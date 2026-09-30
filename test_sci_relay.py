@@ -156,6 +156,23 @@ other = os.path.join(base, "other")
 sh("git", "clone", remote, other)
 check(len(shards(other)) == 3, "a fresh clone sees the finished blocks, so any runner can continue")
 
+# ------------------------------------------------------------ each block is pushed as soon as it is finished
+base_p, work_p, remote_p = make_repo()
+seen_remote = []
+
+
+def spy(id_):
+    if id_ == 19:  # first ID of the second block (descending): block 1 must already be on the remote
+        seen_remote.append(remote_files(remote_p))
+    return served(f"Judgment number {id_}")
+
+
+sci_relay.shift(work_p, 29, 0, minutes=30, workers=1, pause=1.0, block_size=BS,
+                fetcher=make_fetcher({19: spy}), sleep=no_sleep, out=quiet)
+check(seen_remote and any("shards/000020-000029" in f for f in seen_remote[0]),
+      "a finished block is already on the remote before the next block starts (a dead session loses at most one block)")
+shutil.rmtree(base_p, ignore_errors=True)
+
 # ------------------------------------------------------------ time budget
 base2, work2, remote2 = make_repo()
 calls3 = []

@@ -142,7 +142,7 @@ def _commit(data_dir, paths, message):
 
 
 def shift(data_dir, from_id, to_id, minutes=50, workers=2, pause=1.5, block_size=BLOCK_SIZE, fetcher=None,
-          sleep=time.sleep, clock=time.monotonic, push_every=4, est_block_seconds=360, empty_blocks_stop=3,
+          sleep=time.sleep, clock=time.monotonic, push_every=1, est_block_seconds=360, empty_blocks_stop=3,
           retries=2, backoff=(2.0, 5.0), out=print):
     if _git(data_dir, "rev-parse", "--is-inside-work-tree").returncode != 0:
         raise ValueError(f"{data_dir} is not a git repository")
