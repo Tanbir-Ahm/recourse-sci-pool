@@ -246,6 +246,82 @@ def status_summary(data_dir, from_id, to_id, block_size=BLOCK_SIZE):
             "shifts": len(logs), "last_shift": last}
 
 
+_BENIGN = ("time budget", "completed", "nothing left")
+
+
+def active_check(data_dir, ref="origin/claude/sci-pool", now=None, max_age=1500):
+    """Another session looks active if the branch's newest commit is a shard commit made under max_age seconds ago."""
+    p = _git(data_dir, "log", "-1", "--format=%ct|%s", ref)
+    if p.returncode != 0 or "|" not in p.stdout:
+        return False, "no data branch yet"
+    ts, subject = p.stdout.strip().split("|", 1)
+    age = (now or datetime.now(timezone.utc)).timestamp() - int(ts)
+    if subject.startswith("shard ") and age < max_age:
+        return True, f"newest commit is a shard from {age:.0f}s ago, so another session looks active"
+    return False, "no session appears to be active"
+
+
+def _shift_logs(data_dir):
+    logs = []
+    for path in glob.glob(os.path.join(data_dir, "state", "shifts", "*.json")):
+        try:
+            with open(path, encoding="utf-8") as fh:
+                d = json.load(fh)
+            logs.append((datetime.fromisoformat(d["started_at"]), d.get("stop_reason", "")))
+        except Exception:
+            continue
+    return sorted(logs)
+
+
+def chain_guard(data_dir, from_id, to_id, block_size=BLOCK_SIZE, max_shifts_per_day=8, now=None):
+    now = now or datetime.now(timezone.utc)
+    if os.path.exists(os.path.join(data_dir, "STOP")):
+        return False, "STOP file present"
+    if not pending_blocks(set(_ledger(data_dir)), from_id, to_id, block_size):
+        return False, "the crawl is finished"
+    logs = _shift_logs(data_dir)
+    if logs and not logs[-1][1].startswith(_BENIGN):
+        return False, f"the last shift did not end normally: {logs[-1][1][:120]}"
+    recent = [1 for started, _ in logs if (now - started).total_seconds() < 86400]
+    if len(recent) >= max_shifts_per_day:
+        return False, f"daily limit reached ({len(recent)} shifts in the last 24h, limit {max_shifts_per_day})"
+    return True, "ok to chain"
+
+
+def _default_poster(url, headers, payload):
+    import requests
+
+    r = requests.post(url, headers=headers, json=payload, timeout=30)
+    try:
+        body = r.json()
+    except Exception:
+        body = {"raw": r.text[:200]}
+    return r.status_code, body
+
+
+def chain_fire(url, token, text=None, poster=None):
+    headers = {"Authorization": f"Bearer {token}", "anthropic-beta": "experimental-cc-routine-2026-04-01",
+               "anthropic-version": "2023-06-01", "Content-Type": "application/json"}
+    try:
+        status, body = (poster or _default_poster)(url, headers, {"text": text} if text else {})
+    except Exception as e:
+        return False, f"fire failed: {type(e).__name__}: {e}"[:200]
+    if status == 200:
+        return True, f"started the next session: {body.get('claude_code_session_url', '(no link returned)')}"
+    return False, f"fire refused: HTTP {status} {str(body)[:150]}"
+
+
+def run_chain(data_dir, from_id, to_id, block_size=BLOCK_SIZE, env=None, poster=None, now=None, max_shifts_per_day=8):
+    env = os.environ if env is None else env
+    url, token = env.get("ROUTINE_FIRE_URL"), env.get("ROUTINE_FIRE_TOKEN")
+    if not url or not token:
+        return False, "chaining not configured (no ROUTINE_FIRE_URL / ROUTINE_FIRE_TOKEN)"
+    allowed, why = chain_guard(data_dir, from_id, to_id, block_size, max_shifts_per_day, now)
+    if not allowed:
+        return False, f"chain stopped: {why}"
+    return chain_fire(url, token, poster=poster)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -254,11 +330,29 @@ def main(argv=None):
     s.add_argument("--workers", type=int, default=2)
     s.add_argument("--pause", type=float, default=1.5)
     sub.add_parser("status", help="show progress")
-    for p in sub.choices.values():
+    c = sub.add_parser("chain", help="start the next session if it is safe to")
+    c.add_argument("--max-shifts-per-day", type=int, default=8)
+    a = sub.add_parser("active-check", help="say ACTIVE if another session looks active")
+    a.add_argument("--ref", default="origin/claude/sci-pool")
+    sub.add_parser("fire-test", help="fire the routine once with a TEST note (does nothing else)")
+    for name, p in sub.choices.items():
         p.add_argument("--data-dir", default=".")
-        p.add_argument("--from-id", type=int, required=True)
-        p.add_argument("--to-id", type=int, default=0)
+        if name in ("shift", "status", "chain"):
+            p.add_argument("--from-id", type=int, required=True)
+            p.add_argument("--to-id", type=int, default=0)
     args = ap.parse_args(argv)
+    if args.cmd == "active-check":
+        active, msg = active_check(args.data_dir, ref=args.ref)
+        print(("ACTIVE: " if active else "IDLE: ") + msg)
+        return 0
+    if args.cmd == "chain":
+        fired, msg = run_chain(args.data_dir, args.from_id, args.to_id, max_shifts_per_day=args.max_shifts_per_day)
+        print(("CHAINED: " if fired else "NOT CHAINED: ") + msg)
+        return 0
+    if args.cmd == "fire-test":
+        fired, msg = chain_fire(os.environ.get("ROUTINE_FIRE_URL", ""), os.environ.get("ROUTINE_FIRE_TOKEN", ""), text="TEST: chain test only")
+        print(("FIRED: " if fired else "NOT FIRED: ") + msg)
+        return 0 if fired else 1
     if args.cmd == "status":
         st = status_summary(args.data_dir, args.from_id, args.to_id)
         last = st["last_shift"]

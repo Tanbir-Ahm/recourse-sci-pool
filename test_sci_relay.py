@@ -245,6 +245,71 @@ res10 = sci_relay.shift(work9, 9, 0, minutes=30, workers=1, pause=1.0, block_siz
 check("push failed" in res10["stop_reason"] and not res10["pushed"], "if pushing fails the shift says so plainly")
 check(len(shards(work9)) == 1 and sh("git", "status", "--porcelain", cwd=work9).stdout.strip() == "", "the finished block is still committed locally")
 
+# ------------------------------------------------------------ chaining: active-check, chain guard, fire
+from datetime import datetime, timedelta, timezone
+
+baseA, workA, remoteA = make_repo()
+NOW = datetime.now(timezone.utc)
+sh("git", "commit", "--allow-empty", "-m", "shard 000010-000019.ok10.gap0.err0.jsonl.gz", cwd=workA)
+a1, _ = sci_relay.active_check(workA, ref="HEAD", now=NOW)
+check(a1 is True, "a very recent SHARD commit means another session looks active")
+a2, _ = sci_relay.active_check(workA, ref="HEAD", now=NOW + timedelta(minutes=40))
+check(a2 is False, "the same commit 40 minutes later no longer counts as active")
+sh("git", "commit", "--allow-empty", "-m", "shift log", cwd=workA)
+a3, _ = sci_relay.active_check(workA, ref="HEAD", now=NOW)
+check(a3 is False, "a recent SHIFT LOG commit means the session just ended, so the next one may start")
+
+
+def put_log(work, when, reason, name):
+    os.makedirs(os.path.join(work, "state", "shifts"), exist_ok=True)
+    with open(os.path.join(work, "state", "shifts", name), "w") as f:
+        json.dump({"started_at": when.isoformat(timespec="seconds"), "stop_reason": reason, "blocks_done": 3}, f)
+
+
+baseB, workB, remoteB = make_repo()
+put_log(workB, NOW - timedelta(hours=1), "time budget used up (10s left)", "20200101T000000-aaaa.json")
+ok1, why1 = sci_relay.chain_guard(workB, 99, 0, block_size=BS, max_shifts_per_day=8, now=NOW)
+check(ok1 is True, "guard allows chaining after a normal shift with work left and few recent shifts")
+open(os.path.join(workB, "STOP"), "w").close()
+check(sci_relay.chain_guard(workB, 99, 0, block_size=BS, now=NOW)[0] is False, "guard refuses when a STOP file exists")
+os.remove(os.path.join(workB, "STOP"))
+put_log(workB, NOW - timedelta(minutes=5), "blocked by the server (HTTP 403)", "20200101T000001-bbbb.json")
+check(sci_relay.chain_guard(workB, 99, 0, block_size=BS, now=NOW)[0] is False, "guard refuses when the last shift ended abnormally (blocked)")
+put_log(workB, NOW - timedelta(minutes=5), "possible end of archive: 3 empty blocks in a row after real ones", "20200101T000001-bbbb.json")
+check(sci_relay.chain_guard(workB, 99, 0, block_size=BS, now=NOW)[0] is False, "guard refuses at a possible end of archive (needs a human)")
+put_log(workB, NOW - timedelta(minutes=5), "time budget used up (10s left)", "20200101T000001-bbbb.json")
+for i in range(10):
+    put_log(workB, NOW - timedelta(hours=2, minutes=i), "time budget used up (10s left)", f"20200101T0001{i:02d}-cccc.json")
+check(sci_relay.chain_guard(workB, 99, 0, block_size=BS, max_shifts_per_day=8, now=NOW)[0] is False, "guard refuses once the daily shift limit is reached")
+check(sci_relay.chain_guard(workB, 99, 0, block_size=BS, max_shifts_per_day=50, now=NOW)[0] is True, "a higher daily limit allows it again")
+
+baseC, workC, remoteC = make_repo()
+sci_relay.shift(workC, 19, 0, minutes=30, workers=1, pause=1.0, block_size=BS, fetcher=make_fetcher({}), sleep=no_sleep, out=quiet)
+check(sci_relay.chain_guard(workC, 19, 0, block_size=BS, now=datetime.now(timezone.utc))[0] is False, "guard refuses when the crawl is finished")
+
+sent = []
+
+
+def good_post(url, headers, payload):
+    sent.append((url, headers, payload))
+    return 200, {"type": "routine_fire", "claude_code_session_url": "https://claude.ai/code/session_X"}
+
+
+f1, m1 = sci_relay.chain_fire("https://x/fire", "tok", poster=good_post)
+check(f1 is True and "session_X" in m1, "a successful fire reports the new session link")
+check(sent[0][1]["Authorization"] == "Bearer tok" and "anthropic-beta" in sent[0][1], "the fire request carries the bearer token and beta header")
+f2, m2 = sci_relay.chain_fire("https://x/fire", "tok", poster=lambda u, h, p: (429, {"error": "limit"}))
+check(f2 is False and "429" in m2, "a refused fire (for example a usage limit) is reported, not hidden")
+def boom_post(u, h, p):
+    raise ConnectionError("net")
+f3, m3 = sci_relay.chain_fire("https://x/fire", "tok", poster=boom_post)
+check(f3 is False and "net" in m3, "a network failure never raises; the chain just ends")
+f4, m4 = sci_relay.run_chain(workB, 99, 0, block_size=BS, env={}, poster=good_post, now=NOW)
+check(f4 is False and "not configured" in m4, "with no token configured the chain step does nothing, harmlessly")
+
+for b in (baseA, baseB, baseC):
+    shutil.rmtree(b, ignore_errors=True)
+
 for b in (base, base2, base3, base4, base5, base6, base7, base8, base9, plain):
     shutil.rmtree(b, ignore_errors=True)
 
