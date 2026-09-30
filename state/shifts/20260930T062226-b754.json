@@ -1,0 +1,15 @@
+{
+ "started_at": "2026-09-30T06:06:14+00:00",
+ "ended_at": "2026-09-30T06:22:26+00:00",
+ "from_id": 43249,
+ "to_id": 43000,
+ "minutes": 25.0,
+ "workers": 2,
+ "pause": 1.5,
+ "stop_reason": "completed all pending blocks in the range",
+ "seconds": 972.7,
+ "blocks_done": 1,
+ "ok": 241,
+ "gap": 9,
+ "error": 0
+}
