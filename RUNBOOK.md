@@ -19,7 +19,7 @@ Purpose: continue the resumable crawl of the Supreme Court of India's open judgm
 6. Look at the "Reason:" in its output. Continue to step 7 ONLY if it starts with "time budget used up". If it starts with "completed all pending blocks" or "nothing left to do", the crawl is finished: skip step 7 and say so. For any other reason (blocked, challenge, push failed, internal error, possible end of archive, STOP file, stopped inside block...), skip step 7 and report the exact reason.
 7. SHIFT 2: run the identical command from step 5 again (60-minute timeout).
 8. `python sci_relay.py status --from-id 45749 --to-id 0`
-9. `python sci_relay.py chain --from-id 45749 --to-id 0 --max-shifts-per-day 4`  (starts the next session only if it is safe; it may print NOT CHAINED, which is fine)
+9. `python sci_relay.py chain --from-id 45749 --to-id 0 --max-shifts-per-day 12`  (starts the next session only if it is safe; it may print NOT CHAINED, which is fine)
 10. Report in at most 8 lines: blocks done and ok/empty/error counts for each shift, the stop reason of each shift, the status line from step 8, the CHAINED / NOT CHAINED line from step 9, and any 403, 429, timeout or slowdown you noticed.
 
 ## Kill switch
