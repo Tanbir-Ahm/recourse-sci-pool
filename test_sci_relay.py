@@ -8,7 +8,10 @@ import subprocess
 import tempfile
 import threading
 
-import fitz
+try:
+    import pymupdf as fitz
+except ImportError:
+    import fitz
 
 import sci_relay
 
@@ -128,6 +131,7 @@ check([r["id"] for r in top] == sorted(r["id"] for r in top), "records are sorte
 r25 = [r for r in top if r["id"] == 25][0]
 check(r25["status"] == "ok" and "Judgment number 25" in r25["text"] and r25["pages"] >= 1 and len(r25["sha256"]) == 64,
       "an ok record carries the extracted text, page count and fingerprint")
+check(all(isinstance(r.get("ms"), int) and r["ms"] >= 0 for r in top), "every record carries how many milliseconds its request took")
 mid = read_shard(work, [n for n in names if n.startswith("000010")][0])
 r15 = [r for r in mid if r["id"] == 15][0]
 check(r15["status"] == "gap" and "text" not in r15, "an empty ID is recorded as a gap with no text")

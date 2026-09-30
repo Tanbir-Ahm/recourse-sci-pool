@@ -78,7 +78,10 @@ def _push(data_dir):
 
 
 def extract_pdf(body):
-    import fitz
+    try:
+        import pymupdf as fitz
+    except ImportError:
+        import fitz
 
     data = body[4:] if body[4:9] == b"%PDF-" else body
     doc = fitz.open(stream=data, filetype="pdf")
@@ -96,11 +99,11 @@ def _records_for_block(tmp_pool):
     import sqlite3
 
     conn = sqlite3.connect(os.path.join(tmp_pool, "crawl.db"))
-    rows = conn.execute("SELECT id, status, http, bytes, sha256, note FROM fetch_log ORDER BY id").fetchall()
+    rows = conn.execute("SELECT id, status, http, bytes, sha256, note, ms FROM fetch_log ORDER BY id").fetchall()
     conn.close()
     records = []
-    for id_, status, http, nbytes, sha, note in rows:
-        rec = {"id": id_, "status": status, "http": http}
+    for id_, status, http, nbytes, sha, note, ms in rows:
+        rec = {"id": id_, "status": status, "http": http, "ms": ms}
         if status == "ok":
             with open(sci_crawl.shard_path(tmp_pool, id_), "rb") as fh:
                 body = fh.read()
