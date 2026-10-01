@@ -1,0 +1,141 @@
+{
+ "note": "Verified landmark judgments from the main Recourse corpus (pinned paragraphs = the project's own hand-verified holdings). Lalita Kumari excluded: the pool's ID 39112 is the earlier reference order, not the Constitution Bench judgment.",
+ "landmarks": [
+  {
+   "name": "Arnesh Kumar (arrest must be necessary)",
+   "doc": 41736,
+   "pinned": [
+    {
+     "label": "fallback_8",
+     "text": "achieve? It is only after these questions are addressed and one or the other conditions\n\nas enumerated above is satisfied, the power of arrest needs to be exercised. In fine,\n\nbefore arrest first the police officers should have reason to believe on the basis of\n\ninformation and material that the accused has committed the offence. Apart from\n\nthis, the police officer has to be satisfied further that the arrest is necessary for one or\n\nthe more purposes envisaged by sub-clauses\n\n(a) to (e) of clause (1) of Section 41 of Cr.PC.\n\nAn accused arrested without warrant by the police has the constitutional right under Article 22(2) of\n\nthe Constitution of India and Section 57, Cr.PC to be produced before the Magistrate without\n\nunnecessary delay and in no circumstances beyond 24 hours excluding the time necessary for the\n\njourney. During the course of investigation of a case, an accused can be kept in detention beyond a\n\nperiod of 24 hours only when it is authorised by the Magistrate in exercise of power under Section\n\n167 Cr.PC. The power to authorise detention is a very solemn function. It affects the liberty and\n\nfreedom of citizens and needs to be exercised with great care and caution. Our experience tells us\n\nthat it is not exercised with the seriousness it deserves. In many of the cases, detention is authorised\n\nin a routine, casual and cavalier manner. Before a Magistrate authorises detention under Section"
+    },
+    {
+     "label": "fallback_10",
+     "text": "satisfaction in writing that the Magistrate will authorise the detention of the accused. In fine, when a\n\nsuspect is arrested and produced before a Magistrate for authorising detention, the Magistrate has\n\nto address the question whether specific reasons have been recorded for arrest and if so, prima facie\n\nthose reasons are relevant and secondly a reasonable conclusion could at all be reached by the police\n\nofficer that one or the other conditions stated above are attracted. To this limited extent the\n\nMagistrate will make judicial scrutiny.\n\nAnother provision i.e. Section 41A Cr.PC aimed to avoid unnecessary arrest or threat of arrest\n\nlooming large on accused requires to be vitalised. Section 41A as inserted by Section 6 of the Code of\n\nCriminal Procedure (Amendment) Act, 2008(Act 5 of 2009), which is relevant in the context reads\n\nas follows:\n\n“41A. Notice of appearance before police officer.-(1) The police officer shall, in all\n\ncases where the arrest of a person is not required under the provisions of sub-section\n\n(1) of Section 41, issue a notice directing the person against whom a reasonable\n\ncomplaint has been made, or credible information has been received, or a reasonable\n\nsuspicion exists that he has committed a cognizable offence, to appear before him or\n\nat such other place as may be specified in the notice.\n\n(2) Where such a notice is issued to any person, it shall be the duty of that person to\n\ncomply with the terms of the notice."
+    }
+   ],
+   "questions": [
+    {
+     "kind": "lay",
+     "q": "Can the police arrest me automatically just because a case under 498A has been registered against me?"
+    },
+    {
+     "kind": "legal",
+     "q": "Must a police officer be satisfied that arrest is necessary under Section 41 CrPC before arresting for an offence punishable up to seven years, and what must the magistrate check at remand?"
+    }
+   ]
+  },
+  {
+   "name": "Md Ibrahim (civil dispute dressed as crime)",
+   "doc": 35436,
+   "pinned": [
+    {
+     "label": "civil_dispute_criminal_cloak_caution",
+     "text": "This Court has time and again drawn attention to the growing\n\ntendency of complainants attempting to give the cloak of a criminal\n\noffence to matters which are essentially and purely civil in nature,\n\nobviously either to apply pressure on the accused, or out of enmity towards\n\nthe accused, or to subject the accused to harassment. Criminal courts\n\nshould ensure that proceedings before it are not used for settling scores or\n\nto pressurise parties to settle civil disputes. But at the same, it should be\n\nnoted that several disputes of a civil nature may also contain the\n\ningredients of criminal offences and if so, will have to be tried as criminal\n\noffences, even if they also amount to civil disputes. [See: G. Sagar Suri v.\n\f                                    5\n\n\nState of U.P. [2000 (2) SCC 636] and Indian Oil Corporation vs. NEPC\n\nIndia Ltd. [2006 (6) SCC 736].      Let us examine the matter keeping the\n\nsaid principles in mind."
+    },
+    {
+     "label": "forgery_false_document_ownership_claim",
+     "text": "12.     The sale deeds executed by first appellant, clearly and obviously\n\ndo not fall under the second and third categories of `false documents'. It\n\ntherefore remains to be seen whether the claim of the complainant that the\n\nexecution of sale deeds by the first accused, who was in no way connected\n\nwith the land, amounted to committing forgery of the documents with the\n\nintention of taking possession of complainant's land (and that accused 2\n\nto 5 as the purchaser, witness, scribe and stamp vendor colluded with first\n\naccused in execution and registration of the said sale deeds) would bring\n\nthe case under the first category. There is a fundamental difference\n\nbetween a person executing a sale deed claiming that the property\n\nconveyed is his property, and a person executing a sale deed by\n\nimpersonating the owner or falsely claiming to be authorised or\n\nempowered by the owner, to execute the deed on owner's behalf. When a\n\f                                    9\n\n\nperson executes a document conveying a property describing it as his, there\n\nare two possibilities. The first is that he bonafide believes that the property\n\nactually belongs to him. The second is that he may be dishonestly or\n\nfraudulently claiming it to be his even though he knows that it is not his\n\nproperty. But to fall under first category of `false documents', it is not\n\nsufficient that a document has been made or executed dishonestly or\n\nfraudulently. There is a further requirement that it should have been made\n\nwith the intention of causing it to be believed that such document was\n\nmade or executed by, or by the authority of a person, by whom or by\n\nwhose authority he knows that it was not made or executed. When a\n\ndocument is executed by a person claiming a property which is not his, he\n\nis not claiming that he is someone else nor is he claiming that he is\n\nauthorised by someone else. Therefore, execution of such document\n\n(purporting to convey some property of which he is not the owner) is not\n\nexecution of a false document as defined under section 464 of the Code. If\n\nwhat is executed is not a false document, there is no forgery. If there is no\n\nforgery, then neither section 467 nor section 471 of the Code are attracted."
+    }
+   ],
+   "questions": [
+    {
+     "kind": "lay",
+     "q": "My neighbour filed a police case of cheating and forgery over a land dispute that is really a civil matter. Can criminal law be used for this?"
+    },
+    {
+     "kind": "legal",
+     "q": "Can a civil dispute about ownership of property be given a criminal colour by alleging forgery of documents?"
+    }
+   ]
+  },
+  {
+   "name": "Nanda Gopalan (compromise, grievous hurt)",
+   "doc": 42630,
+   "pinned": [
+    {
+     "label": "fallback_4",
+     "text": "Page 4\nJUDGMENT\nCriminal Appeal No.714 of 2015 @ SLP (Crl.) No.431 of 2015\nthe attention of the Court to the judgments in Dasan vs.\nState of Kerala and another\n \n 1, Mathai vs. State of Kerala\n \n 2\nand Regina vs. Bibi\n \n 3. \n8.\nLearned counsel for the State opposed the above\nsubmissions.  According to him, the conviction under Sections\n324 and 326 has been rightly recorded and no interference is\ncalled for by this Court.\n9.\nWhile we have no difficulty in holding that taking into\naccount the compromise between the parties particularly when\nthey are close relatives, reduction in sentence can be ordered,\nwe do no find any ground to interfere with the conviction of the\nappellant.\n10.\nIn Mathai, it was held :\n“16. The expression “any instrument which,\nused as a weapon of offence, is likely to cause\ndeath” (Section 326) has to be gauged taking\nnote of the heading of the section. What would\nconstitute a “dangerous weapon” would depend\nupon the facts of each case and no\ngeneralisation can be made.\n17. The heading of the section provides some\ninsight into the factors to be considered. The\nessential ingredients to attract Section 326 are:\n(1) voluntarily causing a hurt; (2) hurt caused\nmust be a grievous hurt; and (3) the grievous\nhurt must have been caused by dangerous\nweapons or means. As was noted by this Court\nin State of U.P. v. Indrajeet [2000 (7) SCC 249]\nthere is no such thing as a regular or earmarked\n1 2014 (12) SCC 666\n2 2005 (3) SCC 260\n3 1980 (1) WLR 1193\nPage 4 of 11"
+    }
+   ],
+   "questions": [
+    {
+     "kind": "lay",
+     "q": "Both parties have settled a case of grievous hurt. Can the court accept the compromise or reduce the sentence even though the offence is non-compoundable?"
+    },
+    {
+     "kind": "legal",
+     "q": "Can the Supreme Court reduce the sentence on the basis of a compromise in an offence under Section 325 IPC that cannot be compounded under Section 320?"
+    }
+   ]
+  },
+  {
+   "name": "Rangappa (s.139 presumption)",
+   "doc": 36322,
+   "pinned": [
+    {
+     "label": "23",
+     "text": "23. In other words, provided the facts required to form\nthe basis of a presumption of law exists, the discretion is\nleft with the Court to draw the statutory conclusion, but\nthis does not preclude the person against whom the\npresumption is drawn from rebutting it and proving the\ncontrary. A fact is said to be proved when, after\nconsidering the matters before it, the Court either\nbelieves it to exist, or considers its existence so probable\nthat a prudent man ought, under the circumstances of\nthe particular case, to act upon the supposition that it\nexists. Therefore, the rebuttal does not have to be\nconclusively established but such evidence must be\nadduced before the Court in support of the defence that\nthe Court must either believe the defence to exist or\nconsider its existence to be reasonably probable, the\nstandard of reasonability being that of the prudent man.\"\n\n(emphasis supplied)\n\n\n\n                          17"
+    },
+    {
+     "label": "14",
+     "text": "14. In light of these extracts, we are in agreement with the\n\nrespondent-claimant that the presumption mandated by\n\nSection 139 of the Act does indeed include the existence of a\n\nlegally enforceable debt or liability. To that extent, the\n\nimpugned observations in Krishna Janardhan Bhat (supra)\n\n\n\n                               20\n\fmay not be correct. However, this does not in any way cast\n\ndoubt on the correctness of the decision in that case since it\n\nwas based on the specific facts and circumstances therein. As\n\nnoted in the citations, this is of course in the nature of a\n\nrebuttable presumption and it is open to the accused to raise\n\na defence wherein the existence of a legally enforceable debt or\n\nliability can be contested. However, there can be no doubt that\n\nthere is an initial presumption which favours the complainant.\n\nSection 139 of the Act is an example of a reverse onus clause\n\nthat has been included in furtherance of the legislative\n\nobjective of improving the credibility of negotiable instruments.\n\nWhile Section 138 of the Act specifies a strong criminal\n\nremedy in relation to the dishonour of cheques, the rebuttable\n\npresumption under Section 139 is a device to prevent undue\n\ndelay in the course of litigation. However, it must be\n\nremembered that the offence made punishable by Section 138\n\ncan be better described as a regulatory offence since the\n\nbouncing of a cheque is largely in the nature of a civil wrong\n\nwhose impact is usually confined to the private parties\n\ninvolved in commercial transactions. In such a scenario, the\n\n\n                               21\n\ftest of proportionality should guide the construction and\n\ninterpretation     of   reverse         onus   clauses    and     the\n\naccused/defendant cannot be expected to discharge an unduly\n\nhigh standard or proof. In the absence of compelling\n\njustifications,   reverse   onus    clauses    usually   impose   an\n\nevidentiary burden and not a persuasive burden. Keeping this\n\nin view, it is a settled position that when an accused has to\n\nrebut the presumption under Section 139, the standard of\n\nproof for doing so is that of `preponderance of probabilities'.\n\nTherefore, if the accused is able to raise a probable defence\n\nwhich creates doubts about the existence of a legally\n\nenforceable debt or liability, the prosecution can fail. As\n\nclarified in the citations, the accused can rely on the materials\n\nsubmitted by the complainant in order to raise such a defence\n\nand it is conceivable that in some cases the accused may not\n\nneed to adduce evidence of his/her own."
+    }
+   ],
+   "questions": [
+    {
+     "kind": "lay",
+     "q": "The cheque bounced and the accused says he never owed any money. Who has to prove the debt?"
+    },
+    {
+     "kind": "legal",
+     "q": "Does the presumption under Section 139 of the Negotiable Instruments Act cover the existence of a legally enforceable debt, and how can it be rebutted?"
+    }
+   ]
+  },
+  {
+   "name": "Jadeja (s.50 NDPS genuine compliance)",
+   "doc": 37060,
+   "pinned": [
+    {
+     "label": "22",
+     "text": "22. In view of the foregoing discussion, we are of the firm opinion that the object with which right under Section 50(1) of the NDPS Act, by way of a safeguard, has been conferred on the suspect, viz. to check the misuse of power, to avoid harm to innocent persons and to minimise the allegations of planting or foisting of false cases by the law enforcement agencies, it would be imperative on the part of the empowered officer to apprise the person intended to be searched of his right to be searched before a gazetted officer or a Magistrate. We have no hesitation in holding that in so far as the obligation of the authorised officer under sub-section (1) of Section 50 of the NDPS Act is concerned, it is mandatory and requires a strict compliance. Failure to comply with the provision would render the recovery of the illicit article suspect and vitiate the conviction if the same is recorded only on the basis of the recovery of the illicit article from the person of the accused during such search. Thereafter, the suspect may or may not choose to exercise the right provided to him under the said provision. As observed in Re Presidential Poll, it is the duty of the courts to get at the real intention of the Legislature by carefully attending to the whole scope of the provision to be construed. “The key to the opening of every law is the reason and spirit of the law, it is the animus imponentis, the intention of the law maker expressed in the law itself, taken as a whole.” We are of the opinion that the concept of “substantial compliance” with the requirement of Section 50 of the NDPS Act introduced and read into the mandate of the said Section in Joseph Fernandez (supra) and Prabha Shankar Dubey (supra) is neither borne out from the language of sub-section (1) of Section 50 nor it is in consonance with the dictum laid down in Baldev Singh’s case (supra). Needless to add that the question whether or not the procedure prescribed has been followed and the requirement of Section 50 had been met, is a matter of trial. It would neither be possible nor feasible to lay down any absolute formula in that behalf. We also feel that though Section 50 gives an option to the empowered officer to take such person (suspect) either before the nearest gazetted officer or the Magistrate but in order to impart authenticity, transparency and creditworthiness to the entire proceedings, in the first instance, an endeavour should be to produce the suspect before the nearest Magistrate, who enjoys more confidence of the common man compared to any other officer. It would not only add legitimacy to the search proceedings, it may verily strengthen the prosecution as well."
+    }
+   ],
+   "questions": [
+    {
+     "kind": "lay",
+     "q": "Police searched me for drugs but only vaguely said I could be searched in front of an officer. Is that enough?"
+    },
+    {
+     "kind": "legal",
+     "q": "Is substantial compliance enough with the requirement under Section 50 of the NDPS Act to inform the accused of the right to be searched before a Gazetted Officer or Magistrate?"
+    }
+   ]
+  },
+  {
+   "name": "Noor Aga (NDPS reverse burden)",
+   "doc": 31821,
+   "pinned": [
+    {
+     "label": "1",
+     "text": "1.\nThe provisions of Sections 35 and 54 are not ultra vires the\nConstitution of India."
+    },
+    {
+     "label": "5",
+     "text": "5.\nThe fact of recovery has not been proved beyond all reasonable doubt\nwhich is required to be established before the doctrine of reverse\nburden is applied.  Recoveries have not been made as per the\nprocedure established by law."
+    }
+   ],
+   "questions": [
+    {
+     "kind": "lay",
+     "q": "They found drugs and say I must prove I am innocent. Do I have to prove it?"
+    },
+    {
+     "kind": "legal",
+     "q": "Is the reverse burden under Sections 35 and 54 of the NDPS Act constitutional, and what must the prosecution establish first?"
+    }
+   ]
+  }
+ ]
+}

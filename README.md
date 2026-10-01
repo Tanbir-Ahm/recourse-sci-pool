@@ -15,3 +15,7 @@ Run a shift (any machine with git push access and `pip install pymupdf requests`
 Progress: `python sci_relay.py status --from-id 44000 --to-id 0`.
 
 Source acknowledgement: all judgments are from the Supreme Court of India website; keep the source link with anything reproduced.
+
+## Passage index (embeddings)
+
+`sci_index.py` turns the crawled judgments into clean, tagged, embedded passages, one block of 250 IDs at a time, saved on branch `claude/sci-index` (the crawl data on `claude/sci-pool` is only read). It keeps criminal-law judgments only, skips copies, tiny orders and junk, never spends past a token ceiling, and stops cleanly (keeping everything saved) if the Voyage service refuses. Tests: `python test_sci_index.py` (fake service, real temporary git repos, costs nothing). How to run it: see `INDEX_RUNBOOK.md`. `landmarks.json` holds the project's verified landmark paragraphs for the known-answer check (`sci_index.py eval`). `chunk_judgments.py` is a vendored copy of the splitter from the main Recourse repo.
