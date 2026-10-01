@@ -1,0 +1,15 @@
+{
+ "started_at": "2026-10-01T09:15:07+00:00",
+ "ended_at": "2026-10-01T10:03:25+00:00",
+ "from_id": 45749,
+ "to_id": 0,
+ "minutes": 50.0,
+ "workers": 2,
+ "pause": 1.5,
+ "stop_reason": "time budget used up (102s left, a block takes about 337s)",
+ "seconds": 2898.2,
+ "blocks_done": 10,
+ "ok": 2500,
+ "gap": 0,
+ "error": 0
+}
