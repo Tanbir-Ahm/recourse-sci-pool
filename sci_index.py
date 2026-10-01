@@ -519,7 +519,7 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
             seen = load_seen(index_dir)
             spent = tokens_spent(index_dir)
             blocks = pool_blocks(pool_dir)
-            todo = sorted((s for s in blocks if s not in done and (from_id is None or s <= from_id) and (to_id is None or s >= to_id)), reverse=True)
+            todo = sorted((s for s in blocks if s not in done and blocks[s]["ok"] > 0 and (from_id is None or s <= from_id) and (to_id is None or s >= to_id)), reverse=True)
             if not todo:
                 reason = "nothing left to do (every crawled block is already indexed)"
         for start in ([] if reason else todo):
@@ -602,7 +602,7 @@ def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING):
             last = json.load(fh)
     return {"blocks_done": len(led), "docs_embedded": sum(v["docs"] for v in led.values()), "passages": sum(v["passages"] for v in led.values()),
             "tokens_spent": spent, "ceiling": ceiling, "ceiling_left": ceiling - spent,
-            "blocks_pending": len([s for s in blocks if s not in led]), "lowest_id_done": min(led) if led else None,
+            "blocks_pending": len([s for s in blocks if s not in led and blocks[s]["ok"] > 0]), "lowest_id_done": min(led) if led else None,
             "highest_id_done": max(v["end"] for v in led.values()) if led else None, "shifts": len(logs), "last_shift": last}
 
 
