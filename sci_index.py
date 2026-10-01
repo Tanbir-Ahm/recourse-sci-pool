@@ -30,7 +30,7 @@ import chunk_judgments as cj
 
 PREP_VERSION = "p1"
 BLOCK_SIZE = 250
-DEFAULT_CEILING = 42_000_000          # new tokens this job may spend (the free allowance left was 44.15M on 2026-10-01)
+DEFAULT_CEILING = 40_000_000          # new tokens this job may spend; 44.15M of the free allowance was left on 2026-10-01 and the live site shares it, so ~4M stays in reserve
 CHARS_PER_TOKEN = 3.87                # measured against the real service
 TOKEN_CALIBRATION = 0.984             # the estimate ran 1.6% above the real count on the first sample
 MODEL = "voyage-law-2"
