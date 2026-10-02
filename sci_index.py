@@ -8,6 +8,7 @@ The saved files ARE the ledger: a block is done exactly when its files are commi
 It never spends past a token ceiling, and stops cleanly (keeping everything saved) if the service refuses.
 """
 import argparse
+import collections
 import glob
 import gzip
 import hashlib
@@ -28,7 +29,7 @@ import numpy as np
 
 import chunk_judgments as cj
 
-PREP_VERSION = "p1"
+PREP_VERSION = "p2"                   # p2: non-breaking spaces and running page headers removed, very short numbered paragraphs joined (p1 blocks lack both)
 BLOCK_SIZE = 250
 DEFAULT_CEILING = 40_000_000          # new tokens this job may spend; 44.15M of the free allowance was left on 2026-10-01 and the live site shares it, so ~4M stays in reserve
 CHARS_PER_TOKEN = 3.87                # measured against the real service
@@ -49,11 +50,34 @@ HDR_INLINE = re.compile(r"(?:http://JUDIS\.NIC\.IN\s+)?(?:SUPREME COURT OF INDIA
 ESC = {"021": "'", "022": "'", "023": '"', "024": '"', "025": "'", "026": "-", "027": "-"}
 
 
+ODD_SPACES = re.compile(r"[\u00a0\u2002\u2003\u2007\u2009\u202f]")   # the PDFs use non-breaking spaces, which hid 99% of the "Page 4" markers from the patterns above
+
+
 def clean_page(p):
     p = p.replace("\ufffd", "'")
+    p = ODD_SPACES.sub(" ", p).replace("\u200b", "")
     p = HDR_INLINE.sub(" ", p)
     p = HDR_LINE.sub("", p)
     return re.sub(r"\n{3,}", "\n\n", p)
+
+
+def strip_running_headers(pages):
+    """A line that sits at the top or bottom of many pages is a running header or footer (for example
+    'Criminal Appeal No.714 of 2015 @ SLP (Crl.) No.431 of 2015'); it is not part of the judgment, so drop it."""
+    if len(pages) < 4:
+        return pages
+    norm = lambda s: re.sub(r"\s+", " ", s).strip()
+    count = collections.Counter()
+    for pg in pages:
+        lines = [norm(x) for x in pg.split("\n") if x.strip()]
+        for x in set(lines[:3] + lines[-3:]):
+            if 3 <= len(x) <= 150:
+                count[x] += 1
+    need = max(3, int(0.3 * len(pages)))
+    drop = {x for x, c in count.items() if c >= need}
+    if not drop:
+        return pages
+    return ["\n".join(x for x in pg.split("\n") if norm(x) not in drop) for pg in pages]
 
 
 def fix_text(t):
@@ -181,9 +205,31 @@ def tag_doc(passages):
     return passages
 
 
-def make_passages(text):
+MERGE_BELOW = 200                     # chars: a numbered paragraph shorter than this is joined with the one after it (a very short passage is almost unfindable by meaning)
+
+
+def merge_short(passages, below=MERGE_BELOW, cap=2600):
+    """Joins runs of very short numbered paragraphs (a list of conclusions, a one-line order) into one passage, so each has
+    enough text to be found by meaning. The joined passage keeps the first page and is numbered like '1-3'."""
+    out, buf, first = [], None, None
+    for p in passages:
+        if (buf is not None and below and len(buf["text"]) < below and buf["method"] == "para" and p["method"] == "para"
+                and not str(buf["pn"]).startswith("preamble") and not str(p["pn"]).startswith("preamble")
+                and len(buf["text"]) + 1 + len(p["text"]) <= cap):
+            buf["text"] += " " + p["text"]
+            buf["pn"] = f"{first}-{p['pn']}"
+        else:
+            if buf is not None:
+                out.append(buf)
+            buf, first = dict(p), p["pn"]
+    if buf is not None:
+        out.append(buf)
+    return out
+
+
+def make_passages(text, merge_below=MERGE_BELOW):
     """One judgment -> (passages, old-header data). Passages carry text, paragraph number (or None), page, method, tags."""
-    pages = [clean_page(x) for x in text.split("\f")]
+    pages = strip_running_headers([clean_page(x) for x in text.split("\f")])
     meta = None
     if pages:
         meta, pages[0] = split_old_header(pages[0])
@@ -221,7 +267,7 @@ def make_passages(text):
                 search = max(search, idx)
             page = bisect_right(fstarts, max(idx, 0))
             out.append({"pn": None, "page": page, "method": "sentences", "text": w})
-    return tag_doc(out), meta
+    return tag_doc(merge_short(out, merge_below)), meta
 
 
 # ================================================================ which judgments to keep
