@@ -48,10 +48,11 @@ class FakeClient:
 
     def __init__(self, plan=None, fail_after=None, exc=None):
         self.calls, self.plan, self.fail_after, self.exc = 0, plan or {}, fail_after, exc
-        self.texts, self.tokens = [], 0
+        self.texts, self.tokens, self.models = [], 0, []
 
     def embed(self, texts, model=None, input_type=None):
         self.calls += 1
+        self.models.append(model)
         if self.plan.get(self.calls):
             raise self.plan[self.calls]
         if self.fail_after is not None and self.calls > self.fail_after:
@@ -117,7 +118,7 @@ check(si.fix_text("\\023quoted\\024 and \\026 dash") == '"quoted" and - dash', "
 meta, rest = si.split_old_header("CASE NO.: Appeal (crl.) 12 of 2000 PETITIONER: Ram Singh RESPONDENT: State of U.P. DATE OF JUDGMENT: 04/05/2000 BENCH: A & B JUDGMENT: The Judgment of the Court was delivered by K.T. THOMAS, J. The facts are simple.")
 check(meta and meta["pet"] == "Ram Singh" and meta["resp"] == "State of U.P." and meta["date"] == "04/05/2000" and rest.startswith("The facts"), "an old-style header block is lifted out as case data, not left as a passage")
 
-ps, m = si.make_passages(crim_text("Raju"))
+ps, m = si.make_passages(crim_text("Raju"), merge_below=0)   # merging is tested separately below
 check(len(ps) >= 8 and all(p["method"] == "para" for p in ps), "a numbered judgment is split on its real paragraph numbers")
 check([p["pn"] for p in ps if p["pn"] != "preamble"][:3] == ["1", "2", "3"], "paragraph numbers are kept so a result can point to the exact paragraph")
 alltext = " ".join(p["text"] for p in ps)
@@ -144,6 +145,34 @@ tg = si.tag_doc(junk)
 check(tg[0]["noise"] == 1 and tg[1]["noise"] == 1, "number-only and very short fragments are flagged as noise (never embedded)")
 hdr = [{"pn": "preamble", "page": 1, "method": "para", "text": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 5 OF 2010 A versus State of X with a few more words of the caption here"}]
 check(si.tag_doc(hdr)[0]["section"] == "header", "a leftover caption block is tagged header")
+
+# ---- p2 cleaning: non-breaking spaces, running headers, very short paragraphs
+cn = si.clean_page("An\xa0abrasion\xa0injury\nPage\xa04\nthe charge Page\xa05 JUDGMENT under Section 302\n")
+check("\xa0" not in cn and "An abrasion injury" in cn, "non-breaking spaces become normal spaces")
+check("Page" not in cn and "the charge" in cn and "under Section 302" in cn, "a page marker spelled with a non-breaking space is removed, the sentence around it stays")
+hdr_pages = [f"Criminal Appeal No.714 of 2015 @ SLP (Crl.) No.431 of 2015\nJUDGMENT text of page {i} unique words here {i}\nmore real content {i}" for i in range(6)]
+stripped = "\n".join(si.strip_running_headers(hdr_pages))
+check("Criminal Appeal No.714" not in stripped and all(f"unique words here {i}" in stripped for i in range(6)), "a header repeated on most pages is dropped, each page's own text stays")
+few = ["Criminal Appeal No.714 of 2015\nbody a", "Criminal Appeal No.714 of 2015\nbody b"]
+check(si.strip_running_headers(few) == few, "a judgment with only a couple of pages is left alone")
+once = [f"unique line {i}\nbody {i}" for i in range(6)]
+check(si.strip_running_headers(once) == once, "lines that do not repeat are never dropped")
+P = lambda pn, n, **k: {"pn": pn, "page": k.get("page", 1), "method": k.get("method", "para"), "text": ("w" * (n - 1)) + "."}
+mg = si.merge_short([P("1", 80), P("2", 80), P("3", 80), P("4", 500), P("5", 80)], below=200)
+check([p["pn"] for p in mg] == ["1-3", "4", "5"], "a run of very short numbered paragraphs is joined and numbered like 1-3; long ones and a short last one stay alone")
+check(len(mg[0]["text"]) == 80 * 3 + 2 and mg[0]["page"] == 1, "the joined passage holds all the text and the first page")
+check([p["pn"] for p in si.merge_short([P("preamble", 50), P("1", 50)], below=200)] == ["preamble", "1"], "a header block is never joined to the first paragraph")
+check([p["pn"] for p in si.merge_short([P("1", 80), P("2", 80)], below=0)] == ["1", "2"], "merging can be switched off")
+check([p["pn"] for p in si.merge_short([P("1", 80), P("2", 2700)], below=200, cap=2600)] == ["1", "2"], "a join never grows past the passage size cap")
+sent = si.merge_short([P(None, 80, method="sentences"), P(None, 80, method="sentences")], below=200)
+check(len(sent) == 2, "unnumbered (sentence-window) passages are not joined")
+long_para = "The prosecution alleged that the accused had cheated the complainant by a false promise and the trial court convicted him after examining the witnesses and the documents produced before it during the trial of the case."
+concl = "".join(f"\n{i}. Conclusion number {i} is short and clear." for i in range(4, 9))
+pcn, _ = si.make_passages("IN THE SUPREME COURT OF INDIA\nCRIMINAL APPELLATE JURISDICTION\nJUDGMENT\n" + f"\n1. {long_para}\n2. {long_para}\n3. The following conclusions emerge:" + concl)
+joined = [p for p in pcn if p["pn"] == "4-8"]
+check(len(joined) == 1 and "Conclusion number 4" in joined[0]["text"] and "Conclusion number 8" in joined[0]["text"] and not joined[0]["noise"], "a list of short conclusions ends up in one passage that is kept, not dropped as noise")
+check([p["pn"] for p in pcn if p["pn"] in ("1", "2")] == ["1", "2"], "long paragraphs next to it are untouched")
+check(si.PREP_VERSION == "p2", "blocks made with the new cleaning are marked p2")
 
 # ================================================================ B. criminal-law filter
 print("--- criminal-law filter")
@@ -183,6 +212,10 @@ bs = si.batch_texts(texts, max_tokens=100000, max_items=500)
 flat = [i for b in bs for i in b]
 check(flat == list(range(1000)), "every passage is sent exactly once, in order")
 check(all(len(b) <= 500 for b in bs) and all(sum(len(texts[i]) for i in b) / 3.87 <= 100000 for b in bs), "no batch exceeds the item cap or the token cap")
+bs_default = si.batch_texts(texts)
+check(all(sum(len(texts[i]) for i in b) / 3.87 <= si.MAX_BATCH_TOKENS for b in bs_default), "the default batches stay within the default token cap")
+check(si.MAX_BATCH_TOKENS * 127389 / 100000 <= 120000, "a batch undercounted as badly as the one the service refused (127,389 real vs 100,000 estimated) now stays under its 120,000 limit")
+check(si.MAX_BATCH_TOKENS * 2 <= 120000, "the default batch cap leaves room for the estimate to run 2x low")
 
 # ================================================================ E. embedding behaviours
 print("--- embedding behaviours")
@@ -442,6 +475,41 @@ rows = {r["name"]: r for r in res["results"]}
 check(rows["Missing case"]["status"] == "not_embedded_yet" and rows["Present case"]["status"] == "tested", "a landmark not yet embedded is reported as such, not counted as a miss")
 check(rows["Present case"]["doc_rank"] is not None and rows["Present case"]["doc_rank"] <= 5 and rows["Present case"]["pinned_in_top3"], "the planted verified paragraph is found by the evaluation")
 check(res["summary"]["tested"] == 1 and res["summary"]["full_success"] == 1, "the summary counts only tested questions")
+shutil.rmtree(base, ignore_errors=True)
+
+# ================================================================ J. one model per index
+print("--- one model per index")
+base, remote, code, idx, pool = new_env("idxM_")
+si.init_index_branch(code, idx)
+check(si.check_model(idx, "voyage-4-large") is None and si.check_model(idx, si.MODEL) is None, "an empty index accepts any model")
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("T")}])
+cm = FakeClient()
+rm = run_shift(code, idx, pool, cm, model="voyage-4-large")
+check(rm["blocks_done"] == 1 and set(cm.models) == {"voyage-4-large"}, "the chosen model is the one sent to the service")
+check(open(os.path.join(idx, "index", "MODEL")).read().strip() == "voyage-4-large" and "index/MODEL" in git(idx, "ls-files").stdout.split(), "the first block records, and saves, which model made the index")
+write_pool_shard(pool, 10, [{"id": 11, "status": "ok", "pages": 3, "text": crim_text("U")}])
+cm2 = FakeClient()
+rm2 = run_shift(code, idx, pool, cm2)
+check(rm2["blocks_done"] == 0 and cm2.calls == 0 and "voyage-4-large" in rm2["stop_reason"], "a different model is refused before anything is sent")
+lmq = os.path.join(base, "lm.json")
+json.dump({"landmarks": []}, open(lmq, "w"))
+refused = False
+try:
+    si.run_eval(idx, FakeClient(), landmarks_path=lmq)
+except ValueError:
+    refused = True
+check(refused, "searching an index with a different model's questions is refused")
+check(si.run_eval(idx, FakeClient(), landmarks_path=lmq, out=lambda *_: None, model="voyage-4-large")["model"] == "voyage-4-large", "the evaluation records which model it used")
+shutil.rmtree(base, ignore_errors=True)
+
+# an index saved before the marker existed counts as voyage-law-2
+base, remote, code, idx, pool = new_env("idxN_")
+si.init_index_branch(code, idx)
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("T")}])
+run_shift(code, idx, pool, FakeClient())
+os.remove(os.path.join(idx, "index", "MODEL"))
+legacy_refusal = si.check_model(idx, "voyage-4-large") or ""
+check(si.check_model(idx, "voyage-law-2") is None and "voyage-law-2" in legacy_refusal, "blocks saved before the marker existed are treated as voyage-law-2")
 shutil.rmtree(base, ignore_errors=True)
 
 print()

@@ -8,6 +8,7 @@ The saved files ARE the ledger: a block is done exactly when its files are commi
 It never spends past a token ceiling, and stops cleanly (keeping everything saved) if the service refuses.
 """
 import argparse
+import collections
 import glob
 import gzip
 import hashlib
@@ -28,12 +29,14 @@ import numpy as np
 
 import chunk_judgments as cj
 
-PREP_VERSION = "p1"
+PREP_VERSION = "p2"                   # p2: non-breaking spaces and running page headers removed, very short numbered paragraphs joined (p1 blocks lack both)
 BLOCK_SIZE = 250
 DEFAULT_CEILING = 40_000_000          # new tokens this job may spend; 44.15M of the free allowance was left on 2026-10-01 and the live site shares it, so ~4M stays in reserve
 CHARS_PER_TOKEN = 3.87                # measured against the real service
 TOKEN_CALIBRATION = 1.062             # measured on a real cloud block (2026-10-01, 044750-044999): estimate 398,003 vs real 429,448 at 0.984
 MODEL = "voyage-law-2"
+LEGACY_MODEL = "voyage-law-2"         # blocks saved before an index had a MODEL marker file were all made with this one
+MAX_BATCH_TOKENS = 60_000             # the service refuses a batch over 120,000 real tokens; one batch ran 27%+ over its estimate (127,389 real vs at most 100,000 estimated, 2026-10-02), so keep 2x headroom
 MIN_DOC_CHARS = 1500
 DENSITY_THRESHOLD = 10.0              # criminal-law wording per 10,000 characters
 
@@ -47,11 +50,34 @@ HDR_INLINE = re.compile(r"(?:http://JUDIS\.NIC\.IN\s+)?(?:SUPREME COURT OF INDIA
 ESC = {"021": "'", "022": "'", "023": '"', "024": '"', "025": "'", "026": "-", "027": "-"}
 
 
+ODD_SPACES = re.compile(r"[\u00a0\u2002\u2003\u2007\u2009\u202f]")   # the PDFs use non-breaking spaces, which hid 99% of the "Page 4" markers from the patterns above
+
+
 def clean_page(p):
     p = p.replace("\ufffd", "'")
+    p = ODD_SPACES.sub(" ", p).replace("\u200b", "")
     p = HDR_INLINE.sub(" ", p)
     p = HDR_LINE.sub("", p)
     return re.sub(r"\n{3,}", "\n\n", p)
+
+
+def strip_running_headers(pages):
+    """A line that sits at the top or bottom of many pages is a running header or footer (for example
+    'Criminal Appeal No.714 of 2015 @ SLP (Crl.) No.431 of 2015'); it is not part of the judgment, so drop it."""
+    if len(pages) < 4:
+        return pages
+    norm = lambda s: re.sub(r"\s+", " ", s).strip()
+    count = collections.Counter()
+    for pg in pages:
+        lines = [norm(x) for x in pg.split("\n") if x.strip()]
+        for x in set(lines[:3] + lines[-3:]):
+            if 3 <= len(x) <= 150:
+                count[x] += 1
+    need = max(3, int(0.3 * len(pages)))
+    drop = {x for x, c in count.items() if c >= need}
+    if not drop:
+        return pages
+    return ["\n".join(x for x in pg.split("\n") if norm(x) not in drop) for pg in pages]
 
 
 def fix_text(t):
@@ -179,9 +205,31 @@ def tag_doc(passages):
     return passages
 
 
-def make_passages(text):
+MERGE_BELOW = 200                     # chars: a numbered paragraph shorter than this is joined with the one after it (a very short passage is almost unfindable by meaning)
+
+
+def merge_short(passages, below=MERGE_BELOW, cap=2600):
+    """Joins runs of very short numbered paragraphs (a list of conclusions, a one-line order) into one passage, so each has
+    enough text to be found by meaning. The joined passage keeps the first page and is numbered like '1-3'."""
+    out, buf, first = [], None, None
+    for p in passages:
+        if (buf is not None and below and len(buf["text"]) < below and buf["method"] == "para" and p["method"] == "para"
+                and not str(buf["pn"]).startswith("preamble") and not str(p["pn"]).startswith("preamble")
+                and len(buf["text"]) + 1 + len(p["text"]) <= cap):
+            buf["text"] += " " + p["text"]
+            buf["pn"] = f"{first}-{p['pn']}"
+        else:
+            if buf is not None:
+                out.append(buf)
+            buf, first = dict(p), p["pn"]
+    if buf is not None:
+        out.append(buf)
+    return out
+
+
+def make_passages(text, merge_below=MERGE_BELOW):
     """One judgment -> (passages, old-header data). Passages carry text, paragraph number (or None), page, method, tags."""
-    pages = [clean_page(x) for x in text.split("\f")]
+    pages = strip_running_headers([clean_page(x) for x in text.split("\f")])
     meta = None
     if pages:
         meta, pages[0] = split_old_header(pages[0])
@@ -219,7 +267,7 @@ def make_passages(text):
                 search = max(search, idx)
             page = bisect_right(fstarts, max(idx, 0))
             out.append({"pn": None, "page": page, "method": "sentences", "text": w})
-    return tag_doc(out), meta
+    return tag_doc(merge_short(out, merge_below)), meta
 
 
 # ================================================================ which judgments to keep
@@ -289,7 +337,7 @@ _FATAL = {"AuthenticationError", "InvalidRequestError", "MalformedRequestError"}
 _ALLOWANCE = re.compile(r"payment|billing|credit|quota|free token|free tier|allowance", re.I)
 
 
-def batch_texts(texts, max_tokens=100000, max_items=500):
+def batch_texts(texts, max_tokens=MAX_BATCH_TOKENS, max_items=500):
     batches, cur, curtok = [], [], 0.0
     for i, t in enumerate(texts):
         e = len(t) / CHARS_PER_TOKEN
@@ -319,7 +367,7 @@ def _embed_once(client, texts, sleep, model):
     raise EmbedStop("5 failed attempts in a row")
 
 
-def embed_texts(client, texts, *, sleep=time.sleep, pause=2.0, max_tokens=100000, max_items=500, budget_tokens=None, model=MODEL):
+def embed_texts(client, texts, *, sleep=time.sleep, pause=2.0, max_tokens=MAX_BATCH_TOKENS, max_items=500, budget_tokens=None, model=MODEL):
     """Embeds in small batches with a pause between them. Returns (float16 vectors in order, tokens the service charged).
     Raises EmbedStop (carrying the tokens already spent) on refusal, repeated failure, or if a batch would pass the budget."""
     vectors, used = [None] * len(texts), 0
@@ -387,6 +435,33 @@ def ledger(index_dir):
                 continue
         found[start] = {"docs": docs, "passages": passes, "tokens": tok, "base": base, "end": end}
     return found
+
+
+def _model_marker(index_dir):
+    return os.path.join(_idx_dir(index_dir), "MODEL")
+
+
+def check_model(index_dir, model):
+    """One index holds vectors from ONE model; vectors from different models cannot be compared, so mixing them would silently
+    break search. Returns a refusal text, or None if `model` may be used with this index."""
+    if os.path.exists(_model_marker(index_dir)):
+        with open(_model_marker(index_dir), encoding="utf-8") as fh:
+            have = fh.read().strip()
+    elif ledger(index_dir):
+        have = LEGACY_MODEL
+    else:
+        return None
+    return None if have == model else f"this index holds {have} vectors; refusing to add or search with {model} (use a separate index folder)"
+
+
+def _claim_model(index_dir, model):
+    """The first block of a new, empty index records which model made its vectors. True if the marker was just written."""
+    if os.path.exists(_model_marker(index_dir)) or ledger(index_dir):
+        return False
+    os.makedirs(_idx_dir(index_dir), exist_ok=True)
+    with open(_model_marker(index_dir), "w", encoding="utf-8") as fh:
+        fh.write(model + "\n")
+    return True
 
 
 def _shift_logs(index_dir):
@@ -499,7 +574,7 @@ def active_check(code_repo, now=None, max_age=1500, ref=f"origin/{BRANCH}"):
 # ================================================================ the shift
 def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None, sleep=time.sleep, clock=time.monotonic,
           out=print, pause=2.0, block_size=BLOCK_SIZE, est_block_seconds=120, max_blocks=None, batch_items=500,
-          from_id=None, to_id=None):
+          from_id=None, to_id=None, model=MODEL):
     if _git(index_dir, "rev-parse", "--is-inside-work-tree").returncode != 0:
         raise ValueError(f"{index_dir} is not a git repository")
     started_iso, t0 = datetime.now(timezone.utc).isoformat(timespec="seconds"), clock()
@@ -507,10 +582,13 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
     reason, est = None, est_block_seconds
     stop_file = os.path.join(index_dir, "STOP")
     ok, msg = _sync(index_dir)
+    wrong_model = check_model(index_dir, model)
     if not ok:
         reason = f"could not update from the remote: {msg}"
     elif os.path.exists(stop_file):
         reason = "STOP file present in the index folder"
+    elif wrong_model:
+        reason = wrong_model
     try:
         if not reason:
             if client is None:
@@ -544,14 +622,17 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
                 break
             try:
                 vectors, tokens = embed_texts(client, [p["text"] for p in blk["passages"]], sleep=sleep, pause=pause,
-                                              max_items=batch_items, budget_tokens=ceiling - spent)
+                                              max_items=batch_items, budget_tokens=ceiling - spent, model=model)
             except EmbedStop as e:
                 totals["wasted_tokens"] += e.used
                 spent += e.used
                 reason = f"stopped inside block {start}: {e.reason} (that block is discarded and will be redone)"
                 break
+            marked = _claim_model(index_dir, model)
             base = write_block_files(index_dir, start, bsize, blk["docs"], blk["passages"], vectors, tokens)
             rel = [os.path.join("index", base + s) for s in (".docs.jsonl.gz", ".meta.jsonl.gz") + ((".vec.npy",) if blk["passages"] else ())]
+            if marked:
+                rel.append(os.path.join("index", "MODEL"))
             _commit(index_dir, rel, f"index block {start:06d}-{start + bsize - 1:06d}")
             seen = local_seen
             spent += tokens
@@ -664,9 +745,13 @@ def _load_index(index_dir):
     return metas, M, docs_with
 
 
-def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5):
+def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5, model=MODEL):
     """The known-answer test: for each verified landmark (that is already embedded), ask its questions and see whether the
-    case is in the top 5 AND the project's verified paragraph is among its top 3 passages. Same method as the local test."""
+    case is in the top 5 AND the project's verified paragraph is among its top 3 passages. Same method as the local test.
+    `model` must be the model that made the index's vectors (the questions are embedded with it)."""
+    wrong_model = check_model(index_dir, model)
+    if wrong_model:
+        raise ValueError(wrong_model)
     landmarks_path = landmarks_path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "landmarks.json")
     lm = json.load(open(landmarks_path, encoding="utf-8"))["landmarks"]
     metas, M, docs_with = _load_index(index_dir)
@@ -683,7 +768,7 @@ def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5):
         pins = [shingles(p["text"]) for p in L["pinned"]]
         for q in L["questions"]:
             question = q["q"]
-            qv = np.asarray(client.embed([question], model=MODEL, input_type="query").embeddings[0], dtype=np.float32)
+            qv = np.asarray(client.embed([question], model=model, input_type="query").embeddings[0], dtype=np.float32)
             qv /= (np.linalg.norm(qv) or 1.0)
             sims = np.concatenate([M[i:i + 50000].astype(np.float32) @ qv for i in range(0, len(M), 50000)])
             top = np.argsort(-sims)[:100]
@@ -724,7 +809,7 @@ def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5):
                "meaning_only_full_success": sum(1 for r in tested if r["meaning_only"]["success"]),
                "passages_searched": int(len(metas))}
     out(f"SUMMARY: {summary}")
-    return {"results": results, "summary": summary}
+    return {"model": model, "results": results, "summary": summary}
 
 
 # ================================================================ command line
@@ -742,6 +827,7 @@ def main(argv=None):
     p.add_argument("--max-blocks", type=int, default=None)
     p.add_argument("--from-id", type=int, default=None)
     p.add_argument("--to-id", type=int, default=None)
+    p.add_argument("--model", default=MODEL)
     p = sub.add_parser("status")
     p.add_argument("--pool-dir", required=True)
     p.add_argument("--index-dir", required=True)
@@ -751,6 +837,7 @@ def main(argv=None):
     p.add_argument("--index-dir", required=True)
     p.add_argument("--landmarks", default=None)
     p.add_argument("--push", action="store_true")
+    p.add_argument("--model", default=MODEL)
     a = ap.parse_args(argv)
     if a.cmd == "init":
         print(init_index_branch(os.getcwd(), a.index_dir))
@@ -759,11 +846,11 @@ def main(argv=None):
     elif a.cmd == "status":
         print(json.dumps(status_summary(a.pool_dir, a.index_dir, a.ceiling), indent=1))
     elif a.cmd == "shift":
-        r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id)
+        r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id, model=a.model)
         print(f"Blocks done: {r['blocks_done']} | docs embedded: {r['docs_embedded']} | passages: {r['passages']} | tokens: {r['tokens']:,} | wasted: {r['wasted_tokens']:,}")
         print(f"Reason: {r['stop_reason']}")
     elif a.cmd == "eval":
-        res = run_eval(a.index_dir, make_client(), landmarks_path=a.landmarks)
+        res = run_eval(a.index_dir, make_client(), landmarks_path=a.landmarks, model=a.model)
         rel = os.path.join("eval", f"landmark-{datetime.now(timezone.utc):%Y%m%dT%H%M%S}.json")
         os.makedirs(os.path.join(a.index_dir, "eval"), exist_ok=True)
         with open(os.path.join(a.index_dir, rel), "w", encoding="utf-8") as fh:
