@@ -183,6 +183,10 @@ bs = si.batch_texts(texts, max_tokens=100000, max_items=500)
 flat = [i for b in bs for i in b]
 check(flat == list(range(1000)), "every passage is sent exactly once, in order")
 check(all(len(b) <= 500 for b in bs) and all(sum(len(texts[i]) for i in b) / 3.87 <= 100000 for b in bs), "no batch exceeds the item cap or the token cap")
+bs_default = si.batch_texts(texts)
+check(all(sum(len(texts[i]) for i in b) / 3.87 <= si.MAX_BATCH_TOKENS for b in bs_default), "the default batches stay within the default token cap")
+check(si.MAX_BATCH_TOKENS * 127389 / 100000 <= 120000, "a batch undercounted as badly as the one the service refused (127,389 real vs 100,000 estimated) now stays under its 120,000 limit")
+check(si.MAX_BATCH_TOKENS * 2 <= 120000, "the default batch cap leaves room for the estimate to run 2x low")
 
 # ================================================================ E. embedding behaviours
 print("--- embedding behaviours")

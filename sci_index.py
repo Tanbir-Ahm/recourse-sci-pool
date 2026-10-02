@@ -34,6 +34,7 @@ DEFAULT_CEILING = 40_000_000          # new tokens this job may spend; 44.15M of
 CHARS_PER_TOKEN = 3.87                # measured against the real service
 TOKEN_CALIBRATION = 1.062             # measured on a real cloud block (2026-10-01, 044750-044999): estimate 398,003 vs real 429,448 at 0.984
 MODEL = "voyage-law-2"
+MAX_BATCH_TOKENS = 60_000             # the service refuses a batch over 120,000 real tokens; one batch ran 27%+ over its estimate (127,389 real vs at most 100,000 estimated, 2026-10-02), so keep 2x headroom
 MIN_DOC_CHARS = 1500
 DENSITY_THRESHOLD = 10.0              # criminal-law wording per 10,000 characters
 
@@ -289,7 +290,7 @@ _FATAL = {"AuthenticationError", "InvalidRequestError", "MalformedRequestError"}
 _ALLOWANCE = re.compile(r"payment|billing|credit|quota|free token|free tier|allowance", re.I)
 
 
-def batch_texts(texts, max_tokens=100000, max_items=500):
+def batch_texts(texts, max_tokens=MAX_BATCH_TOKENS, max_items=500):
     batches, cur, curtok = [], [], 0.0
     for i, t in enumerate(texts):
         e = len(t) / CHARS_PER_TOKEN
@@ -319,7 +320,7 @@ def _embed_once(client, texts, sleep, model):
     raise EmbedStop("5 failed attempts in a row")
 
 
-def embed_texts(client, texts, *, sleep=time.sleep, pause=2.0, max_tokens=100000, max_items=500, budget_tokens=None, model=MODEL):
+def embed_texts(client, texts, *, sleep=time.sleep, pause=2.0, max_tokens=MAX_BATCH_TOKENS, max_items=500, budget_tokens=None, model=MODEL):
     """Embeds in small batches with a pause between them. Returns (float16 vectors in order, tokens the service charged).
     Raises EmbedStop (carrying the tokens already spent) on refusal, repeated failure, or if a batch would pass the budget."""
     vectors, used = [None] * len(texts), 0
