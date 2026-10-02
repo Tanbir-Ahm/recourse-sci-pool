@@ -1,0 +1,13 @@
+{
+ "started_at": "2026-10-02T06:27:45+00:00",
+ "ended_at": "2026-10-02T07:17:51+00:00",
+ "minutes": 50.0,
+ "ceiling": 80000000,
+ "stop_reason": "time budget used up (-6s left, a block takes about 49s)",
+ "seconds": 3006.3,
+ "blocks_done": 73,
+ "docs_embedded": 3484,
+ "passages": 53752,
+ "tokens": 17059250,
+ "wasted_tokens": 0
+}
