@@ -1,0 +1,230 @@
+{
+ "model": "voyage-law-2",
+ "results": [
+  {
+   "name": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "lay",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 1,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 1,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "doc_rank": 1,
+   "pinned_in_top3": false,
+   "success": false
+  },
+  {
+   "name": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "legal",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 2,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 2,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "doc_rank": 2,
+   "pinned_in_top3": true,
+   "success": true
+  },
+  {
+   "name": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "lay",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 19,
+    "pinned_in_top3": true,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 7,
+    "pinned_in_top3": true,
+    "success": false
+   },
+   "doc_rank": 7,
+   "pinned_in_top3": true,
+   "success": false
+  },
+  {
+   "name": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "legal",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 5,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "final": {
+    "doc_rank": 15,
+    "pinned_in_top3": true,
+    "success": false
+   },
+   "doc_rank": 15,
+   "pinned_in_top3": true,
+   "success": false
+  },
+  {
+   "name": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "lay",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 21,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 15,
+    "pinned_in_top3": true,
+    "success": false
+   },
+   "doc_rank": 15,
+   "pinned_in_top3": true,
+   "success": false
+  },
+  {
+   "name": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "legal",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 3,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 12,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "doc_rank": 12,
+   "pinned_in_top3": false,
+   "success": false
+  },
+  {
+   "name": "Rangappa (s.139 presumption)",
+   "kind": "lay",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 8,
+    "pinned_in_top3": true,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 6,
+    "pinned_in_top3": true,
+    "success": false
+   },
+   "doc_rank": 6,
+   "pinned_in_top3": true,
+   "success": false
+  },
+  {
+   "name": "Rangappa (s.139 presumption)",
+   "kind": "legal",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 3,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "final": {
+    "doc_rank": 1,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "doc_rank": 1,
+   "pinned_in_top3": true,
+   "success": true
+  },
+  {
+   "name": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "lay",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 25,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 16,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "doc_rank": 16,
+   "pinned_in_top3": false,
+   "success": false
+  },
+  {
+   "name": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "legal",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 3,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 5,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "doc_rank": 5,
+   "pinned_in_top3": true,
+   "success": true
+  },
+  {
+   "name": "Noor Aga (NDPS reverse burden)",
+   "kind": "lay",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 28,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "final": {
+    "doc_rank": 1,
+    "pinned_in_top3": false,
+    "success": false
+   },
+   "doc_rank": 1,
+   "pinned_in_top3": false,
+   "success": false
+  },
+  {
+   "name": "Noor Aga (NDPS reverse burden)",
+   "kind": "legal",
+   "status": "tested",
+   "meaning_only": {
+    "doc_rank": 2,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "final": {
+    "doc_rank": 2,
+    "pinned_in_top3": true,
+    "success": true
+   },
+   "doc_rank": 2,
+   "pinned_in_top3": true,
+   "success": true
+  }
+ ],
+ "summary": {
+  "tested": 12,
+  "not_embedded_yet": 0,
+  "case_top5": 6,
+  "pinned_top3": 8,
+  "full_success": 4,
+  "meaning_only_full_success": 3,
+  "passages_searched": 156235
+ }
+}
