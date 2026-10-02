@@ -24,10 +24,10 @@ Purpose: turn the crawled Supreme Court judgments (branch `claude/sci-pool`, rea
 
 ### If the task says FULL (the real run)
 6F. SHIFT 1, as one command with a 60-minute (3600000 ms) timeout:
-   `python sci_index.py shift --pool-dir ../recourse-sci-pool-data --index-dir ../recourse-sci-index --minutes 50 --ceiling 40000000 --pause 2.0`
+   `python sci_index.py shift --pool-dir ../recourse-sci-pool-data --index-dir ../recourse-sci-index --minutes 50 --ceiling 80000000 --pause 2.0`
 7F. Look at the "Reason:" in its output. Continue to the next shift ONLY if it starts with "time budget used up". If it starts with "completed all pending blocks" or "nothing left to do", the job is finished: say so. For ANY other reason (token ceiling, allowance, refused, push failed, internal error, STOP file, stopped inside block...), stop running shifts and report the exact reason.
 8F. SHIFT 2 and then SHIFT 3: run the identical command from step 6F again (60-minute timeout each), applying the same check from step 7F after each one.
-9F. `python sci_index.py status --pool-dir ../recourse-sci-pool-data --index-dir ../recourse-sci-index`
+9F. `python sci_index.py status --pool-dir ../recourse-sci-pool-data --index-dir ../recourse-sci-index --ceiling 80000000`
 10F. Report in at most 8 lines: blocks, docs, passages and tokens for each shift, each stop reason, and the status line.
 
 ### If the task says EVAL (the known-answer check on what is already indexed)
