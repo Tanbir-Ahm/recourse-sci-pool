@@ -34,6 +34,7 @@ DEFAULT_CEILING = 40_000_000          # new tokens this job may spend; 44.15M of
 CHARS_PER_TOKEN = 3.87                # measured against the real service
 TOKEN_CALIBRATION = 1.062             # measured on a real cloud block (2026-10-01, 044750-044999): estimate 398,003 vs real 429,448 at 0.984
 MODEL = "voyage-law-2"
+LEGACY_MODEL = "voyage-law-2"         # blocks saved before an index had a MODEL marker file were all made with this one
 MAX_BATCH_TOKENS = 60_000             # the service refuses a batch over 120,000 real tokens; one batch ran 27%+ over its estimate (127,389 real vs at most 100,000 estimated, 2026-10-02), so keep 2x headroom
 MIN_DOC_CHARS = 1500
 DENSITY_THRESHOLD = 10.0              # criminal-law wording per 10,000 characters
@@ -390,6 +391,33 @@ def ledger(index_dir):
     return found
 
 
+def _model_marker(index_dir):
+    return os.path.join(_idx_dir(index_dir), "MODEL")
+
+
+def check_model(index_dir, model):
+    """One index holds vectors from ONE model; vectors from different models cannot be compared, so mixing them would silently
+    break search. Returns a refusal text, or None if `model` may be used with this index."""
+    if os.path.exists(_model_marker(index_dir)):
+        with open(_model_marker(index_dir), encoding="utf-8") as fh:
+            have = fh.read().strip()
+    elif ledger(index_dir):
+        have = LEGACY_MODEL
+    else:
+        return None
+    return None if have == model else f"this index holds {have} vectors; refusing to add or search with {model} (use a separate index folder)"
+
+
+def _claim_model(index_dir, model):
+    """The first block of a new, empty index records which model made its vectors. True if the marker was just written."""
+    if os.path.exists(_model_marker(index_dir)) or ledger(index_dir):
+        return False
+    os.makedirs(_idx_dir(index_dir), exist_ok=True)
+    with open(_model_marker(index_dir), "w", encoding="utf-8") as fh:
+        fh.write(model + "\n")
+    return True
+
+
 def _shift_logs(index_dir):
     return sorted(glob.glob(os.path.join(index_dir, "state", "shifts", "*.json")))
 
@@ -500,7 +528,7 @@ def active_check(code_repo, now=None, max_age=1500, ref=f"origin/{BRANCH}"):
 # ================================================================ the shift
 def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None, sleep=time.sleep, clock=time.monotonic,
           out=print, pause=2.0, block_size=BLOCK_SIZE, est_block_seconds=120, max_blocks=None, batch_items=500,
-          from_id=None, to_id=None):
+          from_id=None, to_id=None, model=MODEL):
     if _git(index_dir, "rev-parse", "--is-inside-work-tree").returncode != 0:
         raise ValueError(f"{index_dir} is not a git repository")
     started_iso, t0 = datetime.now(timezone.utc).isoformat(timespec="seconds"), clock()
@@ -508,10 +536,13 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
     reason, est = None, est_block_seconds
     stop_file = os.path.join(index_dir, "STOP")
     ok, msg = _sync(index_dir)
+    wrong_model = check_model(index_dir, model)
     if not ok:
         reason = f"could not update from the remote: {msg}"
     elif os.path.exists(stop_file):
         reason = "STOP file present in the index folder"
+    elif wrong_model:
+        reason = wrong_model
     try:
         if not reason:
             if client is None:
@@ -545,14 +576,17 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
                 break
             try:
                 vectors, tokens = embed_texts(client, [p["text"] for p in blk["passages"]], sleep=sleep, pause=pause,
-                                              max_items=batch_items, budget_tokens=ceiling - spent)
+                                              max_items=batch_items, budget_tokens=ceiling - spent, model=model)
             except EmbedStop as e:
                 totals["wasted_tokens"] += e.used
                 spent += e.used
                 reason = f"stopped inside block {start}: {e.reason} (that block is discarded and will be redone)"
                 break
+            marked = _claim_model(index_dir, model)
             base = write_block_files(index_dir, start, bsize, blk["docs"], blk["passages"], vectors, tokens)
             rel = [os.path.join("index", base + s) for s in (".docs.jsonl.gz", ".meta.jsonl.gz") + ((".vec.npy",) if blk["passages"] else ())]
+            if marked:
+                rel.append(os.path.join("index", "MODEL"))
             _commit(index_dir, rel, f"index block {start:06d}-{start + bsize - 1:06d}")
             seen = local_seen
             spent += tokens
@@ -665,9 +699,13 @@ def _load_index(index_dir):
     return metas, M, docs_with
 
 
-def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5):
+def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5, model=MODEL):
     """The known-answer test: for each verified landmark (that is already embedded), ask its questions and see whether the
-    case is in the top 5 AND the project's verified paragraph is among its top 3 passages. Same method as the local test."""
+    case is in the top 5 AND the project's verified paragraph is among its top 3 passages. Same method as the local test.
+    `model` must be the model that made the index's vectors (the questions are embedded with it)."""
+    wrong_model = check_model(index_dir, model)
+    if wrong_model:
+        raise ValueError(wrong_model)
     landmarks_path = landmarks_path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "landmarks.json")
     lm = json.load(open(landmarks_path, encoding="utf-8"))["landmarks"]
     metas, M, docs_with = _load_index(index_dir)
@@ -684,7 +722,7 @@ def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5):
         pins = [shingles(p["text"]) for p in L["pinned"]]
         for q in L["questions"]:
             question = q["q"]
-            qv = np.asarray(client.embed([question], model=MODEL, input_type="query").embeddings[0], dtype=np.float32)
+            qv = np.asarray(client.embed([question], model=model, input_type="query").embeddings[0], dtype=np.float32)
             qv /= (np.linalg.norm(qv) or 1.0)
             sims = np.concatenate([M[i:i + 50000].astype(np.float32) @ qv for i in range(0, len(M), 50000)])
             top = np.argsort(-sims)[:100]
@@ -725,7 +763,7 @@ def run_eval(index_dir, client, landmarks_path=None, out=print, top_docs=5):
                "meaning_only_full_success": sum(1 for r in tested if r["meaning_only"]["success"]),
                "passages_searched": int(len(metas))}
     out(f"SUMMARY: {summary}")
-    return {"results": results, "summary": summary}
+    return {"model": model, "results": results, "summary": summary}
 
 
 # ================================================================ command line
@@ -743,6 +781,7 @@ def main(argv=None):
     p.add_argument("--max-blocks", type=int, default=None)
     p.add_argument("--from-id", type=int, default=None)
     p.add_argument("--to-id", type=int, default=None)
+    p.add_argument("--model", default=MODEL)
     p = sub.add_parser("status")
     p.add_argument("--pool-dir", required=True)
     p.add_argument("--index-dir", required=True)
@@ -752,6 +791,7 @@ def main(argv=None):
     p.add_argument("--index-dir", required=True)
     p.add_argument("--landmarks", default=None)
     p.add_argument("--push", action="store_true")
+    p.add_argument("--model", default=MODEL)
     a = ap.parse_args(argv)
     if a.cmd == "init":
         print(init_index_branch(os.getcwd(), a.index_dir))
@@ -760,11 +800,11 @@ def main(argv=None):
     elif a.cmd == "status":
         print(json.dumps(status_summary(a.pool_dir, a.index_dir, a.ceiling), indent=1))
     elif a.cmd == "shift":
-        r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id)
+        r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id, model=a.model)
         print(f"Blocks done: {r['blocks_done']} | docs embedded: {r['docs_embedded']} | passages: {r['passages']} | tokens: {r['tokens']:,} | wasted: {r['wasted_tokens']:,}")
         print(f"Reason: {r['stop_reason']}")
     elif a.cmd == "eval":
-        res = run_eval(a.index_dir, make_client(), landmarks_path=a.landmarks)
+        res = run_eval(a.index_dir, make_client(), landmarks_path=a.landmarks, model=a.model)
         rel = os.path.join("eval", f"landmark-{datetime.now(timezone.utc):%Y%m%dT%H%M%S}.json")
         os.makedirs(os.path.join(a.index_dir, "eval"), exist_ok=True)
         with open(os.path.join(a.index_dir, rel), "w", encoding="utf-8") as fh:

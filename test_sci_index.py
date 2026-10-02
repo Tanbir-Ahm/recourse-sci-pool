@@ -48,10 +48,11 @@ class FakeClient:
 
     def __init__(self, plan=None, fail_after=None, exc=None):
         self.calls, self.plan, self.fail_after, self.exc = 0, plan or {}, fail_after, exc
-        self.texts, self.tokens = [], 0
+        self.texts, self.tokens, self.models = [], 0, []
 
     def embed(self, texts, model=None, input_type=None):
         self.calls += 1
+        self.models.append(model)
         if self.plan.get(self.calls):
             raise self.plan[self.calls]
         if self.fail_after is not None and self.calls > self.fail_after:
@@ -446,6 +447,41 @@ rows = {r["name"]: r for r in res["results"]}
 check(rows["Missing case"]["status"] == "not_embedded_yet" and rows["Present case"]["status"] == "tested", "a landmark not yet embedded is reported as such, not counted as a miss")
 check(rows["Present case"]["doc_rank"] is not None and rows["Present case"]["doc_rank"] <= 5 and rows["Present case"]["pinned_in_top3"], "the planted verified paragraph is found by the evaluation")
 check(res["summary"]["tested"] == 1 and res["summary"]["full_success"] == 1, "the summary counts only tested questions")
+shutil.rmtree(base, ignore_errors=True)
+
+# ================================================================ J. one model per index
+print("--- one model per index")
+base, remote, code, idx, pool = new_env("idxM_")
+si.init_index_branch(code, idx)
+check(si.check_model(idx, "voyage-4-large") is None and si.check_model(idx, si.MODEL) is None, "an empty index accepts any model")
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("T")}])
+cm = FakeClient()
+rm = run_shift(code, idx, pool, cm, model="voyage-4-large")
+check(rm["blocks_done"] == 1 and set(cm.models) == {"voyage-4-large"}, "the chosen model is the one sent to the service")
+check(open(os.path.join(idx, "index", "MODEL")).read().strip() == "voyage-4-large" and "index/MODEL" in git(idx, "ls-files").stdout.split(), "the first block records, and saves, which model made the index")
+write_pool_shard(pool, 10, [{"id": 11, "status": "ok", "pages": 3, "text": crim_text("U")}])
+cm2 = FakeClient()
+rm2 = run_shift(code, idx, pool, cm2)
+check(rm2["blocks_done"] == 0 and cm2.calls == 0 and "voyage-4-large" in rm2["stop_reason"], "a different model is refused before anything is sent")
+lmq = os.path.join(base, "lm.json")
+json.dump({"landmarks": []}, open(lmq, "w"))
+refused = False
+try:
+    si.run_eval(idx, FakeClient(), landmarks_path=lmq)
+except ValueError:
+    refused = True
+check(refused, "searching an index with a different model's questions is refused")
+check(si.run_eval(idx, FakeClient(), landmarks_path=lmq, out=lambda *_: None, model="voyage-4-large")["model"] == "voyage-4-large", "the evaluation records which model it used")
+shutil.rmtree(base, ignore_errors=True)
+
+# an index saved before the marker existed counts as voyage-law-2
+base, remote, code, idx, pool = new_env("idxN_")
+si.init_index_branch(code, idx)
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("T")}])
+run_shift(code, idx, pool, FakeClient())
+os.remove(os.path.join(idx, "index", "MODEL"))
+legacy_refusal = si.check_model(idx, "voyage-4-large") or ""
+check(si.check_model(idx, "voyage-law-2") is None and "voyage-law-2" in legacy_refusal, "blocks saved before the marker existed are treated as voyage-law-2")
 shutil.rmtree(base, ignore_errors=True)
 
 print()
