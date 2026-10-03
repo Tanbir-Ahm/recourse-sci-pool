@@ -6,12 +6,16 @@ with a different header, an OCR variant, or a different layout (official report 
 
   scan   reads every kept judgment from the crawl and lists pairs whose text overlaps by 80% or more
   plan   decides which pairs are the SAME case (same parties, no conflicting case number), groups them, picks one copy to keep
+         (--keep-landmarks makes sure the verified landmark cases in landmarks.json are never the copy that is removed;
+          --save-to-index also commits and pushes the plan under state/fixes/plans/ on the index branch so a person can review it there)
   apply  removes the other copies' passages and vectors from the index files and marks them in the docs files
+         (--commit commits on the index branch; --push also pushes it; both refuse if the index folder has uncommitted changes or a STOP file)
 
 A judgment decided together with others (different case numbers or different parties) is a different case even when its text is
 identical, so it is never removed here. Anything the rules cannot decide goes in the plan's "review" list.
+The rules cannot tell every same-case pair (a differently spelled name, another layout), so a person reviews a plan before it is applied.
 """
-import argparse, collections, gzip, heapq, itertools, json, os, re, sys, time
+import argparse, collections, gzip, heapq, itertools, json, os, re, shutil, sys, time
 
 import numpy as np
 
@@ -22,6 +26,7 @@ MIN_OVERLAP = 0.80                                          # each judgment must
 MAX_LEN_RATIO = 1.30
 MIN_PARTY_SIM = 0.60
 HEAD_CHARS = 900
+DEFAULT_LANDMARKS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "landmarks.json")
 
 BOILER = set("""supreme court of india criminal appellate jurisdiction appeal crl petition special leave civil reportable non judgment
 petitioner respondent respondents appellant appellants versus vs date bench page case state states arising out slp the and others anr ors
@@ -280,6 +285,27 @@ def apply_plan(index_dir, the_plan, out=print):
     return totals
 
 
+def landmark_ids(path=None):
+    """The judgment ids of the verified landmark cases (landmarks.json). They must never be the copy a plan removes."""
+    with open(path or DEFAULT_LANDMARKS, encoding="utf-8") as fh:
+        return [int(L["doc"]) for L in json.load(fh)["landmarks"]]
+
+
+def check_ready_to_commit(index_dir):
+    """Refusal text if the index folder must not be changed and committed right now, else None: a STOP file, uncommitted changes, or not in step with the remote."""
+    if os.path.exists(os.path.join(index_dir, "STOP")):
+        return "STOP file present in the index folder"
+    dirty = si._git(index_dir, "status", "--porcelain")
+    if dirty.returncode != 0:
+        return f"{index_dir} is not a git repository"
+    if dirty.stdout.strip():
+        return "the index folder has uncommitted changes; commit or discard them first"
+    ok, msg = si._sync(index_dir)
+    if not ok:
+        return f"could not update from the remote: {msg}"
+    return None
+
+
 def write_record(index_dir, the_plan, totals, previous_commit, note=""):
     rel = os.path.join("state", "fixes", f"{time.strftime('%Y%m%dT%H%M%S', time.gmtime())}-duplicates.json")
     os.makedirs(os.path.join(index_dir, "state", "fixes"), exist_ok=True)
@@ -294,8 +320,13 @@ def main(argv=None):
     p = sub.add_parser("scan"); p.add_argument("--pool-dir", required=True); p.add_argument("--index-dir", required=True); p.add_argument("--out", required=True)
     p = sub.add_parser("plan"); p.add_argument("--index-dir", required=True); p.add_argument("--scan", required=True); p.add_argument("--out", required=True)
     p.add_argument("--decisions", help="JSON with keys keep, force, never, merge (see plan())")
+    p.add_argument("--keep-landmarks", action="store_true", help="never remove the verified landmark cases (adds them to the keep list)")
+    p.add_argument("--landmarks", default=DEFAULT_LANDMARKS, help="landmarks.json to read for --keep-landmarks")
+    p.add_argument("--show", type=int, default=10, help="print the first N groups (keep id, removed ids)")
+    p.add_argument("--save-to-index", action="store_true", help="also commit and push the plan on the index branch (state/fixes/plans/); changes no index data")
     p = sub.add_parser("apply"); p.add_argument("--index-dir", required=True); p.add_argument("--plan", required=True)
-    p.add_argument("--commit", action="store_true", help="commit the change on the index branch (never pushes)")
+    p.add_argument("--commit", action="store_true", help="commit the change on the index branch")
+    p.add_argument("--push", action="store_true", help="commit and push the index branch (implies --commit)")
     a = ap.parse_args(argv)
     if a.cmd == "scan":
         res = scan(a.pool_dir, a.index_dir)
@@ -306,18 +337,47 @@ def main(argv=None):
         s["heads"] = {int(k): v for k, v in s["heads"].items()}; s["lens"] = {int(k): v for k, v in s["lens"].items()}
         dec = json.load(open(a.decisions)) if a.decisions else {}
         ids = {d for p in s["pairs"] for d in (p["a"], p["b"])}
-        pl = plan(s, doc_stats(a.index_dir, ids), keep=dec.get("keep", []), force=dec.get("force", []), never=dec.get("never", []), merge=dec.get("merge", []))
+        keep = list(dec.get("keep", [])) + (landmark_ids(a.landmarks) if a.keep_landmarks else [])
+        pl = plan(s, doc_stats(a.index_dir, ids), keep=keep, force=dec.get("force", []), never=dec.get("never", []), merge=dec.get("merge", []))
         json.dump(pl, open(a.out, "w"), indent=1)
         print(f"{len(pl['groups'])} groups, {sum(len(g['remove']) for g in pl['groups'])} judgments to remove, {len(pl['review'])} pairs left in place")
+        for g in pl["groups"][:a.show]:
+            print(f"  keep {g['keep']}, remove {', '.join(map(str, g['remove']))}  ({g['reason'][:60]})")
+        if a.save_to_index:
+            why_not = check_ready_to_commit(a.index_dir)
+            if why_not:
+                sys.exit(f"refused: {why_not}")
+            rel = os.path.join("state", "fixes", "plans", f"{time.strftime('%Y%m%dT%H%M%S', time.gmtime())}-plan.json")
+            os.makedirs(os.path.join(a.index_dir, "state", "fixes", "plans"), exist_ok=True)
+            shutil.copy(a.out, os.path.join(a.index_dir, rel))
+            si._commit(a.index_dir, [rel], f"dedupe plan (not applied): {len(pl['groups'])} groups")
+            ok, msg = si._push(a.index_dir)
+            print(f"plan saved on the index branch as {rel}" + (" (pushed)" if ok else f" (push failed: {msg})"))
+            if not ok:
+                sys.exit(1)
     else:
+        commit = a.commit or a.push
+        if os.path.exists(os.path.join(a.index_dir, "STOP")):
+            sys.exit("refused: STOP file present in the index folder")
+        if commit:
+            why_not = check_ready_to_commit(a.index_dir)
+            if why_not:
+                sys.exit(f"refused: {why_not}")
         pl = json.load(open(a.plan))
         prev = si._git(a.index_dir, "rev-parse", "HEAD").stdout.strip()
         totals = apply_plan(a.index_dir, pl)
         rel = write_record(a.index_dir, pl, totals, prev)
         print(json.dumps(totals))
-        if a.commit:
+        if commit:
             si._commit(a.index_dir, ["index", rel], f"index fix: remove {totals['docs_removed']} duplicate judgments ({totals['passages_removed']} passages)")
-            print("committed (not pushed)")
+            print("committed")
+            if a.push:
+                ok, msg = si._push(a.index_dir)
+                print("pushed" if ok else f"push failed: {msg}")
+                if not ok:
+                    sys.exit(1)
+            else:
+                print("(not pushed)")
 
 
 if __name__ == "__main__":

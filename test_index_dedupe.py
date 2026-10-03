@@ -232,6 +232,101 @@ led = si.ledger(idx)
 check(set(led) == {0, 10} and led[10]["passages"] == 0 and not any(f.startswith("000010") and f.endswith(".vec.npy") for f in os.listdir(os.path.join(idx, "index"))), "a block that loses all its passages stays valid and has no vector file")
 shutil.rmtree(base, ignore_errors=True)
 
+# ================================================================ 4. the command line: landmarks are protected, apply can push, and refuses when it should
+print("--- command line")
+lm_file = os.path.join(tempfile.mkdtemp(prefix="lm_"), "landmarks.json")
+json.dump({"landmarks": [{"doc": 10, "name": "x"}]}, open(lm_file, "w"))
+check(dd.landmark_ids(lm_file) == [10], "landmark ids are read from landmarks.json")
+check(len(dd.landmark_ids()) == 6 and all(isinstance(x, int) for x in dd.landmark_ids()), "the repository's own landmarks.json gives the six verified cases")
+
+
+def fresh_env(prefix):
+    base = tempfile.mkdtemp(prefix=prefix)
+    remote, code, idx, pool = os.path.join(base, "remote.git"), os.path.join(base, "code"), os.path.join(base, "idx"), os.path.join(base, "pool")
+    subprocess.run(["git", "init", "--bare", "-b", "main", remote], capture_output=True)
+    subprocess.run(["git", "clone", remote, code], capture_output=True)
+    open(os.path.join(code, "README"), "w").write("code\n"); git(code, "add", "."); git(code, "commit", "-m", "code"); git(code, "push", "origin", "HEAD:main")
+    si.init_index_branch(code, idx)
+    write_pool_shard(pool, 0, [doc(0, old_header("RAMESH KUMAR", "STATE OF ZETA", "15 of 2000") + body(1))])
+    write_pool_shard(pool, 10, [doc(10, old_header("RAMESH KUMAR", "STATE OF ZETA", "15 of 2000") + body(1, mutate=0.01))])
+    si.shift(pool, idx, client=FakeClient(), block_size=BS, sleep=lambda s: None, pause=0, out=lambda *_: None, minutes=50)
+    return base, remote, code, idx, pool
+
+
+base, remote, code, idx, pool = fresh_env("dedupe3_")
+scan_json, plan_json = os.path.join(base, "scan.json"), os.path.join(base, "plan.json")
+led0, head0 = si.ledger(idx), git(idx, "rev-parse", "HEAD").stdout.strip()
+dd.main(["scan", "--pool-dir", pool, "--index-dir", idx, "--out", scan_json])
+dd.main(["plan", "--index-dir", idx, "--scan", scan_json, "--out", plan_json])
+pl_plain = json.load(open(plan_json))
+check(pl_plain["groups"][0]["keep"] == 0 and pl_plain["groups"][0]["remove"] == [10], "without --keep-landmarks the lower id is the surviving copy")
+dd.main(["plan", "--index-dir", idx, "--scan", scan_json, "--out", plan_json, "--keep-landmarks", "--landmarks", lm_file])
+pl_lm = json.load(open(plan_json))
+check(pl_lm["groups"][0]["keep"] == 10 and pl_lm["groups"][0]["remove"] == [0], "--keep-landmarks makes the landmark the surviving copy")
+
+with open(os.path.join(idx, "scratch.txt"), "w") as fh:
+    fh.write("uncommitted")
+try:
+    dd.main(["apply", "--index-dir", idx, "--plan", plan_json, "--commit"])
+    refused = False
+except SystemExit as e:
+    refused = "uncommitted" in str(e)
+check(refused and si.ledger(idx) == led0 and git(idx, "rev-parse", "HEAD").stdout.strip() == head0, "apply --commit refuses when the index folder has uncommitted changes, and changes nothing")
+os.remove(os.path.join(idx, "scratch.txt"))
+with open(os.path.join(idx, "STOP"), "w") as fh:
+    fh.write("")
+try:
+    dd.main(["apply", "--index-dir", idx, "--plan", plan_json])
+    refused = False
+except SystemExit as e:
+    refused = "STOP" in str(e)
+check(refused and si.ledger(idx) == led0, "apply refuses while a STOP file is present, even without --commit")
+os.remove(os.path.join(idx, "STOP"))
+
+dd.main(["apply", "--index-dir", idx, "--plan", plan_json, "--push"])
+local, remote_head = git(idx, "rev-parse", "HEAD").stdout.strip(), git(code, "ls-remote", "--heads", "origin", "claude/sci-index").stdout.split()[0]
+check(local != head0 and local == remote_head, "apply --push commits and pushes: the remote branch now holds the fix commit")
+check(git(idx, "log", "-1", "--format=%s").stdout.strip() == "index fix: remove 1 duplicate judgments (%d passages)" % json.load(open(os.path.join(idx, "state", "fixes", os.listdir(os.path.join(idx, "state", "fixes"))[0])))["totals"]["passages_removed"]
+      and git(idx, "status", "--porcelain").stdout.strip() == "", "the commit message names the count and nothing is left uncommitted")
+metas_after = si._load_index(idx)[0]
+check({m["doc"] for m in metas_after} == {10}, "the landmark copy is the one that kept its passages")
+shutil.rmtree(base, ignore_errors=True)
+
+# apply --commit without --push leaves the remote alone
+base, remote, code, idx, pool = fresh_env("dedupe4_")
+scan_json, plan_json = os.path.join(base, "scan.json"), os.path.join(base, "plan.json")
+head0 = git(idx, "rev-parse", "HEAD").stdout.strip()
+dd.main(["scan", "--pool-dir", pool, "--index-dir", idx, "--out", scan_json])
+dd.main(["plan", "--index-dir", idx, "--scan", scan_json, "--out", plan_json])
+dd.main(["apply", "--index-dir", idx, "--plan", plan_json, "--commit"])
+check(git(idx, "rev-parse", "HEAD").stdout.strip() != head0 and git(code, "ls-remote", "--heads", "origin", "claude/sci-index").stdout.split()[0] == head0, "apply --commit alone commits locally and does not push")
+shutil.rmtree(base, ignore_errors=True)
+
+# the plan can be saved on the index branch for review, and a saved plan can be applied later
+base, remote, code, idx, pool = fresh_env("dedupe5_")
+scan_json, plan_json = os.path.join(base, "scan.json"), os.path.join(base, "plan.json")
+led0, head0 = si.ledger(idx), git(idx, "rev-parse", "HEAD").stdout.strip()
+dd.main(["scan", "--pool-dir", pool, "--index-dir", idx, "--out", scan_json])
+dd.main(["plan", "--index-dir", idx, "--scan", scan_json, "--out", plan_json, "--save-to-index"])
+saved = os.path.join(idx, "state", "fixes", "plans")
+local, remote_head = git(idx, "rev-parse", "HEAD").stdout.strip(), git(code, "ls-remote", "--heads", "origin", "claude/sci-index").stdout.split()[0]
+check(len(os.listdir(saved)) == 1 and local != head0 and local == remote_head and git(idx, "log", "-1", "--format=%s").stdout.startswith("dedupe plan (not applied)"),
+      "plan --save-to-index commits and pushes the plan file and nothing else")
+check(si.ledger(idx) == led0 and {m["doc"] for m in si._load_index(idx)[0]} == {0, 10}, "saving a plan changes no index data")
+saved_plan = os.path.join(saved, os.listdir(saved)[0])
+check(json.load(open(saved_plan)) == json.load(open(plan_json)), "the saved plan is the plan that was made")
+dd.main(["apply", "--index-dir", idx, "--plan", saved_plan, "--push"])
+check({m["doc"] for m in si._load_index(idx)[0]} == {0} and git(idx, "rev-parse", "HEAD").stdout.strip() == git(code, "ls-remote", "--heads", "origin", "claude/sci-index").stdout.split()[0], "a plan saved on the index branch can be applied from there")
+with open(os.path.join(idx, "scratch.txt"), "w") as fh:
+    fh.write("uncommitted")
+try:
+    dd.main(["plan", "--index-dir", idx, "--scan", scan_json, "--out", plan_json, "--save-to-index"])
+    refused = False
+except SystemExit as e:
+    refused = "uncommitted" in str(e)
+check(refused, "plan --save-to-index refuses when the index folder has uncommitted changes")
+shutil.rmtree(base, ignore_errors=True)
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED:")
