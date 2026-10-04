@@ -10,7 +10,7 @@ Needs `pip install openpyxl`. The reply reader needs nothing else.
 |---|---|
 | `../review_data/pool_all.json` | The pool: 12 test questions, 199 passages (175 in the first batch, 24 in the top-up batch) with their numbers, and which search version showed each one. **Private answer key. Never send it to reviewers.** |
 | `build_llm_pack.py` | Builds `LLM_Review_Pack.zip`: 24 prompt files (A = number order, B = reversed) and a README for AI reviewers. |
-| `build_topup_pack.py` | Builds `Top_Up_Pack.zip` (17 prompts, a README) and `Top_Up_Review_Sheet.xlsx` for the 24 top-up passages. |
+| `build_topup_pack.py` | Builds `Top_Up_Pack.zip` (10 prompts, one `TA` file per question with new passages, plus a README) and `Top_Up_Review_Sheet.xlsx` for the 24 top-up passages. `--with-reverse` also writes `TB` files (the same passages reversed, 17 prompts in all); off by default because reversing 1 to 5 passages is a weak order test. |
 | `build_review_sheet.py` | Builds the human review sheet `Search_Review_Sheet_Pooled_v2.xlsx` (the 175 first-batch passages, dropdown marks, per-question verdicts). |
 | `build_authority_list.py` | Builds `Authority_Check_List.xlsx`: is each case still good law, and what does a research tool show for the 12 questions. |
 | `ingest_llm_reviews.py` | Reads the replies, checks them, and scores each search version. |
@@ -28,7 +28,7 @@ The builders reproduce, byte for byte or cell for cell, the files that were firs
         python review_tools/build_review_sheet.py --out OUTDIR      # for a human reviewer
         python review_tools/build_authority_list.py --out OUTDIR
 
-2. Reviewers return replies. For AI reviewers each reply is a plain text file named `Q03_A_<model>.txt` (first pack) or `Q03_TA_<model>.txt` (top-up); `B` and `TB` are the reversed-order versions. Put them in one folder. If two people use the same tool, ask them to add their initials to the model name, or one set overwrites the other (the reader reports it).
+2. Reviewers return replies. For AI reviewers each reply is a plain text file named `Q03_A_<model>.txt` (first pack) or `Q03_TA_<model>.txt` (top-up); `B` (and `TB`, if built with `--with-reverse`) are the reversed-order versions. The first pack's `B` files are the real order check, because its questions have 11 to 16 passages; for that, `Q03_B` and `Q09_B` in each tool are enough. Put them in one folder. If two people use the same tool, ask them to add their initials to the model name, or one set overwrites the other (the reader reports it).
 
 3. Read them:
 

@@ -79,28 +79,25 @@ try:
 
     # ---------------------------------------------------------------- top-up pack
     print("--- top-up pack")
-    zt, files, n_pass, n_q = btp.build(rc.DEFAULT_POOL, tmp)
+    with_extra = [q["qid"] for q in pool if extra[q["qid"]]]
+    zt, files, n_pass, n_q = btp.build(rc.DEFAULT_POOL, tmp)                              # default: TA files only
     zt_ = zipfile.ZipFile(zt)
     tn = zt_.namelist()
-    with_extra = [q["qid"] for q in pool if extra[q["qid"]]]
-    expect_files = sum(1 if len(extra[qid]) < 2 else 2 for qid in with_extra)
-    check("17 prompts: one TA per question with new passages, one TB where there are two or more", files == expect_files == 17 and n_q == 10 and n_pass == 24, (files, n_q, n_pass))
+    check("10 prompts by default: one TA per question with new passages, and no TB", files == len(with_extra) == 10 and n_q == 10 and n_pass == 24
+          and not any("_TB" in n for n in tn) and sum(n.startswith("Top_Up_Pack/prompts/") for n in tn) == 10, (files, n_q, n_pass))
     ok = True
     for qid in with_extra:
         want = {r["n"]: r["text"].strip() for r in extra[qid]}
-        for order in "AB":
-            fn = f"Top_Up_Pack/prompts/{qid}_T{order}.txt"
-            if fn not in tn:
-                ok &= (order == "B" and len(extra[qid]) < 2)
-                continue
-            got = passages_in(zt_.read(fn).decode())
-            ok &= [n for n, _ in got] == sorted(want, reverse=(order == "B")) and all(want[n] == t for n, t in got)
-    check("top-up prompts hold exactly the top-up passages, numbered after the first batch", ok)
+        got = passages_in(zt_.read(f"Top_Up_Pack/prompts/{qid}_TA.txt").decode())
+        ok &= [n for n, _ in got] == sorted(want) and all(want[n] == t for n, t in got)
+    check("each top-up prompt holds exactly its question's top-up passages, in number order, numbered after the first batch", ok)
     check("top-up numbers never collide with first-batch numbers", all(not ({r["n"] for r in extra[q["qid"]]} & {r["n"] for r in first[q["qid"]]}) for q in pool))
     allt = "\n".join(zt_.read(n).decode() for n in tn if n.endswith(".txt")).lower()
     check("no answer-key wording in the top-up pack", not [w for w in VARIANT_WORDS if w.lower() in allt], [w for w in VARIANT_WORDS if w.lower() in allt])
     rd = zt_.read("Top_Up_Pack/README.txt").decode()
-    check("the README counts are right and name the questions with nothing new", "24 passages" in rd and "10 of the 12 questions (Q01 and Q06 have none)" in rd and "Q03 had 1 to 16, so the top-up for Q03 is 17 to 19" in rd and "(10 chats per tool)" in rd and "(17 chats per tool)" in rd)
+    check("the README counts are right, names the questions with nothing new, says 10 chats per tool and never mentions TB or reversing",
+          "24 passages" in rd and "10 of the 12 questions (Q01 and Q06 have none)" in rd and "Q03 had 1 to 16, so the top-up for Q03 is 17 to 19" in rd
+          and "That is 10 chats per tool." in rd and "TB" not in rd and "reverse" not in rd.lower())
     one = zt_.read("Top_Up_Pack/prompts/Q12_TA.txt").decode()
     check("a one-passage prompt says 'exactly 1 entry' and its template uses the real number", "exactly 1 entry," in one and f'"no": {extra["Q12"][0]["n"]},' in one)
     ws = openpyxl.load_workbook(os.path.join(tmp, "Top_Up_Review_Sheet.xlsx"))["Review"]
@@ -108,6 +105,22 @@ try:
     check("the top-up sheet has the 24 passages, each with its dropdown cell, and unique (Q, No.)", len(rows) == 24 and len({(r[0], r[1]) for r in rows}) == 24 and ws.data_validations.dataValidation)
     cells = " ".join(str(c.value) for row in openpyxl.load_workbook(os.path.join(tmp, "Top_Up_Review_Sheet.xlsx")).worksheets[0:2] for r in row.iter_rows() for c in r if c.value).lower()
     check("no answer-key wording in the top-up sheet", not [w for w in VARIANT_WORDS if w.lower() in cells])
+    # the optional reverse-order files
+    zr, files_r, _, _ = btp.build(rc.DEFAULT_POOL, os.path.join(tmp, "rev"), with_reverse=True)
+    zr_ = zipfile.ZipFile(zr)
+    expect_r = sum(1 if len(extra[qid]) < 2 else 2 for qid in with_extra)
+    ok = True
+    for qid in with_extra:
+        fn = f"Top_Up_Pack/prompts/{qid}_TB.txt"
+        if len(extra[qid]) < 2:
+            ok &= fn not in zr_.namelist()
+        else:
+            got = [n for n, _ in passages_in(zr_.read(fn).decode())]
+            ok &= got == sorted((r["n"] for r in extra[qid]), reverse=True)
+    check("--with-reverse adds a TB file (the passages reversed) only where a question has two or more new passages: 17 prompts", files_r == expect_r == 17 and ok, (files_r, expect_r))
+    rdr = zr_.read("Top_Up_Pack/README.txt").decode()
+    check("the --with-reverse README explains TA and TB and says 17 chats per tool", "_TB.txt" in rdr and "(17 chats per tool)" in rdr and "(10 chats per tool)" in rdr)
+    check("the TA prompts are byte-identical with and without --with-reverse", all(zt_.read(f"Top_Up_Pack/prompts/{qid}_TA.txt") == zr_.read(f"Top_Up_Pack/prompts/{qid}_TA.txt") for qid in with_extra))
 
     # ---------------------------------------------------------------- human review sheet
     print("--- human review sheet")

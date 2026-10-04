@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Builds Top_Up_Pack.zip from the pool's top-up passages: AI-reviewer prompts (TA = number order, TB = reversed), a human review sheet and a README.
+"""Builds Top_Up_Pack.zip from the pool's top-up passages: AI-reviewer prompts (one TA file per question that has new passages, in number order),
+a human review sheet and a README. With --with-reverse it also writes TB files (the same passages in reverse order, only for questions with two or more),
+a check on whether a reviewer is swayed by order; that check is weak on batches this small, so it is off by default.
 Top-up passage numbers continue after the first batch's numbers for the same question, so (question, number) is unique across both batches.
 Nothing about which search found a passage is included.
 
-  python review_tools/build_topup_pack.py --out DIR [--pool review_data/pool_all.json]
+  python review_tools/build_topup_pack.py --out DIR [--pool review_data/pool_all.json] [--with-reverse]
 """
 import argparse
 import math
@@ -67,13 +69,22 @@ def _names(qids):
     return ", ".join(qids[:-1]) + (" and " if len(qids) > 1 else "") + qids[-1]
 
 
-def readme(top, n_orig, all_q, example):
+def readme(top, n_orig, all_q, example, with_reverse=False):
     n_pass = sum(len(q["rows"]) for q in top)
     without = [q["qid"] for q in all_q if not rc.rows_of(q, True)]
     none_phrase = f" ({_names(without)} {'has' if len(without) == 1 else 'have'} none)" if without else ""
     ex_old = [r["n"] for r in rc.rows_of(example["full"], False)]
     ex_new = [r["n"] for r in example["new"]]
     chats_a, chats_ab = len(top), len(top) + sum(1 for q in top if len(q["rows"]) > 1)
+    qid = example["full"]["qid"]
+    if with_reverse:
+        which_files = f"Files named {qid}_TA.txt hold the passages in number order; {qid}_TB.txt hold the same passages in reverse order (only for questions with 2 or more passages)."
+        reply_names = f"{qid}_TA_ChatGPT5.txt  or  {qid}_TB_Gemini.txt"
+        how_much = f"Please use the same two or more AI tools you used for the first pack. Minimum: the TA files ({chats_a} chats per tool). Better: TA and TB ({chats_ab} chats per tool)."
+    else:
+        which_files = f"There is one file for each question that has new passages, named like {qid}_TA.txt ({chats_a} files)."
+        reply_names = f"{qid}_TA_ChatGPT5.txt  or  {qid}_TA_Gemini.txt"
+        how_much = f"Please use the same two or more AI tools you used for the first pack. That is {chats_a} chats per tool."
     return f"""TOP-UP PACK: a second, small batch of passages to mark
 
 WHAT THIS IS
@@ -82,12 +93,12 @@ The first review pack (Q01 to Q12) covered {n_orig} passages. Since then the pro
 If you have not done the first pack yet, please do it first or in the same sitting: the same question appears in both. If you already did the first pack, you only need this.
 
 OPTION 1: AI reviewers (same method as the first pack)
-1. Open the folder 'prompts'. Files named {example['full']['qid']}_TA.txt hold the passages in number order; {example['full']['qid']}_TB.txt hold the same passages in reverse order (only for questions with 2 or more passages).
+1. Open the folder 'prompts'. {which_files}
 2. Copy one whole file into a NEW chat of an AI tool (switch off web search and tools), send it, and wait.
-3. Save the model's whole reply as plain text, named like  {example['full']['qid']}_TA_ChatGPT5.txt  or  {example['full']['qid']}_TB_Gemini.txt  (same model name every time, no spaces). Put the files in the folder 'replies'.
+3. Save the model's whole reply as plain text, named like  {reply_names}  (same model name every time, no spaces). Put the files in the folder 'replies'.
 4. If a reply is not JSON or is cut off, send "Reply again with only the JSON object, nothing else." and save the new reply.
 5. Zip the 'replies' folder and send it back.
-Please use the same two or more AI tools you used for the first pack. Minimum: the TA files ({chats_a} chats per tool). Better: TA and TB ({chats_ab} chats per tool).
+{how_much}
 
 OPTION 2: a human reviewer
 Open Top_Up_Review_Sheet.xlsx, read each passage as if you had asked that question, and pick Yes, Partly, No or Misleading from the dropdown in the yellow cell. Save under a new name with your initials and send it back.
@@ -220,8 +231,9 @@ def build_sheet(top, n_questions, path):
     return last
 
 
-def build(pool_path, out_dir):
-    """Writes out_dir/Top_Up_Pack/, out_dir/Top_Up_Pack.zip and out_dir/Top_Up_Review_Sheet.xlsx. Returns (zip path, prompt files, passages, questions)."""
+def build(pool_path, out_dir, with_reverse=False):
+    """Writes out_dir/Top_Up_Pack/, out_dir/Top_Up_Pack.zip and out_dir/Top_Up_Review_Sheet.xlsx. Returns (zip path, prompt files, passages, questions).
+    with_reverse=True adds the TB files (reverse order, only for questions with two or more passages)."""
     pool = rc.load_pool(pool_path)
     top = [dict(q, rows=rc.rows_of(q, True)) for q in pool if rc.rows_of(q, True)]
     if not top:
@@ -238,14 +250,14 @@ def build(pool_path, out_dir):
     os.makedirs(os.path.join(folder, "replies"))
     files = 0
     for q in top:
-        for order in ("A", "B"):
+        for order in (("A", "B") if with_reverse else ("A",)):
             if order == "B" and len(q["rows"]) < 2:
                 continue
             with open(os.path.join(folder, "prompts", f"{q['qid']}_T{order}.txt"), "w", encoding="utf-8") as fh:
                 fh.write(render(q, order))
             files += 1
     with open(os.path.join(folder, "README.txt"), "w", encoding="utf-8") as fh:
-        fh.write(readme(top, n_orig, pool, example))
+        fh.write(readme(top, n_orig, pool, example, with_reverse))
     with open(os.path.join(folder, "replies", "PUT_SAVED_REPLIES_HERE.txt"), "w", encoding="utf-8") as fh:
         fh.write(f"Save each model reply here, named like {example['full']['qid']}_TA_ChatGPT5.txt\n")
     build_sheet(top, len(pool), xlsx)
@@ -258,9 +270,10 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", required=True, help="folder to write into")
     ap.add_argument("--pool", default=rc.DEFAULT_POOL)
+    ap.add_argument("--with-reverse", action="store_true", help="also write the TB files (reverse order); off by default")
     a = ap.parse_args(argv)
     os.makedirs(a.out, exist_ok=True)
-    zip_path, files, n, nq = build(a.pool, a.out)
+    zip_path, files, n, nq = build(a.pool, a.out, a.with_reverse)
     print(f"built {zip_path} ({os.path.getsize(zip_path):,} bytes): {files} prompt files, {n} passages, {nq} questions")
 
 
