@@ -42,6 +42,29 @@ check("every row has what the builders need", all({"h", "doc", "pn", "page", "ti
 check("top-up rows carry only the two 'what a method showed' tags", all(set(r["variants"]) <= {"S site shown", "M mine top 6"} and r["variants"] for q in pool for r in rc.rows_of(q, True)))
 
 
+def removed_by_index_fixes():
+    """Judgment ids that an applied index fix removed (index_fixes/*/plan.json: every group's 'remove' list)."""
+    import glob
+    import json
+    root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "index_fixes")
+    gone = set()
+    for f in glob.glob(os.path.join(root, "*", "plan.json")):
+        for g in json.load(open(f, encoding="utf-8")).get("groups", []):
+            gone |= {int(x) for x in g.get("remove", [])}
+    return gone
+
+
+GONE = removed_by_index_fixes()
+check("the index fixes on file remove judgments (so the next check is not vacuous)", len(GONE) >= 100, len(GONE))
+check("no pool passage points at a judgment that an index fix removed (the pool was once built before a fix)",
+      not [(q["qid"], r["n"], r["doc"]) for q in pool for r in q["rows"] if r["doc"] in GONE], [(q["qid"], r["n"], r["doc"]) for q in pool for r in q["rows"] if r["doc"] in GONE])
+fixed_rows = [(q["qid"], r["n"]) for q in pool for r in q["rows"] if r.get("was_doc")]
+check("the 4 passages repointed on 2026-10-04 are recorded (judgment 18070 -> 20481) and show the right case name",
+      fixed_rows == [("Q03", 4), ("Q04", 1), ("Q04", 7), ("Q04", 12)]
+      and all(r["doc"] == 20481 and r["was_doc"] == 18070 and "KAMALADEVI" in r["title"] and "INCOME TAX" not in r["title"].upper() and "INCOME TAX" in (r["was_title"] or "").upper()
+              for q in pool for r in q["rows"] if r.get("was_doc")), fixed_rows)
+
+
 def passages_in(prompt_text):
     body = prompt_text[prompt_text.index("QUESTION: "):]
     parts = re.split(r"--- PASSAGE (\d+) ---\n", body)
@@ -194,7 +217,8 @@ try:
     qs = [r for r in wa["Questions"].iter_rows(min_row=2, values_only=True)]
     check("the 12 questions are listed with the pool's exact wording", len(qs) == 12 and all(r[2] == q["question"] for r, q in zip(qs, pool)))
     ours = [r for r in wa["Our results (open last)"].iter_rows(min_row=2, values_only=True) if isinstance(r[1], int)]
-    check("'our results' lists the judgments behind each question's top passages, 87 rows in all", n_r == 87 == len(ours) and all(r[3] for r in ours))
+    # 87 rows until the pool correction of 2026-10-04: judgment 18070 (removed as mislabelled) had one row each for Q03 and Q04, which now merge into 20481's
+    check("'our results' lists the judgments behind each question's top passages, 85 rows in all", n_r == 85 == len(ours) and all(r[3] for r in ours))
     check("'Our results (open last)' comes after 'Questions', so the tool's own results are filled in first", wa.sheetnames.index("Our results (open last)") > wa.sheetnames.index("Questions"))
     filled = openpyxl.load_workbook(pa)
     statuses = ["Good law", "Overruled", "Partly overruled", "Doubted", "Distinguished", "Not found", "Unsure"]

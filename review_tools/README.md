@@ -15,9 +15,10 @@ Needs `pip install openpyxl`. The reply reader needs nothing else.
 | `build_authority_list.py` | Builds `Authority_Check_List.xlsx`: is each case still good law, and what does a research tool show for the 12 questions. |
 | `ingest_llm_reviews.py` | Reads the replies, checks them, and scores each search version. |
 | `review_common.py` | Shared helpers and the wording both prompt packs use. |
+| `experiments/` | The one-off scripts that made the pool and ran the site-versus-mine comparison, saved as run. A record, not a tool. Never send to reviewers. |
 | `test_ingest_llm_reviews.py`, `test_builders.py` | Tests (synthetic replies only, nothing real). |
 
-The builders reproduce, byte for byte or cell for cell, the files that were first sent out on 2026-10-02 (checked when they were saved here). Rebuilding changes nothing a reviewer has already seen, because the passage numbers come from `pool_all.json`.
+The builders reproduce, byte for byte or cell for cell, the files that were first sent out on 2026-10-02 (checked when they were saved here). Rebuilding changes nothing a reviewer has already seen, because the passage numbers come from `pool_all.json`. One exception, from the pool correction of 2026-10-04 (see `../review_data/README.md`): four passages (Q03 no. 4; Q04 nos. 1, 7, 12) now show their right case name and judgment id, so `Q03_A/B` and `Q04_A/B` differ from the first send in those lines only; the human sheet differs in 8 cells (case name and hidden key); the authority workbook lists judgment 18070 at row 11 instead of 7 and has 85 'our results' rows instead of 87. The top-up pack is unchanged.
 
 ## The routine
 
@@ -48,6 +49,6 @@ The builders reproduce, byte for byte or cell for cell, the files that were firs
 - Versions named `S ...` and `M ...` in the scoring table (the site's own search method run on the wide index; my pipeline's top 6) are sets scored on everything they showed. The others are scored on their top 5.
 - The pool's passage numbers are fixed, because reviewers' marks are matched to passages by (question, number). To add a new round of passages (for example after the search changes), add rows to the pool with numbers continuing after the existing ones for that question and the `topup` flag, so every old mark stays valid.
 
-## What is not saved here
+## The one-off experiment scripts
 
-The scripts that first made the pool (running six search versions per question, then finding the passages the site's search showed that were not yet marked) and the site-versus-mine comparison run were one-off experiments and were not saved. `pool_all.json` is the result.
+The scripts that first made the pool (running six search versions per question, then finding the passages the site's search showed that were not yet marked) and the site-versus-mine comparison run are saved in `experiments/`, exactly as they were run, with a README that says what each did. They are a record, not a tool: they have hard-coded paths and a re-run will not reproduce the pool. `pool_all.json` is the result.
