@@ -8,7 +8,7 @@ These are the scripts that built `review_data/pool_all.json` and ran the site-ve
 
 | File | What it did |
 |---|---|
-| `pool.py` | Built the first batch. For each of the 12 test questions it ran six search versions, took each version's top 10, collapsed identical passages, kept up to 16, shuffled with a fixed seed and numbered them. Writes `pool_raw.json`. |
+| `pool.py` | Built the first batch. For each of the 12 test questions it ran five search versions (and added the hand-picked landmark passages as a sixth list), took each list's top 10, collapsed identical passages, kept up to 16, shuffled with a fixed seed and numbered them. Writes `pool_raw.json`. |
 | `rewrites.json` | The legal-wording rewrites of the six plain-language questions, used by versions C and F. The same text is also stored in each question's `rewrite` field in `pool_all.json`. |
 | `site_on_wide.py` | Ran the Recourse site's own search function (`semantic_retrieval.find_relevant_sections`, unmodified, statute lookups switched off) on the wide index for the 12 questions, and ran my own pipeline on the same index for comparison. |
 | `site_on_wide2.py` | The fair-size check: if my pipeline showed as many passages as the site does (top 6), does it include the landmark case and the verified paragraph? Also finds where the verified paragraph ranks by plain meaning. |
