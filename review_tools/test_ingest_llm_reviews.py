@@ -181,6 +181,16 @@ try:
     check("passages with no votes are 'unjudged', not crashes", sum(1 for c in res3["cons"].values() if c["mark"] is None) > 0)
     check("variant table still produced with unjudged slots counted", all("unjudged" in r for r in res3["var_rows"]) and any(r["unjudged"] > 0 for r in res3["var_rows"]))
 
+    def judged_questions(v):          # independent count: questions where this version has at least one marked passage
+        n = 0
+        for q in pool:
+            marks = [res3["cons"][(q["qid"], r["n"])]["mark"] for r in q["rows"] if v in r["variants"] and (v.startswith(("S ", "M ")) or r["variants"][v] <= 5)]
+            n += any(m not in (None, "split") for m in marks)
+        return n
+    check("'Questions judged' counts only questions where the version has a marked passage (not every question in the pool)",
+          all(vr["questions"] == judged_questions(vr["variant"]) for vr in res3["var_rows"]) and any(vr["questions"] < len(pool) for vr in res3["var_rows"]),
+          [(vr["variant"], vr["questions"], judged_questions(vr["variant"])) for vr in res3["var_rows"]])
+
     # ---------------------------------------------------------------- scenario 3: the top-up batch
     rep4 = f"{tmp}/replies4"
     os.makedirs(rep4)

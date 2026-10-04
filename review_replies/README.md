@@ -15,6 +15,14 @@ Real replies only. Put each reply as a plain text file in the folder for the pac
 - The initials keep J's and S's files apart if they use the same tool.
 - Keep the reply text exactly as the tool gave it. Do not edit it.
 
+## If a reply was saved as Rich Text (.rtf)
+
+A reply pasted into a rich-text editor (for example Mac TextEdit) becomes an `.rtf` file named like `A01_A.rtf`. The reader cannot read that, so convert it first:
+
+    python review_tools/rtf_to_txt.py review_replies/J_first_pack OUT_DIR --tool ChatGPT-J
+
+It writes `Q01_A_ChatGPT-J.txt` and so on, checks each reply's `question_id` against the file name, and leaves the originals untouched.
+
 ## Not counted
 
 The mock-trial replies (ChatGPT Q03 TA/TB, Gemini Q03 TA) are not real results and must not be put here.

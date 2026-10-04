@@ -14,9 +14,10 @@ Needs `pip install openpyxl`. The reply reader needs nothing else.
 | `build_review_sheet.py` | Builds the human review sheet `Search_Review_Sheet_Pooled_v2.xlsx` (the 175 first-batch passages, dropdown marks, per-question verdicts). |
 | `build_authority_list.py` | Builds `Authority_Check_List.xlsx`: is each case still good law, and what does a research tool show for the 12 questions. |
 | `ingest_llm_reviews.py` | Reads the replies, checks them, and scores each search version. |
+| `rtf_to_txt.py` | Turns reply files saved as Rich Text (`.rtf`, for example from Mac TextEdit) into the plain-text files the reader accepts. |
 | `review_common.py` | Shared helpers and the wording both prompt packs use. |
 | `experiments/` | The one-off scripts that made the pool and ran the site-versus-mine comparison, saved as run. A record, not a tool. Never send to reviewers. |
-| `test_ingest_llm_reviews.py`, `test_builders.py` | Tests (synthetic replies only, nothing real). |
+| `test_ingest_llm_reviews.py`, `test_builders.py`, `test_rtf_to_txt.py` | Tests (synthetic replies only, nothing real). |
 
 The builders reproduce, byte for byte or cell for cell, the files that were first sent out on 2026-10-02 (checked when they were saved here). Rebuilding changes nothing a reviewer has already seen, because the passage numbers come from `pool_all.json`. One exception, from the pool correction of 2026-10-04 (see `../review_data/README.md`): four passages (Q03 no. 4; Q04 nos. 1, 7, 12) now show their right case name and judgment id, so `Q03_A/B` and `Q04_A/B` differ from the first send in those lines only; the human sheet differs in 8 cells (case name and hidden key); the authority workbook lists judgment 18070 at row 11 instead of 7 and has 85 'our results' rows instead of 87. The top-up pack is unchanged.
 

@@ -210,7 +210,8 @@ def analyse(runs, passages, pool):
         yes = lambda ms: sum(m == "Yes" for m in ms) / len(ms)
         use = lambda ms: sum(m in ("Yes", "Partly") for m in ms) / len(ms)
         mis = lambda ms: sum(m == "Misleading" for m in ms) / len(ms)
-        var_rows.append(dict(variant=v, questions=len(qs), top5_slots=sum(len(m) for m in qs.values()),
+        judged_q = sum(1 for ms in qs.values() if any(m not in (None, "split") for m in ms))      # questions where this version has at least one marked passage
+        var_rows.append(dict(variant=v, questions=judged_q, top5_slots=sum(len(m) for m in qs.values()),
                              unjudged=sum(m in (None, "split") for ms in qs.values() for m in ms),
                              yes=mean_of(yes), useful=mean_of(use), misleading=mean_of(mis),
                              yes_lay=mean_of(yes, "lay"), yes_legal=mean_of(yes, "legal"),
@@ -269,7 +270,7 @@ def write_outputs(out, runs, problems, ev, cons, pair, var_rows, passages, exper
     L += ["## Consensus marks (plurality of all runs)", "", " | ".join(f"{k}: {dist.get(k, 0)}" for k in MARKS + ["split", None]), "",
           f"Passages marked Misleading by at least one run: {sum(c['any_misleading'] for c in cons.values())}", ""]
     L += ["## How good is what each search version shows (LLM-judged consensus)", "",
-          "| Version | Questions | Top-5 slots | Unjudged slots | Yes share | Yes or Partly | Misleading | Yes (plain questions) | Yes (legal questions) |", "|---|---|---|---|---|---|---|---|---|"]
+          "| Version | Questions judged | Top-5 slots | Unjudged slots | Yes share | Yes or Partly | Misleading | Yes (plain questions) | Yes (legal questions) |", "|---|---|---|---|---|---|---|---|---|"]
     for r in var_rows:
         L.append(f"| {r['variant']} | {r['questions']} | {r['top5_slots']} | {r['unjudged']} | {fmt(r['yes'])} | {fmt(r['useful'])} | {fmt(r['misleading'])} | {fmt(r['yes_lay'])} | {fmt(r['yes_legal'])} |")
     L += ["", "Shares are averaged per question over the passages each version placed in its top 5; versions whose name starts with S or M (the site's own search, my pipeline's top 6) are scored on everything they showed. Only passages that were in the pool can be scored; 'L landmark key passages' is the set of verified paragraphs, not a search version.", ""]
