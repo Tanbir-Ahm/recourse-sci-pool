@@ -80,22 +80,24 @@ def readme(top, n_orig, all_q, example, with_reverse=False):
     if with_reverse:
         which_files = f"Files named {qid}_TA.txt hold the passages in number order; {qid}_TB.txt hold the same passages in reverse order (only for questions with 2 or more passages)."
         reply_names = f"{qid}_TA_ChatGPT5.txt  or  {qid}_TB_Gemini.txt"
-        how_much = f"Please use the same two or more AI tools you used for the first pack. Minimum: the TA files ({chats_a} chats per tool). Better: TA and TB ({chats_ab} chats per tool)."
+        how_much = f"Please use at least TWO different AI tools (three is better), and the tools the project asked you to use if it named them. Minimum: the TA files ({chats_a} chats per tool). Better: TA and TB ({chats_ab} chats per tool)."
     else:
         which_files = f"There is one file for each question that has new passages, named like {qid}_TA.txt ({chats_a} files)."
         reply_names = f"{qid}_TA_ChatGPT5.txt  or  {qid}_TA_Gemini.txt"
-        how_much = f"Please use the same two or more AI tools you used for the first pack. That is {chats_a} chats per tool."
+        how_much = f"Please use at least TWO different AI tools (three is better), and the tools the project asked you to use if it named them. That is {chats_a} chats per tool."
     return f"""TOP-UP PACK: a second, small batch of passages to mark
 
 WHAT THIS IS
-The first review pack (Q01 to Q12) covered {n_orig} passages. Since then the project tested a second way of searching, and it showed {n_pass} passages that nobody has marked yet. This top-up asks for marks on those {n_pass} passages only. They belong to {len(top)} of the {len(all_q)} questions{none_phrase}. The passage numbers CONTINUE after the first pack's numbers for the same question (for example {example['full']['qid']} had {ex_old[0]} to {ex_old[-1]}, so the top-up for {example['full']['qid']} is {ex_new[0]} to {ex_new[-1]}).
+A test of a legal search tool for Indian Supreme Court criminal-law judgments. This pack holds {n_pass} passages that the search showed, for {len(top)} of the project's {len(all_q)} test questions{none_phrase}. An AI model is asked to mark each passage Yes / Partly / No / Misleading. All the texts are public court judgments; there is no personal or confidential information in the files.
 
-If you have not done the first pack yet, please do it first or in the same sitting: the same question appears in both. If you already did the first pack, you only need this.
+These passages belong to a larger set of {n_orig + n_pass} that the project is having marked, and these {n_pass} are the ones nobody has marked yet. So the passage numbers CONTINUE after that set's numbers for the same question (for example {qid} has {ex_old[0]} to {ex_old[-1]} in the larger set, so the passages here are numbered {ex_new[0]} to {ex_new[-1]}). Numbers that start well above 1 are normal: just use the numbers shown.
 
-OPTION 1: AI reviewers (same method as the first pack)
+You do not need the rest of the set. Each passage is judged on its own, so it does not matter who marks the rest.
+
+OPTION 1: AI reviewers
 1. Open the folder 'prompts'. {which_files}
 2. Copy one whole file into a NEW chat of an AI tool (switch off web search and tools), send it, and wait.
-3. Save the model's whole reply as plain text, named like  {reply_names}  (same model name every time, no spaces). Put the files in the folder 'replies'.
+3. Save the model's whole reply as plain text, named like  {reply_names}  (same model name every time, no spaces). If someone else is also marking passages with the same tool, add your initials to the name, for example {qid}_TA_ChatGPT5-S.txt. Put the files in the folder 'replies'.
 4. If a reply is not JSON or is cut off, send "Reply again with only the JSON object, nothing else." and save the new reply.
 5. Zip the 'replies' folder and send it back.
 {how_much}

@@ -96,8 +96,10 @@ try:
     check("no answer-key wording in the top-up pack", not [w for w in VARIANT_WORDS if w.lower() in allt], [w for w in VARIANT_WORDS if w.lower() in allt])
     rd = zt_.read("Top_Up_Pack/README.txt").decode()
     check("the README counts are right, names the questions with nothing new, says 10 chats per tool and never mentions TB or reversing",
-          "24 passages" in rd and "10 of the 12 questions (Q01 and Q06 have none)" in rd and "Q03 had 1 to 16, so the top-up for Q03 is 17 to 19" in rd
+          "24 passages" in rd and "10 of the project's 12 test questions (Q01 and Q06 have none)" in rd and "Q03 has 1 to 16 in the larger set, so the passages here are numbered 17 to 19" in rd
           and "That is 10 chats per tool." in rd and "TB" not in rd and "reverse" not in rd.lower())
+    check("the README stands alone: it never assumes the reader has the first pack, and tells them to add initials if someone else uses the same tool",
+          "first pack" not in rd.lower() and "first review" not in rd.lower() and "-S.txt" in rd and "You do not need the rest of the set" in rd)
     one = zt_.read("Top_Up_Pack/prompts/Q12_TA.txt").decode()
     check("a one-passage prompt says 'exactly 1 entry' and its template uses the real number", "exactly 1 entry," in one and f'"no": {extra["Q12"][0]["n"]},' in one)
     ws = openpyxl.load_workbook(os.path.join(tmp, "Top_Up_Review_Sheet.xlsx"))["Review"]
