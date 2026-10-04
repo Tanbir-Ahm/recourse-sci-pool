@@ -29,7 +29,7 @@ The builders reproduce, byte for byte or cell for cell, the files that were firs
         python review_tools/build_review_sheet.py --out OUTDIR      # for a human reviewer
         python review_tools/build_authority_list.py --out OUTDIR
 
-2. Reviewers return replies. For AI reviewers each reply is a plain text file named `Q03_A_<model>.txt` (first pack) or `Q03_TA_<model>.txt` (top-up); `B` (and `TB`, if built with `--with-reverse`) are the reversed-order versions. The first pack's `B` files are the real order check, because its questions have 11 to 16 passages; for that, `Q03_B` and `Q09_B` in each tool are enough. Put them in one folder. If two people use the same tool, ask them to add their initials to the model name, or one set overwrites the other (the reader reports it).
+2. Reviewers return replies. For AI reviewers each reply is a plain text file named `Q03_A_<model>.txt` (first pack) or `Q03_TA_<model>.txt` (top-up); `B` (and `TB`, if built with `--with-reverse`) are the reversed-order versions. The first pack's `B` files are the real order check, because its questions have 11 to 16 passages; for that, `Q03_B` and `Q09_B` in each tool are enough. Put them in one folder. The real reply files are kept in `../review_replies/` (`J_first_pack/`, `S_top_up/`); copy both into one folder before reading. If two people use the same tool, ask them to add their initials to the model name, or one set overwrites the other (the reader reports it).
 
 3. Read them:
 
