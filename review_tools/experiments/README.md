@@ -1,6 +1,6 @@
 # experiments: the one-off scripts that made the review pool
 
-These are the scripts that built `review_data/pool_all.json` and ran the site-versus-mine comparison on 2026-10-02. They are saved **exactly as they were run** (byte for byte), so you can see what each search version did. They are a record, not a tool.
+These are the scripts that built `review_data/pool_all.json` and ran the site-versus-mine comparison on 2026-10-02. They are saved **exactly as they were run** (byte for byte), so you can see what each search version did. They are a record, not a tool. For a plain-words table of the six versions and the two top-up sources, see `VERSIONS.md`.
 
 **Do not send this folder to reviewers.** It names the search versions, and the pool is a private answer key (see `review_data/README.md`).
 
