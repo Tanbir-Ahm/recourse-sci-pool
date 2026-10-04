@@ -238,6 +238,38 @@ try:
     check("a top-up reply that leaves out a passage is reported with its number", f"passages not marked: [{new9['rows'][0]['n']}]" in txt5)
     check("a main-batch reply that marks top-up numbers is reported", "is not part of this batch for Q03" in txt5)
     check("a top-up reply for a question without new passages is refused", "Q01 has no top-up passages" in txt5)
+
+    # ---------------------------------------------------------------- the sensitivity table, against numbers worked out by hand
+    # One question with four passages (all in A's top 5); version C shows passages 1 and 2 only; a second question that only A covers.
+    row = lambda n, **v: {"n": n, "variants": v}
+    spool = [dict(qid="Q01", kind="lay", rows=[row(1, **{"A today": 1, "C rewrite": 1}), row(2, **{"A today": 2, "C rewrite": 2}), row(3, **{"A today": 3}), row(4, **{"A today": 4})]),
+             dict(qid="Q02", kind="legal", rows=[row(1, **{"A today": 1}), row(2, **{"A today": 2})])]
+    spass = {(q["qid"], r["n"]): {} for q in spool for r in q["rows"]}
+    sruns = {("M1", "A"): {("Q01", 1): "Yes", ("Q01", 2): "Partly", ("Q01", 3): "Yes", ("Q01", 4): "No", ("Q02", 1): "Yes", ("Q02", 2): "Yes"},
+             ("M1", "B"): {("Q01", 1): "Yes", ("Q01", 2): "Yes", ("Q01", 3): "Partly", ("Q01", 4): "No", ("Q02", 1): "No", ("Q02", 2): "Yes"}}
+    sens = {r["variant"]: r for r in ing.sensitivity(sruns, spass, spool)}
+    a, c = sens["A today"], sens["C rewrite"]
+    close = lambda x, y: x is not None and abs(x - y) < 1e-9
+    # Q01 for A: agreed -> passages 1 (Yes) and 4 (No) only = 0.5; lower -> Yes, Partly, Partly, No = 0.25; higher -> Yes, Yes, Yes, No = 0.75
+    # Q02 for A: agreed -> passage 2 (Yes) only = 1.0; lower -> No, Yes = 0.5; higher -> Yes, Yes = 1.0.   Average over both questions:
+    check("agreed-only Yes share for A is the average of 0.5 and 1.0", close(a["cells"]["agreed"]["yes"], 0.75), a["cells"]["agreed"])
+    check("'ties to the lower mark' keeps every disagreement and settles it the unfavourable way (0.25 and 0.5)", close(a["cells"]["lower"]["yes"], 0.375), a["cells"]["lower"])
+    check("'ties to the higher mark' settles it the favourable way (0.75 and 1.0)", close(a["cells"]["higher"]["yes"], 0.875), a["cells"]["higher"])
+    check("each run alone is scored on that run's own marks (run A: 0.5 and 1.0; run B: 0.5 and 0.5)", close(a["cells"]["run M1/A"]["yes"], 0.75) and close(a["cells"]["run M1/B"]["yes"], 0.5), (a["cells"]["run M1/A"], a["cells"]["run M1/B"]))
+    check("the range over single runs is reported lowest to highest", close(a["runs_yes"][0], 0.5) and close(a["runs_yes"][1], 0.75), a["runs_yes"])
+    check("Yes-or-Partly share under 'agreed' for Q01 and Q02 is computed over the same passages (1 of 2 and 1 of 1)", close(a["cells"]["agreed"]["useful"], 0.75), a["cells"]["agreed"])
+    check("a version marked on one question reports one question judged, the baseline two", c["questions"] == 1 and a["questions"] == 2, (c["questions"], a["questions"]))
+    # C on Q01 (passages 1 and 2): agreed -> [Yes] = 1.0 vs A on Q01 0.5; lower -> Yes, Partly = 0.5 vs 0.25; higher -> 1.0 vs 0.75;
+    # run A -> Yes, Partly = 0.5 vs A's 0.5 (Yes, Partly, Yes, No); run B -> Yes, Yes = 1.0 vs 0.5
+    check("against the baseline on the SAME questions: above in 4, equal in 1, below in 0", (c["above"], c["equal"], c["below"]) == (4, 1, 0), (c["above"], c["equal"], c["below"]))
+    check("the baseline row says so and is not compared with itself", a["is_baseline"] and (a["above"], a["equal"], a["below"]) == (0, 0, 0))
+    one = ing.sensitivity({("M1", "A"): sruns[("M1", "A")]}, spass, spool)
+    check("with a single run the 'agreed', 'lower', 'higher' and run columns all coincide", all(close(r["cells"]["agreed"]["yes"], r["cells"]["lower"]["yes"]) and close(r["cells"]["lower"]["yes"], r["cells"]["higher"]["yes"]) for r in one))
+    res_s = ing.main(["--replies", rep5, "--out", f"{tmp}/out_s", "--label", "SYNTHETIC TEST 5"])
+    check("the summary has the sensitivity section only when there is more than one run",
+          "## Sensitivity" not in open(f"{tmp}/out_s/llm_summary.md", encoding="utf-8").read() or len(res_s["runs"]) > 1)
+    res_two = ing.main(["--replies", rep4, "--out", f"{tmp}/out_two"])
+    check("with several runs the summary gets the sensitivity table and a CSV", "## Sensitivity" in open(f"{tmp}/out_two/llm_summary.md", encoding="utf-8").read() and os.path.exists(f"{tmp}/out_two/llm_sensitivity.csv"))
 finally:
     shutil.rmtree(tmp, ignore_errors=True)
 

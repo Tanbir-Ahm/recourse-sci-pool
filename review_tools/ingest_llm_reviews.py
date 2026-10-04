@@ -245,8 +245,81 @@ def compare_expert(cons, expert):
     return dict(n=len(common), agree4=po, kappa4=k4, agree_useful=pu, kappa_useful=ku, confusion=conf)
 
 
+RANK = {"Misleading": 0, "No": 1, "Partly": 2, "Yes": 3}       # less favourable to more favourable, used only to settle ties
+
+
+def _resolve(votes, pick):
+    """Plurality mark; when marks tie for most votes, `pick` (min or max) chooses the less or more favourable of the tied ones."""
+    c = collections.Counter(v for v in votes if v)
+    if not c:
+        return None
+    top = max(c.values())
+    return pick((m for m, n in c.items() if n == top), key=RANK.get)
+
+
+def _scores_by_variant(pool, mark_of):
+    """{variant: {question: (yes share, yes-or-partly share, misleading share, marked slots)}}, with the same slot rules as analyse():
+    a search version is scored on its top 5, 'S ...' and 'M ...' sets on everything they showed. mark_of(qid, n) gives a mark or None."""
+    out = collections.defaultdict(dict)
+    for q in pool:
+        buckets = collections.defaultdict(list)
+        for r in q["rows"]:
+            m = mark_of(q["qid"], r["n"])
+            for v, rank in r["variants"].items():
+                if v.startswith(SET_VARIANTS) or rank <= 5:
+                    buckets[v].append(m)
+        for v, ms in buckets.items():
+            judged = [m for m in ms if m is not None]
+            if judged:
+                n = len(judged)
+                out[v][q["qid"]] = (sum(m == "Yes" for m in judged) / n, sum(m in ("Yes", "Partly") for m in judged) / n, sum(m == "Misleading" for m in judged) / n, n)
+    return out
+
+
+def sensitivity(runs, passages, pool, baseline="A today"):
+    """How much do the version scores depend on how disagreements between runs are handled?
+    Treatments: 'agreed' (the headline rule: a passage counts only when the plurality is clear), 'lower' / 'higher' (a tie goes to the less / more
+    favourable tied mark), and each run on its own. Returns one row per version, with its macro-averaged Yes and Yes-or-Partly share under every
+    treatment and, against the baseline version on the SAME questions, in how many treatments it comes out above, equal or below."""
+    keys = sorted(runs)
+    votes = {p: [runs[k][p] for k in keys if p in runs[k]] for p in passages}
+
+    def agreed(q, n):
+        c = collections.Counter(votes[(q, n)]).most_common()
+        return None if not c or (len(c) > 1 and c[0][1] == c[1][1]) else c[0][0]
+    treatments = [("agreed", agreed),
+                  ("lower", lambda q, n: _resolve(votes[(q, n)], min)),
+                  ("higher", lambda q, n: _resolve(votes[(q, n)], max))]
+    treatments += [(f"run {m}/{o}", (lambda q, n, k=(m, o): runs[k].get((q, n)))) for m, o in keys]
+    scored = {t: _scores_by_variant(pool, fn) for t, fn in treatments}
+    run_labels = [t for t, _ in treatments if t.startswith("run ")]
+
+    def macro(per_q, qids, i):
+        vals = [per_q[q][i] for q in qids if q in per_q]
+        return sum(vals) / len(vals) if vals else None
+    rows = []
+    for v in sorted({v for t in scored for v in scored[t]}):
+        cells = {}
+        for t in scored:
+            per_q = scored[t].get(v, {})
+            cells[t] = dict(questions=len(per_q), slots=sum(x[3] for x in per_q.values()), yes=macro(per_q, per_q, 0), useful=macro(per_q, per_q, 1), misleading=macro(per_q, per_q, 2))
+        above = equal = below = 0
+        if v != baseline:
+            for t in scored:
+                a, b = scored[t].get(v, {}), scored[t].get(baseline, {})
+                common = [q for q in a if q in b]
+                if common:
+                    x, y = macro(a, common, 0), macro(b, common, 0)
+                    above += x > y + 1e-9; below += x < y - 1e-9; equal += abs(x - y) <= 1e-9
+        ys = [cells[t]["yes"] for t in run_labels if cells[t]["yes"] is not None]
+        us = [cells[t]["useful"] for t in run_labels if cells[t]["useful"] is not None]
+        rows.append(dict(variant=v, cells=cells, questions=cells["higher"]["questions"], runs_yes=(min(ys), max(ys)) if ys else None,
+                         runs_useful=(min(us), max(us)) if us else None, above=above, equal=equal, below=below, baseline=baseline, is_baseline=(v == baseline)))
+    return rows
+
+
 # ----------------------------------------------------------------------------- report
-def write_outputs(out, runs, problems, ev, cons, pair, var_rows, passages, experts, label):
+def write_outputs(out, runs, problems, ev, cons, pair, var_rows, passages, experts, label, sens=None):
     os.makedirs(out, exist_ok=True)
     keys = sorted(runs)
     with open(os.path.join(out, "llm_marks.csv"), "w", newline="", encoding="utf-8") as f:
@@ -274,6 +347,28 @@ def write_outputs(out, runs, problems, ev, cons, pair, var_rows, passages, exper
     for r in var_rows:
         L.append(f"| {r['variant']} | {r['questions']} | {r['top5_slots']} | {r['unjudged']} | {fmt(r['yes'])} | {fmt(r['useful'])} | {fmt(r['misleading'])} | {fmt(r['yes_lay'])} | {fmt(r['yes_legal'])} |")
     L += ["", "Shares are averaged per question over the passages each version placed in its top 5; versions whose name starts with S or M (the site's own search, my pipeline's top 6) are scored on everything they showed. Only passages that were in the pool can be scored; 'L landmark key passages' is the set of verified paragraphs, not a search version.", ""]
+    if sens and len(runs) > 1:
+        two = lambda lo_hi: "-" if lo_hi is None else (f"{lo_hi[0]:.2f}" if abs(lo_hi[0] - lo_hi[1]) < 0.005 else f"{lo_hi[0]:.2f} to {lo_hi[1]:.2f}")
+        cell = lambda c: "-" if c["yes"] is None else f"{c['yes']:.2f} / {c['useful']:.2f}"
+        L += ["## Sensitivity: do the scores depend on how disagreements between runs are handled?", "",
+              "The table above counts a passage only when the runs agree on its mark, so every passage they disagree on drops out. Here the same scores are recomputed four ways. "
+              "Each cell is 'Yes share / Yes-or-Partly share', averaged per question over the questions marked so far. "
+              "'Ties to the lower mark' and 'Ties to the higher mark' keep every disagreement and settle it the unfavourable or favourable way. "
+              "'Each run alone' is the lowest to the highest score any single run gives. A version whose passages are only partly marked so far (for example the site's own extra passages before the top-up is marked) is scored on what has been marked. The last column compares each version with the baseline "
+              f"({sens[0]['baseline']}) on the questions both were marked on, counting the treatments (agreed, lower, higher, each run) in which it comes out above, equal or below.", "",
+              "| Version | Questions judged | Agreed only | Ties to the lower mark | Ties to the higher mark | Each run alone | Against the baseline (same questions) |", "|---|---|---|---|---|---|---|"]
+        for r in sens:
+            alone = "-" if r["runs_yes"] is None else f"{two(r['runs_yes'])} / {two(r['runs_useful'])}"
+            vs = "baseline" if r["is_baseline"] else f"above in {r['above']}, equal in {r['equal']}, below in {r['below']}"
+            L.append(f"| {r['variant']} | {r['questions']} | {cell(r['cells']['agreed'])} | {cell(r['cells']['lower'])} | {cell(r['cells']['higher'])} | {alone} | {vs} |")
+        L += ["", "Read it this way: a difference between versions is worth acting on only if it points the same way in every column and holds over more than a few questions. "
+              "With 12 questions only big differences show; gaps that appear in one column and vanish in another are noise from the AI reviewer's own unsteadiness.", ""]
+        with open(os.path.join(out, "llm_sensitivity.csv"), "w", newline="", encoding="utf-8") as f:
+            w = csv.writer(f)
+            w.writerow(["version", "treatment", "questions_judged", "marked_slots", "yes_share", "yes_or_partly_share", "misleading_share", "source"])
+            for r in sens:
+                for t, c in r["cells"].items():
+                    w.writerow([r["variant"], t, c["questions"], c["slots"], fmt(c["yes"]) if c["yes"] is not None else "", fmt(c["useful"]) if c["useful"] is not None else "", fmt(c["misleading"]) if c["misleading"] is not None else "", "LLM-judged"])
     for name, label_h, res in experts:
         L += [f"## Comparison with {label_h} marks: {name} ({label_h} marks vs LLM consensus)", ""]
         if res is None:
@@ -297,11 +392,12 @@ def main(argv=None):
     pool, passages = load_pool(a.pool)
     runs, problems, ev = load_replies(a.replies, passages, pool)
     cons, pair, var_rows = analyse(runs, passages, pool)
+    sens = sensitivity(runs, passages, pool)
     experts = [(os.path.basename(p), "human-judged (not a lawyer)", compare_expert(cons, read_expert(p))) for p in a.human]
     experts += [(os.path.basename(p), "expert-checked", compare_expert(cons, read_expert(p))) for p in a.expert]
-    text = write_outputs(a.out, runs, problems, ev, cons, pair, var_rows, passages, experts, a.label)
+    text = write_outputs(a.out, runs, problems, ev, cons, pair, var_rows, passages, experts, a.label, sens)
     print(text)
-    return dict(runs=runs, problems=problems, ev=ev, cons=cons, pair=pair, var_rows=var_rows, experts=experts)
+    return dict(runs=runs, problems=problems, ev=ev, cons=cons, pair=pair, var_rows=var_rows, experts=experts, sens=sens)
 
 
 if __name__ == "__main__":

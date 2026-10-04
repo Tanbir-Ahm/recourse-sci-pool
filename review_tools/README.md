@@ -38,7 +38,7 @@ The builders reproduce, byte for byte or cell for cell, the files that were firs
             [--human filled_sheet.xlsx ...]   # a person who is not a lawyer
             [--expert filled_sheet.xlsx ...]  # a lawyer's sheet only
 
-   It writes `llm_summary.md` and `llm_marks.csv`. The summary lists file problems (not JSON, passages not marked, a quote that is not in the passage, a wrong question number), agreement between runs (kappa; the same model in A and B order shows how much position matters), how many passages were marked Misleading, and a table scoring each search version on what it showed.
+   It writes `llm_summary.md`, `llm_marks.csv` and, when there is more than one run, `llm_sensitivity.csv`. The summary lists file problems (not JSON, passages not marked, a quote that is not in the passage, a wrong question number), agreement between runs (kappa; the same model in A and B order shows how much position matters), how many passages were marked Misleading, and a table scoring each search version on what it showed. With more than one run it adds a sensitivity table: the same scores recomputed with disagreements dropped, settled to the lower mark, settled to the higher mark, and for each run alone, with each version compared against version A on the same questions. Treat a difference as real only if it points the same way in every column.
 
 4. The authority workbook has no reader script: open the returned file and read the Judgments, Questions and Summary sheets.
 
