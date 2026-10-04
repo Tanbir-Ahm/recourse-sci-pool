@@ -142,6 +142,14 @@ try:
         json.dump(reply_obj(q3, R), fh)
     res_q3 = ing.main(["--replies", rep_q3, "--out", f"{tmp}/out_q3"])
     check("a file named Q3_A_... is read as Q03", len(res_q3["runs"][("SynM9", "A")]) == len(q3["rows"]) and all(k[0] == "Q03" for k in res_q3["runs"][("SynM9", "A")]))
+    # a reply saved as ...Gemini.txt.txt (a hidden extension added twice) belongs to the same tool as ...Gemini.txt
+    rep_dbl = f"{tmp}/replies_dbl"
+    os.makedirs(rep_dbl)
+    for name in ("Q03_A_SynM8.txt", "Q03_B_SynM8.txt.txt", "Q03_TA_SynM8.json.txt"):
+        with open(f"{rep_dbl}/{name}", "w", encoding="utf-8") as fh:
+            json.dump(reply_obj(q3 if "_TA_" not in name else topup(next(x for x in pool_all if x["qid"] == "Q03")), R), fh)
+    res_dbl = ing.main(["--replies", rep_dbl, "--out", f"{tmp}/out_dbl"])
+    check("a doubled file extension does not turn one tool into two", sorted({m for m, _ in res_dbl["runs"]}) == ["SynM8"] and sorted(o for _, o in res_dbl["runs"]) == ["A", "B", "TA"], sorted(res_dbl["runs"]))
 
     # ---------------------------------------------------------------- scenario 2: messy third model
     q3, q5, q7, q9 = pool[2], pool[4], pool[6], pool[8]

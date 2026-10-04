@@ -109,7 +109,8 @@ def load_replies(folder, passages, pool):
             if fn != "PUT_SAVED_REPLIES_HERE.txt":
                 problems.append((fn, "file name does not match Qnn_A_model.txt: skipped"))
             continue
-        qid, order, model = f"Q{int(m.group(1)):02d}", m.group(2).upper(), m.group(3)
+        qid, order = f"Q{int(m.group(1)):02d}", m.group(2).upper()
+        model = re.sub(r"(?:\.(?:txt|json|md))+$", "", m.group(3), flags=re.I)        # 'Gemini.txt.txt' (a hidden extension added twice) is still 'Gemini'
         is_top = order.startswith("T")
         exp = (expected_top if is_top else expected).get(qid)
         if exp is None or (is_top and not exp):
