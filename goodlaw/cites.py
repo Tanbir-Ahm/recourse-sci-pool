@@ -49,6 +49,7 @@ _PATTERNS = [
     (rf"\[\s*{_Y}\s*\]\s*(\d{{1,3}})\s*{_SUP}\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s{g[1]}:{g[2]}"),                # [1992] 1 Suppl. SCR 764
     (rf"\[\s*{_Y}\s*\]\s*{_SUP}\s*\(?\s*(\d{{1,2}})\s*\)?\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s{g[1]}:{g[2]}"),    # [2001] Supp (1) SCR 598
     (rf"\[\s*{_Y}\s*\]\s*{_SUP}\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s:{g[1]}"),                                      # [1976] Suppl. SCR 172
+    (rf"\[\s*{_Y}\s*\]\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}::{g[1]}"),                                                  # [1953] S.C.R. 476 (the early reports have no volume)
     (rf"\(\s*{_Y}\s*\)\s*(\d{{1,3}})\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:{g[1]}:{g[2]}"),                          # (1955) 1 SCR 1083
     (rf"\b{_Y}\s*\(\s*(\d{{1,3}})\s*\)\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:{g[1]}:{g[2]}"),                        # 1964 (5) SCR 89
     (rf"\b{_Y}\s*{_SUP}\s*\(\s*(\d{{1,2}})\s*\)\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s{g[1]}:{g[2]}"),             # 2001 Supp(1) SCR 598

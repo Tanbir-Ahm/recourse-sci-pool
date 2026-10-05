@@ -62,11 +62,11 @@
  {
   "target": "Meters and Instruments v. Kanchan Mehta (2017)",
   "doc_key": "b2017_10_66_85",
-  "triage": "NO_ADVERSE_FOUND",
+  "triage": "ADVERSE_SIGNAL",
   "statute_flag": "STATUTE_CHANGED",
   "citing_judgments": 7,
   "latest_citing_year": 2024,
-  "adverse_strong": 0,
+  "adverse_strong": 2,
   "adverse_possible": 0
  },
  {

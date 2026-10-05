@@ -39,6 +39,24 @@
   "argued_or_lower_court": [],
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
+  "case_law_table": {
+   "judgments_with_a_row": 1,
+   "rows": 1,
+   "by_what_the_reporter_marked": {
+    "relied on": 1
+   },
+   "recent_relied_on": [
+    {
+     "title": "TEESTA ATUL SETALVAD versus THE STATE OF GUJARAT",
+     "date": "2017-12-15",
+     "year": 2017,
+     "marked": "relied on",
+     "para": "Para 14",
+     "quote": "[1999] 2 Suppl. SCR 609 relied on Para 14",
+     "quote_verified": true
+    }
+   ]
+  },
   "weak_signals_set_aside": 0
  },
  "recent_approving": [
@@ -167,6 +185,7 @@
  "limits": [
   "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
   "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
-  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
+  "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."
  ]
 }

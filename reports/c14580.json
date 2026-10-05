@@ -23,8 +23,8 @@
   "citing_judgments": 78,
   "citing_judgments_all_confidence": 183,
   "by_treatment": {
-   "NEUTRAL": 47,
-   "FOLLOWS": 7
+   "NEUTRAL": 48,
+   "FOLLOWS": 6
   },
   "latest_citing_year": 2025,
   "citing_in_last_10_years": 39,
@@ -40,31 +40,65 @@
   "argued_or_lower_court": [],
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
+  "case_law_table": {
+   "judgments_with_a_row": 13,
+   "rows": 14,
+   "by_what_the_reporter_marked": {
+    "referred to": 8,
+    "relied on": 5,
+    "distinguished or held inapplicable": 1
+   },
+   "recent_relied_on": [
+    {
+     "title": "UNION OF INDIA versus ASHOK KUMAR SHARMA AND OTHERS",
+     "date": "2020-08-28",
+     "year": 2020,
+     "marked": "relied on",
+     "para": "Para 77",
+     "quote": "[1996] 10 Suppl. SCR 284 relied on Para 77",
+     "quote_verified": true
+    },
+    {
+     "title": "SOCIAL ACTION FORUM FOR MANAV ADHIKAR AND ANOTHER versus UNION OF INDIA MINISTRY OF LAW AND JUSTICE AND OTHERS",
+     "date": "2018-09-14",
+     "year": 2018,
+     "marked": "relied on",
+     "para": "Para 28",
+     "quote": "[1996] 10 Suppl. SCR 284 relied on Para 28",
+     "quote_verified": true
+    },
+    {
+     "title": "NAVTEJ SINGH JOHAR & ORS. versus UNION OF INDIA THR. SECRETARY MINISTRY OF LAW AND JUSTICE",
+     "date": "2018-09-06",
+     "year": 2018,
+     "marked": "relied on",
+     "para": "Para 173",
+     "quote": "[1996] 10 Suppl. SCR 284 relied on Para 173",
+     "quote_verified": true
+    },
+    {
+     "title": "DR. SUBHASH KASHINATH MAHAJAN versus THE STATE OF MAHARASHTRA AND ANR.",
+     "date": "2018-03-20",
+     "year": 2018,
+     "marked": "relied on",
+     "para": "Para 37",
+     "quote": "[1996] 10 Suppl. SCR 284 relied on Para 37",
+     "quote_verified": true
+    },
+    {
+     "title": "MS. Z  versus THE STATE OF BIHAR AND OTHERS",
+     "date": "2017-08-17",
+     "year": 2017,
+     "marked": "relied on",
+     "para": "Para 15",
+     "quote": "[1996) 10 Suppl. SCR 284 relied on Para 15",
+     "quote_verified": true
+    }
+   ]
+  },
   "weak_signals_set_aside": 0
  },
  "recent_approving": [
-  {
-   "doc_key": "c41970",
-   "title": "People’s Union for Civil Liberties & Anr v. State of Maharashtra & Ors",
-   "date": null,
-   "year": 2014,
-   "bench_size": 2,
-   "bench_relation": "unknown",
-   "source": "crawl",
-   "label": "FOLLOWS",
-   "cue": "following",
-   "hedged": false,
-   "binding": "strong",
-   "anaphoric": false,
-   "speaker": "court",
-   "confidence": "high",
-   "tier": "cite",
-   "sentence": "1 D.K. Basu v. State of West Bengal; [(1997) 1 SCC 416] 6 Page 7 JUDGMENT While doing so, the Court in para 29 (page 433 of the Report) made the following weighty observations: 29.",
-   "prev": "While framing the requirements to be followed in all cases of arrest or detention till legal provisions are made in that behalf, this Court issued certain directives as preventive measures.",
-   "next": "How do we check the abuse of police power?",
-   "quote_verified": true,
-   "in_headnote": false
-  },
   {
    "doc_key": "c38766",
    "title": "Municipal Corporation of Delhi, Delhi v. Association of Victims of Uphaar Tragedy & Ors",
@@ -118,7 +152,7 @@
    "bench_relation": "unknown",
    "source": "crawl",
    "label": "FOLLOWS",
-   "cue": "following",
+   "cue": "approval",
    "hedged": false,
    "binding": "weak",
    "anaphoric": false,
@@ -150,6 +184,28 @@
    "sentence": "This legal position has been reiterated in D. K. Basu v. State Of W.B. [(1997) 1 SCC 416].",
    "prev": "In doing so the courts take into account not only the interest of the applicant and the respondent but also the interest of the public as a whole with a view to ensure that public bodies or officials do not act unlawfully and do perform their public duties properly particularly where the fundamental right of a citizen under Article 21 is concerned.\"",
    "next": "Compensation can be awarded for violation of fundamental rights in public law domain, but the facts of the case in hand do not justify the directions given in the impugned judgment for conducting of an enquiry by the District Judge so as to determine the compensation to be awarded to respondent No.5.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "c13877",
+   "title": "SHRI DILIP K. BASU ETC.ASHOK K. JOHARI v. STATE OF WEST BENGAL & ORS",
+   "date": "1997-08-01",
+   "year": 1997,
+   "bench_size": 2,
+   "bench_relation": "equal",
+   "source": "crawl",
+   "label": "FOLLOWS",
+   "cue": "followed",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "cite",
+   "sentence": "O R D E R The following Order of the Court was delivered: WITH WRIT PETITION (CRL) no. 592 OF 1987 O R D E R On December 18, 1996 in D.K. Basu Versus State of West Bengal (1997 (1) SCC 416), this court laid down certain basic \"requirements\" to be followed in all cases of arrest or detention till legal provisions are made in that behalf as a measure to prevent custodial violence.",
+   "prev": "PETITIONER: SHRI DILIP K. BASU ETC.ASHOK K. JOHARI Vs. RESPONDENT: STATE OF WEST BENGAL & ORS. DATE OF JUDGMENT: 01/08/1997 BENCH: A.S. ANAND, K.T. THOMAS ACT: HEADNOTE: JUDGMENT: THE 1ST DAY OF AUGUST, 1997 Present: Hon’ble Dr. Justice A.S. Anand Hon’ble Mr. Justice K.T. Thomas Dr. A.M. Singhvi, Additional Solicitor General (A.C.), Ms. Suruchi Agarwal, Sushil Kumar Jain, Y.P. Dhamija, B. Krishna Prasad, Ms. A. Subhashini, B.B. Singh, Uma Nath Singh, B.S. Chahar, Ashok Mathur, Ms. Hemantika Wahi, Ms. Nandini Mukherjee, Kailash Vasdev, C.K. Sasi Raj Kumar Mehta, Dilip Sinha, K.R. Nagaraja, Ms. S. Janani, Aruneshwar Gupta, G. Prakash, Ms. Beena Prakash, Shakil Ahmed Syed, S.N. Jadhav, D.M. Nargolkar, A.S. Pundit, R.B. Misra, Gunture Prabhakar, Prem Malhotra, M. Veerappa, R.S. Sodhi, J.K. Manhas, V. Krishnamurthy, D.N. Mukherjee, T. Sridharan, Gopal Singh, D.S. Mehra, Ms. Kamakshi Singh Mehlwal, V.G. Pragasam and Ms. Kamini Jaiswal, Advs. with him for the appearing parties.",
+   "next": "The requirements read as follows.",
    "quote_verified": true,
    "in_headnote": false
   }
@@ -255,6 +311,7 @@
  "limits": [
   "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
   "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
-  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
+  "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."
  ]
 }

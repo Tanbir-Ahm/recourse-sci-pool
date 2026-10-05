@@ -1,4 +1,5 @@
 """Tests for goodlaw/modern_gold.py: the answer key read from the reporters' case-law tables. Run: python test_goodlaw_modern_gold.py"""
+from goodlaw import cites as C
 from goodlaw import modern_gold as G
 
 FAILURES = []
@@ -44,6 +45,12 @@ for text, letter in [("overruled", "O"), ("partly overruled", "O"), ("stood over
                      ("referred to", "R"), ("referred", "R"), ("discussed", "R"), ("Para 10", None), ("", None)]:
     check(G.code_letter(text) == letter, f"code {text!r} -> {letter}")
 check(G.code_letter("not approved") == "NF" and G.code_letter("approved") == "F", "'not approved' is read as disapproval, not approval")
+
+for raw, key in [("[1993) 2 SCR 581", "scr:1993:2:581"), ("[19971 2 SCR 389", "scr:1997:2:389"), ("119741 2 SCR 768", "scr:1974:2:768"), ("(2014] 8 SCR 992", "scr:2014:8:992"),
+                 ("[2013 7 SCR 581", "scr:2013:7:581"), ("(1994) 4 sec 260", "scc:1994:4:260"), ("c2010) 14 sec 506", "scc:2010:14:506"), ("[2010] (3) SCR 609", "scr:2010:3:609"),
+                 ("[1996) 10 Suppl. SCR 284", "scr:1996:s10:284"), ("[1962] SCR 702", "scr:1962::702"), ("[2006] 3 SCR 420", "scr:2006:3:420"), ("(2020) 15 SCC 460", "scc:2020:15:460")]:
+    check(C.norm_cite(G.repair_cite(raw)) == key, f"table citation {raw!r} -> {key}")
+check(G.repair_cite("AIR 1993 Ker 4") == "AIR 1993 Ker 4", "a High Court citation is left as it is")
 
 pairs = [("c1", f"b{i}", "R", "x") for i in range(200)]
 tune, kept = G.split(pairs)

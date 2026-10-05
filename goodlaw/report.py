@@ -20,6 +20,7 @@ from datetime import date
 from . import cites as C
 from . import mentions as M
 from . import statutes as S
+from . import tables as TB
 from . import treatment as T
 from .textutil import flatten, quote_in_text
 
@@ -148,6 +149,38 @@ def _collapse(items):
     return out
 
 
+def _table_into_lists(rows, target, adverse_strong, adverse_possible):
+    """Adds the law reporters' case-law table rows that mark the target overruled (or disapproved, or not followed) to the adverse lists, as the reporter's own statement
+    and not as a reading of a sentence, and returns a summary of every row (counts by what the reporter marked, most recent 'relied on' ones). An overruling by a smaller
+    bench than the target's goes to the possible list; a judgment already in the strong list is not listed twice."""
+    strong_docs = {m["doc_key"] for m in adverse_strong}
+    by_code, relied = collections.Counter(), []
+    for r in rows:
+        by_code[TB.MEANING.get(r["code"], r["code"])] += 1
+        if r["code"] in ("RF", "F"):
+            relied.append(r)
+        if r["code"] not in TB.ADVERSE_LABEL:
+            continue
+        relation = bench_relation(r["bench_size"], target.bench_size, r["bench_source"], target.bench_source)
+        brief = {"doc_key": r["doc_key"], "title": r["title"], "date": r["date"], "year": r["year"], "bench_size": r["bench_size"], "bench_relation": relation, "source": r["source"],
+                 "label": TB.ADVERSE_LABEL[r["code"]], "cue": r["code_text"], "hedged": False, "binding": "strong", "anaphoric": False, "speaker": "the law report's case-law table",
+                 "confidence": "high", "tier": "table", "sentence": r["quote"], "prev": "", "next": "", "quote_verified": r["quote_verified"], "in_headnote": True}
+        clean_adverse = relation != "smaller" if r["code"] == "O" else relation == "larger"
+        if clean_adverse:
+            if r["doc_key"] not in strong_docs:
+                brief["kind"] = f"law report's case-law table marks it {r['code_text']}"
+                adverse_strong.append(brief)
+                strong_docs.add(r["doc_key"])
+        else:
+            brief["why_not_a_clean_overruling"] = ["by a smaller bench than the target's, which cannot overrule it" if relation == "smaller" and r["code"] == "O"
+                                                   else "the reporter marks disapproval or non-following, not an overruling"]
+            brief["weak"] = False
+            adverse_possible.append(brief)
+    relied.sort(key=lambda r: r["date"] or f"{r['year']}-12-31", reverse=True)
+    return {"judgments_with_a_row": len({r["doc_key"] for r in rows}), "rows": len(rows), "by_what_the_reporter_marked": dict(by_code),
+            "recent_relied_on": [{"title": r["title"], "date": r["date"], "year": r["year"], "marked": r["code_text"], "para": r["para"], "quote": r["quote"], "quote_verified": r["quote_verified"]} for r in relied[:5]]}
+
+
 def build_bundle(corpus, target, doc=None, today=None):
     today = today or date.today().isoformat()
     res = M.find_mentions(corpus, target)
@@ -202,6 +235,8 @@ def build_bundle(corpus, target, doc=None, today=None):
             b["weak"] = weak
             adverse_possible.append(b)
 
+    table_rows = TB.evidence(corpus, target, mentions)
+    table_summary = _table_into_lists(table_rows, target, adverse_strong, adverse_possible)
     adverse_strong, adverse_possible, legislative, not_courts_own = (_collapse(x) for x in (adverse_strong, adverse_possible, legislative, not_courts_own))
     citator = citator_block(corpus, doc) if doc else []
     citator_overruled = [c for c in citator if c["code"] in ("O", "HO")]
@@ -217,7 +252,7 @@ def build_bundle(corpus, target, doc=None, today=None):
         "citing_judgments": len(docs_hi), "citing_judgments_all_confidence": len({m["doc_key"] for m in mentions}), "by_treatment": dict(by_label),
         "latest_citing_year": years[-1] if years else None, "citing_in_last_10_years": sum(1 for m in {m["doc_key"]: m for m in mentions if m["doc_key"] in docs_hi}.values() if m["year"] and m["year"] >= int(today[:4]) - 10),
         "citing_by_decade": dict(sorted(decades.items())), "adverse_strong": adverse_strong, "adverse_possible": adverse_possible, "legislative": legislative, "argued_or_lower_court": not_courts_own,
-        "citator_adverse_overruled": citator_overruled, "citator_adverse_other": citator_other,
+        "citator_adverse_overruled": citator_overruled, "citator_adverse_other": citator_other, "case_law_table": table_summary,
     }
     summary["weak_signals_set_aside"] = len([m for m in adverse_possible if m.get("weak")]) if triage(summary) in ("NO_ADVERSE_FOUND", "INSUFFICIENT") else 0
     label = triage(summary)
@@ -234,7 +269,8 @@ def build_bundle(corpus, target, doc=None, today=None):
         "how_found": res["by_tier"],
         "limits": ["Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
                    "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
-                   "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."],
+                   "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
+                   "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."],
     }
     return bundle
 
@@ -266,6 +302,14 @@ def render_markdown(b):
     block("Appears to overrule or reject it (read these first)", s["adverse_strong"])
     block("Disagree, doubt, limit, or an overruling with a caveat (weak readings are marked in their reasons)", s["adverse_possible"])
     block("The legislature responded", s["legislative"])
+    ct = s.get("case_law_table") or {}
+    if ct.get("rows"):
+        L.extend(["## What the law reporter's case-law table says (judgments of 2017 to 2023 only)", "",
+                  f"- The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. {ct['judgments_with_a_row']} later judgments have a row for this case; "
+                  + "; ".join(f"{k} {v}" for k, v in sorted(ct["by_what_the_reporter_marked"].items(), key=lambda x: -x[1])) + ". This is the reporter's annotation, not the court's own words."])
+        for r in ct["recent_relied_on"]:
+            L.append(f"  - {r['title']} ({r['date'] or r['year']}): marked \"{r['marked']}\", {r['para']}. Quote verified: {r['quote_verified']}")
+        L.append("")
     block("An overruling or doubt said by counsel or a lower court (not this Court's own words; does not change the triage)", s["argued_or_lower_court"])
     if b["reporter_citator"]:
         L.extend(["## The reporter's own citator (printed in the judgment's header; later cases to about 1994)", ""])

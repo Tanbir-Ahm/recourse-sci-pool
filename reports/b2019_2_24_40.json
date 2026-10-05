@@ -23,7 +23,7 @@
   "citing_judgments": 12,
   "citing_judgments_all_confidence": 17,
   "by_treatment": {
-   "NEUTRAL": 10
+   "NEUTRAL": 9
   },
   "latest_citing_year": 2025,
   "citing_in_last_10_years": 12,
@@ -37,6 +37,25 @@
   "argued_or_lower_court": [],
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
+  "case_law_table": {
+   "judgments_with_a_row": 5,
+   "rows": 5,
+   "by_what_the_reporter_marked": {
+    "referred to": 4,
+    "relied on": 1
+   },
+   "recent_relied_on": [
+    {
+     "title": "ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI",
+     "date": "2022-08-16",
+     "year": 2022,
+     "marked": "relied on",
+     "para": "Para 14",
+     "quote": "[2019] 2 SCR 24 relied on Para 14",
+     "quote_verified": true
+    }
+   ]
+  },
   "weak_signals_set_aside": 0
  },
  "recent_approving": [],
@@ -110,6 +129,7 @@
  "limits": [
   "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
   "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
-  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
+  "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."
  ]
 }

@@ -15,6 +15,7 @@ Run `python sci_goodlaw.py check --corpus corpus.sqlite "Rangappa v. Sri Mohan" 
 | What they do with it | for each citing judgment the strongest sentence: overrules, disagrees, doubts or refers, legislative response, distinguishes, limits, follows, not overruled | sentence rules with negation, who-overruled-whom, speaker (the Court, counsel, a lower court, the law report's headnote) and bench rules (`goodlaw/treatment.py`) |
 | Evidence | the exact sentences, each checked word for word against the judgment's text, with the cue words, the speaker, the confidence and the bench relation | `goodlaw/textutil.py` |
 | The reporter's citator | for judgments to about 1985, the reporters' own printed list of later citing cases and what they did (followed, distinguished, overruled ...), with each citing case found in the collection | `goodlaw/headers.py` |
+| The law reporter's case-law table | for judgments of 2017 to 2023, what the Supreme Court Reports marked for the case in each later judgment's headnote table (overruled, relied on, referred to ...), quoted and labelled as the reporter's annotation | `goodlaw/tables.py`, `goodlaw/modern_gold.py` |
 | Statute dimension | the sections the case turns on and what became of them under the 2023 recodification (IPC to BNS, CrPC to BNSS) | NCRB concordance vendored from Recourse (`goodlaw/statutes.py`) |
 | Coverage | where the collection ends and how much of what came after the case it holds, against Indian Kanoon's yearly counts | `coverage/year_counts.csv` |
 

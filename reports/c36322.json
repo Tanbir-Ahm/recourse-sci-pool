@@ -21,9 +21,9 @@
   "citing_judgments": 23,
   "citing_judgments_all_confidence": 44,
   "by_treatment": {
-   "FOLLOWS": 9,
+   "FOLLOWS": 8,
    "LIMITS": 2,
-   "NEUTRAL": 12
+   "NEUTRAL": 13
   },
   "latest_citing_year": 2026,
   "citing_in_last_10_years": 19,
@@ -37,6 +37,61 @@
   "argued_or_lower_court": [],
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
+  "case_law_table": {
+   "judgments_with_a_row": 10,
+   "rows": 10,
+   "by_what_the_reporter_marked": {
+    "referred to": 5,
+    "relied on": 5
+   },
+   "recent_relied_on": [
+    {
+     "title": "ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI",
+     "date": "2022-08-16",
+     "year": 2022,
+     "marked": "relied on",
+     "para": "Para 16",
+     "quote": "[2010] 6 SCR 507 relied on Para 16",
+     "quote_verified": true
+    },
+    {
+     "title": "RATHISH BABU UNNIKRISHNAN versus THE STATE (GOVT. OF NCT OF DELHI) & ANR.",
+     "date": "2022-04-26",
+     "year": 2022,
+     "marked": "relied on",
+     "para": "Para 11",
+     "quote": "[2010] 6 SCR 507 relied on Para 11",
+     "quote_verified": true
+    },
+    {
+     "title": "SUMETI VIJ versus M/S PARAMOUNT TECH FAB INDUSTRIES",
+     "date": "2021-03-09",
+     "year": 2021,
+     "marked": "relied on",
+     "para": "Para 15",
+     "quote": "[2010] 6 SCR 507 relied on Para 15",
+     "quote_verified": true
+    },
+    {
+     "title": "BASALINGAPPA versus MUDIBASAPPA",
+     "date": "2019-04-09",
+     "year": 2019,
+     "marked": "relied on",
+     "para": "Para 18",
+     "quote": "[2010] 6 SCR 507 relied on Para 18",
+     "quote_verified": true
+    },
+    {
+     "title": "ANSS RAJASHEKAR versus AUGUSTUS JEBA ANANTH",
+     "date": "2019-01-18",
+     "year": 2019,
+     "marked": "relied on",
+     "para": "Para 6",
+     "quote": "[2010] 6 SCR 507 relied on Para 6",
+     "quote_verified": true
+    }
+   ]
+  },
   "weak_signals_set_aside": 0
  },
  "recent_approving": [
@@ -129,24 +184,24 @@
    "in_headnote": false
   },
   {
-   "doc_key": "b2019_13_425_441",
-   "title": "UTTAM RAM versus DEVINDER SINGH HUDAN & ANR.",
-   "date": "2019-10-17",
+   "doc_key": "b2019_5_417_443",
+   "title": "ROHITBHAI JIVANLAL PATEL versus STATE OF GUJARAT & ANR.",
+   "date": "2019-03-15",
    "year": 2019,
    "bench_size": 2,
    "bench_relation": "unknown",
    "source": "bucket",
    "label": "FOLLOWS",
-   "cue": "following",
+   "cue": "reiterated",
    "hedged": false,
-   "binding": "strong",
+   "binding": "weak",
    "anaphoric": false,
    "speaker": "court",
-   "confidence": "medium",
-   "tier": "short",
-   "sentence": "In a judgment reported as Kishan Rao v. Shankargouda6, this Court referring to Kumar Exports and Rangappa returned the following findings: “22.",
-   "prev": "(emphasis supplied) 23.",
-   "next": "Another judgment which needs to be looked into is Rangappa v. Sri Mohan [Rangappa v. Sri Mohan, (2010) 11 SCC 441 : (2010) 4 SCC (Civ) 477 : (2011) 1 SCC (Cri) 184] .",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In Rangappa v. Sri Mohan : (2010) 11 SCC 441, this Court has reiterated and summarised the principles relating to presumptions under Sections 118 and 139 of the NI Act and rebuttal thereof in the following:- “26.",
+   "prev": "15.",
+   "next": "In the light of these extracts, we are in agreement with the respondent claimant that the presumption mandated by Section 139 of the Act does indeed include the existence of a legally enforceable debt or liability.",
    "quote_verified": true,
    "in_headnote": false
   }
@@ -219,6 +274,7 @@
  "limits": [
   "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
   "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
-  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
+  "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."
  ]
 }

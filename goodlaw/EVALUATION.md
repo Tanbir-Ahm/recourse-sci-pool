@@ -111,6 +111,20 @@ What step 2 did instead, on the evidence of those misses: the mention of a case 
 
 **These gains are in-sample.** The fixes came from reading these very pairs, so on fresh cases expect less. The new flags are in the "possible" tier except one real one. The known cases are unchanged (7 of 7 and 13 of 13). The full-pipeline run of the old-text adverse pairs gives 28 of 59, the same as the fast reader, so the fast reader is not hiding recall on old text. Neither untouched half has been run.
 
+### Step 3 of the improvement plan: the reporters' case-law tables as evidence
+
+A report now lists, for the judgments of 2017 to 2023 that print the table, what the Supreme Court Reports marked for the case under review ("overruled", "relied on", "referred to" and so on), quoted word for word from the headnote (`goodlaw/tables.py`). It is labelled as the reporter's annotation, not the court's words. A row marking the case **overruled** counts like the headnote's "overruled": a clean adverse signal if the citing bench is at least as large as the case's, otherwise a possibility; **disapproved or not followed** is strong only from a larger bench, otherwise a possibility. The other rows are counted and the most recent "relied on" ones listed. Judgments of 2024 on print no table, so this evidence stops at 2023.
+
+What was measured (tuning half only, so the untouched half still has not been run):
+
+- All 22 reporter-marked adverse pairs on the tuning half now reach the target's report; 20 of the 21 targets come out `ADVERSE_SIGNAL` and one `QUESTIONED`. Three of the 22 reach the report **only** through the table. This says the report picks up what the reporter marked; it is a coverage check, not an accuracy figure, because the table is the answer key.
+- The 13 well-settled known cases carry 3 to 51 table rows each and none of those rows marks the case overruled, so the table adds no false alarm there. The 7 overruled cases are unchanged (all flagged).
+- Priority case **Meters and Instruments v. Kanchan Mehta (2017)** changed from `NO_ADVERSE_FOUND` to `ADVERSE_SIGNAL`: a five-judge bench in 2021 says the judgment "in so far as it conferred power on the Trial Court to discharge an accused is not good law". That is a real partial overruling the first run missed. It was found by the text reading (after the fixes of steps 1 and 2 and the citation fix below), and the reporter's table marks it "overruled" too.
+
+A finding that came with this step: `cites.py` did not recognise the early reports' "[1953] S.C.R. 476" (a bracketed year with no volume), so those citations were invisible in headnotes and tables. Fixing it, and mending the scanner's damage to table citations ("[1993) 2 SCR 581", "(1994) 4 sec 260"), raised the usable table rows from 15,669 to 16,608 and the citations that give no key from 3,413 to 1,569 of 25,628 rows. On the old-text tuning half it brought 9 more adverse flags on other pairs, about six of them genuine (headnote entries such as "[1954] S.C.R. 817, not followed"), and it turned one reporter-marked "not followed" pair from missed to caught. After the step: old text 29 of 59 adverse pairs read as adverse; modern 16 of 22 (the key now has 22 adverse pairs on the tuning half).
+
+Limits: the table is only as good as the reporters' annotation (not checked by a lawyer); a case is matched to a row by its printed citation, so a case whose citations we do not know in the form the table uses is missed; and the key grew by pairs that the rules were never tuned on, so the one new adverse pair is a small fresh check, not a measurement.
+
 Reproduce: `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev --gold modern` (add `--production` for the full-pipeline run of the adverse pairs).
 
 ## What this means for use

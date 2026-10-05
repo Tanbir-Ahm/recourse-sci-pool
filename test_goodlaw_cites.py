@@ -82,6 +82,10 @@ check(C.key_variants("scr:1978:2:621") == {"scr:1978:2:621", "scr:1978::621", "s
 check(C.keys_match("scr:1978::621", "scr:1978:2:621") and C.keys_match("scr:1976:s:172", "scr:1976:s1:172") and C.keys_match("scr:1976:s:172", "scr:1976::172") and not C.keys_match("scr:1976:s2:172", "scr:1976:s1:172") and not C.keys_match("scr:1978:3:621", "scr:1978:2:621") and not C.keys_match("scr:1978::621", "scr:1979:2:621") and C.keys_match("air:1980:898", "air:1980:898"),
       "keys_match treats a missing SCR volume as a wildcard, nothing else")
 
+check(C.norm_cite("[1953] S.C.R. 476") == "scr:1953::476" and C.norm_cite("[1962] SCR 702") == "scr:1962::702", "the early reports' '[1953] S.C.R. 476' (bracketed year, no volume) is a citation")
+check(C.norm_cite("[2019] 5 S.C.R. 569") == "scr:2019:5:569" and C.norm_cite("[1976] Suppl. SCR 172") == "scr:1976:s:172", "the new form does not disturb the volume and supplement forms")
+check([k for k, _, _ in C.find_cites("see [1953] S.C.R. 476, and [1976] 1 Suppl. SCR 172")] == ["scr:1953::476", "scr:1976:s1:172"], "both forms are found in running text")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")

@@ -48,6 +48,26 @@ def code_letter(text):
     return None
 
 
+_OCR_SERIES = re.compile(r"(\d)\s+s[eo]c\s+(\d)", re.I)
+_OCR_YEAR = re.compile(r"^\s*[\[\(c1l]?\s*((?:19|20)\d\d)\s*[\]\)1l]?\s+(?=\d{1,3}\s+(?:Suppl\.?\s+)?(?:SCR|SCC|S\.C\.R|sec)\b|(?:Suppl\.?\s+)?(?:SCR|S\.C\.R)\b)", re.I)
+
+
+def repair_cite(raw):
+    """A table citation with the scanner's usual damage mended: a bracket read as ')' or '1' ("[1993) 2 SCR 581", "[19971 2 SCR 389", "119741 2 SCR 768"), 'SCC' read
+    as 'sec' ("(1994) 4 sec 260"), a volume put in brackets ("[2010] (3) SCR 609"). Applied only to the table's own citation lines, where the shape is known."""
+    s = re.sub(r"\s+", " ", raw).strip()
+    s = _OCR_SERIES.sub(lambda m: f"{m.group(1)} SCC {m.group(2)}", s)
+    m = _OCR_YEAR.match(s)
+    if m:
+        year, rest = m.group(1), s[m.end():]
+        if re.match(r"(?:\d{1,3}\s+)?(?:Suppl\.?\s+)?(?:SCR|S\.C\.R)\b", rest, re.I):
+            s = f"[{year}] {rest}"
+        else:
+            s = f"({year}) {rest}"
+    s = re.sub(r"(\[(?:19|20)\d\d\])\s*\((\d{1,3})\)\s*(SCR)", r"\1 \2 \3", s, flags=re.I)
+    return s
+
+
 def table_region(text, body_start=None):
     """The part of a judgment's text that holds its case-law table (after the heading 'Case Law Reference', before the first 'APPELLATE JURISDICTION'-type line),
     or None."""
@@ -94,7 +114,7 @@ def gold_pairs(corpus, source="bucket", years=(2017, 2023), log=None):
             if letter is None:
                 counts["no_code"] += 1
                 continue
-            key = C.norm_cite(cite)
+            key = C.norm_cite(repair_cite(cite))
             if not key:
                 counts["no_citation_key"] += 1
                 continue

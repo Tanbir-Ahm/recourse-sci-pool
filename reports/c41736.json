@@ -23,8 +23,8 @@
   "citing_judgments": 28,
   "citing_judgments_all_confidence": 30,
   "by_treatment": {
-   "NEUTRAL": 13,
-   "FOLLOWS": 12,
+   "NEUTRAL": 15,
+   "FOLLOWS": 10,
    "LIMITS": 1
   },
   "latest_citing_year": 2026,
@@ -39,6 +39,61 @@
   "argued_or_lower_court": [],
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
+  "case_law_table": {
+   "judgments_with_a_row": 11,
+   "rows": 12,
+   "by_what_the_reporter_marked": {
+    "relied on": 6,
+    "referred to": 6
+   },
+   "recent_relied_on": [
+    {
+     "title": "MD. ASFAK ALAM versus THE STATE OF JHARKHAND & ANR.",
+     "date": "2023-07-31",
+     "year": 2023,
+     "marked": "relied on",
+     "para": "Para 12, 13",
+     "quote": "[2014] 8 SCR 128 relied on Para 12, 13",
+     "quote_verified": true
+    },
+    {
+     "title": "MOHAMMED ZUBAIR versus STATE OF NCT OF DELHI & ORS",
+     "date": "2022-07-20",
+     "year": 2022,
+     "marked": "relied on",
+     "para": "Para 27",
+     "quote": "[2014] 8 SCR 128 relied on Para 27",
+     "quote_verified": true
+    },
+    {
+     "title": "MOHAMMED ZUBAIR versus STATE OF NCT OF DELHI & ORS",
+     "date": "2022-07-20",
+     "year": 2022,
+     "marked": "relied on",
+     "para": "Para 27",
+     "quote": "(2014) 8 SCC 273 relied on Para 27",
+     "quote_verified": true
+    },
+    {
+     "title": "KAHKASHAN KAUSAR @ SONAM & ORS. versus STATE OF BIHAR & ORS.",
+     "date": "2022-02-08",
+     "year": 2022,
+     "marked": "relied on",
+     "para": "Para 14",
+     "quote": "[2014] 8 SCR 128 relied on Para 14",
+     "quote_verified": true
+    },
+    {
+     "title": "SOCIAL ACTION FORUM FOR MANAV ADHIKAR AND ANOTHER versus UNION OF INDIA MINISTRY OF LAW AND JUSTICE AND OTHERS",
+     "date": "2018-09-14",
+     "year": 2018,
+     "marked": "relied on",
+     "para": "Para 22",
+     "quote": "[2014] 8 SCR 128 relied on Para 22",
+     "quote_verified": true
+    }
+   ]
+  },
   "weak_signals_set_aside": 0
  },
  "recent_approving": [
@@ -109,28 +164,6 @@
    "in_headnote": false
   },
   {
-   "doc_key": "b2024_8_1086_1145",
-   "title": "SHAJAN SKARIA versus THE STATE OF KERALA & ANR.",
-   "date": "2024-08-23",
-   "year": 2024,
-   "bench_size": 2,
-   "bench_relation": "unknown",
-   "source": "bucket",
-   "label": "FOLLOWS",
-   "cue": "follows",
-   "hedged": false,
-   "binding": "weak",
-   "anaphoric": false,
-   "speaker": "court",
-   "confidence": "high",
-   "tier": "pair",
-   "sentence": "In Arnesh Kumar v. State of Bihar and Another reported in (2014) 8 SCC 273, this Court laid emphasis on the phrases “credible information” and “reasonable suspicion” as they appear in Section 41 of CrPC and held as follows: “5.",
-   "prev": "45.",
-   "next": "Arrest brings humiliation, curtails freedom and casts scars forever.",
-   "quote_verified": true,
-   "in_headnote": false
-  },
-  {
    "doc_key": "b2024_2_1072_1120",
    "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION AND ANR.",
    "date": "2024-02-13",
@@ -149,6 +182,28 @@
    "sentence": "Union Territory of Andaman and Nicobar Islands -Directions to be complied with: (i) In terms of direction contained in para 100.2, it is directed to provide the particulars of First Information Reports of cognizable and non-bailable cases in which the mandate of Sections 41, 41-A of CrPC and Arnesh Kumar (Supra) has not been followed and consequently to provide the details of necessary actions [2024] 2 S.C.R. \b 1079 Satender Kumar Antil v. Central Bureau of Investigation and Anr. that have been taken against erring police officers.",
    "prev": "(vii) To inform on whether the judgment in Satender Kumar Antil (Supra) is being applied to petitions under Section 438 of CrPC. 2.",
    "next": "Also, in terms of direction contained in para 100.2, information has to be provided as to whether the Standing Order is being complied with by Investigating Officers.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2023_10_1184_1195",
+   "title": "MD. ASFAK ALAM versus THE STATE OF JHARKHAND & ANR.",
+   "date": "2023-07-31",
+   "year": 2023,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "law laid down",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "Before parting, the court would direct all the courts ceased of proceedings to strictly follow the law laid down in Arnesh Kumar (supra) and reiterate the directions contained thereunder, as well as other directions: “I. 11.",
+   "prev": "The impugned order of rejecting the bail and directing the appellant, to surrender and later seek bail, therefore, cannot stand, and is hereby set aside.",
+   "next": "Our endeavour in this judgment is to ensure that police officers do not arrest the accused unnecessarily and Magistrate do not authorize detention casually and mechanically.",
    "quote_verified": true,
    "in_headnote": false
   }
@@ -287,6 +342,7 @@
  "limits": [
   "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
   "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
-  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
+  "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."
  ]
 }
