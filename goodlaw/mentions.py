@@ -187,6 +187,17 @@ def extract(text, target, short_names=(), body_start=None, known_cites=None, par
                 if k.split(":")[0] in SERIES_OK:
                     votes[k] += 1
             raw.append((s, e, "pair", None))
+    # parallel citations: "(1976) 2 SCC 521 : [1976] Suppl. SCR 172" next to a citation the target is known by is the same case, whatever the name says
+    for key, s_, e_ in cites:
+        if not any(C.keys_match(key, k) for k in known):
+            continue
+        for key2, s2, e2 in cites:
+            if key2 == key or any(C.keys_match(key2, k) for k in known):
+                continue
+            gap = flat[e_:s2] if s2 >= e_ else (flat[e2:s_] if e2 <= s_ else None)
+            if gap is not None and len(gap) <= 12 and re.fullmatch(r"[\s:;,=/]*(?:and|or)?[\s:;,=/]*", gap) and _compatible_year(key2, target.year) and key2.split(":")[0] in SERIES_OK:
+                votes[key2] += 1
+    votes = collections.Counter({k: 1 for k in votes})          # one vote per text, so a long judgment cannot outvote the rest
     raw = _merge(raw)
     shorts = []
     for name in short_names:

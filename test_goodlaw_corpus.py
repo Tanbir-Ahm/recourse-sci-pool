@@ -100,7 +100,7 @@ check(g["date"] == "1950-05-19" and g["date_source"] == "bucket" and g["bucket_p
       "a crawl text linked to a bucket row takes its exact date, neutral citation and law-report citation")
 check("air:1950:27" in g["cites"] and "scr:1950::88" in g["cites"] and "insc:1950:20" in g["cites"], "its citation keys gather the header's AIR and SCR and the bucket's neutral citation")
 check(g["pet"] == "A. K. GOPALAN" and g["resp"] == "STATE OF MADRAS" and g["title"] == "A. K. GOPALAN v. STATE OF MADRAS", "parties and title come from the header")
-check(g["bench_size"] == 2 and g["bench_source"] == "header" and g["body_start"] is not None and g["text"][g["body_start"]:].strip().startswith("The petition"), "bench size and the start of the court's own words come from the JUDIS layout")
+check(g["bench_size"] == 2 and g["bench_source"] == "header_full" and g["body_start"] is not None and g["text"][g["body_start"]:].strip().startswith("The petition"), "bench size and the start of the court's own words come from the JUDIS layout")
 m = cp.get("c2")
 check(m["bench_size"] == 7 and [c["code"] for c in m["citator"]] == ["F", "O"] and m["citator"][1]["cite"] == "1985 SC 1416" and m["scr_cite"] == "[1978] 2 S.C.R. 621",
       "a text the none-resolution marks 'yes' is linked to the crawl text, whose citator is kept")

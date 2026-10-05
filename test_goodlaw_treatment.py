@@ -48,6 +48,27 @@ CASES = [
     ("Union of India v. Metal Corporation of India Ltd. [1967] 1 S.C.R. 255 overruled, because Parliament had specified the principles.", "Union of India v. Metal Corporation of India Ltd.", "OVERRULES"),
     ("Mohan Singh v. Bhanwarlal, [1964] 5 S.C.R. 12, disapproved; Amin Lal v. Hunna Mal, [1964] 1 S.C.R. 393, referred to.", "Amin Lal v. Hunna Mal", "NEUTRAL"),
     ("Mohan Singh v. Bhanwarlal, [1964] 5 S.C.R. 12, disapproved; Amin Lal v. Hunna Mal, [1964] 1 S.C.R. 393, referred to.", "Mohan Singh v. Bhanwarlal", "OVERRULES"),
+    # a law report's paragraph reference separates one case's note from the next
+    ("Mhetre to that extent and other judgments which have followed it are accordingly overruled.[128A-C] Shri Gurbaksh Singh Sibbia and others v. State of Punjab (1980) 2 SCC 565 - relied on.", "Shri Gurbaksh Singh Sibbia and others v. State of Punjab", "FOLLOWS"),
+    # the case that did the overruling, named after the case it overruled
+    ("After three decades, the Supreme Court overruled its previous decision in A.K. Gopalan and held in its landmark judgment in Maneka Gandhi v. Union of India that the procedure must be reasonable.", "Maneka Gandhi v. Union of India", "OVERRULED_OTHER"),
+    ("After three decades, the Supreme Court overruled its previous decision in A.K. Gopalan and held in its landmark judgment in Maneka Gandhi v. Union of India that the procedure must be reasonable.", "A.K. Gopalan", "OVERRULES"),
+    # a negated approval is disagreement; the traps around it
+    ("At this stage, we are obligated to state that we are not in agreement with the decision rendered in Rajesh Sharma (supra).", "Rajesh Sharma", "DISAGREES"),
+    ("The reasoning in Mohan v. Singh, [1960] 2 SCR 5, cannot be followed.", "Mohan v. Singh", "DISAGREES"),
+    ("We do not hesitate to follow the decision in Rangappa v. Sri Mohan.", "Rangappa v. Sri Mohan", "FOLLOWS"),
+    ("We cannot but follow the decision in Rangappa v. Sri Mohan.", "Rangappa v. Sri Mohan", "FOLLOWS"),
+    ("The Court has not only followed but also reiterated Rangappa v. Sri Mohan.", "Rangappa v. Sri Mohan", "FOLLOWS"),
+    # the target is the authority that was ignored, or the one a proposition is attributed to
+    ("These judgments have clearly ignored a Constitution Bench judgment of this Court in Sibbia case which comprehensively dealt with anticipatory bail, and are therefore per incuriam.", "Sibbia case", "FOLLOWS"),
+    ("The decision was given in ignorance of Maneka Gandhi v. Union of India and is per incuriam.", "Maneka Gandhi v. Union of India", "FOLLOWS"),
+    ("Reliance was placed on Maneka Gandhi v. Union of India where it was held that the earlier view in Gopalan has been overruled.", "Maneka Gandhi v. Union of India", "NEUTRAL"),
+    # traps found by reading adverse readings of cases the reporter marked as followed
+    ("In view of two judgments of the Constitution Bench in Romesh Chandra Mehta v. State of West Bengal, [1969] 2 SCR 461 and Illias v. Collector of Customs, [1969] 2 SCR 613, the stand of the appellant cannot be accepted.", "Illias v. Collector of Customs", "NEUTRAL"),
+    ("We are unable to agree with Dr. Chitale that this further proposition emerges from the decision in Union of India v. Valluri B. Chaudhary.", "Union of India v. Valluri B. Chaudhary", "NEUTRAL"),
+    ("It is not correct to say that the decision in Shri Digvijay Woollen Mills' case does not lay down any principle.", "Shri Digvijay Woollen Mills' case", "NEUTRAL"),
+    ("Fazl Ali, J., dissented from the views thus expressed by the majority and reiterated his observations in Brij Bhushan's case.", "Brij Bhushan's case", "FOLLOWS"),
+    ("There is nothing to suggest that in Cooper Engineering Ltd. case this Court specifically overruled the decision in R.K. Jain's case.", "R.K. Jain's case", "NOT_OVERRULED"),
     # the case stands
     ("The decision in Rangappa has not been overruled and continues to hold the field.", "Rangappa", "NOT_OVERRULED"),
     ("Bhajan Lal has never been overruled.", "Bhajan Lal", "NOT_OVERRULED"),
@@ -85,6 +106,8 @@ for sentence, target, want in CASES:
 # traps
 r = run("The High Court overruled the objection and relied on Rangappa.", "Rangappa")
 check(r["label"] != "OVERRULES", "an objection being overruled is not an overruling of the case")
+r = run("It is now suggested that Champakam's case, Romesh Thappar's case and Motilal's case were wrongly decided.", "Motilal's case")
+check(r["label"] == "OVERRULES" and r["hedged"], "a reported suggestion across a list of cases is flagged hedged")
 r = run("It was argued that Bhajan Lal stands overruled.", "Bhajan Lal")
 check(r["label"] == "OVERRULES" and r["hedged"], "an overruling that is only argued is flagged hedged")
 r = run("If Rangappa were overruled, the presumption would fall.", "Rangappa")
@@ -92,7 +115,7 @@ check(r["label"] == "OVERRULES" and r["hedged"], "a hypothetical is flagged hedg
 r = run("Rangappa was followed, while Mohan v. Singh (2001) 3 SCC 4 stands overruled.", "Rangappa")
 check(r["label"] == "OVERRULES" and r["binding"] == "weak", "a cue with another case named between it and the target is flagged weak")
 r = run("Mohan v. Singh (2001) 3 SCC 4 stands overruled, while Rangappa was followed.", "Rangappa")
-check(r["label"] == "OVERRULES" and r["binding"] == "weak", "and the same when the order is reversed")
+check(r["label"] == "FOLLOWS", "when the other case's overruling comes first and the target is followed after a clause break, the target is not read as overruled")
 r = run("In Rangappa the Court examined the matter " + "at great length and " * 20 + "the earlier view stands overruled.", "Rangappa")
 check(r["label"] != "OVERRULES", "a cue far from the mention is not tied to it")
 s = "The decision in Rangappa v. Sri Mohan (2010) 11 SCC 441 has not been overruled."
@@ -103,6 +126,17 @@ check(run("The decision in Rangappa has not been overruled.", "Rangappa")["cue"]
 r = run("Rangappa was distinguished in one case but followed in another.", "Rangappa")
 check(r["label"] == "DISTINGUISHES" and ("FOLLOWS", "followed") in [(a, b.lower()) for a, b in r["all"]], "the strongest treatment wins and the others are kept in `all`")
 check(run("The matter was decided on 5 May 2017.", "matter")["label"] == "NEUTRAL" and run("The matter was decided on 5 May 2017.", "matter")["all"] == [], "no cue gives NEUTRAL with nothing in `all`")
+
+# anaphora: the cue in the next sentence, pointing back at the case
+S1 = "The decision in Kartar Singh v. State of Punjab was relied on by the respondents."
+S2 = "That decision does not lay down the correct law and we decline to follow it."
+i = S1.index("Kartar Singh v. State of Punjab")
+r = T.classify_in_context(S1, (i, i + len("Kartar Singh v. State of Punjab")), S2)
+check(r["label"] == "OVERRULES" and r["anaphoric"] and r["binding"] == "weak", "a cue in the next sentence that opens 'That decision' is used, marked anaphoric and weak")
+r = T.classify_in_context(S1, (i, i + len("Kartar Singh v. State of Punjab")), "Learned counsel then turned to the facts. The decision is wrong, he said.")
+check(r["label"] == "FOLLOWS" and not r["anaphoric"], "a next sentence that does not point back at the case is ignored")
+r = T.classify_in_context("Kartar Singh v. State of Punjab was overruled.", (0, 28), "That decision was followed in Mohan.")
+check(r["label"] == "OVERRULES" and not r["anaphoric"], "the mention's own sentence wins when it already shows a cue")
 
 print()
 if FAILURES:

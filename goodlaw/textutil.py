@@ -12,7 +12,7 @@ _ABBREV = {
     "prof", "rev", "ch", "sch", "ors", "inc", "corp", "dept", "govt", "assn", "assoc", "bros", "m", "s", "p", "c", "d", "u", "w", "o", "b", "f", "g", "h",
     "k", "l", "n", "r", "t", "y", "e", "a", "i", "x", "z", "q",
 }
-_BOUNDARY = re.compile(r"([.?!])([\"')\]”’]*)\s+(?=[A-Z0-9(\[“\"'‘])")
+_BOUNDARY = re.compile(r"([.?!])([\"')\]”’]*)(?:\s+(?=[A-Z0-9(\[“\"'‘])|(?=\[\d))")
 
 
 def flatten(text):

@@ -25,6 +25,8 @@ CASES = {
     "2001 Supp(1) SCR 598": ["scr:2001:s1:598"],
     "2008 (8 )  SCR 1201": ["scr:2008:8:1201"],
     "1978 SCR (2) 621": ["scr:1978:2:621"],
+    "[1976] Suppl. SCR 172": ["scr:1976:s:172"],
+    "(1976) 2 SCC 521 : [1976] Suppl. SCR 172": ["scc:1976:2:521", "scr:1976:s:172"],
     "1978 SCR  (2)  621": ["scr:1978:2:621"],
     "2017 INSC 447": ["insc:2017:447"],
     "2017INSC447": ["insc:2017:447"],
@@ -76,8 +78,8 @@ t = "see AIR 1980 SC 898 here"
 k, s, e = C.find_cites(t)[0]
 check(t[s:e] == "AIR 1980 SC 898", "find_cites gives the exact span of the citation")
 
-check(C.key_variants("scr:1978:2:621") == {"scr:1978:2:621", "scr:1978::621"} and C.key_variants("air:1980:898") == {"air:1980:898"}, "an SCR key with a volume also denotes the volume-less form")
-check(C.keys_match("scr:1978::621", "scr:1978:2:621") and not C.keys_match("scr:1978:3:621", "scr:1978:2:621") and not C.keys_match("scr:1978::621", "scr:1979:2:621") and C.keys_match("air:1980:898", "air:1980:898"),
+check(C.key_variants("scr:1978:2:621") == {"scr:1978:2:621", "scr:1978::621", "scr:1978:s:621"} and C.key_variants("air:1980:898") == {"air:1980:898"}, "an SCR key with a volume also denotes the volume-less form")
+check(C.keys_match("scr:1978::621", "scr:1978:2:621") and C.keys_match("scr:1976:s:172", "scr:1976:s1:172") and C.keys_match("scr:1976:s:172", "scr:1976::172") and not C.keys_match("scr:1976:s2:172", "scr:1976:s1:172") and not C.keys_match("scr:1978:3:621", "scr:1978:2:621") and not C.keys_match("scr:1978::621", "scr:1979:2:621") and C.keys_match("air:1980:898", "air:1980:898"),
       "keys_match treats a missing SCR volume as a wildcard, nothing else")
 
 print()

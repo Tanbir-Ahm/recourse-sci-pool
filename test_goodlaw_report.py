@@ -64,6 +64,17 @@ DOCS = {
 }
 
 
+DOCS[8] = judis("TAU", "UPSILON", "05/05/1990", ["SARKAR, A.K.", "SHAH, J.C."], "1991 AIR 88", "Tau holds. " + PAD)
+for n in range(12):
+    body = "Tau v. Upsilon, AIR 1991 SC 88 was followed. " + PAD
+    if n == 0:
+        body = "If Tau v. Upsilon, AIR 1991 SC 88 were overruled, the result would differ. " + PAD
+    DOCS[30 + n] = later(f"PT{n}", body, f"{10 + n:02d}/06/2001", 2)
+DOCS[9] = judis("PHI", "CHI", "05/05/1990", ["SARKAR, A.K.", "SHAH, J.C."], "1991 AIR 99", "Phi holds. " + PAD)
+DOCS[60] = later("PP0", "If Phi v. Chi, AIR 1991 SC 99 were overruled, the result would differ. " + PAD, "10/06/2001", 2)
+DOCS[61] = later("PP1", "Reference is made to Phi v. Chi, AIR 1991 SC 99. " + PAD, "11/06/2001", 2)
+
+
 def write_gz(path, content):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with gzip.open(path, "wt", encoding="utf-8", newline="") as fh:
@@ -120,6 +131,11 @@ check(cit["O"]["citing_case"] and cit["O"]["citing_case"]["doc_key"] == "c20" an
 h = bundle_for("c7")
 check(h["triage"] == "ADVERSE_SIGNAL" and h["summary"]["adverse_strong"] and h["summary"]["adverse_strong"][0]["in_headnote"] and "headnote" in h["summary"]["adverse_strong"][0]["kind"],
       "a law report's headnote saying 'over-ruled' of the case is ADVERSE_SIGNAL, marked as the headnote's word")
+
+t8 = bundle_for("c8")
+check(t8["triage"] == "NO_ADVERSE_FOUND" and t8["summary"]["weak_signals_set_aside"] == 1 and "weak or ambiguous" in t8["plain"], "in a heavily cited case a lone hedged 'overruled' is set aside, counted and disclosed, and does not change the triage")
+t9 = bundle_for("c9")
+check(t9["triage"] == "QUESTIONED", "in a case cited only twice the same hedged reading is enough for QUESTIONED")
 
 cv = a["coverage"]
 check(cv["collection_runs_to"] and isinstance(cv["later_years"], list) and "note" in cv, "the coverage block says where the collection ends and how much of the later years it holds")

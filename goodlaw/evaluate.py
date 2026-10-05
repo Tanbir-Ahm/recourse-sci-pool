@@ -57,7 +57,7 @@ def best_in_doc(corpus, target_key, citing_key):
         return None
     best = None
     for m in found:
-        c = T.classify(m["sentence"], m["target_in_sentence"])
+        c = T.classify_in_context(m["sentence"], m["target_in_sentence"], m.get("next", ""))
         m.update(label=c["label"], cue=c["cue"], hedged=c["hedged"], binding=c["binding"])
         eligible = m["confidence"] in ("high", "medium") and m["speaker"] in ("court", "headnote")
         rank = (eligible, T.STRENGTH.get(m["label"], -1) if m["label"] != "NOT_OVERRULED" else 3.5, m["binding"] == "strong", not m["hedged"])

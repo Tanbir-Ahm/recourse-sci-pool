@@ -48,6 +48,7 @@ _PATTERNS = [
     (rf"\[\s*{_Y}\s*\]\s*(\d{{1,3}})\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:{g[1]}:{g[2]}"),                          # [2019] 5 S.C.R. 569
     (rf"\[\s*{_Y}\s*\]\s*(\d{{1,3}})\s*{_SUP}\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s{g[1]}:{g[2]}"),                # [1992] 1 Suppl. SCR 764
     (rf"\[\s*{_Y}\s*\]\s*{_SUP}\s*\(?\s*(\d{{1,2}})\s*\)?\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s{g[1]}:{g[2]}"),    # [2001] Supp (1) SCR 598
+    (rf"\[\s*{_Y}\s*\]\s*{_SUP}\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s:{g[1]}"),                                      # [1976] Suppl. SCR 172
     (rf"\(\s*{_Y}\s*\)\s*(\d{{1,3}})\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:{g[1]}:{g[2]}"),                          # (1955) 1 SCR 1083
     (rf"\b{_Y}\s*\(\s*(\d{{1,3}})\s*\)\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:{g[1]}:{g[2]}"),                        # 1964 (5) SCR 89
     (rf"\b{_Y}\s*{_SUP}\s*\(\s*(\d{{1,2}})\s*\)\s*{_SCR}\s*(\d{{1,4}})\b", lambda g: f"scr:{g[0]}:s{g[1]}:{g[2]}"),             # 2001 Supp(1) SCR 598
@@ -108,16 +109,17 @@ def parse_key(key):
 
 
 def key_variants(key):
-    """Keys that denote the same page. Old SCR headers print no volume ("1966 SCR 209") where the bucket prints one ("[1966] 3 S.C.R. 209"), so a
-    volume-less SCR key matches the same year and page with any volume."""
+    """Keys that denote the same page. Old SCR headers print no volume ("1966 SCR 209") or only "Supp" where the bucket prints one ("[1966] 3 S.C.R. 209",
+    "[1976] 1 Suppl. SCR 172"), so an SCR key with a volume also stands for the volume-less and unnumbered-supplement forms."""
     kind, year, series, page = parse_key(key)
-    if kind == "scr":
-        return {key, f"scr:{year}::{page}"} if series else {key}
+    if kind == "scr" and series not in ("", "s"):
+        return {key, f"scr:{year}::{page}", f"scr:{year}:s:{page}"}
     return {key}
 
 
 def keys_match(a, b):
+    """Equal keys, or the same SCR page where one side gives no volume (or only 'Supp') and the other a volume."""
     if a == b:
         return True
     ka, kb = parse_key(a), parse_key(b)
-    return ka[0] == "scr" == kb[0] and ka[1] == kb[1] and ka[3] == kb[3] and ("" in (ka[2], kb[2]))
+    return ka[0] == "scr" == kb[0] and ka[1] == kb[1] and ka[3] == kb[3] and bool({ka[2], kb[2]} & {"", "s"})

@@ -130,7 +130,7 @@ def parse_date(text):
 _CITATION_BLOCK = re.compile(r"CITATION:\s*(?P<c>.*?)(?=CITATOR INFO|ACT:|HEADNOTE:|JUDGMENT:|\Z)", re.S)
 _AIR = re.compile(r"\b((?:19|20)\d\d)\s+AIR\s*(?:SC\s*)?(\d+)\b")
 _SCR = re.compile(r"\b(?:19|20)\d\d\s+(?:Supp\s*\(\d+\)\s*)?SCR\s*(?:\(\d+\)\s*)?\d+\b")
-_SCC = re.compile(r"\b((?:19|20)\d\d)\s+(?:Supp\s*\(\d+\)\s*)?SCC\s*(?:\(\w+\)\s*)?(\d+)\b")
+_SCC = re.compile(r"\b(?:19|20)\d\d\s+SCC\s*(?:Supp?l?\.?\s*)?(?:\(\s*\w+\s*\)\s*)?\d+\b")
 
 
 def parse_header_citations(text):
@@ -141,7 +141,7 @@ def parse_header_citations(text):
     flat = re.sub(r"\s+", " ", block)
     out["air"] = [f"{y} AIR {p}" for y, p in _AIR.findall(flat)]
     out["scr"] = [re.sub(r"\s+", " ", m.group(0)) for m in _SCR.finditer(flat)]
-    out["scc"] = [f"{y} SCC {p}" for y, p in _SCC.findall(flat)]
+    out["scc"] = [re.sub(r"\s+", " ", m.group(0)) for m in _SCC.finditer(flat)]
     # the 2000s layout prints one line such as "2001 Supp(1) SCR 598" right after JUDGMENT
     if not out["scr"]:
         m2 = re.search(r"\n\s*((?:19|20)\d\d\s+Supp\s*\(\d+\)\s+SCR\s+\d+|(?:19|20)\d\d\s+\(\d+\)\s+SCR\s+\d+)\s*\n", text[:3000])

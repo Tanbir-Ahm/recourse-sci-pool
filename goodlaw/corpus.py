@@ -414,7 +414,7 @@ class Corpus:
         for k in keys:
             ks |= C.key_variants(k)
             kind, year, series, page = C.parse_key(k)
-            if kind == "scr" and not series:
+            if kind == "scr" and series in ("", "s"):
                 like = f"scr:{year}:%:{page}"
                 ks |= {r[0] for r in self.con.execute("SELECT DISTINCT key FROM cx.doc_cites WHERE key LIKE ?", (like,))}
         if not ks:

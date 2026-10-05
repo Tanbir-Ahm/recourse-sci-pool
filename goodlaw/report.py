@@ -51,8 +51,8 @@ def classify_mentions(corpus, mentions, target):
     """Adds treatment, cue and bench relation to each mention; checks each sentence word for word against its judgment's text."""
     texts = {}
     for m in mentions:
-        c = T.classify(m["sentence"], m["target_in_sentence"])
-        m.update(label=c["label"], cue=c["cue"], negated=c["negated"], hedged=c["hedged"], binding=c["binding"], labels_all=c["all"])
+        c = T.classify_in_context(m["sentence"], m["target_in_sentence"], m.get("next", ""))
+        m.update(label=c["label"], cue=c["cue"], negated=c["negated"], hedged=c["hedged"], binding=c["binding"], labels_all=c["all"], anaphoric=c.get("anaphoric", False))
         m["bench_relation"] = bench_relation(m.get("bench_size"), target.bench_size, m.get("bench_source"), target.bench_source)
         if m["doc_id"] not in texts:
             texts[m["doc_id"]] = corpus.text_of(m["doc_id"])
@@ -79,7 +79,7 @@ def strongest_per_doc(mentions):
 
 def _brief(m):
     return {"doc_key": m["doc_key"], "title": m["title"], "date": m["date"], "year": m["year"], "bench_size": m["bench_size"], "bench_relation": m["bench_relation"], "source": m["source"],
-            "label": m["label"], "cue": m["cue"], "hedged": m["hedged"], "binding": m["binding"], "speaker": m["speaker"], "confidence": m["confidence"], "tier": m["tier"],
+            "label": m["label"], "cue": m["cue"], "hedged": m["hedged"], "binding": m["binding"], "anaphoric": m.get("anaphoric", False), "speaker": m["speaker"], "confidence": m["confidence"], "tier": m["tier"],
             "sentence": m["sentence"], "prev": m["prev"], "next": m["next"], "quote_verified": m["quote_verified"], "in_headnote": m["in_headnote"]}
 
 
@@ -117,10 +117,17 @@ def citator_block(corpus, doc):
     return out
 
 
+WEAK_ONLY_BELOW = 10      # a case cited this few times is flagged on weak readings alone; a heavily cited one is not (some sentence among hundreds always looks odd)
+
+
 def triage(summary):
     if summary["adverse_strong"] or summary["citator_adverse_overruled"]:
         return "ADVERSE_SIGNAL"
-    if summary["adverse_possible"] or summary["legislative"] or summary["citator_adverse_other"]:
+    firm = [m for m in summary["adverse_possible"] if not m.get("weak")]
+    weak = [m for m in summary["adverse_possible"] if m.get("weak")]
+    if firm or summary["legislative"] or summary["citator_adverse_other"]:
+        return "QUESTIONED"
+    if weak and summary["citing_judgments"] < WEAK_ONLY_BELOW:
         return "QUESTIONED"
     if summary["citing_judgments"] >= MIN_CITING:
         return "NO_ADVERSE_FOUND"
@@ -159,19 +166,26 @@ def build_bundle(corpus, target, doc=None, today=None):
             b["kind"] = "rejected by a larger bench (disagreement by a bench that can overrule)"
             adverse_strong.append(b)
         else:
-            reason = []
+            reason, weak = [], False
+            if m.get("anaphoric"):
+                reason.append("the cue is in the sentence after the one naming the case (\"That decision ...\"), so it may be about something else")
+                weak = True
             if m["hedged"]:
                 reason.append("worded as an argument, a condition or a possibility")
+                weak = True
             if m["binding"] == "weak":
-                reason.append("another case is named nearer the cue, so it may be about that case")
+                reason.append("another case is named nearer the cue, or the cue is far from the mention, so it may be about something else")
+                weak = True
             if m["label"] == "OVERRULES" and m["bench_relation"] == "smaller":
                 reason.append("by a smaller bench than the target's, which cannot overrule it")
             if m["in_headnote"]:
                 reason.append("in the law report's headnote, not the judgment")
+                weak = True
             if m["label"] in ("DISAGREES", "DOUBTS_REFERS") and not reason:
                 reason.append("disagreement or doubt, not an overruling")
             b = _brief(m)
             b["why_not_a_clean_overruling"] = reason
+            b["weak"] = weak
             adverse_possible.append(b)
 
     citator = citator_block(corpus, doc) if doc else []
@@ -190,12 +204,13 @@ def build_bundle(corpus, target, doc=None, today=None):
         "citing_by_decade": dict(sorted(decades.items())), "adverse_strong": adverse_strong, "adverse_possible": adverse_possible, "legislative": legislative, "argued_or_lower_court": not_courts_own,
         "citator_adverse_overruled": citator_overruled, "citator_adverse_other": citator_other,
     }
+    summary["weak_signals_set_aside"] = len([m for m in adverse_possible if m.get("weak")]) if triage(summary) in ("NO_ADVERSE_FOUND", "INSUFFICIENT") else 0
     label = triage(summary)
     bundle = {
         "target": {"name": target.name, "pet": target.pet, "resp": target.resp, "year": target.year, "date": target.date, "doc_key": target.doc_key, "bench_size": target.bench_size,
                    "cites": target.cites, "learned_cites": target.learned_cites},
         "generated": today,
-        "triage": label, "plain": PLAIN[label], "statute_flag": S.summarise(sd),
+        "triage": label, "plain": PLAIN[label] + (f" {summary['weak_signals_set_aside']} weak or ambiguous readings were set aside; they are listed below so you can check them." if summary["weak_signals_set_aside"] else ""), "statute_flag": S.summarise(sd),
         "summary": summary,
         "recent_approving": [_brief(m) for m in positives[:5]],
         "reporter_citator": citator,
@@ -232,7 +247,7 @@ def render_markdown(b):
         L.append("")
 
     block("Appears to overrule or reject it (read these first)", s["adverse_strong"])
-    block("Disagree, doubt, limit, or an overruling with a caveat", s["adverse_possible"])
+    block("Disagree, doubt, limit, or an overruling with a caveat (weak readings are marked in their reasons)", s["adverse_possible"])
     block("The legislature responded", s["legislative"])
     block("An overruling or doubt said by counsel or a lower court (not this Court's own words; does not change the triage)", s["argued_or_lower_court"])
     if b["reporter_citator"]:

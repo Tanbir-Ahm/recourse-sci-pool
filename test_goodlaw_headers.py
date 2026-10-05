@@ -60,6 +60,9 @@ check(whole["bench_size"] == 5 and whole["bench_source"] == "header_full" and wh
 
 check(H.parse_header_citations("CITATION:\n 1978 AIR  597            1978 SCR (2) 621\nACT:\n")["scr"] == ["1978 SCR (2) 621"], "a volume printed in the header is kept")
 
+check(H.parse_header_citations("CITATION:\n 1976 AIR 1207            1976 SCR  172\n 1976 SCC  (2) 521\n CITATOR INFO :\nACT:\n")["scc"] == ["1976 SCC (2) 521"], "the SCC citation with its volume is read from the header")
+check(H.parse_header_citations("CITATION: 1995 AIR 2486 1995 SCC Supl. (3) 541 JT 1995 (6) 299 ACT:")["scc"] == ["1995 SCC Supl. (3) 541"], "a supplement SCC citation is read from the header")
+
 # 1995 to 2007 layout (Jasbir Singh v. Vipin Kumar Jaggi, 2001)
 JASBIR = """http://JUDIS.NIC.IN
 SUPREME COURT OF INDIA

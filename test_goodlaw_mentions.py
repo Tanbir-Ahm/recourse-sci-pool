@@ -27,7 +27,7 @@ text = ("The question before us is old. Learned counsel for the appellant submit
         "In Rangappa v. Sri Mohan (2005) 3 SCC 100 a different matter was decided.")
 found, votes = M.extract(text, T, [])
 check(len(found) == 2 and all(m["tier"] == "pair" for m in found), "two pair mentions are found; the one followed by a different case's citation (2005) is dropped")
-check(votes == {"scc:2010:11:441": 2}, "the compatible citation after the pair is voted for in each sentence it follows")
+check(votes == {"scc:2010:11:441": 1}, "the compatible citation after the pair earns the text one vote")
 check(found[0]["speaker"] == "counsel" and found[1]["speaker"] == "court", "counsel's sentence is told apart from the court's own")
 check(found[1]["matched"].startswith("Rangappa v. Sri Mohan") and "has not been overruled" in found[1]["sentence"], "the mention carries its sentence")
 i, j = found[1]["target_in_sentence"]
@@ -48,6 +48,13 @@ check(len(found) == 2 and all(m["tier"] == "short" and m["confidence"] == "low" 
 strong = short_text + " State of Haryana v. Bhajan Lal (1992) Supp (1) SCC 335 is the leading case."
 found, _ = M.extract(strong, T3, ["Bhajan"])
 check(found[0]["tier"] == "short" and found[-1]["tier"] == "pair", "a pair mention in the same text is found alongside the short ones")
+
+# parallel citations name the same case whatever the text calls it
+T5 = M.Target("ADDITIONAL DISTRICT MAGISTRATE, JABALPUR", "S. S. SHUKLA", 1976, ["air:1976:1207", "scr:1976::172"], date="1976-04-28", doc_key="c1")
+found, votes = M.extract("ADM Jabalpur v. Shivakant Shukla (1976) 2 SCC 521 : AIR 1976 SC 1207 was overruled.", T5, [])
+check(votes == {"scc:1976:2:521": 1} and found and found[0]["tier"] == "cite", "a citation printed right beside a known one is learned as the same case, even when the case is named differently")
+found, votes = M.extract("The Court held in (2001) 4 SCC 99 : AIR 1976 SC 1207 and in (1999) 5 SCC 5.", T5, [])
+check(set(votes) == set(), "a citation of a clearly different year beside it is not learned")
 
 # headnote
 head = "HELD: Rangappa v. Sri Mohan, (2010) 11 SCC 441 followed. The Judgment of the Court was delivered by Rangappa v. Sri Mohan, (2010) 11 SCC 441 is binding."
