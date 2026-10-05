@@ -46,13 +46,18 @@ def gold_pairs(corpus):
     return pairs, unresolved
 
 
-def best_in_doc(corpus, target_key, citing_key):
-    """The strongest treatment of the target found in the citing judgment (court's own voice, confident mentions only), or None if no mention is found."""
+def best_in_doc(corpus, target_key, citing_key, body_only=False):
+    """The strongest treatment of the target found in the citing judgment (court's own voice, confident mentions only), or None if no mention is found.
+    With body_only, mentions inside the headnote (and so inside its case-law table) are not read, only the court's own judgment after it: used when the answer key
+    itself is printed in that headnote. The text is still read as a whole, as in the real checker, so a full citation in the headnote still raises the
+    confidence of a short-name mention in the body ("Jasmine Kaur (Supra)")."""
     tdoc = corpus.get(target_key, with_text=False)
     cdoc = corpus.get(citing_key)
     target = M.Target.from_doc(tdoc)
     short = target.short_names(corpus)
     found, _ = M.extract(cdoc["text"], target, short, cdoc.get("body_start"), party_cases=target.party_case_patterns(corpus))
+    if body_only:
+        found = [m for m in found if not m["in_headnote"]]
     if not found:
         return None
     best = None
@@ -70,22 +75,55 @@ def best_in_doc(corpus, target_key, citing_key):
 _POOL = {}
 
 
-def _init(path):
+def _init(path, body_only=False):
     _POOL["c"] = K.Corpus(path)
+    _POOL["body_only"] = body_only
 
 
 def _work(pair):
     t, c, code, cite = pair
-    m = best_in_doc(_POOL["c"], t, c)
+    m = best_in_doc(_POOL["c"], t, c, _POOL.get("body_only", False))
     if m is None:
         return (t, c, code, cite, None, None, None, False, False, "strong", None)
     return (t, c, code, cite, m["label"], m["cue"], m["sentence"][:400], m["eligible"], m["hedged"], m["binding"], m["speaker"])
 
 
-def run(corpus_path, pairs, workers=4):
+def run(corpus_path, pairs, workers=4, body_only=False):
+    """Runs the checker on each pair's citing judgment (see best_in_doc for body_only)."""
     from multiprocessing import Pool
-    with Pool(workers, initializer=_init, initargs=(corpus_path,)) as pool:
+    with Pool(workers, initializer=_init, initargs=(corpus_path, body_only)) as pool:
         return pool.map(_work, pairs, chunksize=50)
+
+
+def production_rows(corpus, pairs, body_only=False, log=None):
+    """Like run(), but through the full mention finder for each target (candidates from the citation index and names, citations learned from the corpus), as the real
+    report does. Slow (several seconds per target) but it is what a user gets; run() is a fast stand-in that cannot learn a case's other citations, so it finds fewer
+    mentions. Meant for the pairs where the answer matters most, such as the adverse ones. Rows have the same fields as run()."""
+    by_target = collections.defaultdict(list)
+    for p in pairs:
+        by_target[p[0]].append(p)
+    out = []
+    for n, (tkey, group) in enumerate(by_target.items(), 1):
+        tdoc = corpus.get(tkey, with_text=False)
+        target = M.Target.from_doc(tdoc)
+        res = M.find_mentions(corpus, target)
+        mentions = R.classify_mentions(corpus, res["mentions"], target)
+        for t, c, code, cite in group:
+            mine = [m for m in mentions if m["doc_key"] == c and not (body_only and m["in_headnote"])]
+            best = None
+            for m in mine:
+                eligible = m["confidence"] in ("high", "medium") and m["speaker"] in ("court", "headnote")
+                rank = (eligible, T.STRENGTH.get(m["label"], -1) if m["label"] != "NOT_OVERRULED" else 3.5, m["binding"] == "strong", not m["hedged"])
+                if best is None or rank > best[0]:
+                    best = (rank, m, eligible)
+            if best is None:
+                out.append((t, c, code, cite, None, None, None, False, False, "strong", None))
+            else:
+                m = best[1]
+                out.append((t, c, code, cite, m["label"], m["cue"], m["sentence"][:400], best[2], m["hedged"], m["binding"], m["speaker"]))
+        if log and n % 10 == 0:
+            log(f"{n}/{len(by_target)} targets")
+    return out
 
 
 def _row(r):

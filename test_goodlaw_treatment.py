@@ -210,6 +210,42 @@ for sentence, target, what in [
     check(r["label"] in NOT_ADVERSE or r["hedged"], f"not a clean adverse reading: {what} (got {r['label']}, hedged {r['hedged']}, cue {r['cue']!r})")
 import goodlaw.mentions as _M
 check(_M.speaker("The Attorney General referred to a number of earlier decisions wanting us to infer that the observations did not state the correct law.", "", False)[0] == "counsel", "the Attorney General referring to decisions is counsel's voice")
+# modern wording found by reading the modern answer key's misses
+for sentence, target, what in [
+    ("He referred to a judgment of this Court in Meters and Instruments Private Limited v. Kanchan Mehta which reads as follows: the observation is clear.", "Meters and Instruments Private Limited v. Kanchan Mehta", "'reads as follows' is not following the case"),
+    ("The Court examined the following passage from Rangappa v. Sri Mohan in the light of the facts.", "Rangappa v. Sri Mohan", "'the following passage' is not following the case"),
+    ("The decisions in Rowther-I, Forbes-II and Rasiklal do not seem to follow a consistent line about the liability.", "Forbes-II", "'follow a consistent line' is not following the case"),
+]:
+    r = run(sentence, target)
+    check(r["label"] != "FOLLOWS", f"not read as followed: {what} (got {r['label']}, cue {r['cue']!r})")
+r = run("Following the decision in Rangappa v. Sri Mohan, the presumption is rebuttable.", "Rangappa v. Sri Mohan")
+check(r["label"] == "FOLLOWS", "'Following the decision in T' is still following it")
+r = run("In the decision in Raghbir Singh Sehrawat v. State of Haryana, the observation made was that it is not possible to take possession of the entire land in a day, cannot be accepted as laying down the law correctly and same is contrary to precedent.", "Raghbir Singh Sehrawat v. State of Haryana")
+check(r["label"] == "DISAGREES", f"'cannot be accepted as laying down the law correctly' judges the decision it follows (got {r['label']})")
+r = run("We are of the view that the judgments in Purbanchal Cables and Conductors (supra) and Shakti Tubes which held that the Act shall apply only when the contract was entered after its enforcement, do not lay down the correct law.", "Purbanchal Cables and Conductors (supra)")
+check(r["label"] == "OVERRULES", f"'judgments in T, which held that ..., do not lay down the correct law' is a verdict on T (got {r['label']})")
+r = run("It was held in Mohan v. Singh that the view of the High Court does not lay down the correct law.", "Mohan v. Singh")
+check(r["label"] != "OVERRULES", "but 'it was held in T that the view ... does not lay down the correct law' is still T's holding, not a verdict on T")
+# errors found by reading a sample of modern adverse readings (tuning half of the modern answer key)
+for sentence, target, what in [
+    ("In the case of Indore Development Authority (supra), the decision of this Court in the case of Pune Municipal Corporation (supra) has been specifically overruled.", "Indore Development Authority (supra)", "'In T, the decision of Y has been overruled': T did the overruling"),
+    ("In S. Nagaraj (supra), it was also made clear by this Court that binding decisions cannot be ignored even on the principles of per incuriam.", "S. Nagaraj (supra)", "the principles of per incuriam are the topic"),
+    ("There is nothing in the Satyawati Sharma judgment which can be said to be per incuriam.", "Satyawati Sharma", "'nothing ... which can be said to be per incuriam'"),
+    ("The submission that after the amendment the law laid down in National Seeds Corporation Limited (supra) is no more a good law cannot be accepted.", "National Seeds Corporation Limited (supra)", "a submission that T is no longer good law, rejected"),
+    ("It was not open for the High Court to not follow the binding decision of this Court in Peerappa Hanmantha Harijan (supra).", "Peerappa Hanmantha Harijan (supra)", "a High Court not following T ignored the authority"),
+    ("However, by not following the decision of this Court in D.S. Nakara (supra), the Division Bench of the High Court has not considered the matter.", "D.S. Nakara (supra)", "'by not following T' by a High Court"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE or r["hedged"], f"not a clean adverse reading: {what} (got {r['label']}, hedged {r['hedged']}, cue {r['cue']!r})")
+r = run("In case this Court does not agree with the decision rendered in Dinesh Chandra Sangma (supra), the matter may be referred to a larger Bench.", "Dinesh Chandra Sangma (supra)")
+check(r["hedged"] or r["label"] in NOT_ADVERSE, "a conditional ('In case this Court does not agree') is hedged")
+import goodlaw.mentions as _M2
+check(_M2.speaker("The reliance of Mr. Rao on the judgment of this Court in K. Ethirajan is not tenable.", "", False)[0] == "counsel", "'The reliance of Mr. Rao on ...' is counsel's voice")
+check(_M2.speaker("The stand of the State appears to be that the judgment was not correctly decided.", "", False)[0] == "counsel", "'The stand of the State' is a party's voice")
+r = run("This Court overruled the judgment of this Court reported as Vannattankandy Ibrayi v. Kunhabdulla Hajee and held as under.", "Vannattankandy Ibrayi v. Kunhabdulla Hajee")
+check(r["label"] == "OVERRULES", "'overruled the judgment ... Y' is still an overruling of Y")
+r = run("Accordingly, the earlier decision of this Court in H. Anraj vs. Govt. of T.N. was overruled.", "H. Anraj vs. Govt. of T.N.")
+check(r["label"] == "OVERRULES", "'the earlier decision in T was overruled' is still an overruling of T")
 
 # and the real ones still fire
 for sentence, target, want in [

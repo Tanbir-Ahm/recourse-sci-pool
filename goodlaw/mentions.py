@@ -81,6 +81,15 @@ class Target:
             if corpus is not None and corpus.phrase_df(" ".join(words)) > max_df:
                 continue
             out.append((" ".join(words), re.compile(rf"\b{_words_regex(words)}(?:['’]s)?\W{{0,3}}(?:case|decision|judgment|ruling|\(supra\)|\(\d\))", re.I)))
+            # a later reference often drops the end of a long name: "Assam Small Scale Industries (supra)" for "Assam Small Scale Ind. Dev. Corp. Ltd."; only the explicit "(supra)" counts for these shorter forms
+            for n in (3, 2):
+                if len(words) > n:
+                    head = words[:n]
+                    if len(" ".join(head)) < 9 or head[0].lower() in _COMMON:
+                        continue
+                    if corpus is not None and corpus.phrase_df(" ".join(head)) > max_df:
+                        continue
+                    out.append((" ".join(head), re.compile(rf"\b{_words_regex(head)}(?:\W+[A-Za-z.&]+){{0,3}}?\W{{0,3}}\(supra\)", re.I)))
         return out
 
     def short_names(self, corpus=None, max_df=300):
@@ -103,7 +112,7 @@ class Target:
 
 
 # ---------------------------------------------------------------- who is speaking
-_COUNSEL = re.compile(r"\b(?:learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
+_COUNSEL = re.compile(r"\b(?:(?:reliance|stand|plea|grievance|contention|argument|submission|case) (?:placed )?(?:of|by|taken by) (?:Mr|Ms|Mrs|Shri|Dr)\.? [A-Z]\w*|(?:stand|plea|case|contention|submission|argument) of the (?:State|appellants?|respondents?|petitioners?|Union|Government|Revenue|Department)\b|learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
                       r"(?:Mr|Ms|Mrs|Dr|Shri|Sri)\.? [A-Z][\w.]*(?: [A-Z][\w.]*)*,? (?:learned )?(?:senior )?(?:counsel|advocate)|"
                       r"(?:arguments?|submissions?|contentions?) (?:in support of|advanced|addressed)|in support of the (?:submission|contention)|addressed (?:elaborate |lengthy |detailed )?arguments|appearing (?:also )?for the|"
                       r"submitted that|submits that|contended that|contends that|argued that|argues that|urged that|urges that|placed (?:strong )?reliance|"

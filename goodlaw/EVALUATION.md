@@ -6,7 +6,7 @@ Everything here is labelled by source: **pattern-rule reading of Supreme Court t
 
 - **A clean `NO_ADVERSE_FOUND` is weak evidence.** Against the law reporters' own citator codes (below), the checker finds an overruling or disagreement in about **one pair in three** it should (held-out: 20 of 57, 35%; development half: 27 of 59, 46%). It reads an explicit "overruled" in 15 of 53 (28%) held-out pairs.
 - **A flag is a pointer, not a finding.** When it raises a clean adverse reading on a pair the reporter did not mark adverse, about **half** are real treatment of the case when read by hand (held-out: 19 of 40 clean readings, 5 of 30 "possible" ones). Every flag carries the sentence, so reading it takes seconds, but someone must read it.
-- **Not measured at all on 2018 to 2026 text** except for 20 well-known cases (7 overruled or doubted, 13 good law) whose labels I assembled and have not had checked by a lawyer. Those 20 all came out right, but I looked at them while fixing rules, so that result is optimistic.
+- **Recent text (2017 to 2023) is measured only on 21 adverse pairs from the reporters' case-law tables, and 2024 to 2026 not at all**, apart from 20 well-known cases (7 overruled or doubted, 13 good law) whose labels I assembled and have not had checked by a lawyer. Those 20 all came out right, but I looked at them while fixing rules, so that result is optimistic.
 
 ## What the gold standard is
 
@@ -67,6 +67,35 @@ The wrong readings fall into a short list of causes: a negation the rules missed
 `goodlaw/targets/known.json`: 7 cases known to be overruled, doubted or legislatively overcome (Koushal, Sowmithri Vishnu, ADM Jabalpur, Prabha Shankar Dubey, Gopalan, Rajesh Sharma, Dashrath Rupsingh Rathod) and 13 well-settled ones (Maneka Gandhi, Bhajan Lal, Puttaswamy, Navtej Johar and others). Result at the latest commit: all 7 flagged (5 as `ADVERSE_SIGNAL`, 2 as `QUESTIONED`); none of the 13 raised `ADVERSE_SIGNAL`, and all 13 came out `NO_ADVERSE_FOUND`.
 
 Read this with care. **I assembled these labels myself from general knowledge and they have not been checked by a lawyer.** I also used the list to find and fix bugs (a Dashrath signal that a weak-signal policy hid, 40 repeated "has not been followed" directions that made Arnesh Kumar look doubtful, a case-law table that made Maneka Gandhi look overruled), so it is not an independent test.
+
+
+## Recent judgments (2017 to 2023): the second answer key
+
+The old reporters' citator stops at about 1985, so on its own it says nothing about modern text. From about 2017 the Supreme Court Reports print a "Case Law Reference" table in each judgment's headnote: every earlier case cited, what the court did with it ("overruled", "followed", "referred to", "distinguished" and so on) and the paragraph. `goodlaw/modern_gold.py` reads those tables.
+
+- 3,944 judgments carry a table; they hold 25,628 rows; 15,669 rows name a case we hold (the rest name cases we lack, High Court cases, or use a citation form we cannot read).
+- Only **49 of those rows are adverse** (21 on the tuning half, 28 on the untouched half). That is a small test: one case moves a percentage by about 5 points.
+- The table sits in the headnote, so the checker is tested on **the court's own judgment only** (headnote mentions are dropped). A full citation printed in the headnote still raises the confidence of a short-name mention in the body, as it does in the real checker.
+- The pairs are split by a stable hash of the citing judgment. The untouched half has **not been run**.
+- 2024 to 2026 judgments carry no such table, so nothing here covers them.
+
+| Tuning half, 2017 to 2023 | Before any fix for modern text | After the first round of fixes |
+|---|---|---|
+| Adverse pairs read as overrules, disagrees or doubts | 9 of 21 (43%) | 12 of 21 (57%) |
+| Read as an explicit overruling | 7 of 21 | 9 of 21 |
+| Other pairs read as adverse | 114 of 8,290 (1.4%) | 113 of 8,290 (1.4%) |
+| of which clean | 91 | 85 |
+
+I hand-scored 60 of the 122 adverse readings on other pairs after the first round: 20 real, 24 wrong, 16 I could not tell (a sentence about two cases where the table does not say which is the target). Roughly a third to a half are real, about the same as on old text. The wrong ones were: a case named as the place where another case was overruled ("In T, the decision of Y has been overruled"), "per incuriam" as a topic, a negation the rules missed ("nothing ... which can be said to be per incuriam"), a High Court that did not follow a binding decision, a conditional ("In case this Court does not agree") and counsel's stand ("The reliance of Mr. Rao"). Fixes for those were made after the scoring and are tested only by unit tests and by the tuning half, so they are not yet measured on fresh data.
+
+What the misses showed (all measured on the tuning half):
+
+- Several misses were an artefact of the test, not the checker: the per-pair test cannot learn a case's other printed citations (for example the SCC citation under which a judgment actually cites it), which the full pipeline does. `evaluate.production_rows` runs the full pipeline for the adverse pairs; its numbers are the ones to quote (12 of 21, as above).
+- Modern drafting says "X (supra)" or "X, which held that ..., does not lay down the correct law" far more often than old text; two wording fixes came from that.
+- A case cited only by a footnote marker ("Jasmine Kaur2") is found only if the footnote's citation is known; this is why the citation-learning step matters more here.
+- About a fifth of the misses are overrulings stated in a different sentence from the case's name; step 2 of the improvement plan (reading the paragraph) targets those.
+
+Reproduce: `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev --gold modern` (add `--production` for the full-pipeline run of the adverse pairs).
 
 ## What this means for use
 

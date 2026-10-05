@@ -28,7 +28,7 @@ Run `python sci_goodlaw.py check --corpus corpus.sqlite "Rangappa v. Sri Mohan" 
 
 ## How good is it (measured)
 
-See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what they do not show. In short: against the law reporters' own citator codes (older judgments only) it found an overruling or disagreement in 35% of pairs on the held-out half (46% on the half it was tuned on), and about half of its clean adverse flags were real treatment when read by hand. `NO_ADVERSE_FOUND` is therefore weak evidence. Recent judgments (2018 to 2026) are measured only on 20 known cases whose labels are mine and not lawyer-checked.
+See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what they do not show. In short: against the law reporters' own citator codes (older judgments only) it found an overruling or disagreement in 35% of pairs on the held-out half (46% on the half it was tuned on), and about half of its clean adverse flags were real treatment when read by hand. `NO_ADVERSE_FOUND` is therefore weak evidence. Recent judgments (2017 to 2023) are measured on a second answer key read from the reporters' case-law tables, but it holds only 49 adverse pairs, and 2024 to 2026 judgments are measured only on 20 known cases whose labels are mine and not lawyer-checked.
 
 ## Running it
 

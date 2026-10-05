@@ -7,6 +7,7 @@
     python sci_goodlaw.py batch  --corpus corpus.sqlite --targets goodlaw/targets/priority.json --out reports/
     python sci_goodlaw.py known  --corpus corpus.sqlite                      # the 20 known cases
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
+    python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
 
 `build` reads the two data branches into one searchable store (about 10 minutes, 2 GB) and indexes the citations in it. `check` writes a JSON bundle and a
 Markdown report for one case: who cites it, what they do with it (with the exact sentences), what became of the statute sections it turns on, a triage label
@@ -90,6 +91,8 @@ def main(argv=None):
     ev = sub.add_parser("eval")
     ev.add_argument("--half", choices=["dev", "held"], required=True)
     ev.add_argument("--confirm-held-out", action="store_true", help="the held-out half is for one reported run per rule set; say so to run it")
+    ev.add_argument("--gold", choices=["citator", "modern"], default="citator", help="citator: the old reporters' citator codes (to about 1985); modern: the 2017-2023 case-law tables, read on the court's own text only")
+    ev.add_argument("--production", action="store_true", help="with --gold modern: run the adverse pairs through the full mention finder (slow, learns citations) instead of the fast per-pair reader")
     ev.add_argument("--workers", type=int, default=4)
     ev.add_argument("--out", help="write the per-pair results here (JSON)")
     for p in (f, c, bt, kn, ev):
@@ -125,13 +128,24 @@ def main(argv=None):
         return 0
     if a.cmd == "eval":
         from goodlaw import evaluate as E
-        pairs, unresolved = E.gold_pairs(corpus)
-        dev, held = E.split(pairs)
-        res = E.run(a.corpus, dev if a.half == "dev" else held, workers=a.workers)
+        if a.gold == "modern":
+            from goodlaw import modern_gold as G
+            pairs, counts = G.gold_pairs(corpus)
+            unresolved = f"{counts['rows'] - counts['pairs']} table rows were not usable: {counts}"
+            dev, held = G.split(pairs)
+            chosen = dev if a.half == "dev" else held
+            if a.production:
+                res = E.production_rows(corpus, [p for p in chosen if p[2] in ("O", "NF")], body_only=True, log=print)
+            else:
+                res = E.run(a.corpus, chosen, workers=a.workers, body_only=True)
+        else:
+            pairs, unresolved = E.gold_pairs(corpus)
+            dev, held = E.split(pairs)
+            res = E.run(a.corpus, dev if a.half == "dev" else held, workers=a.workers)
         if a.out:
             with open(a.out, "w", encoding="utf-8") as fh:
                 json.dump(res, fh)
-        print(f"{a.half}: {len(res)} citator entries ({unresolved} citator entries across the collection could not be matched to a judgment we hold)")
+        print(f"{a.half} ({a.gold}): {len(res)} pairs; unmatched: {unresolved}")
         print(json.dumps(E.summarise(res), indent=1))
         return 0
     if a.cmd == "batch":
