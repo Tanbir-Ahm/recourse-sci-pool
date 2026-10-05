@@ -86,4 +86,5 @@ The "about 2 GB" figure used earlier for the later judgments was too low; it is 
 - `list_bucket_sizes.py`: lists the bucket's PDF files with sizes (anonymous listing).
 - `bucket_registry_match.py`: removes second listings and does the match; writes `registry.csv` (here gzipped as `registry.csv.gz`: one row per distinct bucket judgment with date, title, citation, INSC number, file, size, tier and matched crawl IDs).
 - `validate_match.py`, `validate_counts.py`: the sample check against real texts; `validation.json`, `validation_counts.json` are its outputs.
+- `build_worklist.py`, `worklist.csv.gz`: the 11,958 judgments the downloader (`../../sci_bucket.py`) fetches, with their metadata (scope `after`: 7,125; scope `none`: 4,833; 4 rows have no file under the standard name).
 - Paths inside the scripts point at the session's scratch folder; change them to re-run.

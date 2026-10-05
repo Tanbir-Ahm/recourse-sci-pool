@@ -26,6 +26,10 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 `review_tools/` builds the packs that reviewers mark (a first AI-reviewer pack, a top-up pack, a human review sheet and an authority-check workbook) and reads the replies back, scoring each search version on what it showed. `review_data/pool_all.json` is the passage pool those packs are built from. **It is a private answer key (it records which search found each passage): never send it to reviewers.** Everything it reports is labelled LLM-judged or human-judged; none of it is lawyer validation. See `review_tools/README.md`. Tests: `python review_tools/test_ingest_llm_reviews.py` and `python review_tools/test_builders.py` (need `pip install openpyxl`).
 
+## Open-bucket text (post-May-2017 judgments and older gap-fill)
+
+`sci_bucket.py` downloads PDFs from the open `indian-supreme-court-judgments` bucket (CC-BY-4.0, Dattam Labs), extracts the text and saves it, block by block, on branch `claude/sci-bucket` (text and metadata only; PDFs are held in memory and never written to disk or committed). The work list is `coverage/bucket_match/worklist.csv.gz` (7,125 judgments dated after 4 May 2017, scope `after`; 4,833 older ones the crawl seems to lack, scope `none`). How to run it: `BUCKET_RUNBOOK.md`. Tests: `python test_sci_bucket.py`. Source acknowledgement: keep the Supreme Court of India and Dattam Labs attribution with anything reproduced.
+
 ## Coverage note
 
 `coverage/COVERAGE_NOTE.md` records where the crawl ends (4 May 2017), how many Supreme Court judgments each source holds per year against Indian Kanoon's own list, what the open AWS bucket contains and how good its text is, and the proposed plan for checking whether judgments are still good law. `coverage/year_counts.csv` has the per-year numbers; `coverage/scripts_as_run/` has the scripts that produced them, saved as run. `coverage/bucket_match/` holds the metadata-only match of the bucket against the crawl (`MATCH_REPORT.md`, the per-judgment `registry.csv.gz`, scripts); it also corrects an earlier double count of the bucket (38,152 distinct judgments, not 43,333).
