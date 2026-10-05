@@ -16,7 +16,7 @@ Run `python sci_goodlaw.py check --corpus corpus.sqlite "Rangappa v. Sri Mohan" 
 | Evidence | the exact sentences, each checked word for word against the judgment's text, with the cue words, the speaker, the confidence and the bench relation | `goodlaw/textutil.py` |
 | The reporter's citator | for judgments to about 1985, the reporters' own printed list of later citing cases and what they did (followed, distinguished, overruled ...), with each citing case found in the collection | `goodlaw/headers.py` |
 | The law reporter's case-law table | for judgments of 2017 to 2023, what the Supreme Court Reports marked for the case in each later judgment's headnote table (overruled, relied on, referred to ...), quoted and labelled as the reporter's annotation | `goodlaw/tables.py`, `goodlaw/modern_gold.py` |
-| Statute dimension | the sections the case turns on and what became of them under the 2023 recodification (IPC to BNS, CrPC to BNSS) | NCRB concordance vendored from Recourse (`goodlaw/statutes.py`) |
+| Statute dimension | the IPC and CrPC sections the judgment cites and what became of them under the 2023 recodification (IPC to BNS, CrPC to BNSS) | NCRB concordance vendored from Recourse (`goodlaw/statutes.py`) |
 | Coverage | where the collection ends and how much of what came after the case it holds, against Indian Kanoon's yearly counts | `coverage/year_counts.csv` |
 
 ## Precomputed cards for the answer step
@@ -29,7 +29,7 @@ For the cases Recourse can show, `python sci_goodlaw.py cards` writes one card e
 - `QUESTIONED`: later judgments disagree, doubt, refer or limit it; a smaller bench appears to overrule it; the cue is hedged or may be about another case; or the legislature responded.
 - `NO_ADVERSE_FOUND`: at least three later judgments we hold cite it and nothing adverse turned up. **This is silence in what we hold, not a finding that it is good law.** The coverage block says how much we hold.
 - `INSUFFICIENT`: fewer than three citing judgments found.
-- `STATUTE_CHANGED`: a provision it turns on was renumbered, repealed or marked changed. That is a fact about the section, not about the doctrine, which usually carries over.
+- `STATUTE_CHANGED`: a provision it cites was renumbered, repealed or marked changed. That is a fact about the section, not about the doctrine, which usually carries over.
 
 ## How good is it (measured)
 

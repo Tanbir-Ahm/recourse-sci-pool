@@ -14,7 +14,7 @@
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
 
 `build` reads the two data branches into one searchable store (about 10 minutes, 2 GB) and indexes the citations in it. `check` writes a JSON bundle and a
-Markdown report for one case: who cites it, what they do with it (with the exact sentences), what became of the statute sections it turns on, a triage label
+Markdown report for one case: who cites it, what they do with it (with the exact sentences), what became of the statute sections it cites, a triage label
 and a statement of what the collection can and cannot see. No code here decides that a case is good law; see goodlaw/report.py.
 """
 import argparse

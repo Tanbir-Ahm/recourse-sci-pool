@@ -8,7 +8,7 @@ Triage labels (never a verdict, never "good law"):
   NO_ADVERSE_FOUND at least MIN_CITING later judgments that we hold cite the case and none of the above turned up. This is silence in what we hold, and the
                    coverage block says how much that is.
   INSUFFICIENT     fewer than MIN_CITING later citing judgments found; too little to say anything.
-A separate STATUTE_CHANGED flag says the provisions the case turns on were renumbered, repealed or changed by the 2023 recodification.
+A separate STATUTE_CHANGED flag says the IPC or CrPC provisions the judgment cites most were renumbered, repealed or changed by the 2023 recodification.
 """
 import collections
 import csv
@@ -322,7 +322,7 @@ def render_markdown(b):
         L.append("")
     block("Recent judgments citing it with approval", b["recent_approving"])
     if b["statute_dimension"]:
-        L.extend(["## Statute dimension (what became of the provisions it turns on)", ""])
+        L.extend(["## Statute dimension (what became of the sections the judgment cites)", ""])
         for r in b["statute_dimension"]:
             succ = ", ".join(f"{e['act']} {e['section']}" + (" (changed)" if e["change"] else "") for e in r["successors"])
             L.append(f"- {r['act']} s.{r['section']} (cited {r['count']}x): {r['note']}" + (f" -> {succ}" if succ else ""))

@@ -63,11 +63,15 @@ every = [c, c2, c3, c4, c5, card("NO_ADVERSE_FOUND"), card("INSUFFICIENT", citin
 check(all(not CR.check_wording(x["user_facing_note"]) and not CR.check_wording(x.get("statute_note")) for x in every), "no note says 'good law' or anything like it")
 check("silence" in card("NO_ADVERSE_FOUND")["internal_note"] and "not a finding" in card("NO_ADVERSE_FOUND")["internal_note"], "the internal note for a quiet case says it is silence, not a finding")
 
-dim = [{"act": "CrPC", "section": "200", "count": 1, "status": "renumbered", "note": "renumbered", "successors": [{"act": "BNSS", "section": "223", "change": False}]},
+dim = [{"act": "CrPC", "section": "200", "count": 4, "status": "renumbered", "note": "renumbered", "successors": [{"act": "BNSS", "section": "223", "change": False}]},
+       {"act": "IPC", "section": "304B", "count": 1, "status": "renumbered", "note": "renumbered", "successors": [{"act": "BNS", "section": "80", "change": False}]},
        {"act": "NI Act", "section": "139", "count": 2, "status": "unaffected", "note": "not part of the 2023 recodification", "successors": []}]
 cs = card("NO_ADVERSE_FOUND", statute_flag="STATUTE_CHANGED", dimension=dim)
-check(cs["statute_note"] == "The ruling turns on CrPC section 200 (renumbered as BNSS section 223). That is a change of number, not a finding that the ruling no longer applies.", f"the statute note is about the number, not the doctrine (got {cs['statute_note']!r})")
+check(cs["statute_note"] == "The judgment repeatedly discusses CrPC section 200 (renumbered as BNSS section 223). That is a change of number, not a finding that the ruling no longer applies.", f"the statute note is about a section the judgment repeatedly discusses, and about its number, not the doctrine (got {cs['statute_note']!r})")
+check("304B" not in cs["statute_note"], "a section cited once is not mentioned")
 check(card("NO_ADVERSE_FOUND", dimension=dim)["statute_note"] is None, "no flag, no statute note")
+once = [dict(dim[1])] + [dict(dim[2])]
+check(card("NO_ADVERSE_FOUND", statute_flag="STATUTE_CHANGED", dimension=once)["statute_note"] is None, "a renumbered section cited only once or twice gives no note at all")
 
 # ---------------------------------------------------------------- the evidence kept for the reviewer
 ev = card("ADVERSE_SIGNAL", strong=[mention("OVERRULES", f"b{i}", 2010 + i) for i in range(5)], possible=[mention("DISAGREES", "p1", 2012)], weak=2)["evidence"]

@@ -86,7 +86,7 @@ def for_answer(card, today=None, max_age_days=45):
 
     level            'warning', 'caution' or 'none'
     user_facing_note a short plain text for the user (or None), safe to show or to give the answer-writing model
-    statute_note     a mechanical note when the case turns on a section the 2023 codes renumbered (None otherwise); Recourse's curated record is the authority on this
+    statute_note     a mechanical note when the judgment repeatedly discusses a section the 2023 codes renumbered (None otherwise); Recourse's curated record is the authority on this
     decided_by       'checker' or 'human review (...)'
     stale            the card is older than max_age_days (rebuild after each monthly refresh)
     under_review     a person marked the case as needing research

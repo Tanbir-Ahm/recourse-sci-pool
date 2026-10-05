@@ -128,12 +128,15 @@ def user_note(status, evidence):
     return None
 
 
+STATUTE_MIN_CITED = 3      # a section cited once or twice is usually incidental (a precedent's own facts, a passing reference); the note is for sections the judgment discusses
+
+
 def statute_note(statute_flag, dimension):
-    """A mechanical note when the case turns on an IPC or CrPC section that the 2023 codes renumbered, repealed or changed; None otherwise. It is about the section's number,
-    not the doctrine. Recourse's curated records (SUPERSEDED_BY_STATUTE) are the authority on this and take precedence."""
+    """A mechanical note when the judgment repeatedly discusses an IPC or CrPC section that the 2023 codes renumbered, repealed or changed; None otherwise. It is about the
+    section's number, not the doctrine. Recourse's curated records (SUPERSEDED_BY_STATUTE) are the authority on this and take precedence."""
     if not statute_flag:
         return None
-    rows = [r for r in dimension if r.get("status") in ("renumbered", "renumbered_changed", "no_counterpart", "replaced_not_mapped")]
+    rows = [r for r in dimension if r.get("status") in ("renumbered", "renumbered_changed", "no_counterpart", "replaced_not_mapped") and (r.get("count") or 0) >= STATUTE_MIN_CITED]
     rows.sort(key=lambda r: -(r.get("count") or 0))
     bits = []
     for r in rows[:2]:
@@ -144,7 +147,7 @@ def statute_note(statute_flag, dimension):
             bits.append(f"{r['act']} section {r['section']} ({r.get('note') or 'changed in the 2023 codes'})")
     if not bits:
         return None
-    return "The ruling turns on " + " and ".join(bits) + ". That is a change of number, not a finding that the ruling no longer applies."
+    return "The judgment repeatedly discusses " + " and ".join(bits) + ". That is a change of number, not a finding that the ruling no longer applies."
 
 
 def fingerprint(card):

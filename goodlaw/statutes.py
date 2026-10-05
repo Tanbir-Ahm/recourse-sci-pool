@@ -1,4 +1,4 @@
-"""The statute dimension of "is this still good law": did the numbered provisions a case turns on survive the 2023 recodification?
+"""The statute dimension of "is this still good law": did the numbered provisions a judgment cites survive the 2023 recodification?
 
 Mechanical and checkable, and kept apart from case-law treatment (Recourse's own two-dimension rule): this module reads the sections a judgment cites
 most, looks each up in the NCRB concordance (IPC to BNS, CrPC to BNSS; vendored in data/, source and caveats in data/statute_concordance.SOURCE.txt) and says
