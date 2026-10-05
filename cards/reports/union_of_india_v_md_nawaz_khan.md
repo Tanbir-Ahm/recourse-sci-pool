@@ -13,7 +13,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - By decade: none
 - Found by: short 34
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NDPS Act s.42 (cited 8x): not part of the 2023 recodification
 - NDPS Act s.37 (cited 7x): not part of the 2023 recodification

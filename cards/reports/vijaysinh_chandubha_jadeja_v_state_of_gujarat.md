@@ -34,7 +34,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **State of Delhi v. Ram Avtar @ Rama** (2011-07-07; bench 2; bench compared with the target's: unknown; follows; cue: "reiterating"; speaker: court; confidence medium; quote verified: True)
   > After further referring to the conclusions arrived at by the Constitution Bench in Baldev Singh’s case (supra) (which have been referred by us in para 9 of this judgment) and reiterating the same the Constitution Bench in Vijaysinh Chandubha Jadeja (supra) this case concluded as under: 27 “31.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NDPS Act s.50 (cited 32x): not part of the 2023 recodification
 - NDPS Act s.41 (cited 8x): not part of the 2023 recodification

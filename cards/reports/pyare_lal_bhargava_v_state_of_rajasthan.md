@@ -30,7 +30,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **WARIYAM SINGH & ORS v. STATE OF U.P** (1995-09-19; bench 2; bench compared with the target's: smaller; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > In this connection, he has relied on a decision of this Court in Pyarelal Bhargava versus The State of Rajasthan (AIR 1963 SC 1094).
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Evidence Act s.24 (cited 7x): replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table
 - IPC s.379 (cited 3x): renumbered and the table marks a substantive change: check the element the case relied on -> BNS 303(2) (changed)

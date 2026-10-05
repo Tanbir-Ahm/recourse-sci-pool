@@ -28,7 +28,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **ENFORCEMENT DIRECTORATE, GOVERNMENT OF INDIA versus KAPIL WADHAWAN & ANR. ETC** (2023-03-27; bench 3; bench compared with the target's: equal; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
   > The prosecution relies, on the line of reasoning in State of M.P. Vs. Rustam & Ors.2, which was later followed in Ravi Prakash Singh Vs. State of Bihar3 and M. Ravindran Vs. Intelligence Officer, 2 1995 (Supp) 3 SCC 221 3 (2015) 8 SCC 340 Director of Revenue Intelligence4, where it was held that the date of remand is to be excluded for computing the stipulated 60/90 day period, for the right of default bail, to arise.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.167 (cited 40x): renumbered; the table marks no substantive change -> BNSS 187
 - NDPS Act s.36A (cited 11x): not part of the 2023 recodification

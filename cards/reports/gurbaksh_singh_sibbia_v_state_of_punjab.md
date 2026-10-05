@@ -51,7 +51,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **SEEMA SINGH versus CENTRAL BUREAU OF INVESTIGATION & ANR.** (2018-04-18; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > In view of the clear declaration of law laid down by the Constitution Bench in Sibbia case [(1980) 2 SCC 565 : 1980 SCC (Cri) 465] , it would not be proper to limit the life of anticipatory bail.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.438 (cited 8x): renumbered; the table marks no substantive change -> BNSS 482
 - Evidence Act s.27 (cited 8x): replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table

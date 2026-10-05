@@ -34,7 +34,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **JAI PRAKASH v. STATE (DELHI ADMINISTRATION)** (1991-02-05; bench 3; bench compared with the target's: larger; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
   > In this case, there is no reference to Virsa Singh’s case but there is a 217 references to Jagrup Singh’s case which decision, as noted already, has followed the ratio in Virsa singh’s case.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.300 (cited 2x): renumbered; the table marks no substantive change -> BNS 101
 - IPC s.302 (cited 2x): renumbered and the table marks a substantive change: check the element the case relied on -> BNS 103 (changed)

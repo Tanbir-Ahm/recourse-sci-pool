@@ -63,7 +63,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 420 (renumbered as BNS section 318(4)) and IPC section 406 (renumbered as BNS section 316(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 4,
@@ -153,7 +153,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -218,7 +218,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 482 (renumbered as BNSS section 528) and CrPC section 93 (renumbered as BNSS section 96). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 482 (renumbered as BNSS section 528). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 5,
@@ -351,7 +351,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -417,7 +417,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 324 (renumbered as BNS section 118) and IPC section 504 (renumbered as BNS section 352). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 324 (renumbered as BNS section 118). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -550,7 +550,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -621,7 +621,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 41 (renumbered as BNSS section 35) and CrPC section 167 (renumbered as BNSS section 187). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 41 (renumbered as BNSS section 35). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 29,
@@ -817,7 +817,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -882,7 +882,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 167 (renumbered as BNSS section 187) and IPC section 302 (renumbered as BNS section 103; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 167 (renumbered as BNSS section 187) and IPC section 302 (renumbered as BNS section 103; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 9,
@@ -1025,7 +1025,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1096,7 +1096,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 482 (renumbered as BNSS section 528). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 12,
@@ -1189,7 +1189,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1254,7 +1254,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 125 (renumbered as BNSS section 144). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 125 (renumbered as BNSS section 144). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 3,
@@ -1310,7 +1310,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1381,7 +1381,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 218 (renumbered as BNS section 256) and IPC section 201 (renumbered as BNS section 238). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 86,
@@ -1545,7 +1545,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1613,7 +1613,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 320 (renumbered as BNSS section 359) and CrPC section 374 (renumbered as BNSS section 415). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 320 (renumbered as BNSS section 359). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 14,
@@ -1756,7 +1756,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1814,7 +1814,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1879,7 +1879,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 406 (renumbered as BNS section 316(2)) and IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 406 (renumbered as BNS section 316(2)) and IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 42,
@@ -2035,7 +2035,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2103,7 +2103,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 438 (renumbered as BNSS section 482) and Evidence Act section 27 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 438 (renumbered as BNSS section 482) and Evidence Act section 27 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [
     {
      "group": "weak",
@@ -2313,7 +2313,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2379,7 +2379,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 125 (renumbered as BNSS section 144) and IPC section 498A (renumbered as BNS section 85, BNS section 86). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 125 (renumbered as BNSS section 144). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 6,
@@ -2511,7 +2511,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2577,7 +2577,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 149 (renumbered as BNS section 190) and IPC section 302 (renumbered as BNS section 103; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 149 (renumbered as BNS section 190) and IPC section 302 (renumbered as BNS section 103; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -2705,7 +2705,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2770,7 +2770,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 420 (renumbered as BNS section 318(4)) and IPC section 120B (renumbered as BNS section 61(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 19,
@@ -2897,7 +2897,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2963,7 +2963,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 482 (renumbered as BNSS section 528) and IPC section 467 (renumbered as BNS section 338, BNS section 341(1)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 482 (renumbered as BNSS section 528) and IPC section 467 (renumbered as BNS section 338, BNS section 341(1)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 28,
@@ -3125,7 +3125,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3190,7 +3190,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 125 (renumbered as BNSS section 144) and IPC section 498A (renumbered as BNS section 85, BNS section 86). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 125 (renumbered as BNSS section 144). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 9,
@@ -3301,7 +3301,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3369,7 +3369,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 300 (renumbered as BNS section 101) and IPC section 302 (renumbered as BNS section 103; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 11,
@@ -3477,7 +3477,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3535,7 +3535,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3593,7 +3593,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3660,7 +3660,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 378 (renumbered as BNS section 303; the table also marks a change in content) and IPC section 379 (renumbered as BNS section 303(2); the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 378 (renumbered as BNS section 303; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 2,
@@ -3774,7 +3774,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3839,7 +3839,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 498A (renumbered as BNS section 85, BNS section 86) and IPC section 323 (renumbered as BNS section 115(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 498A (renumbered as BNS section 85, BNS section 86) and IPC section 323 (renumbered as BNS section 115(2)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 4,
@@ -3970,7 +3970,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4032,7 +4032,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 100 (renumbered as BNSS section 103) and CrPC section 313 (renumbered as BNSS section 351). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 20,
@@ -4150,7 +4150,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4221,7 +4221,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -4291,7 +4291,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4356,7 +4356,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 294 (renumbered as BNS section 296; the table also marks a change in content) and IPC section 323 (renumbered as BNS section 115(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -4465,7 +4465,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4530,7 +4530,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 154 (renumbered as BNSS section 173) and CrPC section 173 (renumbered as BNSS section 193). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 154 (renumbered as BNSS section 173) and CrPC section 173 (renumbered as BNSS section 193). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [
     {
      "group": "weak",
@@ -4730,7 +4730,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4795,7 +4795,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 366 (renumbered as BNS section 87) and IPC section 368 (renumbered as BNS section 142; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 13,
@@ -4926,7 +4926,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4986,7 +4986,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5051,7 +5051,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 167 (renumbered as BNSS section 187). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 167 (renumbered as BNSS section 187). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 12,
@@ -5182,7 +5182,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5246,7 +5246,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5311,7 +5311,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 326 (renumbered as BNS section 118(2)) and IPC section 320 (renumbered as BNS section 116; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 326 (renumbered as BNS section 118(2)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 3,
@@ -5428,7 +5428,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5495,7 +5495,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 489A (renumbered as BNS section 178(1)) and IPC section 489E (renumbered as BNS section 182). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 489A (renumbered as BNS section 178(1)) and IPC section 489E (renumbered as BNS section 182). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 9,
@@ -5645,7 +5645,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5710,7 +5710,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 323 (renumbered as BNS section 115(2)) and IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 323 (renumbered as BNS section 115(2)) and IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 11,
@@ -5860,7 +5860,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5925,7 +5925,7 @@
    "status": "ADVERSE_SIGNAL",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": "A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case.",
-   "statute_note": "The ruling turns on IPC section 304B (renumbered as BNS section 80) and CrPC section 313 (renumbered as BNSS section 351). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [
     {
      "group": "strong",
@@ -6181,7 +6181,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6246,7 +6246,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 157 (renumbered as BNSS section 176) and CrPC section 154 (renumbered as BNSS section 173). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 157 (renumbered as BNSS section 176) and CrPC section 154 (renumbered as BNSS section 173). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [
     {
      "group": "weak",
@@ -6435,7 +6435,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6501,7 +6501,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 324 (renumbered as BNS section 118) and IPC section 326 (renumbered as BNS section 118(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 1,
@@ -6604,7 +6604,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6666,7 +6666,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 377 (in the table with no counterpart (repealed or folded elsewhere)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 377 (in the table with no counterpart (repealed or folded elsewhere)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 24,
@@ -6794,7 +6794,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6858,7 +6858,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6920,7 +6920,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on Evidence Act section 25 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table) and Evidence Act section 114 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses Evidence Act section 25 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [
     {
      "group": "weak",
@@ -7118,7 +7118,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7183,7 +7183,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 167 (renumbered as BNSS section 187) and IPC section 120B (renumbered as BNS section 61(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 167 (renumbered as BNSS section 187). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 10,
@@ -7304,7 +7304,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7367,7 +7367,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 482 (renumbered as BNSS section 528). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 3,
@@ -7423,7 +7423,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7486,7 +7486,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 34 (renumbered as BNS section 3(5)) and IPC section 326 (renumbered as BNS section 118(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 34 (renumbered as BNS section 3(5)) and IPC section 326 (renumbered as BNS section 118(2)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -7586,7 +7586,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7651,7 +7651,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 153A (renumbered as BNS section 196; the table also marks a change in content) and IPC section 120B (renumbered as BNS section 61(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 7,
@@ -7766,7 +7766,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7832,7 +7832,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7890,7 +7890,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7955,7 +7955,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 324 (renumbered as BNS section 118) and IPC section 34 (renumbered as BNS section 3(5)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 324 (renumbered as BNS section 118) and IPC section 34 (renumbered as BNS section 3(5)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -8071,7 +8071,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8137,7 +8137,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on Evidence Act section 24 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table) and IPC section 379 (renumbered as BNS section 303(2); the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses Evidence Act section 24 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table) and IPC section 379 (renumbered as BNS section 303(2); the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 12,
@@ -8317,7 +8317,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8382,7 +8382,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 167 (renumbered as BNSS section 187) and IPC section 386 (renumbered as BNS section 308(5)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 167 (renumbered as BNSS section 187) and IPC section 386 (renumbered as BNS section 308(5)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 19,
@@ -8546,7 +8546,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8610,7 +8610,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8678,7 +8678,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 200 (renumbered as BNSS section 223). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 23,
@@ -8808,7 +8808,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8874,7 +8874,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 498A (renumbered as BNS section 85, BNS section 86). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 2,
@@ -8967,7 +8967,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9032,7 +9032,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 482 (renumbered as BNSS section 528) and CrPC section 200 (renumbered as BNSS section 223). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 482 (renumbered as BNSS section 528) and CrPC section 200 (renumbered as BNSS section 223). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 15,
@@ -9172,7 +9172,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9291,7 +9291,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9351,7 +9351,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9416,7 +9416,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 145 (renumbered as BNSS section 164) and Evidence Act section 43 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 145 (renumbered as BNSS section 164) and Evidence Act section 43 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 4,
@@ -9525,7 +9525,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9590,7 +9590,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 406 (renumbered as BNS section 316(2)) and IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 406 (renumbered as BNS section 316(2)) and IPC section 420 (renumbered as BNS section 318(4)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -9706,7 +9706,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9771,7 +9771,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 95 (renumbered as BNSS section 98) and CrPC section 96 (renumbered as BNSS section 99). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 95 (renumbered as BNSS section 98) and CrPC section 96 (renumbered as BNSS section 99). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 21,
@@ -9930,7 +9930,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9995,7 +9995,7 @@
    "status": "ADVERSE_SIGNAL",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": "A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case.",
-   "statute_note": "The ruling turns on CrPC section 438 (renumbered as BNSS section 482) and CrPC section 437 (renumbered as BNSS section 480). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 438 (renumbered as BNSS section 482) and CrPC section 437 (renumbered as BNSS section 480). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [
     {
      "group": "strong",
@@ -10301,7 +10301,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10365,7 +10365,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10433,7 +10433,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 299 (renumbered as BNS section 100; the table also marks a change in content) and IPC section 300 (renumbered as BNS section 101). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 299 (renumbered as BNS section 100; the table also marks a change in content) and IPC section 300 (renumbered as BNS section 101). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 1,
@@ -10581,7 +10581,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10652,7 +10652,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 102 (renumbered as BNSS section 106) and CrPC section 457 (renumbered as BNSS section 503). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 102 (renumbered as BNSS section 106). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 4,
@@ -10785,7 +10785,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10850,7 +10850,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 165 (renumbered as BNSS section 185) and CrPC section 96 (renumbered as BNSS section 99). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 165 (renumbered as BNSS section 185) and CrPC section 96 (renumbered as BNSS section 99). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 83,
@@ -11004,7 +11004,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11167,7 +11167,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11235,7 +11235,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 149 (renumbered as BNS section 190) and IPC section 307 (renumbered as BNS section 109; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 149 (renumbered as BNS section 190) and IPC section 307 (renumbered as BNS section 109; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -11381,7 +11381,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11446,7 +11446,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 438 (renumbered as BNSS section 482) and Evidence Act section 27 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 438 (renumbered as BNSS section 482) and Evidence Act section 27 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [
     {
      "group": "weak",
@@ -11632,7 +11632,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11690,7 +11690,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11755,7 +11755,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on Evidence Act section 25 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table) and CrPC section 173 (renumbered as BNSS section 193). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses Evidence Act section 25 (replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table) and CrPC section 173 (renumbered as BNSS section 193). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 11,
@@ -11870,7 +11870,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11935,7 +11935,7 @@
    "status": "INSUFFICIENT",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 302 (renumbered as BNS section 103; the table also marks a change in content). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 0,
@@ -12021,7 +12021,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12136,7 +12136,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12291,7 +12291,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12351,7 +12351,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12422,7 +12422,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 50 (renumbered as BNSS section 47) and CrPC section 50A (renumbered as BNSS section 48). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses CrPC section 50 (renumbered as BNSS section 47) and CrPC section 50A (renumbered as BNSS section 48). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 3,
@@ -12536,7 +12536,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12599,7 +12599,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on IPC section 420 (renumbered as BNS section 318(4)) and IPC section 406 (renumbered as BNS section 316(2)). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": "The judgment repeatedly discusses IPC section 420 (renumbered as BNS section 318(4)) and IPC section 406 (renumbered as BNS section 316(2)). That is a change of number, not a finding that the ruling no longer applies.",
    "evidence": [],
    "support": {
     "citing_judgments": 4,
@@ -12729,7 +12729,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12791,7 +12791,7 @@
    "status": "NO_ADVERSE_FOUND",
    "statute_flag": "STATUTE_CHANGED",
    "user_facing_note": null,
-   "statute_note": "The ruling turns on CrPC section 100 (renumbered as BNSS section 103). That is a change of number, not a finding that the ruling no longer applies.",
+   "statute_note": null,
    "evidence": [],
    "support": {
     "citing_judgments": 15,
@@ -12928,7 +12928,7 @@
    ],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12986,7 +12986,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -13052,7 +13052,7 @@
    "statute_dimension": [],
    "provenance": {
     "generated": "2026-10-05",
-    "checker_commit": "39b02d58f12d92929ce492a7f786e22e77c6997f",
+    "checker_commit": "8534ab4fd0e9e7df3962e9f1971980a73ee9af62",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {

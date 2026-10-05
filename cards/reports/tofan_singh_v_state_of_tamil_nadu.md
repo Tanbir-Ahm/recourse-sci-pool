@@ -26,7 +26,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **BALWINDER SINGH (BINDA) versus THE NARCOTICS CONTROL BUREAU** (2023-09-22; bench 3; bench compared with the target's: equal; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > Once the confessional statement13 of the co-accused, Satnam Singh5 recorded by the NCB oﬃ cers under Section 67 of the NDPS Act, who had attributed a role to Balwinder Singh3 and the subsequently recorded statement22 of Balwinder Singh3 himself under Section 67 of the NDPS Act are rejected in the light of the law laid down in Tofan Singh36 (supra), there is no other independent incriminating evidence that has been brought to the fore by the prosecution for convicting Balwinder Singh3 under the NDPS Act.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Evidence Act s.25 (cited 109x): replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table
 - CrPC s.173 (cited 59x): renumbered; the table marks no substantive change -> BNSS 193

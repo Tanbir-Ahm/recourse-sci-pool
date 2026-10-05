@@ -27,7 +27,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **JUPALLY LAKSHMIKANTHA REDDY versus STATE OF ANDHRA PRADESH & ANR.** (2025-09-10; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence medium; quote verified: True)
   > In Hridaya Ranjan Prasad Verma & Ors. v. State of Bihar & Anr.,6 this Court reiterated that Section 415 IPC contemplates two distinct situations; the first where a person is dishonestly induced to deliver property, and the second where a person is induced to do or omit an 5 (1998) 8 SCC 745, para 3. 6 (2000) 4 SCC 168, paras 13-15. 64 [2025] 10 S.C.R. Supreme Court Reports act which, but for the deception, he would not have done or omitted.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.420 (cited 2x): renumbered; the table marks no substantive change -> BNS 318(4)
 - IPC s.120B (cited 1x): renumbered; the table marks no substantive change -> BNS 61(2)

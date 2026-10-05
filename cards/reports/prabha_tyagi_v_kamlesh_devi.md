@@ -13,7 +13,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - By decade: 2020s 3
 - Found by: short 230, cite 2, pair 3; citations learned from the texts: scc:2022:8:90
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.482 (cited 1x): renumbered; the table marks no substantive change -> BNSS 528
 - Constitution s.31B (cited 1x): not part of the 2023 recodification

@@ -22,7 +22,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **INTERNATIONAL ADVANCED RESEARCH CENTRE FOR POWDER METALLURGY AND NEW MATERIALS (ARCI) & ORS v. NIMRA CERGLASS TECHNICS (P) LTD. & ANR** (2015-09-22; bench 2; bench compared with the target's: unknown; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
   > The above view in Palanitkar’s case was referred to and followed in Rashmi Jain vs. State of Uttar Pradesh & Anr. (2014) 13 SCC 553.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.482 (cited 14x): renumbered; the table marks no substantive change -> BNSS 528
 - CrPC s.200 (cited 4x): renumbered; the table marks no substantive change -> BNSS 223

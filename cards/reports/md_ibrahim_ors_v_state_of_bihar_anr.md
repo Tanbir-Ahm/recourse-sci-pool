@@ -23,7 +23,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **THE STATE OF MADHYA PRADESH versus SHILPA JAIN & ORS.** (2024-04-05; bench 2; bench compared with the target's: unknown; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > It has ben consistently stated by the Counsel for the petitioners that the 376 [2024] 4 S.C.R. Digital Supreme Court Reports petitioners are in possession of the said land for more than 90 years and Counsel has relied on several judgments of the Hon’ble Apex Court as well as this Court in the matter of Mohammed Ibrahim and others Vs. State of Bihar and another [(2009) 8 SCC 751], Ramesh Dutt and others Vs. State Punjab and others [(2009) 15 SCC 429], Rajib Ranjan and others Vs. R Vijaykumar [(2005) 1 SCC 513], Mr. Stephen V. Gomes and another [2015 (II) MPWN 149], Savitri Pandey and another v. State of UP and others [AIR 2015 SC 2501], AK Sharma (Cdr.) vs. State of MP 2015(3) JLJ 213 and Chandran Ratnaswami Vs. KC Palanisamy and others [2013 (6) SCC 740] to state that the Hon’ble Supreme Court and this Hon’ble Court have repeatedly held and quashed FIR and criminal proceedings relating to a dispute of title of property and other civil disputes and Counsel prayed for quashment of the FIR.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.323 (cited 3x): renumbered; the table marks no substantive change -> BNS 115(2)
 - IPC s.420 (cited 3x): renumbered; the table marks no substantive change -> BNS 318(4)

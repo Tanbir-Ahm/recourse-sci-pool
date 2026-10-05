@@ -20,7 +20,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **ARVIND KEJRIWAL versus DIRECTORATE OF ENFORCEMENT** (2024-07-12; bench 2; bench compared with the target's: equal; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > Recently, in Prabir Purkayastha v. State (NCT of Delhi),15 this Court reiterated the aforesaid principles expounded in Pankaj Bansal (supra).
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.22 (cited 38x): not part of the 2023 recodification
 - Constitution s.21 (cited 3x): not part of the 2023 recodification

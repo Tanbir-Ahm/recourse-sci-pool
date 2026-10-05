@@ -56,7 +56,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **THE STATE OF TELANGANA versus SRI MANAGIPET @ MANGIPET SARVESHWAR REDDY** (2019-12-06; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence high; quote verified: True)
   > A proper administration of the criminal justice delivery system, therefore requires balancing the rights of the accused and the prosecution, so that the law laid down in Mohan Lal (supra) is not allowed to become a spring board for acquittal 13 (2018) 17 SCC 627 14 2019 SCC OnLine SC 170 STATE OF TELANGANA v. SRI MANAGIPET @ MANGIPET SARVESHWAR REDDY [HEMANT GUPTA, J.] SUPREME COURT REPORTS [2019] 14 S.C.R. in prosecutions prior to the same, irrespective of all other considerations.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.21 (cited 5x): not part of the 2023 recodification
 - IPC s.165A (cited 1x): section not found in the NCRB table

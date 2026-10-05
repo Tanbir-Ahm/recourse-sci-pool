@@ -17,7 +17,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 - R (referred): 1992 SC 125 paras 3
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.149 (cited 16x): renumbered; the table marks no substantive change -> BNS 190
 - IPC s.307 (cited 15x): renumbered and the table marks a substantive change: check the element the case relied on -> BNS 109 (changed)

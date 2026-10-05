@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **HDFC Securities Ltd. & Ors v. State of Maharashtra & Anr** (2016-12-09; bench 2; bench compared with the target's: unknown; follows; cue: "relied upon"; speaker: court; confidence high; quote verified: True)
   > In the case of All Cargo Movers (India) (P.) Limited Vs. Dhanesh Badarwal Jain, (2007) 14 SCC 776, relied upon in paragraph 17 thereof, it was held by this Court: “We are of the opinion that the allegations made in the complaint petition, even if given face value and taken to be correct in its entirety, do not disclose an offence.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.420 (cited 2x): renumbered; the table marks no substantive change -> BNS 318(4)
 - IPC s.406 (cited 1x): renumbered; the table marks no substantive change -> BNS 316(2)

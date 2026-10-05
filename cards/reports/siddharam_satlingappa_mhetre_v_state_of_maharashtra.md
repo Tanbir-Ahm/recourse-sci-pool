@@ -73,7 +73,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **K.S. Panduranga v. State of Karnataka** (2013-03-01; bench 2; bench compared with the target's: unknown; follows; cue: "binding precedent"; speaker: court; confidence high; quote verified: True)
   > In Government of A.P. and another v. B. Satyanarayana Rao (dead) by LRs and others41 39 (2011) 1 SCC 694 40 (1980) 2 SCC 565 41 (2000) 4 SCC 262 29 Page 30 JUDGMENT this Court has observed that the rule of per incuriam can be applied where a court omits to consider a binding precedent of the same court or the superior court rendered on the same issue or where a court omits to consider any statute while deciding that issue.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.438 (cited 32x): renumbered; the table marks no substantive change -> BNSS 482
 - Constitution s.21 (cited 9x): not part of the 2023 recodification

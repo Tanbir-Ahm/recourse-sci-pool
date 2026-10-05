@@ -13,7 +13,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - By decade: none
 - Found by: short 40
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.406 (cited 8x): renumbered; the table marks no substantive change -> BNS 316(2)
 - IPC s.420 (cited 5x): renumbered; the table marks no substantive change -> BNS 318(4)

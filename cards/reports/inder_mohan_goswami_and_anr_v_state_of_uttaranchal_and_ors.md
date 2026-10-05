@@ -25,7 +25,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **RAJIB RANJAN & ORS v. R. VIJAYKUMAR** (2014-10-14; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In Inder Mohan Goswami and another v. State of Uttaranchal and others, (2007) 12 SCC 1, the Court reiterated the scope and ambit of power of the High Court under Section 482 of the Code in the following words: “23.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.482 (cited 15x): renumbered; the table marks no substantive change -> BNSS 528
 - IPC s.467 (cited 12x): renumbered; the table marks no substantive change -> BNS 338, BNS 341(1)

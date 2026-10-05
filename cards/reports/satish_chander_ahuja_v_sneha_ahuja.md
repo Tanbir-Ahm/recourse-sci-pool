@@ -17,7 +17,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 - The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 1 later judgments have a row for this case; referred to 2. This is the reporter's annotation, not the court's own words.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.145 (cited 17x): renumbered; the table marks no substantive change -> BNSS 164
 - Evidence Act s.43 (cited 16x): replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table

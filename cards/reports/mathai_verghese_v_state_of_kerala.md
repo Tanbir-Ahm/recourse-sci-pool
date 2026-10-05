@@ -23,7 +23,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **Commissioner of Income Tax, Kerala v. M/s Tara Agencies** (2007-07-09; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In State of Kerala v. Mathai Verghese & Others (1986) 4 SCC 746, this court has reiterated the well settled position that the court can merely interpret the section; it cannot re-write, recast or redesign the section.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.489A (cited 7x): renumbered; the table marks no substantive change -> BNS 178(1)
 - IPC s.489E (cited 4x): renumbered; the table marks no substantive change -> BNS 182

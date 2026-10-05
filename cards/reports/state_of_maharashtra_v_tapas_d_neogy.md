@@ -23,7 +23,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **ESTATE OFFICER, HARYANA URBAN DEVELOPMENT AUTHORITY AND ORS. versus NIRMALA DEVI** (2025-07-14; bench 2; bench compared with the target's: equal; follows; cue: "follows"; speaker: court; confidence medium; quote verified: True)
   > It follows from the aforesaid discussion that the decision in Tapas D. Neogy [State of Maharashtra v. Tapas D. Neogy, (1999) 7 SCC 685 : 1999 SCC (Cri) 1352] did not go into and decide the issue: whether immovable property would fall under the expression “any property” under Section 102 of the Code.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.102 (cited 24x): renumbered; the table marks no substantive change -> BNSS 106
 - CrPC s.457 (cited 2x): renumbered; the table marks no substantive change -> BNSS 503

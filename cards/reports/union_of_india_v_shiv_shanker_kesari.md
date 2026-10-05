@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 1 later judgments have a row for this case; relied on 1. This is the reporter's annotation, not the court's own words.
   - UNION OF INDIA THROUGH NARCOTICS CONTROL BUREAU, LUCKNOW versus MD. NAWAZ KHAN (2021-09-22): marked "relied on", Para 16. Quote verified: True
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NDPS Act s.8 (cited 1x): not part of the 2023 recodification
 - NDPS Act s.15 (cited 1x): not part of the 2023 recodification

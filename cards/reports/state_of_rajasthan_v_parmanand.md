@@ -22,7 +22,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **RANJAN KUMAR CHADHA versus STATE OF HIMACHAL PRADESH** (2023-10-06; bench 2; bench compared with the target's: unknown; follows; cue: "relied upon"; speaker: court; confidence medium; quote verified: True)
   > Parmanand (supra) relied upon the judgment in Dilip (supra) while taking the view that if both, the person of the accused as well as the bag is searched and the contraband is ultimately recovered from the bag, then it is as good as the search of a person and, therefore, Section 50 would be applicable.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NDPS Act s.50 (cited 23x): not part of the 2023 recodification
 - NDPS Act s.8 (cited 4x): not part of the 2023 recodification

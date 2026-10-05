@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **STATE OF KARNATAKA versus SRI DARSHAN ETC.** (2025-08-14; bench 2; bench compared with the target's: equal; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In Vihaan Kumar v. State of Haryana22, it was reiterated that Article 22(1) is satisfied if the accused is made aware of the arrest grounds in substance, even if not conveyed in writing.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.22 (cited 30x): not part of the 2023 recodification
 - CrPC s.50 (cited 9x): renumbered; the table marks no substantive change -> BNSS 47

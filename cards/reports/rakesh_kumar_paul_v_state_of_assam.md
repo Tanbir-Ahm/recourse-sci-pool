@@ -33,7 +33,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **M. RAVINDRAN versus THE INTELLIGENCE OFFICER, DIRECTORATE OF REVENUE INTELLIGENCE** (2020-10-26; bench 3; bench compared with the target's: equal; follows; cue: "We agree with"; speaker: court; confidence medium; quote verified: True)
   > 12.7 We agree with the view expressed in Rakesh Kumar Paul (supra) that as a cautionary measure, the counsel for the accused as well as the magistrate ought to inform the accused of the availability of the indefeasible right under Section 167(2) once it accrues to him, without any delay.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.167 (cited 22x): renumbered; the table marks no substantive change -> BNSS 187
 - IPC s.386 (cited 9x): renumbered; the table marks no substantive change -> BNS 308(5)

@@ -26,7 +26,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **COMMON CAUSE (A REGD. SOCIETY) versus UNION OF INDIA & ANOTHER** (2018-03-09; bench 5; bench compared with the target's: unknown; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > [Para 99][359-B] National Legal Services Authority v. Union of India and Ors. (2014) 5 SCC 438 – relied on.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.21 (cited 9x): not part of the 2023 recodification
 - Constitution s.14 (cited 8x): not part of the 2023 recodification

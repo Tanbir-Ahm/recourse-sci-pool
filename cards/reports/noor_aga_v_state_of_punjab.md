@@ -43,7 +43,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **TOFAN SINGH v. STATE OF TAMIL NADU** (2013-10-08; bench 2; bench compared with the target's: unknown; follows; cue: "follow"; speaker: court; confidence medium; quote verified: True)
   > We thus feel it would be proper for us to follow the ratio of the judgment in Noor Aga's case particularly as the provisions of Section 50 of the Act which are mandatory have also not been complied with.”
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.21 (cited 9x): not part of the 2023 recodification
 - Evidence Act s.25 (cited 5x): replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table

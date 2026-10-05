@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 5 later judgments have a row for this case; referred to 4; relied on 1. This is the reporter's annotation, not the court's own words.
   - ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI (2022-08-16): marked "relied on", Para 14. Quote verified: True
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NI Act s.138 (cited 20x): not part of the 2023 recodification
 - NI Act s.139 (cited 13x): not part of the 2023 recodification

@@ -31,7 +31,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **S. K. RAJU @ ABDUL HAQUE @ JAGGA versus STATE OF WEST BENGAL** (2018-09-05; bench 3; bench compared with the target's: unknown; follows; cue: "dictum laid down"; speaker: court; confidence medium; quote verified: True)
   > Thereafter, the suspect may or may not choose to exercise the right provided to him under the said provision … We are of the opinion that the concept of “substantial compliance” with the requirement of Section 50 of the NDPS Act introduced and read into the mandate of the said Section in Joseph Fernandez (supra) and Prabha Shankar Dubey (supra) is neither borne out from the language of Sub-section (1) of Section 50 nor it is in consonance with the dictum laid down in Baldev Singh’s case (supra).”
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NDPS Act s.50 (cited 19x): not part of the 2023 recodification
 - CrPC s.165 (cited 4x): renumbered; the table marks no substantive change -> BNSS 185

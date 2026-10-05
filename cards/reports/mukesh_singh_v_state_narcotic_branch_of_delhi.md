@@ -40,7 +40,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **TOFAN SINGH versus STATE OF TAMIL NADU** (2020-10-29; bench 3; bench compared with the target's: smaller; not overruled; cue: "for reconsideration"; speaker: court; confidence medium; quote verified: True)
   > For all these reasons, we do not accede either to Shri Puneet Jain’s argument to refer Mukesh Singh (supra) to a larger Bench for reconsideration, or to Shri Lekhi’s argument based on the same judgment, as the point involved in Mukesh Singh (supra) was completely different from the one before us.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.157 (cited 16x): renumbered; the table marks no substantive change -> BNSS 176
 - CrPC s.154 (cited 13x): renumbered; the table marks no substantive change -> BNSS 173

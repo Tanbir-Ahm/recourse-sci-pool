@@ -28,7 +28,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **RAM KISHOR ARORA versus DIRECTORATE OF ENFORCEMENT** (2023-12-15; bench 2; bench compared with the target's: equal; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > The same was also reiterated and clariﬁ ed by this Hon’ble Court in Pankaj Bansal Vs Union of India and Others, 2023 SCC OnLine SC 1244. ii.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.22 (cited 11x): not part of the 2023 recodification
 - CrPC s.167 (cited 7x): renumbered; the table marks no substantive change -> BNSS 187

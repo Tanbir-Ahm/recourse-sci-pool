@@ -23,7 +23,7 @@
   "citing_judgments": 4,
   "citing_judgments_all_confidence": 45,
   "by_treatment": {
-   "NEUTRAL": 2,
+   "NEUTRAL": 1,
    "DISTINGUISHES": 1,
    "FOLLOWS": 1
   },
@@ -78,7 +78,7 @@
    "tier": "short",
    "sentence": "It follows from the aforesaid discussion that the decision in Tapas D. Neogy [State of Maharashtra v. Tapas D. Neogy, (1999) 7 SCC 685 : 1999 SCC (Cri) 1352] did not go into and decide the issue: whether immovable property would fall under the expression “any property” under Section 102 of the Code.",
    "prev": "The test was affirmed by a three-Judge Bench of this Court in Nevada Properties (P) Ltd. v. State of Maharashtra reported in (2019) 20 SCC 119 wherein it was held thus: “13.",
-   "next": "We say so by applying the inversion test as referred to in State of Gujarat v. Utility Users’ Welfare Assn. [State of Gujarat v. Utility Users’ Welfare Assn., (2018) 6 SCC 21] , which states that the Court must first carefully frame the supposed proposition 834\b [2025] 7 S.C.R. Supreme Court Reports of law and then insert in the proposition a word reversing its meaning to get the answer whether or not a decision is a precedent for that proposition.",
+   "next": "We say so by applying the inversion test as referred to in State of Gujarat v. Utility Users’ Welfare Assn. [State of Gujarat v. Utility Users’ Welfare Assn., (2018) 6 SCC 21] , which states that the Court must first carefully frame the supposed proposition 834 [2025] 7 S.C.R. Supreme Court Reports of law and then insert in the proposition a word reversing its meaning to get the answer whether or not a decision is a precedent for that proposition.",
    "quote_verified": true,
    "in_headnote": false
   }
@@ -179,7 +179,7 @@
  },
  "how_found": {
   "short": 99,
-  "pair": 6,
+  "pair": 5,
   "cite": 5
  },
  "limits": [

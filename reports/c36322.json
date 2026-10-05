@@ -18,17 +18,17 @@
  "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
  "statute_flag": "STATUTE_CHANGED",
  "summary": {
-  "citing_judgments": 23,
-  "citing_judgments_all_confidence": 44,
+  "citing_judgments": 22,
+  "citing_judgments_all_confidence": 43,
   "by_treatment": {
-   "FOLLOWS": 8,
+   "FOLLOWS": 7,
    "LIMITS": 2,
    "NEUTRAL": 13
   },
   "latest_citing_year": 2026,
-  "citing_in_last_10_years": 19,
+  "citing_in_last_10_years": 18,
   "citing_by_decade": {
-   "2010": 12,
+   "2010": 11,
    "2020": 11
   },
   "adverse_strong": [],
@@ -38,10 +38,10 @@
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
   "case_law_table": {
-   "judgments_with_a_row": 10,
-   "rows": 10,
+   "judgments_with_a_row": 9,
+   "rows": 9,
    "by_what_the_reporter_marked": {
-    "referred to": 5,
+    "referred to": 4,
     "relied on": 5
    },
    "recent_relied_on": [
@@ -118,28 +118,6 @@
    "in_headnote": false
   },
   {
-   "doc_key": "b2025_9_1515_1538",
-   "title": "SANJABIJ TARI versus KISHORE S. BORCAR & ANR.",
-   "date": "2025-09-25",
-   "year": 2025,
-   "bench_size": 2,
-   "bench_relation": "unknown",
-   "source": "bucket",
-   "label": "FOLLOWS",
-   "cue": "relied upon",
-   "hedged": false,
-   "binding": "strong",
-   "anaphoric": false,
-   "speaker": "court",
-   "confidence": "high",
-   "tier": "pair",
-   "sentence": "In support of his submission, he relied upon the judgment of this Court in Rangappa vs. Sri Mohan, (2010) 11 SCC 441.",
-   "prev": "He submitted that the accused can always rely on material and/or evidence filed by the complainant in order to raise a probable defence which creates doubts about the existence of a legally enforceable debt or liability.",
-   "next": "9.",
-   "quote_verified": true,
-   "in_headnote": false
-  },
-  {
    "doc_key": "b2022_7_72_77",
    "title": "ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI",
    "date": "2022-08-16",
@@ -202,6 +180,28 @@
    "sentence": "In Rangappa v. Sri Mohan : (2010) 11 SCC 441, this Court has reiterated and summarised the principles relating to presumptions under Sections 118 and 139 of the NI Act and rebuttal thereof in the following:- “26.",
    "prev": "15.",
    "next": "In the light of these extracts, we are in agreement with the respondent claimant that the presumption mandated by Section 139 of the Act does indeed include the existence of a legally enforceable debt or liability.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2019_1_731_740",
+   "title": "ANSS RAJASHEKAR versus AUGUSTUS JEBA ANANTH",
+   "date": "2019-01-18",
+   "year": 2019,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "law laid down",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "For the reasons indicated above, we are of the view that having regard to the law laid down by the three Judge Bench in Rangappa (supra) the appellant duly rebutted the presumption under Section 139 of the Act.",
+   "prev": "15.",
+   "next": "His defence that there was an absence of a legally enforceable debt was rendered probable on the basis of the material on record.",
    "quote_verified": true,
    "in_headnote": false
   }
@@ -268,7 +268,7 @@
  },
  "how_found": {
   "short": 58,
-  "pair": 47,
+  "pair": 39,
   "cite": 1
  },
  "limits": [

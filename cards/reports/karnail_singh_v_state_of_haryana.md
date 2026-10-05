@@ -31,7 +31,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **State of Rajasthan v. Bheru Lal** (2013-05-28; bench 2; bench compared with the target's: unknown; follows; cue: "principle laid down"; speaker: court; confidence medium; quote verified: True)
   > In our considered view, such a literal and technical approach would defeat the principle laid down by the Constitution Bench in Karnail Singh’s case.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.100 (cited 2x): renumbered; the table marks no substantive change -> BNSS 103
 - NDPS Act s.42 (cited 2x): not part of the 2023 recodification

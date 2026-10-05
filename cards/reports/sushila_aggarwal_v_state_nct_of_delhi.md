@@ -40,7 +40,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **DR NARESH KUMAR MANGLA versus SMT. ANITA AGARWAL & ORS. ETC.** (2020-12-17; bench 3; bench compared with the target's: smaller; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In the recent decision of the Constitution Benchin Sushila Aggarwal vs State (NCT of Delhi),10 the considerations which ought to weigh with the Court in deciding an application for the grant of anticipatory bail have been reiterated.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.438 (cited 61x): renumbered; the table marks no substantive change -> BNSS 482
 - Evidence Act s.27 (cited 23x): replaced by the Bharatiya Sakshya Adhiniyam, 2023; section mapping is not in our table

@@ -42,7 +42,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **AMIT KUMAR & ORS.  versus UNION OF INDIA & ORS.** (2025-03-24; bench 2; bench compared with the target's: unknown; follows; cue: "affirmed"; speaker: court; confidence high; quote verified: True)
   > In Lalita Kumari v. Government of U.P., (2014) 2 SCC 1, a five-Judge Bench of this Court affirmed the requirement for the mandatory registration of an F.I.R. under Section 154 of the CrPC. The Court ruled that, once the information provided discloses the commission of a cognizable offence, it is imperative for the police to register the F.I.R. without conducting any preliminary inquiry.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.154 (cited 7x): renumbered; the table marks no substantive change -> BNSS 173
 - Constitution s.21 (cited 5x): not part of the 2023 recodification

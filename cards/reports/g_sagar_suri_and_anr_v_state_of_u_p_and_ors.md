@@ -20,7 +20,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
   - KAPIL AGARWAL AND OTHERS versus SANJAY SHARMA AND OTHERS (2021-03-01): marked "relied on", para 3.5. Quote verified: True
   - ANAND KUMAR MOHATTA AND ANR. versus STATE (GOVT. OF NCT OF DELHI) DEPARTMENT OF HOME AND ANR. (2018-11-15): marked "relied on", Para 17. Quote verified: True
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NI Act s.138 (cited 9x): not part of the 2023 recodification
 - IPC s.406 (cited 5x): renumbered; the table marks no substantive change -> BNS 316(2)

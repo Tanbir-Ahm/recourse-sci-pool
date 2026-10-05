@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **MURALI versus STATE REP. BY THE INSPECTOR OF POLICE** (2021-01-05; bench 3; bench compared with the target's: unknown; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > SCR 406 relied on Para 12 (2015) 11 SCC 226 relied on Para 12 [2015] 4 SCR 563 relied on Para 12 (2019) 5 SCC 166 relied on Para 12 CRIMINAL APPELLATE JURISDICTION : Criminal Appeal No 24 of 2021.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.324 (cited 1x): renumbered; the table marks no substantive change -> BNS 118
 - IPC s.326 (cited 1x): renumbered; the table marks no substantive change -> BNS 118(2)

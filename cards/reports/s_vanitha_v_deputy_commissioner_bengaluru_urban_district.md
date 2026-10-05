@@ -13,7 +13,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - By decade: 2020s 2
 - Found by: cite 7, pair 1, short 7
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.498A (cited 2x): renumbered; the table marks no substantive change -> BNS 85, BNS 86
 - Constitution s.14 (cited 2x): not part of the 2023 recodification

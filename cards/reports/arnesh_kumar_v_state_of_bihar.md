@@ -35,7 +35,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **MD. ASFAK ALAM versus THE STATE OF JHARKHAND & ANR.** (2023-07-31; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > Before parting, the court would direct all the courts ceased of proceedings to strictly follow the law laid down in Arnesh Kumar (supra) and reiterate the directions contained thereunder, as well as other directions: “I. 11.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.41 (cited 9x): renumbered; the table marks no substantive change -> BNSS 35
 - CrPC s.167 (cited 2x): renumbered; the table marks no substantive change -> BNSS 187

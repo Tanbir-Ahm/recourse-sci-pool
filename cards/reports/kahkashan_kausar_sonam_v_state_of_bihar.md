@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **PRIYANKA MISHRA & ORS versus THE STATE OF MADHYA PRADESH & ANR.** (2023-05-08; bench 3; bench compared with the target's: larger; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > Kahkashan Kausar alias Sonam v State of Bihar (2022) 6 SCC 599 – relied on.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.498A (cited 9x): renumbered; the table marks no substantive change -> BNS 85, BNS 86
 - IPC s.323 (cited 4x): renumbered; the table marks no substantive change -> BNS 115(2)

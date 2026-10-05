@@ -25,7 +25,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **RAJNESH versus NEHA & ANR.** (2020-11-04; bench 2; bench compared with the target's: unknown; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
   > (vi) The Delhi High Court in a series of judgments beginning with Puneet Kaur v Inderjit Singh Sawhney26 and followed in Kusum Sharma v Mahinder Kumar Sharma27 (“Kusum Sharma I”) directed that applications for maintenance under the HMA, HAMA, D.V. Act, and the Cr.P.C. be accompanied with an Affidavit of assets, income and expenditure as prescribed.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.14 (cited 7x): not part of the 2023 recodification
 - CrPC s.125 (cited 3x): renumbered; the table marks no substantive change -> BNSS 144

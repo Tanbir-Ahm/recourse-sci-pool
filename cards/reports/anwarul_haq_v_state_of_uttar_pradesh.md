@@ -13,7 +13,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - By decade: none
 - Found by: short 15
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.324 (cited 5x): renumbered; the table marks no substantive change -> BNS 118
 - IPC s.504 (cited 2x): renumbered; the table marks no substantive change -> BNS 352

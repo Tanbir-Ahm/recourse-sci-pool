@@ -27,7 +27,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **ARUP BHUYAN versus STATE OF ASSAM & ANR.** (2023-03-24; bench 3; bench compared with the target's: larger; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > SCR 789 referred to Para 8 [2015] 5 SCR 963 relied on Para 8 [2011] 14 SCR 1 referred to Para 10 [1962] 3 SCR 547 referred to Para 11 [1994] 6 Suppl.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.95 (cited 7x): renumbered; the table marks no substantive change -> BNSS 98
 - CrPC s.96 (cited 7x): renumbered; the table marks no substantive change -> BNSS 99

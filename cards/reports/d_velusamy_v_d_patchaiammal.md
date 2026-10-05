@@ -17,7 +17,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 - The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 1 later judgments have a row for this case; referred to 1. This is the reporter's annotation, not the court's own words.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.125 (cited 11x): renumbered; the table marks no substantive change -> BNSS 144
 

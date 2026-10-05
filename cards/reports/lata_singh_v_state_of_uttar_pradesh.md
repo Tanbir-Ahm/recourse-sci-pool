@@ -23,7 +23,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **Vikas Yada v. State of U.P. and Ors. Etc. Etc** (2016-10-03; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence medium; quote verified: True)
   > In Arumugam Servai v. State of Tamil Nadu61, the Court reiterated the principle stated in Lata Singh(supra) and proceeded to state that:- “12.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.366 (cited 1x): renumbered; the table marks no substantive change -> BNS 87
 - IPC s.368 (cited 1x): renumbered and the table marks a substantive change: check the element the case relied on -> BNS 142 (changed)

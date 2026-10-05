@@ -35,7 +35,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **ANSS RAJASHEKAR versus AUGUSTUS JEBA ANANTH** (2019-01-18; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > For the reasons indicated above, we are of the view that having regard to the law laid down by the three Judge Bench in Rangappa (supra) the appellant duly rebutted the presumption under Section 139 of the Act.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - NI Act s.139 (cited 2x): not part of the 2023 recodification
 - CrPC s.200 (cited 1x): renumbered; the table marks no substantive change -> BNSS 223

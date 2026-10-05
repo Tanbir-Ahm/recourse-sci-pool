@@ -18,7 +18,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 1 later judgments have a row for this case; relied on 1. This is the reporter's annotation, not the court's own words.
   - M N G BHARATEESH REDDY versus RAMESH RANGANATHAN AND ANOTHER (2022-08-18): marked "relied on", Para 22. Quote verified: True
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - IPC s.420 (cited 19x): renumbered; the table marks no substantive change -> BNS 318(4)
 - IPC s.406 (cited 10x): renumbered; the table marks no substantive change -> BNS 316(2)

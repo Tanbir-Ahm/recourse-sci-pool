@@ -9,8 +9,7 @@
   "bench_size": 3,
   "cites": [],
   "learned_cites": [
-   "scc:2010:5:663",
-   "scr:2010:5:678"
+   "scc:2010:5:663"
   ]
  },
  "generated": "2026-10-05",
@@ -18,17 +17,17 @@
  "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
  "statute_flag": "STATUTE_CHANGED",
  "summary": {
-  "citing_judgments": 10,
+  "citing_judgments": 9,
   "citing_judgments_all_confidence": 98,
   "by_treatment": {
-   "NEUTRAL": 7,
+   "NEUTRAL": 6,
    "LIMITS": 2
   },
-  "latest_citing_year": 2025,
-  "citing_in_last_10_years": 6,
+  "latest_citing_year": 2024,
+  "citing_in_last_10_years": 5,
   "citing_by_decade": {
    "2010": 4,
-   "2020": 6
+   "2020": 5
   },
   "adverse_strong": [],
   "adverse_possible": [],
@@ -37,32 +36,10 @@
   "citator_adverse_overruled": [],
   "citator_adverse_other": [],
   "case_law_table": {
-   "judgments_with_a_row": 3,
-   "rows": 3,
-   "by_what_the_reporter_marked": {
-    "relied on": 2,
-    "referred to": 1
-   },
-   "recent_relied_on": [
-    {
-     "title": "M/S GIMPEX PRIVATE LIMITED versus MANOJ GOEL",
-     "date": "2021-10-08",
-     "year": 2021,
-     "marked": "relied on",
-     "para": "Para 29",
-     "quote": "[2010] 5 SCR 678 relied on Para 29",
-     "quote_verified": true
-    },
-    {
-     "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD.",
-     "date": "2021-03-01",
-     "year": 2021,
-     "marked": "relied on",
-     "para": "para 46",
-     "quote": "[2010] 5 SCR 678 relied on para 46",
-     "quote_verified": true
-    }
-   ]
+   "judgments_with_a_row": 0,
+   "rows": 0,
+   "by_what_the_reporter_marked": {},
+   "recent_relied_on": []
   },
   "weak_signals_set_aside": 0
  },
@@ -163,7 +140,7 @@
  },
  "how_found": {
   "short": 299,
-  "pair": 15
+  "pair": 10
  },
  "limits": [
   "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",

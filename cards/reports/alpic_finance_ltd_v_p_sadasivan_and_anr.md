@@ -20,7 +20,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **Rajeswar Tiwari & Ors v. Nanda Kishore Roy** (2010-08-19; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > 19) In Alpic Finance Ltd. vs. P. Sadasivan and another (2001) 3 SCC 513, this court reiterated that the complaint must disclose essential ingredients of the offence.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.482 (cited 5x): renumbered; the table marks no substantive change -> BNSS 528
 - CrPC s.93 (cited 2x): renumbered; the table marks no substantive change -> BNSS 96

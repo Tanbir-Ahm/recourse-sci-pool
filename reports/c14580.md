@@ -35,7 +35,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **SHRI DILIP K. BASU ETC.ASHOK K. JOHARI v. STATE OF WEST BENGAL & ORS** (1997-08-01; bench 2; bench compared with the target's: equal; follows; cue: "followed"; speaker: court; confidence high; quote verified: True)
   > O R D E R The following Order of the Court was delivered: WITH WRIT PETITION (CRL) no. 592 OF 1987 O R D E R On December 18, 1996 in D.K. Basu Versus State of West Bengal (1997 (1) SCC 416), this court laid down certain basic "requirements" to be followed in all cases of arrest or detention till legal provisions are made in that behalf as a measure to prevent custodial violence.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - Constitution s.21 (cited 10x): not part of the 2023 recodification
 - Constitution s.22 (cited 3x): not part of the 2023 recodification

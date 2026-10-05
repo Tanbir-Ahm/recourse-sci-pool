@@ -24,7 +24,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 - **ENFORCEMENT DIRECTORATE, GOVERNMENT OF INDIA versus KAPIL WADHAWAN & ANR. ETC** (2023-03-27; bench 3; bench compared with the target's: equal; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
   > In Ravindran(supra) and Bikramjit (supra), which followed the Constitution Bench in Sanjay Dutt(supra) it was rightly held that if the accused persons avail their indefeasible right to default bail before the chargesheet/final report is filed, then such right would not stand frustrated or extinguished by any such subsequent filing.
 
-## Statute dimension (what became of the provisions it turns on)
+## Statute dimension (what became of the sections the judgment cites)
 
 - CrPC s.167 (cited 16x): renumbered; the table marks no substantive change -> BNSS 187
 - Constitution s.21 (cited 6x): not part of the 2023 recodification
