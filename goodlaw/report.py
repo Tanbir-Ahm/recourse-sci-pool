@@ -255,7 +255,7 @@ def render_markdown(b):
             return
         L.extend([f"## {title}", ""])
         for m in items:
-            L.append(f"- {('[' + m['kind'] + '] ') if m.get('kind') else ''}**{m['title']}** ({m['date'] or m['year']}; bench {m['bench_size'] or 'unknown'}, {m['bench_relation']} than the target's; {m['label'].lower().replace('_', ' ')}; cue: \"{m['cue']}\"; speaker: {m['speaker']}; confidence {m['confidence']}; quote verified: {m['quote_verified']})")
+            L.append(f"- {('[' + m['kind'] + '] ') if m.get('kind') else ''}**{m['title']}** ({m['date'] or m['year']}; bench {m['bench_size'] or 'unknown'}; bench compared with the target's: {m['bench_relation']}; {m['label'].lower().replace('_', ' ')}; cue: \"{m['cue']}\"; speaker: {m['speaker']}; confidence {m['confidence']}; quote verified: {m['quote_verified']})")
             L.append(f"  > {m['sentence']}")
             if m.get("repeats"):
                 L.append(f"  (the same wording appears {m['repeats']} more time{'s' if m['repeats'] > 1 else ''} in this judgment)")
