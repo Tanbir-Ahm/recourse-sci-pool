@@ -175,6 +175,27 @@ for sentence, target, why in [
         check(r["hedged"] or r["label"] in NOT_ADVERSE, f"a taken-back cue is hedged: {sentence[:50]}... (got {r['label']}, hedged {r['hedged']})")
 sp = X.sentences("(1) [1963] 3 S.C.R. 338 at 366. 501 The conduct of the appellant in not following the previous decision of the High Court is calculated to create confusion.")
 check(len(sp) == 2, "a footnote's citation line ends its own sentence even when the next page's number follows it")
+for sentence, target, why in [
+    ("State of Assam -Directions to be complied with: (i) In terms of direction contained in para 100.2, it is directed to provide the particulars of cases in which the mandate of Sections 41, 41-A of CrPC and Arnesh Kumar (Supra) has not been followed.", "Arnesh Kumar (Supra)", "non-compliance with T's mandate is not a judgment on T"),
+    ("A two-Judge Bench held that the intervening decisions curtailing the scope of Gurbaksh Singh Sibbia (supra) were per incuriam.", "Gurbaksh Singh Sibbia (supra)", "decisions that curtailed T are what was called per incuriam"),
+    ("While considering the issues referred to a larger Bench, referred to hereinabove, the decision of the Constitution Bench of this Court in Gurbaksh Singh Sibbia (supra) is required to be considered in detail.", "Gurbaksh Singh Sibbia (supra)", "the issues were referred, not T"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE, f"not read as adverse: {why} (got {r['label']}, cue {r['cue']!r})")
+r = run("To test the hypothesis that this Court was wrong in not following the dicta of the Constitution Bench in Lalita Kumari, a reverse process can be employed.", "Lalita Kumari")
+check(r["hedged"] or r["label"] in NOT_ADVERSE, "a hypothesis being tested is hedged")
+r = run("This judgment has been legislatively overruled by Section 142(2) of the Negotiable Instruments Act.", "This judgment")
+check(r["label"] == "LEGISLATIVE", f"'legislatively overruled' is a legislative response, not a judicial overruling (got {r['label']})")
+r = run("However, a five-Judge Bench of this Court in Vijaysinh Chandubha Jadeja v. State of Gujarat reported in (2011) 1 SCC 609, overruled the decisions in Prabha Shankar Dubey (supra) and Joseph Fernandez (supra) and disapproved the concept of substantial compliance.", "Prabha Shankar Dubey (supra)")
+check(r["label"] == "OVERRULES" and r["binding"] == "strong", f"'X, overruled the decisions in T': X before the verb does not make T's reading weak (got {r['label']}, {r['binding']})")
+r = run("Rangappa was followed, while Mohan v. Singh (2001) 3 SCC 4 stands overruled.", "Rangappa")
+check(r["binding"] == "weak", "a case between the target and the cue still makes the reading weak")
+check("PUTTASWAMY" not in X.flatten("held in the matter. JUSTICE K S PUTTASWAMY (RETD) v. UNION OF INDIA [ASHOK BHUSHAN, J.] The Court then said") and "705" not in X.flatten("held. A B C D E F G H 705 The Court said"), "running captions and margin letters of the digital law reports are dropped")
+check(X.flatten("Section 5 applies to A, B and C and the State.") == "Section 5 applies to A, B and C and the State.", "ordinary lettered lists are not mistaken for margin letters")
+r = run("[1954] SCR 1077 partly overruled Para 2 [1964] 1 SCR 332 partly overruled Para 3 [1978] 2 SCR 621 relied on Para 3", "[1978] 2 SCR 621")
+check(r["label"] in NOT_ADVERSE, f"in a case-law table each entry ends at its paragraph number: an earlier entry's 'overruled' is not this one's (got {r['label']})")
+r = run("[1954] SCR 1077 relied on Para 2 [1978] 2 SCR 621 partly overruled Para 3", "[1978] 2 SCR 621")
+check(r["label"] == "OVERRULES", "and an entry's own code still counts")
 
 # and the real ones still fire
 for sentence, target, want in [

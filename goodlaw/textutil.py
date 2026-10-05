@@ -21,11 +21,14 @@ _PAGE_HEADER = re.compile(r"https?://JUDIS\.NIC\.IN\s+SUPREME\s+COURT\s+OF\s+IND
 _FOOTNOTE_CITE = re.compile(r"(?:S\.?\s?C\.?\s?R\.?|S\.?\s?C\.?\s?C\.?|I\.?\s?T\.?\s?R\.?|S\.?\s?T\.?\s?C\.?|A\.?\s?I\.?\s?R\.?(?:\s+\d{4})?\s+S\.?\s?C\.?)\s*\d+(?:\s+at\s+\d+)?$", re.I)   # a footnote's citation line followed by the page number of the next page of text: "[1963] 3 S.C.R. 338 at 366. 501 The conduct ..."
 
 
+_RUNNING_HEAD = re.compile(r"(?:\b[A-H]\s+){4,8}(?:\d{1,4}\s+)?|\b[A-Z][A-Z0-9 .()&',/-]{6,90}?\s+(?:v\.?|versus|vs\.?)\s+[A-Z][A-Z0-9 .()&',/-]{2,60}?\s*\[[A-Z][A-Z .,&'-]{2,45}?,?\s*(?:C\.?J\.?(?:I\.?)?|J\.?|JJ\.?)\]")   # the margin letters "A B C D E F G H 705" and the running caption "JUSTICE K S PUTTASWAMY (RETD) v. UNION OF INDIA [ASHOK BHUSHAN, J.]" of the digital law reports
+
+
 def flatten(text):
     """The text with every run of whitespace (line wraps, page breaks) turned into a single space, and the JUDIS site's running page header
     ("http://JUDIS.NIC.IN SUPREME COURT OF INDIA Page 4 of 6", repeated on every page of the later crawled texts) removed so that it neither
     glues two sentences together nor sits inside a quoted passage."""
-    return re.sub(r"\s+", " ", _PAGE_HEADER.sub(" ", text)).strip()
+    return re.sub(r"\s+", " ", _RUNNING_HEAD.sub(" ", _PAGE_HEADER.sub(" ", text))).strip()
 
 
 def sentences(flat):

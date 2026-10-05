@@ -141,6 +141,10 @@ cv = a["coverage"]
 check(cv["collection_runs_to"] and isinstance(cv["later_years"], list) and "note" in cv, "the coverage block says where the collection ends and how much of the later years it holds")
 check(all(x for x in a["limits"]) and a["generated"] == "2026-10-05", "limits are stated and the date is recorded")
 
+rows = [{"doc_key": "b1", "label": "DISAGREES", "cue": "not been followed"} for _ in range(4)] + [{"doc_key": "b2", "label": "DISAGREES", "cue": "not been followed"}, {"doc_key": "b1", "label": "OVERRULES", "cue": "overruled"}]
+col = R._collapse(rows)
+check(len(col) == 3 and col[0].get("repeats") == 3 and "repeats" not in col[1], "the same wording repeated in one judgment is shown once with a count of the repeats; other judgments and other cues are kept")
+
 md = R.render_markdown(a)
 check("Triage: ADVERSE_SIGNAL" in md and "stands overruled" in md and "What this collection can and cannot see" in md and "## Limits" in md, "the Markdown report shows the triage, the quote, the coverage and the limits")
 check("not lawyer-validated" in md, "the Markdown report carries the source label")

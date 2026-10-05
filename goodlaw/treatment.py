@@ -32,7 +32,7 @@ I = re.I
 RULES = [
     ("OVERRULES", [
         r"\b(?:stand(?:s|ing)?|is|are|was|were|be|been|hereby|also|expressly|accordingly)\s+(?:hereby\s+)?(?:expressly\s+)?over-?\s?rule[ds]?\b",
-        r"\bover-?\s?rul(?:e|es|ed|ing)\b",
+        r"(?<!legislatively )(?<!statutorily )\bover-?\s?rul(?:e|es|ed|ing)\b",
         r"\bno longer (?:a )?good law\b", r"\b(?:is|are|was|were) not (?:a )?good law\b", r"\bnot (?:to be )?(?:treated|regarded|considered) as (?:a )?good law\b",
         r"\bcannot be (?:treated|regarded|considered|said to be) (?:as )?(?:a )?good law\b",
         r"\b(?:does|do|did) not (?:lay down|represent|state|reflect) (?:the )?correct law\b", r"\bdoes not lay down the correct (?:law|proposition)\b",
@@ -58,6 +58,7 @@ RULES = [
         r"\breferred to (?:a |the )?(?:larger|five-?judge|seven-?judge|nine-?judge|three-?judge|constitution) bench\b(?!\s+(?:decision|judgment|ruling|case|opinion|authority|in\b))", r"\bfor (?:re-?consideration|re-?examination)\b", r"\bkept in abeyance\b", r"\bdoubted\b",
     ]),
     ("LEGISLATIVE", [
+        r"\b(?:legislatively|statutorily)\s+(?:over-?\s?rul\w+|nullif\w+|negated|reversed|superseded|set aside|undone|abrogated)\b",
         r"\b(?:Parliament|Legislature|legislature)\b[^.]{0,120}\b(?:amend\w*|inserted|enacted|substituted|overcame|nullif\w+|remov\w+|in response)\b",
         r"\b(?:amend(?:ed|ment)|Amendment Act|inserted|substituted)\b[^.]{0,120}\b(?:in view of|pursuant to|consequent upon|in the wake of|to (?:overcome|nullify|remove|undo|get over|neutralise))\b",
         r"\b(?:overcome|nullif\w+|neutralis\w+|undo\w*|get over)\b[^.]{0,80}\b(?:effect|decision|judgment|ratio)\b",
@@ -109,7 +110,7 @@ def voice(sentence, cue_span, target):
             return "agent"                                            # "T was overruled by X / in X": what follows a passive cue is the overruler, not the overruled
         return "patient"
     if target[1] <= cue_span[0]:                                   # target before an active verb
-        if re.match(r"\s*(?:[;.,:)]|$)", sentence[cue_span[1]:cue_span[1] + 6]):
+        if re.match(r"\s*(?:[;.,:)]|$|Paras?\.?\s*\d)", sentence[cue_span[1]:cue_span[1] + 10]):
             return "patient"                                          # headnote style: "T, [cite], over-ruled." or "T over-ruled, because ..."
         return "agent"
     between = sentence[cue_span[1]:target[0]]
@@ -120,13 +121,14 @@ def voice(sentence, cue_span, target):
     return "patient"                                                  # "overruling T", "overruled the decision in T"
 
 
-_AUTHORITY = re.compile(r"\b(?:ignor\w+|overlook\w+|in ignorance of|disregard\w*(?: of)?|without (?:considering|noticing|referring to|adverting to|taking note of)|contrary to|in (?:conflict|contravention|violation|breach) (?:with|of)|inconsistent with|bypass\w*|failed to (?:consider|notice|follow)|did not (?:consider|notice|follow))\b(?:[\s,]+\w+){0,10}?[\s,]*$", I)
+_AUTHORITY = re.compile(r"\b(?:curtail\w*|dilut\w*|restrict\w*|depart\w* from|deviat\w+ from|ignor\w+|overlook\w+|in ignorance of|disregard\w*(?: of)?|without (?:considering|noticing|referring to|adverting to|taking note of)|contrary to|in (?:conflict|contravention|violation|breach) (?:with|of)|inconsistent with|bypass\w*|failed to (?:consider|notice|follow)|did not (?:consider|notice|follow))\b(?:[\s,]+\w+){0,10}?[\s,]*$", I)
 _PROPOSITION = re.compile(r"\b(?:held|observed|said|stated|decided|ruled|laid down|opined|noted|reiterated|concluded|took the view)\s+that\b", I)
 _BLOCK_BETWEEN = re.compile(r"\b(?:and|reiterated|that|because|since|though|although|but|while|whereas|contention|argument|submission|stand|plea|counsel|learned|held|observed|said|stated|hold|holds|is|was|are|were|has|have|had|been|being|if|when|where|therefore|thus)\b", re.I)
 _BLOCK_BEFORE = re.compile(r"\b(?:because|since|in view of|having regard|therefore|but|while|whereas|when|if|though|although|contention|argument|submission|counsel)\b", re.I)
 
 
 _HELD_IN = re.compile(r"\b(?:held|observed|said|stated|decided|ruled|laid down|opined|noted|reiterated|concluded|pointed out|explained|clarified)\b[^.;]{0,40}?\b(?:in|by)\s+(?:the\s+(?:case|decision|judgment)\s+of\s+)?$", I)
+_COMPLIANCE = re.compile(r"\b(?:mandate|directions?|guidelines?|norms?|procedure|requirements?|safeguards?|dictum|law laid down|principles?)\b", I)
 _LOWER_ACTOR = re.compile(r"\b(?:High Court|Tribunal|Trial Court|trial court|Sessions|Magistrate|learned (?:Single )?Judge|Single Judge|Collector|Commissioner|Government|Board|State|Officer|authorit(?:y|ies)|Municipality|Corporation|accused|appellants?|respondents?|assessee|courts below|Court of Appeal|first appellate)\b", I)   # who "did not follow T": a body bound by T, so T is the authority it ignored
 _DOUBLE_NEG = re.compile(r"\b(?:not|never|cannot|hardly)\b[^.;]{0,60}?\b(?:justified|right|entitled|inclined|free|at liberty|able|competent)\s+in\s+not\s*$", I)
 _PRONOUN_SUBJECT = re.compile(r"\b(?:but|and|yet|however|though|while)\s+(?:it|this|that|the same)\s+(?:was|has been|had been|is|were)\s*$", I)
@@ -156,6 +158,8 @@ def attached(sentence, span, target):
             return True                                               # a law report's list entry: "T, [1950] S.C.R. 88, held incorrect."
         return len(between) <= 80 and not re.search(r"[;,]", between) and not _BLOCK_BEFORE.search(between)
     between = sentence[span[1]:target[0]]                             # cue first, then the target
+    if "," in between and re.match(r"referred", sentence[span[0]:span[1]], I):
+        return False                                                  # "the issues referred to a larger Bench, referred to hereinabove, the decision in T is to be considered"
     m = re.search(r"\bthat\s+(?:the|its|their|this)\s+(?:decision|view|judgment|ruling|reasoning|ratio|holding)\b(?:\s+\w+){0,4}\s+(?:in|of|by)\s*$", between, re.I)
     if m and len(between[:m.start()].split()) <= 3 and "," not in between[:m.start()]:
         between = re.sub(r"\bthat\b", "", between, count=1, flags=re.I)     # "felt that the decision of this Court in T might need reconsideration" (not "unable to agree with the view of Judge J that the ratio in T ...")
@@ -168,7 +172,7 @@ _NOT_A_NEGATION = re.compile(r"\b(?:hesitat\w*|cannot but|can not but|not only|b
 _NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$", I)
 _HEDGE = re.compile(r"\b(?:if|whether|unless|until|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
                     r"possib\w+|might|may|could|would|should|question (?:of|whether))\b(?:[\s,.]+\w+){0,10}[\s,]*$", I)
-_REPORTED = re.compile(r"\b(?:if|whether|unless|suggest\w*|criticism|argue\w*|contend\w*|contention\w*|negativ\w+|challeng\w+|submit\w*|urge\w*|plea\w*|alleg\w+|claim\w*|counsel|(?:neither|no|nor|without)\s+(?:the\s+)?(?:need|necessity|occasion))\b", I)
+_REPORTED = re.compile(r"\b(?:if|whether|unless|suggest\w*|criticism|hypothes\w+|argue\w*|contend\w*|contention\w*|negativ\w+|challeng\w+|submit\w*|urge\w*|plea\w*|alleg\w+|claim\w*|counsel|(?:neither|no|nor|without)\s+(?:the\s+)?(?:need|necessity|occasion))\b", I)
 
 
 _HEDGE_AFTER = re.compile(r"^[^.;]{0,60}?\b(?:open to doubt|is doubtful|are doubtful|doubtful whether|questionable|debatable|not free from doubt|(?:was|were|is|are|has been|have been)\s+(?:\w+\s+){0,2}?(?:repelled|rejected|negatived|repulsed|turned down|refuted|not accepted))\b", I)
@@ -210,6 +214,8 @@ def _separated(span, target, sentence):
     """True if a semicolon lies between the cue and the target: in a law report's list of cases ("A, over-ruled; B, referred to") each clause is about its own case."""
     lo, hi = (span[1], target[0]) if span[0] < target[0] else (target[1], span[0])
     between = sentence[lo:hi]
+    if re.search(r"\bParas?\.?\s*\d", between):
+        return True                                                   # the digital law reports' case-law tables: "[cite] overruled Para 2 [cite] relied on Para 3": each entry ends at its paragraph number
     return ";" in between or bool(re.search(r"\[\d{1,4}\s?[A-Z](?:\s?-\s?[A-Z0-9]+)?(?:\s?;[^\]]*)?\]", between))   # a semicolon, or a law report's paragraph reference such as [128A-C] or [570 G; 571 A] (a year in brackets, [1969], is a citation, not a paragraph reference)
 
 
@@ -225,7 +231,7 @@ _COORD = re.compile(r"\s*(?:,|;|and|&|as well as|as also|and also|also|,\s*and)?
 
 
 def _binding(cue, others, target, sentence):
-    """'weak' when another case, not coordinated with the target, is nearer to the cue than the target is (the cue may be about that other
+    """'weak' when another case, not coordinated with the target, lies between the cue and the target (the cue may be about that other
     case); 'strong' otherwise. Mentions joined by 'and', '&' or commas, with or without citations, count as one group ("A, B and C stand overruled")."""
     lo, hi = target
     mentions = sorted(others)
@@ -241,7 +247,16 @@ def _binding(cue, others, target, sentence):
                 lo, changed = s, True
     group = (lo, hi)
     d_group = _distance(cue, group)
-    return "weak" if any(not (lo <= s and e <= hi) and _distance(cue, (s, e)) <= d_group for s, e in mentions) else "strong"
+    def competing(s, e):
+        """Only a case lying between the cue and the target group can steal the cue; "X overruled T" has X before the cue, as the verb's other argument."""
+        if lo <= s and e <= hi:
+            return False
+        if group[0] >= cue[1]:
+            return cue[1] <= s and e <= group[0]
+        if group[1] <= cue[0]:
+            return group[1] <= s and e <= cue[0]
+        return False
+    return "weak" if any(competing(s, e) for s, e in mentions) else "strong"
 
 
 def classify(sentence, target):
@@ -267,6 +282,12 @@ def classify(sentence, target):
                         found.append({"label": "FOLLOWS", "was": "FOLLOWS", "cue": "not justified in not following", "cue_span": span, "negated": False, "hedged": False,
                                       "binding": _binding(span, others, target, sentence), "distance": _distance(span, target)})
                         continue                                      # "we will not be justified in not following T": a double negative, T is followed
+                    if (neg_start >= target[1] and _COMPLIANCE.search(sentence[max(0, target[0] - 160):target[0]])
+                            and re.search(r"\b(?:has|have|had)\s+(?:not|never)\s+been\s+$", sentence[max(0, span[0] - 30):span[0]], I)
+                            and not re.match(r"\s*(?:by|in)\b", sentence[span[1]:span[1] + 10], I)):
+                        found.append({"label": "FOLLOWS", "was": "DISAGREES", "cue": "mandate not complied with (T is the authority)", "cue_span": span, "negated": False, "hedged": False,
+                                      "binding": _binding(span, others, target, sentence), "distance": _distance(span, target)})
+                        continue                                      # "cases in which the mandate of Sections 41, 41-A and T has not been followed": non-compliance with T, not a judgment on T
                     if (neg_start < target[0] and re.search(r"\b(?:has|have|had|did|does|do)\s*$", sentence[max(0, neg_start - 12):neg_start], I)
                             and _LOWER_ACTOR.search(sentence[max(0, neg_start - 100):neg_start])):
                         found.append({"label": "FOLLOWS", "was": "DISAGREES", "cue": "has not followed (T is the authority)", "cue_span": span, "negated": False, "hedged": False,
@@ -275,7 +296,7 @@ def classify(sentence, target):
                     if not (attached(sentence, (neg_start, span[1]), target)
                             or (neg_start >= target[1] and neg_start - target[1] <= 100 and _PRONOUN_SUBJECT.search(sentence[target[1]:neg_start]))):
                         continue                                      # "the affidavit has not been affirmed by the deponent": the negated verb is not about the target
-                    found.append({"label": "DISAGREES", "was": "FOLLOWS", "cue": _NEG_FOLLOW.search(before).group(0) + m.group(0), "cue_span": span, "negated": False, "hedged": bool(_HEDGE.search(before)),
+                    found.append({"label": "DISAGREES", "was": "FOLLOWS", "cue": _NEG_FOLLOW.search(before).group(0) + m.group(0), "cue_span": span, "negated": False, "hedged": bool(_HEDGE.search(before)) or is_hedged(sentence, neg_start) or is_hedged_after(sentence, span[1]),
                                   "binding": _binding(span, others, target, sentence), "distance": _distance(span, target)})
                     continue
                 # cues that already contain a negation ("not good law", "not borne out") are not flipped by it
@@ -361,7 +382,7 @@ def classify_in_context(sentence, target, next_sentence=""):
         m = _ANAPHOR.match(next_sentence)
         if m:
             d = classify(next_sentence, (0, m.end()))
-            if d["label"] in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS") and not d["negated"] and d["distance"] is not None:
+            if d["label"] in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS", "LEGISLATIVE") and not d["negated"] and d["distance"] is not None:
                 d = dict(d)
                 d.update(anaphoric=True, binding="weak", all=c["all"] + [(d["label"], d["cue"])])
                 return d

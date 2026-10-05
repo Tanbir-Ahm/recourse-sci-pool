@@ -134,6 +134,20 @@ def triage(summary):
     return "INSUFFICIENT"
 
 
+def _collapse(items):
+    """One entry per (judgment, label, cue): a judgment that repeats the same sentence pattern many times (a table of directions, each ending 'has not been followed') shows
+    the first and a count of the others."""
+    out, seen = [], {}
+    for m in items:
+        key = (m["doc_key"], m["label"], (m["cue"] or "").lower())
+        if key in seen:
+            seen[key]["repeats"] = seen[key].get("repeats", 0) + 1
+        else:
+            seen[key] = m
+            out.append(m)
+    return out
+
+
 def build_bundle(corpus, target, doc=None, today=None):
     today = today or date.today().isoformat()
     res = M.find_mentions(corpus, target)
@@ -188,6 +202,7 @@ def build_bundle(corpus, target, doc=None, today=None):
             b["weak"] = weak
             adverse_possible.append(b)
 
+    adverse_strong, adverse_possible, legislative, not_courts_own = (_collapse(x) for x in (adverse_strong, adverse_possible, legislative, not_courts_own))
     citator = citator_block(corpus, doc) if doc else []
     citator_overruled = [c for c in citator if c["code"] in ("O", "HO")]
     citator_other = [c for c in citator if c["code"] == "NF"]
@@ -242,6 +257,8 @@ def render_markdown(b):
         for m in items:
             L.append(f"- {('[' + m['kind'] + '] ') if m.get('kind') else ''}**{m['title']}** ({m['date'] or m['year']}; bench {m['bench_size'] or 'unknown'}, {m['bench_relation']} than the target's; {m['label'].lower().replace('_', ' ')}; cue: \"{m['cue']}\"; speaker: {m['speaker']}; confidence {m['confidence']}; quote verified: {m['quote_verified']})")
             L.append(f"  > {m['sentence']}")
+            if m.get("repeats"):
+                L.append(f"  (the same wording appears {m['repeats']} more time{'s' if m['repeats'] > 1 else ''} in this judgment)")
             if m.get("why_not_a_clean_overruling"):
                 L.append(f"  Why not a clean overruling: {'; '.join(m['why_not_a_clean_overruling'])}.")
         L.append("")
