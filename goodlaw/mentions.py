@@ -103,7 +103,7 @@ class Target:
 
 
 # ---------------------------------------------------------------- who is speaking
-_COUNSEL = re.compile(r"\b(?:learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|"
+_COUNSEL = re.compile(r"\b(?:learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
                       r"(?:Mr|Ms|Mrs|Dr|Shri|Sri)\.? [A-Z][\w.]*(?: [A-Z][\w.]*)*,? (?:learned )?(?:senior )?(?:counsel|advocate)|"
                       r"(?:arguments?|submissions?|contentions?) (?:in support of|advanced|addressed)|in support of the (?:submission|contention)|addressed (?:elaborate |lengthy |detailed )?arguments|appearing (?:also )?for the|"
                       r"submitted that|submits that|contended that|contends that|argued that|argues that|urged that|urges that|placed (?:strong )?reliance|"

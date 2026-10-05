@@ -196,6 +196,20 @@ r = run("[1954] SCR 1077 partly overruled Para 2 [1964] 1 SCR 332 partly overrul
 check(r["label"] in NOT_ADVERSE, f"in a case-law table each entry ends at its paragraph number: an earlier entry's 'overruled' is not this one's (got {r['label']})")
 r = run("[1954] SCR 1077 relied on Para 2 [1978] 2 SCR 621 partly overruled Para 3", "[1978] 2 SCR 621")
 check(r["label"] == "OVERRULES", "and an entry's own code still counts")
+# wording from the held-out half's wrong readings, added after that half had been scored once (so these fixes are not measured on it)
+for sentence, target, what in [
+    ("This view was neither overruled nor departed from in the Safdarjung Hospital case (supra).", "Safdarjung Hospital case", "'neither overruled nor'"),
+    ("It cannot be said that the decision in Laxman Pimputkar's case can be deemed to have overruled by necessary implication the view of the High Court.", "Laxman Pimputkar's case", "'cannot be said that ... overruled'"),
+    ("We are not prepared to hold that the decision in Shantilal Mangaldas's case is overruled by the Bank Nationalisation case.", "Shantilal Mangaldas's case", "'not prepared to hold that ... overruled'"),
+    ("The majority decision in Chiranjit Lal Chowdhuri's case has binding force till it is reconsidered or overruled by this Court.", "Chiranjit Lal Chowdhuri's case", "'till it is ... overruled'"),
+    ("The decisions in U.P. Warehousing Corporation and Indian Airlines Corporation are in direct conflict with the decision of this Court in Naraindas Barot v. S.T.C. and are wrongly decided.", "Naraindas Barot v. S.T.C.", "'in direct conflict with T'"),
+    ("The petitioners pray for reconsideration of the three decisions in S.G. Jaisinghani v. Union of India.", "S.G. Jaisinghani v. Union of India", "a prayer"),
+    ("For these reasons the contention put forward by Mr. Dikshit in Man Industrial Corporation's case on this score is overruled.", "Man Industrial Corporation's case", "an overruled contention"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE or r["hedged"], f"not a clean adverse reading: {what} (got {r['label']}, hedged {r['hedged']}, cue {r['cue']!r})")
+import goodlaw.mentions as _M
+check(_M.speaker("The Attorney General referred to a number of earlier decisions wanting us to infer that the observations did not state the correct law.", "", False)[0] == "counsel", "the Attorney General referring to decisions is counsel's voice")
 
 # and the real ones still fire
 for sentence, target, want in [

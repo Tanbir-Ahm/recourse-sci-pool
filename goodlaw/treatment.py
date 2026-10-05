@@ -121,7 +121,7 @@ def voice(sentence, cue_span, target):
     return "patient"                                                  # "overruling T", "overruled the decision in T"
 
 
-_AUTHORITY = re.compile(r"\b(?:curtail\w*|dilut\w*|restrict\w*|depart\w* from|deviat\w+ from|ignor\w+|overlook\w+|in ignorance of|disregard\w*(?: of)?|without (?:considering|noticing|referring to|adverting to|taking note of)|contrary to|in (?:conflict|contravention|violation|breach) (?:with|of)|inconsistent with|bypass\w*|failed to (?:consider|notice|follow)|did not (?:consider|notice|follow))\b(?:[\s,]+\w+){0,10}?[\s,]*$", I)
+_AUTHORITY = re.compile(r"\b(?:curtail\w*|dilut\w*|restrict\w*|depart\w* from|deviat\w+ from|ignor\w+|overlook\w+|in ignorance of|disregard\w*(?: of)?|without (?:considering|noticing|referring to|adverting to|taking note of)|contrary to|in (?:(?:direct|open|complete|clear|sharp)\s+)?(?:conflict|contravention|violation|breach) (?:with|of)|inconsistent with|bypass\w*|failed to (?:consider|notice|follow)|did not (?:consider|notice|follow))\b(?:[\s,]+\w+){0,10}?[\s,]*$", I)
 _PROPOSITION = re.compile(r"\b(?:held|observed|said|stated|decided|ruled|laid down|opined|noted|reiterated|concluded|took the view)\s+that\b", I)
 _BLOCK_BETWEEN = re.compile(r"\b(?:and|reiterated|that|because|since|though|although|but|while|whereas|contention|argument|submission|stand|plea|counsel|learned|held|observed|said|stated|hold|holds|is|was|are|were|has|have|had|been|being|if|when|where|therefore|thus)\b", re.I)
 _BLOCK_BEFORE = re.compile(r"\b(?:because|since|in view of|having regard|therefore|but|while|whereas|when|if|though|although|contention|argument|submission|counsel)\b", re.I)
@@ -169,10 +169,10 @@ def attached(sentence, span, target):
 _RELATIONAL = re.compile(r"\b(?:(?:not|nor) (?:in )?(?:consonance|conformity|accord|keeping|line) with|runs? counter to|contrary to the)\b", I)
 _NEG_FOLLOW = re.compile(r"\b(?:not|never|cannot|can not|nor|unable to|neither)\s+(?:be\s+|been\s+|being\s+|have\s+|has\s+|had\s+|to\s+)?(?:at all\s+)?$", I)
 _NOT_A_NEGATION = re.compile(r"\b(?:hesitat\w*|cannot but|can not but|not only|but also|not merely|no doubt|not (?:be )?(?:unmindful|oblivious))\b[^.]{0,25}$", I)
-_NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$", I)
-_HEDGE = re.compile(r"\b(?:if|whether|unless|until|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
+_NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|neither|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$|\b(?:cannot|can not|could not|not|never)\s+be\s+(?:said|held|regarded|understood|construed|inferred|read)\s+(?:to|that)\b[^.;]{0,100}$|\b(?:not|never)\s+(?:prepared|willing|inclined|able)\s+to\s+(?:hold|say|accept|agree)\s+that\b[^.;]{0,100}$", I)
+_HEDGE = re.compile(r"\b(?:if|whether|unless|until|till|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
                     r"possib\w+|might|may|could|would|should|question (?:of|whether))\b(?:[\s,.]+\w+){0,10}[\s,]*$", I)
-_REPORTED = re.compile(r"\b(?:if|whether|unless|suggest\w*|criticism|hypothes\w+|argue\w*|contend\w*|contention\w*|negativ\w+|challeng\w+|submit\w*|urge\w*|plea\w*|alleg\w+|claim\w*|counsel|(?:neither|no|nor|without)\s+(?:the\s+)?(?:need|necessity|occasion))\b", I)
+_REPORTED = re.compile(r"\b(?:if|whether|unless|till|until|pray\w*|suggest\w*|criticism|hypothes\w+|argue\w*|contend\w*|contention\w*|negativ\w+|challeng\w+|submit\w*|urge\w*|plea\w*|alleg\w+|claim\w*|counsel|(?:neither|no|nor|without)\s+(?:the\s+)?(?:need|necessity|occasion))\b", I)
 
 
 _HEDGE_AFTER = re.compile(r"^[^.;]{0,60}?\b(?:open to doubt|is doubtful|are doubtful|doubtful whether|questionable|debatable|not free from doubt|(?:was|were|is|are|has been|have been)\s+(?:\w+\s+){0,2}?(?:repelled|rejected|negatived|repulsed|turned down|refuted|not accepted))\b", I)
@@ -195,7 +195,7 @@ def is_hedged(sentence, cue_start):
     return bool(_HEDGE.search(sentence[max(0, cue_start - 90):cue_start]))
 
 
-_NOT_ABOUT_CASE = re.compile(r"\bover-?\s?rul\w*\s+(?:the |that |this |his |her |their |any |all )?(?:objections?|plea|contention|ground|submission|argument|claim|preliminary|order of|decision of the (?:trial|learned|single))", I)
+_NOT_ABOUT_CASE = re.compile(r"\bover-?\s?rul\w*\s+(?:the |that |this |his |her |their |any |all )?(?:objections?|plea|contention|ground|submission|argument|claim|preliminary|order of|decision of the (?:trial|learned|single))|\b(?:contentions?|objections?|pleas?|submissions?|arguments?|grounds?)\b[^.;]{0,80}\b(?:is|are|was|were|stands?)\s+(?:hereby\s+)?over-?\s?rul", I)
 _OTHER_CASE = re.compile(r"\b[A-Z][\w.'&-]*(?:\s+[A-Za-z.'&()-]+){0,5}?\s+(?:v\.?|vs\.?|versus)\s+[A-Z]")
 
 
@@ -274,7 +274,7 @@ def classify(sentence, target):
                 if label == "DOUBTS_REFERS" and re.match(r"correctness of", m.group(0), I) and _AFFIRMING.search(sentence[max(0, m.start() - 40):m.start()]):
                     continue                                              # "affirmed the correctness of the decision in T" supports T
                 before = sentence[max(0, m.start() - 45):m.start()]
-                negated = bool(_NEGATION.search(before)) and label in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS", "DISTINGUISHES")
+                negated = bool(_NEGATION.search(sentence[max(0, m.start() - 140):m.start()])) and label in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS", "DISTINGUISHES")
                 if (label == "FOLLOWS" and _NEG_FOLLOW.search(before) and not _NOT_A_NEGATION.search(before)
                         and not re.match(r"in (?:consonance|conformity|accord|line|keeping)\b", m.group(0), I)):      # those are handled as relational cues
                     neg_start = span[0] - len(_NEG_FOLLOW.search(before).group(0))
