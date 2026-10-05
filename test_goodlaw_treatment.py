@@ -266,6 +266,24 @@ r = T.classify_in_context(S1, (i, i + len("Angad Kol's case (supra)")), "Thus, t
 check(not r["anaphoric"], "a next sentence that does not point back at the case adds nothing")
 r = T.classify_in_context(S1, (i, i + len("Angad Kol's case (supra)")), "The decision of the High Court in Sharma was per incuriam of the Constitution Bench.")
 check(not r["anaphoric"], "a bare 'The decision ...' with no concluding marker is not taken to be about the case")
+# false alarms found by reading the checker's flagged cards for Recourse's own library (each sentence is real wording from a judgment)
+NOT_LEGISLATIVE = NOT_ADVERSE
+for sentence, target, why in [
+    ("This, undoubtedly, is the position even under the decision in Shreya Singhal (supra) which has read down Section 79(3)(b) and the Intermediary Rules already noted.", "Shreya Singhal (supra)", "'undoubtedly' is not 'undo'"),
+    ("Siddharam Satlingappa Mhetre v. State of Maharashtra is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).", "Sushila Aggarwal (supra)", "'its overruling in T': T did the overruling"),
+    ("In 2020 a three-judges Bench answered a Reference Order in Tofan Singh v. State of Tamil Nadu42 and re-examined the ratio of Kanhaiyalal33 (supra) and Raj Kumar Karwal35 (supra).", "Tofan Singh v. State of Tamil Nadu42", "the case that re-examined others is not itself re-examined"),
+    ("For all these reasons, we do not accede either to Shri Puneet Jain's argument to refer Mukesh Singh (supra) to a larger Bench for reconsideration, or to Shri Lekhi's argument based on the same judgment.", "Mukesh Singh (supra)", "a refusal to refer is not a doubt"),
+    ("Later judgments such as Noor Aga (supra) ought to be overruled by us, inasmuch as they are contrary to several Constitution Bench judgments of this Court.", "Noor Aga (supra)", None),
+]:
+    r = run(sentence, target)
+    if why:
+        check(r["label"] in NOT_ADVERSE and r["label"] != "LEGISLATIVE", f"not read as a warning: {why} (got {r['label']}, cue {r['cue']!r})")
+    else:
+        check(r["hedged"], f"'ought to be overruled' is hedged (got {r['label']}, hedged {r['hedged']})")
+r = run("We decline to accept the submission that Noor Aga (supra) is no longer good law.", "Noor Aga (supra)")
+check(r["label"] in NOT_ADVERSE, f"declining to accept that a case is no longer good law leaves it standing (got {r['label']})")
+r = run("Siddharam Satlingappa Mhetre v. State of Maharashtra was overruled in Sushila Aggarwal (supra) to that extent.", "Siddharam Satlingappa Mhetre v. State of Maharashtra")
+check(r["label"] == "OVERRULES", "and the case that was overruled is still read as overruled")
 
 # and the real ones still fire
 for sentence, target, want in [

@@ -116,7 +116,7 @@ class Target:
 
 
 # ---------------------------------------------------------------- who is speaking
-_COUNSEL = re.compile(r"\b(?:(?:reliance|stand|plea|grievance|contention|argument|submission|case) (?:placed )?(?:of|by|taken by) (?:Mr|Ms|Mrs|Shri|Dr)\.? [A-Z]\w*|(?:stand|plea|case|contention|submission|argument) of the (?:State|appellants?|respondents?|petitioners?|Union|Government|Revenue|Department)\b|learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
+_COUNSEL = re.compile(r"\b(?:according to (?:him|her|them)|(?:he|she|they) (?:further |also |then |in turn )?(?:argued|submitted|contended|urged|pointed out|referred to|relied)|(?:reliance|stand|plea|grievance|contention|argument|submission|case) (?:placed )?(?:of|by|taken by) (?:Mr|Ms|Mrs|Shri|Dr)\.? [A-Z]\w*|(?:stand|plea|case|contention|submission|argument) of the (?:State|appellants?|respondents?|petitioners?|Union|Government|Revenue|Department)\b|learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
                       r"(?:Mr|Ms|Mrs|Dr|Shri|Sri)\.? [A-Z][\w.]*(?: [A-Z][\w.]*)*,? (?:learned )?(?:senior )?(?:counsel|advocate)|"
                       r"(?:arguments?|submissions?|contentions?) (?:in support of|advanced|addressed)|in support of the (?:submission|contention)|addressed (?:elaborate |lengthy |detailed )?arguments|appearing (?:also )?for the|"
                       r"submitted that|submits that|contended that|contends that|argued that|argues that|urged that|urges that|placed (?:strong )?reliance|"
@@ -200,6 +200,10 @@ def extract(text, target, short_names=(), body_start=None, known_cites=None, par
     if pair:
         for m in pair.finditer(flat):
             s, e = m.start(), m.end()
+            before = [(k, a, b) for k, a, b in cites if 0 <= s - b <= 6]
+            if before and not any(C.keys_match(before[-1][0], kk) for kk in known) and not _compatible_year(before[-1][0], target.year):
+                conflict.append((before[-1][1], e))
+                continue              # "[2024] 6 S.C.R. 907 Karnail Singh v. State of Haryana": the running page header of a later judgment with the same parties
             after = [(k, a, b) for k, a, b in cites if 0 <= a - e <= 90]
             if after:
                 k = after[0][0]

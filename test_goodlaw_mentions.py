@@ -153,6 +153,19 @@ check(fnd and fnd[0]["matched"].startswith("Town Municipal Council, Athani v. Pr
 check(M.clean_party("No. 6290/2007) American Hotel & Lodging Association Educational Institute") == "American Hotel & Lodging Association Educational Institute", "a case number left on the front of a title is dropped")
 check(M.clean_party("Mohan Lal") == "Mohan Lal" and M.clean_party("M/s. No. 1 Traders") != "", "ordinary names are untouched")
 
+# the page header of a later judgment with the same parties is not a mention
+T3 = M.Target("KARNAIL SINGH", "STATE OF HARYANA", 2009, [], date="2009-09-10", doc_key="c35186")
+hdr = "[2024] 6 S.C.R. 907 Karnail Singh v. State of Haryana & Ors. (v) A review is by no means an appeal in disguise whereby an erroneous decision is reheard and corrected."
+fnd, _ = M.extract(hdr, T3, [])
+check(fnd == [], "a citation of another year just before the names marks a later judgment's page header, not a mention of the case")
+fnd, _ = M.extract("In Karnail Singh v. State of Haryana the Court held that compliance with the procedure is mandatory in every case where a search is made without a gazetted officer being present. [2024] 6 S.C.R. 907", T3, [])
+check(len(fnd) == 1, "a genuine mention before a page number is kept")
+fnd, _ = M.extract("The law was laid down in Karnail Singh v. State of Haryana, (2009) 8 SCC 539.", M.Target("KARNAIL SINGH", "STATE OF HARYANA", 2009, ["scc:2009:8:539"], doc_key="c35186"), [])
+check(len(fnd) >= 1, "and a mention with the case's own citation is kept")
+check(M.speaker("Later judgments such as Noor Aga (supra) ought to be overruled by us.", "According to him, the reference order was flawed.", False)[0] == "counsel", "a sentence after 'According to him ...' is counsel's")
+check(M.speaker("He further argued that the judgment does not need reconsideration.", "", False)[0] == "counsel", "'He further argued' is counsel's")
+check(M.speaker("We hold that the judgment was wrong.", "According to him, it was right.", False)[0] == "court", "but a sentence in the court's own voice stays the court's")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")

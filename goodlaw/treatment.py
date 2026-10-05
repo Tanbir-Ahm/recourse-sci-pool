@@ -63,7 +63,7 @@ RULES = [
         r"\b(?:legislatively|statutorily)\s+(?:over-?\s?rul\w+|nullif\w+|negated|reversed|superseded|set aside|undone|abrogated)\b",
         r"\b(?:Parliament|Legislature|legislature)\b[^.]{0,120}\b(?:amend\w*|inserted|enacted|substituted|overcame|nullif\w+|remov\w+|in response)\b",
         r"\b(?:amend(?:ed|ment)|Amendment Act|inserted|substituted)\b[^.]{0,120}\b(?:in view of|pursuant to|consequent upon|in the wake of|to (?:overcome|nullify|remove|undo|get over|neutralise))\b",
-        r"\b(?:overcome|nullif\w+|neutralis\w+|undo\w*|get over)\b[^.]{0,80}\b(?:effect|decision|judgment|ratio)\b",
+        r"\b(?:overcome|nullif\w+|neutralis\w+|undo(?:es|ing|ne)?|get over)\b[^.]{0,80}\b(?:effect|decision|judgment|ratio)\b",
     ]),
     ("DISTINGUISHES", [
         r"\bdistinguish(?:ed|able|ing|es)?\b", r"\b(?:has|have) no application\b", r"\b(?:is|are) not applicable\b", r"\binapplicable\b", r"\bnot attracted\b",
@@ -123,6 +123,8 @@ def voice(sentence, cue_span, target):
             return "patient"                                          # "T, [cite], over-ruled in [cite]": the overruler is cited after the verb
         return "agent"
     between = sentence[cue_span[1]:target[0]]
+    if re.match(r"\s*(?:in|by)\s*$", between):
+        return "agent"                                                # "its partial overruling in T", "overruled by T": T is the case that did it
     if _GROUND.search(between[-60:]):
         return "agent"                                                # "overruled X in view of T": T is the reason, not the case overruled
     if "," in between or re.search(r"\b(?:and|but|while|whereas|which|that|held|holding|observed|said|stated|decided|ruled)\b", between, I):
@@ -162,8 +164,8 @@ def attached(sentence, span, target):
     if span[0] >= target[1] and (_DECISION_IDIOM.fullmatch(sentence[span[0]:span[1]].strip()) or _DECISION_IDIOM.search(sentence[span[0]:span[1]])):
         return True                                                   # these idioms judge a decision they follow; the distance and clause checks are enough (before the target the usual between-checks apply)
     if span[0] >= target[1]:                                          # target first, then the cue
-        if re.search(r"(?:correctness|soundness) of (?:the |that )?(?:view|decision|judgment|ratio)$", sentence[span[0]:span[1]], I) and any(span[1] <= a <= span[1] + 40 for a, _ in _other_mentions(sentence, target)):
-            return False                                              # "T contains observations which throw doubt on the correctness of the decision in X": X is the object
+        if re.search(r"(?:decision|view|ratio|judgment|judgement|case|opinion|holding)s?$", sentence[span[0]:span[1]].strip(), I) and any(span[1] <= a <= span[1] + 40 for a, _ in _other_mentions(sentence, target)):
+            return False                                              # "T contains observations which throw doubt on the correctness of the decision in X", "T ... re-examined the ratio of X": X is the object
         between = sentence[target[1]:span[0]]
         if not re.sub(r"\[[^\]]*\]|\([^)]*\)|\d+|S\.?\s?C\.?\s?R\.?|SCC|AIR|SC|Supp\w*|Suppl|\b(?:" + _HEADNOTE_WORDS + r")\b|[\s,.;:=&]+", "", between, flags=re.I):
             return True                                               # a law report's list entry: "T, [1950] S.C.R. 88, held incorrect."
@@ -181,9 +183,10 @@ def attached(sentence, span, target):
 
 _RELATIONAL = re.compile(r"\b(?:(?:not|nor) (?:in )?(?:consonance|conformity|accord|keeping|line) with|runs? counter to|contrary to the)\b", I)
 _NEG_FOLLOW = re.compile(r"\b(?:not|never|cannot|can not|nor|unable to|neither)\s+(?:be\s+|been\s+|being\s+|have\s+|has\s+|had\s+|to\s+)?(?:at all\s+)?$", I)
+_REJECTING = re.compile(r"\b(?:(?:do|does|did)\s+not\s+accede|decline[sd]?|refuse[sd]?|not\s+(?:inclined|persuaded|prepared)|reject(?:s|ed)?\s+the\s+(?:submission|contention|argument|plea|claim)|negativ(?:e|ed)\s+the\s+(?:submission|contention|argument|plea|claim))\b[^.;]{0,140}$", I)
 _NOT_A_NEGATION = re.compile(r"\b(?:hesitat\w*|cannot but|can not but|not only|but also|not merely|no doubt|not (?:be )?(?:unmindful|oblivious))\b[^.]{0,25}$", I)
-_NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|neither|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$|\b(?:cannot|can not|could not|not|never)\s+be\s+(?:said|held|regarded|understood|construed|inferred|read)\s+(?:to|that)\b[^.;]{0,100}$|\b(?:not|never)\s+(?:prepared|willing|inclined|able)\s+to\s+(?:hold|say|accept|agree)\s+that\b[^.;]{0,100}$|\b(?:nothing|no\s+\w+)\b[^.;]{0,80}\b(?:can|could|would)\s+be\s+(?:said|held|regarded|treated)\s+to\s+be\s*$", I)
-_HEDGE = re.compile(r"\b(?:if|in case|in the event|whether|unless|until|till|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
+_NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|neither|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$|\b(?:cannot|can not|could not|not|never)\s+be\s+(?:said|held|regarded|understood|construed|inferred|read)\s+(?:to|that)\b[^.;]{0,100}$|\b(?:not|never)\s+(?:prepared|willing|inclined|able)\s+to\s+(?:hold|say|accept|agree)\s+that\b[^.;]{0,100}$|\b(?:nothing|no\s+\w+)\b[^.;]{0,80}\b(?:can|could|would)\s+be\s+(?:said|held|regarded|treated)\s+to\s+be\s*$|\b(?:do|does|did)\s+not\s+accede\b[^.;]{0,140}$|\b(?:decline[sd]?|refuse[sd]?|not\s+(?:inclined|persuaded|prepared))\b[^.;]{0,140}$", I)
+_HEDGE = re.compile(r"\b(?:if|in case|in the event|ought|whether|unless|until|till|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
                     r"possib\w+|might|may|could|would|should|question (?:of|whether))\b(?:[\s,.]+\w+){0,10}[\s,]*$", I)
 _REPORTED = re.compile(r"\b(?:if|in case|in the event|whether|unless|till|until|pray\w*|suggest\w*|criticism|hypothes\w+|argue\w*|contend\w*|contention\w*|negativ\w+|challeng\w+|submit\w*|urge\w*|plea\w*|alleg\w+|claim\w*|counsel|(?:neither|no|nor|without)\s+(?:the\s+)?(?:need|necessity|occasion))\b", I)
 
@@ -319,9 +322,9 @@ def classify(sentence, target):
                     found.append({"label": "DISAGREES", "was": "FOLLOWS", "cue": _NEG_FOLLOW.search(before).group(0) + m.group(0), "cue_span": span, "negated": False, "hedged": bool(_HEDGE.search(before)) or is_hedged(sentence, neg_start) or is_hedged_after(sentence, span[1]),
                                   "binding": _binding(span, others, target, sentence), "distance": _distance(span, target)})
                     continue
-                # cues that already contain a negation ("not good law", "not borne out") are not flipped by it
+                # cues that already contain a negation ("not good law", "not borne out") are not flipped by a nearby 'not', but a rejection of the whole proposition still flips them
                 if re.match(r"(?:not|no longer|neither|cannot|do(?:es)? not|did not|is not|are not|was not|were not)\b", m.group(0), I) or re.search(r"\bnot\b", m.group(0), I):
-                    negated = False
+                    negated = bool(_REJECTING.search(sentence[max(0, m.start() - 140):m.start()])) and label in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS", "DISTINGUISHES")
                 hedged = is_hedged(sentence, m.start()) or is_hedged_after(sentence, m.end())
                 binding = _binding(span, others, target, sentence)
                 if label in ("OVERRULES", "DISAGREES") and span[1] <= target[0] and _IGNORED_MID.search(sentence[span[1]:target[0]]):
