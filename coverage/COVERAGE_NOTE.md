@@ -54,11 +54,13 @@ Cautions:
 
 ## 3a. How much of the bucket is already in the crawl
 
-Matched on party names and dates (no PDF downloaded), then checked on a sample against the real texts; full detail in `bucket_match/MATCH_REPORT.md`.
+Matched on party names and dates, then settled for the unmatched older judgments by comparing the downloaded texts with the crawl's; full detail in `bucket_match/MATCH_REPORT.md`.
 
-- Of the bucket's 31,027 distinct judgments dated up to 4 May 2017, about **96% (about 29,800) are already in the crawl**. About 1,300 are not (plausible range 0.7 to 2.5 thousand). Sample check: 40 of 40 and 20 of 20 for the strongest match tiers, 88 of 90 for the name-only tiers, and 54 of 70 for the judgments the names failed to match. [Likely]
-- So for 1990 to 2004 the bucket adds almost nothing. Both sources lack roughly the same 40% of what IK lists for 1968 to 1999. That gap would need IK's API or the court's own newer archive.
-- What the bucket adds: the 7,125 judgments after 4 May 2017 (2.90 GB), about 1,300 older ones, and neutral (INSC) and law-report (SCR) citation numbers for the judgments it shares with the crawl.
+- Of the bucket's 31,027 distinct judgments dated up to 4 May 2017, about **94% (about 29,200) are already in the crawl**. About **1,840 are not** (range roughly 1,700 to 2,000). Sample check of the name matches: 39 of 40 and 20 of 20 for the strongest tiers, 88 of 90 for the name-only tiers. [Likely]
+- The first estimate (96%, about 1,300 missing) was too optimistic: it counted 50 shared 8-word runs as proof of the same judgment, and the full run showed that band is mostly different judgments quoting the same passages.
+- So for 1990 to 2004 the bucket adds a few hundred to about a thousand, not the thousands needed to close the gap. Both sources lack roughly the same 40% of what IK lists for 1968 to 1999. That gap would need IK's API or the court's own newer archive.
+- The judgments the crawl lacks are concentrated in a few years (1994: 354; 1999: 190; 1995: 148; 1993: 133; 2004: 114), which suggests holes in the crawl for those years. [Likely]
+- What the bucket adds: the 7,125 judgments after 4 May 2017, about 1,840 older ones, and neutral (INSC) and law-report (SCR) citation numbers for the judgments it shares with the crawl.
 
 ## 4. Citation pilot: later judgments that name a landmark
 
@@ -90,20 +92,21 @@ Counted by name, later IDs only. "Index" is the 8,101-judgment criminal-law inde
 
 Changing this is a setting on the cloud environment's network access, the owner's choice. We do not scrape IK's site: our own review workbook says not to scrape or bulk-download, IK sells API access, and we have not read its terms.
 
-## 6. Plan (revised 2026-10-05 after the metadata match; the download has not started)
+## 6. Plan (revised 2026-10-05; steps 1 to 3 done, the rest not started)
 
-Decided with the project owner: text only is kept (no PDFs in any repo); a new data branch `claude/sci-bucket` is acceptable; the metadata-only match came first.
+Decided with the project owner: text only is kept (no PDFs in any repo); the data branch `claude/sci-bucket`; the metadata-only match came first.
 
-1. Treat the **crawl as the corpus up to 4 May 2017**. Attach the bucket's neutral (INSC) and law-report (SCR) citation numbers to the crawl's judgments from the match (no download).
-2. Download the **7,125 judgments after 4 May 2017** (2.90 GB, in batches; PDFs deleted after text extraction). Clean margin letters, running headers and the law-report headnote. Save text and metadata on `claude/sci-bucket`.
-3. Download the **4,833 unmatched older judgments** (2.45 GB) only to compare their texts with the crawl's and keep the roughly 1,300 that are truly missing.
+1. Treat the **crawl as the corpus up to 4 May 2017**. Attach the bucket's neutral (INSC) and law-report (SCR) citation numbers to the crawl's judgments from the match (no download). *Not yet done: the match table `bucket_match/registry.csv.gz` has the links; nothing yet writes them into a combined registry.*
+2. **Done:** the 7,125 judgments after 4 May 2017 (7,123 saved, 2 have no file in the bucket) are on `claude/sci-bucket`, about 105 MB, text only. Margin letters, running headers and the law-report headnote are *not* removed from the saved text; `sci_bucket.clean_text()` does that when reading, and `body_start` marks where the court's own judgment begins (found for 89% to 100% of judgments).
+3. **Done:** the 4,833 unmatched older judgments (4,831 saved) were downloaded and compared with the crawl's texts: 3,084 are in the crawl, 137 uncertain, 1,610 not (`bucket_match/none_resolution.csv.gz`). Those 1,610 (plus the uncertain ones) are the older judgments the crawl lacks.
 4. Build the currency evidence as a **review bundle per case** (later citing cases, the court's own sentences, bench strength, the statute's BNS/BNSS successor), never a verdict. Run one extractor over the crawl and the bucket.
 5. Use the IK **API**, only for the 33 priority cases and the newest period (2025 to now), through Recourse's existing pipeline. IK's yearly list is an audit yardstick, not a data source. Both open sources lack about 40% of what IK lists for 1968 to 1999; only IK's API or the court's own newer archive could fill that.
 6. Test whether citation counts improve ranking (the search misses some landmarks) on the 12-question test.
-7. Needs a cloud routine like the crawl's: a runbook, a resumable time-boxed script and an environment that can reach the bucket (the `sci-index` environment can).
+7. Monthly refresh needs a cloud routine like the crawl's (`BUCKET_RUNBOOK.md`, an environment that can reach the bucket; `sci-index` can). A routine session starts from `main`, so the downloader would first have to be on `main`; that is a merge for the owner to approve.
 
 ## 7. Open items
 
 - The "Cited by" numbers for Rangappa (`https://indiankanoon.org/doc/150051/`) and Bhajan Lal (`https://indiankanoon.org/doc/1033637/`) are to be read off the pages by hand. Compare with Rangappa 12 and Bhajan Lal 237 above; IK's figure includes High Courts and later years unless filtered.
 - The `Judgments` sheet of the authority workbook (is each case still good law) is still blank.
-- The download of the bucket's PDFs has not been started. Five bucket rows have no file under the standard name (listed in `bucket_match/MATCH_REPORT.md`).
+- Five bucket rows have no file under the standard name (listed in `bucket_match/MATCH_REPORT.md`; 4 are in the download lists).
+- The text quality of the 2018 to 2025 downloads has not been tested against ground truth (no second copy exists); the 2017 judgments are scans with machine-read text, so expect the same small errors as the crawl's older texts.
