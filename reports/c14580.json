@@ -1,0 +1,260 @@
+{
+ "target": {
+  "name": "SHRI D.K. BASU,ASHOK K. JOHRI v. STATE OF WEST BENGAL,STATE OF U.P",
+  "pet": "SHRI D.K. BASU,ASHOK K. JOHRI",
+  "resp": "STATE OF WEST BENGAL,STATE OF U.P",
+  "year": 1996,
+  "date": "1996-12-18",
+  "doc_key": "c14580",
+  "bench_size": 2,
+  "cites": [
+   "scr:1996:s10:284",
+   "insc:1996:1508"
+  ],
+  "learned_cites": [
+   "scc:1997:1:416"
+  ]
+ },
+ "generated": "2026-10-05",
+ "triage": "NO_ADVERSE_FOUND",
+ "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 78,
+  "citing_judgments_all_confidence": 183,
+  "by_treatment": {
+   "NEUTRAL": 47,
+   "FOLLOWS": 7
+  },
+  "latest_citing_year": 2025,
+  "citing_in_last_10_years": 39,
+  "citing_by_decade": {
+   "1990": 6,
+   "2000": 16,
+   "2010": 36,
+   "2020": 20
+  },
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [
+  {
+   "doc_key": "c41970",
+   "title": "People’s Union for Civil Liberties & Anr v. State of Maharashtra & Ors",
+   "date": null,
+   "year": 2014,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "crawl",
+   "label": "FOLLOWS",
+   "cue": "following",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "cite",
+   "sentence": "1 D.K. Basu v. State of West Bengal; [(1997) 1 SCC 416] 6 Page 7 JUDGMENT While doing so, the Court in para 29 (page 433 of the Report) made the following weighty observations: 29.",
+   "prev": "While framing the requirements to be followed in all cases of arrest or detention till legal provisions are made in that behalf, this Court issued certain directives as preventive measures.",
+   "next": "How do we check the abuse of police power?",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "c38766",
+   "title": "Municipal Corporation of Delhi, Delhi v. Association of Victims of Uphaar Tragedy & Ors",
+   "date": "2011-10-13",
+   "year": 2011,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "crawl",
+   "label": "FOLLOWS",
+   "cue": "followed",
+   "hedged": false,
+   "binding": "weak",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "cite",
+   "sentence": "In D.K. Basu vs. Union of India (1997) 1 SCC 416, a Constitution Bench of this Court held that there is no strait jacket formula for computation of damages and we find that there 75 is no uniformity or yardstick followed in awarding damages for violation of fundamental rights.",
+   "prev": "The yardsticks normally adopted for determining the compensation payable in a private tort claims are not as such applicable when a constitutional court determines the compensation in cases where there is violation of fundamental rights guaranteed to its citizens.",
+   "next": "In Rudal Shah’s case (supra) this Court used the terminology “Palliative” for measuring the damages and The formula of “Ad hoc” was applied in Sebastian Hongary’s case (supra) the expression used by this Court for determining the monetary compensation was “Exemplary” cost and the formula adopted was “Punitive” .",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "c37785",
+   "title": "Haricharan & Anr v. State of Madhya Pradesh & Ors",
+   "date": "2011-03-09",
+   "year": 2011,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "crawl",
+   "label": "FOLLOWS",
+   "cue": "reiterated",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "cite",
+   "sentence": "It reiterated the principle that the expression “Life or Personal Liberty in 11 (1997) 1 SCC 416 22 Article 21 includes right to live with human dignity.",
+   "prev": "The Judgment further declared that the fundamental rights under Articles 21 and 22 (1) of the Constitution required to be jealously and scrupulously protected.",
+   "next": "Therefore, it also includes within itself guarantee against the torture and assault by the States or his functionaries.”",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "c28468",
+   "title": "VIKRAM DHILLON v. STATE OF HARYANA & ORSZ",
+   "date": "2007-01-10",
+   "year": 2007,
+   "bench_size": 3,
+   "bench_relation": "unknown",
+   "source": "crawl",
+   "label": "FOLLOWS",
+   "cue": "following",
+   "hedged": false,
+   "binding": "weak",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "cite",
+   "sentence": "5 lakhs to each of the parents with interest @ 12% p.a. When the matter came up before this Court at the instance of the School Authorities, dismissing the appeal, the Court quoted with approval the following observations from D.K. Basu v. State of West Bengal, (1997) 1 SCC 416; \"The courts have the obligation to satisfy the social aspirations of the citizens because the courts and the law are for the people and expected to respond to their aspirations.",
+   "prev": "Teachers were convicted for an offence under Section 304-A IPC. In a petition under Article 226 of the Constitution, the High Court awarded compensation of Rs.",
+   "next": "A court of law cannot close its consciousness and aliveness to stark realities.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "c27006",
+   "title": "S.P.S. Rathore v. State of Haryana & Ors",
+   "date": "2005-05-06",
+   "year": 2005,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "crawl",
+   "label": "FOLLOWS",
+   "cue": "reiterated",
+   "hedged": false,
+   "binding": "weak",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "cite",
+   "sentence": "This legal position has been reiterated in D. K. Basu v. State Of W.B. [(1997) 1 SCC 416].",
+   "prev": "In doing so the courts take into account not only the interest of the applicant and the respondent but also the interest of the public as a whole with a view to ensure that public bodies or officials do not act unlawfully and do perform their public duties properly particularly where the fundamental right of a citizen under Article 21 is concerned.\"",
+   "next": "Compensation can be awarded for violation of fundamental rights in public law domain, but the facts of the case in hand do not justify the directions given in the impugned judgment for conducting of an enquiry by the District Judge so as to determine the compensation to be awarded to respondent No.5.",
+   "quote_verified": true,
+   "in_headnote": false
+  }
+ ],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "Constitution",
+   "section": "21",
+   "count": 10,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "Constitution",
+   "section": "22",
+   "count": 3,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "Constitution",
+   "section": "32",
+   "count": 3,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "Constitution",
+   "section": "226",
+   "count": 3,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "IPC",
+   "section": "218",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNS",
+     "section": "256",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "IPC",
+   "section": "201",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNS",
+     "section": "238",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "1997-1999",
+    "our_judgments": 2428,
+    "indiankanoon_lists": 4099,
+    "share": 0.59
+   },
+   {
+    "years": "2000-2009",
+    "our_judgments": 12270,
+    "indiankanoon_lists": 15531,
+    "share": 0.79
+   },
+   {
+    "years": "2010-2019",
+    "our_judgments": 10283,
+    "indiankanoon_lists": 10106,
+    "share": 1.02
+   },
+   {
+    "years": "2020-2026",
+    "our_judgments": 5043,
+    "indiankanoon_lists": 7320,
+    "share": 0.69
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.81,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "cite": 109,
+  "short": 218
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}

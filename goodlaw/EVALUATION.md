@@ -84,7 +84,8 @@ Read this with care. **I assembled these labels myself from general knowledge an
 
 ```
 python sci_goodlaw.py build --corpus corpus.sqlite        # about 15 minutes
-python -c "from goodlaw import evaluate as E, corpus as K; ..."   # gold_pairs, split, run, summarise (see goodlaw/evaluate.py)
+python sci_goodlaw.py eval --corpus corpus.sqlite --half dev          # about 3 minutes; the held-out half needs --confirm-held-out
+python sci_goodlaw.py known --corpus corpus.sqlite                  # the 20 known cases
 ```
 
-The agreement tables come from `goodlaw/evaluate.py` (`gold_pairs`, `split`, `run`, `summarise`); the known cases from `evaluate.known_cases`.
+The agreement tables come from `goodlaw/evaluate.py` (`gold_pairs`, `split`, `run`, `summarise`) and the known cases from `evaluate.known_cases`. Results will differ slightly if the corpus is rebuilt with newer bucket data.

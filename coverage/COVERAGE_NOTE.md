@@ -92,14 +92,14 @@ Counted by name, later IDs only. "Index" is the 8,101-judgment criminal-law inde
 
 Changing this is a setting on the cloud environment's network access, the owner's choice. We do not scrape IK's site: our own review workbook says not to scrape or bulk-download, IK sells API access, and we have not read its terms.
 
-## 6. Plan (revised 2026-10-05; steps 1 to 3 done, the rest not started)
+## 6. Plan (revised 2026-10-05; steps 1 to 4 done, 5 to 7 not started)
 
 Decided with the project owner: text only is kept (no PDFs in any repo); the data branch `claude/sci-bucket`; the metadata-only match came first.
 
-1. Treat the **crawl as the corpus up to 4 May 2017**. Attach the bucket's neutral (INSC) and law-report (SCR) citation numbers to the crawl's judgments from the match (no download). *Not yet done: the match table `bucket_match/registry.csv.gz` has the links; nothing yet writes them into a combined registry.*
+1. **Done (inside the checker's store, not as a separate table):** the crawl is the corpus up to 4 May 2017; the bucket's neutral (INSC) and law-report (SCR) citation numbers and its judgments are attached in `goodlaw/corpus.py` from the match (`bucket_match/registry.csv.gz`, `none_resolution.csv.gz`).
 2. **Done:** the 7,125 judgments after 4 May 2017 (7,123 saved, 2 have no file in the bucket) are on `claude/sci-bucket`, about 105 MB, text only. Margin letters, running headers and the law-report headnote are *not* removed from the saved text; `sci_bucket.clean_text()` does that when reading, and `body_start` marks where the court's own judgment begins (found for 89% to 100% of judgments).
 3. **Done:** the 4,833 unmatched older judgments (4,831 saved) were downloaded and compared with the crawl's texts: 3,084 are in the crawl, 137 uncertain, 1,610 not (`bucket_match/none_resolution.csv.gz`). Those 1,610 (plus the uncertain ones) are the older judgments the crawl lacks.
-4. Build the currency evidence as a **review bundle per case** (later citing cases, the court's own sentences, bench strength, the statute's BNS/BNSS successor), never a verdict. Run one extractor over the crawl and the bucket.
+4. **Done:** the currency evidence is built as a **review bundle per case** (later citing cases, the court's own sentences, bench strength where known, the statute's BNS/BNSS successor, a triage label), never a verdict: `GOODLAW.md`, `goodlaw/`, `sci_goodlaw.py`. Measured against the reporters' citator codes in `goodlaw/EVALUATION.md`: it finds about a third to a half of the recorded overrulings, and about half of its clean flags are real; read that file before relying on any `NO_ADVERSE_FOUND`. Example reports for the priority cases are in `reports/`.
 5. Use the IK **API**, only for the 33 priority cases and the newest period (2025 to now), through Recourse's existing pipeline. IK's yearly list is an audit yardstick, not a data source. Both open sources lack about 40% of what IK lists for 1968 to 1999; only IK's API or the court's own newer archive could fill that.
 6. Test whether citation counts improve ranking (the search misses some landmarks) on the 12-question test.
 7. Monthly refresh needs a cloud routine like the crawl's (`BUCKET_RUNBOOK.md`, an environment that can reach the bucket; `sci-index` can). A routine session starts from `main`, so the downloader would first have to be on `main`; that is a merge for the owner to approve.

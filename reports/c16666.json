@@ -1,0 +1,172 @@
+{
+ "target": {
+  "name": "STATE OF MAHARASHTRA v. TAPAS D. NEOGY",
+  "pet": "STATE OF MAHARASHTRA",
+  "resp": "TAPAS D. NEOGY",
+  "year": 1999,
+  "date": "1999-09-16",
+  "doc_key": "c16666",
+  "bench_size": 2,
+  "cites": [
+   "scr:1999:s2:609",
+   "insc:1999:417"
+  ],
+  "learned_cites": [
+   "scc:1999:7:685"
+  ]
+ },
+ "generated": "2026-10-05",
+ "triage": "NO_ADVERSE_FOUND",
+ "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 4,
+  "citing_judgments_all_confidence": 45,
+  "by_treatment": {
+   "NEUTRAL": 2,
+   "DISTINGUISHES": 1,
+   "FOLLOWS": 1
+  },
+  "latest_citing_year": 2025,
+  "citing_in_last_10_years": 4,
+  "citing_by_decade": {
+   "2010": 2,
+   "2020": 2
+  },
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [
+  {
+   "doc_key": "b2025_7_777_858",
+   "title": "ESTATE OFFICER, HARYANA URBAN DEVELOPMENT AUTHORITY AND ORS. versus NIRMALA DEVI",
+   "date": "2025-07-14",
+   "year": 2025,
+   "bench_size": 2,
+   "bench_relation": "equal",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "follows",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "It follows from the aforesaid discussion that the decision in Tapas D. Neogy [State of Maharashtra v. Tapas D. Neogy, (1999) 7 SCC 685 : 1999 SCC (Cri) 1352] did not go into and decide the issue: whether immovable property would fall under the expression “any property” under Section 102 of the Code.",
+   "prev": "The test was affirmed by a three-Judge Bench of this Court in Nevada Properties (P) Ltd. v. State of Maharashtra reported in (2019) 20 SCC 119 wherein it was held thus: “13.",
+   "next": "We say so by applying the inversion test as referred to in State of Gujarat v. Utility Users’ Welfare Assn. [State of Gujarat v. Utility Users’ Welfare Assn., (2018) 6 SCC 21] , which states that the Court must first carefully frame the supposed proposition 834\b [2025] 7 S.C.R. Supreme Court Reports of law and then insert in the proposition a word reversing its meaning to get the answer whether or not a decision is a precedent for that proposition.",
+   "quote_verified": true,
+   "in_headnote": false
+  }
+ ],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "CrPC",
+   "section": "102",
+   "count": 24,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "106",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "457",
+   "count": 2,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "503",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "PC Act",
+   "section": "13",
+   "count": 2,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification (other amendments are not tracked here)"
+  },
+  {
+   "act": "IPC",
+   "section": "161",
+   "count": 1,
+   "successors": [],
+   "status": "not_in_table",
+   "note": "section not found in the NCRB table"
+  },
+  {
+   "act": "IPC",
+   "section": "165A",
+   "count": 1,
+   "successors": [],
+   "status": "not_in_table",
+   "note": "section not found in the NCRB table"
+  },
+  {
+   "act": "CrPC",
+   "section": "452",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "498",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "2000-2009",
+    "our_judgments": 12270,
+    "indiankanoon_lists": 15531,
+    "share": 0.79
+   },
+   {
+    "years": "2010-2019",
+    "our_judgments": 10283,
+    "indiankanoon_lists": 10106,
+    "share": 1.02
+   },
+   {
+    "years": "2020-2026",
+    "our_judgments": 5043,
+    "indiankanoon_lists": 7320,
+    "share": 0.69
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.84,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "short": 99,
+  "pair": 6,
+  "cite": 5
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}

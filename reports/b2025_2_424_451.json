@@ -1,0 +1,162 @@
+{
+ "target": {
+  "name": "VIHAAN KUMAR versus STATE OF HARYANA & ANR.",
+  "pet": "VIHAAN KUMAR",
+  "resp": "STATE OF HARYANA & ANR.",
+  "year": 2025,
+  "date": "2025-02-06",
+  "doc_key": "b2025_2_424_451",
+  "bench_size": 2,
+  "cites": [
+   "scr:2025:2:424",
+   "insc:2025:162"
+  ],
+  "learned_cites": []
+ },
+ "generated": "2026-10-05",
+ "triage": "NO_ADVERSE_FOUND",
+ "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 3,
+  "citing_judgments_all_confidence": 4,
+  "by_treatment": {
+   "LIMITS": 2,
+   "FOLLOWS": 1
+  },
+  "latest_citing_year": 2025,
+  "citing_in_last_10_years": 3,
+  "citing_by_decade": {
+   "2020": 3
+  },
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [
+  {
+   "doc_key": "b2025_9_194_257",
+   "title": "STATE OF KARNATAKA versus SRI DARSHAN ETC.",
+   "date": "2025-08-14",
+   "year": 2025,
+   "bench_size": 2,
+   "bench_relation": "equal",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "reiterated",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In Vihaan Kumar v. State of Haryana22, it was reiterated that Article 22(1) is satisfied if the accused is made aware of the arrest grounds in substance, even if not conveyed in writing.",
+   "prev": "20.1.4.",
+   "next": "Similarly, in Kasireddy Upender Reddy v. State of Andhra Pradesh23, it was observed that when arrest is made pursuant a warrant, reading out the warrant amounts to sufficient compliance.",
+   "quote_verified": true,
+   "in_headnote": false
+  }
+ ],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "Constitution",
+   "section": "22",
+   "count": 30,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "CrPC",
+   "section": "50",
+   "count": 9,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "47",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "Constitution",
+   "section": "21",
+   "count": 9,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "CrPC",
+   "section": "50A",
+   "count": 5,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "48",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "41",
+   "count": 2,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "35",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "57",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "58",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "2026-2026",
+    "our_judgments": 214,
+    "indiankanoon_lists": 983,
+    "share": 0.22
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.22,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "short": 16,
+  "pair": 9,
+  "cite": 1
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}

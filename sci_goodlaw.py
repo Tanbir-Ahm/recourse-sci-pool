@@ -5,6 +5,8 @@
     python sci_goodlaw.py check  --corpus corpus.sqlite "Rangappa v. Sri Mohan" --year 2010 --out reports/
     python sci_goodlaw.py check  --corpus corpus.sqlite --doc-key c36322 --out reports/
     python sci_goodlaw.py batch  --corpus corpus.sqlite --targets goodlaw/targets/priority.json --out reports/
+    python sci_goodlaw.py known  --corpus corpus.sqlite                      # the 20 known cases
+    python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
 
 `build` reads the two data branches into one searchable store (about 10 minutes, 2 GB) and indexes the citations in it. `check` writes a JSON bundle and a
 Markdown report for one case: who cites it, what they do with it (with the exact sentences), what became of the statute sections it turns on, a triage label
@@ -83,9 +85,19 @@ def main(argv=None):
     bt = sub.add_parser("batch")
     bt.add_argument("--targets", required=True)
     bt.add_argument("--out", required=True)
-    for p in (f, c, bt):
+    kn = sub.add_parser("known")
+    kn.add_argument("--cases", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "goodlaw", "targets", "known.json"))
+    ev = sub.add_parser("eval")
+    ev.add_argument("--half", choices=["dev", "held"], required=True)
+    ev.add_argument("--confirm-held-out", action="store_true", help="the held-out half is for one reported run per rule set; say so to run it")
+    ev.add_argument("--workers", type=int, default=4)
+    ev.add_argument("--out", help="write the per-pair results here (JSON)")
+    for p in (f, c, bt, kn, ev):
         p.add_argument("--corpus", default="corpus.sqlite")
     a = ap.parse_args(argv)
+    if a.cmd == "eval" and a.half == "held" and not a.confirm_held_out:
+        print("the held-out half is run once per frozen rule set; add --confirm-held-out to run it", file=sys.stderr)
+        return 2
     if a.cmd == "build":
         here = os.path.dirname(os.path.abspath(__file__))
         K.build(a.crawl_dir, a.bucket_dir, os.path.join(here, "coverage", "bucket_match", "registry.csv.gz"),
@@ -105,6 +117,22 @@ def main(argv=None):
             return 2
         bundle, md = check_one(corpus, doc, a.cite, a.alias, a.out)
         print(json.dumps(bundle, indent=1, ensure_ascii=False) if a.json else md)
+        return 0
+    if a.cmd == "known":
+        from goodlaw import evaluate as E
+        rows, summary = E.known_cases(corpus, a.cases)
+        print(json.dumps(summary))
+        return 0
+    if a.cmd == "eval":
+        from goodlaw import evaluate as E
+        pairs, unresolved = E.gold_pairs(corpus)
+        dev, held = E.split(pairs)
+        res = E.run(a.corpus, dev if a.half == "dev" else held, workers=a.workers)
+        if a.out:
+            with open(a.out, "w", encoding="utf-8") as fh:
+                json.dump(res, fh)
+        print(f"{a.half}: {len(res)} citator entries ({unresolved} citator entries across the collection could not be matched to a judgment we hold)")
+        print(json.dumps(E.summarise(res), indent=1))
         return 0
     if a.cmd == "batch":
         targets = json.load(open(a.targets, encoding="utf-8"))["targets"]

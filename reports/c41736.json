@@ -1,0 +1,292 @@
+{
+ "target": {
+  "name": "ARNESH KUMAR v. STATE OF BIHAR & ANR",
+  "pet": "ARNESH KUMAR",
+  "resp": "STATE OF BIHAR & ANR",
+  "year": 2014,
+  "date": "2014-07-02",
+  "doc_key": "c41736",
+  "bench_size": 2,
+  "cites": [
+   "scr:2014:8:128",
+   "insc:2014:463"
+  ],
+  "learned_cites": [
+   "scc:2014:8:273"
+  ]
+ },
+ "generated": "2026-10-05",
+ "triage": "NO_ADVERSE_FOUND",
+ "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 28,
+  "citing_judgments_all_confidence": 30,
+  "by_treatment": {
+   "NEUTRAL": 13,
+   "FOLLOWS": 12,
+   "LIMITS": 1
+  },
+  "latest_citing_year": 2026,
+  "citing_in_last_10_years": 28,
+  "citing_by_decade": {
+   "2010": 4,
+   "2020": 24
+  },
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [
+  {
+   "doc_key": "b2026_4_298_312",
+   "title": "SHANKAR versus STATE OF RAJASTHAN",
+   "date": "2026-04-02",
+   "year": 2026,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "reaffirmed",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "The Court has also addressed the complexities of domestic violence, in Arnesh Kumar v. State of Bihar9, while cautioning against misuse of Section 498A, it reaffirmed the seriousness of cruelty against married women, and in Hiral P. Harsora v. Kusum Narottamdas Harsora10, it expanded the scope of the DVA to include complaints against female relatives within the household.",
+   "prev": "In Vineeta Sharma v. Rakesh Sharma8, daughters were recognized as equal coparceners in Hindu joint family property.",
+   "next": "The Court has further intervened in matters of personal liberty and choice.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2024_12_559_573",
+   "title": "DARA LAKSHMI NARAYANA & OTHERS versus STATE OF TELANGANA & ANOTHER",
+   "date": "2024-12-10",
+   "year": 2024,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "follow",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "By the impugned order dated 16.02.2024, the High Court refused to quash the criminal proceedings pending against the appellants and accused No.7 in FIR No.82 of 2022 dated 01.02.2022 and disposed of the Criminal Petition No.1479 of 2022 directing the Investigation Officer to follow the mandatory procedure contemplated under Section 41-A of CrPC and also the guidelines issued by this Court in Arnesh Kumar vs. State of Bihar (2014) 8 SCC 273.",
+   "prev": "5.",
+   "next": "The High Court further granted protection by directing the Investigation Officer not to arrest to appellants until the chargesheet is filed.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2024_10_493_638",
+   "title": "SUKANYA SHANTHA versus UNION OF INDIA & ORS.",
+   "date": "2024-10-03",
+   "year": 2024,
+   "bench_size": 3,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "follow",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In case, there is no habitual offender legislation in the State, the Union and the State governments are directed to make necessary changes in the manuals/rules in line with this judgment, within a period of three months; (iv) The “caste” column and any references to caste in undertrial and/or convicts’ prisoners’ registers inside the prisons shall be deleted; (v) The Police is directed to follow the guidelines issued in Arnesh Kumar v. State of Bihar (2014) and Amanatullah Khan v. The Commissioner of Police, Delhi (2024) to ensure that members of Denotified Tribes are not subjected to arbitrary arrest; (vi) This Court takes suo motu cognizance of the discrimination inside prisons on any ground such as caste, gender, disability, and shall list the case from now onwards as In Re: Discrimination Inside Prisons in India.",
+   "prev": "All other references or definitions of “habitual offenders” in the impugned prison manuals/rules are declared unconstitutional.",
+   "next": "The Registry is directed to list the case after a period of three months before an appropriate Bench; (vii) On the first date of hearing of the above suo motu petition, all States and the Union government shall file a compliance report on this judgment; (viii) The DLSAs and the Board of Visitors formed under the Model Prison Manual 2016 shall jointly conduct regular inspections to identify whether caste-based discrimination or similar discriminatory practices, as highlighted in this judgment, are still taking place inside prisons.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2024_8_1086_1145",
+   "title": "SHAJAN SKARIA versus THE STATE OF KERALA & ANR.",
+   "date": "2024-08-23",
+   "year": 2024,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "follows",
+   "hedged": false,
+   "binding": "weak",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In Arnesh Kumar v. State of Bihar and Another reported in (2014) 8 SCC 273, this Court laid emphasis on the phrases “credible information” and “reasonable suspicion” as they appear in Section 41 of CrPC and held as follows: “5.",
+   "prev": "45.",
+   "next": "Arrest brings humiliation, curtails freedom and casts scars forever.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2024_2_1072_1120",
+   "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION AND ANR.",
+   "date": "2024-02-13",
+   "year": 2024,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "mandate not complied with (T is the authority)",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "Union Territory of Andaman and Nicobar Islands -Directions to be complied with: (i) In terms of direction contained in para 100.2, it is directed to provide the particulars of First Information Reports of cognizable and non-bailable cases in which the mandate of Sections 41, 41-A of CrPC and Arnesh Kumar (Supra) has not been followed and consequently to provide the details of necessary actions [2024] 2 S.C.R. \b 1079 Satender Kumar Antil v. Central Bureau of Investigation and Anr. that have been taken against erring police officers.",
+   "prev": "(vii) To inform on whether the judgment in Satender Kumar Antil (Supra) is being applied to petitions under Section 438 of CrPC. 2.",
+   "next": "Also, in terms of direction contained in para 100.2, information has to be provided as to whether the Standing Order is being complied with by Investigating Officers.",
+   "quote_verified": true,
+   "in_headnote": false
+  }
+ ],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "CrPC",
+   "section": "41",
+   "count": 9,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "35",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "167",
+   "count": 2,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "187",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "41A",
+   "count": 2,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "35(3)",
+     "change": false
+    },
+    {
+     "act": "BNSS",
+     "section": "35(4)",
+     "change": false
+    },
+    {
+     "act": "BNSS",
+     "section": "35(5)",
+     "change": false
+    },
+    {
+     "act": "BNSS",
+     "section": "35(6)",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "IPC",
+   "section": "498A",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNS",
+     "section": "85",
+     "change": false
+    },
+    {
+     "act": "BNS",
+     "section": "86",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "57",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "58",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "6",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "6",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "2015-2019",
+    "our_judgments": 4889,
+    "indiankanoon_lists": 4646,
+    "share": 1.05
+   },
+   {
+    "years": "2020-2026",
+    "our_judgments": 5043,
+    "indiankanoon_lists": 7320,
+    "share": 0.69
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.83,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "short": 84,
+  "pair": 48,
+  "cite": 46
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}

@@ -28,13 +28,14 @@ Run `python sci_goodlaw.py check --corpus corpus.sqlite "Rangappa v. Sri Mohan" 
 
 ## How good is it (measured)
 
-See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what they do not show.
+See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what they do not show. In short: against the law reporters' own citator codes (older judgments only) it found an overruling or disagreement in 35% of pairs on the held-out half (46% on the half it was tuned on), and about half of its clean adverse flags were real treatment when read by hand. `NO_ADVERSE_FOUND` is therefore weak evidence. Recent judgments (2018 to 2026) are measured only on 20 known cases whose labels are mine and not lawyer-checked.
 
 ## Running it
 
 1. Build the store (about 15 minutes, 2 GB, needs the two data branches checked out): `python sci_goodlaw.py build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --corpus corpus.sqlite`.
 2. `python sci_goodlaw.py find --corpus corpus.sqlite "rangappa"` lists candidate judgments; `check` writes `<doc_key>.json` and `<doc_key>.md`; `batch --targets goodlaw/targets/priority.json --out reports/` does a list.
-3. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`.
+3. `python sci_goodlaw.py known --corpus corpus.sqlite` runs the 20 known cases; `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev` measures agreement with the reporter's citator (the held-out half needs `--confirm-held-out` and should be run once per frozen rule set).
+4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`.
 
 ## What it cannot do
 

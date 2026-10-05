@@ -1,13 +1,22 @@
 # Follow-ups (kept here because the working environment has no persistent memory)
 
-Last updated 2026-10-05. Each item says what it is, why it waits, and what to do.
+Last updated 2026-10-05 (checker built and measured). Each item says what it is, why it waits, and what to do.
 
 ## 1. Monthly refresh of the bucket text (cloud routine) - decide after the good-law checker is reviewed
 - What: a routine that, each month, lists the open bucket, downloads judgments added since the last run, extracts the text and pushes it to `claude/sci-bucket`, then updates the checker's data. `BUCKET_RUNBOOK.md` and `sci_bucket.py` already work this way for one run.
 - Why it waits: (a) a routine session starts from `main`, and `sci_bucket.py`, the checker and the runbooks are only on `claude/sharp-euler-unyfv0`; merging to `main` is the owner's decision (no PR has been opened); (b) the routine needs an environment that can reach the bucket (`sci-index` can); (c) the checker should be reviewed first, so the routine refreshes something the owner trusts.
 - Evidence for the cadence: the bucket is added to in small batches. Its 2026 folder holds 214 judgments added in June, July and August 2026, and its metadata was last written 2026-08-30. A monthly check (a listing of about 80 small requests) is cheap.
-- To do: merge decision; create the routine (cron, one session, `BUCKET_RUNBOOK.md` steps plus the checker's refresh step); test it once with a TEST note like the crawl's; keep a STOP file as the kill switch.
+- To do: merge decision; create the routine (cron, one session, `BUCKET_RUNBOOK.md` steps plus the checker's refresh step: after new text is pushed, rebuild the store (`sci_goodlaw.py build`, about 15 minutes, 2 GB) and re-run `batch` on `goodlaw/targets/priority.json`); test it once with a TEST note like the crawl's; keep a STOP file as the kill switch.
 - Reminder set for 2026-10-12.
+
+## 1b. Checker: what is still open after the first build
+- Lawyer-checked sample: 100 to 200 cases, half recent, is the one thing that would let anyone call the checker validated. Until then every output carries "pattern-rule reading, not lawyer-validated".
+- The 20 known cases (`goodlaw/targets/known.json`) were labelled by me from general knowledge, not checked by a lawyer.
+- Held-out half: run once at commit `bb77a5e` (see `goodlaw/EVALUATION.md`). Seven bugs fixed afterwards are not measured on it. Further rule changes should be tested on a freshly drawn half, not on that one again.
+- Known weaknesses in the rules (from the hand-scored held-out readings): a headnote list where the cue belongs to the neighbouring case; a case named as the authority in a sentence that judges something else; hypotheticals and counsel's contentions in the Court's own narration. Overrulings stated away from the case's name (the next paragraph, or "that view") are mostly missed.
+- Nothing measures 2018 to 2026 text beyond the 20 known cases; the reporters' citator stops at about 1985.
+- High Court treatment is invisible; the IK API (priority cases and 2025 to now) is the planned way to add it, through Recourse's pipeline.
+- `NO_ADVERSE_FOUND` plus the coverage block is the honest reading; the collection lacks about 40% of IK's 1968 to 1999 list and a quarter of 2018 to 2025.
 
 ## 2. Open items from earlier (unchanged)
 - Serve the original Supreme Court PDF to Recourse users from the crawl's IDs (`api.sci.gov.in/jonew/judis/<id>.pdf`): plan was link-only first, live test from Railway, then fetch-and-send, then add the roughly 5,968 crawl judgments the catalogue lacks. The crawl kept no PDFs (text, size and sha256 only); the court's server is blocked from cloud sessions.

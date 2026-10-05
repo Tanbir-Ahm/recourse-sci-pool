@@ -1,0 +1,98 @@
+{
+ "target": {
+  "name": "KAVERI PLASTICS versus MAHDOOM BAWA BAHRUDEEN NOORUL",
+  "pet": "KAVERI PLASTICS",
+  "resp": "MAHDOOM BAWA BAHRUDEEN NOORUL",
+  "year": 2025,
+  "date": "2025-09-19",
+  "doc_key": "b2025_9_1210_1228",
+  "bench_size": 2,
+  "cites": [
+   "scr:2025:9:1210",
+   "insc:2025:1133"
+  ],
+  "learned_cites": []
+ },
+ "generated": "2026-10-05",
+ "triage": "INSUFFICIENT",
+ "plain": "Too few later judgments in our collection cite this case to say anything.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 0,
+  "citing_judgments_all_confidence": 3,
+  "by_treatment": {},
+  "latest_citing_year": null,
+  "citing_in_last_10_years": 0,
+  "citing_by_decade": {},
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "NI Act",
+   "section": "138",
+   "count": 26,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "NI Act",
+   "section": "141",
+   "count": 2,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "NI Act",
+   "section": "142",
+   "count": 2,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "IPC",
+   "section": "420",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNS",
+     "section": "318(4)",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "2026-2026",
+    "our_judgments": 214,
+    "indiankanoon_lists": 983,
+    "share": 0.22
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.22,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "short": 39
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}

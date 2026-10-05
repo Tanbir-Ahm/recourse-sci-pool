@@ -1,0 +1,224 @@
+{
+ "target": {
+  "name": "Rangappa v. Sri Mohan",
+  "pet": "Rangappa",
+  "resp": "Sri Mohan",
+  "year": 2010,
+  "date": null,
+  "doc_key": "c36322",
+  "bench_size": 3,
+  "cites": [],
+  "learned_cites": [
+   "scc:2010:11:441",
+   "scr:2010:6:507"
+  ]
+ },
+ "generated": "2026-10-05",
+ "triage": "NO_ADVERSE_FOUND",
+ "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 23,
+  "citing_judgments_all_confidence": 44,
+  "by_treatment": {
+   "FOLLOWS": 9,
+   "LIMITS": 2,
+   "NEUTRAL": 12
+  },
+  "latest_citing_year": 2026,
+  "citing_in_last_10_years": 19,
+  "citing_by_decade": {
+   "2010": 12,
+   "2020": 11
+  },
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [
+  {
+   "doc_key": "b2026_5_26_36",
+   "title": "RENUKA versus THE STATE OF MAHARASHTRA AND ANOTHER",
+   "date": "2026-04-07",
+   "year": 2026,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "reiterated",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In Rangappa Vs. Sri Mohan3, it has been explicitly reiterated that the presumption mandated by Section 139 of the N.I. Act includes the presumption as regards existence of a legally enforceable debt or liability.",
+   "prev": "We may in this regard refer to two decisions of this Court that have reiterated the view that once the basic ingredients of Section 138 of the N.I. Act are duly satisfied by the complainant, the rebuttal of statutory presumption by the drawer can only be made during the course of trial.",
+   "next": "It has been held that Section 139 is an example of a reverse onus clause that has been included in furtherance of the legislative object of improving the credibility of negotiable instruments.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2025_9_1515_1538",
+   "title": "SANJABIJ TARI versus KISHORE S. BORCAR & ANR.",
+   "date": "2025-09-25",
+   "year": 2025,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "relied upon",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In support of his submission, he relied upon the judgment of this Court in Rangappa vs. Sri Mohan, (2010) 11 SCC 441.",
+   "prev": "He submitted that the accused can always rely on material and/or evidence filed by the complainant in order to raise a probable defence which creates doubts about the existence of a legally enforceable debt or liability.",
+   "next": "9.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2022_7_72_77",
+   "title": "ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI",
+   "date": "2022-08-16",
+   "year": 2022,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "reiterated",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "In Anss Rajashekar v. Augustus Jeba Ananth,5 a two Judge Bench of this Court, of which one of us (D.Y. Chandrachud J.) was a part, reiterated the decision of the three-Judge Bench of this Court in Rangappa v. Sri Mohan6 on the presumption under Section 139 of the NI Act.",
+   "prev": "The presumption arises under Section 139. 16.",
+   "next": "The court held: 12.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2022_4_989_1001",
+   "title": "RATHISH BABU UNNIKRISHNAN versus THE STATE (GOVT. OF NCT OF DELHI) & ANR.",
+   "date": "2022-04-26",
+   "year": 2022,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "in agreement with",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "high",
+   "tier": "pair",
+   "sentence": "The opinion of Justice K.G. Balakrishnan for a three judges Bench in Rangappa vs. Sri Mohan4 would at this stage, deserve our attention: - “26.... we are in agreement with the respondent claimant that the presumption mandated by Section 139 of the Act does indeed include the existence of a legally enforceable debt or liability.",
+   "prev": "In a situation where the accused moves Court for quashing even before trial has commenced, the Court’s approach should be careful enough to not to prematurely extinguish the case by disregarding the legal presumption which supports the complaint.",
+   "next": "As noted in the citations, this is of course in the nature of a rebuttable presumption and it is open to the accused to 3 (2002) 1 SCC 234 4 (2010) 11 SCC 441 RATHISH BABU UNNIKRISHNAN v. THE STATE (GOVT. OF NCT OF DELHI) & ANR. [HRISHIKESH ROY, J.] SUPREME COURT REPORTS [2022] 4 S.C.R. raise a defence wherein the existence of a legally enforceable debt or liability can be contested.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2019_13_425_441",
+   "title": "UTTAM RAM versus DEVINDER SINGH HUDAN & ANR.",
+   "date": "2019-10-17",
+   "year": 2019,
+   "bench_size": 2,
+   "bench_relation": "unknown",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "following",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "In a judgment reported as Kishan Rao v. Shankargouda6, this Court referring to Kumar Exports and Rangappa returned the following findings: “22.",
+   "prev": "(emphasis supplied) 23.",
+   "next": "Another judgment which needs to be looked into is Rangappa v. Sri Mohan [Rangappa v. Sri Mohan, (2010) 11 SCC 441 : (2010) 4 SCC (Civ) 477 : (2011) 1 SCC (Cri) 184] .",
+   "quote_verified": true,
+   "in_headnote": false
+  }
+ ],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "NI Act",
+   "section": "139",
+   "count": 2,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "CrPC",
+   "section": "200",
+   "count": 1,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "223",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "NI Act",
+   "section": "138",
+   "count": 1,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "NI Act",
+   "section": "118",
+   "count": 1,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "2011-2019",
+    "our_judgments": 9045,
+    "indiankanoon_lists": 8725,
+    "share": 1.04
+   },
+   {
+    "years": "2020-2026",
+    "our_judgments": 5043,
+    "indiankanoon_lists": 7320,
+    "share": 0.69
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.88,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "short": 58,
+  "pair": 47,
+  "cite": 1
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}

@@ -1,0 +1,197 @@
+{
+ "target": {
+  "name": "M/S. METERS AND INSTRUMENTS PRIVATE LIMITED &  ANR. versus KANCHAN MEHTA",
+  "pet": "M/S. METERS AND INSTRUMENTS PRIVATE LIMITED &  ANR.",
+  "resp": "KANCHAN MEHTA",
+  "year": 2017,
+  "date": "2017-10-05",
+  "doc_key": "b2017_10_66_85",
+  "bench_size": 2,
+  "cites": [
+   "scr:2017:10:66",
+   "insc:2017:1009"
+  ],
+  "learned_cites": [
+   "scc:2018:1:560"
+  ]
+ },
+ "generated": "2026-10-05",
+ "triage": "NO_ADVERSE_FOUND",
+ "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
+ "statute_flag": "STATUTE_CHANGED",
+ "summary": {
+  "citing_judgments": 7,
+  "citing_judgments_all_confidence": 68,
+  "by_treatment": {
+   "FOLLOWS": 2,
+   "NEUTRAL": 5
+  },
+  "latest_citing_year": 2024,
+  "citing_in_last_10_years": 7,
+  "citing_by_decade": {
+   "2020": 7
+  },
+  "adverse_strong": [],
+  "adverse_possible": [],
+  "legislative": [],
+  "argued_or_lower_court": [],
+  "citator_adverse_overruled": [],
+  "citator_adverse_other": [],
+  "weak_signals_set_aside": 0
+ },
+ "recent_approving": [
+  {
+   "doc_key": "b2021_4_257_273",
+   "title": "IN RE: EXPEDITIOUS TRIAL OF CASES UNDER SECTION 138 OF N.I. ACT 1881 versus .",
+   "date": "2021-04-16",
+   "year": 2021,
+   "bench_size": 5,
+   "bench_relation": "larger",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "follows",
+   "hedged": false,
+   "binding": "strong",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "He referred to a judgment of this Court in Meters and Instruments Private Limited and Another v. Kanchan Mehta11 which reads as follows: “While it is true that in Subramanium Sethuraman v. State of Maharashtra this Court observed that once the plea of the 8 (1992) 1 SCC 217 9 (2004) 7 SCC 338 10 (2004) 13 SCC 324 11 (2018) 1 SCC 560 IN RE: EXPEDITIOUS TRIAL OF CASES UNDER SECTION 138 OF N.I. ACT 1881.",
+   "prev": "It was contended by learned Amici Curiae that a holistic reading of Sections 251 and 258 of the Code, along with Section 143 of the Act, should be considered to confer a power of review or recall of the issuance of process by the Trial Court in relation to complaints filed under Section 138 of the Act.",
+   "next": "SUPREME COURT REPORTS [2021] 4 S.C.R. accused is recorded under Section 252 CrPC, the procedure contemplated under Chapter XX CrPC has to be followed to take the trial to its logical conclusion, the said judgment was rendered as per statutory provisions prior to the 2002 Amendment.",
+   "quote_verified": true,
+   "in_headnote": false
+  },
+  {
+   "doc_key": "b2021_14_204_320",
+   "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD.",
+   "date": "2021-03-01",
+   "year": 2021,
+   "bench_size": 3,
+   "bench_relation": "larger",
+   "source": "bucket",
+   "label": "FOLLOWS",
+   "cue": "follows",
+   "hedged": false,
+   "binding": "weak",
+   "anaphoric": false,
+   "speaker": "court",
+   "confidence": "medium",
+   "tier": "short",
+   "sentence": "In Meters and Instruments (P) Ltd. v. Kanchan Mehta, (2018) 1 SCC 560, this Court noticed the object of Section 138 and the amendments made to Chapter XVII, and summarised the case law as follows: “6.",
+   "prev": "51.",
+   "next": "The object of introducing Section 138 and other provisions of Chapter XVII in the Act in the year 1988 [Vide the Banking, Public Financial Institutions and Negotiable Instruments Laws (Amendment) Act, 1988] was to enhance the acceptability of cheques in the settlement of liabilities.",
+   "quote_verified": true,
+   "in_headnote": false
+  }
+ ],
+ "reporter_citator": [],
+ "statute_dimension": [
+  {
+   "act": "CrPC",
+   "section": "258",
+   "count": 7,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "281",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "357",
+   "count": 6,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "395",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "IPC",
+   "section": "64",
+   "count": 4,
+   "successors": [
+    {
+     "act": "BNS",
+     "section": "8(2)",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "NI Act",
+   "section": "138",
+   "count": 4,
+   "successors": [],
+   "status": "unaffected",
+   "note": "not part of the 2023 recodification"
+  },
+  {
+   "act": "CrPC",
+   "section": "431",
+   "count": 3,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "471",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  },
+  {
+   "act": "CrPC",
+   "section": "205",
+   "count": 3,
+   "successors": [
+    {
+     "act": "BNSS",
+     "section": "228",
+     "change": false
+    }
+   ],
+   "status": "renumbered",
+   "note": "renumbered; the table marks no substantive change"
+  }
+ ],
+ "coverage": {
+  "collection_runs_to": "2026-08-12",
+  "later_years": [
+   {
+    "years": "2018-2019",
+    "our_judgments": 1844,
+    "indiankanoon_lists": 2309,
+    "share": 0.8
+   },
+   {
+    "years": "2020-2026",
+    "our_judgments": 5043,
+    "indiankanoon_lists": 7320,
+    "share": 0.69
+   }
+  ],
+  "share_of_later_judgments_we_hold": 0.72,
+  "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."
+ },
+ "how_found": {
+  "short": 110,
+  "cite": 11
+ },
+ "limits": [
+  "Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.",
+  "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
+  "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm."
+ ]
+}
