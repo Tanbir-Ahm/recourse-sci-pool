@@ -1,0 +1,3 @@
+{
+ "_readme": "A person's decisions about which judgment in the collection a library case is. Keys are the case_name exactly as Recourse prints it. Use {\"doc_key\": \"c12345\", \"note\": \"why\"} to say which judgment it is, or {\"not_in_collection\": \"why\"} to record that we do not hold it. The matcher reports a case as AMBIGUOUS_MATCH when it cannot tell; cards/MATCH_CHECK.csv lists them first."
+}

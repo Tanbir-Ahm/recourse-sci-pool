@@ -1,0 +1,1106 @@
+{
+ "snapshot": {
+  "read_from": "Recourse checkout (registry, pilot pool and curated currency records)",
+  "recourse_commit": "721e0631d2cfb6beed8fe9688d5280be891e9624",
+  "date": "2026-10-05",
+  "cases": 76
+ },
+ "cases": [
+  {
+   "case_name": "All Cargo Movers (I) Pvt. Ltd. and Ors. v Dhanesh Badarmal Jain and Anr.",
+   "case_key": null,
+   "citation": "(2007) 14 SCC 776",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/29675.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "cheating_civil_dispute",
+   "court_class": "SC",
+   "year": 2007
+  },
+  {
+   "case_name": "Alpic Finance Ltd. v P. Sadasivan and Anr.",
+   "case_key": null,
+   "citation": "(2001) 3 SCC 513",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/17594.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "cheating_civil_dispute",
+   "court_class": "SC",
+   "year": 2001
+  },
+  {
+   "case_name": "Anwarul Haq v State of Uttar Pradesh",
+   "case_key": "anwarul_haq_v_state_of_uttar_pradesh",
+   "citation": "[2005] 3 S.C.R. 917",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/26969.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 2005
+  },
+  {
+   "case_name": "Arnesh Kumar v State of Bihar",
+   "case_key": "arnesh_kumar",
+   "citation": "(2014) 8 SCC 273",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/2982624/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "arnesh_kumar_checklist",
+     "status": "SUPERSEDED_BY_STATUTE",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2014
+  },
+  {
+   "case_name": "Bikramjit Singh v State of Punjab",
+   "case_key": "bikramjit_singh_v_state_of_punjab",
+   "citation": "(2020) 10 SCC 616",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/10807134/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2020
+  },
+  {
+   "case_name": "Bir Singh v Mukesh Kumar",
+   "case_key": "bir_singh",
+   "citation": "(2019) 4 SCC 197",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/157736723/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "bir_singh_blank_cheque_and_informal_loan",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2019
+  },
+  {
+   "case_name": "D. Velusamy v D. Patchaiammal",
+   "case_key": "d_velusamy_v_d_patchaiammal",
+   "citation": "AIR 2011 SC 479",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/1521881/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2011
+  },
+  {
+   "case_name": "D.K. Basu v State of West Bengal",
+   "case_key": "dk_basu",
+   "citation": "(1997) 1 SCC 416",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/235756/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "dk_basu_safeguards",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 1997
+  },
+  {
+   "case_name": "Damodar S. Prabhu v Sayed Babalal H",
+   "case_key": "damodar_s_prabhu",
+   "citation": "(2010) 5 SCC 663",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/1594211/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "damodar_prabhu_compounding_cost_scheme",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2010
+  },
+  {
+   "case_name": "Deepa v S. Vijayalakshmi",
+   "case_key": "deepa_v_s_vijayalakshmi",
+   "citation": "2025 SCC OnLine Mad (MD) (W.A.(MD) Nos. 1155 of 2020, 1200 & 1216 of 2019)",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/99998710/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "HC",
+   "year": 2025
+  },
+  {
+   "case_name": "G. Sagar Suri and Anr. v State of U.P. and Ors.",
+   "case_key": null,
+   "citation": "(2000) 2 SCC 636",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/20281.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "cheating_civil_dispute",
+   "court_class": "SC",
+   "year": 2000
+  },
+  {
+   "case_name": "Gurbaksh Singh Sibbia v State of Punjab",
+   "case_key": null,
+   "citation": "1980 AIR 1632, (1980) 2 SCC 565",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/4562.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "anticipatory_bail",
+   "court_class": "SC",
+   "year": 1980
+  },
+  {
+   "case_name": "Hiral P. Harsora v Kusum Narottamdas Harsora",
+   "case_key": "hiral_p_harsora_v_kusum_narottamdas_harsora",
+   "citation": "AIR 2016 SC 4774, (2016) 10 SCC 165",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/114237665/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2016
+  },
+  {
+   "case_name": "Hori Lal v State of Uttar Pradesh",
+   "case_key": "hori_lal_v_state_of_uttar_pradesh",
+   "citation": "[2006] Supp. 10 S.C.R. 60",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/28365.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 2006
+  },
+  {
+   "case_name": "Hridaya Rangan Pd. Verma and Ors. v State of Bihar and Anr.",
+   "case_key": null,
+   "citation": "(2000) 4 SCC 168",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/20323.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "cheating_civil_dispute",
+   "court_class": "SC",
+   "year": 2000
+  },
+  {
+   "case_name": "Inder Mohan Goswami and Anr. v State of Uttaranchal and Ors.",
+   "case_key": "inder_mohan_goswami_and_anr_v_state_of_uttaranchal_and_ors",
+   "citation": "(2007) 12 SCC 1",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/29628.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "cheating_civil_dispute",
+   "court_class": "SC",
+   "year": 2007
+  },
+  {
+   "case_name": "Indra Sarma v V.K.V. Sarma",
+   "case_key": "indra_sarma_v_v_k_v_sarma",
+   "citation": "2013 AIR SCW 6783, (2013) 15 SCC 755",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/192421140/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2013
+  },
+  {
+   "case_name": "Jagrup Singh v State of Haryana",
+   "case_key": "jagrup_singh_v_state_of_haryana",
+   "citation": "[1981] 3 S.C.R. 839",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/10048.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 1981
+  },
+  {
+   "case_name": "Jatin Narendrabhai Sanghvi & Ors v State of Gujarat & Anr",
+   "case_key": "jatin_narendrabhai_sanghvi_v_state_of_gujarat",
+   "citation": "R/Criminal Misc. Application No. 18659 of 2023 (Gujarat HC, 19 June 2026) -- no independent neutral/SCC citation confirmed",
+   "court": "High Court of Gujarat at Ahmedabad",
+   "source_url": "https://indiankanoon.org/doc/9504756/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "HC",
+   "year": 2023
+  },
+  {
+   "case_name": "Johnson V.U. v State of Kerala",
+   "case_key": "johnson_vu_v_state_of_kerala",
+   "citation": "2024:KER:60051 (Crl.M.C. No. 6262 of 2016)",
+   "court": "Kerala High Court",
+   "source_url": "https://indiankanoon.org/doc/31511452/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "HC",
+   "year": 2024
+  },
+  {
+   "case_name": "K.N. Mehra v State of Rajasthan",
+   "case_key": "kn_mehra_v_state_of_rajasthan",
+   "citation": "1957 AIR 369",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/684379/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 1957
+  },
+  {
+   "case_name": "Kahkashan Kausar @ Sonam v State of Bihar",
+   "case_key": "kahkashan_kausar_sonam_v_state_of_bihar",
+   "citation": "(2022) 6 SCC 599",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/76640285/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2022
+  },
+  {
+   "case_name": "Karnail Singh v State of Haryana",
+   "case_key": "karnail_singh_v_state_of_haryana",
+   "citation": "(2009) 8 SCC 539",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/35186.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2009
+  },
+  {
+   "case_name": "Kaveri Plastics v Mahdoom Bawa Bahrudeen Noorul",
+   "case_key": "kaveri_plastics",
+   "citation": "2025 INSC 1133",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/175356438/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "kaveri_plastics_amount_specifically_demanded",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2025
+  },
+  {
+   "case_name": "L. Muruganantham v State of Tamil Nadu",
+   "case_key": "l_muruganantham_v_state_of_tamil_nadu",
+   "citation": "2025 INSC 844",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/77627897/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2025
+  },
+  {
+   "case_name": "Lalita Kumari v Government of Uttar Pradesh",
+   "case_key": "lalita_kumari_v_government_of_uttar_pradesh",
+   "citation": "(2014) 2 SCC 1",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/10239019/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2014
+  },
+  {
+   "case_name": "Lata Singh v State of Uttar Pradesh",
+   "case_key": "lata_singh_v_state_of_uttar_pradesh",
+   "citation": "(2006) 5 SCC 475",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/1364215/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2006
+  },
+  {
+   "case_name": "Lokesh B.H v State of Karnataka",
+   "case_key": "lokesh_bh_v_state_of_karnataka",
+   "citation": "2026 INSC 784",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/124664047/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2026
+  },
+  {
+   "case_name": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+   "case_key": "m_ravindran_v_intelligence_officer_dri",
+   "citation": "(2021) 2 SCC 485",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/88760594/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2021
+  },
+  {
+   "case_name": "Malabar Gold and Diamond Limited v Union of India",
+   "case_key": "malabar_gold",
+   "citation": "2026 SCC OnLine Del 297",
+   "court": "High Court of Delhi",
+   "source_url": "https://indiankanoon.org/doc/31367852/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "malabar_gold_section_106_107_textual_holding",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "HC",
+   "year": 2026
+  },
+  {
+   "case_name": "Mathai v State of Kerala",
+   "case_key": "mathai_v_state_of_kerala",
+   "citation": "(2005) 3 SCC 260",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/1043893/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2005
+  },
+  {
+   "case_name": "Mathai Verghese v State of Kerala",
+   "case_key": "mathai_verghese_v_state_of_kerala",
+   "citation": "[1987] 1 S.C.R. 317",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/8897.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 1987
+  },
+  {
+   "case_name": "Md. Ibrahim & Ors v State of Bihar & Anr",
+   "case_key": "md_ibrahim_v_state_of_bihar",
+   "citation": "(2009) 8 SCC 751",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/409057/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2009
+  },
+  {
+   "case_name": "Mohan Lal v State of Punjab",
+   "case_key": "mohan_lal_v_state_of_punjab",
+   "citation": "(2018) 17 SCC 627",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/supremecourt/2010/1075/1075_2010_Judgement_16-Aug-2018.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2018
+  },
+  {
+   "case_name": "Mukesh Singh v State (Narcotic Branch of Delhi)",
+   "case_key": "mukesh_singh_v_state_narcotic_branch_of_delhi",
+   "citation": "(2020) 10 SCC 120",
+   "court": "Supreme Court of India (Constitution Bench)",
+   "source_url": "https://api.sci.gov.in/supremecourt/2018/39528/39528_2018_33_1502_23731_Judgement_31-Aug-2020.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2020
+  },
+  {
+   "case_name": "Nanda Gopalan v State of Kerala",
+   "case_key": "nanda_gopalan_v_state_of_kerala",
+   "citation": "[2015] 4 S.C.R. 563",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/42630.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 2015
+  },
+  {
+   "case_name": "National Legal Services Authority v Union of India",
+   "case_key": "nalsa",
+   "citation": "AIR 2014 SC 1863",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/193543132/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2014
+  },
+  {
+   "case_name": "Neelkanth Pharma Logistics Pvt. Ltd. v Union of India",
+   "case_key": "neelkanth_pharma_logistics",
+   "citation": "2025 SCC OnLine Del 1055",
+   "court": "High Court of Delhi",
+   "source_url": "https://indiankanoon.org/doc/131354096/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "neelkanth_blanket_freeze_disproportionate",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "HC",
+   "year": 2025
+  },
+  {
+   "case_name": "Noor Aga v State of Punjab",
+   "case_key": "noor_aga_v_state_of_punjab",
+   "citation": "(2008) 16 SCC 417",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/31821.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2008
+  },
+  {
+   "case_name": "Pankaj Bansal v Union of India",
+   "case_key": "pankaj_bansal",
+   "citation": "2023 INSC 866",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/189692408/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2023
+  },
+  {
+   "case_name": "Prabha Tyagi v Kamlesh Devi",
+   "case_key": "prabha_tyagi_v_kamlesh_devi",
+   "citation": "Criminal Appeal No. 511 of 2022 (SCC/AIR reporter citation not found in source text)",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/85317640/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2022
+  },
+  {
+   "case_name": "Prabhu v State of Madhya Pradesh",
+   "case_key": "prabhu_v_state_of_madhya_pradesh",
+   "citation": "[2008] 16 S.C.R. 1095",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/33220.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 2008
+  },
+  {
+   "case_name": "Prabir Purkayastha v State (NCT of Delhi)",
+   "case_key": "prabir_purkayastha",
+   "citation": "2024 INSC 414",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/17476648/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2024
+  },
+  {
+   "case_name": "Prakash Chimanlal Sheth v Jagruti Keyur Rajpopat",
+   "case_key": "prakash_chimanlal_sheth",
+   "citation": "2025 INSC 897",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/178325150/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "prakash_chimanlal_sheth_jurisdiction",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2025
+  },
+  {
+   "case_name": "Prakash Ranjan v State of Bihar",
+   "case_key": "prakash_ranjan_v_state_of_bihar",
+   "citation": "Civil Writ Jurisdiction Case No. 20349 of 2019",
+   "court": "High Court of Judicature at Patna",
+   "source_url": "https://indiankanoon.org/doc/195353027/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "HC",
+   "year": 2019
+  },
+  {
+   "case_name": "Pravat Chandra Mohanty v State of Odisha",
+   "case_key": "pravat_chandra_mohanty_v_state_of_odisha",
+   "citation": "[2021] 4 S.C.R. 407",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/supremecourt/2020/26261/26261_2020_37_1501_26066_Judgement_11-Feb-2021.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2021
+  },
+  {
+   "case_name": "Pyare Lal Bhargava v State of Rajasthan",
+   "case_key": "pyare_lal_bhargava_v_state_of_rajasthan",
+   "citation": "1963 AIR 1094",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/1689792/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 1963
+  },
+  {
+   "case_name": "Rakesh Kumar Paul v State of Assam",
+   "case_key": "rakesh_kumar_paul_v_state_of_assam",
+   "citation": "(2017) 15 SCC 67",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/194334432/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2017
+  },
+  {
+   "case_name": "Rakhi Mitra and Anr v State of West Bengal",
+   "case_key": "rakhi_mitra",
+   "citation": "2025:CHC-AS:1826",
+   "court": "High Court at Calcutta",
+   "source_url": "https://indiankanoon.org/doc/106336343/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "rakhi_mitra_arnesh_kumar_consequences",
+     "status": "SUPERSEDED_BY_STATUTE",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "HC",
+   "year": 2025
+  },
+  {
+   "case_name": "Rangappa v Sri Mohan",
+   "case_key": "rangappa",
+   "citation": "(2010) 11 SCC 441",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/150051/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "rangappa_section_139_presumption_mandatory",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2010
+  },
+  {
+   "case_name": "S. Vanitha v Deputy Commissioner, Bengaluru Urban District",
+   "case_key": "s_vanitha_v_deputy_commissioner",
+   "citation": "AIRONLINE 2020 SC 897, (2021) 15 SCC 730",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/71453821/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2020
+  },
+  {
+   "case_name": "S.W. Palanitkar and Ors. v State of Bihar and Anr.",
+   "case_key": null,
+   "citation": "(2002) 1 SCC 241",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/20022.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "cheating_civil_dispute",
+   "court_class": "SC",
+   "year": 2002
+  },
+  {
+   "case_name": "Sakharam v State of Madhya Pradesh",
+   "case_key": "sakharam_v_state_of_madhya_pradesh",
+   "citation": "[1992] 1 S.C.R. 638",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/12496.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 1992
+  },
+  {
+   "case_name": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+   "case_key": "satender_kumar_antil_2026",
+   "citation": "2026 INSC 115",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/155374238/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2026
+  },
+  {
+   "case_name": "Satish Chander Ahuja v Sneha Ahuja",
+   "case_key": "satish_chander_ahuja_v_sneha_ahuja",
+   "citation": "AIRONLINE 2020 SC 784",
+   "court": null,
+   "source_url": "https://indiankanoon.org/doc/62368827/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2020
+  },
+  {
+   "case_name": "Satishchandra Ratanlal Shah v State of Gujarat",
+   "case_key": "satishchandra_ratanlal_shah_v_state_of_gujarat",
+   "citation": "(2019) 9 SCC 148",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/801807/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2019
+  },
+  {
+   "case_name": "Shreya Singhal v Union of India",
+   "case_key": "shreya_singhal_v_union_of_india",
+   "citation": "(2015) 5 SCC 1",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/110813550/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2015
+  },
+  {
+   "case_name": "Siddharam Satlingappa Mhetre v State of Maharashtra",
+   "case_key": null,
+   "citation": "(2011) 1 SCC 694",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/37199.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "anticipatory_bail",
+   "court_class": "SC",
+   "year": 2011
+  },
+  {
+   "case_name": "Sri Manjunath M P v State of Karnataka",
+   "case_key": "sri_manjunath_mp",
+   "citation": "2026:KHC:2726",
+   "court": "High Court of Karnataka at Bengaluru",
+   "source_url": "https://indiankanoon.org/doc/107568550/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "sri_manjunath_arnesh_kumar_application",
+     "status": "SUPERSEDED_BY_STATUTE",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "HC",
+   "year": 2026
+  },
+  {
+   "case_name": "State of Gujarat v Haidarali Kalubhai",
+   "case_key": "state_of_gujarat_v_haidarali_kalubhai",
+   "citation": "1976 AIR 1012, [1976] 3 SCR 303",
+   "court": "Supreme Court of India",
+   "source_url": "https://api.sci.gov.in/jonew/judis/5735.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 1976
+  },
+  {
+   "case_name": "State of Maharashtra v Tapas D. Neogy",
+   "case_key": "tapas_d_neogy",
+   "citation": "(1999) 7 SCC 685",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/491816/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "tapas_d_neogy_bank_account_as_property",
+     "status": "SUPERSEDED_BY_STATUTE",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 1999
+  },
+  {
+   "case_name": "State of Punjab v Baldev Singh",
+   "case_key": "state_of_punjab_v_baldev_singh",
+   "citation": "(1999) 6 SCC 172",
+   "court": "Supreme Court of India (Constitution Bench)",
+   "source_url": "https://indiankanoon.org/doc/1259796/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 1999
+  },
+  {
+   "case_name": "State of Rajasthan v Parmanand",
+   "case_key": "state_of_rajasthan_v_parmanand",
+   "citation": "(2014) 5 SCC 345",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/41273.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2014
+  },
+  {
+   "case_name": "State of Uttar Pradesh v Ram Kishan",
+   "case_key": "state_of_uttar_pradesh_v_ram_kishan",
+   "citation": "[1976] 3 S.C.R. 379",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/5725.pdf",
+   "pools": [
+    "library",
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "hurt_assault",
+   "court_class": "SC",
+   "year": 1976
+  },
+  {
+   "case_name": "Sushila Aggarwal v State (NCT of Delhi)",
+   "case_key": null,
+   "citation": "(2020) 5 SCC 1",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/supremecourt/2017/28027/28027_2017_3_1501_20088_Judgement_29-Jan-2020.pdf",
+   "pools": [
+    "pilot_tier"
+   ],
+   "recourse_currency": [],
+   "topic": "anticipatory_bail",
+   "court_class": "SC",
+   "year": 2020
+  },
+  {
+   "case_name": "T. Manikadan v State (NCT of Delhi) & Anr",
+   "case_key": "t_manikadan_v_state_nct_of_delhi",
+   "citation": "CRL.REV.P. 404/2016 (Delhi HC, 10 January 2017) -- no independent SCC/AIR citation confirmed",
+   "court": "High Court of Delhi",
+   "source_url": "https://indiankanoon.org/doc/34693422/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "HC",
+   "year": 2016
+  },
+  {
+   "case_name": "Tofan Singh v State of Tamil Nadu",
+   "case_key": "tofan_singh_v_state_of_tamil_nadu",
+   "citation": "(2021) 4 SCC 1",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/supremecourt/2012/26682/26682_2012_33_1501_24551_Judgement_29-Oct-2020.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2021
+  },
+  {
+   "case_name": "Union of India v Md Nawaz Khan",
+   "case_key": "union_of_india_v_md_nawaz_khan",
+   "citation": "(2021) 10 SCC 100",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/165351878/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2021
+  },
+  {
+   "case_name": "Union of India v Mohanlal",
+   "case_key": "union_of_india_v_mohanlal",
+   "citation": "(2016) 3 SCC 379",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/43312.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2016
+  },
+  {
+   "case_name": "Union of India v Shiv Shanker Kesari",
+   "case_key": "union_of_india_v_shiv_shanker_kesari",
+   "citation": "(2007) 7 SCC 798",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/29564.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2007
+  },
+  {
+   "case_name": "Usha Chakraborty v State of West Bengal",
+   "case_key": "usha_chakraborty_v_state_of_west_bengal",
+   "citation": "2023 SCC OnLine SC 90",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/116013104/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2023
+  },
+  {
+   "case_name": "Vihaan Kumar v State of Haryana",
+   "case_key": "vihaan_kumar",
+   "citation": "2025 INSC 162",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/74708490/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "vihaan_kumar_written_grounds",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2025
+  },
+  {
+   "case_name": "Vijay Kumar Ghai v State of West Bengal",
+   "case_key": "vijay_kumar_ghai_v_state_of_west_bengal",
+   "citation": "2022 LiveLaw (SC) 305",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/60158808/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2022
+  },
+  {
+   "case_name": "Vijaysinh Chandubha Jadeja v State of Gujarat",
+   "case_key": "vijaysinh_chandubha_jadeja_v_state_of_gujarat",
+   "citation": "(2011) 1 SCC 609",
+   "court": null,
+   "source_url": "https://api.sci.gov.in/jonew/judis/37060.pdf",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "SC",
+   "year": 2011
+  },
+  {
+   "case_name": "Viraj Chetan Shah v Union of India & Anr (& Connected Matters)",
+   "case_key": "viraj_chetan_shah_v_union_of_india",
+   "citation": "2024:BHC-OS:6672-DB",
+   "court": "High Court of Judicature at Bombay (Ordinary Original Civil Jurisdiction)",
+   "source_url": "https://indiankanoon.org/doc/44869332/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [],
+   "court_class": "HC",
+   "year": 2024
+  },
+  {
+   "case_name": "Youth Bar Association v Union of India",
+   "case_key": "youth_bar_association",
+   "citation": "AIR 2016 SC 4136",
+   "court": "Supreme Court of India",
+   "source_url": "https://indiankanoon.org/doc/151036912/",
+   "pools": [
+    "library"
+   ],
+   "recourse_currency": [
+    {
+     "doctrine_key": "youth_bar_association_fir_copy_guidelines",
+     "status": "GOOD_LAW",
+     "last_checked_date": "2026-09-01"
+    }
+   ],
+   "court_class": "SC",
+   "year": 2016
+  }
+ ]
+}

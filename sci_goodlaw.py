@@ -6,6 +6,10 @@
     python sci_goodlaw.py check  --corpus corpus.sqlite --doc-key c36322 --out reports/
     python sci_goodlaw.py batch  --corpus corpus.sqlite --targets goodlaw/targets/priority.json --out reports/
     python sci_goodlaw.py known  --corpus corpus.sqlite                      # the 20 known cases
+    python sci_goodlaw.py library --recourse-dir ../tanbir-ahm/recourse      # snapshot the cases Recourse can show (goodlaw/targets/library.json)
+    python sci_goodlaw.py cards  --corpus corpus.sqlite                      # precompute a currency card for every library case (cards/)
+    python sci_goodlaw.py cards-review --sheet cards/REVIEW_SHEET.csv        # record the verdicts a person filled into the review sheet
+    python sci_goodlaw.py card   "Rangappa v Sri Mohan"                      # what the answer step would be told about one case
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
 
@@ -64,6 +68,59 @@ def check_one(corpus, doc, extra_cites=(), aliases=(), out_dir=None, log=print):
     return bundle, md
 
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def run_cards(a):
+    from goodlaw import cardreader as CR
+    from goodlaw import cards as CD
+    from goodlaw import library as LB
+    reviews_path = os.path.join(getattr(a, "out", os.path.join(HERE, "cards")), "reviews.json")
+    if a.cmd == "card":
+        index = CR.load(a.cards)
+        card = CR.find(index, case_name=a.name, citation=a.citation)
+        if card is None:
+            print(f"no card for {a.name or a.citation!r}; the library has {len(index['cards'])} cases", file=sys.stderr)
+            return 2
+        result = CR.for_answer(card, today=a.today)
+        print(json.dumps(result, indent=1, ensure_ascii=False))
+        return 0
+    cards_path = os.path.join(a.out, "currency_cards.json")
+    if a.cmd == "cards-review":
+        doc = json.load(open(cards_path, encoding="utf-8"))
+        recorded, problems = CD.merge_review_sheet(a.sheet, doc["cards"], reviews_path)
+        for p in problems:
+            print("PROBLEM:", p, file=sys.stderr)
+        CD.attach_reviews(doc["cards"], CD.load_reviews(reviews_path))
+        with open(cards_path, "w", encoding="utf-8") as fh:
+            json.dump(doc, fh, indent=1, ensure_ascii=False)
+        print(f"{recorded} verdict(s) recorded in {reviews_path}; the cards now carry them" + (f"; {len(problems)} row(s) skipped" if problems else ""))
+        return 1 if problems else 0
+    snap = json.load(open(a.library, encoding="utf-8"))
+    overrides = LB.load_overrides(a.overrides)
+    sheet = os.path.join(a.out, "REVIEW_SHEET.csv")
+    os.makedirs(a.out, exist_ok=True)
+    if os.path.exists(sheet) and os.path.exists(cards_path):                       # verdicts a person filled in but nobody merged yet must not be lost when the sheet is rewritten
+        old_doc = json.load(open(cards_path, encoding="utf-8"))
+        recorded, problems = CD.merge_review_sheet(sheet, old_doc["cards"], reviews_path)
+        if recorded:
+            print(f"merged {recorded} verdict(s) from the existing review sheet before rebuilding")
+        for p in problems:
+            print("PROBLEM:", p, file=sys.stderr)
+    old_cards = json.load(open(cards_path, encoding="utf-8"))["cards"] if os.path.exists(cards_path) else None
+    cards, reports = CD.build_all(a.corpus, snap["cases"], overrides, today=a.today, workers=a.workers)
+    CD.attach_reviews(cards, CD.load_reviews(reviews_path))
+    doc = CD.write_cards(cards, reports, a.out, snap.get("snapshot"))
+    changes = CD.compare(old_cards, cards)
+    today = cards[0]["provenance"]["generated"]
+    CD.write_changes(changes, os.path.join(a.out, "CHANGES.md"), today, first_run=old_cards is None)
+    n_sheet = CD.write_review_sheet(cards, sheet)
+    CD.write_match_check(cards, os.path.join(a.out, "MATCH_CHECK.csv"))
+    print(f"{len(cards)} cards written to {a.out}: {doc['counts']}")
+    print(f"{n_sheet} case(s) in the review sheet; {len([c for c in changes if c['worse']])} change(s) since the last run that need a look (see CHANGES.md)")
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -88,6 +145,23 @@ def main(argv=None):
     bt.add_argument("--out", required=True)
     kn = sub.add_parser("known")
     kn.add_argument("--cases", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "goodlaw", "targets", "known.json"))
+    lb = sub.add_parser("library")
+    lb.add_argument("--recourse-dir", required=True, help="a checkout of the Recourse repository (read only: its registry code is run in a subprocess, nothing is written there)")
+    lb.add_argument("--out", default=os.path.join(HERE, "goodlaw", "targets", "library.json"))
+    cd = sub.add_parser("cards")
+    cd.add_argument("--library", default=os.path.join(HERE, "goodlaw", "targets", "library.json"))
+    cd.add_argument("--overrides", default=os.path.join(HERE, "goodlaw", "targets", "library_overrides.json"))
+    cd.add_argument("--out", default=os.path.join(HERE, "cards"))
+    cd.add_argument("--workers", type=int, default=4)
+    cd.add_argument("--today", help="date to stamp on the cards (default: today)")
+    cr = sub.add_parser("cards-review")
+    cr.add_argument("--sheet", default=os.path.join(HERE, "cards", "REVIEW_SHEET.csv"))
+    cr.add_argument("--out", default=os.path.join(HERE, "cards"))
+    cs = sub.add_parser("card")
+    cs.add_argument("name", nargs="?")
+    cs.add_argument("--citation")
+    cs.add_argument("--cards", default=os.path.join(HERE, "cards", "currency_cards.json"))
+    cs.add_argument("--today")
     ev = sub.add_parser("eval")
     ev.add_argument("--half", choices=["dev", "held"], required=True)
     ev.add_argument("--confirm-held-out", action="store_true", help="the held-out half is for one reported run per rule set; say so to run it")
@@ -95,7 +169,7 @@ def main(argv=None):
     ev.add_argument("--production", action="store_true", help="with --gold modern: run the adverse pairs through the full mention finder (slow, learns citations) instead of the fast per-pair reader")
     ev.add_argument("--workers", type=int, default=4)
     ev.add_argument("--out", help="write the per-pair results here (JSON)")
-    for p in (f, c, bt, kn, ev):
+    for p in (f, c, bt, kn, ev, cd):
         p.add_argument("--corpus", default="corpus.sqlite")
     a = ap.parse_args(argv)
     if a.cmd == "eval" and a.half == "held" and not a.confirm_held_out:
@@ -107,6 +181,19 @@ def main(argv=None):
                 os.path.join(here, "coverage", "bucket_match", "none_resolution.csv.gz"), a.corpus, a.workers)
         K.index_cites(a.corpus, a.workers)
         return 0
+    if a.cmd == "library":
+        from goodlaw import library as LB
+        snap = LB.snapshot(a.recourse_dir)
+        os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+        with open(a.out, "w", encoding="utf-8") as fh:
+            json.dump(snap, fh, indent=1, ensure_ascii=False)
+        classes = {}
+        for c_ in snap["cases"]:
+            classes[c_["court_class"]] = classes.get(c_["court_class"], 0) + 1
+        print(f"{len(snap['cases'])} cases read from Recourse commit {snap['snapshot']['recourse_commit']}: {classes}; wrote {a.out}")
+        return 0
+    if a.cmd in ("cards", "cards-review", "card"):
+        return run_cards(a)
     corpus = K.Corpus(a.corpus)
     if a.cmd == "find":
         for d in corpus.find_title(a.query, 40):
