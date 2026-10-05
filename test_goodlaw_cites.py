@@ -86,6 +86,11 @@ check(C.norm_cite("[1953] S.C.R. 476") == "scr:1953::476" and C.norm_cite("[1962
 check(C.norm_cite("[2019] 5 S.C.R. 569") == "scr:2019:5:569" and C.norm_cite("[1976] Suppl. SCR 172") == "scr:1976:s:172", "the new form does not disturb the volume and supplement forms")
 check([k for k, _, _ in C.find_cites("see [1953] S.C.R. 476, and [1976] 1 Suppl. SCR 172")] == ["scr:1953::476", "scr:1976:s1:172"], "both forms are found in running text")
 
+check(C.norm_cite("[2024] 6 S.C.R. \x08 907") == "scr:2024:6:907" and C.norm_cite("(2010) 11\x08 SCC 441") == "scc:2010:11:441", "a stray control character inside a citation does not break it")
+txt = "see [2024] 6 S.C.R. \x08 907 Karnail"
+key, s0, e0 = C.find_cites(txt)[0]
+check(txt[s0:e0] == "[2024] 6 S.C.R. \x08 907", "and the positions are those of the original text")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")

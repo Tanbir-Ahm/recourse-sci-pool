@@ -15,6 +15,7 @@ _ABBREV = {
 _BOUNDARY = re.compile(r"([.?!])([\"')\]”’]*)(?:\s+(?=[A-Z0-9(\[“\"'‘])|(?=\[\d))")
 
 
+_CONTROL = re.compile(r"[\x00-\x08\x0e-\x1f\x7f]")     # stray control characters from the PDF text (mostly \x08, in about a fifth of the 2017-on texts)
 _PAGE_HEADER = re.compile(r"https?://JUDIS\.NIC\.IN\s+SUPREME\s+COURT\s+OF\s+INDIA\s+Page\s+\d+\s+of\s+\d+", re.I)
 
 
@@ -28,7 +29,7 @@ def flatten(text):
     """The text with every run of whitespace (line wraps, page breaks) turned into a single space, and the JUDIS site's running page header
     ("http://JUDIS.NIC.IN SUPREME COURT OF INDIA Page 4 of 6", repeated on every page of the later crawled texts) removed so that it neither
     glues two sentences together nor sits inside a quoted passage."""
-    return re.sub(r"\s+", " ", _RUNNING_HEAD.sub(" ", _PAGE_HEADER.sub(" ", text))).strip()
+    return re.sub(r"\s+", " ", _RUNNING_HEAD.sub(" ", _PAGE_HEADER.sub(" ", _CONTROL.sub(" ", text)))).strip()
 
 
 def sentences(flat):

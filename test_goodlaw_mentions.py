@@ -166,6 +166,10 @@ check(M.speaker("Later judgments such as Noor Aga (supra) ought to be overruled 
 check(M.speaker("He further argued that the judgment does not need reconsideration.", "", False)[0] == "counsel", "'He further argued' is counsel's")
 check(M.speaker("We hold that the judgment was wrong.", "According to him, it was right.", False)[0] == "court", "but a sentence in the court's own voice stays the court's")
 
+hdr2 = "[2024] 6 S.C.R. \x08 907 Karnail Singh v. State of Haryana & Ors. (v) A review is by no means an appeal in disguise whereby an erroneous decision is reheard."
+fnd, _ = M.extract(hdr2, T3, [])
+check(fnd == [], "a page header whose citation has a stray control character in it is still recognised as a later judgment's header")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")

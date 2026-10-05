@@ -68,9 +68,13 @@ _PATTERNS = [
 _COMPILED = [(re.compile(rx, re.I), build) for rx, build in _PATTERNS]
 
 
+_CONTROL = re.compile(r"[\x00-\x08\x0e-\x1f\x7f]")      # stray control characters from the PDF text ("S.C.R. \x08 907"); not whitespace to \s, so they broke citations
+
+
 def find_cites(text):
     """[(key, start, end)] for every reported citation in text, in order of appearance. Where two patterns overlap, the earlier start wins, then
-    the longer match."""
+    the longer match. Stray control characters are read as spaces (one for one, so positions do not move)."""
+    text = _CONTROL.sub(" ", text)
     found = []
     for rx, build in _COMPILED:
         for m in rx.finditer(text):
