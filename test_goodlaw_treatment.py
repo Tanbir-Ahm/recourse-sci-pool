@@ -246,6 +246,26 @@ r = run("This Court overruled the judgment of this Court reported as Vannattanka
 check(r["label"] == "OVERRULES", "'overruled the judgment ... Y' is still an overruling of Y")
 r = run("Accordingly, the earlier decision of this Court in H. Anraj vs. Govt. of T.N. was overruled.", "H. Anraj vs. Govt. of T.N.")
 check(r["label"] == "OVERRULES", "'the earlier decision in T was overruled' is still an overruling of T")
+# step 2: span and voice around the mention, and the sentence after it
+r = run("Town Municipal Council Athani v. Presiding Officer, Labour Court, [1970] 1 S.C.R.51 over-ruled in [1977] 1 S.C.R. 996.", "Town Municipal Council Athani v. Presiding Officer, Labour Court")
+check(r["label"] == "OVERRULES", f"headnote style 'T, [cite], over-ruled in [cite]': T was overruled, the overruler is cited after (got {r['label']})")
+r = run("In any case majority decision in Dhillon's case (supra) is neither overruled nor departed from in Kesavananda's case (supra).", "Dhillon's case (supra)")
+check(r["label"] == "NOT_OVERRULED", f"'is neither overruled nor departed from' says the case stands (got {r['label']})")
+r = run("But be that as it may, we find ourselves with all respect unable to agree with the view taken in Tarak Nath Ghosh's case (supra).", "Tarak Nath Ghosh's case (supra)")
+check(r["label"] == "DISAGREES" and not r["hedged"], f"'be that as it may' is not a hedge (got {r['label']}, hedged {r['hedged']})")
+r = run("We are unable to subscribe to the view which has been adopted in the above decision in M Krishnan (supra).", "M Krishnan (supra)")
+check(r["label"] == "DISAGREES", f"'unable to subscribe to the view which has been adopted in the above decision in T' is disagreement with T (got {r['label']})")
+r = run("The legal position cannot be said to have been correctly appreciated in Angad Kol's case (supra), for the reasons discussed by us.", "Angad Kol's case (supra)")
+check(r["label"] == "DISAGREES", f"'cannot be said to have been correctly appreciated in T' is disagreement (got {r['label']})")
+S1 = "The learned counsel relied on Angad Kol's case (supra)."
+S2 = "Thus, the decision is required to be overruled as the vehicle was a light motor vehicle."
+i = S1.index("Angad Kol's case (supra)")
+r = T.classify_in_context(S1, (i, i + len("Angad Kol's case (supra)")), S2)
+check(r["label"] == "OVERRULES" and r["anaphoric"] and r["binding"] == "weak", f"'Thus, the decision is required to be overruled' in the next sentence is read as about the case, marked anaphoric and weak (got {r['label']}, {r.get('anaphoric')}, {r['binding']})")
+r = T.classify_in_context(S1, (i, i + len("Angad Kol's case (supra)")), "Thus, the matter is remanded for fresh consideration. The High Court shall decide it.")
+check(not r["anaphoric"], "a next sentence that does not point back at the case adds nothing")
+r = T.classify_in_context(S1, (i, i + len("Angad Kol's case (supra)")), "The decision of the High Court in Sharma was per incuriam of the Constitution Bench.")
+check(not r["anaphoric"], "a bare 'The decision ...' with no concluding marker is not taken to be about the case")
 
 # and the real ones still fire
 for sentence, target, want in [

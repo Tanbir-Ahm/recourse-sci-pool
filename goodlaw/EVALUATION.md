@@ -95,6 +95,22 @@ What the misses showed (all measured on the tuning half):
 - A case cited only by a footnote marker ("Jasmine Kaur2") is found only if the footnote's citation is known; this is why the citation-learning step matters more here.
 - Of the 12 adverse pairs missed at the start, about 4 were overrulings stated away from the case's name, or that I could not locate in the judgment; 3 were cases not found in the body at all; the rest were wording problems (fixed). Step 2 of the improvement plan (reading the paragraph) targets the first group; with so few cases that is a rough count, not a rate.
 
+### Step 2 of the improvement plan: reading past the sentence that names the case
+
+I predicted that reading the surrounding paragraph would recover a third of the misses (roughly 8 to 10 points of recall). **That estimate was wrong.** Looking at where the missed overrulings actually sit (tuning halves only): of 32 old-text misses, 15 had no recognisable adverse wording within six sentences after any mention, 10 had the cue in the same sentence but misread, 4 had it in a later sentence and 3 had no mention found; of 9 modern misses, 1 was a later-sentence case. Cross-sentence reading is worth about one pair in ten of the misses, not a third.
+
+What step 2 did instead, on the evidence of those misses: the mention of a case printed with its citation now begins at the case's name (a name followed by a comma and a separate citation had been read as two cases); "T, [cite], over-ruled in [cite]" is read as T having been overruled; "neither overruled nor ..." is read as passive; "be that as it may" is no longer a hedge; "the view which has been adopted in the above decision in T" is attached to T; two new cue wordings; a case number left on the front of a title is dropped; and the sentence after a mention is read as about the case when it opens with a concluding marker ("Thus, the decision is required to be overruled"). A first, looser version of the last rule added six flags and none was right, so it was tightened.
+
+| Tuning halves | Before step 2 | After step 2 |
+|---|---|---|
+| Modern: adverse pairs read as adverse | 12 of 21 | 15 of 21 (71%) |
+| Modern: explicit overruling | 9 of 21 | 10 of 21 |
+| Modern: other pairs flagged adverse | 113 of 8,290 | 115 of 8,290 |
+| Old: adverse pairs read as adverse | 27 of 59 | 28 of 59 (47%) |
+| Old: other pairs flagged adverse | 38 of 8,065 | 41 of 8,065 |
+
+**These gains are in-sample.** The fixes came from reading these very pairs, so on fresh cases expect less. The new flags are in the "possible" tier except one real one. The known cases are unchanged (7 of 7 and 13 of 13). The full-pipeline run of the old-text adverse pairs gives 28 of 59, the same as the fast reader, so the fast reader is not hiding recall on old text. Neither untouched half has been run.
+
 Reproduce: `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev --gold modern` (add `--production` for the full-pipeline run of the adverse pairs).
 
 ## What this means for use

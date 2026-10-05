@@ -48,6 +48,7 @@ RULES = [
         r"\b(?:is|was|are|were) (?:not|neither) (?:sustainable|tenable|correct(?! to (?:say|read|hold|think|suggest|contend|assume|infer|conclude))|right|sound|justified)\b", r"\b(?:erroneous|incorrect|unsound|flawed) (?:view|reasoning|decision|ratio|conclusion|opinion)\b",
         r"\b(?:is|was) erroneous\b", r"\b(?:not|nor) (?:in )?(?:consonance|conformity|accord|keeping|line) with\b", r"\bruns? counter to\b", r"\bcontrary to the (?:law|dictum|ratio|view|decision|principle)s?\b", r"\bnot the correct (?:law|view|position|proposition)\b",
         r"\bdoes not (?:commend|find) (?:itself|favour|acceptance)\b",
+        r"\bcannot be said to have been (?:correctly|properly|rightly) (?:appreciated|decided|understood|laid down|interpreted|construed|stated)\b",
         r"\bcannot be (?:accepted|taken|regarded|treated|said) as laying down (?:the )?(?:law|correct law) correctly\b", r"\b(?:do|does|did) not lay down the law correctly\b",
     ]),
     ("DOUBTS_REFERS", [
@@ -94,7 +95,7 @@ STRENGTH = {"OVERRULED_OTHER": -0.5, "OVERRULES": 6, "DISAGREES": 5, "DOUBTS_REF
 
 _VERB = re.compile(r"over-?\s?rul(?:e|es|ed|ing)|disapprov(?:e|es|ed|ing)", I)
 _AUX_IN_CUE = re.compile(r"^(?:stand(?:s|ing)?|is|are|was|were|be|been|hereby|also|expressly|accordingly)\b", I)
-_AUX_BEFORE = re.compile(r"\b(?:is|are|was|were|be|been|being|stand|stands|stood|get|gets|got)\s+(?:(?:hereby|also|expressly|specifically|thereby|now|already|since|later|subsequently|virtually|effectively|in effect|clearly|categorically|expressly|finally)\s+)*$", I)
+_AUX_BEFORE = re.compile(r"\b(?:is|are|was|were|be|been|being|stand|stands|stood|get|gets|got)\s+(?:(?:hereby|also|expressly|specifically|thereby|now|already|since|later|subsequently|virtually|effectively|in effect|clearly|categorically|expressly|finally|neither|never|not|nor|ever|ultimately|partly|partially|in part)\s+)*$", I)
 
 
 def voice(sentence, cue_span, target):
@@ -118,6 +119,8 @@ def voice(sentence, cue_span, target):
     if target[1] <= cue_span[0]:                                   # target before an active verb
         if re.match(r"\s*(?:[;.,:)]|$|Paras?\.?\s*\d)", sentence[cue_span[1]:cue_span[1] + 10]):
             return "patient"                                          # headnote style: "T, [cite], over-ruled." or "T over-ruled, because ..."
+        if re.match(r"\s+(?:in|by)\s+(?:\[\d{4}\]|\(\d{4}\)|\d{4}\b|[A-Z][\w.&'-]*(?:\s+[A-Za-z.&'-]+){0,5}?\s+v\.?\s)", sentence[cue_span[1]:cue_span[1] + 60]):
+            return "patient"                                          # "T, [cite], over-ruled in [cite]": the overruler is cited after the verb
         return "agent"
     between = sentence[cue_span[1]:target[0]]
     if _GROUND.search(between[-60:]):
@@ -133,6 +136,7 @@ _BLOCK_BETWEEN = re.compile(r"\b(?:and|reiterated|that|because|since|though|alth
 _BLOCK_BEFORE = re.compile(r"\b(?:because|since|in view of|having regard|therefore|but|while|whereas|when|if|though|although|contention|argument|submission|counsel|good law|over-?\s?rul\w*|incuriam|wrongly decided)\b", re.I)
 
 
+_VIEW_RELATIVE = re.compile(r"^\s*(?:to\s+)?(?:the\s+)?(?:view|opinion|reasoning|ratio|finding|conclusion|proposition|law|interpretation)\s+(?:which|that)\s+(?:has been|have been|was|were|is|had been)\s+(?:adopted|taken|expressed|laid down|held|propounded|rendered|given|enunciated|stated|arrived at)\s+(?:by\s+[\w\s.]{0,40}?)?in\s+(?:the\s+)?(?:above|said|aforesaid|earlier|previous|abovementioned)?\s*(?:decision|judgment|judgement|case)?\s*(?:of\s+this\s+Court\s+)?(?:in\s+)?$", I)
 _RELATIVE_HELD = re.compile(r"\b(?:which|who|that)\s+(?:had\s+|have\s+)?(?:held|observed|laid down|decided|ruled|took the view|propounded)\s+that\b", I)   # "judgments in T, which held that ..., do not lay down the correct law": the clause describes T and the verdict is on T
 _HELD_IN = re.compile(r"\b(?:held|observed|said|stated|decided|ruled|laid down|opined|noted|reiterated|concluded|pointed out|explained|clarified)\b[^.;]{0,40}?\b(?:in|by)\s+(?:the\s+(?:case|decision|judgment)\s+of\s+)?$", I)
 _COMPLIANCE = re.compile(r"\b(?:mandate|directions?|guidelines?|norms?|procedure|requirements?|safeguards?|dictum|law laid down|principles?)\b", I)
@@ -165,6 +169,8 @@ def attached(sentence, span, target):
             return True                                               # a law report's list entry: "T, [1950] S.C.R. 88, held incorrect."
         return len(between) <= 80 and not re.search(r"[;,]", between) and not _BLOCK_BEFORE.search(between)
     between = sentence[span[1]:target[0]]                             # cue first, then the target
+    if _VIEW_RELATIVE.match(between):
+        return True                                                   # "unable to subscribe to the view which has been adopted in the above decision in T": the view is T's
     if "," in between and re.match(r"referred", sentence[span[0]:span[1]], I):
         return False                                                  # "the issues referred to a larger Bench, referred to hereinabove, the decision in T is to be considered"
     m = re.search(r"\bthat\s+(?:the|its|their|this)\s+(?:decision|view|judgment|ruling|reasoning|ratio|holding)\b(?:\s+\w+){0,4}\s+(?:in|of|by)\s*$", between, re.I)
@@ -193,13 +199,13 @@ def is_hedged_after(sentence, cue_end):
 def is_hedged(sentence, cue_start):
     """The cue sits in a reported argument or a conditional: a reporting or conditional word within 200 characters before it with no semicolon or colon between,
     or a modal (may, might, could, would, should) within a few words."""
-    before = sentence[max(0, cue_start - 200):cue_start]
+    before = re.sub(r"\bas it may\b", " ", sentence[max(0, cue_start - 200):cue_start], flags=I)          # "be that as it may" is not a possibility
     last = None
     for m in _REPORTED.finditer(before):
         last = m
     if last and not re.search(r"[;:]", before[last.end():]):
         return True
-    return bool(_HEDGE.search(sentence[max(0, cue_start - 90):cue_start]))
+    return bool(_HEDGE.search(re.sub(r"\bas it may\b", " ", sentence[max(0, cue_start - 90):cue_start], flags=I)))
 
 
 _NOT_ABOUT_CASE = re.compile(r"\bover-?\s?rul\w*\s+(?:the |that |this |his |her |their |any |all )?(?:objections?|plea|contention|ground|submission|argument|claim|preliminary|order of|decision of the (?:trial|learned|single))|\b(?:contentions?|objections?|pleas?|submissions?|arguments?|grounds?)\b[^.;]{0,80}\b(?:is|are|was|were|stands?)\s+(?:hereby\s+)?over-?\s?rul", I)
@@ -383,7 +389,10 @@ def classify(sentence, target):
     return out
 
 
-_ANAPHOR = re.compile(r"^(?:That|This|The said|The aforesaid|The above|The same|Such|Said)\s+(?:\w+\s+){0,3}?(?:decision|judgment|judgement|view|case|ratio|holding|ruling|reasoning|opinion|proposition|law|authority)\b", I)
+_MARKER = r"(?:Thus|Therefore|Accordingly|Hence|Consequently|In (?:view of the above|the result|that view|the circumstances|these circumstances)|For (?:these|the above|the said) reasons)"
+_NOUN = r"(?:decision|judgment|judgement|view|case|ratio|holding|ruling|reasoning|opinion|proposition|law|authority)"
+_ANAPHOR = re.compile(rf"^(?:{_MARKER}\s*,?\s+)?(?:That|This|The said|The aforesaid|The above|The same|Such|Said)\s+(?:\w+\s+){{0,3}}?{_NOUN}\b"
+                      rf"|^{_MARKER}\s*,?\s+the\s+(?:(?:earlier|said|previous)\s+)?(?:decision|judgment|judgement|view|ratio|holding|ruling|reasoning|opinion|proposition)\b", I)   # a bare "The decision ..." opens a sentence about any decision, so it counts only after a concluding marker ("Thus, the decision is required to be overruled")
 _NON_ADVERSE = ("NEUTRAL", "FOLLOWS", "LIMITS", "DISTINGUISHES", "NOT_OVERRULED", "OVERRULED_OTHER")
 
 

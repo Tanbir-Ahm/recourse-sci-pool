@@ -27,8 +27,12 @@ _COMMON = {"state", "union", "india", "of", "the", "and", "company", "corporatio
            "reddy", "khan", "ali", "shah", "prasad", "nath", "pradesh", "bihar", "punjab", "haryana", "gujarat", "maharashtra", "kerala", "delhi"}
 
 
+_LEADING_NUMBER = re.compile(r"^(?:[A-Za-z. ]{0,20}\bNo\.?\s*[\d/-]+\s*\)\s*|[\d/-]{3,}\s*\)\s*)", re.I)   # a case number left on the front of a title: "No. 6290/2007) American Hotel ..."
+
+
 def clean_party(name):
-    s = _NOISE_TAIL.sub(" ", name or "")
+    s = _LEADING_NUMBER.sub("", name or "")
+    s = _NOISE_TAIL.sub(" ", s)
     s = _PREFIX.sub("", s.strip())
     return re.sub(r"\s+", " ", s).strip(" .,;:-&")
 
@@ -169,6 +173,17 @@ def _compatible_year(key, year):
     return year is None or -1 <= y - int(year) <= 3
 
 
+_NAME_BEFORE_CITE = re.compile(r"((?:[A-Z][\w.&'()/-]*,?\s+){1,8}(?:v\.?|vs\.?|versus)\s+(?:[A-Z][\w.&'()/-]*,?\s+){1,10})$")
+
+
+def _name_start(flat, s):
+    """Where a citation's mention begins: at the case name just before it ("Town Municipal Council, Athani v. Presiding Officer, Labour Court, [1970] 1 SCR 51"),
+    so that the cue reading sees the name and the citation as one reference and not as a name followed by a comma and a separate citation."""
+    window = flat[max(0, s - 160):s]
+    hit = _NAME_BEFORE_CITE.search(window)
+    return s - (len(window) - hit.start(1)) if hit else s
+
+
 def extract(text, target, short_names=(), body_start=None, known_cites=None, party_cases=()):
     """Mentions of the target in one text -> (list of mention dicts, {citation key: votes} for citations seen right after the pair)."""
     flat = flatten(text)
@@ -180,7 +195,7 @@ def extract(text, target, short_names=(), body_start=None, known_cites=None, par
     votes = collections.Counter()
     for key, s, e in cites:
         if any(C.keys_match(key, k) for k in known):
-            raw.append((s, e, "cite", key))
+            raw.append((_name_start(flat, s), e, "cite", key))
     pair = target.pair_regex()
     if pair:
         for m in pair.finditer(flat):

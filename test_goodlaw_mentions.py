@@ -145,6 +145,14 @@ check(sorted({m["doc_key"] for m in res2["mentions"]}) == ["c2", "c3", "c4"] and
 
 cp.con.close()
 shutil.rmtree(base, ignore_errors=True)
+# step 2: the citation's mention takes in the case name before it
+T2 = M.Target("TOWN MUNICIPAL COUNCIL, ATHANI", "PRESIDING OFFICER, LABOUR COURT", 1970, ["scr:1970:1:51"], date="1970-01-01", doc_key="c1")
+txt = "It was so held following the decision in Kerala State Electricity Board v. Amsom, [1977] 1 S.C.R. 996 which overruled the earlier decision of this court in Town Municipal Council, Athani v. Presiding Officer, Labour Court, [1970] 1 S.C.R. 51."
+fnd, _ = M.extract(txt, T2, [])
+check(fnd and fnd[0]["matched"].startswith("Town Municipal Council, Athani v. Presiding Officer") and fnd[0]["matched"].endswith("51"), f"a citation mention begins at the case name before it (got {fnd[0]['matched'] if fnd else None!r})")
+check(M.clean_party("No. 6290/2007) American Hotel & Lodging Association Educational Institute") == "American Hotel & Lodging Association Educational Institute", "a case number left on the front of a title is dropped")
+check(M.clean_party("Mohan Lal") == "Mohan Lal" and M.clean_party("M/s. No. 1 Traders") != "", "ordinary names are untouched")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")
