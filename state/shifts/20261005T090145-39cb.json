@@ -1,0 +1,13 @@
+{
+ "started_at": "2026-10-05T08:36:01+00:00",
+ "ended_at": "2026-10-05T09:01:45+00:00",
+ "scope": "after",
+ "minutes": 50.0,
+ "workers": 8,
+ "stop_reason": "completed all pending blocks in scope after",
+ "seconds": 1543.8,
+ "blocks_done": 27,
+ "ok": 6623,
+ "missing": 2,
+ "error": 0
+}
