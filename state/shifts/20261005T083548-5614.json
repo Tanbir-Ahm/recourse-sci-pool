@@ -1,0 +1,13 @@
+{
+ "started_at": "2026-10-05T08:33:37+00:00",
+ "ended_at": "2026-10-05T08:35:48+00:00",
+ "scope": "after",
+ "minutes": 10.0,
+ "workers": 8,
+ "stop_reason": "time budget used up (stopped after the 2 blocks asked for)",
+ "seconds": 130.8,
+ "blocks_done": 2,
+ "ok": 500,
+ "missing": 0,
+ "error": 0
+}
