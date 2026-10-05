@@ -5,7 +5,8 @@ Sources
   crawl         our crawl of api.sci.gov.in/jonew/judis (36,928 judgments). The decision year is ESTIMATED from the text:
                 ids below 28,000 use the date in the old-format header, or the nearest dated neighbour by id; ids from 28,000 use the last
                 date near the end of the text (see crawl_years.py). Single years near 2015 to 2017 are noisy; use period totals.
-  bucket        the open 'indian-supreme-court-judgments' AWS bucket, one metadata table per year (CC-BY-4.0, Dattam Labs).
+  bucket        the open 'indian-supreme-court-judgments' AWS bucket, one metadata table per year (CC-BY-4.0, Dattam Labs); distinct judgments
+                by decision year (second listings of the same judgment removed; an earlier version of this file counted them twice).
   catalogue     Recourse's case_lookup_index.db (Vaquill dataset plus bucket additions), by decision year.
 
 Inputs the crawl column needs (made by the other scripts in scripts_as_run/): crawl_table.json and crawl_years.json. Paths below are
@@ -19,7 +20,13 @@ BUCKET_DIR = f"{SCRATCH}/bucket"                      # meta_<year>.parquet, dow
 CATALOGUE = "/home/user/tanbir-ahm/recourse/case_lookup_index.db"
 IK = {1968: 393, 1969: 555, 1970: 428, 1971: 666, 1972: 616, 1973: 436, 1974: 456, 1975: 548, 1976: 524, 1977: 367, 1978: 420, 1979: 510, 1980: 469, 1981: 420, 1982: 228, 1983: 398, 1984: 368, 1985: 375, 1986: 472, 1987: 635, 1988: 530, 1989: 578, 1990: 738, 1991: 603, 1992: 774, 1993: 994, 1994: 1214, 1995: 1298, 1996: 2263, 1997: 1647, 1998: 1288, 1999: 1164, 2000: 1566, 2001: 1167, 2002: 1349, 2003: 1378, 2004: 1228, 2005: 950, 2006: 1250, 2007: 1590, 2008: 2835, 2009: 2218, 2010: 1381, 2011: 1271, 2012: 849, 2013: 1077, 2014: 882, 2015: 812, 2016: 745, 2017: 780, 2018: 1057, 2019: 1252, 2020: 688, 2021: 880, 2022: 1277, 2023: 1047, 2024: 1024, 2025: 1421, 2026: 983}
 
-bucket = {y: pq.read_table(f"{BUCKET_DIR}/meta_{y}.parquet").num_rows for y in range(1950, 2026)}
+# The per-year tables list 5,181 judgments twice (same file path, date and title, once in the decision year's table and once in
+# another year's), so a plain row count overstates the bucket by about 14% (43,333 rows, 38,152 distinct judgments). Count distinct ones.
+import pandas as pd
+_raw = pd.concat([pd.read_parquet(f"{BUCKET_DIR}/meta_{y}.parquet") for y in range(1950, 2026)], ignore_index=True)
+_raw["_t"] = _raw.title.map(lambda s: re.sub(r"[^a-z0-9]+", " ", str(s).lower()).strip())
+_distinct = _raw.drop_duplicates(["path", "decision_date", "_t"])
+bucket = collections.Counter(int(d[-4:]) for d in _distinct.decision_date)
 con = sqlite3.connect(f"file:{CATALOGUE}?mode=ro", uri=True)
 catalogue = dict(con.execute("select cast(substr(decision_date,1,4) as int), count(*) from cases where decision_date is not null group by 1").fetchall())
 
