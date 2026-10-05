@@ -428,6 +428,13 @@ class Corpus:
             out.append(d)
         return out
 
+    def phrase_df(self, phrase):
+        """How many texts contain the exact phrase (full-text index)."""
+        words = re.findall(r"[A-Za-z0-9]+", phrase)
+        if not words:
+            return 0
+        return self.con.execute("SELECT COUNT(*) FROM fts WHERE fts MATCH ?", ('"' + " ".join(words) + '"',)).fetchone()[0]
+
     def doc_frequency(self, term):
         """How many texts contain the word (from the full-text index vocabulary)."""
         if not getattr(self, "_vocab", False):

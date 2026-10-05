@@ -11,6 +11,7 @@ strongest treatment found near the mention, the exact words that show it (the cu
     LIMITS         "clarified", "explained", "confined to", "must be read in the context"
     FOLLOWS        "followed", "approved", "reaffirmed", "relied upon", "in consonance with"
     NOT_OVERRULED  "has not been overruled", "continues to hold the field", "remains good law"
+    OVERRULED_OTHER the target is the case that did the overruling ("T overruled X"), not the one overruled
     NEUTRAL        named, no cue found
 
 A cue only counts when it is within `MAX_DISTANCE` characters of the mention, and negation flips it ("has not been overruled" is NOT_OVERRULED, not
@@ -29,16 +30,17 @@ MAX_DISTANCE = 230
 I = re.I
 RULES = [
     ("OVERRULES", [
-        r"\b(?:stand(?:s|ing)?|is|are|was|were|be|been|hereby|also|expressly|accordingly)\s+(?:hereby\s+)?(?:expressly\s+)?overrule[ds]?\b",
-        r"\boverrul(?:e|es|ed|ing)\b",
+        r"\b(?:stand(?:s|ing)?|is|are|was|were|be|been|hereby|also|expressly|accordingly)\s+(?:hereby\s+)?(?:expressly\s+)?over-?\s?rule[ds]?\b",
+        r"\bover-?\s?rul(?:e|es|ed|ing)\b",
         r"\bno longer (?:a )?good law\b", r"\b(?:is|are|was|were) not (?:a )?good law\b", r"\bnot (?:to be )?(?:treated|regarded|considered) as (?:a )?good law\b",
         r"\bcannot be (?:treated|regarded|considered|said to be) (?:as )?(?:a )?good law\b",
         r"\b(?:does|do|did) not (?:lay down|represent|state|reflect) (?:the )?correct law\b", r"\bdoes not lay down the correct (?:law|proposition)\b",
         r"\b(?:was|were|is|are) (?:wrongly|incorrectly|erroneously) decided\b", r"\bwrongly decided\b", r"\bper incuriam\b",
-        r"\b(?:is|are|was|were) (?:hereby )?disapproved\b", r"\bdisapprov(?:e|es|ed|ing)\b", r"\bnot (?:been )?correctly decided\b",
+        r"\b(?:is|are|was|were) (?:hereby )?disapproved\b", r"\bdisapprov(?:e|es|ed|ing)\b", r"\bnot (?:been )?correctly decided\b", r"\bnot (?:rightly|properly) decided\b",
         r"\b(?:stands?|is|are) (?:hereby )?(?:set at naught|nullified|negated|superseded by this)\b",
     ]),
     ("DISAGREES", [
+        r"\bheld (?:to be )?(?:incorrect|erroneous|wrong|bad law)\b", r"\bdissent(?:ed|s|ing)? from\b", r"\bnot followed\b", r"\b(?:cannot|can not|could not|should not|ought not to) be followed\b",
         r"\b(?:unable|not able|not inclined|constrained) to (?:subscribe|agree|concur|accept)\b", r"\b(?:do|does|did|can) not (?:agree|concur|subscribe)\b",
         r"\bnot (?:able )?to agree\b", r"\b(?:respectfully|with respect,?) (?:differ|disagree|dissent)\b", r"\b(?:differ|disagree)s? (?:from|with) the (?:view|reasoning|ratio|decision|opinion)\b",
         r"\b(?:neither|not) borne out\b", r"\bcannot be (?:accepted|sustained|endorsed|approved|upheld|supported)\b", r"\bcannot (?:be )?(?:accept|sustain|endorse|approve|uphold)\b",
@@ -51,7 +53,7 @@ RULES = [
         r"\b(?:requires?|needs?|merits?|warrants?|calls? for|deserves?) (?:to be )?(?:re-?consider|re-?visit|re-?examin|re-?look|fresh look)\w*",
         r"\b(?:re-?consider(?:ation)?|re-?visit|re-?examin\w+)\b[^.]{0,60}\b(?:decision|view|ratio|judgment|case)\b", r"\blarger bench\b",
         r"\brefer(?:red|ring|s)? (?:the (?:matter|question|issue|case)|it|them) to (?:a |the )?(?:larger|five|seven|nine|constitution|three)",
-        r"\breferred to (?:a |the )?(?:larger|five-?judge|seven-?judge|nine-?judge|three-?judge|constitution) bench\b", r"\bfor (?:re-?consideration|re-?examination)\b", r"\bkept in abeyance\b",
+        r"\breferred to (?:a |the )?(?:larger|five-?judge|seven-?judge|nine-?judge|three-?judge|constitution) bench\b", r"\bfor (?:re-?consideration|re-?examination)\b", r"\bkept in abeyance\b", r"\bdoubted\b",
     ]),
     ("LEGISLATIVE", [
         r"\b(?:Parliament|Legislature|legislature)\b[^.]{0,120}\b(?:amend\w*|inserted|enacted|substituted|overcame|nullif\w+|remov\w+|in response)\b",
@@ -83,13 +85,38 @@ NOT_OVERRULED_RULES = [
 _COMPILED = [(label, [re.compile(p, I) for p in pats]) for label, pats in RULES]
 _NOT_OVERRULED = [re.compile(p, I) for p in NOT_OVERRULED_RULES]
 PRIORITY = ["OVERRULES", "DISAGREES", "DOUBTS_REFERS", "LEGISLATIVE", "DISTINGUISHES", "LIMITS", "FOLLOWS"]
-STRENGTH = {"OVERRULES": 6, "DISAGREES": 5, "DOUBTS_REFERS": 4, "LEGISLATIVE": 3, "DISTINGUISHES": 2, "LIMITS": 1, "FOLLOWS": 0}
+STRENGTH = {"OVERRULED_OTHER": -0.5, "OVERRULES": 6, "DISAGREES": 5, "DOUBTS_REFERS": 4, "LEGISLATIVE": 3, "DISTINGUISHES": 2, "LIMITS": 1, "FOLLOWS": 0}
+
+_VERB = re.compile(r"over-?\s?rul(?:e|es|ed|ing)|disapprov(?:e|es|ed|ing)", I)
+_AUX_IN_CUE = re.compile(r"^(?:stand(?:s|ing)?|is|are|was|were|be|been|hereby|also|expressly|accordingly)\b", I)
+_AUX_BEFORE = re.compile(r"\b(?:is|are|was|were|be|been|being|stand|stands|stood|get|gets|got)\s+(?:(?:hereby|also|expressly|specifically|thereby|now|already|since|later|subsequently|virtually|effectively|in effect|clearly|categorically|expressly|finally)\s+)*$", I)
+
+
+def voice(sentence, cue_span, target):
+    """For a cue built on the verb overrule or disapprove: 'patient' if the target is the case overruled ("T was overruled", "overruling T", "T, over-ruled."),
+    'agent' if the target is the case that did the overruling ("T overruled X", "overruled by T"). Anything else defaults to 'patient' so that doubt errs towards
+    flagging."""
+    cue = sentence[cue_span[0]:cue_span[1]]
+    before = sentence[max(0, cue_span[0] - 40):cue_span[0]]
+    after = sentence[cue_span[1]:cue_span[1] + 90]
+    passive = bool(_AUX_IN_CUE.match(cue)) or bool(_AUX_BEFORE.search(before)) or bool(re.match(r"\s*by\b", after))
+    if passive:
+        gap = target[0] - cue_span[1]
+        if 0 <= gap <= 90 and re.match(r"\s*by\b", after) and "by" in sentence[cue_span[1]:target[0]].lower().split():
+            return "agent"
+        return "patient"
+    if target[1] <= cue_span[0]:                                   # target before an active verb
+        if re.match(r"\s*(?:[;.,:)]|$)", sentence[cue_span[1]:cue_span[1] + 6]):
+            return "patient"                                          # headnote style: "T, [cite], over-ruled." or "T over-ruled, because ..."
+        return "agent"
+    return "patient"                                                  # "overruling T", "overruled the decision in T"
+
 
 _RELATIONAL = re.compile(r"\b(?:(?:not|nor) (?:in )?(?:consonance|conformity|accord|keeping|line) with|runs? counter to|contrary to the)\b", I)
 _NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$", I)
 _HEDGE = re.compile(r"\b(?:if|whether|unless|until|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
                     r"possib\w+|might|may|could|would|should|question (?:of|whether))\b(?:\s+\w+){0,6}\s*$", I)
-_NOT_ABOUT_CASE = re.compile(r"\boverrul\w*\s+(?:the |that |this |his |her |their |any )?(?:objections?|plea|contention|ground|submission|argument|claim|preliminary)", I)
+_NOT_ABOUT_CASE = re.compile(r"\bover-?\s?rul\w*\s+(?:the |that |this |his |her |their |any |all )?(?:objections?|plea|contention|ground|submission|argument|claim|preliminary|order of|decision of the (?:trial|learned|single))", I)
 _OTHER_CASE = re.compile(r"\b[A-Z][\w.'&-]*(?:\s+[A-Za-z.'&()-]+){0,5}?\s+(?:v\.?|vs\.?|versus)\s+[A-Z]")
 
 
@@ -98,6 +125,12 @@ def _other_mentions(sentence, target):
     spans = [(m.start(), m.end()) for m in _OTHER_CASE.finditer(sentence)]
     spans += [(s, e) for _, s, e in C.find_cites(sentence)]
     return [(s, e) for s, e in spans if e <= target[0] or s >= target[1]]
+
+
+def _separated(span, target, sentence):
+    """True if a semicolon lies between the cue and the target: in a law report's list of cases ("A, over-ruled; B, referred to") each clause is about its own case."""
+    lo, hi = (span[1], target[0]) if span[0] < target[0] else (target[1], span[0])
+    return ";" in sentence[lo:hi]
 
 
 def _distance(span, target):
@@ -139,7 +172,7 @@ def classify(sentence, target):
         for rx in patterns:
             for m in rx.finditer(sentence):
                 span = (m.start(), m.end())
-                if _distance(span, target) > MAX_DISTANCE:
+                if _distance(span, target) > MAX_DISTANCE or _separated(span, target, sentence):
                     continue
                 if label == "OVERRULES" and _NOT_ABOUT_CASE.search(sentence[max(0, m.start() - 10):m.end() + 40]):
                     continue
@@ -154,10 +187,13 @@ def classify(sentence, target):
                     # "X is not in consonance with T": T is the standard X is measured against, so this supports T
                     found.append({"label": "FOLLOWS", "was": "DISAGREES", "cue": m.group(0), "cue_span": span, "negated": False, "hedged": hedged, "binding": binding, "distance": _distance(span, target)})
                     continue
+                if label == "OVERRULES" and _VERB.search(m.group(0)) and voice(sentence, span, target) == "agent":
+                    found.append({"label": "OVERRULED_OTHER", "cue": m.group(0), "cue_span": span, "negated": negated, "hedged": hedged, "binding": binding, "distance": _distance(span, target)})
+                    continue
                 found.append({"label": label, "cue": m.group(0), "cue_span": span, "negated": negated, "hedged": hedged, "binding": binding, "distance": _distance(span, target)})
     for rx in _NOT_OVERRULED:
         for m in rx.finditer(sentence):
-            if _distance((m.start(), m.end()), target) <= MAX_DISTANCE:
+            if _distance((m.start(), m.end()), target) <= MAX_DISTANCE and not _separated((m.start(), m.end()), target, sentence):
                 found.append({"label": "NOT_OVERRULED", "cue": m.group(0), "cue_span": (m.start(), m.end()), "negated": False, "hedged": bool(_HEDGE.search(sentence[max(0, m.start() - 45):m.start()])),
                               "binding": _binding((m.start(), m.end()), others, target, sentence), "distance": _distance((m.start(), m.end()), target)})
     # "X is neither borne out ... nor in consonance with T": the cues before the relational one are about X, not about T

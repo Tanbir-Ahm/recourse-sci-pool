@@ -36,8 +36,13 @@ PLAIN = {
 }
 
 
-def bench_relation(citing, target):
-    if not citing or not target:
+RELIABLE_BENCH = ("header_full", "report_line")
+
+
+def bench_relation(citing, target, citing_source=None, target_source=None):
+    """'larger', 'equal' or 'smaller' when both benches are known completely (from the JUDIS header or the law report's judge list); otherwise 'unknown',
+    because signature counts and short headers can miss judges."""
+    if not citing or not target or citing_source not in RELIABLE_BENCH or target_source not in RELIABLE_BENCH:
         return "unknown"
     return "larger" if citing > target else ("equal" if citing == target else "smaller")
 
@@ -48,7 +53,7 @@ def classify_mentions(corpus, mentions, target):
     for m in mentions:
         c = T.classify(m["sentence"], m["target_in_sentence"])
         m.update(label=c["label"], cue=c["cue"], negated=c["negated"], hedged=c["hedged"], binding=c["binding"], labels_all=c["all"])
-        m["bench_relation"] = bench_relation(m.get("bench_size"), target.bench_size)
+        m["bench_relation"] = bench_relation(m.get("bench_size"), target.bench_size, m.get("bench_source"), target.bench_source)
         if m["doc_id"] not in texts:
             texts[m["doc_id"]] = corpus.text_of(m["doc_id"])
         m["quote_verified"] = quote_in_text(m["sentence"], texts[m["doc_id"]])
@@ -107,7 +112,7 @@ def citator_block(corpus, doc):
     out = []
     for row in doc.get("citator") or []:
         key = C.norm_cite(row["cite"])
-        found = corpus.docs_citing([key])[:1] if key and corpus.has_cite_index else []
+        found = [d for d in corpus.by_cite(key) if d["doc_key"] != doc["doc_key"]][:1] if key else []
         out.append({**row, "citing_case": ({"doc_key": found[0]["doc_key"], "title": found[0]["title"], "date": found[0]["date"]} if found else None)})
     return out
 
@@ -130,28 +135,39 @@ def build_bundle(corpus, target, doc=None, today=None):
     best = strongest_per_doc(mentions)
     by_label = collections.Counter(m["label"] for m in best.values())
 
-    adverse_strong, adverse_possible, legislative = [], [], []
+    adverse_strong, adverse_possible, legislative, not_courts_own = [], [], [], []
     for m in mentions:
         if m["label"] not in ADVERSE and m["label"] != "LEGISLATIVE":
             continue
-        if m["confidence"] == "low" or m["in_headnote"]:
+        if m["confidence"] == "low":
             continue
-        clean = (m["speaker"] == "court" and m["binding"] == "strong" and not m["hedged"] and m["confidence"] in ("high", "medium"))
+        if m["speaker"] in ("counsel", "lower_court"):
+            b = _brief(m)
+            b["why_not_a_clean_overruling"] = [f"said by {m['speaker'].replace('_', ' ')}, not as this Court's own holding"]
+            not_courts_own.append(b)
+            continue
+        clean = (m["binding"] == "strong" and not m["hedged"] and m["confidence"] in ("high", "medium"))
         if m["label"] == "LEGISLATIVE":
-            if m["speaker"] == "court":
+            if not m["in_headnote"]:
                 legislative.append(_brief(m))
         elif m["label"] == "OVERRULES" and clean and m["bench_relation"] in ("larger", "equal", "unknown"):
-            adverse_strong.append(_brief(m))
+            b = _brief(m)
+            b["kind"] = "law report's headnote says overruled" if m["in_headnote"] else "overruled by this Court"
+            adverse_strong.append(b)
+        elif m["label"] == "DISAGREES" and clean and m["bench_relation"] == "larger":
+            b = _brief(m)
+            b["kind"] = "rejected by a larger bench (disagreement by a bench that can overrule)"
+            adverse_strong.append(b)
         else:
             reason = []
-            if m["speaker"] != "court":
-                reason.append(f"said by {m['speaker'].replace('_', ' ')}, not as the Court's own holding")
             if m["hedged"]:
                 reason.append("worded as an argument, a condition or a possibility")
             if m["binding"] == "weak":
                 reason.append("another case is named nearer the cue, so it may be about that case")
             if m["label"] == "OVERRULES" and m["bench_relation"] == "smaller":
                 reason.append("by a smaller bench than the target's, which cannot overrule it")
+            if m["in_headnote"]:
+                reason.append("in the law report's headnote, not the judgment")
             if m["label"] in ("DISAGREES", "DOUBTS_REFERS") and not reason:
                 reason.append("disagreement or doubt, not an overruling")
             b = _brief(m)
@@ -171,7 +187,7 @@ def build_bundle(corpus, target, doc=None, today=None):
     summary = {
         "citing_judgments": len(docs_hi), "citing_judgments_all_confidence": len({m["doc_key"] for m in mentions}), "by_treatment": dict(by_label),
         "latest_citing_year": years[-1] if years else None, "citing_in_last_10_years": sum(1 for m in {m["doc_key"]: m for m in mentions if m["doc_key"] in docs_hi}.values() if m["year"] and m["year"] >= int(today[:4]) - 10),
-        "citing_by_decade": dict(sorted(decades.items())), "adverse_strong": adverse_strong, "adverse_possible": adverse_possible, "legislative": legislative,
+        "citing_by_decade": dict(sorted(decades.items())), "adverse_strong": adverse_strong, "adverse_possible": adverse_possible, "legislative": legislative, "argued_or_lower_court": not_courts_own,
         "citator_adverse_overruled": citator_overruled, "citator_adverse_other": citator_other,
     }
     label = triage(summary)
@@ -209,7 +225,7 @@ def render_markdown(b):
             return
         L.extend([f"## {title}", ""])
         for m in items:
-            L.append(f"- **{m['title']}** ({m['date'] or m['year']}; bench {m['bench_size'] or 'unknown'}, {m['bench_relation']} than the target's; {m['label'].lower().replace('_', ' ')}; cue: \"{m['cue']}\"; speaker: {m['speaker']}; confidence {m['confidence']}; quote verified: {m['quote_verified']})")
+            L.append(f"- {('[' + m['kind'] + '] ') if m.get('kind') else ''}**{m['title']}** ({m['date'] or m['year']}; bench {m['bench_size'] or 'unknown'}, {m['bench_relation']} than the target's; {m['label'].lower().replace('_', ' ')}; cue: \"{m['cue']}\"; speaker: {m['speaker']}; confidence {m['confidence']}; quote verified: {m['quote_verified']})")
             L.append(f"  > {m['sentence']}")
             if m.get("why_not_a_clean_overruling"):
                 L.append(f"  Why not a clean overruling: {'; '.join(m['why_not_a_clean_overruling'])}.")
@@ -218,6 +234,7 @@ def render_markdown(b):
     block("Appears to overrule or reject it (read these first)", s["adverse_strong"])
     block("Disagree, doubt, limit, or an overruling with a caveat", s["adverse_possible"])
     block("The legislature responded", s["legislative"])
+    block("An overruling or doubt said by counsel or a lower court (not this Court's own words; does not change the triage)", s["argued_or_lower_court"])
     if b["reporter_citator"]:
         L.extend(["## The reporter's own citator (printed in the judgment's header; later cases to about 1994)", ""])
         for c in b["reporter_citator"]:

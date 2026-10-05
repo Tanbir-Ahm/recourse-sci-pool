@@ -233,15 +233,16 @@ def bench_from_signatures(text):
 
 
 def bench_size(text, layout=None):
-    """(size, source) where source is 'header', 'report_line', 'signatures' or None. The header list is trusted when the layout carries
-    full bench lists (JUDIS layout up to about 1994); for later layouts the larger of header and signature counts is used."""
+    """(size, source) where source is 'header_full', 'report_line', 'header', 'signatures' or None. 'header_full' (the JUDIS layout with a citator,
+    up to about 1994, lists every judge) and 'report_line' (the law report's bracketed list) are complete; 'header' (the 1995-2007 layout, which can omit
+    judges) and 'signatures' are lower bounds, so the larger of the two is used and bench comparisons ignore them."""
     h, _ = bench_from_header(text)
     r, _ = bench_from_report_line(text) if layout != "judis" else (None, None)
     s = bench_from_signatures(text)
     if r:
         return max(r, s or 0), "report_line"
-    if h and layout == "judis" and "CITATOR" in text[:6000]:
-        return h, "header"
+    if h and layout == "judis" and "CASE NO" not in text[:800]:      # the pre-1995 JUDIS layout (no CASE NO. line) lists every judge
+        return h, "header_full"
     cands = [(n, src) for n, src in ((h, "header"), (s, "signatures")) if n]
     if cands:
         return max(cands)

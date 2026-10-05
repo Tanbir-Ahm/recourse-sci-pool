@@ -1,0 +1,25 @@
+{
+  "note": "Cases whose later history is known from outside this checker. Labels were assembled by an AI assistant from its own knowledge of Indian law and, for the second list, from Recourse's human-curated currency map; they have NOT been checked by a lawyer and must be before anyone relies on the scores. 'adverse' means a later Supreme Court judgment rejected the case; 'not_adverse' means it is still followed. doc_key points at the judgment in our collection (c = crawl id, b = bucket file).",
+  "cases": [
+    {"name": "Suresh Kumar Koushal v. Naz Foundation (2013)", "doc_key": "c41070", "expect": "adverse", "aliases": ["Koushal"], "basis": "Overruled by Navtej Singh Johar v. Union of India (2018), five judges (in the collection as b2018_7_379_746)."},
+    {"name": "Sowmithri Vishnu v. Union of India (1985)", "doc_key": "c9258", "expect": "adverse", "basis": "Overruled by Joseph Shine v. Union of India (2018), five judges (b2018_11_765_950), on section 497 IPC."},
+    {"name": "ADM Jabalpur v. Shivkant Shukla (1976)", "doc_key": "c5622", "expect": "adverse", "aliases": ["Shivkant Shukla"], "basis": "Overruled by K.S. Puttaswamy v. Union of India (2017), nine judges (b2017_10_569_999)."},
+    {"name": "Prabha Shankar Dubey v. State of M.P. (2003)", "doc_key": "c25607", "expect": "adverse", "basis": "Its 'substantial compliance' view of section 50 NDPS rejected by Vijaysinh Chandubha Jadeja v. State of Gujarat (2010), Constitution Bench (c37060); verified in the text of Jadeja."},
+    {"name": "A.K. Gopalan v. State of Madras (1950)", "doc_key": "c1251", "expect": "adverse", "basis": "Its reading of Articles 19, 21 and 22 as mutually exclusive was rejected in R.C. Cooper (1970) and Maneka Gandhi (1978); the reporter's headnotes say so."},
+    {"name": "Rajesh Sharma v. State of U.P. (2017)", "doc_key": "b2017_9_529_543", "expect": "adverse", "basis": "Its directions on section 498A IPC (family welfare committees) set aside by Social Action Forum for Manav Adhikar v. Union of India (2018), three judges (b2018_12_19_50)."},
+    {"name": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)", "doc_key": "c41801", "expect": "adverse", "basis": "Its rule on where a section 138 NI Act complaint can be filed was overridden by the Negotiable Instruments (Amendment) Act 2015 (section 142(2)); later judgments apply the amendment. Counts as adverse if the checker flags it QUESTIONED or ADVERSE_SIGNAL."},
+    {"name": "State of Haryana v. Bhajan Lal (1990)", "doc_key": "c7332", "expect": "not_adverse", "basis": "Leading case on quashing FIRs; followed for 30 years."},
+    {"name": "Maneka Gandhi v. Union of India (1978)", "doc_key": "c5154", "expect": "not_adverse", "basis": "Seven judges; foundation of Article 21 doctrine."},
+    {"name": "Gurbaksh Singh Sibbia v. State of Punjab (1980)", "doc_key": "c4562", "expect": "not_adverse", "basis": "Constitution Bench on anticipatory bail; affirmed by Sushila Aggarwal (2020)."},
+    {"name": "Hussainara Khatoon v. Home Secretary, Bihar (1979)", "doc_key": "c4873", "expect": "not_adverse", "basis": "Speedy trial as a fundamental right; followed."},
+    {"name": "D.K. Basu v. State of West Bengal (1996)", "doc_key": "c14580", "expect": "not_adverse", "basis": "Arrest and custody safeguards; Recourse's human map marks it good law."},
+    {"name": "State of Punjab v. Baldev Singh (1999)", "doc_key": "c30317", "expect": "not_adverse", "basis": "Constitution Bench on section 50 NDPS; reaffirmed in Jadeja (2010)."},
+    {"name": "Lalita Kumari v. Government of U.P. (2013)", "doc_key": "c40960", "expect": "not_adverse", "basis": "Constitution Bench on mandatory registration of FIRs; followed."},
+    {"name": "Arnesh Kumar v. State of Bihar (2014)", "doc_key": "c41736", "expect": "not_adverse", "statute_expect": "STATUTE_CHANGED", "basis": "Arrest guidelines; Recourse's map marks it superseded by statute only in numbering (CrPC 41A became BNSS 35), applied under the new numbering."},
+    {"name": "Rangappa v. Sri Mohan (2010)", "doc_key": "c36322", "expect": "not_adverse", "basis": "Three judges on the section 139 presumption; Recourse's human map marks it good law; followed in Basalingappa (2019)."},
+    {"name": "Bir Singh v. Mukesh Kumar (2019)", "doc_key": "b2019_2_24_40", "expect": "not_adverse", "basis": "Section 139 NI Act (blank cheque); Recourse's human map marks it good law."},
+    {"name": "K.S. Puttaswamy v. Union of India (2017)", "doc_key": "b2017_10_569_999", "expect": "not_adverse", "basis": "Nine judges, right to privacy."},
+    {"name": "Navtej Singh Johar v. Union of India (2018)", "doc_key": "b2018_7_379_746", "expect": "not_adverse", "basis": "Five judges, section 377 IPC."},
+    {"name": "Joseph Shine v. Union of India (2018)", "doc_key": "b2018_11_765_950", "expect": "not_adverse", "basis": "Five judges, section 497 IPC."}
+  ]
+}

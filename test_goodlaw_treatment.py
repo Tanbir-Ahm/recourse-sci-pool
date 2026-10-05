@@ -29,6 +29,25 @@ CASES = [
     ("The view taken in Mithu was wrongly decided and cannot survive.", "Mithu", "OVERRULES"),
     ("The decision in Ram Lal was rendered per incuriam of the earlier Constitution Bench.", "Ram Lal", "OVERRULES"),
     ("The said decision in Shyam v. State is hereby disapproved.", "Shyam v. State", "OVERRULES"),
+    # the law report's own headnote wording
+    ("Cricket Club of India v. Bombay Labour Union & Anr. [1969] 1 SCR 600= AIR [1969] SC 276 over-ruled; Hospital Mazdoor's case AIR 1960 S.C. 610 approved.", "Cricket Club of India v. Bombay Labour Union", "OVERRULES"),
+    ("Jagdish & Ors. v. Nathi Mal Kejriwal & Ors., [1986] 4 SCC 510, over-ruled.", "Jagdish & Ors. v. Nathi Mal Kejriwal", "OVERRULES"),
+    ("The assumption in A. K. Gopalan v. The State of Madras, [1950] S.C.R. 88, held incorrect.", "A. K. Gopalan v. The State of Madras", "DISAGREES"),
+    ("Chhotabhai Jethabhai's case was cited in support of the petition but it was not followed.", "Chhotabhai Jethabhai's case", "DISAGREES"),
+    ("Mohan v. Singh, [1960] 2 SCR 5, doubted.", "Mohan v. Singh", "DOUBTS_REFERS"),
+    # who overruled whom
+    ("Lakhanpal overruled the decision of Shah J. on this point.", "Lakhanpal", "OVERRULED_OTHER"),
+    ("The decision of Shah J. was overruled by Lakhanpal.", "Lakhanpal", "OVERRULED_OTHER"),
+    ("Chandra Bhan v. State of Rajasthan was overruled by Malik Ram, [1962] 1 SCR 978.", "Chandra Bhan v. State of Rajasthan", "OVERRULES"),
+    ("Overruling the earlier decision in Shivji Lal, it was held that the clause needs no extra ingredient.", "Shivji Lal", "OVERRULES"),
+    ("Mysore State Road Transport Corporation v. The Mysore Revenue Appellate Tribunal [1975] 1 S.C.R. 493, over-ruled.", "Mysore State Road Transport Corporation", "OVERRULES"),
+    ("Kerala SEB v. Amsom, [1977] 1 SCR 996, which overruled the earlier decision in Athani, is the leading case.", "Kerala SEB v. Amsom", "OVERRULED_OTHER"),
+    ("Kerala SEB v. Amsom, [1977] 1 SCR 996, which overruled the earlier decision in Athani, is the leading case.", "Athani", "OVERRULES"),
+    ("Gopalan's case was disapproved and held to be not correct.", "Gopalan's case", "OVERRULES"),
+    # law-report lists: each clause is about its own case
+    ("Union of India v. Metal Corporation of India Ltd. [1967] 1 S.C.R. 255 overruled, because Parliament had specified the principles.", "Union of India v. Metal Corporation of India Ltd.", "OVERRULES"),
+    ("Mohan Singh v. Bhanwarlal, [1964] 5 S.C.R. 12, disapproved; Amin Lal v. Hunna Mal, [1964] 1 S.C.R. 393, referred to.", "Amin Lal v. Hunna Mal", "NEUTRAL"),
+    ("Mohan Singh v. Bhanwarlal, [1964] 5 S.C.R. 12, disapproved; Amin Lal v. Hunna Mal, [1964] 1 S.C.R. 393, referred to.", "Mohan Singh v. Bhanwarlal", "OVERRULES"),
     # the case stands
     ("The decision in Rangappa has not been overruled and continues to hold the field.", "Rangappa", "NOT_OVERRULED"),
     ("Bhajan Lal has never been overruled.", "Bhajan Lal", "NOT_OVERRULED"),

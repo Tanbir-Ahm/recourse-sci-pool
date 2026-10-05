@@ -1,0 +1,14 @@
+{
+  "note": "Cases behind Recourse's own currency map (citation_currency.py in the Recourse repository), as far as our collection holds them. Not found in the collection, so not checked: Youth Bar Association of India (FIR copy guidelines), Rakhi Mitra, Sri Manjunath, Neelkanth Pharma Logistics, Malabar Gold, Prakash Chimanlal Sheth. Meters and Instruments v. Kanchan Mehta (2017) is added because it comments on Damodar Prabhu.",
+  "targets": [
+    {"name": "Arnesh Kumar v. State of Bihar (2014)", "doc_key": "c41736"},
+    {"name": "D.K. Basu v. State of West Bengal (1996)", "doc_key": "c14580"},
+    {"name": "State of Maharashtra v. Tapas D. Neogy (1999)", "doc_key": "c16666"},
+    {"name": "Rangappa v. Sri Mohan (2010)", "doc_key": "c36322"},
+    {"name": "Bir Singh v. Mukesh Kumar (2019)", "doc_key": "b2019_2_24_40"},
+    {"name": "Damodar S. Prabhu v. Sayed Babalal H. (2010)", "doc_key": "c36294"},
+    {"name": "Meters and Instruments v. Kanchan Mehta (2017)", "doc_key": "b2017_10_66_85"},
+    {"name": "Kaveri Plastics v. Mahdoom Bawa Bahrudeen Noorul (2025)", "doc_key": "b2025_9_1210_1228"},
+    {"name": "Vihaan Kumar v. State of Haryana (2025)", "doc_key": "b2025_2_424_451"}
+  ]
+}

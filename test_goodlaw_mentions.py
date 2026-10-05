@@ -61,6 +61,13 @@ check(found[0]["speaker"] == "lower_court", "a mention the High Court is said to
 found, _ = M.extract("It was urged by the respondents. Reliance was placed on Rangappa v. Sri Mohan, (2010) 11 SCC 441.", T2, [])
 check(found[0]["speaker"] == "counsel", "counsel's argument carried over from the previous sentence is recognised")
 
+# a party's name with 'case' after it
+T4 = M.Target("UNIVERSITY OF DELHI", "RAM NATH", 1963, [], date="1963-01-01", doc_key="c1")
+pcs = T4.party_case_patterns()
+found, _ = M.extract("Our conclusion is that the University of Delhi case was wrongly decided. The Delhi University's decision was different.", T4, [], party_cases=pcs)
+check(len(found) == 1 and found[0]["tier"] == "short" and found[0]["matched"].lower().startswith("university of delhi case"), "a party's name followed by 'case' is found as a short mention")
+check(M.Target("STATE OF PUNJAB", "X", 1990).party_case_patterns() != [] and M.Target("STATE", "X", 1990).party_case_patterns() == [], "a one-word stock party name never makes a party-case pattern")
+
 # party words and regexes
 check(M.party_words("M/S. ABC TRADERS (DEAD) THROUGH LRS. & ORS.") == ["ABC", "TRADERS"], "party names lose prefixes, 'dead through LRs' and 'and others'")
 check(M.party_words("STATE OF U.P. AND ANOTHER") == ["STATE", "OF", "U", "P"], "initials are kept as words")
@@ -94,22 +101,27 @@ def write_gz(path, content):
 
 base = tempfile.mkdtemp(prefix="mentions_test_")
 write_gz(os.path.join(base, "crawl", "shards", "000000-000249.ok9.gap0.err0.jsonl.gz"), "".join(json.dumps({"id": i, "status": "ok", "text": t, "pages": 2}) + "\n" for i, t in DOCS.items()))
-write_gz(os.path.join(base, "bucket", "shards", "after-0000.ok0.miss0.err0.jsonl.gz"), "")
+dupe_text = DOCS[3]
+write_gz(os.path.join(base, "bucket", "shards", "none-0000.ok1.miss0.err0.jsonl.gz"), json.dumps(
+    {"status": "ok", "path": "2000_1_1_9", "title": "GOPAL versus HARI", "petitioner": "GOPAL", "respondent": "HARI", "decision_date": "04-04-2000", "citation": "[2000] 1 S.C.R. 1",
+     "case_id": "", "text": dupe_text, "key": "k", "bytes": 1, "sha256": "x", "pages": 2, "scan_pages": 0}) + "\n")
 buf = io.StringIO()
 csv.DictWriter(buf, fieldnames=["decision_date", "title", "path", "tier", "citation", "case_id", "crawl_ids"]).writeheader()
 write_gz(os.path.join(base, "registry.csv.gz"), buf.getvalue())
-write_gz(os.path.join(base, "none.csv.gz"), "path,title,decision_date,key,status,best_crawl_id,shared_runs,frac,in_crawl\n")
+write_gz(os.path.join(base, "none.csv.gz"), "path,title,decision_date,key,status,best_crawl_id,shared_runs,frac,in_crawl\n2000_1_1_9,GOPAL versus HARI,04-04-2000,k,ok,3,60,0.25,uncertain\n")
 out = os.path.join(base, "corpus.sqlite")
 K.build(os.path.join(base, "crawl"), os.path.join(base, "bucket"), os.path.join(base, "registry.csv.gz"), os.path.join(base, "none.csv.gz"), out, workers=1, log=lambda *_: None)
 K.index_cites(out, workers=1, chunk=4, log=lambda *_: None)
 cp = K.Corpus(out)
 check(cp.get("c8", False)["dup_of"] == "c3", "fixture: text 8 is a second copy of text 3")
+check(cp.get("b2000_1_1_9", False)["maybe_dup_of"] == "c3", "fixture: the bucket text marked 'uncertain' points at crawl text 3")
 
 tgt = M.Target.from_doc(cp.get("c1", False))
 tgt.cites = ["air:1992:604"]       # known from the law report; the SCC citation has to be learned
 res = M.find_mentions(cp, tgt)
 docs = [m["doc_key"] for m in res["mentions"]]
 check(res["learned_cites"] == ["scc:1992:s1:335"], "the SCC supplement citation is learned from the texts that give it after the parties' names")
+check("b2000_1_1_9" not in docs, "a bucket text that may be a second copy of a candidate crawl text is not counted twice")
 check(sorted(set(docs)) == ["c2", "c3", "c4", "c5"], "citing texts are 2, 3, 4 and 5: not 1 (the target), 6 (earlier), 7 (a different case with the same names), 8 (second copy), 9 (no mention)")
 by_doc = {d: [m for m in res["mentions"] if m["doc_key"] == d] for d in set(docs)}
 check(any(m["tier"] == "cite" for m in by_doc["c2"]), "text 2 cites the AIR page of the target")

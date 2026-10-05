@@ -42,8 +42,9 @@ def _words_regex(words):
 
 
 class Target:
-    def __init__(self, pet, resp, year, cites=(), date=None, doc_key=None, bench_size=None, name=None, aliases=()):
+    def __init__(self, pet, resp, year, cites=(), date=None, doc_key=None, bench_size=None, name=None, aliases=(), bench_source=None):
         self.pet, self.resp, self.year, self.date = pet, resp, year, date
+        self.bench_source = bench_source
         self.cites = list(cites)
         self.doc_key, self.bench_size = doc_key, bench_size
         self.name = name or f"{pet} v. {resp}"
@@ -55,7 +56,7 @@ class Target:
         pet, resp = doc.get("pet"), doc.get("resp")
         if (not pet or not resp) and doc.get("title") and re.search(r"\s(?:v\.?|vs\.?|versus)\s", doc["title"], re.I):
             pet, resp = re.split(r"\s(?:v\.?|vs\.?|versus)\s", doc["title"], maxsplit=1, flags=re.I)
-        return cls(pet or "", resp or "", doc.get("year"), doc.get("cites") or [], doc.get("date"), doc.get("doc_key"), doc.get("bench_size"), doc.get("title"))
+        return cls(pet or "", resp or "", doc.get("year"), doc.get("cites") or [], doc.get("date"), doc.get("doc_key"), doc.get("bench_size"), doc.get("title"), bench_source=doc.get("bench_source"))
 
     def all_cites(self):
         return self.cites + [c for c in self.learned_cites if c not in self.cites]
@@ -66,6 +67,21 @@ class Target:
             return None
         honorific = r"(?:(?:m/s|messrs|shri|sri|smt|dr|mr|mrs|the)\W{0,3})?"
         return re.compile(rf"{_words_regex(pw)}\W{{1,6}}(?:v|vs|versus)\W{{1,4}}{honorific}{_words_regex(rw)}", re.I)
+
+    def party_case_patterns(self, corpus=None, max_df=600):
+        """Patterns for a party's name followed by 'case', 'decision', 'judgment', 'ruling' or '(supra)', e.g. "University of Delhi case" or "Chhotabhai
+        Jethabhai's case". Used only when the party's phrase is unusual enough in the corpus (not "State of Punjab")."""
+        out = []
+        for party in (self.pet, self.resp):
+            words = party_words(party, limit=5)
+            if not words:
+                continue
+            if len(words) == 1 and (len(words[0]) < 5 or words[0].lower() in _COMMON):
+                continue
+            if corpus is not None and corpus.phrase_df(" ".join(words)) > max_df:
+                continue
+            out.append((" ".join(words), re.compile(rf"\b{_words_regex(words)}(?:['’]s)?\W{{0,3}}(?:case|decision|judgment|ruling|\(supra\)|\(\d\))", re.I)))
+        return out
 
     def short_names(self, corpus=None, max_df=300):
         """Distinctive single names to look for alone: a party's first or last word that is rare in the corpus and not a stock name."""
@@ -143,7 +159,7 @@ def _compatible_year(key, year):
     return year is None or -1 <= y - int(year) <= 3
 
 
-def extract(text, target, short_names=(), body_start=None, known_cites=None):
+def extract(text, target, short_names=(), body_start=None, known_cites=None, party_cases=()):
     """Mentions of the target in one text -> (list of mention dicts, {citation key: votes} for citations seen right after the pair)."""
     flat = flatten(text)
     spans = sentences(flat)
@@ -176,6 +192,9 @@ def extract(text, target, short_names=(), body_start=None, known_cites=None):
     for name in short_names:
         for m in re.finditer(rf"\b{re.escape(name)}(?:['’]s)?\b", flat, re.I):
             shorts.append((m.start(), m.end(), "short", name))
+    for phrase, rx in party_cases:
+        for m in rx.finditer(flat):
+            shorts.append((m.start(), m.end(), "short", phrase))
     # an explicit pair or cite hit can swallow a short-name hit at the same place
     covered = [(s, e) for s, e, _, _ in raw]
     shorts = [x for x in shorts if not any(s <= x[0] and x[1] <= e + 3 for s, e in covered + conflict)]
@@ -215,6 +234,7 @@ def _later(doc, target):
 def find_mentions(corpus, target, learn=True, min_votes=2, log=None):
     """-> dict(mentions=[...], citing_docs=n, learned_cites=[...], by_tier={...}). Mentions come sorted by date of the citing judgment."""
     short = target.short_names(corpus)
+    pcases = target.party_case_patterns(corpus)
     cand = {}
 
     def add(docs, why):
@@ -236,6 +256,10 @@ def find_mentions(corpus, target, learn=True, min_votes=2, log=None):
             add(corpus.search(f'"{a}"'), "pair")
     for name in short:
         add(corpus.search(f'"{name.lower()}"'), "short")
+    for phrase, _ in pcases:
+        add(corpus.search(f'"{phrase.lower()}"'), "short")
+    for key in [k for k, (d, _) in cand.items() if d.get("maybe_dup_of") and d["maybe_dup_of"] in cand]:
+        del cand[key]          # a bucket text that may be a second copy of a crawl text already among the candidates is not counted twice
     if log:
         log(f"{len(cand)} candidate texts")
     mentions, votes_total = [], collections.Counter()
@@ -243,12 +267,12 @@ def find_mentions(corpus, target, learn=True, min_votes=2, log=None):
     for key, (d, why) in cand.items():
         text = corpus.text_of(d["id"])
         texts[key] = text
-        found, votes = extract(text, target, short, d.get("body_start"))
+        found, votes = extract(text, target, short, d.get("body_start"), party_cases=pcases)
         votes_total.update(votes)
         for m in found:
             m["doc_key"], m["doc_id"] = d["doc_key"], d["id"]
             m["date"], m["year"], m["date_source"] = d["date"], d["year"], d["date_source"]
-            m["bench_size"], m["source"], m["title"] = d["bench_size"], d["source"], d["title"]
+            m["bench_size"], m["bench_source"], m["source"], m["title"] = d["bench_size"], d["bench_source"], d["source"], d["title"]
             m["citing_cites"] = d["cites"]
             mentions.append(m)
     learned = []
@@ -257,14 +281,14 @@ def find_mentions(corpus, target, learn=True, min_votes=2, log=None):
         if learned:
             target.learned_cites = learned
             if corpus.has_cite_index:
-                extra = [d for d in corpus.docs_citing(learned) if _later(d, target) and d["doc_key"] not in cand]
+                extra = [d for d in corpus.docs_citing(learned) if _later(d, target) and d["doc_key"] not in cand and d.get("maybe_dup_of") not in cand]
                 for d in extra:
                     text = corpus.text_of(d["id"])
-                    found, _ = extract(text, target, short, d.get("body_start"))
+                    found, _ = extract(text, target, short, d.get("body_start"), party_cases=pcases)
                     for m in found:
                         m["doc_key"], m["doc_id"] = d["doc_key"], d["id"]
                         m["date"], m["year"], m["date_source"] = d["date"], d["year"], d["date_source"]
-                        m["bench_size"], m["source"], m["title"] = d["bench_size"], d["source"], d["title"]
+                        m["bench_size"], m["bench_source"], m["source"], m["title"] = d["bench_size"], d["bench_source"], d["source"], d["title"]
                         m["citing_cites"] = d["cites"]
                         mentions.append(m)
     mentions.sort(key=lambda m: (m["date"] or f"{m['year']}-12-31", m["doc_key"], m["start"]))

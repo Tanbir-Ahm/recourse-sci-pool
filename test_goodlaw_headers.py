@@ -56,7 +56,7 @@ check([(c["code"], c["cite"], c["paras"]) for c in cit] == [("F", "1967 SC 908",
 check(cit[3]["meaning"] == "overruled" and cit[0]["meaning"] == "followed", "citator codes carry their meaning")
 check(H.judis_body_start(LAKHANPAL) is not None and LAKHANPAL[H.judis_body_start(LAKHANPAL):].strip().startswith("The Judgment of the Court"), "the court's own judgment starts after the JUDGMENT: heading, past the reporter's headnote")
 whole = H.parse_crawl(LAKHANPAL)
-check(whole["bench_size"] == 5 and whole["bench_source"] == "header" and whole["layout"] == "judis", "parse_crawl: five judges from the header in the JUDIS layout")
+check(whole["bench_size"] == 5 and whole["bench_source"] == "header_full" and whole["layout"] == "judis", "parse_crawl: five judges from the header in the JUDIS layout")
 
 check(H.parse_header_citations("CITATION:\n 1978 AIR  597            1978 SCR (2) 621\nACT:\n")["scr"] == ["1978 SCR (2) 621"], "a volume printed in the header is kept")
 
