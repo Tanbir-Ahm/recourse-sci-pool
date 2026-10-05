@@ -4,7 +4,7 @@ Purpose: fetch the open Supreme Court bucket's PDFs named in `coverage/bucket_ma
 
 The bucket is public (s3://indian-supreme-court-judgments, CC-BY-4.0, Dattam Labs) and needs no key. The session's environment must be allowed to reach `indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com` (the `sci-index` environment can).
 
-The task names the scope: `after` (7,125 judgments dated after 4 May 2017) or `none` (4,833 older judgments the crawl seems to lack, fetched so their texts can be compared with the crawl's). Run `after` first.
+The task names the scope: `after` (7,125 judgments dated after 4 May 2017), `none` (4,833 older judgments the crawl seems to lack, fetched so their texts can be compared with the crawl's), or REFRESH (judgments added to the bucket since the last run; see the end). `after` and `none` are finished.
 
 ## Hard rules
 - Never change any code file. Never push any branch except `claude/sci-bucket` (the script does it).
@@ -22,6 +22,19 @@ The task names the scope: `after` (7,125 judgments dated after 4 May 2017) or `n
 6. SHIFT 2 and then SHIFT 3: run the identical command from step 4 again (60-minute timeout each), applying the same check from step 5 after each one.
 7. `python sci_bucket.py status --data-dir ../recourse-sci-bucket-data`
 8. Report in at most 8 lines: blocks done and ok/missing/error counts for each shift, the stop reason of each shift, and the status lines from step 7.
+
+## If the task says REFRESH (judgments added to the bucket since the last run)
+The bucket gains judgments in small batches (its 2026 folder was filled in June, July and August 2026). A refresh finds what is new and downloads only that. Same hard rules as above.
+0. `git fetch origin` then `python sci_bucket.py active-check`. If it prints `ACTIVE`, STOP.
+1. `pip install -q pymupdf pyarrow`
+2. `python test_sci_bucket.py` and `python test_bucket_refresh.py` (both must end with ALL PASSED; otherwise STOP and report).
+3. `python sci_bucket.py init --data-dir ../recourse-sci-bucket-data`
+4. `python bucket_refresh.py plan --data-dir ../recourse-sci-bucket-data`. It prints `PLAN: ...`. If it says nothing is new, report that and STOP. Otherwise note the `scope:` and `work list:` lines it prints (a scope looks like `refresh_20261005`).
+5. SHIFT (one command, 60-minute timeout), using that scope and work list:
+   `python sci_bucket.py shift --scope <scope> --worklist <work list> --data-dir ../recourse-sci-bucket-data --minutes 50 --workers 8`
+   Apply the step 5 check above ("time budget used up" means run it again, up to three shifts).
+6. `python sci_bucket.py status --data-dir ../recourse-sci-bucket-data` and report in at most 8 lines: what the plan found, blocks done and ok/missing/error counts, the stop reason, the status lines.
+The planner treats every file path in `coverage/bucket_match/registry.csv.gz` and in earlier refresh work lists (kept on the data branch under `state/worklists/`) as already known, so each run downloads only what is new.
 
 ## Kill switch
 If a file named `STOP` exists in the data folder (branch `claude/sci-bucket`), the script stops before fetching anything. Check: `ls ../recourse-sci-bucket-data/STOP`. That is intended; just report it.

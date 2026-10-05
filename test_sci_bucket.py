@@ -278,6 +278,26 @@ data6b = os.path.join(base6, "bucket-data2")
 msg2 = sci_bucket.init_branch(code7, data6b)
 check(msg2 == "attached existing claude/sci-bucket", "a later session attaches the existing branch")
 
+# ------------------------------------------------------------ a later scope (monthly refresh) has its own pin and shard names
+base8, work8, remote8 = make_repo()
+rows8 = []
+for i in range(12):
+    rows8.append(dict(scope="refresh_20261005", decision_date="05-01-2026", path=f"2026_1_{i}_{i + 3}", key=f"data/pdf/year=2026/english/2026_1_{i}_{i + 3}_EN.pdf", size="",
+                      title=f"NEW {i} versus STATE", petitioner=f"NEW {i}", respondent="STATE", citation="", case_id=f"2026 INSC {i}", nc_display="", cnr="", judge="",
+                      disposal_nature="", available_languages="", tier="refresh"))
+wl8, _ = make_worklist(base8, 0, 0, extra=rows8)
+f8, _ = make_fetcher(rows8)
+res10 = sci_bucket.shift(work8, wl8, "refresh_20261005", minutes=30, workers=2, block_size=BS, fetcher=f8, sleep=no_sleep, out=quiet)
+check(res10["blocks_done"] == 2 and res10["ok"] == 12 and shards(work8)[0].startswith("refresh_20261005-0000.ok10"), "a refresh scope downloads and names its shards after itself")
+check(os.path.exists(os.path.join(work8, "state", "worklist-refresh_20261005.sha256")) and not os.path.exists(os.path.join(work8, "state", "worklist.sha256")), "a later scope pins its work list in its own file, not in the first scopes' pin")
+check(sci_bucket.status_summary(work8, wl8, block_size=BS)["scopes"]["refresh_20261005"]["blocks_done"] == 2, "status lists a refresh scope too")
+try:
+    sci_bucket.shift(work8, wl8, "Bad Scope", minutes=1, workers=1, block_size=BS, fetcher=f8, sleep=no_sleep, out=quiet)
+    bad_ok = False
+except ValueError:
+    bad_ok = True
+check(bad_ok, "a scope name with spaces or capitals is refused")
+
 # ------------------------------------------------------------ body start and cleaning
 lr = ("A\nB\nC\nD\nE\nF\nG\nH\n329\nSUNITA & ORS.\nv.\nRAJASTHAN STATE ROAD TRANSPORT CORPORATION\n(Civil Appeal No. 1665 of 2019)\n"
       "Motor Vehicles Act, 1988 – Fatal accident – held: the High Court erred.\n[2019] 3 S.C.R. 329\nSUPREME COURT REPORTS\n[2019] 3 S.C.R.\n"
@@ -302,7 +322,7 @@ check(clean.count("Sunita v. Rajasthan SRTC") == 0 and "We allow the appeal." in
 check(json.dumps(rec, sort_keys=True) == before, "cleaning never changes the saved record")
 check(sci_bucket.clean_text({"text": "ABC\nA\n12\nword"}) == "ABC\nword", "with no body start the whole text is kept apart from margin marks")
 
-for b in (base, base2, base3, base4, base5, base6):
+for b in (base, base2, base3, base4, base5, base6, base8):
     shutil.rmtree(b, ignore_errors=True)
 
 print()

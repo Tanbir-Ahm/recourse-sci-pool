@@ -31,7 +31,7 @@ IK's list: 55,332 Supreme Court judgments for 1968 to 2026, typed from a screens
 | 2010-14 | 5,460 | 5,148 (94%) | 4,007 (73%) | 3,984 (73%) |
 | 2015-17 | 2,337 | 2,437 (104%) | 2,080 (89%) | 2,034 (87%) |
 | 2018-25 | 8,646 | 3 | 6,675 (77%) | 6,622 (77%) |
-| 2026 | 983 | 0 | 0 | 0 |
+| 2026 (to 12 Aug) | 983 (to early Oct) | 0 | 214 (22%) | 0 |
 
 **Correction, 2026-10-05:** an earlier version of this table counted the bucket's metadata rows (43,333). The tables list 5,181 judgments twice, so the bucket holds 38,152 distinct judgments; the figures above are distinct counts. The old figures for 1968 to 1979 (99%) and 1980 to 1989 (79%) were wrong. See `bucket_match/MATCH_REPORT.md`.
 
@@ -39,12 +39,12 @@ Cautions:
 - The crawl's decision year is estimated from dates in the text. Single years near 2015 to 2017 are noisy (the estimate shows 2016 at 150% of IK), so read the period totals, not single years.
 - IK may count things the other sources do not (unreported judgments, possibly duplicates or orders). "IK has more" does not prove every extra is a distinct judgment.
 - The bucket and the crawl each hold about 60% of IK's count for 1968 to 1999, and they overlap almost completely (section 3a), so the bucket does not fill the crawl's gaps for those years. [Likely]
-- The newest period is the weakest: the bucket has 897 of IK's 1,421 judgments for 2025 (63%) and nothing for 2026; about 1,970 judgments from 2018 to 2025 are on IK but not in the bucket.
+- The newest period is the weakest: the bucket has 897 of IK's 1,421 judgments for 2025 (63%) and 214 of IK's 983 for 2026 (22%, decisions to 12 August 2026); about 1,970 judgments from 2018 to 2025 are on IK but not in the bucket. The bucket's 2026 folder was added in small batches in June, July and August 2026; an earlier version of this note said 2026 was empty because only the 1950 to 2025 tables had been fetched.
 - Recourse's case catalogue (38,026 cases) matches the bucket's distinct judgments almost exactly (about 120 recent ones are missing), so its "find any judgment" reach has the same gaps.
 
 ## 3. The open bucket (indian-supreme-court-judgments, CC-BY-4.0, Dattam Labs)
 
-- **38,152 distinct judgments** for 1950 to 2025 in per-year metadata tables (43,333 rows; 5,181 judgments are listed twice). 7,125 are dated after the crawl's last date (450 of the 732 for 2017). The bucket's PDFs total 22.6 GB (43,327 files; both copies of the duplicates count); the 7,125 later ones are 2.90 GB.
+- **38,366 distinct judgments** for 1950 to 2026 (38,152 for 1950 to 2025, plus 214 for 2026) in per-year metadata tables (43,333 rows; 5,181 judgments are listed twice). 7,125 of the 1950-to-2025 judgments are dated after the crawl's last date (450 of the 732 for 2017), and all 214 of 2026 are. The bucket's PDFs total 22.6 GB (43,327 files; both copies of the duplicates count); the 7,125 later ones are 2.90 GB.
 - Each record has title, petitioner, respondent, judge, law-report citation, neutral citation (INSC), decision date, how it was disposed of, and the PDF's file name (law-report volume and pages).
 - **Scanned or not:** every sampled PDF from 2012 to 2017 is a scan with machine-read text (35 of 35; 685 of 685 pages carry an embedded image). Every sampled PDF from 2018 to 2025 is typeset text (56 of 56; 0 of 1,025 pages). So only 2017 is scanned within the proposed extension.
 - **Clutter to clean:** 2018 to 2022 PDFs carry margin letters A to H as lone lines (roughly 100 to 180 per PDF in the sample); 2023 has a few, 2024 on none. Running headers and the law-report headnote appear in all years.

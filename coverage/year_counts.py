@@ -23,7 +23,7 @@ IK = {1968: 393, 1969: 555, 1970: 428, 1971: 666, 1972: 616, 1973: 436, 1974: 45
 # The per-year tables list 5,181 judgments twice (same file path, date and title, once in the decision year's table and once in
 # another year's), so a plain row count overstates the bucket by about 14% (43,333 rows, 38,152 distinct judgments). Count distinct ones.
 import pandas as pd
-_raw = pd.concat([pd.read_parquet(f"{BUCKET_DIR}/meta_{y}.parquet") for y in range(1950, 2026)], ignore_index=True)
+_raw = pd.concat([pd.read_parquet(f"{BUCKET_DIR}/meta_{y}.parquet") for y in range(1950, 2027)], ignore_index=True)
 _raw["_t"] = _raw.title.map(lambda s: re.sub(r"[^a-z0-9]+", " ", str(s).lower()).strip())
 _distinct = _raw.drop_duplicates(["path", "decision_date", "_t"])
 bucket = collections.Counter(int(d[-4:]) for d in _distinct.decision_date)

@@ -33,7 +33,8 @@ BLOCK_SIZE = 250
 BRANCH = "claude/sci-bucket"
 HOST = "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/"
 DEFAULT_WORKLIST = os.path.join(os.path.dirname(os.path.abspath(__file__)), "coverage", "bucket_match", "worklist.csv.gz")
-_SHARD_RE = re.compile(r"^(after|none)-(\d{4})\.ok(\d+)\.miss(\d+)\.err(\d+)\.jsonl\.gz$")
+_SHARD_RE = re.compile(r"^([a-z0-9_]+)-(\d{4})\.ok(\d+)\.miss(\d+)\.err(\d+)\.jsonl\.gz$")
+_SCOPE_RE = re.compile(r"^[a-z0-9_]+$")
 META_FIELDS = ("scope", "decision_date", "path", "key", "title", "petitioner", "respondent", "citation", "case_id", "nc_display", "cnr",
                "judge", "disposal_nature", "available_languages", "tier")
 
@@ -204,16 +205,18 @@ def _write_shard(data_dir, scope, n, records):
     return name, counts
 
 
-def _guard_worklist(data_dir, sha):
-    """The block numbers only mean something for one exact work list; the first shift pins its hash on the data branch."""
-    path = os.path.join(data_dir, "state", "worklist.sha256")
+def _guard_worklist(data_dir, scope, sha):
+    """The block numbers only mean something for one exact work list; the first shift of a scope pins its hash on the data branch.
+    (The first two scopes, after and none, were pinned together in state/worklist.sha256; later scopes get their own pin file.)"""
+    name = "worklist.sha256" if scope in ("after", "none") else f"worklist-{scope}.sha256"
+    path = os.path.join(data_dir, "state", name)
     if os.path.exists(path):
         pinned = open(path, encoding="utf-8").read().strip()
         return (pinned == sha), pinned
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
         fh.write(sha + "\n")
-    _commit(data_dir, [os.path.join("state", "worklist.sha256")], "pin the work list")
+    _commit(data_dir, [os.path.join("state", name)], f"pin the work list for scope {scope}")
     return True, sha
 
 
@@ -221,6 +224,8 @@ def shift(data_dir, worklist, scope, minutes=50, workers=8, fetcher=None, sleep=
           block_size=BLOCK_SIZE, est_block_seconds=120, max_blocks=None, retries=3, backoff=(2.0, 5.0, 10.0), out=print):
     if _git(data_dir, "rev-parse", "--is-inside-work-tree").returncode != 0:
         raise ValueError(f"{data_dir} is not a git repository")
+    if not _SCOPE_RE.match(scope or ""):
+        raise ValueError(f"scope {scope!r} must be lower-case letters, digits and underscores")
     fetcher = fetcher or default_fetcher
     started_iso, t0 = datetime.now(timezone.utc).isoformat(timespec="seconds"), clock()
     totals = {"blocks_done": 0, "ok": 0, "missing": 0, "error": 0}
@@ -234,7 +239,7 @@ def shift(data_dir, worklist, scope, minutes=50, workers=8, fetcher=None, sleep=
     elif os.path.exists(stop_file):
         reason = "STOP file present in the data repo"
     else:
-        same, pinned = _guard_worklist(data_dir, sha)
+        same, pinned = _guard_worklist(data_dir, scope, sha)
         if not same:
             reason = f"the work list changed since the first shift (pinned {pinned[:12]}, now {sha[:12]}); block numbers would mean different judgments"
     try:
@@ -328,11 +333,24 @@ def active_check(code_repo, now=None, max_age=1500, ref=f"origin/{BRANCH}"):
     return f"IDLE (newest commit: '{subject}', {int(age)}s ago)"
 
 
+def worklist_scopes(worklist):
+    raw = open(worklist, "rb").read()
+    text = gzip.decompress(raw).decode("utf-8") if raw[:2] == b"\x1f\x8b" else raw.decode("utf-8")
+    return sorted({r["scope"] for r in csv.DictReader(text.splitlines())})
+
+
 def status_summary(data_dir, worklist, block_size=BLOCK_SIZE):
+    """Progress per scope. Work lists are read from `worklist` and from the refresh lists kept on the data branch (state/worklists/)."""
     ledger = _ledger(data_dir)
+    files = [worklist] + sorted(glob.glob(os.path.join(data_dir, "state", "worklists", "*.csv.gz")))
+    where = {}
+    for f in files:
+        for sc in worklist_scopes(f):
+            where.setdefault(sc, f)
+    scopes = sorted({k[0] for k in ledger} | set(where) | {"after", "none"})
     out = {}
-    for scope in ("after", "none"):
-        rows, _ = load_worklist(worklist, scope)
+    for scope in scopes:
+        rows = load_worklist(where[scope], scope)[0] if scope in where else []
         done = {k: v for k, v in ledger.items() if k[0] == scope}
         out[scope] = {"judgments": len(rows), "blocks": n_blocks(rows, block_size), "blocks_done": len(done),
                       "ok": sum(v[0] for v in done.values()), "missing": sum(v[1] for v in done.values()), "error": sum(v[2] for v in done.values())}
@@ -346,7 +364,7 @@ def main(argv=None):
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("init", help="attach (or create, the first time) the data branch as a folder")
     s = sub.add_parser("shift", help="run one time-boxed shift")
-    s.add_argument("--scope", choices=["after", "none"], required=True)
+    s.add_argument("--scope", required=True, help="after, none, or a refresh scope such as refresh_20261005")
     s.add_argument("--minutes", type=float, default=50)
     s.add_argument("--workers", type=int, default=8)
     s.add_argument("--max-blocks", type=int, default=None)
@@ -366,7 +384,8 @@ def main(argv=None):
     if args.cmd == "status":
         st = status_summary(args.data_dir, args.worklist)
         for scope, v in st["scopes"].items():
-            print(f"{scope}: {v['blocks_done']}/{v['blocks']} blocks done ({v['ok']} judgments saved, {v['missing']} missing, {v['error']} errors, of {v['judgments']})")
+            if v["judgments"] or v["blocks_done"]:
+                print(f"{scope}: {v['blocks_done']}/{v['blocks']} blocks done ({v['ok']} judgments saved, {v['missing']} missing, {v['error']} errors, of {v['judgments']})")
         print(f"shifts run {st['shifts']}")
         if st["last_shift"]:
             ls = st["last_shift"]

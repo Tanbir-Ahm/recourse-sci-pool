@@ -28,7 +28,7 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 ## Open-bucket text (post-May-2017 judgments and older gap-fill)
 
-`sci_bucket.py` downloads PDFs from the open `indian-supreme-court-judgments` bucket (CC-BY-4.0, Dattam Labs), extracts the text and saves it, block by block, on branch `claude/sci-bucket` (text and metadata only; PDFs are held in memory and never written to disk or committed). The work list is `coverage/bucket_match/worklist.csv.gz` (7,125 judgments dated after 4 May 2017, scope `after`; 4,833 older ones the crawl seems to lack, scope `none`). How to run it: `BUCKET_RUNBOOK.md`. Tests: `python test_sci_bucket.py`. Source acknowledgement: keep the Supreme Court of India and Dattam Labs attribution with anything reproduced.
+`sci_bucket.py` downloads PDFs from the open `indian-supreme-court-judgments` bucket (CC-BY-4.0, Dattam Labs), extracts the text and saves it, block by block, on branch `claude/sci-bucket` (text and metadata only; PDFs are held in memory and never written to disk or committed). The work list is `coverage/bucket_match/worklist.csv.gz` (7,125 judgments dated after 4 May 2017, scope `after`; 4,833 older ones the crawl seems to lack, scope `none`). `bucket_refresh.py` finds judgments added to the bucket since the last run and writes a refresh work list (the 214 judgments of 2026 were the first). How to run it: `BUCKET_RUNBOOK.md`. Tests: `python test_sci_bucket.py`, `python test_bucket_refresh.py`. Source acknowledgement: keep the Supreme Court of India and Dattam Labs attribution with anything reproduced.
 
 ## Coverage note
 
