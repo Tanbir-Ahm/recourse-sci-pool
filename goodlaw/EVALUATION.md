@@ -125,6 +125,14 @@ A finding that came with this step: `cites.py` did not recognise the early repor
 
 Limits: the table is only as good as the reporters' annotation (not checked by a lawyer); a case is matched to a row by its printed citation, so a case whose citations we do not know in the form the table uses is missed; and the key grew by pairs that the rules were never tuned on, so the one new adverse pair is a small fresh check, not a measurement.
 
+### Reading the flagged cards for Recourse's own library (a third sample, and what it showed)
+
+Running the checker on the 76 cases Recourse can show (`cards/`) produced eight flagged cases. I read the evidence behind every one. **Two were real** (Mohan Lal v State of Punjab (2018), overruled by the five-judge Mukesh Singh bench in 2020; Siddharam Satlingappa Mhetre (2011), overruled "to that extent" by the five-judge Sushila Aggarwal bench in 2020). **Six were false alarms**, so on this sample the checker's flags were a quarter real, below the "about half" measured on the reporters' answer keys; eight cases is far too few to say which figure is right.
+
+The six false alarms were rule errors of general kinds, fixed with tests: "undoubtedly" matched an "undo" cue; "its partial overruling in T" was read as T being overruled; a case that "re-examined the ratio of X" was read as itself re-examined; a refusal to refer a case for reconsideration was read as a doubt; counsel's argument ("According to him ... ought to be overruled by us") was read as the Court's; and a later judgment's running page header ("[2024] 6 S.C.R. 907 Karnail Singh v. State of Haryana") was read as a mention of the earlier case with the same name. A stray control character inside that header's citation (found in about a fifth of the 2017-on texts) had hidden it from the citation reader, so citations are now read through such characters. A seventh rule, from the Sushila Aggarwal card: a smaller bench's disagreement with a larger bench's ruling is a weak signal, because it binds nothing.
+
+After these fixes recall on both tuning halves was unchanged (old text 29 of 59 adverse pairs read as adverse; modern 16 of 22), the known cases were unchanged (7 of 7, 13 of 13) and false flags on other pairs fell slightly (old 50 to 49, modern 118 to 114). **These fixes were made after reading these cards, so they are tuned on that sample too**; the untouched modern half is still unrun. The cards are checked by hand once, not validated: the 45 quiet ones are only as good as the checker's recall.
+
 Reproduce: `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev --gold modern` (add `--production` for the full-pipeline run of the adverse pairs).
 
 ## What this means for use

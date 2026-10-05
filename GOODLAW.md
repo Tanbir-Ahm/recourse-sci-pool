@@ -19,6 +19,10 @@ Run `python sci_goodlaw.py check --corpus corpus.sqlite "Rangappa v. Sri Mohan" 
 | Statute dimension | the sections the case turns on and what became of them under the 2023 recodification (IPC to BNS, CrPC to BNSS) | NCRB concordance vendored from Recourse (`goodlaw/statutes.py`) |
 | Coverage | where the collection ends and how much of what came after the case it holds, against Indian Kanoon's yearly counts | `coverage/year_counts.csv` |
 
+## Precomputed cards for the answer step
+
+For the cases Recourse can show, `python sci_goodlaw.py cards` writes one card each (`cards/currency_cards.json`) so that answering a question is a lookup: the status, one or two plain sentences for a user (only when there is a warning or a caution; never "good law"), the quoted evidence for a reviewer, a review sheet a person fills in, and a report of what changed since the last run. `goodlaw/cardreader.py` is the stdlib-only reader Recourse would copy. See `cards/README.md`. Nothing is connected to the live site yet.
+
 ## What the labels mean, and do not mean
 
 - `ADVERSE_SIGNAL`: a later judgment of this Court, in its own voice, appears to overrule or reject the case (or a larger bench disagrees with it, or the law report's headnote says "over-ruled", or the reporter's citator marks it overruled). Read it before relying on the case.
@@ -35,8 +39,8 @@ See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what th
 
 1. Build the store (about 15 minutes, 2 GB, needs the two data branches checked out): `python sci_goodlaw.py build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --corpus corpus.sqlite`.
 2. `python sci_goodlaw.py find --corpus corpus.sqlite "rangappa"` lists candidate judgments; `check` writes `<doc_key>.json` and `<doc_key>.md`; `batch --targets goodlaw/targets/priority.json --out reports/` does a list.
-3. `python sci_goodlaw.py known --corpus corpus.sqlite` runs the 20 known cases; `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev` measures agreement with the reporter's citator (the held-out half needs `--confirm-held-out` and should be run once per frozen rule set).
-4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`.
+3. `python sci_goodlaw.py library`, `cards`, `cards-review` and `card` make, review and read the precomputed cards (`cards/README.md`). `python sci_goodlaw.py known --corpus corpus.sqlite` runs the 20 known cases; `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev` measures agreement with the reporter's citator (the held-out half needs `--confirm-held-out` and should be run once per frozen rule set).
+4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`, `test_goodlaw_modern_gold.py`, `test_goodlaw_tables.py`, `test_goodlaw_library.py`, `test_goodlaw_cards.py`.
 
 ## What it cannot do
 
