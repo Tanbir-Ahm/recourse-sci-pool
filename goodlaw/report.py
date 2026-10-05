@@ -225,6 +225,9 @@ def build_bundle(corpus, target, doc=None, today=None):
                 weak = True
             if m["label"] == "OVERRULES" and m["bench_relation"] == "smaller":
                 reason.append("by a smaller bench than the target's, which cannot overrule it")
+            if m["label"] == "DISAGREES" and m["bench_relation"] == "smaller":
+                reason.append("a smaller bench's disagreement does not bind or weaken a larger bench's ruling")
+                weak = True
             if m["in_headnote"]:
                 reason.append("in the law report's headnote, not the judgment")
                 weak = True

@@ -70,6 +70,10 @@ for n in range(12):
     if n == 0:
         body = "If Tau v. Upsilon, AIR 1991 SC 88 were overruled, the result would differ. " + PAD
     DOCS[30 + n] = later(f"PT{n}", body, f"{10 + n:02d}/06/2001", 2)
+DOCS[70] = judis("OMICRON", "PI", "05/05/1990", ["SARKAR, A.K.", "SHAH, J.C.", "RAY, A.N.", "KHANNA, H.R.", "MATHEW, K.K."], "1991 AIR 140", "Omicron holds. " + PAD)
+DOCS[71] = later("PQ1", "We are unable to agree with the view taken in Omicron v. Pi, AIR 1991 SC 140. " + PAD, "10/06/2001", 2)
+DOCS[72] = later("PQ2", "Reference is made to Omicron v. Pi, AIR 1991 SC 140. " + PAD, "11/06/2001", 2)
+DOCS[73] = later("PQ3", "Reference is made to Omicron v. Pi, AIR 1991 SC 140. " + PAD, "12/06/2001", 2)
 DOCS[9] = judis("PHI", "CHI", "05/05/1990", ["SARKAR, A.K.", "SHAH, J.C."], "1991 AIR 99", "Phi holds. " + PAD)
 DOCS[60] = later("PP0", "If Phi v. Chi, AIR 1991 SC 99 were overruled, the result would differ. " + PAD, "10/06/2001", 2)
 DOCS[61] = later("PP1", "Reference is made to Phi v. Chi, AIR 1991 SC 99. " + PAD, "11/06/2001", 2)
@@ -136,6 +140,10 @@ t8 = bundle_for("c8")
 check(t8["triage"] == "NO_ADVERSE_FOUND" and t8["summary"]["weak_signals_set_aside"] == 1 and "weak or ambiguous" in t8["plain"], "in a heavily cited case a lone hedged 'overruled' is set aside, counted and disclosed, and does not change the triage")
 t9 = bundle_for("c9")
 check(t9["triage"] == "QUESTIONED", "in a case cited only twice the same hedged reading is enough for QUESTIONED")
+
+o = bundle_for("c70")
+check(o["summary"]["adverse_possible"] and o["summary"]["adverse_possible"][0]["label"] == "DISAGREES" and o["summary"]["adverse_possible"][0]["weak"] and "smaller bench" in " ".join(o["summary"]["adverse_possible"][0]["why_not_a_clean_overruling"]),
+      "a two-judge bench's disagreement with a five-judge case is kept as evidence but marked weak, with the reason")
 
 cv = a["coverage"]
 check(cv["collection_runs_to"] and isinstance(cv["later_years"], list) and "note" in cv, "the coverage block says where the collection ends and how much of the later years it holds")
