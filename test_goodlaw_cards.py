@@ -137,7 +137,11 @@ check(recorded == 1 and len(problems) == 2 and any("maybe" in p for p in problem
 saved = json.load(open(reviews_path))["reviews"][0]
 check(saved["verdict"] == "CONFIRMED_ADVERSE" and saved["fingerprint"] == flagged["fingerprint"] and saved["reviewer"] == "Dr R" and saved["date"] == "2026-10-07", "the record carries the verdict, the fingerprint of what was reviewed, the reviewer and the date")
 match_csv = os.path.join(tmp, "MATCH_CHECK.csv")
-check(CD.write_match_check([quiet, amb, hc], match_csv) == 3 and open(match_csv).read().splitlines()[1].startswith("Fourth v State"), "the match list puts the uncertain matches first")
+med = CD.card_from_bundle(dict(CASE, case_name="Sixth v State", recourse_currency=[]), dict(MATCH, method="name_year", confidence="medium"), DOC, bundle("NO_ADVERSE_FOUND"), "2026-10-05", "abc", INFO)
+check(CD.write_match_check([quiet, hc, med, amb], match_csv) == 4, "the match list is written")
+order = [l.split(",")[0] for l in open(match_csv).read().splitlines()[1:]]
+check(order == ["Fourth v State", "Sixth v State", "Other v State", "Fifth v State"], f"the match list puts ambiguous matches first, then medium ones, then those matched on a citation, then the unchecked (got {order})")
+check("compared with the case's bench" in CD.review_rows([flagged])[0]["where"], "the review sheet says what the bench comparison is")
 
 # ---------------------------------------------------------------- the reader
 doc = {"generated": "2026-10-05", "counts": {}, "cards": [flagged, quiet, questioned]}

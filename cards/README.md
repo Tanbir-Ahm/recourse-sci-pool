@@ -13,7 +13,7 @@ Source label on everything: **pattern-rule reading of Supreme Court texts; not l
 | `MATCH_CHECK.csv` | every case with the judgment in our collection it was matched to, uncertain matches first |
 | `CHANGES.md` | what changed since the previous run (a status that moved towards a warning is listed first) |
 | `reports/*.md` | the full readable report for each checked case |
-| `reviews.json` | the verdicts people have recorded (absent until someone records one) |
+| `reviews.json` | the verdicts people have recorded (an empty list until someone records one) |
 
 ## What a card says
 
@@ -27,7 +27,7 @@ Source label on everything: **pattern-rule reading of Supreme Court texts; not l
 | `NOT_CHECKABLE_HIGH_COURT` | a High Court decision; the collection is Supreme Court only | none |
 | `AMBIGUOUS_MATCH` | we could not tell which judgment in our collection it is | none |
 
-Each card also has: the case's own details and citations; the matched judgment and how it was matched; `evidence` (the quoted sentences, the judgment each comes from, its bench, the cue, the caveats, checked word for word against the text); `support` (how many later judgments cite it, the latest year, recent approving ones, what the reporters' case-law tables marked); `coverage` (what the collection can and cannot see); `statute_note` (when the case turns on an IPC or CrPC section the 2023 codes renumbered: a note about the number, not the doctrine); `provenance` (date, the checker's git commit, the corpus); `fingerprint`; and `review`.
+Each card also has: the case's own details and citations; the matched judgment and how it was matched; `evidence` (the quoted sentences, the judgment each comes from, its bench, the cue, the caveats, checked word for word against the text); `support` (how many later judgments cite it, the latest year, recent approving ones, what the reporters' case-law tables marked); `coverage` (what the collection can and cannot see); `statute_note` (when the judgment discusses an IPC or CrPC section the 2023 codes renumbered at least three times: a note about the number, not the doctrine); `provenance` (date, the checker's git commit, the corpus); `fingerprint`; and `review`.
 
 ### The wording rules
 

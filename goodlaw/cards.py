@@ -367,7 +367,7 @@ def review_rows(cards):
                      else "; ".join(f"{x['doc_key']} {x['title'][:50]} ({x['year']})" for x in (m["match"].get("candidates") or [])) or "no candidate")
         rows.append({"case_name": c["case"]["name"], "why_in_sheet": "; ".join(why), "checker_label": c["status"], "recourse_curated_status": _recourse_status(c),
                      "strongest_evidence": (f"[{top['kind'] or top['group']}] {top['quote']}" if top else ""),
-                     "where": (f"{top['title']} ({top['date'] or top['year']}, bench {top['bench_size'] or '?'}; {top['bench_relation']} than the case's)" if top else ""),
+                     "where": (f"{top['title']} ({top['date'] or top['year']}, bench {top['bench_size'] or '?'}; compared with the case's bench: {top['bench_relation']})" if top else ""),
                      "report_file": c.get("report_file") or "", "match_check": match_txt, "your_verdict": "", "reviewer": "", "review_date": "", "note": ""})
     rows.sort(key=lambda r: (0 if r["why_in_sheet"].startswith("Recourse's record") else (1 if r["checker_label"] == "ADVERSE_SIGNAL" else (2 if r["checker_label"] == "QUESTIONED" else 3)), r["case_name"]))
     return rows
@@ -390,7 +390,15 @@ def write_match_check(cards, path):
         m = c["corpus"]
         rows.append({"case_name": c["case"]["name"], "library_citation": c["case"]["citation"], "status": c["status"], "matched_doc_key": m["doc_key"] or "", "matched_title": m["title"] or "",
                      "matched_date": m["date"] or "", "method": m["match"]["method"] or "", "confidence": m["match"]["confidence"] or "", "note": m["match"]["note"] or ""})
-    rows.sort(key=lambda r: (r["confidence"] == "high" and r["method"] in ("citation", "source_url"), r["status"] != "AMBIGUOUS_MATCH", r["case_name"]))
+    def rank(r):
+        if r["status"] == "AMBIGUOUS_MATCH":
+            return 0
+        if r["status"] in ("NOT_CHECKABLE_HIGH_COURT", "NOT_IN_COLLECTION"):
+            return 4
+        if r["confidence"] == "medium":
+            return 1
+        return 3 if r["method"] in ("citation", "source_url", "override") else 2
+    rows.sort(key=lambda r: (rank(r), r["case_name"]))
     with open(path, "w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0].keys()))
         w.writeheader()
