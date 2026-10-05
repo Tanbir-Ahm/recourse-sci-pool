@@ -60,6 +60,7 @@ def best_in_doc(corpus, target_key, citing_key):
         c = T.classify_in_context(m["sentence"], m["target_in_sentence"], m.get("next", ""))
         m.update(label=c["label"], cue=c["cue"], hedged=c["hedged"], binding=c["binding"])
         eligible = m["confidence"] in ("high", "medium") and m["speaker"] in ("court", "headnote")
+        m["eligible"] = eligible
         rank = (eligible, T.STRENGTH.get(m["label"], -1) if m["label"] != "NOT_OVERRULED" else 3.5, m["binding"] == "strong", not m["hedged"])
         if best is None or rank > best[0]:
             best = (rank, m)
@@ -77,8 +78,8 @@ def _work(pair):
     t, c, code, cite = pair
     m = best_in_doc(_POOL["c"], t, c)
     if m is None:
-        return (t, c, code, cite, None, None, None)
-    return (t, c, code, cite, m["label"], m["cue"], m["sentence"][:400])
+        return (t, c, code, cite, None, None, None, False, False, "strong", None)
+    return (t, c, code, cite, m["label"], m["cue"], m["sentence"][:400], m["eligible"], m["hedged"], m["binding"], m["speaker"])
 
 
 def run(corpus_path, pairs, workers=4):
@@ -87,15 +88,32 @@ def run(corpus_path, pairs, workers=4):
         return pool.map(_work, pairs, chunksize=50)
 
 
+def _row(r):
+    """(code, label as the report would use it, hedged, binding). Older 7-field rows carry no speaker or flags and are taken as eligible and strong. A mention
+    found only in counsel's or a lower court's voice (or only by a weak name match) is not used by the report, so it is counted as no usable reading."""
+    code, label = r[2], r[4]
+    if len(r) < 11:
+        return code, label, False, "strong"
+    return code, (label if r[7] else ("NO_COURT_VOICE" if label is not None else None)), r[8], r[9]
+
+
 def summarise(results):
-    """Agreement tables for a list of results from run()."""
+    """Agreement tables for a list of results from run(). The by-code table and the 'adverse' and 'others' counts use the reading the report would use (the court's or
+    the headnote's voice only); 'tiers' splits the adverse readings the way the report does, into clean ones (not hedged, cue clearly about the target) and possible
+    ones (hedged, or another case may be what the cue is about)."""
     by_code = collections.defaultdict(collections.Counter)
-    for t, c, code, cite, label, cue, sent in results:
+    tiers = {"adverse_codes": collections.Counter(), "other_codes": collections.Counter()}
+    for r in results:
+        code, label, hedged, binding = _row(r)
         by_code[code][label or "NOT_FOUND"] += 1
+        if label in ADVERSE:
+            tier = "clean" if (not hedged and binding == "strong") else "possible"
+            tiers["adverse_codes" if EXPECT.get(code) == "adverse" else "other_codes"][tier] += 1
     adverse_codes = [c for c in by_code if EXPECT.get(c) == "adverse"]
     out = {"by_code": {c: dict(v) for c, v in sorted(by_code.items(), key=lambda x: -sum(x[1].values()))}}
     n_adv = sum(sum(by_code[c].values()) for c in adverse_codes)
     found_adv = sum(v for c in adverse_codes for k, v in by_code[c].items() if k != "NOT_FOUND")
+    tiers = {k: dict(v) for k, v in tiers.items()}
     hit_overrule = sum(by_code[c].get("OVERRULES", 0) for c in ("O", "HO"))
     n_o = sum(sum(by_code[c].values()) for c in ("O", "HO"))
     hit_adverse_any = sum(v for c in adverse_codes for k, v in by_code[c].items() if k in ADVERSE)
@@ -104,6 +122,7 @@ def summarise(results):
     found_non = sum(v for c in non_adv for k, v in by_code[c].items() if k != "NOT_FOUND")
     false_adv = sum(v for c in non_adv for k, v in by_code[c].items() if k in ADVERSE)
     false_over = sum(v for c in non_adv for k, v in by_code[c].items() if k == "OVERRULES")
+    out["tiers"] = tiers
     out["adverse"] = {"pairs": n_adv, "mention_found": found_adv, "read_as_any_adverse": hit_adverse_any, "overruled_pairs": n_o, "read_as_overrules": hit_overrule}
     out["others"] = {"pairs": n_non, "mention_found": found_non, "read_as_adverse": false_adv, "read_as_overrules": false_over}
     pos_codes = [c for c in by_code if EXPECT.get(c) == "positive"]

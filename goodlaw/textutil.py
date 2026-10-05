@@ -15,9 +15,17 @@ _ABBREV = {
 _BOUNDARY = re.compile(r"([.?!])([\"')\]”’]*)(?:\s+(?=[A-Z0-9(\[“\"'‘])|(?=\[\d))")
 
 
+_PAGE_HEADER = re.compile(r"https?://JUDIS\.NIC\.IN\s+SUPREME\s+COURT\s+OF\s+INDIA\s+Page\s+\d+\s+of\s+\d+", re.I)
+
+
+_FOOTNOTE_CITE = re.compile(r"(?:S\.?\s?C\.?\s?R\.?|S\.?\s?C\.?\s?C\.?|I\.?\s?T\.?\s?R\.?|S\.?\s?T\.?\s?C\.?|A\.?\s?I\.?\s?R\.?(?:\s+\d{4})?\s+S\.?\s?C\.?)\s*\d+(?:\s+at\s+\d+)?$", re.I)   # a footnote's citation line followed by the page number of the next page of text: "[1963] 3 S.C.R. 338 at 366. 501 The conduct ..."
+
+
 def flatten(text):
-    """The text with every run of whitespace (line wraps, page breaks) turned into a single space."""
-    return re.sub(r"\s+", " ", text).strip()
+    """The text with every run of whitespace (line wraps, page breaks) turned into a single space, and the JUDIS site's running page header
+    ("http://JUDIS.NIC.IN SUPREME COURT OF INDIA Page 4 of 6", repeated on every page of the later crawled texts) removed so that it neither
+    glues two sentences together nor sits inside a quoted passage."""
+    return re.sub(r"\s+", " ", _PAGE_HEADER.sub(" ", text)).strip()
 
 
 def sentences(flat):
@@ -30,7 +38,7 @@ def sentences(flat):
             word = re.findall(r"[A-Za-z]+$", before)
             if word and word[0].lower() in _ABBREV and (len(word[0]) <= 1 or word[0].lower() in _ABBREV):
                 continue
-            if re.search(r"\d$", before) and re.match(r"\d", flat[m.end():m.end() + 1] or ""):
+            if re.search(r"\d$", before) and re.match(r"\d", flat[m.end():m.end() + 1] or "") and not _FOOTNOTE_CITE.search(before):
                 continue
         end = m.start() + len(m.group(1)) + len(m.group(2))
         spans.append((start, end))

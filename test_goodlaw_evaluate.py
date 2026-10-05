@@ -31,6 +31,20 @@ check(s["positive"] == {"pairs": 3, "read_as_follows_or_not_overruled": 1, "read
 check(s["distinguished"] == {"pairs": 2, "read_as_distinguishes": 1}, "code D: 2 pairs, 1 read as distinguishes")
 check(s["by_code"]["O"] == {"OVERRULES": 1, "DISAGREES": 1, "NEUTRAL": 1}, "the confusion table is kept per code")
 
+# rows from the real runner carry (eligible, hedged, binding, speaker): a counsel-only reading is not a usable reading, and hedged or weak ones are 'possible'
+R2 = [
+    ("c2", "c9", "O", "x", "OVERRULES", "overruled", "s", True, False, "strong", "court"),
+    ("c2", "c8", "O", "x", "OVERRULES", "overruled", "s", True, True, "strong", "court"),
+    ("c2", "c7", "O", "x", "OVERRULES", "overruled", "s", False, False, "strong", "counsel"),
+    ("c4", "c5", "R", "x", "DISAGREES", "not followed", "s", True, False, "weak", "court"),
+    ("c4", "c6", "R", "x", "DISAGREES", "not followed", "s", True, False, "strong", "court"),
+    ("c4", "c7", "F", "x", "FOLLOWS", "followed", "s", True, False, "strong", "court"),
+]
+s2 = E.summarise(R2)
+check(s2["adverse"]["read_as_any_adverse"] == 2 and s2["adverse"]["mention_found"] == 3, "a reading only in counsel's voice is a found mention but not an adverse reading")
+check(s2["tiers"] == {"adverse_codes": {"clean": 1, "possible": 1}, "other_codes": {"possible": 1, "clean": 1}}, "adverse readings split into clean and possible (hedged or weak)")
+check(s2["by_code"]["O"] == {"OVERRULES": 2, "NO_COURT_VOICE": 1}, "the confusion table shows the counsel-only reading apart")
+
 pairs = [("c2", "c9", "O", "x"), ("c3", "c9", "F", "x"), ("c4", "c9", "R", "x"), ("c5", "c9", "D", "x")]
 dev, held = E.split(pairs)
 check([p[0] for p in dev] == ["c2", "c4"] and [p[0] for p in held] == ["c3", "c5"], "even target ids are the development half, odd ids the held-out half")
