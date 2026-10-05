@@ -93,7 +93,7 @@ What the misses showed (all measured on the tuning half):
 - Several misses were an artefact of the test, not the checker: the per-pair test cannot learn a case's other printed citations (for example the SCC citation under which a judgment actually cites it), which the full pipeline does. `evaluate.production_rows` runs the full pipeline for the adverse pairs; its numbers are the ones to quote (12 of 21, as above).
 - Modern drafting says "X (supra)" or "X, which held that ..., does not lay down the correct law" far more often than old text; two wording fixes came from that.
 - A case cited only by a footnote marker ("Jasmine Kaur2") is found only if the footnote's citation is known; this is why the citation-learning step matters more here.
-- About a fifth of the misses are overrulings stated in a different sentence from the case's name; step 2 of the improvement plan (reading the paragraph) targets those.
+- Of the 12 adverse pairs missed at the start, about 4 were overrulings stated away from the case's name, or that I could not locate in the judgment; 3 were cases not found in the body at all; the rest were wording problems (fixed). Step 2 of the improvement plan (reading the paragraph) targets the first group; with so few cases that is a rough count, not a rate.
 
 Reproduce: `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev --gold modern` (add `--production` for the full-pipeline run of the adverse pairs).
 
