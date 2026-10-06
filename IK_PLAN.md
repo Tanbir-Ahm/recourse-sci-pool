@@ -44,6 +44,8 @@ Written 2026-10-06, revised the same day after the owner pasted IK's terms and p
 5. In the cloud environment settings add the environment variable `INDIANKANOON_API_KEY` (the value goes there, never in chat) and set Network access to **Custom** with `api.indiankanoon.org` added to the allowed domains, keeping the default package-manager list. Start a **new session** on this repository and branch `claude/sharp-euler-unyfv0`; say "IK ready".
 
 ## Starting the new session (no cost, before Phase 0)
+**This checklist was run on 2026-10-06 and step 2 (`add_repo` for the data repositories) did not work as written; see `IK_STARTUP_FINDINGS.md` for what happened and the corrected commands.**
+
 The corpus store (`corpus.sqlite`, 1.8 GB) lived in the previous session's scratch space and is gone; a new session must rebuild it. In order: (1) read this file and `FOLLOW_UPS.md` 1e and 1f; (2) attach the data repositories with `add_repo` (`recourse-sci-pool-data` = crawl, `recourse-sci-bucket-data` = bucket text; `recourse-sci-index` is not needed) and clone them next to this one; the Recourse repository is read-only and only needed to re-read `indiankanoon_client.py`; (3) `python sci_goodlaw.py build --corpus corpus.sqlite` (about 15 minutes) and run the test suite; (4) check that `INDIANKANOON_API_KEY` is set **without printing it** (for example `[ -n "$INDIANKANOON_API_KEY" ] && echo set`) and that `api.indiankanoon.org` is reachable (the check in Phase 0).
 
 ## What the next session does (each phase stops for approval before spending)
