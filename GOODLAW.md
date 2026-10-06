@@ -47,5 +47,5 @@ See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what th
 - It sees only Supreme Court judgments we hold: the court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds part of each year. Our crawl and the bucket together miss roughly 40% of what Indian Kanoon lists for 1968 to 1999, and about a quarter of 2018 to 2025. A judgment we lack cannot overrule anything we can see.
 - High Court treatment is invisible.
 - Rules read sentences; they miss overrulings stated without the usual words, and they can mistake a sentence about another case for one about the target (the report flags the weak ones).
-- Bench strength is known completely only for judgments up to 1994 and for law-report PDFs; elsewhere the bench comparison is skipped.
+- Bench strength is known completely only for judgments up to 1994 and for law-report PDFs; elsewhere it is a lower bound, and the comparison is made only when the bound already settles it (step 4 in `goodlaw/EVALUATION.md`). A larger bench's disagreement with a 1995 to 2016 judgment therefore stays a caution, not a warning.
 - Case names in old OCR texts are spelled inconsistently; a case named in an unusual spelling can be missed.

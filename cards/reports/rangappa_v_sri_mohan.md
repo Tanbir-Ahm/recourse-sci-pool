@@ -24,15 +24,15 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **RENUKA versus THE STATE OF MAHARASHTRA AND ANOTHER** (2026-04-07; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
+- **RENUKA versus THE STATE OF MAHARASHTRA AND ANOTHER** (2026-04-07; bench 2; bench compared with the target's: smaller; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In Rangappa Vs. Sri Mohan3, it has been explicitly reiterated that the presumption mandated by Section 139 of the N.I. Act includes the presumption as regards existence of a legally enforceable debt or liability.
-- **ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI** (2022-08-16; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
+- **ORIENTAL BANK OF COMMERCE versus PRABODH KUMAR TEWARI** (2022-08-16; bench 2; bench compared with the target's: smaller; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In Anss Rajashekar v. Augustus Jeba Ananth,5 a two Judge Bench of this Court, of which one of us (D.Y. Chandrachud J.) was a part, reiterated the decision of the three-Judge Bench of this Court in Rangappa v. Sri Mohan6 on the presumption under Section 139 of the NI Act.
-- **RATHISH BABU UNNIKRISHNAN versus THE STATE (GOVT. OF NCT OF DELHI) & ANR.** (2022-04-26; bench 2; bench compared with the target's: unknown; follows; cue: "in agreement with"; speaker: court; confidence high; quote verified: True)
+- **RATHISH BABU UNNIKRISHNAN versus THE STATE (GOVT. OF NCT OF DELHI) & ANR.** (2022-04-26; bench 2; bench compared with the target's: smaller; follows; cue: "in agreement with"; speaker: court; confidence high; quote verified: True)
   > The opinion of Justice K.G. Balakrishnan for a three judges Bench in Rangappa vs. Sri Mohan4 would at this stage, deserve our attention: - “26.... we are in agreement with the respondent claimant that the presumption mandated by Section 139 of the Act does indeed include the existence of a legally enforceable debt or liability.
-- **ROHITBHAI JIVANLAL PATEL versus STATE OF GUJARAT & ANR.** (2019-03-15; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
+- **ROHITBHAI JIVANLAL PATEL versus STATE OF GUJARAT & ANR.** (2019-03-15; bench 2; bench compared with the target's: smaller; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In Rangappa v. Sri Mohan : (2010) 11 SCC 441, this Court has reiterated and summarised the principles relating to presumptions under Sections 118 and 139 of the NI Act and rebuttal thereof in the following:- “26.
-- **ANSS RAJASHEKAR versus AUGUSTUS JEBA ANANTH** (2019-01-18; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
+- **ANSS RAJASHEKAR versus AUGUSTUS JEBA ANANTH** (2019-01-18; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > For the reasons indicated above, we are of the view that having regard to the law laid down by the three Judge Bench in Rangappa (supra) the appellant duly rebutted the presumption under Section 139 of the Act.
 
 ## Statute dimension (what became of the sections the judgment cites)

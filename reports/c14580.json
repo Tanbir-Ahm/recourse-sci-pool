@@ -15,7 +15,7 @@
    "scc:1997:1:416"
   ]
  },
- "generated": "2026-10-05",
+ "generated": "2026-10-06",
  "triage": "NO_ADVERSE_FOUND",
  "plain": "No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.",
  "statute_flag": "STATUTE_CHANGED",
@@ -149,7 +149,7 @@
    "date": "2007-01-10",
    "year": 2007,
    "bench_size": 3,
-   "bench_relation": "unknown",
+   "bench_relation": "larger",
    "source": "crawl",
    "label": "FOLLOWS",
    "cue": "approval",

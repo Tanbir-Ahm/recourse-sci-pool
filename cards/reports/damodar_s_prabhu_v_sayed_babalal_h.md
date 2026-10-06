@@ -21,7 +21,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **M/S. METERS AND INSTRUMENTS PRIVATE LIMITED &  ANR. versus KANCHAN MEHTA** (2017-10-05; bench 2; bench compared with the target's: unknown; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
+- **M/S. METERS AND INSTRUMENTS PRIVATE LIMITED &  ANR. versus KANCHAN MEHTA** (2017-10-05; bench 2; bench compared with the target's: smaller; follows; cue: "followed"; speaker: court; confidence medium; quote verified: True)
   > Even in· such cases, the procedure to be followed may not be exactly the same as in Cr.P.C. The expression 'Lafarge Aggregates & Concrete India (P) Ltd. v. Sukarsh Azad (2014) 13 SCC 779 G ' Damodar S. Prabhu (supra) 10 c2006) 6 sec 456, c2001) 6 sec 555 " Para 23 in Madhya Pradesh State Legal Services Authority versus Prateek Jain and Anr. (2014) 10 SCC 690 12 RajneeshAggarwal v. Amit J. Bhalla (2001) I SCC 631 13 Mandvi Cooperative Bank Ltd. v. Ni mesh B. Thakore(2010) 3 SCC 83. paras 25, 26 14 Para 41, ibid H 78 A B c SUPREME COURT REPORTS [2017] JO S.C.R. ''as far as possible" in Section 143 leaves sufficient flexibility for the Magistrate so as not to affect the quick flow of the trial process.
 
 ## Statute dimension (what became of the sections the judgment cites)

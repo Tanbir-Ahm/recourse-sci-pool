@@ -20,15 +20,15 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **MD. RAHIM ALI @ ABDUR RAHIM versus THE STATE OF ASSAM & ORS.** (2024-07-11; bench 2; bench compared with the target's: unknown; follows; cue: "followed"; speaker: court; confidence high; quote verified: True)
+- **MD. RAHIM ALI @ ABDUR RAHIM versus THE STATE OF ASSAM & ORS.** (2024-07-11; bench 2; bench compared with the target's: smaller; follows; cue: "followed"; speaker: court; confidence high; quote verified: True)
   > In State of Punjab v. Baldev Singh [(1999) 6 SCC 172: 1999 SCC (Cri) 1080] it was stated: (SCC p. 199, para 28) “28. … It must be borne in mind that severer the punishment, greater has to be the care taken to see that all the safeguards provided in a statute are scrupulously followed.”
-- **DAYALU KASHYAP versus THE STATE OF CHHATTISGARH** (2022-01-25; bench 2; bench compared with the target's: unknown; follows; cue: "relied upon"; speaker: court; confidence high; quote verified: True)
+- **DAYALU KASHYAP versus THE STATE OF CHHATTISGARH** (2022-01-25; bench 2; bench compared with the target's: smaller; follows; cue: "relied upon"; speaker: court; confidence high; quote verified: True)
   > The judgment in turn, relied upon a Constitution Bench judgment of this Court in State of Punjab v. Baldev Singh – 1999 (6) SCC 172 to conclude that if a search is made by an empowered Officer on prior information without informing the person of his right that he has to be taken before a Gazetted Officer or a Magistrate for search and in case he so opts, failure to take his search accordingly would render the recovery of the illicit article suspicious and vitiate the conviction and sentence of the accused where the conviction has been recorded only the on basis of possession of illicit articles recovered from his person.
-- **TOFAN SINGH versus STATE OF TAMIL NADU** (2020-10-29; bench 3; bench compared with the target's: unknown; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
+- **TOFAN SINGH versus STATE OF TAMIL NADU** (2020-10-29; bench 3; bench compared with the target's: smaller; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > SCR 142 relied on Para 240 TOFAN SINGH v. STATE OF TAMIL NADU SUPREME COURT REPORTS [2020] 12 S.C.R. [1966] SCR 698 followed Para 242 [1969] SCR 461 followed Para 242 [1967] SCR 920 relied on Para 244 [2007] 12 SCR 906 relied on Para 252 [1999] 3 SCR 977 relied on Para 255 [2006] 6 Suppl.
-- **THAN KUNWAR versus STATE OF HARYANA** (2020-03-02; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
+- **THAN KUNWAR versus STATE OF HARYANA** (2020-03-02; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > This Court, in Baljinder Singh (supra), went on to consider the law laid down by the Constitution Bench in Baldev Singh (supra) and, inter alia, held as follows: “16.
-- **S. K. RAJU @ ABDUL HAQUE @ JAGGA versus STATE OF WEST BENGAL** (2018-09-05; bench 3; bench compared with the target's: unknown; follows; cue: "dictum laid down"; speaker: court; confidence medium; quote verified: True)
+- **S. K. RAJU @ ABDUL HAQUE @ JAGGA versus STATE OF WEST BENGAL** (2018-09-05; bench 3; bench compared with the target's: smaller; follows; cue: "dictum laid down"; speaker: court; confidence medium; quote verified: True)
   > Thereafter, the suspect may or may not choose to exercise the right provided to him under the said provision … We are of the opinion that the concept of “substantial compliance” with the requirement of Section 50 of the NDPS Act introduced and read into the mandate of the said Section in Joseph Fernandez (supra) and Prabha Shankar Dubey (supra) is neither borne out from the language of Sub-section (1) of Section 50 nor it is in consonance with the dictum laid down in Baldev Singh’s case (supra).”
 
 ## Statute dimension (what became of the sections the judgment cites)

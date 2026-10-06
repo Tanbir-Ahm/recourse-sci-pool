@@ -20,7 +20,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE** (2024-05-16; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence high; quote verified: True)
+- **TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE** (2024-05-16; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence high; quote verified: True)
   > (emphasis added) 6 [2007] 10 SCR 847 : (2007) 12 SCC 1 [2024] 6 S.C.R. 877 Tarsem Lal v. Directorate of Enforcement Jalandhar Zonal Office As noted earlier, a complaint under Section 44(1)(b) of the PMLA will be governed by Sections 200 to 204 of the CrPC. Hence, the law laid down by this Court in the above decision will apply to a complaint under Section 44(1)(b).
 - **RAJIB RANJAN & ORS v. R. VIJAYKUMAR** (2014-10-14; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
   > In Inder Mohan Goswami and another v. State of Uttaranchal and others, (2007) 12 SCC 1, the Court reiterated the scope and ambit of power of the High Court under Section 482 of the Code in the following words: “23.

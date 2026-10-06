@@ -15,10 +15,10 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Disagree, doubt, limit, or an overruling with a caveat (weak readings are marked in their reasons)
 
-- **YASHWANT SINHA & ORS. versus CENTRAL BUREAU OF INVESTIGATION THROUGH ITS DIRECTOR & ANR.** (2019-11-14; bench 4; bench compared with the target's: unknown; disagrees; cue: "not following"; speaker: headnote; confidence medium; quote verified: True)
+- **YASHWANT SINHA & ORS. versus CENTRAL BUREAU OF INVESTIGATION THROUGH ITS DIRECTOR & ANR.** (2019-11-14; bench 3; bench compared with the target's: smaller; disagrees; cue: "not following"; speaker: headnote; confidence medium; quote verified: True)
   > To test the hypothesis that on the facts this Court was wrong and manifestly so in declining in not following the dicta of the Constitution Bench in Lalita Kumari, a reverse process of reasoning can be employed to appreciate the matter further.
   (the same wording appears 1 more time in this judgment)
-  Why not a clean overruling: worded as an argument, a condition or a possibility; in the law report's headnote, not the judgment.
+  Why not a clean overruling: worded as an argument, a condition or a possibility; a smaller bench's disagreement does not bind or weaken a larger bench's ruling; in the law report's headnote, not the judgment.
 
 ## What the law reporter's case-law table says (judgments of 2017 to 2023 only)
 
@@ -31,15 +31,15 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **VINOD KUMAR PANDEY & ANR. versus SEESH RAM SAINI & ORS.** (2025-09-10; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
+- **VINOD KUMAR PANDEY & ANR. versus SEESH RAM SAINI & ORS.** (2025-09-10; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
   > Secondly, in view of the law laid down in Lalita Kumari vs. Government of Uttar Pradesh and Ors.11, and reiterated thereafter to the effect that registration of FIR is mandatory under Section 154 Cr.P.C. if the information discloses commission of a cognizable offence and no preliminary inquiry before FIR is permissible in such a situation; however, if the information received does not disclose a cognizable offence but indicates necessity of an inquiry being conducted, a preliminary inquiry may be conducted only to ascertain facts disclosing cognizable offence, if any.
-- **KHURSHEED AHMAD CHOHAN versus UNION OF TERRITORY OF JAMMU AND KASHMIR AND ORS. ETC.** (2025-07-21; bench 2; bench compared with the target's: unknown; follows; cue: "principles laid down"; speaker: court; confidence medium; quote verified: True)
+- **KHURSHEED AHMAD CHOHAN versus UNION OF TERRITORY OF JAMMU AND KASHMIR AND ORS. ETC.** (2025-07-21; bench 2; bench compared with the target's: smaller; follows; cue: "principles laid down"; speaker: court; confidence medium; quote verified: True)
   > The High Court committed a grave error in law by failing to exercise the writ jurisdiction and in refusing to apply the mandatory principles laid down by the Constitution Bench in Lalita Kumari (supra).
-- **STATE OF KARNATAKA versus SRI CHANNAKESHAVA.H.D. & ANR.** (2025-04-07; bench 2; bench compared with the target's: unknown; follows; cue: "Following"; speaker: court; confidence medium; quote verified: True)
+- **STATE OF KARNATAKA versus SRI CHANNAKESHAVA.H.D. & ANR.** (2025-04-07; bench 2; bench compared with the target's: smaller; follows; cue: "Following"; speaker: court; confidence medium; quote verified: True)
   > Following the rationale of Lalita Kumari (supra), this Court in Managipet (supra) held that while the decision in Lalita Kumari (supra) noted that a preliminary inquiry was desirable in cases of alleged corruption, this does not vest a right in the accused to demand a preliminary inquiry.
-- **IMRAN PRATAPGADHI versus STATE OF GUJARAT AND ANR** (2025-03-28; bench 2; bench compared with the target's: unknown; follows; cue: "law laid down"; speaker: court; confidence high; quote verified: True)
+- **IMRAN PRATAPGADHI versus STATE OF GUJARAT AND ANR** (2025-03-28; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence high; quote verified: True)
   > Therefore, the law laid down by this Court in the case of Lalita Kumari v. Govt. of U.P.2 on Section 154 of the CrPC will be relevant.
-- **AMIT KUMAR & ORS.  versus UNION OF INDIA & ORS.** (2025-03-24; bench 2; bench compared with the target's: unknown; follows; cue: "affirmed"; speaker: court; confidence high; quote verified: True)
+- **AMIT KUMAR & ORS.  versus UNION OF INDIA & ORS.** (2025-03-24; bench 2; bench compared with the target's: smaller; follows; cue: "affirmed"; speaker: court; confidence high; quote verified: True)
   > In Lalita Kumari v. Government of U.P., (2014) 2 SCC 1, a five-Judge Bench of this Court affirmed the requirement for the mandatory registration of an F.I.R. under Section 154 of the CrPC. The Court ruled that, once the information provided discloses the commission of a cognizable offence, it is imperative for the police to register the F.I.R. without conducting any preliminary inquiry.
 
 ## Statute dimension (what became of the sections the judgment cites)

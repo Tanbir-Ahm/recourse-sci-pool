@@ -15,7 +15,7 @@ Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **PRIYANKA MISHRA & ORS versus THE STATE OF MADHYA PRADESH & ANR.** (2023-05-08; bench 3; bench compared with the target's: larger; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
+- **PRIYANKA MISHRA & ORS versus THE STATE OF MADHYA PRADESH & ANR.** (2023-05-08; bench 2; bench compared with the target's: equal; follows; cue: "relied on"; speaker: court; confidence high; quote verified: True)
   > Kahkashan Kausar alias Sonam v State of Bihar (2022) 6 SCC 599 – relied on.
 
 ## Statute dimension (what became of the sections the judgment cites)
