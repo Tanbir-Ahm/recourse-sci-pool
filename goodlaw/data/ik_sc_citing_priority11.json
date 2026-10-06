@@ -1,0 +1,958 @@
+{
+ "note": "Phase 3a (priority 11), 2026-10-06: for each case, IK's Supreme Court documents that cite it (search citedby:<id> doctypes:supremecourt): the total IK reports and page 1 (10 results). our_doc_key is a match to our collection by date (+-1 day) and title words, approximate. Metadata only. we_hold_citing is the checker's own count, which includes name matches and is not directly comparable with IK's total. IK's index is incomplete for judgments from about late 2023.",
+ "cases": [
+  {
+   "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+   "case_ik_tid": "88760594",
+   "decided": "2020-10-26",
+   "ik_supreme_court_citing_total": 14,
+   "we_hold_citing": 12,
+   "page1_shown": 10,
+   "page1_in_our_collection": 9,
+   "page1": [
+    {
+     "ik_tid": "48740597",
+     "title": "The State Of Maharashtra vs Momin Moiuddin Gulam Hasan @ Moin Mistri on 21 September, 2026",
+     "date": "2026-09-21",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "199112586",
+     "title": "Ritu Chhabaria vs Union Of India on 26 April, 2023",
+     "date": "2023-04-26",
+     "citation": null,
+     "ik_numcitedby": 14,
+     "our_doc_key": "b2023_3_826_843"
+    },
+    {
+     "ik_tid": "7407636",
+     "title": "Enforcement Directorate Government Of ... vs Kapil Wadhawan on 27 March, 2023",
+     "date": "2023-03-27",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2023_5_918_948"
+    },
+    {
+     "ik_tid": "149583669",
+     "title": "Serious Fraud Investigation Office vs Rahul Modi on 7 February, 2022",
+     "date": "2022-02-07",
+     "citation": null,
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2022_1_597_608"
+    },
+    {
+     "ik_tid": "7148380",
+     "title": "Satender Kumar Antil vs Central Bureau Of Investigation on 11 July, 2022",
+     "date": "2022-07-11",
+     "citation": null,
+     "ik_numcitedby": 19037,
+     "our_doc_key": "b2022_10_351_447"
+    },
+    {
+     "ik_tid": "71337571",
+     "title": "Naser Bin Abu Bakr Yafai vs The State Of Maharashtra on 20 October, 2021",
+     "date": "2021-10-20",
+     "citation": "AIRONLINE 2021 SC 894",
+     "ik_numcitedby": 11,
+     "our_doc_key": "b2021_10_353_392"
+    },
+    {
+     "ik_tid": "58570551",
+     "title": "Arvind Kejriwal vs Directorate Of Enforcement on 12 July, 2024",
+     "date": "2024-07-12",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_7_2363_2426"
+    },
+    {
+     "ik_tid": "197372058",
+     "title": "State (Nct) Of Delhi vs Rajeev Sharma on 3 April, 2025",
+     "date": "2025-04-03",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2025_4_617_624"
+    },
+    {
+     "ik_tid": "196416347",
+     "title": "Pesala Nookaraju vs The Government Of Andhra Pradesh on 16 August, 2023",
+     "date": "2023-08-16",
+     "citation": null,
+     "ik_numcitedby": 6,
+     "our_doc_key": "b2023_11_520_582"
+    },
+    {
+     "ik_tid": "18307664",
+     "title": "Jigar @ Jimmy Pravinchandra Adatiya vs State Of Gujarat on 23 September, 2022",
+     "date": "2022-09-23",
+     "citation": null,
+     "ik_numcitedby": 40,
+     "our_doc_key": "b2022_13_367_402"
+    }
+   ]
+  },
+  {
+   "case": "State of Punjab v Baldev Singh",
+   "case_ik_tid": "1259796",
+   "decided": "1999-07-21",
+   "ik_supreme_court_citing_total": 49,
+   "we_hold_citing": 83,
+   "page1_shown": 10,
+   "page1_in_our_collection": 9,
+   "page1": [
+    {
+     "ik_tid": "112509971",
+     "title": "Ranjan Kumar Chadha vs The State Of Himachal Pradesh on 6 October, 2023",
+     "date": "2023-10-06",
+     "citation": null,
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2023_13_289_370"
+    },
+    {
+     "ik_tid": "147432673",
+     "title": "Than Kunwar vs The State Of Haryana on 2 March, 2020",
+     "date": "2020-03-02",
+     "citation": "AIRONLINE 2020 SC 272",
+     "ik_numcitedby": 26,
+     "our_doc_key": "b2020_3_1090_1105"
+    },
+    {
+     "ik_tid": "794095",
+     "title": "State Of Himachal Pradesh vs Pawan Kumar on 8 April, 2005",
+     "date": "2005-04-08",
+     "citation": "AIR 2005 SUPREME COURT 2265",
+     "ik_numcitedby": 489,
+     "our_doc_key": "c26977"
+    },
+    {
+     "ik_tid": "1251516",
+     "title": "Liyaqat Ali vs Union Of India (Uoi) And Ors. on 2 May, 2003",
+     "date": "2003-05-02",
+     "citation": "2004(5)CTC608",
+     "ik_numcitedby": 2,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "143202244",
+     "title": "Tofan Singh vs The State Of Tamil Nadu on 29 October, 2020",
+     "date": "2020-10-29",
+     "citation": "AIR 2020 SUPREME COURT 5592",
+     "ik_numcitedby": 1439,
+     "our_doc_key": "b2020_12_583_874"
+    },
+    {
+     "ik_tid": "414510",
+     "title": "Union Of India & Ors vs L.D. Balam Singh on 24 April, 2002",
+     "date": "2002-04-24",
+     "citation": "AIRONLINE 2002 SC 153",
+     "ik_numcitedby": 18,
+     "our_doc_key": "c18427"
+    },
+    {
+     "ik_tid": "1788846",
+     "title": "State Of Rajasthan vs Babu Ram on 5 June, 2007",
+     "date": "2007-06-05",
+     "citation": "AIR 2007 SUPREME COURT 2018",
+     "ik_numcitedby": 25,
+     "our_doc_key": "c29137"
+    },
+    {
+     "ik_tid": "143363",
+     "title": "Roy V. D vs State Of Kerala on 10 November, 2000",
+     "date": "2000-11-10",
+     "citation": null,
+     "ik_numcitedby": 112,
+     "our_doc_key": "c17236"
+    },
+    {
+     "ik_tid": "1930484",
+     "title": "Beckodan Abdul Rahiman vs State Of Kerala on 16 April, 2002",
+     "date": "2002-04-16",
+     "citation": "(2002) 2 UC 157",
+     "ik_numcitedby": 109,
+     "our_doc_key": "c18387"
+    },
+    {
+     "ik_tid": "1783557",
+     "title": "Smt. Krishna Kanwar @ Thakuraeen vs State Of Rajasthan on 27 January, 2004",
+     "date": "2004-01-27",
+     "citation": "AIR 2004 SUPREME COURT 2735",
+     "ik_numcitedby": 51,
+     "our_doc_key": "c25796"
+    }
+   ]
+  },
+  {
+   "case": "Siddharam Satlingappa Mhetre v State of Maharashtra",
+   "case_ik_tid": "1108032",
+   "decided": "2010-12-02",
+   "ik_supreme_court_citing_total": 41,
+   "we_hold_citing": 46,
+   "page1_shown": 10,
+   "page1_in_our_collection": 9,
+   "page1": [
+    {
+     "ik_tid": "123660783",
+     "title": "Sushila Aggarwal vs State (Nct Of Delhi) on 29 January, 2020",
+     "date": "2020-01-29",
+     "citation": "AIR 2020 SUPREME COURT 831",
+     "ik_numcitedby": 15728,
+     "our_doc_key": "b2020_2_1_131"
+    },
+    {
+     "ik_tid": "79532249",
+     "title": "Sumit vs State Of U P on 9 February, 2026",
+     "date": "2026-02-09",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2026_3_87_102"
+    },
+    {
+     "ik_tid": "68963893",
+     "title": "Anna Waman Bhalerao vs State Of Maharashtra on 12 September, 2025",
+     "date": "2025-09-12",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2025_9_982_1015"
+    },
+    {
+     "ik_tid": "77704402",
+     "title": "M/S. Supreme Bhiwandi Wada Manor ... vs The State Of Maharashtra on 26 July, 2021",
+     "date": "2021-07-26",
+     "citation": "AIR 2021 SUPREME COURT 3580",
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2021_7_226_239"
+    },
+    {
+     "ik_tid": "14485072",
+     "title": "Vijay Madanlal Choudhary vs Union Of India on 27 July, 2022",
+     "date": "2022-07-27",
+     "citation": null,
+     "ik_numcitedby": 293,
+     "our_doc_key": "b2022_6_382_726"
+    },
+    {
+     "ik_tid": "6951427",
+     "title": "Munilakshmi vs Narendra Babu on 20 October, 2023",
+     "date": "2023-10-20",
+     "citation": null,
+     "ik_numcitedby": 2,
+     "our_doc_key": "b2023_14_1058_1072"
+    },
+    {
+     "ik_tid": "769498",
+     "title": "Narmada Bachao Andolan vs State Of M.P. & Anr on 11 May, 2011",
+     "date": "2011-05-11",
+     "citation": "AIR 2011 SUPREME COURT 1989",
+     "ik_numcitedby": 217,
+     "our_doc_key": "c37998"
+    },
+    {
+     "ik_tid": "155199616",
+     "title": "K.S.Panduranga vs State Of Karnataka on 1 March, 2013",
+     "date": "2013-03-01",
+     "citation": "AIR 2013 SUPREME COURT 2164",
+     "ik_numcitedby": 412,
+     "our_doc_key": "c40108"
+    },
+    {
+     "ik_tid": "195031852",
+     "title": "Union Of India & Ors vs R.P.Singh on 22 May, 2014",
+     "date": "2014-05-22",
+     "citation": "AIR 2014 SUPREME COURT 2541",
+     "ik_numcitedby": 90,
+     "our_doc_key": "c41566"
+    },
+    {
+     "ik_tid": "6768602",
+     "title": "Rakesh Baban Borhade vs The State Of Maharashtra & Anr Etc.Etc on 19 November, 2014",
+     "date": "2014-11-19",
+     "citation": "2014 AIR SCW 6606",
+     "ik_numcitedby": 19,
+     "our_doc_key": null
+    }
+   ]
+  },
+  {
+   "case": "G. Sagar Suri and Anr. v State of U.P. and Ors.",
+   "case_ik_tid": "1699144",
+   "decided": "2000-01-28",
+   "ik_supreme_court_citing_total": 54,
+   "we_hold_citing": 42,
+   "page1_shown": 10,
+   "page1_in_our_collection": 10,
+   "page1": [
+    {
+     "ik_tid": "180229683",
+     "title": "A.M. Mohan vs The State Rep By Sho on 20 March, 2024",
+     "date": "2024-03-20",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_3_722_739"
+    },
+    {
+     "ik_tid": "174899170",
+     "title": "J. Vedhasingh vs R.M. Govindan on 11 August, 2022",
+     "date": "2022-08-11",
+     "citation": null,
+     "ik_numcitedby": 10,
+     "our_doc_key": "b2022_6_888_900"
+    },
+    {
+     "ik_tid": "97191348",
+     "title": "Kapil Agarwal vs Sanjay Sharma on 1 March, 2021",
+     "date": "2021-03-01",
+     "citation": "AIR 2021 SUPREME COURT 1241",
+     "ik_numcitedby": 74,
+     "our_doc_key": "b2021_2_145_159"
+    },
+    {
+     "ik_tid": "60158808",
+     "title": "Vijay Kumar Ghai vs The State Of West Bengal on 22 March, 2022",
+     "date": "2022-03-22",
+     "citation": null,
+     "ik_numcitedby": 154,
+     "our_doc_key": "b2022_1_884_912"
+    },
+    {
+     "ik_tid": "165428571",
+     "title": "Sri Gulam Mustafa vs The State Of Karnataka on 10 May, 2023",
+     "date": "2023-05-10",
+     "citation": null,
+     "ik_numcitedby": 19,
+     "our_doc_key": "b2023_5_354_371"
+    },
+    {
+     "ik_tid": "112121899",
+     "title": "Chanchalpati Das vs The State Of West Bengal on 18 May, 2023",
+     "date": "2023-05-18",
+     "citation": null,
+     "ik_numcitedby": 5,
+     "our_doc_key": "b2023_6_655_668"
+    },
+    {
+     "ik_tid": "194914590",
+     "title": "Umesh Kumar vs State Of A.P.And Anr on 6 September, 2013",
+     "date": "2013-09-06",
+     "citation": "AIR 2014 SUPREME COURT 1106",
+     "ik_numcitedby": 213,
+     "our_doc_key": "c40727"
+    },
+    {
+     "ik_tid": "678316",
+     "title": "B. Suresh Yadav vs Sharifa Bee & Anr on 12 October, 2007",
+     "date": "2007-10-12",
+     "citation": "AIR 2008 SUPREME COURT 210",
+     "ik_numcitedby": 136,
+     "our_doc_key": "c29687"
+    },
+    {
+     "ik_tid": "1308555",
+     "title": "Gorige Pentaiah vs State Of A.P. & Ors on 20 August, 2008",
+     "date": "2008-08-20",
+     "citation": "2008 AIR SCW 6901",
+     "ik_numcitedby": 731,
+     "our_doc_key": "c32323"
+    },
+    {
+     "ik_tid": "60838",
+     "title": "Rajeswar Tiwari & Ors vs Nanda Kishore Roy on 19 August, 2010",
+     "date": "2010-08-19",
+     "citation": "2010 AIR SCW 5093",
+     "ik_numcitedby": 17,
+     "our_doc_key": "c36724"
+    }
+   ]
+  },
+  {
+   "case": "Mohan Lal v State of Punjab",
+   "case_ik_tid": "38505268",
+   "decided": "2018-08-16",
+   "ik_supreme_court_citing_total": 11,
+   "we_hold_citing": 13,
+   "page1_shown": 10,
+   "page1_in_our_collection": 10,
+   "page1": [
+    {
+     "ik_tid": "154139001",
+     "title": "Mukesh Singh vs State (Narcotic Branch Of Delhi) on 31 August, 2020",
+     "date": "2020-08-31",
+     "citation": "AIR 2020 SUPREME COURT 4794",
+     "ik_numcitedby": 83,
+     "our_doc_key": "b2020_9_245_302"
+    },
+    {
+     "ik_tid": "164163418",
+     "title": "Rajesh Dhiman vs The State Of Himachal Pradesh on 26 October, 2020",
+     "date": "2020-10-26",
+     "citation": "AIR 2020 SUPREME COURT 5353",
+     "ik_numcitedby": 26,
+     "our_doc_key": "b2020_8_1044_1056"
+    },
+    {
+     "ik_tid": "80495794",
+     "title": "Vijay Pandey vs The State Of Uttar Pradesh on 30 July, 2019",
+     "date": "2019-07-30",
+     "citation": "AIR 2019 SUPREME COURT 3569",
+     "ik_numcitedby": 210,
+     "our_doc_key": "b2019_10_774_778"
+    },
+    {
+     "ik_tid": "96697417",
+     "title": "Rizwan Khan vs The State Of Chhattisgarh on 10 September, 2020",
+     "date": "2020-09-10",
+     "citation": "AIR 2020 SUPREME COURT 4297",
+     "ik_numcitedby": 34,
+     "our_doc_key": "b2020_7_546_557"
+    },
+    {
+     "ik_tid": "30300806",
+     "title": "Varinder Kumar vs The State Of Himachal Pradesh on 11 February, 2019",
+     "date": "2019-02-11",
+     "citation": "AIRONLINE 2019 SC 570",
+     "ik_numcitedby": 90,
+     "our_doc_key": "b2019_2_707_716"
+    },
+    {
+     "ik_tid": "19041404",
+     "title": "Tarun Jit Tejpal vs The State Of Goa on 19 August, 2019",
+     "date": "2019-08-19",
+     "citation": "AIRONLINE 2019 SC 926",
+     "ik_numcitedby": 64,
+     "our_doc_key": "b2019_10_675_695"
+    },
+    {
+     "ik_tid": "132852703",
+     "title": "The State Of Telangana vs Managipet @ Mangipet Sarveshwar Reddy on 6 December, 2019",
+     "date": "2019-12-06",
+     "citation": "AIRONLINE 2019 SC 1686",
+     "ik_numcitedby": 50,
+     "our_doc_key": "b2019_14_716_741"
+    },
+    {
+     "ik_tid": "143202244",
+     "title": "Tofan Singh vs The State Of Tamil Nadu on 29 October, 2020",
+     "date": "2020-10-29",
+     "citation": "AIR 2020 SUPREME COURT 5592",
+     "ik_numcitedby": 1439,
+     "our_doc_key": "b2020_12_583_874"
+    },
+    {
+     "ik_tid": "168323304",
+     "title": "Office Of The Odisha Lokayukta vs Pradeep Kumar Panigrahi on 23 February, 2023",
+     "date": "2023-02-23",
+     "citation": null,
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2023_2_560_581"
+    },
+    {
+     "ik_tid": "45469621",
+     "title": "Md. Rahim Ali @ Abdur Rahim vs The State Of Assam on 11 July, 2024",
+     "date": "2024-07-11",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_7_2329_2362"
+    }
+   ]
+  },
+  {
+   "case": "State of Rajasthan v Parmanand",
+   "case_ik_tid": "155481249",
+   "decided": "2014-02-28",
+   "ik_supreme_court_citing_total": 4,
+   "we_hold_citing": 3,
+   "page1_shown": 4,
+   "page1_in_our_collection": 3,
+   "page1": [
+    {
+     "ik_tid": "112509971",
+     "title": "Ranjan Kumar Chadha vs The State Of Himachal Pradesh on 6 October, 2023",
+     "date": "2023-10-06",
+     "citation": null,
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2023_13_289_370"
+    },
+    {
+     "ik_tid": "193290257",
+     "title": "The State Of Himachal Pradesh vs Surat Singh on 16 March, 2026",
+     "date": "2026-03-16",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "84174937",
+     "title": "Sk. Raju @ Abdul Haque @ Jagga vs The State Of West Bengal on 5 September, 2018",
+     "date": "2018-09-05",
+     "citation": "AIR 2018 SUPREME COURT 4255",
+     "ik_numcitedby": 123,
+     "our_doc_key": "b2018_10_731_748"
+    },
+    {
+     "ik_tid": "13257392",
+     "title": "Dayalu Kashyap vs The State Of Chhattisgarh on 25 January, 2022",
+     "date": "2022-01-25",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2022_1_1020_1023"
+    }
+   ]
+  },
+  {
+   "case": "Gurbaksh Singh Sibbia v State of Punjab",
+   "case_ik_tid": "1308768",
+   "decided": "1980-04-09",
+   "ik_supreme_court_citing_total": 54,
+   "we_hold_citing": 61,
+   "page1_shown": 10,
+   "page1_in_our_collection": 8,
+   "page1": [
+    {
+     "ik_tid": "123660783",
+     "title": "Sushila Aggarwal vs State (Nct Of Delhi) on 29 January, 2020",
+     "date": "2020-01-29",
+     "citation": "AIR 2020 SUPREME COURT 831",
+     "ik_numcitedby": 15728,
+     "our_doc_key": "b2020_2_1_131"
+    },
+    {
+     "ik_tid": "1730508",
+     "title": "Union Of India vs Padam Narain Aggarwal Etc on 3 October, 2008",
+     "date": "2008-10-03",
+     "citation": "AIR 2009 SUPREME COURT 254",
+     "ik_numcitedby": 271,
+     "our_doc_key": "c32620"
+    },
+    {
+     "ik_tid": "238832",
+     "title": "Savitri Agarwal & Ors vs State Of Maharashtra & Anr on 10 July, 2009",
+     "date": "2009-07-10",
+     "citation": "2009 AIR SCW 5092",
+     "ik_numcitedby": 92,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "68963893",
+     "title": "Anna Waman Bhalerao vs State Of Maharashtra on 12 September, 2025",
+     "date": "2025-09-12",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2025_9_982_1015"
+    },
+    {
+     "ik_tid": "132771982",
+     "title": "Manish Sisodia vs Directorate Of Enforcement on 9 August, 2024",
+     "date": "2024-08-09",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_8_1061_1085"
+    },
+    {
+     "ik_tid": "2252807",
+     "title": "Md. Asfak Alam vs The State Of Jharkhand on 31 July, 2023",
+     "date": "2023-07-31",
+     "citation": null,
+     "ik_numcitedby": 9,
+     "our_doc_key": "b2023_10_1184_1195"
+    },
+    {
+     "ik_tid": "86652428",
+     "title": "Sushila Aggarwal vs State (Nct Of Delhi) on 15 May, 2018",
+     "date": "2018-05-15",
+     "citation": "AIRONLINE 2018 SC 1111",
+     "ik_numcitedby": 63,
+     "our_doc_key": "b2018_6_825_852"
+    },
+    {
+     "ik_tid": "60022179",
+     "title": "Balmukund Singh Gautam vs State Of Madhya Pradesh on 13 February, 2026",
+     "date": "2026-02-13",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "135048839",
+     "title": "The State Of Haryana vs Dharamraj on 29 August, 2023",
+     "date": "2023-08-29",
+     "citation": null,
+     "ik_numcitedby": 23,
+     "our_doc_key": "b2023_11_705_714"
+    },
+    {
+     "ik_tid": "20777541",
+     "title": "Manish Sisodia vs Central Bureau Of Investigation on 30 October, 2023",
+     "date": "2023-10-30",
+     "citation": null,
+     "ik_numcitedby": 2,
+     "our_doc_key": "b2023_15_480_512"
+    }
+   ]
+  },
+  {
+   "case": "Noor Aga v State of Punjab",
+   "case_ik_tid": "1584447",
+   "decided": "2008-07-09",
+   "ik_supreme_court_citing_total": 48,
+   "we_hold_citing": 52,
+   "page1_shown": 10,
+   "page1_in_our_collection": 10,
+   "page1": [
+    {
+     "ik_tid": "61381973",
+     "title": "Tofan Singh vs State Of Tamil Nadu on 8 October, 2013",
+     "date": "2013-10-08",
+     "citation": "2013 AIR SCW 5740",
+     "ik_numcitedby": 127,
+     "our_doc_key": "c40880"
+    },
+    {
+     "ik_tid": "84654053",
+     "title": "Mangilal vs The State Of Madhya Pradesh on 12 July, 2023",
+     "date": "2023-07-12",
+     "citation": null,
+     "ik_numcitedby": 18,
+     "our_doc_key": "b2023_10_517_532"
+    },
+    {
+     "ik_tid": "143202244",
+     "title": "Tofan Singh vs The State Of Tamil Nadu on 29 October, 2020",
+     "date": "2020-10-29",
+     "citation": "AIR 2020 SUPREME COURT 5592",
+     "ik_numcitedby": 1439,
+     "our_doc_key": "b2020_12_583_874"
+    },
+    {
+     "ik_tid": "37078038",
+     "title": "Just Rights For Children Alliance vs S. Harish on 23 September, 2024",
+     "date": "2024-09-23",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_10_154_314"
+    },
+    {
+     "ik_tid": "3493537",
+     "title": "Balwinder Singh @ Binda vs The Narcotics Control Bureau on 22 September, 2023",
+     "date": "2023-09-22",
+     "citation": null,
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2023_14_100_122"
+    },
+    {
+     "ik_tid": "842519",
+     "title": "Vinod Solanki vs Union Of India & Anr on 18 December, 2008",
+     "date": "2008-12-18",
+     "citation": "2009 (1) AIR BOM R 814",
+     "ik_numcitedby": 116,
+     "our_doc_key": "c33428"
+    },
+    {
+     "ik_tid": "1879901",
+     "title": "Sami Ullaha vs Superintendent, Narcotic Central ... on 7 November, 2008",
+     "date": "2008-11-07",
+     "citation": "AIR 2009 SUPREME COURT 1357",
+     "ik_numcitedby": 315,
+     "our_doc_key": "c32928"
+    },
+    {
+     "ik_tid": "791070",
+     "title": "State Of Maharashtra vs Dnyaneshwar Laxman Rao Wankhede on 29 July, 2009",
+     "date": "2009-07-29",
+     "citation": null,
+     "ik_numcitedby": 227,
+     "our_doc_key": "c35169"
+    },
+    {
+     "ik_tid": "1792963",
+     "title": "U.O.I vs Bal Mukund & Ors on 31 March, 2009",
+     "date": "2009-03-31",
+     "citation": null,
+     "ik_numcitedby": 516,
+     "our_doc_key": "c34217"
+    },
+    {
+     "ik_tid": "39862551",
+     "title": "Nirmal Singh Pehlwan @ Nimma vs Inspector,Customs, Customs House, ... on 21 July, 2011",
+     "date": "2011-07-21",
+     "citation": "2011 AIR SCW 5697",
+     "ik_numcitedby": 88,
+     "our_doc_key": "c38315"
+    }
+   ]
+  },
+  {
+   "case": "Inder Mohan Goswami and Anr. v State of Uttaranchal and Ors.",
+   "case_ik_tid": "855018",
+   "decided": "2007-10-09",
+   "ik_supreme_court_citing_total": 38,
+   "we_hold_citing": 28,
+   "page1_shown": 10,
+   "page1_in_our_collection": 8,
+   "page1": [
+    {
+     "ik_tid": "7148380",
+     "title": "Satender Kumar Antil vs Central Bureau Of Investigation on 11 July, 2022",
+     "date": "2022-07-11",
+     "citation": null,
+     "ik_numcitedby": 19037,
+     "our_doc_key": "b2022_10_351_447"
+    },
+    {
+     "ik_tid": "10546413",
+     "title": "Sushil Sethi vs The State Of Arunachal Pradesh on 31 January, 2020",
+     "date": "2020-01-31",
+     "citation": "AIR 2020 SUPREME COURT 765",
+     "ik_numcitedby": 119,
+     "our_doc_key": "b2020_1_582_601"
+    },
+    {
+     "ik_tid": "190417046",
+     "title": "Ramveer Upadhyay vs The State Of Uttar Pradesh on 20 April, 2022",
+     "date": "2022-04-20",
+     "citation": null,
+     "ik_numcitedby": 1084,
+     "our_doc_key": "b2022_3_336_355"
+    },
+    {
+     "ik_tid": "913087",
+     "title": "Vimalben Ajitbhai Patel vs Vatslabeen Ashokbhai Patel And Others on 14 March, 2008",
+     "date": "2008-03-14",
+     "citation": "AIR 2008 SUPREME COURT 2675",
+     "ik_numcitedby": 175,
+     "our_doc_key": "c30909"
+    },
+    {
+     "ik_tid": "165330",
+     "title": "D.Venkatasubramaniam & Ors vs M.K.Mohan Krishnamachari & Ors on 14 September, 2009",
+     "date": "2009-09-14",
+     "citation": "2009 AIR SCW 6412",
+     "ik_numcitedby": 152,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "1284652",
+     "title": "Asoke Basak vs State Of Maharashtra & Ors on 8 October, 2010",
+     "date": "2010-10-08",
+     "citation": "AIRONLINE 2010 SC 326",
+     "ik_numcitedby": 41,
+     "our_doc_key": "c36961"
+    },
+    {
+     "ik_tid": "18288042",
+     "title": "Iridium India Telecom Ltd vs Motorola Incorporated & Ors on 20 October, 2010",
+     "date": "2010-10-20",
+     "citation": "AIR 2011 SUPREME COURT 20",
+     "ik_numcitedby": 630,
+     "our_doc_key": "c37034"
+    },
+    {
+     "ik_tid": "138575974",
+     "title": "State Of Punjab vs Davinder Pal Singh Bhullar & Ors.Etc on 7 December, 2011",
+     "date": "2011-12-07",
+     "citation": "AIR 2012 SUPREME COURT 364",
+     "ik_numcitedby": 1099,
+     "our_doc_key": "c38903"
+    },
+    {
+     "ik_tid": "1273941",
+     "title": "Maharashtra State ... vs Datar Switchgear Ltd.& Ors on 8 October, 2010",
+     "date": "2010-10-08",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "53801355",
+     "title": "Mr. Robert John D'Souza & Ors vs Mr. Stephen V. Gomes & Anr on 21 July, 2015",
+     "date": "2015-07-21",
+     "citation": "2015 AIR SCW 4343",
+     "ik_numcitedby": 44,
+     "our_doc_key": "c42789"
+    }
+   ]
+  },
+  {
+   "case": "Sushila Aggarwal v State (NCT of Delhi)",
+   "case_ik_tid": "123660783",
+   "decided": "2020-01-29",
+   "ik_supreme_court_citing_total": 18,
+   "we_hold_citing": 22,
+   "page1_shown": 10,
+   "page1_in_our_collection": 8,
+   "page1": [
+    {
+     "ik_tid": "176371351",
+     "title": "Naresh Kumar Mangla vs Anita Agarwal on 17 December, 2020",
+     "date": "2020-12-17",
+     "citation": "AIR 2021 SUPREME COURT 277",
+     "ik_numcitedby": 38,
+     "our_doc_key": "b2020_14_294_326"
+    },
+    {
+     "ik_tid": "60022179",
+     "title": "Balmukund Singh Gautam vs State Of Madhya Pradesh on 13 February, 2026",
+     "date": "2026-02-13",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "79532249",
+     "title": "Sumit vs State Of U P on 9 February, 2026",
+     "date": "2026-02-09",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2026_3_87_102"
+    },
+    {
+     "ik_tid": "180631499",
+     "title": "Union Of India vs Sunil Biyani on 12 August, 2026",
+     "date": "2026-08-12",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "66168928",
+     "title": "Sumedh Singh Saini vs The State Of Punjab on 3 December, 2020",
+     "date": "2020-12-03",
+     "citation": "AIRONLINE 2020 SC 868",
+     "ik_numcitedby": 22,
+     "our_doc_key": "b2020_11_966_982"
+    },
+    {
+     "ik_tid": "77704402",
+     "title": "M/S. Supreme Bhiwandi Wada Manor ... vs The State Of Maharashtra on 26 July, 2021",
+     "date": "2021-07-26",
+     "citation": "AIR 2021 SUPREME COURT 3580",
+     "ik_numcitedby": 1,
+     "our_doc_key": "b2021_7_226_239"
+    },
+    {
+     "ik_tid": "130119054",
+     "title": "Prashant Singh Rajput vs The State Of Madhya Pradesh on 8 October, 2021",
+     "date": "2021-10-08",
+     "citation": "AIRONLINE 2021 SC 867",
+     "ik_numcitedby": 24,
+     "our_doc_key": "b2021_10_161_179"
+    },
+    {
+     "ik_tid": "14485072",
+     "title": "Vijay Madanlal Choudhary vs Union Of India on 27 July, 2022",
+     "date": "2022-07-27",
+     "citation": null,
+     "ik_numcitedby": 293,
+     "our_doc_key": "b2022_6_382_726"
+    },
+    {
+     "ik_tid": "73887298",
+     "title": "Pratibha Manchanda vs The State Of Haryana on 7 July, 2023",
+     "date": "2023-07-07",
+     "citation": null,
+     "ik_numcitedby": 75,
+     "our_doc_key": "b2023_10_411_426"
+    },
+    {
+     "ik_tid": "135048839",
+     "title": "The State Of Haryana vs Dharamraj on 29 August, 2023",
+     "date": "2023-08-29",
+     "citation": null,
+     "ik_numcitedby": 23,
+     "our_doc_key": "b2023_11_705_714"
+    }
+   ]
+  },
+  {
+   "case": "Karnail Singh v State of Haryana",
+   "case_ik_tid": "1036527",
+   "decided": "2009",
+   "ik_supreme_court_citing_total": 20,
+   "we_hold_citing": 20,
+   "page1_shown": 10,
+   "page1_in_our_collection": 9,
+   "page1": [
+    {
+     "ik_tid": "61591149",
+     "title": "Shafhi Mohammad vs The State Of Himachal Pradesh on 3 April, 2018",
+     "date": "2018-04-03",
+     "citation": null,
+     "ik_numcitedby": 243,
+     "our_doc_key": "b2018_3_1096_1108"
+    },
+    {
+     "ik_tid": "9781569",
+     "title": "Najmunisha Etc vs The State Of Gujarat on 9 April, 2024",
+     "date": "2024-04-09",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_4_442_472"
+    },
+    {
+     "ik_tid": "994218",
+     "title": "Dalel Singh vs State Of Haryana on 7 October, 2009",
+     "date": "2009-10-07",
+     "citation": "2009 AIR SCW 6583",
+     "ik_numcitedby": 40,
+     "our_doc_key": "c35543"
+    },
+    {
+     "ik_tid": "65577072",
+     "title": "Rajender Singh vs State Of Haryana on 8 August, 2011",
+     "date": "2011-08-08",
+     "citation": "AIRONLINE 2011 SC 414",
+     "ik_numcitedby": 0,
+     "our_doc_key": null
+    },
+    {
+     "ik_tid": "24170317",
+     "title": "Mohan Lal vs State Of Rajasthan on 17 April, 2015",
+     "date": "2015-04-17",
+     "citation": "AIR 2015 SUPREME COURT 2098",
+     "ik_numcitedby": 165,
+     "our_doc_key": "c42608"
+    },
+    {
+     "ik_tid": "35702503",
+     "title": "M/S Siddamsetty Infra Projects Pvt. Ltd vs Katta Sujatha Reddy on 8 November, 2024",
+     "date": "2024-11-08",
+     "citation": null,
+     "ik_numcitedby": 0,
+     "our_doc_key": "b2024_11_667_699"
+    },
+    {
+     "ik_tid": "169834054",
+     "title": "State Of Karnataka vs Dondusa Namasa Baddi on 5 August, 2010",
+     "date": "2010-08-05",
+     "citation": "2010 AIR SCW 5905",
+     "ik_numcitedby": 31,
+     "our_doc_key": "c37555"
+    },
+    {
+     "ik_tid": "1450627",
+     "title": "Sarju @ Ramu vs State Of U.P on 7 August, 2009",
+     "date": "2009-08-07",
+     "citation": "AIR 2009 SUPREME COURT 3214",
+     "ik_numcitedby": 60,
+     "our_doc_key": "c35223"
+    },
+    {
+     "ik_tid": "143381580",
+     "title": "Ram Swaroop vs State(Govt.Of Nct) Of Delhi on 21 May, 2013",
+     "date": "2013-05-21",
+     "citation": "AIR 2013 SUPREME COURT 2068",
+     "ik_numcitedby": 129,
+     "our_doc_key": "c40431"
+    },
+    {
+     "ik_tid": "107667752",
+     "title": "Boota Singh vs The State Of Haryana on 16 April, 2021",
+     "date": "2021-04-16",
+     "citation": "AIR 2021 SUPREME COURT 1913",
+     "ik_numcitedby": 22,
+     "our_doc_key": "b2021_4_180_189"
+    }
+   ]
+  }
+ ]
+}
