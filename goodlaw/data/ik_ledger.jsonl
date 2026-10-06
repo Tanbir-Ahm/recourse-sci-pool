@@ -95,3 +95,5 @@
 {"type": "result", "id": "5977f227a6b6", "ts": "2026-10-06T11:01:27Z", "outcome": "ok", "http": 200, "note": ""}
 {"type": "attempt", "id": "21ca39880feb", "ts": "2026-10-06T11:01:27Z", "kind": "meta", "shape": "meta", "key": "{\"extra\": {}, \"kind\": \"meta\", \"page\": 0, \"query\": \"\", \"tid\": \"44869332\"}", "tid": "44869332", "query": "", "page": 0, "extra": {}, "price_rs": 0.02, "outcome": "pending"}
 {"type": "result", "id": "21ca39880feb", "ts": "2026-10-06T11:01:28Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "1e7a37694480", "ts": "2026-10-06T11:12:11Z", "kind": "doc", "shape": "doc+maxcitedby=50", "key": "{\"extra\": {\"maxcitedby\": 50}, \"kind\": \"doc\", \"page\": 0, \"query\": \"\", \"tid\": \"151036912\"}", "tid": "151036912", "query": "", "page": 0, "extra": {"maxcitedby": 50}, "price_rs": 0.2, "outcome": "pending"}
+{"type": "result", "id": "1e7a37694480", "ts": "2026-10-06T11:12:13Z", "outcome": "ok", "http": 200, "note": ""}
