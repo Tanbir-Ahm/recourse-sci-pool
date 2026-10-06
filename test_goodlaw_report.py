@@ -108,6 +108,11 @@ check(cp.get("c1", False)["bench_size"] == 3 and cp.get("c10", False)["bench_siz
 a = bundle_for("c1")
 check(a["triage"] == "ADVERSE_SIGNAL" and len(a["summary"]["adverse_strong"]) == 1, "a five-judge bench saying 'stands overruled' of a three-judge case gives ADVERSE_SIGNAL")
 e = a["summary"]["adverse_strong"][0]
+check(R.bench_relation(5, 3, "report_line", "header_full") == "larger" and R.bench_relation(3, 3, "report_line", "report_line") == "equal" and R.bench_relation(2, 3, "report_line", "report_line") == "smaller", "bench relation: complete benches are compared")
+check(R.bench_relation(2, 3, "report_line", "signatures") == "smaller", "bench relation: a lower bound that already exceeds the citing bench makes the citing bench smaller")
+check(R.bench_relation(3, 2, "report_line", "signatures") == "unknown" and R.bench_relation(3, 3, "report_line", "header") == "unknown", "bench relation: a lower bound the citing bench exceeds or matches proves nothing, a judge may be missing from it")
+check(R.bench_relation(3, 2, "signatures", "header_full") == "larger" and R.bench_relation(2, 2, "signatures", "header_full") == "unknown", "bench relation: a citing lower bound that exceeds the complete target bench makes it larger")
+check(R.bench_relation(5, 2, "header", "signatures") == "unknown" and R.bench_relation(None, 2, "report_line", "report_line") == "unknown", "bench relation: two lower bounds, or a missing size, give unknown")
 check(e["bench_relation"] == "larger" and e["quote_verified"] and "stands overruled" in e["sentence"] and e["cue"] and e["speaker"] == "court", "the evidence carries bench relation, a verified quote, the cue and the speaker")
 
 g = bundle_for("c2")

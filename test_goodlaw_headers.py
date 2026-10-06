@@ -125,6 +125,15 @@ check(H.bench_from_report_line("[JAGDISH SINGH KHEHAR, CJI, KURIAN JOSEPH,\nR. F
 check(H.bench_from_report_line("[A. K. SIKRI, J.]")[0] == 1, "report line: a one-judge bench")
 check(H.bench_from_report_line("DECEMBER 18, 1992\n(S. RATNAVEL PANDIAN AND K. JAYACHANDRA REDDY, JJ.]\nB")[0] == 2, "report line: an OCR-damaged opening bracket is tolerated")
 SIGS = "...\n.......................J.\n(ARUN MISHRA)\n.......................J.\n(S. ABDUL NAZEER)\n.......................J.\n(M.R. SHAH)\nNew Delhi;\nMay 04, 2017."
+# a stray bracket in a headnote must not turn prose into a bench (found: 12 to 26 judges counted for two- and three-judge benches)
+PROSE = ("[RANJAN GOGOI, N. V. RAMANA, R. BANUMATHI, MOHAN M. SHANTANAGOUDAR AND S. ABDUL NAZEER, JJ.]\n"
+         "Services - Delhi Police (Appointment and Recruitment) Rules, 1980 - r.5 - held: under the Rules, 2003 the post was not open (Delhi Administration Subordinate Services Rules, 1967. Answering the reference, J.")
+check(H.bench_from_report_line(PROSE)[0] == 5, "report line: headnote prose that runs on to a later 'J.' is not counted as judges")
+check(H.bench_from_report_line("Held: the order is set aside, the appellants, who were Advs. for the State, Ms. Mohua Sinha, Rakesh Mishra, Shekhar Kumar, Advs. for the Appellants. The Judgement of the Court was delivered by M. R. SHAH, J.")[0] is None, "report line: counsel lists are not a bench")
+check(H.bench_from_report_line("(Civil Appeal No. 8834 of 2015) JULY 25, 2017 (RANJAN GOGOI AND NAVIN SINHA, JJ.)")[0] == 2, "report line: the list is cut back to its last open bracket (a case number and date before it are not judges)")
+check(H.bench_from_report_line("[DR. A.S. ANAND AND K.T. THOMAS, JJ.]")[0] == 2 and H.bench_from_report_line("[DR. AS. ANAND AND K.T. THOMAS, JJ.]")[0] == 2, "report line: 'AS.' for 'A.S.' (OCR) is a name, not the word 'as'")
+check(H.bench_from_report_line("[M.N. VENKATACHALIAH, CJ. AND S. MOHAN, JJ.]")[0] == 2 and H.bench_from_report_line("[Dr Dnhananjaya Y Chandrachud, CJl, B R Gavai, J B Pardiwala, Manoj Misra and Sanjiv Khanna, JJ.]")[0] == 5, "report line: 'CJ.' and an OCR 'CJl' are designations, not judges")
+check(H.judge_names("Held: the High Court was right") is None and H.judge_names("A. K. SIKRI AND ASHOK BHUSHAN") == ["A. K. SIKRI", "ASHOK BHUSHAN"], "judge_names: prose is None, a pair of names is two")
 check(H.bench_from_signatures(SIGS) == 3, "signatures: three signature lines make three judges")
 check(H.bench_from_signatures("no signatures") is None, "no signatures give None")
 check(H.bench_size(PUTT, "caption") == (9, "report_line"), "bench_size prefers the report line")

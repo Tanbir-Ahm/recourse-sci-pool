@@ -41,11 +41,22 @@ RELIABLE_BENCH = ("header_full", "report_line")
 
 
 def bench_relation(citing, target, citing_source=None, target_source=None):
-    """'larger', 'equal' or 'smaller' when both benches are known completely (from the JUDIS header or the law report's judge list); otherwise 'unknown',
-    because signature counts and short headers can miss judges."""
-    if not citing or not target or citing_source not in RELIABLE_BENCH or target_source not in RELIABLE_BENCH:
+    """'larger', 'equal' or 'smaller' when it can be established, otherwise 'unknown'.
+
+    Both benches complete (the JUDIS header up to about 1994, or the law report's judge list): compare them. A count from a short header or from signature lines is
+    only a lower bound, since those can miss judges, so with one bound only the comparison that no missing judge could reverse is made: the target's bound already
+    exceeds the complete citing bench ('smaller': the target's bench is at least as large as the bound), or the citing bound already exceeds the complete target bench
+    ('larger'). With two bounds nothing is concluded."""
+    if not citing or not target:
         return "unknown"
-    return "larger" if citing > target else ("equal" if citing == target else "smaller")
+    citing_ok, target_ok = citing_source in RELIABLE_BENCH, target_source in RELIABLE_BENCH
+    if citing_ok and target_ok:
+        return "larger" if citing > target else ("equal" if citing == target else "smaller")
+    if citing_ok and target > citing:
+        return "smaller"
+    if target_ok and citing > target:
+        return "larger"
+    return "unknown"
 
 
 def classify_mentions(corpus, mentions, target):

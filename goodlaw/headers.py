@@ -183,11 +183,44 @@ _JJ_LINE = re.compile(r"[\[(]\s*(?P<names>[A-Za-z][^\[\]]{3,500}?)[,.\s]*(?:J\.?
 _SIG = re.compile(r"(?:[.…_\-]{3,}|\s)\s*(?:CJI|C\.J\.I|C\.J|JJ|J)\s*\.?\s*(?:\(|\n|\Z|$)")
 
 
-def _count_names(s):
+_DESIGNATION = re.compile(r"^(?:CJ[Il1]|CJI|CJ|C\.\s*J\.?(?:\s*I\.?)?|JJ?|J\.\s*J)\.?$", re.I)
+_NOT_NAME_WORD = {"the", "of", "in", "on", "for", "to", "under", "act", "rules", "rule", "constitution", "section", "article", "held", "per", "himself", "herself", "court", "state", "union",
+                  "india", "appeal", "petition", "civil", "criminal", "case", "judgment", "order", "advs", "adv", "counsel", "with", "by", "is", "was", "are", "an"}
+
+
+def judge_names(text):
+    """The judges' names in a bracketed list ("A. K. SIKRI AND ASHOK BHUSHAN"), or None when the text does not read as a list of names.
+
+    A stray '[' or '(' in a headnote can start a 'list' that runs through prose to the next 'J.'; counting its commas and 'and's once gave benches of 12 to 26 judges.
+    The list is cut back to what follows its last open bracket, and then it must be short, with no sentence punctuation, every part one to six words, no ordinary
+    words of prose and no figure other than a lone digit (OCR for an initial). A designation ('CJ.', 'CJI') is not a name."""
+    s = re.sub(r"\*", "", text)
+    s = re.split(r"[\[(]", s)[-1]
+    if len(s) > 320 or re.search(r"[:\u2013\u2014]", s):
+        return None
+    s = s.replace(";", ",")                                                           # OCR for a comma
     s = re.sub(r"\(\s*(?:CJ|J|C\.J\.?|CJI)\s*\)", "", s)
-    s = re.sub(r"\b(?:CJI|C\.J\.I\.?|C\.J\.?)\b", ",", s)
-    parts = [p.strip() for p in re.split(r"\s*(?:&|,|\band\b|\n)\s*", s, flags=re.I) if re.search(r"[A-Za-z]{3,}", p)]
-    return len(parts)
+    s = re.sub(r"(?i)\b(?:CJ[Il1]|CJI|C\.\s*J\.\s*I\.?|C\.\s*J\.?|CJ\.?)(?=\W|$)", ",", s)
+    parts = [p.strip() for p in re.split(r"\s*(?:&|,|\band\b|\n)\s*", s, flags=re.I) if re.search(r"[A-Za-z]{3,}", p) or _DESIGNATION.match(p.strip())]
+    parts = [p for p in parts if not _DESIGNATION.match(p)]
+    if not parts:
+        return None
+    for p in parts:
+        words = p.split()
+        if not 1 <= len(words) <= 6:
+            return None
+        for w in words:
+            bare = w.strip(".,)")
+            if re.search(r"\d", bare) and len(bare) > 1:
+                return None
+            if len(bare) >= 2 and bare.lower() in _NOT_NAME_WORD:
+                return None
+    return parts
+
+
+def _count_names(s):
+    parts = judge_names(s)
+    return len(parts) if parts else 0
 
 
 def bench_from_header(text):
@@ -232,13 +265,17 @@ def bench_from_signatures(text):
     return len(sigs) if sigs else None
 
 
+MAX_BENCH = 13          # the largest the Court has sat (Kesavananda Bharati); a count above it is a misreading, not a bench
+
+
 def bench_size(text, layout=None):
     """(size, source) where source is 'header_full', 'report_line', 'header', 'signatures' or None. 'header_full' (the JUDIS layout with a citator,
     up to about 1994, lists every judge) and 'report_line' (the law report's bracketed list) are complete; 'header' (the 1995-2007 layout, which can omit
-    judges) and 'signatures' are lower bounds, so the larger of the two is used and bench comparisons ignore them."""
+    judges) and 'signatures' are lower bounds, so the larger of the two is used and bench comparisons ignore them. A count above MAX_BENCH is dropped."""
     h, _ = bench_from_header(text)
     r, _ = bench_from_report_line(text) if layout != "judis" else (None, None)
     s = bench_from_signatures(text)
+    h, r, s = (n if n and n <= MAX_BENCH else None for n in (h, r, s))
     if r:
         return max(r, s or 0), "report_line"
     if h and layout == "judis" and "CASE NO" not in text[:800]:      # the pre-1995 JUDIS layout (no CASE NO. line) lists every judge
