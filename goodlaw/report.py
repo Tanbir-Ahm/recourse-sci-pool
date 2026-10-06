@@ -19,6 +19,7 @@ from datetime import date
 
 from . import cites as C
 from . import mentions as M
+from . import reader as RD
 from . import statutes as S
 from . import tables as TB
 from . import treatment as T
@@ -285,6 +286,7 @@ def build_bundle(corpus, target, doc=None, today=None):
                    "Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.",
                    "Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.",
                    "The law reporter's case-law table (judgments of 2017 to 2023) is the reporter's annotation, not the court's words; judgments of 2024 on print no such table."],
+        "_reader_items": RD.items_for_target(target.doc_key, doc["title"] if doc else target.name, mentions),       # for the second reader; not part of the written report
     }
     return bundle
 

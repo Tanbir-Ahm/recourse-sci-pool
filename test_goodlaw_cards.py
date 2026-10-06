@@ -143,6 +143,54 @@ order = [l.split(",")[0] for l in open(match_csv).read().splitlines()[1:]]
 check(order == ["Fourth v State", "Sixth v State", "Other v State", "Fifth v State"], f"the match list puts ambiguous matches first, then medium ones, then those matched on a citation, then the unchecked (got {order})")
 check("compared with the case's bench" in CD.review_rows([flagged])[0]["where"], "the review sheet says what the bench comparison is")
 
+# ---------------------------------------------------------------- the second reader's batch, verdicts and place on the card
+from goodlaw import reader as RD
+
+
+def rmention(doc, sentence, label="NEUTRAL"):
+    i = sentence.index("X v. Y")
+    return {"doc_key": doc, "title": f"Judgment {doc}", "date": "2021-01-01", "year": 2021, "sentence": sentence, "target_in_sentence": (i, i + 6), "prev": "", "next": "", "confidence": "high",
+            "speaker": "court", "in_headnote": False, "label": label}
+
+
+ritems = RD.items_for_target("c1", "Rangappa v. Sri Mohan", [rmention("b1", "The Court overrules X v. Y today.", "OVERRULES"), rmention("b2", "In X v. Y this decision is wrongly decided in the view of the Court.")])
+quiet_card = card("NO_ADVERSE_FOUND")
+quiet_card["_reader_items"] = ritems
+items_by_case = CD.split_reader_items([quiet_card])
+check("_reader_items" not in quiet_card and len(items_by_case["Rangappa v Sri Mohan"]) == 2, "the reader items are taken off the card before it is saved")
+with tempfile.TemporaryDirectory() as td:
+    pend = CD.pending_items([quiet_card], items_by_case, {})
+    check(len(pend) == 2 and all("_rule" not in p_ and p_["case_name"] == "Rangappa v Sri Mohan" and p_["hash"] for p_ in pend), "every unread item is in the batch, without the rules' labels")
+    check(CD.write_reader_batch(pend, td) == 2 and os.path.exists(os.path.join(td, "reader_batch.jsonl")) and os.path.exists(os.path.join(td, "READER_INSTRUCTIONS.txt")), "the batch and its instructions are written")
+    answers = os.path.join(td, "answers.jsonl")
+    with open(answers, "w") as fh:
+        fh.write(json.dumps({"id": "c1:b1", "treatment": "OVERRULES", "quote": "The Court overrules X v. Y today."}) + "\n")
+        fh.write(json.dumps({"id": "c1:b2", "treatment": "DISAGREES", "quote": "a sentence that is not in the passages"}) + "\n")
+        fh.write(json.dumps({"id": "c1:zz", "treatment": "CITED"}) + "\n")
+    recs_path = os.path.join(td, "reader_verdicts.jsonl")
+    recorded, problems = CD.import_reader_verdicts(answers, os.path.join(td, "reader_batch.jsonl"), recs_path, "a session", "2026-10-06")
+    check(recorded == 1 and len(problems) == 2 and any("word for word" in p_ for p_ in problems) and any("no item" in p_ for p_ in problems), "import records the valid verdict and reports an unverified quote and an unknown id")
+    recs = CD.load_reader_records(recs_path)
+    check(list(recs) == ["c1:b1"] and recs["c1:b1"]["hash"] == ritems[0]["hash"] and recs["c1:b1"]["reader"] == "a session", "the stored record carries the hash of what was read and who read it")
+    check([p_["id"] for p_ in CD.pending_items([quiet_card], items_by_case, recs)] == ["c1:b2"], "only the unread item stays in the next batch")
+    check(CD.write_reader_batch([], td) == 0 and not os.path.exists(os.path.join(td, "reader_batch.jsonl")), "an empty batch removes the old one")
+
+quiet_card["second_reader"] = RD.summarise(items_by_case["Rangappa v Sri Mohan"], recs)
+check(quiet_card["second_reader"]["confirmed"] == 1 and quiet_card["second_reader"]["pending"] == 1 and quiet_card["status"] == "NO_ADVERSE_FOUND" and quiet_card["user_facing_note"] is None,
+      "the second reader's result sits on the card; the status and the user-facing note are untouched")
+reader_found = card("NO_ADVERSE_FOUND")
+reader_found["case"] = dict(reader_found["case"], name="Quiet v State")
+reader_found["second_reader"] = {"items": 1, "read": 1, "pending": 0, "confirmed": 0, "dismissed": [], "adverse": [], "label": "x",
+                                 "reader_only": [{"id": "c9:b1", "later_judgment": "Later v State", "date": "2022-02-02", "treatment": "OVERRULES", "quote": "we overrule it", "note": "", "rules_agree": False}]}
+rows = CD.review_rows([card("ADVERSE_SIGNAL", strong=strong1), reader_found, card("NO_ADVERSE_FOUND")])
+check([r["case_name"] for r in rows] == ["Rangappa v Sri Mohan", "Quiet v State"], "a quiet case with a reader-only finding gets a row, after the case Recourse calls GOOD_LAW that the checker flags; a quiet case without one gets none")
+qrow = [r for r in rows if r["case_name"] == "Quiet v State"][0]
+check("second reader found 1 adverse" in qrow["why_in_sheet"] and qrow["strongest_evidence"].startswith("[second reader: OVERRULES]") and qrow["where"] == "Later v State (2022-02-02)", "its row says the second reader found it and quotes the reader's sentence")
+agree = card("ADVERSE_SIGNAL", strong=strong1)
+agree["second_reader"] = {"items": 2, "read": 2, "pending": 0, "confirmed": 1, "dismissed": [{"id": "x"}], "adverse": [], "reader_only": [], "label": "x"}
+arow = CD.review_rows([agree])[0]
+check("the second reader agrees on 1 judgment(s)" in arow["why_in_sheet"] and "read 1 flagged judgment(s) as not adverse" in arow["why_in_sheet"], "a flagged case's row shows where the second reader agrees and where it dismissed a flagged judgment")
+
 # ---------------------------------------------------------------- the reader
 doc = {"generated": "2026-10-05", "counts": {}, "cards": [flagged, quiet, questioned]}
 idx = CR.load(doc)

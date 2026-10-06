@@ -19,6 +19,7 @@ Markdown report for one case: who cites it, what they do with it (with the exact
 and a statement of what the collection can and cannot see. No code here decides that a case is good law; see goodlaw/report.py.
 """
 import argparse
+import datetime
 import json
 import os
 import sys
@@ -62,7 +63,7 @@ def check_one(corpus, doc, extra_cites=(), aliases=(), out_dir=None, log=print):
         os.makedirs(out_dir, exist_ok=True)
         base = os.path.join(out_dir, doc["doc_key"])
         with open(base + ".json", "w", encoding="utf-8") as fh:
-            json.dump(bundle, fh, indent=1, ensure_ascii=False)
+            json.dump({k: v for k, v in bundle.items() if not k.startswith("_")}, fh, indent=1, ensure_ascii=False)
         with open(base + ".md", "w", encoding="utf-8") as fh:
             fh.write(md)
         log(f"wrote {base}.json and .md")
@@ -87,6 +88,17 @@ def run_cards(a):
         print(json.dumps(result, indent=1, ensure_ascii=False))
         return 0
     cards_path = os.path.join(a.out, "currency_cards.json")
+    records_path = os.path.join(a.out, "reader_verdicts.jsonl")
+    if a.cmd == "reader-import":
+        batch_path = os.path.join(a.out, "reader_batch.jsonl")
+        if not os.path.exists(batch_path):
+            print(f"no batch to answer: {batch_path} does not exist (run `cards` first)", file=sys.stderr)
+            return 2
+        recorded, problems = CD.import_reader_verdicts(a.verdicts, batch_path, records_path, a.reader, a.today or datetime.date.today().isoformat())
+        for p in problems:
+            print("PROBLEM:", p, file=sys.stderr)
+        print(f"{recorded} verdict(s) recorded in {records_path}" + (f"; {len(problems)} skipped" if problems else "") + "; run `cards` again to put them on the cards")
+        return 1 if problems else 0
     if a.cmd == "cards-review":
         doc = json.load(open(cards_path, encoding="utf-8"))
         recorded, problems = CD.merge_review_sheet(a.sheet, doc["cards"], reviews_path)
@@ -109,7 +121,10 @@ def run_cards(a):
         for p in problems:
             print("PROBLEM:", p, file=sys.stderr)
     old_cards = json.load(open(cards_path, encoding="utf-8"))["cards"] if os.path.exists(cards_path) else None
-    cards, reports = CD.build_all(a.corpus, snap["cases"], overrides, today=a.today, workers=a.workers)
+    records = CD.load_reader_records(records_path)
+    cards, reports = CD.build_all(a.corpus, snap["cases"], overrides, today=a.today, workers=a.workers, reader_records=records)
+    items_by_case = CD.split_reader_items(cards)
+    n_batch = CD.write_reader_batch(CD.pending_items(cards, items_by_case, records), a.out)
     CD.attach_reviews(cards, CD.load_reviews(reviews_path))
     doc = CD.write_cards(cards, reports, a.out, snap.get("snapshot"))
     changes = CD.compare(old_cards, cards)
@@ -119,6 +134,8 @@ def run_cards(a):
     CD.write_match_check(cards, os.path.join(a.out, "MATCH_CHECK.csv"))
     print(f"{len(cards)} cards written to {a.out}: {doc['counts']}")
     print(f"{n_sheet} case(s) in the review sheet; {len([c for c in changes if c['worse']])} change(s) since the last run that need a look (see CHANGES.md)")
+    n_items = sum(len(v) for v in items_by_case.values())
+    print(f"second reader: {n_items} judgment(s) worth reading across the cases, {n_items - n_batch} already read, {n_batch} in {os.path.join(a.out, 'reader_batch.jsonl')}")
     return 0
 
 
@@ -155,6 +172,11 @@ def main(argv=None):
     cd.add_argument("--out", default=os.path.join(HERE, "cards"))
     cd.add_argument("--workers", type=int, default=4)
     cd.add_argument("--today", help="date to stamp on the cards (default: today)")
+    ri = sub.add_parser("reader-import", help="check a reader's verdicts against cards/reader_batch.jsonl and store the valid ones; then run `cards` again")
+    ri.add_argument("--verdicts", required=True, help="one JSON object per line: id, treatment, quote, note")
+    ri.add_argument("--reader", default="a model session reading the passages", help="who read them, recorded with each verdict")
+    ri.add_argument("--out", default=os.path.join(HERE, "cards"))
+    ri.add_argument("--today")
     cr = sub.add_parser("cards-review")
     cr.add_argument("--sheet", default=os.path.join(HERE, "cards", "REVIEW_SHEET.csv"))
     cr.add_argument("--out", default=os.path.join(HERE, "cards"))
@@ -200,7 +222,7 @@ def main(argv=None):
             classes[c_["court_class"]] = classes.get(c_["court_class"], 0) + 1
         print(f"{len(snap['cases'])} cases read from Recourse commit {snap['snapshot']['recourse_commit']}: {classes}; wrote {a.out}")
         return 0
-    if a.cmd in ("cards", "cards-review", "card"):
+    if a.cmd in ("cards", "cards-review", "card", "reader-import"):
         return run_cards(a)
     corpus = K.Corpus(a.corpus)
     if a.cmd == "reader-eval":
@@ -225,7 +247,7 @@ def main(argv=None):
             print(e, file=sys.stderr)
             return 2
         bundle, md = check_one(corpus, doc, a.cite, a.alias, a.out)
-        print(json.dumps(bundle, indent=1, ensure_ascii=False) if a.json else md)
+        print(json.dumps({k: v for k, v in bundle.items() if not k.startswith("_")}, indent=1, ensure_ascii=False) if a.json else md)
         return 0
     if a.cmd == "known":
         from goodlaw import evaluate as E

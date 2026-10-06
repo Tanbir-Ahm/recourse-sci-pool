@@ -24,6 +24,7 @@ import subprocess
 from . import cites as C
 from . import library as LB
 from . import mentions as M
+from . import reader as RD
 from . import report as R
 from . import treatment as T
 
@@ -165,7 +166,7 @@ def _base_card(case, match, today, commit, corpus_info):
                        "note": match.get("note"), "candidates": match.get("candidates")}},
             "status": None, "statute_flag": None, "user_facing_note": None, "statute_note": None, "evidence": [], "support": None, "coverage": None, "statute_dimension": [],
             "provenance": {"generated": today, "checker_commit": commit, "label": LABEL_TEXT, "evaluation": "goodlaw/EVALUATION.md", "corpus": corpus_info},
-            "fingerprint": None, "review": None, "changed_since_last_run": None, "report_file": None}
+            "fingerprint": None, "review": None, "second_reader": None, "changed_since_last_run": None, "report_file": None}
 
 
 def unchecked_card(case, match, today, commit, corpus_info):
@@ -246,11 +247,14 @@ def _work(args):
     bundle = R.build_bundle(corpus, target, doc, today=today)
     name = slug(case["case_name"])
     card = card_from_bundle(case, match, doc, bundle, today, commit, info, report_file=f"reports/{name}.md")
+    card["_reader_items"] = bundle.get("_reader_items") or []          # for the second reader; split off before the cards are written (see split_reader_items)
     return card, R.render_markdown(bundle)
 
 
-def build_all(corpus_path, library_cases, overrides=None, today=None, workers=4, log=print):
-    """-> ([card, ...], {slug: markdown report}). Matches every library case to a judgment (goodlaw.library), then runs the checker on each matched one in parallel."""
+def build_all(corpus_path, library_cases, overrides=None, today=None, workers=4, log=print, reader_records=None):
+    """-> ([card, ...], {slug: markdown report}). Matches every library case to a judgment (goodlaw.library), then runs the checker on each matched one in parallel. With
+    `reader_records` (the stored second-reading verdicts, by item id) each card also carries what the second reader said; every checked card holds its reader items under
+    `_reader_items` until split_reader_items takes them off."""
     from multiprocessing import Pool
     from . import corpus as K
     today = today or datetime.date.today().isoformat()
@@ -268,12 +272,85 @@ def build_all(corpus_path, library_cases, overrides=None, today=None, workers=4,
     if jobs:
         with Pool(workers, initializer=_init, initargs=(corpus_path,)) as pool:
             for n, (card, md) in enumerate(pool.imap_unordered(_work, jobs), 1):
+                card["second_reader"] = RD.summarise(card["_reader_items"], reader_records or {})
                 cards[card["case"]["name"]] = card
                 reports[slug(card["case"]["name"])] = md
                 if n % 10 == 0:
                     log(f"  {n}/{len(jobs)}")
     ordered = [cards[c["case_name"]] for c in library_cases]
     return ordered, reports
+
+
+# ---------------------------------------------------------------- the second reader's batch and verdicts
+def split_reader_items(cards):
+    """Takes the reader items off the cards (they are not part of the saved cards) -> {case name: [item, ...]}."""
+    return {c["case"]["name"]: c.pop("_reader_items", []) or [] for c in cards}
+
+
+def load_reader_records(path):
+    """The stored second-reading verdicts: {item id: record}; a later line for the same id replaces an earlier one."""
+    out = {}
+    if path and os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            line = line.strip()
+            if line:
+                rec = json.loads(line)
+                out[rec["id"]] = rec
+    return out
+
+
+def pending_items(cards, items_by_case, records):
+    """The items no valid verdict covers yet (a verdict covers an item only while its hash is the item's current one)."""
+    out = []
+    for c in cards:
+        for it in items_by_case.get(c["case"]["name"], []):
+            rec = records.get(it["id"])
+            if rec and rec.get("hash") == it["hash"] and RD.check_verdict(it, rec)["valid"]:
+                continue
+            out.append(dict({k: v for k, v in it.items() if not k.startswith("_")}, case_name=c["case"]["name"]))
+    return out
+
+
+def write_reader_batch(items, out_dir):
+    """Writes the batch a reader reads (reader_batch.jsonl, only what is still unread) with its instructions; an empty batch removes the old one. -> the number of items."""
+    path = os.path.join(out_dir, "reader_batch.jsonl")
+    if not items:
+        if os.path.exists(path):
+            os.remove(path)
+        return 0
+    with open(path, "w", encoding="utf-8") as fh:
+        for it in items:
+            fh.write(json.dumps(it, ensure_ascii=False) + "\n")
+    with open(os.path.join(out_dir, "READER_INSTRUCTIONS.txt"), "w", encoding="utf-8") as fh:
+        fh.write(RD.INSTRUCTIONS + "\n")
+    return len(items)
+
+
+def import_reader_verdicts(verdicts_path, batch_path, records_path, reader, today):
+    """Checks the verdicts a reader wrote against the batch they answer and appends the valid ones to the stored records. -> (recorded, [problems])."""
+    batch = {}
+    for line in open(batch_path, encoding="utf-8"):
+        if line.strip():
+            it = json.loads(line)
+            batch[it["id"]] = it
+    recorded, problems = 0, []
+    with open(records_path, "a", encoding="utf-8") as out:
+        for n, line in enumerate(open(verdicts_path, encoding="utf-8"), 1):
+            if not line.strip():
+                continue
+            v = json.loads(line)
+            it = batch.get(v.get("id"))
+            if it is None:
+                problems.append(f"line {n}: no item {v.get('id')!r} in the batch")
+                continue
+            c = RD.check_verdict(it, v)
+            if not c["valid"] or c["problems"]:
+                problems.append(f"line {n} ({v.get('id')}): " + "; ".join(c["problems"]))
+                continue
+            out.write(json.dumps({"id": it["id"], "case_name": it.get("case_name"), "treatment": c["treatment"], "quote": c["quote"], "note": c["note"], "hash": it["hash"],
+                                  "reader": reader, "date": today}, ensure_ascii=False) + "\n")
+            recorded += 1
+    return recorded, problems
 
 
 # ---------------------------------------------------------------- reviews, changes, sheets
@@ -346,12 +423,15 @@ SHEET_COLUMNS = ["case_name", "why_in_sheet", "checker_label", "recourse_curated
 
 
 def review_rows(cards):
-    """The cases a person should look at, most pressing first: a flagged case Recourse's own record calls GOOD_LAW; any other flagged case; a case we could not match."""
+    """The cases a person should look at, most pressing first: a flagged case Recourse's own record calls GOOD_LAW; a case the rules left quiet where the second reader found an
+    adverse reading; any other flagged case; a case we could not match. The second reader's verdict is shown beside the checker's, never instead of it."""
     rows = []
     for c in cards:
         flagged = c["status"] in ("ADVERSE_SIGNAL", "QUESTIONED")
         curated_good = any(r["status"] == "GOOD_LAW" for r in c["case"].get("recourse_curated") or [])
-        if not flagged and c["status"] != "AMBIGUOUS_MATCH":
+        sr = c.get("second_reader") or {}
+        reader_only = sr.get("reader_only") or []
+        if not flagged and c["status"] != "AMBIGUOUS_MATCH" and not reader_only:
             continue
         why = []
         if flagged and curated_good:
@@ -360,16 +440,28 @@ def review_rows(cards):
             why.append(f"the checker says {c['status']}")
         if c["status"] == "AMBIGUOUS_MATCH":
             why.append("could not tell which judgment this is")
+        if reader_only:
+            why.append(f"the second reader found {len(reader_only)} adverse reading(s) the rules did not")
+        if flagged and sr.get("read"):
+            if sr.get("confirmed"):
+                why.append(f"the second reader agrees on {sr['confirmed']} judgment(s)")
+            if sr.get("dismissed"):
+                why.append(f"the second reader read {len(sr['dismissed'])} flagged judgment(s) as not adverse")
         ev = [e for e in c["evidence"] if e["group"] in ("strong", "citator", "possible", "legislative")] or c["evidence"]
         top = ev[0] if ev else None
         m = c["corpus"]
         match_txt = (f"{m['doc_key']} {m['title']} ({m['date'] or m['year']}, bench {m['bench_size'] or '?'}); matched by {m['match']['method']} ({m['match']['confidence']})" if m["doc_key"]
                      else "; ".join(f"{x['doc_key']} {x['title'][:50]} ({x['year']})" for x in (m["match"].get("candidates") or [])) or "no candidate")
+        strongest = f"[{top['kind'] or top['group']}] {top['quote']}" if top else ""
+        where = (f"{top['title']} ({top['date'] or top['year']}, bench {top['bench_size'] or '?'}; compared with the case's bench: {top['bench_relation']})" if top else "")
+        if reader_only and not flagged:
+            r0 = reader_only[0]
+            strongest, where = f"[second reader: {r0['treatment']}] {r0['quote']}", f"{r0['later_judgment']} ({r0['date']})"
         rows.append({"case_name": c["case"]["name"], "why_in_sheet": "; ".join(why), "checker_label": c["status"], "recourse_curated_status": _recourse_status(c),
-                     "strongest_evidence": (f"[{top['kind'] or top['group']}] {top['quote']}" if top else ""),
-                     "where": (f"{top['title']} ({top['date'] or top['year']}, bench {top['bench_size'] or '?'}; compared with the case's bench: {top['bench_relation']})" if top else ""),
+                     "strongest_evidence": strongest, "where": where,
                      "report_file": c.get("report_file") or "", "match_check": match_txt, "your_verdict": "", "reviewer": "", "review_date": "", "note": ""})
-    rows.sort(key=lambda r: (0 if r["why_in_sheet"].startswith("Recourse's record") else (1 if r["checker_label"] == "ADVERSE_SIGNAL" else (2 if r["checker_label"] == "QUESTIONED" else 3)), r["case_name"]))
+    rows.sort(key=lambda r: (0 if r["why_in_sheet"].startswith("Recourse's record") else (1 if "the second reader found" in r["why_in_sheet"] and r["checker_label"] not in ("ADVERSE_SIGNAL", "QUESTIONED")
+                                                                                           else (2 if r["checker_label"] == "ADVERSE_SIGNAL" else (3 if r["checker_label"] == "QUESTIONED" else 4))), r["case_name"]))
     return rows
 
 

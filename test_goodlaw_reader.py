@@ -45,6 +45,45 @@ check(R.check_verdict(item, {"id": "r1", "treatment": "CITED", "quote": ""})["va
 check(not R.check_verdict(item, {"id": "r1", "treatment": "maybe"})["valid"], "a treatment outside the list is invalid")
 check(not R.is_adverse(None), "no verdict is not adverse")
 
+
+# ---- the choice of passages: strong words outweigh weak ones, and what the rules flagged is always shown
+weak_many = mention("The appellant relied on and the High Court followed and affirmed, approved and reaffirmed Sibbia v. State as explained, distinguished and referred to.", "Sibbia v. State")
+strong_one = mention("Thus we overrule the decision in Sibbia v. State.", "Sibbia v. State", confidence="medium")
+ordered = R.candidate_passages([weak_many, strong_one], limit=1)
+check(len(ordered) == 1 and "overrule" in ordered[0]["text"], "one strong word outweighs a string of weak ones (the first blind run left an explicit overruling out)")
+many = [mention(f"Sibbia v. State is mentioned in point {i} where the Court doubts nothing at all.", "Sibbia v. State") for i in range(8)]
+shown = R.candidate_passages(many, limit=2, must={6, 7})
+check(len(shown) == 2 and all(any(f"point {i} " in p["text"] for i in (6, 7)) for p in shown), "the mentions the rules flagged are shown first")
+check(len(R.candidate_passages(many, limit=2, must={3, 4, 5})) == 3, "flagged mentions are all shown even beyond the limit")
+check(R.cue_score("we overrule it") == 4 and R.cue_score("it was followed and relied on") == 2 and R.cue_score("nothing here") == 0, "cue scores: 4 for a strong word, 1 for a weak one")
+
+# ---- items for a case, and what the answers say about it
+def cm(doc, sentence, name, label=None, conf="high", speaker="court", head=False, title="Later v State", date="2020-01-01"):
+    m = mention(sentence, name, confidence=conf, head=head)
+    m.update(doc_key=doc, title=title, date=date, year=int(date[:4]), label=label or "NEUTRAL", speaker=speaker)
+    return m
+
+
+ms = [cm("d1", "The Court overrules Sibbia v. State here.", "Sibbia v. State", label="OVERRULES"),
+      cm("d2", "Learned counsel cited Sibbia v. State for bail.", "Sibbia v. State"),
+      cm("d3", "In Sibbia v. State this Court held bail is wide, but that view is wrongly decided.", "Sibbia v. State", conf="medium"),
+      cm("d4", "Sibbia v. State is flagged by the rules but only by a low-confidence match.", "Sibbia v. State", label="DISAGREES", conf="low")]
+its = R.items_for_target("c100", "Sibbia v State (1980)", ms)
+check([i["id"] for i in its] == ["c100:d1", "c100:d3"], "an item for each judgment where the rules read it as adverse or a passage has a strong word; none for a bare citation or a low-confidence match")
+check(its[0]["_rule"] == ["OVERRULES"] and its[1]["_rule"] == [] and all(i["hash"] and len(i["hash"]) == 12 for i in its), "items carry the rules' labels (for the comparison) and a hash of the passages")
+check(all("_rule" not in R.public(i) and "hash" not in R.public(i) for i in its), "the reader's view of an item has no rule label")
+rec = lambda it, t, q: {"id": it["id"], "treatment": t, "quote": q, "note": "", "hash": it["hash"], "reader": "r", "date": "2026-10-06"}
+summ = R.summarise(its, {"c100:d1": rec(its[0], "OVERRULES", "The Court overrules Sibbia"), "c100:d3": rec(its[1], "CITED", "")})
+check(summ["items"] == 2 and summ["read"] == 2 and summ["pending"] == 0 and summ["confirmed"] == 1 and summ["reader_only"] == [] and summ["dismissed"] == [], "the reader confirms the flagged judgment and finds nothing in the other")
+summ2 = R.summarise(its, {"c100:d1": rec(its[0], "CITED", ""), "c100:d3": rec(its[1], "DISAGREES", "that view is wrongly decided")})
+check(len(summ2["dismissed"]) == 1 and summ2["dismissed"][0]["id"] == "c100:d1" and len(summ2["reader_only"]) == 1 and summ2["reader_only"][0]["id"] == "c100:d3", "a dismissed flag and a reader-only finding are told apart")
+stale = dict(rec(its[0], "OVERRULES", "The Court overrules Sibbia"), hash="000000000000")
+check(R.summarise(its, {"c100:d1": stale})["pending"] == 2, "a verdict whose passages have changed since is not used")
+check(R.summarise(its, {"c100:d3": rec(its[1], "OVERRULES", "words not in the passage")})["adverse"] == [], "a quote not in the passages is never counted")
+check(R.summarise([], {}) is None, "nothing to read, no summary")
+
+check(R.check_verdict(item, {"id": "r1", "treatment": "OVERRULES", "quote": "decision is overruled."})["quote_verified"] and R.check_verdict(item, {"id": "r1", "treatment": "OVERRULES", "quote": "In \u00abSibbia v. State\u00bb the Court was wrong and the decision is overruled."})["quote_verified"], "a quote verifies whether or not the reader copied the case markers")
+
 print()
 print("ALL PASSED" if not FAILED else f"{len(FAILED)} FAILED")
 sys.exit(1 if FAILED else 0)
