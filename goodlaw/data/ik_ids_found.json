@@ -1,0 +1,16 @@
+{
+ "note": "Indian Kanoon ids found by chance in answers, not supplied by the owner. NOT yet checked with a metadata call; the title, court, date and citation below were read from a search result on 2026-10-06.",
+ "rows": [
+  {
+   "case_name": "D.K. Basu v State of West Bengal (the landmark judgment)",
+   "tid": "501198",
+   "ik_title": "Shri D.K. Basu,Ashok K. Johri vs State Of West Bengal,State Of U.P",
+   "ik_date": "1996-12-18",
+   "docsource": "Supreme Court of India",
+   "citation": "AIR 1997 SUPREME COURT 610",
+   "numcitedby": 2221,
+   "we_hold_citing": 86,
+   "why": "Recourse's id for D.K. Basu (235756) is the 1 August 1997 follow-up order, with an IK count of 1; this is the 18 December 1996 judgment the checker's card is built on (corpus doc c14580)."
+  }
+ ]
+}

@@ -105,3 +105,5 @@
 {"type": "result", "id": "d151e5b71331", "ts": "2026-10-06T11:20:17Z", "outcome": "ok", "http": 200, "note": ""}
 {"type": "attempt", "id": "17cf0e8a465e", "ts": "2026-10-06T11:20:17Z", "kind": "meta", "shape": "meta", "key": "{\"extra\": {}, \"kind\": \"meta\", \"page\": 0, \"query\": \"\", \"tid\": \"155481249\"}", "tid": "155481249", "query": "", "page": 0, "extra": {}, "price_rs": 0.02, "outcome": "pending"}
 {"type": "result", "id": "17cf0e8a465e", "ts": "2026-10-06T11:20:18Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "38230cd24ccd", "ts": "2026-10-06T11:24:32Z", "kind": "search", "shape": "search", "key": "{\"extra\": {}, \"kind\": \"search\", \"page\": 0, \"query\": \"cites:151036912 doctypes:supremecourt\", \"tid\": \"\"}", "tid": "", "query": "cites:151036912 doctypes:supremecourt", "page": 0, "extra": {}, "price_rs": 0.5, "outcome": "pending"}
+{"type": "result", "id": "38230cd24ccd", "ts": "2026-10-06T11:24:34Z", "outcome": "ok", "http": 200, "note": ""}
