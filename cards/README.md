@@ -68,6 +68,8 @@ This logic was run against the real cards in isolation (Mohan Lal gets the warni
 3. Run `python sci_goodlaw.py cards-review` to record the verdicts in `reviews.json` and put them on the cards. (Running `cards` merges any unmerged verdicts first, so a filled sheet is never lost.)
 4. A verdict applies only while the card's `fingerprint` (its status and its evidence) is unchanged. If a later run finds new evidence, the review is kept but marked no longer current, the reader ignores it, and `CHANGES.md` says so.
 
+`preliminary_readings.json` holds a model's reading of the full judgments behind a sheet row, with a proposed verdict; it appears in the row's `note` column (labelled "not a lawyer's and not a verdict") only while the card's evidence is the evidence it was based on. It is never written to `your_verdict` and never recorded as a review. The 2026-10-06 readings propose: Mohan Lal and Mhetre `CONFIRMED_ADVERSE` (both partial overrulings by five-judge benches, quotes checked in the judgments); G. Sagar Suri, M. Ravindran and Parmanand `NEEDS_RESEARCH` (a reference to a larger bench, and two narrow-point criticisms; none is an overruling); Baldev Singh `FALSE_ALARM`.
+
 At read time: `CONFIRMED_ADVERSE` gives a warning; `FALSE_ALARM` silences it; `NEEDS_RESEARCH` keeps the checker's reading and marks it under review.
 
 ## The second reader (a model reads the passages; a person confirms)

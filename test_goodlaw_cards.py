@@ -193,6 +193,15 @@ noted["second_reader"] = {"items": 2, "read": 2, "pending": 0, "confirmed": 0, "
     {"id": "c8:b2", "later_judgment": "Another v State", "date": "2023-03-03", "treatment": "DOUBTS", "quote": "again", "note": "", "rules_agree": False}]}
 nrow = CD.review_rows([noted])[0]
 check("(the reader's note: a reference order only)" in nrow["strongest_evidence"] and nrow["where"].endswith("; and 1 more"), "a reader-only row carries the reader's note and says how many more such judgments there are")
+noted["second_reader"]["adverse"] = noted["second_reader"]["reader_only"]
+basis = CD.reading_basis(noted)
+check(basis["reader_adverse"] == ["c8:b1", "c8:b2"] and basis["fingerprint"] == noted["fingerprint"], "a reading's basis is the card's fingerprint and the reader's adverse ids")
+rd = {"Noted v State": {"case_name": "Noted v State", "by": "a model", "date": "2026-10-06", "proposed_verdict": "FALSE_ALARM", "reading": "a reference order only", "basis": basis}}
+check("not a lawyer's and not a verdict (proposes FALSE_ALARM): a reference order only" in CD.reading_note(noted, rd), "a current preliminary reading is shown, labelled as no verdict")
+check(CD.review_rows([noted], rd)[0]["your_verdict"] == "" and "proposes FALSE_ALARM" in CD.review_rows([noted], rd)[0]["note"], "it goes in the note column and never in the verdict column")
+rd["Noted v State"]["basis"] = dict(basis, reader_adverse=["c8:b1"])
+check("no longer matches" in CD.reading_note(noted, rd) and CD.reading_note(noted, {}) == "", "a reading whose evidence changed says so; no reading gives no note")
+check(CD.load_readings("/nonexistent/x.json") == {}, "a missing readings file is no readings")
 agree = card("ADVERSE_SIGNAL", strong=strong1)
 agree["second_reader"] = {"items": 2, "read": 2, "pending": 0, "confirmed": 1, "dismissed": [{"id": "x"}], "adverse": [], "reader_only": [], "label": "x"}
 arow = CD.review_rows([agree])[0]

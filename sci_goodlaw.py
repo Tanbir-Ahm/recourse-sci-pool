@@ -130,7 +130,7 @@ def run_cards(a):
     changes = CD.compare(old_cards, cards)
     today = cards[0]["provenance"]["generated"]
     CD.write_changes(changes, os.path.join(a.out, "CHANGES.md"), today, first_run=old_cards is None)
-    n_sheet = CD.write_review_sheet(cards, sheet)
+    n_sheet = CD.write_review_sheet(cards, sheet, CD.load_readings(os.path.join(a.out, "preliminary_readings.json")))
     CD.write_match_check(cards, os.path.join(a.out, "MATCH_CHECK.csv"))
     print(f"{len(cards)} cards written to {a.out}: {doc['counts']}")
     print(f"{n_sheet} case(s) in the review sheet; {len([c for c in changes if c['worse']])} change(s) since the last run that need a look (see CHANGES.md)")

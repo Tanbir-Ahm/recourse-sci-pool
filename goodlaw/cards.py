@@ -422,7 +422,30 @@ def _recourse_status(card):
 SHEET_COLUMNS = ["case_name", "why_in_sheet", "checker_label", "recourse_curated_status", "strongest_evidence", "where", "report_file", "match_check", "your_verdict", "reviewer", "review_date", "note"]
 
 
-def review_rows(cards):
+def reading_basis(card):
+    """What a preliminary reading was based on: the card's fingerprint and the second reader's adverse readings. The reading lapses when either changes."""
+    return {"fingerprint": card["fingerprint"], "reader_adverse": sorted(a["id"] for a in ((card.get("second_reader") or {}).get("adverse") or []))}
+
+
+def load_readings(path):
+    """{case_name: reading} from the preliminary readings file (`{"readings": [{case_name, by, date, proposed_verdict, reading, basis}]}`); {} if there is none."""
+    if not path or not os.path.exists(path):
+        return {}
+    return {r["case_name"]: r for r in json.load(open(path, encoding="utf-8")).get("readings", [])}
+
+
+def reading_note(card, readings):
+    """The `note` cell for a case: a preliminary reading by a model, shown only while the evidence it was based on is unchanged. It proposes a verdict; only a person's verdict in
+    `your_verdict` counts, and it is never recorded as one."""
+    r = (readings or {}).get(card["case"]["name"])
+    if not r:
+        return ""
+    if r.get("basis") != reading_basis(card):
+        return f"A preliminary reading from {r.get('date')} no longer matches this card's evidence; read it again."
+    return f"Preliminary reading by {r.get('by')}, {r.get('date')}, not a lawyer's and not a verdict (proposes {r.get('proposed_verdict')}): {r.get('reading')}"
+
+
+def review_rows(cards, readings=None):
     """The cases a person should look at, most pressing first: a flagged case Recourse's own record calls GOOD_LAW; a case the rules left quiet where the second reader found an
     adverse reading; any other flagged case; a case we could not match. The second reader's verdict is shown beside the checker's, never instead of it."""
     rows = []
@@ -460,14 +483,14 @@ def review_rows(cards):
             where = f"{r0['later_judgment']} ({r0['date']})" + (f"; and {len(reader_only) - 1} more" if len(reader_only) > 1 else "")
         rows.append({"case_name": c["case"]["name"], "why_in_sheet": "; ".join(why), "checker_label": c["status"], "recourse_curated_status": _recourse_status(c),
                      "strongest_evidence": strongest, "where": where,
-                     "report_file": c.get("report_file") or "", "match_check": match_txt, "your_verdict": "", "reviewer": "", "review_date": "", "note": ""})
+                     "report_file": c.get("report_file") or "", "match_check": match_txt, "your_verdict": "", "reviewer": "", "review_date": "", "note": reading_note(c, readings)})
     rows.sort(key=lambda r: (0 if r["why_in_sheet"].startswith("Recourse's record") else (1 if "the second reader found" in r["why_in_sheet"] and r["checker_label"] not in ("ADVERSE_SIGNAL", "QUESTIONED")
                                                                                            else (2 if r["checker_label"] == "ADVERSE_SIGNAL" else (3 if r["checker_label"] == "QUESTIONED" else 4))), r["case_name"]))
     return rows
 
 
-def write_review_sheet(cards, path):
-    rows = review_rows(cards)
+def write_review_sheet(cards, path, readings=None):
+    rows = review_rows(cards, readings)
     with open(path, "w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=SHEET_COLUMNS)
         w.writeheader()

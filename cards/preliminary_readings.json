@@ -1,0 +1,90 @@
+{
+ "readings": [
+  {
+   "case_name": "Mohan Lal v State of Punjab",
+   "by": "Claude (a model reading the full judgments in the collection)",
+   "date": "2026-10-06",
+   "proposed_verdict": "CONFIRMED_ADVERSE",
+   "reading": "Read in the Mukesh Singh text (5 judges, 31 Aug 2020): the operative paragraph says a contrary decision in Mohan Lal and any decision taking the view that an informant cannot be the investigator 'are not good law and they are specifically overruled'. The headnote says the same. It is an overruling of Mohan Lal's rule that the trial is vitiated when the informant investigates; I have not determined from the text whether any other part of Mohan Lal survives. Four later benches and Md. Rahim Ali (2024) repeat it.",
+   "basis": {
+    "fingerprint": "5d99d0df3beb",
+    "reader_adverse": [
+     "b2018_9_1006_1023:b2020_8_1057_1070",
+     "b2018_9_1006_1023:b2020_9_245_302",
+     "b2018_9_1006_1023:b2023_11_95_107",
+     "b2018_9_1006_1023:b2023_2_560_581",
+     "b2018_9_1006_1023:b2024_7_2329_2362"
+    ]
+   }
+  },
+  {
+   "case_name": "Siddharam Satlingappa Mhetre v State of Maharashtra",
+   "by": "Claude (a model reading the full judgments in the collection)",
+   "date": "2026-10-06",
+   "proposed_verdict": "CONFIRMED_ADVERSE",
+   "reading": "Read in Sushila Aggarwal (5 judges, 29 Jan 2020): the concurring conclusion says the view in Mhetre that no conditions can be imposed when granting anticipatory bail 'is incorrect. Mhetre to that extent and other judgments which have followed it are accordingly overruled'. This is a partial overruling, on that point only; the same judgment relies on Sibbia. The four 2023 to 2025 judgments the second reader also flagged only report this overruling, so they add nothing new.",
+   "basis": {
+    "fingerprint": "25fd26c1810d",
+    "reader_adverse": [
+     "c37199:b2020_2_1_131",
+     "c37199:b2023_11_705_714",
+     "c37199:b2023_15_525_589",
+     "c37199:b2024_8_753_767",
+     "c37199:b2025_1_911_933"
+    ]
+   }
+  },
+  {
+   "case_name": "G. Sagar Suri and Anr. v State of U.P. and Ors.",
+   "by": "Claude (a model reading the full judgments in the collection)",
+   "date": "2026-10-06",
+   "proposed_verdict": "NEEDS_RESEARCH",
+   "reading": "Read in J. Vedhasingh v R.M. Govindan (2 judges, 11 Aug 2022): the Court itself refers to a larger bench the question 'whether the ratio of the judgment in G. Sagar Suri and Kolla Veera Raghav Rao lay down the correct law', because two-judge benches had taken conflicting views on s.300(1) CrPC and prosecution under both the NI Act and the IPC. A real, explicit doubt of the Court, not a ruling. Our collection holds no later judgment on the reference, so whether it has been answered is unknown: check the court's site or Indian Kanoon.",
+   "basis": {
+    "fingerprint": "665b5bf52752",
+    "reader_adverse": [
+     "c20281:b2022_6_888_900"
+    ]
+   }
+  },
+  {
+   "case_name": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+   "by": "Claude (a model reading the full judgments in the collection)",
+   "date": "2026-10-06",
+   "proposed_verdict": "NEEDS_RESEARCH",
+   "reading": "Read in ED v Kapil Wadhawan (3 judges, 27 Mar 2023; Ravindran was also a 3-judge bench): it holds the Rustam computation per incuriam and says Ravindran 'ought to have followed' Chaganti, so the day of remand is included in the 60/90 days. It also says Ravindran 'rightly held' that the right to default bail is not defeated by a chargesheet filed after the accused applies. So the disagreement is on one narrow point (counting the first day) by an equal-strength bench, and Ravindran's main holding is approved. A caution on that point, not a warning on the case.",
+   "basis": {
+    "fingerprint": "665b5bf52752",
+    "reader_adverse": [
+     "b2020_12_915_955:b2023_5_918_948"
+    ]
+   }
+  },
+  {
+   "case_name": "State of Rajasthan v Parmanand",
+   "by": "Claude (a model reading the full judgments in the collection)",
+   "date": "2026-10-06",
+   "proposed_verdict": "NEEDS_RESEARCH",
+   "reading": "Read in Ranjan Kumar Chadha v State of H.P. (2 judges, 6 Oct 2023): on the point whether s.50 NDPS applies when a bag and the person are both searched, it says Parmanand followed Dilip, which did not consider the larger bench in Pawan Kumar, and so goes 'beyond what has been stated by the large Bench'; the headnote lists Parmanand 'held not applicable'. On other points (joint notice of the s.50 right is bad; only two options may be offered) the same judgment follows Parmanand. So a narrow criticism by a bench that is not larger; the case is partly relied on.",
+   "basis": {
+    "fingerprint": "665b5bf52752",
+    "reader_adverse": [
+     "c41273:b2023_13_289_370"
+    ]
+   }
+  },
+  {
+   "case_name": "State of Punjab v Baldev Singh",
+   "by": "Claude (a model reading the full judgments in the collection)",
+   "date": "2026-10-06",
+   "proposed_verdict": "FALSE_ALARM",
+   "reading": "The flagged judgment (Vijaysinh Chandubha Jadeja, 2010) is the five-judge bench that answered the reference. The quoted sentence ('we feel that the matter requires some clarification by a larger Bench') is the two-judge reference order it recites. The bench then holds the s.50(1) obligation mandatory and says the 'substantial compliance' cases are not in consonance with Baldev Singh. It reaffirms Baldev Singh. The second reader took the recited order as the Court's doubt.",
+   "basis": {
+    "fingerprint": "665b5bf52752",
+    "reader_adverse": [
+     "c30317:c37060"
+    ]
+   }
+  }
+ ]
+}
