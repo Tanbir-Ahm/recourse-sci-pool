@@ -11,6 +11,7 @@
     python sci_goodlaw.py cards-review --sheet cards/REVIEW_SHEET.csv        # record the verdicts a person filled into the review sheet
     python sci_goodlaw.py card   "Rangappa v Sri Mohan"                      # what the answer step would be told about one case
     python sci_goodlaw.py reader-eval build|score --out DIR [--verdicts FILE]   # the second reader on the tuning halves (blind batch, then score)
+    python sci_goodlaw.py ik     status|plan|run [--kind meta --tids 1,2 --run-cap 1 --approved-rs 0.04]   # the Indian Kanoon API, with a dry run, caps and a ledger (IK_PLAN.md)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
 
@@ -71,6 +72,48 @@ def check_one(corpus, doc, extra_cites=(), aliases=(), out_dir=None, log=print):
 
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def run_ik(a):
+    """status: what has been spent. plan: the dry run (no key needed, nothing sent). run: only with --run-cap and an --approved-rs equal to the plan's cost."""
+    from goodlaw import ik as IK
+    client = IK.Client(cache_dir=a.cache, ledger_path=a.ledger)
+    if a.action == "status":
+        print(json.dumps(client.status(), indent=1))
+        return 0
+    tids = [t.strip() for t in (a.tids or "").split(",") if t.strip()]
+    if a.tids_file:
+        with open(a.tids_file, encoding="utf-8") as fh:
+            tids += [ln.split("#")[0].strip() for ln in fh if ln.split("#")[0].strip()]
+    extra = {}
+    for kv in a.extra or []:
+        k, _, v = kv.partition("=")
+        extra[k] = int(v)
+    try:
+        calls = [IK.Call(a.kind, tid=t, query=a.query or "", extra=extra) for t in tids] if "tid" in IK.KINDS[a.kind]["needs"] else [IK.Call(a.kind, query=a.query or "", page=a.page, extra=extra)]
+    except (ValueError, KeyError) as e:
+        print(f"bad call: {e}", file=sys.stderr)
+        return 2
+    if a.run_cap is None:
+        print("--run-cap (rupees) is required for plan and run", file=sys.stderr)
+        return 2
+    if a.action == "plan":
+        pl = client.plan(calls, a.run_cap)
+        print(pl.text())
+        return 1 if pl.problems else 0
+    try:
+        results = client.run(calls, a.run_cap, a.approved_rs)
+    except IK.IKError as e:
+        print(f"{type(e).__name__}: {e}", file=sys.stderr)
+        return 1
+    for c in calls:
+        rec = results.get(c.key())
+        if rec and c.kind == "meta":
+            m = IK.parse_meta(rec["response"])
+            print(f"{c.tid}  {m['date']}  cited by {m['numcitedby']:4d}  {m['doctype']}  {m['title'][:70]}")
+        elif rec:
+            print(f"{c.label()}: saved in {client._cache_path(c)}")
+    return 0
 
 
 def run_cards(a):
@@ -172,6 +215,18 @@ def main(argv=None):
     cd.add_argument("--out", default=os.path.join(HERE, "cards"))
     cd.add_argument("--workers", type=int, default=4)
     cd.add_argument("--today", help="date to stamp on the cards (default: today)")
+    ik_ = sub.add_parser("ik", help="the Indian Kanoon API: `status`, `plan` (dry run, free) and `run` (spends, needs --run-cap and --approved-rs equal to the plan's cost)")
+    ik_.add_argument("action", choices=["status", "plan", "run"])
+    ik_.add_argument("--kind", choices=["meta", "doc", "fragment", "search"], default="meta")
+    ik_.add_argument("--tids", help="comma-separated Indian Kanoon document ids")
+    ik_.add_argument("--tids-file", help="one id per line ('#' starts a comment)")
+    ik_.add_argument("--query", help="fragment and search: the query")
+    ik_.add_argument("--page", type=int, default=0, help="search: the page, from 0")
+    ik_.add_argument("--extra", action="append", help="doc: an extra parameter, name=number (for example maxcitedby=10); a first call of any such shape runs alone")
+    ik_.add_argument("--run-cap", type=float, help="the most this run may spend, in rupees")
+    ik_.add_argument("--approved-rs", type=float, help="run: the plan's cost, as read from `plan`; anything else is refused")
+    ik_.add_argument("--cache", default=os.path.join(HERE, "ik_cache"))
+    ik_.add_argument("--ledger", default=os.path.join(HERE, "goodlaw", "data", "ik_ledger.jsonl"))
     ri = sub.add_parser("reader-import", help="check a reader's verdicts against cards/reader_batch.jsonl and store the valid ones; then run `cards` again")
     ri.add_argument("--verdicts", required=True, help="one JSON object per line: id, treatment, quote, note")
     ri.add_argument("--reader", default="a model session reading the passages", help="who read them, recorded with each verdict")
@@ -222,6 +277,8 @@ def main(argv=None):
             classes[c_["court_class"]] = classes.get(c_["court_class"], 0) + 1
         print(f"{len(snap['cases'])} cases read from Recourse commit {snap['snapshot']['recourse_commit']}: {classes}; wrote {a.out}")
         return 0
+    if a.cmd == "ik":
+        return run_ik(a)
     if a.cmd in ("cards", "cards-review", "card", "reader-import"):
         return run_cards(a)
     corpus = K.Corpus(a.corpus)

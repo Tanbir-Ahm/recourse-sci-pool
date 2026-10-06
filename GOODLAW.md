@@ -29,7 +29,7 @@ A model can read the passage around each mention, which the pattern rules cannot
 
 ## Cases whose own judgment we do not hold
 
-A library case whose judgment is not in the collection is checked as an **external target** (`goodlaw/targets/external.json`): the mention finder looks for it by name and citation in the later judgments we hold, and its card says it was checked from the outside. The Indian Kanoon API would add the later judgments we do not hold; it needs the owner's key and network access (`FOLLOW_UPS.md` 1f).
+A library case whose judgment is not in the collection is checked as an **external target** (`goodlaw/targets/external.json`): the mention finder looks for it by name and citation in the later judgments we hold, and its card says it was checked from the outside. The Indian Kanoon API would add the later judgments we do not hold. `goodlaw/ik.py` is the guarded client for it (a dry run, rupee caps, a ledger, a cache, stop on the first error; see its docstring and `IK_PLAN.md`); only a metadata call has been made so far, and nothing from the API feeds a card yet.
 
 ## What the labels mean, and do not mean
 
@@ -48,7 +48,7 @@ See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what th
 1. Build the store (about 15 minutes, 2 GB, needs the two data branches checked out): `python sci_goodlaw.py build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --corpus corpus.sqlite`.
 2. `python sci_goodlaw.py find --corpus corpus.sqlite "rangappa"` lists candidate judgments; `check` writes `<doc_key>.json` and `<doc_key>.md`; `batch --targets goodlaw/targets/priority.json --out reports/` does a list.
 3. `python sci_goodlaw.py library`, `cards`, `cards-review` and `card` make, review and read the precomputed cards (`cards/README.md`). `python sci_goodlaw.py known --corpus corpus.sqlite` runs the 20 known cases; `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev` measures agreement with the reporter's citator (the held-out half needs `--confirm-held-out` and should be run once per frozen rule set).
-4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`, `test_goodlaw_modern_gold.py`, `test_goodlaw_tables.py`, `test_goodlaw_library.py`, `test_goodlaw_cards.py`, `test_goodlaw_reader.py`.
+4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`, `test_goodlaw_modern_gold.py`, `test_goodlaw_tables.py`, `test_goodlaw_library.py`, `test_goodlaw_cards.py`, `test_goodlaw_reader.py`, `test_goodlaw_ik.py` (no real call: a fake server on 127.0.0.1).
 
 ## What it cannot do
 

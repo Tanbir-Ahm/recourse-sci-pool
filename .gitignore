@@ -1,3 +1,7 @@
 __pycache__/
 *.part
 .tmp-*
+ik_cache/
+corpus.sqlite*
+.env
+IK_STOP
