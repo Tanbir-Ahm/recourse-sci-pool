@@ -1,0 +1,85 @@
+{
+ "note": "Library cases whose judgment is not in the collection, checked as external targets: the checker looks for them by name and citation in the later judgments we hold. Metadata only (no judgment text). Facts come from Recourse's own copy of each judgment (its corpus/ folder, fetched through the Indian Kanoon API or saved from Indian Kanoon by Recourse); a field left out was not stated there.",
+ "cases": [
+  {
+   "case_key": "lokesh_bh_v_state_of_karnataka",
+   "name": "Lokesh B.H v State of Karnataka",
+   "pet": "Dr. Lokesh B.H.",
+   "resp": "State of Karnataka",
+   "year": 2026,
+   "date": null,
+   "cites": [
+    "insc:2026:784"
+   ],
+   "aliases": [
+    "Lokesh B.H"
+   ],
+   "bench_size": null,
+   "ik_url": "https://indiankanoon.org/doc/124664047/",
+   "recourse_copy": "corpus/lokesh_bh_v_state_of_karnataka.json"
+  },
+  {
+   "case_key": "prakash_chimanlal_sheth",
+   "name": "Prakash Chimanlal Sheth v Jagruti Keyur Rajpopat",
+   "pet": "Prakash Chimanlal Sheth",
+   "resp": "Jagruti Keyur Rajpopat",
+   "year": 2025,
+   "date": null,
+   "cites": [
+    "insc:2025:897"
+   ],
+   "aliases": [],
+   "bench_size": null,
+   "ik_url": "https://indiankanoon.org/doc/178325150/",
+   "recourse_copy": "corpus/prakash_chimanlal_sheth_v_jagruti_keyur_rajpopat.json"
+  },
+  {
+   "case_key": "satender_kumar_antil_2026",
+   "name": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+   "pet": "Satender Kumar Antil",
+   "resp": "Central Bureau of Investigation",
+   "year": 2026,
+   "date": "2026-01-15",
+   "cites": [
+    "insc:2026:115"
+   ],
+   "aliases": [],
+   "bench_size": null,
+   "ik_url": "https://indiankanoon.org/doc/155374238/",
+   "recourse_copy": "corpus/satender_kumar_antil_v_cbi_2026.json"
+  },
+  {
+   "case_key": "usha_chakraborty_v_state_of_west_bengal",
+   "name": "Usha Chakraborty v State of West Bengal",
+   "pet": "Usha Chakraborty",
+   "resp": "State of West Bengal",
+   "year": 2023,
+   "date": null,
+   "cites": [
+    "sconline:2023:90",
+    "scc:2023:15:135"
+   ],
+   "aliases": [],
+   "bench_size": null,
+   "ik_url": "https://indiankanoon.org/doc/116013104/",
+   "recourse_copy": "corpus/usha_chakraborty_v_state_of_west_bengal.json"
+  },
+  {
+   "case_key": "youth_bar_association",
+   "name": "Youth Bar Association of India v Union of India",
+   "pet": "Youth Bar Association of India",
+   "resp": "Union of India",
+   "year": 2016,
+   "date": "2016-09-07",
+   "cites": [
+    "air:2016:4136",
+    "scc:2016:9:473"
+   ],
+   "aliases": [],
+   "bench_size": 2,
+   "bench_source": "external_header",
+   "ik_url": "https://indiankanoon.org/doc/151036912/",
+   "recourse_copy": "corpus/youth_bar_association_v_union_of_india.json"
+  }
+ ]
+}

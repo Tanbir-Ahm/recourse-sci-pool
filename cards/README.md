@@ -26,6 +26,8 @@ Source label on everything: **pattern-rule reading of Supreme Court texts; not l
 | `NO_ADVERSE_FOUND` | at least three later judgments we hold cite it and nothing adverse turned up. **Silence in what we hold, not a finding about the law** | none |
 | `INSUFFICIENT` | fewer than three later judgments we hold cite it | none |
 | `NOT_IN_COLLECTION` | not among the Supreme Court judgments we hold | none |
+
+A library case whose judgment is not in the collection can still be checked as an **external target** (`goodlaw/targets/external.json`, metadata only): the checker looks for it by name and citation in the later judgments we hold, and its card says so (`corpus.external`). Since 2026-10-06 the five such cases are checked this way; they then get a normal status (below), but the case's own entry in the reporter's citator and its own text are not used, and nothing outside our collection is seen.
 | `NOT_CHECKABLE_HIGH_COURT` | a High Court decision; the collection is Supreme Court only | none |
 | `AMBIGUOUS_MATCH` | we could not tell which judgment in our collection it is | none |
 
@@ -102,7 +104,7 @@ Then read `CHANGES.md`: any case whose status moved towards a warning, or that g
 
 ## What the first run found (2026-10-05, checker commit in each card)
 
-76 cases: 45 `NO_ADVERSE_FOUND`, 14 `INSUFFICIENT`, 10 High Court decisions (not checkable), 5 not in the collection, **2 `ADVERSE_SIGNAL`**.
+76 cases: 45 `NO_ADVERSE_FOUND`, 14 `INSUFFICIENT`, 10 High Court decisions (not checkable), 5 not in the collection, **2 `ADVERSE_SIGNAL`**. (Since step 6 the 5 are checked as external targets: now 46 `NO_ADVERSE_FOUND`, 18 `INSUFFICIENT`, 10 High Court, 2 `ADVERSE_SIGNAL`.)
 
 - **Mohan Lal v State of Punjab (2018) 17 SCC 627**: overruled by the five-judge bench in Mukesh Singh v State (Narcotic Branch of Delhi) (2020), whose headnote says "overruled". Recourse has no curated currency record for it.
 - **Siddharam Satlingappa Mhetre v State of Maharashtra (2011) 1 SCC 694**: overruled "to that extent" by the five-judge Sushila Aggarwal bench (2020), on the point that no restrictive conditions can be imposed when granting anticipatory bail. It is in the pilot pool (150 chunks), and Sushila Aggarwal is in the pilot pool too. Recourse has no curated record for it.
@@ -111,6 +113,8 @@ Then read `CHANGES.md`: any case whose status moved towards a warning, or that g
 - 5 cases were matched to a judgment on the names and year alone, within a year of the citation's (D. Velusamy, D.K. Basu, Lalita Kumari, M. Ravindran, Tofan Singh); I checked that the names and dates agree, but not the content, and `MATCH_CHECK.csv` lists them first for a glance.
 
 ## Limits (read before relying on any card)
+
+- **Five cases are checked from the outside (2026-10-06).** Lokesh B.H. (2026), Prakash Chimanlal Sheth (2025) and Satender Kumar Antil (2026): no later judgment we hold cites them (they are too recent), so `INSUFFICIENT` means nothing has been looked at. Youth Bar Association (2016): 2 later judgments held, `INSUFFICIENT`. Usha Chakraborty (2023): 3 held, `NO_ADVERSE_FOUND`; both of those are very likely cited by many judgments we do not hold (Indian Kanoon's "cited by" list would show them; it could not be reached, see `FOLLOW_UPS.md` item 1f).
 
 - **The second reader is the checker's author reading again, not a second person.** Its quotes are checked word for word; its readings are not checked by anyone yet. 180 judgments were read on 2026-10-06 and 14 verified adverse readings found: 5 agree with a rule's reading, 9 are reader-only (5 on the two flagged cards, 4 on quiet cards; one of those 4 is a false alarm).
 - **A quiet card is weak evidence.** The checker found roughly a third to a half of the overrulings it could be tested on, and about half its clean flags were real (see `goodlaw/EVALUATION.md`). The 45 quiet cards are not 45 findings that the law is settled.

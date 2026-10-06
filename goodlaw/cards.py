@@ -43,6 +43,16 @@ UNCHECKED_TEXT = {
 }
 
 
+EXTERNAL = os.path.join(os.path.dirname(os.path.abspath(__file__)), "targets", "external.json")
+
+
+def load_external(path=EXTERNAL):
+    """{case_key: entry} for the library cases that are checked as external targets (their own judgment is not in the collection)."""
+    if not path or not os.path.exists(path):
+        return {}
+    return {e["case_key"]: e for e in json.load(open(path, encoding="utf-8")).get("cases", [])}
+
+
 def slug(name):
     return re.sub(r"[^a-z0-9]+", "_", (name or "").lower()).strip("_")[:90] or "case"
 
@@ -237,21 +247,32 @@ def _init(path):
 
 
 def _work(args):
-    case, match, today, commit, info = args
+    case, match, today, commit, info, external = args
     corpus = _POOL["corpus"]
-    doc = corpus.get(match["doc_key"], with_text=False)
-    target = M.Target.from_doc(doc)
+    if external:
+        doc = {"doc_key": None, "title": external["name"], "date": external.get("date"), "year": external["year"], "bench_size": external.get("bench_size"), "source": "external",
+               "cites": list(external.get("cites") or [])}
+        target = M.Target(external["pet"], external["resp"], external["year"], list(external.get("cites") or []), external.get("date"), "ext:" + external["case_key"],
+                          external.get("bench_size"), external["name"], aliases=external.get("aliases") or [], bench_source=external.get("bench_source"))
+    else:
+        doc = corpus.get(match["doc_key"], with_text=False)
+        target = M.Target.from_doc(doc)
     for k, _, _ in C.find_cites(case.get("citation") or ""):      # the library's own citation is a citation of the case
         if k not in target.cites:
             target.cites.append(k)
-    bundle = R.build_bundle(corpus, target, doc, today=today)
+    bundle = R.build_bundle(corpus, target, None if external else doc, today=today)
     name = slug(case["case_name"])
     card = card_from_bundle(case, match, doc, bundle, today, commit, info, report_file=f"reports/{name}.md")
+    if external:
+        bundle["limits"] = ["This judgment is not in our collection (the case is checked as an external target, by name and citation, in the later judgments we hold). The reporter's citator codes on its own entry and its own text are not used; "
+                            "only what later judgments we hold say about it."] + list(bundle["limits"])
+        card["corpus"]["external"] = {"ik_url": external.get("ik_url"), "recourse_copy": external.get("recourse_copy"),
+                                      "note": "the judgment itself is not in our collection; it was looked for by name and citation in the later judgments we hold"}
     card["_reader_items"] = bundle.get("_reader_items") or []          # for the second reader; split off before the cards are written (see split_reader_items)
     return card, R.render_markdown(bundle)
 
 
-def build_all(corpus_path, library_cases, overrides=None, today=None, workers=4, log=print, reader_records=None):
+def build_all(corpus_path, library_cases, overrides=None, today=None, workers=4, log=print, reader_records=None, external=None):
     """-> ([card, ...], {slug: markdown report}). Matches every library case to a judgment (goodlaw.library), then runs the checker on each matched one in parallel. With
     `reader_records` (the stored second-reading verdicts, by item id) each card also carries what the second reader said; every checked card holds its reader items under
     `_reader_items` until split_reader_items takes them off."""
@@ -261,10 +282,14 @@ def build_all(corpus_path, library_cases, overrides=None, today=None, workers=4,
     corpus = K.Corpus(corpus_path)
     commit, info = code_version(), corpus_fingerprint(corpus)
     cards, jobs = {}, []
+    external = load_external() if external is None else external
     for case in library_cases:
         match = LB.match_case(corpus, case, overrides)
         if match["status"] == "MATCHED":
-            jobs.append((case, match, today, commit, info))
+            jobs.append((case, match, today, commit, info, None))
+        elif match["status"] == "NOT_IN_COLLECTION" and case.get("case_key") in external:
+            match = dict(match, status="EXTERNAL", method="external_target", confidence=None, note="the judgment is not in our collection; checked as an external target by name and citation (goodlaw/targets/external.json)")
+            jobs.append((case, match, today, commit, info, external[case["case_key"]]))
         else:
             cards[case["case_name"]] = unchecked_card(case, match, today, commit, info)
     log(f"{len(jobs)} cases matched to a judgment, {len(cards)} not checkable; running the checker on {len(jobs)}")
@@ -473,7 +498,8 @@ def review_rows(cards, readings=None):
         ev = [e for e in c["evidence"] if e["group"] in ("strong", "citator", "possible", "legislative")] or c["evidence"]
         top = ev[0] if ev else None
         m = c["corpus"]
-        match_txt = (f"{m['doc_key']} {m['title']} ({m['date'] or m['year']}, bench {m['bench_size'] or '?'}); matched by {m['match']['method']} ({m['match']['confidence']})" if m["doc_key"]
+        match_txt = (f"external target (its judgment is not in our collection): {m['title']}" if m.get("external") else
+                     f"{m['doc_key']} {m['title']} ({m['date'] or m['year']}, bench {m['bench_size'] or '?'}); matched by {m['match']['method']} ({m['match']['confidence']})" if m["doc_key"]
                      else "; ".join(f"{x['doc_key']} {x['title'][:50]} ({x['year']})" for x in (m["match"].get("candidates") or [])) or "no candidate")
         strongest = f"[{top['kind'] or top['group']}] {top['quote']}" if top else ""
         where = (f"{top['title']} ({top['date'] or top['year']}, bench {top['bench_size'] or '?'}; compared with the case's bench: {top['bench_relation']})" if top else "")
@@ -511,7 +537,7 @@ def write_match_check(cards, path):
             return 0
         if r["status"] in ("NOT_CHECKABLE_HIGH_COURT", "NOT_IN_COLLECTION"):
             return 4
-        if r["confidence"] == "medium":
+        if r["method"] == "external_target" or r["confidence"] == "medium":
             return 1
         return 3 if r["method"] in ("citation", "source_url", "override") else 2
     rows.sort(key=lambda r: (rank(r), r["case_name"]))

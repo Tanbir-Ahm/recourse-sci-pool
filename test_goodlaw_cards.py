@@ -258,6 +258,9 @@ DOCS = {
     12: judis("P12", "SOME RESPONDENT", "06/03/2001", JUDGES[:3], "2003 AIR 903", "The law laid down in Epsilon v. Zeta, AIR 1991 SC 33 is reiterated. " + PAD),
     13: judis("P13", "SOME RESPONDENT", "07/03/2005", JUDGES[:3], "2004 AIR 904", "We respectfully agree with Epsilon v. Zeta, AIR 1991 SC 33. " + PAD),
     14: judis("P14", "SOME RESPONDENT", "08/03/2000", JUDGES[:2], "2005 AIR 905", "Reference is made to Gamma v. Delta, AIR 1991 SC 44. " + PAD),
+    15: judis("P15", "SOME RESPONDENT", "09/03/2001", JUDGES[:3], "2006 AIR 906", "Zeta v. Eta, AIR 1999 SC 77 was followed. " + PAD),
+    16: judis("P16", "SOME RESPONDENT", "10/03/2002", JUDGES[:3], "2007 AIR 907", "The law laid down in Zeta v. Eta, AIR 1999 SC 77 is reiterated. " + PAD),
+    17: judis("P17", "SOME RESPONDENT", "11/03/2003", JUDGES[:3], "2008 AIR 908", "We respectfully agree with Zeta v. Eta, AIR 1999 SC 77. " + PAD),
 }
 
 
@@ -282,21 +285,28 @@ library = [
     {"case_name": "Alpha v Beta", "citation": "AIR 1991 SC 11", "court": "Supreme Court of India", "pools": ["library"], "recourse_currency": []},
     {"case_name": "Epsilon v Zeta", "citation": "AIR 1991 SC 33", "court": "Supreme Court of India", "pools": ["library"], "recourse_currency": []},
     {"case_name": "Gamma v Delta", "citation": "AIR 1991 SC 44", "court": "Supreme Court of India", "pools": ["pilot_tier"], "recourse_currency": []},
+    {"case_name": "Zeta v Eta", "citation": "AIR 1999 SC 77", "court": "Supreme Court of India", "pools": ["library"], "case_key": "zeta_v_eta", "recourse_currency": []},
     {"case_name": "Nobody v Nowhere", "citation": "(2005) 1 SCC 1", "court": "Supreme Court of India", "pools": ["library"], "recourse_currency": []},
     {"case_name": "Some v High Court Case", "citation": "2025 SCC OnLine Del 1", "court": "High Court of Delhi", "pools": ["library"], "recourse_currency": []},
 ]
 for c in library:
     c["court_class"] = CD.LB.court_class(c)
     c["year"] = CD.LB.year_of(c["citation"])
-built, reports = CD.build_all(corpus_path, library, today="2026-10-05", workers=2, log=lambda *_: None)
+EXT = {"zeta_v_eta": {"case_key": "zeta_v_eta", "name": "Zeta v Eta", "pet": "Zeta", "resp": "Eta", "year": 1999, "date": None, "cites": ["air:1999:77"], "ik_url": "https://example.test/doc/1/", "recourse_copy": "corpus/zeta.json"}}
+built, reports = CD.build_all(corpus_path, library, today="2026-10-05", workers=2, log=lambda *_: None, external=EXT)
 by = {c["case"]["name"]: c for c in built}
 check([c["case"]["name"] for c in built] == [c["case_name"] for c in library], "one card per library case, in the library's order")
 check(by["Alpha v Beta"]["status"] == "ADVERSE_SIGNAL" and by["Alpha v Beta"]["corpus"]["doc_key"] == "c1" and by["Alpha v Beta"]["user_facing_note"].startswith("A later five-judge bench"), "the whole build: a case a larger bench overruled gets a warning card")
 check(by["Epsilon v Zeta"]["status"] == "NO_ADVERSE_FOUND" and by["Epsilon v Zeta"]["user_facing_note"] is None and by["Epsilon v Zeta"]["support"]["citing_judgments"] == 3, "a case three judgments follow gets a quiet card with no note")
 check(by["Gamma v Delta"]["status"] == "INSUFFICIENT", "a case cited once is INSUFFICIENT")
 check(by["Nobody v Nowhere"]["status"] == "NOT_IN_COLLECTION" and by["Some v High Court Case"]["status"] == "NOT_CHECKABLE_HIGH_COURT", "a case we do not hold and a High Court case are said to be unchecked, not quietly clean")
+ze = by["Zeta v Eta"]
+check(ze["status"] == "NO_ADVERSE_FOUND" and ze["corpus"]["doc_key"] is None and ze["corpus"]["external"]["ik_url"] == "https://example.test/doc/1/" and ze["support"]["citing_judgments"] == 3 and ze["corpus"]["match"]["method"] == "external_target",
+      "a library case whose judgment is not held is checked as an external target by name and citation, and its card says so")
+check("zeta_v_eta" in reports and "not in our collection" in reports["zeta_v_eta"], "its report says the judgment itself is not in the collection")
+check(by["Nobody v Nowhere"]["status"] == "NOT_IN_COLLECTION" and by["Nobody v Nowhere"]["corpus"].get("external") is None, "a case with no external entry stays NOT_IN_COLLECTION")
 check(all(c["provenance"]["generated"] == "2026-10-05" and c["provenance"]["label"] == CD.LABEL_TEXT and c["fingerprint"] for c in built), "every card carries its date, its source label and a fingerprint")
-check(set(reports) == {"alpha_v_beta", "epsilon_v_zeta", "gamma_v_delta"} and "Currency report" in reports["alpha_v_beta"], "a readable report is kept for each checked case")
+check(set(reports) == {"alpha_v_beta", "epsilon_v_zeta", "gamma_v_delta", "zeta_v_eta"} and "Currency report" in reports["alpha_v_beta"], "a readable report is kept for each checked case")
 out_dir = os.path.join(tmp, "out")
 written = CD.write_cards(built, reports, out_dir)
 loaded = CR.load(os.path.join(out_dir, "currency_cards.json"))

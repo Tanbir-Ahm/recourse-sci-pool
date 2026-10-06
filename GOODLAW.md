@@ -27,6 +27,10 @@ For the cases Recourse can show, `python sci_goodlaw.py cards` writes one card e
 
 A model can read the passage around each mention, which the pattern rules cannot. `goodlaw/reader.py` exports the passages (without the rules' labels), checks each answer's quote word for word, and ties each verdict to the passages it read. The results sit on each card (`second_reader`) and on the review sheet; they never change a status or a user note. Measured blind on the tuning halves it found 75% of the pairs the reporters marked adverse (the rules 65%), read 34 of 48 rule flags on unmarked pairs as not adverse, and found nothing on 42 quiet pairs; it is the checker's author, not an independent reader, and it can read a quoted earlier doubt as the Court's own. See `goodlaw/EVALUATION.md` (step 5) and `cards/README.md`.
 
+## Cases whose own judgment we do not hold
+
+A library case whose judgment is not in the collection is checked as an **external target** (`goodlaw/targets/external.json`): the mention finder looks for it by name and citation in the later judgments we hold, and its card says it was checked from the outside. The Indian Kanoon API would add the later judgments we do not hold; it needs the owner's key and network access (`FOLLOW_UPS.md` 1f).
+
 ## What the labels mean, and do not mean
 
 - `ADVERSE_SIGNAL`: a later judgment of this Court, in its own voice, appears to overrule or reject the case (or a larger bench disagrees with it, or the law report's headnote says "over-ruled", or the reporter's citator marks it overruled). Read it before relying on the case.
