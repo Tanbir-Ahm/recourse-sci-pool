@@ -183,7 +183,7 @@ _JJ_LINE = re.compile(r"[\[(]\s*(?P<names>[A-Za-z][^\[\]]{3,500}?)[,.\s]*(?:J\.?
 _SIG = re.compile(r"(?:[.…_\-]{3,}|\s)\s*(?:CJI|C\.J\.I|C\.J|JJ|J)\s*\.?\s*(?:\(|\n|\Z|$)")
 
 
-_DESIGNATION = re.compile(r"^(?:CJ[Il1]|CJI|CJ|C\.\s*J\.?(?:\s*I\.?)?|JJ?|J\.\s*J)\.?$", re.I)
+_DESIGNATION = re.compile(r"^(?:CJ[IlJT1]|CJI|CJ|C\.\s*J\.?(?:\s*I\.?)?|JJ?|J\.\s*J)\.?$", re.I)
 _NOT_NAME_WORD = {"the", "of", "in", "on", "for", "to", "under", "act", "rules", "rule", "constitution", "section", "article", "held", "per", "himself", "herself", "court", "state", "union",
                   "india", "appeal", "petition", "civil", "criminal", "case", "judgment", "order", "advs", "adv", "counsel", "with", "by", "is", "was", "are", "an"}
 
@@ -196,12 +196,13 @@ def judge_names(text):
     words of prose and no figure other than a lone digit (OCR for an initial). A designation ('CJ.', 'CJI') is not a name."""
     s = re.sub(r"\*", "", text)
     s = re.split(r"[\[(]", s)[-1]
+    s = re.sub(r"\s+", " ", s)                                                         # a name wrapped over two lines is still one name
     if len(s) > 320 or re.search(r"[:\u2013\u2014]", s):
         return None
     s = s.replace(";", ",")                                                           # OCR for a comma
     s = re.sub(r"\(\s*(?:CJ|J|C\.J\.?|CJI)\s*\)", "", s)
-    s = re.sub(r"(?i)\b(?:CJ[Il1]|CJI|C\.\s*J\.\s*I\.?|C\.\s*J\.?|CJ\.?)(?=\W|$)", ",", s)
-    parts = [p.strip() for p in re.split(r"\s*(?:&|,|\band\b|\n)\s*", s, flags=re.I) if re.search(r"[A-Za-z]{3,}", p) or _DESIGNATION.match(p.strip())]
+    s = re.sub(r"(?i)\b(?:CJ[IlJT1]|CJI|C\.\s*J\.\s*I\.?|C\.\s*J\.?|CJ\.?)(?=\W|$)", ",", s)
+    parts = [p.strip() for p in re.split(r"\s*(?:&|,|\bA\.?ND\b)\s*", s, flags=re.I) if re.search(r"[A-Za-z]{3,}", p) or _DESIGNATION.match(p.strip())]
     parts = [p for p in parts if not _DESIGNATION.match(p)]
     if not parts:
         return None
