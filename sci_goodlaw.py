@@ -11,7 +11,7 @@
     python sci_goodlaw.py cards-review --sheet cards/REVIEW_SHEET.csv        # record the verdicts a person filled into the review sheet
     python sci_goodlaw.py card   "Rangappa v Sri Mohan"                      # what the answer step would be told about one case
     python sci_goodlaw.py reader-eval build|score --out DIR [--verdicts FILE]   # the second reader on the tuning halves (blind batch, then score)
-    python sci_goodlaw.py ik     status|plan|run [--kind meta --tids 1,2 --run-cap 1 --approved-rs 0.04]   # the Indian Kanoon API, with a dry run, caps and a ledger (IK_PLAN.md)
+    python sci_goodlaw.py ik     status|plan|run|confirm [--kind meta --tids 1,2 --run-cap 1 --approved-rs 0.04 --plan-id ID]   # the Indian Kanoon API: dry run, caps, ledger (IK_PLAN.md)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
 
@@ -22,7 +22,9 @@ and a statement of what the collection can and cannot see. No code here decides 
 import argparse
 import datetime
 import json
+import math
 import os
+import re
 import sys
 
 from goodlaw import corpus as K
@@ -74,43 +76,79 @@ def check_one(corpus, doc, extra_cites=(), aliases=(), out_dir=None, log=print):
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
+def _finite_rupees(text):
+    v = float(text)
+    if not math.isfinite(v) or v < 0:
+        raise argparse.ArgumentTypeError(f"{text!r} is not a finite, non-negative number of rupees")
+    return v
+
+
+def _plain(text):
+    """Text that came from the network, safe to print: control characters (including terminal escapes) become '?'."""
+    return re.sub(r"[\x00-\x1f\x7f-\x9f]", "?", str(text))
+
+
 def run_ik(a):
-    """status: what has been spent. plan: the dry run (no key needed, nothing sent). run: only with --run-cap and an --approved-rs equal to the plan's cost."""
+    """status: what has been spent. plan: the dry run (no key needed, nothing sent). run: only with --run-cap, an --approved-rs equal to the plan's cost and the plan's --plan-id.
+    confirm: record the price per call that the dashboard showed after the single probe of a kind of call. The ledger is fixed (goodlaw/data/ik_ledger.jsonl) and must exist."""
     from goodlaw import ik as IK
-    client = IK.Client(cache_dir=a.cache, ledger_path=a.ledger)
-    if a.action == "status":
-        print(json.dumps(client.status(), indent=1))
-        return 0
+    client = IK.Client(cache_dir=a.cache, require_ledger=True)
+    try:
+        if a.action == "status":
+            print(json.dumps(client.status(), indent=1))
+            return 0
+        if a.action == "confirm":
+            if not (a.shape and a.price is not None and a.note):
+                print("confirm needs --shape, --price (rupees per call, as the dashboard showed it) and --note (the balance before and after)", file=sys.stderr)
+                return 2
+            client.confirm_price(a.shape, a.price, a.note)
+            print(f"recorded: {a.shape} costs Rs {a.price:.2f} per call")
+            return 0
+    except IK.IKError as e:
+        print(f"{type(e).__name__}: {_plain(e)}", file=sys.stderr)
+        return 1
     tids = [t.strip() for t in (a.tids or "").split(",") if t.strip()]
     if a.tids_file:
         with open(a.tids_file, encoding="utf-8") as fh:
             tids += [ln.split("#")[0].strip() for ln in fh if ln.split("#")[0].strip()]
-    extra = {}
-    for kv in a.extra or []:
-        k, _, v = kv.partition("=")
-        extra[k] = int(v)
     try:
-        calls = [IK.Call(a.kind, tid=t, query=a.query or "", extra=extra) for t in tids] if "tid" in IK.KINDS[a.kind]["needs"] else [IK.Call(a.kind, query=a.query or "", page=a.page, extra=extra)]
-    except (ValueError, KeyError) as e:
+        extra = {}
+        for kv in a.extra or []:
+            k, sep, v = kv.partition("=")
+            if not sep or k in extra:
+                raise ValueError(f"--extra needs name=number, once per name; got {kv!r}")
+            extra[k] = int(v)
+        if "tid" in IK.KINDS[a.kind]["needs"]:
+            if not tids:
+                raise ValueError("no ids given (--tids or --tids-file)")
+            calls = [IK.Call(a.kind, tid=t, query=a.query or "", page=a.page, extra=extra) for t in tids]
+        else:
+            if tids:
+                raise ValueError(f"{a.kind} takes no ids")
+            calls = [IK.Call(a.kind, query=a.query or "", page=a.page, extra=extra)]
+    except ValueError as e:
         print(f"bad call: {e}", file=sys.stderr)
         return 2
     if a.run_cap is None:
         print("--run-cap (rupees) is required for plan and run", file=sys.stderr)
         return 2
-    if a.action == "plan":
-        pl = client.plan(calls, a.run_cap)
-        print(pl.text())
-        return 1 if pl.problems else 0
     try:
-        results = client.run(calls, a.run_cap, a.approved_rs)
+        if a.action == "plan":
+            pl = client.plan(calls, a.run_cap, a.retry_failed, a.refetch)
+            print(pl.text())
+            return 1 if pl.problems else 0
+        results = client.run(calls, a.run_cap, a.approved_rs, a.plan_id, a.retry_failed, a.refetch)
     except IK.IKError as e:
-        print(f"{type(e).__name__}: {e}", file=sys.stderr)
+        print(f"{type(e).__name__}: {_plain(e)}", file=sys.stderr)
         return 1
     for c in calls:
         rec = results.get(c.key())
         if rec and c.kind == "meta":
-            m = IK.parse_meta(rec["response"])
-            print(f"{c.tid}  {m['date']}  cited by {m['numcitedby']:4d}  {m['doctype']}  {m['title'][:70]}")
+            try:
+                m = IK.parse_meta(rec["response"])
+                print(f"{c.tid}  {_plain(m['date'])}  cited by {m['numcitedby']:4d}  {_plain(m['doctype'])}  {_plain(m['title'])[:70]}")
+            except IK.IKBadResponse as e:
+                print(f"{c.tid}: the saved answer is not readable as metadata: {_plain(e)}", file=sys.stderr)
         elif rec:
             print(f"{c.label()}: saved in {client._cache_path(c)}")
     return 0
@@ -215,18 +253,23 @@ def main(argv=None):
     cd.add_argument("--out", default=os.path.join(HERE, "cards"))
     cd.add_argument("--workers", type=int, default=4)
     cd.add_argument("--today", help="date to stamp on the cards (default: today)")
-    ik_ = sub.add_parser("ik", help="the Indian Kanoon API: `status`, `plan` (dry run, free) and `run` (spends, needs --run-cap and --approved-rs equal to the plan's cost)")
-    ik_.add_argument("action", choices=["status", "plan", "run"])
+    ik_ = sub.add_parser("ik", help="the Indian Kanoon API: `status`, `plan` (dry run, free), `run` (spends: needs --run-cap, --approved-rs and --plan-id from the plan) and `confirm` (record the dashboard price of a kind of call)")
+    ik_.add_argument("action", choices=["status", "plan", "run", "confirm"])
     ik_.add_argument("--kind", choices=["meta", "doc", "fragment", "search"], default="meta")
     ik_.add_argument("--tids", help="comma-separated Indian Kanoon document ids")
     ik_.add_argument("--tids-file", help="one id per line ('#' starts a comment)")
     ik_.add_argument("--query", help="fragment and search: the query")
     ik_.add_argument("--page", type=int, default=0, help="search: the page, from 0")
-    ik_.add_argument("--extra", action="append", help="doc: an extra parameter, name=number (for example maxcitedby=10); a first call of any such shape runs alone")
-    ik_.add_argument("--run-cap", type=float, help="the most this run may spend, in rupees")
-    ik_.add_argument("--approved-rs", type=float, help="run: the plan's cost, as read from `plan`; anything else is refused")
+    ik_.add_argument("--extra", action="append", help="doc: an extra parameter, name=number (for example maxcitedby=10); each such shape needs its own single probe")
+    ik_.add_argument("--run-cap", type=_finite_rupees, help="the most this run may spend, in rupees")
+    ik_.add_argument("--approved-rs", type=_finite_rupees, help="run: the plan's cost, as read from `plan`; anything else is refused")
+    ik_.add_argument("--plan-id", help="run: the plan id printed by `plan`; an approval is for that list of calls only")
+    ik_.add_argument("--retry-failed", action="store_true", help="allow a call that failed before (read the rejected answer in the cache first)")
+    ik_.add_argument("--refetch", action="store_true", help="allow paying again for a call whose answer is not in the cache (the cache does not survive a new session)")
+    ik_.add_argument("--shape", help="confirm: the shape, for example meta or doc+maxcitedby=10")
+    ik_.add_argument("--price", type=_finite_rupees, help="confirm: the price per call the dashboard showed")
+    ik_.add_argument("--note", help="confirm: the balance before and after, in words")
     ik_.add_argument("--cache", default=os.path.join(HERE, "ik_cache"))
-    ik_.add_argument("--ledger", default=os.path.join(HERE, "goodlaw", "data", "ik_ledger.jsonl"))
     ri = sub.add_parser("reader-import", help="check a reader's verdicts against cards/reader_batch.jsonl and store the valid ones; then run `cards` again")
     ri.add_argument("--verdicts", required=True, help="one JSON object per line: id, treatment, quote, note")
     ri.add_argument("--reader", default="a model session reading the passages", help="who read them, recorded with each verdict")
