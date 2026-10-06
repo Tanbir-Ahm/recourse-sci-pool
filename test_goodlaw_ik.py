@@ -140,7 +140,7 @@ def go(c, calls, cap=5.0, **kw):
 
 
 # ---- the numbers the plan rests on are pinned, so raising them is a visible edit
-check(IK.TOTAL_CAP_RS == 150.0 and IK.MIN_GAP_SECONDS == 0.5, "the total cap (Rs 150) and the call gap (0.5 s) are the plan's")
+check(IK.TOTAL_CAP_RS == 8.49 and IK.MIN_GAP_SECONDS == 0.5, "the total cap is frozen at the Rs 8.49 spent when the owner stopped IK spending (2026-10-06), and the call gap is 0.5 s")
 check(IK.Call("meta", tid="9").price == 0.02 and IK.Call("doc", tid="9").price == 0.20 and IK.Call("fragment", tid="9", query="x").price == 0.05 and IK.Call("search", query="x").price == 0.50,
       "prices are the ones on IK's page (meta confirmed on the dashboard)")
 
@@ -505,6 +505,13 @@ with scripted([(200, REAL_META)], require_ledger=True) as (c, st, tmp, logs):
     check(e is not None and "missing" in str(e) and st["n"] == 0, "a missing ledger refuses a run when the ledger is required (the CLI always requires it)")
     check(c.plan([IK.meta("132")], 1.0).cost == 0.02, "a dry run still works without a ledger")
 
+# ---- the frozen cap: against the real ledger, nothing that costs money can be planned, and a free (cached) plan still works
+cl2 = IK.Client(env={IK.KEY_ENV: FAKE_KEY}, cache_dir=tempfile.mkdtemp(prefix="ik-test-"), ledger_path=IK.DEFAULT_LEDGER, sample_dir=IK.SAMPLE_DIR, stop_file=os.path.join(tempfile.gettempdir(), "no-such-IK_STOP"))
+pl2 = cl2.plan([IK.meta("999999992")], 1.0)
+check(any("total cap" in p_ for p_ in pl2.problems) and cl2.status()["left_under_cap_rs"] <= 0.0, "IK spending is stopped: even one Rs 0.02 call is refused against the real ledger")
+check(not any("total cap" in p_ for p_ in cl2.plan([IK.meta("151036912")], 1.0).problems), "while a call that is already saved (free) is still allowed")
+shutil.rmtree(cl2.cache_dir, ignore_errors=True)
+
 # ---- the committed ledger is valid and records Phase 0
 cl = IK.Client(env={}, cache_dir=tempfile.mkdtemp(prefix="ik-test-"), ledger_path=IK.DEFAULT_LEDGER, sample_dir=IK.SAMPLE_DIR)
 s = cl.status()
@@ -593,11 +600,11 @@ try:
     rc, out, err = cli("status", "--cache", ctmp)
     check(rc == 0 and '"confirmed_shapes"' in out and "meta" in out and FAKE_KEY not in out, "ik status prints the ledger's totals")
     rc, out, err = cli("plan", "--kind", "meta", "--tids", "151036912,999999991", "--run-cap", "1", "--cache", ctmp)
-    check(rc == 0 and "999999991" in out and "COST OF THIS PLAN: Rs 0.02" in out and "plan id" in out, "ik plan prints a dry run (the committed sample covers the Phase 0 call)")
+    check(rc in (0, 1) and "999999991" in out and "COST OF THIS PLAN: Rs 0.02" in out and "plan id" in out, "ik plan prints a dry run (the committed sample covers the Phase 0 call)")
     rc, out, err = cli("run", "--kind", "meta", "--tids", "999999991", "--run-cap", "1", "--cache", ctmp)
     check(rc == 1 and "IKPlanError" in err and not os.path.exists(os.path.join(ctmp, "meta", "999999991.json")), "ik run without an approval is refused")
     rc, out, err = cli("run", "--kind", "meta", "--tids", "999999991", "--run-cap", "1", "--approved-rs", "0.02", "--plan-id", "00000000", "--cache", ctmp)
-    check(rc == 1 and "plan id" in err, "ik run with the right amount and a wrong plan id is refused")
+    check(rc == 1 and ("plan id" in err or "total cap" in err), "ik run with the right amount and a wrong plan id is refused (now by the frozen cap first)")
     for args, why in ((("plan", "--kind", "meta", "--run-cap", "nan"), "--run-cap nan"), (("plan", "--kind", "meta", "--tids", "1", "--run-cap", "inf"), "--run-cap inf"),
                       (("plan", "--kind", "meta", "--tids", "1", "--run-cap", "-3"), "a negative cap"), (("plan", "--kind", "meta", "--run-cap", "1"), "no ids"),
                       (("plan", "--kind", "meta", "--tids", "1", "--run-cap", "1", "--ledger", "/tmp/x"), "--ledger (not an option: the ledger is fixed)"),
@@ -609,7 +616,7 @@ try:
     rc, out, err = cli("plan", "--kind", "doc", "--tids", "1,2,3", "--run-cap", "5", "--cache", ctmp)
     check(rc == 1 and "REFUSED" in out and "no confirmed price" in out, "ik plan of three unconfirmed doc calls is refused")
     rc, out, err = cli("plan", "--kind", "search", "--tids", "111,222", "--query-template", "citedby:{tid} doctypes:supremecourt", "--run-cap", "5", "--cache", ctmp)
-    check(rc == 0 and "citedby:111 doctypes:supremecourt" in out and "citedby:222 doctypes:supremecourt" in out and "COST OF THIS PLAN: Rs 1.00" in out, "ik plan --query-template makes one search per id")
+    check(rc in (0, 1) and "citedby:111 doctypes:supremecourt" in out and "citedby:222 doctypes:supremecourt" in out and "COST OF THIS PLAN: Rs 1.00" in out, "ik plan --query-template makes one search per id")
     for args, why in ((("--tids", "111", "--query-template", "citedby:{tid} {tid}"), "a template with {tid} twice"), (("--tids", "111", "--query-template", "citedby:{x}"), "a template without {tid}"),
                       (("--tids", "1;2", "--query-template", "citedby:{tid}"), "an id that is not digits"), (("--tids", "111", "--query", "a", "--query-template", "citedby:{tid}"), "both --query and --query-template"),
                       (("--query-template", "citedby:{tid}"), "a template with no ids")):

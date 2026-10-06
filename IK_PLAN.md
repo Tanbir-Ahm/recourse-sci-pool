@@ -1,5 +1,8 @@
 # Step 6 plan: using the Indian Kanoon (IK) API for the checker
 
+> **STATUS 2026-10-06: STOPPED by the owner. No more Indian Kanoon spending.** Total spent by this client: Rs 8.49 of the Rs 150 cap (dashboard about Rs 382.67). The client's hard cap is frozen at Rs 8.49 (`TOTAL_CAP_RS` in `goodlaw/ik.py`), so any call that costs money is refused; calls already saved are still free. See "Stopped by the owner" below for what was learned, what was left undone, and how to resume.
+
+
 Written 2026-10-06, revised the same day after the owner pasted IK's terms and pricing, and again after Phase 0 and Phase 1 (see 'Where it stands' just below). A new cloud session starts without this conversation, so this file is the hand-over. Facts are labelled: **[seen]** read in a file, screenshot or pasted page; **[inferred]** worked out from those; **[unverified]** from memory, to be checked.
 
 ## Where it stands (2026-10-06, end of the second session)
@@ -58,6 +61,18 @@ The corpus store (`corpus.sqlite`, 1.8 GB) lived in the previous session's scrat
 
 ## Budget rule
 Balance Rs 391.16 on 2026-10-06, Rs 391.14 after Phase 0. Keep at least **Rs 200 untouched for the live Recourse site**; the checker's cap is about Rs 150 (for example 5 cited-by calls, Rs 1, and up to 1,500 fragments, Rs 75, with room to spare) until the non-commercial allowance is granted or the owner tops up. Phases 0 and 1 cost Rs 0.02. Phase 2a is Rs 0.96, 2c about Rs 0.20 to 0.50; 2b is the open decision (free if the owner supplies links, Rs 14 to Rs 15 if searched).
+
+## Stopped by the owner (2026-10-06)
+
+**Decision.** After Phase 3 the owner decided that IK had done its job and stopped all further spending. Spent: Rs 8.49 (Phase 0 Rs 0.02; Phase 2a Rs 0.94; link checks Rs 0.28; probes Rs 1.25 [one `doc`, two `search`, one `fragment`]; Phase 3a priority searches Rs 5.50; ten fragments Rs 0.50).
+
+**What was learned** (details above): the API and the key work and cost what IK lists (every price reconciled to the dashboard); IK's all-court "cited by" count says nothing about the Supreme Court gap, but `citedby:<id> doctypes:supremecourt` does; for 11 priority cases we hold about 89% of the Supreme Court judgments IK lists on page 1, and the 11 pairs we did not hold (read by document fragment) show nothing adverse; IK's citation index is incomplete for judgments from about late 2023 on; Recourse's IK id for D.K. Basu is the 1997 follow-up order (the landmark is IK 501198). Results are saved as ids, counts and labels (no IK text) in `goodlaw/data/ik_*.json`; the raw answers were in the git-ignored cache and are gone with the session, by design.
+
+**Left undone, on purpose.** Page 1 for the other 29 candidate cases (Rs 14.50) and pages 2 onward for the eleven (Rs 14.50); 16 library cases still without an IK link (`IK_LINKS_NEEDED.md`); finding the right IK id for NALSA and Pankaj Bansal; whether the G. Sagar Suri reference (J. Vedhasingh 2022) was decided; wiring IK passages into the cards (Phase 4, not built).
+
+**To resume:** raise `TOTAL_CAP_RS` in `goodlaw/ik.py` (a visible edit), update the pinned value in `test_goodlaw_ik.py`, and follow the same loop as before (`plan`, owner approves the cost and plan id, `run`, owner reads the dashboard). Before any IK text feeds a card, Recourse needs IK's "powered by IKanoon" logo.
+
+**Owner items still open.** The logo in Recourse (checklist item 2); the decision on the Rs 10,000-a-month non-commercial allowance (item 1); the balance alert (item 3). Optional hard stop outside the code: remove `INDIANKANOON_API_KEY` from the cloud environment and `api.indiankanoon.org` from its allowed domains.
 
 ## Not in this plan, on purpose
 - Scraping `indiankanoon.org` pages (ruled out by the owner; API only).
