@@ -115,18 +115,26 @@ def doc_stats(index_dir, ids):
 
 
 # ---------------------------------------------------------------- scan
-def scan(pool_dir, index_dir, out=print):
-    """Pairs of kept judgments whose text overlaps by MIN_OVERLAP or more both ways. Returns {"pairs": [...], "heads": {id: head}, "lens": {id: chars}}."""
+def scan(pool_dir, index_dir, out=print, bucket_dir=None, skip_paths=None):
+    """Pairs of kept judgments whose text overlaps by MIN_OVERLAP or more both ways. Returns {"pairs": [...], "heads": {id: head}, "lens": {id: chars}}.
+    With `bucket_dir`, judgments that came from the bucket are compared too (the law report's cleaned body against the others' text; the header that decides 'same parties, no
+    conflicting case number' is the report's own opening lines, headnote included). Without it they are left out, and the output says how many."""
     t0 = time.time()
     led, kept = si.ledger(index_dir), kept_docs(index_dir)
-    blocks = si.pool_blocks(pool_dir)
-    texts, sketch = {}, {}
+    if bucket_dir and skip_paths is None:
+        skip_paths = si.load_skip_paths()
+    blocks = si.all_blocks(pool_dir, bucket_dir)
+    n_bucket = sum(1 for d in kept if d >= si.BUCKET_BASE)
+    if n_bucket and not bucket_dir:
+        out(f"{n_bucket:,} kept judgments come from the bucket and are NOT compared (pass --bucket-dir to include them)")
+    texts, sketch, head_src = {}, {}, {}
     for start in sorted(led):
         if start not in blocks:
             continue
-        for r in si._read_pool_block(blocks[start]["path"]):
+        for r in si.read_block(blocks[start], skip_paths or frozenset()):
             if r.get("id") in kept and r.get("text"):
                 texts[r["id"]] = r["text"]
+                head_src[r["id"]] = r.get("raw_text") or r["text"]
                 w = re.findall(r"[a-z0-9]+", r["text"].lower())
                 sketch[r["id"]] = heapq.nsmallest(SKETCH_K, {hash(" ".join(w[i:i + 5])) for i in range(max(len(w) - 4, 1))})
     out(f"read {len(texts):,} of {len(kept):,} kept judgments in {time.time() - t0:.0f}s")
@@ -151,7 +159,7 @@ def scan(pool_dir, index_dir, out=print):
             pairs.append({"a": a, "b": b, "a_in_b": round(a_in_b, 4), "b_in_a": round(b_in_a, 4), "len_a": len(texts[a]), "len_b": len(texts[b])})
     ids = {d for p in pairs for d in (p["a"], p["b"])}
     out(f"{len(cand):,} candidate pairs, {len(pairs)} with at least {MIN_OVERLAP:.0%} overlap both ways, in {time.time() - t0:.0f}s")
-    return {"pairs": sorted(pairs, key=lambda p: (p["a"], p["b"])), "heads": {d: norm_head(texts[d]) for d in ids}, "lens": {d: len(texts[d]) for d in ids}}
+    return {"pairs": sorted(pairs, key=lambda p: (p["a"], p["b"])), "heads": {d: norm_head(head_src[d]) for d in ids}, "lens": {d: len(texts[d]) for d in ids}}
 
 
 # ---------------------------------------------------------------- plan
@@ -318,6 +326,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("scan"); p.add_argument("--pool-dir", required=True); p.add_argument("--index-dir", required=True); p.add_argument("--out", required=True)
+    p.add_argument("--bucket-dir", default=None); p.add_argument("--skip-file", default=None)
     p = sub.add_parser("plan"); p.add_argument("--index-dir", required=True); p.add_argument("--scan", required=True); p.add_argument("--out", required=True)
     p.add_argument("--decisions", help="JSON with keys keep, force, never, merge (see plan())")
     p.add_argument("--keep-landmarks", action="store_true", help="never remove the verified landmark cases (adds them to the keep list)")
@@ -329,7 +338,7 @@ def main(argv=None):
     p.add_argument("--push", action="store_true", help="commit and push the index branch (implies --commit)")
     a = ap.parse_args(argv)
     if a.cmd == "scan":
-        res = scan(a.pool_dir, a.index_dir)
+        res = scan(a.pool_dir, a.index_dir, bucket_dir=a.bucket_dir, skip_paths=si.load_skip_paths(a.skip_file) if a.bucket_dir else None)
         res["heads"] = {str(k): v for k, v in res["heads"].items()}; res["lens"] = {str(k): v for k, v in res["lens"].items()}
         json.dump(res, open(a.out, "w"))
     elif a.cmd == "plan":

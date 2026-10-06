@@ -327,6 +327,43 @@ except SystemExit as e:
 check(refused, "plan --save-to-index refuses when the index folder has uncommitted changes")
 shutil.rmtree(base, ignore_errors=True)
 
+# ================================================================ 4. a judgment in the crawl and the same one in the bucket (law-report layout)
+print("--- crawl and bucket")
+import csv as _csv
+base = tempfile.mkdtemp(prefix="dedupe_bkt_")
+remote, code, idx, pool = os.path.join(base, "remote.git"), os.path.join(base, "code"), os.path.join(base, "idx"), os.path.join(base, "pool")
+bk = os.path.join(base, "bucket")
+subprocess.run(["git", "init", "--bare", "-b", "main", remote], capture_output=True)
+subprocess.run(["git", "clone", remote, code], capture_output=True)
+open(os.path.join(code, "README"), "w").write("code\n"); git(code, "add", "."); git(code, "commit", "-m", "code"); git(code, "push", "origin", "HEAD:main")
+si.init_index_branch(code, idx)
+def alpha_body(seed, paras=14, words=45):
+    """Like body(), but the random words are letters only, so no passage is dropped as noise (digits in the words lower the share of letters)."""
+    rnd = random.Random(seed)
+    return "".join(f"\n{i}. The accused and the prosecution witnesses on the FIR {' '.join(''.join(rnd.choice('abcdefghijklmnopqrstuvwxyz') for _ in range(7)) for _ in range(words))} under Section 420 IPC." for i in range(1, paras + 1))
+
+
+BODY = alpha_body(21)
+write_pool_shard(pool, 0, [doc(0, old_header("RAMESH KUMAR", "STATE OF ZETA", "15 of 2000") + BODY), doc(1, old_header("OTHER PERSON", "STATE OF ZETA", "16 of 2000") + alpha_body(22))])
+head = "A \n.B \n[2000] 1 S.C.R. 1 \nRAMESH KUMAR \nv. \nSTATE OF ZETA \n(Criminal Appeal No. 15 of 2000) \nThe accused and the prosecution - FIR - offence.\n\f"
+brec = {"scope": "after", "path": "2000_1_1_9", "title": "RAMESH KUMAR versus STATE OF ZETA", "decision_date": "05-05-2000", "citation": "[2000] 1 S.C.R. 1", "case_id": "2000 INSC 1",
+        "status": "ok", "pages": 4, "text": head + "R.F. NARIMAN, J. " + BODY, "body_start": len(head)}
+os.makedirs(os.path.join(bk, "shards"))
+with gzip.open(os.path.join(bk, "shards", "after-0000.ok1.miss0.err0.jsonl.gz"), "wt", encoding="utf-8") as fh:
+    fh.write(json.dumps(brec) + "\n")
+si.shift(pool, idx, client=FakeClient(), block_size=BS, sleep=lambda s: None, pause=0, out=lambda *_: None, minutes=50, bucket_dir=bk, skip_paths=frozenset())
+bid = si.BUCKET_BASE + si.bucket_ordinal("after", 0) * si.BLOCK_SIZE
+check(any(m["doc"] == bid for m in si._load_index(idx)[0]) and any(m["doc"] == 0 for m in si._load_index(idx)[0]), "setup: the crawl judgment and its bucket copy are both in the index")
+lines = []
+sc_no = dd.scan(pool, idx, out=lines.append)
+check(not any(bid in (p["a"], p["b"]) for p in sc_no["pairs"]) and any("NOT compared" in l for l in lines), "a scan without --bucket-dir leaves the bucket's judgments out and says how many")
+sc_b = dd.scan(pool, idx, out=lambda *_: None, bucket_dir=bk, skip_paths=frozenset())
+check({(p["a"], p["b"]) for p in sc_b["pairs"]} == {(0, bid)}, "with the bucket attached, the copy in the law-report layout is paired with the crawl's text, and the other judgment is not")
+check("RAMESH KUMAR" in sc_b["heads"][bid] and "Criminal Appeal No. 15" in sc_b["heads"][bid], "the bucket judgment's header for the rules is the report's own opening lines (parties and appeal number)")
+pl_b = dd.plan(sc_b, dd.doc_stats(idx, {0, bid}))
+check(len(pl_b["groups"]) == 1 and sorted(pl_b["groups"][0]["members"]) == [0, bid] and not pl_b["review"], "the rules call it the same case (same parties, no conflicting case number)")
+shutil.rmtree(base, ignore_errors=True)
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED:")
