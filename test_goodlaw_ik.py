@@ -615,6 +615,16 @@ try:
                       (("--query-template", "citedby:{tid}"), "a template with no ids")):
         rc, out, err = cli("plan", "--kind", "search", *args, "--run-cap", "5", "--cache", ctmp)
         check(rc == 2 and "Traceback" not in err, f"{why}: refused with a message (exit 2)")
+    pf = os.path.join(ctmp, "pairs.txt")
+    open(pf, "w").write("# a comment\n111 | Baldev Singh\n222 | Sibbia   # trailing comment\n")
+    rc, out, err = cli("plan", "--kind", "fragment", "--pairs-file", pf, "--run-cap", "5", "--cache", ctmp)
+    check(rc in (0, 1) and "fragment 111 'Baldev Singh'" in out and "fragment 222 'Sibbia'" in out and "Rs  0.05" in out, "ik plan --pairs-file makes one fragment call per line")
+    for body, why in (("111\n", "a line without a term"), ("111 | \n", "an empty term"), ("x1 | Baldev\n", "an id that is not digits"), ("# only a comment\n", "a file with no lines")):
+        open(pf, "w").write(body)
+        rc, out, err = cli("plan", "--kind", "fragment", "--pairs-file", pf, "--run-cap", "5", "--cache", ctmp)
+        check(rc == 2 and "Traceback" not in err, f"--pairs-file with {why}: refused with a message (exit 2)")
+    rc, out, err = cli("plan", "--kind", "meta", "--pairs-file", pf, "--run-cap", "5", "--cache", ctmp)
+    check(rc == 2 and "Traceback" not in err, "--pairs-file is refused for kinds other than fragment")
     rc, out, err = cli("confirm", "--shape", "doc", "--price", "0.2", "--note", "x", "--cache", ctmp)
     check(rc == 1 and "IKError" in err, "ik confirm for a shape that was never answered is refused")
 finally:

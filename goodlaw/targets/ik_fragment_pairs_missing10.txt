@@ -1,0 +1,12 @@
+# Phase 3: the Supreme Court judgments IK lists as citing a priority case that are not in our collection (goodlaw/data/ik_sc_citing_priority11.json).
+# 'IK id | search term' = the passages around the case's name in that judgment. Rakesh Baban Borhade (6768602, cites Mhetre) was the probe and is done.
+1251516   | Baldev Singh          # Liyaqat Ali v Union of India, 2 May 2003
+238832    | Sibbia                # Savitri Agarwal v State of Maharashtra, 10 July 2009
+165330    | Inder Mohan Goswami   # D. Venkatasubramaniam v M.K. Mohan Krishnamachari, 14 Sept 2009
+1273941   | Inder Mohan Goswami   # Maharashtra State v Datar Switchgear, 8 Oct 2010
+65577072  | Karnail Singh         # Rajender Singh v State of Haryana, 8 Aug 2011
+60022179  | Sibbia                # Balmukund Singh Gautam v State of Madhya Pradesh, 13 Feb 2026
+60022179  | Sushila Aggarwal      # the same judgment, for Sushila Aggarwal
+193290257 | Parmanand             # State of Himachal Pradesh v Surat Singh, 16 March 2026
+180631499 | Sushila Aggarwal      # Union of India v Sunil Biyani, 12 Aug 2026
+48740597  | Ravindran            # State of Maharashtra v Momin Moiuddin Gulam Hasan, 21 Sept 2026

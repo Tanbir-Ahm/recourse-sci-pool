@@ -153,3 +153,5 @@
 {"type": "result", "id": "9fabfa6b36db", "ts": "2026-10-06T11:45:46Z", "outcome": "ok", "http": 200, "note": ""}
 {"type": "attempt", "id": "3fe6f8d56d44", "ts": "2026-10-06T11:45:46Z", "kind": "search", "shape": "search", "key": "{\"extra\": {}, \"kind\": \"search\", \"page\": 0, \"query\": \"citedby:1036527 doctypes:supremecourt\", \"tid\": \"\"}", "tid": "", "query": "citedby:1036527 doctypes:supremecourt", "page": 0, "extra": {}, "price_rs": 0.5, "outcome": "pending"}
 {"type": "result", "id": "3fe6f8d56d44", "ts": "2026-10-06T11:45:48Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "f2e1e6f93bed", "ts": "2026-10-06T11:55:38Z", "kind": "fragment", "shape": "fragment", "key": "{\"extra\": {}, \"kind\": \"fragment\", \"page\": 0, \"query\": \"Mhetre\", \"tid\": \"6768602\"}", "tid": "6768602", "query": "Mhetre", "page": 0, "extra": {}, "price_rs": 0.05, "outcome": "pending"}
+{"type": "result", "id": "f2e1e6f93bed", "ts": "2026-10-06T11:55:40Z", "outcome": "ok", "http": 200, "note": ""}

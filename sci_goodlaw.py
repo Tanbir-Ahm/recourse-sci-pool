@@ -118,7 +118,22 @@ def run_ik(a):
             if not sep or k in extra:
                 raise ValueError(f"--extra needs name=number, once per name; got {kv!r}")
             extra[k] = int(v)
-        if "tid" in IK.KINDS[a.kind]["needs"]:
+        if a.pairs_file:
+            if a.kind != "fragment" or tids or a.query or a.query_template:
+                raise ValueError("--pairs-file is for --kind fragment only, and replaces --tids, --tids-file, --query and --query-template")
+            calls = []
+            with open(a.pairs_file, encoding="utf-8") as fh:
+                for n, ln in enumerate(fh, 1):
+                    ln = ln.split("#")[0].strip()
+                    if not ln:
+                        continue
+                    tid, sep, term = (x.strip() for x in ln.partition("|"))
+                    if not sep or not term:
+                        raise ValueError(f"{a.pairs_file} line {n}: expected 'id | search term'")
+                    calls.append(IK.Call("fragment", tid=tid, query=term, extra=extra))
+            if not calls:
+                raise ValueError(f"{a.pairs_file} has no lines")
+        elif "tid" in IK.KINDS[a.kind]["needs"]:
             if not tids:
                 raise ValueError("no ids given (--tids or --tids-file)")
             calls = [IK.Call(a.kind, tid=t, query=a.query or "", page=a.page, extra=extra) for t in tids]
@@ -271,6 +286,7 @@ def main(argv=None):
     ik_.add_argument("--tids-file", help="one id per line ('#' starts a comment)")
     ik_.add_argument("--query", help="fragment and search: the query")
     ik_.add_argument("--page", type=int, default=0, help="search: the page, from 0")
+    ik_.add_argument("--pairs-file", help="fragment: one call per line, 'id | search term' ('#' starts a comment); the passages around the term in that judgment")
     ik_.add_argument("--query-template", help="search with --tids/--tids-file: one search per id, the query being this text with {tid} replaced, for example 'citedby:{tid} doctypes:supremecourt'")
     ik_.add_argument("--extra", action="append", help="doc: an extra parameter, name=number (for example maxcitedby=10); each such shape needs its own single probe")
     ik_.add_argument("--run-cap", type=_finite_rupees, help="the most this run may spend, in rupees")
