@@ -10,6 +10,7 @@
     python sci_goodlaw.py cards  --corpus corpus.sqlite                      # precompute a currency card for every library case (cards/)
     python sci_goodlaw.py cards-review --sheet cards/REVIEW_SHEET.csv        # record the verdicts a person filled into the review sheet
     python sci_goodlaw.py card   "Rangappa v Sri Mohan"                      # what the answer step would be told about one case
+    python sci_goodlaw.py reader-eval build|score --out DIR [--verdicts FILE]   # the second reader on the tuning halves (blind batch, then score)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
 
@@ -169,7 +170,14 @@ def main(argv=None):
     ev.add_argument("--production", action="store_true", help="with --gold modern: run the adverse pairs through the full mention finder (slow, learns citations) instead of the fast per-pair reader")
     ev.add_argument("--workers", type=int, default=4)
     ev.add_argument("--out", help="write the per-pair results here (JSON)")
-    for p in (f, c, bt, kn, ev, cd):
+    re_ = sub.add_parser("reader-eval", help="the second reader on the tuning halves: 'build' writes a blind batch and its key, 'score' compares a reader's verdicts with the key")
+    re_.add_argument("action", choices=["build", "score"])
+    re_.add_argument("--out", required=True, help="the folder for batch.jsonl, key.json and INSTRUCTIONS.txt")
+    re_.add_argument("--verdicts", help="score: the reader's verdicts, one JSON object per line")
+    re_.add_argument("--seed", type=int, default=11)
+    re_.add_argument("--per-cell", type=int, default=24)
+    re_.add_argument("--workers", type=int, default=4)
+    for p in (f, c, bt, kn, ev, cd, re_):
         p.add_argument("--corpus", default="corpus.sqlite")
     a = ap.parse_args(argv)
     if a.cmd == "eval" and a.half == "held" and not a.confirm_held_out:
@@ -195,6 +203,17 @@ def main(argv=None):
     if a.cmd in ("cards", "cards-review", "card"):
         return run_cards(a)
     corpus = K.Corpus(a.corpus)
+    if a.cmd == "reader-eval":
+        from goodlaw import reader_eval as RE
+        if a.action == "build":
+            RE.build(corpus, a.corpus, a.out, a.seed, a.per_cell, a.workers)
+            return 0
+        if not a.verdicts:
+            print("score needs --verdicts", file=sys.stderr)
+            return 2
+        table, _ = RE.score(a.out, a.verdicts)
+        print(json.dumps(table, indent=1))
+        return 0
     if a.cmd == "find":
         for d in corpus.find_title(a.query, 40):
             print(f"{d['doc_key']:22} {d['date'] or d['year']!s:11} bench {d['bench_size'] or '?'!s:3} {d['title'][:90]}")
