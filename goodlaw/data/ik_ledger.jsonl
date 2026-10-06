@@ -107,3 +107,7 @@
 {"type": "result", "id": "17cf0e8a465e", "ts": "2026-10-06T11:20:18Z", "outcome": "ok", "http": 200, "note": ""}
 {"type": "attempt", "id": "38230cd24ccd", "ts": "2026-10-06T11:24:32Z", "kind": "search", "shape": "search", "key": "{\"extra\": {}, \"kind\": \"search\", \"page\": 0, \"query\": \"cites:151036912 doctypes:supremecourt\", \"tid\": \"\"}", "tid": "", "query": "cites:151036912 doctypes:supremecourt", "page": 0, "extra": {}, "price_rs": 0.5, "outcome": "pending"}
 {"type": "result", "id": "38230cd24ccd", "ts": "2026-10-06T11:24:34Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "price_confirmed", "ts": "2026-10-06T11:27:05Z", "shape": "doc+maxcitedby=50", "price_rs": 0.2, "note": "Owner's dashboard 2026-10-06: 390.00 after Phase 2a (391.14 minus 0.94) and this probe, so Rs 0.20; reconciled by the later reading 389.42"}
+{"type": "price_confirmed", "ts": "2026-10-06T11:27:05Z", "shape": "search", "price_rs": 0.5, "note": "Owner's dashboard 2026-10-06: 390.00 before the four link checks (0.08), 389.42 after the search, so Rs 0.50"}
+{"type": "attempt", "id": "f093c3269d36", "ts": "2026-10-06T11:27:11Z", "kind": "search", "shape": "search", "key": "{\"extra\": {}, \"kind\": \"search\", \"page\": 0, \"query\": \"citedby:151036912 doctypes:supremecourt\", \"tid\": \"\"}", "tid": "", "query": "citedby:151036912 doctypes:supremecourt", "page": 0, "extra": {}, "price_rs": 0.5, "outcome": "pending"}
+{"type": "result", "id": "f093c3269d36", "ts": "2026-10-06T11:27:12Z", "outcome": "ok", "http": 200, "note": ""}

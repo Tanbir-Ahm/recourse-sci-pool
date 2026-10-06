@@ -592,11 +592,11 @@ ctmp = tempfile.mkdtemp(prefix="ik-cli-")
 try:
     rc, out, err = cli("status", "--cache", ctmp)
     check(rc == 0 and '"confirmed_shapes"' in out and "meta" in out and FAKE_KEY not in out, "ik status prints the ledger's totals")
-    rc, out, err = cli("plan", "--kind", "meta", "--tids", "151036912,124664047", "--run-cap", "1", "--cache", ctmp)
-    check(rc == 0 and "124664047" in out and "COST OF THIS PLAN: Rs 0.02" in out and "plan id" in out, "ik plan prints a dry run (the committed sample covers the Phase 0 call)")
-    rc, out, err = cli("run", "--kind", "meta", "--tids", "124664047", "--run-cap", "1", "--cache", ctmp)
-    check(rc == 1 and "IKPlanError" in err and not os.path.exists(os.path.join(ctmp, "meta", "124664047.json")), "ik run without an approval is refused")
-    rc, out, err = cli("run", "--kind", "meta", "--tids", "124664047", "--run-cap", "1", "--approved-rs", "0.02", "--plan-id", "00000000", "--cache", ctmp)
+    rc, out, err = cli("plan", "--kind", "meta", "--tids", "151036912,999999991", "--run-cap", "1", "--cache", ctmp)
+    check(rc == 0 and "999999991" in out and "COST OF THIS PLAN: Rs 0.02" in out and "plan id" in out, "ik plan prints a dry run (the committed sample covers the Phase 0 call)")
+    rc, out, err = cli("run", "--kind", "meta", "--tids", "999999991", "--run-cap", "1", "--cache", ctmp)
+    check(rc == 1 and "IKPlanError" in err and not os.path.exists(os.path.join(ctmp, "meta", "999999991.json")), "ik run without an approval is refused")
+    rc, out, err = cli("run", "--kind", "meta", "--tids", "999999991", "--run-cap", "1", "--approved-rs", "0.02", "--plan-id", "00000000", "--cache", ctmp)
     check(rc == 1 and "plan id" in err, "ik run with the right amount and a wrong plan id is refused")
     for args, why in ((("plan", "--kind", "meta", "--run-cap", "nan"), "--run-cap nan"), (("plan", "--kind", "meta", "--tids", "1", "--run-cap", "inf"), "--run-cap inf"),
                       (("plan", "--kind", "meta", "--tids", "1", "--run-cap", "-3"), "a negative cap"), (("plan", "--kind", "meta", "--run-cap", "1"), "no ids"),
@@ -608,6 +608,13 @@ try:
         check(rc == 2 and "Traceback" not in err, f"{why}: refused with a message (exit 2), not a traceback")
     rc, out, err = cli("plan", "--kind", "doc", "--tids", "1,2,3", "--run-cap", "5", "--cache", ctmp)
     check(rc == 1 and "REFUSED" in out and "no confirmed price" in out, "ik plan of three unconfirmed doc calls is refused")
+    rc, out, err = cli("plan", "--kind", "search", "--tids", "111,222", "--query-template", "citedby:{tid} doctypes:supremecourt", "--run-cap", "5", "--cache", ctmp)
+    check(rc == 0 and "citedby:111 doctypes:supremecourt" in out and "citedby:222 doctypes:supremecourt" in out and "COST OF THIS PLAN: Rs 1.00" in out, "ik plan --query-template makes one search per id")
+    for args, why in ((("--tids", "111", "--query-template", "citedby:{tid} {tid}"), "a template with {tid} twice"), (("--tids", "111", "--query-template", "citedby:{x}"), "a template without {tid}"),
+                      (("--tids", "1;2", "--query-template", "citedby:{tid}"), "an id that is not digits"), (("--tids", "111", "--query", "a", "--query-template", "citedby:{tid}"), "both --query and --query-template"),
+                      (("--query-template", "citedby:{tid}"), "a template with no ids")):
+        rc, out, err = cli("plan", "--kind", "search", *args, "--run-cap", "5", "--cache", ctmp)
+        check(rc == 2 and "Traceback" not in err, f"{why}: refused with a message (exit 2)")
     rc, out, err = cli("confirm", "--shape", "doc", "--price", "0.2", "--note", "x", "--cache", ctmp)
     check(rc == 1 and "IKError" in err, "ik confirm for a shape that was never answered is refused")
 finally:

@@ -122,6 +122,17 @@ def run_ik(a):
             if not tids:
                 raise ValueError("no ids given (--tids or --tids-file)")
             calls = [IK.Call(a.kind, tid=t, query=a.query or "", page=a.page, extra=extra) for t in tids]
+        elif a.kind == "search" and a.query_template:
+            if a.query:
+                raise ValueError("give --query or --query-template, not both")
+            if a.query_template.count("{tid}") != 1 or "{" in a.query_template.replace("{tid}", "") or "}" in a.query_template.replace("{tid}", ""):
+                raise ValueError("--query-template must contain {tid} exactly once and no other braces")
+            if not tids:
+                raise ValueError("no ids given (--tids or --tids-file)")
+            bad = [t for t in tids if not IK.TID_RE.fullmatch(t)]
+            if bad:
+                raise ValueError(f"not an Indian Kanoon id: {bad[0]!r}")
+            calls = [IK.Call("search", query=a.query_template.replace("{tid}", t), page=a.page, extra=extra) for t in tids]
         else:
             if tids:
                 raise ValueError(f"{a.kind} takes no ids")
@@ -260,6 +271,7 @@ def main(argv=None):
     ik_.add_argument("--tids-file", help="one id per line ('#' starts a comment)")
     ik_.add_argument("--query", help="fragment and search: the query")
     ik_.add_argument("--page", type=int, default=0, help="search: the page, from 0")
+    ik_.add_argument("--query-template", help="search with --tids/--tids-file: one search per id, the query being this text with {tid} replaced, for example 'citedby:{tid} doctypes:supremecourt'")
     ik_.add_argument("--extra", action="append", help="doc: an extra parameter, name=number (for example maxcitedby=10); each such shape needs its own single probe")
     ik_.add_argument("--run-cap", type=_finite_rupees, help="the most this run may spend, in rupees")
     ik_.add_argument("--approved-rs", type=_finite_rupees, help="run: the plan's cost, as read from `plan`; anything else is refused")
