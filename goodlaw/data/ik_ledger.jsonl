@@ -97,3 +97,11 @@
 {"type": "result", "id": "21ca39880feb", "ts": "2026-10-06T11:01:28Z", "outcome": "ok", "http": 200, "note": ""}
 {"type": "attempt", "id": "1e7a37694480", "ts": "2026-10-06T11:12:11Z", "kind": "doc", "shape": "doc+maxcitedby=50", "key": "{\"extra\": {\"maxcitedby\": 50}, \"kind\": \"doc\", \"page\": 0, \"query\": \"\", \"tid\": \"151036912\"}", "tid": "151036912", "query": "", "page": 0, "extra": {"maxcitedby": 50}, "price_rs": 0.2, "outcome": "pending"}
 {"type": "result", "id": "1e7a37694480", "ts": "2026-10-06T11:12:13Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "d5744f76770a", "ts": "2026-10-06T11:20:12Z", "kind": "meta", "shape": "meta", "key": "{\"extra\": {}, \"kind\": \"meta\", \"page\": 0, \"query\": \"\", \"tid\": \"1108032\"}", "tid": "1108032", "query": "", "page": 0, "extra": {}, "price_rs": 0.02, "outcome": "pending"}
+{"type": "result", "id": "d5744f76770a", "ts": "2026-10-06T11:20:14Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "70dbbac4e2b1", "ts": "2026-10-06T11:20:14Z", "kind": "meta", "shape": "meta", "key": "{\"extra\": {}, \"kind\": \"meta\", \"page\": 0, \"query\": \"\", \"tid\": \"1699144\"}", "tid": "1699144", "query": "", "page": 0, "extra": {}, "price_rs": 0.02, "outcome": "pending"}
+{"type": "result", "id": "70dbbac4e2b1", "ts": "2026-10-06T11:20:15Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "d151e5b71331", "ts": "2026-10-06T11:20:15Z", "kind": "meta", "shape": "meta", "key": "{\"extra\": {}, \"kind\": \"meta\", \"page\": 0, \"query\": \"\", \"tid\": \"38505268\"}", "tid": "38505268", "query": "", "page": 0, "extra": {}, "price_rs": 0.02, "outcome": "pending"}
+{"type": "result", "id": "d151e5b71331", "ts": "2026-10-06T11:20:17Z", "outcome": "ok", "http": 200, "note": ""}
+{"type": "attempt", "id": "17cf0e8a465e", "ts": "2026-10-06T11:20:17Z", "kind": "meta", "shape": "meta", "key": "{\"extra\": {}, \"kind\": \"meta\", \"page\": 0, \"query\": \"\", \"tid\": \"155481249\"}", "tid": "155481249", "query": "", "page": 0, "extra": {}, "price_rs": 0.02, "outcome": "pending"}
+{"type": "result", "id": "17cf0e8a465e", "ts": "2026-10-06T11:20:18Z", "outcome": "ok", "http": 200, "note": ""}

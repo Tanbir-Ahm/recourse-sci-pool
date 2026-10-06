@@ -8,7 +8,7 @@ The checker holds each of these cases from the Supreme Court's own site, so it h
 2. Open the **Supreme Court judgment itself**. Check that the parties and the **decision date** match the table below. IK often has several pages for one case (a later order, a different date, a copy), and only one is the judgment. This has gone wrong before: Recourse's link for D.K. Basu points to a 1 August 1997 follow-up order, not the 18 December 1996 judgment.
 3. Copy the address. It looks like `https://indiankanoon.org/doc/123456/`; only the number matters.
 
-Send them as one line each, in this form (any order, any number; partial is fine):
+Send them as one line each, in this form (any order, any number; partial is fine). **24 cases are still without a link (priority 2 and 3 below).**
 
 ```
 Mohan Lal v State of Punjab | https://indiankanoon.org/doc/NNNNNN/
@@ -16,7 +16,7 @@ Mohan Lal v State of Punjab | https://indiankanoon.org/doc/NNNNNN/
 
 If a case is not on IK, or you cannot tell which page is the judgment, write `not found` instead of a link. I check every link before using it: one metadata call each (Rs 0.02) compares IK's title and date with the date below, and a mismatch is reported rather than used.
 
-## Priority 1: the four cases on the review sheet (send these first)
+## Priority 1: the four cases on the review sheet (RECEIVED 2026-10-06 and verified: IK's title, date and court match for all four; ids in `goodlaw/data/ik_ids_owner_batch1.json`)
 
 | Case | Citation | Decision date | Why it matters |
 |---|---|---|---|

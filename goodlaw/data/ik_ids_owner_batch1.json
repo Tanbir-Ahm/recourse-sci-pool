@@ -1,0 +1,53 @@
+{
+ "note": "Indian Kanoon ids supplied by the owner on 2026-10-06 (IK_LINKS_NEEDED.md, priority 1) and verified by one metadata call each. numcitedby counts documents of all courts; we_hold_citing is the Supreme Court judgments in our collection that the checker found citing the case.",
+ "rows": [
+  {
+   "tid": "1108032",
+   "case_name": "Siddharam Satlingappa Mhetre v State of Maharashtra",
+   "ik_title": "Siddharam Satlingappa Mhetre vs State Of Maharashtra And Ors on 2 December, 2010",
+   "ik_date": "2010-12-02",
+   "ik_doctype": "Supreme Court of India",
+   "caseno": null,
+   "numcites": 65,
+   "numcitedby": 21316,
+   "we_hold_citing": 46,
+   "verified": "IK title, date and court matched the decision date and parties in our collection (2026-10-06)"
+  },
+  {
+   "tid": "1699144",
+   "case_name": "G. Sagar Suri and Anr. v State of U.P. and Ors.",
+   "ik_title": "G. Sagar Suri And Anr vs State Of Up. And Ors on 28 January, 2000",
+   "ik_date": "2000-01-28",
+   "ik_doctype": "Supreme Court of India",
+   "caseno": null,
+   "numcites": 15,
+   "numcitedby": 1136,
+   "we_hold_citing": 42,
+   "verified": "IK title, date and court matched the decision date and parties in our collection (2026-10-06)"
+  },
+  {
+   "tid": "38505268",
+   "case_name": "Mohan Lal v State of Punjab",
+   "ik_title": "Mohan Lal vs The State Of Punjab on 16 August, 2018",
+   "ik_date": "2018-08-16",
+   "ik_doctype": "Supreme Court of India",
+   "caseno": "Crl.A. No.-001880-001880 / 2011",
+   "numcites": 32,
+   "numcitedby": 543,
+   "we_hold_citing": 13,
+   "verified": "IK title, date and court matched the decision date and parties in our collection (2026-10-06)"
+  },
+  {
+   "tid": "155481249",
+   "case_name": "State of Rajasthan v Parmanand",
+   "ik_title": "State Of Rajasthan vs Parmanand And Anr on 28 February, 2014",
+   "ik_date": "2014-02-28",
+   "ik_doctype": "Supreme Court of India",
+   "caseno": null,
+   "numcites": 17,
+   "numcitedby": 710,
+   "we_hold_citing": 3,
+   "verified": "IK title, date and court matched the decision date and parties in our collection (2026-10-06)"
+  }
+ ]
+}
