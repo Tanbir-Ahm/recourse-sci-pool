@@ -1,0 +1,111 @@
+{
+ "note": "Phase 3 (2026-10-06): the eleven judgments IK lists as citing a priority case that were not in our collection (the Borhade probe and ten more), read through IK's document-fragment call (the passages around the case's name). 'reading' is by the checker's author (a model), not an independent reader, and is preliminary; 'rules' is what the checker's own mention finder and treatment rules said on the same passages. No IK text is stored here; the fragments stay in the git-ignored cache. Not connected to any card.",
+ "readings": [
+  {
+   "ik_tid": "6768602",
+   "later_judgment": "Rakesh Baban Borhade v State of Maharashtra",
+   "date": "2014-11-19",
+   "case": "Siddharam Satlingappa Mhetre",
+   "reading": "FOLLOWS",
+   "rules": "NEUTRAL",
+   "why": "applies the parameters laid down in Mhetre"
+  },
+  {
+   "ik_tid": "1251516",
+   "later_judgment": "Liyaqat Ali v Union of India",
+   "date": "2003-05-02",
+   "case": "State of Punjab v Baldev Singh",
+   "reading": "FOLLOWS",
+   "rules": "NEUTRAL",
+   "why": "says the law on s.50 NDPS is as laid down in Baldev Singh; the 'per incuriam' remark is about other observations, not Baldev Singh"
+  },
+  {
+   "ik_tid": "238832",
+   "later_judgment": "Savitri Agarwal v State of Maharashtra",
+   "date": "2009-07-10",
+   "case": "Gurbaksh Singh Sibbia",
+   "reading": "FOLLOWS",
+   "rules": "FOLLOWS/NEUTRAL",
+   "why": "treats the Constitution Bench opinion in Sibbia as the standard; criticises other decisions for not being in line with it"
+  },
+  {
+   "ik_tid": "165330",
+   "later_judgment": "D. Venkatasubramaniam v M.K. Mohan Krishnamachari",
+   "date": "2009-09-14",
+   "case": "Inder Mohan Goswami",
+   "reading": "DISTINGUISHES",
+   "rules": "NEUTRAL",
+   "why": "unable to see the relevance of the decision to the question in the appeals; no view on its correctness"
+  },
+  {
+   "ik_tid": "1273941",
+   "later_judgment": "Maharashtra State v Datar Switchgear",
+   "date": "2010-10-08",
+   "case": "Inder Mohan Goswami",
+   "reading": "CITED",
+   "rules": "NEUTRAL (counsel)",
+   "why": "counsel's list of decisions"
+  },
+  {
+   "ik_tid": "65577072",
+   "later_judgment": "Rajender Singh v State of Haryana",
+   "date": "2011-08-08",
+   "case": "Karnail Singh",
+   "reading": "CITED",
+   "rules": "NEUTRAL",
+   "why": "counsel relies on it; the Court recites what it held; no stance of its own in the passage"
+  },
+  {
+   "ik_tid": "60022179",
+   "later_judgment": "Balmukund Singh Gautam v State of Madhya Pradesh",
+   "date": "2026-02-13",
+   "case": "Gurbaksh Singh Sibbia",
+   "reading": "FOLLOWS",
+   "rules": "NEUTRAL",
+   "why": "relies on it among the precedents guiding anticipatory bail"
+  },
+  {
+   "ik_tid": "60022179",
+   "later_judgment": "Balmukund Singh Gautam v State of Madhya Pradesh",
+   "date": "2026-02-13",
+   "case": "Sushila Aggarwal",
+   "reading": "FOLLOWS",
+   "rules": "LIMITS/FOLLOWS",
+   "why": "the Court calls it the recent Constitution Bench decision and sets out its guiding principles"
+  },
+  {
+   "ik_tid": "193290257",
+   "later_judgment": "State of Himachal Pradesh v Surat Singh",
+   "date": "2026-03-16",
+   "case": "State of Rajasthan v Parmanand",
+   "reading": "FOLLOWS",
+   "rules": "DISTINGUISHES/NEUTRAL",
+   "why": "says the High Court was justified in relying on Parmanand"
+  },
+  {
+   "ik_tid": "180631499",
+   "later_judgment": "Union of India v Sunil Biyani",
+   "date": "2026-08-12",
+   "case": "Sushila Aggarwal",
+   "reading": "FOLLOWS",
+   "rules": "NEUTRAL (low confidence)",
+   "why": "relies on it for the right to seek anticipatory bail"
+  },
+  {
+   "ik_tid": "48740597",
+   "later_judgment": "State of Maharashtra v Momin Moiuddin Gulam Hasan",
+   "date": "2026-09-21",
+   "case": "M. Ravindran",
+   "reading": "CITED",
+   "rules": "NEUTRAL",
+   "why": "the Court recounts what the High Court referred to"
+  }
+ ],
+ "summary": {
+  "pairs": 11,
+  "adverse": 0,
+  "FOLLOWS": 7,
+  "DISTINGUISHES": 1,
+  "CITED": 3
+ }
+}
