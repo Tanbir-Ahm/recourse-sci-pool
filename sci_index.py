@@ -9,6 +9,7 @@ It never spends past a token ceiling, and stops cleanly (keeping everything save
 """
 import argparse
 import collections
+import csv
 import glob
 import gzip
 import hashlib
@@ -23,7 +24,7 @@ import tempfile
 import time
 import uuid
 from bisect import bisect_right
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 
 import numpy as np
 
@@ -41,7 +42,7 @@ MIN_DOC_CHARS = 1500
 DENSITY_THRESHOLD = 10.0              # criminal-law wording per 10,000 characters
 
 _POOL_RE = re.compile(r"^(\d{6})-(\d{6})\.ok(\d+)\.gap(\d+)\.err(\d+)\.jsonl\.gz$")
-_IDX_RE = re.compile(r"^(\d{6})-(\d{6})\.docs(\d+)\.pass(\d+)\.tok(\d+)\.meta\.jsonl\.gz$")
+_IDX_RE = re.compile(r"^(\d{6,12})-(\d{6,12})\.docs(\d+)\.pass(\d+)\.tok(\d+)\.meta\.jsonl\.gz$")      # 6 digits for crawl blocks, 10 for bucket blocks (BUCKET_BASE and up)
 
 
 # ================================================================ cleaning
@@ -270,6 +271,98 @@ def make_passages(text, merge_below=MERGE_BELOW):
     return tag_doc(merge_short(out, merge_below)), meta
 
 
+# ================================================================ the bucket (law-report text, 2017 on, plus older judgments the crawl lacks)
+# A bucket shard (branch claude/sci-bucket) is read like a crawl block, with these differences. Its judgments get ids of their own, so they can never collide with a crawl id:
+# a block's start is BUCKET_BASE + ordinal * BLOCK_SIZE and a judgment's id is its block's start plus its position in the shard file (the shard is immutable once committed,
+# so the id is stable). The shard's own text is the law report's: it opens with the editors' headnote and has margin letters A to H, which are cut (the same rules as
+# sci_bucket.clean_text, kept here so an index session needs nothing but this file). Judgments the crawl already holds are skipped (see load_skip_paths).
+BUCKET_BASE = 1_000_000_000
+REFRESH_EPOCH = date(2026, 1, 1)
+_BUCKET_RE = re.compile(r"^([a-z0-9_]+)-(\d{4})\.ok(\d+)\.miss(\d+)\.err(\d+)\.jsonl\.gz$")
+_BUCKET_HEADERS = (re.compile(r"^[A-H]$"), re.compile(r"^\d{1,4}$"), re.compile(r"(?i)^SUPREME COURT REPORTS$"),
+                   re.compile(r"^\[\d{4}\]\s*\d+\s*S\.?C\.?R\.?(?:\s*\d+)?(?:\s*:\s*\d{4}\s+INSC\s+\d+)?$"))
+DEFAULT_SKIP_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "coverage", "bucket_match", "none_resolution.csv.gz")
+
+
+def bucket_ordinal(scope, n):
+    """Where a shard sits in the id space. Newest first when blocks are taken in descending order: refreshes, then `after` (judgments after 4 May 2017), then `none` (older ones
+    the name match did not find in the crawl). A refresh scope is `refresh_YYYYMMDD` and may have up to 50 blocks."""
+    if scope == "none":
+        return n
+    if scope == "after":
+        return 1000 + n
+    m = re.match(r"^refresh_(\d{4})(\d{2})(\d{2})$", scope)
+    if m:
+        days = (date(int(m[1]), int(m[2]), int(m[3])) - REFRESH_EPOCH).days
+        if days < 0 or n >= 50:
+            raise ValueError(f"bucket scope {scope!r} block {n} is outside the id space (a refresh must be dated {REFRESH_EPOCH} or later and have fewer than 50 blocks)")
+        return 2000 + days * 50 + n
+    raise ValueError(f"unknown bucket scope {scope!r} (expected after, none or refresh_YYYYMMDD)")
+
+
+def bucket_blocks(bucket_dir):
+    """{block start: {end, ok, gap, err, path, kind, scope, start}} for every bucket shard that holds at least one saved judgment."""
+    out = {}
+    for path in glob.glob(os.path.join(bucket_dir, "shards", "*.jsonl.gz")):
+        m = _BUCKET_RE.match(os.path.basename(path))
+        if not m:
+            continue
+        scope, n, ok, miss, err = m[1], int(m[2]), int(m[3]), int(m[4]), int(m[5])
+        start = BUCKET_BASE + bucket_ordinal(scope, n) * BLOCK_SIZE
+        out[start] = {"start": start, "end": start + BLOCK_SIZE - 1, "ok": ok, "gap": miss, "err": err, "path": path, "kind": "bucket", "scope": scope}
+    return out
+
+
+def load_skip_paths(path=None):
+    """Bucket paths the crawl already holds (none_resolution.csv.gz, column in_crawl == 'yes'); embedding them again would pay twice for the same judgment. Refuses if the file
+    is missing: a bucket run without it would silently re-embed about 3,000 judgments."""
+    path = path or DEFAULT_SKIP_FILE
+    if not os.path.exists(path):
+        raise ValueError(f"the skip file {path} is missing (it lists the bucket judgments the crawl already holds); pass --skip-file")
+    opener = gzip.open if path.endswith(".gz") else open
+    with opener(path, "rt", encoding="utf-8", newline="") as fh:
+        return {r["path"] for r in csv.DictReader(fh) if (r.get("in_crawl") or "").strip().lower() == "yes"}
+
+
+def bucket_pages(rec):
+    """(text with pages joined by form feeds and the law report's headnote, margin letters and running headers cut, number of pages before the cut)."""
+    text = rec.get("text") or ""
+    start = rec.get("body_start") or 0
+    offset = text.count("\f", 0, start)
+    pages = []
+    for pg in text[start:].split("\f"):
+        lines = [ln.strip() for ln in pg.split("\n")]
+        pages.append("\n".join(ln for ln in lines if ln and not any(rx.match(ln) for rx in _BUCKET_HEADERS)))
+    return "\f".join(pages), offset
+
+
+def read_block(info, skip_paths=frozenset()):
+    """The records of one block in the shape prepare_block reads: {id, status, text, pages, ...}. A crawl block is read as it is. A bucket block gets its ids from its position,
+    the cleaned text, the raw text (to decide criminal or not, and for the header a duplicate check compares) and, for each judgment, where it came from."""
+    recs = _read_pool_block(info["path"])
+    if info.get("kind") != "bucket":
+        return recs
+    if len(recs) > BLOCK_SIZE:
+        raise ValueError(f"{info['path']} holds {len(recs)} records; a block has at most {BLOCK_SIZE}")
+    out = []
+    for i, r in enumerate(recs):
+        if r.get("status") != "ok" or not r.get("text"):
+            continue
+        text, offset = bucket_pages(r)
+        out.append({"id": info["start"] + i, "status": "ok", "text": text, "pages": r.get("pages"), "raw_text": r["text"], "page_offset": offset,
+                    "in_crawl": r.get("path") in skip_paths,
+                    "src": {"source": "bucket", "scope": info["scope"], "path": r.get("path"), "title": r.get("title"), "date": r.get("decision_date"),
+                            "citation": r.get("citation"), "case_id": r.get("case_id"), "headnote_cut": bool(r.get("body_start"))}})
+    return out
+
+
+def all_blocks(pool_dir=None, bucket_dir=None):
+    blocks = pool_blocks(pool_dir) if pool_dir else {}
+    if bucket_dir:
+        blocks.update(bucket_blocks(bucket_dir))
+    return blocks
+
+
 # ================================================================ which judgments to keep
 CRH = re.compile(r"CRIMINAL\s+(?:APPELLATE|ORIGINAL|REVISION)|Appeal\s*\(\s*crl|\(\s*Crl\.?\s*\)|Crl\.?\s*A\.?\s*No|Criminal\s+Appeal|SLP\s*\(\s*Crl|Writ Petition\s*\(\s*Crl|Crl\.M\.P|CRIMINAL\s+MISC", re.I)
 CUE = re.compile(r"\b(?:accused|prosecution|I\.?P\.?C|Cr\.?\s?P\.?\s?C|N\.?D\.?P\.?S|Negotiable Instruments|F\.?I\.?R|offences?|bail|cognizable|conviction|acquittal|complainant)\b", re.I)
@@ -290,18 +383,22 @@ def prepare_block(records, seen):
     """Records of one crawl block -> docs (kept or skipped, with the reason) and the passages to embed. `seen` maps
     content hash -> first doc id and is updated in place (so identical copies are never paid for twice)."""
     docs, passages = [], []
-    skipped = {"not_criminal": 0, "duplicate": 0, "short": 0}
+    skipped = {"not_criminal": 0, "duplicate": 0, "short": 0, "in_crawl": 0}
     for r in records:
         if r.get("status") != "ok" or not r.get("text"):
             continue
         id_, text = r["id"], r["text"]
         h = doc_hash(text)
         row = {"doc": id_, "hash": h, "pages": r.get("pages"), "v": PREP_VERSION}
-        if h in seen:
+        if r.get("src"):
+            row["src"] = r["src"]                  # a bucket judgment: where it came from (path, title, date, citation)
+        if r.get("in_crawl"):
+            row.update(skip="in_crawl")            # the crawl already holds this judgment; it is not embedded again and its hash is not recorded
+        elif h in seen:
             row.update(skip="duplicate", of=seen[h])
         else:
             seen[h] = id_
-            crim, dens = is_criminal(text)
+            crim, dens = is_criminal(r.get("raw_text") or text)       # a law report's headnote names the statutes, so the criminal test reads the raw text
             row["density"] = dens
             if len(text) < MIN_DOC_CHARS:
                 row["skip"] = "short"
@@ -314,6 +411,8 @@ def prepare_block(records, seen):
         ps, meta = make_passages(text)
         if meta:
             row["case"] = meta
+        for p in ps:
+            p["page"] += r.get("page_offset", 0)       # pages cut with the headnote still count towards the page number
         keep = [p for p in ps if not p["noise"]]
         row["passages"], row["noise"] = len(keep), len(ps) - len(keep)
         docs.append(row)
@@ -574,9 +673,15 @@ def active_check(code_repo, now=None, max_age=1500, ref=f"origin/{BRANCH}"):
 # ================================================================ the shift
 def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None, sleep=time.sleep, clock=time.monotonic,
           out=print, pause=2.0, block_size=BLOCK_SIZE, est_block_seconds=120, max_blocks=None, batch_items=500,
-          from_id=None, to_id=None, model=MODEL):
+          from_id=None, to_id=None, model=MODEL, bucket_dir=None, skip_paths=None, max_new_tokens=None):
+    """One time-boxed run: embeds the blocks not yet in the ledger, newest first. With `bucket_dir` the bucket's shards are blocks too (ids from BUCKET_BASE up; `skip_paths` are the
+    bucket judgments the crawl already holds, loaded from the default skip file when not given). `ceiling` is a limit on everything ever spent on the index; `max_new_tokens` also
+    limits what THIS run may spend, whatever was spent before (the lower of the two applies)."""
     if _git(index_dir, "rev-parse", "--is-inside-work-tree").returncode != 0:
         raise ValueError(f"{index_dir} is not a git repository")
+    if bucket_dir and skip_paths is None:
+        skip_paths = load_skip_paths()
+    skip_paths = skip_paths or frozenset()
     started_iso, t0 = datetime.now(timezone.utc).isoformat(timespec="seconds"), clock()
     totals = {"blocks_done": 0, "docs_embedded": 0, "passages": 0, "tokens": 0, "wasted_tokens": 0}
     reason, est = None, est_block_seconds
@@ -596,7 +701,9 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
             done = set(ledger(index_dir))
             seen = load_seen(index_dir)
             spent = tokens_spent(index_dir)
-            blocks = pool_blocks(pool_dir)
+            if max_new_tokens is not None:
+                ceiling = min(ceiling, spent + max_new_tokens)
+            blocks = all_blocks(pool_dir, bucket_dir)
             todo = sorted((s for s in blocks if s not in done and blocks[s]["ok"] > 0 and (from_id is None or s <= from_id) and (to_id is None or s >= to_id)), reverse=True)
             if not todo:
                 reason = "nothing left to do (every crawled block is already indexed)"
@@ -615,7 +722,7 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
             info = blocks[start]
             bsize = info["end"] - start + 1
             local_seen = dict(seen)
-            blk = prepare_block(_read_pool_block(info["path"]), local_seen)
+            blk = prepare_block(read_block(info, skip_paths), local_seen)
             need = blk["stats"]["est_tokens"]
             if spent + need > ceiling:
                 reason = f"token ceiling reached ({spent:,} spent, next block needs about {need:,}, limit {ceiling:,}); nothing was sent for it"
@@ -644,7 +751,7 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
             secs = clock() - b0
             est = max(secs * 1.25, 30)
             sk = st["skipped"]
-            out(f"block {start:06d}: kept {st['docs_kept']} docs (skipped: civil {sk['not_criminal']}, copies {sk['duplicate']}, tiny {sk['short']}) | {st['passages']} passages | {tokens:,} tokens | total spent {spent:,} ({secs:.0f}s)")
+            out(f"block {start:06d}: kept {st['docs_kept']} docs (skipped: civil {sk['not_criminal']}, copies {sk['duplicate']}, tiny {sk['short']}, held by the crawl {sk['in_crawl']}) | {st['passages']} passages | {tokens:,} tokens | total spent {spent:,} ({secs:.0f}s)")
             pushed_ok, pmsg = _push(index_dir)
             if not pushed_ok:
                 reason = f"push failed: {pmsg}"
@@ -672,7 +779,7 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
     return {**totals, "stop_reason": reason, "seconds": seconds, "pushed": pushed}
 
 
-def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING):
+def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING, bucket_dir=None):
     led = ledger(index_dir)
     blocks = pool_blocks(pool_dir)
     spent = tokens_spent(index_dir)
@@ -681,10 +788,44 @@ def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING):
     if logs:
         with open(logs[-1], encoding="utf-8") as fh:
             last = json.load(fh)
-    return {"blocks_done": len(led), "docs_embedded": sum(v["docs"] for v in led.values()), "passages": sum(v["passages"] for v in led.values()),
-            "tokens_spent": spent, "ceiling": ceiling, "ceiling_left": ceiling - spent,
-            "blocks_pending": len([s for s in blocks if s not in led and blocks[s]["ok"] > 0]), "lowest_id_done": min(led) if led else None,
-            "highest_id_done": max(v["end"] for v in led.values()) if led else None, "shifts": len(logs), "last_shift": last}
+    crawl = {s_: v for s_, v in led.items() if s_ < BUCKET_BASE}
+    bucket = {s_: v for s_, v in led.items() if s_ >= BUCKET_BASE}
+    out = {"blocks_done": len(crawl), "docs_embedded": sum(v["docs"] for v in crawl.values()), "passages": sum(v["passages"] for v in crawl.values()),
+           "tokens_spent": spent, "ceiling": ceiling, "ceiling_left": ceiling - spent,
+           "blocks_pending": len([s_ for s_ in blocks if s_ not in led and blocks[s_]["ok"] > 0]), "lowest_id_done": min(crawl) if crawl else None,
+           "highest_id_done": max(v["end"] for v in crawl.values()) if crawl else None, "shifts": len(logs), "last_shift": last}
+    if bucket or bucket_dir:                       # the bucket's blocks are counted apart, so the crawl figures above mean what they always meant
+        bb = bucket_blocks(bucket_dir) if bucket_dir else {}
+        out["bucket"] = {"blocks_done": len(bucket), "docs_embedded": sum(v["docs"] for v in bucket.values()), "passages": sum(v["passages"] for v in bucket.values()),
+                         "tokens": sum(v["tokens"] for v in bucket.values()), "blocks_pending": (len([s_ for s_ in bb if s_ not in led and bb[s_]["ok"] > 0]) if bucket_dir else None)}
+    return out
+
+
+def plan_bucket(bucket_dir, index_dir, skip_paths=None, ceiling=DEFAULT_CEILING, out=print):
+    """What indexing the bucket would cost, found by preparing every pending bucket block exactly as a shift would, without calling the service (spends nothing, needs no key).
+    Judgments already in the index (same text) are recognised, so run it against the real index folder."""
+    skip_paths = load_skip_paths() if skip_paths is None else skip_paths
+    led = ledger(index_dir)
+    seen = load_seen(index_dir)
+    blocks = bucket_blocks(bucket_dir)
+    spent = tokens_spent(index_dir)
+    tot = collections.Counter()
+    per_scope = collections.defaultdict(collections.Counter)
+    for start in sorted(blocks, reverse=True):
+        if start in led or blocks[start]["ok"] == 0:
+            continue
+        blk = prepare_block(read_block(blocks[start], skip_paths), seen)
+        st = blk["stats"]
+        row = per_scope[blocks[start]["scope"] if not blocks[start]["scope"].startswith("refresh") else "refresh"]
+        for key, val in (("blocks", 1), ("judgments", sum(1 for d in blk["docs"])), ("kept", st["docs_kept"]), ("passages", st["passages"]), ("est_tokens", st["est_tokens"]),
+                         ("civil", st["skipped"]["not_criminal"]), ("copies", st["skipped"]["duplicate"]), ("tiny", st["skipped"]["short"]), ("held_by_crawl", st["skipped"]["in_crawl"])):
+            row[key] += val
+            tot[key] += val
+    for scope, row in sorted(per_scope.items()):
+        out(f"{scope:8}: {row['blocks']} blocks, {row['judgments']} judgments | kept {row['kept']} (civil {row['civil']}, copies {row['copies']}, tiny {row['tiny']}, held by the crawl {row['held_by_crawl']}) | {row['passages']} passages | about {row['est_tokens']:,} tokens")
+    out(f"TOTAL: {tot['blocks']} blocks, kept {tot['kept']} judgments, {tot['passages']} passages, about {tot['est_tokens']:,} tokens; spent so far {spent:,}; ceiling {ceiling:,}; "
+        f"{'fits under' if spent + tot['est_tokens'] <= ceiling else 'DOES NOT fit under'} the ceiling (this says nothing about the service's own allowance)")
+    return {"per_scope": {k: dict(v) for k, v in per_scope.items()}, "total": dict(tot), "spent": spent, "ceiling": ceiling}
 
 
 def make_client():
@@ -821,8 +962,11 @@ def main(argv=None):
     p = sub.add_parser("shift")
     p.add_argument("--pool-dir", required=True)
     p.add_argument("--index-dir", required=True)
+    p.add_argument("--bucket-dir", default=None, help="also index the bucket's shards (a checkout of branch claude/sci-bucket)")
+    p.add_argument("--skip-file", default=None, help="list of bucket judgments the crawl already holds (default: coverage/bucket_match/none_resolution.csv.gz)")
     p.add_argument("--minutes", type=float, default=50)
-    p.add_argument("--ceiling", type=int, default=DEFAULT_CEILING)
+    p.add_argument("--ceiling", type=int, default=DEFAULT_CEILING, help="limit on everything ever spent on the index (the total on file counts)")
+    p.add_argument("--max-new-tokens", type=int, default=None, help="limit on what this run may spend, whatever was spent before")
     p.add_argument("--pause", type=float, default=2.0)
     p.add_argument("--max-blocks", type=int, default=None)
     p.add_argument("--from-id", type=int, default=None)
@@ -831,6 +975,12 @@ def main(argv=None):
     p = sub.add_parser("status")
     p.add_argument("--pool-dir", required=True)
     p.add_argument("--index-dir", required=True)
+    p.add_argument("--bucket-dir", default=None)
+    p.add_argument("--ceiling", type=int, default=DEFAULT_CEILING)
+    p = sub.add_parser("plan-bucket", help="what indexing the bucket would cost; prepares every pending block, calls nothing, spends nothing")
+    p.add_argument("--bucket-dir", required=True)
+    p.add_argument("--index-dir", required=True)
+    p.add_argument("--skip-file", default=None)
     p.add_argument("--ceiling", type=int, default=DEFAULT_CEILING)
     sub.add_parser("active-check")
     p = sub.add_parser("eval")
@@ -844,9 +994,13 @@ def main(argv=None):
     elif a.cmd == "active-check":
         print(active_check(os.getcwd()))
     elif a.cmd == "status":
-        print(json.dumps(status_summary(a.pool_dir, a.index_dir, a.ceiling), indent=1))
+        print(json.dumps(status_summary(a.pool_dir, a.index_dir, a.ceiling, a.bucket_dir), indent=1))
+    elif a.cmd == "plan-bucket":
+        plan_bucket(a.bucket_dir, a.index_dir, load_skip_paths(a.skip_file), a.ceiling)
     elif a.cmd == "shift":
-        r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id, model=a.model)
+        skip = load_skip_paths(a.skip_file) if a.bucket_dir else None
+        r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id, model=a.model,
+                  bucket_dir=a.bucket_dir, skip_paths=skip, max_new_tokens=a.max_new_tokens)
         print(f"Blocks done: {r['blocks_done']} | docs embedded: {r['docs_embedded']} | passages: {r['passages']} | tokens: {r['tokens']:,} | wasted: {r['wasted_tokens']:,}")
         print(f"Reason: {r['stop_reason']}")
     elif a.cmd == "eval":

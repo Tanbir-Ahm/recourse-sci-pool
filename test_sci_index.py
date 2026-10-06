@@ -512,6 +512,160 @@ legacy_refusal = si.check_model(idx, "voyage-4-large") or ""
 check(si.check_model(idx, "voyage-law-2") is None and "voyage-law-2" in legacy_refusal, "blocks saved before the marker existed are treated as voyage-law-2")
 shutil.rmtree(base, ignore_errors=True)
 
+# ================================================================ K. the bucket (law-report shards)
+print("--- bucket shards")
+import csv as _csv
+from datetime import date as _date
+
+check(si.bucket_ordinal("none", 7) == 7 and si.bucket_ordinal("after", 7) == 1007, "bucket blocks have ordinals of their own: none, then after")
+check(si.bucket_ordinal("refresh_20261005", 0) == 2000 + (_date(2026, 10, 5) - _date(2026, 1, 1)).days * 50 > si.bucket_ordinal("after", 999), "a refresh sorts after every `after` block, so newest-first reaches it first")
+check(si.bucket_ordinal("refresh_20261006", 0) > si.bucket_ordinal("refresh_20261005", 49), "a later refresh never collides with an earlier one")
+refused = []
+for bad in (("mystery", 0), ("refresh_20251231", 0), ("refresh_20261005", 50)):
+    try:
+        si.bucket_ordinal(*bad)
+    except ValueError:
+        refused.append(bad)
+check(len(refused) == 3, "an unknown scope, a refresh dated before the epoch, or a refresh with 50 blocks is refused, never given a clashing id")
+check(si.BUCKET_BASE > 10**9 - 1 and si.BUCKET_BASE + si.bucket_ordinal("none", 0) * si.BLOCK_SIZE > 999_999, "bucket ids are far above any crawl id")
+
+
+def bucket_rec(path, tag, headnote="Code of Criminal Procedure, 1973 - s.482 - accused - prosecution - FIR - offence. ", status="ok", n=8):
+    """A law-report record: pages joined by form feeds, an editors' headnote first, margin letters through the body, body_start at the court's own text."""
+    head = f"A \n.B \n[2019] 1 S.C.R. 1 \nParty {tag} \nv. \nState \n(Criminal Appeal No. 7 of 2019) \n{headnote}\n\f"
+    paras = crim_text(tag, n).split("JUDGMENT\n", 1)[1]
+    body = "R.F. NARIMAN, J. " + paras.replace("\n2.", "\nB\n2.").replace("\n5.", "\nC\n5.")
+    return {"scope": "after", "path": path, "title": f"Party {tag} versus State", "decision_date": "05-05-2019", "citation": "[2019] 1 S.C.R. 1", "case_id": "2019 INSC 1",
+            "status": status, "pages": 4, "text": head + body if status == "ok" else "", "body_start": len(head)}
+
+
+def write_bucket_shard(bucket, scope, n, records):
+    os.makedirs(os.path.join(bucket, "shards"), exist_ok=True)
+    ok = sum(1 for r in records if r["status"] == "ok")
+    miss = sum(1 for r in records if r["status"] == "missing")
+    with gzip.open(os.path.join(bucket, "shards", f"{scope}-{n:04d}.ok{ok}.miss{miss}.err0.jsonl.gz"), "wt", encoding="utf-8") as fh:
+        for r in records:
+            fh.write(json.dumps(r) + "\n")
+
+
+def write_skip_file(path, rows):
+    with gzip.open(path, "wt", encoding="utf-8", newline="") as fh:
+        w = _csv.writer(fh)
+        w.writerow(["path", "title", "in_crawl"])
+        w.writerows(rows)
+
+
+br = bucket_rec("2019_1_1_9", "Zed")
+pages, off = si.bucket_pages(br)
+check(off == 1 and "Code of Criminal" not in pages and "S.C.R." not in pages, "the law report's headnote is cut, and the pages it took are counted")
+check(not re.search(r"(?m)^[A-H]$", pages) and "R.F. NARIMAN, J." in pages and "\f" not in pages.split("R.F.")[0], "margin letters A to H are dropped and the court's own text stays")
+check(si.bucket_pages({"text": "page one\fpage two"}) == ("page one\fpage two", 0), "a record with no body_start is kept whole")
+
+btmp = tempfile.mkdtemp(prefix="bkt_")
+skipf = os.path.join(btmp, "skip.csv.gz")
+write_skip_file(skipf, [["2019_1_1_9", "t", "yes"], ["p_no", "t", "no"], ["p_unc", "t", "uncertain"]])
+check(si.load_skip_paths(skipf) == {"2019_1_1_9"}, "only judgments the crawl certainly holds are skipped; 'uncertain' ones are kept (the duplicate scan can look at them)")
+try:
+    si.load_skip_paths(os.path.join(btmp, "missing.csv.gz"))
+    check(False, "a missing skip file is refused")
+except ValueError as e:
+    check("skip file" in str(e), "a missing skip file is refused, never silently ignored")
+
+bk = os.path.join(btmp, "bucket")
+recs_k = [bucket_rec("kept_a", "Kilo"), {"status": "missing", "path": "gone", "text": ""}, bucket_rec("in_crawl_b", "Lima"), bucket_rec("civ", "Mike", headnote="Income Tax Act - assessment. "), bucket_rec("kept_c", "November")]
+recs_k[3]["text"] = recs_k[3]["text"].replace("Criminal Appeal No. 7", "Civil Appeal No. 7")
+civ_body = civil_text("Mike", 8).split("JUDGMENT\n", 1)[1]
+recs_k[3]["text"] = recs_k[3]["text"][:recs_k[3]["body_start"]] + "R.F. NARIMAN, J. " + civ_body
+write_bucket_shard(bk, "after", 0, recs_k)
+write_bucket_shard(bk, "none", 3, [bucket_rec("old_d", "Oscar")])
+write_bucket_shard(bk, "refresh_20261005", 0, [bucket_rec("new_e", "Papa")])
+write_bucket_shard(bk, "after", 1, [{"status": "missing", "path": "x", "text": ""}])
+bb = si.bucket_blocks(bk)
+check(sorted(bb) == [si.BUCKET_BASE + 3 * si.BLOCK_SIZE, si.BUCKET_BASE + 1000 * si.BLOCK_SIZE, si.BUCKET_BASE + 1001 * si.BLOCK_SIZE, si.BUCKET_BASE + (2000 + 277 * 50) * si.BLOCK_SIZE], "every shard becomes one block at its own place in the id space")
+b0 = bb[si.BUCKET_BASE + 1000 * si.BLOCK_SIZE]
+rb = si.read_block(b0, {"in_crawl_b"})
+check([r["id"] for r in rb] == [b0["start"] + 0, b0["start"] + 2, b0["start"] + 3, b0["start"] + 4], "a judgment's id is its block's start plus its position in the shard, so a missing record does not shift the others")
+check(rb[0]["src"]["path"] == "kept_a" and rb[0]["src"]["title"] == "Party Kilo versus State" and rb[0]["src"]["headnote_cut"] and rb[0]["page_offset"] == 1, "each judgment carries where it came from")
+check([r["in_crawl"] for r in rb] == [False, True, False, False] and "Code of Criminal" in rb[0]["raw_text"] and "Code of Criminal" not in rb[0]["text"], "the crawl-held one is flagged; the raw text keeps the headnote that the cleaned text lacks")
+
+seen_b = {}
+pb = si.prepare_block(rb, seen_b)
+why_b = {d["doc"]: d.get("skip") for d in pb["docs"]}
+check(why_b[b0["start"]] is None and why_b[b0["start"] + 2] == "in_crawl" and why_b[b0["start"] + 3] == "not_criminal" and why_b[b0["start"] + 4] is None, "criminal bucket judgments are kept, the one the crawl holds and the tax one are skipped")
+check(pb["stats"]["skipped"]["in_crawl"] == 1 and all(p["doc"] != b0["start"] + 2 for p in pb["passages"]), "a crawl-held judgment contributes no passage (so it is never paid for)")
+check(all(isinstance(d.get("src"), dict) and d["src"]["path"] for d in pb["docs"]), "every saved doc row of a bucket judgment names its source path")
+kept_pass = [p for p in pb["passages"] if p["doc"] == b0["start"]]
+check(len(kept_pass) >= 4 and min(p["page"] for p in kept_pass) == 2 and max(p["page"] for p in kept_pass) == 3, "page numbers count the pages the headnote took (the first body page is page 2 here)")
+check("Code of Criminal" not in " ".join(p["text"] for p in kept_pass) and not any(re.fullmatch(r"[A-H]", p["text"].strip()) for p in kept_pass), "no headnote text and no margin letters reach a passage")
+check(si.is_criminal(rb[0]["raw_text"])[0], "the raw text of a law-report record shows it is criminal")
+
+# a whole shift with crawl and bucket together (real temporary git repos)
+base, remote, code, idx, pool = new_env("idxK_")
+si.init_index_branch(code, idx)
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("Crawled")}])
+cb = FakeClient()
+real_default = si.DEFAULT_SKIP_FILE
+si.DEFAULT_SKIP_FILE = os.path.join(btmp, "no-such-skip-file.csv.gz")
+try:
+    run_shift(code, idx, pool, cb, bucket_dir=bk)
+    check(False, "bucket without a skip file refuses")
+except ValueError:
+    check(cb.calls == 0, "with a bucket and no skip file nothing is sent (it would re-embed judgments the crawl holds)")
+finally:
+    si.DEFAULT_SKIP_FILE = real_default
+sk = frozenset({"in_crawl_b"})
+st0 = si.status_summary(pool, idx, ceiling=10**9)
+check("bucket" not in st0 and st0["blocks_pending"] == 1, "without a bucket the status reads exactly as before")
+rk = run_shift(code, idx, pool, cb, bucket_dir=bk, skip_paths=sk)
+check(rk["blocks_done"] == 4 and rk["stop_reason"].startswith("completed"), "the crawl block and the three non-empty bucket blocks are all done (the all-missing bucket shard is left alone)")
+logk = [l for l in git(idx, "log", "--format=%s").stdout.splitlines() if l.startswith("index block")]
+check(logk[0] == "index block 000020-000029" and logk[-1].startswith("index block 1003962500-") and [l.split()[2][:11] for l in logk[1:-1]] == ["1000000750-", "1000250000-"], "newest first (the log lists the last block done first): the refresh, then `after`, then `none`, then the crawl; names carry the bucket's long ids")
+sent_k = " ".join(t for batch in cb.texts for t in batch)
+check("Lima" not in sent_k and "Mike" not in sent_k and "Kilo" in sent_k and "Papa" in sent_k and "Oscar" in sent_k and "Crawled" in sent_k, "the crawl-held and the tax judgments were never sent; the others were")
+led_k = si.ledger(idx)
+check(len(led_k) == 4 and sum(1 for k in led_k if k >= si.BUCKET_BASE) == 3, "the ledger holds the crawl block and three bucket blocks")
+meta_ids = set()
+for v in led_k.values():
+    with gzip.open(os.path.join(idx, "index", v["base"] + ".meta.jsonl.gz"), "rt", encoding="utf-8") as fh:
+        meta_ids |= {json.loads(l)["doc"] for l in fh}
+check(21 in meta_ids and all(i == 21 or i >= si.BUCKET_BASE for i in meta_ids) and len(meta_ids) > 3, "crawl and bucket passages sit side by side without clashing ids")
+stk = si.status_summary(pool, idx, ceiling=10**9, bucket_dir=bk)
+check(stk["blocks_done"] == 1 and stk["highest_id_done"] == 29 and stk["bucket"]["blocks_done"] == 3 and stk["bucket"]["blocks_pending"] == 0, "the status counts bucket blocks apart, so the crawl figures keep their meaning")
+check(si.tokens_spent(idx) == cb.tokens, "tokens on file equal what the service charged")
+cb2 = FakeClient()
+rk2 = run_shift(code, idx, pool, cb2, bucket_dir=bk, skip_paths=sk)
+check(rk2["blocks_done"] == 0 and cb2.calls == 0, "running again does nothing and spends nothing")
+seen_k = si.load_seen(idx)
+check(len(seen_k) == len(set(seen_k.values())) and seen_k, "every embedded judgment's text hash is on file, so a copy anywhere is recognised")
+
+# the cost plan spends nothing
+write_bucket_shard(bk, "after", 2, [bucket_rec("later_f", "Quebec")])
+cp = FakeClient()
+lines = []
+pl = si.plan_bucket(bk, idx, skip_paths=sk, ceiling=10**9, out=lines.append)
+check(cp.calls == 0 and pl["total"]["blocks"] == 1 and pl["total"]["kept"] == 1 and pl["total"]["est_tokens"] > 0 and any(l.startswith("TOTAL") and "fits under" in l for l in lines), "the plan counts only blocks not yet indexed, and calls nothing")
+pl2 = si.plan_bucket(bk, idx, skip_paths=sk, ceiling=10, out=lambda *_: None)
+check(pl2["total"]["est_tokens"] > 10, "the plan sets the estimate against the ceiling")
+rk3 = run_shift(code, idx, pool, FakeClient(), bucket_dir=bk, skip_paths=sk)
+check(rk3["blocks_done"] == 1, "a block added to the bucket later is picked up on the next run")
+shutil.rmtree(base, ignore_errors=True)
+
+# --max-new-tokens limits one run whatever was spent before (the total ceiling alone cannot do that)
+base, remote, code, idx, pool = new_env("idxL_")
+si.init_index_branch(code, idx)
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("Crawled")}])
+run_shift(code, idx, pool, FakeClient())
+before = si.tokens_spent(idx)
+cn = FakeClient()
+rn = run_shift(code, idx, pool, cn, bucket_dir=bk, skip_paths=sk, ceiling=10**9, max_new_tokens=1)
+check(rn["blocks_done"] == 0 and cn.calls == 0 and "token ceiling" in rn["stop_reason"] and si.tokens_spent(idx) == before, "--max-new-tokens stops before a block that would pass it, although the total ceiling is far away")
+rn2 = run_shift(code, idx, pool, FakeClient(), bucket_dir=bk, skip_paths=sk, ceiling=before + 1, max_new_tokens=10**9)
+check(rn2["blocks_done"] == 0 and "token ceiling" in rn2["stop_reason"], "the lower of the two limits applies")
+rn3 = run_shift(code, idx, pool, FakeClient(), bucket_dir=bk, skip_paths=sk, ceiling=10**9, max_new_tokens=10**9, max_blocks=1)
+check(rn3["blocks_done"] == 1, "with room, the run goes ahead")
+shutil.rmtree(base, ignore_errors=True)
+shutil.rmtree(btmp, ignore_errors=True)
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED:")
