@@ -4,7 +4,7 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block. 2 weak or ambiguous readings were set aside; they are listed below so you can check them.
 
-Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 

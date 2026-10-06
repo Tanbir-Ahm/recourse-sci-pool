@@ -1,6 +1,6 @@
 {
  "schema": "goodlaw-card-1",
- "generated": "2026-10-05",
+ "generated": "2026-10-06",
  "library": {
   "read_from": "Recourse checkout (registry, pilot pool and curated currency records)",
   "recourse_commit": "721e0631d2cfb6beed8fe9688d5280be891e9624",
@@ -152,8 +152,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -166,6 +166,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 4,
+    "read": 4,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/all_cargo_movers_i_pvt_ltd_and_ors_v_dhanesh_badarmal_jain_and_anr.md",
    "internal_note": "No overruling or doubt found in the 4 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 89% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -350,8 +360,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -364,6 +374,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/alpic_finance_ltd_v_p_sadasivan_and_anr.md",
    "internal_note": "No overruling or doubt found in the 5 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 86% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -549,8 +569,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -563,6 +583,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/anwarul_haq_v_state_of_uttar_pradesh.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -816,8 +837,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -830,6 +851,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 3,
+    "read": 3,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/arnesh_kumar_v_state_of_bihar.md",
    "internal_note": "No overruling or doubt found in the 29 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 83% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -1024,8 +1055,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1038,6 +1069,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/bikramjit_singh_v_state_of_punjab.md",
    "internal_note": "No overruling or doubt found in the 9 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 67% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -1188,8 +1229,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1202,6 +1243,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/bir_singh_v_mukesh_kumar.md",
    "internal_note": "No overruling or doubt found in the 12 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 69% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -1309,8 +1360,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1323,6 +1374,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/d_velusamy_v_d_patchaiammal.md",
    "internal_note": "No overruling or doubt found in the 3 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -1544,8 +1605,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1558,6 +1619,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 6,
+    "read": 6,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/d_k_basu_v_state_of_west_bengal.md",
    "internal_note": "No overruling or doubt found in the 86 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 81% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -1755,8 +1826,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1769,6 +1840,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/damodar_s_prabhu_v_sayed_babalal_h.md",
    "internal_note": "No overruling or doubt found in the 14 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -1813,8 +1894,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -1827,6 +1908,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by a court other than the Supreme Court; the collection holds only Supreme Court judgments)"
@@ -2034,8 +2116,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2048,6 +2130,36 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [
+     {
+      "id": "c20281:b2022_6_888_900",
+      "later_judgment": "J. VEDHASINGH versus R.M. GOVINDAN & ORS.",
+      "date": "2022-08-11",
+      "treatment": "DOUBTS",
+      "quote": "In our view, the aforesaid judgments cited by the respective parties are conflicting, however, to avoid any further confusion and to maintain consistency, we deem it appropriate to refer this issue for decision by the larger bench to answer the following questions: (1) Whether the ratio of the judgment, in the case of G. Sagar Suri (supra) and Kolla Veera Raghav Rao (supra) lay down the correct law?",
+      "note": "the Court refers the question of its correctness to a larger bench (2022)",
+      "rules_agree": false
+     }
+    ],
+    "confirmed": 0,
+    "reader_only": [
+     {
+      "id": "c20281:b2022_6_888_900",
+      "later_judgment": "J. VEDHASINGH versus R.M. GOVINDAN & ORS.",
+      "date": "2022-08-11",
+      "treatment": "DOUBTS",
+      "quote": "In our view, the aforesaid judgments cited by the respective parties are conflicting, however, to avoid any further confusion and to maintain consistency, we deem it appropriate to refer this issue for decision by the larger bench to answer the following questions: (1) Whether the ratio of the judgment, in the case of G. Sagar Suri (supra) and Kolla Veera Raghav Rao (supra) lay down the correct law?",
+      "note": "the Court refers the question of its correctness to a larger bench (2022)",
+      "rules_agree": false
+     }
+    ],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/g_sagar_suri_and_anr_v_state_of_u_p_and_ors.md",
    "internal_note": "No overruling or doubt found in the 42 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 85% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -2312,8 +2424,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2326,6 +2438,37 @@
    },
    "fingerprint": "9e2f1d788722",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 16,
+    "read": 16,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "c4562:c37199",
+      "later_judgment": "Siddharam Satlingappa Mhetre v. State of Maharashtra and Others",
+      "date": "2010-12-02",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "CITED",
+      "note": "counsel's submissions only in these passages"
+     },
+     {
+      "id": "c4562:b2018_6_825_852",
+      "later_judgment": "SUSHILA AGGARWAL & ORS. versus STATE (NCT OF DELHI) & ANR.",
+      "date": "2018-05-15",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "CITED",
+      "note": "a reference order that describes it and the conflict about it"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/gurbaksh_singh_sibbia_v_state_of_punjab.md",
    "internal_note": "No overruling or doubt found in the 61 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 77% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -2510,8 +2653,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2524,6 +2667,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 3,
+    "read": 3,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/hiral_p_harsora_v_kusum_narottamdas_harsora.md",
    "internal_note": "No overruling or doubt found in the 6 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 75% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -2704,8 +2857,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2718,6 +2871,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/hori_lal_v_state_of_uttar_pradesh.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -2896,8 +3050,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -2910,6 +3064,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/hridaya_rangan_pd_verma_and_ors_v_state_of_bihar_and_anr.md",
    "internal_note": "No overruling or doubt found in the 19 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 85% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -3124,8 +3288,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3138,6 +3302,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/inder_mohan_goswami_and_anr_v_state_of_uttaranchal_and_ors.md",
    "internal_note": "No overruling or doubt found in the 28 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 89% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -3300,8 +3465,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3314,6 +3479,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 3,
+    "read": 3,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/indra_sarma_v_v_k_v_sarma.md",
    "internal_note": "No overruling or doubt found in the 9 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 85% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -3476,8 +3651,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3490,6 +3665,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/jagrup_singh_v_state_of_haryana.md",
    "internal_note": "No overruling or doubt found in the 11 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 77% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -3534,8 +3710,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3548,6 +3724,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Gujarat at Ahmedabad; the collection holds only Supreme Court judgments)"
@@ -3592,8 +3769,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3606,6 +3783,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by Kerala High Court; the collection holds only Supreme Court judgments)"
@@ -3773,8 +3951,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3787,6 +3965,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/k_n_mehra_v_state_of_rajasthan.md",
    "internal_note": "Only 2 later judgments in our collection cite this case; too few to say anything."
@@ -3969,8 +4148,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -3983,6 +4162,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/kahkashan_kausar_sonam_v_state_of_bihar.md",
    "internal_note": "No overruling or doubt found in the 4 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 61% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -4149,8 +4329,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4163,6 +4343,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 5,
+    "read": 5,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/karnail_singh_v_state_of_haryana.md",
    "internal_note": "No overruling or doubt found in the 20 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -4290,8 +4480,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4304,6 +4494,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/kaveri_plastics_v_mahdoom_bawa_bahrudeen_noorul.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -4464,8 +4655,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4478,6 +4669,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/l_muruganantham_v_state_of_tamil_nadu.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -4730,8 +4922,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4744,6 +4936,27 @@
    },
    "fingerprint": "ad471b4760db",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 13,
+    "read": 13,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "c40960:b2019_17_917_985",
+      "later_judgment": "YASHWANT SINHA & ORS. versus CENTRAL BUREAU OF INVESTIGATION THROUGH ITS DIRECTOR & ANR.",
+      "date": "2019-11-14",
+      "rules_read": [
+       "DISAGREES"
+      ],
+      "reader_says": "FOLLOWS",
+      "note": "treated as binding"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/lalita_kumari_v_government_of_uttar_pradesh.md",
    "internal_note": "No overruling or doubt found in the 59 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 85% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -4926,8 +5139,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -4940,6 +5153,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/lata_singh_v_state_of_uttar_pradesh.md",
    "internal_note": "No overruling or doubt found in the 13 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 89% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -4986,8 +5209,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5000,6 +5223,7 @@
    },
    "fingerprint": "fa2b32811edc",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This case is not in our collection of Supreme Court judgments, so what later judgments did with it was not checked. (no judgment with these parties and year)"
@@ -5182,8 +5406,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5196,6 +5420,36 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [
+     {
+      "id": "b2020_12_915_955:b2023_5_918_948",
+      "later_judgment": "ENFORCEMENT DIRECTORATE, GOVERNMENT OF INDIA versus KAPIL WADHAWAN & ANR. ETC",
+      "date": "2023-03-27",
+      "treatment": "DISAGREES",
+      "quote": "Therefore, the Court in Ravindran (supra) ought to have followed the computation principle laid down in Chaganti and not Rustam.",
+      "note": "criticises its computation of the 60/90-day period; the Court's opinion on the rest of the case is not in these passages",
+      "rules_agree": false
+     }
+    ],
+    "confirmed": 0,
+    "reader_only": [
+     {
+      "id": "b2020_12_915_955:b2023_5_918_948",
+      "later_judgment": "ENFORCEMENT DIRECTORATE, GOVERNMENT OF INDIA versus KAPIL WADHAWAN & ANR. ETC",
+      "date": "2023-03-27",
+      "treatment": "DISAGREES",
+      "quote": "Therefore, the Court in Ravindran (supra) ought to have followed the computation principle laid down in Chaganti and not Rustam.",
+      "note": "criticises its computation of the 60/90-day period; the Court's opinion on the rest of the case is not in these passages",
+      "rules_agree": false
+     }
+    ],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/m_ravindran_v_intelligence_officer_directorate_of_revenue_intelligence.md",
    "internal_note": "No overruling or doubt found in the 12 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 67% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -5246,8 +5500,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5260,6 +5514,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Delhi; the collection holds only Supreme Court judgments)"
@@ -5428,8 +5683,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5442,6 +5697,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/mathai_v_state_of_kerala.md",
    "internal_note": "No overruling or doubt found in the 3 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 89% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -5645,8 +5901,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5659,6 +5915,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/mathai_verghese_v_state_of_kerala.md",
    "internal_note": "No overruling or doubt found in the 9 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 78% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -5860,8 +6126,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -5874,6 +6140,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/md_ibrahim_ors_v_state_of_bihar_anr.md",
    "internal_note": "No overruling or doubt found in the 11 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -6181,8 +6448,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6195,6 +6462,83 @@
    },
    "fingerprint": "5d99d0df3beb",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 7,
+    "read": 7,
+    "pending": 0,
+    "adverse": [
+     {
+      "id": "b2018_9_1006_1023:b2020_9_245_302",
+      "later_judgment": "MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI)",
+      "date": "2020-08-31",
+      "treatment": "OVERRULES",
+      "quote": "Mohan Lal v. State of Punjab (2018) 17 SCC 627 : [2018] 9 SCR 1006 – overruled.",
+      "note": "five-judge bench, 2020",
+      "rules_agree": true
+     },
+     {
+      "id": "b2018_9_1006_1023:b2020_8_1057_1070",
+      "later_judgment": "RAJESH DHIMAN versus STATE OF HIMACHAL PRADESH",
+      "date": "2020-10-26",
+      "treatment": "OVERRULES",
+      "quote": "A contrary decision of this Court in the case of Mohan Lal v. State of Punjab, (2018) 17 SCC 627 and any other decision taking a contrary view that the informant cannot be the investigator and in such a case the accused is entitled to acquittal are not good law and they are specifically overruled.",
+      "note": "quotes the overruling bench and applies it",
+      "rules_agree": true
+     },
+     {
+      "id": "b2018_9_1006_1023:b2023_2_560_581",
+      "later_judgment": "OFFICE OF THE ODISHA LOKAYUKTA versus DR. PRADEEP KUMAR PANIGRAHI AND OTHERS",
+      "date": "2023-02-23",
+      "treatment": "OVERRULES",
+      "quote": "A contrary decision of this Court in Mohan Lal v. State of Punjab [(2018) 17 SCC 627] and any other decision taking a contrary view that the informant cannot be the investigator and in such a case the accused is entitled to acquittal are not good law and they are specifically overruled.",
+      "note": "quotes the five-judge bench and relies on it",
+      "rules_agree": true
+     },
+     {
+      "id": "b2018_9_1006_1023:b2023_11_95_107",
+      "later_judgment": "SATHYAN versus STATE OF KERALA",
+      "date": "2023-08-11",
+      "treatment": "OVERRULES",
+      "quote": "and any other decision taking a contrary view that the informant cannot be the investigator and in such a case the 102 SUPREME COURT REPORTS [2023] 11 S.C.R. accused is entitled to acquittal are not good law",
+      "note": "quotes the five-judge bench and relies on it",
+      "rules_agree": true
+     },
+     {
+      "id": "b2018_9_1006_1023:b2024_7_2329_2362",
+      "later_judgment": "MD. RAHIM ALI @ ABDUR RAHIM versus THE STATE OF ASSAM & ORS.",
+      "date": "2024-07-11",
+      "treatment": "DISAGREES",
+      "quote": "Now so far as the observations made by this Court in para 13 in Mohan Lal [Mohan Lal v. State of Punjab (2018) 17 SCC 627 : (2019) 4 SCC (Cri) 215] that in the nature of reverse burden of proof, the onus will lie on the prosecution to demonstrate on the face of it that the investigation was fair, judicious with no circumstance that may raise doubt about its veracity, it is to be noted that the presumption under the Act is against the accused as per Sections 35 and 54 of the NDPS Act.",
+      "note": "quotes the five-judge bench rejecting para 13 of Mohan Lal",
+      "rules_agree": false
+     }
+    ],
+    "confirmed": 4,
+    "reader_only": [
+     {
+      "id": "b2018_9_1006_1023:b2024_7_2329_2362",
+      "later_judgment": "MD. RAHIM ALI @ ABDUR RAHIM versus THE STATE OF ASSAM & ORS.",
+      "date": "2024-07-11",
+      "treatment": "DISAGREES",
+      "quote": "Now so far as the observations made by this Court in para 13 in Mohan Lal [Mohan Lal v. State of Punjab (2018) 17 SCC 627 : (2019) 4 SCC (Cri) 215] that in the nature of reverse burden of proof, the onus will lie on the prosecution to demonstrate on the face of it that the investigation was fair, judicious with no circumstance that may raise doubt about its veracity, it is to be noted that the presumption under the Act is against the accused as per Sections 35 and 54 of the NDPS Act.",
+      "note": "quotes the five-judge bench rejecting para 13 of Mohan Lal",
+      "rules_agree": false
+     }
+    ],
+    "dismissed": [
+     {
+      "id": "b2018_9_1006_1023:b2020_12_583_874",
+      "later_judgment": "TOFAN SINGH versus STATE OF TAMIL NADU",
+      "date": "2020-10-29",
+      "rules_read": [
+       "DOUBTS_REFERS"
+      ],
+      "reader_says": "CITED",
+      "note": "describes the case that dealt with its correctness; no explicit statement on it here"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/mohan_lal_v_state_of_punjab.md",
    "internal_note": "A later judgment appears to overrule or reject this case; read the evidence before relying on it."
@@ -6435,8 +6779,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6449,6 +6793,38 @@
    },
    "fingerprint": "db137602cf90",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 6,
+    "read": 6,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "b2020_9_245_302:b2020_7_546_557",
+      "later_judgment": "RIZWAN KHAN versus THE STATE OF CHHATTISGARH",
+      "date": "2020-09-10",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "FOLLOWS",
+      "note": "applied"
+     },
+     {
+      "id": "b2020_9_245_302:b2025_7_2053_2061",
+      "later_judgment": "STATE OF PUNJAB versus GURNAM @ GAMA ETC.",
+      "date": "2025-07-30",
+      "rules_read": [
+       "DOUBTS_REFERS",
+       "OVERRULES"
+      ],
+      "reader_says": "FOLLOWS",
+      "note": "headnote"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/mukesh_singh_v_state_narcotic_branch_of_delhi.md",
    "internal_note": "No overruling or doubt found in the 12 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 67% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -6604,8 +6980,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6618,6 +6994,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/nanda_gopalan_v_state_of_kerala.md",
    "internal_note": "Only 1 later judgments in our collection cite this case; too few to say anything."
@@ -6794,8 +7171,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6808,6 +7185,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/national_legal_services_authority_v_union_of_india.md",
    "internal_note": "No overruling or doubt found in the 24 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 83% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -6858,8 +7245,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -6872,6 +7259,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Delhi; the collection holds only Supreme Court judgments)"
@@ -7118,8 +7506,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7132,6 +7520,37 @@
    },
    "fingerprint": "22fddc550a32",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 17,
+    "read": 17,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "c31821:c43934",
+      "later_judgment": "GIRISH RAGHUNATH MEHTA v. INSPECTOR OF CUSTOMS AND ANOTHER",
+      "date": "2016-09-07",
+      "rules_read": [
+       "DISAGREES"
+      ],
+      "reader_says": "DISTINGUISHES",
+      "note": "a contention based on it is rejected"
+     },
+     {
+      "id": "c31821:b2020_12_583_874",
+      "later_judgment": "TOFAN SINGH versus STATE OF TAMIL NADU",
+      "date": "2020-10-29",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "FOLLOWS",
+      "note": "a request to overrule it is rejected"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/noor_aga_v_state_of_punjab.md",
    "internal_note": "No overruling or doubt found in the 52 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -7304,8 +7723,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7318,6 +7737,27 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "b2023_12_714_739:b2023_16_743_764",
+      "later_judgment": "RAM KISHOR ARORA versus DIRECTORATE OF ENFORCEMENT",
+      "date": "2023-12-15",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "CITED",
+      "note": "the ASG's argument that it is per incuriam is reported; the Court's own view is not in these passages"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/pankaj_bansal_v_union_of_india.md",
    "internal_note": "No overruling or doubt found in the 10 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 55% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -7423,8 +7863,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7437,6 +7877,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/prabha_tyagi_v_kamlesh_devi.md",
    "internal_note": "No overruling or doubt found in the 3 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 61% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -7586,8 +8027,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7600,6 +8041,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/prabhu_v_state_of_madhya_pradesh.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -7766,8 +8208,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7780,6 +8222,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/prabir_purkayastha_v_state_nct_of_delhi.md",
    "internal_note": "No overruling or doubt found in the 7 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 46% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -7832,8 +8284,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7846,6 +8298,7 @@
    },
    "fingerprint": "fa2b32811edc",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This case is not in our collection of Supreme Court judgments, so what later judgments did with it was not checked. (no judgment with these parties and year)"
@@ -7890,8 +8343,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -7904,6 +8357,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Judicature at Patna; the collection holds only Supreme Court judgments)"
@@ -8071,8 +8525,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8085,6 +8539,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/pravat_chandra_mohanty_v_state_of_odisha.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -8317,8 +8772,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8331,6 +8786,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/pyare_lal_bhargava_v_state_of_rajasthan.md",
    "internal_note": "No overruling or doubt found in the 12 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 75% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -8546,8 +9002,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8560,6 +9016,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/rakesh_kumar_paul_v_state_of_assam.md",
    "internal_note": "No overruling or doubt found in the 19 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 72% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -8610,8 +9076,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8624,6 +9090,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court at Calcutta; the collection holds only Supreme Court judgments)"
@@ -8808,8 +9275,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8822,6 +9289,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 3,
+    "read": 3,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/rangappa_v_sri_mohan.md",
    "internal_note": "No overruling or doubt found in the 23 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -8967,8 +9444,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -8981,6 +9458,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/s_vanitha_v_deputy_commissioner_bengaluru_urban_district.md",
    "internal_note": "Only 2 later judgments in our collection cite this case; too few to say anything."
@@ -9172,8 +9650,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9186,6 +9664,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/s_w_palanitkar_and_ors_v_state_of_bihar_and_anr.md",
    "internal_note": "No overruling or doubt found in the 15 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 86% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -9291,8 +9770,8 @@
    },
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9305,6 +9784,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/sakharam_v_state_of_madhya_pradesh.md",
    "internal_note": "Only 1 later judgments in our collection cite this case; too few to say anything."
@@ -9351,8 +9831,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9365,6 +9845,7 @@
    },
    "fingerprint": "fa2b32811edc",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This case is not in our collection of Supreme Court judgments, so what later judgments did with it was not checked. (no judgment with these parties and year)"
@@ -9525,8 +10006,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9539,6 +10020,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 3,
+    "read": 3,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/satish_chander_ahuja_v_sneha_ahuja.md",
    "internal_note": "No overruling or doubt found in the 4 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 67% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -9706,8 +10197,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9720,6 +10211,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/satishchandra_ratanlal_shah_v_state_of_gujarat.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -9930,8 +10422,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -9944,6 +10436,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 5,
+    "read": 5,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/shreya_singhal_v_union_of_india.md",
    "internal_note": "No overruling or doubt found in the 21 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 80% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -10301,8 +10803,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10315,6 +10817,140 @@
    },
    "fingerprint": "25fd26c1810d",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 20,
+    "read": 20,
+    "pending": 0,
+    "adverse": [
+     {
+      "id": "c37199:b2020_2_1_131",
+      "later_judgment": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+      "date": "2020-01-29",
+      "treatment": "OVERRULES",
+      "quote": "Mhetre (supra) to that extent and other judgments which have followed it are accordingly overruled.",
+      "note": "in part: the view that no conditions can be imposed on anticipatory bail; five-judge bench, 2020",
+      "rules_agree": true
+     },
+     {
+      "id": "c37199:b2023_11_705_714",
+      "later_judgment": "STATE OF HARYANA versus DHARAMRAJ",
+      "date": "2023-08-29",
+      "treatment": "OVERRULES",
+      "quote": "Siddharam Satlingappa Mhetre v State of Maharashtra, (2011) 1 SCC 694 is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).",
+      "note": "reports the partial overruling in Sushila Aggarwal (a 2023 bench)",
+      "rules_agree": false
+     },
+     {
+      "id": "c37199:b2023_15_525_589",
+      "later_judgment": "PRIYA INDORIA versus STATE OF KARNATAKA AND ORS. ETC.",
+      "date": "2023-11-20",
+      "treatment": "OVERRULES",
+      "quote": "k) In Siddharam Satlingappa Mhetre vs. State of Maharashtra, (2011) 1 SCC 694 (and other similar judgments), it was held that no restrictive conditions at all can be imposed, while granting anticipatory bail are hereby overruled.",
+      "note": "quotes Sushila Aggarwal's conclusion and applies it",
+      "rules_agree": false
+     },
+     {
+      "id": "c37199:b2024_8_753_767",
+      "later_judgment": "MANIK MADHUKAR SARVE & ORS. versus VITTHAL DAMUJI MEHER & ORS.",
+      "date": "2024-08-28",
+      "treatment": "OVERRULES",
+      "quote": "Siddharam Satlingappa Mhetre v. State of Maharashtra, (2011) 1 SCC 694 is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).",
+      "note": "reports the partial overruling",
+      "rules_agree": false
+     },
+     {
+      "id": "c37199:b2025_1_911_933",
+      "later_judgment": "MOHD. TAHIR HUSSAIN versus STATE OF NCT OF DELHI",
+      "date": "2025-01-22",
+      "treatment": "OVERRULES",
+      "quote": "Siddharam Satlingappa Mhetre v. State of Maharashtra, (2011) 1 SCC 694 is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).",
+      "note": "reports the partial overruling",
+      "rules_agree": false
+     }
+    ],
+    "confirmed": 1,
+    "reader_only": [
+     {
+      "id": "c37199:b2023_11_705_714",
+      "later_judgment": "STATE OF HARYANA versus DHARAMRAJ",
+      "date": "2023-08-29",
+      "treatment": "OVERRULES",
+      "quote": "Siddharam Satlingappa Mhetre v State of Maharashtra, (2011) 1 SCC 694 is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).",
+      "note": "reports the partial overruling in Sushila Aggarwal (a 2023 bench)",
+      "rules_agree": false
+     },
+     {
+      "id": "c37199:b2023_15_525_589",
+      "later_judgment": "PRIYA INDORIA versus STATE OF KARNATAKA AND ORS. ETC.",
+      "date": "2023-11-20",
+      "treatment": "OVERRULES",
+      "quote": "k) In Siddharam Satlingappa Mhetre vs. State of Maharashtra, (2011) 1 SCC 694 (and other similar judgments), it was held that no restrictive conditions at all can be imposed, while granting anticipatory bail are hereby overruled.",
+      "note": "quotes Sushila Aggarwal's conclusion and applies it",
+      "rules_agree": false
+     },
+     {
+      "id": "c37199:b2024_8_753_767",
+      "later_judgment": "MANIK MADHUKAR SARVE & ORS. versus VITTHAL DAMUJI MEHER & ORS.",
+      "date": "2024-08-28",
+      "treatment": "OVERRULES",
+      "quote": "Siddharam Satlingappa Mhetre v. State of Maharashtra, (2011) 1 SCC 694 is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).",
+      "note": "reports the partial overruling",
+      "rules_agree": false
+     },
+     {
+      "id": "c37199:b2025_1_911_933",
+      "later_judgment": "MOHD. TAHIR HUSSAIN versus STATE OF NCT OF DELHI",
+      "date": "2025-01-22",
+      "treatment": "OVERRULES",
+      "quote": "Siddharam Satlingappa Mhetre v. State of Maharashtra, (2011) 1 SCC 694 is worthy of mention in this context, despite its partial overruling in Sushila Aggarwal (supra).",
+      "note": "reports the partial overruling",
+      "rules_agree": false
+     }
+    ],
+    "dismissed": [
+     {
+      "id": "c37199:c39290",
+      "later_judgment": "Rashmi Rekha Thatoi & Anr v. State of Orissa & Ors",
+      "date": "2012-05-04",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "DISTINGUISHES",
+      "note": "confines what Mhetre decided"
+     },
+     {
+      "id": "c37199:c41544",
+      "later_judgment": "UNION OF INDIA & ORS v. R.P.SINGH",
+      "date": 2014,
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "FOLLOWS",
+      "note": "its per incuriam analysis is quoted as authority"
+     },
+     {
+      "id": "c37199:c42426",
+      "later_judgment": "K.P. Manu v. Chairman, Scrutiny Committee for Verification of Community Certificate",
+      "date": "2015-02-26",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "CITED",
+      "note": "a quotation of another decision's quotation"
+     },
+     {
+      "id": "c37199:b2018_6_825_852",
+      "later_judgment": "SUSHILA AGGARWAL & ORS. versus STATE (NCT OF DELHI) & ANR.",
+      "date": "2018-05-15",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "CITED",
+      "note": "a reference order that describes the two lines of cases"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/siddharam_satlingappa_mhetre_v_state_of_maharashtra.md",
    "internal_note": "A later judgment appears to overrule or reject this case; read the evidence before relying on it."
@@ -10365,8 +11001,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10379,6 +11015,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Karnataka at Bengaluru; the collection holds only Supreme Court judgments)"
@@ -10581,8 +11218,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10595,6 +11232,16 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/state_of_gujarat_v_haidarali_kalubhai.md",
    "internal_note": "Only 1 later judgments in our collection cite this case; too few to say anything."
@@ -10785,8 +11432,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -10799,6 +11446,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/state_of_maharashtra_v_tapas_d_neogy.md",
    "internal_note": "No overruling or doubt found in the 4 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 84% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -11004,8 +11652,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11018,6 +11666,36 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 24,
+    "read": 24,
+    "pending": 0,
+    "adverse": [
+     {
+      "id": "c30317:c37060",
+      "later_judgment": "VIJAYSINH CHANDUBHA JADEJA — v. STATE OF GUJARAT —",
+      "date": 2010,
+      "treatment": "DOUBTS",
+      "quote": "In appreciating the law laid down by the Constitution Bench in Baldev Singh’s case (supra), we have noticed that conflicting decisions have been rendered by this court. We feel that the matter requires some clarification by a larger Bench.",
+      "note": "refers the question of how Section 50 is to be read to a larger bench; it does not say Baldev Singh was wrong",
+      "rules_agree": false
+     }
+    ],
+    "confirmed": 0,
+    "reader_only": [
+     {
+      "id": "c30317:c37060",
+      "later_judgment": "VIJAYSINH CHANDUBHA JADEJA — v. STATE OF GUJARAT —",
+      "date": 2010,
+      "treatment": "DOUBTS",
+      "quote": "In appreciating the law laid down by the Constitution Bench in Baldev Singh’s case (supra), we have noticed that conflicting decisions have been rendered by this court. We feel that the matter requires some clarification by a larger Bench.",
+      "note": "refers the question of how Section 50 is to be read to a larger bench; it does not say Baldev Singh was wrong",
+      "rules_agree": false
+     }
+    ],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/state_of_punjab_v_baldev_singh.md",
    "internal_note": "No overruling or doubt found in the 83 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 84% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -11167,8 +11845,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11181,6 +11859,36 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 1,
+    "read": 1,
+    "pending": 0,
+    "adverse": [
+     {
+      "id": "c41273:b2023_13_289_370",
+      "later_judgment": "RANJAN KUMAR CHADHA versus STATE OF HIMACHAL PRADESH",
+      "date": "2023-10-06",
+      "treatment": "DISAGREES",
+      "quote": "It is also pertinent to note that although in Parmanand (supra) the Court looked into Pawan Kumar (supra), yet ultimately it followed Dilip (supra) and took the view that if the bag carried by the accused is searched and his person is also searched, Section 50 of the NDPS Act will have application. This is something travelling beyond what has been stated by the large Bench in Pawan Kumar (supra).",
+      "note": "criticises it for going beyond a larger bench; headnote says held not applicable; in part",
+      "rules_agree": false
+     }
+    ],
+    "confirmed": 0,
+    "reader_only": [
+     {
+      "id": "c41273:b2023_13_289_370",
+      "later_judgment": "RANJAN KUMAR CHADHA versus STATE OF HIMACHAL PRADESH",
+      "date": "2023-10-06",
+      "treatment": "DISAGREES",
+      "quote": "It is also pertinent to note that although in Parmanand (supra) the Court looked into Pawan Kumar (supra), yet ultimately it followed Dilip (supra) and took the view that if the bag carried by the accused is searched and his person is also searched, Section 50 of the NDPS Act will have application. This is something travelling beyond what has been stated by the large Bench in Pawan Kumar (supra).",
+      "note": "criticises it for going beyond a larger bench; headnote says held not applicable; in part",
+      "rules_agree": false
+     }
+    ],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/state_of_rajasthan_v_parmanand.md",
    "internal_note": "No overruling or doubt found in the 3 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 83% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -11381,8 +12089,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11395,6 +12103,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/state_of_uttar_pradesh_v_ram_kishan.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -11632,8 +12341,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11646,6 +12355,27 @@
    },
    "fingerprint": "87a801b2b6cc",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 9,
+    "read": 9,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "b2020_2_1_131:b2023_10_1184_1195",
+      "later_judgment": "MD. ASFAK ALAM versus THE STATE OF JHARKHAND & ANR.",
+      "date": "2023-07-31",
+      "rules_read": [
+       "DISAGREES"
+      ],
+      "reader_says": "FOLLOWS",
+      "note": "its holding is reproduced and applied; moderate confidence"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/sushila_aggarwal_v_state_nct_of_delhi.md",
    "internal_note": "No overruling or doubt found in the 22 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 67% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -11690,8 +12420,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11704,6 +12434,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Delhi; the collection holds only Supreme Court judgments)"
@@ -11870,8 +12601,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -11884,6 +12615,27 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 3,
+    "read": 3,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": [
+     {
+      "id": "b2020_12_583_874:b2022_6_382_726",
+      "later_judgment": "VIJAY MADANLAL CHOUDHARY & ORS. versus UNION OF INDIA & ORS.",
+      "date": "2022-07-27",
+      "rules_read": [
+       "OVERRULES"
+      ],
+      "reader_says": "DISTINGUISHES",
+      "note": "headnote; the Court declined to examine an argument that it is per incuriam"
+     }
+    ]
+   },
    "changed_since_last_run": null,
    "report_file": "reports/tofan_singh_v_state_of_tamil_nadu.md",
    "internal_note": "No overruling or doubt found in the 11 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 67% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -12021,8 +12773,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12035,6 +12787,7 @@
    },
    "fingerprint": "11b395a766d4",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/union_of_india_v_md_nawaz_khan.md",
    "internal_note": "Only 0 later judgments in our collection cite this case; too few to say anything."
@@ -12136,8 +12889,8 @@
    },
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12150,6 +12903,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 2,
+    "read": 2,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/union_of_india_v_mohanlal.md",
    "internal_note": "No overruling or doubt found in the 5 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 75% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -12291,8 +13054,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12305,6 +13068,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/union_of_india_v_shiv_shanker_kesari.md",
    "internal_note": "No overruling or doubt found in the 3 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 89% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -12351,8 +13115,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12365,6 +13129,7 @@
    },
    "fingerprint": "fa2b32811edc",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This case is not in our collection of Supreme Court judgments, so what later judgments did with it was not checked. (no judgment with these parties and year)"
@@ -12536,8 +13301,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12550,6 +13315,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/vihaan_kumar_v_state_of_haryana.md",
    "internal_note": "No overruling or doubt found in the 3 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 22% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -12729,8 +13495,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12743,6 +13509,7 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": "reports/vijay_kumar_ghai_v_state_of_west_bengal.md",
    "internal_note": "No overruling or doubt found in the 4 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 61% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -12928,8 +13695,8 @@
     }
    ],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -12942,6 +13709,16 @@
    },
    "fingerprint": "665b5bf52752",
    "review": null,
+   "second_reader": {
+    "label": "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author",
+    "items": 5,
+    "read": 5,
+    "pending": 0,
+    "adverse": [],
+    "confirmed": 0,
+    "reader_only": [],
+    "dismissed": []
+   },
    "changed_since_last_run": null,
    "report_file": "reports/vijaysinh_chandubha_jadeja_v_state_of_gujarat.md",
    "internal_note": "No overruling or doubt found in the 15 later judgments we hold that cite it (collection runs to 2026-08-12; we hold about 88% of what Indian Kanoon lists after it). This is silence in what we hold, not a finding about the law."
@@ -12986,8 +13763,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -13000,6 +13777,7 @@
    },
    "fingerprint": "ee2acf787f9d",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This is a High Court decision; our collection holds only Supreme Court judgments, so what later judgments did with it was not checked. (decided by High Court of Judicature at Bombay (Ordinary Original Civil Jurisdiction); the collection holds only Supreme Court judgments)"
@@ -13052,8 +13830,8 @@
    "coverage": null,
    "statute_dimension": [],
    "provenance": {
-    "generated": "2026-10-05",
-    "checker_commit": "4bb3b2ffc52457c05393261a1bffbf7c04ef5c6b",
+    "generated": "2026-10-06",
+    "checker_commit": "adbbdd80639d2d25d8d88e23f41a04b0af449d5d +uncommitted changes",
     "label": "pattern-rule reading of Supreme Court texts; not lawyer-validated",
     "evaluation": "goodlaw/EVALUATION.md",
     "corpus": {
@@ -13066,6 +13844,7 @@
    },
    "fingerprint": "fa2b32811edc",
    "review": null,
+   "second_reader": null,
    "changed_since_last_run": null,
    "report_file": null,
    "internal_note": "This case is not in our collection of Supreme Court judgments, so what later judgments did with it was not checked. (no judgment with these parties and year)"

@@ -4,7 +4,7 @@
 
 A later judgment of the Supreme Court appears to overrule or reject this case. A lawyer must read it before anyone relies on this case.
 
-Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 

@@ -148,6 +148,34 @@ The plan said "bench size for modern judgments". I had expected missing sizes to
 
 Reproduce: `python test_goodlaw_headers.py`, and rebuild the store (`python sci_goodlaw.py build`) to apply the corrected sizes.
 
+### Step 5 of the improvement plan: a second reader (a model reads the passages)
+
+The pattern rules read one sentence at a time. A reader that reads the passage can see an overruling stated in other words, in the next paragraph, or as "that view". `goodlaw/reader.py` prepares what a model reads and checks what it says; it does not call a model. For each case and each later judgment that mentions it, the reader sees up to four passages (the mention's sentence and its neighbours, the case marked « »), the ones with treatment vocabulary first and every sentence the rules read as adverse always included. It writes a treatment (`OVERRULES`, `DISAGREES`, `DOUBTS`, `DISTINGUISHES`, `FOLLOWS`, `CITED`, `UNCLEAR`) and the sentence that shows it. **Import checks that the sentence occurs word for word in the passages**; a verdict with an invented or altered quote is rejected and can never be shown as evidence. A verdict is tied to the exact passages by a hash, so it lapses if the passages change. The reader never changes a card's status or user note; it adds a labelled second reading and puts disagreements on the review sheet.
+
+**Measured blind, on the tuning halves only** (the held-out old half was run once at frozen commit `bb77a5e`, and the untouched modern half is unrun). 159 pairs were drawn with a fixed seed, shuffled with opaque ids, and read before the answer key was opened: 69 the reporters marked overruled or not followed (old: citator codes, 49; modern: case-law tables, 20), 48 the reporters did not mark adverse but the rules flagged adverse, and 42 the reporters did not mark and the rules left alone.
+
+| Pairs | n | Rules read adverse | Reader read adverse (verified quote) | Either | Both |
+|---|---|---|---|---|---|
+| Reporter-marked adverse, mention found | 69 | 45 (65%) | 52 (75%) | 55 (80%) | 42 |
+| Not marked adverse, rules flagged them | 48 | 48 | 14 | 48 | 14 |
+| Not marked adverse, rules quiet | 42 | 0 | **0** | 0 | 0 |
+
+- **Recall on pairs with a found mention**: 75% for the reader against 65% for the rules, 80% for either. That is 7 more pairs of 69, on a sample where one pair is 1.4 points. It is not a large gain, and the pairs are those the keys mark adverse, which includes key noise (a citator code can mark a pair adverse for a reason the later text does not state).
+- **False flags**: of the 48 pairs the rules flagged and the reporters did not mark adverse, the reader read 34 as not adverse (counsel's argument, a lower court's view, a case cited for a rule, a reference order that only describes the conflict). I read the dismissals; about 25 were real rule errors (my reading, not independent). The other 14 were read adverse by both, which is not an error by the key's measure: the key marks only what the reporter chose to mark.
+- **On quiet pairs the reader found nothing adverse (0 of 42)**, so it does not invent adverse readings when there is nothing there. 42 is small.
+- **Limits of this measurement.** (1) The reader is the same model that wrote the rules; it is not independent, and a lawyer is. (2) Samples are small (69, 48, 42); the intervals are wide. (3) The first blind run showed a flaw in choosing which passages to show: explicit "we overrule the decision in X" sentences were left out in favour of passages with many weak cue words. I changed the selection (strong cues outrank weak ones; rule-flagged sentences are always shown) after seeing it; that change is **unmeasured** and, being tuned on what I saw, optimistic. (4) Where the reader read a passage as "reported, not the Court's own stance" the protocol is ambiguous: a reported *overruling* ("as held in X, the case was overruled") was read as adverse, a reported *doubt* was read as `CITED`. (5) The reader sees only the passages, not the whole judgment, so it cannot know that a judgment which quotes an earlier doubt goes on to resolve it (see the Baldev Singh example below).
+
+**Production read, 76 cards (2026-10-06).** 180 judgments carried a rule-adverse mention or a strong cue in a passage; all 180 were read (178 verdicts accepted first time; 2 were rejected for a quote that was not word for word, and re-read). Result: 14 verified adverse readings, 15 flagged judgments read as not adverse, and no status changed.
+
+- **The 2 cases the rules had already flagged** gained readings: Mohan Lal (4 judgments agree, plus Md. Rahim Ali 2024 quoting the five-judge bench) and Mhetre (Sushila Aggarwal 2020 agrees; four 2023 to 2025 judgments *report* its partial overruling, which repeats the finding rather than adding to it). Across all 76 cards the reader read 15 judgments the rules had flagged as not adverse, among them Mhetre mentions that only describe it or quote counsel (4), and Tofan Singh 2020, where a request to overrule Noor Aga was rejected.
+- **4 quiet cards got a new reader-only finding**, which is why they are now on the review sheet: G. Sagar Suri (J. Vedhasingh 2022 refers the question of its correctness to a larger bench: a real, explicit doubt of the Court; whether the reference is decided is not in our data), M. Ravindran (ED v. Kapil Wadhawan 2023 says Ravindran ought to have followed a different computation principle for the 60/90-day default-bail period), State of Rajasthan v. Parmanand (Ranjan Kumar Chadha 2023 says it travels beyond what a larger bench held, in part), and State of Punjab v. Baldev Singh (Vijaysinh Chandubha Jadeja 2010).
+- **One of the four is a false alarm, shown by the text itself.** The Jadeja judgment *is* the five-judge Constitution Bench that clarified Baldev Singh: it quotes the two-judge reference order ("we feel the matter requires some clarification by a larger Bench"), then holds Section 50(1) mandatory and says the later "substantial compliance" cases are not in consonance with Baldev Singh. The reader marked the recited reference order as `DOUBTS`. The quote is real, so the check cannot catch it; the reader's note said "it does not say Baldev Singh was wrong"; the review sheet row now carries that note. I left the verdict as recorded rather than editing it with information the reader did not have. This is the failure to expect from a second reader: a true sentence, read as the wrong speaker's stance.
+- **Mohan Lal's and Mhetre's `ADVERSE_SIGNAL` do not depend on the reader**; it changes neither card.
+
+**What this does and does not establish.** The reader raised recall on the sample, read 34 of the rules' 48 flags on unmarked pairs as not adverse (about 25 of the 48 real rule errors, on my reading), and invented nothing on quiet pairs. It has found 3 plausible new adverse readings on 3 cases the rules called quiet, and 1 false alarm. Nobody but the author has read any of it; every reading is labelled "second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author". Neither it nor the rules say whether a case is good law.
+
+Reproduce: `python test_goodlaw_reader.py`; the blind run is `sci_goodlaw.py reader-eval build --out DIR` (writes the batch and, apart, the key), a reader writes `verdicts.jsonl`, `reader-eval score --out DIR --verdicts FILE`; the production protocol is in `cards/README.md`.
+
 ## What this means for use
 
 - Use `ADVERSE_SIGNAL` and `QUESTIONED` as "read this sentence first". About half the clean flags are real; the report prints the quote and says why a reading is weak.
@@ -159,6 +187,7 @@ Reproduce: `python test_goodlaw_headers.py`, and rebuild the store (`python sci_
 1. A lawyer-checked sample of 100 to 200 cases, half of them recent. This is the one thing that would turn "pattern rules" into something that can be called validated.
 2. Indian Kanoon's "cited by" annotations for a few dozen cases (this needs the person with access; the checker does not fetch from Indian Kanoon).
 3. Re-running this on a fresh held-out half once more rules are added, drawn from cases the rules have never seen.
+4. A reader that is not the checker's author (another model, or a lawyer on the 180 passages read), and a second blind run of the second reader after the passage-selection change.
 
 ## Reproduce
 

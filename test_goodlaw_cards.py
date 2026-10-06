@@ -186,6 +186,13 @@ rows = CD.review_rows([card("ADVERSE_SIGNAL", strong=strong1), reader_found, car
 check([r["case_name"] for r in rows] == ["Rangappa v Sri Mohan", "Quiet v State"], "a quiet case with a reader-only finding gets a row, after the case Recourse calls GOOD_LAW that the checker flags; a quiet case without one gets none")
 qrow = [r for r in rows if r["case_name"] == "Quiet v State"][0]
 check("second reader found 1 adverse" in qrow["why_in_sheet"] and qrow["strongest_evidence"].startswith("[second reader: OVERRULES]") and qrow["where"] == "Later v State (2022-02-02)", "its row says the second reader found it and quotes the reader's sentence")
+noted = card("NO_ADVERSE_FOUND")
+noted["case"] = dict(noted["case"], name="Noted v State")
+noted["second_reader"] = {"items": 2, "read": 2, "pending": 0, "confirmed": 0, "dismissed": [], "adverse": [], "label": "x", "reader_only": [
+    {"id": "c8:b1", "later_judgment": "Later v State", "date": "2022-02-02", "treatment": "DOUBTS", "quote": "it needs a larger bench", "note": "a reference order only", "rules_agree": False},
+    {"id": "c8:b2", "later_judgment": "Another v State", "date": "2023-03-03", "treatment": "DOUBTS", "quote": "again", "note": "", "rules_agree": False}]}
+nrow = CD.review_rows([noted])[0]
+check("(the reader's note: a reference order only)" in nrow["strongest_evidence"] and nrow["where"].endswith("; and 1 more"), "a reader-only row carries the reader's note and says how many more such judgments there are")
 agree = card("ADVERSE_SIGNAL", strong=strong1)
 agree["second_reader"] = {"items": 2, "read": 2, "pending": 0, "confirmed": 1, "dismissed": [{"id": "x"}], "adverse": [], "reader_only": [], "label": "x"}
 arow = CD.review_rows([agree])[0]

@@ -14,6 +14,8 @@ Source label on everything: **pattern-rule reading of Supreme Court texts; not l
 | `CHANGES.md` | what changed since the previous run (a status that moved towards a warning is listed first) |
 | `reports/*.md` | the full readable report for each checked case |
 | `reviews.json` | the verdicts people have recorded (an empty list until someone records one) |
+| `reader_verdicts.jsonl` | the second reader's accepted verdicts, one per line (see "The second reader" below); `cards` puts them on the cards |
+| `READER_INSTRUCTIONS.txt`, `reader_batch.jsonl` | what a reader is told, and the passages still unread (the batch file exists only while something is unread) |
 
 ## What a card says
 
@@ -68,6 +70,22 @@ This logic was run against the real cards in isolation (Mohan Lal gets the warni
 
 At read time: `CONFIRMED_ADVERSE` gives a warning; `FALSE_ALARM` silences it; `NEEDS_RESEARCH` keeps the checker's reading and marks it under review.
 
+## The second reader (a model reads the passages; a person confirms)
+
+Each card has a `second_reader` block: for every later judgment in which the rules read the case as adverse, or a passage carries a strong treatment word, a model has read the passages and said how that judgment treats the case, with the sentence that shows it (`goodlaw/reader.py`; method and measurement in `goodlaw/EVALUATION.md`, step 5). It never changes `status` or `user_facing_note`, and `cardreader.py` ignores it. It appears in two places: the card, and the review sheet (a quiet card with a reader-only adverse reading gets a row, with the reader's note beside the quote; a flagged card's row says where the reader agrees and where it read a flagged judgment as not adverse). Label: **second reading by a model (a session reading the passages); not lawyer-validated and not independent of the checker's author.**
+
+```
+python sci_goodlaw.py cards --corpus corpus.sqlite   # writes reader_batch.jsonl with every item not yet read (and READER_INSTRUCTIONS.txt)
+# a reader (a Claude session, or any model) reads the batch and writes answers.jsonl: {"id", "treatment", "quote", "note"} per item
+python sci_goodlaw.py reader-import --verdicts answers.jsonl --reader "<who read it>"   # rejects a verdict whose quote is not word for word in the passages
+python sci_goodlaw.py cards --corpus corpus.sqlite   # puts the verdicts on the cards and rebuilds the review sheet
+```
+
+- A verdict is tied to the exact passages by a hash: when a rebuild changes the passages a reader saw (new later judgments, a rule change), that item returns to the batch.
+- A reader should read the passages only, not the whole judgment, and not the checker's labels (the batch carries none).
+- **Known failure.** The reader answers for what the passage says, and a passage can quote someone else. On 2026-10-06 the State of Punjab v Baldev Singh card got a reader-only `DOUBTS` from the Jadeja Constitution Bench (2010): the quoted sentence is the two-judge reference order it recites; the bench itself held Baldev Singh's rule mandatory. Treat a reader-only finding as "read this judgment", exactly as with a rule flag, and read the reader's note beside it.
+- Reports of a doubt or overruling made by *another* bench are not yet a separate answer. The protocol treated a reported overruling as adverse and a reported doubt as `CITED`; four of Mhetre's five adverse readings are later benches reporting Sushila Aggarwal. A `REPORTED` treatment is an open item in `FOLLOW_UPS.md`.
+
 ## Refreshing (after each monthly bucket refresh)
 
 ```
@@ -92,6 +110,7 @@ Then read `CHANGES.md`: any case whose status moved towards a warning, or that g
 
 ## Limits (read before relying on any card)
 
+- **The second reader is the checker's author reading again, not a second person.** Its quotes are checked word for word; its readings are not checked by anyone yet. 180 judgments were read on 2026-10-06 and 14 verified adverse readings found: 5 agree with a rule's reading, 9 are reader-only (5 on the two flagged cards, 4 on quiet cards; one of those 4 is a false alarm).
 - **A quiet card is weak evidence.** The checker found roughly a third to a half of the overrulings it could be tested on, and about half its clean flags were real (see `goodlaw/EVALUATION.md`). The 45 quiet cards are not 45 findings that the law is settled.
 - The collection lacks roughly 40% of what Indian Kanoon lists for 1968 to 1999 and about a quarter of 2018 to 2025; High Court treatment is invisible.
 - A card is a snapshot: rebuild it after each monthly refresh (`stale` flags a card older than 45 days).

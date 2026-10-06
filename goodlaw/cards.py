@@ -456,7 +456,8 @@ def review_rows(cards):
         where = (f"{top['title']} ({top['date'] or top['year']}, bench {top['bench_size'] or '?'}; compared with the case's bench: {top['bench_relation']})" if top else "")
         if reader_only and not flagged:
             r0 = reader_only[0]
-            strongest, where = f"[second reader: {r0['treatment']}] {r0['quote']}", f"{r0['later_judgment']} ({r0['date']})"
+            strongest = f"[second reader: {r0['treatment']}] {r0['quote']}" + (f" (the reader's note: {r0['note']})" if r0.get("note") else "")
+            where = f"{r0['later_judgment']} ({r0['date']})" + (f"; and {len(reader_only) - 1} more" if len(reader_only) > 1 else "")
         rows.append({"case_name": c["case"]["name"], "why_in_sheet": "; ".join(why), "checker_label": c["status"], "recourse_curated_status": _recourse_status(c),
                      "strongest_evidence": strongest, "where": where,
                      "report_file": c.get("report_file") or "", "match_check": match_txt, "your_verdict": "", "reviewer": "", "review_date": "", "note": ""})

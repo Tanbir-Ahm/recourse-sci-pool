@@ -23,6 +23,10 @@ Run `python sci_goodlaw.py check --corpus corpus.sqlite "Rangappa v. Sri Mohan" 
 
 For the cases Recourse can show, `python sci_goodlaw.py cards` writes one card each (`cards/currency_cards.json`) so that answering a question is a lookup: the status, one or two plain sentences for a user (only when there is a warning or a caution; never "good law"), the quoted evidence for a reviewer, a review sheet a person fills in, and a report of what changed since the last run. `goodlaw/cardreader.py` is the stdlib-only reader Recourse would copy. See `cards/README.md`. Nothing is connected to the live site yet.
 
+## The second reader
+
+A model can read the passage around each mention, which the pattern rules cannot. `goodlaw/reader.py` exports the passages (without the rules' labels), checks each answer's quote word for word, and ties each verdict to the passages it read. The results sit on each card (`second_reader`) and on the review sheet; they never change a status or a user note. Measured blind on the tuning halves it found 75% of the pairs the reporters marked adverse (the rules 65%), read 34 of 48 rule flags on unmarked pairs as not adverse, and found nothing on 42 quiet pairs; it is the checker's author, not an independent reader, and it can read a quoted earlier doubt as the Court's own. See `goodlaw/EVALUATION.md` (step 5) and `cards/README.md`.
+
 ## What the labels mean, and do not mean
 
 - `ADVERSE_SIGNAL`: a later judgment of this Court, in its own voice, appears to overrule or reject the case (or a larger bench disagrees with it, or the law report's headnote says "over-ruled", or the reporter's citator marks it overruled). Read it before relying on the case.
@@ -40,12 +44,13 @@ See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what th
 1. Build the store (about 15 minutes, 2 GB, needs the two data branches checked out): `python sci_goodlaw.py build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --corpus corpus.sqlite`.
 2. `python sci_goodlaw.py find --corpus corpus.sqlite "rangappa"` lists candidate judgments; `check` writes `<doc_key>.json` and `<doc_key>.md`; `batch --targets goodlaw/targets/priority.json --out reports/` does a list.
 3. `python sci_goodlaw.py library`, `cards`, `cards-review` and `card` make, review and read the precomputed cards (`cards/README.md`). `python sci_goodlaw.py known --corpus corpus.sqlite` runs the 20 known cases; `python sci_goodlaw.py eval --corpus corpus.sqlite --half dev` measures agreement with the reporter's citator (the held-out half needs `--confirm-held-out` and should be run once per frozen rule set).
-4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`, `test_goodlaw_modern_gold.py`, `test_goodlaw_tables.py`, `test_goodlaw_library.py`, `test_goodlaw_cards.py`.
+4. Tests: `python test_goodlaw_headers.py`, `test_goodlaw_cites.py`, `test_goodlaw_corpus.py`, `test_goodlaw_mentions.py`, `test_goodlaw_treatment.py`, `test_goodlaw_statutes.py`, `test_goodlaw_report.py`, `test_goodlaw_evaluate.py`, `test_goodlaw_modern_gold.py`, `test_goodlaw_tables.py`, `test_goodlaw_library.py`, `test_goodlaw_cards.py`, `test_goodlaw_reader.py`.
 
 ## What it cannot do
 
 - It sees only Supreme Court judgments we hold: the court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds part of each year. Our crawl and the bucket together miss roughly 40% of what Indian Kanoon lists for 1968 to 1999, and about a quarter of 2018 to 2025. A judgment we lack cannot overrule anything we can see.
 - High Court treatment is invisible.
+- The second reader sees only the passages around a mention, so it can take a recited earlier order or a reported view for the Court's own stance.
 - Rules read sentences; they miss overrulings stated without the usual words, and they can mistake a sentence about another case for one about the target (the report flags the weak ones).
 - Bench strength is known completely only for judgments up to 1994 and for law-report PDFs; elsewhere it is a lower bound, and the comparison is made only when the bound already settles it (step 4 in `goodlaw/EVALUATION.md`). A larger bench's disagreement with a 1995 to 2016 judgment therefore stays a caution, not a warning.
 - Case names in old OCR texts are spelled inconsistently; a case named in an unusual spelling can be missed.

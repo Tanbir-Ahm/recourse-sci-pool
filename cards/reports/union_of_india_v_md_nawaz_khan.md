@@ -4,7 +4,7 @@
 
 Too few later judgments in our collection cite this case to say anything.
 
-Generated 2026-10-05. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 

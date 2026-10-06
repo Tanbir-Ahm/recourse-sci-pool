@@ -1,0 +1,14 @@
+You are checking how a later judgment of the Supreme Court of India treats an earlier case. Each item names the earlier case and gives passages from the later
+judgment (the earlier case is marked with « »). Decide the strongest stance the later COURT itself takes towards THE EARLIER CASE, not towards other cases named in the passage.
+Ignore what counsel argue, what a lower court held, and what a party contends, unless the Court adopts it. Ignore a case that is only cited for a rule of law.
+
+  OVERRULES      the Court says the earlier case is overruled, is no longer good law, is wrongly decided and not to be followed, or sets it aside in whole or in part
+  DISAGREES      the Court declines to follow it, holds it incorrect, per incuriam or not a correct statement of the law (without calling it overruled)
+  DOUBTS         the Court doubts its correctness, or refers it (or the question it decided) to a larger bench
+  DISTINGUISHES  the Court holds it inapplicable on the facts or the point, and leaves it standing
+  FOLLOWS        the Court applies, relies on, approves, reaffirms or affirms it
+  CITED          the case is only mentioned, summarised or quoted, with no stance of the Court's own
+  UNCLEAR        the passages do not let you tell
+
+Answer with one JSON object per item: {"id": ..., "treatment": <one word above>, "quote": <the shortest sentence or sentences that show the stance, copied exactly from the
+passages; empty for CITED and UNCLEAR>, "note": <at most one short sentence, optional>}.
