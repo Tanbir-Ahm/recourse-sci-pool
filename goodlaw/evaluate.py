@@ -46,11 +46,8 @@ def gold_pairs(corpus):
     return pairs, unresolved
 
 
-def best_in_doc(corpus, target_key, citing_key, body_only=False):
-    """The strongest treatment of the target found in the citing judgment (court's own voice, confident mentions only), or None if no mention is found.
-    With body_only, mentions inside the headnote (and so inside its case-law table) are not read, only the court's own judgment after it: used when the answer key
-    itself is printed in that headnote. The text is still read as a whole, as in the real checker, so a full citation in the headnote still raises the
-    confidence of a short-name mention in the body ("Jasmine Kaur (Supra)")."""
+def mentions_in_doc(corpus, target_key, citing_key, body_only=False):
+    """The mentions of the target found in the citing judgment by the fast per-pair reader (see best_in_doc for body_only), unclassified."""
     tdoc = corpus.get(target_key, with_text=False)
     cdoc = corpus.get(citing_key)
     target = M.Target.from_doc(tdoc)
@@ -58,6 +55,15 @@ def best_in_doc(corpus, target_key, citing_key, body_only=False):
     found, _ = M.extract(cdoc["text"], target, short, cdoc.get("body_start"), party_cases=target.party_case_patterns(corpus))
     if body_only:
         found = [m for m in found if not m["in_headnote"]]
+    return found
+
+
+def best_in_doc(corpus, target_key, citing_key, body_only=False):
+    """The strongest treatment of the target found in the citing judgment (court's own voice, confident mentions only), or None if no mention is found.
+    With body_only, mentions inside the headnote (and so inside its case-law table) are not read, only the court's own judgment after it: used when the answer key
+    itself is printed in that headnote. The text is still read as a whole, as in the real checker, so a full citation in the headnote still raises the
+    confidence of a short-name mention in the body ("Jasmine Kaur (Supra)")."""
+    found = mentions_in_doc(corpus, target_key, citing_key, body_only)
     if not found:
         return None
     best = None
