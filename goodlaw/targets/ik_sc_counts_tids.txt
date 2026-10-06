@@ -1,4 +1,4 @@
-# Phase 3a: Supreme Court documents citing each case (citedby:<id> doctypes:supremecourt, one search per id, Rs 0.50). Excluded: Youth Bar (done), cases with an IK all-court count of 0, and 4 cases whose id looks like a duplicate copy (NALSA, Pankaj Bansal, Prabir Purkayastha, Vihaan Kumar).
+# Phase 3a: Supreme Court documents citing each case (citedby:<id> doctypes:supremecourt, one search per id, Rs 0.50). Excluded: Youth Bar (done), cases with an IK all-court count of 0, and the four whose IK count is below what we hold (NALSA, Pankaj Bansal, Prabir Purkayastha, Vihaan Kumar: IK's citation index looks incomplete for them).
 2982624  # Arnesh Kumar v State of Bihar (IK all-court 25720, we hold 29)
 10807134  # Bikramjit Singh v State of Punjab (IK all-court 84, we hold 9)
 157736723  # Bir Singh v Mukesh Kumar (IK all-court 2207, we hold 12)
@@ -31,3 +31,11 @@
 1699144  # G. Sagar Suri and Anr. v State of U.P. and Ors. (IK all-court 1136, we hold 42)
 38505268  # Mohan Lal v State of Punjab (IK all-court 543, we hold 13)
 155481249  # State of Rajasthan v Parmanand (IK all-court 710, we hold 3)
+1308768  # Gurbaksh Singh Sibbia v State of Punjab (IK all-court 8067, we hold 61)
+1584447  # Noor Aga v State of Punjab (IK all-court 746, we hold 52)
+855018  # Inder Mohan Goswami and Anr. v State of Uttaranchal and Ors. (IK all-court 1931, we hold 28)
+123660783  # Sushila Aggarwal v State (NCT of Delhi) (IK all-court 15728, we hold 22)
+1036527  # Karnail Singh v State of Haryana (IK all-court 484, we hold 20)
+853800  # Hridaya Rangan Pd. Verma and Ors. v State of Bihar and Anr. (IK all-court 714, we hold 19)
+891864  # S.W. Palanitkar and Ors. v State of Bihar and Anr. (IK all-court 2481, we hold 15)
+1145861  # Vijaysinh Chandubha Jadeja v State of Gujarat (IK all-court 555, we hold 15)

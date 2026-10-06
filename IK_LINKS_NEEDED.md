@@ -25,7 +25,7 @@ If a case is not on IK, or you cannot tell which page is the judgment, write `no
 | Mohan Lal v State of Punjab | (2018) 17 SCC 627 | 2018-08-16 | partly overruled by Mukesh Singh (2020); the checker shows ADVERSE_SIGNAL |
 | State of Rajasthan v Parmanand | (2014) 5 SCC 345 | 2014-02-28 | criticised on one point by a later judgment; plausible, unconfirmed |
 
-## Priority 2: heavily cited (we hold 20 or more later judgments citing each)
+## Priority 2: heavily cited (we hold 20 or more later judgments citing each). RECEIVED 2026-10-06 for Sibbia, Noor Aga, Inder Mohan Goswami, Sushila Aggarwal and Karnail Singh, and for Hridaya Rangan Pd. Verma, S.W. Palanitkar and Vijaysinh Chandubha Jadeja; all verified (ids in `goodlaw/data/ik_ids_owner_batch2.json`)
 
 | Case | Citation | Decision date | Later judgments we hold | Status now |
 |---|---|---|---|---|
@@ -60,3 +60,12 @@ If a case is not on IK, or you cannot tell which page is the judgment, write `no
 | State of Uttar Pradesh v Ram Kishan | [1976] 3 S.C.R. 379 | 1976-02-13 | 0 | INSUFFICIENT |
 
 Cases where the status is INSUFFICIENT are the ones where an IK id would help most: we hold few or no later judgments citing them, so silence there says almost nothing.
+
+## Still without a link (16 cases; not needed for the next step)
+
+Mukesh Singh v State (Narcotic Branch of Delhi) (2020); Jagrup Singh v State of Haryana (1981); Tofan Singh v State of Tamil Nadu (2020); Mathai Verghese v State of Kerala (1986); Alpic Finance Ltd. v P. Sadasivan (2001); Union of India v Mohanlal (2016); All Cargo Movers (I) Pvt. Ltd. v Dhanesh Badarmal Jain (2007); Union of India v Shiv Shanker Kesari (2007); Nanda Gopalan v State of Kerala (2015); Sakharam v State of Madhya Pradesh (1992); State of Gujarat v Haidarali Kalubhai (1976); Anwarul Haq v State of Uttar Pradesh (2005); Hori Lal v State of Uttar Pradesh (2006); Prabhu v State of Madhya Pradesh (2008); Pravat Chandra Mohanty v State of Odisha (2021); State of Uttar Pradesh v Ram Kishan (1976).
+
+## Two links that did not work (second batch)
+
+- NALSA v Union of India: the link sent (36567208) is a 16 July 2026 order, not the 15 April 2014 judgment. The earlier id (193543132) has the right date but a count of 1; the main copy of the judgment is still unidentified.
+- Pankaj Bansal v Union of India: the link sent (121377653) is IK's "Daily Orders" copy of the 3 October 2023 judgment, with a count of 0; the other id (189692408) is the judgment copy, with a count of 3.
