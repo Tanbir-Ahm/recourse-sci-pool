@@ -1,0 +1,970 @@
+{
+ "groups": [],
+ "review": [
+  {
+   "pair": [
+    16829,
+    16830
+   ],
+   "overlap": 0.9998,
+   "why": "party names differ (similarity 0.18)"
+  },
+  {
+   "pair": [
+    16829,
+    16831
+   ],
+   "overlap": 0.9998,
+   "why": "party names differ (similarity 0.38)"
+  },
+  {
+   "pair": [
+    16830,
+    16831
+   ],
+   "overlap": 0.9999,
+   "why": "party names differ (similarity 0.33)"
+  },
+  {
+   "pair": [
+    26743,
+    27526
+   ],
+   "overlap": 0.838,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27232
+   ],
+   "overlap": 0.8053,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27233
+   ],
+   "overlap": 0.8296,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27234
+   ],
+   "overlap": 0.8926,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27235
+   ],
+   "overlap": 0.848,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27262
+   ],
+   "overlap": 0.9156,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27263
+   ],
+   "overlap": 0.8805,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27264
+   ],
+   "overlap": 0.8563,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27265
+   ],
+   "overlap": 0.8555,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27266
+   ],
+   "overlap": 0.8605,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27267
+   ],
+   "overlap": 0.848,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27268
+   ],
+   "overlap": 0.8129,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27269
+   ],
+   "overlap": 0.8939,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27281
+   ],
+   "overlap": 0.8538,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27233
+   ],
+   "overlap": 0.8947,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27234
+   ],
+   "overlap": 0.8218,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27235
+   ],
+   "overlap": 0.8574,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27262
+   ],
+   "overlap": 0.8149,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27263
+   ],
+   "overlap": 0.8156,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27264
+   ],
+   "overlap": 0.8512,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27265
+   ],
+   "overlap": 0.8521,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27266
+   ],
+   "overlap": 0.8345,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27267
+   ],
+   "overlap": 0.8799,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27268
+   ],
+   "overlap": 0.889,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27269
+   ],
+   "overlap": 0.8143,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27281
+   ],
+   "overlap": 0.8231,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27234
+   ],
+   "overlap": 0.8368,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27235
+   ],
+   "overlap": 0.8385,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27262
+   ],
+   "overlap": 0.8358,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27263
+   ],
+   "overlap": 0.8365,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27264
+   ],
+   "overlap": 0.84,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27265
+   ],
+   "overlap": 0.8368,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27266
+   ],
+   "overlap": 0.8421,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27267
+   ],
+   "overlap": 0.8525,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27268
+   ],
+   "overlap": 0.9105,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27269
+   ],
+   "overlap": 0.8367,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27281
+   ],
+   "overlap": 0.8206,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27235
+   ],
+   "overlap": 0.8576,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27262
+   ],
+   "overlap": 0.9026,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27263
+   ],
+   "overlap": 0.8676,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27264
+   ],
+   "overlap": 0.8526,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27265
+   ],
+   "overlap": 0.8501,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27266
+   ],
+   "overlap": 0.8643,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27267
+   ],
+   "overlap": 0.8551,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27268
+   ],
+   "overlap": 0.8376,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27269
+   ],
+   "overlap": 0.8964,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27281
+   ],
+   "overlap": 0.8501,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27262
+   ],
+   "overlap": 0.8685,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27263
+   ],
+   "overlap": 0.9028,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27264
+   ],
+   "overlap": 0.8871,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27265
+   ],
+   "overlap": 0.8846,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27266
+   ],
+   "overlap": 0.871,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27267
+   ],
+   "overlap": 0.8909,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27268
+   ],
+   "overlap": 0.8402,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27269
+   ],
+   "overlap": 0.8466,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27281
+   ],
+   "overlap": 0.86,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27263
+   ],
+   "overlap": 0.9288,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27264
+   ],
+   "overlap": 0.8652,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27265
+   ],
+   "overlap": 0.866,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27266
+   ],
+   "overlap": 0.8727,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27267
+   ],
+   "overlap": 0.861,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27268
+   ],
+   "overlap": 0.8283,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27269
+   ],
+   "overlap": 0.9022,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27281
+   ],
+   "overlap": 0.861,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27264
+   ],
+   "overlap": 0.8659,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27265
+   ],
+   "overlap": 0.8659,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27266
+   ],
+   "overlap": 0.8718,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27267
+   ],
+   "overlap": 0.8592,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27268
+   ],
+   "overlap": 0.8273,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27269
+   ],
+   "overlap": 0.8673,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27281
+   ],
+   "overlap": 0.86,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27265
+   ],
+   "overlap": 0.9427,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27266
+   ],
+   "overlap": 0.8964,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27267
+   ],
+   "overlap": 0.8956,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27268
+   ],
+   "overlap": 0.8417,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27269
+   ],
+   "overlap": 0.8466,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27281
+   ],
+   "overlap": 0.8935,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27266
+   ],
+   "overlap": 0.8947,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27267
+   ],
+   "overlap": 0.8872,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27268
+   ],
+   "overlap": 0.8385,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27269
+   ],
+   "overlap": 0.8449,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27281
+   ],
+   "overlap": 0.891,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27267
+   ],
+   "overlap": 0.8786,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27268
+   ],
+   "overlap": 0.8413,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27269
+   ],
+   "overlap": 0.8706,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27281
+   ],
+   "overlap": 0.8952,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27267,
+    27268
+   ],
+   "overlap": 0.8537,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27267,
+    27269
+   ],
+   "overlap": 0.8532,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27267,
+    27281
+   ],
+   "overlap": 0.8609,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27268,
+    27269
+   ],
+   "overlap": 0.8184,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27268,
+    27281
+   ],
+   "overlap": 0.8223,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27269,
+    27281
+   ],
+   "overlap": 0.8449,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27283
+   ],
+   "overlap": 0.8146,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27284
+   ],
+   "overlap": 0.825,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27292
+   ],
+   "overlap": 0.8373,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27293
+   ],
+   "overlap": 0.8222,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27294
+   ],
+   "overlap": 0.8374,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27283,
+    27284
+   ],
+   "overlap": 0.8517,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27283,
+    27294
+   ],
+   "overlap": 0.8496,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27283,
+    27295
+   ],
+   "overlap": 0.849,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27284,
+    27294
+   ],
+   "overlap": 0.8439,
+   "why": "party names differ (similarity 0.25)"
+  },
+  {
+   "pair": [
+    27284,
+    27295
+   ],
+   "overlap": 0.8333,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27292,
+    27293
+   ],
+   "overlap": 0.8294,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27292,
+    27294
+   ],
+   "overlap": 0.8008,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27292,
+    27295
+   ],
+   "overlap": 0.8167,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27293,
+    27294
+   ],
+   "overlap": 0.8027,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27294,
+    27295
+   ],
+   "overlap": 0.8438,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    32073,
+    32075
+   ],
+   "overlap": 0.9112,
+   "why": "party names differ (similarity 0.50)"
+  },
+  {
+   "pair": [
+    32759,
+    32760
+   ],
+   "overlap": 0.9736,
+   "why": "party names differ (similarity 0.20)"
+  },
+  {
+   "pair": [
+    32759,
+    32761
+   ],
+   "overlap": 0.9736,
+   "why": "party names differ (similarity 0.20)"
+  },
+  {
+   "pair": [
+    32760,
+    32761
+   ],
+   "overlap": 0.9861,
+   "why": "party names differ (similarity 0.20)"
+  },
+  {
+   "pair": [
+    33526,
+    33527
+   ],
+   "overlap": 0.9549,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    33843,
+    33846
+   ],
+   "overlap": 0.9125,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    34330,
+    34331
+   ],
+   "overlap": 0.9216,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    39815,
+    39943
+   ],
+   "overlap": 0.9913,
+   "why": "same parties but different case numbers"
+  },
+  {
+   "pair": [
+    44878,
+    1000250000
+   ],
+   "overlap": 0.8068,
+   "why": "party names differ (similarity 0.50)"
+  },
+  {
+   "pair": [
+    1000251169,
+    1000251170
+   ],
+   "overlap": 0.8098,
+   "why": "party names differ (similarity 0.00)"
+  }
+ ],
+ "rules": {
+  "min_overlap": 0.8,
+  "max_len_ratio": 1.3,
+  "min_party_sim": 0.6
+ }
+}
