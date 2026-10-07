@@ -106,7 +106,7 @@ def voice(sentence, cue_span, target):
     cue = sentence[cue_span[0]:cue_span[1]]
     before = sentence[max(0, cue_span[0] - 40):cue_span[0]]
     after = sentence[cue_span[1]:cue_span[1] + 90]
-    passive = bool(_AUX_IN_CUE.match(cue)) or bool(_AUX_BEFORE.search(before)) or bool(re.match(r"\s*by\b", after))
+    passive = bool(_AUX_IN_CUE.match(cue)) or bool(_AUX_BEFORE.search(before)) or bool(re.match(r"\s*(?:\w+ly\s+)?by\b", after))        # "overruled subsequently by the Constitution Bench in T": the word between does not make the verb active
     if passive:
         gap = target[0] - cue_span[1]
         if 0 <= gap:
@@ -189,7 +189,8 @@ _NEG_FOLLOW = re.compile(r"\b(?:not|never|cannot|can not|nor|unable to|neither)\
 _REJECTING = re.compile(r"\b(?:(?:do|does|did)\s+not\s+accede|decline[sd]?|refuse[sd]?|not\s+(?:inclined|persuaded|prepared)|reject(?:s|ed)?\s+the\s+(?:submission|contention|argument|plea|claim)|negativ(?:e|ed)\s+the\s+(?:submission|contention|argument|plea|claim))\b[^.;]{0,140}$", I)
 _TEMPORAL_BEFORE = re.compile(r"\b(?:up\s?to|upto|prior to|before|until|till|after|since|subsequent to)\s+(?:the\s+(?:decision|judgment|ruling)\s+(?:in|of)\s+)?$", I)      # "judgments delivered up to T": T is a point in time
 _INTRO_GROUND = re.compile(r"^\W*(?:With|In view of|Having regard to|On the basis of|In (?:the )?light of|Following|Applying|Pursuant to|As per|On the strength of|Relying (?:up)?on|Based (?:up)?on)\b[^,;]*$", I)      # "With these observations in T, the basis on which X ... is disapproved": T is the ground
-_CLAUSE_BREAK = re.compile(r"(?<=[.!?\u2026\u201d\"])\s*\d{0,3}\s+(?=[A-Z])")      # where one sentence runs into the next without the splitter seeing it ("...privacy\u2026\u201d125 With these ...")
+_RUNON = re.compile(r"(?<=[.!?\u2026])[\u201d\"]\s*\d{1,3}\s+(?=[A-Z])")      # where the splitter ran two sentences together: a closing quote, a footnote number and a capital ("...another.\u201d132 In Puttaswamy, ...")
+_ACTIVE_HELD = re.compile(r"(?<!\bbeen )(?<!\bis )(?<!\bwas )(?<!\bare )(?<!\bwere )(?<!\bbe )(?<!\bbeing )\b(?:held|declared|treated|regarded|considered|deemed)\b", I)      # "T held X ..." (not "X has been held ...")
 _THAT_AFTER = re.compile(r"\s*(?:(?:and|&)\s*(?:ors?|anrs?|another|others)\b\.?\s*)?(?:\d{1,3}\s*)?(?:\(\w+\)\s*)?(?:\(supra\)\s*)?that\b", I)      # "... in T that ...", a footnote number or "(supra)" may sit after the name
 _DOUBLE_CUE_NEG = re.compile(r"\b(?:cannot|can not|could not|never|nor|neither|hardly|nothing|nobody)\b[^.;]{0,50}$", I)
 _NOT_A_NEGATION = re.compile(r"\b(?:hesitat\w*|cannot but|can not but|not only|but also|not merely|no doubt|not (?:be )?(?:unmindful|oblivious))\b[^.]{0,25}$", I)
@@ -303,16 +304,23 @@ def classify(sentence, target):
 def _classify(sentence, target):
     others = _other_mentions(sentence, target)
     found = []
+    runs = [(m.start(), m.end()) for m in _RUNON.finditer(sentence)]
+    seg_start = max([e for _, e in runs if e <= target[0]], default=0)           # the part of the text that is the target's own sentence
+    seg_end = min([b for b, _ in runs if b >= target[1]], default=len(sentence))
     for label, patterns in _COMPILED:
         for rx in patterns:
             for m in rx.finditer(sentence):
                 span = (m.start(), m.end())
                 if _distance(span, target) > MAX_DISTANCE or _separated(span, target, sentence):
                     continue
+                if span[1] <= seg_start or span[0] >= seg_end:
+                    continue                                              # the cue is in another sentence that the splitter ran together with the target's
+                if label == "OVERRULES" and span[0] >= target[1] and re.match(r"(?:be|been|being)\s+not\b|not to be\b", m.group(0), I) and _ACTIVE_HELD.search(sentence, target[1], span[0]):
+                    continue                                              # "T held X to be not good law": the verdict is on X, and T is the case that held it
                 if label == "OVERRULES" and _NOT_ABOUT_CASE.search(sentence[max(0, m.start() - 10):m.end() + 40]):
                     continue
                 if label in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS") and span[0] >= target[1] and (
-                        _TEMPORAL_BEFORE.search(sentence[max(0, target[0] - 50):target[0]]) or (_INTRO_GROUND.match(_CLAUSE_BREAK.split(sentence[:target[0]])[-1]) and "," in sentence[target[1]:span[0]])):
+                        _TEMPORAL_BEFORE.search(sentence[max(0, target[0] - 50):target[0]]) or (_INTRO_GROUND.match(_RUNON.split(sentence[:target[0]])[-1]) and "," in sentence[target[1]:span[0]])):
                     continue                                              # T is a point in time or the ground in an opening phrase, and the cue belongs to the clause that follows
                 if label == "OVERRULES" and re.match(r"per incuriam", m.group(0), I) and re.search(r"(?:doctrine|principles?|rule|question|plea|concept|expression|term|test|issue)s?\s+(?:of\s+|on\s+|as to\s+)?$", sentence[max(0, m.start() - 45):m.start()], I):
                     continue                                              # "the principles of per incuriam": the doctrine is the topic, not a verdict on the case
@@ -391,6 +399,8 @@ def _classify(sentence, target):
                 found.append({"label": label, "cue": m.group(0), "cue_span": span, "negated": negated, "hedged": hedged, "binding": binding, "distance": _distance(span, target)})
     for rx in _NOT_OVERRULED:
         for m in rx.finditer(sentence):
+            if m.end() <= seg_start or m.start() >= seg_end:
+                continue
             if _distance((m.start(), m.end()), target) <= MAX_DISTANCE and not _separated((m.start(), m.end()), target, sentence):
                 found.append({"label": "NOT_OVERRULED", "cue": m.group(0), "cue_span": (m.start(), m.end()), "negated": False, "hedged": bool(_HEDGE.search(sentence[max(0, m.start() - 45):m.start()])),
                               "binding": _binding((m.start(), m.end()), others, target, sentence), "distance": _distance((m.start(), m.end()), target)})

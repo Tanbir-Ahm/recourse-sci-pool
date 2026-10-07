@@ -329,6 +329,25 @@ for sentence, target, want in [
     r = run(sentence, target)
     check(r["label"] == want, f"an opening phrase that is not about the case does not hide a verdict on it: {sentence[:50]}... (got {r['label']})")
 
+# the three misreads that settled library cases showed once more mentions counted as confident (Mukesh Singh, Sushila Aggarwal, Puttaswamy)
+r = run("The acquittal was merely on technical ground in view of Mohan Lal\u2019s case (supra) which was diluted in Varinder Kumar\u2019s case (supra) and then overruled subsequently by the Constitution Bench of this Court in Mukesh Singh\u2019s case (supra).", "Mukesh Singh\u2019s case")
+check(r["label"] == "OVERRULED_OTHER", f"'overruled subsequently by the Constitution Bench in T': T is the case that did the overruling, an adverb between the verb and 'by' changes nothing (got {r['label']})")
+r = run("The acquittal was merely on technical ground in view of Mohan Lal\u2019s case (supra) which was diluted in Varinder Kumar\u2019s case (supra) and then overruled subsequently by the Constitution Bench of this Court in Mukesh Singh\u2019s case (supra).", "Mohan Lal\u2019s case")
+check(r["label"] == "OVERRULES", f"and the case it overruled is still read as overruled (got {r['label']})")
+for sentence, target, why in [
+    ("After marshalling the entire range of juridical materials on anticipatory bail, the Constitution Bench in Sushila Aggarwal held the judgements of this Court that postulated greater limitations on the grant of anticipatory bail to be not good law.",
+     "Sushila Aggarwal", "'T held X to be not good law': the verdict is on X"),
+    ("In Sushila Aggarwal, the Constitution Bench held earlier views not to be good law.", "Sushila Aggarwal", "'T held X not to be good law': the verdict is on X"),
+    ("There is, therefore, all the greater reason why any one provision is not, by construction, treated as nullifying the existence and effect of another.\u201d132 In Puttaswamy, a unanimous verdict by a nine judge Bench declared privacy to be constitutionally protected.",
+     "Puttaswamy", "a cue in the sentence the splitter ran into this one (closing quote, footnote number, capital) is not about the case"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE and r["label"] != "LEGISLATIVE", f"not read as a warning: {why} (got {r['label']}, cue {r['cue']!r})")
+r = run("The earlier test was applied for years.\u201d12 Mohan v. Singh is overruled.", "Mohan v. Singh")
+check(r["label"] == "OVERRULES", f"a verdict in the case's own sentence after a run-together break is still read (got {r['label']})")
+r = run("The earlier test was applied for years.\u201d12 Mohan v. Singh has been held to be not good law.", "Mohan v. Singh")
+check(r["label"] == "OVERRULES", f"'has been held to be not good law' (passive) is still read as a verdict on the subject (got {r['label']})")
+
 # "be not good law" is a verdict only when nothing negates it
 for sentence, target, why in [
     ("Ram Lal v. State, which governs the field, cannot be held to be not good law.", "Ram Lal v. State", "a double negative leaves the case standing"),
