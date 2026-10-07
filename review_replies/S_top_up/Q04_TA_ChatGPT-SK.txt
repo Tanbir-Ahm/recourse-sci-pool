@@ -1,0 +1,29 @@
+{
+  "question_id": "Q04",
+  "marks": [
+    {
+      "no": 16,
+      "mark": "Yes",
+      "evidence": "While a transaction giving rise to cause of action for a civil action may also involve a crime in which case resort to criminal proceedings may be justified",
+      "reason": "The passage directly recognizes that a civil transaction can involve a crime while cautioning against giving a purely civil dispute a criminal colour.",
+      "confidence": "high"
+    },
+    {
+      "no": 17,
+      "mark": "Partly",
+      "evidence": "the documents have been forged and fabricated only to be used as genuine to make a fraudulent and illegal claim over the land owned by complainant",
+      "reason": "The passage shows allegations of forgery in a land ownership dispute, but it mainly recounts the complaint rather than stating the governing rule.",
+      "confidence": "high"
+    },
+    {
+      "no": 18,
+      "mark": "Partly",
+      "evidence": "making of a false document so as to support any claim over title would constitute forgery within the meaning of the said provision",
+      "reason": "The passage addresses forgery concerning property title, but it focuses on the statutory elements of forgery rather than whether a civil dispute can be criminalized.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 16,
+  "caveats": ""
+}

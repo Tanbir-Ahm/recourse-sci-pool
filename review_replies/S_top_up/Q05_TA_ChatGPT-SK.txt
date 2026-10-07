@@ -1,0 +1,22 @@
+{
+  "question_id": "Q05",
+  "marks": [
+    {
+      "no": 16,
+      "mark": "Partly",
+      "evidence": "though the offence under Section 326 could not be compounded, the compromise could be taken into account for reducing the sentence.",
+      "reason": "The passage directly addresses reducing the sentence after settlement but records this as counsel's submission, not the court's holding.",
+      "confidence": "high"
+    },
+    {
+      "no": 17,
+      "mark": "No",
+      "evidence": "An offence of causing hurt punishable under Section 323 IPC falls under sub-section (1) of Section 320 of the Code.",
+      "reason": "It concerns a compoundable Section 323 offence and does not address compromise of non-compoundable grievous hurt.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "No",
+  "best_passage_no": null,
+  "caveats": ""
+}

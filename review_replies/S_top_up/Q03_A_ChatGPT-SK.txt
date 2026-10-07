@@ -1,0 +1,120 @@
+{
+  "question_id": "Q03",
+  "marks": [
+    {
+      "no": 1,
+      "mark": "Yes",
+      "evidence": "The proceedings could not be quashed only because the respondents had filed a civil suit with respect to the aforesaid documents.",
+      "reason": "The passage directly explains that a civil land dispute does not prevent criminal proceedings where cheating or forgery is alleged.",
+      "confidence": "high"
+    },
+    {
+      "no": 2,
+      "mark": "Yes",
+      "evidence": "several disputes of a civil nature may also contain the ingredients of criminal offences and if so, will have to be tried as criminal offences",
+      "reason": "It directly states that civil disputes can also constitute criminal offences and may be prosecuted when criminal ingredients exist.",
+      "confidence": "high"
+    },
+    {
+      "no": 3,
+      "mark": "Yes",
+      "evidence": "Merely because a civil claim is maintainable does not mean that the criminal complaint cannot be maintained.",
+      "reason": "The passage directly answers that availability of a civil remedy does not by itself bar criminal prosecution.",
+      "confidence": "high"
+    },
+    {
+      "no": 4,
+      "mark": "Yes",
+      "evidence": "merely because the nature of the dispute is primarily of a civil nature, the criminal prosecution cannot be quashed",
+      "reason": "It directly states that a predominantly civil dispute does not alone justify quashing criminal proceedings involving forgery or fraud.",
+      "confidence": "high"
+    },
+    {
+      "no": 5,
+      "mark": "Partly",
+      "evidence": "any effort to settle civil disputes and claims, which do not involve any criminal offence, by applying pressure through criminal prosecution should be deprecated and discouraged.",
+      "reason": "It explains when criminal prosecution should not be used for civil disputes, but does not fully address genuine cheating or forgery allegations.",
+      "confidence": "high"
+    },
+    {
+      "no": 6,
+      "mark": "Yes",
+      "evidence": "the High Court must see whether a dispute which is essentially of a civil nature is given a cloak of criminal offence.",
+      "reason": "It provides a direct test for distinguishing genuine criminal offences from civil disputes improperly presented as criminal cases.",
+      "confidence": "high"
+    },
+    {
+      "no": 7,
+      "mark": "No",
+      "evidence": "The Investigating Officer, however, upon investigation of the matter came to the conclusion that the dispute between the parties was a civil dispute.",
+      "reason": "It merely reports the investigating officer's conclusion in a particular case without stating the governing legal rule or holding.",
+      "confidence": "high"
+    },
+    {
+      "no": 8,
+      "mark": "Partly",
+      "evidence": "It may be true that in the event the court finds that the dispute between the parties is civil in nature, it may not allow the criminal proceedings to go on.",
+      "reason": "It addresses whether criminal proceedings may continue in civil disputes, but does not provide the complete test for deciding when criminal law applies.",
+      "confidence": "medium"
+    },
+    {
+      "no": 9,
+      "mark": "Partly",
+      "evidence": "under certain situations where the act alleged would predominantly be a civil wrong, such an act does not constitute a criminal offence.",
+      "reason": "It gives a relevant distinction between civil wrongs and criminal offences but does not explain the full circumstances or test.",
+      "confidence": "high"
+    },
+    {
+      "no": 10,
+      "mark": "No",
+      "evidence": "It was further submitted that the allegations that the land in the question did not belong to the appellant could only be resolved by the Civil Court",
+      "reason": "This passage records an advocate's submission rather than the court's ruling on whether criminal law can be used.",
+      "confidence": "high"
+    },
+    {
+      "no": 11,
+      "mark": "Partly",
+      "evidence": "If what is executed is not a false document, there is no forgery. If there is no forgery, then neither section 467 nor section 471 of the Code are attracted.",
+      "reason": "It directly addresses forgery in a land-sale context, but focuses on the definition of a false document rather than the broader civil-versus-criminal issue.",
+      "confidence": "high"
+    },
+    {
+      "no": 12,
+      "mark": "Yes",
+      "evidence": "where the criminal complaints are filed in respect of property disputes of civil in nature only to harass the accused, and to pressurize him in the civil litigation pending",
+      "reason": "It directly addresses criminal complaints arising from civil property disputes and explains when such proceedings may be quashed as abuse of process.",
+      "confidence": "high"
+    },
+    {
+      "no": 13,
+      "mark": "Yes",
+      "evidence": "where the criminal complaints are filed in respect of property disputes of civil in nature only to harass the accused, and to pressurize him in the civil litigation pending",
+      "reason": "It directly states that criminal proceedings in civil property disputes may be quashed when filed merely to harass or pressure the accused.",
+      "confidence": "high"
+    },
+    {
+      "no": 14,
+      "mark": "Yes",
+      "evidence": "The purely civil dispute, is sought to be given a colour of a criminal offence to wreak vengeance against the Appellant.",
+      "reason": "The passage directly describes an impermissible attempt to turn a purely civil dispute into a criminal case.",
+      "confidence": "high"
+    },
+    {
+      "no": 15,
+      "mark": "Yes",
+      "evidence": "only because a civil remedy may be available to the complainant that itself cannot be a ground to quash a criminal proceeding.",
+      "reason": "It directly states that availability of a civil remedy does not itself bar criminal proceedings, while requiring the complaint to disclose a criminal offence.",
+      "confidence": "high"
+    },
+    {
+      "no": 16,
+      "mark": "Yes",
+      "evidence": "A matter which essentially involves dispute of a civil nature should not be allowed to be the subject matter of a criminal offence",
+      "reason": "It directly supports the proposition that essentially civil disputes should not be converted into criminal proceedings.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 2,
+  "caveats": ""
+}

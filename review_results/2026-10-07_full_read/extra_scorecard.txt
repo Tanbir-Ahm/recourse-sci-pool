@@ -1,0 +1,54 @@
+ALL 12 QUESTIONS
+version          questions | consensus Yes somewhere in what it showed | a consensus-Misleading passage | Yes share, disagreements dropped (the reader's figure) | Yes share, disagreements count as not Yes
+A today                 12 | 10 |  3 | 0.45 | 0.37
+B no repeats            12 | 10 |  3 | 0.45 | 0.37
+C rewrite                6 |  6 |  2 | 0.83 | 0.83
+E no multiplier         12 |  9 |  4 | 0.41 | 0.32
+F merged                 6 |  6 |  2 | 0.86 | 0.86
+S site shown            12 | 10 |  1 | 0.36 | 0.35
+M mine top 6            12 | 10 |  3 | 0.40 | 0.35
+
+PLAIN-LANGUAGE QUESTIONS ONLY
+version          questions | consensus Yes somewhere in what it showed | a consensus-Misleading passage | Yes share, disagreements dropped (the reader's figure) | Yes share, disagreements count as not Yes
+A today                  6 |  6 |  2 | 0.50 | 0.50
+B no repeats             6 |  6 |  2 | 0.50 | 0.50
+C rewrite                6 |  6 |  2 | 0.83 | 0.83
+E no multiplier          6 |  6 |  2 | 0.44 | 0.44
+F merged                 6 |  6 |  2 | 0.86 | 0.86
+S site shown             6 |  6 |  0 | 0.53 | 0.53
+M mine top 6             6 |  6 |  2 | 0.50 | 0.50
+
+LEGAL-WORDING QUESTIONS ONLY
+version          questions | consensus Yes somewhere in what it showed | a consensus-Misleading passage | Yes share, disagreements dropped (the reader's figure) | Yes share, disagreements count as not Yes
+A today                  6 |  4 |  1 | 0.39 | 0.23
+B no repeats             6 |  4 |  1 | 0.39 | 0.23
+E no multiplier          6 |  3 |  2 | 0.38 | 0.20
+S site shown             6 |  4 |  1 | 0.19 | 0.17
+M mine top 6             6 |  4 |  1 | 0.29 | 0.19
+
+the 24 passages only the site's method showed: {'Partly': 13, 'Yes': 10, 'No': 1}
+site-shown passages outside today's top 5: {'split': 4, 'Partly': 21, 'Yes': 11, 'No': 3}
+
+CONSENSUS-MISLEADING PASSAGES
+Q05 (lay) no.3 doc 41903 shown by ['A today', 'B no repeats', 'C rewrite', 'E no multiplier', 'F merged', 'M mine top 6']
+    PC and quashed the proceedings as the offence in question was noncompoundable under Section 320 of the Code. 9) The learned counsel for the accused on the other hand submitted that since the parties had settled the matter, the High Court ha
+Q07 (lay) no.4 doc 40033 shown by ['C rewrite', 'F merged']
+    11. However, the Negotiable Instruments Act incorporates two presumptions in this regard: one containing in Section 118 of the Act and other in Section 139 thereof. Section 118 (a) reads as under:- “118. Presumption as to negotiable instrum
+Q08 (legal) no.1 doc 34509 shown by ['A today', 'B no repeats', 'E no multiplier', 'M mine top 6']
+    20. The proviso appended to the said section provides for compliance of legal requirements before a complaint petition can be acted upon by a court of law. Section 139 of the Act merely raises a presumption in regard to the second aspect of
+Q08 (legal) no.3 doc 36322 shown by ['A today', 'B no repeats', 'E no multiplier', 'M mine top 6', 'S site shown']
+    30. The proviso appended to the said section provides for compliance with legal requirements before a complaint petition can be acted upon by a court of law. Section 139 of the Act merely raises a presumption in regard to the second aspect 
+Q08 (legal) no.5 doc 30108 shown by ['A today', 'B no repeats', 'E no multiplier']
+    21. The proviso appended to the said section provides for compliance of legal requirements before a complaint petition can be acted upon by a court of law. Section 139 of the Act merely raises a presumption in regard to the second aspect of
+Q09 (lay) no.3 doc 25607 shown by ['A today', 'B no repeats', 'E no multiplier', 'M mine top 6']
+    In this case PW-8 has deposed that she told the appellant that if he wished he could be searched in the presence of the gazetted officer or a Magistrate to which the appellant had not favourably reciprocated. According to us the said offer 
+Q09 (lay) no.4 doc 39742 shown by ['B no repeats', 'C rewrite', 'F merged']
+    The Court also noted that it was not necessary that the information required to be given under Section 50 should be in a prescribed form or in writing but it was mandatory that the suspect was made aware of the existence of his right to be 
+Q09 (lay) no.10 doc 43732 shown by ['A today', 'B no repeats', 'E no multiplier', 'M mine top 6']
+    P.W.4, who conducted the Raid, stated: “We gave him off in writing whether he likely to be searched in presence of a Magistrate or a Gazetted Officer or a Gazetted Officer accompanying the raiding party. He agreed to be searched before the 
+Q10 (legal) no.2 doc 37060 shown by ['A today']
+    In 1 (2000) 1 SCC 707 2 (2004) 2 SCC 56 3 (2004) 2 SCC 608 4 (1999) 6 SCC 172 another decision of this Court in Prabha Shankar Dubey Vs. State of M.P. 2004(2) SCC p.56, the following information was conveyed to the accused: “By way of this 
+Q10 (legal) no.3 doc 25607 shown by ['E no multiplier']
+    In this case PW-8 has deposed that she told the appellant that if he wished he could be searched in the presence of the gazetted officer or a Magistrate to which the appellant had not favourably reciprocated. According to us the said offer 
+Q12 (legal) no.6 doc 31821 shown by ['A today', 'B no repeats', 'E no multiplier']
+    The learned Additional Sessions Judge by his order and judgment dated 7.06.2000 convicted the appellant under Sections 22 and 23 of the Act and sentenced him to undergo rigorous imprisonment for 10 years and also imposed a fine of Rs. 1 lak

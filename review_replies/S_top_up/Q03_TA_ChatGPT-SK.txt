@@ -1,0 +1,29 @@
+{
+  "question_id": "Q03",
+  "marks": [
+    {
+      "no": 17,
+      "mark": "Yes",
+      "evidence": "While a transaction giving rise to cause of action for a civil action may also involve a crime in which case resort to criminal proceedings may be justified",
+      "reason": "The passage directly explains that a civil dispute can also justify criminal proceedings where the transaction involves an actual crime.",
+      "confidence": "high"
+    },
+    {
+      "no": 18,
+      "mark": "Partly",
+      "evidence": "an action in the Criminal Court would not lie in the absence of any intention to cheat and/or defraud the Respondent No.2.",
+      "reason": "It provides a specific limitation on criminal proceedings for cheating but does not fully address civil disputes involving forgery or other offences.",
+      "confidence": "high"
+    },
+    {
+      "no": 19,
+      "mark": "Partly",
+      "evidence": "the dispute in question was of civil nature for which the civil remedy is available in law.",
+      "reason": "It establishes the civil nature of the land dispute and the availability of a civil remedy, but does not state whether criminal law may nevertheless be used.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 17,
+  "caveats": ""
+}

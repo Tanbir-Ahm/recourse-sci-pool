@@ -1,0 +1,29 @@
+{
+  "question_id": "Q10",
+  "marks": [
+    {
+      "no": 17,
+      "mark": "Partly",
+      "evidence": "failure to give information regarding that right to the suspect would be a serious infirmity amounting to denial of a valuable right",
+      "reason": "It addresses the duty to inform the accused of the right, but does not state whether substantial compliance is sufficient.",
+      "confidence": "high"
+    },
+    {
+      "no": 18,
+      "mark": "Yes",
+      "evidence": "the concept of substantial compliance with the requirement of Section 50 of the NDPS Act is neither borne out from the language of Section 50(1) nor it is in consonance with the dictum laid down in Baldev Singh",
+      "reason": "The passage directly rejects substantial compliance and states that strict compliance with Section 50(1) is necessary.",
+      "confidence": "high"
+    },
+    {
+      "no": 19,
+      "mark": "Partly",
+      "evidence": "the theory of ‘substantial compliance’ cannot be applied to defeat, negate or neutralise important safeguards provided by the legislature",
+      "reason": "It directly concerns substantial compliance under Section 50, but presents counsel's argument rather than the court's holding.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 18,
+  "caveats": "Passage 19 records an argument by learned counsel rather than the court's holding."
+}

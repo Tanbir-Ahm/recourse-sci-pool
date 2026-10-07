@@ -98,6 +98,9 @@ def rtf_to_text(rtf):
     return text.strip() + "\n"
 
 
+_LABEL = re.compile(r"\A\s*json[ \t]*\n", re.I)
+
+
 def convert_folder(in_dir, out_dir, tool, out=print):
     """Converts every .rtf in in_dir. Returns (converted names, problems)."""
     os.makedirs(out_dir, exist_ok=True)
@@ -111,6 +114,9 @@ def convert_folder(in_dir, out_dir, tool, out=print):
             continue
         qn, order = int(m.group(1)), m.group(2).upper()
         text = rtf_to_text(open(os.path.join(in_dir, name), "r", encoding="cp1252", errors="replace").read())
+        label = _LABEL.match(text)            # a tool's code box has a heading ("JSON") that comes along when the reply is copied; it is not part of the reply
+        if label:
+            text = text[label.end():].lstrip("\n")
         try:
             qid = json.loads(text).get("question_id")
         except Exception as e:
@@ -123,7 +129,7 @@ def convert_folder(in_dir, out_dir, tool, out=print):
         with open(os.path.join(out_dir, new), "w", encoding="utf-8", newline="\n") as fh:
             fh.write(text)
         done.append(new)
-        out(f"{name} -> {new}")
+        out(f"{name} -> {new}" + ("  (a leading 'JSON' label copied from the tool's code box was dropped; nothing else was changed)" if label else ""))
     return done, problems
 
 

@@ -7,6 +7,18 @@ Real replies only. Put each reply as a plain text file in the folder for the pac
 | `J_first_pack/` | J's replies to the first pack (`Q01_A_...txt` to `Q12_A_...txt`, and `Q03_B_...`, `Q09_B_...` and any other B files) |
 | `S_top_up/` | S's replies to the top-up pack (`Q02_TA_...txt` and so on) and to any overlap files (`Q03_A_...`, `Q09_A_...`) |
 
+## What is in the folders (2026-10-07)
+
+| Folder | Who and which tool | What |
+|---|---|---|
+| `J_first_pack/` | J, ChatGPT | Q01 to Q06, both orders (A and B), as Rich Text (`A01_A.rtf` ...). Convert with `--tool ChatGPT-J`. |
+| `J_second_pack_gemini/` | J, **Gemini** | Q07, Q08, Q10, Q11, Q12, both orders, as Rich Text (`A07_A.rtf` ...). Convert with `--tool Gemini-J`, a separate run from the folder above, because the names are the same. **Q09 (A and B) is missing.** `A08_A.rtf` came with the code box's heading "JSON" in front of the reply; the converter drops that one label and says so, nothing else is changed. |
+| `S_top_up/` | S (initials **SK**), ChatGPT | The ten top-up replies (Q02, Q03, Q04, Q05, Q07, Q08, Q09, Q10, Q11, Q12; there are no top-up passages for Q01 and Q06) and the two overlap replies `Q03_A` and `Q09_A`. Received as `Q03_A_SK_chatgpt.txt` and so on; only the names were changed, to `Q03_A_ChatGPT-SK.txt`. |
+
+J used two tools (ChatGPT for Q01 to Q06, Gemini for Q07 to Q12), so no question was judged by both tools, and nothing shows whether one is stricter. The reader treats each tool-and-person pair as its own run.
+
+The first full read is in `../review_results/2026-10-07_full_read/`.
+
 ## File names
 
 `Q<question>_<A|B|TA>_<tool>-<initials>.txt`, for example `Q03_A_ChatGPT-J.txt` or `Q03_TA_Gemini-S.txt`.

@@ -1,0 +1,73 @@
+version,treatment,questions_judged,marked_slots,yes_share,yes_or_partly_share,misleading_share,source
+A today,agreed,12,50,0.45,0.82,0.09,LLM-judged
+A today,lower,12,59,0.37,0.85,0.07,LLM-judged
+A today,higher,12,59,0.52,0.85,0.07,LLM-judged
+A today,run ChatGPT-J/A,6,30,0.47,0.90,0.07,LLM-judged
+A today,run ChatGPT-J/B,6,30,0.60,0.93,0.03,LLM-judged
+A today,run ChatGPT-SK/A,2,10,0.60,0.80,0.20,LLM-judged
+A today,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+A today,run Gemini-J/A,5,24,0.40,0.80,0.04,LLM-judged
+A today,run Gemini-J/B,5,24,0.28,0.80,0.04,LLM-judged
+B no repeats,agreed,12,51,0.45,0.82,0.07,LLM-judged
+B no repeats,lower,12,60,0.37,0.85,0.05,LLM-judged
+B no repeats,higher,12,60,0.52,0.85,0.05,LLM-judged
+B no repeats,run ChatGPT-J/A,6,30,0.47,0.90,0.07,LLM-judged
+B no repeats,run ChatGPT-J/B,6,30,0.60,0.93,0.03,LLM-judged
+B no repeats,run ChatGPT-SK/A,2,10,0.60,0.90,0.10,LLM-judged
+B no repeats,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+B no repeats,run Gemini-J/A,5,25,0.40,0.76,0.04,LLM-judged
+B no repeats,run Gemini-J/B,5,25,0.28,0.76,0.04,LLM-judged
+C rewrite,agreed,6,29,0.83,0.92,0.07,LLM-judged
+C rewrite,lower,6,29,0.83,0.92,0.07,LLM-judged
+C rewrite,higher,6,29,0.83,0.92,0.07,LLM-judged
+C rewrite,run ChatGPT-J/A,3,15,0.80,0.87,0.13,LLM-judged
+C rewrite,run ChatGPT-J/B,3,15,0.87,0.93,0.07,LLM-judged
+C rewrite,run ChatGPT-SK/A,2,9,0.88,0.88,0.12,LLM-judged
+C rewrite,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+C rewrite,run Gemini-J/A,2,10,0.80,1.00,0.00,LLM-judged
+C rewrite,run Gemini-J/B,2,10,0.80,1.00,0.00,LLM-judged
+E no multiplier,agreed,12,49,0.41,0.85,0.07,LLM-judged
+E no multiplier,lower,12,59,0.32,0.81,0.09,LLM-judged
+E no multiplier,higher,12,59,0.45,0.85,0.07,LLM-judged
+E no multiplier,run ChatGPT-J/A,6,30,0.40,0.90,0.07,LLM-judged
+E no multiplier,run ChatGPT-J/B,6,30,0.50,0.93,0.07,LLM-judged
+E no multiplier,run ChatGPT-SK/A,2,9,0.42,0.68,0.12,LLM-judged
+E no multiplier,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+E no multiplier,run Gemini-J/A,5,25,0.36,0.76,0.08,LLM-judged
+E no multiplier,run Gemini-J/B,5,25,0.28,0.68,0.12,LLM-judged
+F merged,agreed,6,29,0.86,0.92,0.07,LLM-judged
+F merged,lower,6,29,0.86,0.92,0.07,LLM-judged
+F merged,higher,6,29,0.86,0.92,0.07,LLM-judged
+F merged,run ChatGPT-J/A,3,15,0.80,0.87,0.13,LLM-judged
+F merged,run ChatGPT-J/B,3,15,0.87,0.93,0.07,LLM-judged
+F merged,run ChatGPT-SK/A,2,9,0.88,0.88,0.12,LLM-judged
+F merged,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+F merged,run Gemini-J/A,2,10,0.90,1.00,0.00,LLM-judged
+F merged,run Gemini-J/B,2,10,0.90,1.00,0.00,LLM-judged
+L landmark key passages,agreed,12,19,0.54,0.96,0.00,LLM-judged
+L landmark key passages,lower,12,20,0.50,0.96,0.00,LLM-judged
+L landmark key passages,higher,12,20,0.54,0.96,0.00,LLM-judged
+L landmark key passages,run ChatGPT-J/A,6,10,0.50,1.00,0.00,LLM-judged
+L landmark key passages,run ChatGPT-J/B,6,10,0.58,1.00,0.00,LLM-judged
+L landmark key passages,run ChatGPT-SK/A,2,3,0.75,1.00,0.00,LLM-judged
+L landmark key passages,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+L landmark key passages,run Gemini-J/A,5,9,0.40,0.90,0.00,LLM-judged
+L landmark key passages,run Gemini-J/B,5,9,0.40,0.90,0.00,LLM-judged
+M mine top 6,agreed,12,62,0.40,0.78,0.10,LLM-judged
+M mine top 6,lower,12,72,0.35,0.82,0.07,LLM-judged
+M mine top 6,higher,12,72,0.49,0.82,0.07,LLM-judged
+M mine top 6,run ChatGPT-J/A,6,36,0.44,0.89,0.06,LLM-judged
+M mine top 6,run ChatGPT-J/B,6,36,0.58,0.92,0.03,LLM-judged
+M mine top 6,run ChatGPT-SK/A,2,12,0.50,0.83,0.17,LLM-judged
+M mine top 6,run ChatGPT-SK/TA,0,0,,,,LLM-judged
+M mine top 6,run Gemini-J/A,5,30,0.37,0.73,0.07,LLM-judged
+M mine top 6,run Gemini-J/B,5,30,0.27,0.73,0.07,LLM-judged
+S site shown,agreed,12,57,0.36,0.90,0.02,LLM-judged
+S site shown,lower,12,64,0.35,0.90,0.03,LLM-judged
+S site shown,higher,12,64,0.43,0.92,0.01,LLM-judged
+S site shown,run ChatGPT-J/A,6,22,0.39,0.97,0.00,LLM-judged
+S site shown,run ChatGPT-J/B,6,22,0.49,0.94,0.03,LLM-judged
+S site shown,run ChatGPT-SK/A,2,4,0.33,1.00,0.00,LLM-judged
+S site shown,run ChatGPT-SK/TA,10,24,0.36,0.95,0.00,LLM-judged
+S site shown,run Gemini-J/A,5,17,0.22,0.70,0.05,LLM-judged
+S site shown,run Gemini-J/B,5,17,0.17,0.65,0.05,LLM-judged

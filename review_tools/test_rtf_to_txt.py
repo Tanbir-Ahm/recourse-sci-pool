@@ -63,5 +63,18 @@ with tempfile.TemporaryDirectory() as tmp:
     check("the input folder is left untouched", sorted(os.listdir(src)) == ["A01_A.rtf", "A02_B.rtf", "A04_A.rtf", "A06_A.rtf", "Q03_TA.rtf", "notes.rtf", "readme.txt"])
     check("converted files parse as JSON", all(json.load(open(f"{dst}/{n}", encoding="utf-8"))["question_id"].startswith("Q") for n in done))
 
+with tempfile.TemporaryDirectory() as tmp:       # a reply copied together with the code box's "JSON" heading
+    src, dst = f"{tmp}/in", f"{tmp}/out"
+    os.makedirs(src)
+    q7 = body.replace("Q01", "Q07")
+    open(f"{src}/A07_A.rtf", "w", encoding="cp1252").write(HEAD + "JSON" + BS + "\n" + BS + "\n" + q7)
+    open(f"{src}/A07_B.rtf", "w", encoding="cp1252").write(HEAD + q7)
+    msgs = []
+    done, problems = r2t.convert_folder(src, dst, "Gemini-J", out=msgs.append)
+    check("a leading JSON label from the tool's code box is dropped and the reply converts", done == ["Q07_A_Gemini-J.txt", "Q07_B_Gemini-J.txt"] and not problems, (done, problems))
+    check("the dropped label is reported for that file only", any(m.startswith("A07_A.rtf") and "label" in m for m in msgs) and not any(m.startswith("A07_B.rtf") and "label" in m for m in msgs), msgs)
+    a_txt, b_txt = open(f"{dst}/Q07_A_Gemini-J.txt", encoding="utf-8").read(), open(f"{dst}/Q07_B_Gemini-J.txt", encoding="utf-8").read()
+    check("apart from the label the two converted replies are identical, so nothing else was changed", a_txt == b_txt and "JSON" not in a_txt.split("{")[0], (a_txt[:60], b_txt[:60]))
+
 print("\nALL PASSED" if not FAILS else f"\nFAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)

@@ -1,0 +1,22 @@
+{
+  "question_id": "Q08",
+  "marks": [
+    {
+      "no": 15,
+      "mark": "Partly",
+      "evidence": "a mandatory presumption is required to be raised in terms of Section 118(b) and Section 139 of the Act.",
+      "reason": "The passage establishes a mandatory Section 139 presumption and mentions legally enforceable debt, but does not explain how the presumption can be rebutted.",
+      "confidence": "high"
+    },
+    {
+      "no": 16,
+      "mark": "Yes",
+      "evidence": "It shall be presumed, unless the Contrary is proved, that the holder of a cheque received the cheque",
+      "reason": "The passage directly states that Section 139 presumes a debt or liability and expressly indicates that the presumption may be rebutted by proving the contrary.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 16,
+  "caveats": ""
+}
