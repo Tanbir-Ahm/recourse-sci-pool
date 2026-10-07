@@ -1,0 +1,95 @@
+{
+ "schema": "goodlaw-flags-1",
+ "flags": [
+  {
+   "id": "F-mohan-lal-v-state-of-punjab",
+   "source": "checker",
+   "case": {
+    "name": "Mohan Lal v State of Punjab",
+    "citation": "(2018) 17 SCC 627",
+    "year": 2018,
+    "doc_key": "b2018_9_1006_1023"
+   },
+   "status": "ADVERSE_SIGNAL",
+   "note": "A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case.",
+   "evidence": [
+    {
+     "title": "MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI)",
+     "date": "2020-08-31",
+     "bench": 5,
+     "cue": "are not good law",
+     "label": "OVERRULES",
+     "quote": "MUKESH SINGH v. STATE (NARCOTIC BRANCH OF DELHI) (Special Leave Petition (Criminal) Diary No. 39528 of 2018) AUGUST 31, 2020 [ARUN MISHRA, INDIRA BANERJEE,VINEET SARAN, M. R. SHAH AND S. RAVINDRA BHAT, JJ.] Narcotic Drugs and Psychotropic Substances Act, 1985 – Informant-police officer who is the co"
+    },
+    {
+     "title": "MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI)",
+     "date": "2020-08-31",
+     "bench": 5,
+     "cue": "overruled",
+     "label": "OVERRULES",
+     "quote": "[Para 12][302-B-G] Mohan Lal v. State of Punjab (2018) 17 SCC 627 : [2018] 9 SCR 1006 – overruled."
+    }
+   ],
+   "first_seen": "2026-10-07",
+   "last_seen": "2026-10-07",
+   "state": "open",
+   "next_due": null,
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-review",
+     "event": "raised by the checker as ADVERSE_SIGNAL"
+    }
+   ]
+  },
+  {
+   "id": "F-siddharam-satlingappa-mhetre-v-state-of-maharashtra",
+   "source": "checker",
+   "case": {
+    "name": "Siddharam Satlingappa Mhetre v State of Maharashtra",
+    "citation": "(2011) 1 SCC 694",
+    "year": 2011,
+    "doc_key": "c37199"
+   },
+   "status": "ADVERSE_SIGNAL",
+   "note": "A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case.",
+   "evidence": [
+    {
+     "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+     "date": "2020-01-29",
+     "bench": 5,
+     "cue": "accordingly overruled",
+     "label": "OVERRULES",
+     "quote": "Mhetre to that extent and other judgments which have followed it are accordingly overruled."
+    },
+    {
+     "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+     "date": "2020-01-29",
+     "bench": 5,
+     "cue": "overruled",
+     "label": "OVERRULES",
+     "quote": "SCR 556; Siddharam Satlingappa Mhetre v. State of Maharashtra (2011) 1 SCC 694 : [2010] 15 SCR 201 – overruled."
+    },
+    {
+     "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+     "date": "2020-01-29",
+     "bench": 5,
+     "cue": "are hereby overruled",
+     "label": "OVERRULES",
+     "quote": "This does not amount to “cancellation” in terms of Section 439 (2), Cr. PC. (12) The observations in Siddharam Satlingappa Mhetre v. State of Maharashtra & Ors (and other similar judgments) that no restrictive conditions at all can be imposed, while granting anticipatory bail are hereby overruled."
+    }
+   ],
+   "first_seen": "2026-10-07",
+   "last_seen": "2026-10-07",
+   "state": "open",
+   "next_due": null,
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-review",
+     "event": "raised by the checker as ADVERSE_SIGNAL"
+    }
+   ]
+  }
+ ]
+}

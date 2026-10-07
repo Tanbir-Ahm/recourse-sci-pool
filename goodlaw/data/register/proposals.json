@@ -1,0 +1,6319 @@
+{
+ "schema": "goodlaw-proposals-1",
+ "proposals": [
+  {
+   "id": "P-0001",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "c43549",
+   "date": "2016-04-01",
+   "bench": 3,
+   "title": "LILAWATI AGARWAL ETC. versus THE STATE OF JHARKHAND ETC.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "To understand the dictum in Raghubir Singh (supra), it is necessary to understand what was stated in Bhag Singh (supra) and what has been overruled in Raghubir Singh (supra).",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0002",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "c44452",
+   "date": "2017-01-02",
+   "bench": 5,
+   "title": "KRISHNA KUMAR SINGH & ANR v. STATE OF BIHAR & ORS",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "I also agree with the 40 Page 41 JUDGMENT view that the Constitution Bench decision in Bhupendra Kumar Bose and T. Venkata Reddy (supra) to the extent the same extended the theory of “creation of enduring rights” to legislation by ordinances have not been correctly decided and should stand overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0003",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "c44682",
+   "date": "2017-03-21",
+   "bench": 3,
+   "title": "Ram Kishan Fauji v. State of Haryana and Ors",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Contrary view in Surya Dev Rai (supra) is overruled.” 43.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0004",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_7_765_822",
+   "date": "2017-07-03",
+   "bench": 3,
+   "title": "MUKUND DEWANGAN versus ORIENTAL INSURANCE COMPANY LIMITED",
+   "overruled_name": "Oriental Insurance Co. Ltd. v. Angad Kol & Ors",
+   "overruled_cites": "(2009) 11 SCC 356 : [2009] 2 SCR 695",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0005",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_7_765_822",
+   "date": "2017-07-03",
+   "bench": 3,
+   "title": "MUKUND DEWANGAN versus ORIENTAL INSURANCE COMPANY LIMITED",
+   "overruled_name": "c New India Assurance Co. Ltd. v. Prabhu Lal",
+   "overruled_cites": "(2008) 1 SCC 696 : (2007) 12 SCR 724",
+   "evidence": "not correct law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0006",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_7_765_822",
+   "date": "2017-07-03",
+   "bench": 3,
+   "title": "MUKUND DEWANGAN versus ORIENTAL INSURANCE COMPANY LIMITED",
+   "overruled_name": "D E F Oriental Insurance Co. Ltd. v. Angad Kol & Ors.",
+   "overruled_cites": "(2009) 11 SCC 356 : (2009) 2 SCR 695",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0007",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_7_765_822",
+   "date": "2017-07-03",
+   "bench": 3,
+   "title": "MUKUND DEWANGAN versus ORIENTAL INSURANCE COMPANY LIMITED",
+   "overruled_name": "National Insurance Co. Ltd. v. Annappa lrappa Nesaria alias Nesargi & Ors.",
+   "overruled_cites": "(2008) 3 SCC 464 : (2008) 1 SCR 1061",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0008",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "Union of India v. Bhanudas Krishna Gawde",
+   "overruled_cites": "(1977) 1 SCC 834 : [1977] 2 SCR 719",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0009",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "B Suresh Kumar Koushal v. NAZ foundation",
+   "overruled_cites": "(2014) 1 SCC 1 : [2013) 17 SCR 116",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0010",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "M P Sharma v. Satish Cha11dra, District Magistrate, Delhi",
+   "overruled_cites": "[1954] SCR 1077",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0011",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "Kharak Singh v. State of Uttar Pradesh",
+   "overruled_cites": "[1964] 1 SCR 332",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0012",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "M. P. Sharma and others v. Satish Chandra, District D Magistrate, Delhi, and others 1954 SCR 1077",
+   "overruled_cites": "",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0013",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "Kharak Singh v. State of U.P.",
+   "overruled_cites": "(1964) 1 SCR 332",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0014",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "M P Sharma v. Satish Chandra 1954 SCR 1077",
+   "overruled_cites": "",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0015",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "Kharak Singh v. State of Uttar Pradesh",
+   "overruled_cites": "AIR 1963 SC 1295 : [1964] SCR 332",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0016",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_10_569_999",
+   "date": "2017-08-24",
+   "bench": 9,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR.  versus UNION OF INDIA AND ORS.",
+   "overruled_name": "ADM Jabalpur v. Shivkant Shukla",
+   "overruled_cites": "[1976] Suppl. SCR 172: (1976) 2 sec 521",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0017",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2017_12_557_643",
+   "date": "2017-10-09",
+   "bench": 3,
+   "title": "SANTHINI versus VIJAYA VENKETESH",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "H 614 SUPREME COURT REPORTS [2017] 12 S.C.R. A (vi) The decisionin Krishna ~ni Nagam (supra) is overruled to . the aforesaid extent. · 57.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0018",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2017_13_1009_1052",
+   "date": "2017-12-14",
+   "bench": 5,
+   "title": "THE STATE OF JHARKHAND & ORS. versus MIS HINDUSTAN CONSTRUCTION CO. LTD.",
+   "overruled_name": "State of Madhya Pradesh v. Saith and Skelton (P) Ltd.",
+   "overruled_cites": "(1972) 1 SCC 702 : [1972] 3 SCR 233; **Guru Nanak Foundation v. Rattan Singh and Sons [1982] 1 SCR 842",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0019",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_2_1_231",
+   "date": "2018-02-08",
+   "bench": 3,
+   "title": "INDORE DEVELOPMENT AUTHORITY versus SHAILENDRA (DEAD) THROUGH LRS. & ORS.",
+   "overruled_name": "Velaxan Kumar v. Union of India & Ors.",
+   "overruled_cites": "(2015) 4 SCC 325",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0020",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_2_1_231",
+   "date": "2018-02-08",
+   "bench": 3,
+   "title": "INDORE DEVELOPMENT AUTHORITY versus SHAILENDRA (DEAD) THROUGH LRS. & ORS.",
+   "overruled_name": "Union of India v. Shiv Raj",
+   "overruled_cites": "(2014) 6 SCC 564 : [ 2014] 8 SCR 751",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0021",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_2_1_231",
+   "date": "2018-02-08",
+   "bench": 3,
+   "title": "INDORE DEVELOPMENT AUTHORITY versus SHAILENDRA (DEAD) THROUGH LRS. & ORS.",
+   "overruled_name": "Karnail Kaur & Ors. v. State of Punjab & Ors.",
+   "overruled_cites": "(2015) 3 SCC 206 : [2016] 5 SCR 227",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0022",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_2_1_231",
+   "date": "2018-02-08",
+   "bench": 3,
+   "title": "INDORE DEVELOPMENT AUTHORITY versus SHAILENDRA (DEAD) THROUGH LRS. & ORS.",
+   "overruled_name": "Pune Municipal Corporation & Anr. v. Harakchand Misirmal Solanki",
+   "overruled_cites": "(2014) 3 SCC 183 – per incurium. Shree Balaji Nagar Residential Association v. State of Tamil Nadu (2015) 3 SCC 353",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0023",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_6_1_386",
+   "date": "2018-03-09",
+   "bench": 5,
+   "title": "COMMON CAUSE (A REGD. SOCIETY) versus UNION OF INDIA & ANOTHER",
+   "overruled_name": "Aruna Ramachandra Shanbaug v. Union of India",
+   "overruled_cites": "(2011) 15 SCC 480",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0024",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2018_6_683_687",
+   "date": "2018-03-22",
+   "bench": 3,
+   "title": "M/S LION ENGINEERING CONSULTANTS versus STATE OF M.P. & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Accordingly, we overrule the observations to the contrary in Paragraphs 16 and 17 of the judgment in MSP Infrastructures Ltd. (supra). 10.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0025",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_2_1045_1098",
+   "date": "2018-03-28",
+   "bench": 3,
+   "title": "ASIAN RESURFACING OF ROAD AGENCY PVT. LTD. & ANR.V. CENTRAL BUREAU OF INVESTIGATION versus CENTRAL BUREAU OF INVESTIGATION",
+   "overruled_name": "Satya Narayan Sharma v. State of Rajasthan",
+   "overruled_cites": "(2001) 8 SCC 607 : [2001] 3 Suppl. SCR 268",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0026",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_3_854_857",
+   "date": "2018-04-10",
+   "bench": 3,
+   "title": "SECRETARY TO GOVERNMENT OF TAMIL NADU PUBLIC (LAW AND ORDER) REVENUE DEPARTMENT & ANR. versus KAMALA & ANR.",
+   "overruled_name": "Commissioner of Police v. Gurbux Anandram Bhiryani",
+   "overruled_cites": "(1988) Supp SCC 568",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0027",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_7_1191_1231",
+   "date": "2018-07-30",
+   "bench": 5,
+   "title": "COMMISSIONER OF CUSTOMS (IMPORT), MUMBAI versus M/S. DILIP KUMAR AND COMPANY & ORS.",
+   "overruled_name": "Sun Export Corporation, Bombay v. Collector of Customs, Bombay",
+   "overruled_cites": "(1977) 6 SCC 564 : [1997] 1 Suppl. SCR 434",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0028",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2018_9_1006_1023",
+   "date": "2018-08-16",
+   "bench": 3,
+   "title": "MOHANLAL versus THE STATE OF PUNJAB",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Therefore, legal position stated in Naushad v. State of Kerala 2000 (1) KLT 785 to the contrary is overruled.” 24.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0029",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2018_9_1006_1023",
+   "date": "2018-08-16",
+   "bench": 3,
+   "title": "MOHANLAL versus THE STATE OF PUNJAB",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Kader (supra) is, therefore, overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0030",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_7_379_746",
+   "date": "2018-09-06",
+   "bench": 5,
+   "title": "NAVTEJ SINGH JOHAR & ORS. versus UNION OF INDIA THR. SECRETARY MINISTRY OF LAW AND JUSTICE",
+   "overruled_name": "C.R. Suresh Kumar Koushal and another v. Naz Foundation and others",
+   "overruled_cites": "(2014) 1 SCC 1 : [2013] 17 SCR 1019",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0031",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_7_379_746",
+   "date": "2018-09-06",
+   "bench": 5,
+   "title": "NAVTEJ SINGH JOHAR & ORS. versus UNION OF INDIA THR. SECRETARY MINISTRY OF LAW AND JUSTICE",
+   "overruled_name": "New Delhi Municipal Council v. State of Punjab and Ors.",
+   "overruled_cites": "(1997) 7 SCC 339 : [1996] 10 Suppl. SCR 472",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0032",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_7_379_746",
+   "date": "2018-09-06",
+   "bench": 5,
+   "title": "NAVTEJ SINGH JOHAR & ORS. versus UNION OF INDIA THR. SECRETARY MINISTRY OF LAW AND JUSTICE",
+   "overruled_name": "NAVTEJ SINGH JOHAR v. UOI THR. SECY. MINISTRY OF LAW & JUSTICE [DIPAK MISRA, CJI ] Suresh Kumar Koushal v. Naz Foundation",
+   "overruled_cites": "(2014) 1 SCC 1 : [2013] 17 SCR 116",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0033",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_7_379_746",
+   "date": "2018-09-06",
+   "bench": 5,
+   "title": "NAVTEJ SINGH JOHAR & ORS. versus UNION OF INDIA THR. SECRETARY MINISTRY OF LAW AND JUSTICE",
+   "overruled_name": "A.K. Roy v. Union of India",
+   "overruled_cites": "(1982) 1 SCC 271 : [1982] 2 SCR 272– referred to Suresh Kumar Koushal & Anr. v. Naz Foundation & Ors. (2014) 1 SCC 1 : [2013] 17 SCR116",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0034",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_699_719",
+   "date": "2018-09-19",
+   "bench": 3,
+   "title": "JANABAI versus ADDITIONAL COMMISSIONER AND OTHERS",
+   "overruled_name": "Sagar Pandurang Dhundare v. Keshav Aaba Patil and others",
+   "overruled_cites": "(2018) 1 SCC 340",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0035",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_8_1_1076",
+   "date": "2018-09-26",
+   "bench": 5,
+   "title": "JUSTICE K. S. PUTTASWAMY (RETD.) versus UNION OF INDIA & ORS.",
+   "overruled_name": "Mohd. Saeed Siddiqui v. State of Uttar Pradesh and Another",
+   "overruled_cites": "(2014) 11 SCC 415",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0036",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_8_1_1076",
+   "date": "2018-09-26",
+   "bench": 5,
+   "title": "JUSTICE K. S. PUTTASWAMY (RETD.) versus UNION OF INDIA & ORS.",
+   "overruled_name": "Yogendra Kumar Jaiswal and Others v. State of Bihar and Others",
+   "overruled_cites": "(2016) 3 SCC 183",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0037",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_8_1_1076",
+   "date": "2018-09-26",
+   "bench": 5,
+   "title": "JUSTICE K. S. PUTTASWAMY (RETD.) versus UNION OF INDIA & ORS.",
+   "overruled_name": "Mohd Saeed Siddiqui v State of Uttar Pradesh",
+   "overruled_cites": "(2014) 11 SCC 415",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0038",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_8_1_1076",
+   "date": "2018-09-26",
+   "bench": 5,
+   "title": "JUSTICE K. S. PUTTASWAMY (RETD.) versus UNION OF INDIA & ORS.",
+   "overruled_name": "Yogendra Kumar Jaiswal v State of Bihar",
+   "overruled_cites": "(2016) 3 SCC 183",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0039",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "Sowmithri Vishnu v. Union of India and another",
+   "overruled_cites": "(1985) Supp SCC 137:[1985] Suppl. SCR 741",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0040",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "V. Revathi v. Union of India and others",
+   "overruled_cites": "(1988) 2 SCC 72 : [1988] 3 SCR 73",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0041",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "Sowmithri Vishnu v. Union of India and Anr.",
+   "overruled_cites": "(1985) Supp SCC 137:[1985] Suppl. SCR 741",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0042",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "V. Revathi v. Union of India and Ors.",
+   "overruled_cites": "(1988) 2 SCC 72 : [1988] 3 SCR 73",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0043",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "*Sowmithri Vishnu v. Union of India 1985 Supp",
+   "overruled_cites": "SCC 137:[1985] Suppl. SCR 741;**V Revathi v Union of India (1988) 2 SCC 72 : [1988] 3 SCR 73",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0044",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "Sowmithri Vishnu v. Union of India & Anr.",
+   "overruled_cites": "(1985) Supp SCC 137 : [1985] Suppl. SCR 741",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0045",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "V. Revathi v Union of India",
+   "overruled_cites": "(1988) 2 SCC 72 : [1988] 3 SCR 73",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0046",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_11_765_950",
+   "date": "2018-09-27",
+   "bench": 5,
+   "title": "JOSEPH SHINE versus UNION OF INDIA",
+   "overruled_name": "W. Kalyani v. State",
+   "overruled_cites": "(2012) 1 SCC 358",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0047",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2018_9_561_898",
+   "date": "2018-09-28",
+   "bench": 5,
+   "title": "INDIAN YOUNG LAWYERS ASSN. versus STATE OF KERALA 561 INDIAN YOUNG LAWYERS ASSOCIATION & ORS.V. THE STATE OF KERALA & ORS.",
+   "overruled_name": "The State of Bombay v Narasu Appa Mali",
+   "overruled_cites": "AIR 1952 Bom 84",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0048",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_1_489_532",
+   "date": "2019-01-23",
+   "bench": 3,
+   "title": "M/S. SHANTI CONDUCTORS (P) LTD. & ANR. versus ASSAM STATE ELECTRICITY BOARD & ORS.",
+   "overruled_name": "Purbanchal Cables and Conductors Private Limited v. Assam State Electricity Board and another",
+   "overruled_cites": "(2012) 7 SCC 462 : [2012] 6 SCR 905",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0049",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_4_409_432",
+   "date": "2019-02-20",
+   "bench": 3,
+   "title": "PR. COMMISSIONER OF INCOME TAX SHIMLA versus M/S AARHAM SOFTRONICS",
+   "overruled_name": "Commissioner of Income Tax v. M/s. Classic Binding Industries",
+   "overruled_cites": "(2018) 9 SCC 753",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0050",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_4_928_944",
+   "date": "2019-03-01",
+   "bench": 3,
+   "title": "M/S. VIJAY INDUSTRIES versus COMMISSIONER OF INCOME TAX",
+   "overruled_name": "M/S. VIJAY INDUSTRIES v. COMMISSIONER OF INCOME TAX SUPREME COURT REPORTS",
+   "overruled_cites": "[2019] 4 S.C.R. Motilal Pesticides (I) Pvt. Ltd. v. Commissioner of Income Tax, Delhi-II (2000) 9 SCC 63",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0051",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_5_1049_1059",
+   "date": "2019-03-12",
+   "bench": 3,
+   "title": "STATE OF WEST BENGAL & ORS. versus DR. TONMOY MONDAL",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "So it is that relaxation on merit, by overruling STATE OF WEST BENGAL & ORS. v. DR. TONMOY MONDAL SUPREME COURT REPORTS [2019] 5 S.C.R. equality and quality altogether, is a social risk where the stage is postgraduate or postdoctoral. 34.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0052",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_18_924_956",
+   "date": "2019-07-09",
+   "bench": 3,
+   "title": "STATE OF MADHYA PRADESH AND OTHERS  versus LAFARGE DEALERS ASSOCIATION AND OTHERS",
+   "overruled_name": "Commissioner of Commercial Taxes, Ranchi and Another v. Swarm Rekha Cokes and Coals Pvt. Ltd.",
+   "overruled_cites": "(2004) 6 SCC 689 : [2004] 2 Suppl. SCR 633",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0053",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_11_74_134",
+   "date": "2019-08-07",
+   "bench": 3,
+   "title": "RAVINDER KAUR GREWAL & ORS versus MANJIT KAUR & ORS.",
+   "overruled_name": "Gurudwara Sahab v. Gram Panchayat Village Sirthala",
+   "overruled_cites": "(2014) 1 SCC 669",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0054",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_11_74_134",
+   "date": "2019-08-07",
+   "bench": 3,
+   "title": "RAVINDER KAUR GREWAL & ORS versus MANJIT KAUR & ORS.",
+   "overruled_name": "State of Uttarakhand v. Mandir Sri Laxman Sidh Maharaj",
+   "overruled_cites": "(2017) 9 SCC 579 : [2017] 14 SCR 257",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0055",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_11_74_134",
+   "date": "2019-08-07",
+   "bench": 3,
+   "title": "RAVINDER KAUR GREWAL & ORS versus MANJIT KAUR & ORS.",
+   "overruled_name": "Dharampal (Dead) through LRs v. Punjab Wakf Board",
+   "overruled_cites": "(2018) 11 SCC 449 : [2017] 8 SCR 316",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0056",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_10_381_530",
+   "date": "2019-08-09",
+   "bench": 3,
+   "title": "PIONEER URBAN LAND AND INFRASTRUCTURE LIMITED & ANR. versus UNION OF INDIA & ORS.",
+   "overruled_name": "Krishi Utpadan Mandi Samiti v. Shankar Industries",
+   "overruled_cites": "(1993) 3 Suppl. SCC 361 : [1993] 1 SCR 1037",
+   "evidence": "held not a good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0057",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_12_607_617",
+   "date": "2019-08-27",
+   "bench": 3,
+   "title": "COMMISSIONER OF INCOME TAX, KARNAL (HARYANA) versus M/S CARPET INDIA, PANIPAT (HARYANA)",
+   "overruled_name": "C.I.T. v. Satish Kumar Gupta (C.A. No. 6437/2012) decided on 12.09.2012",
+   "overruled_cites": "",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0058",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_12_123_136",
+   "date": "2019-09-05",
+   "bench": 3,
+   "title": "M/S MAYAVTI TRADING PVT. LTD. versus PRADYUAT DEB BURMAN",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Ltd. v. Rani Construction (P) Ltd. [(2002) 2 SCC 388] is overruled.” 16.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0059",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_12_516_531",
+   "date": "2019-09-16",
+   "bench": 3,
+   "title": "HUDA versus VIDYA CHETAL",
+   "overruled_name": "HUDA v. Sunita",
+   "overruled_cites": "(2005) 2 SCC 479",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0060",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_569_630",
+   "date": "2019-09-18",
+   "bench": 3,
+   "title": "VASANT GANPAT PADAVE (D) BY LRS. & ORS . versus ANANT MAHADEV SAWANT (D) THROUGH LRS. & ORS",
+   "overruled_name": "Appa Narsappa v. Akubai Ganapati",
+   "overruled_cites": "(1999) 4 SCC 453",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0061",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_569_630",
+   "date": "2019-09-18",
+   "bench": 3,
+   "title": "VASANT GANPAT PADAVE (D) BY LRS. & ORS . versus ANANT MAHADEV SAWANT (D) THROUGH LRS. & ORS",
+   "overruled_name": "Tukaram Maruti Chavan v. Maruti Narayan Chavan",
+   "overruled_cites": "(2008) 9 SCC 358 : [2008] 13 SCR 508",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0062",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_15_223_257",
+   "date": "2019-09-24",
+   "bench": 3,
+   "title": "NEVADA PROPERTIES PRIVATE LIMITED THROUGH ITS DIRECTOR versus STATE OF MAHARASHTRA AND ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "According to the majority judgment, earlier decision of the Division Bench of the same High Court in Kishore Shankar Signapurkar v. State of Maharashtra and Others1 lays down the correct ratio and the contrary view expressed in M/s. Bombay Science and Research Education Institute v. The State of Maharashtra and Others2 does not lay down the correct law.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0063",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_15_223_257",
+   "date": "2019-09-24",
+   "bench": 3,
+   "title": "NEVADA PROPERTIES PRIVATE LIMITED THROUGH ITS DIRECTOR versus STATE OF MAHARASHTRA AND ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The minority view holds that the police officer has power to seize any property, whether movable or immovable, under Section 102 of the Code and the decision of the Division Bench in M/s. Bombay Science and Research Education Institute (supra) lays down the correct law and the ratio in Kishore Shankar Signapurkar (supra) is not good law. 1 1997 Vol.IV L J 793 2 2008 All M.R. (Crl.) 2133 NEVADA PRO",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0064",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_14_285_311",
+   "date": "2019-10-03",
+   "bench": 3,
+   "title": "RAVISHANKAR @ BABA VISHWAKARMA versus THE STATE OF MADHYA PRADESH",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "We are, therefore, not in agreement with the opinion expressed by this Court in Sangeet v. State of Haryana [Sangeet v. State of Haryana, (2013) 2 SCC 452 : (2013) 2 SCC (Cri) 611] that the deprival of remission power of the appropriate Government by awarding sentences of 20 or 25 years or without any remission as not permissible is not in consonance with the law and we specifically overrule the s",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0065",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Foreshore Cooperative Housing Society Limited v. Praveen D. Desai (Dead) through Legal Representatives and others",
+   "overruled_cites": "(2015) 6 SCC 412 : [2015] 5 SCR 1075",
+   "evidence": "not correct law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0066",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Foreshore Cooperative Housing Society Limited v. Praveen D. Desai",
+   "overruled_cites": "(2009) 1 AIR Bom R 477",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0067",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Royal Palms (India) P. Ltd. v. Bharat Shah",
+   "overruled_cites": "(2009) 2 Bom CR 622",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0068",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Mukund Ltd. v. MIAL",
+   "overruled_cites": "(2011) 2 Mh.L.J. 936, Jagshi Shah v. Shaan Builders, (2012) 3 Bom CR 770",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0069",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Ferani Hotels P. Ltd. and another v. Nusli Neville Wadia and others",
+   "overruled_cites": "(2012) SCC OnLine Bom 1994",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0070",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Naresh Lachnmandas Aswani v. Haridas Aswani and others",
+   "overruled_cites": "(2013) SCC OnLine Bom 1368",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0071",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Union of India and others v. N.K. Bhog and others",
+   "overruled_cites": "(2015) SCC OnLine Bom 664",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0072",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Sudesh v. Abdul Aziz",
+   "overruled_cites": "(2001) 1 Mh.L.J. 324",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0073",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Smithkline Beecham Consumer Consumer Healthcare v. Hindustan Liver Limited, 2002",
+   "overruled_cites": "SCC OnLine Bom NUSLI NEVILLE WADIA v. IVORY PROPERTIES & ORS. SUPREME COURT REPORTS [2019] 15 S.C.R. 1337",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0074",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_795_864",
+   "date": "2019-10-04",
+   "bench": 3,
+   "title": "NUSLI NEVILLE WADIA versus IVORY PROPERTIES & ORS.",
+   "overruled_name": "Shraddha Associates v. St. Patrick’s Town Co- operative Housing Society Ltd.",
+   "overruled_cites": "(2003) 2 Mh.L.J. 219",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0075",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_13_695_720",
+   "date": "2019-10-14",
+   "bench": 3,
+   "title": "SHIV KUMAR & ANR. versus UNION OF INDIA & ORS.",
+   "overruled_name": "Government (NCT of Delhi) v. Manav Dharam Trust & Anr.",
+   "overruled_cites": "(2017) 6 SCC 751 : [2017] 4 SCR 232",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0076",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_936_989",
+   "date": "2019-10-16",
+   "bench": 3,
+   "title": "HARIBHAI MALAVIYA AND ORS. versus THE STATE OF GUJARAT AND ANR.",
+   "overruled_name": "Amrutbhai Shambubhai Patel v. Sumanbhai Kantibai Patel",
+   "overruled_cites": "(2017) 4 SCC 177 : [2017] 4 SCR 105",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0077",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_936_989",
+   "date": "2019-10-16",
+   "bench": 3,
+   "title": "HARIBHAI MALAVIYA AND ORS. versus THE STATE OF GUJARAT AND ANR.",
+   "overruled_name": "Athul Rao v. State of Karnataka and Anr.",
+   "overruled_cites": "(2018) 14 SCC 298",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0078",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_936_989",
+   "date": "2019-10-16",
+   "bench": 3,
+   "title": "HARIBHAI MALAVIYA AND ORS. versus THE STATE OF GUJARAT AND ANR.",
+   "overruled_name": "Bikash Ranjan Rout v. State through the Secretary (Home), Government of NCT of Delhi",
+   "overruled_cites": "(2019) 5 SCC 542",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0079",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_936_989",
+   "date": "2019-10-16",
+   "bench": 3,
+   "title": "HARIBHAI MALAVIYA AND ORS. versus THE STATE OF GUJARAT AND ANR.",
+   "overruled_name": "Randhir Singh Rana v. State (Delhi Administration)",
+   "overruled_cites": "(1997) 1 SCC 361 : [1996] 10 Suppl. SCR 880",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0080",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_936_989",
+   "date": "2019-10-16",
+   "bench": 3,
+   "title": "HARIBHAI MALAVIYA AND ORS. versus THE STATE OF GUJARAT AND ANR.",
+   "overruled_name": "Reeta Nag v. State of West Bengal and Ors.",
+   "overruled_cites": "(2009) 9 SCC 129 : [2009] 13 SCR 276",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0081",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_936_989",
+   "date": "2019-10-16",
+   "bench": 3,
+   "title": "HARIBHAI MALAVIYA AND ORS. versus THE STATE OF GUJARAT AND ANR.",
+   "overruled_name": "Devarapalli Lakshminarayana Reddy & Ors. v. V. Narayana Reddy & Ors.",
+   "overruled_cites": "(1976) 3 SCC 252 : [1976] Suppl. SCR 524",
+   "evidence": "held not correct law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0082",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_15_1085_1146",
+   "date": "2019-10-23",
+   "bench": 5,
+   "title": "SHAH AND S. RAVINDRA BHAT, JJ.] versus MANOHAR LAL & ORS. ETC.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "In our opinion, the view expressed by this Court in Ganapat Ladha v. Sashikant Vishnu Shinde, (1978) 2 SCC 573 and the observations made therein which we have earlier quoted, do not lay down the correct law.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0083",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_16_1_251",
+   "date": "2019-11-13",
+   "bench": 5,
+   "title": "ROJER MATHEW versus SOUTH INDIAN BANK LTD. & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Saeed Siddiqui v. State of U.P., (2014) 11 SCC 415] and Two Judge Bench judgment of this Court in Yogendra Kumar Jaiswal [Yogendra Kumar Jaiswal v. State of Bihar, (2016) 3 SCC 183 : (2016) 2 SCC (Cri) 1] do not lay down the correct law.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0084",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2019_16_424_650",
+   "date": "2019-11-13",
+   "bench": 5,
+   "title": "CENTRAL PUBLIC INFORMATION OFFICER, versus SUBHASH CHANDRA AGARWAL",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "M.P. Sharma [M.P. Sharma v. Satish Chandra, AIR 1954 SC 300 : 1954 Cri LJ 865 : 1954 SCR 1077] and the majority in Kharak Singh [Kharak Singh v. State of U.P., AIR 1963 SC 1295 : (1963) 2 Cri LJ 329 : (1964) 1 SCR 332] , to the extent that they indicate to the contrary, stand overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0085",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_16_651_671",
+   "date": "2019-11-19",
+   "bench": 3,
+   "title": "K. MEGHACHANDRA SINGH & ORS. versus NINGAM SIRO & ORS.",
+   "overruled_name": "Union of India and others v. N.R. Parmar",
+   "overruled_cites": "(2012) 13 SCC 340",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0086",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_17_331_395",
+   "date": "2019-11-27",
+   "bench": 3,
+   "title": "HINDUSTAN CONSTRUCTION COMPANY LIMITED & ANR.DIA & ORS. versus  UNION OF INDIA",
+   "overruled_name": "National Aluminum Company Ltd. (NALCO) v. Pressteel & Fabrications (P) Ltd. and Anr.",
+   "overruled_cites": "(2004) 1 SCC 540",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0087",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_17_331_395",
+   "date": "2019-11-27",
+   "bench": 3,
+   "title": "HINDUSTAN CONSTRUCTION COMPANY LIMITED & ANR.DIA & ORS. versus  UNION OF INDIA",
+   "overruled_name": "Fiza Developers and Inter-trade Pvt. Ltd. v. AMCI (India) Pvt. Ltd. and Anr.",
+   "overruled_cites": "(2009) 17 SCC 796 : [2009] 12 SCR 1 – per incurium. National Buildings Construction Corporation Ltd. v. Lloyds Insulation India Ltd. (2005) 2 SCC 367",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0088",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_17_1013_1047",
+   "date": "2019-12-06",
+   "bench": 3,
+   "title": "M/S. UNICORN INDUSTRIES versus UNION OF INDIA & OTHERS",
+   "overruled_name": "SRD Nutrients Private Limited v. Commissioner of Central Excise, Guwahati",
+   "overruled_cites": "(2018) 1 SCC 105 : [2017] 11 SCR 43",
+   "evidence": "per incuriam",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0089",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_17_1013_1047",
+   "date": "2019-12-06",
+   "bench": 3,
+   "title": "M/S. UNICORN INDUSTRIES versus UNION OF INDIA & OTHERS",
+   "overruled_name": "Bajaj Auto Limited v. Union of India & others",
+   "overruled_cites": "(2019) SCC OnLine SC 421, decided on 27.3.2019. [2019] 5 SCALE 325",
+   "evidence": "per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0090",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_17_742_827",
+   "date": "2019-12-10",
+   "bench": 3,
+   "title": "BGS SGS SOMA JV versus NHPC LTD.",
+   "overruled_name": "Union of India v. Hardy Exploration and Production (India) Inc. 2018",
+   "overruled_cites": "SCC Online SC 1640",
+   "evidence": "held not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0091",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2019_15_93_112",
+   "date": "2019-12-13",
+   "bench": 3,
+   "title": "S. KRISHNA SRADHA versus THE STATE OF ANDHRA PRADESH & ORS.",
+   "overruled_name": "Chandigarh Admn. vs. Jasmine Kaur",
+   "overruled_cites": "(2014) 10 SCC 521 : [2014] 9 SCR 1122",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0092",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "SUSHILA AGGARWAL v. STATE (NCT OF DELHI) SUPREME COURT REPORTS",
+   "overruled_cites": "[2020] 2 S.C.R. Siddharam Satlingappa Mhetre v. State of Maharashtra (2011) 1 SCC 694 : [2010] 15 SCR 201",
+   "evidence": "held not correct law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0093",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Salauddin Abdulsamad Shaikh v. State of Maharashtra",
+   "overruled_cites": "(1996) 1 SCC 667 : [1995] 6 Suppl. SCR 556",
+   "evidence": "held not good law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0094",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Salauddin Abdulsamad Shaikh v. State of Maharashtra",
+   "overruled_cites": "(1996) 1 SCC 667 : [1995] 6 Suppl. SCR 556",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0095",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "K.L. Verma v. State & Anr",
+   "overruled_cites": "(1998) 9 SCC 348",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0096",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Sunita Devi v. State of Bihar & Anr",
+   "overruled_cites": "(2005) 1 SCC 608 : [2004] 6 Suppl. SCR 707",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0097",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Adri Dharan Das v. State of West Bengal",
+   "overruled_cites": "(2005) 4 SCC 303 : [2005] 2 SCR 188",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0098",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Nirmal Jeet Kaur v. State of M.P. & Anr",
+   "overruled_cites": "(2004) 7 SCC 558 : [2004] 3 Suppl. SCR 1006",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0099",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "HDFC Bank Limited v. J.J. Mannan",
+   "overruled_cites": "(2010) 1 SCC 679 : [2009] 16 SCR 590",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0100",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Satpal Singh v. the State of Punjab",
+   "overruled_cites": "(2018) SCC Online (SC 415)",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0101",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Naresh Kumar Yadav v Ravindra Kumar",
+   "overruled_cites": "(2008) 1 SCC 632 : [2007] 11 SCR 615",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0102",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Siddharam Satlingappa Mhetre v. State of Maharashtra & Ors",
+   "overruled_cites": "(2011) 1 SCC 694 : [2010] 15 SCR 201",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0103",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Bhadresh Bipinbhai Sheth v. State of Gujarat & Anr",
+   "overruled_cites": "(2016) 1 SCC 152 : [2015] 10 SCR 398",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0104",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Salauddin Abdulsamad Shaikh v. State of Maharashtra",
+   "overruled_cites": "(1996) 1 SCC 667 : [1995] 6 Suppl. SCR 556",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0105",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Siddharam Satlingappa Mhetre v. State of Maharashtra",
+   "overruled_cites": "(2011) 1 SCC 694 : [2010] 15 SCR 201",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0106",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Sunita Devi v. State of Bihar & Anr",
+   "overruled_cites": "",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0107",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Adri Dharan Das v. State of West Bengal",
+   "overruled_cites": "",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0108",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Nirmal Jeet Kaur v. State of M.P. & Anr",
+   "overruled_cites": "",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0109",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "HDFC Bank Limited v. J.J. Mannan",
+   "overruled_cites": "",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0110",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Siddharam Satlingappa Mhetre v. State of Maharashtra",
+   "overruled_cites": "(2011) 1 SCC 694 : [2010] 15 SCR 201",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0111",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Salauddin Abdulsamad Shaikh v. State of Maharashtra",
+   "overruled_cites": "(1996) 1 SCC 667 : [1995] 6 Suppl. SCR 556",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0112",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "K.L. Verma v. State and another",
+   "overruled_cites": "(1998) 9 SCC 348",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0113",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Sunita Devi v. State of Bihar",
+   "overruled_cites": "(2005) 1 SCC 608 : [2004] 6 Suppl. SCR 707",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0114",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Adri Dharan Das v. State of West Bengal",
+   "overruled_cites": "(2005) (4) SCC 303 : [2005] 2 SCR 188",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0115",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Nirmal Jeet Kaur v. SUSHILA AGGARWAL v. STATE (NCT OF DELHI) SUPREME COURT REPORTS",
+   "overruled_cites": "[2020] 2 S.C.R. State of M.P. (2004) 7 SCC 558 : [2004] 3 Suppl. SCR 1006",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0116",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "HDFC Bank Limited v. J.J. Mannan",
+   "overruled_cites": "(2010) 1 SCC 679 : [2009] 16 SCR 590",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0117",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Satpal Singh v. State of Punjab",
+   "overruled_cites": "(2018) 4 SCC 303 : [2018] 3 SCR 739",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0118",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_1_131",
+   "date": "2020-01-29",
+   "bench": 5,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER",
+   "overruled_name": "Naresh Kumar Yadav v Ravindra Kumar",
+   "overruled_cites": "(2008) 1 SCC 632 : [2007] 11 SCR 615",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0119",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_3_887_890",
+   "date": "2020-02-11",
+   "bench": 3,
+   "title": "COMMISSIONER OF CUSTOMS AND CENTRAL EXCISE, GOA versus M/S ADANI EXPORTS LTD.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The judgment in Commissioner of Customs, Bangalore (supra) being incorrect is therefore overruled. 4.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0120",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_161_245",
+   "date": "2020-02-19",
+   "bench": 3,
+   "title": "DHEERAJ MOR versus HON’BLE HIGH COURT OF DELHI",
+   "overruled_name": "Vijay Kumar Mishra & Anr. v. High Court of Judicature at Patna & Ors.",
+   "overruled_cites": "(2016) 9 SCC 313 : [2016] 3 SCR 806",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0121",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_161_245",
+   "date": "2020-02-19",
+   "bench": 3,
+   "title": "DHEERAJ MOR versus HON’BLE HIGH COURT OF DELHI",
+   "overruled_name": "DHEERAJ MOR v. HON’BLE HIGH COURT OF DELHI SUPREME COURT REPORTS",
+   "overruled_cites": "[2020] 2 S.C.R. (c) Article 233 (1) cannot be construed as a source of appointment; it merely delineates as to who is the appointing authority; (d) In matters relating to initial posting, initial appointment, and promotion of District Judges, the Governor has the authority to issue the order; thereafter it is up to the High Court, by virtue of Article 235, to exercise control and superintendence over the conditions of service of such District Judges. (See State of Assam v Ranga Mahammad [1967] 1 SCR 454); (e) Article 233 (2) is concerned only with eligibility of those who can be considered for appointment as District Judge. The Constitution clearly states that one who has been for not less than seven years, “an advocate or pleader” and one who is “not already in the service of the Union or of the State” (in the sense that such person is not a holder of a civil or executive post, under the Union or of a State) can be considered for appointment, as a District judge. Significantly, the eligibility- for both categories, is couched in negative terms. Clearly, all that the Constitution envisioned was that an advocate with not less than seven years’ practise could be appointed as a District Judge, under Article 233 (2). (f) Significantly, Article 233 (2) ex facie does not exclude judicial officers from consideration for appointment to the post of District Judge. It, however, equally does not spell out any criteria for such category of candidates. This does not mean however, that if they or any of them, had seven years’ practise in the past, can be considered eligible, because no one amongst them can be said to answer the description of a candidate who “has been for not less than seven years” “an advocate or a pleader” (per Deepak Agarwal, i.e. that the applicant/candidate should be an advocate fulfilling the condition of practise on the date of the eligibility condition, or applying for the post). The sequitur clearly is that a judicial officer is not one who has been for not less than seven years, an advocate or pleader. The net result of the decision in Chandra Mohan, and subsequent decisions which followed it, is that Article 233 (2) renders ineligible all those who hold civil posts under a State or the Union, just as it renders all advocates with less than seven years’ practice ineligible, on the date fixed for reckoning eligibility. Equally, those in judicial service [i.e. holders of posts other than District Judge, per Article 236 (2)] are not entitled to consideration because the provision (Article 233 [2]) does not prescribe any eligibility condition. Does this mean that any judicial officer, with any length of service as a member of the judicial service, is entitled to consideration under Article 233 (2)? The answer is clearly in the negative. This is because the negative phraseology through which eligibility of holders of civil posts, or those in civil service (of the State or the Union) and advocates with seven years’ service is couched. However, the eligibility conditions are not spelt out in respect of those who are in the judicial service. [Paras 24, 25][237-B-E; 238-A-D; 239-A-E] 1.2 The omission- in regard to spelling out the eligibility conditions vis-à-vis judicial officers, to the post of District Judge, in the opinion of this court, is clearly by design. This subject matter is covered by three provisions: Article 233 (1) – which refers to promotions to the post of District Judge",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0122",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_2_161_245",
+   "date": "2020-02-19",
+   "bench": 3,
+   "title": "DHEERAJ MOR versus HON’BLE HIGH COURT OF DELHI",
+   "overruled_name": "Vijay Kumar Mishra & Anr. v. High Court of Judicature at Patna & Ors.",
+   "overruled_cites": "(2016) 9 SCC 313 : [2016] 3 SCR 806",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0123",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_5_429_464",
+   "date": "2020-03-04",
+   "bench": 5,
+   "title": "ASSURANCE CO. LTD. versus HILLI  MULTIPURPOSE COLD STORAGE PVT. LTD.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "We are thus of the opinion that Kailash vs Nanhku (supra) has not overruled the decision in Dr. J. J. Merchant (supra) with regard to the provision of the Consumer Protection Act. 30.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0124",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_3_1_328",
+   "date": "2020-03-06",
+   "bench": 5,
+   "title": "INDORE DEVELOPMENT AUTHORITY versus MANOHARLAL & ORS. ETC.",
+   "overruled_name": "Raghbir Singh Sehrawat v. State of Haryana",
+   "overruled_cites": "(2012) 1 SCC 792 : [2011] 14 SCR 1113",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0125",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_4_1130_1162",
+   "date": "2020-04-22",
+   "bench": 3,
+   "title": "HIRA SINGH AND ANOTHER versus UNION OF INDIA AND ANOTHER",
+   "overruled_name": "E. Micheal Raj v. Intelligence Officer, Narcotic Control Bureau",
+   "overruled_cites": "(2008) 5 SCC 161 : [2008] 4 SCR 644",
+   "evidence": "not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0126",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_5_1038_1170",
+   "date": "2020-05-05",
+   "bench": 5,
+   "title": "PANDURANG GANPATI CHAUGULE versus VISHWASRAO PATIL MURGUD SAHAKARI BANK LIMITED",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Bank Ltd. (supra) are incorrect and required to be overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0127",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_8_1_88",
+   "date": "2020-05-27",
+   "bench": 3,
+   "title": "CHAIRMAN-CUM-MANAGING DIRECTOR, MAHANADI COALFIELDS LIMITED versus SRI RABINDRANATH CHOUBEY",
+   "overruled_name": "Jaswant Singh Gill v. Bharat Coking Coal Ltd.",
+   "overruled_cites": "(2007) 1 SCC 663 : [2006] 8 Suppl. SCR 1064",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0128",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_5_277_298",
+   "date": "2020-06-19",
+   "bench": 3,
+   "title": "S. KASI versus STATE THROUGH THE INSPECTOR OF POLICE SAMAYNALLUR POLICE STATION MADURAI DISTRICT",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "We also overrule the decision in Union of India v. Bhanudas Krishna Gawde, which followed ADM Jabalpur.” 25.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0129",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_7_180_282",
+   "date": "2020-07-14",
+   "bench": 3,
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "overruled_name": "Tomaso Bruno and Anr. v. State of Uttar Pradesh",
+   "overruled_cites": "(2015) 7 SCC 178 : [2015] 1 SCR 721",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0130",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_7_180_282",
+   "date": "2020-07-14",
+   "bench": 3,
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "overruled_name": "Rajendra Kumar Meshram v. Vanshmani Prasad Verma",
+   "overruled_cites": "(2016) 10 SCC 715 : [2016] 9 SCR 74",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0131",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_7_180_282",
+   "date": "2020-07-14",
+   "bench": 3,
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "overruled_name": "ARJUN PANDITRAO KHOTKAR v. KAILASH KUSHANRAO GORANTYAL SUPREME COURT REPORTS",
+   "overruled_cites": "[2020] 7 S.C.R. Shafhi Mohammad v. State of Himachal Pradesh (2018) 2 SCC 801",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0132",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_7_180_282",
+   "date": "2020-07-14",
+   "bench": 3,
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "overruled_name": "Shafhi Mohammad v. State of Himachal Pradesh",
+   "overruled_cites": "(2018) 5 SCC 311 : [2018] 3 SCR 1096",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0133",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_7_180_282",
+   "date": "2020-07-14",
+   "bench": 3,
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "overruled_name": "K. Ramajyam v. Inspector of Police",
+   "overruled_cites": "(2016) Crl. LJ 1542",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0134",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_706_785",
+   "date": "2020-08-05",
+   "bench": 3,
+   "title": "THE CHAIRMAN, BOARD OF TRUSTEES, COCHIN PORT TRUST versus M/S AREBEE STAR MARITIME AGENCIES PVT. LTD. & ORS.",
+   "overruled_name": "Port of Bombay v. Sriyanesh Knitters",
+   "overruled_cites": "(1999) 7 SCC 228",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0135",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_706_785",
+   "date": "2020-08-05",
+   "bench": 3,
+   "title": "THE CHAIRMAN, BOARD OF TRUSTEES, COCHIN PORT TRUST versus M/S AREBEE STAR MARITIME AGENCIES PVT. LTD. & ORS.",
+   "overruled_name": "Forbes Forbes Campbell & Co. v. Port of Bombay (Forbes-II)",
+   "overruled_cites": "(2015) 1 SCC 228 : [2014] 12 SCR 337",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0136",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_6_289_302",
+   "date": "2020-08-05",
+   "bench": 3,
+   "title": "M/S EXL CAREERS AND ANOTHER versus FRANKFINN AVIATION SERVICES PRIVATE LIMITED",
+   "overruled_name": "**Joginder Tuli v. S.L. Bhatia",
+   "overruled_cites": "(1997) 1 SCC 502 : [1996] 7 Suppl. SCR 221 – held per-in-curium and distinguished. Oriental Insurance Company Ltd. v. Tejparas Associates and Exports Pvt. Ltd. [2019] 9 SCC 435",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0137",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_10_135_237",
+   "date": "2020-08-11",
+   "bench": 3,
+   "title": "VINEETA SHARMA versus RAKESH SHARMA & ORS.",
+   "overruled_name": "Prakash & Ors. v. Phulavati & Ors.",
+   "overruled_cites": "(2016) 2 SCC 36: [2015] 12 SCR 579",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0138",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_10_135_237",
+   "date": "2020-08-11",
+   "bench": 3,
+   "title": "VINEETA SHARMA versus RAKESH SHARMA & ORS.",
+   "overruled_name": "Danamma @ Suman Surpur & Anr. v. Amar & Ors.",
+   "overruled_cites": "(2018) 3 SCC 343 : [2018] 2 SCR 553",
+   "evidence": "partly overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0139",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_13_427_464",
+   "date": "2020-08-19",
+   "bench": 3,
+   "title": "DECCAN PAPER MILLS CO. LTD. versus REGENCY MAHAVIR PROPERTIES & ORS.",
+   "overruled_name": "Aliens Developers Pvt. Ltd. v. M. Janardhan Reddy",
+   "overruled_cites": "(2016) 1 ALT 194 (DB)",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0140",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_10_857_922",
+   "date": "2020-08-27",
+   "bench": 5,
+   "title": "THE STATE OF PUNJAB & ORS. versus DAVINDER SINGH & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "(c) In David Burnet v. Colorado Oil & Gas Company, 285 U.S. 393, it was observed that in cases involving the Federal Constitution, where correction through legislative action is practically impossible, this court has often overruled its earlier decisions.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0141",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_9_245_302",
+   "date": "2020-08-31",
+   "bench": 5,
+   "title": "MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI)",
+   "overruled_name": "1.8 The reference is answered as under: I. The observations of this Court in the cases of Bhagwan Singh v. State of Raja",
+   "overruled_cites": "sthan",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0142",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_9_245_302",
+   "date": "2020-08-31",
+   "bench": 5,
+   "title": "MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI)",
+   "overruled_name": "Megha Singh v. State of Haryana; and State by Inspector of Police, NIB, Tamil Nadu v. Rajangam and the acquittal of the ",
+   "overruled_cites": "accused by this Court on the ground that as the informant and the investigator was the same, it has vitiated the trial and the accused is entitled to acquittal are to be treated to be confined to their own facts. It cannot be said that in the aforesaid decisions, this Court laid down any general proposition of law that in each and every case where the informant is the investigator there is a bias caused to the accused and the entire prosecution case is to be disbelieved and the accused is entitled to acquittal",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0143",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_9_245_302",
+   "date": "2020-08-31",
+   "bench": 5,
+   "title": "MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI)",
+   "overruled_name": "Mohan Lal v. State of Punjab",
+   "overruled_cites": "(2018) 17 SCC 627 : [2018] 9 SCR 1006",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0144",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_13_488_516",
+   "date": "2020-09-08",
+   "bench": 3,
+   "title": "M/S BANGALORE CLUB versus THE COMMISSIONER OF WEALTH TAX & ANR.",
+   "overruled_name": "CWT v. ChikmagalurClub 197 ITR Karnataka 609",
+   "overruled_cites": "",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0145",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_14_571_690",
+   "date": "2020-09-23",
+   "bench": 3,
+   "title": "UNION OF INDIA & ORS. versus M/S G S CHATHA RICE MILLS & ANR.",
+   "overruled_name": "Collector of Central Excise v. New Tobacco Company and others",
+   "overruled_cites": "(1998) 144 CTR (SC) 618",
+   "evidence": "held not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0146",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_12_189_278",
+   "date": "2020-10-15",
+   "bench": 3,
+   "title": "SATISH CHANDER AHUJA versus SNEHA AHUJA",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "We, thus, are of the opinion that the interpretation of definition of shared household as put by this Court in S.R. Batra Vs. Taruna Batra (supra) is not correct interpretation and the said judgment does not lay down the correct law.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0147",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_8_1057_1070",
+   "date": "2020-10-26",
+   "bench": 3,
+   "title": "RAJESH DHIMAN versus STATE OF HIMACHAL PRADESH",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "A contrary decision of this Court in the case of Mohan Lal v. State of Punjab, (2018) 17 SCC 627 and any other decision taking a contrary view that the informant cannot be the investigator and in such a case the accused is entitled to acquittal are not good law and they are specifically overruled.” [emphasis supplied] 11.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0148",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_12_583_874",
+   "date": "2020-10-29",
+   "bench": 3,
+   "title": "TOFAN SINGH versus STATE OF TAMIL NADU",
+   "overruled_name": "Raj Kumar Karwal v. Union of India",
+   "overruled_cites": "(1990) 2 SCC 409: [1990] 2 SCR 63",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0149",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_12_583_874",
+   "date": "2020-10-29",
+   "bench": 3,
+   "title": "TOFAN SINGH versus STATE OF TAMIL NADU",
+   "overruled_name": "Kanhaiyalal v. Union of India",
+   "overruled_cites": "(2008) 4 SCC 668: [2008] 1 SCR 350",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0150",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_13_732_761",
+   "date": "2020-12-10",
+   "bench": 3,
+   "title": "G H APJ ABDUL KALAM TECHNOLOGICAL UNIVERSITY & ANR. versus JAI BHARATH COLLEGE OF MANAGEMENT AND ENGINEERING TECHNOLOGY & ORS.",
+   "overruled_name": "Rungta Engineering College, Bhilai and Another v. Chattisgarh Swami Vivekanand Technical University and Another",
+   "overruled_cites": "(2015) 11 SCC 291 : [2014] 12 SCR 796",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0151",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_1001_1180",
+   "date": "2020-12-14",
+   "bench": 3,
+   "title": "VIDYA DROLIA AND OTHERS versus DURGA TRADING CORPORATION",
+   "overruled_name": "HDFC Bank Ltd. v. Satpal Singh Bakshi",
+   "overruled_cites": "2013 (134) DRJ 566 (FB)",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0152",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_1001_1180",
+   "date": "2020-12-14",
+   "bench": 3,
+   "title": "VIDYA DROLIA AND OTHERS versus DURGA TRADING CORPORATION",
+   "overruled_name": "Himangni Enterprises v. Kamaljeet Singh Ahluwalia",
+   "overruled_cites": "(2017) 10 SCC 706: [2017] 10 SCR 139",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0153",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_1001_1180",
+   "date": "2020-12-14",
+   "bench": 3,
+   "title": "VIDYA DROLIA AND OTHERS versus DURGA TRADING CORPORATION",
+   "overruled_name": "N. Radhakrishnan v. Maestro Engineers and Others",
+   "overruled_cites": "(2010) 1 SCC 72: [2009] 15 SCR 371",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0154",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_281_344",
+   "date": "2020-12-18",
+   "bench": 3,
+   "title": "SAURAV YADAV & ORS. versus STATE OF UTTAR PRADESH & ORS.",
+   "overruled_name": "Ajay Kumar v. State of U.P. and Others",
+   "overruled_cites": "(2019) 5 ALJ 466",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0155",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_281_344",
+   "date": "2020-12-18",
+   "bench": 3,
+   "title": "SAURAV YADAV & ORS. versus STATE OF UTTAR PRADESH & ORS.",
+   "overruled_name": "State of Madhya Pradesh and Another v. Uday Sisode and Others",
+   "overruled_cites": "(2019) SCC OnLine MP 5750",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0156",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_281_344",
+   "date": "2020-12-18",
+   "bench": 3,
+   "title": "SAURAV YADAV & ORS. versus STATE OF UTTAR PRADESH & ORS.",
+   "overruled_name": "Allahabad and Madhya Pradesh (in Ajay Kumar v. State of UP & Ors.",
+   "overruled_cites": "(2019) 5 ALJ 466",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0157",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2020_11_281_344",
+   "date": "2020-12-18",
+   "bench": 3,
+   "title": "SAURAV YADAV & ORS. versus STATE OF UTTAR PRADESH & ORS.",
+   "overruled_name": "State of Madhya Pradesh & Anr. v. Uday Sisode & Ors.",
+   "overruled_cites": "(2019) SCC OnLine MP 5750",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0158",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2020_11_597_664",
+   "date": "2020-12-18",
+   "bench": 3,
+   "title": "THE STATE OF MAHARASHTRA & ANR. versus KESHAO VISHWANATH SONONE & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Whether a two-Judge Bench decision of this Court in Dina v. Narayan Singh (for the sake of brevity “Dina I”) and the decision rendered by another two-Judge Bench of this Court in Dadaji v. Sukhdeobabu (for the sake of brevity “Dina II”) are overruled by a Constitution bench of this Court in State of Maharashtra v. Milind?” 90.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0159",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_4_933_995",
+   "date": "2021-01-11",
+   "bench": 3,
+   "title": "M/S. N.N. GLOBAL MERCANTILE PVT. LTD. versus M/S. INDO UNIQUE FLAME LTD. & OTHERS",
+   "overruled_name": "SMS Tea Estates Pvt. Ltd. v. M/s. Chandmari Tea Co. Pvt. Ltd.",
+   "overruled_cites": "(2011) 14 SCC 66 : [2011] 9 SCR 382",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0160",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_829_857",
+   "date": "2021-02-11",
+   "bench": 3,
+   "title": "CHINTELS INDIA LTD. versus BHAYANA BUILDERS PVT. LTD.",
+   "overruled_name": "State of Maharashtra and Anr. v. M/s Ramdas Construction Co. and Anr.",
+   "overruled_cites": "2006 (6) Mah. L.J. 678",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0161",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_829_857",
+   "date": "2021-02-11",
+   "bench": 3,
+   "title": "CHINTELS INDIA LTD. versus BHAYANA BUILDERS PVT. LTD.",
+   "overruled_name": "Union of India v. Radha Krishna Seth and Anr. 2005",
+   "overruled_cites": "SCC OnLine All 8400",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0162",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "Piara Singh v. Jagtar Singh and Anr.",
+   "overruled_cites": "AIR 1987 Punjab and Haryana 93",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0163",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "R. Sambasivam v. Thangavelu ASHA JOHN DIVIANATHAN v. VIKRAM MALHOTRA & ORS. SUPREME COURT REPORTS",
+   "overruled_cites": "[2021] 1 S.C.R. Dhanabagyam 2001-1-L.W. 161",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0164",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "Ajit Prashad Jain v. N.K. Widhani & Ors.",
+   "overruled_cites": "AIR 1990 Del 42",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0165",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "Tufanu Chouhan & Ors. v. Md. Abdur Rahman & Ors.",
+   "overruled_cites": "(1993) 1 Gau LR 306",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0166",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "Geeta Reinboth v. Mrs. J. Clairs Brohier through LRs. Mrs. Cheryl Brohier Gosens & Ors.",
+   "overruled_cites": "(2005) 1 MP LJ 122",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0167",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "Sivaprakasam v. Ilangovan & Ors.",
+   "overruled_cites": "(2010) 3 MWN (Civil) 525",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0168",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_1_953_988",
+   "date": "2021-02-26",
+   "bench": 3,
+   "title": "ASHA JOHN DIVIANATHAN versus VIKRAM MALHOTRA & ORS.",
+   "overruled_name": "Mathu Sree Akkabai Ammani Charitable Trust & Ors. v. Samikannu",
+   "overruled_cites": "(2013) 1 LW 136",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0169",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_14_204_320",
+   "date": "2021-03-01",
+   "bench": 3,
+   "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD.",
+   "overruled_name": "Power Grid Corporation of India Ltd. v. Jyoti Structures Ltd., 2017",
+   "overruled_cites": "SCC OnLine Del 12189 : (2018) 246 DLT 485",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0170",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_14_204_320",
+   "date": "2021-03-01",
+   "bench": 3,
+   "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD.",
+   "overruled_name": "Tayal Cotton Pvt. Ltd. v. State of Maharashtra, 2018",
+   "overruled_cites": "SCC OnLine Bom 2069 : (2019) 1 Mah LJ 312",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0171",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_14_204_320",
+   "date": "2021-03-01",
+   "bench": 3,
+   "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD.",
+   "overruled_name": "M/s MBL Infrastructure Ltd. v. Manik Chand Somani, CRR 3456/2018",
+   "overruled_cites": "",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0172",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_2_321_492",
+   "date": "2021-03-02",
+   "bench": 3,
+   "title": "ENGINEERING ANALYSIS CENTRE OF EXCELLENCE PRIVATE LIMITED versus THE COMMISSIONER OF INCOME TAX & ANR.",
+   "overruled_name": "CIT v. Samsung Electronics Co. Ltd.",
+   "overruled_cites": "(2012) 345 ITR 494",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0173",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2021_1_1162_1198",
+   "date": "2021-03-08",
+   "bench": 3,
+   "title": "PRAVIN ELECTRICALS PVT. LTD. versus GALAXY INFRA AND ENGINEERING PVT. LTD.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Ltd. v. Rani Construction (P) Ltd., (2002) 2 SCC 388 is overruled.’ 11.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0174",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_2_677_769",
+   "date": "2021-03-10",
+   "bench": 3,
+   "title": "KALPRAJ DHARAMSHI & ANR. versus KOTAK INVESTMENT ADVISORS LTD. & ANR.",
+   "overruled_name": "Commissioner of Sales Tax, U.P. vs. Madan Lal Das & Sons, Bareilly",
+   "overruled_cites": "(1976) 4 SCC 464 : [1977] 1 SCR 683",
+   "evidence": "per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0175",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_3_193_254",
+   "date": "2021-03-19",
+   "bench": 3,
+   "title": "GOVERNMENT OF MAHARASHTRA (WATER RESOURCES DEPARTMENT) REPRESENTED BY EXECUTIVE ENGINEER versus M/S BORSE BROTHERS ENGINEERS & CONTRACTORS PVT. LTD.",
+   "overruled_name": "N.V. International v. State of Assam",
+   "overruled_cites": "(2020) 2 SCC 109",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0176",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2021_7_86_111",
+   "date": "2021-04-05",
+   "bench": 3,
+   "title": "KIRAN DEVI versus THE BIHAR STATE SUNNI WAKF BOARD & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Contrary view in Surya Dev Rai [Surya Dev Rai v. Ram Chander Rai, (2003) 6 SCC 675] is overruled.” 20.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0177",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_3_524_575",
+   "date": "2021-04-15",
+   "bench": 3,
+   "title": "ASSET RECONSTRUCTION COMPANY (INDIA) LIMITED versus BISHAL JAISWAL & ANR.",
+   "overruled_name": "V. Padmakumar v. Stressed Assets Stabilisation Fund, Company Appeal (AT) (Insolvency) No. 57 of",
+   "overruled_cites": "2020 (Majority judgment of Full Bench of NCLAT decided on 12.03.2020)",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0178",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_4_257_273",
+   "date": "2021-04-16",
+   "bench": 5,
+   "title": "IN RE: EXPEDITIOUS TRIAL OF CASES UNDER SECTION 138 OF N.I. ACT 1881 versus .",
+   "overruled_name": "Meters and Instruments Private Limited and Another v. Kanchan Mehta",
+   "overruled_cites": "(2018) 1 SCC 560 : [2017] 10 SCR 66",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0179",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_4_532_632",
+   "date": "2021-04-20",
+   "bench": 3,
+   "title": "PASL WIND SOLUTIONS PRIVATE LIMITED versus GE POWER CONVERSION INDIA PRIVATE LIMITED",
+   "overruled_name": "TDM Infrastructure (P) Ltd. v. UE Development India (P) Ltd.",
+   "overruled_cites": "(2008) 14 SCC 271 : [2008] 8 SCR 775",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0180",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_4_532_632",
+   "date": "2021-04-20",
+   "bench": 3,
+   "title": "PASL WIND SOLUTIONS PRIVATE LIMITED versus GE POWER CONVERSION INDIA PRIVATE LIMITED",
+   "overruled_name": "Seven Islands Shipping Ltd. v. Sah Petroleums Ltd.",
+   "overruled_cites": "(2012) 5 Mah LJ 822",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0181",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_4_532_632",
+   "date": "2021-04-20",
+   "bench": 3,
+   "title": "PASL WIND SOLUTIONS PRIVATE LIMITED versus GE POWER CONVERSION INDIA PRIVATE LIMITED",
+   "overruled_name": "M/s. Addhar Mercantile Pvt. Ltd. v. Shree Jagadamba Agrico Exports Pvt. Ltd. Arbitration Application No. 197 of",
+   "overruled_cites": "2014 (decided on 12.06.2015)",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0182",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_6_673_691",
+   "date": "2021-07-22",
+   "bench": 3,
+   "title": "M/S LAUREATE BUILDWELL PVT. LTD. versus CHARANJEET SINGH",
+   "overruled_name": "HUDA v. Raje Ram",
+   "overruled_cites": "2008 (17) SCC 407: [2008] 16 SCR 601",
+   "evidence": "held not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0183",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_6_673_691",
+   "date": "2021-07-22",
+   "bench": 3,
+   "title": "M/S LAUREATE BUILDWELL PVT. LTD. versus CHARANJEET SINGH",
+   "overruled_name": "Wing Commander Arifur Rahman Khan and Anr. v. DLF Southern Homes Pvt. Ltd., 2020",
+   "overruled_cites": "SCC Online 667 (SC)",
+   "evidence": "held not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0184",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2021_13_1146_1240",
+   "date": "2021-09-28",
+   "bench": 3,
+   "title": "ADANI GAS LIMITED versus UNION OF INDIA & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "To sum up, the points of consideration raised are answered as follows: a. On the scope of the “deemed authorisation” clause under the proviso to Section 16 of the PNGRB Act, the decision in Adani Gas (supra) is held to have laid down the law incorrectly, and is hereby overruled. b. It is held that the “deemed authorization” clause under proviso to Section 16 is subject to other provisions of Chapt",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0185",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2021_12_210_258",
+   "date": "2021-10-22",
+   "bench": 3,
+   "title": "JALKAL VIBHAG NAGAR NIGAM & ORS. versus PRADESHIYA INDUSTRIAL AND INVESTMENT CORPORATION & ANR.",
+   "overruled_name": "JALKAL VIBHAG NAGAR NIGAM v. PRADESHIYA INDUSTRIAL AND INVESTMENT CORP. SUPREME COURT REPORTS",
+   "overruled_cites": "[2021] 12 S.C.R. Union of India v. State of U.P. and others (2007) 11 SCC 324 : [2007] (11) SCR 792",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0186",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_2_748_763",
+   "date": "2022-02-16",
+   "bench": 3,
+   "title": "VODAFONE IDEA CELLULAR LTD. versus AJAY KUMAR AGARWAL",
+   "overruled_name": "General Manager, Telecom v. M Krishnan and Another",
+   "overruled_cites": "(2009) 8 SCC 481 : [2009] 14 SCR 86",
+   "evidence": "not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0187",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_10_986_1064",
+   "date": "2022-04-27",
+   "bench": 3,
+   "title": "RANBIR SINGH versus SK ROY, CHAIRMAN, LIFE INSURANCE CORP. OF INDIA & ANR.",
+   "overruled_name": "Tamil Nadu Terminated Full Time Temporary LIC Employees Association v. Life Insurance Corporation of India",
+   "overruled_cites": "(2015) 9 SCC 62 : [2015] 5 SCR 806",
+   "evidence": "held per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0188",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2022_4_926_977",
+   "date": "2022-04-27",
+   "bench": 3,
+   "title": "OIL AND NATURAL GAS CORPORATION LTD. versus M/S DISCOVERY ENTERPRISES PVT. LTD. & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "These decisions are: a. Chloro Controls India Pvt. Ltd. v. Severn Trent Water Purification Inc. & Ors;14 b. Cheran Properties Ltd. v. Kasturi & Sons Ltd. & Ors;15 and c. MTNL v. Canara Bank & Ors.16. and (ix) The decision in Indowind (supra) is not good law in view of the subsequent judgments of this Court.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0189",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_4_675_691",
+   "date": "2022-05-13",
+   "bench": 3,
+   "title": "SURENDRAN versus STATE OF KERELA",
+   "overruled_name": "Gananath Pattnaik v. State of Orissa",
+   "overruled_cites": "(2002) 2 SCC 619 : [2002] 1 SCR 845",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0190",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_4_675_691",
+   "date": "2022-05-13",
+   "bench": 3,
+   "title": "SURENDRAN versus STATE OF KERELA",
+   "overruled_name": "Inderpal v. State of MP",
+   "overruled_cites": "(2001) 10 SCC 736",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0191",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_4_675_691",
+   "date": "2022-05-13",
+   "bench": 3,
+   "title": "SURENDRAN versus STATE OF KERELA",
+   "overruled_name": "Bhairon Singh v. State of Madhya Pradesh",
+   "overruled_cites": "(2009) 13 SCC 80 : [2009] 9 SCR 875",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0192",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_4_675_691",
+   "date": "2022-05-13",
+   "bench": 3,
+   "title": "SURENDRAN versus STATE OF KERELA",
+   "overruled_name": "Kantilal Martaji Pandor v. State of Gujarat",
+   "overruled_cites": "(2013) 8 SCC 781 : [2013] 8 SCR 137",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0193",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_15_847_898",
+   "date": "2022-05-20",
+   "bench": 3,
+   "title": "STATE OF HIMACHAL PRADESH & ORS. versus RAJ KUMAR & ORS.",
+   "overruled_name": "Y. V. Rangaiah v. J. Sreenivasa Rao",
+   "overruled_cites": "(1983) 3 SCC 284",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0194",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2022_17_92_150",
+   "date": "2022-07-26",
+   "bench": 3,
+   "title": "ALL INDIA HAJ UMRAH TOUR ORGANIZER ASSOCIATION MUMBAI versus UNION OF INDIA & ORS",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The ratio in Sun Export case [Sun Export Corpn. v. Collector of Customs, (1997) 6 SCC 564] is not correct and all the decisions which took similar view as in Sun Export case [Sun Export Corpn. v. Collector of Customs, (1997) 6 SCC 564] stand overruled.” (emphasis added) 49.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0195",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_17_1058_1078",
+   "date": "2022-08-18",
+   "bench": 3,
+   "title": "PR. COMMISSIONER OF INCOME TAX – I, CHANDIGARH versus M/S. ABC PAPERS LIMITED",
+   "overruled_name": "CIT v. Aar Bee Industries Ltd.",
+   "overruled_cites": "(2013) 357 ITR 542 (Del)",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0196",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2022_15_516_535",
+   "date": "2022-09-19",
+   "bench": 5,
+   "title": "M/S TRIMURTHI FRAGRANCES (P) LTD. THROUGH ITS DIRECTOR SHRI PRADEEP KUMAR AGRAWAL versus GOVERNMENT OF N.C.T. OF DELHI THROUGH ITS PRINCIPAL SECRETARY (FINANCE) & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The question of numerical strength gains poignancy when one judgment is overruled by another, as has been pointed by Beaumont, C.J. in Ningappa Ramappa Kurbar [Ningappa Ramappa Kurbar v. Emperor, 1941 SCC OnLine Bom 41 : AIR 1941 Bom 408], and by Lokur, J. in Supreme Court Advocates- on-Record Assn. [Supreme Court Advocates-on-Record Assn. v. Union of India, (2016) 5 SCC 1]” 4.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0197",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_18_1082_1143",
+   "date": "2022-10-19",
+   "bench": 3,
+   "title": "M/S NEW NOBLE EDUCATIONAL SOCIETY versus THE CHIEF COMMISSIONER OF INCOME TAX 1 AND ANR.",
+   "overruled_name": "American Hotel and Lodging Association v. Central Board of Direct Taxes",
+   "overruled_cites": "(2008) 10 SCC 509 : [2008] 8 SCR 117",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0198",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_18_1082_1143",
+   "date": "2022-10-19",
+   "bench": 3,
+   "title": "M/S NEW NOBLE EDUCATIONAL SOCIETY versus THE CHIEF COMMISSIONER OF INCOME TAX 1 AND ANR.",
+   "overruled_name": "Queen’s Education Society v Commissioner of Income Tax",
+   "overruled_cites": "(2015) 8 SCC 47 : [2015] 3 SCR 838",
+   "evidence": "partly overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0199",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2022_7_792_832",
+   "date": "2022-11-03",
+   "bench": 3,
+   "title": "MOHD. ARIF @ ASHFAQ versus STATE (NCT OF DELHI)",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Also, the judgment in Shafhi Mohammad v. State of H.P., (2018) 2 SCC 801 and the judgment dated 3-4- 2018 reported as Shafhi Mohd. v. State of H.P., (2018) 5 SCC 311s, do not lay down the law correctly and are therefore overruled. 73.2.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0200",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_17_567_600",
+   "date": "2022-11-10",
+   "bench": 3,
+   "title": "BANK OF RAJASTHAN LTD. versus VCK SHARES & STOCK BROKING SERVICES LTD.",
+   "overruled_name": "United Bank of India, Calcutta v. Abhijit Tea Co. Pvt. Ltd. And Others",
+   "overruled_cites": "(2000) 7 SCC 357 : [2000] 3 Suppl. SCR 153",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0201",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2022_17_567_600",
+   "date": "2022-11-10",
+   "bench": 3,
+   "title": "BANK OF RAJASTHAN LTD. versus VCK SHARES & STOCK BROKING SERVICES LTD.",
+   "overruled_name": "State Bank of India v. Ranjan Chemicals Ltd. and Another",
+   "overruled_cites": "(2007) 1 SCC 97 : [2006] 7 Suppl. SCR 145",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0202",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_2_343_368",
+   "date": "2023-02-10",
+   "bench": 5,
+   "title": "BAR COUNCIL OF INDIA versus BONNIE FOI LAW COLLEGE & ORS.",
+   "overruled_name": "V. Sudeer v. Bar Council of India",
+   "overruled_cites": "(1999) 3 SCC 176 : [1999] 1 SCR 1048",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0203",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_392_396",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "LAND & BUILDING DEPARTMENT & ANR. versus MANISH SETHI AND ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] is hereby overruled and all other decisions in which Pune Municipal Corpn.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0204",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_392_396",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "LAND & BUILDING DEPARTMENT & ANR. versus MANISH SETHI AND ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] has been followed, are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0205",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_392_396",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "LAND & BUILDING DEPARTMENT & ANR. versus MANISH SETHI AND ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The decision in Sree Balaji Nagar LAND & BUILDING DEPARTMENT & ANR. v. MANISH SETHI AND ORS. SUPREME COURT REPORTS [2023] 2 S.C.R. Residential Assn. [Sree Balaji Nagar Residential Assn. v. State of T.N., (2015) 3 SCC 353] cannot be said to be laying down good law, is overruled and other decisions following the same are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0206",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_397_401",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "GOVT. OF NCT DELHI & ORS. versus DHANNU & ANR",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] is hereby overruled and all other decisions in which Pune Municipal Corpn.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0207",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_397_401",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "GOVT. OF NCT DELHI & ORS. versus DHANNU & ANR",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] has been followed, are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0208",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_397_401",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "GOVT. OF NCT DELHI & ORS. versus DHANNU & ANR",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The decision in Sree Balaji Nagar Residential Assn. [Sree Balaji Nagar Residential Assn. v. State of T.N., (2015) 3 SCC 353] cannot be said to be laying down good law, is overruled and other decisions following the same are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0209",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_411_415",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "DELHI DEVELOPMENT AUTHORITY versus JAGAN SINGH & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] is hereby overruled and all other decisions in which Pune Municipal Corpn.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0210",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_411_415",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "DELHI DEVELOPMENT AUTHORITY versus JAGAN SINGH & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] has been followed, are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0211",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_411_415",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "DELHI DEVELOPMENT AUTHORITY versus JAGAN SINGH & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The decision in Sree Balaji Nagar Residential Assn. [Sree Balaji Nagar Residential Assn. v. State of T.N., (2015) 3 SCC 353] cannot be said to be laying down good law, is overruled and other decisions following the same are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0212",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_416_421",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "GOVERNMENT OF NCT DELHI & ORS. versus KRISHAN KUMAR & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] is hereby overruled and all other decisions in which Pune Municipal Corpn.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0213",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_416_421",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "GOVERNMENT OF NCT DELHI & ORS. versus KRISHAN KUMAR & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[Pune Municipal Corpn. v. Harakchand Misirimal Solanki, (2014) 3 SCC 183] has been followed, are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0214",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_2_416_421",
+   "date": "2023-02-17",
+   "bench": 3,
+   "title": "GOVERNMENT OF NCT DELHI & ORS. versus KRISHAN KUMAR & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The decision in Sree Balaji Nagar Residential Assn. [Sree Balaji Nagar Residential Assn. v. State of T.N., (2015) 3 SCC 353] cannot be said to be laying down good law, is overruled and other decisions following the same are also overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0215",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_9_1_245",
+   "date": "2023-03-02",
+   "bench": 5,
+   "title": "ANOOP BARANWAL versus UNION OF INDIA",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "With the above observation, we hold that there is no doubt or confusion persisting in the Constitution Bench judgment of this Court in Kuldip Nayar [(2006) 7 SCC 1] and the decisions in Assn. for Democratic Reforms [(2002) 5 SCC 294] and People’s Union for Civil Liberties [(2003) 4 SCC 399] do not stand impliedly overruled.” (Emphasis supplied) S. ARTICLE 326 DEMYSTIFIED 110.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0216",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_2_256_275",
+   "date": "2023-03-14",
+   "bench": 3,
+   "title": "MOHINDER SINGH(DEAD) THROUGH LRS AND ANOTHER versus NARAIN SINGH AND OTHERS",
+   "overruled_name": "Umed Singh v. Govt. of NCT of Delhi and Others 1997",
+   "overruled_cites": "SCC Online Del 842",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0217",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_4_986_1052",
+   "date": "2023-03-15",
+   "bench": 3,
+   "title": "AJAY KUMAR RADHEYSHYAM GOENKA versus TOURISM FINANCE CORPORATION OF INDIA LTD.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "It was specifically observed that the decision in Anil Hada (supra) is overruled with the qualifier as stated in para 51.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0218",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_3_598_617",
+   "date": "2023-03-21",
+   "bench": 3,
+   "title": "UNION OF INDIA & ORS. versus PARASHOTAM DASS",
+   "overruled_name": "Union of India Ors. v. Major General Shri Kant Sharma & Anr.",
+   "overruled_cites": "(2015) 6 SCC 773 : [2015] 4 SCR 676",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0219",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_5_1016_1066",
+   "date": "2023-03-21",
+   "bench": 3,
+   "title": "SUNDAR @ SUNDARRAJAN versus STATE BY INSPECTOR OF POLICE",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Also, the judgment in Shafhi Mohammad and the judgment dated 3-4-2018 reported as Shafhi Mohd. v. State of H.P., do not lay down the law correctly and are therefore overruled. 73.2.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0220",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_8_496_580",
+   "date": "2023-03-24",
+   "bench": 3,
+   "title": "ARUP BHUYAN versus STATE OF ASSAM & ANR.",
+   "overruled_name": "State of Kerala vs. Raneef",
+   "overruled_cites": "(2011) 1 SCC 784 : [2011] 1 SCR 590",
+   "evidence": "held not good law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0221",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_8_496_580",
+   "date": "2023-03-24",
+   "bench": 3,
+   "title": "ARUP BHUYAN versus STATE OF ASSAM & ANR.",
+   "overruled_name": "Arup Bhuyan vs. Union of India",
+   "overruled_cites": "(2011) 3 SCC 377 : [2011] 2 SCR 506 and Indra Das v. State of Assam (2011) 3 SCC 380 : [2011] 4 SCR 289",
+   "evidence": "held not good law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0222",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_8_496_580",
+   "date": "2023-03-24",
+   "bench": 3,
+   "title": "ARUP BHUYAN versus STATE OF ASSAM & ANR.",
+   "overruled_name": "Arup Bhuyan v. State of Assam",
+   "overruled_cites": "(2011) 3 SCC 377 : [2011] 2 SCR 506 and Sri Indra Das v. State of Assam (2011) 3 SCC 380 : [2011] 4 SCR 289",
+   "evidence": "held not good law",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0223",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_5_918_948",
+   "date": "2023-03-27",
+   "bench": 3,
+   "title": "ENFORCEMENT DIRECTORATE, GOVERNMENT OF INDIA versus KAPIL WADHAWAN & ANR. ETC",
+   "overruled_name": "State of M.P. Vs. Rustam & Ors.",
+   "overruled_cites": "1995 (Supp) 3 SCC 221",
+   "evidence": "per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0224",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_6_1055_1114",
+   "date": "2023-03-27",
+   "bench": 3,
+   "title": "NARAYAN CHETANRAM CHAUDHARY versus THE STATE OF MAHARASHTRA",
+   "overruled_name": "Murari Thakur & Another v. State of Bihar",
+   "overruled_cites": "(2009) 16 SCC 256 : [2006] 10 Suppl. SCR 988",
+   "evidence": "held not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0225",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "N.N. Global Mercantile Private Limited v. Indo Unique Flame Limited and others",
+   "overruled_cites": "(2021) 4 SCC 379",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0226",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "Vidya Drolia and others v. Durga Trading Corporation",
+   "overruled_cites": "(2021) 2 SCC 1",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0227",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "SMS Tea Estates Private Limited v. Chandmari Tea Company Private Limited",
+   "overruled_cites": "(2011) 14 SCC 66 : [2011] 9 SCR 382 and Garware Wall Ropes Limited v. Coastal Marine Constructions & Engineering Limited (2019) 9 SCC 209 : [2019] 5 SCR 579",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0228",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "Vidya Drolia and others v. Durga Trading Corporation",
+   "overruled_cites": "(2021) 2 SCC 1",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0229",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "Garware Wall Ropes Limited v. Coastal Marine Constructions & Engineering Limited",
+   "overruled_cites": "(2019) 9 SCC 209 : [2019] 5 SCR 579",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0230",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "SMS Tea Estates Private Limited v. Chandmari Tea Company Private Limited",
+   "overruled_cites": "(2011) 14 SCC 66 : [2011] 9 SCR 382",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0231",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_285_492",
+   "date": "2023-04-25",
+   "bench": 5,
+   "title": "M/S N. N. GLOBAL MERCANTILE PRIVATE LIMITED versus M/S INDO UNIQUE FLAME LTD. & ORS.",
+   "overruled_name": "United India Insurance Company Limited v. Hyundai Engineering and Construction Company Limited",
+   "overruled_cites": "(2018) 17 SCC 607 : [2018] 12 SCR 1085",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0232",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_9_493_582",
+   "date": "2023-05-11",
+   "bench": 5,
+   "title": "GOVERNMENT OF NCT OF DELHI versus UNION OF INDIA",
+   "overruled_name": "Shiv Kirpal Singh v. VV Giri",
+   "overruled_cites": "AIR 1970 SC 2097 : [1971] 2 SCR 197",
+   "evidence": "held per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0233",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_11_520_582",
+   "date": "2023-08-16",
+   "bench": 3,
+   "title": "PESALA NOOKARAJU versus THE GOVERNMENT OF ANDHRA PRADESH & ORS",
+   "overruled_name": "LIST OF CITATIONS AND OTHER REFERENCES Cherukuri Mani v. Chief Secretary, Government of Andhra Pradesh",
+   "overruled_cites": "(2015) 13 SCC 722:[2014] 6 SCR 750",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0234",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_12_1118_1144",
+   "date": "2023-08-18",
+   "bench": 3,
+   "title": "EXPERION DEVELOPERS PRIVATE LIMITED versus HIMANSHU DEWAN AND SONALI DEWAN AND OTHERS",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "However, this view in re. the subsequent purchasers stands overruled by a bench of three judges’ in Laureate Buildwell Private Limited v. Charanjeet Singh10.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0235",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_14_100_122",
+   "date": "2023-09-22",
+   "bench": 3,
+   "title": "BALWINDER SINGH (BINDA) versus THE NARCOTICS CONTROL BUREAU",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Now that it has been declared in Tofan Singh’s case36 (supra) that the judgements in the case of Kanhaiyalal33 (supra) and Raj Kumar Karwal35 (supra) did not state the correct legal position and they stand overruled, the entire case set up by the prosecution against Balwinder Singh3, collapses like a House of cards.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0236",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2023_15_621_745",
+   "date": "2023-12-06",
+   "bench": 5,
+   "title": "COX AND KINGS LTD. versus SAP INDIA PVT. LTD. & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "However, Roussel-Uclaf (supra) was expressly overruled by the Court of Appeal in Sancheti (supra) on the ground that a mere legal or commercial connection is not suﬃ cient for a person to claim through or under a party to an arbitration agreement. 132.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0237",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_15_1081_1212",
+   "date": "2023-12-13",
+   "bench": 7,
+   "title": "IN RE: INTERPLAY BETWEEN ARBITRATION AGREEMENTS UNDER THE ARBITRATION AND CONCILIATION ACT 1996 AND THE INDIAN STAMP ACT 1899 versus .",
+   "overruled_name": "LIST OF CITATIONS AND OTHER REFERENCES In the judgment of Dr D.Y. Chandrachud, CJI N N Global Mercantile (P) Ltd. v. Indo Unique Flame Ltd.",
+   "overruled_cites": "(2023) 7 SCC 1 and SMS Tea Estates (P) Ltd. v. Chandmari Tea Co. (P) Ltd (2011) 14 SCC 66 : [2011] 9 SCR 382",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0238",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_15_1081_1212",
+   "date": "2023-12-13",
+   "bench": 7,
+   "title": "IN RE: INTERPLAY BETWEEN ARBITRATION AGREEMENTS UNDER THE ARBITRATION AND CONCILIATION ACT 1996 AND THE INDIAN STAMP ACT 1899 versus .",
+   "overruled_name": "Garware Wall Ropes Ltd. v. Coastal Marine Constructions & Engg. Ltd.",
+   "overruled_cites": "(2019) 9 SCC 209 : [2019] 5 SCR 579",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0239",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2023_15_1081_1212",
+   "date": "2023-12-13",
+   "bench": 7,
+   "title": "IN RE: INTERPLAY BETWEEN ARBITRATION AGREEMENTS UNDER THE ARBITRATION AND CONCILIATION ACT 1996 AND THE INDIAN STAMP ACT 1899 versus .",
+   "overruled_name": "In the judgment of Sanjiv Khanna, J. N N Global Mercantile (P) Ltd. v. Indo Unique Flame Ltd.",
+   "overruled_cites": "(2023) 7 SCC 1",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0240",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_3_462_584",
+   "date": "2024-03-04",
+   "bench": 7,
+   "title": "SITA SOREN versus UNION OF INDIA",
+   "overruled_name": "*PV Narasimha Rao v. State (CBI/SPE)",
+   "overruled_cites": "[1998] 2 SCR 870 : (1998) 4 SCC 626",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0241",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_1159_1210",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "GOVERNMENT OF NCT OF DELHI & ANR. versus M/S BSK REALTORS LLP & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "[2024] 5 S.C.R. 1179 Government of NCT of Delhi & Anr. v. M/s BSK Realtors LLP & Anr. i) Although the Bench of two Hon’ble Judges in Govt (NCT) of Delhi v. Manav Dharam Trust and another10 had recognised the right of the subsequent purchasers, such decision is no longer good law in view of the same being overruled by a Bench of three Hon’ble Judges in Shiv Kumar and another v. Union of India and o",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0242",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_1159_1210",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "GOVERNMENT OF NCT OF DELHI & ANR. versus M/S BSK REALTORS LLP & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Therefore, the change in law occasioned by its overruling in Shiv Kumar (supra) cannot be utilised as a crutch to claim that subsequent purchasers cannot seek a declaration of lapsing. g) In any event, the decision in Shiv Kumar (supra) is not good law and requires reconsideration by a larger Bench of this Court.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0243",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_1159_1210",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "GOVERNMENT OF NCT OF DELHI & ANR. versus M/S BSK REALTORS LLP & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Is hereby overruled and all other decisions in which Pune Municipal Corpn.1 has been followed, are also 19 [2000] Supp. 1 SCR 538 : (2000) 6 SCC 359 [2024] 5 S.C.R. 1189 Government of NCT of Delhi & Anr. v. M/s BSK Realtors LLP & Anr. overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0244",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_1211_1304",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "DELHI DEVELOPMENT AUTHORITY versus TEJPAL & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Sree Balaji Nagar Residential Association (supra) was also overruled in so far as it allowed landowners to unduly benefit from orders of stay. 5 (2016) 6 SCC 387, para 6-7. 6 (2018) 1 SCC 733, para 23. 7 [2018] 2 SCR 1 : (2018) 3 SCC 412, para 216-217.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0245",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_1211_1304",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "DELHI DEVELOPMENT AUTHORITY versus TEJPAL & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "This Court also overruled Shailendra (supra), since the question of reading the conditions under Section 24(2) conjunctively (i.e., reading “or” as ‘and’) was not considered by that case.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0246",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_1211_1304",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "DELHI DEVELOPMENT AUTHORITY versus TEJPAL & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Housing Society Ltd. (supra) was overruled in the case of Nusli Neville Wadia v. Ivory Properties.39 This Court while deciding the issue in Shyam Mohan Ruia (supra), held that since the precedent forming the very basis of the High Court’s decision stood overruled, the dispute before it must be decided as per the later decision. 32.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0247",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_5_949_1010",
+   "date": "2024-05-17",
+   "bench": 3,
+   "title": "GOVT. OF NCT OF DELHI THROUGH ITS SECRETARY, LAND AND BUILDING DEPARTMENT & ANOTHER versus M/S K.L. RATHI STEELS LIMITED AND OTHERS",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Although it is true that Shailendra [3-Judge] (supra) was not expressly overruled by Manoharlal [5-Judge, lapse] (supra), what stands out as a direct impact of paragraph 365 thereof is that Shailendra [3-Judge] (supra), not having considered certain vital aspects and more particularly as to how the conjunction ‘or’ in sub- section (2) of section 24 of the 2013 Act has to be read as well as the pro",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0248",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_7_840_909",
+   "date": "2024-07-18",
+   "bench": 3,
+   "title": "SBI GENERAL INSURANCE CO. LTD. versus KRISH SPINNING",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "This pre-2015 position, as was also pointed in Mayavati Trading (supra), was legislatively overruled by the 2015 amendment to the Act, 1996 and the introduction of Section 11(6-A).",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0249",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_7_840_909",
+   "date": "2024-07-18",
+   "bench": 3,
+   "title": "SBI GENERAL INSURANCE CO. LTD. versus KRISH SPINNING",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The view taken in SBP & Co. (supra) and affirmed in Vidya Drolia (supra) that Sections 8 and 11 respectively of the Act, 1996 are complementary in nature was legislatively overruled by the introduction of Section 11(6-A) in 2015.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0250",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "India Cement Ltd. v. State of Tamil Nadu",
+   "overruled_cites": "[1989] Supp. 1 SCR 692 : (1990) 1 SCC 12",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0251",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "Orissa Cement Ltd. v. State of Orissa",
+   "overruled_cites": "[1991] 2 SCR 105 : (1991) Supp 1 SCC 430",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0252",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "Federation of Mining Associations of Rajasthan v. State of Rajasthan",
+   "overruled_cites": "(1992) Supp 2 SCC 239",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0253",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "State of M P v. Mahalaxmi Fabric Mills Ltd.",
+   "overruled_cites": "[1995] 1 SCR 756 : (1995) Supp 1 SCC 642",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0254",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "Saurashtra Cement & Chemical Industries Ltd. v. Union of India",
+   "overruled_cites": "[2000] Supp. 4 SCR 44 : (2001) 1 SCC 91",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0255",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "State of Orissa v. Mahanadi Coalfields Ltd.",
+   "overruled_cites": "[1995] 3 SCR 639 : (1995) Supp 2 SCC 686",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0256",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "P Kannadasan v. State of Tamil Nadu",
+   "overruled_cites": "[1996] Supp. 4 SCR 92 : (1996) 5 SCC 670",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0257",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "In the judgment of B.V. Nagarathna, J. District Mining Officer v. Tata Iron and Steel Company",
+   "overruled_cites": "[2001] Supp. 1 SCR 147 : (2001) 7 SCC 358 – correct law. India Cement Limited v. State of Tamil Nadu [1989] Supp. 1 SCR 692 : (1990) 1 SCC 12 : AIR 1990 SC 85",
+   "evidence": "overruled to the extent",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0258",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "State of Madhya Pradesh v. Mahalaxmi Fabric Mills Ltd.",
+   "overruled_cites": "[1995] 1 SCR 756 : (1995) Supp 1 SCC 642",
+   "evidence": "overruled to the extent",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0259",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "Orissa Cement Limited v. State of Orissa",
+   "overruled_cites": "[1991] 2 SCR 105 : (1991) Supp 1 SCC 430",
+   "evidence": "overruled to the extent",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0260",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "State of Orissa v. Mahanadi Coalfields Ltd.",
+   "overruled_cites": "[1995] 3 SCR 639 : (1995) Supp. 2 SCC 686",
+   "evidence": "overruled to the extent",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0261",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_7_1549_1846",
+   "date": "2024-07-25",
+   "bench": 9,
+   "title": "MINERAL AREA DEVELOPMENT AUTHORITY & ANR. versus M/S STEEL AUTHORITY OF INDIA & ANR. ETC.",
+   "overruled_name": "P. Kannadasan v. State of Tamil Nadu",
+   "overruled_cites": "[1996] Supp. 4 SCR 92 : (1996) 5 SCC 670 – correct law excluding to the extent overruled in Tata Iron and Steel’s case. State of West Bengal v. Kesoram Industries Limited [2004] 1 SCR 564 : (2004) 10 SCC 201",
+   "evidence": "overruled to the extent",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0262",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_8_1321_1672",
+   "date": "2024-08-01",
+   "bench": 7,
+   "title": "THE STATE OF PUNJAB & ORS. versus DAVINDER SINGH & ORS.",
+   "overruled_name": "In the judgment of Dr Dhananjaya Y Chandrachud, CJI EV Chinnaiah v. State of Andhra Pradesh",
+   "overruled_cites": "[2004] Supp. 5 SCR 972 : (2005) 1 SCC 394",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0263",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_9_257_312",
+   "date": "2024-09-09",
+   "bench": 3,
+   "title": "DHANRAJ ASWANI versus AMAR S. MULCHANDANI & ANR.",
+   "overruled_name": "Sunil Kallani v. State of Rajasthan",
+   "overruled_cites": "(2021) SCC OnLine Raj 1654",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0264",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_9_257_312",
+   "date": "2024-09-09",
+   "bench": 3,
+   "title": "DHANRAJ ASWANI versus AMAR S. MULCHANDANI & ANR.",
+   "overruled_name": "Rajesh Kumar Sharma v. CBI",
+   "overruled_cites": "(2022) SCC OnLine All 832",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0265",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_9_257_312",
+   "date": "2024-09-09",
+   "bench": 3,
+   "title": "DHANRAJ ASWANI versus AMAR S. MULCHANDANI & ANR.",
+   "overruled_name": "Bashir Hasan Siddiqui v. State (GNCTD)",
+   "overruled_cites": "(2023) SCC OnLine Del 7544",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0266",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_9_894_946",
+   "date": "2024-09-20",
+   "bench": 3,
+   "title": "AJAY MADHUSUDAN PATEL & ORS.  versus JYOTRINDRA S. PATEL & ORS.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Ltd. v. Rani Construction (P) Ltd. [(2002) 2 SCC 388] is overruled.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0267",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_10_1802_1854",
+   "date": "2024-10-23",
+   "bench": 3,
+   "title": "GLAS TRUST COMPANY LLC  versus BYJU RAVEENDRAN & ORS.",
+   "overruled_name": "Kamal K. Singh v. Dinesh Gupta",
+   "overruled_cites": "(2022) 8 SCC 33",
+   "evidence": "held per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0268",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_10_1802_1854",
+   "date": "2024-10-23",
+   "bench": 3,
+   "title": "GLAS TRUST COMPANY LLC  versus BYJU RAVEENDRAN & ORS.",
+   "overruled_name": "Ashok G. Rajani v. Beacon Trusteeship Ltd",
+   "overruled_cites": "[2022] 18 SCR 133 : 2022 SCC OnLine SC 1275",
+   "evidence": "held per incuriam",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0269",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_10_1931_2182",
+   "date": "2024-10-23",
+   "bench": 9,
+   "title": "STATE OF U.P. & ORS versus M/S LALTA PRASAD VAISH AND SONS",
+   "overruled_name": "In the Judgment of Dr Dhananjaya Y Chandrachud, CJI. Synthetics and Chemicals Ltd. v. State of UP",
+   "overruled_cites": "[1989] Supp. 1 SCR 623 : (1990) 1 SCC 109",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0270",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_10_1931_2182",
+   "date": "2024-10-23",
+   "bench": 9,
+   "title": "STATE OF U.P. & ORS versus M/S LALTA PRASAD VAISH AND SONS",
+   "overruled_name": "Tika Ramji v. State of Uttar Pradesh",
+   "overruled_cites": "[1956] 1 SCR 393 : AIR 1956 SC 676",
+   "evidence": "held not good law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0271",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_11_541_640",
+   "date": "2024-11-06",
+   "bench": 5,
+   "title": "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. versus RAMBHA DEVI & ORS.",
+   "overruled_name": "New India Assurance Company v. Prabhu Lal",
+   "overruled_cites": "[2007] 12 SCR 724 : (2008) 1 SCC 696",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0272",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_11_541_640",
+   "date": "2024-11-06",
+   "bench": 5,
+   "title": "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. versus RAMBHA DEVI & ORS.",
+   "overruled_name": "New India Assurance Co. Ltd. v. Roshanben Rahemansha Fakir",
+   "overruled_cites": "[2008] 8 SCR 328 : (2008) 8 SCC 253",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0273",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_11_541_640",
+   "date": "2024-11-06",
+   "bench": 5,
+   "title": "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. versus RAMBHA DEVI & ORS.",
+   "overruled_name": "Oriental Insurance Co. Ltd. v. Angad Kol",
+   "overruled_cites": "[2009] 2 SCR 695 : (2009) 11 SCC 356",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0274",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_11_541_640",
+   "date": "2024-11-06",
+   "bench": 5,
+   "title": "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. versus RAMBHA DEVI & ORS.",
+   "overruled_name": "National Insurance Co. Ltd. v. Annappa Irappa Nesaria",
+   "overruled_cites": "[2008] 1 SCR 1061 : (2008) 3 SCC 464",
+   "evidence": "partially overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0275",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_12_202_334",
+   "date": "2024-11-07",
+   "bench": 3,
+   "title": "COMMISSIONER OF CUSTOMS versus M/S CANON INDIA PVT. LTD.",
+   "overruled_name": "Mangali Impex Ltd. v. Union of India",
+   "overruled_cites": "(2016) SCC Online Del 2597",
+   "evidence": "disapproved",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0276",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2024_11_1647_2038",
+   "date": "2024-11-08",
+   "bench": 7,
+   "title": "ALIGARH MUSLIM UNIVERSITY versus NARESH AGARWAL & ORS.",
+   "overruled_name": "S Azeez Basha v. Union of India",
+   "overruled_cites": "[1968] 1 SCR 833 : AIR 1968 SC 662",
+   "evidence": "overruled",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0277",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2024_12_574_616",
+   "date": "2024-12-09",
+   "bench": 3,
+   "title": "STATE OF MAHARASHTRA & ORS. versus PRADEEP YASHWANT KOKADE & ANR.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "No fixed period of delay could be held to make the sentence of death inexecutable and to this extent the decision in Vatheeswaran case [(1983) 2 SCC 68 : 1983 SCC (Cri) 342 : (1983) 2 SCR 348] cannot be said to lay down the correct law and therefore to that extent stands overruled.’’ (emphasis added) In paragraph 16, the Constitution Bench held that while considering the delay, the period consumed",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0278",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2025_1_1041_1104",
+   "date": "2025-01-28",
+   "bench": 3,
+   "title": "CHANDRABHAN SUDAM SANAP versus THE STATE OF MAHARASHTRA",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Resultantly, the judgment dated 3-4-2018 of a Division Bench of this Court reported as Shafhi Mohd. v. State of H.P. [Shafhi Mohd. v. State of H.P., (2018) 5 SCC 311 : (2018) 2 SCC (Cri) 704], in following the law incorrectly laid down in Shafhi Mohammad [Shafhi Mohammad v. State of H.P., (2018) 2 SCC 801 : (2018) 2 SCC 807 : (2018) 2 SCC (Civ) 346 : (2018) 2 SCC (Civ) 351 : (2018) 1 SCC (Cri) 860",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0279",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2025_1_1041_1104",
+   "date": "2025-01-28",
+   "bench": 3,
+   "title": "CHANDRABHAN SUDAM SANAP versus THE STATE OF MAHARASHTRA",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "Also, the judgment in Shafhi Mohammad [Shafhi Mohammad v. State of H.P., (2018) 2 SCC 801 : (2018) 2 SCC 807 : (2018) 2 SCC (Civ) 346 : (2018) 2 SCC (Civ) 351 : (2018) 1 SCC (Cri) 860 : (2018) 1 SCC (Cri) 865] and the judgment dated 3-4-2018 reported as Shafhi Mohd. v. State of H.P. [Shafhi Mohd. v. State of H.P., (2018) 5 SCC 311 : (2018) 2 SCC (Cri) 704] , do not lay down the law correctly and a",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0280",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2025_2_1569_1587",
+   "date": "2025-02-12",
+   "bench": 3,
+   "title": "SUKHDEV SINGH versus SUKHBIR KAUR",
+   "overruled_name": "Navdeep Kaur v. Dilraj Singh",
+   "overruled_cites": "[2003] 1 HLR 100 : 2002 SCC OnLine P&H 498",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0281",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2025_2_1569_1587",
+   "date": "2025-02-12",
+   "bench": 3,
+   "title": "SUKHDEV SINGH versus SUKHBIR KAUR",
+   "overruled_name": "Bhausaheb @ Sandhu v. Leelabai",
+   "overruled_cites": "[2004] AIR Bom. 283 (FB)",
+   "evidence": "overruled",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0282",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2025_2_1331_1395",
+   "date": "2025-02-27",
+   "bench": 3,
+   "title": "RADHIKA AGARWAL versus UNION OF INDIA AND OTHERS",
+   "overruled_name": "State of Gujarat v. Choodamani Parmeshwaran Iyer and Another",
+   "overruled_cites": "[2023] 8 SCR 1139 : 2023 SCC OnLine SC 1043",
+   "evidence": "held not binding",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0283",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2025_2_1331_1395",
+   "date": "2025-02-27",
+   "bench": 3,
+   "title": "RADHIKA AGARWAL versus UNION OF INDIA AND OTHERS",
+   "overruled_name": "Bharat Bhushan v. Director General of GST Intelligence, SLP (Crl.) No. 8525/2024",
+   "overruled_cites": "",
+   "evidence": "held not binding",
+   "already_in_register": true
+  },
+  {
+   "id": "P-0284",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2025_3_1555_1578",
+   "date": "2025-03-18",
+   "bench": 3,
+   "title": "DISORTHO S.A.S.  versus MERIL LIFE SCIENCES PRIVATE LIMITED",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "The notional doctrine of concurrent [2025] 3 S.C.R. 1573 Disortho S.A.S. v. Meril Life Sciences Private Limited jurisdiction has been expressly rejected and overruled by this Court in its subsequent decisions.",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0285",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2025_4_2080_2236",
+   "date": "2025-04-30",
+   "bench": 5,
+   "title": "GAYATRI BALASAMY versus M/S ISG NOVASOFT TECHNOLOGIES LIMITED",
+   "overruled_name": "Kinnari Mullick and Another v. Ghanshyam Das Damani",
+   "overruled_cites": "[2017] 6 SCR 657 : (2018) 11 SCC 328",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0286",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "tag",
+   "doc_key": "b2025_4_2080_2236",
+   "date": "2025-04-30",
+   "bench": 5,
+   "title": "GAYATRI BALASAMY versus M/S ISG NOVASOFT TECHNOLOGIES LIMITED",
+   "overruled_name": "Kinnari Mullick and Another v. Ghanshyam Das Damani",
+   "overruled_cites": "[2017] 6 SCR 657 : (2018) 11 SCC 328",
+   "evidence": "held not correct law",
+   "already_in_register": false
+  },
+  {
+   "id": "P-0287",
+   "state": "open",
+   "next_due": null,
+   "first_seen": "2026-10-07",
+   "history": [
+    {
+     "on": "2026-10-07",
+     "by": "register-sweep",
+     "event": "found"
+    }
+   ],
+   "kind": "sentence",
+   "doc_key": "b2025_6_310_359",
+   "date": "2025-05-08",
+   "bench": 3,
+   "title": "C.T. KOCHOUSEPH versus STATE OF KERALA AND ANOTHER ETC.",
+   "overruled_name": null,
+   "overruled_cites": null,
+   "evidence": "I am inclined now to think that this is an approach that basically alters the parameters and removes the provision from the area of vulnerability.” (emphasis supplied)” This Court in Devi Dass (supra) affirmed the reasoning in Hotel Balaji (supra), clearly holding that the decision in Goodyear (supra) did not lay down the correct law: “6.",
+   "already_in_register": false
+  }
+ ]
+}

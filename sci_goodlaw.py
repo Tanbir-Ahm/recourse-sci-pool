@@ -14,6 +14,15 @@
     python sci_goodlaw.py ik     status|plan|run|confirm [--kind meta --tids 1,2 --run-cap 1 --approved-rs 0.04 --plan-id ID]   # the Indian Kanoon API: dry run, caps, ledger (IK_PLAN.md)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev           # agreement with the reporter's citator (development half)
     python sci_goodlaw.py eval   --corpus corpus.sqlite --half dev --gold modern [--production]   # the same against the 2017-2023 case-law tables
+    python sci_goodlaw.py register-build [--force]                           # the Overruled Register from the two outside lists (REGISTER.md); refuses to overwrite a reviewed register
+    python sci_goodlaw.py register-check "Mohan Lal v State of Punjab" --year 2018 [--cite "(2018) 17 SCC 627"]   # what the register says about one case
+    python sci_goodlaw.py register-scan  --file answer.txt                   # the answer guard on a finished answer (lock c)
+    python sci_goodlaw.py register-flags --cards cards/currency_cards.json   # take the checker's ADVERSE_SIGNAL / QUESTIONED cards into the flag ledger
+    python sci_goodlaw.py register-sweep --corpus corpus.sqlite              # find overrulings the register does not hold (proposals only)
+    python sci_goodlaw.py register-exam build --out register_exam/ | score --answers answers.jsonl   # the trap-question exam (needs the assistant to produce the answers)
+    python sci_goodlaw.py register-export-site --out DIR                     # the dependency-free bundle for the Recourse owner (REGISTER_SITE_PATCH.md)
+    python sci_goodlaw.py register-review-queue --out review_queue.csv       # the weekly sheet (every 7 days)
+    python sci_goodlaw.py register-review --sheet review_queue.csv --reviewer "Mr. Advocate"   # record the filled sheet
 
 `build` reads the two data branches into one searchable store (about 10 minutes, 2 GB) and indexes the citations in it. `check` writes a JSON bundle and a
 Markdown report for one case: who cites it, what they do with it (with the exact sentences), what became of the statute sections it cites, a triage label
@@ -246,6 +255,113 @@ def run_cards(a):
     return 0
 
 
+def run_register(a):
+    """The Overruled Register commands (goodlaw/register*.py, REGISTER.md)."""
+    from goodlaw import register as R
+    from goodlaw import register_build as RB
+    from goodlaw import register_guard as G
+    from goodlaw import register_review as RV
+    today = getattr(a, "today", None) or datetime.date.today().isoformat()
+    path = getattr(a, "register", None) or R.DEFAULT_PATH
+    if a.cmd == "register-build":
+        if os.path.exists(path) and not a.force:
+            old = R.Register.load(path)
+            touched = [r["id"] for r in old.rows if len(r.get("history", [])) > 1 or r.get("review") or r["trust"] in ("reviewer_confirmed", "rejected")]
+            if touched:
+                print(f"{path} holds {len(touched)} row(s) a person has reviewed (for example {touched[0]}); rebuilding would lose their decisions. Use --force only to start over.", file=sys.stderr)
+                return 2
+        RB.build(a.pdf, path, built_on=today)
+        return 0
+    reg = R.Register.load(path)
+    if a.cmd == "register-check":
+        hits = reg.lookup_case(a.name, a.year, a.cite)
+        if not hits:
+            print("not in the register (no row matches by citation, or by both names and a year)")
+        for h in hits:
+            r = h["row"]
+            print(f"{h['strength']:6} {h['how']:9} {r['id']} [{r['trust']}] {reg.clause(r) or '(unchecked: no wording)'}")
+        return 0
+    if a.cmd == "register-scan":
+        res = G.guard_answer(reg, open(a.file, encoding="utf-8").read())
+        print(json.dumps(res, indent=1, ensure_ascii=False))
+        return 0
+    if a.cmd == "register-exam":
+        from goodlaw import register_exam as EX
+        if a.action == "build":
+            qs, key = EX.write_exam(reg, a.out, a.seed)
+            kinds = {}
+            for k in key.values():
+                kinds[k["kind"]] = kinds.get(k["kind"], 0) + 1
+            print(f"{len(qs)} questions {kinds} -> {a.out}")
+            return 0
+        key = json.load(open(os.path.join(a.out, "key.json"), encoding="utf-8"))
+        table, res = EX.score(reg, EX.read_answers(a.answers), key)
+        print(json.dumps(table))
+        for qid, v in sorted(res.items()):
+            if v in ("unmatched", "guard_note", "no_answer"):
+                print(f"  {qid} {v}: {key[qid]['case']}")
+        return 0 if table["passes"] else 1
+    if a.cmd == "register-export-site":
+        import shutil
+        os.makedirs(a.out, exist_ok=True)
+        for f_ in ("cites.py", "register.py", "register_guard.py"):
+            shutil.copy(os.path.join(HERE, "goodlaw", f_), os.path.join(a.out, f_))
+        open(os.path.join(a.out, "__init__.py"), "w", encoding="utf-8").write('"""The Overruled Register bundle (exported from recourse-sci-pool; see REGISTER.md there)."""\nfrom . import register, register_guard\n\n\ndef load(path=None):\n    import os\n    return register.Register.load(path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "register_slim.json"))\n')
+        doc = {"schema": R.SCHEMA, **{k: v for k, v in reg.meta.items()}, "rows": R.slim(reg.rows), "slim": True}
+        with open(os.path.join(a.out, "register_slim.json"), "w", encoding="utf-8") as fh:
+            json.dump(doc, fh, ensure_ascii=False, separators=(",", ":"))
+        print(f"bundle in {a.out}: {len(doc['rows'])} rows, {os.path.getsize(os.path.join(a.out, 'register_slim.json')) // 1024} KB")
+        return 0
+    flags_path = a.flags_file if getattr(a, "flags_file", None) else RV.FLAGS_PATH
+    props_path = a.proposals_file if getattr(a, "proposals_file", None) else RV.PROPOSALS_PATH
+    if a.cmd == "register-flags":
+        flags = RV.load_flags(flags_path)
+        new, quiet = RV.flags_from_cards(json.load(open(a.cards, encoding="utf-8")), flags, today)
+        RV._save(flags_path, flags)
+        print(f"{len(new)} new flag(s) {new}; {len(quiet)} open flag(s) the checker no longer raises (they stay open until a person clears them) {quiet}")
+        return 0
+    if a.cmd == "register-sweep":
+        from goodlaw import register_sweep as SW
+        corpus = K.Corpus(a.corpus)
+        found = SW.sweep(corpus, reg, a.min_year, a.min_bench)
+        doc = RV.load_proposals(props_path)
+        have = {(p["doc_key"], p.get("overruled_name"), p["evidence"][:80]): p for p in doc["proposals"]}
+        added = 0
+        for f in found:
+            key = (f["doc_key"], f.get("overruled_name"), f["evidence"][:80])
+            if key in have:
+                have[key]["already_in_register"] = f["already_in_register"]
+                continue
+            n = 1 + max([int(p["id"].split("-")[1]) for p in doc["proposals"]] or [0])
+            doc["proposals"].append({"id": f"P-{n:04d}", "state": "open", "next_due": None, "first_seen": today, "history": [{"on": today, "by": "register-sweep", "event": "found"}], **f})
+            added += 1
+        RV._save(props_path, doc)
+        print(f"{len(found)} find(s), {added} new proposal(s), {sum(1 for p in doc['proposals'] if p['state'] == 'open' and not p.get('already_in_register'))} open in all -> {props_path}")
+        return 0
+    flags = RV.load_flags(flags_path)
+    props = RV.load_proposals(props_path)
+    if a.cmd == "register-review-queue":
+        items = RV.build_queue(reg, flags, props, today, a.proposal_limit, a.match_limit, a.limit)
+        RV.write_queue(items, a.out)
+        kinds = {}
+        for it in items:
+            kinds[it["kind"]] = kinds.get(it["kind"], 0) + 1
+        print(f"{len(items)} item(s) for the review of {today}: {kinds} -> {a.out}")
+        return 0
+    if a.cmd == "register-review":
+        rows = reg.rows
+        res = RV.apply_decisions(rows, flags, props, a.sheet, a.reviewer, today)
+        meta = {k: v for k, v in reg.meta.items()}
+        R.save(rows, meta, path)
+        RV._save(flags_path, flags)
+        RV._save(props_path, props)
+        print(f"{len(res['applied'])} decision(s) recorded; {len(res['errors'])} not applied")
+        for e in res["errors"]:
+            print("  NOT APPLIED", e, file=sys.stderr)
+        return 0 if not res["errors"] else 1
+    return 1
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -325,7 +441,41 @@ def main(argv=None):
     re_.add_argument("--seed", type=int, default=11)
     re_.add_argument("--per-cell", type=int, default=24)
     re_.add_argument("--workers", type=int, default=4)
-    for p in (f, c, bt, kn, ev, cd, re_):
+    rb = sub.add_parser("register-build", help="build the Overruled Register from the two outside lists")
+    rb.add_argument("--pdf", default=os.path.join(HERE, "inbox", "520254941-List-of-Overruled-Cases.pdf"))
+    rb.add_argument("--force", action="store_true", help="overwrite even a register a person has reviewed (their decisions are lost)")
+    rk = sub.add_parser("register-check")
+    rk.add_argument("name")
+    rk.add_argument("--year")
+    rk.add_argument("--cite")
+    rs = sub.add_parser("register-scan")
+    rs.add_argument("--file", required=True)
+    rf = sub.add_parser("register-flags")
+    rf.add_argument("--cards", default=os.path.join(HERE, "cards", "currency_cards.json"))
+    rw = sub.add_parser("register-sweep")
+    rw.add_argument("--min-year", type=int, default=2016)
+    rw.add_argument("--min-bench", type=int, default=3)
+    rq = sub.add_parser("register-review-queue")
+    rq.add_argument("--out", required=True)
+    rq.add_argument("--proposal-limit", type=int, default=20)
+    rq.add_argument("--match-limit", type=int, default=20)
+    rq.add_argument("--limit", type=int, default=60, help="the most items on one week's sheet (flags are never cut)")
+    rx = sub.add_parser("register-exam")
+    rx.add_argument("action", choices=["build", "score"])
+    rx.add_argument("--out", default=os.path.join(HERE, "register_exam"))
+    rx.add_argument("--answers")
+    rx.add_argument("--seed", type=int, default=7)
+    re2 = sub.add_parser("register-export-site")
+    re2.add_argument("--out", required=True)
+    rr = sub.add_parser("register-review")
+    rr.add_argument("--sheet", required=True)
+    rr.add_argument("--reviewer", default="Mr. Advocate")
+    for p in (rb, rk, rs, rf, rw, rq, rr, rx, re2):
+        p.add_argument("--register", help="register file (default goodlaw/data/register/register.json)")
+        p.add_argument("--today", help="date to record (default: today)")
+        p.add_argument("--flags-file")
+        p.add_argument("--proposals-file")
+    for p in (f, c, bt, kn, ev, cd, re_, rw):
         p.add_argument("--corpus", default="corpus.sqlite")
     a = ap.parse_args(argv)
     if a.cmd == "eval" and a.half == "held" and not a.confirm_held_out:
@@ -348,6 +498,8 @@ def main(argv=None):
             classes[c_["court_class"]] = classes.get(c_["court_class"], 0) + 1
         print(f"{len(snap['cases'])} cases read from Recourse commit {snap['snapshot']['recourse_commit']}: {classes}; wrote {a.out}")
         return 0
+    if a.cmd.startswith("register"):
+        return run_register(a)
     if a.cmd == "ik":
         return run_ik(a)
     if a.cmd in ("cards", "cards-review", "card", "reader-import"):

@@ -43,6 +43,10 @@ A library case whose judgment is not in the collection is checked as an **extern
 
 See `goodlaw/EVALUATION.md` for the numbers, how they were produced, and what they do not show. In short: against the law reporters' own citator codes (older judgments only) it found an overruling or disagreement in 35% of pairs on the held-out half (46% on the half it was tuned on), and about half of its clean adverse flags were real treatment when read by hand. `NO_ADVERSE_FOUND` is therefore weak evidence. Recent judgments (2017 to 2023) are measured on a second answer key read from the reporters' case-law tables, but it holds only 49 adverse pairs, and 2024 to 2026 judgments are measured only on 20 known cases whose labels are mine and not lawyer-checked.
 
+## The Overruled Register (2026-10-07)
+
+The checker only warns. What a person has confirmed, or an outside list says, about decisions that a later court overruled is kept in the Overruled Register (1,765 rows: the verified 2015 list, the post-2015 list as candidates, and sibling decisions), with an answer guard, a weekly review and a trap-question exam. See `REGISTER.md`; for the live site, `REGISTER_SITE_PATCH.md`. Tests: `python test_goodlaw_register.py`.
+
 ## Running it
 
 1. Build the store (about 15 minutes, 2 GB, needs the two data branches checked out): `python sci_goodlaw.py build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --corpus corpus.sqlite`.
