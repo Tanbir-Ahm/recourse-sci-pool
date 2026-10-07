@@ -1,0 +1,5 @@
+{"force": [[44878, 1000250000]],
+ "merge": [
+  {"keep": 1000250002, "remove": [44879], "reason": "same judgment (Mukesh & Anr v State for NCT of Delhi, Criminal Appeals 607-608 of 2017): the law-report copy is the more complete text (735,320 against 594,543 characters)"},
+  {"keep": 6906, "remove": [1000000717], "reason": "same judgment (Ishar Das v State of Punjab, [1972] 3 SCR 312, 31 Jan 1972): the law-report copy is a scanned text with misread words; the court-site copy is cleaner"},
+  {"keep": 5614, "remove": [1000000830], "reason": "same judgment (Devarapalli Lakshminarayana Reddy v V. Narayana Reddy, [1976] Supp 1 SCR 524, 4 May 1976): the law-report copy is a scanned text with misread words; the court-site copy is cleaner"}]}
