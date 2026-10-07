@@ -78,7 +78,16 @@ About 9 are real statements the checker misses; the rest are statements about a 
 - **Row 420 (Paras Ram, treated as not good law in Balbir Singh):** the sentence is "The law laid down by this Court in Paras Ram ... has been held to be not good law by the Constitution Bench in Sanjay Dutt". The reader read the opening as **follows**. This is the worst kind: a positive reading of a case the sentence calls not good law.
 - Also seen: "stood overruled" said of a case in a list, "erroneous" and "over-ruled" appearing only in the headnote summary, and overrulings reported by the citing court as another bench's work.
 
-None of these was fixed; the owner asked only for the analysis.
+**These were fixed on 2026-10-07 at the owner's request** (commit `5669fac` and the ones before it; list in `goodlaw/EVALUATION.md`, section "An outside list of overruled cases"). Results on these same 146 pairs after the fixes, full pipeline (the fast reader gives the same readings):
+
+| | Before | After |
+|---|---|---|
+| The later judgment names the case | 122 (84%) | 123 (84%) |
+| Read as overrules, disagrees or doubts | 38 (26%) | **42 (29%)** |
+| ... in the court's or headnote's voice and confident | 33 | 37 |
+| Read as an explicit overruling | 30 (21%) | 33 (23%) |
+
+Rows 668 (Rajinder Kaur), 420 (Paras Ram), 254 and 288 now read as the verdicts the later judgments state; row 422 (Jugraj Singh) reads adverse but is not confident (it needs a change that was tried and undone, see the evaluation notes). **These are in-sample numbers**: the fixes came from reading these pairs. The odd rows (162 pairs) have still not been run. `checker_results_tuning_half.csv` holds the reading of each pair before and after.
 
 ## What to do with the list
 
