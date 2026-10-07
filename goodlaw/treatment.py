@@ -35,6 +35,7 @@ RULES = [
         r"(?<!legislatively )(?<!statutorily )\bover-?\s?rul(?:e|es|ed|ing)\b",
         r"\bno longer (?:a )?good law\b", r"\b(?:is|are|was|were) not (?:a )?good law\b", r"\bnot (?:to be )?(?:treated|regarded|considered) as (?:a )?good law\b",
         r"\bcannot be (?:treated|regarded|considered|said to be) (?:as )?(?:a )?good law\b",
+        r"\b(?:be|been|being)\s+not\s+(?:a\s+)?good law\b", r"\bnot to be (?:a )?good law\b",       # "has been held to be not good law", "held not to be good law"
         r"\b(?:does|do|did) not (?:lay down|represent|state|reflect) (?:the )?correct law\b", r"\bdoes not lay down the correct (?:law|proposition)\b",
         r"\b(?:was|were|is|are) (?:wrongly|incorrectly|erroneously) decided\b", r"\bwrongly decided\b", r"\bper incuriam\b",
         r"\b(?:is|are|was|were) (?:hereby )?disapproved\b", r"\bdisapprov(?:e|es|ed|ing)\b", r"\bnot (?:been )?correctly decided\b", r"\bnot (?:rightly|properly) decided\b",
@@ -149,7 +150,7 @@ _AFFIRMING = re.compile(r"\b(?:affirm\w*|uphold\w*|upheld|approv\w+|confirm\w*|e
 _GROUND = re.compile(r"\b(?:in view of|in the light of|on the strength of|on the basis of|by reason of|because of|having regard to|on account of|owing to|relying (?:up)?on|based (?:up)?on|in accordance with|in terms of)\b", I)
 _BY_AUTHORITY = re.compile(r"^\s*(?:,\s*)?by\s+(?:(?i:(?:this|the|a|an|the said)\s+(?:\w+\s+){0,3}?(?:Court|Bench|Judges?)\b[\w\s,]{0,25}?)|(?:[A-Z][\w.]*,?\s+){1,4}(?:C\.?\s?J\.?(?:I\.?)?|J\.?|JJ\.?),?\s*)\bin\s*(?:(?i:the\s+(?:case|decision|judgment|matter)\s+of\s*))?$")
 _IGNORED_MID = re.compile(r"\b(?:ignor\w+|overlook\w+|in ignorance of|disregard\w*|without (?:considering|noticing|referring to|adverting to|taking note of)|failed to (?:consider|notice|follow)|did not (?:consider|notice|follow))\b", I)
-_DECISION_IDIOM = re.compile(r"as laying down (?:the )?(?:law|correct law) correctly|lay down the law correctly|no longer (?:a )?good law|(?:is|are|was|were) not (?:a )?good law|not (?:to be )?(?:treated|regarded|considered) as (?:a )?good law|cannot be (?:treated|regarded|considered|said to be) (?:as )?(?:a )?good law|"
+_DECISION_IDIOM = re.compile(r"as laying down (?:the )?(?:law|correct law) correctly|lay down the law correctly|no longer (?:a )?good law|(?:is|are|was|were) not (?:a )?good law|(?:be|been|being)\s+not\s+(?:a\s+)?good law|not to be (?:a )?good law|not (?:to be )?(?:treated|regarded|considered) as (?:a )?good law|cannot be (?:treated|regarded|considered|said to be) (?:as )?(?:a )?good law|"
                              r"(?:does|do|did) not (?:lay down|represent|state|reflect) (?:the )?correct law|(?:was|were|is|are) (?:wrongly|incorrectly|erroneously) decided|wrongly decided|per incuriam|"
                              r"not (?:been )?correctly decided|not (?:rightly|properly) decided|held (?:to be )?(?:incorrect|erroneous|wrong|bad law)|over-?\s?rul|disapprov", re.I)
 _HEADNOTE_WORDS = r"explained|followed|referred to|referred|distinguished|relied on|relied upon|approved|applied|considered|affirmed|partly|partially|since|also|and|but|not|held|observed"
@@ -161,6 +162,8 @@ def attached(sentence, span, target):
     to the view taken in T"), not through a clause ("... cannot be accepted, in view of T", "we are unable to agree with counsel that T says ...")."""
     if span[1] <= target[0] and (_GROUND.search(sentence[span[1]:target[0]]) or _BY_AUTHORITY.match(sentence[span[1]:target[0]])):
         return False                                                  # "not tenable having regard to T", "held erroneous by this Court in T": T is the ground or the authority
+    if span[1] <= target[0] and re.match(r"^\s*(?:,\s*)?in\s*(?:the\s+(?:case|decision|judgment|matter)\s+of\s*)?$", sentence[span[1]:target[0]], I) and re.search(r"\b(?:held|declared|pronounced|treated|regarded|stated)\b[^.;]{0,25}$", sentence[max(0, span[0] - 40):span[0]], I):
+        return False                                                  # "has been held to be per incuriam in T": T is the case that held it, not the case judged
     if span[0] >= target[1] and (_DECISION_IDIOM.fullmatch(sentence[span[0]:span[1]].strip()) or _DECISION_IDIOM.search(sentence[span[0]:span[1]])):
         return True                                                   # these idioms judge a decision they follow; the distance and clause checks are enough (before the target the usual between-checks apply)
     if span[0] >= target[1]:                                          # target first, then the cue
@@ -184,8 +187,13 @@ def attached(sentence, span, target):
 _RELATIONAL = re.compile(r"\b(?:(?:not|nor) (?:in )?(?:consonance|conformity|accord|keeping|line) with|runs? counter to|contrary to the)\b", I)
 _NEG_FOLLOW = re.compile(r"\b(?:not|never|cannot|can not|nor|unable to|neither)\s+(?:be\s+|been\s+|being\s+|have\s+|has\s+|had\s+|to\s+)?(?:at all\s+)?$", I)
 _REJECTING = re.compile(r"\b(?:(?:do|does|did)\s+not\s+accede|decline[sd]?|refuse[sd]?|not\s+(?:inclined|persuaded|prepared)|reject(?:s|ed)?\s+the\s+(?:submission|contention|argument|plea|claim)|negativ(?:e|ed)\s+the\s+(?:submission|contention|argument|plea|claim))\b[^.;]{0,140}$", I)
+_TEMPORAL_BEFORE = re.compile(r"\b(?:up\s?to|upto|prior to|before|until|till|after|since|subsequent to)\s+(?:the\s+(?:decision|judgment|ruling)\s+(?:in|of)\s+)?$", I)      # "judgments delivered up to T": T is a point in time
+_INTRO_GROUND = re.compile(r"^\W*(?:With|In view of|Having regard to|On the basis of|In (?:the )?light of|Following|Applying|Pursuant to|As per|On the strength of|Relying (?:up)?on|Based (?:up)?on)\b[^,;]*$", I)      # "With these observations in T, the basis on which X ... is disapproved": T is the ground
+_CLAUSE_BREAK = re.compile(r"(?<=[.!?\u2026\u201d\"])\s*\d{0,3}\s+(?=[A-Z])")      # where one sentence runs into the next without the splitter seeing it ("...privacy\u2026\u201d125 With these ...")
+_THAT_AFTER = re.compile(r"\s*(?:(?:and|&)\s*(?:ors?|anrs?|another|others)\b\.?\s*)?(?:\d{1,3}\s*)?(?:\(\w+\)\s*)?(?:\(supra\)\s*)?that\b", I)      # "... in T that ...", a footnote number or "(supra)" may sit after the name
+_DOUBLE_CUE_NEG = re.compile(r"\b(?:cannot|can not|could not|never|nor|neither|hardly|nothing|nobody)\b[^.;]{0,50}$", I)
 _NOT_A_NEGATION = re.compile(r"\b(?:hesitat\w*|cannot but|can not but|not only|but also|not merely|no doubt|not (?:be )?(?:unmindful|oblivious))\b[^.]{0,25}$", I)
-_NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|neither|nor|hardly|no|without)\b(?:\s+\w+){0,3}\s*$|\b(?:cannot|can not|could not|not|never)\s+be\s+(?:said|held|regarded|understood|construed|inferred|read)\s+(?:to|that)\b[^.;]{0,100}$|\b(?:not|never)\s+(?:prepared|willing|inclined|able)\s+to\s+(?:hold|say|accept|agree)\s+that\b[^.;]{0,100}$|\b(?:nothing|no\s+\w+)\b[^.;]{0,80}\b(?:can|could|would)\s+be\s+(?:said|held|regarded|treated)\s+to\s+be\s*$|\b(?:do|does|did)\s+not\s+accede\b[^.;]{0,140}$|\b(?:decline[sd]?|refuse[sd]?|not\s+(?:inclined|persuaded|prepared))\b[^.;]{0,140}$", I)
+_NEGATION = re.compile(r"\b(?:not|never|nowhere|cannot|can not|neither|nor|hardly|no|without)\b(?:\s+(?!(?:and|but|or|while|whereas|yet)\b)\w+){0,3}\s*$|\b(?:cannot|can not|could not|not|never)\s+be\s+(?:said|held|regarded|understood|construed|inferred|read)\s+(?:to|that)\b[^.;]{0,100}$|\b(?:not|never)\s+(?:prepared|willing|inclined|able)\s+to\s+(?:hold|say|accept|agree)\s+that\b[^.;]{0,100}$|\b(?:nothing|no\s+\w+)\b[^.;]{0,80}\b(?:can|could|would)\s+be\s+(?:said|held|regarded|treated)\s+to\s+be\s*$|\b(?:do|does|did)\s+not\s+accede\b[^.;]{0,140}$|\b(?:decline[sd]?|refuse[sd]?|not\s+(?:inclined|persuaded|prepared))\b[^.;]{0,140}$", I)
 _HEDGE = re.compile(r"\b(?:if|in case|in the event|ought|whether|unless|until|till|even if|as if|suggest(?:s|ed|ing)?|argue[sd]?|contend(?:s|ed|ing)?|submit(?:s|ted)?|urge[sd]?|plea|alleg\w+|claim\w*|"
                     r"possib\w+|might|may|could|would|should|question (?:of|whether))\b(?:[\s,.]+\w+){0,10}[\s,]*$", I)
 _REPORTED = re.compile(r"\b(?:if|in case|in the event|whether|unless|till|until|pray\w*|suggest\w*|criticism|hypothes\w+|argue\w*|contend\w*|contention\w*|negativ\w+|challeng\w+|submit\w*|urge\w*|plea\w*|alleg\w+|claim\w*|counsel|(?:neither|no|nor|without)\s+(?:the\s+)?(?:need|necessity|occasion))\b", I)
@@ -279,8 +287,20 @@ def _binding(cue, others, target, sentence):
     return "weak" if any(competing(s, e) for s, e in mentions) else "strong"
 
 
+_OCR_IS = re.compile(r"\b1s\b")          # a scanned judgment's "is" read as "1s" ("the decision in X's case 1s erroneous"); same length, so every position still fits the printed sentence
+
+
 def classify(sentence, target):
     """-> dict(label, cue, cue_span, negated, hedged, binding, all) for one flattened sentence and the (start, end) of the target mention in it."""
+    printed = sentence
+    sentence = _OCR_IS.sub("is", sentence)
+    out = _classify(sentence, target)
+    if sentence != printed and out.get("cue_span") and out["cue"] == sentence[out["cue_span"][0]:out["cue_span"][1]]:
+        out["cue"] = printed[out["cue_span"][0]:out["cue_span"][1]]       # show the cue as printed
+    return out
+
+
+def _classify(sentence, target):
     others = _other_mentions(sentence, target)
     found = []
     for label, patterns in _COMPILED:
@@ -291,6 +311,9 @@ def classify(sentence, target):
                     continue
                 if label == "OVERRULES" and _NOT_ABOUT_CASE.search(sentence[max(0, m.start() - 10):m.end() + 40]):
                     continue
+                if label in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS") and span[0] >= target[1] and (
+                        _TEMPORAL_BEFORE.search(sentence[max(0, target[0] - 50):target[0]]) or (_INTRO_GROUND.match(_CLAUSE_BREAK.split(sentence[:target[0]])[-1]) and "," in sentence[target[1]:span[0]])):
+                    continue                                              # T is a point in time or the ground in an opening phrase, and the cue belongs to the clause that follows
                 if label == "OVERRULES" and re.match(r"per incuriam", m.group(0), I) and re.search(r"(?:doctrine|principles?|rule|question|plea|concept|expression|term|test|issue)s?\s+(?:of\s+|on\s+|as to\s+)?$", sentence[max(0, m.start() - 45):m.start()], I):
                     continue                                              # "the principles of per incuriam": the doctrine is the topic, not a verdict on the case
                 if label == "DOUBTS_REFERS" and re.match(r"correctness of", m.group(0), I) and _AFFIRMING.search(sentence[max(0, m.start() - 40):m.start()]):
@@ -316,6 +339,8 @@ def classify(sentence, target):
                         found.append({"label": "FOLLOWS", "was": "DISAGREES", "cue": "has not followed (T is the authority)", "cue_span": span, "negated": False, "hedged": False,
                                       "binding": _binding(span, others, target, sentence), "distance": _distance(span, target)})
                         continue
+                    if neg_start >= target[1] and _HELD_IN.search(sentence[:target[0]]) and _THAT_AFTER.match(sentence[target[1]:]):
+                        continue                                      # "it has been held by this Court in T that directions ... is not law laid down": the negation belongs to T's proposition
                     if not (attached(sentence, (neg_start, span[1]), target)
                             or (neg_start >= target[1] and neg_start - target[1] <= 100 and _PRONOUN_SUBJECT.search(sentence[target[1]:neg_start]))):
                         continue                                      # "the affidavit has not been affirmed by the deponent": the negated verb is not about the target
@@ -325,6 +350,12 @@ def classify(sentence, target):
                 # cues that already contain a negation ("not good law", "not borne out") are not flipped by a nearby 'not', but a rejection of the whole proposition still flips them
                 if re.match(r"(?:not|no longer|neither|cannot|do(?:es)? not|did not|is not|are not|was not|were not)\b", m.group(0), I) or re.search(r"\bnot\b", m.group(0), I):
                     negated = bool(_REJECTING.search(sentence[max(0, m.start() - 140):m.start()])) and label in ("OVERRULES", "DISAGREES", "DOUBTS_REFERS", "DISTINGUISHES")
+                    if label == "OVERRULES" and re.match(r"(?:be|been|being)\s+not\b|not to be\b", m.group(0), I):
+                        pre = sentence[:m.start()]
+                        if target[1] <= m.start():
+                            pre = sentence[:target[0]] + " T " + sentence[target[1]:m.start()]       # the case's own name ("v. State") has full stops in it
+                        if _DOUBLE_CUE_NEG.search(pre[-90:]):
+                            negated = True                        # "cannot be held to be not good law" says the case is good law
                 hedged = is_hedged(sentence, m.start()) or is_hedged_after(sentence, m.end())
                 binding = _binding(span, others, target, sentence)
                 if label in ("OVERRULES", "DISAGREES") and span[1] <= target[0] and _IGNORED_MID.search(sentence[span[1]:target[0]]):
@@ -340,7 +371,7 @@ def classify(sentence, target):
                         continue
                     if _PROPOSITION.search(sentence[target[1]:span[0]]) and not (_DECISION_IDIOM.search(m.group(0)) and _RELATIVE_HELD.search(sentence[target[1]:span[0]])):
                         continue
-                    if _HELD_IN.search(sentence[:target[0]]) and re.match(r"\s*(?:\(\w+\)\s*)?(?:\(supra\)\s*)?that\b", sentence[target[1]:]):
+                    if _HELD_IN.search(sentence[:target[0]]) and _THAT_AFTER.match(sentence[target[1]:]):
                         continue                                          # "it was held by this Court in T that the assumption ... was not correct": the proposition is T's holding
                 if (label in ("DISAGREES", "DOUBTS_REFERS") or (label == "OVERRULES" and not _VERB.search(m.group(0)))) and not attached(sentence, span, target):
                     continue

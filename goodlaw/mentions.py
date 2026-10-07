@@ -45,6 +45,17 @@ def _words_regex(words):
     return r"\W+".join(re.escape(w) for w in words)
 
 
+def _state_variants(words):
+    """The word lists a party can be printed as: "State of Punjab" is also "Punjab State" and the other way round; any other name has one form."""
+    out = [words]
+    low = [w.lower() for w in words]
+    if len(words) >= 3 and low[0] == "state" and low[1] == "of":
+        out.append(words[2:] + [words[0]])
+    elif len(words) >= 2 and low[-1] == "state" and "of" not in low[:-1]:
+        out.append([words[-1], "of"] + words[:-1])
+    return out
+
+
 class Target:
     def __init__(self, pet, resp, year, cites=(), date=None, doc_key=None, bench_size=None, name=None, aliases=(), bench_source=None):
         self.pet, self.resp, self.year, self.date = pet, resp, year, date
@@ -70,7 +81,12 @@ class Target:
         if not pw or not rw:
             return None
         honorific = r"(?:(?:m/s|messrs|shri|sri|smt|dr|mr|mrs|the)\W{0,3})?"
-        return re.compile(rf"{_words_regex(pw)}\W{{1,6}}(?:v|vs|versus)\W{{1,4}}{honorific}{_words_regex(rw)}", re.I)
+        # a later judgment often prints "X and Another v. Y" or "X & Anr. vs. Y" for a caption that the store holds as "X v. Y" (the store drops the tail), and a State is
+        # written "State of Punjab" or "Punjab State" whichever way the caption was typed
+        tail = r"(?:\W+(?:and|&)\W+(?:ors?|anrs?|another|others)\b\.?)?(?:\W+etc\b\.?)?"
+        pets = "|".join(_words_regex(v) for v in _state_variants(pw))
+        resps = "|".join(_words_regex(v) for v in _state_variants(rw))
+        return re.compile(rf"(?:{pets}){tail}\W{{1,6}}(?:v|vs|versus)\W{{1,4}}{honorific}(?:{resps}){tail}", re.I)
 
     def party_case_patterns(self, corpus=None, max_df=600):
         """Patterns for a party's name followed by 'case', 'decision', 'judgment', 'ruling' or '(supra)', e.g. "University of Delhi case" or "Chhotabhai
@@ -116,7 +132,7 @@ class Target:
 
 
 # ---------------------------------------------------------------- who is speaking
-_COUNSEL = re.compile(r"\b(?:according to (?:him|her|them)|(?:he|she|they) (?:further |also |then |in turn )?(?:argued|submitted|contended|urged|pointed out|referred to|relied)|(?:reliance|stand|plea|grievance|contention|argument|submission|case) (?:placed )?(?:of|by|taken by) (?:Mr|Ms|Mrs|Shri|Dr)\.? [A-Z]\w*|(?:stand|plea|case|contention|submission|argument) of the (?:State|appellants?|respondents?|petitioners?|Union|Government|Revenue|Department)\b|learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
+_COUNSEL = re.compile(r"\b(?:according to (?:him|her|them|(?:Mr|Ms|Mrs|Dr|Shri|Sri|Smt)\.?\s+\w+)|(?:he|she|they) (?:further |also |then |in turn )?(?:argued|submitted|contended|urged|pointed out|referred to|relied)|(?:reliance|stand|plea|grievance|contention|argument|submission|case) (?:placed )?(?:of|by|taken by) (?:Mr|Ms|Mrs|Shri|Dr)\.? [A-Z]\w*|(?:stand|plea|case|contention|submission|argument) of the (?:State|appellants?|respondents?|petitioners?|Union|Government|Revenue|Department)\b|learned (?:senior )?(?:counsel|advocate|amicus|Additional Solicitor General|Solicitor General|Attorney General)|(?:the )?(?:Attorney|Solicitor|Advocate)[- ]General (?:referred|submitted|contended|urged|argued|relied|pointed|placed|wanted)|"
                       r"(?:Mr|Ms|Mrs|Dr|Shri|Sri)\.? [A-Z][\w.]*(?: [A-Z][\w.]*)*,? (?:learned )?(?:senior )?(?:counsel|advocate)|"
                       r"(?:arguments?|submissions?|contentions?) (?:in support of|advanced|addressed)|in support of the (?:submission|contention)|addressed (?:elaborate |lengthy |detailed )?arguments|appearing (?:also )?for the|"
                       r"submitted that|submits that|contended that|contends that|argued that|argues that|urged that|urges that|placed (?:strong )?reliance|"
@@ -321,6 +337,20 @@ def find_mentions(corpus, target, learn=True, min_votes=2, log=None):
         if learned:
             target.learned_cites = learned
             if corpus.has_cite_index:
+                # texts already read as candidates (found by the party names) are read again if they print a citation just learned: before this, a text that named the
+                # case only by a short name stayed a low-confidence mention even though it printed the case's own citation
+                redo = {d["doc_key"] for d in corpus.docs_citing(learned)} & set(cand)
+                if redo:
+                    mentions = [m for m in mentions if m["doc_key"] not in redo]
+                    for key in sorted(redo):
+                        d = cand[key][0]
+                        found, _ = extract(texts[key], target, short, d.get("body_start"), party_cases=pcases)
+                        for m in found:
+                            m["doc_key"], m["doc_id"] = d["doc_key"], d["id"]
+                            m["date"], m["year"], m["date_source"] = d["date"], d["year"], d["date_source"]
+                            m["bench_size"], m["bench_source"], m["source"], m["title"] = d["bench_size"], d["bench_source"], d["source"], d["title"]
+                            m["citing_cites"] = d["cites"]
+                            mentions.append(m)
                 extra = [d for d in corpus.docs_citing(learned) if _later(d, target) and d["doc_key"] not in cand and d.get("maybe_dup_of") not in cand]
                 for d in extra:
                     text = corpus.text_of(d["id"])

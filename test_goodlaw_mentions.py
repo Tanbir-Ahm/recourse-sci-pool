@@ -79,6 +79,15 @@ check(M.Target("STATE OF PUNJAB", "X", 1990).party_case_patterns() != [] and M.T
 check(M.party_words("M/S. ABC TRADERS (DEAD) THROUGH LRS. & ORS.") == ["ABC", "TRADERS"], "party names lose prefixes, 'dead through LRs' and 'and others'")
 check(M.party_words("STATE OF U.P. AND ANOTHER") == ["STATE", "OF", "U", "P"], "initials are kept as words")
 check(M.Target("", "X", 2000).pair_regex() is None, "a target with no petitioner has no pair pattern")
+rx = M.Target("JUGRAJ SINGH AND ANR.", "LABH SINGH AND ORS.", 1994).pair_regex()
+check(all(rx.search(t) for t in ["Jugraj Singh & Anr vs. Labh Singh & ors,. [(1995) 2 SCC 31]", "Jugraj Singh and Another v. Labh Singh and Others", "Jugraj Singh v. Labh Singh", "Jugraj Singh vs. Labh Singh etc."]),
+      "the pair is found whether a later judgment prints 'and Another', '& Anr.' or nothing after the first name")
+check(not rx.search("Jugraj Singh and Labh Singh") and not rx.search("Jugraj Singh v. Another Singh"), "but two names joined by 'and', or a different respondent, are not the pair")
+rx = M.Target("RAJINDER KAUR", "PUNJAB STATE & ANR", 1986).pair_regex()
+check(rx.search("Smt. Rajinder Kaur vs. State of Punjab is hereby over-ruled") and rx.search("Rajinder Kaur v. Punjab State") and not rx.search("Rajinder Kaur v. State of Haryana"),
+      "'Punjab State' and 'State of Punjab' are the same party, and another State is not")
+rx = M.Target("STATE OF HARYANA", "BHAJAN LAL", 1990).pair_regex()
+check(rx.search("Haryana State v. Bhajan Lal") and rx.search("State of Haryana v. Bhajan Lal") and not rx.search("State of Punjab v. Bhajan Lal"), "and the same when the State is the petitioner")
 check(M.Target("STATE OF PUNJAB", "BALDEV SINGH", 1999).short_names() == ["BALDEV"], "stock names (State, Punjab, Singh) are never used alone")
 
 # ---- across a small corpus
@@ -97,6 +106,7 @@ DOCS = {
     7: caption("PQR", "STU", "State of Haryana v. Bhajan Lal (2001) 4 SCC 99 is a different matter entirely. " + PAD, "New Delhi;\nAugust 08, 2012."),
     8: caption("GOPAL", "HARI", "State of Haryana v. Bhajan Lal (1992) Supp (1) SCC 335 is the leading case. In Bhajan Lal's case guidelines were laid down. " + PAD, "New Delhi;\nApril 04, 2000."),
     9: caption("NO", "MENTION", "Nothing relevant here. " + PAD, "New Delhi;\nApril 09, 2013."),
+    10: caption("DEEP", "VEER", "Bhajan Lal's case was relied on, and the later decision is reported at (1992) Supp (1) SCC 335. " + PAD, "New Delhi;\nMay 10, 2014."),
 }
 
 
@@ -129,19 +139,22 @@ res = M.find_mentions(cp, tgt)
 docs = [m["doc_key"] for m in res["mentions"]]
 check(res["learned_cites"] == ["scc:1992:s1:335"], "the SCC supplement citation is learned from the texts that give it after the parties' names")
 check("b2000_1_1_9" not in docs, "a bucket text that may be a second copy of a candidate crawl text is not counted twice")
-check(sorted(set(docs)) == ["c2", "c3", "c4", "c5"], "citing texts are 2, 3, 4 and 5: not 1 (the target), 6 (earlier), 7 (a different case with the same names), 8 (second copy), 9 (no mention)")
+check(sorted(set(docs)) == ["c10", "c2", "c3", "c4", "c5"], "citing texts are 2, 3, 4, 5 and 10: not 1 (the target), 6 (earlier), 7 (a different case with the same names), 8 (second copy), 9 (no mention)")
 by_doc = {d: [m for m in res["mentions"] if m["doc_key"] == d] for d in set(docs)}
 check(any(m["tier"] == "cite" for m in by_doc["c2"]), "text 2 cites the AIR page of the target")
 check(all(m["confidence"] == "high" for m in by_doc["c5"]) and by_doc["c5"][0]["tier"] == "cite", "text 5 cites only the learned SCC citation, without the names, and is found by it")
 check(any(m["tier"] == "short" and m["confidence"] == "medium" for m in by_doc["c3"]), "a short-name mention in a text that also has a pair mention is medium confidence")
-check(res["citing_docs"] == 4 and res["citing_docs_high"] == 4, "four distinct citing judgments, all with a high-confidence mention")
+check(res["citing_docs"] == 5 and res["citing_docs_high"] == 5, "five distinct citing judgments, all with a high-confidence mention")
+check(any(m["tier"] == "cite" for m in by_doc["c10"]) and all(m["confidence"] in ("high", "medium") for m in by_doc["c10"]),
+      "text 10 names the case only as 'Bhajan Lal's case' but prints the citation learned from the others: it is read again after the learning, so its mention is no longer low confidence")
 check([m["date"] for m in res["mentions"]] == sorted(m["date"] for m in res["mentions"]), "mentions come in date order")
 check(any("stands overruled" in m["sentence"] for m in by_doc["c4"]) and by_doc["c4"][0]["speaker"] == "court", "text 4's sentence says the case stands overruled and the court is the speaker")
 
 # a target with no known cites and a cite index still works from names alone
 tgt2 = M.Target.from_doc(cp.get("c1", False))
 res2 = M.find_mentions(cp, tgt2, learn=False)
-check(sorted({m["doc_key"] for m in res2["mentions"]}) == ["c2", "c3", "c4"] and res2["learned_cites"] == [], "without learning, texts that give neither the parties nor a known citation (text 5) are not found")
+check(sorted({m["doc_key"] for m in res2["mentions"]}) == ["c10", "c2", "c3", "c4"] and res2["learned_cites"] == [], "without learning, texts that give neither the parties nor a known citation (text 5) are not found")
+check(all(m["confidence"] == "low" for m in res2["mentions"] if m["doc_key"] == "c10"), "and without learning, text 10's short-name mention stays low confidence")
 
 cp.con.close()
 shutil.rmtree(base, ignore_errors=True)
@@ -164,6 +177,7 @@ fnd, _ = M.extract("The law was laid down in Karnail Singh v. State of Haryana, 
 check(len(fnd) >= 1, "and a mention with the case's own citation is kept")
 check(M.speaker("Later judgments such as Noor Aga (supra) ought to be overruled by us.", "According to him, the reference order was flawed.", False)[0] == "counsel", "a sentence after 'According to him ...' is counsel's")
 check(M.speaker("He further argued that the judgment does not need reconsideration.", "", False)[0] == "counsel", "'He further argued' is counsel's")
+check(M.speaker("According to Mr. Venugopal, the decision in Kannadasan's case must be held to be wrongly decided.", "", False)[0] == "counsel" and M.speaker("ACCORDING TO MR. VENUGOPAL, THE JUDGMENT WAS WRONG.", "", False)[0] == "counsel", "'According to Mr. X' is counsel's, in capitals too")
 check(M.speaker("We hold that the judgment was wrong.", "According to him, it was right.", False)[0] == "court", "but a sentence in the court's own voice stays the court's")
 
 hdr2 = "[2024] 6 S.C.R. \x08 907 Karnail Singh v. State of Haryana & Ors. (v) A review is by no means an appeal in disguise whereby an erroneous decision is reheard."

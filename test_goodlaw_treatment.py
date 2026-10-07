@@ -51,6 +51,13 @@ CASES = [
     ("Mohan Singh v. Bhanwarlal, [1964] 5 S.C.R. 12, disapproved; Amin Lal v. Hunna Mal, [1964] 1 S.C.R. 393, referred to.", "Mohan Singh v. Bhanwarlal", "OVERRULES"),
     # a law report's paragraph reference separates one case's note from the next
     ("Mhetre to that extent and other judgments which have followed it are accordingly overruled.[128A-C] Shri Gurbaksh Singh Sibbia and others v. State of Punjab (1980) 2 SCC 565 - relied on.", "Shri Gurbaksh Singh Sibbia and others v. State of Punjab", "FOLLOWS"),
+    # found on the Overruled-Cases list (2026-10-07): a passive verdict on the law laid down in the case, far from its name; a scanned "is"
+    ('The law laid down by this Court in Paras Ram vs. State of Haryana, (1992) 4 SCC 662, that for an offence under Section 5, the recovery must be of "arms and ammunitions" and not of either arm or "ammunition" has been held to be not good law by the Constitution Bench in Sanjay Dutt\u2019s case (supra).', "Paras Ram vs. State of Haryana, (1992) 4 SCC 662", "OVERRULES"),
+    ("The decision in Mohan v. Singh has been held not to be good law.", "Mohan v. Singh", "OVERRULES"),
+    ("We are of the view that the decision in Jugraj Singh\u2019s case 1s erroneous.", "Jugraj Singh\u2019s case", "DISAGREES"),
+    ("The decision in Smt. Rajinder Kaur vs. State of Punjab is hereby over-ruled.", "Smt. Rajinder Kaur vs. State of Punjab", "OVERRULES"),
+    ("The view expressed in Narasimhaiah\u2019s case (supra) and Nanjudaiah\u2019s case (supra), is not correct and is over-ruled while that expressed in A.S. Naidu\u2019s case (supra) is affirmed.", "Nanjudaiah\u2019s case (supra)", "OVERRULES"),
+    ("The decision in Ram Lal v. State is not correct and is overruled.", "Ram Lal v. State", "OVERRULES"),
     # the case that did the overruling, named after the case it overruled
     ("After three decades, the Supreme Court overruled its previous decision in A.K. Gopalan and held in its landmark judgment in Maneka Gandhi v. Union of India that the procedure must be reasonable.", "Maneka Gandhi v. Union of India", "OVERRULED_OTHER"),
     ("After three decades, the Supreme Court overruled its previous decision in A.K. Gopalan and held in its landmark judgment in Maneka Gandhi v. Union of India that the procedure must be reasonable.", "A.K. Gopalan", "OVERRULES"),
@@ -284,6 +291,55 @@ r = run("We decline to accept the submission that Noor Aga (supra) is no longer 
 check(r["label"] in NOT_ADVERSE, f"declining to accept that a case is no longer good law leaves it standing (got {r['label']})")
 r = run("Siddharam Satlingappa Mhetre v. State of Maharashtra was overruled in Sushila Aggarwal (supra) to that extent.", "Siddharam Satlingappa Mhetre v. State of Maharashtra")
 check(r["label"] == "OVERRULES", "and the case that was overruled is still read as overruled")
+
+# a 'not' that belongs to an earlier clause ("is not correct and is overruled") does not turn the overruling into its opposite, but a 'not' on the verb still does
+for sentence, target in [("The decision in Ram Lal v. State is not over-ruled.", "Ram Lal v. State"), ("The decision in Ram Lal v. State has never been overruled and is good law.", "Ram Lal v. State")]:
+    r = run(sentence, target)
+    check(r["label"] == "NOT_OVERRULED", f"a negated verb still says the case stands: {sentence} (got {r['label']})")
+
+# the case is the place where something was held, not the case being judged (found when names with "& Ors." began to be recognised)
+for sentence, target, why in [
+    ("The decision rendered in ignorance of a binding precedent and/or ignorance of a provision has been held to be per incuriam in Subhash Chandra & Ors. v. Delhi Subordinate Services Selection Board & Ors. (2009) 15 SCC 458, Dashrath Rupsingh Rathod v. State of Maharashtra (2014) 9 SCC 129, and Central Board of Dawoodi Bohra Community & Ors. v. State of Maharashtra & Ors. (2005) 2 SCC 673.",
+     "Subhash Chandra & Ors. v. Delhi Subordinate Services Selection Board & Ors. (2009) 15 SCC 458", "'held to be per incuriam in T' names the case that held it"),
+    ("The decision rendered in ignorance of a binding precedent and/or ignorance of a provision has been held to be per incuriam in Subhash Chandra & Ors. v. Delhi Subordinate Services Selection Board & Ors. (2009) 15 SCC 458, Dashrath Rupsingh Rathod v. State of Maharashtra (2014) 9 SCC 129, and Central Board of Dawoodi Bohra Community & Ors. v. State of Maharashtra & Ors. (2005) 2 SCC 673.",
+     "Dashrath Rupsingh Rathod v. State of Maharashtra (2014) 9 SCC 129", "and so are the cases listed after it"),
+    ("It has been held by this Court in Ram Pravesh Singh & Ors. v. State of Bihar & Ors.55 that directions given under Article 142 is not law laid down under Article 141.",
+     "Ram Pravesh Singh & Ors. v. State of Bihar & Ors.", "a footnote number after the name does not make the proposition the case's own"),
+    ("It has been held by this Court in Ram Pravesh Singh & Ors. v. State of Bihar & Ors.55 that directions given under Article 142 is not law laid down under Article 141.",
+     "Ram Pravesh Singh & Ors. v. State of Bihar", "nor does '& Ors.' and a footnote number after a shorter match of the name"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE and r["label"] != "LEGISLATIVE", f"not read as a warning: {why} (got {r['label']}, cue {r['cue']!r})")
+
+# the case is a point in time, or the ground named in an opening phrase, and the verdict belongs to the clause that follows (found on Puttaswamy, a settled case)
+for sentence, target, why in [
+    ("One\u2019s sexual orientation is undoubtedly an attribute of privacy\u2026\u201d125 With these observations by five of the nine judges in Puttaswamy,the basis on which Koushal upheld the validity of Section 377 stands eroded and even disapproved.",
+     "Puttaswamy", "the case is the ground named in an opening phrase"),
+    ("The judgments in MP Sharma and Kharak Singh being those of 8 and 6 judges respectively, judgments of smaller benches delivered during the period upto Puttaswamy would be per incuriam.",
+     "Puttaswamy", "'up to T' fixes a point in time"),
+    ("In view of Mohan v. Singh, the earlier decision in Ram Lal is overruled.", "Mohan v. Singh", "the case is the ground for overruling another"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE and r["label"] != "LEGISLATIVE", f"not read as a warning: {why} (got {r['label']}, cue {r['cue']!r})")
+for sentence, target, want in [
+    ("With respect, the decision in Mohan v. Singh does not lay down the correct law.", "Mohan v. Singh", "OVERRULES"),
+    ("The Bench felt. With respect, Mohan v. Singh does not lay down the correct law.", "Mohan v. Singh", "OVERRULES"),
+    ("Applying Maneka Gandhi, Mohan v. Singh must be held to be wrongly decided.", "Mohan v. Singh", "OVERRULES"),
+]:
+    r = run(sentence, target)
+    check(r["label"] == want, f"an opening phrase that is not about the case does not hide a verdict on it: {sentence[:50]}... (got {r['label']})")
+
+# "be not good law" is a verdict only when nothing negates it
+for sentence, target, why in [
+    ("Ram Lal v. State, which governs the field, cannot be held to be not good law.", "Ram Lal v. State", "a double negative leaves the case standing"),
+    ("It cannot be said that Ram Lal v. State is held to be not good law.", "Ram Lal v. State", "a double negative leaves the case standing"),
+]:
+    r = run(sentence, target)
+    check(r["label"] in NOT_ADVERSE and r["label"] != "LEGISLATIVE", f"not read as a warning: {why} (got {r['label']}, cue {r['cue']!r})")
+r = run("We are of the view that the decision in Jugraj Singh\u2019s case 1s erroneous.", "Jugraj Singh\u2019s case")
+check(r["cue"] == "1s erroneous", f"a cue is shown as printed even when a scanned word was read as the word it stands for (got {r['cue']!r})")
+r = run("The Court said that a strike 1s legal; the decision in Mohan v. Singh was followed.", "Mohan v. Singh")
+check(r["label"] == "FOLLOWS", f"reading a scanned 'is' changes nothing else (got {r['label']})")
 
 # and the real ones still fire
 for sentence, target, want in [
