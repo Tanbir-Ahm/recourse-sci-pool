@@ -61,3 +61,7 @@ A second PDF, "Judgments Overruled After 2015 - Research List" (6 pages, 59 entr
 ## Status 2026-10-07 (evening): the register is built
 
 The owner answered the decisions: reviewer Mr. Advocate, verification date 2026-10-07 (recorded for list 1), build the register and tests including the post-2015 list, flags reviewed every 7 days, the re-read idea later. Built: `REGISTER.md` (the register, its trust tiers, the three locks as code, the weekly review, the trap exam), `REGISTER_SITE_PATCH.md` (the patch for the Recourse owner, not applied), `register-export-site` (the bundle). **Still not connected to the live site; the trap exam is not run; no row has been reviewed yet.** The plan's gates: week 1-2 (register, lookup, tests, run against the site's pools) done; weeks 2-4 (answer-guard patch, trap exam, lawyer reads 20 answers) patch written, exam built and not run; weeks 3-6 (ledger, monthly routine, review queue) ledger and queue built, no routine scheduled; weeks 4-8 (sweep, second reader, new wording, odd half) sweep built, the rest not started.
+
+## Owner's instruction, 2026-10-07 (to bring back when the site is connected)
+
+The owner will apply `REGISTER_SITE_PATCH.md` to Recourse himself. When the index, the checker and the search phases are connected to the main site, Claude is to **export the checker's cards as a small overlay for the site, extended to every case the site can cite**, and add a fixed "not checked by us" wording for any case with neither a register row nor a card. Full spec and prerequisites: `FOLLOW_UPS.md` item 0.
