@@ -158,6 +158,11 @@ rows = [{"doc_key": "b1", "label": "DISAGREES", "cue": "not been followed"} for 
 col = R._collapse(rows)
 check(len(col) == 3 and col[0].get("repeats") == 3 and "repeats" not in col[1], "the same wording repeated in one judgment is shown once with a count of the repeats; other judgments and other cues are kept")
 
+rows = [{"doc_key": "b1", "label": "OVERRULES", "cue": "overruled", "weak": True}, {"doc_key": "b1", "label": "OVERRULES", "cue": "overruled", "weak": False},
+        {"doc_key": "b1", "label": "OVERRULES", "cue": "overruled", "weak": True}]
+col = R._collapse(rows)
+check(len(col) == 2 and col[0].get("repeats") == 1 and col[1]["weak"] is False, "a firm reading is not hidden behind a weak one with the same wording in the same judgment; the two weak ones still merge")
+
 md = R.render_markdown(a)
 check("Triage: ADVERSE_SIGNAL" in md and "stands overruled" in md and "What this collection can and cannot see" in md and "## Limits" in md, "the Markdown report shows the triage, the quote, the coverage and the limits")
 check("not lawyer-validated" in md, "the Markdown report carries the source label")

@@ -148,11 +148,12 @@ def triage(summary):
 
 
 def _collapse(items):
-    """One entry per (judgment, label, cue): a judgment that repeats the same sentence pattern many times (a table of directions, each ending 'has not been followed') shows
-    the first and a count of the others."""
+    """One entry per (judgment, label, cue, weak or firm): a judgment that repeats the same sentence pattern many times (a table of directions, each ending 'has not been
+    followed') shows the first and a count of the others. A weak reading and a firm one are never merged: before, a firm reading that came after a weak one with the same
+    wording was hidden behind it."""
     out, seen = [], {}
     for m in items:
-        key = (m["doc_key"], m["label"], (m["cue"] or "").lower())
+        key = (m["doc_key"], m["label"], (m["cue"] or "").lower(), bool(m.get("weak")))
         if key in seen:
             seen[key]["repeats"] = seen[key].get("repeats", 0) + 1
         else:
