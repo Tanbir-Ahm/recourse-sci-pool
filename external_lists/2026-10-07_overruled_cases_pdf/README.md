@@ -88,7 +88,9 @@ None of these was fixed; the owner asked only for the analysis.
 
 ## Files
 
-- `rows_parsed.csv`: all 1,688 rows as printed, with class (Supreme Court or not), same-parties flag, criminal marker, the matched collection documents and how, suspect flag, test half.
-- `test_pairs.csv`: the 308 usable pairs and their half.
-- `checker_results_tuning_half.csv`: the checker's reading and the sentence it read, for the 146 tuning pairs.
-- `tools/`: the scripts, as run (they point at scratch paths of the cloud session; `parse_overruled.py` reads the PDF with PyMuPDF, `match_overruled.py` and `match2_overruled.py` match to the corpus store, `run_overruled_fast.py` and `run_overruled_prod2.py` run the checker, `score_overruled.py` and `miss_context.py` summarise). The corpus store is rebuilt with `python sci_goodlaw.py build`.
+The list's own text (case names and citations as printed) is **not** kept in these files, because of the copyright reserved by the site that publishes the same list (see above). It stays in the PDF in `inbox/` and in earlier commits of this branch (`927fa9f` and `2628161` hold the first versions of the two CSVs with the text).
+
+- `rows_parsed.csv`: one line per list row (1 to 1688): PDF page, whether the overruled decision is a Supreme Court one, same-parties flag, criminal marker, the matched collection document keys and how they were matched, suspect flag, test half.
+- `test_pairs.csv`: the usable pairs (collection document keys, dates) and their half.
+- `checker_results_tuning_half.csv`: the checker's reading, cue, voice and the sentence it read (the court's own words, from our collection) for the tuning pairs, by list row number.
+- `tools/`: the scripts, as run (they point at scratch paths of the cloud session; `parse_overruled.py` reads the PDF with PyMuPDF, `match_overruled.py` and `match2_overruled.py` match to the corpus store, `run_overruled_fast.py` and `run_overruled_prod2.py` run the checker, `score_overruled.py` and `miss_context.py` summarise). The corpus store is rebuilt with `python sci_goodlaw.py build`; the row text needed to rerun them is re-read from the PDF.
