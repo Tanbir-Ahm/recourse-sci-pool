@@ -106,7 +106,6 @@ DOCS = {
     7: caption("PQR", "STU", "State of Haryana v. Bhajan Lal (2001) 4 SCC 99 is a different matter entirely. " + PAD, "New Delhi;\nAugust 08, 2012."),
     8: caption("GOPAL", "HARI", "State of Haryana v. Bhajan Lal (1992) Supp (1) SCC 335 is the leading case. In Bhajan Lal's case guidelines were laid down. " + PAD, "New Delhi;\nApril 04, 2000."),
     9: caption("NO", "MENTION", "Nothing relevant here. " + PAD, "New Delhi;\nApril 09, 2013."),
-    10: caption("DEEP", "VEER", "Bhajan Lal's case was relied on, and the later decision is reported at (1992) Supp (1) SCC 335. " + PAD, "New Delhi;\nMay 10, 2014."),
 }
 
 
@@ -139,22 +138,19 @@ res = M.find_mentions(cp, tgt)
 docs = [m["doc_key"] for m in res["mentions"]]
 check(res["learned_cites"] == ["scc:1992:s1:335"], "the SCC supplement citation is learned from the texts that give it after the parties' names")
 check("b2000_1_1_9" not in docs, "a bucket text that may be a second copy of a candidate crawl text is not counted twice")
-check(sorted(set(docs)) == ["c10", "c2", "c3", "c4", "c5"], "citing texts are 2, 3, 4, 5 and 10: not 1 (the target), 6 (earlier), 7 (a different case with the same names), 8 (second copy), 9 (no mention)")
+check(sorted(set(docs)) == ["c2", "c3", "c4", "c5"], "citing texts are 2, 3, 4 and 5: not 1 (the target), 6 (earlier), 7 (a different case with the same names), 8 (second copy), 9 (no mention)")
 by_doc = {d: [m for m in res["mentions"] if m["doc_key"] == d] for d in set(docs)}
 check(any(m["tier"] == "cite" for m in by_doc["c2"]), "text 2 cites the AIR page of the target")
 check(all(m["confidence"] == "high" for m in by_doc["c5"]) and by_doc["c5"][0]["tier"] == "cite", "text 5 cites only the learned SCC citation, without the names, and is found by it")
 check(any(m["tier"] == "short" and m["confidence"] == "medium" for m in by_doc["c3"]), "a short-name mention in a text that also has a pair mention is medium confidence")
-check(res["citing_docs"] == 5 and res["citing_docs_high"] == 5, "five distinct citing judgments, all with a high-confidence mention")
-check(any(m["tier"] == "cite" for m in by_doc["c10"]) and all(m["confidence"] in ("high", "medium") for m in by_doc["c10"]),
-      "text 10 names the case only as 'Bhajan Lal's case' but prints the citation learned from the others: it is read again after the learning, so its mention is no longer low confidence")
+check(res["citing_docs"] == 4 and res["citing_docs_high"] == 4, "four distinct citing judgments, all with a high-confidence mention")
 check([m["date"] for m in res["mentions"]] == sorted(m["date"] for m in res["mentions"]), "mentions come in date order")
 check(any("stands overruled" in m["sentence"] for m in by_doc["c4"]) and by_doc["c4"][0]["speaker"] == "court", "text 4's sentence says the case stands overruled and the court is the speaker")
 
 # a target with no known cites and a cite index still works from names alone
 tgt2 = M.Target.from_doc(cp.get("c1", False))
 res2 = M.find_mentions(cp, tgt2, learn=False)
-check(sorted({m["doc_key"] for m in res2["mentions"]}) == ["c10", "c2", "c3", "c4"] and res2["learned_cites"] == [], "without learning, texts that give neither the parties nor a known citation (text 5) are not found")
-check(all(m["confidence"] == "low" for m in res2["mentions"] if m["doc_key"] == "c10"), "and without learning, text 10's short-name mention stays low confidence")
+check(sorted({m["doc_key"] for m in res2["mentions"]}) == ["c2", "c3", "c4"] and res2["learned_cites"] == [], "without learning, texts that give neither the parties nor a known citation (text 5) are not found")
 
 cp.con.close()
 shutil.rmtree(base, ignore_errors=True)

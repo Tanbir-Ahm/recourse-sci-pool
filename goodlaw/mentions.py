@@ -337,20 +337,6 @@ def find_mentions(corpus, target, learn=True, min_votes=2, log=None):
         if learned:
             target.learned_cites = learned
             if corpus.has_cite_index:
-                # texts already read as candidates (found by the party names) are read again if they print a citation just learned: before this, a text that named the
-                # case only by a short name stayed a low-confidence mention even though it printed the case's own citation
-                redo = {d["doc_key"] for d in corpus.docs_citing(learned)} & set(cand)
-                if redo:
-                    mentions = [m for m in mentions if m["doc_key"] not in redo]
-                    for key in sorted(redo):
-                        d = cand[key][0]
-                        found, _ = extract(texts[key], target, short, d.get("body_start"), party_cases=pcases)
-                        for m in found:
-                            m["doc_key"], m["doc_id"] = d["doc_key"], d["id"]
-                            m["date"], m["year"], m["date_source"] = d["date"], d["year"], d["date_source"]
-                            m["bench_size"], m["bench_source"], m["source"], m["title"] = d["bench_size"], d["bench_source"], d["source"], d["title"]
-                            m["citing_cites"] = d["cites"]
-                            mentions.append(m)
                 extra = [d for d in corpus.docs_citing(learned) if _later(d, target) and d["doc_key"] not in cand and d.get("maybe_dup_of") not in cand]
                 for d in extra:
                     text = corpus.text_of(d["id"])
