@@ -174,6 +174,11 @@ check("the example row is on the sheet, grey, and ignored on reading", wb["Quest
 check("the question columns carry dropdowns for kind, numbering, domain, trap, era, language, control and anonymised", len(wb["Questions"].data_validations.dataValidation) == 8)
 check("every domain letter and its name are on the Read me sheet", all(any(str(c.value or "").startswith(f"{d}:") for c in wb["Read me"]["A"]) for d in RQ.DOMAINS))
 
+for dv in wb["Questions"].data_validations.dataValidation:
+    items = dv.formula1.strip('"').split(",")
+    check(f"dropdown {dv.sqref} has no value with a comma in it and fits Excel's 255-character limit", len(dv.formula1) <= 257 and all(i.strip() in set(RQ.KINDS + RQ.NUMBERING + RQ.ERAS + RQ.LANGS + RQ.CONTROLS + tuple(RQ.DOMAINS) + ("yes", "no")) for i in items), dv.formula1)
+check("a control typed as 'civil' or in the old wording is understood", RQ.normalise(dict(rows[0], control_type="civil"))["control_type"] == "civil/tax/divorce" and RQ.normalise(dict(rows[0], control_type="Civil, tax or divorce"))["control_type"] == "civil/tax/divorce")
+
 ws = wb["Questions"]
 for k, r in enumerate(rows):
     for j, col in enumerate(RQ.COLUMNS, 1):

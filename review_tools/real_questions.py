@@ -41,7 +41,7 @@ KINDS = ("everyday", "legal", "narrative")
 NUMBERING = ("none", "IPC/CrPC", "BNS/BNSS")
 ERAS = ("before 2017", "2017 or later", "unsure")
 LANGS = ("English", "Hinglish", "other")
-CONTROLS = ("civil, tax or divorce", "High Court only or 2026", "statute table answers it")
+CONTROLS = ("civil/tax/divorce", "High Court only or 2026", "statute table answers it")  # no commas: Excel splits a dropdown list on them
 COLUMNS = ["id", "question", "kind", "numbering", "domain", "trap", "trap_note", "best_law_era", "language", "control_type", "anonymised_ok"]
 HEADERS = {"id": "ID (leave blank)", "question": "Question, as the client said it", "kind": "Kind", "numbering": "Section numbers used", "domain": "Domain (A to K)", "trap": "Currency trap?",
            "trap_note": "Which older ruling is the trap (private)", "best_law_era": "Best law is from", "language": "Language", "control_type": "Control type (domain K only)",
@@ -112,7 +112,8 @@ def normalise(r):
     r["trap"] = _norm(r["trap"], ("yes", "no"), {"y": "yes", "n": "no", "true": "yes", "false": "no"})
     r["best_law_era"] = _norm(r["best_law_era"], ERAS, ERA_ALIASES)
     r["language"] = _norm(r["language"], LANGS)
-    r["control_type"] = _norm(r["control_type"], CONTROLS)
+    r["control_type"] = _norm(r["control_type"], CONTROLS, {"civil, tax or divorce": "civil/tax/divorce", "civil": "civil/tax/divorce", "tax": "civil/tax/divorce", "divorce": "civil/tax/divorce",
+                                                            "high court only": "High Court only or 2026", "2026": "High Court only or 2026", "statute table": "statute table answers it"})
     r["anonymised_ok"] = _norm(r["anonymised_ok"], ("yes",), {"y": "yes", "true": "yes"})
     return r
 
