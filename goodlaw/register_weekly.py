@@ -3,14 +3,26 @@
     python sci_goodlaw.py register-weekly --out-root register_review
 
 Read-only on the register: it changes no row, flag or proposal (those change only when a person's filled sheet is recorded with `register-review`). Running it twice on one day
-writes the same sheet. The weekly routine (REGISTER_ROUTINE_RUNBOOK.md) runs exactly this. The corpus-heavy sweep is NOT part of it: see the runbook.
+writes the same sheet (and adds a second line to the run log). The weekly routine (REGISTER_ROUTINE_RUNBOOK.md) runs exactly this. The corpus-heavy sweep is NOT part of it: see the runbook.
 """
 import collections
+import datetime
 import os
 
 from . import register as R
 from . import register_review as RV
 from . import register_xlsx as X
+
+
+def _log(out_root, today, n_week, kinds, n_backlog, n_flags, n_props):
+    """One line per run in OUT_ROOT/RUN_LOG.md. It always differs (it carries the time), so every run leaves something to commit and push: a missing line means the routine did not run."""
+    path = os.path.join(out_root, "RUN_LOG.md")
+    new = not os.path.exists(path)
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    with open(path, "a", encoding="utf-8") as fh:
+        if new:
+            fh.write("# Register weekly step: run log\n\nOne line per run of `register-weekly`; a week without a line means the routine did not run. Newest last.\n\n")
+        fh.write(f"- {stamp}: sheet {today}: {n_week} items ({', '.join(f'{k} {v}' for k, v in sorted(kinds.items()))}); backlog {n_backlog}; open flags {n_flags}; open proposals {n_props}\n")
 
 
 def run(out_root, today=None):
@@ -36,4 +48,5 @@ def run(out_root, today=None):
              "", "Files in this folder: `review_queue.csv` (the sheet as CSV), `Review_Sheet_" + today + ".xlsx` (the same sheet in Excel with drop-downs for the reviewer). The full register workbook is built with `register-export-xlsx`.", ""]
     with open(os.path.join(d, "SUMMARY.md"), "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines))
+    _log(out_root, today, len(week), kinds, len(backlog), len(open_flags), len(open_props))
     return {"dir": d, "week": len(week), "kinds": dict(kinds), "backlog": len(backlog), "weeks": weeks, "open_flags": len(open_flags), "open_proposals": len(open_props)}

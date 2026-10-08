@@ -15,10 +15,10 @@ Created 2026-10-08 on the owner's instruction ("create the weekly register routi
 
 ## Steps
 0. **Get the repository.** A routine session may start with NO repository (the first test run on 2026-10-08 found an empty working directory and an invalid GitHub token). If `git rev-parse --show-toplevel` fails, call the tool `mcp__claude-code-remote__add_repo` with owner `Tanbir-Ahm`, repo `recourse-sci-pool` and access `push`, run the clone command it returns, then call `register_repo_root` if it asks. Do not check the repository by other means first, and do not use `gh`. Then `git fetch origin claude/sharp-euler-unyfv0` and `git checkout -B claude/sharp-euler-unyfv0 origin/claude/sharp-euler-unyfv0`  (if the branch does not exist, STOP and report).
-1. `pip install -q openpyxl`
+1. `python -m pip install -q openpyxl`  (use `python -m pip`, not a bare `pip`: in the first test run of the stand-alone routine on 2026-10-08 `pip` and `python` pointed at different interpreters and the Excel test failed on a missing openpyxl).
 2. `python test_goodlaw_register.py` and `python test_goodlaw_register_xlsx.py`  (both must end with ALL PASSED; otherwise STOP and report, and do not write a sheet).
 3. `python sci_goodlaw.py register-weekly --out-root register_review`  (writes `register_review/<today>/review_queue.csv`, `Review_Sheet_<today>.xlsx`, `SUMMARY.md`).
-4. `git status --short register_review` . If nothing changed, say "no new sheet" and stop. Otherwise `git add register_review`, commit with the message `Weekly register review sheet <today> (automated)`, then `git pull --rebase origin claude/sharp-euler-unyfv0` and `git push origin claude/sharp-euler-unyfv0` (on a network error only, retry up to 4 times, waiting 2, 4, 8 and 16 seconds).
+4. `git status --short register_review`. `register_review/RUN_LOG.md` gains a line on every run, so there is always something to commit: do NOT restore or drop any change in `register_review/`, even when the Excel file differs only by a few bytes. `git add register_review`, commit with the message `Weekly register review sheet <today> (automated)`, then `git pull --rebase origin claude/sharp-euler-unyfv0` and `git push origin claude/sharp-euler-unyfv0` (on a network error only, retry up to 4 times, waiting 2, 4, 8 and 16 seconds).
 5. Print `register_review/<today>/SUMMARY.md`, then report in at most 6 lines: the date, items on the sheet by kind, the size of the whole backlog and weeks to clear it, open flags, open proposals, the commit hash and whether the push worked.
 
 ## What this run does NOT do

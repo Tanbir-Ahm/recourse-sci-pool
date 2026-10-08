@@ -97,6 +97,9 @@ with tempfile.TemporaryDirectory() as tmp:
     first_csv, first_md = open(os.path.join(d, "review_queue.csv")).read(), open(os.path.join(d, "SUMMARY.md")).read()
     out2 = W.run(os.path.join(tmp, "register_review"), TODAY)
     check("running the weekly step again on the same day writes the same sheet and summary", open(os.path.join(d, "review_queue.csv")).read() == first_csv and open(os.path.join(d, "SUMMARY.md")).read() == first_md and out2["week"] == out["week"])
+    log = open(os.path.join(tmp, "register_review", "RUN_LOG.md"), encoding="utf-8").read()
+    check("every run adds one line to the run log, with the time and the counts", log.count("\n- ") == 2 and "UTC: sheet 2026-10-08: 60 items" in log, log)
+    check("the run log sits beside the dated folders, not in them", "RUN_LOG.md" not in os.listdir(d))
     check("the summary says it changes nothing", "changes nothing in the register" in open(os.path.join(d, "SUMMARY.md")).read())
 
 print()
