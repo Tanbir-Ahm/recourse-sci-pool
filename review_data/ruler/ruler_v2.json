@@ -1,0 +1,1947 @@
+{
+ "schema": "ruler-2",
+ "built": "2026-10-08",
+ "seed": "recourse-ruler-v2",
+ "sources": {
+  "topics": "topics_v2.json",
+  "pool": "review_data/pool_all.json",
+  "landmarks": "landmarks.json",
+  "marks": "review_results/2026-10-07_full_read/llm_marks.csv",
+  "recourse_commit": "721e063",
+  "recourse_note": "The 'recourse_keys' below are verbatim excerpts that the Recourse repository (read-only, commit 721e063) already holds in chunks/*.json and lists in judgment_doctrine_map.py, ndps_doctrine_map.py, cheque_bounce_doctrine_map.py or domestic_violence_doctrine_map.py as hand-verified. Their notes call them read verbatim against the judgment; nothing in them says a lawyer checked them. The cases were chosen by Recourse's own curation, not by this project's search."
+ },
+ "rules": {
+  "match": "a key paragraph is found when 50% of its 8-word runs are in the passages that hold it (a passage holds it if it has 30% of the key's runs or half of its own runs are the key's)",
+  "split": "frozen only if unexposed and the whole group is unexposed; free groups split inside each area by SHA-256(seed|group), alternating frozen, dev",
+  "exposed": "a topic is exposed once search results for it have been seen; the first six topics were scored, rewritten and discussed before this file existed"
+ },
+ "topics": [
+  {
+   "id": "T01",
+   "title": "Arnesh Kumar (arrest must be necessary)",
+   "origin": "v1",
+   "area": "arrest_bail",
+   "group": "G-arrest-necessity",
+   "era": "pre-2017",
+   "exposed": true,
+   "expected": [
+    {
+     "doc": 41736,
+     "name": "Arnesh Kumar (arrest must be necessary)",
+     "role": "landmark",
+     "source": "landmarks.json"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q01",
+    "Q02"
+   ],
+   "key_passages": [
+    {
+     "doc": 41736,
+     "case": "Arnesh Kumar (arrest must be necessary)",
+     "slug": "pinned 1",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 1427,
+     "resolved": true,
+     "coverage": 0.772,
+     "matches": [
+      {
+       "h": "acd7be3a289365d3",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.772,
+       "share": 0.796
+      }
+     ]
+    },
+    {
+     "doc": 41736,
+     "case": "Arnesh Kumar (arrest must be necessary)",
+     "slug": "pinned 2",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 1470,
+     "resolved": true,
+     "coverage": 0.892,
+     "matches": [
+      {
+       "h": "8921970eb7eee440",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.892,
+       "share": 0.931
+      }
+     ]
+    },
+    {
+     "doc": 41736,
+     "case": "Arnesh Kumar v State of Bihar",
+     "slug": "fallback_8",
+     "source": "recourse_curated",
+     "chunk_method": "fixed_size_fallback",
+     "chars": 1427,
+     "resolved": true,
+     "coverage": 0.772,
+     "matches": [
+      {
+       "h": "acd7be3a289365d3",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.772,
+       "share": 0.796
+      }
+     ]
+    },
+    {
+     "doc": 41736,
+     "case": "Arnesh Kumar v State of Bihar",
+     "slug": "fallback_10",
+     "source": "recourse_curated",
+     "chunk_method": "fixed_size_fallback",
+     "chars": 1470,
+     "resolved": true,
+     "coverage": 0.892,
+     "matches": [
+      {
+       "h": "8921970eb7eee440",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.892,
+       "share": 0.931
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T02",
+   "title": "Md Ibrahim (civil dispute dressed as crime)",
+   "origin": "v1",
+   "area": "civil_dispute",
+   "group": "G-civil-dispute",
+   "era": "pre-2017",
+   "exposed": true,
+   "expected": [
+    {
+     "doc": 35436,
+     "name": "Md Ibrahim (civil dispute dressed as crime)",
+     "role": "landmark",
+     "source": "landmarks.json"
+    }
+   ],
+   "also_acceptable": [
+    {
+     "doc": 1000253806,
+     "name": "Vijay Kumar Ghai v State of West Bengal",
+     "year": 2022,
+     "source": "recourse_doctrine_family"
+    },
+    {
+     "doc": 1000251250,
+     "name": "Satishchandra Ratanlal Shah v State of Gujarat",
+     "year": 2019,
+     "source": "recourse_doctrine_family"
+    }
+   ],
+   "questions": [
+    "Q03",
+    "Q04"
+   ],
+   "key_passages": [
+    {
+     "doc": 35436,
+     "case": "Md Ibrahim (civil dispute dressed as crime)",
+     "slug": "pinned 1",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 940,
+     "resolved": true,
+     "coverage": 0.946,
+     "matches": [
+      {
+       "h": "970150f13cd667b2",
+       "pn": "7",
+       "section": "reasoning",
+       "containment": 0.946,
+       "share": 0.898
+      }
+     ]
+    },
+    {
+     "doc": 35436,
+     "case": "Md Ibrahim (civil dispute dressed as crime)",
+     "slug": "pinned 2",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 2230,
+     "resolved": true,
+     "coverage": 0.979,
+     "matches": [
+      {
+       "h": "a0a97518bbc96c49",
+       "pn": "12",
+       "section": "reasoning",
+       "containment": 0.979,
+       "share": 0.974
+      }
+     ]
+    },
+    {
+     "doc": 35436,
+     "case": "Md. Ibrahim v State of Bihar",
+     "slug": "civil_dispute_criminal_cloak_caution",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 940,
+     "resolved": true,
+     "coverage": 0.946,
+     "matches": [
+      {
+       "h": "970150f13cd667b2",
+       "pn": "7",
+       "section": "reasoning",
+       "containment": 0.946,
+       "share": 0.898
+      }
+     ]
+    },
+    {
+     "doc": 35436,
+     "case": "Md. Ibrahim v State of Bihar",
+     "slug": "forgery_false_document_ownership_claim",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 2230,
+     "resolved": true,
+     "coverage": 0.979,
+     "matches": [
+      {
+       "h": "a0a97518bbc96c49",
+       "pn": "12",
+       "section": "reasoning",
+       "containment": 0.979,
+       "share": 0.974
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T03",
+   "title": "Nanda Gopalan (compromise, grievous hurt)",
+   "origin": "v1",
+   "area": "compounding",
+   "group": "G-compounding",
+   "era": "pre-2017",
+   "exposed": true,
+   "expected": [
+    {
+     "doc": 42630,
+     "name": "Nanda Gopalan (compromise, grievous hurt)",
+     "role": "landmark",
+     "source": "landmarks.json"
+    }
+   ],
+   "also_acceptable": [
+    {
+     "doc": 1000252929,
+     "name": "Pravat Chandra Mohanty v State of Odisha",
+     "year": 2021,
+     "source": "recourse_doctrine_family"
+    }
+   ],
+   "questions": [
+    "Q05",
+    "Q06",
+    "Q06v2"
+   ],
+   "key_passages": [
+    {
+     "doc": 42630,
+     "case": "Nanda Gopalan (compromise, grievous hurt)",
+     "slug": "pinned 1",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 1495,
+     "resolved": true,
+     "coverage": 0.785,
+     "matches": [
+      {
+       "h": "52714d4a4f718bfb",
+       "pn": null,
+       "section": "facts",
+       "containment": 0.785,
+       "share": 0.87
+      }
+     ]
+    },
+    {
+     "doc": 42630,
+     "case": "Nanda Gopalan v State of Kerala",
+     "slug": "fallback_4",
+     "source": "recourse_curated",
+     "chunk_method": "fixed_size_fallback",
+     "chars": 1495,
+     "resolved": true,
+     "coverage": 0.785,
+     "matches": [
+      {
+       "h": "52714d4a4f718bfb",
+       "pn": null,
+       "section": "facts",
+       "containment": 0.785,
+       "share": 0.87
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T04",
+   "title": "Rangappa (s.139 presumption)",
+   "origin": "v1",
+   "area": "cheque",
+   "group": "G-cheque-presumption",
+   "era": "pre-2017",
+   "exposed": true,
+   "expected": [
+    {
+     "doc": 36322,
+     "name": "Rangappa (s.139 presumption)",
+     "role": "landmark",
+     "source": "landmarks.json"
+    }
+   ],
+   "also_acceptable": [
+    {
+     "doc": 1000251356,
+     "name": "Bir Singh v Mukesh Kumar",
+     "year": 2019,
+     "source": "recourse_doctrine_family"
+    }
+   ],
+   "questions": [
+    "Q07",
+    "Q08"
+   ],
+   "key_passages": [
+    {
+     "doc": 36322,
+     "case": "Rangappa (s.139 presumption)",
+     "slug": "pinned 1",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 930,
+     "resolved": true,
+     "coverage": 0.993,
+     "matches": [
+      {
+       "h": "adc9d25c7aaec1bd",
+       "pn": "23",
+       "section": "reasoning",
+       "containment": 0.993,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 36322,
+     "case": "Rangappa (s.139 presumption)",
+     "slug": "pinned 2",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 2577,
+     "resolved": true,
+     "coverage": 0.96,
+     "matches": [
+      {
+       "h": "0233eb8c217ee6af",
+       "pn": "14",
+       "section": "reasoning",
+       "containment": 0.96,
+       "share": 0.965
+      }
+     ]
+    },
+    {
+     "doc": 36322,
+     "case": "Rangappa v Sri Mohan",
+     "slug": "14",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 2577,
+     "resolved": true,
+     "coverage": 0.96,
+     "matches": [
+      {
+       "h": "0233eb8c217ee6af",
+       "pn": "14",
+       "section": "reasoning",
+       "containment": 0.96,
+       "share": 0.965
+      }
+     ]
+    },
+    {
+     "doc": 36322,
+     "case": "Rangappa v Sri Mohan",
+     "slug": "23",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 930,
+     "resolved": true,
+     "coverage": 0.993,
+     "matches": [
+      {
+       "h": "adc9d25c7aaec1bd",
+       "pn": "23",
+       "section": "reasoning",
+       "containment": 0.993,
+       "share": 1.0
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T05",
+   "title": "Jadeja (s.50 NDPS genuine compliance)",
+   "origin": "v1",
+   "area": "ndps",
+   "group": "G-ndps-s50",
+   "era": "pre-2017",
+   "exposed": true,
+   "expected": [
+    {
+     "doc": 37060,
+     "name": "Jadeja (s.50 NDPS genuine compliance)",
+     "role": "landmark",
+     "source": "landmarks.json"
+    }
+   ],
+   "also_acceptable": [
+    {
+     "doc": 41273,
+     "name": "State of Rajasthan v Parmanand",
+     "year": 2014,
+     "source": "recourse_doctrine_family"
+    },
+    {
+     "doc": 30317,
+     "name": "State of Punjab v Baldev Singh",
+     "year": 1999,
+     "source": "recourse_doctrine_family"
+    }
+   ],
+   "questions": [
+    "Q09",
+    "Q10"
+   ],
+   "key_passages": [
+    {
+     "doc": 37060,
+     "case": "Jadeja (s.50 NDPS genuine compliance)",
+     "slug": "pinned 1",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 2683,
+     "resolved": true,
+     "coverage": 0.739,
+     "matches": [
+      {
+       "h": "b2554ded5d989068",
+       "pn": "9/16",
+       "section": "reasoning",
+       "containment": 0.485,
+       "share": 0.966
+      },
+      {
+       "h": "38a6eeb0fe9561a4",
+       "pn": "9/17",
+       "section": "reasoning",
+       "containment": 0.254,
+       "share": 0.672
+      }
+     ]
+    },
+    {
+     "doc": 37060,
+     "case": "Vijaysinh Chandubha Jadeja v State of Gujarat",
+     "slug": "22",
+     "source": "recourse_curated",
+     "chunk_method": "manual_verified_extraction",
+     "chars": 2683,
+     "resolved": true,
+     "coverage": 0.739,
+     "matches": [
+      {
+       "h": "b2554ded5d989068",
+       "pn": "9/16",
+       "section": "reasoning",
+       "containment": 0.485,
+       "share": 0.966
+      },
+      {
+       "h": "38a6eeb0fe9561a4",
+       "pn": "9/17",
+       "section": "reasoning",
+       "containment": 0.254,
+       "share": 0.672
+      }
+     ]
+    },
+    {
+     "doc": 41273,
+     "case": "State of Rajasthan v Parmanand",
+     "slug": "14",
+     "source": "recourse_curated",
+     "chunk_method": "manual_verified_extraction",
+     "chars": 1982,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "c2dc92e516011d00",
+       "pn": "14",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 41273,
+     "case": "State of Rajasthan v Parmanand",
+     "slug": "15",
+     "source": "recourse_curated",
+     "chunk_method": "manual_verified_extraction",
+     "chars": 1795,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "b20237347ea90ba3",
+       "pn": "15",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 0.96
+      }
+     ]
+    },
+    {
+     "doc": 30317,
+     "case": "State of Punjab v Baldev Singh",
+     "slug": "56",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 5206,
+     "resolved": true,
+     "coverage": 0.983,
+     "matches": [
+      {
+       "h": "03063c1ff1070a65",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.27,
+       "share": 1.0
+      },
+      {
+       "h": "62bb32a1ac36b836",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.273,
+       "share": 1.0
+      },
+      {
+       "h": "ae6f14aad4dbb216",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.229,
+       "share": 0.886
+      },
+      {
+       "h": "7bbb3b82bd80bdfb",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.271,
+       "share": 0.741
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T06",
+   "title": "Noor Aga (NDPS reverse burden)",
+   "origin": "v1",
+   "area": "ndps",
+   "group": "G-ndps-reverse-burden",
+   "era": "pre-2017",
+   "exposed": true,
+   "expected": [
+    {
+     "doc": 31821,
+     "name": "Noor Aga (NDPS reverse burden)",
+     "role": "landmark",
+     "source": "landmarks.json"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q11",
+    "Q12"
+   ],
+   "key_passages": [
+    {
+     "doc": 31821,
+     "case": "Noor Aga (NDPS reverse burden)",
+     "slug": "pinned 1",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 86,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "7f54317a7ee969f5",
+       "pn": "1-3",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 0.114
+      }
+     ]
+    },
+    {
+     "doc": 31821,
+     "case": "Noor Aga (NDPS reverse burden)",
+     "slug": "pinned 2",
+     "source": "claude_selected",
+     "chunk_method": "landmarks.json",
+     "chars": 229,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "5fb0bc05bdfc6d4a",
+       "pn": "5",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 31821,
+     "case": "Noor Aga v State of Punjab",
+     "slug": "1",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 86,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "7f54317a7ee969f5",
+       "pn": "1-3",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 0.114
+      }
+     ]
+    },
+    {
+     "doc": 31821,
+     "case": "Noor Aga v State of Punjab",
+     "slug": "5",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 229,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "5fb0bc05bdfc6d4a",
+       "pn": "5",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T07",
+   "title": "Grounds of arrest must be communicated in writing",
+   "origin": "new",
+   "area": "arrest_bail",
+   "group": "G-grounds-of-arrest",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000255745,
+     "name": "Prabir Purkayastha v State (NCT of Delhi)",
+     "year": 2024,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    },
+    {
+     "doc": 1000255278,
+     "name": "Pankaj Bansal v Union of India",
+     "year": 2023,
+     "role": "also",
+     "source": "recourse_curated_case"
+    },
+    {
+     "doc": 1000256350,
+     "name": "Vihaan Kumar v State of Haryana",
+     "year": 2025,
+     "role": "also",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q13",
+    "Q14"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000255745,
+     "case": "Prabir Purkayastha v State (NCT of Delhi)",
+     "slug": "30",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 531,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "0a0ee139691f279c",
+       "pn": "30",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 1000255745,
+     "case": "Prabir Purkayastha v State (NCT of Delhi)",
+     "slug": "49",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 1335,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "4cd24a41cf750a2a",
+       "pn": "49",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T08",
+   "title": "Default bail: oral application, and the court's duty to tell the accused",
+   "origin": "new",
+   "area": "arrest_bail",
+   "group": "G-default-bail",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000250154,
+     "name": "Rakesh Kumar Paul v State of Assam",
+     "year": 2017,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    },
+    {
+     "doc": 1000252765,
+     "name": "Bikramjit Singh v State of Punjab",
+     "year": 2020,
+     "role": "also",
+     "source": "recourse_curated_case"
+    },
+    {
+     "doc": 1000252778,
+     "name": "M. Ravindran v Intelligence Officer, DRI",
+     "year": 2020,
+     "role": "also",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q15",
+    "Q16"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000250154,
+     "case": "Rakesh Kumar Paul v State of Assam",
+     "slug": "40_written_or_oral_application_for_default_bail_is_of_no_consequence",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 583,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "23793b8100668246",
+       "pn": "40",
+       "section": "argument",
+       "containment": 0.897,
+       "share": 0.276
+      },
+      {
+       "h": "90d9911b03c94ae3",
+       "pn": "6",
+       "section": "argument",
+       "containment": 0.816,
+       "share": 0.235
+      },
+      {
+       "h": "169f1afdced34f74",
+       "pn": "preamble/4",
+       "section": "argument",
+       "containment": 0.736,
+       "share": 0.217
+      }
+     ]
+    },
+    {
+     "doc": 1000250154,
+     "case": "Rakesh Kumar Paul v State of Assam",
+     "slug": "44_court_has_a_duty_to_apprise_the_accused_of_the_right",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 215,
+     "resolved": true,
+     "coverage": 0.767,
+     "matches": [
+      {
+       "h": "442159d966399048",
+       "pn": "44",
+       "section": "reasoning",
+       "containment": 0.767,
+       "share": 0.253
+      },
+      {
+       "h": "60cd77fe446436b9",
+       "pn": "preamble/5",
+       "section": "facts",
+       "containment": 0.667,
+       "share": 0.074
+      }
+     ]
+    },
+    {
+     "doc": 1000252765,
+     "case": "Bikramjit Singh v State of Punjab",
+     "slug": "29_default_bail_is_a_fundamental_right_under_article_21",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 456,
+     "resolved": true,
+     "coverage": 0.873,
+     "matches": [
+      {
+       "h": "120797dc9601d6b6",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 0.873,
+       "share": 0.23
+      }
+     ]
+    },
+    {
+     "doc": 1000252778,
+     "case": "M. Ravindran v Intelligence Officer, DRI",
+     "slug": "18_1_filing_the_application_is_availing_the_right",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 942,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "d58cbe93a4ab8911",
+       "pn": "18",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 0.349
+      }
+     ]
+    }
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "T09",
+   "title": "Husband's relatives named in a 498A case with general allegations",
+   "origin": "new",
+   "area": "matrimonial",
+   "group": "G-498a-relatives",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000253702,
+     "name": "Kahkashan Kausar @ Sonam v State of Bihar",
+     "year": 2022,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q17",
+    "Q18"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000253702,
+     "case": "Kahkashan Kausar @ Sonam v State of Bihar",
+     "slug": "18_synthesis",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 755,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "e95aed7579ea9969",
+       "pn": "18",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 1000253702,
+     "case": "Kahkashan Kausar @ Sonam v State of Bihar",
+     "slug": "17_subba_rao_quote",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 404,
+     "resolved": true,
+     "coverage": 0.875,
+     "matches": [
+      {
+       "h": "20e9b9c1ce97a6d6",
+       "pn": "17",
+       "section": "reasoning",
+       "containment": 0.875,
+       "share": 0.724
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T10",
+   "title": "Failed commercial deal turned into a cheating / breach of trust case",
+   "origin": "new",
+   "area": "civil_dispute",
+   "group": "G-civil-dispute",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000251250,
+     "name": "Satishchandra Ratanlal Shah v State of Gujarat",
+     "year": 2019,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    },
+    {
+     "doc": 1000253806,
+     "name": "Vijay Kumar Ghai v State of West Bengal",
+     "year": 2022,
+     "role": "also",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q19",
+    "Q20"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000251250,
+     "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+     "slug": "13_breach_of_trust_ingredients",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 578,
+     "resolved": true,
+     "coverage": 0.79,
+     "matches": [
+      {
+       "h": "5f217e42548ae2a0",
+       "pn": "13",
+       "section": "reasoning",
+       "containment": 0.79,
+       "share": 0.81
+      }
+     ]
+    },
+    {
+     "doc": 1000251250,
+     "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+     "slug": "14_cheating_vs_breach_of_contract",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 1219,
+     "resolved": true,
+     "coverage": 0.92,
+     "matches": [
+      {
+       "h": "3c2eec343e8d4363",
+       "pn": "14",
+       "section": "reasoning",
+       "containment": 0.92,
+       "share": 0.871
+      }
+     ]
+    },
+    {
+     "doc": 1000251250,
+     "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+     "slug": "15_caution_against_criminalizing_civil_disputes",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 489,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "65bd650f40cdea8a",
+       "pn": "15",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 1000253806,
+     "case": "Vijay Kumar Ghai v State of West Bengal",
+     "slug": "36_civil_dispute_vs_cheating",
+     "source": "recourse_curated",
+     "chunk_method": "curated_excerpt",
+     "chars": 711,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "fd22bd83a6f5fb1b",
+       "pn": "36",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T11",
+   "title": "Compounding is not automatic where police officers caused custodial violence",
+   "origin": "new",
+   "area": "compounding",
+   "group": "G-compounding",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000252929,
+     "name": "Pravat Chandra Mohanty v State of Odisha",
+     "year": 2021,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q21",
+    "Q22"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000252929,
+     "case": "Pravat Chandra Mohanty v State of Odisha",
+     "slug": "30",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 477,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "d1d1c2698516e6c3",
+       "pn": "30",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T12",
+   "title": "NDPS Section 37: the twin conditions for bail",
+   "origin": "new",
+   "area": "ndps",
+   "group": "G-ndps-s37",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000253281,
+     "name": "Union of India v Md. Nawaz Khan",
+     "year": 2021,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q23",
+    "Q24"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000253281,
+     "case": "Union of India v Md. Nawaz Khan",
+     "slug": "19",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 249,
+     "resolved": true,
+     "coverage": 0.641,
+     "matches": [
+      {
+       "h": "beb442a03144366c",
+       "pn": "18",
+       "section": "reasoning",
+       "containment": 0.641,
+       "share": 0.347
+      }
+     ]
+    },
+    {
+     "doc": 1000253281,
+     "case": "Union of India v Md. Nawaz Khan",
+     "slug": "20",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 261,
+     "resolved": true,
+     "coverage": 0.976,
+     "matches": [
+      {
+       "h": "beb442a03144366c",
+       "pn": "18",
+       "section": "reasoning",
+       "containment": 0.976,
+       "share": 0.556
+      }
+     ]
+    },
+    {
+     "doc": 1000253281,
+     "case": "Union of India v Md. Nawaz Khan",
+     "slug": "24",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 1082,
+     "resolved": true,
+     "coverage": 0.957,
+     "matches": [
+      {
+       "h": "55e031da9313118f",
+       "pn": "11",
+       "section": "reasoning",
+       "containment": 0.522,
+       "share": 1.0
+      },
+      {
+       "h": "b598b5c6570b833b",
+       "pn": "20",
+       "section": "reasoning",
+       "containment": 0.435,
+       "share": 1.0
+      }
+     ]
+    }
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "T13",
+   "title": "NDPS: the informant also investigated (earlier contrary view overruled in 2020)",
+   "origin": "new",
+   "area": "ndps",
+   "group": "G-ndps-informant-investigator",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000252711,
+     "name": "Mukesh Singh v State (Narcotic Branch of Delhi)",
+     "year": 2020,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q25",
+    "Q26"
+   ],
+   "notes": "Mohan Lal v State of Punjab (2018), the decision Mukesh Singh overruled, is not in the collection, so a search cannot show its own passages; Mukesh Singh itself quotes the overruled view, so 'earlier view later rejected' passages can still appear.",
+   "key_passages": [
+    {
+     "doc": 1000252711,
+     "case": "Mukesh Singh v State (Narcotic Branch of Delhi)",
+     "slug": "12",
+     "source": "recourse_curated",
+     "chunk_method": "manual_verified_extraction",
+     "chars": 1763,
+     "resolved": true,
+     "coverage": 0.974,
+     "matches": [
+      {
+       "h": "0da03f12f728abac",
+       "pn": "12",
+       "section": "reasoning",
+       "containment": 0.974,
+       "share": 0.977
+      }
+     ]
+    }
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "T14",
+   "title": "NDPS Section 67 statement is not a confession",
+   "origin": "new",
+   "area": "ndps",
+   "group": "G-ndps-s67",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000252784,
+     "name": "Tofan Singh v State of Tamil Nadu (2020)",
+     "year": 2020,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q27",
+    "Q28"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000252784,
+     "case": "Tofan Singh v State of Tamil Nadu (2020)",
+     "slug": "155",
+     "source": "recourse_curated",
+     "chunk_method": "manual_verified_extraction",
+     "chars": 571,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "5660e64fc3677018",
+       "pn": null,
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 0.355
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T15",
+   "title": "Signed blank cheque given as security still attracts the Section 139 presumption",
+   "origin": "new",
+   "area": "cheque",
+   "group": "G-cheque-presumption",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000251356,
+     "name": "Bir Singh v Mukesh Kumar",
+     "year": 2019,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q29",
+    "Q30"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000251356,
+     "case": "Bir Singh v Mukesh Kumar",
+     "slug": "40",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 295,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "9ddf4cafe12767aa",
+       "pn": "40",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 1.0
+      }
+     ]
+    },
+    {
+     "doc": 1000251356,
+     "case": "Bir Singh v Mukesh Kumar",
+     "slug": "42",
+     "source": "recourse_curated",
+     "chunk_method": "paragraph_number",
+     "chars": 894,
+     "resolved": true,
+     "coverage": 0.941,
+     "matches": [
+      {
+       "h": "e53022530650d11e",
+       "pn": "42",
+       "section": "reasoning",
+       "containment": 0.941,
+       "share": 0.948
+      }
+     ]
+    }
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "T16",
+   "title": "Domestic violence complaint after leaving the shared household",
+   "origin": "new",
+   "area": "matrimonial",
+   "group": "G-dv-no-longer-residing",
+   "era": "2017-2026",
+   "exposed": false,
+   "expected": [
+    {
+     "doc": 1000253984,
+     "name": "Prabha Tyagi v Kamlesh Devi",
+     "year": 2022,
+     "role": "landmark",
+     "source": "recourse_curated_case"
+    }
+   ],
+   "also_acceptable": [],
+   "questions": [
+    "Q31",
+    "Q32"
+   ],
+   "key_passages": [
+    {
+     "doc": 1000253984,
+     "case": "Prabha Tyagi v Kamlesh Devi",
+     "slug": "Issue (ii) of the judgment",
+     "source": "recourse_curated",
+     "chunk_method": "curated_verbatim_holding",
+     "chars": 650,
+     "resolved": true,
+     "coverage": 1.0,
+     "matches": [
+      {
+       "h": "7c0b6d477ddbba04",
+       "pn": "52",
+       "section": "reasoning",
+       "containment": 1.0,
+       "share": 0.265
+      }
+     ]
+    }
+   ],
+   "half": "frozen"
+  }
+ ],
+ "questions": [
+  {
+   "id": "Q01",
+   "topic": "T01",
+   "kind": "lay",
+   "text": "Can the police arrest me automatically just because a case under 498A has been registered against me?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 16,
+    "readers_per_passage": {
+     "2": 16
+    }
+   },
+   "rewrite": "Whether police may arrest an accused as a matter of course on registration of an FIR for an offence under Section 498A IPC, or must be satisfied that arrest is necessary under Section 41 CrPC (arrest without warrant).",
+   "half": "dev"
+  },
+  {
+   "id": "Q02",
+   "topic": "T01",
+   "kind": "legal",
+   "text": "Must a police officer be satisfied that arrest is necessary under Section 41 CrPC before arresting for an offence punishable up to seven years, and what must the magistrate check at remand?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 13,
+    "readers_per_passage": {
+     "2": 12,
+     "1": 1
+    }
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q03",
+   "topic": "T02",
+   "kind": "lay",
+   "text": "My neighbour filed a police case of cheating and forgery over a land dispute that is really a civil matter. Can criminal law be used for this?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 19,
+    "readers_per_passage": {
+     "3": 16,
+     "1": 3
+    }
+   },
+   "rewrite": "Whether a dispute that is essentially civil in nature, concerning land or property, can be made the basis of a criminal complaint of cheating and forgery under the IPC, and when criminal proceedings may be quashed as an abuse of process.",
+   "half": "dev"
+  },
+  {
+   "id": "Q04",
+   "topic": "T02",
+   "kind": "legal",
+   "text": "Can a civil dispute about ownership of property be given a criminal colour by alleging forgery of documents?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 18,
+    "readers_per_passage": {
+     "2": 15,
+     "1": 3
+    }
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q05",
+   "topic": "T03",
+   "kind": "lay",
+   "text": "Both parties have settled a case of grievous hurt. Can the court accept the compromise or reduce the sentence even though the offence is non-compoundable?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 17,
+    "readers_per_passage": {
+     "2": 15,
+     "1": 2
+    }
+   },
+   "rewrite": "Whether a court can permit compounding of, or reduce the sentence in view of a compromise between the parties for, the offence of voluntarily causing grievous hurt by dangerous weapons or means (Section 326 IPC), which is not compoundable under Section 320 CrPC.",
+   "rewrite_v1": "Whether a court can permit compounding of, or reduce the sentence in view of a compromise between the parties for, the offence of voluntarily causing grievous hurt, which is not compoundable under Section 320 CrPC.",
+   "rewrite_note": "The v1 hand rewrite called voluntarily causing grievous hurt (Section 325) 'not compoundable under Section 320'. The question text itself is unchanged (it only says 'grievous hurt' and 'non-compoundable'), so Q05's marks stand; versions C and F for Q05 were run on the old rewrite and need re-running and re-marking.",
+   "half": "dev"
+  },
+  {
+   "id": "Q06",
+   "topic": "T03",
+   "kind": "legal",
+   "text": "Can the Supreme Court reduce the sentence on the basis of a compromise in an offence under Section 325 IPC that cannot be compounded under Section 320?",
+   "status": "superseded",
+   "active": false,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 12,
+    "readers_per_passage": {
+     "2": 12
+    },
+    "note": "these marks answer the old wording; kept as a record"
+   },
+   "superseded_by": "Q06v2",
+   "half": "dev"
+  },
+  {
+   "id": "Q06v2",
+   "topic": "T03",
+   "kind": "legal",
+   "text": "Can the Supreme Court reduce the sentence on the basis of a compromise in an offence under Section 326 IPC that cannot be compounded under Section 320?",
+   "status": "corrected",
+   "active": true,
+   "supersedes": "Q06",
+   "correction_reason": "Q06 said Section 325. Section 325 IPC is compoundable with the court's permission under Section 320(2); the landmark (Nanda Gopalan) concerns Sections 324 and 326, which are not in Section 320. The old passages were found with a section search on 325, so they are not a fair pool for the corrected question: Q06v2 needs a new pool and new marks.",
+   "marks": {
+    "state": "none",
+    "note": "needs a new pool (the old one came from a section search on 325) and new marks"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q07",
+   "topic": "T04",
+   "kind": "lay",
+   "text": "The cheque bounced and the accused says he never owed any money. Who has to prove the debt?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 17,
+    "readers_per_passage": {
+     "2": 16,
+     "1": 1
+    }
+   },
+   "rewrite": "Burden of proof and statutory presumptions under the Negotiable Instruments Act where a cheque is dishonoured and the drawer denies any legally enforceable debt or liability; Sections 138, 118 and 139.",
+   "half": "dev"
+  },
+  {
+   "id": "Q08",
+   "topic": "T04",
+   "kind": "legal",
+   "text": "Does the presumption under Section 139 of the Negotiable Instruments Act cover the existence of a legally enforceable debt, and how can it be rebutted?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 16,
+    "readers_per_passage": {
+     "2": 14,
+     "1": 2
+    }
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q09",
+   "topic": "T05",
+   "kind": "lay",
+   "text": "Police searched me for drugs but only vaguely said I could be searched in front of an officer. Is that enough?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 21,
+    "readers_per_passage": {
+     "1": 21
+    }
+   },
+   "rewrite": "Whether telling a person to be searched for narcotics that he may be searched before a Gazetted Officer or Magistrate, without clearly informing him of his right, satisfies the mandatory requirement of Section 50 of the NDPS Act.",
+   "half": "dev"
+  },
+  {
+   "id": "Q10",
+   "topic": "T05",
+   "kind": "legal",
+   "text": "Is substantial compliance enough with the requirement under Section 50 of the NDPS Act to inform the accused of the right to be searched before a Gazetted Officer or Magistrate?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 19,
+    "readers_per_passage": {
+     "2": 16,
+     "1": 3
+    }
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q11",
+   "topic": "T06",
+   "kind": "lay",
+   "text": "They found drugs and say I must prove I am innocent. Do I have to prove it?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 19,
+    "readers_per_passage": {
+     "2": 16,
+     "1": 3
+    }
+   },
+   "rewrite": "Whether the burden of proof can be placed on the accused in a prosecution for possession of narcotic drugs under the NDPS Act: the presumption of culpable mental state under Section 35 and the standard of proof the accused must meet.",
+   "half": "dev"
+  },
+  {
+   "id": "Q12",
+   "topic": "T06",
+   "kind": "legal",
+   "text": "Is the reverse burden under Sections 35 and 54 of the NDPS Act constitutional, and what must the prosecution establish first?",
+   "status": "v1",
+   "active": true,
+   "marks": {
+    "state": "llm-judged",
+    "passages": 12,
+    "readers_per_passage": {
+     "2": 11,
+     "1": 1
+    }
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q13",
+   "topic": "T07",
+   "kind": "lay",
+   "text": "The police took my brother away and never gave him or us anything in writing to say why he was arrested. Is that allowed?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q14",
+   "topic": "T07",
+   "kind": "legal",
+   "text": "Must the grounds of arrest be communicated to the arrested person in writing, and what is the effect on the arrest and remand if they are not?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q15",
+   "topic": "T08",
+   "kind": "lay",
+   "text": "It is more than ninety days since my husband was arrested and the police have not filed the chargesheet. Can he get out on bail, and what do we have to do?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q16",
+   "topic": "T08",
+   "kind": "legal",
+   "text": "Is a written application necessary to claim default bail under Section 167(2) CrPC when the chargesheet is not filed in time, and is the court bound to tell the accused of the right?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q17",
+   "topic": "T09",
+   "kind": "lay",
+   "text": "My wife has named my elderly parents and my married sister, who live in another city, in her cruelty complaint. Can the case against them be stopped?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q18",
+   "topic": "T09",
+   "kind": "legal",
+   "text": "Can proceedings under Section 498A IPC against the husband's relatives be quashed when the allegations against them are general and omnibus, with no specific role attributed to them?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q19",
+   "topic": "T10",
+   "kind": "lay",
+   "text": "I took money from a friend for a business deal that fell through, and now he has filed a cheating case against me. Is a failed deal a crime?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q20",
+   "topic": "T10",
+   "kind": "legal",
+   "text": "When does failure to perform a commercial contract amount to cheating under Section 420 IPC or criminal breach of trust under Section 406 IPC, and what must be shown about intention at the time of the promise?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q21",
+   "topic": "T11",
+   "kind": "lay",
+   "text": "Two policemen were convicted for beating a man in custody and have now paid compensation to his family. Can the case simply be closed because the family has agreed?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q22",
+   "topic": "T11",
+   "kind": "legal",
+   "text": "Can the Supreme Court grant leave to compound an offence under Section 324 IPC committed by police officers in custody on the basis of a settlement and compensation, having regard to Section 320(5) CrPC?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q23",
+   "topic": "T12",
+   "kind": "lay",
+   "text": "My son was arrested with a large quantity of drugs and the court keeps refusing him bail. When can someone in such a case get bail?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q24",
+   "topic": "T12",
+   "kind": "legal",
+   "text": "What are the twin conditions under Section 37 of the NDPS Act for granting bail in a commercial quantity case, and how must the court assess whether there are reasonable grounds to believe the accused is not guilty?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q25",
+   "topic": "T13",
+   "kind": "lay",
+   "text": "The police officer who filed the complaint against me also investigated the case himself. Does that mean the case against me must fail?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q26",
+   "topic": "T13",
+   "kind": "legal",
+   "text": "Does investigation of an NDPS case by the officer who is also the informant vitiate the trial and entitle the accused to acquittal without proof of actual bias?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q27",
+   "topic": "T14",
+   "kind": "lay",
+   "text": "At the narcotics office I was made to sign a statement saying the drugs were mine. Can that statement alone be used to convict me?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q28",
+   "topic": "T14",
+   "kind": "legal",
+   "text": "Is a statement recorded by an officer under Section 67 of the NDPS Act admissible as a confession against the accused, having regard to Section 25 of the Evidence Act?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q29",
+   "topic": "T15",
+   "kind": "lay",
+   "text": "I gave a signed blank cheque to a lender as security, and he filled in a large amount and the cheque bounced. Can he still prosecute me?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q30",
+   "topic": "T15",
+   "kind": "legal",
+   "text": "Does a cheque signed and handed over blank as security attract the presumption under Section 139 of the Negotiable Instruments Act when the holder later fills in the amount?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "dev"
+  },
+  {
+   "id": "Q31",
+   "topic": "T16",
+   "kind": "lay",
+   "text": "I left my husband's house because of the violence. Can I still complain under the domestic violence law although I no longer live there?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  },
+  {
+   "id": "Q32",
+   "topic": "T16",
+   "kind": "legal",
+   "text": "Is residence in the shared household at the time of filing necessary to maintain a complaint under the Protection of Women from Domestic Violence Act, 2005?",
+   "status": "new",
+   "active": true,
+   "marks": {
+    "state": "none",
+    "note": "no search has been run on this question and no passage has been marked"
+   },
+   "half": "frozen"
+  }
+ ],
+ "index_gaps": [
+  {
+   "case": "Satender Kumar Antil v CBI, 2026 INSC 115 (15 Jan 2026)",
+   "recourse_use": "BNSS Section 35(3) notice; Recourse's current-code restatement of Arnesh Kumar",
+   "finding": "not in the collection: 2026 INSC 114 and 116 are present, 115 is not. The collection holds 214 judgments dated 2026 (INSC numbers up to 847), so 2026 coverage is partial in general"
+  },
+  {
+   "case": "Mohan Lal v State of Punjab (2018) 17 SCC 627",
+   "recourse_use": "overruled by Mukesh Singh (2020)",
+   "finding": "not in the collection (only the later judgment's quotation of it)"
+  },
+  {
+   "case": "Youth Bar Association of India v Union of India (2016) 9 SCC 473",
+   "recourse_use": "right to an FIR copy",
+   "finding": "no title match in the collection"
+  },
+  {
+   "case": "Usha Chakraborty v State of West Bengal (2023)",
+   "recourse_use": "quashing; Bhajan Lal categories",
+   "finding": "no title match in the collection"
+  },
+  {
+   "case": "Shreya Singhal v Union of India (2015); Hiral P. Harsora v Kusum Narottamdas Harsora (2016); Satish Chander Ahuja v Sneha Ahuja (2020); S. Vanitha v Deputy Commissioner (2020)",
+   "recourse_use": "IT Act 66A; domestic violence",
+   "finding": "in the collection but left out of the index by its criminal-law filter ('not_criminal'), so a search cannot find them"
+  },
+  {
+   "case": "Rakhi Mitra v State of West Bengal (Calcutta HC, 2025); Viraj Chetan Shah v Union of India (Bombay HC, 2024)",
+   "recourse_use": "consequence of arrest without notice; look-out circulars",
+   "finding": "High Court judgments, outside a Supreme Court collection by design"
+  }
+ ],
+ "freeze": {
+  "half": "frozen",
+  "sha256": "48cbb184c9098e25739afd031a4f6ede190c1c246ad255da960c7e0ab89dbbc7",
+  "topics": [
+   "T08",
+   "T12",
+   "T13",
+   "T16"
+  ],
+  "questions": [
+   "Q15",
+   "Q16",
+   "Q23",
+   "Q24",
+   "Q25",
+   "Q26",
+   "Q31",
+   "Q32"
+  ],
+  "note": "Written before any search was run on these questions. Run once, at the end, with `select --half frozen --final`."
+ }
+}
