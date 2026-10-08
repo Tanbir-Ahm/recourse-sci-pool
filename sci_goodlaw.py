@@ -453,7 +453,7 @@ def main(argv=None):
     rf = sub.add_parser("register-flags")
     rf.add_argument("--cards", default=os.path.join(HERE, "cards", "currency_cards.json"))
     rw = sub.add_parser("register-sweep")
-    rw.add_argument("--min-year", type=int, default=2016)
+    rw.add_argument("--min-year", type=int, default=2000)
     rw.add_argument("--min-bench", type=int, default=3)
     rq = sub.add_parser("register-review-queue")
     rq.add_argument("--out", required=True)

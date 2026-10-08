@@ -1,0 +1,20 @@
+{
+  "note": "PRIVATE. Cases whose view is known to have been overtaken, added to goodlaw/targets/known.json for the currency pass. 'treatment' says what the later court did in its own words; nothing here is a verdict on good law and none of it is lawyer-checked. Written 2026-10-08.",
+  "cases": [
+    {
+      "name": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)", "doc_key": "c30108", "expect": "adverse_in_part",
+      "basis": "Rangappa v. Sri Mohan (2010), three judges: 'the impugned observations in Krishna Janardhan Bhat (supra) may not be correct. However, this does not in any way cast doubt on the correctness of the decision in that case since it was based on the specific facts and circumstances therein.' The observation in question is that Section 139 does not raise a presumption that a legally enforceable debt exists. Not overruled: the decision stands, one view in it does not.",
+      "source": "text of Rangappa (corpus id 29368), read 2026-10-08; three passages of it were in the first review pool"
+    },
+    {
+      "name": "Mohan Lal v. State of Punjab (2018)", "doc_key": null, "expect": "adverse",
+      "basis": "Overruled by Mukesh Singh v. State (Narcotic Branch of Delhi) (2020), Constitution Bench ('not good law and ... specifically overruled'). Not in the collection, so no passage of it can appear in a search; kept to test whether the register holds it.",
+      "source": "goodlaw/data/register/register.json (candidate row L2-xxx) and Recourse's NDPS doctrine map"
+    },
+    {
+      "name": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)", "doc_key": "c37199", "expect": "adverse_in_part",
+      "basis": "Overruled in part by Sushila Aggarwal v. State (NCT of Delhi) (2020), Constitution Bench, on the time limit of an anticipatory-bail order. The register holds it as a candidate row.",
+      "source": "goodlaw/data/register/register.json and the checker's flag ledger"
+    }
+  ]
+}

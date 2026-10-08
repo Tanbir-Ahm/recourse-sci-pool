@@ -1,0 +1,338 @@
+{
+ "top_k": 5,
+ "versions": {
+  "A today": {
+   "questions": 12,
+   "slots": 60,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 1,
+   "stale_slots": 1,
+   "stale_slots_flagged": 0
+  },
+  "B no repeats": {
+   "questions": 12,
+   "slots": 60,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 0
+  },
+  "C rewrite": {
+   "questions": 6,
+   "slots": 30,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 0
+  },
+  "E no multiplier": {
+   "questions": 12,
+   "slots": 60,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 2,
+   "stale_slots": 2,
+   "stale_slots_flagged": 0
+  },
+  "F merged": {
+   "questions": 6,
+   "slots": 30,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 0
+  },
+  "L landmark key passages": {
+   "questions": 12,
+   "slots": 20,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 0
+  },
+  "M mine top 6": {
+   "questions": 12,
+   "slots": 72,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 0,
+   "after_slots_changed": 0,
+   "after_stale_slots": 1,
+   "stale_slots": 1,
+   "stale_slots_flagged": 0
+  },
+  "S site shown": {
+   "questions": 12,
+   "slots": 64,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 2,
+   "after_slots_changed": 0,
+   "after_stale_slots": 2,
+   "stale_slots": 2,
+   "stale_slots_flagged": 0
+  }
+ },
+ "stale_slots": [
+  {
+   "qid": "Q09",
+   "n": 3,
+   "version": "A today",
+   "doc": 25607,
+   "case": "Prabha Shankar Dubey v. State of M.P. (2003)",
+   "register_action": null
+  },
+  {
+   "qid": "Q09",
+   "n": 3,
+   "version": "E no multiplier",
+   "doc": 25607,
+   "case": "Prabha Shankar Dubey v. State of M.P. (2003)",
+   "register_action": null
+  },
+  {
+   "qid": "Q10",
+   "n": 3,
+   "version": "E no multiplier",
+   "doc": 25607,
+   "case": "Prabha Shankar Dubey v. State of M.P. (2003)",
+   "register_action": null
+  },
+  {
+   "qid": "Q09",
+   "n": 3,
+   "version": "M mine top 6",
+   "doc": 25607,
+   "case": "Prabha Shankar Dubey v. State of M.P. (2003)",
+   "register_action": null
+  },
+  {
+   "qid": "Q08",
+   "n": 11,
+   "version": "S site shown",
+   "doc": 30108,
+   "case": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+   "register_action": null
+  },
+  {
+   "qid": "Q11",
+   "n": 18,
+   "version": "S site shown",
+   "doc": 30108,
+   "case": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+   "register_action": null
+  }
+ ],
+ "stale_docs": {
+  "41070": "Suresh Kumar Koushal v. Naz Foundation (2013)",
+  "9258": "Sowmithri Vishnu v. Union of India (1985)",
+  "5622": "ADM Jabalpur v. Shivkant Shukla (1976)",
+  "25607": "Prabha Shankar Dubey v. State of M.P. (2003)",
+  "1251": "A.K. Gopalan v. State of Madras (1950)",
+  "1000250111": "Rajesh Sharma v. State of U.P. (2017)",
+  "41801": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+  "30108": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+  "37199": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)"
+ },
+ "settled_docs": {
+  "7332": "State of Haryana v. Bhajan Lal (1990)",
+  "5154": "Maneka Gandhi v. Union of India (1978)",
+  "4562": "Gurbaksh Singh Sibbia v. State of Punjab (1980)",
+  "4873": "Hussainara Khatoon v. Home Secretary, Bihar (1979)",
+  "14580": "D.K. Basu v. State of West Bengal (1996)",
+  "30317": "State of Punjab v. Baldev Singh (1999)",
+  "40960": "Lalita Kumari v. Government of U.P. (2013)",
+  "41736": "Arnesh Kumar v. State of Bihar (2014)",
+  "36322": "Rangappa v. Sri Mohan (2010)",
+  "1000251356": "Bir Singh v. Mukesh Kumar (2019)",
+  "1000250181": "K.S. Puttaswamy v. Union of India (2017)",
+  "1000250978": "Navtej Singh Johar v. Union of India (2018)",
+  "1000251042": "Joseph Shine v. Union of India (2018)"
+ },
+ "passages": 199,
+ "passages_without_case_info": 0,
+ "register": [
+  {
+   "name": "Suresh Kumar Koushal v. Naz Foundation (2013)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Sowmithri Vishnu v. Union of India (1985)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "ADM Jabalpur v. Shivkant Shukla (1976)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Prabha Shankar Dubey v. State of M.P. (2003)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "A.K. Gopalan v. State of Madras (1950)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "verified"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Rajesh Sharma v. State of U.P. (2017)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "State of Haryana v. Bhajan Lal (1990)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Maneka Gandhi v. Union of India (1978)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Gurbaksh Singh Sibbia v. State of Punjab (1980)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Hussainara Khatoon v. Home Secretary, Bihar (1979)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "D.K. Basu v. State of West Bengal (1996)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "State of Punjab v. Baldev Singh (1999)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Lalita Kumari v. Government of U.P. (2013)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Arnesh Kumar v. State of Bihar (2014)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Rangappa v. Sri Mohan (2010)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Bir Singh v. Mukesh Kumar (2019)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "K.S. Puttaswamy v. Union of India (2017)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Navtej Singh Johar v. Union of India (2018)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Joseph Shine v. Union of India (2018)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+   "expect": "adverse_in_part",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Mohan Lal v. State of Punjab (2018)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)",
+   "expect": "adverse_in_part",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  }
+ ]
+}

@@ -48,3 +48,7 @@ The guard (`ruler.select`) hands out the frozen questions only for a final run w
 ## Judgments the ruler cannot test (the index or collection lacks them)
 
 Listed in `ruler_v2.json` under `index_gaps`. Satender Kumar Antil v CBI (2026 INSC 115), which Recourse treats as the current-code restatement of Arnesh Kumar, is not in the collection (2026 coverage is partial: 214 judgments, INSC numbers up to 847). Mohan Lal (2018), the decision Mukesh Singh overruled, is not in the collection. Youth Bar Association (2016) and Usha Chakraborty (2023) have no title match. Shreya Singhal (2015), Hiral Harsora (2016), Satish Chander Ahuja (2020) and S. Vanitha (2020) are in the collection but left out of the index by its criminal-law filter, so no search can find them.
+
+## Currency: the second pass (agreed with the owner, 2026-10-08)
+
+The Overruled Register and the checker are **not** part of the search and are kept out of the relevance marks. Plan for every pool: (1) search and AI-tool marking with the register off, so relevance numbers stay clean; (2) `review_tools/currency_pass.py` over the saved results, which counts passages from register cases and from known-stale cases per search version and simulates the register's demotion; (3) trap questions from Mr. Advocate double as a test of whether the register holds the trap rulings (a gap goes to his weekly sheet as a proposal). On the first pool the register flagged none of the stale passages, because neither stale case is in it. The register sees only explicit Supreme Court overrulings: expect misses.
