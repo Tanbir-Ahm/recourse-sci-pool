@@ -11,7 +11,7 @@ Decide, before any connection to the live site: (a) which search recipe over the
 - **The ruler** (`review_data/ruler/`, commit `d9c1eae`): 16 topics, 32 active questions (24 for tuning, 8 sealed: T08 default bail, T12 NDPS Section 37 bail, T13 informant who also investigated, T16 domestic violence after leaving). 44 key paragraphs, all found in the index. Q06 is superseded by Q06v2 (Section 326, not 325). Freeze hash `48cbb184c9098e25739afd031a4f6ede190c1c246ad255da960c7e0ab89dbbc7`. The guard hands the sealed questions out once, for a final run with a label, and logs it. Its answer key comes from Recourse's hand-verified excerpts (new topics) and this project's own picks (first six): it is **not lawyer-checked, and biased toward famous, settled cases**.
 - **The currency pass** (`review_tools/currency_pass.py`, commit `25d68cb`): runs the Overruled Register over saved search results as a second pass kept apart from the relevance marks.
 - **The register sweep** now reads back to 2000 (42 new proposals, 232 open, none read). It finds only judgments that use overruling words and found neither Prabha Shankar Dubey nor Krishna Janardhan Bhat.
-- The index: **10,509 criminal-law judgments, 236,814 passages**, in `../recourse-sci-index`. The first 12 questions were marked on the older index of about 8,200 judgments.
+- The index: **10,505 criminal-law judgments, 236,155 passages** after the duplicate fix of 2026-10-08 (was 10,509 and 236,814; index commit `3c80a26`), in `../recourse-sci-index`. The first 12 questions were marked on the older index of about 8,200 judgments.
 
 ## 3. The 30 real questions (to be supplied by the owner)
 
@@ -45,7 +45,7 @@ Counts are judgments that **mention** the topic (a word match), not judgments th
 - **Recipes pooled, none chosen in advance:** A (today: re-ranker x passage-type weights), B (no repeated passages), E (no weights), S (the live site's own method run on the big index, without its hand pins and topic routing; a comparison arm), and a **blind rewrite arm** (a fixed instruction to a model rewrites each everyday or narrative question into legal wording, saved before any search; not written by me with the answer in view). L does not apply (no keys).
 - Each recipe's top results are merged and de-duplicated into one pool per question; reviewers do not see which recipe found what.
 - Also run: the first 12 questions on the current index (only the new passages need marks), Q06v2, and the 20 new ruler questions. The 20 new ruler questions are scored first by the **automatic key-paragraph test** (is Recourse's key paragraph in the top results?), which needs no human marks; human marks on them come only if time allows. The sealed ruler questions are run only in the final run.
-- **Duplicate fix (accepted 2026-10-08): apply it to the index before pooling** (removes 659 passages), so the baseline is measured once.
+- **Duplicate fix (accepted 2026-10-08): applied on 2026-10-08 before any pooling** (4 judgments, 659 passages removed; `index_fixes/2026-10-08/README.md`). Its EVAL step (a few cents of Voyage) waits for the allowance.
 
 ## 5. How they will be marked
 
@@ -71,8 +71,8 @@ AI tools (ChatGPT and Gemini, run by J and S) mark each passage Yes / Partly / N
 
 | Step | Who | Needs |
 |---|---|---|
-| 1 | Owner | the 30 anonymised questions, the confirmed domain table, the sealing default, the Voyage allowance, the duplicate-fix decision, Mr. Advocate's traps, J's Q09, a 20-label spot-check |
-| 2 | Claude | load the questions into a new ruler version, assign the halves by the fixed rule, hash it, commit (before any search) |
+| 1 | Owner | (the Excel form `review_data/ruler/real_questions_template.xlsx` is ready) the 30 anonymised questions, the confirmed domain table, the sealing default, the Voyage allowance, the duplicate-fix decision, Mr. Advocate's traps, J's Q09, a 20-label spot-check |
+| 2 | Claude | `python review_tools/real_questions.py build --intake FILLED.xlsx` (checks the form, names any shortfall against the plan, ids R01 to R30 in row order, seals by the fixed rule, writes `real30_v1.json` with the freeze hash; tested by `test_real_questions.py`), commit before any search |
 | 3 | Claude | pools for the tuning half of the real questions, Q06v2, the old 12 and the 20 new ruler questions (Voyage); the key-paragraph test on the ruler questions; a spend report against the allowance |
 | 4 | J, S | marking packs built by Claude, both tools |
 | 5 | Claude | scores, sensitivity table, currency pass, first readiness map; a plain-terms report |
