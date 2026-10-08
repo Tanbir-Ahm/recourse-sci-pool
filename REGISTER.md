@@ -4,6 +4,16 @@ Built 2026-10-07 on the owner's instruction. Code: `goodlaw/register.py` (facts,
 
 **What it is.** A list of decisions that a later court has overruled, reversed or disapproved, kept as facts with their evidence, their trust level and a history. It answers one question: *has the Supreme Court said this decision is overruled?*, for a case named in a question, in a retrieved passage or in a finished answer. **What it is not:** a verdict of the code. The code only looks up and words what a row says. The checker (`goodlaw/report.py`) still only warns.
 
+## What the row IDs mean
+
+| Prefix | Meaning | How many |
+|---|---|---|
+| `L1-nnnn` | the row number in the 1,688-entry list (list 1, to about 2015): `L1-0006` is row 6 | 1,688 |
+| `L2-nnn` | the entry number in the 59-entry post-2015 list (list 2): `L2-004` is entry 4 | 59 |
+| `D2-NAME` | "derived from list 2": a decision the same post-2015 judgments overruled but that list 2 leaves out, found by Claude while checking list 2 (for example `D2-KADER`, `D2-PRABHULAL-2017`; the year is added where the same case was overruled more than once). The label is Claude's own naming and was not written down before 2026-10-08 | 18 |
+| `RC-nnn`, `RS-nnn` | rows created only when a reviewer accepts a checker flag (`RC`) or a sweep proposal (`RS`) | none yet |
+| `F-...`, `P-nnnn` | a checker flag, a sweep proposal (these are not register rows) | 2, 329 |
+
 ## What is in it (1,765 rows)
 
 | Source | Rows | Trust | Wording in an answer |
