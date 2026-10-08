@@ -1,0 +1,338 @@
+{
+ "note": "Findings compiled 2026-10-08 from the repository's own analysis files. Each row says where the evidence is. Nothing here is a lawyer's finding. Add rows at the end; do not renumber.",
+ "findings": [
+  {
+   "no": 1,
+   "area": "List 1 (to ~2015)",
+   "finding": "1,688 numbered entries, 260 pages, no stated compiler or source. The author field says 'PADMARAJA'; the file was created 2020-10-29. Read as data only.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Recorded",
+   "who_acts": ""
+  },
+  {
+   "no": 2,
+   "area": "List 1 (to ~2015)",
+   "finding": "71% of entries (1,196) are High Court or tribunal decisions overruled by the Supreme Court; 409 of them are the same dispute reversed on appeal. 29% (492) are Supreme Court judgments overruled by a later Supreme Court judgment. Our collection holds Supreme Court judgments only.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Recorded",
+   "who_acts": ""
+  },
+  {
+   "no": 3,
+   "area": "List 1 (to ~2015)",
+   "finding": "The list stops around 2014-15 (2 entries from 2015, none later) although the file was created in 2020. It cannot contain, for example, Mukesh Singh (2020) overruling Mohan Lal (2018).",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Recorded; list 2 and the sweep cover the later years",
+   "who_acts": ""
+  },
+  {
+   "no": 4,
+   "area": "List 1 (to ~2015)",
+   "finding": "Incomplete even inside its own dates: Prabha Shankar Dubey (overruled in 2010 by the Jadeja Constitution Bench) and Krishna Janardhan Bhat (its s.139 view rejected in part by Rangappa, 2010) are not in it.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md; see also findings below",
+   "confidence": "Certain on absence; Likely on the law",
+   "status": "Open",
+   "who_acts": "Mr. Advocate: say how each should be recorded (see findings on the sweep)"
+  },
+  {
+   "no": 5,
+   "area": "List 1 (to ~2015)",
+   "finding": "Internal errors: 6 pairs list each case as overruled by the other (rows 247/506, 265/242, 270/258, 446/645, 463/535, 594/474); 14 matched pairs name an overruling decision dated before the overruled one; row 75 has an empty 'overruled by' cell; 27 of 1,354 citations point at a different judgment in our store (typo in the list or a wrong key in our store: not told apart).",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Certain",
+   "status": "13 rows carry the flag disputed_listing and are on the weekly sheet ('listing' items)",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 6,
+   "area": "List 1 (to ~2015)",
+   "finding": "'Overruled' is used loosely: 24% of rows are an appeal reversing a lower court; some Supreme Court rows are partial overrulings or 'not followed'. The list gives no date, bench, paragraph or 'partly'. 507 register rows are marked reversed_on_appeal by comparing party names (a heuristic, not read row by row).",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md; REGISTER.md",
+   "confidence": "Certain (loose usage); Likely (heuristic marking)",
+   "status": "Open",
+   "who_acts": "Mr. Advocate may spot-check the reversed_on_appeal rows"
+  },
+  {
+   "no": 7,
+   "area": "List 1 (to ~2015)",
+   "finding": "The same list is published on www.referencer.in (1,677 of 1,688 pairs identical, same errors, same last year), a site that reserves its copyright. The licence for a facts-only register built from it is NOT cleared. Only names, citations, years and row numbers are kept.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md (section 'The same list on referencer.in'); register meta",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Owner / lawyer: is a facts-only register allowed in a product? If not, drop the list1 rows and rebuild"
+  },
+  {
+   "no": 8,
+   "area": "List 1 (to ~2015)",
+   "finding": "The owner stated on 2026-10-07 that a lawyer, Mr. Advocate, verified this list as fully correct (verification date that day). Claude did not see the verification; the 1,688 rows are recorded 'verified' on that statement.",
+   "evidence": "register.json meta; REGISTER.md",
+   "confidence": "Certain that this is the owner's statement",
+   "status": "Recorded",
+   "who_acts": ""
+  },
+  {
+   "no": 9,
+   "area": "List 1 (to ~2015)",
+   "finding": "Coverage of the list inside our collection: 395 of 492 Supreme Court decisions named as overruled (80%) and 1,417 of 1,683 named as overruling (84%) are found. Thinner for 1990-2009 (about 20% short), which fits the 8,821 crawl ids with no file at the court. These percentages undercount.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Likely",
+   "status": "Recorded",
+   "who_acts": ""
+  },
+  {
+   "no": 10,
+   "area": "List 1 (to ~2015)",
+   "finding": "None of the 61 library judgments (the cases Recourse can show that are in our collection) appears as overruled in the list.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Recorded",
+   "who_acts": ""
+  },
+  {
+   "no": 11,
+   "area": "List 1 (to ~2015)",
+   "finding": "110 of the 1,688 rows have no citation or year, so the register cannot recognise them in an answer (68 only weakly, 42 not at all). They come up on the weekly sheet as 'match' items for the reviewer to supply a citation or year.",
+   "evidence": "REGISTER.md; sheet 'Needs citation or year'",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 12,
+   "area": "List 1 (to ~2015)",
+   "finding": "85 register rows have a chain (the overruling decision was itself later overruled or disapproved); 83 of them are list 1 rows, for example K.L. Verma, State of U.P. v Synthetics (1980), Ram Lal Narang, H.R.S. Murthy, the Delhi High Court's Naz Foundation, N.N. Global. A chain row keeps its recorded status and goes to the weekly sheet; nothing is carried forward silently.",
+   "evidence": "REGISTER.md; sheet 'Chains'",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 13,
+   "area": "Checker test on list 1",
+   "finding": "308 usable pairs where both the overruled and the overruling judgment are in our collection (331 minus 14 with the overruling dated first and 9 whose citation matched a differently named judgment). Split by the list's row number: even rows = tuning half (146 pairs, run), odd rows = untouched half (162 pairs, NOT run).",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Odd half still unrun; it must be run once, at a frozen commit",
+   "who_acts": ""
+  },
+  {
+   "no": 14,
+   "area": "Checker test on list 1",
+   "finding": "On the tuning half the checker read 38 of 146 pairs (26%) as overrules, disagrees or doubts (33 confident and in the Court's or headnote's voice; 30 explicit overrulings). 84% of pairs: the later judgment names the case. After fixes made from reading these pairs (2026-10-07): 42 (29%). The 29% is in-sample. Criminal-marked pairs: 4 of 24 flagged. Every pair is a positive, so this measures recall only, not false alarms.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md; sheet 'List1 checker test (308)'",
+   "confidence": "Certain for the counts; Likely that 26% is the better guide to real recall",
+   "status": "Open",
+   "who_acts": ""
+  },
+  {
+   "no": 15,
+   "area": "Checker test on list 1",
+   "finding": "Three misses found on the tuning half: row 668 Rajinder Kaur ('hereby over-ruled' with the name and no citation), row 422 Jugraj Singh (scan error '1s erroneous'), row 420 Paras Ram (read as 'follows' although the sentence says 'not good law'). Fixed 2026-10-07 except row 422, which reads adverse but not confidently.",
+   "evidence": "external_lists/2026-10-07_overruled_cases_pdf/README.md; goodlaw/EVALUATION.md",
+   "confidence": "Certain",
+   "status": "Partly fixed",
+   "who_acts": ""
+  },
+  {
+   "no": 16,
+   "area": "Checker (general)",
+   "finding": "The checker catches about 3 in 10 of the overrulings an outside key verifies, so it misses about 7 in 10. A quiet card is weak evidence, never 'good law'. Nothing measures 2018-2026 text beyond the 20 known cases.",
+   "evidence": "FOLLOW_UPS.md items 0 and 1b; goodlaw/EVALUATION.md",
+   "confidence": "Likely",
+   "status": "Standing limit",
+   "who_acts": ""
+  },
+  {
+   "no": 17,
+   "area": "Checker (general)",
+   "finding": "The checker's known-case list (goodlaw/targets/known.json: 7 overruled/doubted/overcome, 13 settled) was labelled by an AI assistant from general knowledge, not by a lawyer.",
+   "evidence": "goodlaw/targets/known.json note",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Lawyer: check the 20 labels"
+  },
+  {
+   "no": 18,
+   "area": "List 2 (after 2015)",
+   "finding": "The post-2015 list ('Judgments Overruled After 2015', 59 entries, 30 distinct overruling judgments) is a lead list, not a register. It has no author, no date and no verification; it calls itself 'research-compiled'. It is NOT marked verified: its 58 usable rows are 'candidate' (hedged wording), row 43 is 'unchecked'. Mr. Advocate is assigned as reviewer; nothing is verified until he confirms it.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Owner: did Mr. Advocate also verify list 2? Mr. Advocate: confirm rows at the weekly review"
+  },
+  {
+   "no": 19,
+   "area": "List 2 (after 2015)",
+   "finding": "Result of Claude's reading of the judgments: 41 confirmed as stated (C), 11 confirmed but need a caveat (CN), 4 where the court's words are weaker than the label (P), 2 wrong in a material detail (W), 1 not checkable (U). 52 of 59 (88%) are right that the named later judgment overruled the earlier one at least in part. Not a lawyer's verification.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md; sheet 'Post-2015 list (59)'",
+   "confidence": "Certain for the 49 where the judgment's own sentence was read; headnote only for rows 44-46",
+   "status": "Open",
+   "who_acts": "Mr. Advocate: read rows 33, 39, 42, 43, 47, 48, 50, 52, 57, 58, 59 and the chain rows"
+  },
+  {
+   "no": 20,
+   "area": "List 2 (after 2015)",
+   "finding": "Row 39 (V. Surendra Mohan): the court says 'would not be a binding precedent', not overruled. Row 42 (Sree Balaji Nagar): right fact, wrong overruling case; it was overruled by Indore Development Authority v Manoharlal (2020, 5 judges) and already by Shailendra (2018). Row 43 (Shri Kant Sharma): the later judgment (Parshotam Dass, 2023) is not in the collection.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 21,
+   "area": "List 2 (after 2015)",
+   "finding": "Label stronger than the court's words: rows 13 (Foreshore: 'cannot be said to be laying down the law correctly'), 47 (SRD Nutrients: 'per incuriam'), 52 (Asian Resurfacing: directions 36 and 37 'not approved', rest stands), 58 and 59 (Choodamani, Bharat Bhushan: 'should not be treated as binding'). Rows 4 and 5: what is overruled is the 'enduring rights' theory for ordinances, not the re-promulgation holding the list describes.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Recorded in the register as the court's own treatment type",
+   "who_acts": ""
+  },
+  {
+   "no": 22,
+   "area": "List 2 (after 2015)",
+   "finding": "Chains: N.N. Global (row 57) was overruled by a 5-judge bench in 2023 and the 2021 holding's status after the 7-judge In re Interplay (13 Dec 2023) needs a lawyer; Prabhu Lal was overruled twice (2017, 2024); Sree Balaji Nagar twice (2018, 2020). Six list 1 rows (256, 374, 499, 407, 598, 1405) name as the overruling case a decision that list 2 says was overruled later.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md",
+   "confidence": "Certain that the chains exist; Guessing what a lawyer will conclude",
+   "status": "Open",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 23,
+   "area": "List 2 (after 2015)",
+   "finding": "India Cement (row 50, 8:1) overrules six other decisions 'to the extent of the observations made'; Azeez Basha (row 48) is a 4:3 split; Tomaso Bruno (row 33) was overruled by a bench of the same strength. 18 sibling decisions found in the same judgments were added as candidate rows.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 24,
+   "area": "List 2 (after 2015)",
+   "finding": "The list mixes the year of decision and the year of the reporter volume (for example Kharak Singh decided 1962, listed 1963; Unicorn decided 6 Dec 2019, listed 2020). The register keys on citation and decision date, never on the list's year; a year within one is accepted when matching names.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md",
+   "confidence": "Certain",
+   "status": "Handled in code",
+   "who_acts": ""
+  },
+  {
+   "no": 25,
+   "area": "List 2 (after 2015)",
+   "finding": "The scan for other post-2015 overrulings found 60 judgments of three or more judges with an overruling-looking sentence that are not on the list (about 30 look real; Guessing). The scan missed Tofan Singh (2020), which overrules Raj Kumar Karwal and Kanhaiyalal and is in the collection, so 60 is a floor. These hits are machine hits, not individually read.",
+   "evidence": "external_lists/2026-10-07_overruled_after_2015_pdf/README.md; sheet 'Post-2015 other hits (60)'",
+   "confidence": "Certain for Tofan Singh; Likely that the true number is higher",
+   "status": "Open",
+   "who_acts": "Mr. Advocate / Claude: read the 60"
+  },
+  {
+   "no": 26,
+   "area": "Register",
+   "finding": "1,765 rows: 1,688 verified (list 1), 58 candidate and 1 unchecked (list 2), 18 candidate siblings. No row has yet been confirmed by a reviewer. A row names the court's own treatment type (overruled, in part, not good law, per incuriam, not binding, not approved, reversed on appeal, disputed listing), not one flag.",
+   "evidence": "REGISTER.md; sheet 'Register'",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 27,
+   "area": "Register",
+   "finding": "Recognition: 1,655 of 1,765 rows are recognised strongly (1,615 by name and year, 40 by citation only), 68 weakly and 42 not at all. Scanning 45,186 collection titles gives 477 strong hits on 459 rows and no collision. The 76 library cases hit only Mohan Lal and Mhetre (both candidate rows). A bare name is never matched; both names with no year is weak and never worded as a fact.",
+   "evidence": "REGISTER.md",
+   "confidence": "Certain",
+   "status": "Recorded",
+   "who_acts": ""
+  },
+  {
+   "no": 28,
+   "area": "Register",
+   "finding": "The register only subtracts trust or warns; it never says a case is good law. A row not confirmed by a person is worded 'reported ... not yet confirmed by our reviewer'. It knows only decisions overruled by a later Supreme Court decision: not statutes that override a decision, High Court rulings overruled by a High Court, or decisions merely doubted or distinguished.",
+   "evidence": "REGISTER.md; CLAUDE.md",
+   "confidence": "Certain",
+   "status": "Standing limit",
+   "who_acts": ""
+  },
+  {
+   "no": 29,
+   "area": "Register",
+   "finding": "Nothing is connected to the live site. REGISTER_SITE_PATCH.md is for the Recourse owner and untested inside Recourse. The 50-question trap exam is built and has not been run (it needs the live assistant). The licence question on list 1 and who reviews flags (Mr. Advocate assumed) are open.",
+   "evidence": "REGISTER.md; REGISTER_SITE_PATCH.md",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Owner"
+  },
+  {
+   "no": 30,
+   "area": "Checker cards (76 library cases)",
+   "finding": "Cards of 2026-10-06: 46 NO_ADVERSE_FOUND, 18 INSUFFICIENT, 10 NOT_CHECKABLE_HIGH_COURT, 2 ADVERSE_SIGNAL. 'No adverse found' is silence in what we hold, not a finding about the law. The two warnings are Mohan Lal v State of Punjab (2018; overruled by the 5-judge Mukesh Singh, 2020) and Siddharam Satlingappa Mhetre (2011; overruled in part by the 5-judge Sushila Aggarwal, 2020). Recourse has no curated currency record for either.",
+   "evidence": "cards/README.md; cards/currency_cards.json; sheet 'Library cards (76)'",
+   "confidence": "Certain",
+   "status": "Open: two open flags on the weekly sheet",
+   "who_acts": "Mr. Advocate"
+  },
+  {
+   "no": 31,
+   "area": "Checker cards (76 library cases)",
+   "finding": "Mohan Lal (2018) IS in the collection and in the index (as 'MOHANLAL versus THE STATE OF PUNJAB', doc_key b2018_9_1006_1023, index doc 1000250931), so its own passages, which state the rejected view, can appear in a search. An earlier note of 2026-10-08 in the ruler files said it was missing; that was an error (a search had split the name in two) and has been corrected.",
+   "evidence": "sheet 'Known cases'; review_data/ruler/README.md",
+   "confidence": "Certain",
+   "status": "Corrected 2026-10-08",
+   "who_acts": ""
+  },
+  {
+   "no": 32,
+   "area": "Register sweep",
+   "finding": "The sweep reads later judgments of three or more judges for overruling sentences and law-report tags. Run from 2016 (1,514 judgments): 127 tag and 63 sentence proposals. Widened to 2000 on 2026-10-08 (3,406 judgments): 42 more proposals (41 sentence, 1 tag). 329 proposals in all, 232 open and not already in the register, none read by anyone. Proposals only: nothing enters the register until a person confirms it.",
+   "evidence": "goodlaw/data/register/proposals.json; sheet 'Sweep proposals'",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": "Mr. Advocate (20 a week)"
+  },
+  {
+   "no": 33,
+   "area": "Register sweep",
+   "finding": "The sweep found NEITHER Prabha Shankar Dubey NOR Krishna Janardhan Bhat, because the later courts did not write 'overruled' or 'not good law'. Jadeja (2010): the 'substantial compliance' view introduced in Joseph Fernandez and Prabha Shankar Dubey 'is neither borne out from the language of sub-section (1) of Section 50 nor it is in consonance with the dictum laid down in Baldev Singh's case'. Rangappa (2010): 'the impugned observations in Krishna Janardhan Bhat (supra) may not be correct. However, this does not in any way cast doubt on the correctness of the decision in that case'. So Krishna Janardhan Bhat is partly doubted, not overruled. The sweep sees explicit overruling words only.",
+   "evidence": "REGISTER.md; texts of Jadeja (corpus id 29975) and Rangappa (29368)",
+   "confidence": "Certain",
+   "status": "Open: widening the wording needs a precision test on a labelled sample first",
+   "who_acts": "Claude, with Mr. Advocate's list of such cases"
+  },
+  {
+   "no": 34,
+   "area": "Currency pass (first review pool)",
+   "finding": "On the 199 passages of the first review pool the register held 6 of the 10 known-stale cases (not Prabha Shankar Dubey, Rajesh Sharma, Dashrath Rupsingh Rathod, Krishna Janardhan Bhat), flagged none of the stale passages in the pool (because those cases are not in it), and wrongly flagged none of the 13 known-settled cases. Stale passages in a version's top 5: A 1, B 0, C 0, E 2, F 0, M 1, S 2 (too few to rank versions). Five passages in the pool come from the two stale cases (consensus 'Misleading').",
+   "evidence": "review_results/2026-10-08_currency_pass_first_pool/; sheet 'Currency pass'",
+   "confidence": "Certain",
+   "status": "Recorded; to be repeated on the pools of the 30 real questions",
+   "who_acts": ""
+  },
+  {
+   "no": 35,
+   "area": "Index and collection",
+   "finding": "The index holds 10,509 criminal-law judgments (236,814 passages). About 33,000 civil and tax judgments were filtered out. By decade: 1,237 before 1990; 4,640 in 1990-2009; 2,375 in 2010-16; 2,257 from 2017. Only 93 judgments mention the new codes (BNS, BNSS, BSA): the index speaks IPC and CrPC while users now speak BNS and BNSS. The search's section boost ignores which code a section number belongs to.",
+   "evidence": "review_data/ruler/PLAN_30_REAL_QUESTIONS.md; sci_index.py (section_numbers, has_section)",
+   "confidence": "Certain",
+   "status": "Open: test translating through Recourse's concordance before searching",
+   "who_acts": ""
+  },
+  {
+   "no": 36,
+   "area": "Index and collection",
+   "finding": "Cases Recourse relies on that the search cannot show: Satender Kumar Antil v CBI (2026 INSC 115) is not in the collection (2026 coverage is partial: 214 judgments, INSC numbers up to 847); Youth Bar Association (2016) and Usha Chakraborty (2023) have no title match; Shreya Singhal (2015), Hiral Harsora (2016), Satish Chander Ahuja (2020) and S. Vanitha (2020) are in the collection but excluded by the index's criminal-law filter. Rakhi Mitra and Viraj Chetan Shah are High Court decisions.",
+   "evidence": "sheet 'Index gaps'; review_data/ruler/topics_v2.json",
+   "confidence": "Certain",
+   "status": "Open",
+   "who_acts": ""
+  },
+  {
+   "no": 37,
+   "area": "Ruler and plan",
+   "finding": "The ruler (16 topics, 32 active questions, 8 sealed) and the plan for 30 real questions are recorded in review_data/ruler/ (README.md, PLAN_30_REAL_QUESTIONS.md). Its answer key is Recourse's hand-verified excerpts plus this project's own picks: not lawyer-checked and biased toward famous, settled cases.",
+   "evidence": "review_data/ruler/",
+   "confidence": "Certain",
+   "status": "In progress",
+   "who_acts": ""
+  }
+ ]
+}

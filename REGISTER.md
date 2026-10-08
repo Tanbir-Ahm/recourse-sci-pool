@@ -52,6 +52,16 @@ Today's flags: Mohan Lal v. State of Punjab (2018) and Siddharam Satlingappa Mhe
 
 Commands: `register-flags` (take the checker's cards into the ledger after each `cards` run), `register-sweep --corpus corpus.sqlite` (about a minute and a half since the default window was widened on 2026-10-08 from 2016 to 2000: finds later judgments of three or more judges that say an earlier decision is overruled, from the law report's own tags and from the court's sentences; proposals only), `register-check "Name v Name" --year Y --cite C` (what the register says about one case), `register-scan --file answer.txt` (the guard on a finished answer).
 
+## The weekly routine (created 2026-10-08)
+
+A scheduled cloud session runs `REGISTER_ROUTINE_RUNBOOK.md` every Thursday morning (India time): it writes `register_review/DATE/` (the week's sheet as CSV and Excel, and a short `SUMMARY.md`) on the branch `claude/sharp-euler-unyfv0`. It is read-only on the register. The sweep is not part of it (it needs the 1.8 GB corpus store).
+
+**The loop:** (1) Thursday: the sheet appears. (2) Mr. Advocate fills the yellow columns of `Review_Sheet_DATE.xlsx` (decision, and new_treatment / scope / overruling_case / overruling_year / overruled_cites / overruled_year / note where the decision asks for it). (3) The owner sends the filled file to a Claude session. (4) The session records it: `python sci_goodlaw.py register-review --sheet FILE.xlsx --reviewer "Mr. Advocate"`, runs the tests and commits. Items left blank or kept return seven days later. The first sheet (2026-10-08) holds 60 of a backlog of 504 items: about 9 weeks at 60 a week.
+
+**How to stop it:** in the Claude app, open Routines (scheduled tasks), find "Register weekly review sheet", and pause or delete it; or ask a Claude session to run `update_trigger` with enabled false.
+
+**Full workbook for checking:** `python sci_goodlaw.py register-export-xlsx --out FILE.xlsx` writes every row (1,765), every finding, the post-2015 sheets, the sweep proposals, the review backlog, the checker's cards and the known cases (the 2026-10-08 copy is `register_review/2026-10-08/Overruled_Register_Full_Review.xlsx`). The summary's formulas are computed by Excel when the file is opened.
+
 ## Tests and the trap-question exam
 
 `python test_goodlaw_register.py`: unit tests (matching, wording, chains, the guard, the review decisions, the sweep's parsing, the build) and gates on the real register (every recognisable row is found by its own name and year; the 76 library cases hit only the two known flags; a bare name is nothing; a wrong year is weak; the bundle works on its own). All pass.

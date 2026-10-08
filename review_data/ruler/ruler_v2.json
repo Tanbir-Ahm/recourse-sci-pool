@@ -1224,7 +1224,7 @@
     "Q25",
     "Q26"
    ],
-   "notes": "Mohan Lal v State of Punjab (2018), the decision Mukesh Singh overruled, is not in the collection, so a search cannot show its own passages; Mukesh Singh itself quotes the overruled view, so 'earlier view later rejected' passages can still appear.",
+   "notes": "Mohan Lal v State of Punjab (2018), the decision Mukesh Singh overruled, IS in the collection and the index (doc 1000250931, titled 'MOHANLAL versus THE STATE OF PUNJAB'), so its own passages, which state the view the Constitution Bench rejected, can appear in a search: this is a direct currency trap. (A note of 2026-10-08 said it was missing; that was wrong, my search had split the name 'Mohan Lal' into two words.) Mukesh Singh also quotes the overruled view.",
    "key_passages": [
     {
      "doc": 1000252711,
@@ -1896,11 +1896,6 @@
    "case": "Satender Kumar Antil v CBI, 2026 INSC 115 (15 Jan 2026)",
    "recourse_use": "BNSS Section 35(3) notice; Recourse's current-code restatement of Arnesh Kumar",
    "finding": "not in the collection: 2026 INSC 114 and 116 are present, 115 is not. The collection holds 214 judgments dated 2026 (INSC numbers up to 847), so 2026 coverage is partial in general"
-  },
-  {
-   "case": "Mohan Lal v State of Punjab (2018) 17 SCC 627",
-   "recourse_use": "overruled by Mukesh Singh (2020)",
-   "finding": "not in the collection (only the later judgment's quotation of it)"
   },
   {
    "case": "Youth Bar Association of India v Union of India (2016) 9 SCC 473",

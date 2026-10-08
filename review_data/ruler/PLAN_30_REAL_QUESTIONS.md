@@ -1,6 +1,6 @@
 # The plan, for the record: choosing the search for the big index with 30 real questions
 
-Written 2026-10-08, after commit `25d68cb` on `claude/sharp-euler-unyfv0`. PRIVATE (answer key and sealed questions live here). Nothing in this plan connects anything to the live Recourse site, merges to `main`, opens a pull request or creates a scheduled routine; each of those needs the owner's separate say-so. Every figure the plan produces carries its source label: **LLM-judged** unless a lawyer's sheet is in it.
+**ACCEPTED by the owner on 2026-10-08, in full: the domain table, the sealing default (about 11-12 sealed), the draft traffic-light rule and the duplicate fix (apply it before pooling). Work on the plan proceeds after the weekly register routine and the full register workbook were delivered (also 2026-10-08).** Written 2026-10-08, after commit `25d68cb` on `claude/sharp-euler-unyfv0`. PRIVATE (answer key and sealed questions live here). Nothing in this plan connects anything to the live Recourse site, merges to `main`, opens a pull request or creates a scheduled routine; each of those needs the owner's separate say-so. Every figure the plan produces carries its source label: **LLM-judged** unless a lawyer's sheet is in it.
 
 ## 1. Purpose
 
@@ -15,7 +15,7 @@ Decide, before any connection to the live site: (a) which search recipe over the
 
 ## 3. The 30 real questions (to be supplied by the owner)
 
-**Proposed domain table (awaiting the owner's confirmation):**
+**Domain table (accepted by the owner 2026-10-08):**
 
 | | Domain | Questions | Recourse today | Index mentions (judgments) |
 |---|---|---|---|---|
@@ -45,7 +45,7 @@ Counts are judgments that **mention** the topic (a word match), not judgments th
 - **Recipes pooled, none chosen in advance:** A (today: re-ranker x passage-type weights), B (no repeated passages), E (no weights), S (the live site's own method run on the big index, without its hand pins and topic routing; a comparison arm), and a **blind rewrite arm** (a fixed instruction to a model rewrites each everyday or narrative question into legal wording, saved before any search; not written by me with the answer in view). L does not apply (no keys).
 - Each recipe's top results are merged and de-duplicated into one pool per question; reviewers do not see which recipe found what.
 - Also run: the first 12 questions on the current index (only the new passages need marks), Q06v2, and the 20 new ruler questions. The 20 new ruler questions are scored first by the **automatic key-paragraph test** (is Recourse's key paragraph in the top results?), which needs no human marks; human marks on them come only if time allows. The sealed ruler questions are run only in the final run.
-- **Before pooling the owner decides the duplicate fix** (removes 659 passages): recommended yes, so the baseline is measured once.
+- **Duplicate fix (accepted 2026-10-08): apply it to the index before pooling** (removes 659 passages), so the baseline is measured once.
 
 ## 5. How they will be marked
 
@@ -63,7 +63,7 @@ AI tools (ChatGPT and Gemini, run by J and S) mark each passage Yes / Partly / N
 
 - A recipe is preferred only if it points the same way in every treatment (agreed marks only, ties to the lower mark, ties to the higher mark, each run alone) **and** on the sealed half.
 - The rewrite arm is carried forward only if the blind rewrite keeps most of the gain the hand rewrite showed.
-- **Readiness map:** a traffic light per domain. Draft rule, to be fixed in writing before any mark is seen [Guessing]: green = Yes-or-Partly at least 80% of the top 5, no Misleading in the top 3, no stale-case passage in the top 5; red = under 60% or a Misleading in the top 3 on most questions; amber otherwise. Two or three questions per domain is a first reading, not proof. The map is final only after the sealed run.
+- **Readiness map:** a traffic light per domain. Rule (accepted by the owner 2026-10-08 as the draft; thresholds are [Guessing] and may be adjusted only before any mark is seen): green = Yes-or-Partly at least 80% of the top 5, no Misleading in the top 3, no stale-case passage in the top 5; red = under 60% or a Misleading in the top 3 on most questions; amber otherwise. Two or three questions per domain is a first reading, not proof. The map is final only after the sealed run.
 - Tuning (for instance the "who is speaking" passage labels) uses the tuning half only, and nothing seen on a sealed topic may motivate a rule.
 - Results on the 32 ruler questions are labelled "well-known settled topics, Recourse's picks" and are not compared with the live site, which was tuned on those topics.
 
@@ -84,7 +84,7 @@ AI tools (ChatGPT and Gemini, run by J and S) mark each passage Yes / Partly / N
 
 - **Voyage re-ranking:** about 4.5-7.5 million tokens for 30 questions plus the re-runs [guess]; the allowance on the owner's dashboard is not yet read and nothing is run before it is.
 - **Reviewer effort:** the largest cost; see section 5.
-- **Limits that remain:** AI marks are not lawyer marks; the ruler's answer key is Recourse's pick; 30 questions give crude domain readings and about 12 sealed questions show only large differences; the index lacks some cases (Satender Kumar Antil Jan 2026, Mohan Lal 2018, Youth Bar Association, Usha Chakraborty; Shreya Singhal and the domestic-violence cases are cut by its criminal-law filter; 2026 coverage is partial); the index speaks IPC/CrPC while users now speak BNS/BNSS.
+- **Limits that remain:** AI marks are not lawyer marks; the ruler's answer key is Recourse's pick; 30 questions give crude domain readings and about 12 sealed questions show only large differences; the index lacks some cases (Satender Kumar Antil Jan 2026, Youth Bar Association, Usha Chakraborty; Mohan Lal 2018 is in the index, contrary to what an earlier version of this plan said; Shreya Singhal and the domestic-violence cases are cut by its criminal-law filter; 2026 coverage is partial); the index speaks IPC/CrPC while users now speak BNS/BNSS.
 
 ## 10. Open items outside this plan (unchanged)
 

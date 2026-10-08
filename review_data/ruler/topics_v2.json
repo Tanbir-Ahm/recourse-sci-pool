@@ -147,7 +147,7 @@
         {"doc": 1000252711, "name": "Mukesh Singh v State (Narcotic Branch of Delhi)", "year": 2020, "role": "landmark"}
       ],
       "recourse_keys": [{"doc": 1000252711, "name": "Mukesh Singh v State (Narcotic Branch of Delhi)", "file": "mukesh_singh_v_state_narcotic_branch_of_delhi_chunks.json", "slugs": ["12"]}],
-      "notes": "Mohan Lal v State of Punjab (2018), the decision Mukesh Singh overruled, is not in the collection, so a search cannot show its own passages; Mukesh Singh itself quotes the overruled view, so 'earlier view later rejected' passages can still appear.",
+      "notes": "Mohan Lal v State of Punjab (2018), the decision Mukesh Singh overruled, IS in the collection and the index (doc 1000250931, titled 'MOHANLAL versus THE STATE OF PUNJAB'), so its own passages, which state the view the Constitution Bench rejected, can appear in a search: this is a direct currency trap. (A note of 2026-10-08 said it was missing; that was wrong, my search had split the name 'Mohan Lal' into two words.) Mukesh Singh also quotes the overruled view.",
       "questions": [
         {"id": "Q25", "kind": "lay", "text": "The police officer who filed the complaint against me also investigated the case himself. Does that mean the case against me must fail?"},
         {"id": "Q26", "kind": "legal", "text": "Does investigation of an NDPS case by the officer who is also the informant vitiate the trial and entitle the accused to acquittal without proof of actual bias?"}
@@ -189,7 +189,6 @@
   ],
   "index_gaps": [
     {"case": "Satender Kumar Antil v CBI, 2026 INSC 115 (15 Jan 2026)", "recourse_use": "BNSS Section 35(3) notice; Recourse's current-code restatement of Arnesh Kumar", "finding": "not in the collection: 2026 INSC 114 and 116 are present, 115 is not. The collection holds 214 judgments dated 2026 (INSC numbers up to 847), so 2026 coverage is partial in general"},
-    {"case": "Mohan Lal v State of Punjab (2018) 17 SCC 627", "recourse_use": "overruled by Mukesh Singh (2020)", "finding": "not in the collection (only the later judgment's quotation of it)"},
     {"case": "Youth Bar Association of India v Union of India (2016) 9 SCC 473", "recourse_use": "right to an FIR copy", "finding": "no title match in the collection"},
     {"case": "Usha Chakraborty v State of West Bengal (2023)", "recourse_use": "quashing; Bhajan Lal categories", "finding": "no title match in the collection"},
     {"case": "Shreya Singhal v Union of India (2015); Hiral P. Harsora v Kusum Narottamdas Harsora (2016); Satish Chander Ahuja v Sneha Ahuja (2020); S. Vanitha v Deputy Commissioner (2020)", "recourse_use": "IT Act 66A; domestic violence", "finding": "in the collection but left out of the index by its criminal-law filter ('not_criminal'), so a search cannot find them"},

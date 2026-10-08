@@ -47,7 +47,7 @@ The guard (`ruler.select`) hands out the frozen questions only for a final run w
 
 ## Judgments the ruler cannot test (the index or collection lacks them)
 
-Listed in `ruler_v2.json` under `index_gaps`. Satender Kumar Antil v CBI (2026 INSC 115), which Recourse treats as the current-code restatement of Arnesh Kumar, is not in the collection (2026 coverage is partial: 214 judgments, INSC numbers up to 847). Mohan Lal (2018), the decision Mukesh Singh overruled, is not in the collection. Youth Bar Association (2016) and Usha Chakraborty (2023) have no title match. Shreya Singhal (2015), Hiral Harsora (2016), Satish Chander Ahuja (2020) and S. Vanitha (2020) are in the collection but left out of the index by its criminal-law filter, so no search can find them.
+Listed in `ruler_v2.json` under `index_gaps`. Satender Kumar Antil v CBI (2026 INSC 115), which Recourse treats as the current-code restatement of Arnesh Kumar, is not in the collection (2026 coverage is partial: 214 judgments, INSC numbers up to 847). (Correction of 2026-10-08: Mohan Lal (2018), the decision Mukesh Singh overruled, IS in the collection and the index as 'MOHANLAL'; an earlier version of this paragraph said it was missing, because a search had split its name into two words.) Youth Bar Association (2016) and Usha Chakraborty (2023) have no title match. Shreya Singhal (2015), Hiral Harsora (2016), Satish Chander Ahuja (2020) and S. Vanitha (2020) are in the collection but left out of the index by its criminal-law filter, so no search can find them.
 
 ## Currency: the second pass (agreed with the owner, 2026-10-08)
 

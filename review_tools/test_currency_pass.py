@@ -114,6 +114,9 @@ if os.path.exists(corpus) and os.path.isdir(os.path.join(CP.DEFAULT_INDEX, "inde
         direct = sum(1 for q in real_pool for r in CP.top_rows(q["rows"], v, 5) if r["doc"] in stale_docs)
         ok = ok and direct == st.get("stale_slots", 0)
     check("stale slots per version agree with a direct recount from the pool", ok)
+    key_to_doc = {i["doc_key"]: d for d, i in tab.items()}
+    check("every known-stale case that has a document key resolves to a judgment in the index (Mohan Lal 2018 is in it, as 'MOHANLAL')", all(c["doc_key"] in key_to_doc for c in kc if c.get("doc_key") and c["expect"] != "not_adverse"), [c["name"] for c in kc if c.get("doc_key") and c["doc_key"] not in key_to_doc])
+    check("Mohan Lal is a known-stale case with a document key", any(c["name"].startswith("Mohan Lal") and c.get("doc_key") == "b2018_9_1006_1023" for c in kc))
     check("the register wrongly flags none of the 13 known-settled cases", not [x for x in out["register"] if x["false_alarm"]], [x["name"] for x in out["register"] if x["false_alarm"]])
 else:
     print("SKIP real-pool gate: no corpus store (set RECOURSE_CORPUS) or no index checkout")

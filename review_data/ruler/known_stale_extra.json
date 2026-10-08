@@ -7,9 +7,9 @@
       "source": "text of Rangappa (corpus id 29368), read 2026-10-08; three passages of it were in the first review pool"
     },
     {
-      "name": "Mohan Lal v. State of Punjab (2018)", "doc_key": null, "expect": "adverse",
-      "basis": "Overruled by Mukesh Singh v. State (Narcotic Branch of Delhi) (2020), Constitution Bench ('not good law and ... specifically overruled'). Not in the collection, so no passage of it can appear in a search; kept to test whether the register holds it.",
-      "source": "goodlaw/data/register/register.json (candidate row L2-xxx) and Recourse's NDPS doctrine map"
+      "name": "Mohan Lal v. State of Punjab (2018)", "doc_key": "b2018_9_1006_1023", "expect": "adverse",
+      "basis": "Overruled by Mukesh Singh v. State (Narcotic Branch of Delhi) (2020), Constitution Bench ('not good law and ... specifically overruled'). In the collection and embedded in the index (doc 1000250931, 'MOHANLAL versus THE STATE OF PUNJAB'), so its own passages can appear in a search; the register holds it as a candidate row (L2-034).",
+      "source": "goodlaw/data/register/register.json (candidate row L2-034) and Recourse's NDPS doctrine map"
     },
     {
       "name": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)", "doc_key": "c37199", "expect": "adverse_in_part",

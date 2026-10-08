@@ -182,6 +182,33 @@ def _keep(rec, today, by):
     _event(rec, "kept open at the weekly review", by, today)
 
 
+def sheet_records(path):
+    """The rows of a filled sheet: a CSV, or an Excel workbook (the sheet named 'Review sheet', else the first). Cells come back as text; a date cell becomes YYYY-MM-DD."""
+    if not str(path).lower().endswith(".xlsx"):
+        with open(path, encoding="utf-8", newline="") as fh:
+            return list(csv.DictReader(fh))
+    import datetime
+    import openpyxl
+    wb = openpyxl.load_workbook(path, data_only=True, read_only=True)
+    ws = wb["Review sheet"] if "Review sheet" in wb.sheetnames else wb[wb.sheetnames[0]]
+    rows = list(ws.iter_rows(values_only=True))
+    start = next((i for i, r in enumerate(rows) if r and r[0] == "item_id"), None)
+    if start is None:
+        raise ValueError("no header row starting with item_id")
+    head = [str(h) if h is not None else "" for h in rows[start]]
+    out = []
+    for r in rows[start + 1:]:
+        if not r or r[0] in (None, ""):
+            continue
+        rec = {}
+        for h, v in zip(head, r):
+            if not h:
+                continue
+            rec[h] = v.date().isoformat() if isinstance(v, (datetime.datetime, datetime.date)) and hasattr(v, "date") else ("" if v is None else (str(int(v)) if isinstance(v, float) and v == int(v) else str(v)))
+        out.append(rec)
+    return out
+
+
 def apply_decisions(rows, flags_doc, proposals_doc, sheet_path, reviewer, today):
     """Record a filled queue sheet. Mutates rows / flags_doc / proposals_doc; returns {'applied': [...], 'errors': [...]}. Rows are never deleted."""
     reg = R.Register(rows)
@@ -189,7 +216,7 @@ def apply_decisions(rows, flags_doc, proposals_doc, sheet_path, reviewer, today)
     by_flag = {f["id"]: f for f in flags_doc["flags"]}
     by_prop = {p["id"]: p for p in proposals_doc["proposals"]}
     out = {"applied": [], "errors": []}
-    for rec in csv.DictReader(open(sheet_path, encoding="utf-8")):
+    for rec in sheet_records(sheet_path):
         dec = (rec.get("decision") or "").strip().lower()
         if not dec:
             continue

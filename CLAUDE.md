@@ -10,5 +10,6 @@ When the owner says the big index, the checker, the search phases and the Overru
 
 - Nothing here says a case is "good law". The register and the checker only subtract trust or warn; a row that is not confirmed by a person is worded as "reported ... not yet confirmed by our reviewer".
 - Nothing is merged to `main`, no pull request is opened, and no scheduled routine is created without the owner's say-so. Development is on `claude/sharp-euler-unyfv0`.
+- One routine exists with the owner's say-so (2026-10-08): the **weekly register review sheet** (`REGISTER_ROUTINE_RUNBOOK.md`). It is read-only on the register and pushes only `register_review/` to `claude/sharp-euler-unyfv0`. Do not create other routines without asking.
 - The register's reviewer is Mr. Advocate (the owner's statement of 2026-10-07; list 1 only is recorded as verified). Flags are reviewed once every 7 days.
 - Indian Kanoon spending: keep at least Rs 200 in reserve; see `IK_PLAN.md`.

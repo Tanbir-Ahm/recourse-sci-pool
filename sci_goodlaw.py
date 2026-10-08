@@ -22,6 +22,8 @@
     python sci_goodlaw.py register-exam build --out register_exam/ | score --answers answers.jsonl   # the trap-question exam (needs the assistant to produce the answers)
     python sci_goodlaw.py register-export-site --out DIR                     # the dependency-free bundle for the Recourse owner (REGISTER_SITE_PATCH.md)
     python sci_goodlaw.py register-review-queue --out review_queue.csv       # the weekly sheet (every 7 days)
+    python sci_goodlaw.py register-weekly --out-root register_review         # the weekly step in one command (what the weekly routine runs)
+    python sci_goodlaw.py register-export-xlsx --out FILE.xlsx [--mode weekly]  # the register (or only the week's sheet) as an Excel workbook to read and fill in
     python sci_goodlaw.py register-review --sheet review_queue.csv --reviewer "Mr. Advocate"   # record the filled sheet
 
 `build` reads the two data branches into one searchable store (about 10 minutes, 2 GB) and indexes the citations in it. `check` writes a JSON bundle and a
@@ -273,6 +275,14 @@ def run_register(a):
         RB.build(a.pdf, path, built_on=today)
         return 0
     reg = R.Register.load(path)
+    if a.cmd == "register-weekly":
+        from goodlaw import register_weekly as W
+        print(W.run(a.out_root, today))
+        return 0
+    if a.cmd == "register-export-xlsx":
+        from goodlaw import register_xlsx as X
+        print("wrote", X.export(a.out, a.mode, today))
+        return 0
     if a.cmd == "register-check":
         hits = reg.lookup_case(a.name, a.year, a.cite)
         if not hits:
@@ -452,6 +462,11 @@ def main(argv=None):
     rs.add_argument("--file", required=True)
     rf = sub.add_parser("register-flags")
     rf.add_argument("--cards", default=os.path.join(HERE, "cards", "currency_cards.json"))
+    rwk = sub.add_parser("register-weekly")
+    rwk.add_argument("--out-root", default="register_review", help="the sheet is written to OUT_ROOT/DATE/ (CSV, Excel, SUMMARY.md); the register is not changed")
+    rxl = sub.add_parser("register-export-xlsx")
+    rxl.add_argument("--out", required=True)
+    rxl.add_argument("--mode", choices=["full", "weekly"], default="full", help="full: the whole register, every finding and the review backlog; weekly: only the week's review sheet")
     rw = sub.add_parser("register-sweep")
     rw.add_argument("--min-year", type=int, default=2000)
     rw.add_argument("--min-bench", type=int, default=3)
