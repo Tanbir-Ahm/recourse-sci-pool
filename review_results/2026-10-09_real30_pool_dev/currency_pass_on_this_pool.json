@@ -1,0 +1,563 @@
+{
+ "top_k": 5,
+ "versions": {
+  "A today": {
+   "questions": 19,
+   "slots": 95,
+   "own_firm": 0,
+   "own_candidate": 1,
+   "names_flagged_case": 2,
+   "after_slots_changed": 0,
+   "after_stale_slots": 4,
+   "stale_slots": 4,
+   "stale_slots_flagged": 1
+  },
+  "B no repeats": {
+   "questions": 19,
+   "slots": 95,
+   "own_firm": 0,
+   "own_candidate": 1,
+   "names_flagged_case": 2,
+   "after_slots_changed": 0,
+   "after_stale_slots": 4,
+   "stale_slots": 4,
+   "stale_slots_flagged": 1
+  },
+  "C rewrite": {
+   "questions": 12,
+   "slots": 60,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 1,
+   "after_slots_changed": 0,
+   "after_stale_slots": 3,
+   "stale_slots": 3,
+   "stale_slots_flagged": 0
+  },
+  "E no multiplier": {
+   "questions": 19,
+   "slots": 95,
+   "own_firm": 0,
+   "own_candidate": 4,
+   "names_flagged_case": 1,
+   "after_slots_changed": 0,
+   "after_stale_slots": 7,
+   "stale_slots": 7,
+   "stale_slots_flagged": 4
+  },
+  "F merged": {
+   "questions": 12,
+   "slots": 60,
+   "own_firm": 0,
+   "own_candidate": 0,
+   "names_flagged_case": 2,
+   "after_slots_changed": 0,
+   "after_stale_slots": 4,
+   "stale_slots": 4,
+   "stale_slots_flagged": 0
+  },
+  "S site shown": {
+   "questions": 19,
+   "slots": 97,
+   "own_firm": 0,
+   "own_candidate": 2,
+   "names_flagged_case": 3,
+   "after_slots_changed": 0,
+   "after_stale_slots": 5,
+   "stale_slots": 5,
+   "stale_slots_flagged": 2
+  }
+ },
+ "stale_slots": [
+  {
+   "qid": "R09",
+   "n": 5,
+   "version": "A today",
+   "doc": 41801,
+   "case": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 3,
+   "version": "A today",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 6,
+   "version": "A today",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R21",
+   "n": 6,
+   "version": "A today",
+   "doc": 1000250501,
+   "case": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R09",
+   "n": 5,
+   "version": "B no repeats",
+   "doc": 41801,
+   "case": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 3,
+   "version": "B no repeats",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 6,
+   "version": "B no repeats",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R21",
+   "n": 6,
+   "version": "B no repeats",
+   "doc": 1000250501,
+   "case": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R11",
+   "n": 1,
+   "version": "C rewrite",
+   "doc": 30081,
+   "case": "Kanhaiyalal v. Union of India (2008)",
+   "register_action": null
+  },
+  {
+   "qid": "R11",
+   "n": 4,
+   "version": "C rewrite",
+   "doc": 30081,
+   "case": "Kanhaiyalal v. Union of India (2008)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 9,
+   "version": "C rewrite",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R04",
+   "n": 5,
+   "version": "E no multiplier",
+   "doc": 37199,
+   "case": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R09",
+   "n": 5,
+   "version": "E no multiplier",
+   "doc": 41801,
+   "case": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 3,
+   "version": "E no multiplier",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 6,
+   "version": "E no multiplier",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R21",
+   "n": 6,
+   "version": "E no multiplier",
+   "doc": 1000250501,
+   "case": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R21",
+   "n": 8,
+   "version": "E no multiplier",
+   "doc": 1000250501,
+   "case": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R21",
+   "n": 7,
+   "version": "E no multiplier",
+   "doc": 1000250501,
+   "case": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R11",
+   "n": 1,
+   "version": "F merged",
+   "doc": 30081,
+   "case": "Kanhaiyalal v. Union of India (2008)",
+   "register_action": null
+  },
+  {
+   "qid": "R11",
+   "n": 4,
+   "version": "F merged",
+   "doc": 30081,
+   "case": "Kanhaiyalal v. Union of India (2008)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 3,
+   "version": "F merged",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 9,
+   "version": "F merged",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R04",
+   "n": 5,
+   "version": "S site shown",
+   "doc": 37199,
+   "case": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)",
+   "register_action": "badge"
+  },
+  {
+   "qid": "R09",
+   "n": 5,
+   "version": "S site shown",
+   "doc": 41801,
+   "case": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 3,
+   "version": "S site shown",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R15",
+   "n": 6,
+   "version": "S site shown",
+   "doc": 1000250111,
+   "case": "Rajesh Sharma v. State of U.P. (2017)",
+   "register_action": null
+  },
+  {
+   "qid": "R21",
+   "n": 7,
+   "version": "S site shown",
+   "doc": 1000250501,
+   "case": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "register_action": "badge"
+  }
+ ],
+ "stale_docs": {
+  "41070": "Suresh Kumar Koushal v. Naz Foundation (2013)",
+  "9258": "Sowmithri Vishnu v. Union of India (1985)",
+  "5622": "ADM Jabalpur v. Shivkant Shukla (1976)",
+  "25607": "Prabha Shankar Dubey v. State of M.P. (2003)",
+  "1251": "A.K. Gopalan v. State of Madras (1950)",
+  "1000250111": "Rajesh Sharma v. State of U.P. (2017)",
+  "41801": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+  "30108": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+  "1000250931": "Mohan Lal v. State of Punjab (2018)",
+  "37199": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)",
+  "10195": "Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996)",
+  "1000254957": "Ritu Chhabaria v. Union of India (2023)",
+  "36294": "Damodar S. Prabhu v. Sayed Babalal H. (2010)",
+  "30081": "Kanhaiyalal v. Union of India (2008)",
+  "7598": "Raj Kumar Karwal v. Union of India (1990)",
+  "1000250501": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+  "1000250634": "Subhash Kashinath Mahajan v. State of Maharashtra (2018)",
+  "39731": "Sangeet v. State of Haryana (2013)"
+ },
+ "settled_docs": {
+  "7332": "State of Haryana v. Bhajan Lal (1990)",
+  "5154": "Maneka Gandhi v. Union of India (1978)",
+  "4562": "Gurbaksh Singh Sibbia v. State of Punjab (1980)",
+  "4873": "Hussainara Khatoon v. Home Secretary, Bihar (1979)",
+  "14580": "D.K. Basu v. State of West Bengal (1996)",
+  "30317": "State of Punjab v. Baldev Singh (1999)",
+  "40960": "Lalita Kumari v. Government of U.P. (2013)",
+  "41736": "Arnesh Kumar v. State of Bihar (2014)",
+  "36322": "Rangappa v. Sri Mohan (2010)",
+  "1000251356": "Bir Singh v. Mukesh Kumar (2019)",
+  "1000250181": "K.S. Puttaswamy v. Union of India (2017)",
+  "1000250978": "Navtej Singh Johar v. Union of India (2018)",
+  "1000251042": "Joseph Shine v. Union of India (2018)"
+ },
+ "passages": 217,
+ "passages_without_case_info": 0,
+ "register": [
+  {
+   "name": "Suresh Kumar Koushal v. Naz Foundation (2013)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Sowmithri Vishnu v. Union of India (1985)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "ADM Jabalpur v. Shivkant Shukla (1976)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Prabha Shankar Dubey v. State of M.P. (2003)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "A.K. Gopalan v. State of Madras (1950)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "verified"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Rajesh Sharma v. State of U.P. (2017)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "State of Haryana v. Bhajan Lal (1990)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Maneka Gandhi v. Union of India (1978)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Gurbaksh Singh Sibbia v. State of Punjab (1980)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Hussainara Khatoon v. Home Secretary, Bihar (1979)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "D.K. Basu v. State of West Bengal (1996)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "State of Punjab v. Baldev Singh (1999)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Lalita Kumari v. Government of U.P. (2013)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Arnesh Kumar v. State of Bihar (2014)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Rangappa v. Sri Mohan (2010)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Bir Singh v. Mukesh Kumar (2019)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "K.S. Puttaswamy v. Union of India (2017)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Navtej Singh Johar v. Union of India (2018)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Joseph Shine v. Union of India (2018)",
+   "expect": "not_adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+   "expect": "adverse_in_part",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Mohan Lal v. State of Punjab (2018)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)",
+   "expect": "adverse_in_part",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Ritu Chhabaria v. Union of India (2023)",
+   "expect": "adverse_in_part",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Damodar S. Prabhu v. Sayed Babalal H. (2010)",
+   "expect": "adverse_in_part",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Kanhaiyalal v. Union of India (2008)",
+   "expect": "adverse",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Raj Kumar Karwal v. Union of India (1990)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+   "expect": "adverse",
+   "in_register": true,
+   "trust": [
+    "candidate"
+   ],
+   "false_alarm": false
+  },
+  {
+   "name": "Subhash Kashinath Mahajan v. State of Maharashtra (2018)",
+   "expect": "adverse_in_part",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  },
+  {
+   "name": "Sangeet v. State of Haryana (2013)",
+   "expect": "adverse_in_part",
+   "in_register": false,
+   "trust": [],
+   "false_alarm": false
+  }
+ ]
+}
