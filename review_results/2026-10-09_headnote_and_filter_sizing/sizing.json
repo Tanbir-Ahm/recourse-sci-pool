@@ -1,0 +1,369 @@
+{
+ "headnotes": {
+  "bucket_judgments_in_main_index": 2403,
+  "with_front_matter": 2247,
+  "median_chars": 5975,
+  "mean_chars": 7663,
+  "p90_chars": 13697,
+  "total_chars": 17219804,
+  "total_dollars": 0.534,
+  "dollars_if_capped_at_chars": {
+   "3000": 0.204,
+   "4000": 0.262,
+   "6000": 0.349
+  },
+  "tuning_key_authorities": [
+   {
+    "qid": "R01",
+    "key_docs": [
+     1000257082
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 1
+   },
+   {
+    "qid": "R02",
+    "key_docs": [
+     1000256838
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 1
+   },
+   {
+    "qid": "R04",
+    "key_docs": [
+     1000252377
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 2
+   },
+   {
+    "qid": "R08",
+    "key_docs": [
+     1000255600
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 2
+   },
+   {
+    "qid": "R09",
+    "key_docs": [
+     43149
+    ],
+    "has_law_report_headnote": false,
+    "version_A_first_rank": null
+   },
+   {
+    "qid": "R11",
+    "key_docs": [
+     1000252784
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 3
+   },
+   {
+    "qid": "R12",
+    "key_docs": [
+     1000256582
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 5
+   },
+   {
+    "qid": "R14",
+    "key_docs": [
+     27880
+    ],
+    "has_law_report_headnote": false,
+    "version_A_first_rank": null
+   },
+   {
+    "qid": "R17",
+    "key_docs": [
+     1000251837
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 1
+   },
+   {
+    "qid": "R19",
+    "key_docs": [
+     1000256082
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 1
+   },
+   {
+    "qid": "R20",
+    "key_docs": [
+     1000251932
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": null
+   },
+   {
+    "qid": "R22",
+    "key_docs": [
+     4726,
+     4795
+    ],
+    "has_law_report_headnote": false,
+    "version_A_first_rank": null
+   },
+   {
+    "qid": "R24",
+    "key_docs": [
+     1000255755
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 1
+   },
+   {
+    "qid": "R26",
+    "key_docs": [
+     1000254993
+    ],
+    "has_law_report_headnote": true,
+    "version_A_first_rank": 4
+   }
+  ]
+ },
+ "filter": {
+  "not_criminal_judgments_with_a_corpus_match": 33395,
+  "bands": [
+   {
+    "density_from": 8,
+    "density_below": 10,
+    "judgments": 260,
+    "chars": 8316662,
+    "dollars": 0.258,
+    "cumulative_judgments": 260,
+    "cumulative_dollars": 0.258
+   },
+   {
+    "density_from": 6,
+    "density_below": 8,
+    "judgments": 299,
+    "chars": 9374188,
+    "dollars": 0.291,
+    "cumulative_judgments": 559,
+    "cumulative_dollars": 0.549
+   },
+   {
+    "density_from": 5,
+    "density_below": 6,
+    "judgments": 182,
+    "chars": 5897528,
+    "dollars": 0.183,
+    "cumulative_judgments": 741,
+    "cumulative_dollars": 0.731
+   },
+   {
+    "density_from": 4,
+    "density_below": 5,
+    "judgments": 210,
+    "chars": 7019731,
+    "dollars": 0.218,
+    "cumulative_judgments": 951,
+    "cumulative_dollars": 0.949
+   },
+   {
+    "density_from": 3,
+    "density_below": 4,
+    "judgments": 293,
+    "chars": 8968235,
+    "dollars": 0.278,
+    "cumulative_judgments": 1244,
+    "cumulative_dollars": 1.227
+   },
+   {
+    "density_from": 2,
+    "density_below": 3,
+    "judgments": 473,
+    "chars": 16763547,
+    "dollars": 0.52,
+    "cumulative_judgments": 1717,
+    "cumulative_dollars": 1.747
+   },
+   {
+    "density_from": 1,
+    "density_below": 2,
+    "judgments": 965,
+    "chars": 38543183,
+    "dollars": 1.195,
+    "cumulative_judgments": 2682,
+    "cumulative_dollars": 2.942
+   },
+   {
+    "density_from": 0.0001,
+    "density_below": 1,
+    "judgments": 2919,
+    "chars": 220107363,
+    "dollars": 6.825,
+    "cumulative_judgments": 5601,
+    "cumulative_dollars": 9.767
+   },
+   {
+    "density_from": 0,
+    "density_below": 0.0001,
+    "judgments": 27791,
+    "chars": 724651445,
+    "dollars": 22.47,
+    "cumulative_judgments": 33392,
+    "cumulative_dollars": 32.237
+   }
+  ],
+  "samples": {
+   "6_to_10": {
+    "eligible": 486,
+    "titles": [
+     {
+      "density": 8.3,
+      "year": 1971,
+      "title": "MUNICIPAL CORPORATION OF DELHI v. SHIV SHANKAR"
+     },
+     {
+      "density": 6.3,
+      "year": 1951,
+      "title": "KESHAVAN MADHAVA MENON v. THE STATE OF BOMBAY"
+     },
+     {
+      "density": 6.6,
+      "year": 1968,
+      "title": "BHALCHANDRA alias BAPU & ANR v. STATE OF MAHARASHTRA"
+     },
+     {
+      "density": 8.2,
+      "year": 1998,
+      "title": "KAVITA v. STATE OF TAMIL NADU"
+     },
+     {
+      "density": 9.9,
+      "year": 2003,
+      "title": "Kendriya Vidyalaya Sangathan & Ors v. Ram Ratan Yada"
+     },
+     {
+      "density": 6.7,
+      "year": 2008,
+      "title": "Sarbdeep Singh Virk v. The State of Punjab and others"
+     },
+     {
+      "density": 6.1,
+      "year": 1979,
+      "title": "PHUL SINGH v. STATE OF HARYANA"
+     },
+     {
+      "density": 6.2,
+      "year": 1978,
+      "title": "STATE OF KERALA ETC. ETC v. ALASERRY MOHAMMED ETC. ETC"
+     },
+     {
+      "density": 9.5,
+      "year": 2013,
+      "title": "Suresh Kumar Koushal and another v. NAZ Foundation and others"
+     },
+     {
+      "density": 6.2,
+      "year": 1954,
+      "title": "ZAVERBHAI AMAIDAS v. THE STATE OF BOMBAY"
+     },
+     {
+      "density": 6.9,
+      "year": 2013,
+      "title": "Republic of Italy & Ors v. Union of India & Ors"
+     },
+     {
+      "density": 6.4,
+      "year": 2024,
+      "title": "IN RE: DIRECTIONS IN THE MATTER OF DEMOLITION OF STRUCTURES  versus"
+     },
+     {
+      "density": 7.2,
+      "year": 1994,
+      "title": "LAXMAN NAIK versus STATE OF ORISSA"
+     },
+     {
+      "density": 8.7,
+      "year": 1963,
+      "title": "KISHAN CHANDER v. STATE OF MADHYA PRADESH"
+     }
+    ]
+   },
+   "3_to_6": {
+    "eligible": 574,
+    "titles": [
+     {
+      "density": 4.1,
+      "year": 1998,
+      "title": "STATE OF GUJARAT AND ANR v. HON’BLE HIGH COURT OF GUJARAT"
+     },
+     {
+      "density": 3.0,
+      "year": 2011,
+      "title": "No.24432/10) Kusum Lata and others v. Satbir and others"
+     },
+     {
+      "density": 5.5,
+      "year": 2012,
+      "title": "CENTER FOR PIL & OTHERS v. UNION OF INDIA & OTHERS"
+     },
+     {
+      "density": 4.2,
+      "year": 2021,
+      "title": "LAXMIBAI CHANDARAGI& ANR. versus THE STATE OF KARNATKA & ORS."
+     },
+     {
+      "density": 4.4,
+      "year": 2011,
+      "title": "Rajeev Hitendra Pathak & Others v. Achyut Kashinath Karekar & Another"
+     },
+     {
+      "density": 5.3,
+      "year": 2000,
+      "title": "UNION OF INDIA AND ANR v. R.S. SHARMA"
+     },
+     {
+      "density": 5.5,
+      "year": 1955,
+      "title": "IN THE MATTER OF AN ADVOCATE OF THE SUPREME COURT. • versus ."
+     },
+     {
+      "density": 4.7,
+      "year": 2024,
+      "title": "THE STATE OF WEST BENGAL versus UNION OF INDIA"
+     },
+     {
+      "density": 3.0,
+      "year": 2020,
+      "title": "PAWAN KUMAR GUPTA versus STATE OF NCT OF DELHI"
+     },
+     {
+      "density": 3.1,
+      "year": 1952,
+      "title": "THE STATE OF BOMBAY v. VIRKUMAR GULABCHAND SHAH"
+     },
+     {
+      "density": 3.4,
+      "year": 2003,
+      "title": "Sarva Shramik Sangh v. M/s. Indian Smelting & Refining Co. Ltd. & Ors"
+     },
+     {
+      "density": 3.5,
+      "year": 1998,
+      "title": "KULDEEP SINGH v. THE COMMISSIONER OF POLICE & ORS"
+     },
+     {
+      "density": 3.0,
+      "year": 2014,
+      "title": "J.H. PATEL (D) BY LRS. AND ORS. versus NUBOARD MANUFACTURING CO. LTD. & ORS."
+     },
+     {
+      "density": 3.7,
+      "year": 1988,
+      "title": "RAJENDRAKUMAR NATVARLAL SHAH v. STATE OF GUJARAT & ORS"
+     }
+    ]
+   }
+  }
+ }
+}
