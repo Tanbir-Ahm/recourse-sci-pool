@@ -37,3 +37,29 @@ We checked whether the case named in your file shows up in the first 5 results (
 4. 3 of 27 law questions cannot be answered because the right case is missing from the index; the old case shows instead.
 5. Cost so far: about $0.13 of $9.88.
 6. Next: J and S mark 50 chats; then the lights per area; then you decide; the sealed run comes last.
+
+## The other 9 of the 19 practice questions (added the same day)
+
+The "about 7 in 10" is **10 of the 14 questions that could be tested**. The 19 practice questions split like this:
+
+| Group | Questions | What happened |
+|---|---|---|
+| Named case in the first five | 10 (R01, R02, R04, R08, R11, R12, R17, R19, R24, R26) | the search did what the file expects |
+| Named case not found | 4 (R09, R14, R20, R22) | see below |
+| Cannot be tested: the right case is not in the index | 3 (R06, R15, R21) | the old case shows instead |
+| Controls: no right answer by design | 2 (R28 divorce, R29 lawyer at interrogation) | to be marked "No" by the reviewers |
+
+**The 4 that missed, and where the named case was lost** (`miss_diagnosis/`, about 0.7 cent):
+- **R09, which court for a cheque presented in Delhi:** the search found Bridgestone (the 2015 ruling) but the re-ranker put it 36th of 60 and preferred the older line of cases (Dashrath and before), which the 2015 Act replaced. A currency problem, not a search problem.
+- **R14, business partner's cheating complaint:** the named case (Indian Oil v. NEPC) was nowhere near by meaning (rank 2,241 of 236,155 passages) because the everyday words do not look like its legal language. If it is put in front of the re-ranker it comes first. The first five were on-topic quashing cases anyway.
+- **R20, promise of marriage:** narrowly missed, 11th. Later cases that restate the rule rank above it. The first five are on-topic. The BNS 69 half of the question has no case law to find.
+- **R22, death sentence with no background inquiry:** not among the first 60 candidates, and even if added would land about 10th. The first five were on-topic sentencing cases.
+
+My reading of the first five for R14, R20 and R22 (not marks): the right kind of case, just not the one the file names. The file names one case per question and others can be right. R09 is the real problem.
+
+**Way forward**
+1. Wait for the marks: they say whether those first fives are useful.
+2. After this round, fix the library gaps as a new index snapshot (Arjun Panditrao is already in our collection but was filtered out as "not criminal"; the 2024 prisons order and the 2025 Shivangi Bansal ruling have to be fetched), then re-run only the practice questions that depend on them.
+3. For old rulings the 2015-type statute change has replaced (R09), add a warning next to the old ruling; Mr. Advocate to list the statute-driven ones.
+4. For everyday and story questions: test cheap fixes on the practice half only, after the marks (a wider candidate pool; indexing the short headnotes of 2017+ judgments [Guessing: the headnotes are cut from the index today]).
+5. Ask Mr. Advocate for two or three acceptable authorities per question so the "named case" test is fair.

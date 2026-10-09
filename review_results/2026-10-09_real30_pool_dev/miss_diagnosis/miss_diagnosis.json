@@ -1,0 +1,142 @@
+{
+ "spend": {
+  "rerank_tokens": 128501,
+  "rerank_calls": 6,
+  "embed_tokens": 239,
+  "embed_calls": 4,
+  "cap_rerank_tokens": 3000000,
+  "dollars_estimate": 0.0065,
+  "prices_per_million": {
+   "rerank-2": 0.05,
+   "voyage-law-2": 0.12
+  }
+ },
+ "results": {
+  "R09": {
+   "key_docs": [
+    43149
+   ],
+   "key_passages_in_index": 13,
+   "best_meaning_rank_of_any_key_passage": 31,
+   "key_passage_in_100_nearest_by_meaning": true,
+   "key_passage_in_keyword_top50": true,
+   "key_passage_in_section_search": false,
+   "key_passage_among_60_candidates": true,
+   "rank_after_rerank_if_candidate": 36,
+   "if_forced_in": null,
+   "keyword_terms_used": [
+    "payee",
+    "presents",
+    "dishonoured",
+    "cheque",
+    "through",
+    "account",
+    "branch",
+    "bank",
+    "delhi",
+    "though",
+    "drawn",
+    "kolkata"
+   ],
+   "section_numbers_seen": []
+  },
+  "R14": {
+   "key_docs": [
+    27880
+   ],
+   "key_passages_in_index": 37,
+   "best_meaning_rank_of_any_key_passage": 2241,
+   "key_passage_in_100_nearest_by_meaning": false,
+   "key_passage_in_keyword_top50": false,
+   "key_passage_in_section_search": false,
+   "key_passage_among_60_candidates": false,
+   "rank_after_rerank_if_candidate": null,
+   "if_forced_in": {
+    "key passages added": 8,
+    "best key passage rank among 68": 1,
+    "its re-ranker score": 0.656,
+    "score of the 5th result": 0.531
+   },
+   "keyword_terms_used": [
+    "business",
+    "partner",
+    "filed",
+    "cheating",
+    "against",
+    "because",
+    "couldn",
+    "return",
+    "money",
+    "invested",
+    "made",
+    "loss"
+   ],
+   "section_numbers_seen": []
+  },
+  "R20": {
+   "key_docs": [
+    1000251932
+   ],
+   "key_passages_in_index": 29,
+   "best_meaning_rank_of_any_key_passage": 15,
+   "key_passage_in_100_nearest_by_meaning": true,
+   "key_passage_in_keyword_top50": true,
+   "key_passage_in_section_search": false,
+   "key_passage_among_60_candidates": true,
+   "rank_after_rerank_if_candidate": 11,
+   "if_forced_in": null,
+   "keyword_terms_used": [
+    "consensual",
+    "sexual",
+    "relations",
+    "promise",
+    "marriage",
+    "later",
+    "broken",
+    "constitute",
+    "rape",
+    "section",
+    "alters",
+    "position"
+   ],
+   "section_numbers_seen": [
+    "69"
+   ]
+  },
+  "R22": {
+   "key_docs": [
+    4726,
+    4795,
+    1000254035
+   ],
+   "key_passages_in_index": 319,
+   "best_meaning_rank_of_any_key_passage": 58,
+   "key_passage_in_100_nearest_by_meaning": true,
+   "key_passage_in_keyword_top50": false,
+   "key_passage_in_section_search": false,
+   "key_passage_among_60_candidates": false,
+   "rank_after_rerank_if_candidate": null,
+   "if_forced_in": {
+    "key passages added": 8,
+    "best key passage rank among 68": 10,
+    "its re-ranker score": 0.598,
+    "score of the 5th result": 0.668
+   },
+   "keyword_terms_used": [
+    "younger",
+    "brother",
+    "convicted",
+    "killing",
+    "people",
+    "2019",
+    "village",
+    "land",
+    "fight",
+    "sessions",
+    "court",
+    "gave"
+   ],
+   "section_numbers_seen": []
+  }
+ }
+}
