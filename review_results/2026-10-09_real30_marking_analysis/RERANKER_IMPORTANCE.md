@@ -50,6 +50,7 @@ Three searches (by meaning, by keywords, by section number) each bring back pass
 
 - The re-ranker's effect on **usefulness** is not measured; only the named-authority test is clean. The decisive test is to have **the 39 never-shown merged-top-5 passages marked** (all 19 questions have some): 19 short prompts, in ChatGPT and Gemini, 38 chats, no money. **The pack is built** (`../2026-10-09_real30_rerank_test_pack/`, `Second_Batch_Pack.zip`; it also holds A's unmarked places 6 to 10 and two anchors per question) and the scorer is ready (`review_tools/score_rerank_arms.py`); it gives a real "without the re-ranker" top 5 to score against A, with the same two tools. A safety net (`--safety-net`) now keeps the merged top 5 in the list shown whatever the re-ranker thinks.
 - Its effect on the **answers** (the answer-writing step) has not been measured at all.
+- It is **not exactly repeatable**: re-running version A on the same 19 questions (2026-10-09, `rerank_effect/a_scores.json`) gave the same ten in the same order for 9, a neighbouring pair swapped in 10, and a different top-5 set in 4 (R04, R12, R15, R20: a 5th/6th swap; for R15 the retrieval itself changed). Places 5 and 6 are close to a coin toss for any pair of near-tied passages; this is service noise on top of the 19-question noise.
 - Whether `rerank-2` is better than another re-ranker, or than a re-ranker run only on the top 20, has not been tried.
 
 ## 8. What I would do

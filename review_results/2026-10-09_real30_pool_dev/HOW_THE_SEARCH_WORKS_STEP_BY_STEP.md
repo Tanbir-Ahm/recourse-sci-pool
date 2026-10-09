@@ -44,7 +44,7 @@
 
 ## 4b. The safety net (added 2026-10-09, opt-in with `--safety-net`; not used in the run above)
 
-Because the re-ranker decides most of what is shown and made the named case's position worse on 4 of 14 questions, the recipe can also keep what the three searches agreed on: the list to show is **A's ten, then whatever of the merged top 5 A's ten do not show** (a copy of the same text counts as shown), at most 15 passages. It costs no extra call. It brings up nothing that was not in the merged top 5 (so it does not rescue a case that is not among the 60 candidates). See `review_results/2026-10-09_real30_rerank_test_pack/README.md`.
+Because the re-ranker decides most of what is shown and made the named case's position worse on 4 of 14 questions, the recipe can also keep what the three searches agreed on: the list to show is **A's ten, untouched (so the top 5 always follows the rules already set), then whatever of the merged top 5 A's ten do not show**, placed after place ten and ranked by the same query-based score as A (a copy of the same text counts as shown), at most 15 passages. It costs no extra call. Without it, those passages are simply ranked by the question like every other candidate and land at a median place of 28 of 60. It brings up nothing that was not in the merged top 5 (so it does not rescue a case that is not among the 60 candidates). See `review_results/2026-10-09_real30_rerank_test_pack/README.md`.
 
 ## 5. What was NOT used
 

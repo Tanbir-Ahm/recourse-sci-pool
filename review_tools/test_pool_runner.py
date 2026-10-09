@@ -121,6 +121,27 @@ fb = eng_b.retrieve(Q)["cand"]
 hb = [metas3[r]["h"] for r in lb["A today"]]
 check("a passage the first stage ranks in its top five but the re-ranker buries is not in A's ten, and is brought up by the net",
       "hburied" in [metas3[r]["h"] for r in fb[:5]] and "hburied" not in hb and "hburied" in [metas3[r]["h"] for r in lb["M safety net"]], ([metas3[r]["h"] for r in fb[:5]], hb[:5], [metas3[r]["h"] for r in lb["M safety net"]]))
+# the top 5 is never touched, and the net is ranked by the question, not forced anywhere
+check("the net can be ranked by a score (best first, ties in merged order); without a score it keeps the merged order",
+      P.safety_net(list("abcde"), list("x"), 5, score={"a": 1, "b": 3, "c": 3, "d": 2, "e": 0}.get) == ["b", "c", "d", "a", "e"] and P.safety_net(list("abcde"), list("x"), 5) == list("abcde"))
+ranked = list("ABCDEFGHIJKLMNO")
+shown = P.list_to_show(ranked, ["Z", "C", "Y", "Z", "K", "X"], keep=10)
+check("the list to show: the rules' own ten untouched, then the net, each passage once, the net never above place eleven",
+      shown[:10] == ranked[:10] and shown[10:] == ["Z", "Y", "K", "X"] and shown[:5] == ranked[:5] and len(set(shown)) == len(shown), shown)
+check("an empty net changes nothing", P.list_to_show(ranked, [], keep=10) == ranked[:10])
+probe = P.Engine(metas, M, FakeClient(), P.Spend(10**9), fts, None, sleep=lambda s: None, safety=True)
+lp = probe.lists_for(Q)
+shown_ids = P.list_to_show(lp["A today"], lp["M safety net"], 10, lambda r: metas[r]["h"])
+check("through the engine: the first ten places of the list to show are exactly version A's ten, so the top 5 is the rules' top 5; the net follows after place ten",
+      shown_ids[:10] == lp["A today"] and shown_ids[:5] == lp["A today"][:5] and shown_ids[10:] == lp["M safety net"] and len(shown_ids) <= 15, (len(shown_ids), shown_ids[:5], lp["A today"][:5]))
+probe2 = P.Engine(metas, M, FakeClient(), P.Spend(10**9), fts, None, sleep=lambda s: None)
+cand_probe = probe2.retrieve(Q)
+rs_probe = probe2.rerank(Q, cand_probe["cand"])
+final_probe = {r: sc * probe2.weight(r, cand_probe["nums"]) for r, sc in rs_probe.items()}
+net_scores = [final_probe[r] for r in lp["M safety net"]]
+check("the net is ranked by the same query-based score as version A (re-ranker times weights), best first", net_scores == sorted(net_scores, reverse=True), net_scores)
+check("a net passage never outranks a passage of A's ten on that score (it is in the net because it scored below them)", all(final_probe[r] <= min(final_probe[x] for x in lp["A today"]) + 1e-12 for r in lp["M safety net"]))
+
 # pooling: the net is pooled whole, N by its top five, and rows carry both arms
 q_fake = {"id": "R90", "domain": "X", "kind": "legal", "text": Q, "half": "dev"}
 rec_b = P.build_question(q_fake, lb, metas3, collections.defaultdict(set, {m["h"]: {m["doc"]} for m in metas3}), title)

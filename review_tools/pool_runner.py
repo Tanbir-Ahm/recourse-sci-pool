@@ -9,7 +9,8 @@ up to 30 by "section N", merged by reciprocal rank into 60 candidates) and one r
 Guards: the index head must be the one recorded in the question file (`index_snapshot`); the re-rank tokens billed stay under --max-rerank-tokens (the run stops before the call that would
 cross it, saving what it has); a sealed question is run only with --final and a label. The private key is never read here.
 --safety-net adds two arms that cost no extra call: "N merged order (no re-ranker)" (the merged order before the re-ranker, top 10) and "M safety net" (the merged top 5 that version A's ten do not show),
-so that nothing the three searches agreed on is lost to the re-ranker: the list to show is A's ten followed by the net (at most 15). Off by default; the arms are labelled in the run record.
+so that nothing the three searches agreed on is lost to the re-ranker: the list to show (`list_to_show`) is A's ten, untouched, followed by the net (at most 15), the net ranked by the same query-based score as A
+(re-ranker times weights). The top 5 is always A's top 5 under the rules already set; the net only comes after place ten. Off by default; the arms are labelled in the run record.
 --supplement DIR (repeatable) searches "main index + side index(es)" (see build_supplement.py): a side index holds judgments the main index left out; the main index is not touched and the run says so.
 Writes OUT/questions.jsonl as it goes (a re-run skips the questions already there), then OUT/pool.json (per question: rows to be marked, shuffled with a fixed seed and numbered, and the ordered top
 results of every version for the scorer) and OUT/spend.json. PRIVATE: the pool names which version found what.
@@ -52,9 +53,11 @@ SHUFFLE_SEED = "real30-pool-v1"
 RETRYABLE = {"RateLimitError", "ServiceUnavailableError", "APIConnectionError", "Timeout", "TryAgain", "APIError"}
 
 
-def safety_net(fused, shown, depth=SAFETY_NET_DEPTH, ident=lambda x: x):
-    """The safety net: the passages of the merged top `depth` (the order the three searches agreed on, before the re-ranker) that the list `shown` does not hold, in merged order. `ident` maps an item to the
-    identity that decides 'already shown' (the passage hash, so that a copy of the same text counts as shown). Nothing is added when the re-ranker's list already holds them all."""
+def safety_net(fused, shown, depth=SAFETY_NET_DEPTH, ident=lambda x: x, score=None):
+    """The safety net: the passages of the merged top `depth` (the order the three searches agreed on, before the re-ranker) that the list `shown` does not hold. `ident` maps an item to the identity that
+    decides 'already shown' (the passage hash, so that a copy of the same text counts as shown). Nothing is added when the re-ranker's list already holds them all.
+    Order: the merged order, unless `score` (item -> number) is given; then best score first, ties in merged order. The runner passes the score of version A (the re-ranker's score times the weights), so the net is
+    ranked by the user's question under the rules already set, not by the first stage."""
     seen = {ident(x) for x in shown}
     out = []
     for x in fused[:depth]:
@@ -63,7 +66,22 @@ def safety_net(fused, shown, depth=SAFETY_NET_DEPTH, ident=lambda x: x):
             continue
         seen.add(i)
         out.append(x)
+    if score is not None:
+        out = [x for _, x in sorted(enumerate(out), key=lambda t: (-score(t[1]), t[0]))]
     return out
+
+
+def list_to_show(ranked, net, keep=10, ident=lambda x: x):
+    """The list to show: the first `keep` places are the rules' own order, untouched (so the top 5 always follows the rules already set); the safety net comes after them and never above place keep + 1;
+    each passage once (a copy of a shown text is not repeated)."""
+    head = list(ranked[:keep])
+    seen = {ident(x) for x in head}
+    tail = []
+    for x in net:
+        if ident(x) not in seen:
+            seen.add(ident(x))
+            tail.append(x)
+    return head + tail
 
 
 class SpendCapReached(RuntimeError):
@@ -169,11 +187,12 @@ class Engine:
         out = {}
         a = self.retrieve(q)
         rs_a = self.rerank(q, a["cand"])
-        out["A today"] = self.order_by({r: s * self.weight(r, a["nums"]) for r, s in rs_a.items()})[:10]
+        final_a = {r: s * self.weight(r, a["nums"]) for r, s in rs_a.items()}
+        out["A today"] = self.order_by(final_a)[:10]
         out["E no multiplier"] = self.order_by(rs_a)[:10]
-        if self.safety:                                      # no extra call: the merged order is what the re-ranker was given
+        if self.safety:                                      # no extra call: the merged order is what the re-ranker was given, and A's scores already exist
             out["N merged order (no re-ranker)"] = list(a["cand"][:10])
-            out["M safety net"] = safety_net(a["cand"], out["A today"], SAFETY_NET_DEPTH, lambda r: self.metas[r]["h"])
+            out["M safety net"] = safety_net(a["cand"], out["A today"], SAFETY_NET_DEPTH, lambda r: self.metas[r]["h"], score=lambda r: final_a[r])
         b = self.retrieve(q, dedupe=True)
         rs_b = self.rerank(q, b["cand"])
         out["B no repeats"] = self.order_by({r: s * self.weight(r, b["nums"]) for r, s in rs_b.items()})[:10]

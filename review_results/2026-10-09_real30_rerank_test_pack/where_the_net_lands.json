@@ -1,0 +1,156 @@
+{
+ "candidates_per_question": 60,
+ "merged_top5_passages_not_found_in_the_rerun": 1,
+ "reproduction_of_A_recorded_ten": {
+  "R01": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R02": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R04": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": false,
+   "places_that_differ": 3
+  },
+  "R06": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R08": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R09": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R11": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R12": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R14": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R15": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": false,
+   "places_that_differ": 7
+  },
+  "R17": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R19": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R20": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R21": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R22": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R24": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  },
+  "R26": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 2
+  },
+  "R28": {
+   "same_ten_in_the_same_order": false,
+   "same_ten_as_a_set": false,
+   "places_that_differ": 1
+  },
+  "R29": {
+   "same_ten_in_the_same_order": true,
+   "same_ten_as_a_set": true,
+   "places_that_differ": 0
+  }
+ },
+ "groups": {
+  "merged top 5 (all)": {
+   "passages": 94,
+   "median_rank": 11.5,
+   "rank_1-10": 43,
+   "rank_11-15": 14,
+   "rank_16-20": 4,
+   "rank_21-30": 12,
+   "rank_31-60": 21
+  },
+  "merged top 5, never shown to a reviewer": {
+   "passages": 38,
+   "median_rank": 32.0,
+   "rank_1-10": 5,
+   "rank_11-15": 6,
+   "rank_16-20": 2,
+   "rank_21-30": 5,
+   "rank_31-60": 20
+  },
+  "safety net (merged top 5 outside A's ten)": {
+   "passages": 51,
+   "median_rank": 28,
+   "rank_1-10": 0,
+   "rank_11-15": 14,
+   "rank_16-20": 4,
+   "rank_21-30": 12,
+   "rank_31-60": 21
+  }
+ },
+ "if_the_list_shown_were_simply_A_top_K": {
+  "10": {
+   "merged top 5 (all)": 43,
+   "merged top 5, never shown to a reviewer": 5,
+   "safety net (merged top 5 outside A's ten)": 0
+  },
+  "15": {
+   "merged top 5 (all)": 57,
+   "merged top 5, never shown to a reviewer": 11,
+   "safety net (merged top 5 outside A's ten)": 14
+  },
+  "20": {
+   "merged top 5 (all)": 61,
+   "merged top 5, never shown to a reviewer": 13,
+   "safety net (merged top 5 outside A's ten)": 18
+  },
+  "30": {
+   "merged top 5 (all)": 73,
+   "merged top 5, never shown to a reviewer": 18,
+   "safety net (merged top 5 outside A's ten)": 30
+  }
+ },
+ "named_cases_not_shown_by_A_ten (recorded run)": {
+  "R09": 36,
+  "R20": 11
+ }
+}
