@@ -1,0 +1,111 @@
+{
+ "schema": "real-links-1",
+ "written": "2026-10-09",
+ "note": "PRIVATE. Written before the seal was computed and before any search. The rule (accepted by the owner 2026-10-09, 'all the defaults'): a question that shares a case, or sits in the same doctrine group, with a ruler topic takes that topic's side (a frozen ruler topic means sealed); the rest are sealed by the hash rule inside each domain. 'shared case' is a mechanical overlap between the authorities the owner's file names and the ruler topic's expected judgments (checked 2026-10-09); 'doctrine group' is Claude's reading of the ruler's own group names and is not lawyer-checked.",
+ "links": [
+  {
+   "id": "R01",
+   "topic": "T07",
+   "basis": "shared case",
+   "note": "Pankaj Bansal (2023), Prabir Purkayastha (2024) and Vihaan Kumar (2025) are T07's expected judgments and the older rulings Q1 is set against"
+  },
+  {
+   "id": "R02",
+   "topic": "T01",
+   "basis": "shared case",
+   "note": "Arnesh Kumar (2014) is T01's expected judgment and a supporting authority of Q2"
+  },
+  {
+   "id": "R05",
+   "topic": "T08",
+   "basis": "doctrine group",
+   "note": "G-default-bail: both turn on the right to default bail under CrPC 167(2) / BNSS 187(3); T08 asks about the application and the court's duty, Q5 about a charge-sheet filed in time but called incomplete"
+  },
+  {
+   "id": "R10",
+   "topic": "T13",
+   "basis": "shared case",
+   "note": "Mukesh Singh (2020) and Mohan Lal (2018): the same question, the informant who also investigated"
+  },
+  {
+   "id": "R11",
+   "topic": "T14",
+   "basis": "shared case",
+   "note": "Tofan Singh (2020): the NDPS section 67 statement as a confession"
+  },
+  {
+   "id": "R12",
+   "topic": "T10",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute: a failed oral sale dressed up as cheating and breach of trust (the same group as T02)"
+  },
+  {
+   "id": "R12",
+   "topic": "T02",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute"
+  },
+  {
+   "id": "R14",
+   "topic": "T10",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute: a failed business deal turned into a cheating case"
+  },
+  {
+   "id": "R14",
+   "topic": "T02",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute"
+  },
+  {
+   "id": "R15",
+   "topic": "T09",
+   "basis": "doctrine group",
+   "note": "G-498a-relatives: relatives named in a 498A / BNS 85-86 case"
+  },
+  {
+   "id": "R16",
+   "topic": "T16",
+   "basis": "doctrine group",
+   "note": "G-dv-no-longer-residing: a Domestic Violence Act application by a woman who has left the shared household"
+  },
+  {
+   "id": "R24",
+   "topic": "T07",
+   "basis": "shared case",
+   "note": "Pankaj Bansal (2023) is T07's expected judgment and a named authority of Q24"
+  }
+ ],
+ "considered_not_linked": [
+  {
+   "id": "R03",
+   "topic": "T01 / T07",
+   "why": "D.K. Basu obligations (memo, relative, lawyer) are a different issue from arrest necessity and written grounds"
+  },
+  {
+   "id": "R07",
+   "topic": "T03 / T11",
+   "why": "compounding of a cheque offence under the NI Act (costs scale) is a separate statutory regime from compounding under CrPC 320"
+  },
+  {
+   "id": "R09",
+   "topic": "T04 / T15",
+   "why": "territorial jurisdiction for a cheque case is not the section 139 presumption"
+  },
+  {
+   "id": "R13",
+   "topic": "T03 / T11",
+   "why": "quashing under section 482 / BNSS 528 on a commercial settlement is a different power and stage from compounding or reducing a sentence on appeal; the nearest call, kept free"
+  },
+  {
+   "id": "R19",
+   "topic": "T03 / T11",
+   "why": "quashing a POCSO FIR on a compromise is a different issue from compounding after conviction"
+  },
+  {
+   "id": "R04, R06, R08, R17, R18, R20-R23, R25-R30",
+   "topic": "none",
+   "why": "no shared case and no shared doctrine group"
+  }
+ ]
+}

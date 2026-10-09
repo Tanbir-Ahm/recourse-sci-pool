@@ -130,6 +130,49 @@ except ValueError:
     ok = True
 check("build refuses an intake with problems", ok)
 
+# ---- link-first sealing --------------------------------------------------------------------------------------------------------------------------
+sides = {"T01": "dev", "T02": "dev", "T08": "sealed", "T13": "sealed"}
+links = [{"id": "R10", "topic": "T13", "basis": "shared case", "note": "x"}, {"id": "R11", "topic": "T02", "basis": "doctrine group", "note": "x"},
+         {"id": "R05", "topic": "T08", "basis": "doctrine group", "note": "x"}, {"id": "R01", "topic": "T01", "basis": "shared case", "note": "x"}]
+lreal, _, _ = RQ.build(rows, today="2026-10-09", links=links, ruler=(sides, "abc"))
+lh = {q["id"]: q["half"] for q in lreal["questions"]}
+check("a question linked to a sealed ruler topic is sealed and one linked to a dev topic is dev", lh["R10"] == "sealed" and lh["R05"] == "sealed" and lh["R11"] == "dev" and lh["R01"] == "dev", lh)
+dq = {q["id"]: q["domain"] for q in lreal["questions"]}
+by_dom = {d: [i for i, x in dq.items() if x == d] for d in RQ.DOMAINS}
+check("a domain whose forced questions already reach the target seals none of the others", sum(lh[i] == "sealed" for i in by_dom[dq["R10"]]) == 1 and sum(lh[i] == "sealed" for i in by_dom[dq["R05"]]) == 1)
+check("every domain still has its ceil(n/3) sealed or more", all(sum(lh[i] == "sealed" for i in ids) >= -(-len(ids) // 3) for ids in by_dom.values()))
+check("forced questions say why", lreal["questions"][9]["half_basis"] == "linked to ruler topic T13" and lreal["questions"][0]["half_basis"] == "linked to ruler topic T01" and lreal["questions"][2]["half_basis"] == "hash")
+check("the question file records the ruler's freeze hash and a split hash", lreal["ruler_freeze_sha256"] == "abc" and len(lreal["freeze"]["split_sha256"]) == 64 and RQ.check(lreal) == [], RQ.check(lreal))
+nolink, _, _ = RQ.build(rows, today="2026-10-09")
+check("without links the plain hash rule gives the same split as before", {q["id"]: q["half"] for q in nolink["questions"]} == {q["id"]: q["half"] for q in real["questions"]})
+t2 = copy.deepcopy(lreal)
+t2["links"][0]["topic"] = "T01"
+check("changing a link after the freeze is detected", any("split" in x or "sealing rule" in x for x in RQ.check(t2)), RQ.check(t2))
+try:
+    RQ.forced_sides([{"id": "R01", "topic": "T01"}, {"id": "R01", "topic": "T08"}], sides)
+    ok = False
+except ValueError:
+    ok = True
+check("a question linked to topics on both sides of the seal is refused", ok)
+try:
+    RQ.build(rows, links=[{"id": "R99", "topic": "T01", "basis": "x", "note": "x"}], ruler=(sides, "abc"))
+    ok = False
+except ValueError:
+    ok = True
+check("a link to a question that is not in the intake is refused", ok)
+leak = copy.deepcopy(lreal)
+leak["questions"][0]["expected_answer"] = "x"
+check("a question file that holds an answer-key field fails the check", any("key fields" in x for x in RQ.check(leak)))
+check("the built question file carries no trap notes", all("trap_note" not in q for q in lreal["questions"]))
+cut = copy.deepcopy(rows)
+for r in cut:
+    if r["domain"] == "K":
+        r["control_type"] = RQ.CUTOFF_TRAP
+        break
+check("a cut-off trap is a valid control type but does not cover the clean controls", RQ.validate(cut)[0] == [] and any("cut-off trap" in x for x in RQ.plan_gaps(cut)), RQ.plan_gaps(cut))
+rsides, rhash = RQ.ruler_sides()
+check("the ruler's frozen topics are read as sealed", [t for t, v in rsides.items() if v == "sealed"] == ["T08", "T12", "T13", "T16"] and len(rhash) == 64, rsides)
+
 # ---- the guard -----------------------------------------------------------------------------------------------------------------------------------------
 tmp = tempfile.mkdtemp()
 runs = os.path.join(tmp, "runs.jsonl")
@@ -176,7 +219,7 @@ check("every domain letter and its name are on the Read me sheet", all(any(str(c
 
 for dv in wb["Questions"].data_validations.dataValidation:
     items = dv.formula1.strip('"').split(",")
-    check(f"dropdown {dv.sqref} has no value with a comma in it and fits Excel's 255-character limit", len(dv.formula1) <= 257 and all(i.strip() in set(RQ.KINDS + RQ.NUMBERING + RQ.ERAS + RQ.LANGS + RQ.CONTROLS + tuple(RQ.DOMAINS) + ("yes", "no")) for i in items), dv.formula1)
+    check(f"dropdown {dv.sqref} has no value with a comma in it and fits Excel's 255-character limit", len(dv.formula1) <= 257 and all(i.strip() in set(RQ.KINDS + RQ.NUMBERING + RQ.ERAS + RQ.LANGS + RQ.CONTROL_VALUES + tuple(RQ.DOMAINS) + ("yes", "no")) for i in items), dv.formula1)
 check("a control typed as 'civil' or in the old wording is understood", RQ.normalise(dict(rows[0], control_type="civil"))["control_type"] == "civil/tax/divorce" and RQ.normalise(dict(rows[0], control_type="Civil, tax or divorce"))["control_type"] == "civil/tax/divorce")
 
 ws = wb["Questions"]

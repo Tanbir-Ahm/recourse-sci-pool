@@ -84,10 +84,27 @@ AI tools (ChatGPT and Gemini, run by J and S) mark each passage Yes / Partly / N
 
 ## 9. Costs and risks
 
-- **Voyage re-ranking:** about 4.5-7.5 million tokens for 30 questions plus the re-runs [guess]; the allowance on the owner's dashboard is not yet read and nothing is run before it is.
+- **Voyage re-ranking:** about 4.5-7.5 million tokens for 30 questions plus the re-runs [guess]; the balance was read on 2026-10-09 ($9.88, shared with the live site); the cap and the estimate are in section 11.
 - **Reviewer effort:** the largest cost; see section 5.
 - **Limits that remain:** AI marks are not lawyer marks; the ruler's answer key is Recourse's pick; 30 questions give crude domain readings and about 12 sealed questions show only large differences; the index lacks some cases (Satender Kumar Antil Jan 2026, Youth Bar Association, Usha Chakraborty; Mohan Lal 2018 is in the index, contrary to what an earlier version of this plan said; Shreya Singhal and the domestic-violence cases are cut by its criminal-law filter; 2026 coverage is partial); the index speaks IPC/CrPC while users now speak BNS/BNSS.
 
 ## 10. Open items outside this plan (unchanged)
 
 Weekly register routine not created; trap exam for the register not run; nobody has reviewed a register row; licence question on list 1; authority workbook part 1; Q05 versions C and F need re-running on the corrected rewrite; the register sweep wording is not widened (needs a precision test first).
+
+## 11. Decisions of 2026-10-09 (owner: "Yes, go ahead with all the defaults"), and what was built
+
+**The set.** The 30 questions are the owner's file (kept at `review_data/ruler/inputs/2026-10-09_owner_30_questions.xlsx`). Built by `review_tools/real30_build.py` into `review_data/ruler/real30_v1.json` (questions only; ids R01 to R30 = the owner's Q1 to Q30) and `real30_key_v1.json` (the private key: expected answers, authorities, trap pairs, sources; never read by a search or a pack builder). Label: "re-told from reported cases and government sources (owner's statement); not client messages; per-question source not recorded". Every figure from the set is a best case.
+
+**Link-first sealing** (`real30_links_v1.json`, written before the seal): a question that shares a case or a doctrine group with a ruler topic takes that topic's side; the rest are sealed by the hash rule inside each domain. **Sealed (11): R03, R05, R07, R10, R13, R16, R18, R23, R25, R27, R30.** Tuning (19): the rest. Freeze hash of the sealed content `8aa158ba889369b2c7b87872335d0abe261eedf4174a9f99df3154f82643381c`; split hash (sides, links, rule) `6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0`; both written before any search. Ten questions are linked (R01, R02, R05, R10, R11, R12, R14, R15, R16, R24); the borderline ones left free are recorded in the links file (R07, R13, R19 against the compounding group). The sealed questions are handed out once by `real_questions.select`.
+
+**Q6, Q15, Q21 are scored apart** as index gaps (their key authority is filtered out of the index or absent); they stay on the tuning side and are marked like the others. **Q29 is a cut-off trap**, not a control: the clean "High Court only or 2026" control is still missing and is asked of Mr. Advocate (the builder prints it as a GAP).
+
+**Two lights per domain** (replacing the single light of section 7; thresholds are [Guessing] and may be adjusted only before any mark is seen):
+- *Relevance light*, from search alone: green = Yes-or-Partly at least 80% of the top 5 and no Misleading in the top 3 on most questions; red = under 60% or a Misleading in the top 3 on most; amber otherwise. Questions whose key authority is unreachable are left out and counted as index gaps.
+- *Currency light*: for the domain's trap questions, green = no passage from a known-stale ruling (one that counts as stale in `real30_stale_status_v1.json`) in the top 5; red = one in the top 5 of most trap questions; amber otherwise; reported without the register and, separately, with the register's demotion. A narrower or contested older ruling is listed but does not count.
+Two questions or three per domain is a first reading; both lights are final only after the sealed run.
+
+**Index held at commit `3c80a26`** (10,503 judgments with passages, 236,155 passages; the 10,505 counted earlier included two judgments with no usable passage). The pool runner refuses another head. The 2026-10-12 refresh decision waits until the run is over.
+
+**Voyage.** Balance read from the owner's dashboard on 2026-10-09: **$9.88**, auto-recharge off; the account is shared with the live site. Re-ranking `rerank-2` is listed at about $0.05 per million tokens (third-party price lists, not Voyage's own page; the first real call's billed tokens will be checked against it) and query embeddings with `voyage-law-2` at $0.12 per million. The estimate for the whole run (tuning half, then the sealed half) is about 10 to 12 million re-rank tokens, about $0.50 to $0.60. **Cap set by Claude: 15 million re-rank tokens (about $0.75) for the tuning half and 30 million (about $1.50) for the whole experiment**; the runner stops at the cap and says so. Anything beyond is asked of the owner. At least $8 stays for the live site.

@@ -1,0 +1,641 @@
+{
+ "schema": "real-questions-1",
+ "built": "2026-10-09",
+ "seed": "recourse-real-v1",
+ "domains": {
+  "A": "Arrest and custody rights",
+  "B": "Bail: regular, anticipatory, default",
+  "C": "Cheque bounce (Section 138)",
+  "D": "NDPS",
+  "E": "FIR quashing; civil dispute dressed as crime (cheating, forgery, breach of trust)",
+  "F": "Marriage-related offences: 498A, dowry, 304B/306, domestic violence",
+  "G": "Sexual offences and POCSO",
+  "H": "Violent crime: murder, hurt, evidence, sentence",
+  "I": "Special-statute arrest and bail: PMLA, UAPA, SC/ST, corruption",
+  "J": "After conviction: appeal, suspended sentence, remission, parole",
+  "K": "Controls (no good answer)"
+ },
+ "questions": [
+  {
+   "id": "R01",
+   "owner_q": "Q1",
+   "text": "Police picked up my brother last night from Andheri after his car hit a scooter, they just said 'come with us' and took his phone, no paper nothing, my mother is crying since morning. Today they took him to magistrate for remand. The lawyer says it's fine but I read online they must give reasons?? Is this arrest even legal, can we get him out because they gave nothing in writing?",
+   "kind": "narrative",
+   "numbering": "none",
+   "domain": "A",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T07"
+  },
+  {
+   "id": "R02",
+   "owner_q": "Q2",
+   "text": "Police sent me a notice on WhatsApp under section 35 BNSS to come to the station tomorrow in a cheating case. Is a WhatsApp notice valid? Can they arrest me if I don't go?",
+   "kind": "everyday",
+   "numbering": "BNS/BNSS",
+   "domain": "A",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T01"
+  },
+  {
+   "id": "R03",
+   "owner_q": "Q3",
+   "text": "What are the mandatory obligations of the arresting officer under Sections 41B, 41D and 50A CrPC, and what are the consequences of non-compliance in light of the D.K. Basu requirements?",
+   "kind": "legal",
+   "numbering": "IPC/CrPC",
+   "domain": "A",
+   "trap": false,
+   "best_law_era": "before 2017",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R04",
+   "owner_q": "Q4",
+   "text": "Whether an order of anticipatory bail under Section 438 CrPC must necessarily be limited in time or until the filing of the charge-sheet, or whether it may continue till the end of trial.",
+   "kind": "legal",
+   "numbering": "IPC/CrPC",
+   "domain": "B",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R05",
+   "owner_q": "Q5",
+   "text": "my father is in jail since 88 days in a CBI bank fraud case. CBI filed chargesheet on day 87 but says investigation against 'other accused' is still going on and they didn't even give us copy of chargesheet yet. Our lawyer is saying we can get default bail under section 187 BNSS because chargesheet is incomplete, citing some Ritu Chhabaria case. Someone else told me that case was stopped by Supreme Court. Please tell what is the actual position, we are very confused.",
+   "kind": "narrative",
+   "numbering": "BNS/BNSS",
+   "domain": "B",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "linked to ruler topic T08"
+  },
+  {
+   "id": "R06",
+   "owner_q": "Q6",
+   "text": "My nephew is first time accused in a 2023 theft case, he's been in jail as undertrial for over a year. Does the new section 479 BNSS one-third rule help him even though the FIR was before the new law?",
+   "kind": "everyday",
+   "numbering": "BNS/BNSS",
+   "domain": "B",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R07",
+   "owner_q": "Q7",
+   "text": "I gave my old friend 6 lakhs cash for his shop, he gave cheque, it bounced, case going on in Margao court for four years now. Now suddenly he is ready to pay the cheque amount but my lawyer says he will have to pay 10% or 15% extra to settle as per some 2010 Supreme Court rules. His evidence is not recorded yet. How much extra does he actually have to pay, and can court close it even if I want to punish him?",
+   "kind": "narrative",
+   "numbering": "none",
+   "domain": "C",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R08",
+   "owner_q": "Q8",
+   "text": "In my cheque bounce case the magistrate ordered me to pay 20% interim compensation on the very first date. Is that compulsory?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "C",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R09",
+   "owner_q": "Q9",
+   "text": "Where the payee presents a dishonoured cheque through his account at the branch of his bank in Delhi, though the cheque is drawn on a Kolkata bank, which court has territorial jurisdiction to try the complaint?",
+   "kind": "legal",
+   "numbering": "none",
+   "domain": "C",
+   "trap": true,
+   "best_law_era": "before 2017",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R10",
+   "owner_q": "Q10",
+   "text": "Whether a prosecution under the NDPS Act stands vitiated merely because the informant/complainant police officer also conducted the investigation.",
+   "kind": "legal",
+   "numbering": "none",
+   "domain": "D",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "linked to ruler topic T13"
+  },
+  {
+   "id": "R11",
+   "owner_q": "Q11",
+   "text": "NCB made my cousin sign a statement in their office saying the ganja was his. Can they use that as his confession in court?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "D",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T14"
+  },
+  {
+   "id": "R12",
+   "owner_q": "Q12",
+   "text": "We had oral deal to sell our godown in Kanpur, buyer paid part only and then stopped, after one year we sold to someone else. Now the buyer's wife filed FIR under 420 and 406 IPC and even 354 against my mother!! Police filed chargesheet also. Magistrate earlier itself said it was civil matter. We never cheated anyone, it was their default. Can High Court quash this, and how long will this harassment go on?",
+   "kind": "narrative",
+   "numbering": "IPC/CrPC",
+   "domain": "E",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T02, T10"
+  },
+  {
+   "id": "R13",
+   "owner_q": "Q13",
+   "text": "Parameters governing the exercise of inherent jurisdiction under Section 528 BNSS to quash non-compoundable offences on the basis of a settlement in a predominantly commercial dispute.",
+   "kind": "legal",
+   "numbering": "BNS/BNSS",
+   "domain": "E",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R14",
+   "owner_q": "Q14",
+   "text": "My business partner filed a cheating FIR against me because I couldn't return the money he invested after the business made a loss. Can this FIR be cancelled?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "E",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T02, T10"
+  },
+  {
+   "id": "R15",
+   "owner_q": "Q15",
+   "text": "My daughter-in-law left our house in Meerut in March 2025 and now filed case under section 85 and 86 BNS against my son, me, my husband and even my married daughter in Pune. I am 64 with sugar problem. Neighbours say police will come and arrest all of us. I read there is family welfare committee and 2 month no-arrest rule?? Is that true or was it cancelled? We never asked for any dowry.",
+   "kind": "narrative",
+   "numbering": "BNS/BNSS",
+   "domain": "F",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T09"
+  },
+  {
+   "id": "R16",
+   "owner_q": "Q16",
+   "text": "My husband threw me out of the house three years ago. Is it too late to file a domestic violence case now?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "F",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "linked to ruler topic T16"
+  },
+  {
+   "id": "R17",
+   "owner_q": "Q17",
+   "text": "What are the essential ingredients to sustain a charge under Section 306 IPC, and does persistent matrimonial harassment without a proximate act of instigation suffice?",
+   "kind": "legal",
+   "numbering": "IPC/CrPC",
+   "domain": "F",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R18",
+   "owner_q": "Q18",
+   "text": "A man touched my 12-year-old daughter's chest over her clothes. Someone said it's not POCSO because there was no skin contact. Is that right?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "G",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R19",
+   "owner_q": "Q19",
+   "text": "My daughter is 16, her teacher misbehaved with her in school and touched her wrongly, we filed police case. Now the whole village and the school trust is pressuring my husband, he signed some compromise paper, and the teacher's people say High Court will cancel the FIR because of compromise. I don't want to compromise, my daughter is scared to go to school. Can they really close the case like this?",
+   "kind": "narrative",
+   "numbering": "none",
+   "domain": "G",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R20",
+   "owner_q": "Q20",
+   "text": "Whether consensual sexual relations on a promise of marriage that was later broken constitute rape, and how Section 69 BNS alters the position for conduct after 1 July 2024.",
+   "kind": "legal",
+   "numbering": "BNS/BNSS",
+   "domain": "G",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R21",
+   "owner_q": "Q21",
+   "text": "Whether a certificate under Section 63 BSA (formerly Section 65B Evidence Act) is a mandatory condition for admissibility of CCTV footage where the original device is not produced.",
+   "kind": "legal",
+   "numbering": "BNS/BNSS",
+   "domain": "H",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R22",
+   "owner_q": "Q22",
+   "text": "My younger brother was convicted under 302 IPC for killing two people in 2019 village land fight and the sessions court gave death sentence in 10 days after conviction, the judge didn't even ask about his background, he has a small child, he was never in trouble before, works in the jail bakery now. We are poor, the legal aid lawyer barely met him. Can the High Court change it to life? What can we show?",
+   "kind": "narrative",
+   "numbering": "IPC/CrPC",
+   "domain": "H",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R23",
+   "owner_q": "Q23",
+   "text": "In a parking fight my neighbour hit a man once on the head with a stick and he died in hospital. Will this be murder?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "H",
+   "trap": false,
+   "best_law_era": "before 2017",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R24",
+   "owner_q": "Q24",
+   "text": "ED questioned my father 4 times in 2023 but never arrested him. Now the special court has taken cognizance of their complaint and sent summons. Our CA says the moment he walks into court ED will arrest him and he'll need to pass those impossible twin conditions for bail that Supreme Court upheld in 2022. Should he just not go? We are terrified.",
+   "kind": "narrative",
+   "numbering": "none",
+   "domain": "I",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "linked to ruler topic T07"
+  },
+  {
+   "id": "R25",
+   "owner_q": "Q25",
+   "text": "Whether anticipatory bail under Section 438 CrPC is maintainable in a case under the SC/ST (Prevention of Atrocities) Act, and whether a preliminary enquiry or approval is required before arrest.",
+   "kind": "legal",
+   "numbering": "IPC/CrPC",
+   "domain": "I",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R26",
+   "owner_q": "Q26",
+   "text": "Standard for suspension of a sentence of life imprisonment pending appeal under Section 430 BNSS, and whether the appellate court may re-appreciate evidence at that stage.",
+   "kind": "legal",
+   "numbering": "BNS/BNSS",
+   "domain": "J",
+   "trap": false,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R27",
+   "owner_q": "Q27",
+   "text": "My uncle has done 16 years in Lucknow jail on a life sentence, his jail conduct is very good, he made furniture, other prisoners with less time already got out. Jail people told him he must give an application himself for remission but he doesn't know how and we live in Bihar and can't come often. Is it true that without application nothing will happen? Who has to start the process?",
+   "kind": "narrative",
+   "numbering": "none",
+   "domain": "J",
+   "trap": true,
+   "best_law_era": "2017 or later",
+   "language": "English",
+   "control_type": "",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R28",
+   "owner_q": "Q28",
+   "text": "Me and my wife both want divorce by mutual consent. Can the court skip the 6-month waiting period?",
+   "kind": "everyday",
+   "numbering": "none",
+   "domain": "K",
+   "trap": false,
+   "best_law_era": "unsure",
+   "language": "English",
+   "control_type": "civil/tax/divorce",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R29",
+   "owner_q": "Q29",
+   "text": "Does Section 38 BNSS entitle an arrested person to have his advocate physically present throughout custodial interrogation?",
+   "kind": "legal",
+   "numbering": "BNS/BNSS",
+   "domain": "K",
+   "trap": false,
+   "best_law_era": "unsure",
+   "language": "English",
+   "control_type": "cut-off trap",
+   "marks": {
+    "state": "none"
+   },
+   "half": "dev",
+   "half_basis": "hash"
+  },
+  {
+   "id": "R30",
+   "owner_q": "Q30",
+   "text": "Police registered FIR in Aug 2024 under 420 and 406 IPC for a fraud done in March 2024. What are the new BNS sections for these and what is the punishment?",
+   "kind": "everyday",
+   "numbering": "IPC/CrPC",
+   "domain": "K",
+   "trap": false,
+   "best_law_era": "unsure",
+   "language": "English",
+   "control_type": "statute table answers it",
+   "marks": {
+    "state": "none"
+   },
+   "half": "sealed",
+   "half_basis": "hash"
+  }
+ ],
+ "links": [
+  {
+   "id": "R01",
+   "topic": "T07",
+   "basis": "shared case",
+   "note": "Pankaj Bansal (2023), Prabir Purkayastha (2024) and Vihaan Kumar (2025) are T07's expected judgments and the older rulings Q1 is set against"
+  },
+  {
+   "id": "R02",
+   "topic": "T01",
+   "basis": "shared case",
+   "note": "Arnesh Kumar (2014) is T01's expected judgment and a supporting authority of Q2"
+  },
+  {
+   "id": "R05",
+   "topic": "T08",
+   "basis": "doctrine group",
+   "note": "G-default-bail: both turn on the right to default bail under CrPC 167(2) / BNSS 187(3); T08 asks about the application and the court's duty, Q5 about a charge-sheet filed in time but called incomplete"
+  },
+  {
+   "id": "R10",
+   "topic": "T13",
+   "basis": "shared case",
+   "note": "Mukesh Singh (2020) and Mohan Lal (2018): the same question, the informant who also investigated"
+  },
+  {
+   "id": "R11",
+   "topic": "T14",
+   "basis": "shared case",
+   "note": "Tofan Singh (2020): the NDPS section 67 statement as a confession"
+  },
+  {
+   "id": "R12",
+   "topic": "T10",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute: a failed oral sale dressed up as cheating and breach of trust (the same group as T02)"
+  },
+  {
+   "id": "R12",
+   "topic": "T02",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute"
+  },
+  {
+   "id": "R14",
+   "topic": "T10",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute: a failed business deal turned into a cheating case"
+  },
+  {
+   "id": "R14",
+   "topic": "T02",
+   "basis": "doctrine group",
+   "note": "G-civil-dispute"
+  },
+  {
+   "id": "R15",
+   "topic": "T09",
+   "basis": "doctrine group",
+   "note": "G-498a-relatives: relatives named in a 498A / BNS 85-86 case"
+  },
+  {
+   "id": "R16",
+   "topic": "T16",
+   "basis": "doctrine group",
+   "note": "G-dv-no-longer-residing: a Domestic Violence Act application by a woman who has left the shared household"
+  },
+  {
+   "id": "R24",
+   "topic": "T07",
+   "basis": "shared case",
+   "note": "Pankaj Bansal (2023) is T07's expected judgment and a named authority of Q24"
+  }
+ ],
+ "rules": {
+  "seal": "a question that shares a case, or sits in the same doctrine group, with a ruler topic takes that topic's side (a frozen topic means sealed); the remaining questions are ordered inside each domain by SHA-256(seed|id) and sealed until ceil(n/3) of the domain is sealed (forced ones count towards that)",
+  "sealed": "neither searched nor marked until the final run; select hands it out once and logs it"
+ },
+ "ruler_freeze_sha256": "48cbb184c9098e25739afd031a4f6ede190c1c246ad255da960c7e0ab89dbbc7",
+ "index_snapshot": {
+  "branch": "claude/sci-index",
+  "commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "judgments_embedded": 10503,
+  "passages": 236155,
+  "note": "The experiment runs on this index only; a changed head is refused by the pool runner."
+ },
+ "provenance": {
+  "statement": "Owner, 2026-10-09: the questions were 'retrieved from real legal scenarios and from recognised government websites'. Checked: the story questions retell the reported case they test (Q1, Q7, Q12, Q19). They are not client messages, and the file does not say which question came from which page.",
+  "label": "re-told from reported cases and government sources (owner's statement); not client messages; per-question source not recorded",
+  "reading": "every figure from this set is a best case: a question that describes the case it is meant to find is easier than a real client's",
+  "source_file": "review_data/ruler/inputs/2026-10-09_owner_30_questions.xlsx",
+  "source_sha256": "755d0ea574ef6e8a2df426ddb6c5d4c7070a8fc5d96c3375414b4ae007d884b3"
+ },
+ "freeze": {
+  "sha256": "8aa158ba889369b2c7b87872335d0abe261eedf4174a9f99df3154f82643381c",
+  "split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "questions": [
+   "R03",
+   "R05",
+   "R07",
+   "R10",
+   "R13",
+   "R16",
+   "R18",
+   "R23",
+   "R25",
+   "R27",
+   "R30"
+  ],
+  "note": "Written before any search was run on these questions. Run once, at the end, with `select --half sealed --final`."
+ }
+}

@@ -42,6 +42,10 @@ NUMBERING = ("none", "IPC/CrPC", "BNS/BNSS")
 ERAS = ("before 2017", "2017 or later", "unsure")
 LANGS = ("English", "Hinglish", "other")
 CONTROLS = ("civil/tax/divorce", "High Court only or 2026", "statute table answers it")  # no commas: Excel splits a dropdown list on them
+CUTOFF_TRAP = "cut-off trap"          # a domain K question whose newest ruling is not in the collection: older law answers it, so it is not a clean control
+CONTROL_VALUES = CONTROLS + (CUTOFF_TRAP,)
+RULE_TEXT = ("a question that shares a case, or sits in the same doctrine group, with a ruler topic takes that topic's side (a frozen topic means sealed); the remaining questions are "
+             "ordered inside each domain by SHA-256(seed|id) and sealed until ceil(n/3) of the domain is sealed (forced ones count towards that)")
 COLUMNS = ["id", "question", "kind", "numbering", "domain", "trap", "trap_note", "best_law_era", "language", "control_type", "anonymised_ok"]
 HEADERS = {"id": "ID (leave blank)", "question": "Question, as the client said it", "kind": "Kind", "numbering": "Section numbers used", "domain": "Domain (A to K)", "trap": "Currency trap?",
            "trap_note": "Which older ruling is the trap (private)", "best_law_era": "Best law is from", "language": "Language", "control_type": "Control type (domain K only)",
@@ -112,7 +116,7 @@ def normalise(r):
     r["trap"] = _norm(r["trap"], ("yes", "no"), {"y": "yes", "n": "no", "true": "yes", "false": "no"})
     r["best_law_era"] = _norm(r["best_law_era"], ERAS, ERA_ALIASES)
     r["language"] = _norm(r["language"], LANGS)
-    r["control_type"] = _norm(r["control_type"], CONTROLS, {"civil, tax or divorce": "civil/tax/divorce", "civil": "civil/tax/divorce", "tax": "civil/tax/divorce", "divorce": "civil/tax/divorce",
+    r["control_type"] = _norm(r["control_type"], CONTROL_VALUES, {"cut-off": CUTOFF_TRAP, "civil, tax or divorce": "civil/tax/divorce", "civil": "civil/tax/divorce", "tax": "civil/tax/divorce", "divorce": "civil/tax/divorce",
                                                             "high court only": "High Court only or 2026", "2026": "High Court only or 2026", "statute table": "statute table answers it"})
     r["anonymised_ok"] = _norm(r["anonymised_ok"], ("yes",), {"y": "yes", "true": "yes"})
     return r
@@ -140,8 +144,8 @@ def validate(rows):
             problems.append(f"{tag}: best law era {r['best_law_era']!r} is not one of {', '.join(ERAS)}")
         if r["language"] and r["language"] not in LANGS:
             problems.append(f"{tag}: language {r['language']!r} is not one of {', '.join(LANGS)}")
-        if r["domain"] == "K" and r["control_type"] and r["control_type"] not in CONTROLS:
-            problems.append(f"{tag}: control type {r['control_type']!r} is not one of {'; '.join(CONTROLS)}")
+        if r["domain"] == "K" and r["control_type"] and r["control_type"] not in CONTROL_VALUES:
+            problems.append(f"{tag}: control type {r['control_type']!r} is not one of {'; '.join(CONTROL_VALUES)}")
         if r["anonymised_ok"].lower() != "yes":
             problems.append(f"{tag}: the owner has not confirmed 'Anonymised? yes'")
         for what, rx in IDENTIFIERS:
@@ -184,23 +188,45 @@ def plan_gaps(rows):
         gaps.append(f"only {c} question(s) marked 'best law is from 2017 or later' (the owner may leave this blank when unsure), the plan wants at least 8")
     kc = {t: sum(1 for r in rows if r["domain"] == "K" and r["control_type"] == t) for t in CONTROLS}
     if n["K"] and any(v == 0 for v in kc.values()):
-        gaps.append("the controls should cover: " + "; ".join(f"{t} ({kc[t]})" for t in CONTROLS))
+        cut = sum(1 for r in rows if r["domain"] == "K" and r["control_type"] == CUTOFF_TRAP)
+        gaps.append("the controls should cover: " + "; ".join(f"{t} ({kc[t]})" for t in CONTROLS) + (f"; {cut} question(s) are cut-off traps, which do not count as clean controls" if cut else ""))
     return gaps
 
 
 # ---- the split ----------------------------------------------------------------------------------------------------------------------------------------
 
-def assign_halves(questions, seed=SEED):
-    """{id: 'sealed'|'dev'}: inside each domain, order by SHA-256(seed|id) and seal the first ceil(n/3)."""
-    out = {}
-    by = {}
+def ruler_sides(path=None):
+    """{ruler topic id: 'sealed' | 'dev'} and the ruler's freeze hash, read from the ruler (its frozen topics are the sealed ones)."""
+    with open(path or os.path.join(DATA, "ruler_v2.json"), encoding="utf-8") as fh:
+        ruler = json.load(fh)
+    frozen = set(ruler["freeze"]["topics"])
+    return {t["id"]: ("sealed" if t["id"] in frozen else "dev") for t in ruler["topics"]}, ruler["freeze"]["sha256"]
+
+
+def forced_sides(links, sides):
+    """{question id: 'sealed' | 'dev'} from the link table. A question linked to topics on both sides is an error: the rule cannot be kept."""
+    forced = {}
+    for l in links:
+        side = sides[l["topic"]]
+        if forced.setdefault(l["id"], side) != side:
+            raise ValueError(f"{l['id']} is linked to ruler topics on both sides of the seal")
+    return forced
+
+
+def assign_halves(questions, seed=SEED, forced=None):
+    """{id: 'sealed'|'dev'}. Questions in `forced` keep that side. Inside each domain the others are ordered by SHA-256(seed|id) and sealed until ceil(n/3) of the domain is sealed
+    (forced ones count; none of the others is sealed once the forced ones reach the target)."""
+    forced = forced or {}
+    out, by = {}, {}
     for q in questions:
         by.setdefault(q["domain"], []).append(q["id"])
     for d, ids in by.items():
-        ids = sorted(ids, key=lambda i: hashlib.sha256(f"{seed}|{i}".encode("utf-8")).hexdigest())
-        k = math.ceil(len(ids) / 3)
-        for j, i in enumerate(ids):
-            out[i] = "sealed" if j < k else "dev"
+        want = math.ceil(len(ids) / 3)
+        have = sum(1 for i in ids if forced.get(i) == "sealed")
+        free = sorted((i for i in ids if i not in forced), key=lambda i: hashlib.sha256(f"{seed}|{i}".encode("utf-8")).hexdigest())
+        extra = set(free[:max(want - have, 0)])
+        for i in ids:
+            out[i] = forced.get(i) or ("sealed" if i in extra else "dev")
     return out
 
 
@@ -210,24 +236,47 @@ def freeze_digest(real):
     return hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()
 
 
-def build(rows, today=None):
+def split_digest(real):
+    """Hash of the whole split: the seed, the rule, every question's domain and side, and the link table."""
+    body = {"seed": real["seed"], "rule": real["rules"]["seal"], "halves": sorted((q["id"], q["domain"], q["half"]) for q in real["questions"]),
+            "links": sorted((l["id"], l["topic"], l["basis"]) for l in real.get("links", []))}
+    return hashlib.sha256(json.dumps(body, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()
+
+
+def build(rows, today=None, links=None, ruler=None, snapshot=None, provenance=None):
+    """The question file (no answers, no trap notes: those go to the key). `links` is the list of {id, topic, basis, note}; `ruler` is (sides, freeze hash) from ruler_sides()."""
     problems, warnings = validate(rows)
     if problems:
         raise ValueError("; ".join(problems))
-    qs = [{"id": f"R{i:02d}", "text": r["question"], "kind": r["kind"], "numbering": r["numbering"], "domain": r["domain"], "trap": r["trap"] == "yes", "trap_note": r["trap_note"],
+    qs = [{"id": f"R{i:02d}", "owner_q": r.get("owner_q") or "", "text": r["question"], "kind": r["kind"], "numbering": r["numbering"], "domain": r["domain"], "trap": r["trap"] == "yes",
            "best_law_era": r["best_law_era"] or "unsure", "language": r["language"] or "English", "control_type": r["control_type"], "marks": {"state": "none"}} for i, r in enumerate(rows, 1)]
-    halves = assign_halves(qs)
+    links = list(links or [])
+    known = {q["id"] for q in qs}
+    if any(l["id"] not in known for l in links):
+        raise ValueError("a link names a question that is not in the intake")
+    forced = {}
+    if links:
+        sides, ruler_hash = ruler or ruler_sides()
+        forced = forced_sides(links, sides)
+    halves = assign_halves(qs, SEED, forced)
     for q in qs:
         q["half"] = halves[q["id"]]
+        q["half_basis"] = "linked to ruler topic " + ", ".join(sorted(l["topic"] for l in links if l["id"] == q["id"])) if q["id"] in forced else "hash"
     real = {"schema": SCHEMA, "built": today or datetime.date.today().isoformat(), "seed": SEED, "domains": {d: v[0] for d, v in DOMAINS.items()}, "questions": qs,
-            "rules": {"seal": "inside each domain, order by SHA-256(seed|id) and seal the first ceil(n/3)",
-                      "sealed": "neither searched nor marked until the final run; select hands it out once and logs it"}}
-    real["freeze"] = {"sha256": freeze_digest(real), "questions": sorted(q["id"] for q in qs if q["half"] == "sealed"),
+            "links": links, "rules": {"seal": RULE_TEXT, "sealed": "neither searched nor marked until the final run; select hands it out once and logs it"}}
+    if links:
+        real["ruler_freeze_sha256"] = ruler_hash
+    if snapshot:
+        real["index_snapshot"] = snapshot
+    if provenance:
+        real["provenance"] = provenance
+    real["freeze"] = {"sha256": freeze_digest(real), "split_sha256": split_digest(real), "questions": sorted(q["id"] for q in qs if q["half"] == "sealed"),
                       "note": "Written before any search was run on these questions. Run once, at the end, with `select --half sealed --final`."}
     return real, warnings, plan_gaps(rows)
 
 
-def check(real):
+def check(real, ruler_path=None):
+    """Problems found in a built question file: structure, the sealing rule reproduced from the links, both hashes, and (when the ruler file is given) the link sides."""
     bad = []
     ids = [q["id"] for q in real["questions"]]
     if len(ids) != len(set(ids)):
@@ -235,12 +284,26 @@ def check(real):
     for q in real["questions"]:
         if q["domain"] not in DOMAINS or q["kind"] not in KINDS or q["half"] not in ("sealed", "dev"):
             bad.append(f"{q['id']}: bad domain, kind or half")
-    if assign_halves(real["questions"], real["seed"]) != {q["id"]: q["half"] for q in real["questions"]}:
+    links = real.get("links", [])
+    forced = {}
+    if links and ruler_path:
+        sides, ruler_hash = ruler_sides(ruler_path)
+        forced = forced_sides(links, sides)
+        if real.get("ruler_freeze_sha256") != ruler_hash:
+            bad.append("the ruler's frozen topics have changed since the links were applied")
+    elif links:
+        forced = {q["id"]: q["half"] for q in real["questions"] if q.get("half_basis", "").startswith("linked")}
+    if assign_halves(real["questions"], real["seed"], forced) != {q["id"]: q["half"] for q in real["questions"]}:
         bad.append("the halves do not follow the sealing rule")
     if real["freeze"]["sha256"] != freeze_digest(real):
         bad.append("the sealed questions have changed since the freeze (hash differs)")
+    if "split_sha256" in real["freeze"] and real["freeze"]["split_sha256"] != split_digest(real):
+        bad.append("the split (sides or links) has changed since the freeze (hash differs)")
     if sorted(q["id"] for q in real["questions"] if q["half"] == "sealed") != real["freeze"]["questions"]:
         bad.append("freeze list differs from the questions marked sealed")
+    leaked = [k for q in real["questions"] for k in q if k in ("trap_note", "expected", "expected_answer", "authority", "authorities", "source_urls")]
+    if leaked:
+        bad.append("the question file holds key fields: " + ", ".join(sorted(set(leaked))))
     return bad
 
 
@@ -322,7 +385,7 @@ def write_template(path):
     for j, col in enumerate(COLUMNS, 1):
         q.column_dimensions[chr(64 + j)].width = widths[col]
     q.freeze_panes = "A2"
-    lists = {"kind": KINDS, "numbering": NUMBERING, "domain": tuple(DOMAINS), "trap": ("yes", "no"), "best_law_era": ERAS, "language": LANGS, "control_type": CONTROLS, "anonymised_ok": ("yes",)}
+    lists = {"kind": KINDS, "numbering": NUMBERING, "domain": tuple(DOMAINS), "trap": ("yes", "no"), "best_law_era": ERAS, "language": LANGS, "control_type": CONTROL_VALUES, "anonymised_ok": ("yes",)}
     for col, vals in lists.items():
         j = COLUMNS.index(col) + 1
         letter = chr(64 + j)

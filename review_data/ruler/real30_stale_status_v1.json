@@ -1,0 +1,114 @@
+{
+ "schema": "real-stale-1",
+ "written": "2026-10-09",
+ "note": "PRIVATE. What later courts did to the older rulings the owner's file sets its trap questions against, in Claude's reading, from our own judgment texts where marked 'text'. NOT lawyer-checked; Mr. Advocate is asked to confirm each line. 'counts_as_stale' says whether a passage from the case counts as a known-stale slot in the currency pass: only rulings overruled, modified, recalled or replaced by statute do; a ruling that is merely narrower than today's law does not.",
+ "rulings": {
+  "Pankaj Bansal v. Union of India (2023)": {
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "basis": "Required written grounds of arrest under PMLA; Mihir Rajesh Shah (2025) extends it to every offence. Still sound on its own ground.",
+   "source": "owner's file (Q1, Currency Traps sheet)"
+  },
+  "Prabir Purkayastha v. State (NCT of Delhi) (2024)": {
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "basis": "Written grounds under UAPA; extended to every offence by Mihir Rajesh Shah (2025).",
+   "source": "owner's file (Q1)"
+  },
+  "Vihaan Kumar v. State of Haryana (2025)": {
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "basis": "Treated writing as the ideal, not mandatory (owner's file); Mihir Rajesh Shah (2025) makes written grounds mandatory.",
+   "source": "owner's file (Q1); not tested against the text"
+  },
+  "Salauddin Abdulsamad Shaikh v. State of Maharashtra (1995/96)": {
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "Sushila Aggarwal v. State (NCT of Delhi) (2020), Constitution Bench: 'held not good law' (headnote and para 7.4).",
+   "source": "text of Sushila Aggarwal, read 2026-10-09"
+  },
+  "Ritu Chhabaria v. Union of India (2023)": {
+   "kind": "put_on_hold",
+   "counts_as_stale": true,
+   "expect": "adverse_in_part",
+   "basis": "Order of 26 Apr 2023 on default bail after an incomplete charge-sheet, deferred by the order of 1 May 2023 and clarified on 12 May 2023; CBI v. Kapil Wadhawan (2024, three judges) takes the contrary view. Mr. Advocate to confirm what became of the Union's recall application (the file's own To Verify item 2).",
+   "source": "owner's file (Q5); Kapil Wadhawan not tested against the text"
+  },
+  "Damodar S. Prabhu v. Sayed Babalal H. (2010)": {
+   "kind": "modified",
+   "counts_as_stale": true,
+   "expect": "adverse_in_part",
+   "basis": "Sanjabij Tari v. Kishore S. Borcar (2025), para 38: 'the aforesaid guidelines of compounding are modified as under' (nil / 5% / 7.5% / 10%).",
+   "source": "text of Sanjabij Tari, read 2026-10-09"
+  },
+  "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)": {
+   "kind": "superseded_by_statute",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "The Negotiable Instruments (Amendment) Act, 2015 (section 142(2)) gives the payee's branch jurisdiction; Bridgestone India v. Inderpal Singh (2015). Already in goodlaw/targets/known.json.",
+   "source": "owner's file (Q9) and known.json"
+  },
+  "Mohan Lal v. State of Punjab (2018)": {
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "Mukesh Singh v. State (Narcotic Branch of Delhi) (2020), Constitution Bench: 'not good law and ... specifically overruled'. Already in known_stale_extra.json.",
+   "source": "text of Mukesh Singh, read 2026-10-09"
+  },
+  "Kanhaiyalal v. Union of India (2008)": {
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "Tofan Singh v. State of Tamil Nadu (2020): Raj Kumar Karwal and Kanhaiyalal 'overruled' (headnote). The register does not hold it; the sweep queue has it as P-0235 (unreviewed).",
+   "source": "text of Tofan Singh, read 2026-10-09"
+  },
+  "Raj Kumar Karwal v. Union of India (1990)": {
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "Tofan Singh v. State of Tamil Nadu (2020), headnote 'overruled'. In the register as D2-KARWAL (candidate).",
+   "source": "text of Tofan Singh, read 2026-10-09"
+  },
+  "Rajesh Sharma v. State of U.P. (2017)": {
+   "kind": "modified",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "Social Action Forum for Manav Adhikar v. Union of India (2018), three judges: the Family Welfare Committee directions are impermissible (headnote). Already in goodlaw/targets/known.json.",
+   "source": "text of Social Action Forum, read 2026-10-09"
+  },
+  "Social Action Forum for Manav Adhikar v. Union of India (2018)": {
+   "kind": "contested",
+   "counts_as_stale": false,
+   "basis": "The file says Shivangi Bansal v. Sahib Bansal (2025, two judges) later directed the Allahabad High Court's Family Welfare Committee guidelines to be implemented, and that it is not reconciled with the larger bench. Shivangi Bansal is not in the collection and the point is unsettled (the file's own To Verify item 1).",
+   "source": "owner's file (Q15); not testable here"
+  },
+  "Shafhi Mohammad v. State of H.P. (2018)": {
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "expect": "adverse",
+   "basis": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal (2020), three judges: 'Shafhi Mohammad ... overruled' (headnote). The overruling case is not in the index.",
+   "source": "text of Arjun Panditrao, read 2026-10-09"
+  },
+  "Vijay Madanlal Choudhary v. Union of India (2022)": {
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "basis": "Not overruled: the twin conditions stand; Tarsem Lal v. Directorate of Enforcement (2024) deals with an accused who appears on summons after cognizance. A review is pending (owner's file).",
+   "source": "owner's file (Q24); Tarsem Lal read in part"
+  },
+  "Subhash Kashinath Mahajan v. State of Maharashtra (2018)": {
+   "kind": "modified",
+   "counts_as_stale": true,
+   "expect": "adverse_in_part",
+   "basis": "Directions recalled in the review order of 1 Oct 2019 (Union of India v. State of Maharashtra); Prathvi Raj Chauhan (2020): 'Dr. Subhash Kashinath's case have already been recalled'.",
+   "source": "text of Prathvi Raj Chauhan, read 2026-10-09"
+  },
+  "Sangeet v. State of Haryana (2012)": {
+   "kind": "modified",
+   "counts_as_stale": true,
+   "expect": "adverse_in_part",
+   "basis": "Overruled on one point (fixed-term sentences without remission) by Union of India v. V. Sriharan (2015, Constitution Bench) and Ravishankar (2019); the file's point (remission only on application) is displaced by In Re: Policy Strategy for Grant of Bail (2025). Both in the sweep queue (P-0329, P-0064).",
+   "source": "sweep proposals P-0329 and P-0064; text of In Re: Policy Strategy, read 2026-10-09"
+  }
+ }
+}
