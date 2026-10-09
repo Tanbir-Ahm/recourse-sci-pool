@@ -2231,9 +2231,9 @@
     "A": {
      "relevance": [
       "green",
-      1.0,
+      0.9,
       0,
-      1
+      2
      ],
      "currency": [
       "no trap",
@@ -2363,9 +2363,9 @@
     "A": {
      "relevance": [
       "green",
-      1.0,
+      0.9,
       0,
-      1
+      2
      ],
      "currency": [
       "no trap",
@@ -2494,10 +2494,10 @@
    "C rewrite": {
     "A": {
      "relevance": [
-      "green",
-      1.0,
-      0,
-      1
+      "amber",
+      0.7,
+      1,
+      2
      ],
      "currency": [
       "no trap",
@@ -2600,10 +2600,10 @@
    "E no multiplier": {
     "A": {
      "relevance": [
-      "green",
-      1.0,
-      0,
-      1
+      "amber",
+      0.6,
+      1,
+      2
      ],
      "currency": [
       "no trap",
@@ -2733,9 +2733,9 @@
     "A": {
      "relevance": [
       "green",
-      1.0,
+      0.9,
       0,
-      1
+      2
      ],
      "currency": [
       "no trap",
@@ -2838,10 +2838,10 @@
    "S site shown": {
     "A": {
      "relevance": [
-      "green",
-      1.0,
-      0,
-      1
+      "amber",
+      0.75,
+      1,
+      2
      ],
      "currency": [
       "no trap",

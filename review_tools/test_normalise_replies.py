@@ -43,6 +43,14 @@ check("the manifest names the prompt echo and the identical pair", m["prompt_ech
 check("the manifest keeps both fingerprints and the count of escapes removed", m["files"]["R03_A_ChatGPT.txt"]["markdown_escapes_removed"] > 0 and m["files"]["R03_A_ChatGPT.txt"]["sha256_as_received"] != m["files"]["R03_A_ChatGPT.txt"]["sha256_as_written"]
       and m["files"]["R06_A_ChatGPT.txt"]["dropped"] and m["files"]["R06_A_ChatGPT.txt"]["sha256_as_written"] is None)
 check("the files as received are untouched", open(os.path.join(src, "R03_A_ChatGPT.txt"), encoding="utf-8").read() == escaped)
+# a later upload added to the same output folder with its own manifest: the first manifest and the first files stay as they were
+src2 = tempfile.mkdtemp()
+open(os.path.join(src2, "R05_A_ChatGPT.txt"), "w", encoding="utf-8").write(escaped.replace("R03", "R05"))
+first_manifest = open(out + "_NORMALISATION.json", encoding="utf-8").read()
+m2 = N.run(src2, out, manifest_path=out + "_second_upload.json")
+check("a second run adds its file to the same folder and writes its manifest where it was told", os.path.exists(out + "_second_upload.json") and "R05_A_ChatGPT.txt" in os.listdir(out), os.listdir(out))
+check("the first manifest and the first files are not touched by the second run", open(out + "_NORMALISATION.json", encoding="utf-8").read() == first_manifest and open(os.path.join(out, "R03_A_ChatGPT.txt"), encoding="utf-8").read() == clean)
+check("the second file is written unescaped", ing.parse_reply(open(os.path.join(out, "R05_A_ChatGPT.txt"), encoding="utf-8").read())[0]["question_id"] == "R05")
 try:
     N.run(src, out + "2", drop=["nope.txt"])
     bad = False

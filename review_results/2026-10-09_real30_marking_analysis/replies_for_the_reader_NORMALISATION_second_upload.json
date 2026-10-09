@@ -1,0 +1,21 @@
+{
+ "source_folder": "/home/user/recourse-sci-pool/review_results/2026-10-09_real30_marking_analysis/replies_as_received_second_upload",
+ "files": {
+  "R02_A_ChatGPT.txt": {
+   "sha256_as_received": "474ddf247a6bfc96cc4e285773eb9f9dcb4227cf06184001da4ab562c7efaed8",
+   "markdown_escapes_removed": 7,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "46aedbab37ce5f6227e13bf6b41fdae876d1f0da1e7381d321f0a8e1588db460"
+  },
+  "R06_A_ChatGPT.txt": {
+   "sha256_as_received": "c0dc97575fd9625729371d8b843ea040a6fa8f78dc4c7dc48f7207380c3c625b",
+   "markdown_escapes_removed": 7,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "d3607e3f6b590cf0b729f4441c79f59cb3705ab4486c053d7c014a292a256a6b"
+  }
+ },
+ "identical_files": [],
+ "prompt_echoes": []
+}

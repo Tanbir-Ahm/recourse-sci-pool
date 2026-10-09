@@ -1,0 +1,146 @@
+{
+ "what": "My reading of the reasons the reviewers gave for marking a passage Misleading (not a mark by anyone else, and not a lawyer's reading). Re-made on 2026-10-09 after the two missing ChatGPT replies (R02, R06) arrived: 34 passages, 4 new (R02 #1, R02 #3, R06 #5, R06 #7).",
+ "classes": {
+  "R": "a later ruling or statute replaced what the passage says",
+  "S": "records a lawyer's or a party's submission, not the court's holding",
+  "O": "other reason"
+ },
+ "passages": {
+  "R02#1": {
+   "class": "S",
+   "why": "counsel's submission opposing electronic service, not the Court's holding (ChatGPT)"
+  },
+  "R02#3": {
+   "class": "S",
+   "why": "a submission advocating personal service, not adopted as the holding (ChatGPT)"
+  },
+  "R02#4": {
+   "class": "S",
+   "why": "the State's argument for electronic service, which the Court rejects (ChatGPT, Gemini A and B)"
+  },
+  "R02#8": {
+   "class": "S",
+   "why": "a lawyer's submission, not the Court's holding (ChatGPT A and B, Gemini B)"
+  },
+  "R04#3": {
+   "class": "R",
+   "why": "the earlier limited-duration approach that the Constitution Bench in the same judgment rejects (all runs)"
+  },
+  "R04#5": {
+   "class": "S",
+   "why": "counsel's submissions against limiting anticipatory bail (ChatGPT A and B)"
+  },
+  "R06#5": {
+   "class": "S",
+   "why": "a party's argument for entitlement under section 479, not a holding (ChatGPT)"
+  },
+  "R06#7": {
+   "class": "O",
+   "why": "about the former section 436A and rejects its direct application; does not decide the BNSS 479 question (ChatGPT)"
+  },
+  "R09#2": {
+   "class": "R",
+   "why": "old view on the payee's bank, superseded by the 2015 amendment of section 142(2) and later rulings (Gemini)"
+  },
+  "R09#5": {
+   "class": "R",
+   "why": "rule contrary to the account-based jurisdiction rule the later statute set (ChatGPT, Gemini)"
+  },
+  "R09#8": {
+   "class": "R",
+   "why": "jurisdiction on presentation alone, which conflicts with the statutory account-based rule (ChatGPT)"
+  },
+  "R11#1": {
+   "class": "R",
+   "why": "Kanhaiyalal: NCB statements as confessions, overruled by Tofan Singh (all runs)"
+  },
+  "R11#4": {
+   "class": "R",
+   "why": "Kanhaiyalal line: section 67 confession alone sustains conviction, contrary to Tofan Singh (all runs)"
+  },
+  "R11#6": {
+   "class": "R",
+   "why": "Binda (2023) recounting the earlier admissibility position, no longer good law after Tofan Singh (all runs)"
+  },
+  "R11#7": {
+   "class": "R",
+   "why": "recounts an earlier case's question and arguments; the earlier approach conflicts with the later ruling (one run; mixed with S)"
+  },
+  "R11#9": {
+   "class": "R",
+   "why": "repeats the Kanhaiyalal rule without the later rejection (all runs)"
+  },
+  "R11#10": {
+   "class": "R",
+   "why": "pre-Tofan Singh view that statements to narcotics officers sustain a conviction (ChatGPT A, Gemini A and B)"
+  },
+  "R11#11": {
+   "class": "R",
+   "why": "states the earlier rule rejected by Tofan Singh (all runs)"
+  },
+  "R11#12": {
+   "class": "R",
+   "why": "a Tofan Singh passage that reproduces the earlier position without the controlling prohibition (one run)"
+  },
+  "R11#14": {
+   "class": "R",
+   "why": "Central Bureau of Narcotics confessions admissible, the superseded view (all runs)"
+  },
+  "R14#7": {
+   "class": "O",
+   "why": "reproduces the complainant's fraud allegations, which could be read as a finding (ChatGPT)"
+  },
+  "R14#13": {
+   "class": "S",
+   "why": "the respondent's counsel's argument against quashing (ChatGPT, Gemini)"
+  },
+  "R14#15": {
+   "class": "O",
+   "why": "a different construction-business dispute whose quashing contentions failed (ChatGPT)"
+  },
+  "R15#1": {
+   "class": "R",
+   "why": "the Family Welfare Committee and no-arrest direction later declared impermissible (ChatGPT)"
+  },
+  "R15#7": {
+   "class": "R",
+   "why": "the committee and no-arrest directions later declared impermissible (ChatGPT)"
+  },
+  "R15#9": {
+   "class": "R",
+   "why": "the no-arrest direction, with the committee directions later declared impermissible (ChatGPT)"
+  },
+  "R20#4": {
+   "class": "O",
+   "why": "a slip in the Court's own text says 'complainant' for 'accused' (Gemini)"
+  },
+  "R20#10": {
+   "class": "O",
+   "why": "the same textual slip (Gemini)"
+  },
+  "R21#6": {
+   "class": "R",
+   "why": "Shafhi Mohammad, overruled by Arjun Panditrao (ChatGPT, Gemini)"
+  },
+  "R21#7": {
+   "class": "R",
+   "why": "Shafhi Mohammad argument later overruled by a larger bench (ChatGPT, Gemini; mixed with S)"
+  },
+  "R21#8": {
+   "class": "R",
+   "why": "Shafhi Mohammad approach later overruled (ChatGPT, Gemini)"
+  },
+  "R22#5": {
+   "class": "O",
+   "why": "rejects family circumstances as a ground to reduce a death sentence; could mislead if read alone (ChatGPT, Gemini)"
+  },
+  "R26#10": {
+   "class": "S",
+   "why": "counsel's submissions, not the Court's holding (ChatGPT)"
+  },
+  "R28#8": {
+   "class": "O",
+   "why": "reports a rejected waiver and the limits of Article 142; could suggest the waiting period can never be waived (ChatGPT A and B, Gemini)"
+  }
+ }
+}

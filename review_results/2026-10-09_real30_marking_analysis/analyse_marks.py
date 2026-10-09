@@ -164,8 +164,11 @@ for t in TREAT:
         row = {"questions": len(common)}
         for key in ("yes", "useful", "mis"):
             diffs = [per_q[t][v][q][key] - per_q[t]["A today"][q][key] for q in common]
+            loo = [sum(diffs[:i] + diffs[i + 1:]) / (len(diffs) - 1) for i in range(len(diffs))] if len(diffs) > 1 else []
             row[key] = {"version": sum(per_q[t][v][q][key] for q in common) / len(common), "A": sum(per_q[t]["A today"][q][key] for q in common) / len(common),
-                        "diff": sum(diffs) / len(diffs), "ci95": boot(diffs), "better": sum(d > 1e-9 for d in diffs), "same": sum(abs(d) <= 1e-9 for d in diffs), "worse": sum(d < -1e-9 for d in diffs)}
+                        "diff": sum(diffs) / len(diffs), "ci95": boot(diffs), "better": sum(d > 1e-9 for d in diffs), "same": sum(abs(d) <= 1e-9 for d in diffs), "worse": sum(d < -1e-9 for d in diffs),
+                        "leave_one_question_out": [min(loo), max(loo)] if loo else None,
+                        "without_R14": (sum(d for q, d in zip(common, diffs) if q != "R14") / (len(common) - 1)) if "R14" in common and len(common) > 1 else None}
         paired[t][v] = row
 out["paired_against_A_same_questions"] = paired
 
@@ -297,5 +300,138 @@ for qid, s in AH.items():
     grp["key authority in A's top 5" if s["hits"]["5"] else "key authority not in A's top 5 (answerable questions)"].append((qid, round(d["yes"], 2), round(d["useful"], 2), round(d["mis"], 2)))
 out["key_authority_vs_marks_A"] = {k: {"questions": [x[0] for x in v], "avg_yes": round(sum(x[1] for x in v) / len(v), 3) if v else None, "avg_useful": round(sum(x[2] for x in v) / len(v), 3) if v else None, "detail": v} for k, v in grp.items()}
 
-json.dump(out, open(HERE + "/analysis.json", "w"), indent=1, ensure_ascii=False, default=str)
+# ------------------------------------------------------------------ 8. why passages were called Misleading (my reading of the reasons: misleading_classification.json; R = replaced by a later ruling or statute, S = records a submission, O = other)
+CLS = json.load(open(HERE + "/misleading_classification.json"))["passages"]
+assert set(CLS) == {f"{m['qid']}#{m['no']}" for m in mis}, "the set of Misleading passages changed: classify the new ones in misleading_classification.json first"
+for m in out["misleading_passages"]:
+    m["class"] = CLS[f"{m['qid']}#{m['no']}"]["class"]
+def most_runs_said_misleading(m):
+    return m["votes"].get("Misleading", 0) * 2 > sum(m["votes"].values())
+out["misleading_why"] = {"passages": len(mis), "by_class": dict(collections.Counter(m["class"] for m in out["misleading_passages"])),
+                         "most_runs_said_misleading": sum(most_runs_said_misleading(m) for m in out["misleading_passages"]),
+                         "most_runs_said_misleading_by_class": dict(collections.Counter(m["class"] for m in out["misleading_passages"] if most_runs_said_misleading(m)))}
+# questions where A's top 5 carries replaced law: a passage of a listed stale ruling, or a passage classed R that some reviewer called Misleading
+a_top5 = {(q["qid"], n) for q in pool for _, n in version_rows(q, "A today")}
+repl_q = collections.defaultdict(list)
+for m in out["misleading_passages"]:
+    if m["class"] == "R" and (m["qid"], m["no"]) in a_top5:
+        repl_q[m["qid"]].append(f"passage {m['no']} called Misleading")
+for x in stale_rows:
+    if x["version"] == "A today" and x["counts_as_stale"]:
+        repl_q[x["qid"]].append(f"passage {x['no']} of the listed ruling {x['ruling']}")
+out["A_top5_with_replaced_law"] = {"questions": sorted(repl_q), "of": len(pool), "detail": {k: sorted(set(v)) for k, v in sorted(repl_q.items())}}
+
+# ------------------------------------------------------------------ 9. accuracy rating of version A (the search with the re-ranker): each tool alone and the consensus, with intervals
+def boot_mean(vals, n=5000):
+    r = random.Random(20261010)                  # a fresh generator per call: the same values always give the same interval, whatever was computed before
+    ms = sorted(sum(vals[r.randrange(len(vals))] for _ in vals) / len(vals) for _ in range(n))
+    return [round(ms[int(0.025 * n)], 3), round(ms[int(0.975 * n)], 3)]
+def sd(vals):
+    m = sum(vals) / len(vals)
+    return (sum((x - m) ** 2 for x in vals) / (len(vals) - 1)) ** 0.5
+def wilson(k, n, z=1.96):
+    """95% Wilson interval for k questions out of n (a share of questions, so the sample is the 19 questions themselves)."""
+    p_ = k / n
+    centre = (p_ + z * z / (2 * n)) / (1 + z * z / n)
+    half = z * ((p_ * (1 - p_) / n + z * z / (4 * n * n)) ** 0.5) / (1 + z * z / n)
+    return [round(max(0.0, centre - half), 3), round(min(1.0, centre + half), 3)]
+SOURCES = {"ChatGPT alone (order A run)": lambda p: runs[("ChatGPT", "A")].get(p),
+           "Gemini alone (order A run)": lambda p: runs[("Gemini", "A")].get(p),
+           "both tools, agreed only": agreed,
+           "both tools, ties to the lower mark": lower,
+           "both tools, ties to the higher mark": higher}
+def per_question(f, k=5):
+    per = {}
+    for q in pool:
+        ms = [f((q["qid"], n)) for _, n in version_rows(q, "A today")[:k]]
+        j = [m for m in ms if m is not None]
+        if j:
+            d = {m: sum(x == m for x in j) / len(j) for m in ("Yes", "Partly", "No", "Misleading")}
+            d["useful"] = d["Yes"] + d["Partly"]
+            per[q["qid"]] = d
+    return per
+acc = {}
+for name, f in SOURCES.items():
+    per = per_question(f)
+    row = {"questions": len(per)}
+    for key in ("Yes", "Partly", "No", "Misleading", "useful"):
+        row[key] = round(sum(per[q][key] for q in per) / len(per), 3)
+    for key in ("Yes", "useful", "Misleading"):
+        vals = [per[q][key] for q in per]
+        mean = sum(vals) / len(vals)
+        half = 1.96 * sd(vals) * (1 / len(vals) + 1 / 11) ** 0.5          # a fresh set of 11 questions (the sealed half) could average this far from the mean
+        row[key + "_ci95_over_questions"] = boot_mean(vals)
+        row[key + "_sd_between_questions"] = round(sd(vals), 3)
+        row[key + "_range_for_11_new_questions"] = [round(max(0.0, mean - half), 3), round(min(1.0, mean + half), 3)]
+    row["by_top_k"] = {str(k): {key: round(sum(d[key] for d in per_question(f, k).values()) / len(per_question(f, k)), 3) for key in ("Yes", "useful", "Misleading")} for k in (1, 3, 5)}
+    row["by_kind"] = {kd: {"questions": len([q for q in per if kind_of(q) == kd]), **{key: round(sum(per[q][key] for q in per if kind_of(q) == kd) / len([q for q in per if kind_of(q) == kd]), 3) for key in ("Yes", "useful", "Misleading")}} for kd in ("everyday", "narrative", "legal")}
+    if name != "both tools, agreed only":                                  # question-level measures need every passage to carry a mark
+        lvl = collections.Counter()
+        for qid, ms in {q["qid"]: [f((q["qid"], n)) for _, n in version_rows(q, "A today")] for q in pool}.items():
+            lvl["questions"] += 1
+            lvl["first_result_yes"] += ms[0] == "Yes"
+            lvl["first_result_useful"] += ms[0] in ("Yes", "Partly")
+            lvl["at_least_one_yes"] += "Yes" in ms
+            lvl["no_useful_passage"] += not any(m in ("Yes", "Partly") for m in ms)
+            lvl["misleading_in_top3"] += "Misleading" in ms[:3]
+            lvl["misleading_in_top5"] += "Misleading" in ms
+            lvl["replaced_law_in_top5"] += qid in repl_q
+            lvl["clean_question"] += ("Yes" in ms) and ("Misleading" not in ms[:3]) and (qid not in repl_q)
+        row["question_level"] = dict(lvl)
+        row["question_level_wilson95"] = {k: wilson(v, lvl["questions"]) for k, v in lvl.items() if k != "questions"}
+    acc[name] = row
+out["accuracy_rating_A"] = acc
+# how many individual passages in A's top 5 are replaced law (a listed stale ruling, or a passage classed R that some reviewer called Misleading)
+stale_in_A = {(x["qid"], x["no"]) for x in stale_rows if x["version"] == "A today" and x["counts_as_stale"]}
+r_in_A = {(m["qid"], m["no"]) for m in out["misleading_passages"] if m["class"] == "R"} & a_top5
+out["A_top5_with_replaced_law"]["passages"] = {"listed_stale": len(stale_in_A), "called_misleading_and_classed_replaced": len(r_in_A), "either": len(stale_in_A | r_in_A), "of_slots": len(a_top5),
+                                                "listed_stale_that_no_reviewer_called_misleading": sorted(f"{q}#{n}" for q, n in stale_in_A - r_in_A)}
+# question by question: the marks of A's top 5 in rank order under the cautious and the generous settlement, and whether the question is 'clean'
+bq = {}
+for q in pool:
+    its = version_rows(q, "A today")
+    lo = [lower((q["qid"], n)) for _, n in its]
+    hi = [higher((q["qid"], n)) for _, n in its]
+    cg = [runs[("ChatGPT", "A")].get((q["qid"], n)) for _, n in its]
+    gm = [runs[("Gemini", "A")].get((q["qid"], n)) for _, n in its]
+    rep = q["qid"] in repl_q
+    bq[q["qid"]] = {"kind": q["kind"], "domain": q["domain"], "key_reachable": KEY[q["qid"]]["reachable"], "replaced_law_in_top5": rep, "cautious": lo, "generous": hi, "ChatGPT": cg, "Gemini": gm,
+                    "clean_cautious": ("Yes" in lo) and ("Misleading" not in lo[:3]) and not rep, "clean_generous": ("Yes" in hi) and ("Misleading" not in hi[:3]) and not rep}
+out["accuracy_rating_A_by_question"] = bq
+# the same shares on the subsets: the 16 questions without the three index gaps (R06, R15, R21), and the 14 answerable ones (also without the two controls R28, R29)
+GAPS, CONTROLS = {"R06", "R15", "R21"}, {"R28", "R29"}
+subsets = {"all 19": set(qinfo), "16 without the three index gaps": set(qinfo) - GAPS, "14 answerable (also without the two controls)": set(qinfo) - GAPS - CONTROLS}
+sub = {}
+for sname, qs in subsets.items():
+    sub[sname] = {}
+    for name, f in SOURCES.items():
+        per = {q: d for q, d in per_question(f).items() if q in qs}
+        row = {"questions": len(per)}
+        for key in ("Yes", "useful", "Misleading"):
+            vals = [per[q][key] for q in per]
+            row[key] = round(sum(vals) / len(vals), 3)
+            row[key + "_ci95_over_questions"] = boot_mean(vals)
+        if name != "both tools, agreed only":
+            lvl = collections.Counter()
+            for qid in qs:
+                d = bq[qid]
+                ms = d["cautious"] if "lower" in name else d["generous"] if "higher" in name else d["ChatGPT"] if "ChatGPT" in name else d["Gemini"]
+                lvl["questions"] += 1
+                lvl["first_result_yes"] += ms[0] == "Yes"
+                lvl["at_least_one_yes"] += "Yes" in ms
+                lvl["clean_question"] += ("Yes" in ms) and ("Misleading" not in ms[:3]) and not d["replaced_law_in_top5"]
+            row["question_level"] = dict(lvl)
+        sub[sname][name] = row
+out["accuracy_rating_A_subsets"] = sub
+
+def round_floats(x, nd=9):
+    """Floats to 9 decimals, so the file is byte-identical from run to run (the last digit of a kappa otherwise depends on the order a set of labels is visited in)."""
+    if isinstance(x, float):
+        return round(x, nd)
+    if isinstance(x, dict):
+        return {k: round_floats(v, nd) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return [round_floats(v, nd) for v in x]
+    return x
+json.dump(round_floats(out), open(HERE + "/analysis.json", "w"), indent=1, ensure_ascii=False, default=str)
 print("written", HERE + "/analysis.json")

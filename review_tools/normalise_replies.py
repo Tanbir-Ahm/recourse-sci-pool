@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Prepares saved reviewer replies for ingest_llm_reviews.py without touching a single mark.
 
-    python review_tools/normalise_replies.py --src DIR_AS_RECEIVED --out DIR_FOR_THE_READER [--drop R06_A_ChatGPT.txt --drop R02_A_ChatGPT.txt ...]
+    python review_tools/normalise_replies.py --src DIR_AS_RECEIVED --out DIR_FOR_THE_READER [--drop R06_A_ChatGPT.txt --drop R02_A_ChatGPT.txt ...] [--manifest PATH]
 
 What it does (and nothing else):
   1. Undoes the Markdown escaping that copying a reply out of a chat window can add: a backslash before an underscore or a square bracket (\\_ \\[ \\]) is removed. These three sequences are not valid JSON, so a
@@ -9,6 +9,7 @@ What it does (and nothing else):
   2. Reports files that are not replies (the saved text is the prompt, recognisable by its opening line or its closing line) and files that are byte-identical to another file (the same reply saved under two
      names). It never drops a file on its own: a file named with --drop is left out of the output folder and the reason is written to the manifest; everything else is copied.
 Writes OUT/<files> and, next to OUT (not inside it, so the reader does not see it), OUT_NORMALISATION.json (per file: sha256 as received, sha256 as written, how many escapes were removed, whether it was dropped, and the problems found). The files as received stay untouched.
+A later upload (for example two replies that were missing) is added to an existing OUT folder with a second run and its own --manifest PATH, so the first manifest is not overwritten.
 """
 import argparse
 import hashlib
@@ -37,7 +38,7 @@ def sha(b):
     return hashlib.sha256(b).hexdigest()
 
 
-def run(src, out, drop=()):
+def run(src, out, drop=(), manifest_path=None):
     names = sorted(f for f in os.listdir(src) if os.path.isfile(os.path.join(src, f)))
     raw = {f: open(os.path.join(src, f), "rb").read() for f in names}
     same = {}
@@ -69,7 +70,7 @@ def run(src, out, drop=()):
                 fh.write(data)
             entry["sha256_as_written"] = sha(data)
         manifest["files"][f] = entry
-    with open(os.path.normpath(out) + "_NORMALISATION.json", "w", encoding="utf-8") as fh:
+    with open(manifest_path or os.path.normpath(out) + "_NORMALISATION.json", "w", encoding="utf-8") as fh:
         json.dump(manifest, fh, indent=1)
         fh.write("\n")
     return manifest
@@ -80,8 +81,9 @@ def main(argv=None):
     ap.add_argument("--src", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--drop", action="append", default=[], help="a file to leave out (not a reply, or a duplicate); may be repeated")
+    ap.add_argument("--manifest", default=None, help="where to write the manifest (default: OUT_NORMALISATION.json next to OUT); use it when adding a later upload to an existing OUT folder")
     a = ap.parse_args(argv)
-    m = run(a.src, a.out, a.drop)
+    m = run(a.src, a.out, a.drop, a.manifest)
     n = sum(e["markdown_escapes_removed"] for e in m["files"].values())
     print(f"{len(m['files'])} files read; {sum(1 for e in m['files'].values() if e['dropped'])} left out; {n} markdown escapes removed in {sum(1 for e in m['files'].values() if e['markdown_escapes_removed'])} files")
     for f, e in m["files"].items():

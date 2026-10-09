@@ -1,19 +1,19 @@
 {
  "reliability": {
   "runs": {
-   "ChatGPT/A": 195,
+   "ChatGPT/A": 217,
    "Gemini/A": 217,
    "ChatGPT/B": 69,
    "Gemini/B": 69
   },
-  "files_with_replies": 48,
+  "files_with_replies": 50,
   "mark_distribution_by_run": {
    "ChatGPT/A": {
-    "Yes": 71,
-    "Partly": 83,
-    "No": 18,
-    "Misleading": 23,
-    "n": 195
+    "Yes": 76,
+    "Partly": 92,
+    "No": 20,
+    "Misleading": 29,
+    "n": 217
    },
    "Gemini/A": {
     "Yes": 67,
@@ -39,11 +39,11 @@
   },
   "mark_distribution_by_tool": {
    "ChatGPT": {
-    "Yes": 0.367,
+    "Yes": 0.357,
     "Partly": 0.409,
     "No": 0.091,
-    "Misleading": 0.133,
-    "n": 264
+    "Misleading": 0.143,
+    "n": 286
    },
    "Gemini": {
     "Yes": 0.325,
@@ -54,28 +54,28 @@
    }
   },
   "chatgpt_vs_gemini_A_confusion": {
-   "ChatGPT Misleading / Gemini Misleading": 15,
-   "ChatGPT Misleading / Gemini No": 2,
-   "ChatGPT Misleading / Gemini Partly": 4,
-   "ChatGPT Misleading / Gemini Yes": 2,
-   "ChatGPT No / Gemini No": 17,
+   "ChatGPT Misleading / Gemini Misleading": 16,
+   "ChatGPT Misleading / Gemini No": 3,
+   "ChatGPT Misleading / Gemini Partly": 6,
+   "ChatGPT Misleading / Gemini Yes": 4,
+   "ChatGPT No / Gemini No": 19,
    "ChatGPT No / Gemini Partly": 1,
-   "ChatGPT Partly / Gemini No": 13,
-   "ChatGPT Partly / Gemini Partly": 62,
+   "ChatGPT Partly / Gemini No": 21,
+   "ChatGPT Partly / Gemini Partly": 63,
    "ChatGPT Partly / Gemini Yes": 8,
    "ChatGPT Yes / Gemini Misleading": 3,
-   "ChatGPT Yes / Gemini Partly": 17,
-   "ChatGPT Yes / Gemini Yes": 51
+   "ChatGPT Yes / Gemini Partly": 18,
+   "ChatGPT Yes / Gemini Yes": 55
   },
-  "on_the_common_passages_chatgpt_marks_higher_than_gemini": 33,
-  "on_the_common_passages_gemini_marks_higher_than_chatgpt": 17,
-  "common_passages": 195,
-  "agree_exactly": 145,
+  "on_the_common_passages_chatgpt_marks_higher_than_gemini": 42,
+  "on_the_common_passages_gemini_marks_higher_than_chatgpt": 22,
+  "common_passages": 217,
+  "agree_exactly": 153,
   "quotes_found_verbatim": {
    "ChatGPT": {
-    "found": 250,
-    "of": 264,
-    "share": 0.947
+    "found": 272,
+    "of": 286,
+    "share": 0.951
    },
    "Gemini": {
     "found": 246,
@@ -87,70 +87,70 @@
    {
     "a": "ChatGPT/A",
     "b": "ChatGPT/B",
-    "n": 60,
+    "n": 69,
     "kind": "same model, A vs B",
-    "agree4": 0.8166666666666667,
-    "kappa4": 0.7336561743341404,
-    "agree_useful": 0.8666666666666667,
-    "kappa_useful": 0.6595744680851066
+    "agree4": 0.797101449,
+    "kappa4": 0.704496788,
+    "agree_useful": 0.84057971,
+    "kappa_useful": 0.593900482
    },
    {
     "a": "ChatGPT/A",
     "b": "Gemini/A",
-    "n": 195,
+    "n": 217,
     "kind": "different models",
-    "agree4": 0.7435897435897436,
-    "kappa4": 0.6210943572205814,
-    "agree_useful": 0.882051282051282,
-    "kappa_useful": 0.6713081714913888
+    "agree4": 0.705069124,
+    "kappa4": 0.572545399,
+    "agree_useful": 0.838709677,
+    "kappa_useful": 0.578313253
    },
    {
     "a": "ChatGPT/A",
     "b": "Gemini/B",
-    "n": 60,
+    "n": 69,
     "kind": "different models",
-    "agree4": 0.7333333333333333,
-    "kappa4": 0.6210027635215158,
-    "agree_useful": 0.85,
-    "kappa_useful": 0.625
+    "agree4": 0.724637681,
+    "kappa4": 0.607837272,
+    "agree_useful": 0.84057971,
+    "kappa_useful": 0.60693941
    },
    {
     "a": "ChatGPT/B",
     "b": "Gemini/A",
     "n": 69,
     "kind": "different models",
-    "agree4": 0.6666666666666666,
-    "kappa4": 0.5276785714285714,
-    "agree_useful": 0.7681159420289855,
-    "kappa_useful": 0.43902439024390233
+    "agree4": 0.666666667,
+    "kappa4": 0.527678571,
+    "agree_useful": 0.768115942,
+    "kappa_useful": 0.43902439
    },
    {
     "a": "ChatGPT/B",
     "b": "Gemini/B",
     "n": 69,
     "kind": "different models",
-    "agree4": 0.7681159420289855,
-    "kappa4": 0.6684684684684684,
-    "agree_useful": 0.8260869565217391,
-    "kappa_useful": 0.5646687697160885
+    "agree4": 0.768115942,
+    "kappa4": 0.668468468,
+    "agree_useful": 0.826086957,
+    "kappa_useful": 0.56466877
    },
    {
     "a": "Gemini/A",
     "b": "Gemini/B",
     "n": 69,
     "kind": "same model, A vs B",
-    "agree4": 0.8115942028985508,
-    "kappa4": 0.7343009478672987,
-    "agree_useful": 0.8840579710144928,
-    "kappa_useful": 0.7264618434093162
+    "agree4": 0.811594203,
+    "kappa4": 0.734300948,
+    "agree_useful": 0.884057971,
+    "kappa_useful": 0.726461843
    }
   ],
   "order_effect": {
    "ChatGPT": {
-    "passages_in_both_orders": 60,
-    "marked_differently": 11,
+    "passages_in_both_orders": 69,
+    "marked_differently": 14,
     "higher_mark_in_the_order_where_it_was_earlier": 6,
-    "higher_mark_in_the_order_where_it_was_later": 5
+    "higher_mark_in_the_order_where_it_was_later": 8
    },
    "Gemini": {
     "passages_in_both_orders": 69,
@@ -164,115 +164,115 @@
   "agreed only": {
    "A today": {
     "questions": 19,
-    "yes": 0.39824561403508774,
-    "useful": 0.8166666666666668,
-    "mis": 0.07719298245614034
+    "yes": 0.398245614,
+    "useful": 0.795614035,
+    "mis": 0.077192982
    },
    "B no repeats": {
     "questions": 18,
-    "yes": 0.4314814814814815,
-    "useful": 0.8175925925925926,
-    "mis": 0.07037037037037036
+    "yes": 0.431481481,
+    "useful": 0.79537037,
+    "mis": 0.07037037
    },
    "E no multiplier": {
     "questions": 19,
-    "yes": 0.33157894736842103,
-    "useful": 0.7929824561403509,
-    "mis": 0.10964912280701755
+    "yes": 0.331578947,
+    "useful": 0.771929825,
+    "mis": 0.109649123
    },
    "C rewrite": {
-    "questions": 12,
-    "yes": 0.5027777777777778,
-    "useful": 0.8333333333333334,
-    "mis": 0.08333333333333333
+    "questions": 11,
+    "yes": 0.548484848,
+    "useful": 0.909090909,
+    "mis": 0.090909091
    },
    "F merged": {
-    "questions": 12,
-    "yes": 0.5027777777777778,
-    "useful": 0.75,
-    "mis": 0.09999999999999999
+    "questions": 11,
+    "yes": 0.548484848,
+    "useful": 0.8,
+    "mis": 0.109090909
    },
    "S site shown": {
     "questions": 19,
-    "yes": 0.306140350877193,
-    "useful": 0.7201754385964914,
-    "mis": 0.06052631578947369
+    "yes": 0.306140351,
+    "useful": 0.709649123,
+    "mis": 0.060526316
    }
   },
   "ties to the lower mark": {
    "A today": {
     "questions": 19,
-    "yes": 0.3263157894736842,
-    "useful": 0.7578947368421053,
-    "mis": 0.11578947368421055
+    "yes": 0.326315789,
+    "useful": 0.747368421,
+    "mis": 0.126315789
    },
    "B no repeats": {
     "questions": 19,
-    "yes": 0.33684210526315794,
-    "useful": 0.768421052631579,
-    "mis": 0.10526315789473684
+    "yes": 0.336842105,
+    "useful": 0.757894737,
+    "mis": 0.115789474
    },
    "E no multiplier": {
     "questions": 19,
-    "yes": 0.26315789473684215,
-    "useful": 0.7157894736842106,
-    "mis": 0.16842105263157897
+    "yes": 0.263157895,
+    "useful": 0.705263158,
+    "mis": 0.178947368
    },
    "C rewrite": {
     "questions": 12,
-    "yes": 0.39999999999999997,
+    "yes": 0.4,
     "useful": 0.75,
-    "mis": 0.11666666666666665
+    "mis": 0.133333333
    },
    "F merged": {
     "questions": 12,
-    "yes": 0.46666666666666673,
-    "useful": 0.7166666666666668,
-    "mis": 0.15
+    "yes": 0.466666667,
+    "useful": 0.716666667,
+    "mis": 0.166666667
    },
    "S site shown": {
     "questions": 19,
-    "yes": 0.23684210526315788,
-    "useful": 0.65,
-    "mis": 0.07631578947368421
+    "yes": 0.236842105,
+    "useful": 0.639473684,
+    "mis": 0.086842105
    }
   },
   "ties to the higher mark": {
    "A today": {
     "questions": 19,
-    "yes": 0.4947368421052632,
-    "useful": 0.8526315789473685,
-    "mis": 0.06315789473684211
+    "yes": 0.505263158,
+    "useful": 0.873684211,
+    "mis": 0.063157895
    },
    "B no repeats": {
     "questions": 19,
-    "yes": 0.5157894736842106,
-    "useful": 0.8631578947368422,
-    "mis": 0.05263157894736842
+    "yes": 0.526315789,
+    "useful": 0.884210526,
+    "mis": 0.052631579
    },
    "E no multiplier": {
     "questions": 19,
-    "yes": 0.42105263157894746,
-    "useful": 0.831578947368421,
-    "mis": 0.09473684210526316
+    "yes": 0.431578947,
+    "useful": 0.852631579,
+    "mis": 0.094736842
    },
    "C rewrite": {
     "questions": 12,
-    "yes": 0.48333333333333334,
-    "useful": 0.8333333333333334,
-    "mis": 0.08333333333333333
+    "yes": 0.483333333,
+    "useful": 0.9,
+    "mis": 0.083333333
    },
    "F merged": {
     "questions": 12,
-    "yes": 0.5,
-    "useful": 0.8166666666666668,
-    "mis": 0.09999999999999999
+    "yes": 0.516666667,
+    "useful": 0.866666667,
+    "mis": 0.1
    },
    "S site shown": {
     "questions": 19,
-    "yes": 0.35526315789473684,
-    "useful": 0.7535087719298247,
-    "mis": 0.04999999999999999
+    "yes": 0.355263158,
+    "useful": 0.774561404,
+    "mis": 0.05
    }
   }
  },
@@ -282,196 +282,271 @@
    "B no repeats": {
     "questions": 18,
     "yes": {
-     "version": 0.4314814814814815,
-     "A": 0.4203703703703704,
-     "diff": 0.011111111111111112,
+     "version": 0.431481481,
+     "A": 0.42037037,
+     "diff": 0.011111111,
      "ci95": [
       0.0,
-      0.03333333333333334
+      0.033333333
      ],
      "better": 1,
      "same": 17,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.0,
+      0.011764706
+     ],
+     "without_R14": 0.011764706
     },
     "useful": {
-     "version": 0.8175925925925926,
-     "A": 0.8064814814814816,
-     "diff": 0.011111111111111115,
+     "version": 0.79537037,
+     "A": 0.784259259,
+     "diff": 0.011111111,
      "ci95": [
       0.0,
-      0.03333333333333335
+      0.033333333
      ],
      "better": 1,
      "same": 17,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.0,
+      0.011764706
+     ],
+     "without_R14": 0.011764706
     },
     "mis": {
-     "version": 0.07037037037037036,
-     "A": 0.08148148148148147,
-     "diff": -0.011111111111111112,
+     "version": 0.07037037,
+     "A": 0.081481481,
+     "diff": -0.011111111,
      "ci95": [
-      -0.03333333333333334,
+      -0.033333333,
       0.0
      ],
      "better": 0,
      "same": 17,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      -0.011764706,
+      0.0
+     ],
+     "without_R14": -0.011764706
     }
    },
    "E no multiplier": {
     "questions": 19,
     "yes": {
-     "version": 0.33157894736842103,
-     "A": 0.39824561403508774,
-     "diff": -0.06666666666666668,
+     "version": 0.331578947,
+     "A": 0.398245614,
+     "diff": -0.066666667,
      "ci95": [
-      -0.15701754385964914,
-      0.004385964912280695
+      -0.157017544,
+      0.004385965
      ],
      "better": 2,
      "same": 12,
-     "worse": 5
+     "worse": 5,
+     "leave_one_question_out": [
+      -0.081481481,
+      -0.037037037
+     ],
+     "without_R14": -0.07037037
     },
     "useful": {
-     "version": 0.7929824561403509,
-     "A": 0.8166666666666668,
-     "diff": -0.02368421052631579,
+     "version": 0.771929825,
+     "A": 0.795614035,
+     "diff": -0.023684211,
      "ci95": [
-      -0.07807017543859651,
-      0.013157894736842111
+      -0.078070175,
+      0.013157895
      ],
      "better": 2,
      "same": 15,
-     "worse": 2
+     "worse": 2,
+     "leave_one_question_out": [
+      -0.02962963,
+      -0.001851852
+     ],
+     "without_R14": -0.02962963
     },
     "mis": {
-     "version": 0.10964912280701755,
-     "A": 0.07719298245614034,
-     "diff": 0.0324561403508772,
+     "version": 0.109649123,
+     "A": 0.077192982,
+     "diff": 0.03245614,
      "ci95": [
       0.0,
-      0.0868421052631579
+      0.086842105
      ],
      "better": 2,
      "same": 17,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.011111111,
+      0.034259259
+     ],
+     "without_R14": 0.034259259
     }
    },
    "C rewrite": {
-    "questions": 12,
+    "questions": 11,
     "yes": {
-     "version": 0.5027777777777778,
-     "A": 0.39444444444444443,
-     "diff": 0.10833333333333334,
+     "version": 0.548484848,
+     "A": 0.43030303,
+     "diff": 0.118181818,
      "ci95": [
-      -0.075,
-      0.3166666666666667
+      -0.072727273,
+      0.336363636
      ],
      "better": 5,
-     "same": 5,
-     "worse": 2
+     "same": 4,
+     "worse": 2,
+     "leave_one_question_out": [
+      0.03,
+      0.17
+     ],
+     "without_R14": 0.03
     },
     "useful": {
-     "version": 0.8333333333333334,
-     "A": 0.7652777777777778,
-     "diff": 0.06805555555555555,
+     "version": 0.909090909,
+     "A": 0.798484848,
+     "diff": 0.110606061,
      "ci95": [
-      -0.09999999999999999,
-      0.24305555555555558
+      -0.042424242,
+      0.284848485
      ],
      "better": 4,
      "same": 6,
-     "worse": 2
+     "worse": 1,
+     "leave_one_question_out": [
+      0.046666667,
+      0.161666667
+     ],
+     "without_R14": 0.088333333
     },
     "mis": {
-     "version": 0.08333333333333333,
-     "A": 0.06666666666666667,
-     "diff": 0.016666666666666666,
+     "version": 0.090909091,
+     "A": 0.072727273,
+     "diff": 0.018181818,
      "ci95": [
-      -0.05000000000000001,
-      0.10000000000000002
+      -0.054545455,
+      0.109090909
      ],
      "better": 1,
-     "same": 10,
-     "worse": 1
+     "same": 9,
+     "worse": 1,
+     "leave_one_question_out": [
+      -0.02,
+      0.04
+     ],
+     "without_R14": 0.02
     }
    },
    "F merged": {
-    "questions": 12,
+    "questions": 11,
     "yes": {
-     "version": 0.5027777777777778,
-     "A": 0.39444444444444443,
-     "diff": 0.10833333333333334,
+     "version": 0.548484848,
+     "A": 0.43030303,
+     "diff": 0.118181818,
      "ci95": [
-      -0.03333333333333333,
-      0.30416666666666664
+      -0.036363636,
+      0.327272727
      ],
      "better": 4,
-     "same": 7,
-     "worse": 1
+     "same": 6,
+     "worse": 1,
+     "leave_one_question_out": [
+      0.03,
+      0.16
+     ],
+     "without_R14": 0.03
     },
     "useful": {
-     "version": 0.75,
-     "A": 0.7652777777777778,
-     "diff": -0.01527777777777777,
+     "version": 0.8,
+     "A": 0.798484848,
+     "diff": 0.001515152,
      "ci95": [
-      -0.14166666666666664,
-      0.10555555555555557
+      -0.127272727,
+      0.127272727
      ],
      "better": 3,
      "same": 5,
-     "worse": 4
+     "worse": 3,
+     "leave_one_question_out": [
+      -0.031666667,
+      0.041666667
+     ],
+     "without_R14": -0.031666667
     },
     "mis": {
-     "version": 0.09999999999999999,
-     "A": 0.06666666666666667,
-     "diff": 0.03333333333333333,
+     "version": 0.109090909,
+     "A": 0.072727273,
+     "diff": 0.036363636,
      "ci95": [
-      -0.03333333333333333,
-      0.11666666666666668
+      -0.036363636,
+      0.127272727
      ],
      "better": 2,
-     "same": 9,
-     "worse": 1
+     "same": 8,
+     "worse": 1,
+     "leave_one_question_out": [
+      0.0,
+      0.06
+     ],
+     "without_R14": 0.04
     }
    },
    "S site shown": {
     "questions": 19,
     "yes": {
-     "version": 0.306140350877193,
-     "A": 0.39824561403508774,
-     "diff": -0.09210526315789473,
+     "version": 0.306140351,
+     "A": 0.398245614,
+     "diff": -0.092105263,
      "ci95": [
-      -0.2,
-      0.007894736842105265
+      -0.201754386,
+      0.009649123
      ],
      "better": 3,
      "same": 9,
-     "worse": 7
+     "worse": 7,
+     "leave_one_question_out": [
+      -0.119444444,
+      -0.066666667
+     ],
+     "without_R14": -0.097222222
     },
     "useful": {
-     "version": 0.7201754385964914,
-     "A": 0.8166666666666668,
-     "diff": -0.09649122807017543,
+     "version": 0.709649123,
+     "A": 0.795614035,
+     "diff": -0.085964912,
      "ci95": [
-      -0.20877192982456136,
-      -0.001754385964912292
+      -0.197368421,
+      0.00877193
      ],
      "better": 4,
-     "same": 7,
-     "worse": 8
+     "same": 8,
+     "worse": 7,
+     "leave_one_question_out": [
+      -0.101851852,
+      -0.053703704
+     ],
+     "without_R14": -0.053703704
     },
     "mis": {
-     "version": 0.06052631578947369,
-     "A": 0.07719298245614034,
-     "diff": -0.016666666666666666,
+     "version": 0.060526316,
+     "A": 0.077192982,
+     "diff": -0.016666667,
      "ci95": [
-      -0.05263157894736842,
-      0.020175438596491225
+      -0.053508772,
+      0.020175439
      ],
      "better": 2,
      "same": 13,
-     "worse": 4
+     "worse": 4,
+     "leave_one_question_out": [
+      -0.028703704,
+      -0.006481481
+     ],
+     "without_R14": -0.017592593
     }
    }
   },
@@ -479,196 +554,271 @@
    "B no repeats": {
     "questions": 19,
     "yes": {
-     "version": 0.33684210526315794,
-     "A": 0.3263157894736842,
-     "diff": 0.010526315789473684,
+     "version": 0.336842105,
+     "A": 0.326315789,
+     "diff": 0.010526316,
      "ci95": [
       0.0,
-      0.03157894736842106
+      0.031578947
      ],
      "better": 1,
      "same": 18,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.0,
+      0.011111111
+     ],
+     "without_R14": 0.011111111
     },
     "useful": {
-     "version": 0.768421052631579,
-     "A": 0.7578947368421053,
-     "diff": 0.010526315789473687,
+     "version": 0.757894737,
+     "A": 0.747368421,
+     "diff": 0.010526316,
      "ci95": [
       0.0,
-      0.03157894736842106
+      0.031578947
      ],
      "better": 1,
      "same": 18,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.0,
+      0.011111111
+     ],
+     "without_R14": 0.011111111
     },
     "mis": {
-     "version": 0.10526315789473684,
-     "A": 0.11578947368421055,
-     "diff": -0.010526315789473684,
+     "version": 0.115789474,
+     "A": 0.126315789,
+     "diff": -0.010526316,
      "ci95": [
-      -0.03157894736842106,
+      -0.031578947,
       0.0
      ],
      "better": 0,
      "same": 18,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      -0.011111111,
+      0.0
+     ],
+     "without_R14": -0.011111111
     }
    },
    "E no multiplier": {
     "questions": 19,
     "yes": {
-     "version": 0.26315789473684215,
-     "A": 0.3263157894736842,
-     "diff": -0.06315789473684212,
+     "version": 0.263157895,
+     "A": 0.326315789,
+     "diff": -0.063157895,
      "ci95": [
-      -0.1473684210526316,
+      -0.147368421,
       0.0
      ],
      "better": 0,
      "same": 16,
-     "worse": 3
+     "worse": 3,
+     "leave_one_question_out": [
+      -0.066666667,
+      -0.033333333
+     ],
+     "without_R14": -0.066666667
     },
     "useful": {
-     "version": 0.7157894736842106,
-     "A": 0.7578947368421053,
-     "diff": -0.042105263157894736,
+     "version": 0.705263158,
+     "A": 0.747368421,
+     "diff": -0.042105263,
      "ci95": [
-      -0.10526315789473684,
-      0.010526315789473682
+      -0.105263158,
+      0.010526316
      ],
      "better": 1,
      "same": 14,
-     "worse": 4
+     "worse": 4,
+     "leave_one_question_out": [
+      -0.055555556,
+      -0.022222222
+     ],
+     "without_R14": -0.055555556
     },
     "mis": {
-     "version": 0.16842105263157897,
-     "A": 0.11578947368421055,
-     "diff": 0.05263157894736842,
+     "version": 0.178947368,
+     "A": 0.126315789,
+     "diff": 0.052631579,
      "ci95": [
-      0.010526315789473684,
-      0.10526315789473684
+      0.010526316,
+      0.105263158
      ],
      "better": 4,
      "same": 15,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.033333333,
+      0.055555556
+     ],
+     "without_R14": 0.055555556
     }
    },
    "C rewrite": {
     "questions": 12,
     "yes": {
-     "version": 0.39999999999999997,
-     "A": 0.35000000000000003,
-     "diff": 0.049999999999999996,
+     "version": 0.4,
+     "A": 0.35,
+     "diff": 0.05,
      "ci95": [
-      -0.11666666666666665,
+      -0.1,
       0.25
      ],
      "better": 3,
      "same": 6,
-     "worse": 3
+     "worse": 3,
+     "leave_one_question_out": [
+      -0.036363636,
+      0.090909091
+     ],
+     "without_R14": -0.036363636
     },
     "useful": {
      "version": 0.75,
-     "A": 0.7166666666666668,
-     "diff": 0.03333333333333332,
+     "A": 0.7,
+     "diff": 0.05,
      "ci95": [
-      -0.11666666666666665,
-      0.16666666666666666
+      -0.083333333,
+      0.183333333
      ],
      "better": 4,
      "same": 6,
-     "worse": 2
+     "worse": 2,
+     "leave_one_question_out": [
+      -0.0,
+      0.090909091
+     ],
+     "without_R14": -0.0
     },
     "mis": {
-     "version": 0.11666666666666665,
-     "A": 0.08333333333333333,
-     "diff": 0.03333333333333334,
+     "version": 0.133333333,
+     "A": 0.1,
+     "diff": 0.033333333,
      "ci95": [
-      -0.06666666666666667,
+      -0.066666667,
       0.15
      ],
      "better": 2,
      "same": 8,
-     "worse": 2
+     "worse": 2,
+     "leave_one_question_out": [
+      0.0,
+      0.054545455
+     ],
+     "without_R14": 0.054545455
     }
    },
    "F merged": {
     "questions": 12,
     "yes": {
-     "version": 0.46666666666666673,
-     "A": 0.35000000000000003,
-     "diff": 0.11666666666666665,
+     "version": 0.466666667,
+     "A": 0.35,
+     "diff": 0.116666667,
      "ci95": [
-      -0.016666666666666663,
-      0.30000000000000004
+      -0.016666667,
+      0.3
      ],
      "better": 4,
      "same": 7,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      0.036363636,
+      0.145454545
+     ],
+     "without_R14": 0.036363636
     },
     "useful": {
-     "version": 0.7166666666666668,
-     "A": 0.7166666666666668,
-     "diff": -4.625929269271485e-18,
+     "version": 0.716666667,
+     "A": 0.7,
+     "diff": 0.016666667,
      "ci95": [
-      -0.13333333333333333,
-      0.15
+      -0.116666667,
+      0.166666667
      ],
      "better": 3,
-     "same": 5,
-     "worse": 4
+     "same": 6,
+     "worse": 3,
+     "leave_one_question_out": [
+      -0.036363636,
+      0.054545455
+     ],
+     "without_R14": -0.036363636
     },
     "mis": {
-     "version": 0.15,
-     "A": 0.08333333333333333,
-     "diff": 0.06666666666666667,
+     "version": 0.166666667,
+     "A": 0.1,
+     "diff": 0.066666667,
      "ci95": [
-      -0.05000000000000001,
-      0.19999999999999998
+      -0.05,
+      0.2
      ],
      "better": 3,
      "same": 7,
-     "worse": 2
+     "worse": 2,
+     "leave_one_question_out": [
+      0.018181818,
+      0.090909091
+     ],
+     "without_R14": 0.090909091
     }
    },
    "S site shown": {
     "questions": 19,
     "yes": {
-     "version": 0.23684210526315788,
-     "A": 0.3263157894736842,
-     "diff": -0.08947368421052633,
+     "version": 0.236842105,
+     "A": 0.326315789,
+     "diff": -0.089473684,
      "ci95": [
-      -0.18947368421052632,
-      0.006140350877192963
+      -0.189473684,
+      0.007894737
      ],
      "better": 4,
      "same": 5,
-     "worse": 10
+     "worse": 10,
+     "leave_one_question_out": [
+      -0.112962963,
+      -0.063888889
+     ],
+     "without_R14": -0.094444444
     },
     "useful": {
-     "version": 0.65,
-     "A": 0.7578947368421053,
-     "diff": -0.10789473684210528,
+     "version": 0.639473684,
+     "A": 0.747368421,
+     "diff": -0.107894737,
      "ci95": [
-      -0.22105263157894742,
-      -0.001754385964912292
+      -0.221929825,
+      -0.006140351
      ],
      "better": 5,
      "same": 5,
-     "worse": 9
+     "worse": 9,
+     "leave_one_question_out": [
+      -0.128703704,
+      -0.076851852
+     ],
+     "without_R14": -0.091666667
     },
     "mis": {
-     "version": 0.07631578947368421,
-     "A": 0.11578947368421055,
-     "diff": -0.039473684210526314,
+     "version": 0.086842105,
+     "A": 0.126315789,
+     "diff": -0.039473684,
      "ci95": [
-      -0.09649122807017543,
-      0.021052631578947368
+      -0.096491228,
+      0.020175439
      ],
      "better": 2,
      "same": 11,
-     "worse": 6
+     "worse": 6,
+     "leave_one_question_out": [
+      -0.060185185,
+      -0.026851852
+     ],
+     "without_R14": -0.030555556
     }
    }
   },
@@ -676,196 +826,271 @@
    "B no repeats": {
     "questions": 19,
     "yes": {
-     "version": 0.5157894736842106,
-     "A": 0.4947368421052632,
-     "diff": 0.021052631578947368,
+     "version": 0.526315789,
+     "A": 0.505263158,
+     "diff": 0.021052632,
      "ci95": [
       0.0,
-      0.05263157894736841
+      0.052631579
      ],
      "better": 2,
      "same": 17,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.011111111,
+      0.022222222
+     ],
+     "without_R14": 0.022222222
     },
     "useful": {
-     "version": 0.8631578947368422,
-     "A": 0.8526315789473685,
-     "diff": 0.010526315789473687,
+     "version": 0.884210526,
+     "A": 0.873684211,
+     "diff": 0.010526316,
      "ci95": [
       0.0,
-      0.03157894736842106
+      0.031578947
      ],
      "better": 1,
      "same": 18,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.0,
+      0.011111111
+     ],
+     "without_R14": 0.011111111
     },
     "mis": {
-     "version": 0.05263157894736842,
-     "A": 0.06315789473684211,
-     "diff": -0.010526315789473684,
+     "version": 0.052631579,
+     "A": 0.063157895,
+     "diff": -0.010526316,
      "ci95": [
-      -0.03157894736842106,
+      -0.031578947,
       0.0
      ],
      "better": 0,
      "same": 18,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      -0.011111111,
+      0.0
+     ],
+     "without_R14": -0.011111111
     }
    },
    "E no multiplier": {
     "questions": 19,
     "yes": {
-     "version": 0.42105263157894746,
-     "A": 0.4947368421052632,
-     "diff": -0.0736842105263158,
+     "version": 0.431578947,
+     "A": 0.505263158,
+     "diff": -0.073684211,
      "ci95": [
-      -0.15789473684210525,
+      -0.157894737,
       0.0
      ],
      "better": 1,
      "same": 13,
-     "worse": 5
+     "worse": 5,
+     "leave_one_question_out": [
+      -0.088888889,
+      -0.044444444
+     ],
+     "without_R14": -0.077777778
     },
     "useful": {
-     "version": 0.831578947368421,
-     "A": 0.8526315789473685,
-     "diff": -0.021052631578947375,
+     "version": 0.852631579,
+     "A": 0.873684211,
+     "diff": -0.021052632,
      "ci95": [
-      -0.07368421052631581,
-      0.021052631578947364
+      -0.073684211,
+      0.021052632
      ],
      "better": 1,
      "same": 16,
-     "worse": 2
+     "worse": 2,
+     "leave_one_question_out": [
+      -0.033333333,
+      -0.0
+     ],
+     "without_R14": -0.022222222
     },
     "mis": {
-     "version": 0.09473684210526316,
-     "A": 0.06315789473684211,
-     "diff": 0.031578947368421054,
+     "version": 0.094736842,
+     "A": 0.063157895,
+     "diff": 0.031578947,
      "ci95": [
       0.0,
-      0.08421052631578947
+      0.084210526
      ],
      "better": 2,
      "same": 17,
-     "worse": 0
+     "worse": 0,
+     "leave_one_question_out": [
+      0.011111111,
+      0.033333333
+     ],
+     "without_R14": 0.033333333
     }
    },
    "C rewrite": {
     "questions": 12,
     "yes": {
-     "version": 0.48333333333333334,
-     "A": 0.39999999999999997,
-     "diff": 0.08333333333333333,
+     "version": 0.483333333,
+     "A": 0.416666667,
+     "diff": 0.066666667,
      "ci95": [
-      -0.08333333333333333,
-      0.2833333333333334
+      -0.116666667,
+      0.283333333
      ],
      "better": 5,
-     "same": 5,
-     "worse": 2
+     "same": 4,
+     "worse": 3,
+     "leave_one_question_out": [
+      -0.018181818,
+      0.109090909
+     ],
+     "without_R14": -0.018181818
     },
     "useful": {
-     "version": 0.8333333333333334,
-     "A": 0.7999999999999999,
-     "diff": 0.03333333333333332,
+     "version": 0.9,
+     "A": 0.833333333,
+     "diff": 0.066666667,
      "ci95": [
-      -0.10000000000000002,
-      0.18333333333333332
+      -0.05,
+      0.2
      ],
      "better": 4,
-     "same": 6,
-     "worse": 2
+     "same": 7,
+     "worse": 1,
+     "leave_one_question_out": [
+      0.018181818,
+      0.109090909
+     ],
+     "without_R14": 0.054545455
     },
     "mis": {
-     "version": 0.08333333333333333,
-     "A": 0.06666666666666667,
-     "diff": 0.016666666666666666,
+     "version": 0.083333333,
+     "A": 0.066666667,
+     "diff": 0.016666667,
      "ci95": [
-      -0.05000000000000001,
-      0.10000000000000002
+      -0.05,
+      0.1
      ],
      "better": 1,
      "same": 10,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      -0.018181818,
+      0.036363636
+     ],
+     "without_R14": 0.018181818
     }
    },
    "F merged": {
     "questions": 12,
     "yes": {
-     "version": 0.5,
-     "A": 0.39999999999999997,
-     "diff": 0.10000000000000002,
+     "version": 0.516666667,
+     "A": 0.416666667,
+     "diff": 0.1,
      "ci95": [
-      -0.06666666666666665,
+      -0.066666667,
       0.3
      ],
      "better": 3,
      "same": 8,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      0.018181818,
+      0.145454545
+     ],
+     "without_R14": 0.018181818
     },
     "useful": {
-     "version": 0.8166666666666668,
-     "A": 0.7999999999999999,
-     "diff": 0.016666666666666663,
+     "version": 0.866666667,
+     "A": 0.833333333,
+     "diff": 0.033333333,
      "ci95": [
-      -0.09999999999999999,
-      0.13333333333333333
+      -0.083333333,
+      0.15
      ],
      "better": 4,
-     "same": 5,
-     "worse": 3
+     "same": 6,
+     "worse": 2,
+     "leave_one_question_out": [
+      -0.0,
+      0.072727273
+     ],
+     "without_R14": 0.018181818
     },
     "mis": {
-     "version": 0.09999999999999999,
-     "A": 0.06666666666666667,
-     "diff": 0.03333333333333333,
+     "version": 0.1,
+     "A": 0.066666667,
+     "diff": 0.033333333,
      "ci95": [
-      -0.03333333333333333,
-      0.11666666666666665
+      -0.033333333,
+      0.116666667
      ],
      "better": 2,
      "same": 9,
-     "worse": 1
+     "worse": 1,
+     "leave_one_question_out": [
+      0.0,
+      0.054545455
+     ],
+     "without_R14": 0.036363636
     }
    },
    "S site shown": {
     "questions": 19,
     "yes": {
-     "version": 0.35526315789473684,
-     "A": 0.4947368421052632,
-     "diff": -0.1394736842105263,
+     "version": 0.355263158,
+     "A": 0.505263158,
+     "diff": -0.15,
      "ci95": [
-      -0.22017543859649125,
-      -0.06578947368421054
+      -0.228070175,
+      -0.076315789
      ],
      "better": 2,
-     "same": 4,
-     "worse": 13
+     "same": 3,
+     "worse": 14,
+     "leave_one_question_out": [
+      -0.163888889,
+      -0.127777778
+     ],
+     "without_R14": -0.158333333
     },
     "useful": {
-     "version": 0.7535087719298247,
-     "A": 0.8526315789473685,
-     "diff": -0.09912280701754386,
+     "version": 0.774561404,
+     "A": 0.873684211,
+     "diff": -0.099122807,
      "ci95": [
-      -0.20438596491228073,
-      -0.007017543859649127
+      -0.207017544,
+      -0.007894737
      ],
      "better": 4,
      "same": 7,
-     "worse": 8
+     "worse": 8,
+     "leave_one_question_out": [
+      -0.115740741,
+      -0.067592593
+     ],
+     "without_R14": -0.071296296
     },
     "mis": {
-     "version": 0.04999999999999999,
-     "A": 0.06315789473684211,
-     "diff": -0.013157894736842111,
+     "version": 0.05,
+     "A": 0.063157895,
+     "diff": -0.013157895,
      "ci95": [
-      -0.047368421052631574,
-      0.019298245614035082
+      -0.048245614,
+      0.019298246
      ],
      "better": 2,
      "same": 13,
-     "worse": 4
+     "worse": 4,
+     "leave_one_question_out": [
+      -0.023148148,
+      -0.002777778
+     ],
+     "without_R14": -0.013888889
     }
    }
   }
@@ -876,7 +1101,7 @@
     "questions": 19,
     "has_yes": 13,
     "no_useful": 0,
-    "mis_in_top3": 4,
+    "mis_in_top3": 5,
     "top1_yes": 10,
     "top1_useful": 15
    },
@@ -884,7 +1109,7 @@
     "questions": 19,
     "has_yes": 14,
     "no_useful": 0,
-    "mis_in_top3": 4,
+    "mis_in_top3": 5,
     "top1_yes": 10,
     "top1_useful": 15
    },
@@ -892,7 +1117,7 @@
     "questions": 19,
     "has_yes": 13,
     "no_useful": 0,
-    "mis_in_top3": 6,
+    "mis_in_top3": 7,
     "top1_yes": 8,
     "top1_useful": 12
    },
@@ -900,7 +1125,7 @@
     "questions": 12,
     "has_yes": 11,
     "no_useful": 1,
-    "mis_in_top3": 3,
+    "mis_in_top3": 4,
     "top1_yes": 6,
     "top1_useful": 8
    },
@@ -908,58 +1133,58 @@
     "questions": 12,
     "has_yes": 10,
     "no_useful": 1,
-    "mis_in_top3": 2,
+    "mis_in_top3": 3,
     "top1_yes": 6,
     "top1_useful": 10
    },
    "S site shown": {
     "questions": 19,
     "has_yes": 13,
-    "no_useful": 2,
-    "mis_in_top3": 3,
+    "no_useful": 3,
+    "mis_in_top3": 4,
     "top1_yes": 5,
-    "top1_useful": 13
+    "top1_useful": 12
    }
   },
   "ties to the higher mark": {
    "A today": {
     "questions": 19,
-    "has_yes": 15,
+    "has_yes": 16,
     "no_useful": 0,
     "mis_in_top3": 2,
-    "top1_yes": 12,
+    "top1_yes": 13,
     "top1_useful": 17
    },
    "B no repeats": {
     "questions": 19,
-    "has_yes": 16,
+    "has_yes": 17,
     "no_useful": 0,
     "mis_in_top3": 2,
-    "top1_yes": 12,
+    "top1_yes": 13,
     "top1_useful": 17
    },
    "E no multiplier": {
     "questions": 19,
-    "has_yes": 15,
+    "has_yes": 16,
     "no_useful": 0,
     "mis_in_top3": 3,
-    "top1_yes": 10,
+    "top1_yes": 11,
     "top1_useful": 13
    },
    "C rewrite": {
     "questions": 12,
     "has_yes": 11,
-    "no_useful": 1,
+    "no_useful": 0,
     "mis_in_top3": 2,
     "top1_yes": 7,
     "top1_useful": 9
    },
    "F merged": {
     "questions": 12,
-    "has_yes": 10,
+    "has_yes": 11,
     "no_useful": 0,
     "mis_in_top3": 1,
-    "top1_yes": 7,
+    "top1_yes": 8,
     "top1_useful": 11
    },
    "S site shown": {
@@ -976,109 +1201,109 @@
   "A today": {
    "everyday": {
     "questions": 6,
-    "yes": 0.2333333333333333,
-    "useful": 0.6,
-    "mis": 0.13333333333333333
+    "yes": 0.233333333,
+    "useful": 0.566666667,
+    "mis": 0.166666667
    },
    "narrative": {
     "questions": 6,
-    "yes": 0.46666666666666673,
-    "useful": 0.8333333333333334,
-    "mis": 0.03333333333333333
+    "yes": 0.466666667,
+    "useful": 0.833333333,
+    "mis": 0.033333333
    },
    "legal": {
     "questions": 7,
-    "yes": 0.2857142857142857,
-    "useful": 0.8285714285714285,
-    "mis": 0.17142857142857143
+    "yes": 0.285714286,
+    "useful": 0.828571429,
+    "mis": 0.171428571
    }
   },
   "B no repeats": {
    "everyday": {
     "questions": 6,
-    "yes": 0.26666666666666666,
-    "useful": 0.6333333333333334,
-    "mis": 0.10000000000000002
+    "yes": 0.266666667,
+    "useful": 0.6,
+    "mis": 0.133333333
    },
    "narrative": {
     "questions": 6,
-    "yes": 0.46666666666666673,
-    "useful": 0.8333333333333334,
-    "mis": 0.03333333333333333
+    "yes": 0.466666667,
+    "useful": 0.833333333,
+    "mis": 0.033333333
    },
    "legal": {
     "questions": 7,
-    "yes": 0.2857142857142857,
-    "useful": 0.8285714285714285,
-    "mis": 0.17142857142857143
+    "yes": 0.285714286,
+    "useful": 0.828571429,
+    "mis": 0.171428571
    }
   },
   "E no multiplier": {
    "everyday": {
     "questions": 6,
-    "yes": 0.13333333333333333,
-    "useful": 0.6,
-    "mis": 0.16666666666666666
+    "yes": 0.133333333,
+    "useful": 0.566666667,
+    "mis": 0.2
    },
    "narrative": {
     "questions": 6,
-    "yes": 0.39999999999999997,
-    "useful": 0.8333333333333334,
-    "mis": 0.03333333333333333
+    "yes": 0.4,
+    "useful": 0.833333333,
+    "mis": 0.033333333
    },
    "legal": {
     "questions": 7,
-    "yes": 0.2571428571428572,
-    "useful": 0.7142857142857143,
-    "mis": 0.28571428571428575
+    "yes": 0.257142857,
+    "useful": 0.714285714,
+    "mis": 0.285714286
    }
   },
   "C rewrite": {
    "everyday": {
     "questions": 6,
-    "yes": 0.3666666666666667,
+    "yes": 0.366666667,
     "useful": 0.6,
-    "mis": 0.16666666666666666
+    "mis": 0.2
    },
    "narrative": {
     "questions": 6,
-    "yes": 0.43333333333333335,
+    "yes": 0.433333333,
     "useful": 0.9,
-    "mis": 0.06666666666666667
+    "mis": 0.066666667
    }
   },
   "F merged": {
    "everyday": {
     "questions": 6,
-    "yes": 0.43333333333333335,
+    "yes": 0.433333333,
     "useful": 0.6,
-    "mis": 0.19999999999999998
+    "mis": 0.233333333
    },
    "narrative": {
     "questions": 6,
     "yes": 0.5,
-    "useful": 0.8333333333333334,
-    "mis": 0.09999999999999999
+    "useful": 0.833333333,
+    "mis": 0.1
    }
   },
   "S site shown": {
    "everyday": {
     "questions": 6,
-    "yes": 0.09722222222222221,
-    "useful": 0.39166666666666666,
-    "mis": 0.075
+    "yes": 0.097222222,
+    "useful": 0.358333333,
+    "mis": 0.108333333
    },
    "narrative": {
     "questions": 6,
-    "yes": 0.2638888888888889,
-    "useful": 0.7222222222222222,
+    "yes": 0.263888889,
+    "useful": 0.722222222,
     "mis": 0.0
    },
    "legal": {
     "questions": 7,
-    "yes": 0.33333333333333337,
-    "useful": 0.8095238095238095,
-    "mis": 0.14285714285714285
+    "yes": 0.333333333,
+    "useful": 0.80952381,
+    "mis": 0.142857143
    }
   }
  },
@@ -1135,13 +1360,13 @@
    "kind": "everyday",
    "domain": "B",
    "Yes": 0,
-   "Partly": 2,
+   "Partly": 1,
    "No": 3,
-   "Misleading": 0,
+   "Misleading": 1,
    "marks_in_rank_order": [
     "Partly",
     "No",
-    "Partly",
+    "Misleading",
     "No",
     "No"
    ],
@@ -1394,6 +1619,7 @@
    "Gemini/A": "Yes"
   },
   "R02": {
+   "ChatGPT/A": "Yes",
    "Gemini/A": "Yes",
    "ChatGPT/B": "Yes",
    "Gemini/B": "Yes"
@@ -1405,6 +1631,7 @@
    "Gemini/B": "Yes"
   },
   "R06": {
+   "ChatGPT/A": "Yes",
    "Gemini/A": "No"
   },
   "R08": {
@@ -1483,13 +1710,59 @@
  "misleading_passages": [
   {
    "qid": "R02",
+   "no": 1,
+   "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)",
+   "doc": 1000256838,
+   "pn": "13",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 2,
+    "Yes": 1
+   },
+   "versions": {
+    "E no multiplier": 3,
+    "C rewrite": 3,
+    "A today": 9,
+    "B no repeats": 9,
+    "F merged": 9
+   },
+   "reasons": [
+    "ChatGPT/A: The passage presents counsel's submission opposing electronic service rather than an established judicial holding."
+   ],
+   "class": "S"
+  },
+  {
+   "qid": "R02",
+   "no": 3,
+   "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)",
+   "doc": 1000256838,
+   "pn": "14",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 3
+   },
+   "versions": {
+    "E no multiplier": 4,
+    "C rewrite": 4,
+    "S site shown": 1,
+    "A today": 10,
+    "B no repeats": 10,
+    "F merged": 10
+   },
+   "reasons": [
+    "ChatGPT/A: The passage records a submission advocating personal service without establishing that the Court adopted that position."
+   ],
+   "class": "S"
+  },
+  {
+   "qid": "R02",
    "no": 4,
    "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)",
    "doc": 1000256838,
    "pn": "5",
    "votes": {
-    "Partly": 1,
-    "Misleading": 2
+    "Misleading": 3,
+    "Partly": 1
    },
    "versions": {
     "A today": 5,
@@ -1500,9 +1773,11 @@
     "F merged": 6
    },
    "reasons": [
+    "ChatGPT/A: The passage reports the State's argument supporting electronic service, which conflicts with the Court's stated conclusion.",
     "Gemini/A: This passage records a submission by the State arguing for electronic notice, which the court ultimately rejects.",
     "Gemini/B: It records a contrary argument by the State defending electronic service, which the court ultimately rejects."
-   ]
+   ],
+   "class": "S"
   },
   {
    "qid": "R02",
@@ -1511,7 +1786,7 @@
    "doc": 1000256838,
    "pn": "11",
    "votes": {
-    "Misleading": 2,
+    "Misleading": 3,
     "Yes": 1
    },
    "versions": {
@@ -1522,9 +1797,11 @@
     "B no repeats": 8
    },
    "reasons": [
+    "ChatGPT/A: The passage states a lawyer's submission rather than the Court's own holding, so treating it as a judicial conclusion would be misleading.",
     "ChatGPT/B: The passage states a lawyer's submission rather than the court's decision, so treating it alone as the legal holding would be misleading.",
     "Gemini/B: It only states a lawyer's submission rather than the court's definitive holding, though the conclusion happens to match."
-   ]
+   ],
+   "class": "S"
   },
   {
    "qid": "R04",
@@ -1542,7 +1819,8 @@
     "ChatGPT/A: The passage reproduces an earlier restrictive approach that the Constitution Bench in Sushila Aggarwal subsequently rejected as the governing rule.",
     "Gemini/A: It discusses older case law requiring limited duration and regular bail surrender, which was subsequently reconsidered or clarified by the Constitution Bench.",
     "ChatGPT/B: The passage recounts the earlier limited-duration approach requiring recourse to regular bail, which the Constitution Bench's later ruling in this judgment rejects as the general rule."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R04",
@@ -1561,7 +1839,49 @@
    "reasons": [
     "ChatGPT/A: The passage records counsel's submissions rather than the court's holding, so it does not establish the applicable rule by itself.",
     "ChatGPT/B: The passage records counsel's argument against limiting anticipatory bail but does not itself establish that the court accepted that argument."
-   ]
+   ],
+   "class": "S"
+  },
+  {
+   "qid": "R06",
+   "no": 5,
+   "title": "PARTHA CHATTERJEE versus DIRECTORATE OF ENFORCEMENT (13-12-2024)",
+   "doc": 1000256177,
+   "pn": "11",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 1
+   },
+   "versions": {
+    "A today": 3,
+    "E no multiplier": 2,
+    "B no repeats": 3,
+    "S site shown": 1,
+    "F merged": 9
+   },
+   "reasons": [
+    "ChatGPT/A: It records a party's argument for entitlement under section 479 rather than a judicial holding and does not establish applicability to a pre-BNSS FIR."
+   ],
+   "class": "S"
+  },
+  {
+   "qid": "R06",
+   "no": 7,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.",
+   "doc": 32524,
+   "pn": "33",
+   "votes": {
+    "Misleading": 1,
+    "No": 1
+   },
+   "versions": {
+    "C rewrite": 1,
+    "F merged": 2
+   },
+   "reasons": [
+    "ChatGPT/A: It concerns the former section 436A and expressly rejects its direct application to that case, without deciding the distinct BNSS section 479 question."
+   ],
+   "class": "O"
   },
   {
    "qid": "R09",
@@ -1580,7 +1900,8 @@
    },
    "reasons": [
     "Gemini/A: This old view regarding deposit in a payee's bank was superseded by statutory amendments (Section 142(2)) and rulings like Nishant Aggarwal."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R09",
@@ -1600,7 +1921,8 @@
    "reasons": [
     "ChatGPT/A: The passage directly addresses the issue but states a rule contrary to the account-based jurisdiction rule applicable under the later statutory provision reproduced in passage 4.",
     "Gemini/A: This passage reflects an older, overruled interpretation that presentation at the payee's bank does not confer jurisdiction."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R09",
@@ -1620,7 +1942,8 @@
    },
    "reasons": [
     "ChatGPT/A: The passage endorses jurisdiction based on presentation alone, which conflicts with the statutory account-based rule governing the described scenario."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1639,7 +1962,8 @@
     "ChatGPT/A: It says NCB statements can be used as confessions, but this position is inconsistent with the later ruling in Tofan Singh reproduced in the passages.",
     "Gemini/A: This old view holding Section 67 statements to NCB officers as admissible confessions was subsequently overruled by Tofan Singh v. State of Tamil Nadu.",
     "ChatGPT/B: This passage says NCB-type officers' Section 67 confessions are admissible, but that position was subsequently rejected in Tofan Singh and contradicted by the supplied later ruling."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1658,7 +1982,8 @@
     "ChatGPT/A: It endorses the earlier admissibility position and says a Section 67 confession can alone sustain conviction, contrary to the later ruling in Tofan Singh.",
     "Gemini/A: This reflects the overruled position from Kanhaiyalal allowing Section 67 statements as substantive confessions, contrary to current law established in Tofan Singh.",
     "ChatGPT/B: It endorses admissibility of Section 67 confessions under an earlier legal position that the later supplied ruling in Tofan Singh expressly rejected."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1678,7 +2003,8 @@
     "ChatGPT/A: It describes the High Court's acceptance of the NCB's argument and the earlier admissibility position rather than stating the later governing rule.",
     "Gemini/A: It summarizes previous case law holding such confessions admissible, which is no longer good law after Tofan Singh.",
     "ChatGPT/B: It describes the High Court's acceptance of an earlier admissibility position without supplying the later governing rejection of that position."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1697,7 +2023,8 @@
    },
    "reasons": [
     "ChatGPT/B: It primarily recounts an earlier case's question and counsel's arguments without clearly giving the controlling answer, while the quoted earlier approach conflicts with the later ruling."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1716,7 +2043,8 @@
     "ChatGPT/A: It repeats the earlier admissibility rule from Kanhaiyalal without presenting the later rejection of that rule in Tofan Singh.",
     "Gemini/A: It quotes the overruled Kanhaiyalal precedent treating Section 67 statements as admissible confessions.",
     "ChatGPT/B: It repeats the earlier view that Section 67 confessions are admissible, which the later Tofan Singh ruling rejected."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1735,7 +2063,8 @@
     "ChatGPT/A: It concerns the voluntariness of confessions under the Central Bureau of Narcotics and endorses their use for conviction, without addressing the later Section 67 rule.",
     "Gemini/A: This relies on the pre-Tofan Singh view that retracted or uncomplained-of confessional statements to narcotics officers can sustain a conviction.",
     "Gemini/B: It follows the older view that allowed convictions based on voluntary NCB/customs statements, which is no longer good law."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1754,7 +2083,8 @@
     "ChatGPT/A: It states the earlier rule permitting Section 67 confessions, which was rejected by the later ruling in Tofan Singh.",
     "Gemini/A: It repeats the older, overruled rule from Kanhaiyalal regarding the admissibility of Section 67 statements.",
     "ChatGPT/B: It expressly endorses the earlier admissibility rule for Section 67 statements, which the later Tofan Singh ruling rejected."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1774,7 +2104,8 @@
    },
    "reasons": [
     "ChatGPT/B: Although it discusses general evidentiary principles and involuntary confessions, it reproduces an earlier position suggesting Section 67 statements may be admitted without stating the controlling prohibition."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R11",
@@ -1794,7 +2125,8 @@
     "ChatGPT/A: It affirmatively holds that Central Bureau of Narcotics confessions are admissible, reflecting the earlier legal position rather than the later Section 67 rule.",
     "Gemini/A: This represents the superseded view that CBN/NCB officers are not police officers and their confessions are admissible.",
     "ChatGPT/B: It directly endorses admissibility of confessions to Central Bureau of Narcotics officers under an earlier legal position inconsistent with the later supplied ruling in Tofan Singh."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R14",
@@ -1812,7 +2144,8 @@
    },
    "reasons": [
     "ChatGPT/A: The passage reproduces allegations of fraud concerning partnership cancellation, which could be mistaken for a judicial finding rather than the complainant's assertions."
-   ]
+   ],
+   "class": "O"
   },
   {
    "qid": "R14",
@@ -1834,7 +2167,8 @@
    "reasons": [
     "ChatGPT/A: The passage presents the respondent's counsel's argument against quashing, not the court's holding, and could mislead if treated as its conclusion.",
     "Gemini/A: It records arguments made by the opposing counsel arguing against quashing, which could mislead if read as the court's final holding."
-   ]
+   ],
+   "class": "S"
   },
   {
    "qid": "R14",
@@ -1854,7 +2188,8 @@
    },
    "reasons": [
     "ChatGPT/A: The passage indicates that the appellant's quashing contentions failed before the High Court and describes a different construction-business dispute, so it does not support quashing on the stated facts."
-   ]
+   ],
+   "class": "O"
   },
   {
    "qid": "R15",
@@ -1871,7 +2206,8 @@
    },
    "reasons": [
     "ChatGPT/A: It states the former Family Welfare Committee and no-arrest direction without explaining that these directions were subsequently declared impermissible."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R15",
@@ -1889,7 +2225,8 @@
    },
    "reasons": [
     "ChatGPT/A: It presents the former committee and no-arrest directions without mentioning that the committee directions were subsequently declared impermissible."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R15",
@@ -1907,7 +2244,8 @@
    },
    "reasons": [
     "ChatGPT/A: It reproduces the former no-arrest direction without noting that the Family Welfare Committee directions were later declared impermissible."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R20",
@@ -1927,7 +2265,8 @@
    },
    "reasons": [
     "Gemini/A: The sentence contains a glaring typo/inversion typical of corrupt text by attributing mala fide intentions to the complainant rather than the accused, making it misleading."
-   ]
+   ],
+   "class": "O"
   },
   {
    "qid": "R20",
@@ -1946,7 +2285,8 @@
    },
    "reasons": [
     "Gemini/A: Like passage 4, this passage preserves a textual corruption attributing mala fide intentions to the complainant instead of the accused, making it misleading."
-   ]
+   ],
+   "class": "O"
   },
   {
    "qid": "R21",
@@ -1965,7 +2305,8 @@
    "reasons": [
     "ChatGPT/A: It presents the Shafhi Mohammad exception allowing relaxation when the producer lacks the device, without noting that the passage's cited approach was later overruled in another supplied passage.",
     "Gemini/A: This view holding that the certificate requirement is not always mandatory was subsequently overruled by the Supreme Court in Arjun Panditrao Khotkar."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R21",
@@ -1985,7 +2326,8 @@
    "reasons": [
     "ChatGPT/A: It records a party's argument favoring an exception rather than a judicial holding, potentially suggesting that absence of the original device removes the certification requirement.",
     "Gemini/A: This passage records legal submissions and a perspective on relaxing certificate requirements that was later overruled by larger bench rulings."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R21",
@@ -2004,7 +2346,8 @@
    "reasons": [
     "ChatGPT/A: It states that certification can be relaxed when the producer lacks the device, but the passage reflects an approach later expressly overruled in the supplied materials.",
     "Gemini/A: It summarizes the Shafhi Mohammad ruling which stated the certificate is not always mandatory, a legal position that was subsequently overruled."
-   ]
+   ],
+   "class": "R"
   },
   {
    "qid": "R22",
@@ -2024,7 +2367,8 @@
    "reasons": [
     "ChatGPT/A: Although it discusses sentencing hearings and family circumstances, it rejects family responsibilities as grounds for interference and does not establish that the sentence should be reduced.",
     "Gemini/A: Although it mentions family factors like a young wife and child, it concludes that these compassionate grounds do not warrant reducing a death sentence."
-   ]
+   ],
+   "class": "O"
   },
   {
    "qid": "R26",
@@ -2041,7 +2385,8 @@
    },
    "reasons": [
     "ChatGPT/A: The passage records counsel's submissions rather than the court's holding, so it cannot establish the governing rule on suspension or re-appreciation of evidence."
-   ]
+   ],
+   "class": "S"
   },
   {
    "qid": "R28",
@@ -2060,7 +2405,8 @@
     "ChatGPT/A: The passage reports rejection of waiver and emphasizes limits on Article 142, potentially misleading readers into thinking waiver is never possible without the broader legal context.",
     "Gemini/A: Read on its own, it suggests the court cannot bypass statutory provisions, potentially conflicting with the rule that only the Supreme Court can waive the period under Article 142.",
     "ChatGPT/B: The passage emphasizes restrictions on Article 142 and a rejected waiver request, which could wrongly suggest that the waiting period can never be waived."
-   ]
+   ],
+   "class": "O"
   }
  ],
  "stale_passages_in_top5": [
@@ -2446,8 +2792,8 @@
   "marked_misleading": 2
  },
  "caveats": {
-  "replies": 48,
-  "non_empty": 33,
+  "replies": 50,
+  "non_empty": 35,
   "mentions_a_later_change": 6
  },
  "reranker_promoted_vs_kept": {
@@ -2460,8 +2806,8 @@
   "already_in_merged_top5": {
    "n": 30,
    "yes": 0.467,
-   "useful": 0.833,
-   "misleading": 0.067
+   "useful": 0.8,
+   "misleading": 0.1
   }
  },
  "A_by_rank": {
@@ -2480,8 +2826,8 @@
   "3": {
    "n": 19,
    "yes": 0.211,
-   "useful": 0.789,
-   "misleading": 0.053
+   "useful": 0.737,
+   "misleading": 0.105
   },
   "4": {
    "n": 19,
@@ -2610,6 +2956,1638 @@
      0.2
     ]
    ]
+  }
+ },
+ "misleading_why": {
+  "passages": 34,
+  "by_class": {
+   "S": 8,
+   "R": 19,
+   "O": 7
+  },
+  "most_runs_said_misleading": 16,
+  "most_runs_said_misleading_by_class": {
+   "S": 2,
+   "R": 12,
+   "O": 2
+  }
+ },
+ "A_top5_with_replaced_law": {
+  "questions": [
+   "R09",
+   "R11",
+   "R15",
+   "R21"
+  ],
+  "of": 19,
+  "detail": {
+   "R09": [
+    "passage 2 called Misleading",
+    "passage 5 called Misleading",
+    "passage 5 of the listed ruling Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+    "passage 8 called Misleading"
+   ],
+   "R11": [
+    "passage 14 called Misleading",
+    "passage 6 called Misleading",
+    "passage 7 called Misleading"
+   ],
+   "R15": [
+    "passage 3 of the listed ruling Rajesh Sharma v. State of U.P. (2017)",
+    "passage 6 of the listed ruling Rajesh Sharma v. State of U.P. (2017)"
+   ],
+   "R21": [
+    "passage 6 called Misleading",
+    "passage 6 of the listed ruling Shafhi Mohammad v. State of H.P. (2018)"
+   ]
+  },
+  "passages": {
+   "listed_stale": 4,
+   "called_misleading_and_classed_replaced": 7,
+   "either": 9,
+   "of_slots": 95,
+   "listed_stale_that_no_reviewer_called_misleading": [
+    "R15#3",
+    "R15#6"
+   ]
+  }
+ },
+ "accuracy_rating_A": {
+  "ChatGPT alone (order A run)": {
+   "questions": 19,
+   "Yes": 0.453,
+   "Partly": 0.389,
+   "No": 0.053,
+   "Misleading": 0.105,
+   "useful": 0.842,
+   "Yes_ci95_over_questions": [
+    0.316,
+    0.589
+   ],
+   "Yes_sd_between_questions": 0.326,
+   "Yes_range_for_11_new_questions": [
+    0.211,
+    0.694
+   ],
+   "useful_ci95_over_questions": [
+    0.758,
+    0.926
+   ],
+   "useful_sd_between_questions": 0.195,
+   "useful_range_for_11_new_questions": [
+    0.697,
+    0.987
+   ],
+   "Misleading_ci95_over_questions": [
+    0.042,
+    0.179
+   ],
+   "Misleading_sd_between_questions": 0.154,
+   "Misleading_range_for_11_new_questions": [
+    0.0,
+    0.22
+   ],
+   "by_top_k": {
+    "1": {
+     "Yes": 0.632,
+     "useful": 0.842,
+     "Misleading": 0.105
+    },
+    "3": {
+     "Yes": 0.561,
+     "useful": 0.86,
+     "Misleading": 0.088
+    },
+    "5": {
+     "Yes": 0.453,
+     "useful": 0.842,
+     "Misleading": 0.105
+    }
+   },
+   "by_kind": {
+    "everyday": {
+     "questions": 6,
+     "Yes": 0.267,
+     "useful": 0.733,
+     "Misleading": 0.2
+    },
+    "narrative": {
+     "questions": 6,
+     "Yes": 0.533,
+     "useful": 0.867,
+     "Misleading": 0.033
+    },
+    "legal": {
+     "questions": 7,
+     "Yes": 0.543,
+     "useful": 0.914,
+     "Misleading": 0.086
+    }
+   },
+   "question_level": {
+    "questions": 19,
+    "first_result_yes": 12,
+    "first_result_useful": 16,
+    "at_least_one_yes": 16,
+    "no_useful_passage": 0,
+    "misleading_in_top3": 5,
+    "misleading_in_top5": 7,
+    "replaced_law_in_top5": 4,
+    "clean_question": 12
+   },
+   "question_level_wilson95": {
+    "first_result_yes": [
+     0.41,
+     0.809
+    ],
+    "first_result_useful": [
+     0.624,
+     0.945
+    ],
+    "at_least_one_yes": [
+     0.624,
+     0.945
+    ],
+    "no_useful_passage": [
+     0.0,
+     0.168
+    ],
+    "misleading_in_top3": [
+     0.118,
+     0.488
+    ],
+    "misleading_in_top5": [
+     0.191,
+     0.59
+    ],
+    "replaced_law_in_top5": [
+     0.085,
+     0.433
+    ],
+    "clean_question": [
+     0.41,
+     0.809
+    ]
+   }
+  },
+  "Gemini alone (order A run)": {
+   "questions": 19,
+   "Yes": 0.389,
+   "Partly": 0.368,
+   "No": 0.137,
+   "Misleading": 0.105,
+   "useful": 0.758,
+   "Yes_ci95_over_questions": [
+    0.253,
+    0.526
+   ],
+   "Yes_sd_between_questions": 0.323,
+   "Yes_range_for_11_new_questions": [
+    0.15,
+    0.629
+   ],
+   "useful_ci95_over_questions": [
+    0.642,
+    0.863
+   ],
+   "useful_sd_between_questions": 0.263,
+   "useful_range_for_11_new_questions": [
+    0.562,
+    0.953
+   ],
+   "Misleading_ci95_over_questions": [
+    0.042,
+    0.179
+   ],
+   "Misleading_sd_between_questions": 0.154,
+   "Misleading_range_for_11_new_questions": [
+    0.0,
+    0.22
+   ],
+   "by_top_k": {
+    "1": {
+     "Yes": 0.579,
+     "useful": 0.842,
+     "Misleading": 0.053
+    },
+    "3": {
+     "Yes": 0.456,
+     "useful": 0.772,
+     "Misleading": 0.07
+    },
+    "5": {
+     "Yes": 0.389,
+     "useful": 0.758,
+     "Misleading": 0.105
+    }
+   },
+   "by_kind": {
+    "everyday": {
+     "questions": 6,
+     "Yes": 0.267,
+     "useful": 0.567,
+     "Misleading": 0.133
+    },
+    "narrative": {
+     "questions": 6,
+     "Yes": 0.5,
+     "useful": 0.833,
+     "Misleading": 0.033
+    },
+    "legal": {
+     "questions": 7,
+     "Yes": 0.4,
+     "useful": 0.857,
+     "Misleading": 0.143
+    }
+   },
+   "question_level": {
+    "questions": 19,
+    "first_result_yes": 11,
+    "first_result_useful": 16,
+    "at_least_one_yes": 14,
+    "no_useful_passage": 0,
+    "misleading_in_top3": 4,
+    "misleading_in_top5": 7,
+    "replaced_law_in_top5": 4,
+    "clean_question": 11
+   },
+   "question_level_wilson95": {
+    "first_result_yes": [
+     0.363,
+     0.769
+    ],
+    "first_result_useful": [
+     0.624,
+     0.945
+    ],
+    "at_least_one_yes": [
+     0.512,
+     0.882
+    ],
+    "no_useful_passage": [
+     0.0,
+     0.168
+    ],
+    "misleading_in_top3": [
+     0.085,
+     0.433
+    ],
+    "misleading_in_top5": [
+     0.191,
+     0.59
+    ],
+    "replaced_law_in_top5": [
+     0.085,
+     0.433
+    ],
+    "clean_question": [
+     0.363,
+     0.769
+    ]
+   }
+  },
+  "both tools, agreed only": {
+   "questions": 19,
+   "Yes": 0.398,
+   "Partly": 0.397,
+   "No": 0.127,
+   "Misleading": 0.077,
+   "useful": 0.796,
+   "Yes_ci95_over_questions": [
+    0.249,
+    0.549
+   ],
+   "Yes_sd_between_questions": 0.343,
+   "Yes_range_for_11_new_questions": [
+    0.144,
+    0.653
+   ],
+   "useful_ci95_over_questions": [
+    0.667,
+    0.905
+   ],
+   "useful_sd_between_questions": 0.284,
+   "useful_range_for_11_new_questions": [
+    0.585,
+    1.0
+   ],
+   "Misleading_ci95_over_questions": [
+    0.021,
+    0.14
+   ],
+   "Misleading_sd_between_questions": 0.139,
+   "Misleading_range_for_11_new_questions": [
+    0.0,
+    0.181
+   ],
+   "by_top_k": {
+    "1": {
+     "Yes": 0.667,
+     "useful": 0.867,
+     "Misleading": 0.067
+    },
+    "3": {
+     "Yes": 0.569,
+     "useful": 0.833,
+     "Misleading": 0.049
+    },
+    "5": {
+     "Yes": 0.398,
+     "useful": 0.796,
+     "Misleading": 0.077
+    }
+   },
+   "by_kind": {
+    "everyday": {
+     "questions": 6,
+     "Yes": 0.256,
+     "useful": 0.622,
+     "Misleading": 0.1
+    },
+    "narrative": {
+     "questions": 6,
+     "Yes": 0.533,
+     "useful": 0.842,
+     "Misleading": 0.033
+    },
+    "legal": {
+     "questions": 7,
+     "Yes": 0.405,
+     "useful": 0.905,
+     "Misleading": 0.095
+    }
+   }
+  },
+  "both tools, ties to the lower mark": {
+   "questions": 19,
+   "Yes": 0.326,
+   "Partly": 0.421,
+   "No": 0.126,
+   "Misleading": 0.126,
+   "useful": 0.747,
+   "Yes_ci95_over_questions": [
+    0.2,
+    0.463
+   ],
+   "Yes_sd_between_questions": 0.3,
+   "Yes_range_for_11_new_questions": [
+    0.104,
+    0.549
+   ],
+   "useful_ci95_over_questions": [
+    0.611,
+    0.874
+   ],
+   "useful_sd_between_questions": 0.297,
+   "useful_range_for_11_new_questions": [
+    0.527,
+    0.968
+   ],
+   "Misleading_ci95_over_questions": [
+    0.053,
+    0.211
+   ],
+   "Misleading_sd_between_questions": 0.179,
+   "Misleading_range_for_11_new_questions": [
+    0.0,
+    0.259
+   ],
+   "by_top_k": {
+    "1": {
+     "Yes": 0.526,
+     "useful": 0.789,
+     "Misleading": 0.105
+    },
+    "3": {
+     "Yes": 0.421,
+     "useful": 0.754,
+     "Misleading": 0.105
+    },
+    "5": {
+     "Yes": 0.326,
+     "useful": 0.747,
+     "Misleading": 0.126
+    }
+   },
+   "by_kind": {
+    "everyday": {
+     "questions": 6,
+     "Yes": 0.233,
+     "useful": 0.567,
+     "Misleading": 0.167
+    },
+    "narrative": {
+     "questions": 6,
+     "Yes": 0.467,
+     "useful": 0.833,
+     "Misleading": 0.033
+    },
+    "legal": {
+     "questions": 7,
+     "Yes": 0.286,
+     "useful": 0.829,
+     "Misleading": 0.171
+    }
+   },
+   "question_level": {
+    "questions": 19,
+    "first_result_yes": 10,
+    "first_result_useful": 15,
+    "at_least_one_yes": 13,
+    "no_useful_passage": 0,
+    "misleading_in_top3": 5,
+    "misleading_in_top5": 8,
+    "replaced_law_in_top5": 4,
+    "clean_question": 11
+   },
+   "question_level_wilson95": {
+    "first_result_yes": [
+     0.317,
+     0.727
+    ],
+    "first_result_useful": [
+     0.567,
+     0.915
+    ],
+    "at_least_one_yes": [
+     0.46,
+     0.846
+    ],
+    "no_useful_passage": [
+     0.0,
+     0.168
+    ],
+    "misleading_in_top3": [
+     0.118,
+     0.488
+    ],
+    "misleading_in_top5": [
+     0.231,
+     0.637
+    ],
+    "replaced_law_in_top5": [
+     0.085,
+     0.433
+    ],
+    "clean_question": [
+     0.363,
+     0.769
+    ]
+   }
+  },
+  "both tools, ties to the higher mark": {
+   "questions": 19,
+   "Yes": 0.505,
+   "Partly": 0.368,
+   "No": 0.063,
+   "Misleading": 0.063,
+   "useful": 0.874,
+   "Yes_ci95_over_questions": [
+    0.358,
+    0.642
+   ],
+   "Yes_sd_between_questions": 0.329,
+   "Yes_range_for_11_new_questions": [
+    0.261,
+    0.75
+   ],
+   "useful_ci95_over_questions": [
+    0.789,
+    0.937
+   ],
+   "useful_sd_between_questions": 0.166,
+   "useful_range_for_11_new_questions": [
+    0.75,
+    0.997
+   ],
+   "Misleading_ci95_over_questions": [
+    0.021,
+    0.116
+   ],
+   "Misleading_sd_between_questions": 0.116,
+   "Misleading_range_for_11_new_questions": [
+    0.0,
+    0.15
+   ],
+   "by_top_k": {
+    "1": {
+     "Yes": 0.684,
+     "useful": 0.895,
+     "Misleading": 0.053
+    },
+    "3": {
+     "Yes": 0.614,
+     "useful": 0.895,
+     "Misleading": 0.035
+    },
+    "5": {
+     "Yes": 0.505,
+     "useful": 0.874,
+     "Misleading": 0.063
+    }
+   },
+   "by_kind": {
+    "everyday": {
+     "questions": 6,
+     "Yes": 0.267,
+     "useful": 0.8,
+     "Misleading": 0.1
+    },
+    "narrative": {
+     "questions": 6,
+     "Yes": 0.567,
+     "useful": 0.867,
+     "Misleading": 0.033
+    },
+    "legal": {
+     "questions": 7,
+     "Yes": 0.657,
+     "useful": 0.943,
+     "Misleading": 0.057
+    }
+   },
+   "question_level": {
+    "questions": 19,
+    "first_result_yes": 13,
+    "first_result_useful": 17,
+    "at_least_one_yes": 16,
+    "no_useful_passage": 0,
+    "misleading_in_top3": 2,
+    "misleading_in_top5": 5,
+    "replaced_law_in_top5": 4,
+    "clean_question": 13
+   },
+   "question_level_wilson95": {
+    "first_result_yes": [
+     0.46,
+     0.846
+    ],
+    "first_result_useful": [
+     0.686,
+     0.971
+    ],
+    "at_least_one_yes": [
+     0.624,
+     0.945
+    ],
+    "no_useful_passage": [
+     0.0,
+     0.168
+    ],
+    "misleading_in_top3": [
+     0.029,
+     0.314
+    ],
+    "misleading_in_top5": [
+     0.118,
+     0.488
+    ],
+    "replaced_law_in_top5": [
+     0.085,
+     0.433
+    ],
+    "clean_question": [
+     0.46,
+     0.846
+    ]
+   }
+  }
+ },
+ "accuracy_rating_A_by_question": {
+  "R01": {
+   "kind": "narrative",
+   "domain": "A",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Partly",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "Gemini": [
+    "Yes",
+    "Partly",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R02": {
+   "kind": "everyday",
+   "domain": "A",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Misleading"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Misleading"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Misleading"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Misleading"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R04": {
+   "kind": "legal",
+   "domain": "B",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R06": {
+   "kind": "everyday",
+   "domain": "B",
+   "key_reachable": false,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Partly",
+    "No",
+    "Misleading",
+    "No",
+    "No"
+   ],
+   "generous": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "No",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Partly",
+    "Misleading",
+    "No",
+    "Partly"
+   ],
+   "Gemini": [
+    "Partly",
+    "No",
+    "Partly",
+    "No",
+    "No"
+   ],
+   "clean_cautious": false,
+   "clean_generous": true
+  },
+  "R08": {
+   "kind": "everyday",
+   "domain": "C",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "No",
+    "Yes",
+    "No",
+    "No",
+    "Partly"
+   ],
+   "generous": [
+    "Partly",
+    "Yes",
+    "No",
+    "Partly",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Partly",
+    "Yes",
+    "No",
+    "Partly",
+    "Partly"
+   ],
+   "Gemini": [
+    "No",
+    "Yes",
+    "No",
+    "No",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R09": {
+   "kind": "legal",
+   "domain": "C",
+   "key_reachable": true,
+   "replaced_law_in_top5": true,
+   "cautious": [
+    "Misleading",
+    "Misleading",
+    "Partly",
+    "Partly",
+    "Misleading"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Misleading"
+   ],
+   "ChatGPT": [
+    "Misleading",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Misleading"
+   ],
+   "Gemini": [
+    "Yes",
+    "Misleading",
+    "Partly",
+    "Partly",
+    "Misleading"
+   ],
+   "clean_cautious": false,
+   "clean_generous": false
+  },
+  "R11": {
+   "kind": "everyday",
+   "domain": "D",
+   "key_reachable": true,
+   "replaced_law_in_top5": true,
+   "cautious": [
+    "Partly",
+    "Partly",
+    "Partly",
+    "Misleading",
+    "Misleading"
+   ],
+   "generous": [
+    "Partly",
+    "Partly",
+    "Partly",
+    "Misleading",
+    "Misleading"
+   ],
+   "ChatGPT": [
+    "Partly",
+    "Partly",
+    "Partly",
+    "Misleading",
+    "Misleading"
+   ],
+   "Gemini": [
+    "Partly",
+    "Partly",
+    "Partly",
+    "Misleading",
+    "Misleading"
+   ],
+   "clean_cautious": false,
+   "clean_generous": false
+  },
+  "R12": {
+   "kind": "narrative",
+   "domain": "E",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Partly",
+    "Yes",
+    "Partly",
+    "Yes",
+    "Partly"
+   ],
+   "generous": [
+    "Partly",
+    "Yes",
+    "Partly",
+    "Yes",
+    "Yes"
+   ],
+   "ChatGPT": [
+    "Partly",
+    "Yes",
+    "Partly",
+    "Yes",
+    "Yes"
+   ],
+   "Gemini": [
+    "Partly",
+    "Yes",
+    "Partly",
+    "Yes",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R14": {
+   "kind": "everyday",
+   "domain": "E",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Partly",
+    "No",
+    "No",
+    "Misleading",
+    "Partly"
+   ],
+   "generous": [
+    "Partly",
+    "No",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Partly",
+    "Misleading",
+    "Partly",
+    "Misleading",
+    "Partly"
+   ],
+   "Gemini": [
+    "Partly",
+    "No",
+    "No",
+    "Misleading",
+    "Partly"
+   ],
+   "clean_cautious": false,
+   "clean_generous": false
+  },
+  "R15": {
+   "kind": "narrative",
+   "domain": "F",
+   "key_reachable": false,
+   "replaced_law_in_top5": true,
+   "cautious": [
+    "No",
+    "No",
+    "No",
+    "Partly",
+    "No"
+   ],
+   "generous": [
+    "No",
+    "Partly",
+    "No",
+    "Partly",
+    "No"
+   ],
+   "ChatGPT": [
+    "No",
+    "Partly",
+    "No",
+    "Partly",
+    "No"
+   ],
+   "Gemini": [
+    "No",
+    "No",
+    "No",
+    "Partly",
+    "No"
+   ],
+   "clean_cautious": false,
+   "clean_generous": false
+  },
+  "R17": {
+   "kind": "legal",
+   "domain": "F",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Yes"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Yes"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Yes",
+    "Yes"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R19": {
+   "kind": "narrative",
+   "domain": "G",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R20": {
+   "kind": "legal",
+   "domain": "G",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Partly",
+    "Misleading",
+    "Partly",
+    "Misleading",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "Gemini": [
+    "Partly",
+    "Misleading",
+    "Partly",
+    "Misleading",
+    "Partly"
+   ],
+   "clean_cautious": false,
+   "clean_generous": true
+  },
+  "R21": {
+   "kind": "legal",
+   "domain": "H",
+   "key_reachable": false,
+   "replaced_law_in_top5": true,
+   "cautious": [
+    "Misleading",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "generous": [
+    "Misleading",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Misleading",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "Gemini": [
+    "Misleading",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "clean_cautious": false,
+   "clean_generous": false
+  },
+  "R22": {
+   "kind": "narrative",
+   "domain": "H",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Misleading",
+    "Yes",
+    "Yes"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Misleading",
+    "Yes",
+    "Yes"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Misleading",
+    "Yes",
+    "Yes"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "Misleading",
+    "Yes",
+    "Yes"
+   ],
+   "clean_cautious": false,
+   "clean_generous": false
+  },
+  "R24": {
+   "kind": "narrative",
+   "domain": "I",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly",
+    "Yes"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly",
+    "Yes"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R26": {
+   "kind": "legal",
+   "domain": "J",
+   "key_reachable": true,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "Gemini": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R28": {
+   "kind": "everyday",
+   "domain": "K",
+   "key_reachable": null,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "Gemini": [
+    "Yes",
+    "Yes",
+    "No",
+    "Yes",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  },
+  "R29": {
+   "kind": "legal",
+   "domain": "K",
+   "key_reachable": null,
+   "replaced_law_in_top5": false,
+   "cautious": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "generous": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "ChatGPT": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "Gemini": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "clean_cautious": true,
+   "clean_generous": true
+  }
+ },
+ "accuracy_rating_A_subsets": {
+  "all 19": {
+   "ChatGPT alone (order A run)": {
+    "questions": 19,
+    "Yes": 0.453,
+    "Yes_ci95_over_questions": [
+     0.316,
+     0.589
+    ],
+    "useful": 0.842,
+    "useful_ci95_over_questions": [
+     0.758,
+     0.926
+    ],
+    "Misleading": 0.105,
+    "Misleading_ci95_over_questions": [
+     0.042,
+     0.179
+    ],
+    "question_level": {
+     "questions": 19,
+     "first_result_yes": 12,
+     "at_least_one_yes": 16,
+     "clean_question": 12
+    }
+   },
+   "Gemini alone (order A run)": {
+    "questions": 19,
+    "Yes": 0.389,
+    "Yes_ci95_over_questions": [
+     0.253,
+     0.526
+    ],
+    "useful": 0.758,
+    "useful_ci95_over_questions": [
+     0.642,
+     0.863
+    ],
+    "Misleading": 0.105,
+    "Misleading_ci95_over_questions": [
+     0.042,
+     0.179
+    ],
+    "question_level": {
+     "questions": 19,
+     "first_result_yes": 11,
+     "at_least_one_yes": 14,
+     "clean_question": 11
+    }
+   },
+   "both tools, agreed only": {
+    "questions": 19,
+    "Yes": 0.398,
+    "Yes_ci95_over_questions": [
+     0.249,
+     0.549
+    ],
+    "useful": 0.796,
+    "useful_ci95_over_questions": [
+     0.667,
+     0.905
+    ],
+    "Misleading": 0.077,
+    "Misleading_ci95_over_questions": [
+     0.021,
+     0.14
+    ]
+   },
+   "both tools, ties to the lower mark": {
+    "questions": 19,
+    "Yes": 0.326,
+    "Yes_ci95_over_questions": [
+     0.2,
+     0.463
+    ],
+    "useful": 0.747,
+    "useful_ci95_over_questions": [
+     0.611,
+     0.874
+    ],
+    "Misleading": 0.126,
+    "Misleading_ci95_over_questions": [
+     0.053,
+     0.211
+    ],
+    "question_level": {
+     "questions": 19,
+     "first_result_yes": 10,
+     "at_least_one_yes": 13,
+     "clean_question": 11
+    }
+   },
+   "both tools, ties to the higher mark": {
+    "questions": 19,
+    "Yes": 0.505,
+    "Yes_ci95_over_questions": [
+     0.358,
+     0.642
+    ],
+    "useful": 0.874,
+    "useful_ci95_over_questions": [
+     0.789,
+     0.937
+    ],
+    "Misleading": 0.063,
+    "Misleading_ci95_over_questions": [
+     0.021,
+     0.116
+    ],
+    "question_level": {
+     "questions": 19,
+     "first_result_yes": 13,
+     "at_least_one_yes": 16,
+     "clean_question": 13
+    }
+   }
+  },
+  "16 without the three index gaps": {
+   "ChatGPT alone (order A run)": {
+    "questions": 16,
+    "Yes": 0.513,
+    "Yes_ci95_over_questions": [
+     0.362,
+     0.662
+    ],
+    "useful": 0.887,
+    "useful_ci95_over_questions": [
+     0.812,
+     0.963
+    ],
+    "Misleading": 0.1,
+    "Misleading_ci95_over_questions": [
+     0.025,
+     0.187
+    ],
+    "question_level": {
+     "questions": 16,
+     "first_result_yes": 11,
+     "at_least_one_yes": 14,
+     "clean_question": 12
+    }
+   },
+   "Gemini alone (order A run)": {
+    "questions": 16,
+    "Yes": 0.425,
+    "Yes_ci95_over_questions": [
+     0.275,
+     0.575
+    ],
+    "useful": 0.813,
+    "useful_ci95_over_questions": [
+     0.7,
+     0.913
+    ],
+    "Misleading": 0.113,
+    "Misleading_ci95_over_questions": [
+     0.038,
+     0.2
+    ],
+    "question_level": {
+     "questions": 16,
+     "first_result_yes": 11,
+     "at_least_one_yes": 13,
+     "clean_question": 11
+    }
+   },
+   "both tools, agreed only": {
+    "questions": 16,
+    "Yes": 0.452,
+    "Yes_ci95_over_questions": [
+     0.288,
+     0.615
+    ],
+    "useful": 0.887,
+    "useful_ci95_over_questions": [
+     0.812,
+     0.958
+    ],
+    "Misleading": 0.071,
+    "Misleading_ci95_over_questions": [
+     0.013,
+     0.138
+    ]
+   },
+   "both tools, ties to the lower mark": {
+    "questions": 16,
+    "Yes": 0.375,
+    "Yes_ci95_over_questions": [
+     0.237,
+     0.525
+    ],
+    "useful": 0.812,
+    "useful_ci95_over_questions": [
+     0.688,
+     0.925
+    ],
+    "Misleading": 0.125,
+    "Misleading_ci95_over_questions": [
+     0.038,
+     0.225
+    ],
+    "question_level": {
+     "questions": 16,
+     "first_result_yes": 10,
+     "at_least_one_yes": 12,
+     "clean_question": 11
+    }
+   },
+   "both tools, ties to the higher mark": {
+    "questions": 16,
+    "Yes": 0.55,
+    "Yes_ci95_over_questions": [
+     0.4,
+     0.7
+    ],
+    "useful": 0.912,
+    "useful_ci95_over_questions": [
+     0.85,
+     0.963
+    ],
+    "Misleading": 0.062,
+    "Misleading_ci95_over_questions": [
+     0.013,
+     0.125
+    ],
+    "question_level": {
+     "questions": 16,
+     "first_result_yes": 12,
+     "at_least_one_yes": 14,
+     "clean_question": 12
+    }
+   }
+  },
+  "14 answerable (also without the two controls)": {
+   "ChatGPT alone (order A run)": {
+    "questions": 14,
+    "Yes": 0.5,
+    "Yes_ci95_over_questions": [
+     0.329,
+     0.671
+    ],
+    "useful": 0.871,
+    "useful_ci95_over_questions": [
+     0.786,
+     0.943
+    ],
+    "Misleading": 0.114,
+    "Misleading_ci95_over_questions": [
+     0.043,
+     0.2
+    ],
+    "question_level": {
+     "questions": 14,
+     "first_result_yes": 9,
+     "at_least_one_yes": 12,
+     "clean_question": 10
+    }
+   },
+   "Gemini alone (order A run)": {
+    "questions": 14,
+    "Yes": 0.429,
+    "Yes_ci95_over_questions": [
+     0.257,
+     0.6
+    ],
+    "useful": 0.8,
+    "useful_ci95_over_questions": [
+     0.686,
+     0.914
+    ],
+    "Misleading": 0.129,
+    "Misleading_ci95_over_questions": [
+     0.043,
+     0.214
+    ],
+    "question_level": {
+     "questions": 14,
+     "first_result_yes": 9,
+     "at_least_one_yes": 11,
+     "clean_question": 9
+    }
+   },
+   "both tools, agreed only": {
+    "questions": 14,
+    "Yes": 0.452,
+    "Yes_ci95_over_questions": [
+     0.268,
+     0.636
+    ],
+    "useful": 0.871,
+    "useful_ci95_over_questions": [
+     0.79,
+     0.948
+    ],
+    "Misleading": 0.081,
+    "Misleading_ci95_over_questions": [
+     0.014,
+     0.157
+    ]
+   },
+   "both tools, ties to the lower mark": {
+    "questions": 14,
+    "Yes": 0.386,
+    "Yes_ci95_over_questions": [
+     0.229,
+     0.543
+    ],
+    "useful": 0.786,
+    "useful_ci95_over_questions": [
+     0.657,
+     0.914
+    ],
+    "Misleading": 0.143,
+    "Misleading_ci95_over_questions": [
+     0.057,
+     0.257
+    ],
+    "question_level": {
+     "questions": 14,
+     "first_result_yes": 8,
+     "at_least_one_yes": 10,
+     "clean_question": 9
+    }
+   },
+   "both tools, ties to the higher mark": {
+    "questions": 14,
+    "Yes": 0.543,
+    "Yes_ci95_over_questions": [
+     0.371,
+     0.7
+    ],
+    "useful": 0.9,
+    "useful_ci95_over_questions": [
+     0.829,
+     0.957
+    ],
+    "Misleading": 0.071,
+    "Misleading_ci95_over_questions": [
+     0.014,
+     0.143
+    ],
+    "question_level": {
+     "questions": 14,
+     "first_result_yes": 10,
+     "at_least_one_yes": 12,
+     "clean_question": 10
+    }
+   }
   }
  }
 }

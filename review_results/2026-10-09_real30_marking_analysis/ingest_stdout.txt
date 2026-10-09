@@ -63,15 +63,15 @@ Runs read: 4 (ChatGPT/A, ChatGPT/B, Gemini/A, Gemini/B); passages covered by at 
 
 ## Evidence quotes
 
-- 496 of 550 quotes found verbatim in the passage; 54 not found (possible invented quotes); 0 empty.
+- 518 of 572 quotes found verbatim in the passage; 54 not found (possible invented quotes); 0 empty.
 
 ## Agreement between runs
 
 | Run A | Run B | Comparison | Passages | Agree (4 marks) | Kappa (4 marks) | Agree (useful vs not) | Kappa (useful vs not) |
 |---|---|---|---|---|---|---|---|
-| ChatGPT/A | ChatGPT/B | same model, A vs B | 60 | 0.82 | 0.73 | 0.87 | 0.66 |
-| ChatGPT/A | Gemini/A | different models | 195 | 0.74 | 0.62 | 0.88 | 0.67 |
-| ChatGPT/A | Gemini/B | different models | 60 | 0.73 | 0.62 | 0.85 | 0.62 |
+| ChatGPT/A | ChatGPT/B | same model, A vs B | 69 | 0.80 | 0.70 | 0.84 | 0.59 |
+| ChatGPT/A | Gemini/A | different models | 217 | 0.71 | 0.57 | 0.84 | 0.58 |
+| ChatGPT/A | Gemini/B | different models | 69 | 0.72 | 0.61 | 0.84 | 0.61 |
 | ChatGPT/B | Gemini/A | different models | 69 | 0.67 | 0.53 | 0.77 | 0.44 |
 | ChatGPT/B | Gemini/B | different models | 69 | 0.77 | 0.67 | 0.83 | 0.56 |
 | Gemini/A | Gemini/B | same model, A vs B | 69 | 0.81 | 0.73 | 0.88 | 0.73 |
@@ -80,20 +80,20 @@ Rule of thumb: kappa below 0.4 is weak agreement, 0.4 to 0.6 moderate, above 0.6
 
 ## Consensus marks (plurality of all runs)
 
-Yes: 56 | Partly: 68 | No: 30 | Misleading: 16 | split: 47 | None: 0
+Yes: 56 | Partly: 66 | No: 21 | Misleading: 16 | split: 58 | None: 0
 
-Passages marked Misleading by at least one run: 30
+Passages marked Misleading by at least one run: 34
 
 ## How good is what each search version shows (LLM-judged consensus)
 
 | Version | Questions judged | Top-5 slots | Unjudged slots | Yes share | Yes or Partly | Misleading | Yes (plain questions) | Yes (legal questions) |
 |---|---|---|---|---|---|---|---|---|
-| A today | 19 | 95 | 21 | 0.40 | 0.82 | 0.08 | 0.39 | 0.40 |
-| B no repeats | 18 | 95 | 22 | 0.43 | 0.82 | 0.07 | 0.41 | 0.47 |
-| C rewrite | 12 | 60 | 10 | 0.50 | 0.83 | 0.08 | 0.50 | n/a |
-| E no multiplier | 19 | 95 | 21 | 0.33 | 0.79 | 0.11 | 0.30 | 0.38 |
-| F merged | 12 | 60 | 8 | 0.50 | 0.75 | 0.10 | 0.50 | n/a |
-| S site shown | 19 | 97 | 20 | 0.31 | 0.72 | 0.06 | 0.24 | 0.43 |
+| A today | 19 | 95 | 25 | 0.40 | 0.80 | 0.08 | 0.39 | 0.40 |
+| B no repeats | 18 | 95 | 26 | 0.43 | 0.80 | 0.07 | 0.41 | 0.47 |
+| C rewrite | 11 | 60 | 15 | 0.55 | 0.91 | 0.09 | 0.55 | n/a |
+| E no multiplier | 19 | 95 | 25 | 0.33 | 0.77 | 0.11 | 0.30 | 0.38 |
+| F merged | 11 | 60 | 13 | 0.55 | 0.80 | 0.11 | 0.55 | n/a |
+| S site shown | 19 | 97 | 23 | 0.31 | 0.71 | 0.06 | 0.24 | 0.43 |
 
 Shares are averaged per question over the passages each version placed in its top 5; versions whose name starts with S or M (the site's own search, my pipeline's top 6) are scored on everything they showed. Only passages that were in the pool can be scored; 'L landmark key passages' is the set of verified paragraphs, not a search version.
 
@@ -103,12 +103,12 @@ The table above counts a passage only when the runs agree on its mark, so every 
 
 | Version | Questions judged | Agreed only | Ties to the lower mark | Ties to the higher mark | Each run alone | Against the baseline (same questions) |
 |---|---|---|---|---|---|---|
-| A today | 19 | 0.40 / 0.82 | 0.33 / 0.76 | 0.49 / 0.85 | 0.39 to 0.47 / 0.76 to 0.87 | baseline |
-| B no repeats | 19 | 0.43 / 0.82 | 0.34 / 0.77 | 0.52 / 0.86 | 0.40 to 0.50 / 0.77 to 0.90 | above in 7, equal in 0, below in 0 |
-| C rewrite | 12 | 0.50 / 0.83 | 0.40 / 0.75 | 0.48 / 0.83 | 0.45 to 0.50 / 0.75 to 0.88 | above in 7, equal in 0, below in 0 |
-| E no multiplier | 19 | 0.33 / 0.79 | 0.26 / 0.72 | 0.42 / 0.83 | 0.33 to 0.39 / 0.76 to 0.83 | above in 0, equal in 0, below in 7 |
-| F merged | 12 | 0.50 / 0.75 | 0.47 / 0.72 | 0.50 / 0.82 | 0.50 to 0.60 / 0.70 to 0.82 | above in 7, equal in 0, below in 0 |
-| S site shown | 19 | 0.31 / 0.72 | 0.24 / 0.65 | 0.36 / 0.75 | 0.27 to 0.35 / 0.61 to 0.77 | above in 0, equal in 0, below in 7 |
+| A today | 19 | 0.40 / 0.80 | 0.33 / 0.75 | 0.51 / 0.87 | 0.39 to 0.47 / 0.76 to 0.87 | baseline |
+| B no repeats | 19 | 0.43 / 0.80 | 0.34 / 0.76 | 0.53 / 0.88 | 0.40 to 0.50 / 0.77 to 0.90 | above in 7, equal in 0, below in 0 |
+| C rewrite | 12 | 0.55 / 0.91 | 0.40 / 0.75 | 0.48 / 0.90 | 0.45 to 0.50 / 0.75 to 0.83 | above in 7, equal in 0, below in 0 |
+| E no multiplier | 19 | 0.33 / 0.77 | 0.26 / 0.71 | 0.43 / 0.85 | 0.33 to 0.37 / 0.76 to 0.83 | above in 0, equal in 0, below in 7 |
+| F merged | 12 | 0.55 / 0.80 | 0.47 / 0.72 | 0.52 / 0.87 | 0.50 to 0.60 / 0.70 to 0.82 | above in 7, equal in 0, below in 0 |
+| S site shown | 19 | 0.31 / 0.71 | 0.24 / 0.64 | 0.36 / 0.77 | 0.27 to 0.32 / 0.61 to 0.73 | above in 0, equal in 0, below in 7 |
 
 Read it this way: a difference between versions is worth acting on only if it points the same way in every column and holds over more than a few questions. With 12 questions only big differences show; gaps that appear in one column and vanish in another are noise from the AI reviewer's own unsteadiness.
 
