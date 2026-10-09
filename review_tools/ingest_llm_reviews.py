@@ -12,7 +12,7 @@ The pool (review_data/pool_all.json) is the PRIVATE answer key: it records which
 import argparse, collections, csv, itertools, json, os, re, sys
 
 MARKS = ["Yes", "Partly", "No", "Misleading"]
-NAME_RE = re.compile(r"^Q(\d{1,2})_(T?[AB])_(.+?)\.(?:txt|json|md)$", re.I)
+NAME_RE = re.compile(r"^([QR])(\d{1,2})_(T?[AB])_(.+?)\.(?:txt|json|md)$", re.I)        # Q01_A_ChatGPT5.txt (the first 12 questions); R01_A_Gemini.txt (the 30 real questions)
 DEFAULT_POOL = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "review_data", "pool_all.json"))
 SET_VARIANTS = ("S ", "M ")          # versions named like 'S site shown' are sets of what a method showed, scored on all of it, not on a top 5
 MARK_ALIASES = {"yes": "Yes", "partly": "Partly", "partial": "Partly", "partially": "Partly", "no": "No", "misleading": "Misleading"}
@@ -90,11 +90,18 @@ def fmt(x, p=2):
 # ----------------------------------------------------------------------------- load
 def load_pool(path):
     pool = json.load(open(path, encoding="utf-8"))
+    if isinstance(pool, dict):                       # the pool runner's file: {"run": ..., "questions": [...]}
+        pool = pool["questions"]
     passages = {}
     for q in pool:
         for r in q["rows"]:
-            passages[(q["qid"], r["n"])] = dict(r, qid=q["qid"], kind=q["kind"], landmark_doc=q["landmark_doc"])
+            passages[(q["qid"], r["n"])] = dict(r, qid=q["qid"], kind=q["kind"], landmark_doc=q.get("landmark_doc"))
     return pool, passages
+
+
+def kind_group(kind):
+    """The first 12 questions are 'lay' or 'legal'; the 30 real ones are 'everyday', 'narrative' or 'legal'. Everyday and narrative questions are the plain-language group."""
+    return "lay" if kind in ("lay", "everyday", "narrative") else kind
 
 
 def load_replies(folder, passages, pool):
@@ -107,10 +114,10 @@ def load_replies(folder, passages, pool):
         m = NAME_RE.match(fn)
         if not m:
             if fn != "PUT_SAVED_REPLIES_HERE.txt":
-                problems.append((fn, "file name does not match Qnn_A_model.txt: skipped"))
+                problems.append((fn, "file name does not match Qnn_A_model.txt or Rnn_A_model.txt: skipped"))
             continue
-        qid, order = f"Q{int(m.group(1)):02d}", m.group(2).upper()
-        model = re.sub(r"(?:\.(?:txt|json|md))+$", "", m.group(3), flags=re.I)        # 'Gemini.txt.txt' (a hidden extension added twice) is still 'Gemini'
+        qid, order = f"{m.group(1).upper()}{int(m.group(2)):02d}", m.group(3).upper()
+        model = re.sub(r"(?:\.(?:txt|json|md))+$", "", m.group(4), flags=re.I)        # 'Gemini.txt.txt' (a hidden extension added twice) is still 'Gemini'
         is_top = order.startswith("T")
         exp = (expected_top if is_top else expected).get(qid)
         if exp is None or (is_top and not exp):
@@ -201,7 +208,7 @@ def analyse(runs, passages, pool):
         def mean_of(f, kind=None):
             vals = []
             for qid, marks in qs.items():
-                if kind and next(q["kind"] for q in pool if q["qid"] == qid) != kind:
+                if kind and kind_group(next(q["kind"] for q in pool if q["qid"] == qid)) != kind:
                     continue
                 judged = [m for m in marks if m not in (None, "split")]
                 if judged:
