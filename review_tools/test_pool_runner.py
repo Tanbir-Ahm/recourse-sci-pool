@@ -182,6 +182,22 @@ ordered3, stopped3 = P.run({}, qs, {"R91": "Compounding of a cheque dishonour of
 check("at the cap the run stops before the next question, keeps what it has, and says so", [r["qid"] for r in ordered3] == ["R90"] and stopped3 and "R91" in stopped3 and len(open(os.path.join(tmp2, "questions.jsonl")).read().strip().split("\n")) == 1, stopped3)
 check("the run never bills past the cap", eng5.spend.rerank <= cap)
 
+# ---- titles ------------------------------------------------------------------------------------------------------------------------------------------------
+import gzip as _gz
+idx = tempfile.mkdtemp()
+os.makedirs(os.path.join(idx, "index"))
+with _gz.open(os.path.join(idx, "index", "000000.docs.jsonl.gz"), "wt", encoding="utf-8") as fh:
+    fh.write(json.dumps({"doc": 1, "case": {"pet": "Arnesh Kumar", "resp": "State of Bihar", "date": "2014-07-02"}}) + "\n")
+    fh.write(json.dumps({"doc": 2, "src": {"source": "bucket", "title": "MIHIR RAJESH SHAH   versus STATE OF MAHARASHTRA", "date": "2025-11-06"}}) + "\n")
+    fh.write(json.dumps({"doc": 3}) + "\n")
+tt = P.titles(idx, [{"doc": 3, "section": "header", "pn": "1", "text": "IN THE SUPREME COURT   OF INDIA header text"}])
+check("a crawl judgment is titled from its case record, a bucket judgment from the title it arrived with, else from its header text",
+      tt(1) == "Arnesh Kumar v. State of Bihar (2014-07-02)" and tt(2) == "MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA (2025-11-06)" and tt(3) == "IN THE SUPREME COURT OF INDIA header text" and tt(4) is None, [tt(1), tt(2), tt(3), tt(4)])
+pp = os.path.join(idx, "pool.json")
+json.dump({"run": {}, "questions": [{"qid": "R1", "rows": [{"doc": 2, "title": None}, {"doc": 1, "title": "kept"}, {"doc": 9, "title": None}]}]}, open(pp, "w"))
+check("retitle fills only the empty titles, counts those it could not fill, and leaves the rest alone", P.retitle(pp, idx) == (1, 1) and [r["title"] for r in json.load(open(pp))["questions"][0]["rows"]] == ["MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA (2025-11-06)", "kept", None])
+check("the run record says the titles were filled afterwards", json.load(open(pp))["run"]["titles_filled_afterwards"]["rows"] == 1)
+
 # ---- the guards in main ---------------------------------------------------------------------------------------------------------------------------
 buf = io.StringIO()
 with redirect_stdout(buf):

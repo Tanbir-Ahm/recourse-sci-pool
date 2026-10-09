@@ -1,0 +1,99 @@
+QUESTION ID: R28   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R28",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Me and my wife both want divorce by mutual consent. Can the court skip the 6-month waiting period?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 650 OF 2008 A.B. Bhaskara Rao .... Appellant(s) Versus Inspector of Police, CBI Visakhapatnam .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed agai
+   (Judgment id 38688, unnumbered paragraph, page 17)
+Text:
+Article 142 and its applicability 14) By drawing our attention to Article 142 of the Constitution of India, learned senior counsel for the appellant vehemently submitted that in order to do complete justice, this Court has ample power to reduce the sentence even to the extent of period already undergone or any other order which would be beneficial to the parties approaching this Court. Similar claim based on Article 142 has been negatived in several decisions by this Court, we need to refer only the latest decision of this Court in Manish Goel vs. Rohini Goel, (2010) 4 SCC 393. The facts in that case are that the parties by persuasion of the family members and friends, entered into a compromise and prepared a memorandum of understanding dated 13.11.2009, in the proceedings pending before the Mediation Centre, Delhi, by which they agreed on terms and conditions incorporated therein, to settle all their disputes and also for dissolution of their marriage. The parties filed an application under Section 13-B(1) of the Hindu Marriage Act, 1955 before the Family Court, Delhi seeking divorce by mutual consent. The said HMA No. 456 of 2009 came before the court and it recorded the statement of parties on 16.11.2009. The parties moved another HMA No. 457 of 2009 to waive the statutory period of six months in filing the second petition.
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1635 of 2011 (Arising out of SLP(Crl.) No. 7787 of 2010) Inderjit Singh Grewal …Appellant Versus State of Punjab & Anr. …Respondents J U D G M E N T Dr. B.S. CHAUHAN, J.
+   (Judgment id 38403, paragraph 19, page 16)
+Text:
+19. In Smt. Sureshta Devi v. Om Prakash, AIR 1992 SC 1304, this Court held that mere filing the petition for divorce by mutual consent does not authorise the court to make a decree for divorce. The interregnum waiting period from 6 to 18 months is obviously intended to give time and opportunity to the parties to reflect on their move and seek advice from relations and friends. In this transitional period one of the parties may have a second thought and change the mind not to proceed with the petition. The court must be satisfied about the bona fides and the consent of the parties for the reason that court gets jurisdiction to make a decree for divorce only on mutual consent at the time of enquiry. The consent must continue to decree nisi and must be valid subsisting consent when the case is heard. Thus, withdrawal of consent can be unilateral prior to second motion. The Court further observed: “The 'living separately' for a period of one year should be immediately preceding the presentation of the petition. It is necessary that immediately preceding the presentation of petition, the parties must have been living separately. The expression 'living separately', connotes to our mind not living like husband and wife. It has no reference to the place of living. The parties may live under the same roof by force of circumstances, and yet they may not be living as husband and wife. The. parties may be living in different houses and yet they could live as husband and wife. What seems to be necesssary is that they have no desire to perform marital obligations and with that mental attitude they have been living separately for a period of one year immediately preceding the presentation of the petition. The second requirement that they 'have not been able to live together' seems to indicate the concept of broken down marriage and it would not be possible to reconcile themselves. The third requirement is that they have mutually agreed that the marriage should be dissolved.” (Emphasis added)
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 650 OF 2008 A.B. Bhaskara Rao .... Appellant(s) Versus Inspector of Police, CBI Visakhapatnam .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed agai
+   (Judgment id 38688, unnumbered paragraph, page 18)
+Text:
+457 of 2009 to waive the statutory period of six months in filing the second petition. However, the court rejected the said application vide order dated 01.12.2009 observing that the court was not competent to waive the required statutory period of six months under the Act and such a waiver was permissible only under the directions of the Supreme Court as held by this Court in Anil Kumar Jain vs. Maya Jain, (2009) 10 SCC 415. Hence the parties have approached this Court for appropriate relief. Speaking for the Bench one of us - (Dr. Justice B.S. Chauhan) referred to more than fifty decisions including the Constitution Bench judgments. The relevant paras, which are useful, may be quoted: “11. We are fully alive of the fact that this Court has been exercising the power under Article 142 of the Constitution for dissolution of marriage where the Court finds that marriage is totally unworkable, emotionally dead, beyond salvage and has broken down irretrievably, even if the facts of the case do not provide a ground in law on which the divorce could be granted. Decree of divorce has been granted to put quietus to all litigations between the parties and to save them from further agony, as it is evident from the judgments in Romesh Chander v. Savitri (1995) 2 SCC 7, Kanchan Devi v. Promod Kumar Mittal (1996) 8 SCC 90, Anita Sabharwal v.
+
+--- PASSAGE 4 ---
+Judgment: Sanghamitra Ghosh v. Kajal Kumar Ghosh (20/11/2006)
+   (Judgment id 28288, paragraph 6-7, page 5)
+Text:
+6. Both the parties humbly request that all the transfer petitions pending in this Court (as mentioned earlier in para 4) to be dismissed as infructuous. 7. Both the parties submit that their marriage has broken down irretrievably and that there is no possibility of the parties living together. In these circumstances, both parties would humbly request this Court in exercise of its powers to grant a decree of divorce by mutual consent.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL ORIGINAL JURISDICTION TRANSFER PETITION (C) NO. 91 OF 2008 Aparna Goyal ...Petitioner Versus Rakesh Goyal ...Respondent With (TP (Crl.) Nos. 183-184 of 2008) (SLP (Crl.) Nos. 6900-6902 of 2007) J U D G M E N T Dr. ARIJIT PAS
+   (Judgment id 33575, paragraph 3, page 3)
+Text:
+3. In HMA No.37/2006 the divorce by mutual consent be passed in terms of Section 13B(1) and 13B(2) of the Hindu Marriage Act, 1956 by dissolving the marriage between the husband Rakesh and Aparna Goyal, the wife in terms of this order.
+
+--- PASSAGE 6 ---
+Judgment: SMT. KANCHAN DEVI Vs. v. PROMOD KUMAR MITTAL & ANR. (03/04/1996)
+   (Judgment id 15764, unnumbered paragraph, page 2)
+Text:
+The respondent through his learned counsel categorically submitted that there was no possibility of the parties remaining together as husband and wife and that position was not disputed by learned counsel appearing for the appellants. On 7.12.95, during the course of arguments in the Court, the appellant made the following statement in this Court: "I have no objection to a decree of divorce being made bacause my marriage with the respondent has irretrievably broken down provided, however, the respondent pays a sum of Rs.60000/- (rupees sixty thousand) within twelve weeks from today. My agreement to divorce by mutual consent is subject to that condition and in the event that amount is not paid, I shall not be bound by this statement, as it is without prejudice to my other rights in the case. On the amount being paid, the dispute arising out of the petition under Section 125 Cr.P.C. shall also stand settled." The respondent husband also made a statement to the following effect: "Petitioner Smt. Kanchan Devi is my wife. The relations between her and myself as husband and wife have irretrivably broken down. I have heard her statement made in the court today. I agree with her statement and shall pay a sum of Rs.60000/- (rupees sixty thousand) within twelve weeks from today to her. That amount shall be in settlement of all the disputes arising out of the maintenance proceedings under Section 125 Cr.P.C. as well as for grant of divorce on mutual consent.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION TRANSFER PETITION (CRL) NO. 27 OF 2009 Harpreet Singh Popli and others …Petitioner (s) Versus Manmeet Kaur Popli and another …Respondent(s) With TRANSFER PETITION (C) NO. 342 OF 2009 Manmeet Kaur …Pe
+   (Judgment id 35664, paragraph 6, page 5)
+Text:
+6. Accordingly, H.M.A. Petition No. 51 of 2009, pending on the file of the District Judge, Tis Hazari Courts, Delhi is withdrawn to this Court and a decree of divorce by mutual consent is passed in terms of Section 13B of the Act by waiving the requirement of six months period specified in subsection (2) thereof.
+
+--- PASSAGE 8 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 650 OF 2008 A.B. Bhaskara Rao .... Appellant(s) Versus Inspector of Police, CBI Visakhapatnam .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed agai
+   (Judgment id 38688, unnumbered paragraph, page 21)
+Text:
+However, it is to be made clear that this power cannot be used to supplant the law applicable to the case. This means that acting under Article 142, the Supreme Court cannot pass an order or grant relief which is totally inconsistent or goes against the substantive or statutory enactments pertaining to the case. The power is to be used sparingly in cases which cannot be effectively and appropriately tackled by the existing provisions of law or when the existing provisions of law cannot bring about complete justice between the parties.” (Emphasis added) After elaborately discussing almost all the case laws on this subject about jurisdiction of this Court under Article 142, in para 19, summarised the same in the following words: 19. Therefore, the law in this regard can be summarised to the effect that in exercise of the power under Article 142 of the Constitution, this Court generally does not pass an order in contravention of or ignoring the statutory provisions nor is the power exercised merely on sympathy. After saying so, the Court rejected the request of the parties to waive the statutory period of six months under the Act. 15) In Mota Ram vs. State of Haryana, (2009) 12 SCC 727, this Court, while reiterating the above principles has concluded that Article 142 cannot be exercised to negate the statutory provisions.
+
+--- PASSAGE 9 ---
+Judgment: Judgment / Order of the Supreme Court Vijay Bishnoi, J. Leave granted.
+   (Judgment id 1003962640, paragraph 24, page 15)
+Text:
+24. The First Motion Petition in the petition for divorce by mutual consent was allowed on 14.08.2024 after fulfilling the terms as per the Settlement Agreement to that effect and the Second Motion Petition was to be filed on or before 20.02.2025. However, the Respondent- Wife refused to sign the Second Motion Petition within the stipulated time period and withdrew her consent to the mutual divorce.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 650 OF 2008 A.B. Bhaskara Rao .... Appellant(s) Versus Inspector of Police, CBI Visakhapatnam .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed agai
+   (Judgment id 38688, unnumbered paragraph, page 19)
+Text:
+Promod Kumar Mittal (1996) 8 SCC 90, Anita Sabharwal v. Anil Sabharwal (1997) 11 SCC 490, Ashok Hurra v. Rupa Bipin Zaveri (1997) 4 SCC 226, Kiran v. Sharad Dutt (2000) 10 SCC 243, Swati Verma v. Rajan Verma (2004) 1 SCC 123, Harpit Singh Anand v. State of W.B. (2004) 10 SCC 505, Jimmy Sudarshan Purohit v. Sudarshan Sharad Purohit (2005) 13 SCC 410, Durga Prasanna Tripathy v. Arundhati Tripathy (2005) 7 SCC 353, Naveen Kohli v. Neelu Kohli (2006) 4 SCC 558, Sanghamitra Ghosh v. Kajal Kumar Ghosh (2007) 2 SCC 220, Rishikesh Sharma v. Saroj Sharma (2007) 2 SCC 263, Samar Ghosh v. Jaya Ghosh (2007) 4 SCC 511 and Satish Sitole v. Ganga (2008) 7 SCC 734. However, these are the cases, where this Court came to rescue the parties on the ground for divorce not provided for by the legislature in the statute. 12. In Anjana Kishore v. Puneet Kishore (2002) 10 SCC 194, this Court while allowing a transfer petition directed the court concerned to decide the case of divorce by mutual consent, ignoring the statutory requirement of moving the motion after expiry of the period of six months under Section 13-B(2) of the Act. In Anil Kumar Jain, this Court held that an order of waiving the statutory requirements can be passed only by this Court in exercise of its powers under Article 142 of the Constitution. The said power is not vested with any other court.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R28 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

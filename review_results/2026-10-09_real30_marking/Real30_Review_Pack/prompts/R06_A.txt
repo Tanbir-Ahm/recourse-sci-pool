@@ -1,0 +1,117 @@
+QUESTION ID: R06   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 13 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R06",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 13 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+
+==============================================================================
+QUESTION: My nephew is first time accused in a 2023 theft case, he's been in jail as undertrial for over a year. Does the new section 479 BNSS one-third rule help him even though the FIR was before the new law?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.
+   (Judgment id 32524, paragraph 32, page 21)
+Text:
+32. In the statement of objects and reasons it was stated; There had been instances, where under-trial prisoners were detained in jail for periods beyond the maximum period of imprisonment provided for the alleged offence. As remedial measure section 436A has been inserted to provide that where an under-trial prisoner other than the one accused of an offence for which death has been prescribed as one of the punishments, has been under detention for a period extending to one-half of the maximum period of imprisonment provided for the alleged offence, he should be released on his personal bond, with or without sureties. It has also been provided that in no case will an under-trial prisoner be detained beyond the maximum period of imprisonment for which he can be convicted for the alleged offence.
+
+--- PASSAGE 2 ---
+Judgment: JUDGMENT / ORDER OF THE SUPREME COURT SANJIV KHANNA, J. Leave granted.
+   (Judgment id 1000255361, paragraph 27, page 31)
+Text:
+27. The appellant – Manish Sisodia has argued that given the number of witnesses, 294 in the prosecution ﬁ led by the CBI and 162 in the prosecution ﬁ led by the DoE, and the documents 31,000 pages and 25,000 pages respectively, the fact that the CBI has ﬁ led multiple charge sheets,the arguments of charge have not commenced. The trial court has allowed application of the accused for furnishing of additional documents, which order has been challenged by the prosecution under Section 482 of the Code before the High Court. It was stated at the Bar, on behalf of the prosecution that the said petition under Section 482 will be withdrawn. It was also stated at the Bar,by the prosecution that the trial would be concluded within next six to eight months. Where a person has, during the period of investigation, inquiry or trial under this Code of an oﬀ ence under any law (not being an oﬀ ence for which the punishment of death has been speciﬁ ed as one of the punishments under that law) undergone detention for a period extending up to one-half of the maximum period of imprisonment speciﬁ ed for that oﬀ ence under that law, he shall be released by the Court on his personal bond with or without sureties: Provided that the Court may, after hearing the Public Prosecutor and for reasons to be recorded by it in writing, order the continued detention of such person for a period longer than one-half of the said period or release him on bail instead of the personal bond with or without sureties: Provided further that no such person shall in any case be detained during the period of investigation, inquiry or trial for more than the maximum period of imprisonment provided for the said oﬀ ence under that law. Explanation.—In computing the period of detention under this section for granting bail, the period of detention passed due to delay in proceeding caused by the accused shall be excluded.” 57 (2021) 2 SCC 427.
+
+--- PASSAGE 3 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 20, page 12)
+Text:
+20. The BNSS is an improved version of the erstwhile CrPC. This is a procedural Code designed to act as a guiding framework to all the stakeholders in the criminal justice system. While retaining several provisions contained in the earlier statute, a conscious endeavour has been made to make the BNSS citizen-centric, while facilitating the investigating agencies and the Courts. 498 Section 2(1)(k) of the BNSS “2. Definitions.—(1) In this Sanhita, unless the context otherwise requires,— *** (k) “inquiry” means every inquiry, other than a trial, conducted under this Sanhita by a Magistrate or Court;” (emphasis supplied)
+
+--- PASSAGE 4 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 29, page 17)
+Text:
+29. A substantive right conferred under the BNSS would definitely enure to the benefit of an accused against whom none of the proceedings envisaged under Section 531(2)(a) of the BNSS has been initiated. One has to see the nature of right. It is not a case of either a retrospective or retroactive application, rather it is a prospective one when a better right has been conferred under the BNSS. LEGAL & FACTUAL ANALYSIS
+
+--- PASSAGE 5 ---
+Judgment: PARTHA CHATTERJEE versus DIRECTORATE OF ENFORCEMENT (13-12-2024)
+   (Judgment id 1000256177, paragraph 11, page 7)
+Text:
+11. The aggrieved Appellant is thus before us seeking bail, inter alia, on the following grounds: (i) the prolonged period of incarceration of over two years; (ii) the Appellant was neither named nor chargesheeted in the predicate offence; (iii) the Appellant does not have any criminal antecedents and has deep roots in society; (iv) he is not a flight risk or likely to tamper with evidence or witnesses; (v) no cash was recovered from the Appellant during search and seizure by the respondent ED; (vi) the Appellant is 72 years of age and suffers from multiple health ailments; (vii) the Appellant has already spent one-third of the total sentence prescribed for the offence and thus, is entitled to bail under Section 479 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS); and (viii) there is no hope in the trial commencing in view of the 442 documents and 183 witnesses cited for examination. Mr. Mukul Rohatgi, Learned Senior Counsel, lastly contended that the Appellant ought to be granted bail on the ground of parity, considering that his co-accused have already been released on bail.
+
+--- PASSAGE 6 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 21, page 13)
+Text:
+21. Section 2(1)(k) of the BNSS, 2023 defines an “inquiry”. An exhaustive and inclusive definition of the said term has been provided by stating that it would mean every inquiry other than a trial conducted under the BNSS by a Magistrate or a Court. However, it is pertinent to note that an inquiry is a judicial act, as against an administrative one, requiring application of judicial mind which must be reflected through the recording made by a Court. Hence, it is a positive and conscious act done by a Magistrate or a Court. Section 4 of the BNSS “4. Trial of offences under Bharatiya Nyaya Sanhita, 2023 and other laws.— (1) All offences under the Bharatiya Nyaya Sanhita, 2023 shall be investigated, inquired into, tried, and otherwise dealt with according to the provisions hereinafter contained. (2) All offences under any other law shall be investigated, inquired into, tried, and otherwise dealt with according to the same provisions, but subject to any enactment for the time being in force regulating the manner or place of investigating, inquiring into, trying or otherwise dealing with such offences.” (emphasis supplied) Section 5 of the BNSS, 2023 “5. Saving.— Nothing contained in this Sanhita shall, in the absence of a specific provision to the contrary, affect any special or local law for the time being in force, or any special jurisdiction or power conferred, or any special form of procedure prescribed, by any other law for the time being in force.” (emphasis supplied)
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.
+   (Judgment id 32524, paragraph 33, page 22)
+Text:
+33. The learned counsel for the respondents are, prima facie, right in submitting that no retrospective effect has been given to the said provision and as such Section 436A does not directly apply to the facts of the case.
+
+--- PASSAGE 8 ---
+Judgment: MOHD. TAHIR HUSSAIN versus STATE OF NCT OF DELHI (22-01-2025)
+   (Judgment id 1000256295, paragraph 23, page 18)
+Text:
+23. He submitted that as regards the present FIR, eight co-accused are already on bail, including two of the main assailants, who as per two eye-witnesses, were the persons who had actually killed the deceased. On the aspect of recovery of articles, the submission was that they relate to other cases, where the Petitioner is already on bail. Qua the PMLA case, it was submitted that out of the prescribed maximum sentence of 7 years, the Petitioner has undergone approximately 4 years and 5 months behind bars, and as such, would be entitled to the benefit of Section 436-A9 of the Code of Criminal Procedure, 1973. ‘436-A. Maximum period for which an undertrial prisoner can be detained.—Where a person has, during the period of investigation, inquiry or trial under this Code of an offence under any law (not being an offence for which the punishment of death has been specified as one of the punishments under that law) undergone detention for a period extending up to one-half of the maximum period of imprisonment specified for that offence under that law, he shall be released by the Court on his personal bond with or without sureties: Provided that the Court may, after hearing the Public Prosecutor and for reasons to be recorded by it in writing, order the continued detention of such person for a period longer than one-half of the said period or release him on bail instead of the personal bond with or without sureties: Provided further that no such person shall in any case be detained during the period of investigation, inquiry or trial for more than the maximum period of imprisonment provided for the said offence under that law. Explanation.—In computing the period of detention under this section for granting bail, the period of detention passed due to delay in proceeding caused by the accused shall be excluded.’ ANALYSIS, REASONING AND CONCLUSION:
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.
+   (Judgment id 32524, paragraph 12, page 7)
+Text:
+12. It was also stated that by the Code of Criminal Procedure (Amendment) Act, 2005, Section 436A came to be inserted which provides that an under-trial prisoner other than the one accused of an offence for which death has been prescribed as one of the punishments, has been under detention for a period extending to onehalf of the maximum period of imprisonment provided for the alleged offence, he should be released on his personal bond, with or without sureties.
+
+--- PASSAGE 10 ---
+Judgment: THE CENTRAL BUREAU OF INVESTIGATION versus MIR USMAN @ ARA @ MIR USMAN ALI (22-09-2025)
+   (Judgment id 1000257041, paragraph 19/3, page 15)
+Text:
+This chapter is applicable to other than an offence which punishment of death or of imprisonment for life or of imprisonment for a term exceeding seven years has been provided under the law time being in force but does not apply where such offences affects the socio economic condition of the country or has been committed against a woman, or a child below age of fourteen years. VIII. Section 309(1) of Cr.P.C. (now Section 346 of the BNSS, 2023) provides that in every inquiry or trial the proceeding shall be continued from day to day until all the witnesses in attendance have been examined. It also 1506 provides that when the inquiry or trial relates to an offence under section 376, or 376-A or 376-B or 376-C or 376-D of the Indian Penal Code, 1860, the inquiry or trial shall, as far as possible be completed within a period of two months from the date of filing of the chargesheet. IX. Section 468 of Cr.P.C. (now Section 514 of the BNSS, 2023) Provides bar in taking cognizance after lapse of the period of limitation. Sub section (2) provides limitation period as (a) 6 months, if the offence is punishable with fine only (b) 1 year, if the offence is punishable with imprisonment for a term not exceeding one year (c) 3 year, if the offence is punishable with imprisonment for a term exceeding one year but not exceeding three years.
+
+--- PASSAGE 11 ---
+Judgment: The Judgment of the Court was delivered by A. M. KHANWILKAR, J. Table of Contents VIJAY MADANLAL CHOUDHARY & ORS. v. UNION OF INDIA & ORS. PREFACE
+   (Judgment id 1000254150, paragraph 142, page 289)
+Text:
+142. There is, however, an exception carved out to the strict compliance of the twin conditions in the form of Section 436A of the 1973 Code, which has come into being on 23.6.2006 vide Act 25 of 2005. This, being the subsequent law enacted by the Parliament, must prevail. Section 436A of the 1973 Code reads as under: “656[436A. Maximum period for which an undertrial prisoner can be detained.— Where a person has, during the period of investigation, inquiry or trial under this Code of an offence under any law (not being an offence for which the punishment of death has been specified as one of the punishments under that law) undergone detention for a period extending up to one-half of the maximum period of imprisonment specified for that offence under that law, he shall be released by the Court on his personal bond with or without sureties: Provided that the Court may, after hearing the Public Prosecutor and for reasons to be recorded by it in writing, order the continued detention of such person for a period longer than one-half of the said period or release him on bail instead of the personal bond with or without sureties: Provided further that no such person shall in any case be detained during the period of investigation, inquiry or trial for more than the maximum period of imprisonment provided for the said offence under that law. Explanation.—In computing the period of detention under this section for granting bail, the period of detention passed due to delay in proceeding caused by the accused shall be excluded.]” In the Statement of Objects and Reasons, it was stated thus: 656 Ins. by Act 25 of 2005, sec. 36 (w.e.f. 23-6-2006) “There had been instances, where under-trial prisoners were detained in jail for periods beyond the maximum period of imprisonment provided for the alleged offence. As remedial measure section 436A has been inserted to provide that where an under-trial prisoner other than the one accused of an offence for which death has been prescribed as one of the punishments, has been under detention for a period extending to one-half of the maximum period of imprisonment provided for the alleged offence, he should be released on his personal bond, with or without sureties. It has also been provided that in no case will an under-trial prisoner be detained beyond the maximum period of imprisonment for which he can be convicted for the alleged offence.”
+
+--- PASSAGE 12 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.
+   (Judgment id 32524, paragraph 31, page 20)
+Text:
+31. So far as Section 436A is concerned, it may be stated that by the Code of Criminal Procedure (Amendment) Act, 2005, the said section came to be inserted, which reads as under; “436A. Maximum period for which an undertrial prisoner can be detained.— Where a person has, during the period of investigation, inquiry or trial under this Code of an offence under any law (not being an offence for which the punishment of death has been specified as one of the punishments under that law) undergone detention for a period extending up to one-half of the maximum period of imprisonment specified for that offence under that law, he shall be released by the Court on his personal bond with or without sureties: Provided that the Court may, after hearing the Public Prosecutor and for reasons to be recorded by it in writing, order the continued detention of such person for a period longer than one-half of the said period or release him on bail instead of the personal bond with or without sureties: Provided further that no such person shall in any case be detained during the period of investigation, inquiry or trial for more than the maximum period of imprisonment provided for the said offence under that law. Explanation.—In computing the period of detention under this section for granting bail, the period of detention passed due to delay in proceeding caused by the accused shall be excluded.”
+
+--- PASSAGE 13 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 23, page 14)
+Text:
+23. Section 5 of the BNSS extends protection to a special or local law, only in the absence of a specific provision to the contrary under the BNSS overriding such special or local law. Section 210 of the BNSS, 2023 “210. Cognizance of offences by Magistrate.— (1) Subject to the provisions of this Chapter, any Magistrate of the first class, and any Magistrate of the second class specially empowered in this behalf under sub-section (2), may take cognizance of any offence— (a) upon receiving a complaint of facts, including any complaint filed by a person authorised under any special law, which constitutes such offence; (b) upon a police report (submitted in any mode including electronic mode) of such facts; (c) upon information received from any person other than a police officer, or upon his own knowledge, that such offence has been committed. (2) The Chief Judicial Magistrate may empower any Magistrate of the second class to take cognizance under sub-section (1) of such offences as are within his competence to inquire into or try.” (emphasis supplied) Section 213 of the BNSS, 2023 “213. Cognizance of offences by Court of Session.— Except as otherwise expressly provided by this 500 Sanhita or by any other law for the time being in force, no Court of Session shall take cognizance of any offence as a Court of original jurisdiction unless the case has been committed to it by a Magistrate under this Sanhita. ” (emphasis supplied)
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R06 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).

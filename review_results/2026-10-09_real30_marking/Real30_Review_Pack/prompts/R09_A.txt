@@ -1,0 +1,87 @@
+QUESTION ID: R09   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 8 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R09",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 8 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8
+
+==============================================================================
+QUESTION: Where the payee presents a dishonoured cheque through his account at the branch of his bank in Delhi, though the cheque is drawn on a Kolkata bank, which court has territorial jurisdiction to try the complaint?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2021 OF 2008 [arising out of SLP (Criminal) No. 1712 of 2004] M/S. HARMAN ELECTRONICS (P) LTD. & ANR. … APPELLANTS VERSUS M/S. NATIONAL PANASONIC INDIA LTD. … RESPONDENT J U D G 
+   (Judgment id 33328, paragraph 2, page 1)
+Text:
+2. Territorial jurisdiction of a court to try an offence under Section 138 of the Negotiable Instruments Act, 1881 (for short, “the Act”) is in question in this appeal. The said question arose in the following circumstances. Appellants and respondent entered into a business transaction. Appellant is a resident of Chandigarh. He carries on business in Chandigarh. The cheque in question admittedly was issued at Chandigarh. Complainant also has a branch office at Chandigarh although his Head Office is said to be at Delhi. It is stated that the cheque was presented at Chandigarh. However, it is in dispute as to whether the said cheque was sent for collection to Delhi. The cheque was dishonoured also at Chandigarh. However, the complainant – respondent issued a notice upon the appellant asking him to pay the amount from New Delhi. Admittedly, the said notice was served upon the respondent at Chandigarh. On failure on the part of the appellant to pay the amount within a period of 15 days from the date of communication of the said letter, a complaint petition was filed at Delhi. In the complaint petition, it was stated: “10. That the complainant presented aforesaid cheque for encashment through its banker Citi Bank NA. The Punjab & Sind Bank, the banker of the accused returned the said cheque unpaid with an endorsement “Payment stopped by drawer” vide their memo dated 30.12.2000. The aforesaid memo dated 30.12.2000 was received by the complainant on 3.1.2001.
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 8468 OF 2014 (Arising out of S.L.P. (C) No.29044 of 2009) Vinay Kumar Shailendra …Appellant Versus Delhi High Court Legal Services Committee and Anr. …Respondents With CIVIL APPEAL NO.
+   (Judgment id 41877, paragraph preamble/8, page 1)
+Text:
+In the light of the above pronouncement of this Court we have no hesitation in holding that the issue of a notice from Delhi or deposit of the cheque in a Delhi bank by the payee or receipt of the notice by the accused demanding payment in Delhi would not confer jurisdiction upon the Courts in Delhi. What is important is whether the drawee bank who dishonoured the cheque is situate within the jurisdiction of the Court taking cognizance. In that view, we see no reason to interfere with the order passed by the High Court which simply requires the Magistrate to examine and return the complaints if they do not have the jurisdiction to entertain the same in the light of the legal position as stated in Harman’s case (supra). All that we need to add is that while examining the question of jurisdiction the Metropolitan Magistrates concerned to whom the High Court has issued directions shall also keep in view the decision of this Court in Dashrath’s case (supra). 7. With the above observations these appeals fail and are hereby dismissed but in the circumstances without any orders as to costs. ………………………………….…..…J. (T.S. THAKUR) .……………………………….…..…J. (V. GOPALA GOWDA) ………………………..……………..J. (C. NAGAPPAN) New Delhi September 4, 2014 IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 808 OF 2013 (Arising out of S.L.P. (Crl.) No. 9434 of 2011) Nishant Aggarwal .... Appellant(s) Versus Kailash Kumar Sharma .... Respondent(s) J U D G M E N T P.Sathasivam,J. 1) L
+   (Judgment id 40477, unnumbered paragraph, page 14)
+Text:
+The complainant had a Branch Office at Chandigarh although his Head Office was at Delhi. He presented the cheque given by the accused at Chandigarh. The cheque was dishonoured at Chandigarh. The complainant issued a notice upon the accused asking him to pay the amount from New Delhi. The said notice was served on the accused at Chandigarh. On failure on the part of the accused to pay the amount within 15 days from the date of the communication of the said letter, the complainant filed a complaint at Delhi. In the complaint, it was stated that the Delhi Court has jurisdiction to try the case because the complainant was carrying on business at Delhi, the demand notice was issued from Delhi, the amount of cheque was payable at Delhi and the accused failed to make the payment of the said cheque within the statutory period of 15 days from the date of receipt of notice. It is further seen that the cognizance of the offence was taken by the learned Magistrate at Delhi. The accused questioned the jurisdiction of the Magistrate at Delhi before the Addl. Sessions Judge, New Delhi. The Sessions Judge held that the Magistrate at Delhi had jurisdiction to entertain the complaint as, admitedly, the notice was sent by the complainant to the accused from Delhi and the complainant was having its Registered Office at Delhi and was carrying on business at Delhi.
+
+--- PASSAGE 4 ---
+Judgment: M/S CELESTIUM FINANCIAL versus A. GNANASEKARAN ETC (08-04-2025)
+   (Judgment id 1000256564, paragraph 142, page 29)
+Text:
+142. Cognizance of offences.— (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974),— (a) no court shall take cognizance of any offence punishable under section 138 except upon a complaint, in writing, made by the payee or, as the case may be, the holder in due course of the cheque; (b) such complaint is made within one month of the date on which the cause of action arises under clause (c) of the proviso to section 138: Provided that the cognizance of a complaint may be taken by the Court after the prescribed period, if the complainant satisfies the Court that he had sufficient cause for not making a complaint within such period; (c) no court inferior to that of a Metropolitan Magistrate or a Judicial Magistrate of the first class shall try any offence punishable under section 138. (2) The offence under section 138 shall be inquired into and tried only by a court within whose local jurisdiction,— (a) if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated; or (b) if the cheque is presented for payment by the payee or holder in due course, otherwise through an account, the branch of the drawee bank where the drawer maintains the account, is situated. Explanation.—For the purposes of clause (a), where a cheque is delivered for collection at any branch of the bank of the payee or holder in due course, then, the cheque shall be deemed to have been delivered to the branch of the bank in which the payee or holder in due course, as the case may be, maintains the account.
+
+--- PASSAGE 5 ---
+Judgment: Opening header not available
+   (Judgment id 41801, paragraph 3, page 55)
+Text:
+3. Ishar Alloy’s case (supra) did not deal with the question of jurisdiction of the Courts nor was Bhaskaran noticed by the Court while holding that the presentation of the cheque ought to be within six months to the drawee bank. But that does not, in our view, materially affect the logic underlying the pronouncement, which pronouncement coming as it is from a bench of coordinate jurisdiction binds us. When logically extended to the question of jurisdiction of the Court to take cognizance, we find it difficult to appreciate how a payee of the cheque can by presentation of the cheque to his own bank confer jurisdiction upon the Court where such bank is situate. If presentation referred to in Section 138 means presentation to the “drawee bank”, there is no gainsaying that dishonour would be localised and confined to the place where such bank is situated. The question is not whether or not the payee can deposit his cheque in any bank of his choice at any place. The question is whether by such deposit can the payee confer jurisdiction on a Court of his choice? Our answer is in the negative. The payee may and indeed can present the cheque to any bank for collection from the drawee bank, but such presentation will be valid only if the drawee bank receives the cheque for payment within the period of six months from the date of issue. Dishonour of the cheque would be localised at the place where the drawee bank is situated. Presentation of the cheque at any place, we have no manner of doubt, cannot confer jurisdiction upon the Court within whose territorial limits such presentation may have taken place.
+
+--- PASSAGE 6 ---
+Judgment: Opening header not available
+   (Judgment id 40783, unnumbered paragraph, page 7)
+Text:
+We have heard learned counsel for the rival parties. The reason for posting the instant matter for hearing after the disposal of Nishant Aggarwal’s case (supra) was, that the controversy arising herein, was exactly the same as was sought to be determined by this court in Nishant Aggarwal’s case (supra). The factual position necessary for the disposal of the instant Civil Appeal, was noticed in paragraph 13 of the impugned order, passed by the Delhi High Court. The same is being extracted hereunder: “13. Thus M/s Religare Finvest (supra) relied on by the Petitioner was a case where even the drawer bank’s clearing branch which dishonoured the cheque was also situated at New Delhi. In the said case, the jurisdiction was vested in the Courts at Delhi because of the drawer’s bank’s clearing branch being at Delhi and not because the cheque was presented in the payee bank or that the legal notice of demand was issued from a place at Delhi. Applying the decisions aforementioned to the facts of the present case, I do not consider it fit to state that just because the cheques were presented at Delhi or the demand notice was sent from Delhi, Courts at Delhi would have jurisdiction to try the present case.” (emphasis is ours) 4. Having taken into consideration the fact that the cheque was presented for encashment by the complainant at Delhi, and having referred to the judgments rendered by this Court in K.
+
+--- PASSAGE 7 ---
+Judgment: M/S SHRI SENDHUR AGRO & OIL INDUSTRIES versus KOTAK MAHINDRA BANK LTD. (06-03-2025)
+   (Judgment id 1000256462, paragraph 3, page 61)
+Text:
+3. In the principal Act, section 142 shall be numbered as sub-section (1) thereof and after sub-section (1) as so numbered, the following sub-section shall be inserted, namely:— “(2) The offence under section 138 shall be inquired into and tried only by a court within whose local jurisdiction,- (a) if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated; or (b) if the cheque is presented for payment by the payee or holder in due course, otherwise through an account, the branch of the drawee bank where the drawer maintains the account, is situated. Explanation.- For the purposes of clause (a), where a cheque is delivered for collection at any branch of the bank of the payee or holder in due course, then, the cheque shall be deemed to have been delivered to the branch of the bank in which the payee or holder in due course, as the case may be, maintains the account.”.
+
+--- PASSAGE 8 ---
+Judgment: Opening header not available
+   (Judgment id 40783, unnumbered paragraph, page 7)
+Text:
+Having taken into consideration the fact that the cheque was presented for encashment by the complainant at Delhi, and having referred to the judgments rendered by this Court in K. Bhaskaran vs. Shankaran Vaidhyam Balan & Anr., (1999) 7 SCC 510, Shri Ishar Alloys Steels Ltd. Vs. Jayaswal NECO Ltd., (2003) 3 SCC 609, and Harman Electronics Private Ltd. Vs. National Panasonic India Pvt. Ltd., (2009) 1 SCC 720, the High Court accepted the prayer made by the drawee of the cheque (i.e. the respondent herein) to conclude, that the Courts at Delhi did not have the jurisdiction to try the complaint filed by the appellant, under Section 138 of the Negotiable Instruments Act. Having so concluded, the Metropolitan Magistrate before whom the matter was pending, was directed to return the complaint to the respondent. Liberty was granted to the appellant, to file the returned petition before the jurisdictional Court at Kolkata. 5. It is apparent, that the conclusion drawn by the High Court, in the impugned order dated 27.4.2012, is not in consonance with the decision rendered by this Court in Nishant Aggarwal’s case (supra). Therein it has been concluded, that the Court within the jurisdiction whereof, the dishonoured cheque was presented for encashment, would have the jurisdiction to entertain the complaint filed under Section 138 of the Negotiable Instruments Act.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R09 (passages 1, 2, 3, 4, 5, 6, 7, 8).

@@ -1,0 +1,99 @@
+QUESTION ID: R04   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R04",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether an order of anticipatory bail under Section 438 CrPC must necessarily be limited in time or until the filing of the charge-sheet, or whether it may continue till the end of trial.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: Bharat Chaudhary & Anr. v. State of Bihar & Anr. (08/10/2003)
+   (Judgment id 19384, unnumbered paragraph, page 2)
+Text:
+This judgment only lays down a guideline that while considering the prima facie case against an accused the factum of cognizance having been taken and the laying of chargesheet would be of some assistance for coming to the conclusion whether the claimant for an anticipatory bail is entitled for such bail or not. This is clear from the following observations of the Court in the above case: "It is, therefore, necessary that such anticipatory bail orders should be of limited duration only and ordinarily on the expiry of the duration or extended duration, Court, granting anticipatory bail, should leave it to the regular court to deal with the matter on an appreciation of evidence placed before it after the investigation has made progress or chargesheet is submitted." From the above observations, we are unable to read any restriction on the power of the courts empowered to grant anticipatory bail under Section 438 of the Crl. P.C. We respectfully agree with the observations of this Court in the said case that the duration of anticipatory bail should be normally limited till the trial court has the necessary material before it to pass such orders and it thinks fit on the material available before it. That is only a restriction in regard to blanket anticipatory bail for an unspecified period.
+
+--- PASSAGE 2 ---
+Judgment: The Judgment of the Court was delivered by A. K. SIKRI, J. 1. Delay condoned in Diary No. 26339 of 2017.
+   (Judgment id 1000250714, paragraph 123, page 16)
+Text:
+123. In view of the clear declaration of law laid down by the Constitution Bench in Sibbia case [(1980) 2 SCC 565 : 1980 SCC (Cri) 465] , it would not be proper to limit the life of anticipatory bail. When the Court observed that the anticipatory bail is for limited duration and thereafter the accused should apply to the regular court for bail, that means the life of Section 438 CrPC would come to an end after that limited duration. This limitation has not been envisaged by the legislature. The Constitution Bench in Sibbia case [(1980) 2 SCC 565 : 1980 SCC (Cri) 465] clearly observed that it is not necessary to rewrite Section 438 CrPC. Therefore, in view of the clear declaration of the law by the Constitution Bench, the life of the order under Section 438 CrPC granting bail cannot be curtailed.
+
+--- PASSAGE 3 ---
+Judgment: SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER (29-01-2020)
+   (Judgment id 1000252377, paragraph 9, page 67)
+Text:
+9. The approach and reasoning in Salauddin was applied and reiterated by this Court, in K.L. Verma v. State12. That decision (K.L. Verma) further explained the scope of the provision that till the regular bail application of an accused, enjoying protection under Section 438 is pending before the regular court he need not surrender and his protection will continue till the disposal of the regular bail application under Section 437 or Section 439, and that she or he has to move an application (for regular bail) after expiry of a certain duration as directed by the Court or if the Charge-sheet is submitted because regular courts cannot be bypassed. It was held, in K.L. Verma that: “3....This Court further observed that anticipatory bail is granted in anticipation of arrest in non- bailable cases, but that does not mean that the regular court, which is to try the offender, is sought to be bypassed...By this, what the Court desired to convey was that an order of anticipatory bail does not enure till the end of trial but it must be of limited duration as the regular court cannot be bypassed. The limited duration must be determined having regard to the facts of the case and the need to give the accused sufficient time to move the regular court for bail and to give the regular court sufficient time to determine the bail application. In other words, till the bail application is disposed of one way or the other the court may allow the accused to remain on anticipatory bail. ….. This decision was not intended to convey that as soon as the accused persons are produced before the regular court the anticipatory bail ends even if the court is yet to decide the question of bail on merits. The decision in Salauddin case [(1996) 1 SCC 667] has to be so understood.”
+
+--- PASSAGE 4 ---
+Judgment: JUDGMENT / ORDER OF THE SUPREME COURT NAGARATHNA, J. Leave granted. Bird’s Eye View of the Controversy:
+   (Judgment id 1000255395, paragraph 1-2/1, page 31)
+Text:
+1. Whether the protection granted to a person under Section 438 of CrPC should be limited to a ﬁ xed period so as to enable the person to surrender before the trial Court and seek regular bail? 2. Whether the life of an anticipatory bail order should end at the time and stage when the accused is summoned by the Court? 12.1. Regarding the ﬁ rst question, this Court held that the protection granted to a person under Section 438 of CrPC should not invariably be limited to a ﬁ xed period; it should enure in favour of the accused without any restriction on time. Normal conditions under Section 437(3) read with Section 438(2) of CrPC should be imposed. If there are speciﬁ c facts or features in regard to any oﬀ ence, it is open for the Court to impose any appropriate condition (including ﬁ xed nature of relief, or its being tied to an event), etc. 12.2. As regards the second question referred to this Court, it was held that the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the Court, or when charges are framed, but can continue till the end of the trial. Again, if there are any special or peculiar features necessitating the Court to limit the tenure of anticipatory bail, it is open for it to do so. 12.3 The following clariﬁ cations were also issued which are to be borne in mind while dealing with an application under Section 438 of CrPC: “a) When an application is made seeking anticipatory bail, it should be based on concrete facts (and not vague or general allegations) relatable to one or other speciﬁ c oﬀ ence.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2271 2010. (Arising out of SLP (Crl.) No.7615 of 2009) Siddharam Satlingappa Mhetre …..Appellant Versus State of Maharashtra and Others …..Respondents J U D G M E N T Dalveer Bha
+   (Judgment id 37199, paragraph 25, page 14)
+Text:
+25. Mr. Bhushan submitted that a plain reading of the section 438 Cr.P.C. clearly reveals that the legislature has not placed any fetters on the court. In other words, the legislature has not circumscribed court’s discretion in any manner while granting anticipatory bail, therefore, the court should not limit the order only for a specified period till the charge-sheet is filed and thereafter compel the accused to surrender and ask for regular bail under section 439 Cr.P.C., meaning thereby the legislature has not envisaged that the life of the anticipatory bail would only last till the charge-sheet is filed. Mr. Bhushan submitted that when no embargo has been placed by the legislature then this court in some of its orders was not justified in placing this embargo.
+
+--- PASSAGE 6 ---
+Judgment: MS. X versus THE STATE OF MAHARASHTRA AND ANOTHER (17-03-2023)
+   (Judgment id 1000254814, paragraph 15, page 16)
+Text:
+15. In Sushila Aggarwal and Others v. State (NCT of Delhi) And Another29, a Constitution Bench comprising of five Judges was confronted with conflicting views of different Benches of varying strength on the following two questions framed for consideration :- “(i) Whether the protection granted to a person under Section 438 CrPC should be limited to a fixed period so as to enable the person to surrender before the trial court and seek regular bail. (ii) Whether the life of an anticipatory bail should end at the time and stage when the accused is summoned by the court.” After an extensive discussion, the Constitution Bench distilled the Law and answered the above reference in para 91 in the following words:- “91.1. Regarding Question 1, this Court holds that the protection granted to a person under Section 438 CrPC should not invariably be limited to a fixed period; it should enure in favour of the accused without any restriction on time. Normal conditions under Section 437(3) read with Section 438(2) should be imposed; if there are specific facts or features in regard to any offence, it is open for the court to impose any appropriate condition (including fixed nature of relief, or its being tied to an event), etc. 91.2. As regards the second question referred to this Court, it is held that the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the court, or when charges are framed, but can continue till the end of the trial. Again, if there are any special or peculiar features necessitating the court to limit the tenure of anticipatory bail, it is open for it to do so.” 29 (2020) 5 SCC 1
+
+--- PASSAGE 7 ---
+Judgment: SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER (29-01-2020)
+   (Judgment id 1000252377, paragraph 77, page 124)
+Text:
+77. This court answers the reference in the following manner: (1) Regarding question No. 1, it is held that the protection granted under Section 438 Cr. PC should not always or ordinarily be limited to a fixed period; it should inure in favour of the accused without any restriction as to time. Usual or standard conditions under Section 437 (3) read with Section 438 (2) should be imposed; if there are peculiar features in regard to any crime or offence (such as seriousness or gravity etc.), it is open to the court to impose any appropriate condition (including fixed nature of relief, or its being tied to an event or time bound) etc. (2) The second question referred to this court is answered, by holding that the life of an anticipatory bail does not end generally at the time and stage when the accused is summoned by the court, or after framing charges, but can also continue till the end of the trial. However, if there are any special or peculiar features necessitating the court to limit the tenure of anticipatory bail, it is open for it to do so.
+
+--- PASSAGE 8 ---
+Judgment: Judgment / Order of the Supreme Court Order J.B. Pardiwala & K.V. Viswanathan, JJ.
+   (Judgment id 1003962566, paragraph 19, page 9)
+Text:
+19. The Constitution Bench answered the reference as under: “91.1. Regarding Question 1, this Court holds that the protection granted to a person under Section 438 CrPC should not invariably be limited to a fixed period; it should enure in favour of the accused without any restriction on time. Normal conditions under Section 437(3) read with Section 438(2) should be imposed; if there are specific facts or features in regard to any offence, it is open for the court to impose any appropriate condition (including fixed nature of relief, or its being tied to an event), etc. 91.2. As regards the second question referred to this Court, it is held that the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the court, or when charges are framed, but can continue till the end of the 96 trial. Again, if there are any special or peculiar features necessitating the court to limit the tenure of anticipatory bail, it is open for it to do so.” [Emphasis supplied]
+
+--- PASSAGE 9 ---
+Judgment: The Judgment of the Court was delivered by N. V. RAMANA, CJI
+   (Judgment id 1000253107, paragraph 14, page 7)
+Text:
+14. The Constitution Bench in Sushila Aggarwal (supra) has authoritatively held that when a Court grants anticipatory bail under Section 438, Cr.P.C., the same is ordinarily not limited to a fixed period and would subsist till the end of the trial. However, it was clarified by the Court that if the facts and circumstances so warranted, the Court could impose special conditions, including limiting the relief to a certain period.
+
+--- PASSAGE 10 ---
+Judgment: The Judgment of the Court was delivered by A. K. SIKRI, J. 1. Delay condoned in Diary No. 26339 of 2017.
+   (Judgment id 1000250714, paragraph 122, page 15)
+Text:
+122. In our considered view, the Constitution Bench in Sibbia case [(1980) 2 SCC 565 : 1980 SCC (Cri) 465] has comprehensively dealt with almost all aspects of the concept of anticipatory bail under Section 438 CrPC. A number of judgments have been referred to by the learned counsel for the parties consisting of Benches of smaller strength where the Courts have observed that the anticipatory bail should be of limited duration only and ordinarily on expiry of that duration or standard duration, the court granting the anticipatory bail should leave it to the regular court to deal with the matter. This view is clearly contrary to the view taken by the Constitution Bench in Sibbia case [(1980) 2 SCC 565 : 1980 SCC (Cri) 465] . In the preceding para, it is clearly spelt out that no limitation has been envisaged by the legislature under Section 438 CrPC. The Constitution Bench has aptly observed that “we see no valid reason for rewriting Section 438 with a view, not to expanding the scope and ambit of the discretion conferred on the High Court or the Court of Session but, for the purpose of limiting it”.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R04 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

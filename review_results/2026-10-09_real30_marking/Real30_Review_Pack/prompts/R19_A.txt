@@ -1,0 +1,105 @@
+QUESTION ID: R19   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 11 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R19",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 11 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+
+==============================================================================
+QUESTION: My daughter is 16, her teacher misbehaved with her in school and touched her wrongly, we filed police case. Now the whole village and the school trust is pressuring my husband, he signed some compromise paper, and the teacher's people say High Court will cancel the FIR because of compromise. I don't want to compromise, my daughter is scared to go to school. Can they really close the case like this?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: [REPORTABLE] IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.686/2014 (arising out of S.L.P.(Criminal) No.9547 of 2013) Narinder Singh & Ors. ……Appellants Vs. State of Punjab & Anr. …Respondents J U D G M E N T A.K.SIKRI,J.
+   (Judgment id 41348, paragraph 14/4, page 9)
+Text:
+In this category of cases, the High Court may quash the criminal proceedings if in its view, because of the compromise between the offender and the victim, the possibility of conviction is remote and bleak and continuation of the criminal case would put the accused to great oppression and prejudice and extreme injustice would be caused to him by not quashing the criminal case despite full and complete settlement and compromise with the victim. In other words, the High Court must consider whether it would be unfair or contrary to the interest of justice to continue with the criminal proceeding or continuation of the criminal proceeding or continuation of the criminal proceeding would tantamount to abuse of process of law despite settlement and compromise between the victim and the wrongdoer and whether to secure the ends of justice, it is appropriate that the criminal case is put to an end and if the answer to the above question(s) is in the affirmative, the High Court shall be well within its jurisdiction to quash the criminal proceeding.”
+
+--- PASSAGE 2 ---
+Judgment: RAMJI LAL BAIRWA & ANR. versus STATE OF RAJASTHAN & ORS. (07-11-2024)
+   (Judgment id 1000256082, paragraph 22/1, page 18)
+Text:
+22. The case on hand is not one where the third party sought leave to challenge a judgment of acquittal. In the case on hand, the very FIR registered against the third respondent for the serious offences, as mentioned above, was quashed by the High Court invoking the power under Section 482, Cr. P.C. solely based on the fact that a compromise was arrived at between the third and the fourth respondents, as mentioned above. It is a fact that the compromise was acted upon despite the opposition of the public prosecutor and even then, the State has not chosen to file petition seeking leave to challenge the order passed by the High Court. Though, the fourth respondent is the father of the victim, who suffered sexual assault and such other offences under the POCSO Act and IPC offences in view of the fact that he had compromised the offences with the third respondent accused, and in view of the manner in which he supports the impugned order, it is evident that he would not invoke the jurisdiction of this Court under Article 136 of the Constitution of India. While considering the locus standi of the appellants to challenge the order dated 04.02.2022 the aforesaid aspects are also to be borne in mind. The appellants are ordinary men residing in the very same village to which the fourth respondent belong.
+
+--- PASSAGE 3 ---
+Judgment: RAMJI LAL BAIRWA & ANR. versus STATE OF RAJASTHAN & ORS. (07-11-2024)
+   (Judgment id 1000256082, paragraph 25, page 22)
+Text:
+25. Thus, in unambiguous terms this Court held that before exercising the power under Section 482, Cr. PC the High Court must have due regard to the nature and gravity of the crime besides observing and holding that heinous and serious offences could not be quashed even though a victim or victim’s family and the offender had settled the dispute. This Court held that such offences are not private in nature and have a serious impact on the society. Having understood the position of law on the second question that it is the bounden duty of the court concerned to consider whether the compromise is just and fair besides being free from undue pressure we will proceed to consider the matter further. A bare perusal of the impugned order dated 04.02.2022 would reveal that the High Court has erred in not bestowing proper consideration the law laid down in Gian Singh’s case (supra) while rendering the same. The impugned order would reveal that the allegations contained in the subject FIR was not at all even adverted to, before quashing the same. We have referred to the allegations which are of serious nature revealed from the FIR. The complaint in this case is annexed to the FIR produced in this proceeding as Annexure P-1. In the said complaint which led to the registration of the FIR reads thus:- “Hence my report may be lodged and action may be taken against the offender Vimal Kumar Gupta as he is making pressure on me not to lodge report.” (underline supplied)
+
+--- PASSAGE 4 ---
+Judgment: The Judgment of the Court was delivered by V. RAMASUBRAMANIAN, J. Permission to file Special Leave Petition(s) is granted in D.No.11748 of 2022.
+   (Judgment id 1000254292, paragraph 37/3, page 24)
+Text:
+In other words, the High Court must consider whether it would be unfair or contrary to the interest of justice to continue with the criminal proceeding or continuation of the criminal proceeding would tantamount to abuse of process of law despite settlement and compromise between the victim and wrongdoer and whether to secure the ends of justice, it is appropriate that the criminal case is put to an end and if the answer to the above question(s) is in affirmative, the High Court shall be well within its jurisdiction to quash the criminal proceeding.”
+
+--- PASSAGE 5 ---
+Judgment: Opening header not available
+   (Judgment id 32676, paragraph 23, page 19)
+Text:
+23. There can be no doubt that a case under Section 302 IPC or other serious offences like those under Sections 395, 307 or 304B cannot be compounded and hence proceedings in those provisions cannot be quashed by the High Court in exercise of its power under Section 482 Cr.P.C. or in writ jurisdiction on the basis of compromise. However, in some other cases, (like those akin to a civil nature) the proceedings can be quashed by the High Court if the parties have come to an amicable settlement even though the provisions are not compoundable. Where a line is to be drawn will have to be decided in some later decisions of this Court, preferably by a larger bench (so as to make it more authoritative). Some guidelines will have to be evolved in this connection and the matter cannot be left at the sole unguided discretion of Judges, otherwise there may be conflicting decisions and judicial anarchy. A judicial discretion has to be exercised on some objective guiding principles and criteria, and not on the whims and fancies of individual Judges. Discretion, after all, cannot be the Chancellor’s foot.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION SPECIAL LEAVE PETITION (CRL.) NO. 8989 OF 2010 Gian Singh …Petitioner Versus State of Punjab & Another …Respondents WITH SPECIAL LEAVE PETITION (CRL.) NO. 6138 OF 2006 SPECIAL LEAVE PETITION (CRL.) 
+   (Judgment id 39579, unnumbered paragraph, page 12)
+Text:
+In paragraphs 27 and 28 (pg. 10) of the report he held as under: “27. There can be no doubt that a case under Section 302 IPC or other serious offences like those under Sections 395, 307 or 304-B cannot be compounded and hence proceedings in those provisions cannot be quashed by the High Court in exercise of its power under Section 482 CrPC or in writ jurisdiction on the basis of compromise. However, in some other cases (like those akin to a civil nature), the proceedings can be quashed by the High Court if the parties have come to an amicable settlement even though the provisions are not compoundable. Where a line is to be drawn will have to be decided in some later decisions of this Court, preferably by a larger Bench (so as to make it more authoritative). Some guidelines will have to be evolved in this connection and the matter cannot be left at the sole unguided discretion of Judges, otherwise there may be conflicting decisions and judicial anarchy. A judicial discretion has to be exercised on some objective guiding principles and criteria, and not on the whims and fancies of individual Judges. Discretion, after all, cannot be the Chancellor's foot. 28. I am expressing this opinion because Shri B.B. Singh, learned counsel for the respondent has rightly expressed his concern that the decision in B.S.
+
+--- PASSAGE 7 ---
+Judgment: RAMJI LAL BAIRWA & ANR. versus STATE OF RAJASTHAN & ORS. (07-11-2024)
+   (Judgment id 1000256082, paragraph 30, page 24)
+Text:
+30. In this regard, it is relevant to note that in the case on hand the victim was then a student of Class 11th in the Higher Secondary aged 16 years. The statement annexed to the FIR of the complainant viz., the 4th respondent itself would reveal that on 08.01.2022 he complained about the pressure from the 3rd respondent to restrain him from lodging report. The compromise was entered immediately thereafter on 31.01.2022. Despite the said position, the Court has not chosen to consider whether the compromise entered into between the [2019] 2 SCR 864 : (2019) 5 SCC 688 parents and the accused could be acted upon or not, in the interest of justice, taking note of the serious allegations levelled against the 3rd accused and in view of the law laid down in Gian Singh’s case (supra). In that context, it is relevant to refer to a decision of a learned Single Judge of the Delhi High Court in Sunil Raikwar v. State and Another17. Paragraph 12 therein, to the extent it is relevant reads thus:- “12. The father of the victim cannot be permitted to settle the dispute with the accused. He is not the victim and the courts have to safeguard and protect the interest of children against onslaught by bad forces. We cannot lose sight of the fact that the accused is being prosecuted for an offence that shocks the value system of a society and this is not a matter that can be permitted to be settled as a compoundable minor offence. Deterrence to others committing similar offence is a must and they cannot get a signal that anything and everything can be compromised……”
+
+--- PASSAGE 8 ---
+Judgment: JASWANT SINGH v. STATE OF PUNJAB & ANR. (Criminal Appeal No.1233 of 2021) OCTOBER 20, 2021 [DINESH MAHESHWARI AND VIKRAM NATH, JJ.] Code of Criminal Procedure, 1973 – s.482 – High Court declined to exercise its powers u/s.482 CrPC to quash criminal proceedings
+   (Judgment id 1000253364, paragraph 17/3, page 7)
+Text:
+In this category of cases, the High Court may quash the criminal proceedings if in its View, because of the compromise between the offender and the victim, the possibility of conviction is remote and bleak and continuation of the criminal case would put the accused to great oppression and prejudice and extreme injustice would be caused to him by not quashing the criminal case despite full and complete settlement and compromise with the victim. In other words, the High Court must consider whether it would be unfair or contrary to the interest of justice to continue with the criminal proceeding or continuation of the criminal proceeding would tantamount to abuse of process of law despite settlement and compromise between the victim and the wrongdoer and whether to secure the ends of justice, it is appropriate that the criminal case is put to an end and if the answer to the above question(s) is in the affirmative, the High Court shall be well within its jurisdiction to quash the criminal proceeding.”
+
+--- PASSAGE 9 ---
+Judgment: RAMJI LAL BAIRWA & ANR. versus STATE OF RAJASTHAN & ORS. (07-11-2024)
+   (Judgment id 1000256082, paragraph 32, page 25)
+Text:
+32. In the decision relied on by the High Court to quash the proceedings viz., Gian Singh’s case (supra) and the decision in Laxmi Narayan’s case (supra) in unambiguous terms this Court held that the power under Section 482, Cr. P.C. could not be used to quash proceedings based on compromise if it is in respect of heinous offence which are not private in nature and have a serious impact on the society. When an incident of the aforesaid nature and gravity allegedly occurred in a higher secondary school, that too from a teacher, it cannot be simply described as an offence which is purely private in nature and have no serious impact on the society. 2021 SCC OnLine Del 258 666
+
+--- PASSAGE 10 ---
+Judgment: The Judgment of the Court was delivered by M. R. SHAH, J. Criminal Appeal No. 349 of 2019
+   (Judgment id 1000251468, paragraph 12/5, page 18)
+Text:
+Those cases where the settlement is arrived at immediately after the alleged commission of offence and the matter is still under investigation, the High Court may be liberal in accepting the settlement to quash the criminal proceedings/investigation. It is because of the reason that at this stage the investigation is still on and even the charge-sheet has not been filed. Likewise, those 884 SUPREME COURT REPORTS [2019] 2 S.C.R. cases where the charge is framed but the evidence is yet to start or the evidence is still at infancy stage, the High Court can show benevolence in exercising its powers favourably, but after prima facie assessment of the circumstances/material mentioned above. On the other hand, where the prosecution evidence is almost complete or after the conclusion of the evidence the matter is at the stage of argument, normally the High Court should refrain from exercising its power under Section 482 of the Code, as in such cases the trial court would be in a position to decide the case finally on merits and to come to a conclusion as to whether the offence under Section 307 IPC is committed or not. Similarly, in those cases where the conviction is already recorded by the trial court and the matter is at the appellate stage before the High Court, mere compromise between the parties would not be a ground to accept the same resulting in acquittal of the offender who has already been convicted by the trial court.
+
+--- PASSAGE 11 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2094 OF 2011 (Arising out of SLP (Crl.) No.9919 of 2010) Shiji @ Pappu and Ors. …Appellants Versus Radhika and Anr. …Respondents J U D G M E N T T.S. THAKUR, J. 1. Leave granted. 
+   (Judgment id 38847, unnumbered paragraph, page 11)
+Text:
+We are, therefore, of the view that if for the purpose of securing the ends of justice, quashing of FIR becomes necessary, Section 320 would not be a bar to the exercise of power of quashing. It is, however, a different matter depending upon the facts and circumstances of each case whether to exercise or not such a power. 15. In view of the above discussion, we hold that the High Court in exercise of its inherent powers can quash criminal proceedings or FIR or complaint and Section 320 of the Code does not limit or affect the powers under Section 482 of the Code.” 11. That brings to the decision of this Court in Madan Mohan Abbot’ case (supra) whereby the High Court had declined the prayer for quashing of the prosecution for offences punishable under Sections 379, 406, 409, 418, 506/34 IPC despite a compromise entered into between the complainant and the accused. The High Court had taken the view that since the offence punishable under Section 406 was not compoundable the settlement between the parties could not be recognized nor the pending proceedings quashed. This Court summed up the approach to be adopted in such cases in the following words: “6. We need to emphasise that it is perhaps advisable that in disputes where the question involved is of a purely personal nature, the court should ordinarily accept the terms of the compromise even in criminal proceedings as keeping the matter alive with no possibility of a result in favour of the prosecution is a luxury which the courts, grossly overburdened as they are, cannot afford and that the time so saved can be utilised in deciding more effective and meaningful litigation.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R19 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).

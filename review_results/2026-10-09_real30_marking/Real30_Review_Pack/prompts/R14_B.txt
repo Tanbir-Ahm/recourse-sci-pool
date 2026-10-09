@@ -1,0 +1,129 @@
+QUESTION ID: R14   (prompt version: order B)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 15 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R14",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 15 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+
+==============================================================================
+QUESTION: My business partner filed a cheating FIR against me because I couldn't return the money he invested after the business made a loss. Can this FIR be cancelled?
+==============================================================================
+
+--- PASSAGE 15 ---
+Judgment: KIM WANSOO versus STATE OF UTTAR PRADESH & ORS. (01-01-2025)
+   (Judgment id 1000256233, paragraph 5/1, page 4)
+Text:
+5. Multifarious contentions have been raised, unsuccessfully, by the appellant to support his prayer for quashment of the subject FIR before the High Court. He reiterated such contentions before us, as well. But before dealing with such contentions, as also the challenge against the impugned judgment it is only apposite to refer to the relevant recitals from the subject FIR, which read as follows: - “About all aforementioned people conniving with intention to cause loss to the Applicant and to make gain for themselves, hatching criminal conspiracy, committing cheating, fraud and. forgery against the Applicant and misappropriating Applicant’s money - Hon’ble Sir, This is to submit that Applicant Tahir, Partner M/s RT Construction, 202 B/9, Ground Floor, Thatwari Complex, Westend Road, Near Meerut Public School, Meerut ant, Meerut has been doing his) business from a long time. The Applicant has been doing business of construction for approximately the last 30 years. Applicant’s brother Nasir and Partner Ravindra to look after the said business along with the Applicant. Applicant has been providing various services in construction including providing services of skilled and unskilled labourers to other companies. Aforementioned No. - 6 SEUNG HWI, HER (Managing Director) YOU SEUNG SANG SA INDIA CONSTRUCTION PVT LTD (YSSS), which is a subsidiary company of the main company MS HUNDAI MOTOR INDIA GROUP, had issued a work order to the Applicant on 15.06.2018 because the Applicant has been providing labourers to Korean company for long time.
+
+--- PASSAGE 14 ---
+Judgment: G.V. ADHIMOOLAM & ORS. versus THE INSPECTOR OF POLICE & ANR. (04-04-2025)
+   (Judgment id 1000256546, paragraph 9, page 5)
+Text:
+9. Being perturbed by his intentional and fraudulent exclusion from the dealership business, the complainant enquired from the accusedappellants as to why he had not been made a partner even though he had invested huge sums of money for induction into the said business. The accused-appellants, gave evasive replies upon which the complainant demanded that his money be returned. The accusedappellants assured him that they would repay the amount at a later point of time because they did not have the money at hand then.
+
+--- PASSAGE 13 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2341 OF 2011 Vesa Holdings P. Ltd. & Anr. … Appellants versus State of Kerala & Ors. … Respondents With CRIMINAL APPEAL NOS.2342-2344 OF 2011 J U D G M E N T C. NAGAPPAN, J.
+   (Judgment id 42499, paragraph 4, page 6)
+Text:
+4. Per contra the learned counsel appearing for respondent No.3 contended that there is no merit in the contention of the appellants that the FIR discloses only a civil case or that there is no allegation making out the criminal offence of cheating. It is his further contention that the facts in the present case may make out a civil wrong as also a criminal offence and only because a civil remedy may also be available to the complainant that by itself cannot be a ground to quash the criminal proceedings. In support of his submission he relied on the decision of this Court in Vijayander Kumar and others Vs. State of Rajasthan and another [(2014) 3 SCC 389]
+
+--- PASSAGE 12 ---
+Judgment: RIKHAB BIRANI & ANR. versus STATE OF UTTAR PRADESH & ANR. (16-04-2025)
+   (Judgment id 1000256582, paragraph 14, page 6)
+Text:
+14. We are constrained to pass this detailed speaking order, as it is noticed that, notwithstanding the law clearly laid down by this Court on the difference between a breach of contract and the criminal offence of cheating, we are continuously flooded with cases where the police register an FIR, conduct investigation and even file chargesheet(s) in undeserving cases.
+
+--- PASSAGE 11 ---
+Judgment: Judgment / Order of the Supreme Court Vikram Nath, J. Leave granted.
+   (Judgment id 1000255673, paragraph 13, page 8)
+Text:
+13. A simple reading of the FIR itself does not disclose any cognizable offence for which the FIR should be registered and maintained. Although Chandra Mohan Badaya appellant has sought to explain that he had already returned Rs.37 lakhs by bank transfer to the complainant and had further executed two transfer deeds in favour of the wife and sister-in-law of Anil Agrawal, the power of attorney holder which valued at total amount of more than Rs.1.45 Crores. Even if we do not accept this contention as the same would be subject matter of evidence, what we find is that the complaint lodged by the respondent No.2 was not worth being registered as a complaint and that too in the State of Arunachal Pradesh.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. _________OF 2009 [Arising out of Special Leave Petition (Criminal) No. 3176 of 2008] STATE OF MAHARASHTRA … APPELLANT Versus SAYED MOHAMMED MASOOD & ANR. … RESPONDENTS J U D G M 
+   (Judgment id 35256, paragraph 6, page 4)
+Text:
+6. In the said FIR, it was inter alia alleged: “As mentioned above, Directors of the said Company in their office without listening anything from me, as per their own wishes making changes on the document of agreement, when I noticed that then I enquired about the same in more detail. It is transpired that the said company by showing false inducement about big return in various financial schemes and transferring the motor vehicle in the name of investor, till date has accepted deposits of crores of rupees under various schemes from 25000 investors. But I came to know that said company has purchased motor car only in the name of 500 investors. All aspect of above mentioned schemes are in existence only on paper but in reality not even a single scheme is in force as per the scheme shown on the document. I also came to know that apart from the above mentioned office of the company at Bombay, and other places said company has office on rental basis and Sayyed Masood Jamadar, in collusion with other directors of the Company, induces people for making investment and amount invested by people is being utilized for other purpose, other than the original purpose and is being utilized personally or for some other purposes. The said company on the internet at its website namely www.citylimouzines.com & www.city-money.com has projected the said company as bearing ISO-9001-2000 certification and inducing common poor people to invest money in the said company and thereby cheating the people. If immediate legal action is not taken against the said company then there will be huge financial loss to ordinary investors. Since Directors of the said company threatened investors whenever investors go to ask back money therefore, rein of fear against them is created. Above mentioned persons namely Sayyed Mohammad Masood Jamadar and Geeta Razzaki and other persons have collusively established City Limouzines Ltd. Company and through that company several other companies are established and through them false inducement is given and financial investments is accepted from the people and misappropriation of the same on large scale is done and defrauded citizens and Government.”
+
+--- PASSAGE 9 ---
+Judgment: VIJAY KUMAR GHAI & ORS. versus THE STATE OF WEST BENGAL & ORS. (22-03-2022)
+   (Judgment id 1000253806, paragraph 35, page 24)
+Text:
+35. In Vesa Holdings Pvt. Ltd. & Anr. Vs. State of Kerala & Ors.27, this Court made the following observation:- “13. It is true that a given set of facts may make out a civil wrong as also a criminal offence and only because a civil remedy may be available to the complainant that itself cannot be ground to quash a criminal proceeding. The real test is whether the allegations in the complaint disclose the criminal offence of cheating or not. In the present case, there is nothing to show that at the very inception there was any inception on behalf of an accused person to cheat which is a condition precedent for an offence u/s 420 IPC. In our view, the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be mala fide or otherwise an abuse of the process of the courts. Superior courts while exercising this power should also strive to serve the ends of justice. In our opinion, in view of these facts allowing the police investigation to continue would amount to anabuse of the process of the court and the High Court committed an error in refusing to exercise the power under Section 482 Cr.P.C to quash the proceedings.” 26 (2000) 4 SCC 168 27 (2015) 8 SCC 293
+
+--- PASSAGE 8 ---
+Judgment: CASE NO.: Special Leave Petition (crl.) 1971 of 1999 PETITIONER: M/S. MEDCHL CHEMICALS & PHARMA P. LTD. Vs. RESPONDENT: M/S. BIOLOGICAL E. LTD. & ORS. RESPONDENTS DATE OF JUDGMENT: 25/02/2000 BENCH: G.B.Pattanaik, U.C.Banerjee JUDGMENT: BANERJEE,J. L.....I....
+   (Judgment id 17479, unnumbered paragraph, page 6)
+Text:
+In order to attract the provisions of Sections 418 and 420 the guilty intent, at the time of making the promise is a requirement and an essential ingredient thereto and subsequent failure to fulfil the promise by itself would not attract the provisions of Section 418 or 420. Mens rea is one of the essential ingredients of the offence of cheating under Section 420. As a matter of fact illustration (g) to Section 415 makes the position clear enough to indicate that mere failure to deliver in breach of an agreement would not amount to cheating but is liable only to a civil action for breach of contract and it is this concept which obviously has weighed with the Learned Single Judge. But can the factual situation as narrated above in the longish reproduction of the complaint lend support to the observations of the Learned Judge, the answer is pivotal one but before so doing one other aspect as regards the powers under Section 482 Cr.P.C. ought to be noticed. As noted herein before this power is to be exercised with care and caution and rather sparingly and has been so held on more occasions than one. In the case of Pratibha Rani v. Suraj Kumar 1985 SCC (Crl.) 180 this Court pointed out that the High Court should very sparingly exercise its discretion under Section 482 Cr.P.C. In L.V.Jadhav v.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 925 OF 2008 [Arising out of SLP (Crl.) No. 6351 of 2006] V.R. Dalal & Ors. …Appellants Versus Yougendra Naranji Thakkar & Anr. …Respondents J U D G M E N T S.B. SINHA, J :
+   (Judgment id 31628, paragraph 3, page 2)
+Text:
+3. It appears that the firm ‘M/s. Gandhi Dalal and Shah’ which was constituted with effect from 1.02.2000 was cancelled from the very inception as the same is said to have not been acted upon. The name M/s. Gandhi Dalal and Shah was surrendered to the Chartered Accountants of India. Indisputably, in the complaint petition itself, it has been accepted that the said M/s. Gandhi Dalal and Shah is no longer in existence. It has further not been disputed that one Mahendra Thakkar also signed in the original deed of partnership dated 10.02.2001. In relation to the cancellation of the said partnership, it is alleged: “The Complainant states that they have with some dishonest intention have not prepared any Deed of dissolution which is mandatory for cancellation of any Deed of partnership. Merely by canceling Deed on piece of paper has no meaning in the eyes of law and it is misguiding but in law the Deed of partnership will remain in force till it is dissolved by deed of dissolution. The Accused have again played fraud upon the complainant by misrepresenting him that they have cancelled the Deed of partnership. They have also filed false documents with Institute of Chartered Accountants in order to commit fraud.”
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2341 OF 2011 Vesa Holdings P. Ltd. & Anr. … Appellants versus State of Kerala & Ors. … Respondents With CRIMINAL APPEAL NOS.2342-2344 OF 2011 J U D G M E N T C. NAGAPPAN, J.
+   (Judgment id 42499, paragraph 9, page 10)
+Text:
+9. It is true that a given set of facts may make out a civil wrong as also a criminal offence and only because a civil remedy may be available to the complainant that itself cannot be a ground to quash a criminal proceeding. The real test is whether the allegations in the complaint disclose the criminal offence of cheating or not. In the present case there is nothing to show that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC. In our view the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be malafide or otherwise an abuse of the process of the court. Superior courts while exercising this power should also strive to serve the ends of justice. In our opinion, in view of these facts allowing the police investigation to continue would amount to an abuse of the process of court and the High Court committed an error in refusing to exercise the power under Section 482 Criminal Procedure Code to quash the proceedings.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1504 OF 2010 (Arising out of SLP (Crl) No.5768 of 2008) M.A.A. Annamalai .. Appellant Versus State of Karnataka & Another .. Respondents J U D G M E N T Dalveer Bhandari, J.
+   (Judgment id 36657, paragraph 41, page 21)
+Text:
+41. We have carefully considered the rival contentions. It emerges that: a) In the instant case, the appellant ceased to be a Director of the company from 27.12.1997 whereas the alleged offences, if any, were committed during the period from 24.5.1998 to 17.9.1999. b) Admittedly, there are no allegations against the appellant in the First Information Report. c) The company had invited investment from the depositors to invest in the business/benefit funds after receiving due approval of the scheme from the Reserve Bank of India. Therefore, in any event, the element of cheating as alleged cannot be made out by any stretch of imagination. d) The complainant/respondent no.2 submitted in writing to this Court that he does not want to proceed against the appellant because according to him the appellant has been inadvertently included as an accused by the Investigating Officer. He further mentioned in the letter that he had already received 55% of the deposited amount from the Official Liquidator and he did not want to proceed against the appellant. e) Even assuming that there could have been a vicarious liability thrust on the appellant, even then there cannot be any such vicarious liability in absence of any allegations and material to show that the appellant was in-charge of or responsible for the conduct of the company’s business which had given rise to the offence. From any angle of the matter, the appellant cannot be compelled to face the criminal trial in this case.
+
+--- PASSAGE 4 ---
+Judgment: The Judgment of the Court was delivered by S. A. BOBDE, J. 1. Leave granted.
+   (Judgment id 1000251130, paragraph 7, page 7)
+Text:
+7. Following which, the Appellants approached the High Court under Section 482 of the Cr. P.C seeking to quash FIR dated 20.08.2014. According to the Appellants, the FIR was completely untenable in the facts and circumstances of the case. Mainly, the amount of Rs. One crore was rightfully retained by them and there was no question of such retention constituting a criminal breach of trust. Moreover, assuming that the Respondent No. 2 had a grievance only about the retention of money, the redressal ought to have been sought before a Civil Court. Therefore, the lodging of the FIR was mala fide in nature and done with the intention to pressurize the Appellants to agree to certain new terms and conditions of the agreement to which the Appellants did not want to proceed with.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. _________OF 2009 [Arising out of Special Leave Petition (Criminal) No. 3176 of 2008] STATE OF MAHARASHTRA … APPELLANT Versus SAYED MOHAMMED MASOOD & ANR. … RESPONDENTS J U D G M 
+   (Judgment id 35256, paragraph 15/4, page 12)
+Text:
+In the present case it has nowhere been stated that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC.” Hence the petition of complainant did not disclose any criminal offence at all much less any offence either under Section 420 or Section 120B of the Indian Penal Code. It was purely civil in nature.
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. OF 2008 (Arising out of SLP (Crl.) No.3234 of 2006) Vasudev …Appellant Versus Parvinder Kumar & Ors. …Respondents Dr. ARIJIT PASAYAT, J.
+   (Judgment id 32248, paragraph 7, page 5)
+Text:
+7. Since the petition filed by the appellant was rejected by the High Court on the basis of the statement made by the learned counsel for the State and the accused persons that the FIR has been cancelled, it was but natural that there should be some order in that regard. It is not understood as to why the same has not been brought on record as yet. If there is no such order in existence, obviously the disposal of the petition filed by the appellant on the ground that the FIR has been cancelled cannot be maintained.
+
+--- PASSAGE 1 ---
+Judgment: Opening header not available
+   (Judgment id 38705, unnumbered paragraph, page 16)
+Text:
+Regarding the delay, this Court pointed out that the complaint was filed on 17.05.1999, after a lapse of 10½ years and, therefore, the private complaint filed by respondent No.1 therein is not at all maintainable at this distance of time. It was further observed that it is also not clearly proved that to hold a person guilty of cheating, it is necessary to show that he had a fraudulent or dishonest intention at the time of making the promise and finding that the order of the Magistrate and of the High Court requiring Accused No.1/appellant therein to face trial would not be in the interest of justice, set aside the order of the High Court and of the Magistrate. It is clear that in view of inordinate delay and laches on the part of the complainant and of the fact that the complaint does not disclose any ingredients of Section 420 IPC and also of the fact that at the most it is the dispute of civil nature, this Court quashed the orders of the Magistrate and the High Court. 11) In Madhavrao Jiwajirao Scindia & Ors. vs. Sambhajirao Chandrojirao Angre & Ors. (1988) 1 SCC 692, this Court, after pointing out the grounds on which the criminal proceedings be quashed under Section 482 of the Code at preliminary stage by the High Court highlighted that a case of breach of trust is both a civil wrong and a criminal offence.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R14 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).

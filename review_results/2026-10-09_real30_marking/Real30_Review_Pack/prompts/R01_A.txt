@@ -1,0 +1,105 @@
+QUESTION ID: R01   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 11 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R01",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 11 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+
+==============================================================================
+QUESTION: Police picked up my brother last night from Andheri after his car hit a scooter, they just said 'come with us' and took his phone, no paper nothing, my mother is crying since morning. Today they took him to magistrate for remand. The lawyer says it's fine but I read online they must give reasons?? Is this arrest even legal, can we get him out because they gave nothing in writing?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 49, page 32)
+Text:
+49. It is by now settled that if the grounds of arrest are not furnished to the arrestee in writing, this non-compliance will result in breach of the constitutional and statutory safeguards hence rendering the arrest and remand illegal and the person will be entitled to be set at liberty. The statute is silent with regard to the mode, nature or the time and stage at which the grounds of arrest has to be communicated. Article 22 says ‘as soon as may be’ which would obviously not mean prior to arrest but can be on arrest or thereafter. The indication is as early as it can be conveyed. There may be situations wherein it may not be practically possible to supply such grounds of arrest to the arrested person at the time of his arrest or immediately.
+
+--- PASSAGE 2 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 55, page 34)
+Text:
+55. It goes without saying that if the abovesaid schedule for supplying the grounds of arrest in writing is not adhered to, the arrest will be rendered illegal entitling the release of the arrestee. On such release, an application for remand or custody, if required, will be moved along with the reasons and necessity for the same, after the supply of the grounds of arrest in writing setting forth the explanation for non-supply thereof within the above stipulated schedule. On receipt of such an application, the magistrate shall decide the same expeditiously and preferably within a week of submission thereof by adhering to the principles of natural justice.
+
+--- PASSAGE 3 ---
+Judgment: PRABIR PURKAYASTHA versus STATE (NCT OF DELHI) (15-05-2024)
+   (Judgment id 1000255745, paragraph 35, page 27)
+Text:
+35. It is apparent that the appellant had objected to the appearance of the remand counsel before the learned Remand Judge and this is the reason, the Investigating Officer undertook a charade of informing of the Advocate engaged by the appellant on mobile. The learned Remand Judge recorded the presence of Shri Arshdeep Khurana, Advocate, mentioning that he had been informed and heard on the remand application through telephone call. The initial information about the accused appellant being presented before the learned Remand Judge was sent by the arresting officer to the appellant’s relative Shri Rishab Bailey at around 6:46 a.m. and he, in turn, informed the Advocate Shri Arshdeep Khurana around 7:00 a.m. These facts are manifested from perusal of the call logs presented for the perusal of the Court. Thus, by the time, the Advocate engaged by the accused appellant had been informed, the order of remand had already been passed. Unquestionably, till that time, the grounds of arrest had not been conveyed to the appellant in writing.
+
+--- PASSAGE 4 ---
+Judgment: VIHAAN KUMAR versus STATE OF HARYANA & ANR. (06-02-2025)
+   (Judgment id 1000256350, paragraph 25, page 24)
+Text:
+25. A contention has been raised in the written argument that the grounds of arrest were incorporated in the remand report. This contention has been raised for the first time in written submissions before this Court. This is not pleaded in the reply filed before the High Court and this Court. The police submit a remand report before the learned Magistrate for seeking remand without serving a copy thereof to the arrestee. The reason is that the Police cannot divulge the details of the investigation to the accused till the final report is filed. Mentioning the grounds of arrest in the remand report is no compliance with the requirement of informing the arrestee of the grounds of arrest. 448
+
+--- PASSAGE 5 ---
+Judgment: Judgment / Order of the Supreme Court Sanjiv Khanna, CJI. Leave granted.
+   (Judgment id 1000256420, paragraph 47, page 39)
+Text:
+47. Lastly, Section 104(1) requires that a person arrested as soon as may be is required to be informed of the grounds of such arrest. The grounds of arrest must be given in writing to the arrestee before he is produced before the Magistrate in terms of Section 104(2). This is necessary as it enables the accused to contest and challenge his arrest and seek bail from the court. To deny and not give the grounds in writing would be to deprive the accused of his right in terms of Section 104(1) and also to seek right of bail under the provisions of the Code. This interpretation would be in consonance with Article 22(1) of the Constitution which states that no person who is arrested shall be detained in custody without being informed as soon as may be of the grounds of such arrest, nor shall such arrest be denied the right to consult and to be defended by a legal practitioner of his choice.
+
+--- PASSAGE 6 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 52, page 33)
+Text:
+52. We thus hold, that, in cases where the police are already in possession of documentary material furnishing a cogent basis for the arrest, the written grounds of arrest must be furnished to the arrestee on his arrest. However, in exceptional circumstances such as offences against body or property committed in flagrante delicto, where informing the grounds of arrest in writing on arrest is rendered impractical, it shall be sufficient for the police officer or other person making the arrest to orally convey the same to the person at the time of arrest. Later, a written copy of grounds of arrest must be supplied to the arrested person within a reasonable time and in no event later than two hours prior to production of the arrestee before the magistrate for remand proceedings. The remand papers shall contain the grounds of arrest and in case there is delay in supply thereof, a note indicating a cause for it be included for the information of the magistrate.
+
+--- PASSAGE 7 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 48, page 32)
+Text:
+48. The second issue which requires consideration is when grounds of arrest are not furnished either prior to arrest or immediately after the arrest, would it vitiate the arrest for non-compliance of the provisions of Section 50 of CrPC 1973 (now Section 47 of BNSS 2023) irrespective of certain exigencies where furnishing such grounds would not be possible forthwith.
+
+--- PASSAGE 8 ---
+Judgment: VIHAAN KUMAR versus STATE OF HARYANA & ANR. (06-02-2025)
+   (Judgment id 1000256350, paragraph 21, page 22)
+Text:
+21. Therefore, we conclude: a) The requirement of informing a person arrested of grounds of arrest is a mandatory requirement of Article 22(1); b) The information of the grounds of arrest must be provided to the arrested person in such a manner that sufficient knowledge of the basic facts constituting the grounds is imparted and communicated to the arrested person effectively in the language which he understands. The mode and method of communication must be such that the object of the constitutional safeguard is achieved; c) When arrested accused alleges non-compliance with the requirements of Article 22(1), the burden will always be on the Investigating Officer/Agency to prove compliance with the requirements of Article 22(1); d) Non-compliance with Article 22(1) will be a violation of the fundamental rights of the accused guaranteed by the said Article. Moreover, it will amount to a violation of the right to personal liberty guaranteed by Article 21 of the Constitution. Therefore, non-compliance with the requirements of Article 22(1) vitiates the arrest of the accused. Hence, further orders passed by a criminal court of remand are also vitiated. Needless to add that it will not vitiate the investigation, charge sheet and trial. But, at the same time, filing of chargesheet will not validate a breach of constitutional mandate under Article 22(1); 446 e) When an arrested person is produced before a Judicial Magistrate for remand, it is the duty of the Magistrate to ascertain whether compliance with Article 22(1) and other mandatory safeguards has been made; and f) When a violation of Article 22(1) is established, it is the duty of the court to forthwith order the release of the accused. That will be a ground to grant bail even if statutory restrictions on the grant of bail exist. The statutory restrictions do not affect the power of the court to grant bail when the violation of Articles 21 and 22 of the Constitution is established. FACTUAL ADJUDICATION
+
+--- PASSAGE 9 ---
+Judgment: The Judgment of the Court was delivered by M. M. SUNDRESH, J. “Liberty is one of the most essential requirements of the modern man. It is said to be the delicate fruit of a mature civilization. It is the very quintessence of civilized existence and essential r
+   (Judgment id 1000254065, paragraph preamble/27, page 10)
+Text:
+These are the conclusions, which one may reach based on facts. 7.2. The law mandates the police officer to state the facts and record the reasons in writing which led him to come to a conclusion covered by any of the provisions aforesaid, while making such arrest. The law further requires the police officers to record the reasons in writing for not making the arrest. 7.3. In pith and core, the police officer before arrest must put a question to himself, why arrest? Is it really required? What purpose it will serve? What object it will achieve? It is only after these questions are addressed and one or the other conditions as enumerated above is satisfied, the power of arrest needs to be exercised. In fine, before arrest first the police officers should have reason to believe on the basis of information and material that the accused has committed the offence. Apart from this, the police officer has to be satisfied further that the arrest is necessary for one or the more purposes envisaged by sub-clauses (a) to (e) of clause (1) of Section 41 CrPC. 8. An accused arrested without warrant by the police has the constitutional right under Article 22(2) of the Constitution of India and Section 57 CrPC to be produced before the Magistrate without unnecessary delay and in no circumstances beyond 24 hours excluding the time necessary for the journey: 8.1.
+
+--- PASSAGE 10 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 54, page 34)
+Text:
+54. In view of the above, we hold with regard to the second issue that non supply of grounds of arrest in writing to the arrestee prior to or immediately after arrest would not vitiate such arrest on the grounds of non-compliance with the provisions of Section 50 of the CrPC 1973 (now Section 47 of BNSS 2023) provided the said grounds are supplied in writing within a reasonable time and in any case two hours prior to the production of the arrestee before the magistrate for remand proceedings.
+
+--- PASSAGE 11 ---
+Judgment: KASIREDDY UPENDER REDDY versus STATE OF ANDHRA PRADESH AND ORS. (22-05-2025)
+   (Judgment id 1000256770, paragraph 21, page 26)
+Text:
+21. Therefore, we conclude: a) The requirement of informing a person arrested of grounds of arrest is a mandatory requirement of Article 22(1); b) The information of the grounds of arrest must be provided to the arrested person in such a manner that sufficient knowledge of the basic facts constituting the grounds is imparted and communicated to the arrested person effectively in the language which he understands. The mode and method of communication must be such that the object of the constitutional safeguard is achieved; c) When arrested accused alleges non-compliance with the requirements of Article 22(1), the burden will always be on the Investigating Officer/Agency to prove compliance with the requirements of Article 22(1); d) Non-compliance with Article 22(1) will be a violation of the fundamental rights of the accused guaranteed by the said Article. Moreover, it will amount to a violation of the right to personal liberty guaranteed by Article 21 of the Constitution. Therefore, non-compliance with the requirements of Article 22(1) vitiates the arrest of the accused. Hence, further orders passed by a criminal court of remand are also vitiated. Needless to add that it will not vitiate the investigation, charge sheet and trial. But, at the same time, filing of chargesheet will not validate a breach of constitutional mandate under Article 22(1); e) When an arrested person is produced before a Judicial Magistrate for remand, it is the duty of the Magistrate to ascertain whether compliance with Article 22(1) and other mandatory safeguards has been made; and f) When a violation of Article 22(1) is established, it is the duty of the court to forthwith order the release of the accused. That will be a ground to grant bail even if statutory restrictions on the grant of bail exist. The statutory restrictions do not affect the power of the court to grant bail when the violation of Articles 21 and 22 of the Constitution is established.” (Emphasis supplied)
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R01 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).

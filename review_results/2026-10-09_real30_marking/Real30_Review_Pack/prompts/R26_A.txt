@@ -1,0 +1,99 @@
+QUESTION ID: R26   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R26",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Standard for suspension of a sentence of life imprisonment pending appeal under Section 430 BNSS, and whether the appellate court may re-appreciate evidence at that stage.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2034 OF 2008 (Arising out of SLP (Crl) No. 6647 of 2008) Shiv Kumar …Appellant Versus State of N.C.T. of Delhi …Respondent J U D G M E N T Dr. ARIJIT PASAYAT, J.
+   (Judgment id 33333, paragraph 4-6, page 2)
+Text:
+4. Learned counsel for the State on the other hand supported the judgment. 5. Several decisions were cited at the bar. 6. In Bhagwan Rama Shinde Gosai v. State of Gujarat [1999(4) SCC 421] it was inter alia held as follows: “3. When a convicted person is sentenced to a fixed period of sentence and when he files an appeal under any statutory right, suspension of sentence can be considered by the appellate court liberally unless there are exceptional circumstances. Of course if there is any statutory restriction against suspension of sentence it is a different matter. Similarly, when the sentence is life imprisonment the consideration for suspension of sentence could be of a different approach. But if for any reason the sentence of a limited duration cannot be suspended every endeavour should be made to dispose of the appeal on merits more so when a motion for expeditious hearing of the appeal is made in such cases. Otherwise the very valuable right of appeal would be an exercise in futility by efflux of time. When the appellate court finds that due to practical reasons such appeals cannot be disposed of expeditiously the appellate court must bestow special concern in the matter of suspending the sentence. So as to make the appeal right, meaningful and effective. Of course appellate courts can impose similar conditions when bail is granted.”
+
+--- PASSAGE 2 ---
+Judgment: AASIF @ PASHA versus THE STATE OF U.P. & ORS. (06-08-2025)
+   (Judgment id 1000256908, paragraph 13-14, page 4)
+Text:
+13. Of course, if there is any statutory restriction against suspension of sentence, it is a different matter. 14. Similarly, when the sentence is life imprisonment, the consideration for suspension of sentence could be of a different approach.
+
+--- PASSAGE 3 ---
+Judgment: Judgment / Order of the Supreme Court Abhay S. Oka, J. FACTUAL ASPECT
+   (Judgment id 1000256057, paragraph 5/2, page 5)
+Text:
+(4) When the appellant is ultimately sentenced to imprisonment for a term or to imprisonment for life, the time during which he is so released shall be excluded in computing the term for which he is so sentenced.” The power of suspension of sentence under Section 389 of the CrPC (Corresponding to Section 430 of the Bharatiya Nagarik Suraksha Sanhita, 2023) is vested in the Appellate Court dealing with an appeal against the order of conviction. On a plain reading of sub-section (1), the Appellate Court has the power to suspend the execution of a sentence or order appealed against. If the appellant/accused is in confinement, there is a power vesting in the Appellate Court to release him on bail pending the final disposal of the appeal. In case of offences covered by the first proviso to sub-section (1) of Section 389, there is a mandate to give an opportunity to the Public Prosecutor to show cause in writing against such release before releasing a convicted person on bail. As stated earlier, the substantive sentence imposed on the respondent is rigorous imprisonment for seven years. In addition, there is a direction to pay a fine of Rs.95,00,000/-. There are five kinds of punishment provided in Section 53 in Chapter III of the IPC, which reads thus: 936 “53. “Punishments”.—The punishments to which offenders are liable under the provisions of this Code are— First—Death;
+
+--- PASSAGE 4 ---
+Judgment: The Judgment of the Court was delivered by M. M. SUNDRESH, J. “Liberty is one of the most essential requirements of the modern man. It is said to be the delicate fruit of a mature civilization. It is the very quintessence of civilized existence and essential r
+   (Judgment id 1000254065, paragraph 43, page 65)
+Text:
+43. A suspension of sentence is an act of keeping the sentence in abeyance, pending the final adjudication. Though delay in taking up the main appeal would certainly be a factor and the benefit available under Section 436A would also be considered, the Courts will have to see the relevant factors including the conviction rendered by the trial court. When it is so apparent that the appeals are not likely to be taken up and disposed of, then the delay would certainly be a factor in favour of the appellant.
+
+--- PASSAGE 5 ---
+Judgment: CASE NO.: Writ Petition (crl.) 169 of 1999 Writ Petition (crl.) 243 of 1999 PETITIONER: DADU @ TULSIDAS Vs. RESPONDENT: STATE OF MAHARASHTRA DATE OF JUDGMENT: 12/10/2000 BENCH: K.T.Thomas, R.P. Sethi & S.N. Variava. JUDGMENT: SETHI, J: L...I...T.......T.......
+   (Judgment id 17410, unnumbered paragraph, page 6)
+Text:
+Section 433 empowers the appropriate Government to commute: "(a) a sentence of death, for any other punishment provided by the Indian Penal Code; (b) a sentence of imprisonment for life, for imprisonment for a term not exceeding fourteen years or for fine; (c) a sentence of rigorous imprisonment, for simple imprisonment for any term to which that person might have been sentenced, or for fine; (d) a sentence of simple imprisonment, for fine." However, Section 389 of the Code empowers an appellate court to suspend the sentence pending the appeal and release@@ JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ the appellant on bail. Section 32A of the Act, therefore,@@ JJJJJJJJJJJJJJJJJ takes away the powers both of the Appellate Court and the State Executive in the matter of suspending, remitting and commuting the sentence of a person convicted under the Act other than for an offence under Section 27 of the Act. This Court in Maktool Singh’s case (supra) held that Section 32A of the Act was a complete bar for the Appellate Court to suspend a sentence passed on persons convicted of offences under the Act (except under Section 27) either during the pendency of any appeal or otherwise. It has an overriding effect with regard to the powers of suspension, commutation and remission provided under the Code.
+
+--- PASSAGE 6 ---
+Judgment: MAFABHAI MOTIBHAI SAGAR versus STATE OF GUJARAT & ORS. (21-10-2024)
+   (Judgment id 1000256037, paragraph 2, page 4)
+Text:
+2. The issue involved in this appeal is as regards the legality of the conditions imposed while remitting the life sentence of the appellant in the exercise of powers under sub-section (1) of Section 432 of the Code of Criminal Procedure, 1973 (for short, ‘the CrPC’). There is an identical provision in the Bharatiya Nagarik Suraksha Sanhita, 2023 (for short, ‘the BNSS’) in the form of sub-section (1) of Section 473. FACTUAL ASPECTS
+
+--- PASSAGE 7 ---
+Judgment: AASIF @ PASHA versus THE STATE OF U.P. & ORS. (06-08-2025)
+   (Judgment id 1000256908, paragraph 18-30, page 5)
+Text:
+18. In “Omprakash Sahni vs. Jai Shankar Chaudhary and Anr. (2023) 6 SCC 123, this Court while considering the scope of 389 CrPC in cases of life imprisonment held as under:- 30. In Kishori Lal v. Rupa [Kishori Lal v. Rupa, (2004) 7 SCC 638 : 2004 SCC (Cri) 2021], this Court has indicated the factors that require to be considered by the courts while granting benefit under Section 389CrPC in cases involving serious offences like murder, etc. Thus, it is useful to refer to the observations made therein, which are as follows : (SCC pp. 639-40, paras 4-6) “4. Section 389 of the Code deals with suspension of execution of sentence pending the appeal and release of the appellant on bail. There is a distinction between bail and suspension of sentence. One of the essential ingredients of Section 389 is the requirement for the appellate court to record reasons in writing for ordering suspension of execution of the sentence or order appealed against. If he is in confinement, the said court can direct that he be released on bail or on his own bond. The requirement of recording reasons in writing clearly indicates that there has to be careful consideration of the relevant aspects and the order directing suspension of sentence and grant of bail should not be passed as a matter of routine.
+
+--- PASSAGE 8 ---
+Judgment: The Judgment of the Court was delivered by J. B. PARDIWALA, J.
+   (Judgment id 1000254993, paragraph 27, page 18)
+Text:
+27. In Bhagwan Rama Shinde Gosai and Others v. State of Gujarat, reported in (1999) 4 SCC 421, wherein the appellants were convicted by the Trial Court against which, the appeal was pending before the High Court, the High Court successively rejected the prayer for grant of bail till the pendency of appeal after suspending the sentence.Thus, it has been held as follows: “3. When a convicted person is sentenced to a fixed period of sentence and when he files an appeal under any statutory right, suspension of sentence can be considered by the appellate court liberally unless there are exceptional circumstances. Of course, if there is any statutory restriction against suspension of sentence it is a different matter. Similarly, when the sentence is life imprisonment the consideration for suspension of sentence could be of a different approach. But if for any reason the sentence of a limited duration cannot be suspended every endeavour should be made to dispose of the appeal on merits more so when a motion for expeditious hearing of the appeal is made in such cases. Otherwise the very valuable right of appeal would be an exercise in futility by efflux of time. When the appellate court finds that due to practical reasons such appeals cannot be disposed of expeditiously the appellate court must bestow special concern in the matter of suspending the sentence so as to make the appeal right, meaningful and effective. Of course, appellate courts can impose similar conditions when bail is granted.” (Emphasis supplied)
+
+--- PASSAGE 9 ---
+Judgment: PREET PAL SINGH versus THE STATE OF UTTAR PRADESH & ANR. (14-08-2020)
+   (Judgment id 1000252684, paragraph 39, page 15)
+Text:
+39. In considering an application for suspension of sentence, the Appellate Court is only to examine if there is such patent infirmity in the order of conviction that renders the order of conviction prima facie erroneous. Where there is evidence that has been considered by the Trial Court, it is not open to a Court considering application under Section 389 to re-assess and/or re-analyze the same evidence and take a different view, to suspend the execution of the sentence and release the convict on bail.
+
+--- PASSAGE 10 ---
+Judgment: The Judgment of the Court was delivered by J. B. PARDIWALA, J.
+   (Judgment id 1000254993, paragraph 12, page 13)
+Text:
+12. The learned counsel would submit that once the accused stood convicted for a very serious offence like murder, the presumption of innocence would no longer exist and the High Court is expected to be very slow in granting bail. He submitted that the High Court while considering the plea of the three convicts for suspension of substantive order of sentence has virtually appreciated the evidence. The High Court could not have gone into the issues like over-writings in the First Information Report, inordinate delay in lodging the First Information Report etc. while considering the plea of the convicts for suspension of sentence of life imprisonment.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R26 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

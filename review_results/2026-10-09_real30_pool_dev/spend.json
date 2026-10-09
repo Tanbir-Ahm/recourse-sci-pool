@@ -1,0 +1,114 @@
+{
+ "run": {
+  "when": "2026-10-09T06:54:05Z",
+  "half": "dev",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "A today",
+   "B no repeats",
+   "E no multiplier",
+   "C rewrite",
+   "F merged",
+   "S site shown"
+  ],
+  "site_arm": true,
+  "rewrites_file": "review_data/ruler/real30_rewrites_v1.json",
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 1812788,
+   "rerank_calls": 74,
+   "embed_tokens": 3258,
+   "embed_calls": 50,
+   "cap_rerank_tokens": 15000000,
+   "dollars_estimate": 0.091,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-2"
+  }
+ },
+ "per_question": {
+  "R01": {
+   "rerank_tokens": 146123,
+   "embed_tokens": 279
+  },
+  "R02": {
+   "rerank_tokens": 83902,
+   "embed_tokens": 160
+  },
+  "R04": {
+   "rerank_tokens": 37012,
+   "embed_tokens": 90
+  },
+  "R06": {
+   "rerank_tokens": 132898,
+   "embed_tokens": 203
+  },
+  "R08": {
+   "rerank_tokens": 112287,
+   "embed_tokens": 143
+  },
+  "R09": {
+   "rerank_tokens": 42623,
+   "embed_tokens": 102
+  },
+  "R11": {
+   "rerank_tokens": 131354,
+   "embed_tokens": 124
+  },
+  "R12": {
+   "rerank_tokens": 151483,
+   "embed_tokens": 337
+  },
+  "R14": {
+   "rerank_tokens": 125193,
+   "embed_tokens": 156
+  },
+  "R15": {
+   "rerank_tokens": 145976,
+   "embed_tokens": 305
+  },
+  "R17": {
+   "rerank_tokens": 29074,
+   "embed_tokens": 86
+  },
+  "R19": {
+   "rerank_tokens": 144818,
+   "embed_tokens": 279
+  },
+  "R20": {
+   "rerank_tokens": 35324,
+   "embed_tokens": 90
+  },
+  "R21": {
+   "rerank_tokens": 38458,
+   "embed_tokens": 92
+  },
+  "R22": {
+   "rerank_tokens": 153293,
+   "embed_tokens": 308
+  },
+  "R24": {
+   "rerank_tokens": 143172,
+   "embed_tokens": 258
+  },
+  "R26": {
+   "rerank_tokens": 37262,
+   "embed_tokens": 84
+  },
+  "R28": {
+   "rerank_tokens": 90320,
+   "embed_tokens": 102
+  },
+  "R29": {
+   "rerank_tokens": 32216,
+   "embed_tokens": 60
+  }
+ }
+}

@@ -1,0 +1,111 @@
+QUESTION ID: R08   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 12 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R08",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 12 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+
+==============================================================================
+QUESTION: In my cheque bounce case the magistrate ordered me to pay 20% interim compensation on the very first date. Is that compulsory?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: The Judgment of the Court was delivered by R. F. NARIMAN, J. 1. Steel products were supplied by the respondent to one M/s. Diamond Engineering Pvt. Ltd. [“the company”] from 21.09.2015 to 11.11.2016, as a result of which INR 24,20,91,054/- was due and payable 
+   (Judgment id 1000252963, paragraph preamble/76, page 23)
+Text:
+By another amendment made in 2018, the hybrid nature of these provisions gets a further tilt towards a civil proceeding, by the power to direct interim compensation under Sections 143A and 148 which are set out hereinbelow: “143-A. Power to direct interim compensation.—(1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), the Court trying an offence under Section 138 may order the drawer of the cheque to pay interim compensation to the complainant— (a) in a summary trial or a summons case, where he pleads not guilty to the accusation made in the complaint; and (b) in any other case, upon framing of charge. (2) The interim compensation under sub-section (1) shall not exceed twenty per cent of the amount of the cheque. (3) The interim compensation shall be paid within sixty days from the date of the order under sub-section (1), or within such further period not exceeding thirty days as may be directed by the Court on sufficient cause being shown by the drawer of the cheque. (4) If the drawer of the cheque is acquitted, the Court shall direct the complainant to repay to the drawer the amount of interim compensation, with interest at the bank rate as published by the Reserve Bank of India, prevalent at the beginning of the relevant financial year, within sixty days from the date of the order, or within such further period not exceeding thirty days as may be directed by the Court on sufficient cause being shown by the complainant.
+
+--- PASSAGE 2 ---
+Judgment: RAKESH RANJAN SHRIVASTAVA versus THE STATE OF JHARKHAND & ANR. (15-03-2024)
+   (Judgment id 1000255600, paragraph 1, page 5)
+Text:
+1. The issue involved in this criminal appeal is whether the provision of sub-section (1) of Section 143A of the Negotiable Instruments Act, 1881 (for short, ‘the N.I. Act’), which provides for the grant of interim compensation, is directory or mandatory. If it is held to be a directory provision, the question that arises is, what are factors to be considered while exercising powers under sub-section (1) of Section 143A of the N.I. Act. FACTUAL ASPECTS The case of the 2nd respondent in the Complaint
+
+--- PASSAGE 3 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J.
+   (Judgment id 1000254176, paragraph 16, page 10)
+Text:
+16. It is also directed that 20% of the cheque amount namely Rs.1,40,000/- must be deposited by the Appellant as interim compensation. The Registry is directed to make over a sum of Rs.1,40,000/- to the Trial Court i.e. Senior Civil Judge & JMFC, Nagamangala, Karnataka. The amount shall be kept in deposit in Complaint Case No. 244 of 2019 and shall abide by such orders as the Trial Court may deem appropriate to pass. Rest of the amount along with accrued interest, if any, shall be made over to the Appellant. The Registry shall take out a Pay Order in the name of the Appellant which shall be handed over to the learned counsel for the Appellant.
+
+--- PASSAGE 4 ---
+Judgment: Judgment / Order of the Supreme Court C.T. Ravikumar, J. Leave granted. On the consent of the parties, the matter was finally heard.
+   (Judgment id 1000256042, paragraph 12, page 7)
+Text:
+12. To appreciate rival contentions, it is only appropriate to refer to Sections 143- A and 148 of the NI Act: - “S.143 – A. Power to direct interim compensation – (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), the Court trying an offence under Section 138 may order the drawer of the cheque to pay interim compensation to the complainant- (a) in a summary trial or a summons case, where he pleads not guilty to the accusation made in the complaint; and (b) in any other case, upon framing of charge. (2) The interim compensation under sub-section (1) shall not exceed twenty per cent of the amount of the cheque. (3) The interim compensation shall be paid within sixty days from the date of the order under sub-section (1), or within such further period not exceeding thirty days as may be directed by the Court on sufficient cause being shown by the drawer of the cheque. (4) If the drawer of the cheque is acquitted, the Court shall direct the complainant to repay to the drawer the amount of interim compensation, with interest at the bank rate as published by the Reserve Bank of India, prevalent at the beginning of the relevant financial year, within sixty days from the date of the order, or within such further period not exceeding thirty days as may be directed by the Court on sufficient cause being shown by the complainant.“ “S.148. Power of Appellate Court to order payment pending appeal against conviction. (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), in an appeal by the drawer against conviction under Section 138, the Appellate Court may order the appellant to deposit such sum which shall be a minimum of twenty per cent of the fine or compensation awarded by the trial Court: Provided that the amount payable under this sub-section shall be in addition to any interim compensation paid by the appellant under Section 143-A.” (Underline supplied)
+
+--- PASSAGE 5 ---
+Judgment: SHRI GURUDATTA SUGARS MARKETING PVT. LTD. versus PRITHVIRAJ SAYAJIRAO DESHMUKH & ORS. (24-07-2024)
+   (Judgment id 1000255854, paragraph 8, page 5)
+Text:
+8. Appellant filed an application under Section 143-A, NI Act against respondent Nos. 1 to 3 seeking interim compensation from the respondents during the pendency of the criminal proceedings before the Judicial Magistrate. Vide order dated 27.04.2022, the Judicial Magistrate directed each of the respondents to pay 4% of the total cheque amount as interim compensation to the appellant within 60 days. The respondents were granted an extension till 26.07.2022 to pay the interim compensation upon an application made by them.
+
+--- PASSAGE 6 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J.
+   (Judgment id 1000254176, paragraph 11, page 6)
+Text:
+11. Before we examine the matter in issue, we may extract the relevant provision namely Section 143A of the Act, which is to the following effect:- “143A. Power to direct interim compensation. – (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), the Court trying an offence under section 138 may order the drawer of the cheque to pay interim compensation to the complainant – (a) in a summary trial or a summons case, where he pleads not guilty to the accusation made in the complaint; and (b) in any other case, upon framing of charge. (2) The interim compensation under sub-section (1) shall not exceed twenty per cent of the amount of the cheque. (3) The interim compensation shall be paid within sixty days from the date of the order under sub-section (1), or within such further period not exceeding thirty days as may be directed by the Court on sufficient cause being shown by the drawer of the cheque. (4) If the drawer of the cheque is acquitted, the Court shall direct the complainant to repay to the drawer the amount of interim compensation, with interest at the bank rate as published by the Reserve Bank of India, prevalent at the beginning of the relevant financial years, within sixty days from the date of the order, or within such further period not exceeding thirty days as may be directed by the Court on sufficient cause being shown by the complainant. (5) The interim compensation payable under this section may be recovered as if it were a fine under section 421 of the Code of Criminal Procedure, 1973 (2 of 1974). (6) The amount of fine imposed under section 138 or the amount of compensation awarded under section 357 of the Code of Criminal Procedure, 1973 (2 of 1974), shall be reduced by the amount paid or recovered as interim compensation under this section.”
+
+--- PASSAGE 7 ---
+Judgment: RAKESH RANJAN SHRIVASTAVA versus THE STATE OF JHARKHAND & ANR. (15-03-2024)
+   (Judgment id 1000255600, paragraph 14, page 13)
+Text:
+14. In the case of Section 143A, the power can be exercised even before the accused is held guilty. Sub-section (1) of Section 143A provides for passing a drastic order for payment of interim compensation against the accused in a complaint under Section 138, even before any adjudication is made on the guilt of the accused. The power can be exercised at the threshold even before the evidence is recorded. If the word ‘may’ is interpreted as ‘shall’, it will have drastic consequences as in every complaint under Section 138, the accused will have to pay interim compensation up to 20 per cent of the cheque amount. Such an interpretation will be unjust and contrary to the well-settled concept of fairness and justice. If such an interpretation is made, the provision may expose itself to the vice of manifest arbitrariness. The provision can be held to be violative of Article 14 of the Constitution. In a sense, sub-section (1) of Section 143A provides for penalising an accused even before his guilt is established. Considering the drastic consequences of exercising the power under Section 143A and that also before the finding of the guilt is recorded in the trial, the word “may” used in the provision cannot be construed as “shall”. The provision will have to be held as a directory and not mandatory. Hence, we have no manner of doubt that the word “may” used in Section 143A, cannot be construed or interpreted as “shall”. Therefore, the power under sub-section (1) of Section 143A is discretionary.
+
+--- PASSAGE 8 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J.
+   (Judgment id 1000251858, paragraph 5, page 7)
+Text:
+5. Soon thereafter, the Trial Court ordered that 20% of the cheque amount be made over by the Appellant to the Respondent as interim compensation in accordance with the provisions of Section 143A of the Act. Thus, the Appellant was directed to pay to the Respondent a sum of Rs.7,00,000/-.
+
+--- PASSAGE 9 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J.
+   (Judgment id 1000254176, paragraph 4, page 4)
+Text:
+4. After the cognizance of the aforesaid complaint was taken and the summons were issued, the Appellant appeared before the concerned court through his counsel on 16.08.2019. On the very same date, an order was passed by the Trial Court directing the Appellant to deposit 20% of the cheque amount as interim compensation in terms of Section 143(A) of the Act within 60 days. The period so granted, got over on 15.10.2019 and on the request of the Appellant further extension of 30 days was granted; but no deposit was made by the Appellant.
+
+--- PASSAGE 10 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J.
+   (Judgment id 1000251858, paragraph 8-9, page 7)
+Text:
+8. We heard Mr. G. Ananda Selvam, learned Advocate for the Appellant and the learned Amicus Curiae. 9. A reading of Section 143A shows (i) interim compensation must not exceed 20% of the amount of the cheque; (ii) it must be paid within the time stipulated under Sub-Section (3); (iii) if the accused is acquitted, the complainant shall be directed to pay to the accused the amount of interim compensation with interest at the bank rate; (iv)the interim compensation payable under said Section can be recovered as if it were a fine under Section 421 of the Code of Criminal Procedure, 1973 (‘the Code’, for short); and (v) if the accused were to be convicted, the amount of fine to be imposed under Section 138 of the Act or the amount of compensation to be awarded under Section 357 of the Code would stand reduced by the amount paid or recovered as interim compensation.
+
+--- PASSAGE 11 ---
+Judgment: RAKESH RANJAN SHRIVASTAVA versus THE STATE OF JHARKHAND & ANR. (15-03-2024)
+   (Judgment id 1000255600, paragraph 4, page 6)
+Text:
+4. Before the Court of the learned Magistrate, the respondent moved an application under Section 143A of the N.I. Act seeking a direction against the appellant/accused to pay 20 per cent of the cheque amount as compensation. By the order dated 7th March 2020, the learned Judicial Magistrate allowed the application and directed the 444 appellant to pay an interim compensation of Rs. 10,00,000/- to the respondent within 60 days. The Sessions Court affirmed the order of the learned Magistrate in a revision application. The said orders were subjected to a challenge before the High Court. The learned Judge of Jharkhand High Court dismissed the petition by the impugned judgment. These orders are the subject matter of challenge in the present criminal appeal. SUBMISSIONS
+
+--- PASSAGE 12 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J.
+   (Judgment id 1000254176, paragraph 12, page 7)
+Text:
+12. After empowering the court to pass an order directing the accused to pay interim compensation under Sub-Section 1 of Section 143A, Sub-Section 2 then mandates that such interim compensation should not exceed 20 per cent of the amount of the cheque. The period within which the interim compensation must be paid is stipulated in Sub-Section 3, while Sub-Section 4 deals with situations where the drawer of the cheque is acquitted. Said Sub-Section 4 contemplates repayment of interim compensation along with interest as stipulated. Sub-Section 5 of said Section 143A then states “the interim compensation payable under this Section can be recovered as if it were a fine”. The expression interim compensation is one which is “payable under this Section” and would thus take within its sweep the interim compensation directed to be paid under Sub-Section 1 of said Section 143A.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R08 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12).

@@ -184,9 +184,10 @@ def make_site(metas, M, recourse_dir):
     return site
 
 
-def titles(index_dir, metas):
-    """doc -> the title shown with a passage: 'Petitioner v. Respondent (date)' from the index's case record, else the opening header text (as the first pack did)."""
-    case_meta, header = {}, {}
+def titles(index_dir, metas=()):
+    """doc -> the title shown with a passage: 'Petitioner v. Respondent (date)' from the index's case record (crawl judgments), else the title and date the bucket judgment arrived with, else the
+    opening header text (as the first pack did). None when the index holds none of these."""
+    case_meta, src_title, header = {}, {}, {}
     for f in glob.glob(os.path.join(index_dir, "index", "*.docs.jsonl.gz")):
         with gzip.open(f, "rt", encoding="utf-8") as fh:
             for line in fh:
@@ -194,6 +195,9 @@ def titles(index_dir, metas):
                     r = json.loads(line)
                     if r.get("case"):
                         case_meta[r["doc"]] = r["case"]
+                    src = r.get("src")
+                    if isinstance(src, dict) and src.get("title"):
+                        src_title[r["doc"]] = (src["title"], src.get("date"))
     for m in metas:
         if m["doc"] not in header and (m["section"] == "header" or str(m["pn"]).startswith("preamble")):
             header[m["doc"]] = re.sub(r"\s+", " ", m["text"])[:260]
@@ -202,8 +206,32 @@ def titles(index_dir, metas):
         c = case_meta.get(doc)
         if c and (c.get("pet") or c.get("resp")):
             return (f"{c.get('pet', '?')} v. {c.get('resp', '?')}" + (f" ({c['date']})" if c.get("date") else ""))[:200]
+        if doc in src_title:
+            name, date = src_title[doc]
+            return (re.sub(r"\s+", " ", name) + (f" ({date})" if date else ""))[:200]
         return header.get(doc)
     return title
+
+
+def retitle(pool_path, index_dir):
+    """Fills the titles a run left empty (a first run took titles from crawl records and header text only), in pool.json and nothing else. Returns (rows filled, rows still without a title)."""
+    with open(pool_path, encoding="utf-8") as fh:
+        doc = json.load(fh)
+    title = titles(index_dir)
+    filled = left = 0
+    for q in doc["questions"]:
+        for r in q["rows"]:
+            if not r["title"]:
+                t = title(r["doc"])
+                if t:
+                    r["title"], filled = t, filled + 1
+                else:
+                    left += 1
+    doc["run"]["titles_filled_afterwards"] = {"rows": filled, "still_without": left, "from": "the index's document records (src.title, src.date)"}
+    with open(pool_path, "w", encoding="utf-8") as fh:
+        json.dump(doc, fh, ensure_ascii=False, indent=1)
+        fh.write("\n")
+    return filled, left
 
 
 def build_question(q, lists, metas, hdocs, title, rewrite=None, top_k=5):
@@ -291,13 +319,20 @@ def main(argv=None):
     ap.add_argument("--rewrites", default=DEFAULT_REWRITES)
     ap.add_argument("--index-dir", default=DEFAULT_INDEX)
     ap.add_argument("--recourse-dir", default=DEFAULT_RECOURSE)
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--max-rerank-tokens", type=int, required=True, help="stop before the call that would take the re-rank tokens billed past this")
+    ap.add_argument("--out")
+    ap.add_argument("--max-rerank-tokens", type=int, help="stop before the call that would take the re-rank tokens billed past this (required for a run)")
+    ap.add_argument("--retitle", metavar="POOL_JSON", help="only fill the titles a finished run left empty, from the index's document records; searches nothing, spends nothing")
     ap.add_argument("--no-site", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated question ids")
     ap.add_argument("--allow-other-index", action="store_true", help="run on an index head other than the recorded one (the run says so)")
     ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing")
     a = ap.parse_args(argv)
+    if a.retitle:
+        filled, left = retitle(a.retitle, a.index_dir)
+        print(f"titles filled: {filled}; still without a title: {left}")
+        return 0
+    if not a.out or a.max_rerank_tokens is None:
+        ap.error("--out and --max-rerank-tokens are required for a run")
     real = RQ.load(a.real)
     bad = RQ.check(real, os.path.join(DATA, "ruler_v2.json"))
     if bad:

@@ -58,20 +58,27 @@ def score(pool, key, versions=None):
     return out
 
 
-def summarise(scores, key, half_of=None):
+def summarise(scores, key, only=None):
     """Per version, over the questions whose key authority the index can reach: how many have it in the top 1, 5 and 10, and the stale and narrower passages in the top 5.
-    `half_of` ({qid: 'dev'|'sealed'}) is only used to label the tables."""
+    The stale passages on the index-gap questions (where the key authority is missing) are counted apart: they are the case where only an old ruling is on offer.
+    `only` limits the count to a set of question ids (for a like-with-like comparison on the questions a version was run on)."""
     kq = key["questions"]
     out = {}
     for v, per in scores.items():
-        rate = {"questions": 0, **{f"hit@{n}": 0 for n in KS}, "stale_slots": 0, "stale_questions": 0, "narrower_slots": 0}
+        rate = {"questions": 0, **{f"hit@{n}": 0 for n in KS}, "stale_slots": 0, "stale_questions": 0, "narrower_slots": 0, "gap_stale_slots": 0, "gap_stale_questions": 0}
         for qid, s in per.items():
+            if only is not None and qid not in only:
+                continue
+            st = [x for x in s["stale"] if x["counts_as_stale"]]
+            if kq[qid]["reachable"] is False:
+                rate["gap_stale_slots"] += len(st)
+                rate["gap_stale_questions"] += bool(st)
+                continue
             if kq[qid]["reachable"] is not True:
                 continue
             rate["questions"] += 1
             for n in KS:
                 rate[f"hit@{n}"] += s["hits"][str(n)]
-            st = [x for x in s["stale"] if x["counts_as_stale"]]
             rate["stale_slots"] += len(st)
             rate["stale_questions"] += bool(st)
             rate["narrower_slots"] += sum(1 for x in s["stale"] if not x["counts_as_stale"])
@@ -87,10 +94,19 @@ def report(pool, key, scores, summary, run=None):
     if run:
         L += [f"Run: {run.get('when', '')}; index head `{run.get('index_commit', '')[:7]}`; {len(pool)} questions; re-rank tokens billed {run.get('spend', {}).get('rerank_tokens', 0):,}.", ""]
     L += ["## Per version (questions whose key authority the index holds)", "",
-          "| Version | Questions | Key authority in top 1 | in top 5 | in top 10 | Known-stale passages in top 5 (questions) | Narrower or contested older rulings in top 5 |", "|---|---|---|---|---|---|---|"]
+          "| Version | Questions | Key authority in top 1 | in top 5 | in top 10 | Known-stale passages in top 5 (questions) | Narrower or contested older rulings in top 5 | Known-stale passages in top 5 on the index-gap questions (questions) |", "|---|---|---|---|---|---|---|---|"]
     for v, r in summary.items():
-        L.append(f"| {v} | {r['questions']} | {r['hit@1']} | {r['hit@5']} | {r['hit@10']} | {r['stale_slots']} ({r['stale_questions']}) | {r['narrower_slots']} |")
-    L += ["", "S shows only a few passages, so its 'top 10' is what it showed.", "", "## Per question", ""]
+        L.append(f"| {v} | {r['questions']} | {r['hit@1']} | {r['hit@5']} | {r['hit@10']} | {r['stale_slots']} ({r['stale_questions']}) | {r['narrower_slots']} | {r['gap_stale_slots']} ({r['gap_stale_questions']}) |")
+    L += ["", "S shows only a few passages, so its 'top 10' is what it showed. The last column counts old rulings that sit in the top 5 where the index lacks the ruling that corrects them: only the old law is on offer.", ""]
+    rewritten = {q["qid"] for q in pool if "C rewrite" in q["lists"]}
+    if rewritten:
+        like = summarise(scores, key, only=rewritten)
+        answerable = sorted(q for q in rewritten if kq[q]["reachable"] is True)
+        L += [f"## Like with like: only the {len(answerable)} answerable questions that have a blind rewrite ({', '.join(answerable)}; the rewritten index-gap questions and controls are left out)", "",
+              "| Version | Questions | Key authority in top 1 | in top 5 | in top 10 |", "|---|---|---|---|---|"]
+        L += [f"| {v} | {r['questions']} | {r['hit@1']} | {r['hit@5']} | {r['hit@10']} |" for v, r in like.items() if r["questions"]]
+        L += ["", "C and F are run only on the questions that have a rewrite, so their rows above cover fewer questions than A, B, E and S; this table puts all versions on the same questions.", ""]
+    L += ["## Per question", ""]
     versions = list(summary)
     L += ["| Question | Domain | Key authority | " + " | ".join(versions) + " |", "|---|---|---|" + "---|" * len(versions)]
     for q in pool:

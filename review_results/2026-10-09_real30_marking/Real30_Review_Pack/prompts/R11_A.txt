@@ -1,0 +1,129 @@
+QUESTION ID: R11   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 15 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R11",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 15 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+
+==============================================================================
+QUESTION: NCB made my cousin sign a statement in their office saying the ganja was his. Can they use that as his confession in court?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: Kanhaiyalal v. Union of India (09/01/2008)
+   (Judgment id 30081, paragraph 38, page 10)
+Text:
+38. Considering the provisions of Section 67 of the N.D.P.S. Act and the views expressed by this Court in Raj Kumar Karwal's case (supra), with which we agree, that an officer vested with the powers of an Officer-in-Charge of a Police Station under Section 53 of the above Act is not a "Police Officer" within the meaning of Section 25 of the Evidence Act, it is clear that a statement made under Section 67 of the N.D.P.S. Act is not the same as a statement made under Section 161 of the Code, unless made under threat or coercion. It is this vital difference, which allows a statement made under Section 67 of the N.D.P.S. Act to be used as a confession against the person making it and excludes it from the operation of Sections 24 to 27 of the Evidence Act.
+
+--- PASSAGE 2 ---
+Judgment: TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)
+   (Judgment id 1000252784, unnumbered paragraph, page 228)
+Text:
+146. The statements made in any inquiry or investigation may be recorded in writing and even signed by the person making it. In the absence of any provision similar to Section 162, in the NDPS Act, a statement made before an officer under the NDPS Act in the course of any inquiry, investigation or other proceedings, may be tendered in evidence and proved in a trial for prosecution of an offence under the NDPS Act in accordance with law. A statement confessional in nature is in the genre of extra judicial confessions. 147. Section 24 of the Indian Evidence Act, 1872 provides as follows:- “24. Confession caused by inducement, threat or promise, when irrelevant in criminal proceeding.–– A confession made by an accused person is irrelevant in a criminal proceeding, if the making of the confession appears to the Court to have been caused by any inducement, threat or promise having reference to the charge against the accused person, proceeding from a person in authority and sufficient, in the opinion of the Court, to give the accused person grounds which would appear to him reasonable for supposing that by making it he would gain any advantage or avoid any evil of a temporal nature in reference to the proceedings against him.” 148. A confession made by an accused person is irrelevant in a criminal proceeding, if it appears to the Court that the confessions may have been elicited by any inducement, threat or promise from a person in authority and sufficient, in the opinion of the Court, to give the accused person reasonable grounds, for supposing that by making the confession, he would gain any advantage or avoid any disadvantage in respect of proceedings against him.
+
+--- PASSAGE 3 ---
+Judgment: [REPORTABLE] IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 152 OF 2013 TOFAN SINGH ….APPELLANT VERSUS STATE OF TAMIL NADU ….RESPONDENT J U D G M E N T A.K. Sikri, J
+   (Judgment id 40880, paragraph 8/1, page 6)
+Text:
+8. The information relating to the commission of the offence has been taken note of and discussed by the Trial Court as well as the High Court in the impugned judgment in detail. It is not necessary to burden this judgment with all those details as our purpose would be served by referring to those aspects which are essential for the purposes of the present appeal. We may state that the prosecution had also produced Exs. P1 to P81 and M.Os 1 to 19 during the trial. After examining the prosecution witnesses, statements of the accused persons under Section 313 of the Code of Civil Procedure (hereinafter to be referred as ‘Code’)were recorded. The accused persons denied the same and stated as follows: A-1: Denied the incriminating evidence against him and stated that he was compelled to come to the NCB Office and a false case is foisted against him and gave a written statement stating that the NCB officers came to his house between 12.30 to 1.00 p.m. on 25.10.2004 and took him to their office at Chennai in the presence of his wife and his children and have forcibly taken the signatures on some papers written in Hindi and that he is not connected with the other accused and that he was not occupant of the Car as alleged in the case and he was not aware of the contraband seized and examined defence witnesses on his behalf namely Mr.
+
+--- PASSAGE 4 ---
+Judgment: Kanhaiyalal v. Union of India (09/01/2008)
+   (Judgment id 30081, paragraph 40, page 11)
+Text:
+40. It may also be recalled that though an application was made for retracting the confession made by the appellant, neither was any order passed on the said application nor was the same proved during the trial so as to water down the evidentiary value of the said statement. On the other hand, in the absence of such evidence on record, the High Court had no option but to proceed on the basis of the confession as made by the appellant under Section 67 of the NDPS Act. Since it has been held by this Court that an officer for the purposes of Section 67 of the NDPS Act read with Section 42 thereof, is not a police officer, the bar under Sections 24 and 27 of the Evidence Act cannot be attracted and the statement made by a person directed to appear before the officer concerned may be relied upon as a confessional statement against such person. Since a conviction can be maintained solely on the basis of a confession made under Section 67 of the NDPS Act, we see no reason to interfere with the conclusion of the High Court convicting the appellant.
+
+--- PASSAGE 5 ---
+Judgment: BALWINDER SINGH (BINDA) versus THE NARCOTICS CONTROL BUREAU (22-09-2023)
+   (Judgment id 1000255268, paragraph 158, page 15)
+Text:
+158. We answer the reference by stating: 158.1. That the oﬃ cers who are invested with powers under Section 53 of the NDPS Act are “police oﬃ cers” within the meaning of Section 25 of the Evidence Act, as a result of which any confessional statement made to them would be barred under the provisions of Section 25 of the Evidence Act, and cannot be taken into account in order to convict an accused under the NDPS Act. 158.2. That a statement recorded under Section 67 of the NDPS Act cannot be used as a confessional statement in the trial of an oﬀ ence under the NDPS Act.” [emphasis laid]
+
+--- PASSAGE 6 ---
+Judgment: BALWINDER SINGH (BINDA) versus THE NARCOTICS CONTROL BUREAU (22-09-2023)
+   (Judgment id 1000255268, paragraph 6-7, page 13)
+Text:
+6. We have perused the impugned judgement and the records and given our thoughtful consideration to the arguments advanced by learned counsel for the parties. 7. When the present matter was considered by the High Court in the year 2013, it had accepted the arguments advanced by learned counsel for the respondent-NCB that oﬃ cers of the Department of Revenue Intelligence who are vested with the powers of an oﬃ cer-in-charge of the police station under Section 53 of the Act, are not “police oﬃ cers” within the meaning of Section 25 of the Evidence Act and therefore held that a confessional statement of a person accused of an oﬀ ence under the NDPS Act recorded by such an oﬃ cer in the course of investigation, is admissible against him. The said argument had found favour with the High Court in the light of the decisions of this Court in Kanhaiyalal33 (supra) and Raj Kumar Karwal35 (supra) where it was held that a confession made by the accused before an oﬃ cer of the NCB, is admissible in evidence because the said oﬃ cer cannot be treated as a “police oﬃ cer” within the meaning of Section 25 of the Evidence Act. It was further held that a conviction can be maintained on the sole confession made by an accused under Section 67 of the NDPS Act. A similar view taken by this Court in Ram Singh34 (supra), was cited by the High Court to fortify its decision that the confessions made by the appellants herein before the oﬃ cers of the NCB were admissible in evidence, being of voluntary nature.
+
+--- PASSAGE 7 ---
+Judgment: Opening header not available
+   (Judgment id 32020, unnumbered paragraph, page 6)
+Text:
+In Kanhaiyalal v. Union of India (2008 (1) SCALE 165) at para 7 it was noted as follows: “7. Since the appellant Kanhaiyalal was convicted on the basis of the statement made by him under Section 67 of the NDPS Act, a question has been raised whether such statement made to an officer within the meaning of Section 42 of the said Act could be treated as a confessional statement and whether the accused could be convicted on the basis thereof in the absence of any other corroborative evidence.” 9. Similarly in A.K. Mehaboob v. The Intelligence Officer, Narcotics Control Bueau (JT 2001 (1) SC 614) it was observed as follows: “4. Smt. Malini Poduval, learned counsel for the appellants contended that Exhibit P-8 cannot be relied on for more than one reason. One is that the said statement had been retracted by the accused himself. Second is that on 11.8.1994 appellant- Naushad informed the Magistrate in writing that the said statement had been coaxed out from him. The third is that the said retracted confession had no corroboration and therefore cannot be made the basis for conviction. 5. There is nothing to indicate that Exhibit P-8 had been elicited from A-2 by any coercion, threat or force and therefore the learned Single Judge of the High Court had spurned down that contention. Regarding the complaint alleged to have been made by appellant-Naushad on 11.3.1994 we have perused it.
+
+--- PASSAGE 8 ---
+Judgment: Mohtesham Mohd. Ismail v. Spl. Director, Enforcement Directorate & Anr (09/10/2007)
+   (Judgment id 29625, paragraph 16, page 6)
+Text:
+16. We may, however, notice that recently in Francis Stanly @ Stalin v. Intelligence Officer, Narcotic Control Bureau, Thiruvanthapuram [2006 (13) SCALE 386], this Court has emphasized that confession only if found to be voluntary and free from pressure, can be accepted. A confession purported to have been made before an authority would require a closure scrutiny. It is furthermore now well-settled that the court must seek corroboration of the purported confession from independent sources.
+
+--- PASSAGE 9 ---
+Judgment: The Judgment of the Court was delivered by UDAY UMESH LALIT, J. 1 Special Leave to Appeal granted.
+   (Judgment id 1000250894, paragraph 7, page 5)
+Text:
+7. For the present purposes, we will proceed on the footing that the statements of co-accused were recorded under and in terms of Section 67 of the NDPS Act. As regards such statements, a bench of two Judges of this Court after referring to and relying upon the earlier Judgments, observed in Kanhaiyalal v. Union of India1, as under: “45. Considering the provisions of Section 67 of the NDPS Act and the views expressed by this Court in Raj Kumar Karwal 1 (2008) 4 SCC 668 case2 with which we agree, that an officer vested with the powers of an officer in charge of a police station under Section 53 of the above Act is not a “police officer” within the meaning of Section 25 of the Evidence Act, it is clear that a statement made under Section 67 of the NDPS Act is not the same as a statement made under Section 161 of the Code, unless made under threat or coercion. It is this vital difference, which allows a statement made under Section 67 of the NDPS Act to be used as a confession against the person making it and excludes it from the operation of Sections 24 to 27 of the Evidence Act.”
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.451-452 OF 2005 RAM SINGH … APPELLANT VERSUS CENTRAL BUREAU OF NARCOTICS …RESPONDENT J U D G M E N T CHANDRAMAULI KR. PRASAD, J.
+   (Judgment id 38022, paragraph 13, page 10)
+Text:
+13. Bearing in mind the principles aforesaid, now, we proceed to consider the facts of the present case. Appellant’s first confession was recorded by PW.6, Jagdish Mawal on 19th July, 1997 and he was produced before the Court on 20th July, 1997 and he made no grievance in regard to the confession recorded. Another confession was recorded on 20th July, 1997 and, thereafter, he was produced before the Special Judge on 21st July, 1997 and a copy of the police diary was handed over to him. This obviously would had contained the confessions made by him. No complaint about the same was made then also. Thereafter appellant was produced before the Court several times but he never retracted his confession. The appellant retracted the confession made by him for the first time in his statement under Section 313 of the Code of Criminal Procedure. In our opinion, when an accused is made aware of the confession made by him and he does not make complaint within a reasonable time, same shall be a relevant factor to adjudge as to whether the confession was voluntary or not. Here in the present case appellant was produced before the Court on several dates and at no stage he made any complaint before the Special Judge of any torture or harassment in recording the confession. It is only when his statement was recorded under Section 313 of the Code of Criminal Procedure that he retracted and denied making such a confession and went to the extent of saying that his signatures were obtained on blank pages. In the facts and circumstances of the case we are of the opinion that the confessional statements made by the appellant were voluntary in nature and could form the basis for conviction. The view which we have taken above finds support from the judgment of this Court in the case of M. Prabhulal v. Assistant Director, Directorate of Revenue Intelligence, 2003 (8) SCC 449, in which it has been held as follows: “It has been established that the Customs Office was about 20 km from the place where the truck and the car were apprehended. Having regard to the large quantity of the heroin, the said vehicles with Accused 2, 3 and 6 were brought to the Customs Office. Further, Accused 1 and 2 did not know Tamil. A Hindi-knowing officer had to be arranged. There was, under the circumstances no delay in recording the statements of the appellants. Further, it is also to be borne in mind that the appellants did not make any complaint before the Magistrate before whom they were produced complaining of any torture or harassment. It is only when their statements were recorded by the trial Judge under Section 313 of the Code of Criminal Procedure that a vague stand about the torture was taken. Under these circumstances, the confessional statements cannot be held to be involuntary. The statements were voluntarily made and can, thus, be made the basis of the appellants’ conviction.” (underlining ours)
+
+--- PASSAGE 11 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.451-452 OF 2005 RAM SINGH … APPELLANT VERSUS CENTRAL BUREAU OF NARCOTICS …RESPONDENT J U D G M E N T CHANDRAMAULI KR. PRASAD, J.
+   (Judgment id 38022, paragraph 45, page 8)
+Text:
+45. Considering the provisions of Section 67 of the NDPS Act and the views expressed by this Court in Raj Kumar Karwal case with which we agree, that an officer vested with the powers of an officer in charge of a police station under Section 53 of the above Act is not a “police officer” within the meaning of Section 25 of the Evidence Act, it is clear that a statement made under Section 67 of the NDPS Act is not the same as a statement made under Section 161 of the Code, unless made under threat or coercion. It is this vital difference, which allows a statement made under Section 67 of the NDPS Act to be used as a confession against the person making it and excludes it from the operation of Sections 24 to 27 of the Evidence Act.”
+
+--- PASSAGE 12 ---
+Judgment: TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)
+   (Judgment id 1000252784, unnumbered paragraph, page 29)
+Text:
+810-A-B] 2.38 The statements made in any inquiry or investigation may be recorded in writing and even signed by the person making it. In the absence of any provision similar to Section 162, in the NDPS Act, a statement made before an officer under the NDPS Act in the course of any inquiry, investigation or other proceedings, may be tendered in evidence and proved in a trial for prosecution of an offence under the NDPS Act in accordance with law. A statement confessional in nature is in the genre of extra judicial confessions. [Para 146][810-B-C] 3.1 A confession made by an accused person is irrelevant in a criminal proceeding, if it appears to the Court that the confessions may have been elicited by any inducement, threat or promise from a person in authority and sufficient, in the opinion of the Court, to give the accused person reasonable grounds, for supposing that by making the confession, he would gain any advantage or avoid any disadvantage in respect of proceedings against him. [Para 148][810-F-G] State of Rajasthan v. Raja Ram (2003) 8 SCC 180: [2003] 2 Suppl. SCR 445; Gura Singh v. State of Rajasthan (2001) 2 SCC 205 : [2000] 5 Suppl. SCR 408 – referred to. 3.2 It is one thing to say that a piece of evidence is inadmissible and another thing to assess two or more pieces of evidence on their probative value.
+
+--- PASSAGE 13 ---
+Judgment: [REPORTABLE] IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 152 OF 2013 TOFAN SINGH ….APPELLANT VERSUS STATE OF TAMIL NADU ….RESPONDENT J U D G M E N T A.K. Sikri, J
+   (Judgment id 40880, paragraph 8/2, page 6)
+Text:
+Vinay, son of A-1, D.W.1 and Dr. Somasundaram D.W.2. A-2: Denying the incriminating evidence against him stated that he was taken from Nanganallur to the NCB Office and that he was not allowed to talk before the Judge during remand. A-3: Stated that summon was not issued to him and Rs. 1,600/- and train tickets were seized from him at Chennai Central Railway Station and he was beaten and forced to sign in the NCB office on blank papers and stated that it is a false case. A-4: Stated that he was arrested at Nellore Railway Station while he was coming from train and his signatures were obtained forcibly and the Intelligence Officer Mr. Karthikeyan (P.W.3) has foisted a false case against him due to quarrel in the train between him and the Intelligence Officer and that he was working in the RPF and is not connected with the contraband seized and gave a written statement stating that he travelled in mufti to go to Tirupathy and got down at Chennai Central Railway Station and was arrested and false case was foisted against him due to wordy quarrel with the officer and that Section 67 statement was obtained by force and torture and that he was not carrying any Narcotic Drug. Thereafter, the accused persons produced two witnesses who were examined and one document Ex. D1 was marked. 9. Defence evidence is as follows:- DW.1: The NCB Officers came at about 1.00 p.m on 25.10.2004 and searched the house of A-1 and they obtained his signature and his mother’s signature in blank papers by threatening them.
+
+--- PASSAGE 14 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.451-452 OF 2005 RAM SINGH … APPELLANT VERSUS CENTRAL BUREAU OF NARCOTICS …RESPONDENT J U D G M E N T CHANDRAMAULI KR. PRASAD, J.
+   (Judgment id 38022, paragraph 10, page 8)
+Text:
+10. From what has been observed above, the officers vested with the powers of investigation under the Act are not police officers and, therefore, the confessions recorded by such officers are admissible in evidence. Therefore, the question posed at the outset is answered in the affirmative and it is held that officers of the Central Bureau of Narcotics are not police officers within the meaning of Section 25 and 26 of the Evidence Act and, hence, confessions made before them are admissible in evidence. In view of aforesaid there is no escape from the conclusion that the confessions made by the appellant before PW.6, Jagdish Mawal and PW.8, Mahaveer Singh are admissible in evidence and cannot be thrown out of consideration.
+
+--- PASSAGE 15 ---
+Judgment: TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)
+   (Judgment id 1000252784, unnumbered paragraph, page 47)
+Text:
+The conviction is based solely on the purported confessional statement recorded under Section 67 of the NDPS Act which has no evidentiary value inasmuch as: (a) The statement was given to and recorded by an officer who is to be treated as “police officer” and is thus, hit by Section 25 of the Evidence Act. (b) No such confessional statement could be recorded under Section 67 of the NDPS Act. This provision empowers to call for information and not to record such confessional statements. Thus, the statement recorded under this provision is akin to the statement under Section 161 CrPC. (c) In any case, the said statement having been retracted, it could not have been the basis of conviction and could be used only to corroborate other evidence.” 2. Under the caption “Evidentiary value of statement under section 67 of the Narcotic Drugs and Psychotropic Substances, Act, 1985 (“NDPS Act”)”, the Court noted the decisions of Raj Kumar Karwal v. Union of India (1990) 2 SCC 409 and Kanhaiyalal v. Union of India (2008) 4 SCC 668, as also certain other judgments, most notably Abdul Rashid v. State of Bihar (2001) 9 SCC 578 and Noor Aga v. State of Punjab (2008) 16 SCC 417, and thereafter came to the conclusion that the NDPS Act, being a penal statute, is in contradistinction to the Customs Act, 1962 and the Central Excise Act, 1944, whose dominant object is to protect the revenue of the State, and that therefore, judgments rendered in the context of those Acts may not be apposite when considering the NDPS Act– see paragraph 33.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R11 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).
