@@ -6,7 +6,7 @@
 
 | Step | What it is, in plain words | Numbers | Where |
 |---|---|---|---|
-| 1. Meaning search | The question is turned into a "fingerprint of meaning" (voyage-law-2). Every one of the 236,155 passages has such a fingerprint. The 100 passages whose fingerprint is nearest are taken. Finds a passage that says the same thing in different words. | 100 | `retrieve`, lines 106 to 120 |
+| 1. Meaning search | The question is turned into a "fingerprint of meaning" (voyage-law-2). Every one of the 236,155 passages has such a fingerprint. The 100 passages whose fingerprint is nearest are taken. Finds a passage that says the same thing in different words. | 100 | `retrieve`, lines 106 to 132 |
 | 2. Keyword search | An ordinary word search (SQLite full-text, ranked by BM25) on the question's first 12 distinct words of 4 or more letters that are not common words. Finds a passage that uses the same words. | 50 | `retrieve` |
 | 3. Section search | If the question contains a section number ("section 479", "498A"), search for the exact phrase "section 479". Does nothing when the question names no section. | up to 30 per number | `retrieve`, `si.section_numbers` |
 | 4. Merge | Reciprocal rank fusion: a passage near the top of several lists scores most. The best 60 are the **candidates**. | 60 | `retrieve` |
@@ -23,7 +23,7 @@
 | E no multiplier | yes | yes | yes | **yes** | no | re-ranker alone, to see what the weights add |
 | C rewrite | yes | yes | yes | **yes** | yes + boost | the same pipeline run on a blind rewording of the question (12 questions) |
 | F merged | yes | yes | yes | **yes** | yes + boost | the candidates of A and C together, scored by the better of the two readings (12 questions) |
-| S site shown | yes (top 50, cosine at least 0.40) | only as a backfill (at most 2) | its exact-section lookup is **off** | **no** | no | the Recourse site's own code, `semantic_retrieval.find_relevant_sections`; it does not call `rerank` (checked in the code; the site uses its re-ranker only in other places, `related_judgments.py`) |
+| S site shown | yes (top 50, cosine at least 0.40) | only as a backfill (at most 2) | its exact-section lookup is **off** | **no** | no | the Recourse site's own code, `semantic_retrieval.find_relevant_sections`; it does not call `rerank` (checked in the code: `rerank` is defined in the same file but called only from other parts of the site, such as the related-judgments lane in `related_judgments.py`) |
 
 ## 3. Evidence that the re-ranker was used
 
