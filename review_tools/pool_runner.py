@@ -232,6 +232,15 @@ def build_question(q, lists, metas, hdocs, title, rewrite=None, top_k=5):
             "lists": {v: [{"doc": metas[r]["doc"], "h": metas[r]["h"], "also": sorted(hdocs[metas[r]["h"]] - {metas[r]["doc"]})} for r in lst] for v, lst in lists.items()}}
 
 
+def ruler_questions(ruler_path, half="dev", final=False, label=""):
+    """The ruler's questions of a half as runner questions (the ruler's own guard decides whether the frozen half may be handed out). Everyday = the ruler's 'lay'."""
+    import ruler as RU
+    R = RU.load(ruler_path)
+    topics = {t["id"]: t for t in R["topics"]}
+    return [{"id": q["id"], "domain": topics[q["topic"]]["area"], "kind": "everyday" if q["kind"] == "lay" else q["kind"], "text": q["text"], "half": q["half"], "topic": q["topic"]}
+            for q in RU.select(R, "frozen" if half == "sealed" else "dev", final=final, label=label)]
+
+
 def index_head(index_dir):
     return subprocess.run(["git", "-C", index_dir, "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
 
@@ -274,6 +283,8 @@ def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--real", default=DEFAULT_REAL)
+    ap.add_argument("--source", choices=["real30", "ruler"], default="real30", help="the 30 real questions, or the ruler's 32 (the ruler's own guard keeps its frozen half back; no rewrites are used for it)")
+    ap.add_argument("--ruler", default=os.path.join(DATA, "ruler_v2.json"))
     ap.add_argument("--half", choices=["dev", "sealed"], default="dev")
     ap.add_argument("--final", action="store_true")
     ap.add_argument("--label", default="")
@@ -297,15 +308,20 @@ def main(argv=None):
         print(f"refused: the index head is {head[:7]}, the experiment is recorded on {want[:7]}")
         return 1
     try:
-        qs = RQ.select(real, a.half, final=a.final, label=a.label)
-    except RQ.SealedError as e:
+        if a.source == "ruler":
+            qs = ruler_questions(a.ruler, a.half, final=a.final, label=a.label)
+        else:
+            qs = RQ.select(real, a.half, final=a.final, label=a.label)
+    except Exception as e:                       # noqa: BLE001  (RQ.SealedError, ruler.FrozenHalfError)
+        if type(e).__name__ not in ("SealedError", "FrozenHalfError"):
+            raise
         print("refused:", e)
         return 3
     if a.only:
         keep = set(a.only.split(","))
         qs = [q for q in qs if q["id"] in keep]
     rewrites = {}
-    if os.path.exists(a.rewrites):
+    if a.source == "real30" and os.path.exists(a.rewrites):
         with open(a.rewrites, encoding="utf-8") as fh:
             rewrites = json.load(fh)["rewrites"]
     if a.dry_run:
@@ -325,7 +341,7 @@ def main(argv=None):
     engine = Engine(metas, M, si.make_client(), spend, fts, site)
     ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles(a.index_dir, metas), a.out)
     run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS),
-                "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
+                "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
                 "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:
         json.dump({"run": run_info, "questions": ordered}, fh, ensure_ascii=False, indent=1)
