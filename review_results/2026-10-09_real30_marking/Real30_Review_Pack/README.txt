@@ -9,11 +9,11 @@ WHAT YOU NEED
 - Use a NEW chat for every file. Do not continue an earlier chat.
 
 HOW TO RUN IT
-1. Open the folder 'prompts'. There are 25 files. File names look like R03_A.txt or R03_B.txt.
+1. Open the folder 'prompts'. There are 25 files. File names look like R01_A.txt or R01_B.txt.
    - A and B hold the SAME passages with the SAME numbers. In B the passages are listed in reverse order. Only 6 questions have a B file; it checks whether the model is swayed by position.
 2. For each file: open it, select all, copy, paste into a NEW chat, send, wait for the answer.
 3. Copy the model's ENTIRE reply and save it as a plain text file named exactly like this:
-      R03_A_ChatGPT.txt     R03_A_Gemini.txt     R03_B_ChatGPT.txt     R03_B_Gemini.txt
+      R01_A_ChatGPT.txt     R01_A_Gemini.txt     R02_B_ChatGPT.txt     R02_B_Gemini.txt
    Put all the saved replies in the folder 'replies'.
 4. If a reply is not JSON, or is cut off, send this to the same chat: "Reply again with only the JSON object, nothing else." and save the new reply instead.
 5. Tick the file off in manifest.csv, zip the 'replies' folder and send it back.

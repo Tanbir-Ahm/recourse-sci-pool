@@ -4,7 +4,7 @@ order B (reversed) for about a third of them, to be run in BOTH ChatGPT and Gemi
 
   python review_tools/build_real30_pack.py --pool review_results/DATE_real30_pool_dev/pool.json --out DIR
 
-Replies are saved as R03_A_ChatGPT.txt, R03_A_Gemini.txt (R03_B_... for the reversed files) and read by `ingest_llm_reviews.py --replies ... --pool <the same pool.json>`.
+Replies are saved as R01_A_ChatGPT.txt, R01_A_Gemini.txt (R04_B_... for the reversed files) and read by `ingest_llm_reviews.py --replies ... --pool <the same pool.json>`.
 """
 import argparse
 import csv
@@ -40,11 +40,11 @@ WHAT YOU NEED
 - Use a NEW chat for every file. Do not continue an earlier chat.
 
 HOW TO RUN IT
-1. Open the folder 'prompts'. There are {nfiles} files. File names look like R03_A.txt or R03_B.txt.
+1. Open the folder 'prompts'. There are {nfiles} files. File names look like {ex}_A.txt or {ex}_B.txt.
    - A and B hold the SAME passages with the SAME numbers. In B the passages are listed in reverse order. Only {nb} questions have a B file; it checks whether the model is swayed by position.
 2. For each file: open it, select all, copy, paste into a NEW chat, send, wait for the answer.
 3. Copy the model's ENTIRE reply and save it as a plain text file named exactly like this:
-      R03_A_ChatGPT.txt     R03_A_Gemini.txt     R03_B_ChatGPT.txt     R03_B_Gemini.txt
+      {ex}_A_ChatGPT.txt     {ex}_A_Gemini.txt     {exb}_B_ChatGPT.txt     {exb}_B_Gemini.txt
    Put all the saved replies in the folder 'replies'.
 4. If a reply is not JSON, or is cut off, send this to the same chat: "Reply again with only the JSON object, nothing else." and save the new reply instead.
 5. Tick the file off in manifest.csv, zip the 'replies' folder and send it back.
@@ -95,13 +95,13 @@ def build(pool_path, out_dir):
     nfiles = len({m[0] for m in manifest})
     sizes = [len(q["rows"]) for q in qs]
     with open(os.path.join(folder, "README.txt"), "w", encoding="utf-8") as fh:
-        fh.write(README.format(nq=len(qs), ids=f"{qs[0]['qid']} to {qs[-1]['qid']}", lo=min(sizes), hi=max(sizes), nfiles=nfiles, nb=len(rev), nchats=len(manifest)))
+        fh.write(README.format(nq=len(qs), ids=f"{qs[0]['qid']} to {qs[-1]['qid']}", lo=min(sizes), hi=max(sizes), nfiles=nfiles, nb=len(rev), nchats=len(manifest), ex=qs[0]["qid"], exb=sorted(rev)[0]))
     with open(os.path.join(folder, "manifest.csv"), "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["prompt file", "question", "order", "passages", "tool", "save the reply as", "done (tick)"])
         w.writerows(manifest)
     with open(os.path.join(folder, "replies", "PUT_SAVED_REPLIES_HERE.txt"), "w", encoding="utf-8") as fh:
-        fh.write("Save each model reply here, named like R03_A_ChatGPT.txt or R03_A_Gemini.txt\n")
+        fh.write(f"Save each model reply here, named like {qs[0]['qid']}_A_ChatGPT.txt or {qs[0]['qid']}_A_Gemini.txt\n")
     rc.write_zip(folder, zip_path, "Real30_Review_Pack")
     return zip_path, nfiles, len(manifest)
 

@@ -52,7 +52,7 @@ try:
         pb = [int(x.split()[2]) for x in b.split("\n") if x.startswith("--- PASSAGE")]
         check("B lists the same passages with the same numbers in reverse order", pa == sorted(pa) and pb == pa[::-1] and len(pa) > 1, (pa, pb))
     readme = open(os.path.join(folder, "README.txt"), encoding="utf-8").read()
-    check("the README names both tools and the file and chat counts", "ChatGPT AND Gemini" in readme and f"{nfiles} files" in readme and f"{nchats} chats" in readme and "R03_A_Gemini.txt" in readme)
+    check("the README names both tools and the file and chat counts", "ChatGPT AND Gemini" in readme and f"{nfiles} files" in readme and f"{nchats} chats" in readme and "R01_A_Gemini.txt" in readme and "R03_A" not in readme)
     check("the README does not mention the search versions, the key or the halves", not any(w in readme for w in ("search version", "sealed", "tuning", "rewrite", "register")))
     rows = open(os.path.join(folder, "manifest.csv"), encoding="utf-8").read().strip().split("\n")
     check("the manifest has a line per file per tool", len(rows) - 1 == nchats == nfiles * 2, (len(rows), nchats, nfiles))
