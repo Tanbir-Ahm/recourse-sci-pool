@@ -39,6 +39,8 @@ Counts are judgments that **mention** the topic (a word match), not judgments th
 
 **Sealing (default unless the owner says otherwise).** About 11-12 of the 30 are sealed by the fixed rule used for the ruler: inside each domain, order that domain's questions by SHA-256 of `seed|question id` and seal the first (one of three; one of two). Written down and hashed before any search. Sealed questions are neither searched nor marked until the final run.
 
+**Update 2026-10-09: the owner's file arrived** (`review_data/ruler/inputs/2026-10-09_owner_30_questions.xlsx`; review in `review_results/2026-10-09_real30_file_review/REVIEW.md`). It is a constructed set that follows this section's counts exactly, with an answer key (expected answer, key authority, sources) in the same file, not 30 real questions. Findings that change this plan, all awaiting the owner's decisions: (1) ten of the 30 repeat ruler topics, so sealing needs a link-first step (a question that shares a case or a doctrine group with a ruler topic takes that topic's side); (2) Q6, Q15 and Q21 cannot be answered from the index (their key authorities are filtered out or absent) and are scored separately as index gaps; (3) 13 of 27 are currency traps, so the traffic-light rule needs a second, separate currency light; (4) Q29 is not a clean control; (5) no Hinglish yet. The answer columns never go to Voyage, ChatGPT/Gemini, J or S. Nothing is built, sealed or searched yet.
+
 ## 4. How they will be searched
 
 - Run here, in the cloud session, over a copy of the index. **Not connected to the live site** (read-only to this project, no link to the big index). Outside calls: Voyage only (embedding, re-ranking).
