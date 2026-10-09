@@ -1,0 +1,2615 @@
+{
+ "reliability": {
+  "runs": {
+   "ChatGPT/A": 195,
+   "Gemini/A": 217,
+   "ChatGPT/B": 69,
+   "Gemini/B": 69
+  },
+  "files_with_replies": 48,
+  "mark_distribution_by_run": {
+   "ChatGPT/A": {
+    "Yes": 71,
+    "Partly": 83,
+    "No": 18,
+    "Misleading": 23,
+    "n": 195
+   },
+   "Gemini/A": {
+    "Yes": 67,
+    "Partly": 88,
+    "No": 43,
+    "Misleading": 19,
+    "n": 217
+   },
+   "ChatGPT/B": {
+    "Yes": 26,
+    "Partly": 25,
+    "No": 6,
+    "Misleading": 12,
+    "n": 69
+   },
+   "Gemini/B": {
+    "Yes": 26,
+    "Partly": 23,
+    "No": 10,
+    "Misleading": 10,
+    "n": 69
+   }
+  },
+  "mark_distribution_by_tool": {
+   "ChatGPT": {
+    "Yes": 0.367,
+    "Partly": 0.409,
+    "No": 0.091,
+    "Misleading": 0.133,
+    "n": 264
+   },
+   "Gemini": {
+    "Yes": 0.325,
+    "Partly": 0.388,
+    "No": 0.185,
+    "Misleading": 0.101,
+    "n": 286
+   }
+  },
+  "chatgpt_vs_gemini_A_confusion": {
+   "ChatGPT Misleading / Gemini Misleading": 15,
+   "ChatGPT Misleading / Gemini No": 2,
+   "ChatGPT Misleading / Gemini Partly": 4,
+   "ChatGPT Misleading / Gemini Yes": 2,
+   "ChatGPT No / Gemini No": 17,
+   "ChatGPT No / Gemini Partly": 1,
+   "ChatGPT Partly / Gemini No": 13,
+   "ChatGPT Partly / Gemini Partly": 62,
+   "ChatGPT Partly / Gemini Yes": 8,
+   "ChatGPT Yes / Gemini Misleading": 3,
+   "ChatGPT Yes / Gemini Partly": 17,
+   "ChatGPT Yes / Gemini Yes": 51
+  },
+  "on_the_common_passages_chatgpt_marks_higher_than_gemini": 33,
+  "on_the_common_passages_gemini_marks_higher_than_chatgpt": 17,
+  "common_passages": 195,
+  "agree_exactly": 145,
+  "quotes_found_verbatim": {
+   "ChatGPT": {
+    "found": 250,
+    "of": 264,
+    "share": 0.947
+   },
+   "Gemini": {
+    "found": 246,
+    "of": 286,
+    "share": 0.86
+   }
+  },
+  "agreement_pairs": [
+   {
+    "a": "ChatGPT/A",
+    "b": "ChatGPT/B",
+    "n": 60,
+    "kind": "same model, A vs B",
+    "agree4": 0.8166666666666667,
+    "kappa4": 0.7336561743341404,
+    "agree_useful": 0.8666666666666667,
+    "kappa_useful": 0.6595744680851066
+   },
+   {
+    "a": "ChatGPT/A",
+    "b": "Gemini/A",
+    "n": 195,
+    "kind": "different models",
+    "agree4": 0.7435897435897436,
+    "kappa4": 0.6210943572205814,
+    "agree_useful": 0.882051282051282,
+    "kappa_useful": 0.6713081714913888
+   },
+   {
+    "a": "ChatGPT/A",
+    "b": "Gemini/B",
+    "n": 60,
+    "kind": "different models",
+    "agree4": 0.7333333333333333,
+    "kappa4": 0.6210027635215158,
+    "agree_useful": 0.85,
+    "kappa_useful": 0.625
+   },
+   {
+    "a": "ChatGPT/B",
+    "b": "Gemini/A",
+    "n": 69,
+    "kind": "different models",
+    "agree4": 0.6666666666666666,
+    "kappa4": 0.5276785714285714,
+    "agree_useful": 0.7681159420289855,
+    "kappa_useful": 0.43902439024390233
+   },
+   {
+    "a": "ChatGPT/B",
+    "b": "Gemini/B",
+    "n": 69,
+    "kind": "different models",
+    "agree4": 0.7681159420289855,
+    "kappa4": 0.6684684684684684,
+    "agree_useful": 0.8260869565217391,
+    "kappa_useful": 0.5646687697160885
+   },
+   {
+    "a": "Gemini/A",
+    "b": "Gemini/B",
+    "n": 69,
+    "kind": "same model, A vs B",
+    "agree4": 0.8115942028985508,
+    "kappa4": 0.7343009478672987,
+    "agree_useful": 0.8840579710144928,
+    "kappa_useful": 0.7264618434093162
+   }
+  ],
+  "order_effect": {
+   "ChatGPT": {
+    "passages_in_both_orders": 60,
+    "marked_differently": 11,
+    "higher_mark_in_the_order_where_it_was_earlier": 6,
+    "higher_mark_in_the_order_where_it_was_later": 5
+   },
+   "Gemini": {
+    "passages_in_both_orders": 69,
+    "marked_differently": 13,
+    "higher_mark_in_the_order_where_it_was_earlier": 7,
+    "higher_mark_in_the_order_where_it_was_later": 6
+   }
+  }
+ },
+ "version_scores_all_their_questions": {
+  "agreed only": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.39824561403508774,
+    "useful": 0.8166666666666668,
+    "mis": 0.07719298245614034
+   },
+   "B no repeats": {
+    "questions": 18,
+    "yes": 0.4314814814814815,
+    "useful": 0.8175925925925926,
+    "mis": 0.07037037037037036
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "yes": 0.33157894736842103,
+    "useful": 0.7929824561403509,
+    "mis": 0.10964912280701755
+   },
+   "C rewrite": {
+    "questions": 12,
+    "yes": 0.5027777777777778,
+    "useful": 0.8333333333333334,
+    "mis": 0.08333333333333333
+   },
+   "F merged": {
+    "questions": 12,
+    "yes": 0.5027777777777778,
+    "useful": 0.75,
+    "mis": 0.09999999999999999
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.306140350877193,
+    "useful": 0.7201754385964914,
+    "mis": 0.06052631578947369
+   }
+  },
+  "ties to the lower mark": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.3263157894736842,
+    "useful": 0.7578947368421053,
+    "mis": 0.11578947368421055
+   },
+   "B no repeats": {
+    "questions": 19,
+    "yes": 0.33684210526315794,
+    "useful": 0.768421052631579,
+    "mis": 0.10526315789473684
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "yes": 0.26315789473684215,
+    "useful": 0.7157894736842106,
+    "mis": 0.16842105263157897
+   },
+   "C rewrite": {
+    "questions": 12,
+    "yes": 0.39999999999999997,
+    "useful": 0.75,
+    "mis": 0.11666666666666665
+   },
+   "F merged": {
+    "questions": 12,
+    "yes": 0.46666666666666673,
+    "useful": 0.7166666666666668,
+    "mis": 0.15
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.23684210526315788,
+    "useful": 0.65,
+    "mis": 0.07631578947368421
+   }
+  },
+  "ties to the higher mark": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.4947368421052632,
+    "useful": 0.8526315789473685,
+    "mis": 0.06315789473684211
+   },
+   "B no repeats": {
+    "questions": 19,
+    "yes": 0.5157894736842106,
+    "useful": 0.8631578947368422,
+    "mis": 0.05263157894736842
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "yes": 0.42105263157894746,
+    "useful": 0.831578947368421,
+    "mis": 0.09473684210526316
+   },
+   "C rewrite": {
+    "questions": 12,
+    "yes": 0.48333333333333334,
+    "useful": 0.8333333333333334,
+    "mis": 0.08333333333333333
+   },
+   "F merged": {
+    "questions": 12,
+    "yes": 0.5,
+    "useful": 0.8166666666666668,
+    "mis": 0.09999999999999999
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.35526315789473684,
+    "useful": 0.7535087719298247,
+    "mis": 0.04999999999999999
+   }
+  }
+ },
+ "self_check": "the agreed-only scores equal those of ingest_llm_reviews.py for every version",
+ "paired_against_A_same_questions": {
+  "agreed only": {
+   "B no repeats": {
+    "questions": 18,
+    "yes": {
+     "version": 0.4314814814814815,
+     "A": 0.4203703703703704,
+     "diff": 0.011111111111111112,
+     "ci95": [
+      0.0,
+      0.03333333333333334
+     ],
+     "better": 1,
+     "same": 17,
+     "worse": 0
+    },
+    "useful": {
+     "version": 0.8175925925925926,
+     "A": 0.8064814814814816,
+     "diff": 0.011111111111111115,
+     "ci95": [
+      0.0,
+      0.03333333333333335
+     ],
+     "better": 1,
+     "same": 17,
+     "worse": 0
+    },
+    "mis": {
+     "version": 0.07037037037037036,
+     "A": 0.08148148148148147,
+     "diff": -0.011111111111111112,
+     "ci95": [
+      -0.03333333333333334,
+      0.0
+     ],
+     "better": 0,
+     "same": 17,
+     "worse": 1
+    }
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "yes": {
+     "version": 0.33157894736842103,
+     "A": 0.39824561403508774,
+     "diff": -0.06666666666666668,
+     "ci95": [
+      -0.15701754385964914,
+      0.004385964912280695
+     ],
+     "better": 2,
+     "same": 12,
+     "worse": 5
+    },
+    "useful": {
+     "version": 0.7929824561403509,
+     "A": 0.8166666666666668,
+     "diff": -0.02368421052631579,
+     "ci95": [
+      -0.07807017543859651,
+      0.013157894736842111
+     ],
+     "better": 2,
+     "same": 15,
+     "worse": 2
+    },
+    "mis": {
+     "version": 0.10964912280701755,
+     "A": 0.07719298245614034,
+     "diff": 0.0324561403508772,
+     "ci95": [
+      0.0,
+      0.0868421052631579
+     ],
+     "better": 2,
+     "same": 17,
+     "worse": 0
+    }
+   },
+   "C rewrite": {
+    "questions": 12,
+    "yes": {
+     "version": 0.5027777777777778,
+     "A": 0.39444444444444443,
+     "diff": 0.10833333333333334,
+     "ci95": [
+      -0.075,
+      0.3166666666666667
+     ],
+     "better": 5,
+     "same": 5,
+     "worse": 2
+    },
+    "useful": {
+     "version": 0.8333333333333334,
+     "A": 0.7652777777777778,
+     "diff": 0.06805555555555555,
+     "ci95": [
+      -0.09999999999999999,
+      0.24305555555555558
+     ],
+     "better": 4,
+     "same": 6,
+     "worse": 2
+    },
+    "mis": {
+     "version": 0.08333333333333333,
+     "A": 0.06666666666666667,
+     "diff": 0.016666666666666666,
+     "ci95": [
+      -0.05000000000000001,
+      0.10000000000000002
+     ],
+     "better": 1,
+     "same": 10,
+     "worse": 1
+    }
+   },
+   "F merged": {
+    "questions": 12,
+    "yes": {
+     "version": 0.5027777777777778,
+     "A": 0.39444444444444443,
+     "diff": 0.10833333333333334,
+     "ci95": [
+      -0.03333333333333333,
+      0.30416666666666664
+     ],
+     "better": 4,
+     "same": 7,
+     "worse": 1
+    },
+    "useful": {
+     "version": 0.75,
+     "A": 0.7652777777777778,
+     "diff": -0.01527777777777777,
+     "ci95": [
+      -0.14166666666666664,
+      0.10555555555555557
+     ],
+     "better": 3,
+     "same": 5,
+     "worse": 4
+    },
+    "mis": {
+     "version": 0.09999999999999999,
+     "A": 0.06666666666666667,
+     "diff": 0.03333333333333333,
+     "ci95": [
+      -0.03333333333333333,
+      0.11666666666666668
+     ],
+     "better": 2,
+     "same": 9,
+     "worse": 1
+    }
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": {
+     "version": 0.306140350877193,
+     "A": 0.39824561403508774,
+     "diff": -0.09210526315789473,
+     "ci95": [
+      -0.2,
+      0.007894736842105265
+     ],
+     "better": 3,
+     "same": 9,
+     "worse": 7
+    },
+    "useful": {
+     "version": 0.7201754385964914,
+     "A": 0.8166666666666668,
+     "diff": -0.09649122807017543,
+     "ci95": [
+      -0.20877192982456136,
+      -0.001754385964912292
+     ],
+     "better": 4,
+     "same": 7,
+     "worse": 8
+    },
+    "mis": {
+     "version": 0.06052631578947369,
+     "A": 0.07719298245614034,
+     "diff": -0.016666666666666666,
+     "ci95": [
+      -0.05263157894736842,
+      0.020175438596491225
+     ],
+     "better": 2,
+     "same": 13,
+     "worse": 4
+    }
+   }
+  },
+  "ties to the lower mark": {
+   "B no repeats": {
+    "questions": 19,
+    "yes": {
+     "version": 0.33684210526315794,
+     "A": 0.3263157894736842,
+     "diff": 0.010526315789473684,
+     "ci95": [
+      0.0,
+      0.03157894736842106
+     ],
+     "better": 1,
+     "same": 18,
+     "worse": 0
+    },
+    "useful": {
+     "version": 0.768421052631579,
+     "A": 0.7578947368421053,
+     "diff": 0.010526315789473687,
+     "ci95": [
+      0.0,
+      0.03157894736842106
+     ],
+     "better": 1,
+     "same": 18,
+     "worse": 0
+    },
+    "mis": {
+     "version": 0.10526315789473684,
+     "A": 0.11578947368421055,
+     "diff": -0.010526315789473684,
+     "ci95": [
+      -0.03157894736842106,
+      0.0
+     ],
+     "better": 0,
+     "same": 18,
+     "worse": 1
+    }
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "yes": {
+     "version": 0.26315789473684215,
+     "A": 0.3263157894736842,
+     "diff": -0.06315789473684212,
+     "ci95": [
+      -0.1473684210526316,
+      0.0
+     ],
+     "better": 0,
+     "same": 16,
+     "worse": 3
+    },
+    "useful": {
+     "version": 0.7157894736842106,
+     "A": 0.7578947368421053,
+     "diff": -0.042105263157894736,
+     "ci95": [
+      -0.10526315789473684,
+      0.010526315789473682
+     ],
+     "better": 1,
+     "same": 14,
+     "worse": 4
+    },
+    "mis": {
+     "version": 0.16842105263157897,
+     "A": 0.11578947368421055,
+     "diff": 0.05263157894736842,
+     "ci95": [
+      0.010526315789473684,
+      0.10526315789473684
+     ],
+     "better": 4,
+     "same": 15,
+     "worse": 0
+    }
+   },
+   "C rewrite": {
+    "questions": 12,
+    "yes": {
+     "version": 0.39999999999999997,
+     "A": 0.35000000000000003,
+     "diff": 0.049999999999999996,
+     "ci95": [
+      -0.11666666666666665,
+      0.25
+     ],
+     "better": 3,
+     "same": 6,
+     "worse": 3
+    },
+    "useful": {
+     "version": 0.75,
+     "A": 0.7166666666666668,
+     "diff": 0.03333333333333332,
+     "ci95": [
+      -0.11666666666666665,
+      0.16666666666666666
+     ],
+     "better": 4,
+     "same": 6,
+     "worse": 2
+    },
+    "mis": {
+     "version": 0.11666666666666665,
+     "A": 0.08333333333333333,
+     "diff": 0.03333333333333334,
+     "ci95": [
+      -0.06666666666666667,
+      0.15
+     ],
+     "better": 2,
+     "same": 8,
+     "worse": 2
+    }
+   },
+   "F merged": {
+    "questions": 12,
+    "yes": {
+     "version": 0.46666666666666673,
+     "A": 0.35000000000000003,
+     "diff": 0.11666666666666665,
+     "ci95": [
+      -0.016666666666666663,
+      0.30000000000000004
+     ],
+     "better": 4,
+     "same": 7,
+     "worse": 1
+    },
+    "useful": {
+     "version": 0.7166666666666668,
+     "A": 0.7166666666666668,
+     "diff": -4.625929269271485e-18,
+     "ci95": [
+      -0.13333333333333333,
+      0.15
+     ],
+     "better": 3,
+     "same": 5,
+     "worse": 4
+    },
+    "mis": {
+     "version": 0.15,
+     "A": 0.08333333333333333,
+     "diff": 0.06666666666666667,
+     "ci95": [
+      -0.05000000000000001,
+      0.19999999999999998
+     ],
+     "better": 3,
+     "same": 7,
+     "worse": 2
+    }
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": {
+     "version": 0.23684210526315788,
+     "A": 0.3263157894736842,
+     "diff": -0.08947368421052633,
+     "ci95": [
+      -0.18947368421052632,
+      0.006140350877192963
+     ],
+     "better": 4,
+     "same": 5,
+     "worse": 10
+    },
+    "useful": {
+     "version": 0.65,
+     "A": 0.7578947368421053,
+     "diff": -0.10789473684210528,
+     "ci95": [
+      -0.22105263157894742,
+      -0.001754385964912292
+     ],
+     "better": 5,
+     "same": 5,
+     "worse": 9
+    },
+    "mis": {
+     "version": 0.07631578947368421,
+     "A": 0.11578947368421055,
+     "diff": -0.039473684210526314,
+     "ci95": [
+      -0.09649122807017543,
+      0.021052631578947368
+     ],
+     "better": 2,
+     "same": 11,
+     "worse": 6
+    }
+   }
+  },
+  "ties to the higher mark": {
+   "B no repeats": {
+    "questions": 19,
+    "yes": {
+     "version": 0.5157894736842106,
+     "A": 0.4947368421052632,
+     "diff": 0.021052631578947368,
+     "ci95": [
+      0.0,
+      0.05263157894736841
+     ],
+     "better": 2,
+     "same": 17,
+     "worse": 0
+    },
+    "useful": {
+     "version": 0.8631578947368422,
+     "A": 0.8526315789473685,
+     "diff": 0.010526315789473687,
+     "ci95": [
+      0.0,
+      0.03157894736842106
+     ],
+     "better": 1,
+     "same": 18,
+     "worse": 0
+    },
+    "mis": {
+     "version": 0.05263157894736842,
+     "A": 0.06315789473684211,
+     "diff": -0.010526315789473684,
+     "ci95": [
+      -0.03157894736842106,
+      0.0
+     ],
+     "better": 0,
+     "same": 18,
+     "worse": 1
+    }
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "yes": {
+     "version": 0.42105263157894746,
+     "A": 0.4947368421052632,
+     "diff": -0.0736842105263158,
+     "ci95": [
+      -0.15789473684210525,
+      0.0
+     ],
+     "better": 1,
+     "same": 13,
+     "worse": 5
+    },
+    "useful": {
+     "version": 0.831578947368421,
+     "A": 0.8526315789473685,
+     "diff": -0.021052631578947375,
+     "ci95": [
+      -0.07368421052631581,
+      0.021052631578947364
+     ],
+     "better": 1,
+     "same": 16,
+     "worse": 2
+    },
+    "mis": {
+     "version": 0.09473684210526316,
+     "A": 0.06315789473684211,
+     "diff": 0.031578947368421054,
+     "ci95": [
+      0.0,
+      0.08421052631578947
+     ],
+     "better": 2,
+     "same": 17,
+     "worse": 0
+    }
+   },
+   "C rewrite": {
+    "questions": 12,
+    "yes": {
+     "version": 0.48333333333333334,
+     "A": 0.39999999999999997,
+     "diff": 0.08333333333333333,
+     "ci95": [
+      -0.08333333333333333,
+      0.2833333333333334
+     ],
+     "better": 5,
+     "same": 5,
+     "worse": 2
+    },
+    "useful": {
+     "version": 0.8333333333333334,
+     "A": 0.7999999999999999,
+     "diff": 0.03333333333333332,
+     "ci95": [
+      -0.10000000000000002,
+      0.18333333333333332
+     ],
+     "better": 4,
+     "same": 6,
+     "worse": 2
+    },
+    "mis": {
+     "version": 0.08333333333333333,
+     "A": 0.06666666666666667,
+     "diff": 0.016666666666666666,
+     "ci95": [
+      -0.05000000000000001,
+      0.10000000000000002
+     ],
+     "better": 1,
+     "same": 10,
+     "worse": 1
+    }
+   },
+   "F merged": {
+    "questions": 12,
+    "yes": {
+     "version": 0.5,
+     "A": 0.39999999999999997,
+     "diff": 0.10000000000000002,
+     "ci95": [
+      -0.06666666666666665,
+      0.3
+     ],
+     "better": 3,
+     "same": 8,
+     "worse": 1
+    },
+    "useful": {
+     "version": 0.8166666666666668,
+     "A": 0.7999999999999999,
+     "diff": 0.016666666666666663,
+     "ci95": [
+      -0.09999999999999999,
+      0.13333333333333333
+     ],
+     "better": 4,
+     "same": 5,
+     "worse": 3
+    },
+    "mis": {
+     "version": 0.09999999999999999,
+     "A": 0.06666666666666667,
+     "diff": 0.03333333333333333,
+     "ci95": [
+      -0.03333333333333333,
+      0.11666666666666665
+     ],
+     "better": 2,
+     "same": 9,
+     "worse": 1
+    }
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": {
+     "version": 0.35526315789473684,
+     "A": 0.4947368421052632,
+     "diff": -0.1394736842105263,
+     "ci95": [
+      -0.22017543859649125,
+      -0.06578947368421054
+     ],
+     "better": 2,
+     "same": 4,
+     "worse": 13
+    },
+    "useful": {
+     "version": 0.7535087719298247,
+     "A": 0.8526315789473685,
+     "diff": -0.09912280701754386,
+     "ci95": [
+      -0.20438596491228073,
+      -0.007017543859649127
+     ],
+     "better": 4,
+     "same": 7,
+     "worse": 8
+    },
+    "mis": {
+     "version": 0.04999999999999999,
+     "A": 0.06315789473684211,
+     "diff": -0.013157894736842111,
+     "ci95": [
+      -0.047368421052631574,
+      0.019298245614035082
+     ],
+     "better": 2,
+     "same": 13,
+     "worse": 4
+    }
+   }
+  }
+ },
+ "question_level_measures": {
+  "ties to the lower mark": {
+   "A today": {
+    "questions": 19,
+    "has_yes": 13,
+    "no_useful": 0,
+    "mis_in_top3": 4,
+    "top1_yes": 10,
+    "top1_useful": 15
+   },
+   "B no repeats": {
+    "questions": 19,
+    "has_yes": 14,
+    "no_useful": 0,
+    "mis_in_top3": 4,
+    "top1_yes": 10,
+    "top1_useful": 15
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "has_yes": 13,
+    "no_useful": 0,
+    "mis_in_top3": 6,
+    "top1_yes": 8,
+    "top1_useful": 12
+   },
+   "C rewrite": {
+    "questions": 12,
+    "has_yes": 11,
+    "no_useful": 1,
+    "mis_in_top3": 3,
+    "top1_yes": 6,
+    "top1_useful": 8
+   },
+   "F merged": {
+    "questions": 12,
+    "has_yes": 10,
+    "no_useful": 1,
+    "mis_in_top3": 2,
+    "top1_yes": 6,
+    "top1_useful": 10
+   },
+   "S site shown": {
+    "questions": 19,
+    "has_yes": 13,
+    "no_useful": 2,
+    "mis_in_top3": 3,
+    "top1_yes": 5,
+    "top1_useful": 13
+   }
+  },
+  "ties to the higher mark": {
+   "A today": {
+    "questions": 19,
+    "has_yes": 15,
+    "no_useful": 0,
+    "mis_in_top3": 2,
+    "top1_yes": 12,
+    "top1_useful": 17
+   },
+   "B no repeats": {
+    "questions": 19,
+    "has_yes": 16,
+    "no_useful": 0,
+    "mis_in_top3": 2,
+    "top1_yes": 12,
+    "top1_useful": 17
+   },
+   "E no multiplier": {
+    "questions": 19,
+    "has_yes": 15,
+    "no_useful": 0,
+    "mis_in_top3": 3,
+    "top1_yes": 10,
+    "top1_useful": 13
+   },
+   "C rewrite": {
+    "questions": 12,
+    "has_yes": 11,
+    "no_useful": 1,
+    "mis_in_top3": 2,
+    "top1_yes": 7,
+    "top1_useful": 9
+   },
+   "F merged": {
+    "questions": 12,
+    "has_yes": 10,
+    "no_useful": 0,
+    "mis_in_top3": 1,
+    "top1_yes": 7,
+    "top1_useful": 11
+   },
+   "S site shown": {
+    "questions": 19,
+    "has_yes": 14,
+    "no_useful": 0,
+    "mis_in_top3": 1,
+    "top1_yes": 6,
+    "top1_useful": 14
+   }
+  }
+ },
+ "by_kind_ties_lower": {
+  "A today": {
+   "everyday": {
+    "questions": 6,
+    "yes": 0.2333333333333333,
+    "useful": 0.6,
+    "mis": 0.13333333333333333
+   },
+   "narrative": {
+    "questions": 6,
+    "yes": 0.46666666666666673,
+    "useful": 0.8333333333333334,
+    "mis": 0.03333333333333333
+   },
+   "legal": {
+    "questions": 7,
+    "yes": 0.2857142857142857,
+    "useful": 0.8285714285714285,
+    "mis": 0.17142857142857143
+   }
+  },
+  "B no repeats": {
+   "everyday": {
+    "questions": 6,
+    "yes": 0.26666666666666666,
+    "useful": 0.6333333333333334,
+    "mis": 0.10000000000000002
+   },
+   "narrative": {
+    "questions": 6,
+    "yes": 0.46666666666666673,
+    "useful": 0.8333333333333334,
+    "mis": 0.03333333333333333
+   },
+   "legal": {
+    "questions": 7,
+    "yes": 0.2857142857142857,
+    "useful": 0.8285714285714285,
+    "mis": 0.17142857142857143
+   }
+  },
+  "E no multiplier": {
+   "everyday": {
+    "questions": 6,
+    "yes": 0.13333333333333333,
+    "useful": 0.6,
+    "mis": 0.16666666666666666
+   },
+   "narrative": {
+    "questions": 6,
+    "yes": 0.39999999999999997,
+    "useful": 0.8333333333333334,
+    "mis": 0.03333333333333333
+   },
+   "legal": {
+    "questions": 7,
+    "yes": 0.2571428571428572,
+    "useful": 0.7142857142857143,
+    "mis": 0.28571428571428575
+   }
+  },
+  "C rewrite": {
+   "everyday": {
+    "questions": 6,
+    "yes": 0.3666666666666667,
+    "useful": 0.6,
+    "mis": 0.16666666666666666
+   },
+   "narrative": {
+    "questions": 6,
+    "yes": 0.43333333333333335,
+    "useful": 0.9,
+    "mis": 0.06666666666666667
+   }
+  },
+  "F merged": {
+   "everyday": {
+    "questions": 6,
+    "yes": 0.43333333333333335,
+    "useful": 0.6,
+    "mis": 0.19999999999999998
+   },
+   "narrative": {
+    "questions": 6,
+    "yes": 0.5,
+    "useful": 0.8333333333333334,
+    "mis": 0.09999999999999999
+   }
+  },
+  "S site shown": {
+   "everyday": {
+    "questions": 6,
+    "yes": 0.09722222222222221,
+    "useful": 0.39166666666666666,
+    "mis": 0.075
+   },
+   "narrative": {
+    "questions": 6,
+    "yes": 0.2638888888888889,
+    "useful": 0.7222222222222222,
+    "mis": 0.0
+   },
+   "legal": {
+    "questions": 7,
+    "yes": 0.33333333333333337,
+    "useful": 0.8095238095238095,
+    "mis": 0.14285714285714285
+   }
+  }
+ },
+ "per_question_A_ties_lower": {
+  "R01": {
+   "kind": "narrative",
+   "domain": "A",
+   "Yes": 3,
+   "Partly": 2,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Partly",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R02": {
+   "kind": "everyday",
+   "domain": "A",
+   "Yes": 4,
+   "Partly": 0,
+   "No": 0,
+   "Misleading": 1,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Misleading"
+   ],
+   "key_reachable": true
+  },
+  "R04": {
+   "kind": "legal",
+   "domain": "B",
+   "Yes": 4,
+   "Partly": 1,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R06": {
+   "kind": "everyday",
+   "domain": "B",
+   "Yes": 0,
+   "Partly": 2,
+   "No": 3,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Partly",
+    "No",
+    "Partly",
+    "No",
+    "No"
+   ],
+   "key_reachable": false
+  },
+  "R08": {
+   "kind": "everyday",
+   "domain": "C",
+   "Yes": 1,
+   "Partly": 1,
+   "No": 3,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "No",
+    "Yes",
+    "No",
+    "No",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R09": {
+   "kind": "legal",
+   "domain": "C",
+   "Yes": 0,
+   "Partly": 2,
+   "No": 0,
+   "Misleading": 3,
+   "marks_in_rank_order": [
+    "Misleading",
+    "Misleading",
+    "Partly",
+    "Partly",
+    "Misleading"
+   ],
+   "key_reachable": true
+  },
+  "R11": {
+   "kind": "everyday",
+   "domain": "D",
+   "Yes": 0,
+   "Partly": 3,
+   "No": 0,
+   "Misleading": 2,
+   "marks_in_rank_order": [
+    "Partly",
+    "Partly",
+    "Partly",
+    "Misleading",
+    "Misleading"
+   ],
+   "key_reachable": true
+  },
+  "R12": {
+   "kind": "narrative",
+   "domain": "E",
+   "Yes": 2,
+   "Partly": 3,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Partly",
+    "Yes",
+    "Partly",
+    "Yes",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R14": {
+   "kind": "everyday",
+   "domain": "E",
+   "Yes": 0,
+   "Partly": 2,
+   "No": 2,
+   "Misleading": 1,
+   "marks_in_rank_order": [
+    "Partly",
+    "No",
+    "No",
+    "Misleading",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R15": {
+   "kind": "narrative",
+   "domain": "F",
+   "Yes": 0,
+   "Partly": 1,
+   "No": 4,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "No",
+    "No",
+    "No",
+    "Partly",
+    "No"
+   ],
+   "key_reachable": false
+  },
+  "R17": {
+   "kind": "legal",
+   "domain": "F",
+   "Yes": 3,
+   "Partly": 2,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Yes"
+   ],
+   "key_reachable": true
+  },
+  "R19": {
+   "kind": "narrative",
+   "domain": "G",
+   "Yes": 2,
+   "Partly": 3,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R20": {
+   "kind": "legal",
+   "domain": "G",
+   "Yes": 0,
+   "Partly": 3,
+   "No": 0,
+   "Misleading": 2,
+   "marks_in_rank_order": [
+    "Partly",
+    "Misleading",
+    "Partly",
+    "Misleading",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R21": {
+   "kind": "legal",
+   "domain": "H",
+   "Yes": 1,
+   "Partly": 3,
+   "No": 0,
+   "Misleading": 1,
+   "marks_in_rank_order": [
+    "Misleading",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "key_reachable": false
+  },
+  "R22": {
+   "kind": "narrative",
+   "domain": "H",
+   "Yes": 4,
+   "Partly": 0,
+   "No": 0,
+   "Misleading": 1,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Misleading",
+    "Yes",
+    "Yes"
+   ],
+   "key_reachable": true
+  },
+  "R24": {
+   "kind": "narrative",
+   "domain": "I",
+   "Yes": 3,
+   "Partly": 2,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R26": {
+   "kind": "legal",
+   "domain": "J",
+   "Yes": 1,
+   "Partly": 4,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "key_reachable": true
+  },
+  "R28": {
+   "kind": "everyday",
+   "domain": "K",
+   "Yes": 2,
+   "Partly": 3,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "key_reachable": null
+  },
+  "R29": {
+   "kind": "legal",
+   "domain": "K",
+   "Yes": 1,
+   "Partly": 4,
+   "No": 0,
+   "Misleading": 0,
+   "marks_in_rank_order": [
+    "Yes",
+    "Partly",
+    "Partly",
+    "Partly",
+    "Partly"
+   ],
+   "key_reachable": null
+  }
+ },
+ "good_answer_present": {
+  "R01": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R02": {
+   "Gemini/A": "Yes",
+   "ChatGPT/B": "Yes",
+   "Gemini/B": "Yes"
+  },
+  "R04": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes",
+   "ChatGPT/B": "Yes",
+   "Gemini/B": "Yes"
+  },
+  "R06": {
+   "Gemini/A": "No"
+  },
+  "R08": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R09": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R11": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes",
+   "ChatGPT/B": "Yes",
+   "Gemini/B": "Yes"
+  },
+  "R12": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R14": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes",
+   "ChatGPT/B": "Yes",
+   "Gemini/B": "Yes"
+  },
+  "R15": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R17": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes",
+   "ChatGPT/B": "Yes",
+   "Gemini/B": "Yes"
+  },
+  "R19": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R20": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "No"
+  },
+  "R21": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R22": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R24": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R26": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  },
+  "R28": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes",
+   "ChatGPT/B": "Yes",
+   "Gemini/B": "Yes"
+  },
+  "R29": {
+   "ChatGPT/A": "Yes",
+   "Gemini/A": "Yes"
+  }
+ },
+ "questions_with_no_Yes_in_any_version": [
+  "R06",
+  "R20"
+ ],
+ "misleading_passages": [
+  {
+   "qid": "R02",
+   "no": 4,
+   "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)",
+   "doc": 1000256838,
+   "pn": "5",
+   "votes": {
+    "Partly": 1,
+    "Misleading": 2
+   },
+   "versions": {
+    "A today": 5,
+    "E no multiplier": 1,
+    "B no repeats": 5,
+    "S site shown": 4,
+    "C rewrite": 8,
+    "F merged": 6
+   },
+   "reasons": [
+    "Gemini/A: This passage records a submission by the State arguing for electronic notice, which the court ultimately rejects.",
+    "Gemini/B: It records a contrary argument by the State defending electronic service, which the court ultimately rejects."
+   ]
+  },
+  {
+   "qid": "R02",
+   "no": 8,
+   "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)",
+   "doc": 1000256838,
+   "pn": "11",
+   "votes": {
+    "Misleading": 2,
+    "Yes": 1
+   },
+   "versions": {
+    "E no multiplier": 2,
+    "C rewrite": 1,
+    "F merged": 5,
+    "A today": 8,
+    "B no repeats": 8
+   },
+   "reasons": [
+    "ChatGPT/B: The passage states a lawyer's submission rather than the court's decision, so treating it alone as the legal holding would be misleading.",
+    "Gemini/B: It only states a lawyer's submission rather than the court's definitive holding, though the conclusion happens to match."
+   ]
+  },
+  {
+   "qid": "R04",
+   "no": 3,
+   "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER (29-01-2020)",
+   "doc": 1000252377,
+   "pn": "9",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "S site shown": 6
+   },
+   "reasons": [
+    "ChatGPT/A: The passage reproduces an earlier restrictive approach that the Constitution Bench in Sushila Aggarwal subsequently rejected as the governing rule.",
+    "Gemini/A: It discusses older case law requiring limited duration and regular bail surrender, which was subsequently reconsidered or clarified by the Constitution Bench.",
+    "ChatGPT/B: The passage recounts the earlier limited-duration approach requiring recourse to regular bail, which the Constitution Bench's later ruling in this judgment rejects as the general rule."
+   ]
+  },
+  {
+   "qid": "R04",
+   "no": 5,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 37199,
+   "pn": "25",
+   "votes": {
+    "Misleading": 2,
+    "Partly": 2
+   },
+   "versions": {
+    "E no multiplier": 2,
+    "S site shown": 1
+   },
+   "reasons": [
+    "ChatGPT/A: The passage records counsel's submissions rather than the court's holding, so it does not establish the applicable rule by itself.",
+    "ChatGPT/B: The passage records counsel's argument against limiting anticipatory bail but does not itself establish that the court accepted that argument."
+   ]
+  },
+  {
+   "qid": "R09",
+   "no": 2,
+   "title": "IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 8468",
+   "doc": 41877,
+   "pn": "preamble/8",
+   "votes": {
+    "Yes": 1,
+    "Misleading": 1
+   },
+   "versions": {
+    "A today": 2,
+    "E no multiplier": 2,
+    "B no repeats": 2
+   },
+   "reasons": [
+    "Gemini/A: This old view regarding deposit in a payee's bank was superseded by statutory amendments (Section 142(2)) and rulings like Nishant Aggarwal."
+   ]
+  },
+  {
+   "qid": "R09",
+   "no": 5,
+   "title": "",
+   "doc": 41801,
+   "pn": "3",
+   "votes": {
+    "Misleading": 2
+   },
+   "versions": {
+    "A today": 5,
+    "E no multiplier": 5,
+    "B no repeats": 5,
+    "S site shown": 4
+   },
+   "reasons": [
+    "ChatGPT/A: The passage directly addresses the issue but states a rule contrary to the account-based jurisdiction rule applicable under the later statutory provision reproduced in passage 4.",
+    "Gemini/A: This passage reflects an older, overruled interpretation that presentation at the payee's bank does not confer jurisdiction."
+   ]
+  },
+  {
+   "qid": "R09",
+   "no": 8,
+   "title": "",
+   "doc": 40783,
+   "pn": null,
+   "votes": {
+    "Misleading": 1,
+    "Yes": 1
+   },
+   "versions": {
+    "A today": 1,
+    "E no multiplier": 1,
+    "B no repeats": 1,
+    "S site shown": 3
+   },
+   "reasons": [
+    "ChatGPT/A: The passage endorses jurisdiction based on presentation alone, which conflicts with the statutory account-based rule governing the described scenario."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 1,
+   "title": "Kanhaiyalal v. Union of India (09/01/2008)",
+   "doc": 30081,
+   "pn": "38",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "C rewrite": 2,
+    "F merged": 2
+   },
+   "reasons": [
+    "ChatGPT/A: It says NCB statements can be used as confessions, but this position is inconsistent with the later ruling in Tofan Singh reproduced in the passages.",
+    "Gemini/A: This old view holding Section 67 statements to NCB officers as admissible confessions was subsequently overruled by Tofan Singh v. State of Tamil Nadu.",
+    "ChatGPT/B: This passage says NCB-type officers' Section 67 confessions are admissible, but that position was subsequently rejected in Tofan Singh and contradicted by the supplied later ruling."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 4,
+   "title": "Kanhaiyalal v. Union of India (09/01/2008)",
+   "doc": 30081,
+   "pn": "40",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "C rewrite": 3,
+    "F merged": 3
+   },
+   "reasons": [
+    "ChatGPT/A: It endorses the earlier admissibility position and says a Section 67 confession can alone sustain conviction, contrary to the later ruling in Tofan Singh.",
+    "Gemini/A: This reflects the overruled position from Kanhaiyalal allowing Section 67 statements as substantive confessions, contrary to current law established in Tofan Singh.",
+    "ChatGPT/B: It endorses admissibility of Section 67 confessions under an earlier legal position that the later supplied ruling in Tofan Singh expressly rejected."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 6,
+   "title": "BALWINDER SINGH (BINDA) versus THE NARCOTICS CONTROL BUREAU (22-09-2023)",
+   "doc": 1000255268,
+   "pn": "6-7",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "A today": 4,
+    "E no multiplier": 1,
+    "B no repeats": 5
+   },
+   "reasons": [
+    "ChatGPT/A: It describes the High Court's acceptance of the NCB's argument and the earlier admissibility position rather than stating the later governing rule.",
+    "Gemini/A: It summarizes previous case law holding such confessions admissible, which is no longer good law after Tofan Singh.",
+    "ChatGPT/B: It describes the High Court's acceptance of an earlier admissibility position without supplying the later governing rejection of that position."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 7,
+   "title": "",
+   "doc": 32020,
+   "pn": null,
+   "votes": {
+    "Partly": 3,
+    "Misleading": 1
+   },
+   "versions": {
+    "A today": 2,
+    "E no multiplier": 3,
+    "B no repeats": 3
+   },
+   "reasons": [
+    "ChatGPT/B: It primarily recounts an earlier case's question and counsel's arguments without clearly giving the controlling answer, while the quoted earlier approach conflicts with the later ruling."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 9,
+   "title": "The Judgment of the Court was delivered by UDAY UMESH LALIT, J. 1 Special Leave ",
+   "doc": 1000250894,
+   "pn": "7",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "C rewrite": 4,
+    "F merged": 4
+   },
+   "reasons": [
+    "ChatGPT/A: It repeats the earlier admissibility rule from Kanhaiyalal without presenting the later rejection of that rule in Tofan Singh.",
+    "Gemini/A: It quotes the overruled Kanhaiyalal precedent treating Section 67 statements as admissible confessions.",
+    "ChatGPT/B: It repeats the earlier view that Section 67 confessions are admissible, which the later Tofan Singh ruling rejected."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 10,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 38022,
+   "pn": "13",
+   "votes": {
+    "Misleading": 3,
+    "Partly": 1
+   },
+   "versions": {
+    "S site shown": 5
+   },
+   "reasons": [
+    "ChatGPT/A: It concerns the voluntariness of confessions under the Central Bureau of Narcotics and endorses their use for conviction, without addressing the later Section 67 rule.",
+    "Gemini/A: This relies on the pre-Tofan Singh view that retracted or uncomplained-of confessional statements to narcotics officers can sustain a conviction.",
+    "Gemini/B: It follows the older view that allowed convictions based on voluntary NCB/customs statements, which is no longer good law."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 11,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 38022,
+   "pn": "45",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "C rewrite": 1,
+    "F merged": 1
+   },
+   "reasons": [
+    "ChatGPT/A: It states the earlier rule permitting Section 67 confessions, which was rejected by the later ruling in Tofan Singh.",
+    "Gemini/A: It repeats the older, overruled rule from Kanhaiyalal regarding the admissibility of Section 67 statements.",
+    "ChatGPT/B: It expressly endorses the earlier admissibility rule for Section 67 statements, which the later Tofan Singh ruling rejected."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 12,
+   "title": "TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)",
+   "doc": 1000252784,
+   "pn": null,
+   "votes": {
+    "Partly": 3,
+    "Misleading": 1
+   },
+   "versions": {
+    "S site shown": 1,
+    "A today": 7,
+    "E no multiplier": 9,
+    "B no repeats": 8
+   },
+   "reasons": [
+    "ChatGPT/B: Although it discusses general evidentiary principles and involuntary confessions, it reproduces an earlier position suggesting Section 67 statements may be admitted without stating the controlling prohibition."
+   ]
+  },
+  {
+   "qid": "R11",
+   "no": 14,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 38022,
+   "pn": "10",
+   "votes": {
+    "Misleading": 4
+   },
+   "versions": {
+    "A today": 5,
+    "E no multiplier": 5,
+    "B no repeats": 6
+   },
+   "reasons": [
+    "ChatGPT/A: It affirmatively holds that Central Bureau of Narcotics confessions are admissible, reflecting the earlier legal position rather than the later Section 67 rule.",
+    "Gemini/A: This represents the superseded view that CBN/NCB officers are not police officers and their confessions are admissible.",
+    "ChatGPT/B: It directly endorses admissibility of confessions to Central Bureau of Narcotics officers under an earlier legal position inconsistent with the later supplied ruling in Tofan Singh."
+   ]
+  },
+  {
+   "qid": "R14",
+   "no": 7,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 31628,
+   "pn": "3",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 1,
+    "No": 2
+   },
+   "versions": {
+    "S site shown": 1
+   },
+   "reasons": [
+    "ChatGPT/A: The passage reproduces allegations of fraud concerning partnership cancellation, which could be mistaken for a judicial finding rather than the complainant's assertions."
+   ]
+  },
+  {
+   "qid": "R14",
+   "no": 13,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 42499,
+   "pn": "4",
+   "votes": {
+    "Misleading": 2,
+    "Partly": 2
+   },
+   "versions": {
+    "A today": 4,
+    "E no multiplier": 5,
+    "B no repeats": 4,
+    "C rewrite": 6,
+    "F merged": 6
+   },
+   "reasons": [
+    "ChatGPT/A: The passage presents the respondent's counsel's argument against quashing, not the court's holding, and could mislead if treated as its conclusion.",
+    "Gemini/A: It records arguments made by the opposing counsel arguing against quashing, which could mislead if read as the court's final holding."
+   ]
+  },
+  {
+   "qid": "R14",
+   "no": 15,
+   "title": "KIM WANSOO versus STATE OF UTTAR PRADESH & ORS. (01-01-2025)",
+   "doc": 1000256233,
+   "pn": "5/1",
+   "votes": {
+    "Misleading": 1,
+    "No": 3
+   },
+   "versions": {
+    "A today": 2,
+    "E no multiplier": 1,
+    "B no repeats": 2,
+    "S site shown": 2
+   },
+   "reasons": [
+    "ChatGPT/A: The passage indicates that the appellant's quashing contentions failed before the High Court and describes a different construction-business dispute, so it does not support quashing on the stated facts."
+   ]
+  },
+  {
+   "qid": "R15",
+   "no": 1,
+   "title": "The Judgment of the Court was delivered by UDAY UMESH LALIT, J.",
+   "doc": 1000253111,
+   "pn": "61/2",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 1
+   },
+   "versions": {
+    "F merged": 5
+   },
+   "reasons": [
+    "ChatGPT/A: It states the former Family Welfare Committee and no-arrest direction without explaining that these directions were subsequently declared impermissible."
+   ]
+  },
+  {
+   "qid": "R15",
+   "no": 7,
+   "title": "The Judgment of the Court was delivered by DIPAK MISRA, CJI. 1. Law, especially ",
+   "doc": 1000250996,
+   "pn": "15/2",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 1
+   },
+   "versions": {
+    "C rewrite": 3,
+    "F merged": 2
+   },
+   "reasons": [
+    "ChatGPT/A: It presents the former committee and no-arrest directions without mentioning that the committee directions were subsequently declared impermissible."
+   ]
+  },
+  {
+   "qid": "R15",
+   "no": 9,
+   "title": "The Judgment of the Court was delivered by ADARSH KUMAR GOEL, J. I. Leave grante",
+   "doc": 1000250111,
+   "pn": "19/2",
+   "votes": {
+    "Misleading": 1,
+    "Partly": 1
+   },
+   "versions": {
+    "C rewrite": 4,
+    "F merged": 4
+   },
+   "reasons": [
+    "ChatGPT/A: It reproduces the former no-arrest direction without noting that the Family Welfare Committee directions were later declared impermissible."
+   ]
+  },
+  {
+   "qid": "R20",
+   "no": 4,
+   "title": "The Judgment of the Court was delivered by S. ABDUL NAZEER, J. 1. Leave granted.",
+   "doc": 1000251143,
+   "pn": "20",
+   "votes": {
+    "Yes": 1,
+    "Misleading": 1
+   },
+   "versions": {
+    "A today": 2,
+    "E no multiplier": 2,
+    "B no repeats": 2,
+    "S site shown": 5
+   },
+   "reasons": [
+    "Gemini/A: The sentence contains a glaring typo/inversion typical of corrupt text by attributing mala fide intentions to the complainant rather than the accused, making it misleading."
+   ]
+  },
+  {
+   "qid": "R20",
+   "no": 10,
+   "title": "The Judgment of the Court was delivered by BELA M. TRIVEDI, J.",
+   "doc": 1000254666,
+   "pn": "17",
+   "votes": {
+    "Yes": 1,
+    "Misleading": 1
+   },
+   "versions": {
+    "A today": 4,
+    "E no multiplier": 4,
+    "B no repeats": 4
+   },
+   "reasons": [
+    "Gemini/A: Like passage 4, this passage preserves a textual corruption attributing mala fide intentions to the complainant instead of the accused, making it misleading."
+   ]
+  },
+  {
+   "qid": "R21",
+   "no": 6,
+   "title": "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH (Special Leave Petition (Crl.) ",
+   "doc": 1000250501,
+   "pn": "10",
+   "votes": {
+    "Misleading": 2
+   },
+   "versions": {
+    "A today": 1,
+    "E no multiplier": 1,
+    "B no repeats": 1
+   },
+   "reasons": [
+    "ChatGPT/A: It presents the Shafhi Mohammad exception allowing relaxation when the producer lacks the device, without noting that the passage's cited approach was later overruled in another supplied passage.",
+    "Gemini/A: This view holding that the certificate requirement is not always mandatory was subsequently overruled by the Supreme Court in Arjun Panditrao Khotkar."
+   ]
+  },
+  {
+   "qid": "R21",
+   "no": 7,
+   "title": "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH (Special Leave Petition (Crl.) ",
+   "doc": 1000250501,
+   "pn": "2",
+   "votes": {
+    "Misleading": 2
+   },
+   "versions": {
+    "E no multiplier": 3,
+    "S site shown": 3,
+    "A today": 7,
+    "B no repeats": 7
+   },
+   "reasons": [
+    "ChatGPT/A: It records a party's argument favoring an exception rather than a judicial holding, potentially suggesting that absence of the original device removes the certification requirement.",
+    "Gemini/A: This passage records legal submissions and a perspective on relaxing certificate requirements that was later overruled by larger bench rulings."
+   ]
+  },
+  {
+   "qid": "R21",
+   "no": 8,
+   "title": "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH (Special Leave Petition (Crl.) ",
+   "doc": 1000250501,
+   "pn": "preamble/1",
+   "votes": {
+    "Misleading": 2
+   },
+   "versions": {
+    "E no multiplier": 2,
+    "A today": 8,
+    "B no repeats": 8
+   },
+   "reasons": [
+    "ChatGPT/A: It states that certification can be relaxed when the producer lacks the device, but the passage reflects an approach later expressly overruled in the supplied materials.",
+    "Gemini/A: It summarizes the Shafhi Mohammad ruling which stated the certificate is not always mandatory, a legal position that was subsequently overruled."
+   ]
+  },
+  {
+   "qid": "R22",
+   "no": 5,
+   "title": "PETITIONER: SEVAKA PERUMAL, ETC. Vs. RESPONDENT: STATE OF TAMIL NADU DATE OF JUD",
+   "doc": 12722,
+   "pn": null,
+   "votes": {
+    "Misleading": 2
+   },
+   "versions": {
+    "A today": 3,
+    "E no multiplier": 4,
+    "B no repeats": 3,
+    "F merged": 6
+   },
+   "reasons": [
+    "ChatGPT/A: Although it discusses sentencing hearings and family circumstances, it rejects family responsibilities as grounds for interference and does not establish that the sentence should be reduced.",
+    "Gemini/A: Although it mentions family factors like a young wife and child, it concludes that these compassionate grounds do not warrant reducing a death sentence."
+   ]
+  },
+  {
+   "qid": "R26",
+   "no": 10,
+   "title": "The Judgment of the Court was delivered by J. B. PARDIWALA, J.",
+   "doc": 1000254993,
+   "pn": "12",
+   "votes": {
+    "Misleading": 1,
+    "Yes": 1
+   },
+   "versions": {
+    "E no multiplier": 4
+   },
+   "reasons": [
+    "ChatGPT/A: The passage records counsel's submissions rather than the court's holding, so it cannot establish the governing rule on suspension or re-appreciation of evidence."
+   ]
+  },
+  {
+   "qid": "R28",
+   "no": 8,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO",
+   "doc": 38688,
+   "pn": null,
+   "votes": {
+    "Misleading": 3,
+    "Partly": 1
+   },
+   "versions": {
+    "F merged": 5
+   },
+   "reasons": [
+    "ChatGPT/A: The passage reports rejection of waiver and emphasizes limits on Article 142, potentially misleading readers into thinking waiver is never possible without the broader legal context.",
+    "Gemini/A: Read on its own, it suggests the court cannot bypass statutory provisions, potentially conflicting with the rule that only the Supreme Court can waive the period under Article 142.",
+    "ChatGPT/B: The passage emphasizes restrictions on Article 142 and a rejected waiver request, which could wrongly suggest that the waiting period can never be waived."
+   ]
+  }
+ ],
+ "stale_passages_in_top5": [
+  {
+   "qid": "R01",
+   "no": 3,
+   "version": "S site shown",
+   "rank": 4,
+   "ruling": "Prabir Purkayastha v. State (NCT of Delhi) (2024)",
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Partly",
+   "mark_agreed": "Partly"
+  },
+  {
+   "qid": "R01",
+   "no": 4,
+   "version": "S site shown",
+   "rank": 2,
+   "ruling": "Vihaan Kumar v. State of Haryana (2025)",
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Partly",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R01",
+   "no": 8,
+   "version": "C rewrite",
+   "rank": 3,
+   "ruling": "Vihaan Kumar v. State of Haryana (2025)",
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Yes",
+   "mark_agreed": "Yes"
+  },
+  {
+   "qid": "R01",
+   "no": 8,
+   "version": "F merged",
+   "rank": 3,
+   "ruling": "Vihaan Kumar v. State of Haryana (2025)",
+   "kind": "narrower",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Yes",
+   "mark_agreed": "Yes"
+  },
+  {
+   "qid": "R09",
+   "no": 5,
+   "version": "A today",
+   "rank": 5,
+   "ruling": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "kind": "superseded_by_statute",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R09",
+   "no": 5,
+   "version": "E no multiplier",
+   "rank": 5,
+   "ruling": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "kind": "superseded_by_statute",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R09",
+   "no": 5,
+   "version": "B no repeats",
+   "rank": 5,
+   "ruling": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "kind": "superseded_by_statute",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R09",
+   "no": 5,
+   "version": "S site shown",
+   "rank": 4,
+   "ruling": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+   "kind": "superseded_by_statute",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R11",
+   "no": 1,
+   "version": "C rewrite",
+   "rank": 2,
+   "ruling": "Kanhaiyalal v. Union of India (2008)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R11",
+   "no": 1,
+   "version": "F merged",
+   "rank": 2,
+   "ruling": "Kanhaiyalal v. Union of India (2008)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R11",
+   "no": 4,
+   "version": "C rewrite",
+   "rank": 3,
+   "ruling": "Kanhaiyalal v. Union of India (2008)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R11",
+   "no": 4,
+   "version": "F merged",
+   "rank": 3,
+   "ruling": "Kanhaiyalal v. Union of India (2008)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R15",
+   "no": 2,
+   "version": "A today",
+   "rank": 4,
+   "ruling": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+   "kind": "contested",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Partly",
+   "mark_agreed": "Partly"
+  },
+  {
+   "qid": "R15",
+   "no": 2,
+   "version": "E no multiplier",
+   "rank": 2,
+   "ruling": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+   "kind": "contested",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Partly",
+   "mark_agreed": "Partly"
+  },
+  {
+   "qid": "R15",
+   "no": 2,
+   "version": "B no repeats",
+   "rank": 4,
+   "ruling": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+   "kind": "contested",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Partly",
+   "mark_agreed": "Partly"
+  },
+  {
+   "qid": "R15",
+   "no": 3,
+   "version": "A today",
+   "rank": 1,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": "No"
+  },
+  {
+   "qid": "R15",
+   "no": 3,
+   "version": "E no multiplier",
+   "rank": 1,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": "No"
+  },
+  {
+   "qid": "R15",
+   "no": 3,
+   "version": "B no repeats",
+   "rank": 1,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": "No"
+  },
+  {
+   "qid": "R15",
+   "no": 3,
+   "version": "F merged",
+   "rank": 3,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": "No"
+  },
+  {
+   "qid": "R15",
+   "no": 3,
+   "version": "S site shown",
+   "rank": 2,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": "No"
+  },
+  {
+   "qid": "R15",
+   "no": 6,
+   "version": "A today",
+   "rank": 2,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 6,
+   "version": "E no multiplier",
+   "rank": 3,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 6,
+   "version": "B no repeats",
+   "rank": 2,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 6,
+   "version": "S site shown",
+   "rank": 4,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "No",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 7,
+   "version": "C rewrite",
+   "rank": 3,
+   "ruling": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+   "kind": "contested",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 7,
+   "version": "F merged",
+   "rank": 2,
+   "ruling": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+   "kind": "contested",
+   "counts_as_stale": false,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 9,
+   "version": "C rewrite",
+   "rank": 4,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R15",
+   "no": 9,
+   "version": "F merged",
+   "rank": 4,
+   "ruling": "Rajesh Sharma v. State of U.P. (2017)",
+   "kind": "modified",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": null
+  },
+  {
+   "qid": "R21",
+   "no": 6,
+   "version": "A today",
+   "rank": 1,
+   "ruling": "Shafhi Mohammad v. State of H.P. (2018)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R21",
+   "no": 6,
+   "version": "E no multiplier",
+   "rank": 1,
+   "ruling": "Shafhi Mohammad v. State of H.P. (2018)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R21",
+   "no": 6,
+   "version": "B no repeats",
+   "rank": 1,
+   "ruling": "Shafhi Mohammad v. State of H.P. (2018)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R21",
+   "no": 7,
+   "version": "E no multiplier",
+   "rank": 3,
+   "ruling": "Shafhi Mohammad v. State of H.P. (2018)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R21",
+   "no": 7,
+   "version": "S site shown",
+   "rank": 3,
+   "ruling": "Shafhi Mohammad v. State of H.P. (2018)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  },
+  {
+   "qid": "R21",
+   "no": 8,
+   "version": "E no multiplier",
+   "rank": 2,
+   "ruling": "Shafhi Mohammad v. State of H.P. (2018)",
+   "kind": "overruled",
+   "counts_as_stale": true,
+   "mark_ties_lower": "Misleading",
+   "mark_agreed": "Misleading"
+  }
+ ],
+ "stale_in_A_top5_summary": {
+  "passages": 4,
+  "marked_useful_by_reviewers": 0,
+  "marked_yes": 0,
+  "marked_misleading": 2
+ },
+ "caveats": {
+  "replies": 48,
+  "non_empty": 33,
+  "mentions_a_later_change": 6
+ },
+ "reranker_promoted_vs_kept": {
+  "promoted_from_beyond_merged_top5": {
+   "n": 60,
+   "yes": 0.283,
+   "useful": 0.767,
+   "misleading": 0.15
+  },
+  "already_in_merged_top5": {
+   "n": 30,
+   "yes": 0.467,
+   "useful": 0.833,
+   "misleading": 0.067
+  }
+ },
+ "A_by_rank": {
+  "1": {
+   "n": 19,
+   "yes": 0.526,
+   "useful": 0.789,
+   "misleading": 0.105
+  },
+  "2": {
+   "n": 19,
+   "yes": 0.526,
+   "useful": 0.737,
+   "misleading": 0.105
+  },
+  "3": {
+   "n": 19,
+   "yes": 0.211,
+   "useful": 0.789,
+   "misleading": 0.053
+  },
+  "4": {
+   "n": 19,
+   "yes": 0.263,
+   "useful": 0.737,
+   "misleading": 0.158
+  },
+  "5": {
+   "n": 19,
+   "yes": 0.105,
+   "useful": 0.737,
+   "misleading": 0.158
+  }
+ },
+ "key_authority_vs_marks_A": {
+  "key authority in A's top 5": {
+   "questions": [
+    "R01",
+    "R02",
+    "R04",
+    "R08",
+    "R11",
+    "R12",
+    "R17",
+    "R19",
+    "R24",
+    "R26"
+   ],
+   "avg_yes": 0.46,
+   "avg_useful": 0.88,
+   "detail": [
+    [
+     "R01",
+     0.6,
+     1.0,
+     0.0
+    ],
+    [
+     "R02",
+     0.8,
+     0.8,
+     0.2
+    ],
+    [
+     "R04",
+     0.8,
+     1.0,
+     0.0
+    ],
+    [
+     "R08",
+     0.2,
+     0.4,
+     0.0
+    ],
+    [
+     "R11",
+     0.0,
+     0.6,
+     0.4
+    ],
+    [
+     "R12",
+     0.4,
+     1.0,
+     0.0
+    ],
+    [
+     "R17",
+     0.6,
+     1.0,
+     0.0
+    ],
+    [
+     "R19",
+     0.4,
+     1.0,
+     0.0
+    ],
+    [
+     "R24",
+     0.6,
+     1.0,
+     0.0
+    ],
+    [
+     "R26",
+     0.2,
+     1.0,
+     0.0
+    ]
+   ]
+  },
+  "key authority not in A's top 5 (answerable questions)": {
+   "questions": [
+    "R09",
+    "R14",
+    "R20",
+    "R22"
+   ],
+   "avg_yes": 0.2,
+   "avg_useful": 0.55,
+   "detail": [
+    [
+     "R09",
+     0.0,
+     0.4,
+     0.6
+    ],
+    [
+     "R14",
+     0.0,
+     0.4,
+     0.2
+    ],
+    [
+     "R20",
+     0.0,
+     0.6,
+     0.4
+    ],
+    [
+     "R22",
+     0.8,
+     0.8,
+     0.2
+    ]
+   ]
+  }
+ }
+}

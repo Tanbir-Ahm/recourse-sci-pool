@@ -1,0 +1,99 @@
+{
+"question_id": "R06",
+"marks": [
+{
+"no": 1,
+"mark": "No",
+"evidence": "section 436A has been inserted to provide that where an under-trial prisoner",
+"reason": "This passage discusses the old Section 436A of the CrPC rather than the new Section 479 BNSS one-third rule.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "undergone detention for a period extending up to one-half of the maximum period of imprisonment",
+"reason": "This passage cites the old one-half rule under Section 436A of the CrPC rather than Section 479 of the BNSS.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "No",
+"evidence": "Section 2(1)(k) of the BNSS",
+"reason": "This passage defines inquiry under the BNSS and does not discuss the undertrial detention rule under Section 479.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "A substantive right conferred under the BNSS would definitely enure to the benefit of an accused against whom none of the proceedings envisaged under Section 531(2)(a) of the BNSS has been initiated.",
+"reason": "It discusses prospective application of substantive rights under the BNSS generally, but does not explicitly mention Section 479 or the one-third rule.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "the Appellant has already spent one-third of the total sentence prescribed for the offence and thus, is entitled to bail under Section 479 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)",
+"reason": "It mentions an argument invoking Section 479 of the BNSS for spending one-third of the sentence, but does not analyze applicability to pre-law FIRs.",
+"confidence": "medium"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "Section 4 of the BNSS",
+"reason": "This passage outlines trial provisions and savings clauses under the BNSS rather than undertrial detention limits.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "no retrospective effect has been given to the said provision and as such Section 436A does not directly apply",
+"reason": "This passage refers to the old Section 436A of the CrPC rather than Section 479 of the BNSS.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "entitled to the benefit of Section 436-A9 of the Code of Criminal Procedure, 1973",
+"reason": "This passage discusses the old Section 436A of the CrPC rather than the BNSS provision.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "No",
+"evidence": "Section 436A came to be inserted which provides that an under-trial prisoner",
+"reason": "This passage describes the historical insertion of Section 436A of the CrPC.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "Section 309(1) of Cr.P.C. (now Section 346 of the BNSS, 2023) provides that in every inquiry or trial",
+"reason": "This passage deals with day-to-day proceedings and limitation periods, not the undertrial one-third rule.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "No",
+"evidence": "Section 436A of the 1973 Code",
+"reason": "This passage discusses the background and text of the old Section 436A of the CrPC.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "So far as Section 436A is concerned, it may be stated that by the Code of Criminal Procedure (Amendment) Act, 2005",
+"reason": "This passage quotes the old Section 436A of the CrPC rather than Section 479 of the BNSS.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "Cognizance of offences by Magistrate",
+"reason": "This passage covers magistrate cognizance and savings under special laws, unrelated to Section 479 BNSS.",
+"confidence": "high"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": ""
+}

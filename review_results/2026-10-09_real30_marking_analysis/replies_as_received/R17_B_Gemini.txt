@@ -1,0 +1,78 @@
+{
+"question_id": "R17",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "Conviction under Section 306 IPC is not sustainable on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused, which led or compelled the person to commit suicide.",
+"reason": "It directly details the essential ingredients of Section 306 IPC and answers whether persistent harassment alone suffices.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "conviction under Section 306 IPC is not sustainable on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused",
+"reason": "It clearly answers that mere allegations of harassment without a proximate positive action do not suffice for Section 306 IPC.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "apart from the earlier acts of harassment for parting with the land which she had received in marriage as stridhana, there was an act of driving the deceased out of the house which had direct nexus",
+"reason": "It discusses a specific case where harassment combined with a direct act sustained a conviction, but does not fully define the general rule.",
+"confidence": "medium"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "Merely on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable.",
+"reason": "It outlines the necessary intent/ingredients and explicitly addresses that persistent harassment alone without a proximate act does not suffice.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "Instigation is to goad, urge forward, provoke, incite or encourage to do an act.",
+"reason": "It defines instigation under Section 107/306 IPC but does not directly address whether matrimonial harassment alone suffices without a proximate act.",
+"confidence": "medium"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "even if there is allegation of constant harassment, continued over a long period; to bring in the ingredients of Section 306 read with Section 107, still there has to be a proximate prior act",
+"reason": "It provides a comprehensive explanation of why persistent harassment alone does not suffice without a proximate prior act.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "There is nothing on record to indicate that, on the date of the unfortunate incident or any time in close proximity thereof there was any act of instigation on the part of the Appellants.",
+"reason": "It discusses temporal proximity and provocative remarks in a specific case, offering partial utility regarding the question.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "Merely on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable.",
+"reason": "It explicitly states that allegations of harassment alone without a proximate positive action are insufficient under Section 306 IPC.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "It often happens that there are disputes and discords in the matrimonial home and a wife is often harassed by the husband or her in-laws. This, however, in our opinion would not by itself and without something more attract Section 306 IPC read with Section 107 IPC.",
+"reason": "It directly addresses matrimonial harassment and clarifies that it does not suffice by itself without something more to attract Section 306 IPC.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "the person who is said to have abetted the commission of suicide must have played an active role by an act of instigation or by doing certain act to facilitate the commission of suicide.",
+"reason": "It outlines the essential active role required and notes the lack of a proximate link between marital discord and suicide.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 6,
+"caveats": ""
+}

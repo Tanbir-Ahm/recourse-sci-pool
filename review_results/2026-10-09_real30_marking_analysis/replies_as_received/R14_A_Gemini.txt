@@ -1,0 +1,113 @@
+{
+"question_id": "R14",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "it is also not clearly proved that to hold a person guilty of cheating, it is necessary to show that he had a fraudulent or dishonest intention at the time of making the promise",
+"reason": "The passage explains that an FIR involving a business or financial dispute lacking initial fraudulent intent can be quashed under Section 482.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "If there is no such order in existence, obviously the disposal of the petition filed by the appellant on the ground that the FIR has been cancelled cannot be maintained.",
+"reason": "This passage deals with procedural aspects of an existing cancellation order rather than the substantive grounds for cancelling an FIR.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "In the present case it has nowhere been stated that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC.",
+"reason": "It directly supports the proposition that lack of initial intention to cheat makes the dispute purely civil, aiding in FIR cancellation.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Assuming that the Respondent No. 2 had a grievance only about the retention of money, the redressal ought to have been sought before a Civil Court.",
+"reason": "It shows that monetary retention disputes belong to civil courts and form grounds for quashing, though specific to that case's facts.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "In the instant case, the appellant ceased to be a Director of the company from 27.12.1997 whereas the alleged offences, if any, were committed during the period from 24.5.1998 to 17.9.1999.",
+"reason": "This passage focuses on vicarious liability and director resignation timelines rather than general business loss and cheating FIRs.",
+"confidence": "medium"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "In the present case there is nothing to show that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC.",
+"reason": "It clearly affirms that criminal proceedings can be quashed under Section 482 when a business dispute lacks initial dishonest intent.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "The Complainant states that they have with some dishonest intention have not prepared any Deed of dissolution which is mandatory for cancellation of any Deed of partnership.",
+"reason": "This discusses partnership deed dissolution fraud rather than the inability to return invested money due to business losses.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "subsequent failure to fulfil the promise by itself would not attract the provisions of Section 418 or 420. Mens rea is one of the essential ingredients of the offence of cheating",
+"reason": "It explicitly states that a mere failure to fulfill a promise or return money does not constitute cheating, supporting FIR cancellation.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "In Vesa Holdings Pvt. Ltd. & Anr. Vs. State of Kerala & Ors., this Court made the following observation",
+"reason": "It merely quotes another judgment regarding civil wrongs versus criminal offences without adding new substantive rules on its own.",
+"confidence": "medium"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "directors of the said Company in their office without listening anything from me, as per their own wishes making changes on the document of agreement",
+"reason": "This details factual allegations of large-scale public investment fraud and false investment schemes, unlike a simple business loss dispute.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "A simple reading of the FIR itself does not disclose any cognizable offence for which the FIR should be registered and maintained.",
+"reason": "It supports the quashing of an unwarranted commercial/financial dispute FIR, but lacks a detailed discussion of the legal test.",
+"confidence": "medium"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "we are continuously flooded with cases where the police register an FIR, conduct investigation and even file chargesheet(s) in undeserving cases.",
+"reason": "It expresses general judicial concern over misuse of criminal law for breach of contract, but does not provide a specific legal test.",
+"confidence": "medium"
+},
+{
+"no": 13,
+"mark": "Misleading",
+"evidence": "Per contra the learned counsel appearing for respondent No.3 contended that there is no merit in the contention of the appellants that the FIR discloses only a civil case",
+"reason": "It records arguments made by the opposing counsel arguing against quashing, which could mislead if read as the court's final holding.",
+"confidence": "medium"
+},
+{
+"no": 14,
+"mark": "No",
+"evidence": "Being perturbed by his intentional and fraudulent exclusion from the dealership business, the complainant enquired from the accusedappellants",
+"reason": "It describes background facts regarding exclusion from a partnership business rather than establishing a rule for cancelling an FIR.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "Hon’ble Sir, This is to submit that Applicant Tahir, Partner M/s RT Construction... has been doing his business from a long time.",
+"reason": "It merely reproduces the preliminary recitals of an FIR involving a construction contract dispute rather than deciding on its cancellation.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 8,
+"caveats": ""
+}

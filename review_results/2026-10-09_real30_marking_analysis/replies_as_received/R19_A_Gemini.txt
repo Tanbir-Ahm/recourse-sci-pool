@@ -1,0 +1,85 @@
+{
+"question_id": "R19",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "In this category of cases, the High Court may quash the criminal proceedings if in its view, because of the compromise between the offender and the victim",
+"reason": "It discusses High Court power to quash based on a compromise, but doesn't address serious sexual offences against minors.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "the very FIR registered against the third respondent for the serious offences, as mentioned above, was quashed by the High Court invoking the power under Section 482, Cr. P.C. solely based on the fact that a compromise was arrived at",
+"reason": "It directly illustrates that High Courts have sometimes quashed FIRs for serious sexual offences based on a compromise, though later challenged.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "heinous and serious offences could not be quashed even though a victim or victim’s family and the offender had settled the dispute.",
+"reason": "It directly answers that heinous and serious offences cannot be quashed by the High Court merely because of a settlement.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "In other words, the High Court must consider whether it would be unfair or contrary to the interest of justice to continue with the criminal proceeding",
+"reason": "It states general principles for quashing based on a settlement without addressing minor victims or sexual offences specifically.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "There can be no doubt that a case under Section 302 IPC or other serious offences like those under Sections 395, 307 or 304B cannot be compounded",
+"reason": "It explains that certain serious offences cannot be quashed on a compromise, but does not discuss sexual offences against children.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "There can be no doubt that a case under Section 302 IPC or other serious offences like those under Sections 395, 307 or 304-B cannot be compounded",
+"reason": "It reiterates the rule on non-compoundable serious offences, but lacks specifics regarding POCSO or school teacher misconduct.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "The father of the victim cannot be permitted to settle the dispute with the accused. He is not the victim and the courts have to safeguard and protect the interest of children",
+"reason": "It directly addresses a parent signing a compromise for a minor victim and states it cannot be permitted.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "the High Court may quash the criminal proceedings if in its View, because of the compromise between the offender and the victim",
+"reason": "It discusses general criteria for quashing proceedings on a compromise, without mentioning sexual assault or minors.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "When an incident of the aforesaid nature and gravity allegedly occurred in a higher secondary school, that too from a teacher, it cannot be simply described as an offence which is purely private in nature",
+"reason": "It directly addresses an offence by a school teacher against a student, holding it cannot be quashed as a private matter.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "Those cases where the settlement is arrived at immediately after the alleged commission of offence and the matter is still under investigation, the High Court may be liberal in accepting the settlement",
+"reason": "It outlines when the High Court may be liberal in accepting settlements during investigation, but doesn't mention sexual offences.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "if for the purpose of securing the ends of justice, quashing of FIR becomes necessary, Section 320 would not be a bar to the exercise of power of quashing.",
+"reason": "It explains that Section 482 can override Section 320 for quashing, but concerns personal disputes rather than serious crimes against minors.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 9,
+"caveats": "Although teacher/school compromises have sometimes been mistakenly accepted by lower courts, Supreme Court rulings make it clear that serious offences against minors cannot be quashed solely based on a compromise signed by family."
+}

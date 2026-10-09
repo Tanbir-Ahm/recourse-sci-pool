@@ -1,0 +1,78 @@
+{
+"question_id": "R28",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "The parties moved another HMA No. 457 of 2009 to waive the statutory period of six months in filing the second petition.",
+"reason": "It mentions the attempt to waive the statutory six-month period, but discusses it as background facts of a case.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "The interregnum waiting period from 6 to 18 months is obviously intended to give time and opportunity to the parties",
+"reason": "It discusses the purpose of the waiting period and withdrawal of consent, but does not answer whether the court can skip it.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "such a waiver was permissible only under the directions of the Supreme Court as held by this Court",
+"reason": "It directly indicates that regular courts cannot waive the six-month period, but the Supreme Court can.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "No",
+"evidence": "both parties would humbly request this Court in exercise of its powers to grant a decree of divorce by mutual consent.",
+"reason": "It only contains a request by parties for divorce by mutual consent without addressing whether the waiting period can be skipped.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "the divorce by mutual consent be passed in terms of Section 13B(1) and 13B(2) of the Hindu Marriage Act",
+"reason": "It merely mentions passing a divorce decree under Section 13B without discussing the waiver of the waiting period.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "My agreement to divorce by mutual consent is subject to that condition and in the event that amount is not paid",
+"reason": "It relates to a conditional statement regarding settlement and consent in a maintenance dispute, not the six-month waiting period.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "a decree of divorce by mutual consent is passed in terms of Section 13B of the Act by waiving the requirement of six months period",
+"reason": "It shows directly that the Supreme Court can waive the six-month period requirement under Section 13B.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Misleading",
+"evidence": "acting under Article 142, the Supreme Court cannot pass an order or grant relief which is totally inconsistent or goes against the substantive or statutory enactments",
+"reason": "Read on its own, it suggests the court cannot bypass statutory provisions, potentially conflicting with the rule that only the Supreme Court can waive the period under Article 142.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "No",
+"evidence": "refused to sign the Second Motion Petition within the stipulated time period and withdrew her consent to the mutual divorce.",
+"reason": "It describes a party refusing to sign the second motion and withdrawing consent, which does not answer if the waiting period can be skipped.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "Anil Kumar Jain, this Court held that an order of waiving the statutory requirements can be passed only by this Court in exercise of its powers under Article 142 of the Constitution.",
+"reason": "It directly answers that ordinary family courts cannot waive the six-month statutory period, and only the Supreme Court can do so.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 10,
+"caveats": "While the Supreme Court can waive the six-month waiting period under Article 142 of the Constitution, ordinary family courts lack the jurisdiction to do so."
+}

@@ -1,0 +1,92 @@
+{
+"question_id": "R08",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "the Court trying an offence under Section 138 may order the drawer of the cheque to pay interim compensation to the complainant",
+"reason": "It sets out the statutory provision for interim compensation under Section 143A but does not explain whether it is compulsory on the first date.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "whether the provision of sub-section (1) of Section 143A of the N.I. Act, which provides for the grant of interim compensation, is directory or mandatory.",
+"reason": "It identifies the exact core question of whether Section 143A is mandatory, but does not provide the answer itself.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "No",
+"evidence": "It is also directed that 20% of the cheque amount namely Rs.1,40,000/- must be deposited by the Appellant as interim compensation.",
+"reason": "It is a factual court direction in a specific case rather than a general rule explaining if interim compensation is compulsory.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "the Court trying an offence under Section 138 may order the drawer of the cheque to pay interim compensation to the complainant",
+"reason": "It reproduces the text of Section 143A of the NI Act without discussing whether the order is compulsory.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "Vide order dated 27.04.2022, the Judicial Magistrate directed each of the respondents to pay 4% of the total cheque amount as interim compensation",
+"reason": "It describes a specific court order directing a percentage of interim compensation rather than answering if it is compulsory.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "the Court trying an offence under section 138 may order the drawer of the cheque to pay interim compensation to the complainant",
+"reason": "It sets out the text of Section 143A of the NI Act but does not clarify whether the magistrate is bound to order it.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "Hence, we have no manner of doubt that the word “may” used in Section 138 cannot be construed or interpreted as “shall”. Therefore, the power under sub-section (1) of Section 143A is discretionary.",
+"reason": "It explicitly holds that the power to grant interim compensation is discretionary and not mandatory or compulsory.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "Soon thereafter, the Trial Court ordered that 20% of the cheque amount be made over by the Appellant to the Respondent as interim compensation",
+"reason": "It merely states a procedural fact about what a trial court ordered in a specific case.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "On the very same date, an order was passed by the Trial Court directing the Appellant to deposit 20% of the cheque amount as interim compensation",
+"reason": "It describes an instance where an order was passed on the very first date, but does not state whether the law makes it compulsory.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "A reading of Section 143A shows (i) interim compensation must not exceed 20% of the amount of the cheque",
+"reason": "It outlines features of Section 143A but does not discuss whether the power to award interim compensation is mandatory.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "No",
+"evidence": "By the order dated 7th March 2020, the learned Judicial Magistrate allowed the application and directed the appellant to pay an interim compensation",
+"reason": "It narrates the procedural history of a specific case rather than answering whether interim compensation is compulsory.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "After empowering the court to pass an order directing the accused to pay interim compensation under Sub-Section 1 of Section 143A, Sub-Section 2 then mandates that such interim compensation should not exceed 20 per cent",
+"reason": "It explains the structure and limits of Section 143A without addressing whether ordering interim compensation is compulsory.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 7,
+"caveats": ""
+}

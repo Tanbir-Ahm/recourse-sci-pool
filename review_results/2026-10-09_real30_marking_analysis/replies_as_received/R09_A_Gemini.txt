@@ -1,0 +1,64 @@
+{
+"question_id": "R09",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "Territorial jurisdiction of a court to try an offence under Section 138 of the Negotiable Instruments Act, 1881",
+"reason": "It introduces the topic of territorial jurisdiction under Section 138 but does not provide the rule for presentation through the payee's bank branch.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Misleading",
+"evidence": "issue of a notice from Delhi or deposit of the cheque in a Delhi bank by the payee... would not confer jurisdiction upon the Courts in Delhi",
+"reason": "This old view regarding deposit in a payee's bank was superseded by statutory amendments (Section 142(2)) and rulings like Nishant Aggarwal.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "He presented the cheque given by the accused at Chandigarh. The cheque was dishonoured at Chandigarh.",
+"reason": "It sets out a similar factual matrix and background discussion on jurisdiction but does not directly answer the specific question posed.",
+"confidence": "medium"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated",
+"reason": "The statutory provision directly states that jurisdiction lies where the branch of the bank maintaining the payee's account is situated when delivered for collection.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Misleading",
+"evidence": "how can a payee of the cheque can by presentation of the cheque to his own bank confer jurisdiction upon the Court where such bank is situate",
+"reason": "This passage reflects an older, overruled interpretation that presentation at the payee's bank does not confer jurisdiction.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "just because the cheques were presented at Delhi or the demand notice was sent from Delhi, Courts at Delhi would have jurisdiction to try the present case",
+"reason": "It discusses whether presentation at Delhi gives jurisdiction, but only in the context of quoting a lower court order before the final ruling.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated",
+"reason": "It sets out the exact statutory rule under Section 142(2)(a) confirming jurisdiction where the payee's account branch is situated.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "the Court within the jurisdiction whereof, the dishonoured cheque was presented for encashment, would have the jurisdiction to entertain the complaint",
+"reason": "It directly affirms that the court within whose jurisdiction the cheque is presented for encashment through the payee's account has jurisdiction.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 4,
+"caveats": "Older judgments like Passage 2 and Passage 5 took the view that presentation at the payee's bank does not confer jurisdiction, but this was subsequently overridden by statutory amendment (Section 142(2) of the Negotiable Instruments Act) and later Supreme Court rulings such as Nishant Aggarwal."
+}

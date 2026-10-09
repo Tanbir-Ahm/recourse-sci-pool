@@ -1,0 +1,92 @@
+{
+"question_id": "R12",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "In our opinion, in view of these facts allowing the police investigation to continue would amount to an abuse of the process of court and the High Court committed an error in refusing to exercise the power under Section 482 Criminal Procedure Code to quash the proceedings.",
+"reason": "The passage explains that High Courts can quash criminal proceedings under Section 482 CrPC when a civil dispute is wrongly given a criminal cloak amounting to abuse of process.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "No doubt, where the criminal complaints are filed in respect of property disputes of civil in nature only to harass the accused... it is well within the jurisdiction of the High Court to exercise its powers under Section 482 of the Code to quash the criminal proceedings.",
+"reason": "It acknowledges that High Courts can quash criminal proceedings for civil property disputes filed to harass, but discusses specific factual findings rather than fully matching the user's situation.",
+"confidence": "medium"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "It was the case on behalf of all the accused – private respondents herein in the 482 petition that dispute is of a civil nature; that Munni Devi entered into a registered agreement to sell on 27.10.2010...",
+"reason": "It describes a factual scenario involving an agreement to sell, part payment, and a Section 482 petition, serving as background rather than directly answering the legal question.",
+"confidence": "medium"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "It is the case of the appellant the no criminal proceeding can be initiated as the matters are essentially civil in nature and business disputes cannot be resolved by criminal prosecution.",
+"reason": "It reflects the argument that civil/business matters should not be resolved via criminal prosecution, but it is framed around the appellant's specific contentions.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "deprecating the stance of the police as well as the courts in failing to distinguish between a civil wrong in the form of a breach of contract... and a criminal offence under Sections 420 and 406 of the IPC",
+"reason": "It highlights the courts' and police's failure to distinguish between civil breaches and offences under 420 and 406 IPC, which is relevant to the user's issue.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "Whether the dispute is one of entirely civil nature and therefore liable to be quashed?",
+"reason": "It lists key issues for determination regarding whether a dispute is entirely of a civil nature and liable to be quashed, but contains no substantive answer text.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "Therefore, it was submitted that the dispute is purely of a civil nature and criminal proceedings have been lodged only with a view to pressurize... Therefore, it was prayed to quash the entire FIR.",
+"reason": "It details submissions for quashing an FIR on the grounds that the dispute is purely civil and filed to pressurize, mirroring the user's situation.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "It is trite law that mere institution of civil proceedings is not a ground for quashing the FIR or to hold that the dispute is merely a civil dispute.",
+"reason": "It notes that mere institution of civil proceedings is not automatically a ground for quashing an FIR, providing a legal caveat regarding civil/criminal overlap.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "merely because an act has a civil profile is not sufficient to denude it of its criminal outfit.",
+"reason": "It discusses the principle that an act having a civil profile does not automatically bar a criminal case, offering relevant background context.",
+"confidence": "medium"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "Though the contract is of civil nature, if there is an element of cheating and fraud it is always open for a party in a contract, to prosecute the other side for the offences alleged.",
+"reason": "It states that criminal prosecution is permissible alongside a civil contract if cheating and fraud are present, addressing the dual nature of such disputes.",
+"confidence": "medium"
+},
+{
+"no": 11,
+"mark": "Yes",
+"evidence": "Having regard to the circumstances narrated and explained above, we are also of the view that attempt is made by the respondent to convert a case with civil nature into criminal prosecution. In a case like this, High Court would have been justified in quashing the proceedings in exercise of its inherent powers under Section 482 of the Code.",
+"reason": "The passage directly supports that High Courts are justified in quashing proceedings when a civil dispute is improperly converted into a criminal case.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Yes",
+"evidence": "subsequent failure to fulfil the promise by itself would not attract the provisions of Section 418 or 420. Mens rea is one of the essential ingredients of the offence of cheating under Section 420.",
+"reason": "It states that subsequent failure to fulfill a promise (default) without initial dishonest intention (mens rea) does not attract Section 420 IPC, directly addressing the user's situation.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 1,
+"caveats": "Passage 8 cautions that the mere existence of a civil remedy or proceeding does not automatically warrant quashing an FIR if criminal ingredients are otherwise made out."
+}

@@ -1,0 +1,4896 @@
+{
+ "results": {
+  "agreed only": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6666666666666666,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8333333333333333,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6666666666666666,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8333333333333333,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.9,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6666666666666666,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.875,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "green",
+      0.875,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.65,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6666666666666666,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "red",
+      0.5,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "red",
+      0.3333333333333333,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   }
+  },
+  "ties to the lower mark": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.4,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.7,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.4,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.7,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.9,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.4,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "green",
+      0.875,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "red",
+      0.6666666666666666,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.5833333333333333,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.4,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "red",
+      0.5,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      0.9166666666666667,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "red",
+      0.3333333333333333,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "amber",
+      0.6666666666666666,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   }
+  },
+  "ties to the higher mark": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.9,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "green",
+      0.875,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      0.8333333333333334,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6666666666666667,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "red",
+      0.3333333333333333,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      0.8333333333333334,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   }
+  },
+  "run ChatGPT/A": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.7,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.7,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "red",
+      0.6666666666666666,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.5833333333333333,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.6,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "red",
+      0.3333333333333333,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      0.8333333333333334,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   }
+  },
+  "run ChatGPT/B": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.4,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.4,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "red",
+      0.6666666666666666,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.4,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "red",
+      0.4,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   }
+  },
+  "run Gemini/A": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.5,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.7,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      0.9,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "red",
+      0.5,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.7,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.9,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6,
+      1,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "amber",
+      0.8,
+      1,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "I": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "green",
+      0.875,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      0.8333333333333334,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "amber",
+      0.6666666666666667,
+      0,
+      2
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "red",
+      0.5,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "G": {
+     "relevance": [
+      "green",
+      0.9166666666666667,
+      0,
+      2
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "H": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "I": {
+     "relevance": [
+      "red",
+      0.3333333333333333,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "J": {
+     "relevance": [
+      "amber",
+      0.6666666666666666,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    }
+   }
+  },
+  "run Gemini/B": {
+   "A today": {
+    "A": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "B no repeats": {
+    "A": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "amber",
+      0.6,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "C rewrite": {
+    "A": {
+     "relevance": [
+      "red",
+      0.8,
+      1,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "E no multiplier": {
+    "A": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.6,
+      1,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "F merged": {
+    "A": {
+     "relevance": [
+      "green",
+      0.8,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.2,
+      1,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   },
+   "S site shown": {
+    "A": {
+     "relevance": [
+      "amber",
+      0.75,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "B": {
+     "relevance": [
+      "green",
+      0.8333333333333334,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "C": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "D": {
+     "relevance": [
+      "red",
+      0.4,
+      0,
+      1
+     ],
+     "currency": [
+      "green",
+      0,
+      1
+     ]
+    },
+    "E": {
+     "relevance": [
+      "red",
+      0.0,
+      0,
+      1
+     ],
+     "currency": [
+      "no trap",
+      0,
+      0
+     ]
+    },
+    "F": {
+     "relevance": [
+      "green",
+      1.0,
+      0,
+      1
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    },
+    "H": {
+     "relevance": [
+      "no data",
+      null,
+      0,
+      0
+     ],
+     "currency": [
+      "red",
+      1,
+      1
+     ]
+    }
+   }
+  }
+ },
+ "file_problems": [
+  [
+   "R01_A_ChatGPT.txt",
+   "passage 11: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R01_A_Gemini.txt",
+   "passage 10: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R02_A_Gemini.txt",
+   "passage 9: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R02_B_Gemini.txt",
+   "passage 9: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R04_A_ChatGPT.txt",
+   "passage 8: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R04_A_Gemini.txt",
+   "passage 8: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R04_A_Gemini.txt",
+   "passage 10: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R04_B_ChatGPT.txt",
+   "passage 8: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R04_B_Gemini.txt",
+   "passage 8: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R04_B_Gemini.txt",
+   "passage 10: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R08_A_ChatGPT.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R08_A_ChatGPT.txt",
+   "passage 11: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R08_A_Gemini.txt",
+   "passage 2: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R08_A_Gemini.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R08_A_Gemini.txt",
+   "passage 11: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R09_A_Gemini.txt",
+   "passage 2: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R09_A_Gemini.txt",
+   "passage 5: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R11_A_ChatGPT.txt",
+   "passage 6: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R11_A_Gemini.txt",
+   "passage 3: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R11_A_Gemini.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R11_B_ChatGPT.txt",
+   "passage 5: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R11_B_Gemini.txt",
+   "passage 3: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R11_B_Gemini.txt",
+   "passage 14: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R12_A_Gemini.txt",
+   "passage 2: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R12_A_Gemini.txt",
+   "passage 3: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R12_A_Gemini.txt",
+   "passage 5: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R12_A_Gemini.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R14_A_Gemini.txt",
+   "passage 9: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R14_A_Gemini.txt",
+   "passage 15: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R14_B_Gemini.txt",
+   "passage 10: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R14_B_Gemini.txt",
+   "passage 12: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R14_B_Gemini.txt",
+   "passage 13: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R14_B_Gemini.txt",
+   "passage 14: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R15_A_ChatGPT.txt",
+   "passage 10: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R17_A_Gemini.txt",
+   "passage 3: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R17_A_Gemini.txt",
+   "passage 10: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R17_B_Gemini.txt",
+   "passage 5: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R20_A_ChatGPT.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R21_A_Gemini.txt",
+   "passage 5: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R21_A_Gemini.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R21_A_Gemini.txt",
+   "passage 9: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R22_A_ChatGPT.txt",
+   "passage 16: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R22_A_Gemini.txt",
+   "passage 1: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R22_A_Gemini.txt",
+   "passage 7: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R22_A_Gemini.txt",
+   "passage 8: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R22_A_Gemini.txt",
+   "passage 12: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R22_A_Gemini.txt",
+   "passage 14: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R24_A_ChatGPT.txt",
+   "passage 2: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R24_A_ChatGPT.txt",
+   "passage 11: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R24_A_Gemini.txt",
+   "passage 11: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R24_A_Gemini.txt",
+   "passage 12: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R28_A_ChatGPT.txt",
+   "passage 6: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R29_A_ChatGPT.txt",
+   "passage 6: evidence quote is not in the passage text (possible invented quote)"
+  ],
+  [
+   "R29_A_Gemini.txt",
+   "passage 6: evidence quote is not in the passage text (possible invented quote)"
+  ]
+ ]
+}

@@ -1,0 +1,113 @@
+{
+"question_id": "R15",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "Till report of the Committee is received, no arrest should normally be effected.",
+"reason": "It describes the 2-month/pending report no-arrest rule previously set up, but doesn't mention if it was cancelled.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "it was submitted by the learned Amicus Curiae that the decision in Rajesh Sharma (supra) requires reconsideration, for the said judgment confers powers on the Family Welfare Committee",
+"reason": "It notes challenges against the Family Welfare Committee directions, but does not state the final ruling on cancellation.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "No",
+"evidence": "LeamedASG suggested that there must be some preliminaiy inquiry on the lines ofobservations inLa/itaK11mari versus Government of Uttar Prades/1 7.",
+"reason": "This passage outlines suggestions regarding preliminary inquiry and arrest permissions rather than confirming the family welfare committee status.",
+"confidence": "medium"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Direction No.19.4 had thus contemplated referral of every complaint under Section 498A IPC3 to a Committee and it was only after the report of the Committee, arrest if at all, could be effected.",
+"reason": "It references the previous committee referral and arrest restriction rule.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "Previously, in the landmark judgment of this court in Arnesh Kumar Vs. State of Bihar and Anr.5, it was also observed:-",
+"reason": "It discusses general observations on misuse of Section 498-A without addressing family welfare committees or the no-arrest rule.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "Referring to Sushi{ Kumar Sharma versus Unio11 of ll1dia1, Preeti Gupta versus State of JharkltantP, Ramgopal versus State .of G . Madhya Pradesh3, Savitri Devi versus Ramesh Clrand4, it was",
+"reason": "It discusses general judicial acknowledgment of misuse and Madras High Court guidelines, not the Supreme Court's Family Welfare Committee rule.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "Till report of the committee is received, no arrest should normally be effected.",
+"reason": "It details the framework establishing the Family Welfare Committee and arrest stay, but does not show its subsequent cancellation.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "It has been alleged that she was driven out of the matrimonial home due to nonfulfilment of the demand of dowry.",
+"reason": "This passage is from Arnesh Kumar background facts and general discussion on Section 498-A arrests.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "Till report of the committee is received, no arrest should normally be effected.",
+"reason": "It sets out the committee directions but does not address whether they were later cancelled.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "But on 22.07.2021, my husband Ishan Khan, mother-in-law Irfana Bee, father-in-law Ishaq Khan, sister-in law Aaysha Bee and brother-in-law (Nandoi) Syed Khan hurled abuses to me.",
+"reason": "It details a specific criminal complaint text in an unrelated case.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "No",
+"evidence": "The nature, scope and applicability of Section 86 IPC Section 86 IPC which was elaborately considered by the High Court runs in these terms:",
+"reason": "It discusses intoxication under Section 86 IPC, which is irrelevant to BNS Section 85/86 (cruelty/dowry).",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "That in March, 2020 during the pandemic of Covid-19, Accused No. 1 took the minor son with him and did not come home for so many days",
+"reason": "It recites facts of a different matrimonial dispute case.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "Similarly, under Rule 2(i) service has been defined as follows: (i) “Service” means the Municipal Service for the State constituted under sub-section (i) of Section 86 of the Act.",
+"reason": "It relates to municipal service rules under an unspecified act, completely unrelated to criminal law or matrimonial disputes.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "while declaring the directions pertaining to Family Welfare Committee and its constitution by the District Legal Services Authority and the power conferred on the Committee is impermissible.",
+"reason": "It explicitly declares the directions pertaining to the Family Welfare Committee and its no-arrest powers to be impermissible, meaning it was cancelled/overruled.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "The statements of the parents are carbon copy of each other and as such we may refer to the statement of the father only",
+"reason": "It discusses witness statements in a different dowry harassment case.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 14,
+"caveats": "Passage 14 clarifies that the Family Welfare Committee directions were held to be impermissible (cancelled), answering whether that rule remains valid."
+}

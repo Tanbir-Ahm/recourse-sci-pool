@@ -1,0 +1,113 @@
+{
+"question_id": "R11",
+"marks": [
+{
+"no": 1,
+"mark": "Misleading",
+"evidence": "allows a statement made under Section 67 of the N.D.P.S. Act to be used as a confession against the person making it",
+"reason": "This old view holding Section 67 statements to NCB officers as admissible confessions was subsequently overruled by Tofan Singh v. State of Tamil Nadu.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "A statement confessional in nature is in the genre of extra judicial confessions.",
+"reason": "It discusses NDPS statements and confessions under Section 24 of the Evidence Act, but does not directly answer whether an NCB-coerced signed statement can be used.",
+"confidence": "medium"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "A-1: Denied the incriminating evidence against him and stated that he was compelled to come to the NCB Office... and have forcibly taken the signatures on some papers written in Hindi",
+"reason": "It describes an accused's claim of being forced to sign papers at the NCB office, matching the user's scenario, but it is just a factual recital of arguments, not a direct legal answer.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "the statement made by a person directed to appear before the officer concerned may be relied upon as a confessional statement against such person.",
+"reason": "This reflects the overruled position from Kanhaiyalal allowing Section 67 statements as substantive confessions, contrary to current law established in Tofan Singh.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "oﬃ cers who are invested with powers under Section 53 of the NDPS Act are “police oﬃ cers” within the meaning of Section 25 of the Evidence Act, as a result of which any confessional statement made to them would be barred under the provisions of Section 25 of the Evidence Act",
+"reason": "It directly holds that confessional statements made to NDPS/NCB officers are barred under Section 25 of the Evidence Act and cannot be used to convict.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "held that a confessional statement of a person accused of an oﬀ ence under the NDPS Act recorded by such an oﬃ cer in the course of investigation, is admissible against him.",
+"reason": "It summarizes previous case law holding such confessions admissible, which is no longer good law after Tofan Singh.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "Since the appellant Kanhaiyalal was convicted on the basis of the statement made by him under Section 67 of the NDPS Act, a question has been raised whether such statement made to an officer... could be treated as a confessional statement",
+"reason": "It quotes older queries regarding Section 67 statements without providing a definitive current ruling on forced signatures.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "confession only if found to be voluntary and free from pressure, can be accepted. A confession purported to have been made before an authority would require a closure scrutiny.",
+"reason": "It states that confessions before authorities must be voluntary and scrutinized, but does not specifically address NCB statements under the NDPS Act.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Misleading",
+"evidence": "allows a statement made under Section 67 of the NDPS Act to be used as a confession against the person making it and excludes it from the operation of Sections 24 to 27 of the Evidence Act.",
+"reason": "It quotes the overruled Kanhaiyalal precedent treating Section 67 statements as admissible confessions.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "the confessional statements made by the appellant were voluntary in nature and could form the basis for conviction.",
+"reason": "This relies on the pre-Tofan Singh view that retracted or uncomplained-of confessional statements to narcotics officers can sustain a conviction.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Misleading",
+"evidence": "allows a statement made under Section 67 of the NDPS Act to be used as a confession against the person making it and excludes it from the operation of Sections 24 to 27 of the Evidence Act.",
+"reason": "It repeats the older, overruled rule from Kanhaiyalal regarding the admissibility of Section 67 statements.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "A confession made by an accused person is irrelevant in a criminal proceeding, if it appears to the Court that the confessions may have been elicited by any inducement, threat or promise",
+"reason": "It lays down general principles on irrelevant confessions due to threats, but does not focus specifically on the NCB/NDPS officer context.",
+"confidence": "medium"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "Section 67 statement was obtained by force and torture and that he was not carrying any Narcotic Drug.",
+"reason": "It only notes an accused's defense claim that an NCB Section 67 statement was extracted by force and torture.",
+"confidence": "medium"
+},
+{
+"no": 14,
+"mark": "Misleading",
+"evidence": "officers of the Central Bureau of Narcotics are not police officers within the meaning of Section 25 and 26 of the Evidence Act and, hence, confessions made before them are admissible in evidence.",
+"reason": "This represents the superseded view that CBN/NCB officers are not police officers and their confessions are admissible.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Yes",
+"evidence": "The conviction is based solely on the purported confessional statement recorded under Section 67 of the NDPS Act which has no evidentiary value inasmuch as: (a) The statement was given to and recorded by an officer who is to be treated as “police officer” and is thus, hit by Section 25 of the Evidence Act.",
+"reason": "It highlights that statements given to officers under the NDPS Act are treated as being given to police officers, hit by Section 25 of the Evidence Act, and lack evidentiary value for conviction.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 5,
+"caveats": "Older judgments like Kanhaiyalal and Ram Singh permitted Section 67 statements to be used as confessions, but the later binding position (as reflected in Balwinder Singh and Tofan Singh) bars confessional statements made to NDPS officers under Section 25 of the Evidence Act."
+}

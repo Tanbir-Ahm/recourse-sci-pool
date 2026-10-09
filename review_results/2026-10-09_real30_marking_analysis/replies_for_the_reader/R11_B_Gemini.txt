@@ -1,0 +1,113 @@
+{
+"question_id": "R11",
+"marks": [
+{
+"no": 1,
+"mark": "Misleading",
+"evidence": "It is this vital difference, which allows a statement made under Section 67 of the N.D.P.S. Act to be used as a confession against the person making it",
+"reason": "This old view holding Section 67 statements to be usable as confessions was later overruled by Tofan Singh.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "A statement confessional in nature is in the genre of extra judicial confessions.",
+"reason": "It discusses the nature of statements under the NDPS Act generally without directly answering if NCB statements can be used.",
+"confidence": "medium"
+},
+{
+"no": 3,
+"mark": "No",
+"evidence": "A-1: Denied the incriminating evidence against him and stated that he was compelled to come to the Office",
+"reason": "It merely recounts an accused person's submission regarding his case facts and does not state a legal rule.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "Since a conviction can be maintained solely on the basis of a confession made under Section 67 of the NDPS Act, we see no reason",
+"reason": "This view permitting conviction on Section 67 statements was overruled in Tofan Singh.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "That a statement recorded under Section 67 of the NDPS Act cannot be used as a confessional statement in the trial of an oﬀ ence under the NDPS Act.",
+"reason": "It directly states the correct law that Section 67 statements cannot be used as confessions in court.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "It was further held that a conviction can be maintained on the sole confession made by an accused under Section 67 of the NDPS Act.",
+"reason": "It describes older precedents that permitted such confessions, which were subsequently overruled.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "a question has been raised whether such statement made to an officer within the meaning of Section 42 of the said Act could be treated as a confessional statement",
+"reason": "It highlights the question and older arguments surrounding Section 67 statements without giving the final ruling.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "A confession purported to have been made before an authority would require a closure scrutiny. It is furthermore now well-settled that the court must seek corroboration",
+"reason": "It outlines general safeguards for confessions before authorities but predates the full resolution in Tofan Singh.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Misleading",
+"evidence": "allows a statement made under Section 67 of the NDPS Act to be used as a confession against the person making it",
+"reason": "It quotes the overruled position from Kanhaiyalal regarding Section 67 statements.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "the confessional statements made by the appellant were voluntary in nature and could form the basis for conviction.",
+"reason": "It follows the older view that allowed convictions based on voluntary NCB/customs statements, which is no longer good law.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Misleading",
+"evidence": "allows a statement made under Section 67 of the NDPS Act to be used as a confession against the person making it",
+"reason": "This passage states the superseded rule from Ram Singh that Section 67 statements can be used as confessions.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "In the absence of any provision similar to Section 162, in the NDPS Act, a statement made before an officer under the NDPS Act in the course of any inquiry",
+"reason": "It discusses evidentiary admissibility under the NDPS Act generally but does not provide the definitive ruling on Section 67 confessions.",
+"confidence": "medium"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "Stated that summon was not issued to him and Rs. 1,600/- and train tickets were seized from him",
+"reason": "It only lists individual accused statements and grievances about a specific trial proceeding.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Misleading",
+"evidence": "confessions made before them are admissible in evidence. In view of aforesaid there is no escape from the conclusion that the confessions made by the appellant... are admissible",
+"reason": "It supports the admissibility of confessions before narcotics officers, an approach overruled by Tofan Singh.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Yes",
+"evidence": "The conviction is based solely on the purported confessional statement recorded under Section 67 of the NDPS Act which has no evidentiary value",
+"reason": "It directly holds that Section 67 statements have no evidentiary value as confessions and cannot form the basis of a conviction.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 5,
+"caveats": "Older judgments like Kanhaiyalal and Ram Singh permitted Section 67 statements to be used as confessions, but they were overruled by Tofan Singh."
+}

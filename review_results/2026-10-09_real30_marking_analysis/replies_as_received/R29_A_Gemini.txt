@@ -1,0 +1,57 @@
+{
+"question_id": "R29",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "The right to consult an advocate of his choice shall not be denied to any person who is arrested.",
+"reason": "It discusses the constitutional right to consult an advocate during near-custodial interrogation but does not mention Section 38 BNSS or whether presence is allowed throughout.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied",
+"reason": "It discusses lawyer presence during examination but predates and does not refer to Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "Provided that nothing in this sub-section shall entitle the legal practitioner to remain present throughout the period of interrogation.",
+"reason": "It confirms that an advocate is not entitled to remain present throughout interrogation, but it applies to Section 52 of POTA rather than Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "a person arrested by a customs officer has the right to meet an advocate of his choice during interrogation, but not throughout interrogation.",
+"reason": "It addresses the rule against being present throughout interrogation under the Customs Act and other provisions, but not Section 38 BNSS specifically.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "Provided that nothing in this sub-section, shall, entitle the legal practitioner to remain present throughout the period of interrogation.",
+"reason": "It discusses the restriction on an advocate remaining present throughout interrogation under POTA rather than Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "Section 38 of the BNSS 2023, which confers upon an arrested person the right to meet an advocate of his choice during interrogation, albeit not throughout its course.",
+"reason": "It directly states that Section 38 BNSS grants the right to meet an advocate during interrogation but explicitly notes that it is not allowed throughout its course.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied",
+"reason": "It discusses the general facility of having a lawyer by the accused's side during examination without referencing Section 38 BNSS.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 6,
+"caveats": ""
+}

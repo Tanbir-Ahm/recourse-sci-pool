@@ -1,0 +1,113 @@
+{
+"question_id": "R14",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "It is clear that in view of inordinate delay and laches on the part of the complainant and of the fact that the complaint does not disclose any ingredients of Section 420 IPC and also of the fact that at the most it is the dispute of civil nature, this Court quashed the orders of the Magistrate and the High Court.",
+"reason": "This passage directly discusses quashing a criminal complaint where the dispute is primarily of a civil nature and lacks ingredients of cheating.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "If there is no such order in existence, obviously the disposal of the petition filed by the appellant on the ground that the FIR has been cancelled cannot be maintained.",
+"reason": "This passage discusses procedural aspects of an already cancelled FIR and does not address whether a business loss dispute can be quashed.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "In the present case it has nowhere been stated that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC.” Hence the petition of complainant did not disclose any criminal offence at all much less any offence either under Section 420 or Section 120B of the Indian Penal Code. It was purely civil in nature.",
+"reason": "The passage clearly establishes that lack of initial intention to cheat renders a dispute purely civil, supporting the quashing of such an FIR.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Mainly, the amount of Rs. One crore was rightfully retained by them and there was no question of such retention constituting a criminal breach of trust. Moreover, assuming that the Respondent No. 2 had a grievance only about the retention of money, the redressal ought to have been sought before a Civil Court.",
+"reason": "It mentions approaching the High Court under Section 482 to quash an FIR involving money retention and civil remedy, serving as useful background.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "Admittedly, there are no allegations against the appellant in the First Information Report.",
+"reason": "This passage deals with a director lacking allegations in the FIR and is not relevant to a partner unable to return investment funds.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "In our view the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be malafide or otherwise an abuse of the process of the court.",
+"reason": "The passage states the principle that when a dispute lacks the ingredients of cheating at inception, criminal proceedings are an abuse and can be quashed under Section 482 CrPC.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "The Complainant states that they have with some dishonest intention have not prepared any Deed of dissolution which is mandatory for cancellation of any Deed of partnership.",
+"reason": "This passage discusses partnership dissolution deeds and fraud allegations regarding partnership cancellation rather than an investment loss dispute.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "In order to attract the provisions of Sections 418 and 420 the guilty intent, at the time of making the promise is a requirement and an essential ingredient thereto and subsequent failure to fulfil the promise by itself would not attract the provisions of Section 418 or 420.",
+"reason": "The passage clearly establishes that subsequent failure to fulfill a promise or return money does not constitute cheating without initial guilty intent.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "In our opinion, in view of these facts allowing the police investigation to continue would amount to anabuse of the process of the court and the High Court committed an error in refusing to exercise the power under Section 482 Cr.P.C to quash the proceedings.",
+"reason": "It reaffirms that lack of initial intent to cheat in business/contractual disputes warrants quashing criminal proceedings under Section 482 CrPC.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "In the said FIR, it was inter alia alleged: “As mentioned above, Directors of the said Company in their office without listening anything from me... induced people for making investment...",
+"reason": "This passage recites allegations of a large-scale fraudulent deposit scheme rather than a simple business loss and inability to return investment funds.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "A simple reading of the FIR itself does not disclose any cognizable offence for which the FIR should be registered and maintained.",
+"reason": "It acknowledges that an unmerited FIR should not be maintained, but lacks the detailed legal reasoning regarding breach of contract versus cheating.",
+"confidence": "medium"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "We are constrained to pass this detailed speaking order, as it is noticed that, notwithstanding the law clearly laid down by this Court on the difference between a breach of contract and the criminal offence of cheating, we are continuously flooded with cases where the police register an FIR...",
+"reason": "It highlights the recurring issue of police registering FIRs over breaches of contract, but does not provide the specific ruling on cancellation.",
+"confidence": "medium"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "It is his further contention that the facts in the present case may make out a civil wrong as also a criminal offence and only because a civil remedy may also be available to the complainant that itself cannot be a ground to quash the criminal proceedings.",
+"reason": "It outlines a respondent's argument regarding civil wrongs and criminal offences, but does not provide the court's final ruling.",
+"confidence": "medium"
+},
+{
+"no": 14,
+"mark": "No",
+"evidence": "The accused-appellants gave evasive replies upon which the complainant demanded that his money be returned. The accused-appellants assured him that they would repay the amount at a later point of time...",
+"reason": "This passage only narrates the factual background of a case rather than establishing a legal rule or holding about cancelling an FIR.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "Multifarious contentions have been raised, unsuccessfully, by the appellant to support his prayer for quashment of the subject FIR before the High Court.",
+"reason": "This passage describes unsuccessful contentions raised by an appellant in an unrelated cheating and forgery case.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 8,
+"caveats": ""
+}
