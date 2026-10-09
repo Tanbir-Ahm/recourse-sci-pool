@@ -1,0 +1,11 @@
+# Tuning half of the ruler pooled on the current index, 2026-10-09 (PRIVATE)
+
+Never send this folder to reviewers: `pool.json` names which search version found each passage and `KEY_TEST.md` uses the ruler's answer key.
+
+**What it is.** The ruler's 24 tuning-half questions (12 topics, an everyday and a legal-wording question each; Q06v2 instead of the superseded Q06) searched with versions A today, B no repeats, E no multiplier and S site shown over index `claude/sci-index` `3c80a26` (no rewrites: the first six topics' hand rewrites were written with the answer in view). The frozen half (T08, T12, T13, T16) was not run. 226 passages, 820,048 re-rank tokens, about $0.04. Command: `python review_tools/pool_runner.py --source ruler --half dev --max-rerank-tokens 5000000 --out review_results/2026-10-09_ruler_pool_dev`, scored by `review_tools/ruler_keytest.py` (no reviewer mark).
+
+**First look.** Expected judgment (any passage of it) in the top 5: A 12 of 24, B 12, E 14, S 10 (everyday questions: A 4 of 12, legal: A 8 of 12). The exact verified key paragraph in the top 5: A 4 of 24, B 4, E 2, S 2. Both are weak measures: the file names one judgment per topic, and on the larger index later judgments that restate the rule often outrank the landmark. Example, Q12 (NDPS reverse burden): version A's top results are Mohan Lal, Vijay Pandey (quoting Mohan Lal), a judgment quoting Noor Aga, Pappu (2022) and Tofan Singh para 55, all on the topic, and Noor Aga itself is not in the top 10. The plain-language Q11 is weaker: generic burden-of-proof passages, not NDPS ones.
+
+**Against the first pack (older, smaller index).** On the original 12 questions version A had the landmark judgment in its top 5 for 6 of 12 then and 5 of 12 now (Q11 and Q12 lost, Q05 gained; Q06 was re-asked as Q06v2). Of the 113 passages the original 12 questions now show, 49 were marked in the first round and **64 are new and unmarked**; Q06v2 shows 8 unmarked passages; the 12 newer topics show 105. Marks, not these counts, say whether the answers got better or worse.
+
+**Open.** A top-up pack for the 64 + 8 passages (about 26 chats) would let the original 12 be compared across the two indexes; the 12 newer topics (105 passages, about 24 chats) only if the owner wants them. Not built; the 30 real questions come first.

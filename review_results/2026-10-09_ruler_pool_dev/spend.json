@@ -1,0 +1,135 @@
+{
+ "run": {
+  "when": "2026-10-09T07:00:37Z",
+  "half": "dev",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "A today",
+   "B no repeats",
+   "E no multiplier",
+   "C rewrite",
+   "F merged",
+   "S site shown"
+  ],
+  "source": "ruler",
+  "site_arm": true,
+  "rewrites_file": null,
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 820048,
+   "rerank_calls": 48,
+   "embed_tokens": 1706,
+   "embed_calls": 48,
+   "cap_rerank_tokens": 5000000,
+   "dollars_estimate": 0.0412,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-2"
+  }
+ },
+ "per_question": {
+  "Q01": {
+   "rerank_tokens": 31200,
+   "embed_tokens": 46
+  },
+  "Q02": {
+   "rerank_tokens": 41444,
+   "embed_tokens": 88
+  },
+  "Q03": {
+   "rerank_tokens": 31508,
+   "embed_tokens": 66
+  },
+  "Q04": {
+   "rerank_tokens": 35038,
+   "embed_tokens": 44
+  },
+  "Q05": {
+   "rerank_tokens": 30856,
+   "embed_tokens": 72
+  },
+  "Q06v2": {
+   "rerank_tokens": 33820,
+   "embed_tokens": 78
+  },
+  "Q07": {
+   "rerank_tokens": 32940,
+   "embed_tokens": 50
+  },
+  "Q08": {
+   "rerank_tokens": 33107,
+   "embed_tokens": 84
+  },
+  "Q09": {
+   "rerank_tokens": 39492,
+   "embed_tokens": 54
+  },
+  "Q10": {
+   "rerank_tokens": 39881,
+   "embed_tokens": 82
+  },
+  "Q11": {
+   "rerank_tokens": 29945,
+   "embed_tokens": 44
+  },
+  "Q12": {
+   "rerank_tokens": 32063,
+   "embed_tokens": 70
+  },
+  "Q13": {
+   "rerank_tokens": 33216,
+   "embed_tokens": 54
+  },
+  "Q14": {
+   "rerank_tokens": 29046,
+   "embed_tokens": 64
+  },
+  "Q17": {
+   "rerank_tokens": 34456,
+   "embed_tokens": 70
+  },
+  "Q18": {
+   "rerank_tokens": 34968,
+   "embed_tokens": 86
+  },
+  "Q19": {
+   "rerank_tokens": 36252,
+   "embed_tokens": 70
+  },
+  "Q20": {
+   "rerank_tokens": 32137,
+   "embed_tokens": 100
+  },
+  "Q21": {
+   "rerank_tokens": 30568,
+   "embed_tokens": 74
+  },
+  "Q22": {
+   "rerank_tokens": 35480,
+   "embed_tokens": 104
+  },
+  "Q27": {
+   "rerank_tokens": 39060,
+   "embed_tokens": 66
+  },
+  "Q28": {
+   "rerank_tokens": 37986,
+   "embed_tokens": 86
+  },
+  "Q29": {
+   "rerank_tokens": 35020,
+   "embed_tokens": 74
+  },
+  "Q30": {
+   "rerank_tokens": 30565,
+   "embed_tokens": 80
+  }
+ }
+}

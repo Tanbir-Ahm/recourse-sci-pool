@@ -37,14 +37,17 @@ h = sorted(keys[q1])[0]
 it = lambda hh: {"doc": 1, "also": [], "h": hh}
 pool = [{"qid": q1, "domain": "arrest_bail", "kind": "everyday", "lists": {"A today": [it("x"), it("y"), it(h)] + [it("z")] * 5, "B no repeats": [it("x")] * 10, "S site shown": [it(h)]}},
         {"qid": dev[1]["id"], "domain": "arrest_bail", "kind": "legal", "lists": {"A today": [it(sorted(keys[dev[1]["id"]])[0])] + [it("x")] * 9, "B no repeats": [it("x")] * 10, "S site shown": [it("x")]}}]
-sc = K.score(pool, keys)
+docs = K.expected_docs(R)
+sc = K.score(pool, keys, {q1: {1}, dev[1]["id"]: {1}})
 check("the rank counts passages and the hits are cumulative", sc["A today"][q1]["first_rank"] == 3 and sc["A today"][q1]["hits"] == {"1": False, "3": True, "5": True, "10": True}, sc["A today"][q1])
 check("no key passage means no rank and no hit", sc["B no repeats"][q1]["first_rank"] is None and not any(sc["B no repeats"][q1]["hits"].values()))
 check("an S version is scored on what it showed", sc["S site shown"][q1]["first_rank"] == 1 and sc["S site shown"][q1]["shown"] == 1)
 sm = K.summarise(sc, pool)
 check("the summary counts hits overall and by everyday and legal", sm["A today"]["top1"] == 1 and sm["A today"]["top3"] == 2 and sm["A today"]["top1_legal"] == 1 and sm["A today"]["top3_everyday"] == 1 and sm["B no repeats"]["top10"] == 0, sm["A today"])
 rep = K.report(pool, sc, sm, {"when": "now", "index_commit": "3c80a26abc", "spend": {"rerank_tokens": 5}})
-check("the report says it is a key-paragraph match with no reviewer mark and warns against comparing with the live site", "no reviewer mark" in rep and "live site" in rep and "PRIVATE" in rep)
+check("the expected-judgment test counts any passage of the expected judgment, the key-paragraph test only the exact passage", sc["A today"][q1]["doc_rank"] == 1 and sc["B no repeats"][q1]["doc_rank"] == 1 and sc["A today"][q1]["first_rank"] == 3, (sc["A today"][q1]))
+check("expected judgments are read from the ruler for every question", all(docs[q["id"]] for q in dev), [q["id"] for q in dev if not docs[q["id"]]])
+check("the report says it is a key match with no reviewer mark and warns against comparing with the live site", "no reviewer mark" in rep and "live site" in rep and "PRIVATE" in rep and "Expected judgment found" in rep)
 tmp = tempfile.mkdtemp()
 pp = os.path.join(tmp, "pool.json")
 json.dump({"run": {"when": "now", "index_commit": "x" * 40, "spend": {"rerank_tokens": 1}}, "questions": pool}, open(pp, "w"))
