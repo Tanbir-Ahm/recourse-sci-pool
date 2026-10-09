@@ -52,11 +52,25 @@ only = S.summarise(sc, key, only={"R01"})
 check("the rates can be limited to a set of questions", only["A today"]["questions"] == 1 and only["A today"]["gap_stale_slots"] == 0 and only["B no repeats"]["hit@1"] == 1, only["A today"])
 rep = S.report(pool, key, sc, sm, {"when": "now", "index_commit": "3c80a26abc", "spend": {"rerank_tokens": 1234}})
 check("the report says it is private, names the index gap and the control apart, and lists the older ruling", "PRIVATE" in rep and "Never send to reviewers" in rep and "R06" in rep.split("Scored apart")[1] and "R28" in rep.split("Scored apart")[1] and "Old v. State (2000)" in rep, rep[-600:])
+# an overlay: key documents that only a side index holds
+ov = {"questions": {"R06": {"key_docs": [60], "label": "Missing v. State (2024), side index only"}}}
+k2 = S.with_overlay(key, ov)
+check("an overlay makes an index-gap question answerable for one pool and leaves the key as it was", k2["questions"]["R06"]["reachable"] is True and k2["questions"]["R06"]["key_docs"] == [60]
+      and key["questions"]["R06"]["reachable"] is False and key["questions"]["R06"]["key_docs"] == [] and len(key["questions"]["R06"]["authorities"]) == 1 and len(k2["questions"]["R06"]["authorities"]) == 2)
+sm2 = S.summarise(S.score(pool, k2), k2)
+check("scored with the overlay the question counts in the rates, and its older ruling counts as stale, no longer as an index-gap stale",
+      sm2["A today"]["questions"] == 3 and sm2["A today"]["hit@5"] == 2 and sm2["A today"]["stale_slots"] == 2 and sm2["A today"]["gap_stale_slots"] == 0 and sm2["B no repeats"]["questions"] == 3, sm2["A today"])
+
 tmp = tempfile.mkdtemp()
 pp, kp = os.path.join(tmp, "pool.json"), os.path.join(tmp, "key.json")
 json.dump({"questions": pool, "run": {"when": "now", "index_commit": "x" * 40, "spend": {"rerank_tokens": 1}}}, open(pp, "w"))
 json.dump(key, open(kp, "w"))
 check("main writes the json and the report", S.main(["--pool", pp, "--key", kp, "--out", os.path.join(tmp, "out")]) == 0 and os.path.exists(os.path.join(tmp, "out", "AUTHORITY_HITS.md")) and os.path.exists(os.path.join(tmp, "out", "authority_hits.json")))
+op = os.path.join(tmp, "overlay.json")
+json.dump(ov, open(op, "w"))
+S.main(["--pool", pp, "--key", kp, "--overlay", op, "--out", os.path.join(tmp, "out2")])
+check("main with --overlay scores the pool with the extra key documents", json.load(open(os.path.join(tmp, "out2", "authority_hits.json")))["summary"]["A today"]["questions"] == 3
+      and json.load(open(os.path.join(tmp, "out", "authority_hits.json")))["summary"]["A today"]["questions"] == 2)
 
 print()
 print("FAILED: " + ", ".join(FAILS) if FAILS else "all passed")

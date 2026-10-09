@@ -1,0 +1,9 @@
+{
+  "note": "Key documents that only the side index holds, for scoring the 'main index + side index' arm. The key file (real30_key_v1.json) is not changed. Document ids are those the main index gave the judgments.",
+  "questions": {
+    "R21": {
+      "key_docs": [1000252655],
+      "label": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal (2020), held only in the side index"
+    }
+  }
+}

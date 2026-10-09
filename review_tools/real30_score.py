@@ -33,6 +33,17 @@ def first_rank(items, wanted):
     return None
 
 
+def with_overlay(key, overlay):
+    """A copy of the key in which the overlay's questions have the key documents of the side index and count as answerable. The key file is not changed."""
+    out = json.loads(json.dumps(key))
+    for qid, o in (overlay or {}).get("questions", {}).items():
+        q = out["questions"][qid]
+        q["key_docs"] = sorted(set(q["key_docs"]) | set(o["key_docs"]))
+        q["reachable"] = True
+        q["authorities"] = list(q["authorities"]) + [{"label": o.get("label", "side-index authority"), "role": "key"}]
+    return out
+
+
 def score(pool, key, versions=None):
     """{version: {qid: {first_rank, hits: {k: bool}, stale: [...]}}} for the questions in the pool. `pool` questions carry lists: {version: [{doc, also, h}, ...]} best first."""
     kq = key["questions"]
@@ -138,12 +149,16 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--pool", required=True)
     ap.add_argument("--key", default=DEFAULT_KEY)
+    ap.add_argument("--overlay", help="key documents that only a side index holds (JSON {questions: {R21: {key_docs: [...], label: ...}}}); counted as answerable for this pool; the key file is not changed")
     ap.add_argument("--out", required=True)
     a = ap.parse_args(argv)
     with open(a.pool, encoding="utf-8") as fh:
         doc = json.load(fh)
     with open(a.key, encoding="utf-8") as fh:
         key = json.load(fh)
+    if a.overlay:
+        with open(a.overlay, encoding="utf-8") as fh:
+            key = with_overlay(key, json.load(fh))
     pool = doc["questions"]
     scores = score(pool, key)
     summary = summarise(scores, key)

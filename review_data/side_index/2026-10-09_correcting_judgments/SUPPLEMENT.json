@@ -1,0 +1,135 @@
+{
+ "version": "supplement-1",
+ "built": "2026-10-09T08:03:50Z",
+ "model": "voyage-law-2",
+ "main_index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+ "block_file": "5000000000-5000000249.docs17.pass2572.tok818253",
+ "documents": 17,
+ "passages": 2572,
+ "tokens_charged": 818253,
+ "dollars_estimate": 0.0982,
+ "docs_list": "review_results/2026-10-09_index_gap_sizing/supplement_docs.json",
+ "docs_list_sha256": "d800462078bd84cc3f95d1770c2c4b37ad575e6d3e60cd434045283c63a8a42f",
+ "why": "judgments the Overruled Register links to a ruling the main index holds, but that the main index left out as 'not criminal law' (cue-word density below 10 per 10,000 characters); added here, outside the main index, so that the correcting ruling can be found next to the ruling it corrects",
+ "documents_detail": [
+  {
+   "doc": 1000250181,
+   "doc_key": "b2017_10_569_999",
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR. versus UNION OF INDIA AND ORS.",
+   "passages": 825,
+   "density": 0.7
+  },
+  {
+   "doc": 8342,
+   "doc_key": "c8342",
+   "title": "A.R. ANTULAY v. R.S. NAYAK & ANR",
+   "passages": 326,
+   "density": 7.0
+  },
+  {
+   "doc": 9242,
+   "doc_key": "c9242",
+   "title": "UNION OF INDIA AND ANOTHER v. TULSIRAM PATEL AND OTHERS",
+   "passages": 303,
+   "density": 1.6
+  },
+  {
+   "doc": 6215,
+   "doc_key": "c6215",
+   "title": "SHAMSHER SINGH & ANR v. STATE OF PUNJAB",
+   "passages": 167,
+   "density": 0.1
+  },
+  {
+   "doc": 1000252655,
+   "doc_key": "b2020_7_180_282",
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "passages": 195,
+   "density": 3.4
+  },
+  {
+   "doc": 1000256077,
+   "doc_key": "b2024_11_541_640",
+   "title": "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. versus RAMBHA DEVI & ORS.",
+   "passages": 177,
+   "density": 0.4
+  },
+  {
+   "doc": 16776,
+   "doc_key": "c16776",
+   "title": "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA & ORS",
+   "passages": 145,
+   "density": 2.1
+  },
+  {
+   "doc": 37891,
+   "doc_key": "c37891",
+   "title": "Sri Radhy Shyam (Dead) Through L.Rs. and others v. State of U.P. and others",
+   "passages": 100,
+   "density": 0.0
+  },
+  {
+   "doc": 1000250051,
+   "doc_key": "b2017_7_765_822",
+   "title": "MUKUND DEWANGAN versus ORIENTAL INSURANCE COMPANY LIMITED",
+   "passages": 82,
+   "density": 0.7
+  },
+  {
+   "doc": 3373,
+   "doc_key": "c3373",
+   "title": "VIDYACHARAN SHUKLA v. KHUBCHAND BAGHEL AND OTHERS",
+   "passages": 74,
+   "density": 0.5
+  },
+  {
+   "doc": 8193,
+   "doc_key": "c8193",
+   "title": "DR. BALIRAM WAMAN HIRAY v. JUSTICE B. LENTIN AND OTHERS",
+   "passages": 67,
+   "density": 5.9
+  },
+  {
+   "doc": 17693,
+   "doc_key": "c17693",
+   "title": "CADILA HEALTHCARE LIMITED v. CADILA PHARMACEUTICALS LIMITED",
+   "passages": 41,
+   "density": 0.0
+  },
+  {
+   "doc": 3465,
+   "doc_key": "c3465",
+   "title": "STATE OF UTTAR PRADESH v. SINGHARA SINGH AND OTHERS",
+   "passages": 22,
+   "density": 9.5
+  },
+  {
+   "doc": 25882,
+   "doc_key": "c25882",
+   "title": "Commissioner of Customs, Calcutta etc v. M/s Indian Oil Corporation Ltd. & Anr",
+   "passages": 13,
+   "density": 0.0
+  },
+  {
+   "doc": 25902,
+   "doc_key": "c25902",
+   "title": "Commissioner of Customs, Calcutta etc. etc v. M/s Indian Oil Corporation Ltd. & Anr",
+   "passages": 13,
+   "density": 0.0
+  },
+  {
+   "doc": 13324,
+   "doc_key": "c13324",
+   "title": "1. GAURAV JAIN, 2. SUPREME COURT BAR ASSOCIATION v. UNION OF INDIA & ORS",
+   "passages": 12,
+   "density": 0.0
+  },
+  {
+   "doc": 41774,
+   "doc_key": "c41774",
+   "title": "ROHTAS BHANKHAR & OTHERS v. UNION OF INDIA AND ANOTHER",
+   "passages": 10,
+   "density": 0.0
+  }
+ ]
+}

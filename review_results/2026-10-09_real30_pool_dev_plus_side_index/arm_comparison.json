@@ -1,0 +1,2957 @@
+{
+ "questions": [
+  "R01",
+  "R02",
+  "R04",
+  "R06",
+  "R08",
+  "R09",
+  "R11",
+  "R12",
+  "R14",
+  "R15",
+  "R17",
+  "R19",
+  "R20",
+  "R21",
+  "R22",
+  "R24",
+  "R26",
+  "R28",
+  "R29"
+ ],
+ "versions": [
+  "A today",
+  "B no repeats",
+  "C rewrite",
+  "E no multiplier",
+  "F merged",
+  "S site shown"
+ ],
+ "rates_base": {
+  "A today": {
+   "questions": 14,
+   "hit@1": 5,
+   "hit@5": 10,
+   "hit@10": 10,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 3,
+   "gap_stale_questions": 2
+  },
+  "B no repeats": {
+   "questions": 14,
+   "hit@1": 5,
+   "hit@5": 10,
+   "hit@10": 10,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 3,
+   "gap_stale_questions": 2
+  },
+  "C rewrite": {
+   "questions": 9,
+   "hit@1": 5,
+   "hit@5": 6,
+   "hit@10": 7,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 1,
+   "gap_stale_questions": 1
+  },
+  "E no multiplier": {
+   "questions": 14,
+   "hit@1": 4,
+   "hit@5": 9,
+   "hit@10": 10,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 5,
+   "gap_stale_questions": 2
+  },
+  "F merged": {
+   "questions": 9,
+   "hit@1": 5,
+   "hit@5": 6,
+   "hit@10": 6,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  },
+  "S site shown": {
+   "questions": 14,
+   "hit@1": 5,
+   "hit@5": 6,
+   "hit@10": 7,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 2,
+   "gap_stale_slots": 3,
+   "gap_stale_questions": 2
+  }
+ },
+ "rates_arm_same_key": {
+  "A today": {
+   "questions": 14,
+   "hit@1": 5,
+   "hit@5": 10,
+   "hit@10": 10,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 3,
+   "gap_stale_questions": 2
+  },
+  "B no repeats": {
+   "questions": 14,
+   "hit@1": 5,
+   "hit@5": 10,
+   "hit@10": 10,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 3,
+   "gap_stale_questions": 2
+  },
+  "C rewrite": {
+   "questions": 9,
+   "hit@1": 5,
+   "hit@5": 6,
+   "hit@10": 7,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 1,
+   "gap_stale_questions": 1
+  },
+  "E no multiplier": {
+   "questions": 14,
+   "hit@1": 4,
+   "hit@5": 9,
+   "hit@10": 10,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 5,
+   "gap_stale_questions": 2
+  },
+  "F merged": {
+   "questions": 9,
+   "hit@1": 5,
+   "hit@5": 5,
+   "hit@10": 6,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  },
+  "S site shown": {
+   "questions": 14,
+   "hit@1": 5,
+   "hit@5": 6,
+   "hit@10": 7,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 2,
+   "gap_stale_slots": 3,
+   "gap_stale_questions": 2
+  }
+ },
+ "rates_arm_with_overlay": {
+  "A today": {
+   "questions": 15,
+   "hit@1": 5,
+   "hit@5": 11,
+   "hit@10": 11,
+   "stale_slots": 2,
+   "stale_questions": 2,
+   "narrower_slots": 0,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  },
+  "B no repeats": {
+   "questions": 15,
+   "hit@1": 5,
+   "hit@5": 11,
+   "hit@10": 11,
+   "stale_slots": 2,
+   "stale_questions": 2,
+   "narrower_slots": 0,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  },
+  "C rewrite": {
+   "questions": 9,
+   "hit@1": 5,
+   "hit@5": 6,
+   "hit@10": 7,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 1,
+   "gap_stale_questions": 1
+  },
+  "E no multiplier": {
+   "questions": 15,
+   "hit@1": 4,
+   "hit@5": 10,
+   "hit@10": 11,
+   "stale_slots": 4,
+   "stale_questions": 2,
+   "narrower_slots": 0,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  },
+  "F merged": {
+   "questions": 9,
+   "hit@1": 5,
+   "hit@5": 5,
+   "hit@10": 6,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  },
+  "S site shown": {
+   "questions": 15,
+   "hit@1": 5,
+   "hit@5": 7,
+   "hit@10": 8,
+   "stale_slots": 2,
+   "stale_questions": 2,
+   "narrower_slots": 2,
+   "gap_stale_slots": 2,
+   "gap_stale_questions": 1
+  }
+ },
+ "moved": [
+  {
+   "qid": "R11",
+   "version": "C rewrite",
+   "base": 6,
+   "arm": 7
+  },
+  {
+   "qid": "R11",
+   "version": "F merged",
+   "base": 5,
+   "arm": 6
+  },
+  {
+   "qid": "R21",
+   "version": "A today",
+   "base": null,
+   "arm": 2,
+   "note": "only the side index holds the key authority"
+  },
+  {
+   "qid": "R21",
+   "version": "B no repeats",
+   "base": null,
+   "arm": 2,
+   "note": "only the side index holds the key authority"
+  },
+  {
+   "qid": "R21",
+   "version": "E no multiplier",
+   "base": null,
+   "arm": 3,
+   "note": "only the side index holds the key authority"
+  },
+  {
+   "qid": "R21",
+   "version": "S site shown",
+   "base": null,
+   "arm": 2,
+   "note": "only the side index holds the key authority"
+  }
+ ],
+ "surfaced": [
+  {
+   "qid": "R21",
+   "version": "A today",
+   "hits": [
+    {
+     "rank": 2,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 7,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 9,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 10,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    }
+   ]
+  },
+  {
+   "qid": "R21",
+   "version": "B no repeats",
+   "hits": [
+    {
+     "rank": 2,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 7,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 9,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 10,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    }
+   ]
+  },
+  {
+   "qid": "R21",
+   "version": "E no multiplier",
+   "hits": [
+    {
+     "rank": 3,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 5,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    },
+    {
+     "rank": 6,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    }
+   ]
+  },
+  {
+   "qid": "R21",
+   "version": "S site shown",
+   "hits": [
+    {
+     "rank": 2,
+     "doc": 1000252655,
+     "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS."
+    }
+   ]
+  }
+ ],
+ "unseen": [
+  {
+   "qid": "R02",
+   "new_rows": 1,
+   "of": 10,
+   "from_side_index": 0
+  },
+  {
+   "qid": "R11",
+   "new_rows": 1,
+   "of": 15,
+   "from_side_index": 0
+  },
+  {
+   "qid": "R12",
+   "new_rows": 1,
+   "of": 12,
+   "from_side_index": 0
+  },
+  {
+   "qid": "R21",
+   "new_rows": 2,
+   "of": 11,
+   "from_side_index": 2
+  }
+ ],
+ "stale_slots_top5": {
+  "A today": {
+   "base": 4,
+   "arm": 4
+  },
+  "B no repeats": {
+   "base": 4,
+   "arm": 4
+  },
+  "C rewrite": {
+   "base": 3,
+   "arm": 3
+  },
+  "E no multiplier": {
+   "base": 6,
+   "arm": 6
+  },
+  "F merged": {
+   "base": 4,
+   "arm": 4
+  },
+  "S site shown": {
+   "base": 4,
+   "arm": 4
+  }
+ },
+ "scores_base": {
+  "A today": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 5,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "B no repeats": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 5,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "C rewrite": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000256350,
+      "label": "Vihaan Kumar v. State of Haryana (2025)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R11": {
+    "first_rank": 6,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 3,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R12": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R22": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "E no multiplier": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 5,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": 10,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 3,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 3,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "F merged": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000256350,
+      "label": "Vihaan Kumar v. State of Haryana (2025)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R11": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 3,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R12": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 3,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "S site shown": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 4,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000256350,
+      "label": "Vihaan Kumar v. State of Haryana (2025)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 4,
+      "doc": 1000255745,
+      "label": "Prabir Purkayastha v. State (NCT of Delhi) (2024)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 6,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": [
+     {
+      "rank": 4,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 3,
+    "stale": []
+   }
+  }
+ },
+ "scores_arm": {
+  "A today": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 5,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "B no repeats": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 5,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "C rewrite": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000256350,
+      "label": "Vihaan Kumar v. State of Haryana (2025)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R11": {
+    "first_rank": 7,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R12": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R22": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "E no multiplier": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 5,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 4,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": 10,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 3,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": 3,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "F merged": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000256350,
+      "label": "Vihaan Kumar v. State of Haryana (2025)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R11": {
+    "first_rank": 6,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 30081,
+      "label": "Kanhaiyalal v. Union of India (2008)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R12": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 3,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 10,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": []
+   }
+  },
+  "S site shown": {
+   "R01": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 4,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000256350,
+      "label": "Vihaan Kumar v. State of Haryana (2025)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 4,
+      "doc": 1000255745,
+      "label": "Prabir Purkayastha v. State (NCT of Delhi) (2024)",
+      "kind": "narrower",
+      "counts_as_stale": false
+     }
+    ]
+   },
+   "R02": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R04": {
+    "first_rank": 6,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R06": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R08": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R09": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": [
+     {
+      "rank": 4,
+      "doc": 41801,
+      "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+      "kind": "superseded_by_statute",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R11": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R12": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R14": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": []
+   },
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R17": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R19": {
+    "first_rank": 1,
+    "hits": {
+     "1": true,
+     "5": true,
+     "10": true
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R20": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R21": {
+    "first_rank": 2,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 6,
+    "stale": [
+     {
+      "rank": 4,
+      "doc": 1000250501,
+      "label": "Shafhi Mohammad v. State of H.P. (2018)",
+      "kind": "overruled",
+      "counts_as_stale": true
+     }
+    ]
+   },
+   "R22": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 4,
+    "stale": []
+   },
+   "R24": {
+    "first_rank": 5,
+    "hits": {
+     "1": false,
+     "5": true,
+     "10": true
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R26": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R28": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 6,
+    "stale": []
+   },
+   "R29": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 3,
+    "stale": []
+   }
+  }
+ }
+}

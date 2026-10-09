@@ -1,0 +1,123 @@
+{
+ "run": {
+  "when": "2026-10-09T08:10:21Z",
+  "half": "dev",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "A today",
+   "B no repeats",
+   "E no multiplier",
+   "C rewrite",
+   "F merged",
+   "S site shown"
+  ],
+  "source": "real30",
+  "site_arm": true,
+  "rewrites_file": "review_data/ruler/real30_rewrites_v1.json",
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 1809425,
+   "rerank_calls": 74,
+   "embed_tokens": 3258,
+   "embed_calls": 50,
+   "cap_rerank_tokens": 2500000,
+   "dollars_estimate": 0.0909,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-2"
+  },
+  "side_index": {
+   "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572,
+   "built": "2026-10-09T08:03:50Z",
+   "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+  }
+ },
+ "per_question": {
+  "R01": {
+   "rerank_tokens": 147071,
+   "embed_tokens": 279
+  },
+  "R02": {
+   "rerank_tokens": 88077,
+   "embed_tokens": 160
+  },
+  "R04": {
+   "rerank_tokens": 37012,
+   "embed_tokens": 90
+  },
+  "R06": {
+   "rerank_tokens": 132898,
+   "embed_tokens": 203
+  },
+  "R08": {
+   "rerank_tokens": 112797,
+   "embed_tokens": 143
+  },
+  "R09": {
+   "rerank_tokens": 42623,
+   "embed_tokens": 102
+  },
+  "R11": {
+   "rerank_tokens": 133919,
+   "embed_tokens": 124
+  },
+  "R12": {
+   "rerank_tokens": 155728,
+   "embed_tokens": 337
+  },
+  "R14": {
+   "rerank_tokens": 126585,
+   "embed_tokens": 156
+  },
+  "R15": {
+   "rerank_tokens": 131988,
+   "embed_tokens": 305
+  },
+  "R17": {
+   "rerank_tokens": 29074,
+   "embed_tokens": 86
+  },
+  "R19": {
+   "rerank_tokens": 144818,
+   "embed_tokens": 279
+  },
+  "R20": {
+   "rerank_tokens": 35114,
+   "embed_tokens": 90
+  },
+  "R21": {
+   "rerank_tokens": 35420,
+   "embed_tokens": 92
+  },
+  "R22": {
+   "rerank_tokens": 154829,
+   "embed_tokens": 308
+  },
+  "R24": {
+   "rerank_tokens": 141753,
+   "embed_tokens": 258
+  },
+  "R26": {
+   "rerank_tokens": 37262,
+   "embed_tokens": 84
+  },
+  "R28": {
+   "rerank_tokens": 90320,
+   "embed_tokens": 102
+  },
+  "R29": {
+   "rerank_tokens": 32137,
+   "embed_tokens": 60
+  }
+ }
+}

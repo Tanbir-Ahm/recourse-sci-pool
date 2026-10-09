@@ -8,6 +8,7 @@ no hand pins, no topic routing), and for the questions that have a blind rewrite
 up to 30 by "section N", merged by reciprocal rank into 60 candidates) and one re-ranker (Voyage rerank-2).
 Guards: the index head must be the one recorded in the question file (`index_snapshot`); the re-rank tokens billed stay under --max-rerank-tokens (the run stops before the call that would
 cross it, saving what it has); a sealed question is run only with --final and a label. The private key is never read here.
+--supplement DIR searches "main index + side index" (see build_supplement.py): the side index holds judgments the main index left out; the main index is not touched and the run says so.
 Writes OUT/questions.jsonl as it goes (a re-run skips the questions already there), then OUT/pool.json (per question: rows to be marked, shuffled with a fixed seed and numbered, and the ordered top
 results of every version for the scorer) and OUT/spend.json. PRIVATE: the pool names which version found what.
 """
@@ -16,6 +17,7 @@ import collections
 import datetime
 import glob
 import gzip
+import hashlib
 import json
 import os
 import random
@@ -184,20 +186,22 @@ def make_site(metas, M, recourse_dir):
     return site
 
 
-def titles(index_dir, metas=()):
-    """doc -> the title shown with a passage: 'Petitioner v. Respondent (date)' from the index's case record (crawl judgments), else the title and date the bucket judgment arrived with, else the
-    opening header text (as the first pack did). None when the index holds none of these."""
+def titles(index_dir, metas=(), extra=None):
+    """doc -> the title shown with a passage: 'Petitioner v. Respondent (date)' from the index's case record (crawl judgments), else the title and date the bucket judgment arrived with, else a title
+    given in `extra` ({doc: title}, e.g. a side index's list), else the opening header text (as the first pack did). None when none of these exists. `index_dir` may be a list of index folders."""
     case_meta, src_title, header = {}, {}, {}
-    for f in glob.glob(os.path.join(index_dir, "index", "*.docs.jsonl.gz")):
-        with gzip.open(f, "rt", encoding="utf-8") as fh:
-            for line in fh:
-                if line.strip():
-                    r = json.loads(line)
-                    if r.get("case"):
-                        case_meta[r["doc"]] = r["case"]
-                    src = r.get("src")
-                    if isinstance(src, dict) and src.get("title"):
-                        src_title[r["doc"]] = (src["title"], src.get("date"))
+    dirs = [index_dir] if isinstance(index_dir, str) else list(index_dir)
+    for d in dirs:
+        for f in glob.glob(os.path.join(d, "index", "*.docs.jsonl.gz")):
+            with gzip.open(f, "rt", encoding="utf-8") as fh:
+                for line in fh:
+                    if line.strip():
+                        r = json.loads(line)
+                        if r.get("case"):
+                            case_meta[r["doc"]] = r["case"]
+                        src = r.get("src")
+                        if isinstance(src, dict) and src.get("title"):
+                            src_title[r["doc"]] = (src["title"], src.get("date"))
     for m in metas:
         if m["doc"] not in header and (m["section"] == "header" or str(m["pn"]).startswith("preamble")):
             header[m["doc"]] = re.sub(r"\s+", " ", m["text"])[:260]
@@ -209,15 +213,17 @@ def titles(index_dir, metas=()):
         if doc in src_title:
             name, date = src_title[doc]
             return (re.sub(r"\s+", " ", name) + (f" ({date})" if date else ""))[:200]
+        if extra and doc in extra:
+            return extra[doc][:200]
         return header.get(doc)
     return title
 
 
-def retitle(pool_path, index_dir):
+def retitle(pool_path, index_dir, extra=None):
     """Fills the titles a run left empty (a first run took titles from crawl records and header text only), in pool.json and nothing else. Returns (rows filled, rows still without a title)."""
     with open(pool_path, encoding="utf-8") as fh:
         doc = json.load(fh)
-    title = titles(index_dir)
+    title = titles(index_dir, extra=extra)
     filled = left = 0
     for q in doc["questions"]:
         for r in q["rows"]:
@@ -232,6 +238,47 @@ def retitle(pool_path, index_dir):
         json.dump(doc, fh, ensure_ascii=False, indent=1)
         fh.write("\n")
     return filled, left
+
+
+def supplement_titles(supp_dir):
+    """{doc: title (date)} for the documents of a side index, from its manifest and from the list it was built from (which carries the dates)."""
+    with open(os.path.join(supp_dir, "SUPPLEMENT.json"), encoding="utf-8") as fh:
+        man = json.load(fh)
+    extra = {d["doc"]: d["title"] for d in man.get("documents_detail", [])}
+    lp = os.path.join(ROOT, man["docs_list"]) if man.get("docs_list") else None
+    if lp and os.path.exists(lp):
+        with open(lp, encoding="utf-8") as fh:
+            for e in json.load(fh)["docs"]:
+                extra[int(e["index_doc"])] = re.sub(r"\s+", " ", e["title"]) + (f" ({e['date']})" if e.get("date") else "")
+    return extra
+
+
+def load_supplement(supp_dir, metas, M, head, allow_other=False):
+    """Main index + side index as one searchable set. Refuses a side index made with another model, for another main-index commit (unless allowed), with another vector width, or one that holds
+    a document the main index already has passages for. Returns (metas, M, info for the run record, {doc: title}). The main index's own arrays are not modified."""
+    mp = os.path.join(supp_dir, "SUPPLEMENT.json")
+    if not os.path.exists(mp):
+        raise ValueError(f"{supp_dir} has no SUPPLEMENT.json")
+    with open(mp, "rb") as fh:
+        raw = fh.read()
+    man = json.loads(raw)
+    refusal = si.check_model(supp_dir, EMBED_MODEL)
+    if refusal:
+        raise ValueError(refusal)
+    if man.get("main_index_commit") != head and not allow_other:
+        raise ValueError(f"the side index was made for main index {str(man.get('main_index_commit'))[:7]}, not {head[:7]}")
+    smetas, SM, _ = si._load_index(supp_dir)
+    if len(smetas) != len(SM) or not len(SM):
+        raise ValueError(f"the side index in {supp_dir} is empty or inconsistent")
+    if SM.shape[1] != M.shape[1]:
+        raise ValueError(f"vector width differs: main {M.shape[1]}, side index {SM.shape[1]}")
+    clash = {m["doc"] for m in metas} & {m["doc"] for m in smetas}
+    if clash:
+        raise ValueError(f"the main index already has passages for {len(clash)} document(s) of the side index, e.g. {sorted(clash)[:3]}")
+    extra = supplement_titles(supp_dir)
+    info = {"dir": os.path.relpath(supp_dir, ROOT) if os.path.abspath(supp_dir).startswith(ROOT) else supp_dir, "manifest_sha256": hashlib.sha256(raw).hexdigest(),
+            "documents": man.get("documents"), "passages": man.get("passages"), "built": man.get("built"), "made_for_main_index": man.get("main_index_commit")}
+    return metas + smetas, np.vstack([M, SM]), info, extra
 
 
 def build_question(q, lists, metas, hdocs, title, rewrite=None, top_k=5):
@@ -322,13 +369,14 @@ def main(argv=None):
     ap.add_argument("--out")
     ap.add_argument("--max-rerank-tokens", type=int, help="stop before the call that would take the re-rank tokens billed past this (required for a run)")
     ap.add_argument("--retitle", metavar="POOL_JSON", help="only fill the titles a finished run left empty, from the index's document records; searches nothing, spends nothing")
+    ap.add_argument("--supplement", help="a side index (build_supplement.py): search main + side index; the run is labelled with it")
     ap.add_argument("--no-site", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated question ids")
     ap.add_argument("--allow-other-index", action="store_true", help="run on an index head other than the recorded one (the run says so)")
     ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing")
     a = ap.parse_args(argv)
     if a.retitle:
-        filled, left = retitle(a.retitle, a.index_dir)
+        filled, left = retitle(a.retitle, [a.index_dir] + ([a.supplement] if a.supplement else []), supplement_titles(a.supplement) if a.supplement else None)
         print(f"titles filled: {filled}; still without a title: {left}")
         return 0
     if not a.out or a.max_rerank_tokens is None:
@@ -361,12 +409,21 @@ def main(argv=None):
             rewrites = json.load(fh)["rewrites"]
     if a.dry_run:
         n_rw = sum(1 for q in qs if q["id"] in rewrites)
-        print(f"{len(qs)} questions ({a.half}); {n_rw} with a blind rewrite (versions C and F); site arm {'off' if a.no_site else 'on'}; cap {a.max_rerank_tokens:,} re-rank tokens")
+        print(f"{len(qs)} questions ({a.half}); {n_rw} with a blind rewrite (versions C and F); site arm {'off' if a.no_site else 'on'}; cap {a.max_rerank_tokens:,} re-rank tokens"
+              + (f"; side index {a.supplement}" if a.supplement else ""))
         print("planned re-rank calls: %d (A/E: 1, B: 1, C: 1, F: 2 per rewritten question)" % (len(qs) * 2 + n_rw * 3))
         return 0
     t0 = time.time()
     metas, M, _ = si._load_index(a.index_dir)
     print(f"index loaded: {len(metas):,} passages in {time.time() - t0:.0f}s", flush=True)
+    supp_info, extra_titles = None, None
+    if a.supplement:
+        try:
+            metas, M, supp_info, extra_titles = load_supplement(a.supplement, metas, M, head, a.allow_other_index)
+        except ValueError as e:
+            print("refused:", e)
+            return 1
+        print(f"side index added: {supp_info['documents']} judgments, {supp_info['passages']:,} passages (made {supp_info['built']})", flush=True)
     hdocs = collections.defaultdict(set)
     for m in metas:
         hdocs[m["h"]].add(m["doc"])
@@ -374,10 +431,10 @@ def main(argv=None):
     site = None if a.no_site else make_site(metas, M, a.recourse_dir)
     spend = Spend(a.max_rerank_tokens)
     engine = Engine(metas, M, si.make_client(), spend, fts, site)
-    ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles(a.index_dir, metas), a.out)
+    ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + ([a.supplement] if a.supplement else []), metas, extra_titles), a.out)
     run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS),
                 "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
-                "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}}
+                "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_info}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:
         json.dump({"run": run_info, "questions": ordered}, fh, ensure_ascii=False, indent=1)
         fh.write("\n")

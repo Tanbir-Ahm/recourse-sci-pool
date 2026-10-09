@@ -198,6 +198,69 @@ json.dump({"run": {}, "questions": [{"qid": "R1", "rows": [{"doc": 2, "title": N
 check("retitle fills only the empty titles, counts those it could not fill, and leaves the rest alone", P.retitle(pp, idx) == (1, 1) and [r["title"] for r in json.load(open(pp))["questions"][0]["rows"]] == ["MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA (2025-11-06)", "kept", None])
 check("the run record says the titles were filled afterwards", json.load(open(pp))["run"]["titles_filled_afterwards"]["rows"] == 1)
 
+# ---- a side index ------------------------------------------------------------------------------------------------------------------------------------
+import shutil
+import sci_index as si
+
+
+def make_side(dirpath, docs=((900, "Side Case v. State"),), commit="abc123", model=None, width=DIM, extra_text=""):
+    texts = [f"1. {extra_text} The side judgment {d} holds that sealing of electronic records requires a certificate under section 65B of the evidence act as a condition." for d, _ in docs]
+    passages = [{"doc": d, "i": 0, "pn": "1", "page": 1, "method": "para", "section": "reasoning", "basis": "x", "pos": 0, "prec": 0, "h": f"side{d}", "text": t} for (d, _), t in zip(docs, texts)]
+    vecs = np.stack([vec(t) if width == DIM else np.ones(width, dtype=np.float32) for t in texts]).astype(np.float16)
+    si.write_block_files(dirpath, 5_000_000_000, 250, [{"doc": d, "hash": "h", "passages": 1} for d, _ in docs], passages, vecs, 100)
+    with open(os.path.join(dirpath, "index", "MODEL"), "w") as fh:
+        fh.write((model or si.MODEL) + "\n")
+    with open(os.path.join(dirpath, "SUPPLEMENT.json"), "w") as fh:
+        json.dump({"main_index_commit": commit, "documents": len(docs), "passages": len(docs), "built": "2026-10-09T00:00:00Z", "documents_detail": [{"doc": d, "title": t} for d, t in docs], "docs_list": None}, fh)
+    return dirpath
+
+
+side = make_side(tempfile.mkdtemp())
+metas_before, rows_before = len(metas), M.shape[0]
+m2, M2c, info, extra = P.load_supplement(side, metas, M, "abc123")
+check("a side index is added after the main one: more passages, the same width, the main arrays untouched", len(m2) == metas_before + 1 and M2c.shape[0] == rows_before + 1 and len(metas) == metas_before and M.shape[0] == rows_before)
+check("the run record names the side index and fingerprints its manifest", info["documents"] == 1 and info["passages"] == 1 and len(info["manifest_sha256"]) == 64 and info["made_for_main_index"] == "abc123")
+check("its documents get the title from the list", extra == {900: "Side Case v. State"} and P.titles([side], m2, extra)(900) == "Side Case v. State")
+eng_s = P.Engine(m2, M2c, FakeClient(), P.Spend(10 ** 9), P.build_fts(m2), None, sleep=lambda s: None)
+found = eng_s.lists_for("Is a certificate under section 65B of the evidence act required for electronic records?")
+check("a passage that only the side index holds can be found, and is among the results of a version", any(m2[r]["doc"] == 900 for lst in found.values() for r in lst), {v: [m2[r]["doc"] for r in lst[:5]] for v, lst in found.items()})
+for name, kw, frag in (("another main-index commit", dict(head="zzz"), "made for main index"),):
+    try:
+        P.load_supplement(side, metas, M, kw["head"])
+        raised = None
+    except ValueError as e:
+        raised = str(e)
+    check(f"refused: {name}", raised and frag in raised, raised)
+check("another main-index commit is accepted when the run says so", P.load_supplement(side, metas, M, "zzz", allow_other=True)[2]["documents"] == 1)
+try:
+    P.load_supplement(make_side(tempfile.mkdtemp(), model="some-other-model"), metas, M, "abc123")
+    raised = None
+except ValueError as e:
+    raised = str(e)
+check("refused: vectors made by another model", raised and "some-other-model" in raised, raised)
+try:
+    P.load_supplement(make_side(tempfile.mkdtemp(), docs=((100, "Clash"),)), metas, M, "abc123")
+    raised = None
+except ValueError as e:
+    raised = str(e)
+check("refused: a document the main index already has passages for", raised and "already has passages" in raised, raised)
+try:
+    P.load_supplement(make_side(tempfile.mkdtemp(), width=8), metas, M, "abc123")
+    raised = None
+except ValueError as e:
+    raised = str(e)
+check("refused: a different vector width", raised and "width" in raised, raised)
+try:
+    P.load_supplement(tempfile.mkdtemp(), metas, M, "abc123")
+    raised = None
+except ValueError as e:
+    raised = str(e)
+check("refused: a folder that is not a side index", raised and "SUPPLEMENT.json" in raised, raised)
+buf = io.StringIO()
+with redirect_stdout(buf):
+    rc_s = P.main(["--out", os.path.join(tmp, "s"), "--max-rerank-tokens", "1000", "--dry-run", "--no-site", "--supplement", "/some/side/index"])
+check("a dry run names the side index it would use", rc_s == 0 and "side index /some/side/index" in buf.getvalue(), buf.getvalue())
+
 # ---- the guards in main ---------------------------------------------------------------------------------------------------------------------------
 buf = io.StringIO()
 with redirect_stdout(buf):
