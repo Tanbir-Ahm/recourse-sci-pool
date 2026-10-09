@@ -96,6 +96,37 @@ check("a rewritten question costs five re-rank calls (A/E, B, C, and two for F)"
 e3 = engine(site=lambda q: [3, 4, 5])
 check("the site arm is whatever the site function shows, whole", e3.lists_for(Q)["S site shown"] == [3, 4, 5])
 
+# ---- the safety net (opt-in): what the three searches agreed on is never lost to the re-ranker -------------------------------------------------------
+check("the pure rule: the merged top five minus what is shown, in merged order, each once", P.safety_net(list("abcdefg"), list("xbz"), 5) == ["a", "c", "d", "e"] and P.safety_net(list("abcab"), [], 5) == ["a", "b", "c"] and P.safety_net(list("abc"), list("abcdef")) == [])
+check("a copy of a shown text counts as shown: identity is the passage hash", P.safety_net([1, 2, 3], [9], 5, ident=lambda x: "dup" if x in (2, 9) else str(x)) == [1, 3])
+eng_s = P.Engine(metas, M, FakeClient(), P.Spend(10**9), fts, None, sleep=lambda s: None, safety=True)
+ls_s = eng_s.lists_for(Q)
+check("with the net on, N and M are added to A, B and E", sorted(ls_s) == ["A today", "B no repeats", "E no multiplier", "M safety net", "N merged order (no re-ranker)"], sorted(ls_s))
+check("the net costs no extra call: the same two re-rank calls and two embeddings as without it", eng_s.client.rerank_calls == 2 and eng_s.client.embed_calls == 2, (eng_s.client.rerank_calls, eng_s.client.embed_calls))
+fused_probe = engine().retrieve(Q)["cand"]
+check("N is the merged order before the re-ranker, ten of them", ls_s["N merged order (no re-ranker)"] == fused_probe[:10])
+shown_h = {metas[r]["h"] for r in ls_s["A today"]}
+check("M holds only passages of the merged top five that A's ten do not show, no text twice, at most five", all(r in fused_probe[:5] for r in ls_s["M safety net"]) and not ({metas[r]["h"] for r in ls_s["M safety net"]} & shown_h)
+      and len({metas[r]["h"] for r in ls_s["M safety net"]}) == len(ls_s["M safety net"]) <= 5, [metas[r]["h"] for r in ls_s["M safety net"]])
+check("every passage of the merged top five is in A's ten or in M: it comes up somewhere in the list shown (at most fifteen)",
+      {metas[r]["h"] for r in fused_probe[:5]} <= shown_h | {metas[r]["h"] for r in ls_s["M safety net"]} and len(ls_s["A today"]) + len(ls_s["M safety net"]) <= 15)
+check("with the net off nothing changes: the lists are exactly those of before", sorted(engine().lists_for(Q)) == ["A today", "B no repeats", "E no multiplier"])
+# a case the re-ranker buries: a strong first-stage match that the re-ranker scores at the bottom must still come up through M
+buried = FakeClient({"BURIED-ONE": 0.0})
+metas3 = [dict(m) for m in metas] + [{"doc": 400, "i": 0, "pn": "1", "page": 1, "section": "reasoning", "h": "hburied", "text": "1. BURIED-ONE " + Q}]            # the question's own words: first by meaning and by keyword whatever the hashing seed
+M3 = np.stack([vec(m["text"]) for m in metas3]).astype(np.float16)
+eng_b = P.Engine(metas3, M3, buried, P.Spend(10**9), P.build_fts(metas3), None, sleep=lambda s: None, safety=True)
+lb = eng_b.lists_for(Q)
+fb = eng_b.retrieve(Q)["cand"]
+hb = [metas3[r]["h"] for r in lb["A today"]]
+check("a passage the first stage ranks in its top five but the re-ranker buries is not in A's ten, and is brought up by the net",
+      "hburied" in [metas3[r]["h"] for r in fb[:5]] and "hburied" not in hb and "hburied" in [metas3[r]["h"] for r in lb["M safety net"]], ([metas3[r]["h"] for r in fb[:5]], hb[:5], [metas3[r]["h"] for r in lb["M safety net"]]))
+# pooling: the net is pooled whole, N by its top five, and rows carry both arms
+q_fake = {"id": "R90", "domain": "X", "kind": "legal", "text": Q, "half": "dev"}
+rec_b = P.build_question(q_fake, lb, metas3, collections.defaultdict(set, {m["h"]: {m["doc"]} for m in metas3}), title)
+row_b = [r for r in rec_b["rows"] if r["h"] == "hburied"]
+check("the buried passage is a row to be marked, and its row says only which versions put it where (the pool is private)", len(row_b) == 1 and "M safety net" in row_b[0]["variants"] and "A today" not in row_b[0]["variants"], row_b)
+
 # weights: a header passage that the raw scores like a little more than a reasoning passage
 ov = FakeClient({"HEADER-ONE": 0.60, "REASON-ONE": 0.58})
 metas2 = [dict(m) for m in metas] + [

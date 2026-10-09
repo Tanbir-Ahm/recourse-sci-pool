@@ -1,0 +1,129 @@
+{
+ "questions_with_new_passages": 19,
+ "prompt_files": 19,
+ "chats": 38,
+ "new_passages": 143,
+ "by_kind": {
+  "core": 39,
+  "anchor": 38,
+  "extra": 66
+ },
+ "per_question": {
+  "R01": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2
+  },
+  "R02": {
+   "core": 1,
+   "extra": 1,
+   "anchors": 2,
+   "net": 1
+  },
+  "R04": {
+   "core": 3,
+   "extra": 4,
+   "anchors": 2,
+   "net": 4
+  },
+  "R06": {
+   "core": 3,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3
+  },
+  "R08": {
+   "core": 1,
+   "extra": 3,
+   "anchors": 2,
+   "net": 3
+  },
+  "R09": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3
+  },
+  "R11": {
+   "core": 4,
+   "extra": 4,
+   "anchors": 2,
+   "net": 4
+  },
+  "R12": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3
+  },
+  "R14": {
+   "core": 1,
+   "extra": 3,
+   "anchors": 2,
+   "net": 3
+  },
+  "R15": {
+   "core": 3,
+   "extra": 5,
+   "anchors": 2,
+   "net": 4
+  },
+  "R17": {
+   "core": 1,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2
+  },
+  "R19": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3
+  },
+  "R20": {
+   "core": 2,
+   "extra": 3,
+   "anchors": 2,
+   "net": 2
+  },
+  "R21": {
+   "core": 2,
+   "extra": 2,
+   "anchors": 2,
+   "net": 3
+  },
+  "R22": {
+   "core": 2,
+   "extra": 3,
+   "anchors": 2,
+   "net": 3
+  },
+  "R24": {
+   "core": 3,
+   "extra": 2,
+   "anchors": 2,
+   "net": 3
+  },
+  "R26": {
+   "core": 1,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2
+  },
+  "R28": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2
+  },
+  "R29": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2
+  }
+ },
+ "zip_sha256": "5fccb60371b6603c943333a4e8dd03ab5e977ce0e3e16a77566e9a935ef73996",
+ "zip_bytes": 104525
+}

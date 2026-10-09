@@ -1,0 +1,99 @@
+QUESTION ID: R11   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R11",
+  "marks": [
+    {"no": 16, "mark": "Yes", "evidence": "exact quote from passage 16", "reason": "one sentence", "confidence": "high"},
+    {"no": 17, "mark": "No", "evidence": "exact quote from passage 17", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 16,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+
+==============================================================================
+QUESTION: NCB made my cousin sign a statement in their office saying the ganja was his. Can they use that as his confession in court?
+==============================================================================
+
+--- PASSAGE 16 ---
+Judgment: STATE (CBI) versus MOHD. SALIM ZARGAR @ FAYAZ & ORS. (19-03-2025)
+   (Judgment id 1000256485, unnumbered paragraph, page 15)
+Text:
+(2) The confession so recorded shall be shown, read or played back to the person concerned and if he does not understand the language in which it is recorded, it shall be interpreted to him in a language which he understands and he shall be at liberty to explain or add to his confession. (3) The confession shall, if it is in writing, be— (a) signed by the person who makes the confession; and (b) by the police officer who shall certify under his own hand that such confession was taken in his presence and recorded by him and that the record contains a full and true account of the confession made by the person and such police officer shall make a memorandum at the end of the confession to the following effect: ‘I have explained to (name) that he is not bound to make a confession and that, if he does so, any confession he may make may be used as evidence against him and I believe that this confession was voluntarily made. It was taken in my presence and hearing and recorded by me and was read over to the person making it and admitted by him to be correct, and it contains a full and true account of the statement made by him. Sd/- Police Officer’ (4) Where the confession is recorded on any mechanical device, the memorandum referred to in sub-rule (3) insofar as it is applicable and a declaration made by the person making the confession that the said confession recorded on the mechanical device has been correctly recorded in his presence shall also be recorded in the mechanical device at the end of the confession.
+
+--- PASSAGE 17 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOs. 2-5 OF 2003 Ahmed Hussein Vali Mohammed Saiyed & Anr. .... Appellant(s) Versus State of Gujarat .... Respondent(s) WITH CRIMINAL APPEAL NOs.13-14, 216-217 & 8-11 OF 2003 J U D G
+   (Judgment id 34572, paragraph preamble/10, page 1)
+Text:
+(2) The confession so recorded shall be shown, read or played back to the person concerned and if he does not understand the language in which it is recorded, it shall be interpreted to him in a language which he understands and he shall be at liberty to explain or add to his confession. (3) The confession shall, if it is in writing, be – (a) signed by the person who makes the confession; and (b) by the police officer who shall also certify under his own hand that such confession was taken in his presence and recorded by him and that the record contains a full and true account of the confession made by the person and such police officer shall make a memorandum at the end of the confession to the following effect:- “I have explained to (name) that he is not bound to make a confession and that, if he does so, any confession he may make be used as evidence against him and I believe that this confession was voluntarily made. It was taken in my presence and hearing and recorded by me and was read over to the person making it and admitted by him to be correct, and it contains and full and true account of the statement made by him. Sd/- Police Officer.” (4) Where the confession is recorded on any mechanical device, the memorandum referred to in sub-rule(3) in so far as it is applicable and a declaration made by the person making the confession that the said confession recorded on the mechanical device has been correctly recorded in his presence shall also be recorded in the mechanical device at the end of the confession.
+
+--- PASSAGE 18 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.451-452 OF 2005 RAM SINGH … APPELLANT VERSUS CENTRAL BUREAU OF NARCOTICS …RESPONDENT J U D G M E N T CHANDRAMAULI KR. PRASAD, J.
+   (Judgment id 38022, paragraph 8/1, page 5)
+Text:
+8. In order to answer these questions it is expedient to examine the scheme of the Act. Section 42 of the Act confers on specified categories of officers power of entry, search, seizure and arrest without warrant or authorization. Section 43 thereof confers the power of seizure and arrest. Section 51 of the Act, inter alia, provides application of the provisions of Code of Criminal Procedure to all warrants issued and arrests, searches and seizures made under the Act in so far as they are not inconsistent with its provisions. Power to call for information to the officers specified is conferred by Section 67 of the Act and the confessions in the present case have been recorded in exercise of the said power. Section 25 of the Evidence Act makes confessional statement given by an accused before police officers inadmissible in evidence which cannot be brought on record by the prosecution to obtain conviction. Further Section 26 of the Evidence Act in no uncertain terms provides that the confession made while in custody of police officer cannot be proved against accused to support the criminal charge. Therefore, what needs to be considered is as to whether the officers of the Central Bureau of Narcotics, who had recorded the confessions, are police officers within the meaning of Section 25 and 26 of the Evidence Act.
+
+--- PASSAGE 19 ---
+Judgment: PETITIONER: BABU SINGH Vs. RESPONDENT: STATE OF PUNJAB DATE OF JUDGMENT: 28/08/1962 BENCH: ACT: Criminal Trial-Confession-Voluntariness of-Circumstances showing confession involuntary-Duty of Magistrate recording confession Code of Criminal Procedure, 1898 (Ac
+   (Judgment id 3783, unnumbered paragraph, page 7)
+Text:
+364 (3) will not vitiate the confessions nor will it make them inadmissible. There is some force in this contention, In this connection it would be necessary to consider s. 80 of the Indian Evidence Act as well. This section provides that whenever any document is produced before any Court, purporting to be a record or memorandum of the evidence, or of any part of the evidence, given by a witness in a judicial proceeding or before any officer authorised by law to take such Evidence or to be a statement or confession by any prisoner or accused person, taken in accordance with law, and purporting to be signed by any Judge or Magistrate or by any such officer as aforesaid, ’the Court shall presume that the document is genuine ; that any statements as to the circumstance under which it was taken, purporting to be made by the person signing it, are true, and that such evidence, statement or confession was duly taken. Mr. Khanna also relies on this section in support of his argument that the confessions must be taken to be proved in the light of the evidence given by the magistrate, and his certificate appended to the confessions. It is open to argument whether s. 80 of the Evidence Act would be available in a case where the recording of the confessions is irregular in the sense that s. 364 (3) has not been complied with.
+
+--- PASSAGE 20 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1397 OF 2007 U.O.I. …Appellant Versus Bal Mukund & Ors. …Respondents J U D G M E N T S.B. SINHA, J :
+   (Judgment id 34217, paragraph 34, page 23)
+Text:
+34. Reliance has also been placed on Kanhaiyalal v. Union of India [(2008) 4 SCC 668]. In that case, no question was put in cross-examination to the police officer (PW-9) whose evidence had been relied upon by the High Court and, thus, his evidence was stated to be corroborative of the statement made by the accused. However, it is interesting to note that in Francis Stanly Alias Stalin v. Intelligence Officer, Narcotic Control Bureau, Thiruvananthapuram [(2006) 13 SCC 210], this Court opined: “15. We are of the opinion that while it is true that a confession made before an officer of the Department of Revenue Intelligence under the NDPS Act may not be hit by Section 25 in view of the aforesaid decisions, yet such a confession must be subject to closer scrutiny than a confession made to private citizens or officials who do not have investigating powers under the Act. Hence the alleged confession made by the same appellant must be subjected to closer scrutiny than would otherwise be required.
+
+--- PASSAGE 21 ---
+Judgment: Commissioner of Police, New Delhi v. Narender Singh (05/04/2006)
+   (Judgment id 27626, unnumbered paragraph, page 5)
+Text:
+The Tribunal, therefore, was not correct in its view that the confession made by the respondent herein had not been proved in accordance with law. So far as the evidentiary value of the said confession is concerned, we may notice that Section 25 of the Evidence Act and Section 162 of the Code of Criminal Procedure provides for an embargo as regard admissibility of a confession in a criminal trial. The said provisions have per se no application in a departmental proceeding. Section 25 of the Indian Evidence Act and Section 162 (c) of the Code of Criminal read thus : "25. Confession to police officer not to be proved.- No confession made to a police officer, shall be proved as against a person accused of any offence." 162. Statements to police not to be signed : Use of statements in evidence.-(1) No statement made by any person to a police officer in the course of an investigation under this Chapter, shall, if reduced to writing, be signed by the person making it; nor shall any such statement or any record thereof, whether in a police diary or otherwise, or any part of such statement or record, be used for any purpose, save as hereinafter provided, at any inquiry or trial in respect of any offence under investigation at the time when such statement was made " "Offence" has been defined in Section 2(n) of the Code to mean : "(n).
+
+--- PASSAGE 22 ---
+Judgment: Central Bureau of Investigation v. Ashiq Hussain Faktoo & Ors. (30/01/2003)
+   (Judgment id 18877, unnumbered paragraph, page 3)
+Text:
+The Respondents have been informed that the confessional statements made by them could be used against them as evidence. They were then asked whether they still wanted to make the confessional statements. They have been told that they are not bound to make the confessional statements and that if they make the confessional statements the same would be used against them and that therefore they should think over the matter and let the Officer know whether they still wanted to make the confessional statements. The Superintendent of Police, CBI has signed as such. The Respondents have also signed. This clearly shows that the Respondents were aware that they were making their confessional statements before the Superintendent of Police, CBI. The Respondents were then given one day’s time to think over the matter. On the next day the Superintendent of Police, CBI again informed them that they were not bound to make the confessions and that if they make the confessions the same could be used as evidence against them. It has been recorded that even after this warning they were willing to make the confessions. It has been recorded that the Superintendent of Police, CBI was satisfied that the confession was being made voluntarily. This note has been signed by the Superintendent of Police, CBI as well as the concerned Respondent.
+
+--- PASSAGE 23 ---
+Judgment: Kanhaiyalal v. Union of India (09/01/2008)
+   (Judgment id 30081, paragraph 38, page 10)
+Text:
+38. Considering the provisions of Section 67 of the N.D.P.S. Act and the views expressed by this Court in Raj Kumar Karwal's case (supra), with which we agree, that an officer vested with the powers of an Officer-in-Charge of a Police Station under Section 53 of the above Act is not a "Police Officer" within the meaning of Section 25 of the Evidence Act, it is clear that a statement made under Section 67 of the N.D.P.S. Act is not the same as a statement made under Section 161 of the Code, unless made under threat or coercion. It is this vital difference, which allows a statement made under Section 67 of the N.D.P.S. Act to be used as a confession against the person making it and excludes it from the operation of Sections 24 to 27 of the Evidence Act.
+
+--- PASSAGE 24 ---
+Judgment: Opening header not available
+   (Judgment id 32020, unnumbered paragraph, page 6)
+Text:
+In Kanhaiyalal v. Union of India (2008 (1) SCALE 165) at para 7 it was noted as follows: “7. Since the appellant Kanhaiyalal was convicted on the basis of the statement made by him under Section 67 of the NDPS Act, a question has been raised whether such statement made to an officer within the meaning of Section 42 of the said Act could be treated as a confessional statement and whether the accused could be convicted on the basis thereof in the absence of any other corroborative evidence.” 9. Similarly in A.K. Mehaboob v. The Intelligence Officer, Narcotics Control Bueau (JT 2001 (1) SC 614) it was observed as follows: “4. Smt. Malini Poduval, learned counsel for the appellants contended that Exhibit P-8 cannot be relied on for more than one reason. One is that the said statement had been retracted by the accused himself. Second is that on 11.8.1994 appellant- Naushad informed the Magistrate in writing that the said statement had been coaxed out from him. The third is that the said retracted confession had no corroboration and therefore cannot be made the basis for conviction. 5. There is nothing to indicate that Exhibit P-8 had been elicited from A-2 by any coercion, threat or force and therefore the learned Single Judge of the High Court had spurned down that contention. Regarding the complaint alleged to have been made by appellant-Naushad on 11.3.1994 we have perused it.
+
+--- PASSAGE 25 ---
+Judgment: “ REPORTABLE” IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.___445______OF 2013 (Arising out of SLP (Crl.) No. 9707 of 2012) State of Maharashtra …. Appellant Versus Kamal Ahmed Mohammed Vakil Ansari & Ors. …. Respondents J U
+   (Judgment id 40141, paragraph 80, page 55)
+Text:
+80. Presumption as to documents produced as record of evidence - Whenever any document is produced before any Court, purporting to be a record or memorandum of the evidence, or of any part of the evidence, given by a witness in a judicial proceeding or before any officer authorized by law to take such evidence, or to be statement or confession by any prisoner or accused person, taken in accordance with law, and purporting to be signed by any Judge or Magistrate, or by any such officer as aforesaid, the Court shall presume - that the document is genuine; that any statements as to the circumstances under which it was taken, purporting to be made by the person signing it, are true, and that such evidence, statement or confession was duly taken.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R11 (passages 16, 17, 18, 19, 20, 21, 22, 23, 24, 25).

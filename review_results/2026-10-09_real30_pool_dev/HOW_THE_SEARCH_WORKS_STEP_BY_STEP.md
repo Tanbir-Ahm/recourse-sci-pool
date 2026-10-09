@@ -42,6 +42,10 @@
 - (Re-run on 2026-10-09 for the marks analysis, with Q15 now reproducing: 64 of 95 outside the merged top 5, 52 of 95 outside its top 10, deepest position 58; see `review_results/2026-10-09_real30_marking_analysis/RERANKER_IMPORTANCE.md`.)
 - Q15 was left out of these figures: its retrieval did not reproduce exactly on the rerun (6 of the recorded top-10 passages were not among the recomputed candidates; the question embedding and the keyword ranking can differ a little between calls). The other 18 reproduced exactly.
 
+## 4b. The safety net (added 2026-10-09, opt-in with `--safety-net`; not used in the run above)
+
+Because the re-ranker decides most of what is shown and made the named case's position worse on 4 of 14 questions, the recipe can also keep what the three searches agreed on: the list to show is **A's ten, then whatever of the merged top 5 A's ten do not show** (a copy of the same text counts as shown), at most 15 passages. It costs no extra call. It brings up nothing that was not in the merged top 5 (so it does not rescue a case that is not among the 60 candidates). See `review_results/2026-10-09_real30_rerank_test_pack/README.md`.
+
 ## 5. What was NOT used
 
 - **The Overruled Register** was not used in any search (see `HOW_IT_SEARCHED_AND_THE_REGISTER.md`).

@@ -1,0 +1,81 @@
+QUESTION ID: R26   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 7 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R26",
+  "marks": [
+    {"no": 11, "mark": "Yes", "evidence": "exact quote from passage 11", "reason": "one sentence", "confidence": "high"},
+    {"no": 12, "mark": "No", "evidence": "exact quote from passage 12", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 11,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 7 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 11, 12, 13, 14, 15, 16, 17
+
+==============================================================================
+QUESTION: Standard for suspension of a sentence of life imprisonment pending appeal under Section 430 BNSS, and whether the appellate court may re-appreciate evidence at that stage.
+==============================================================================
+
+--- PASSAGE 11 ---
+Judgment: MAFABHAI MOTIBHAI SAGAR versus STATE OF GUJARAT & ORS. (21-10-2024)
+   (Judgment id 1000256037, paragraph 2, page 4)
+Text:
+2. The issue involved in this appeal is as regards the legality of the conditions imposed while remitting the life sentence of the appellant in the exercise of powers under sub-section (1) of Section 432 of the Code of Criminal Procedure, 1973 (for short, ‘the CrPC’). There is an identical provision in the Bharatiya Nagarik Suraksha Sanhita, 2023 (for short, ‘the BNSS’) in the form of sub-section (1) of Section 473. FACTUAL ASPECTS
+
+--- PASSAGE 12 ---
+Judgment: OMPRAKASH SAHNI versus JAI SHANKAR CHAUDHARY & ANR. ETC. (02-05-2023)
+   (Judgment id 1000254993, paragraph 20, page 14)
+Text:
+20. Section 389 of the CrPC reads thus: “389. Suspension of sentence pending the appeal; release of appellant on bail.—(1) Pending any appeal by a convicted person, the Appellate Court may, for reasons to be recorded by it in writing, order that the execution of the sentence or order appealed against be suspended and, also, if he is in confinement, that he be released on bail, or on his own bond. Provided that the Appellate Court shall, before releasing on bail or on his own bond a convicted person who is convicted of an offence punishable with death or imprisonment for life or imprisonment for a term of not less than ten years, shall give opportunity to the Public Prosecutor for showing cause in writing against such release: Provided further that in cases where a convicted person is released on bail it shall be open to the Public Prosecutor to file an application for the cancellation of the bail. (2) The power conferred by this section on an Appellate Court may be exercised also by the High Court in the case of an appeal by a convicted person to a Court subordinate thereto. (3) Where the convicted person satisfies the Court by which he is convicted that he intends to present an appeal, the Court shall,— (i) where such person, being on bail, is sentenced to imprisonment for a term not exceeding three years, or (ii) where the offence of which such person has been convicted is a bailable one, and he is on bail, order that the convicted person be released on bail, unless there are special reasons for refusing bail, for such period as will afford sufficient time to present the appeal and obtain the orders of the Appellate Court under sub-section (1), and the sentence of imprisonment shall, so long as he is so released on bail, be deemed to be suspended. (4) When the appellant is ultimately sentenced to imprisonment for a term or to imprisonment for life, the time during which he is so released shall be excluded in computing the term for which he is so sentenced.”
+
+--- PASSAGE 13 ---
+Judgment: STATE OF PUNJAB v. DEEPAK MATTU (18/09/2007)
+   (Judgment id 29544, paragraph 5, page 2)
+Text:
+5. Section 389 of the Code of Criminal Procedure, 1973 reads as under:- "389. Suspension of sentence pending the appeal; release of appellant on bail - (1) Pending any appeal by a convicted person, the Appellate Court may, for reasons to be recorded by it in writing, order that the execution of the sentence or order appealed against be suspended and, also, if he is in confinement, that he be released on bail or on his own bond: Provided that the Appellate Court shall, before releasing on bail or on his own bond a convicted person who is convicted of an offence punishable with death or imprisonment for life or imprisonment for a term of not less than ten years, shall give opportunity to the Public Prosecutor for showing cause in writing against such release. Provided further that in cases where a convicted person is released on bail it shall be open to the Public Prosecutor to file an application for the cancellation of the bail. (2) The power conferred by this section on an Appellate Court may be exercised also by the High Court in the case of an appeal by a convicted person to a Court subordinate thereto. (3) Where the convicted person satisfies the Court by which he is convicted that he intends to present an appeal, the Court shall - (i) where such person, being on bail, is sentenced to imprisonment for a term not exceeding three years, or (ii) where the offence of which such person has been convicted is a bailable one, and he is on bail, order that the convicted person be released on bail, unless there are special reasons for refusing bail, for such period as will afford sufficient time to present the appeal and obtain the orders of the Appellate Court under sub-section (1), and the sentence of imprisonment shall, so long as he is so released on bail, be deemed to be suspended. (4) When the appellant is ultimately sentenced to imprisonment for a term or to imprisonment for life, the time during which he is so released shall be excluded in computing the term for which he is so sentenced."
+
+--- PASSAGE 14 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. OF 2009 (Arising out of SLP (Crl.) No.8190 of 2008) Masood Ali Khan ……Appellant Versus State of U.P. & Ors. ……Respondents J U D G M E N T Dr. ARIJIT PASAYAT, J.
+   (Judgment id 33689, paragraph 7, page 5)
+Text:
+7. Section 389 of the Code empowers the Court to suspend the sentence pending the appeal and for release of the appellant on bail. Section 389 so far relevant reads as follows: “389. Suspension of sentence pending the appeal; release of appellant on bail – (1) Pending any appeal by a convicted person, the Appellate Court may, for reasons to be recorded by it in writing, order that he execution of the sentence or order appealed against be suspended and, also, if he is in confinement, that he be released on bail, or on his own bond. Provided that the Appellate Court shall, before releasing on bail or on his own bond a convicted person who is convicted of an offence punishable with death or imprisonment for life or imprisonment for a term of not less than ten years, shall give opportunity to the Public Prosecutor for showing cause in writing against such release: Provided further that in cases where a convicted person is released on bail it shall be open to the Public Prosecutor to file an application for the cancellation of the bail. (2) The power conferred by this section on an Appellate Court may be exercised also by the High Court in the case of an appeal by convicted person to a Court subordinate thereto. (3) Where the convicted person satisfies the Court by which he is convicted that he intends to present an appeal, the Court shall, - (i) where such person, being on bail, is sentenced to imprisonment for a term not exceeding three years, or (ii) where the offence of which such person has been convicted is a baliable one, and he is on bail, order that the convicted person be released on bail unless there are special reasons for refusing bail, for such period as will afford sufficient time to present the appeal and obtain the orders of the Appellate Court under subsection (1), and the sentence of imprisonment shall, so long as he is so released on bail, be deemed to be suspended. (4) When the appellant is ultimately sentenced to imprisonment for a term or to imprisonment for life, the time during which he is so released shall be excluded in computing the term for which he is so sentenced.”
+
+--- PASSAGE 15 ---
+Judgment: CENTRAL BUREAU OF INVESTIGATION versus ASHOK SIRPAL (24-10-2024)
+   (Judgment id 1000256057, paragraph 5/1, page 5)
+Text:
+5. Section 389 of the CrPC reads thus: “389. Suspension of sentence pending the appeal; release of appellant on bail.—(1) Pending any appeal by a convicted person, the Appellate Court may, for reasons to be recorded by it in writing, order that the execution of the sentence or order appealed against be suspended and, also, if he is in confinement, that he be released on bail, or on his own bond: Provided that the Appellate Court shall, before releasing on bail or on his own bond a convicted person who is convicted of an offence punishable with death or imprisonment for life or imprisonment for a term of not less than ten years, shall give opportunity to the Public Prosecutor for showing cause in writing against such release: Provided further that in cases where a convicted person is released on bail it shall be open to the Public Prosecutor to file an application for the cancellation of the bail. (2) The power conferred by this section on an Appellate Court may be exercised also by the High Court in the case of an appeal by a convicted person to a Court subordinate thereto. (3) Where the convicted person satisfies the Court by which he is convicted that he intends to present an appeal, the Court shall, — (i) where such person, being on bail, is sentenced to imprisonment for a term not exceeding three years, or (ii) where the offence of which such person has been convicted is a bailable one, and he is on bail, order that the convicted person be released on bail, unless there are special reasons for refusing bail, for such period as will afford sufficient time to present the appeal and obtain the orders of the Appellate Court under sub-section (1); and the sentence of imprisonment shall, so long as he is so released on bail, be deemed to be suspended.
+
+--- PASSAGE 16 ---
+Judgment: The Judgment of the Court was delivered by J. B. PARDIWALA, J.
+   (Judgment id 1000254993, paragraph 27, page 18)
+Text:
+27. In Bhagwan Rama Shinde Gosai and Others v. State of Gujarat, reported in (1999) 4 SCC 421, wherein the appellants were convicted by the Trial Court against which, the appeal was pending before the High Court, the High Court successively rejected the prayer for grant of bail till the pendency of appeal after suspending the sentence.Thus, it has been held as follows: “3. When a convicted person is sentenced to a fixed period of sentence and when he files an appeal under any statutory right, suspension of sentence can be considered by the appellate court liberally unless there are exceptional circumstances. Of course, if there is any statutory restriction against suspension of sentence it is a different matter. Similarly, when the sentence is life imprisonment the consideration for suspension of sentence could be of a different approach. But if for any reason the sentence of a limited duration cannot be suspended every endeavour should be made to dispose of the appeal on merits more so when a motion for expeditious hearing of the appeal is made in such cases. Otherwise the very valuable right of appeal would be an exercise in futility by efflux of time. When the appellate court finds that due to practical reasons such appeals cannot be disposed of expeditiously the appellate court must bestow special concern in the matter of suspending the sentence so as to make the appeal right, meaningful and effective. Of course, appellate courts can impose similar conditions when bail is granted.” (Emphasis supplied)
+
+--- PASSAGE 17 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 190 OF 2014 Tara Singh & Ors. …Petitioners Versus Union of India & Ors. ...Respondents J U D G M E N T Dipak Misra, J. In this writ petition preferred under Article 32 of Con
+   (Judgment id 43727, paragraph 14, page 11)
+Text:
+14. Having appreciated the analysis made in the aforesaid verdict, we may advert to the statutory scheme pertaining to suspension, remission and commutation of sentence under the CrPC. Section 432 deals with power to suspend or remit sentences. Section 433 deals with power to commute sentences. Section 433-A lays the postulate for restrictions on powers of remission or commutation in certain cases. The said provision reads as follows:- “433-A. Restriction on powers of remission or commutation in certain cases. – Notwithstanding anything contained in Section 432, where a sentence of imprisonment for life is imposed on conviction of a person for an offence for which death is one of the punishments provided by law, or where the sentence of death imposed on a person has been commuted under Section 433 into one of imprisonment for life, such person shall not be released from prison unless he had served at least fourteen years of imprisonment.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R26 (passages 11, 12, 13, 14, 15, 16, 17).

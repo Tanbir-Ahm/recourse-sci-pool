@@ -20,7 +20,7 @@ import shutil
 import sys
 
 ESCAPES = re.compile(r"\\([_\[\]])")
-PROMPT_OPEN = re.compile(r"^\s*QUESTION ID:\s*\S+\s*\(prompt version")
+PROMPT_OPEN = re.compile(r"^\s*QUESTION ID:\s*\S+\s*\([^)\n]*prompt version")          # '(prompt version: order A)' and '(top-up batch, prompt version: order A)'
 PROMPT_CLOSE = re.compile(r"END OF PASSAGES\.\s*Now reply with the single JSON object")
 
 

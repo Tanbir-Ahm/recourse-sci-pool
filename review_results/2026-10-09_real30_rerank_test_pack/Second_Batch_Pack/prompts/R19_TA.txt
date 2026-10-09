@@ -1,0 +1,87 @@
+QUESTION ID: R19   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 8 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R19",
+  "marks": [
+    {"no": 12, "mark": "Yes", "evidence": "exact quote from passage 12", "reason": "one sentence", "confidence": "high"},
+    {"no": 13, "mark": "No", "evidence": "exact quote from passage 13", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 12,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 8 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 12, 13, 14, 15, 16, 17, 18, 19
+
+==============================================================================
+QUESTION: My daughter is 16, her teacher misbehaved with her in school and touched her wrongly, we filed police case. Now the whole village and the school trust is pressuring my husband, he signed some compromise paper, and the teacher's people say High Court will cancel the FIR because of compromise. I don't want to compromise, my daughter is scared to go to school. Can they really close the case like this?
+==============================================================================
+
+--- PASSAGE 12 ---
+Judgment: ANIL MISHRA versus STATE OF U.P. & ORS. (01-03-2024)
+   (Judgment id 1000255562, paragraph 11/3, page 6)
+Text:
+In this category of cases, the High Court may quash the criminal proceedings if in its view, because of the compromise between the offender and the victim, the possibility of conviction is remote and bleak and continuation of the criminal case would put the accused to great oppression and prejudice and extreme injustice would be caused to him by not quashing the criminal case despite full and complete settlement and compromise with the victim. In other words, the High Court must consider whether it would be unfair or contrary to the interest of justice to continue with the criminal proceeding or continuation of the criminal proceeding would tantamount to abuse of process of law despite settlement and compromise between the victim and the wrongdoer and whether to secure the ends of justice, it is appropriate that the criminal case is put to an end and if the answer to the above question(s) is in the affirmative, 392 the High Court shall be well within its jurisdiction to quash the criminal proceeding.”
+
+--- PASSAGE 13 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 1567 of 2007 Kantilal Martaji Pandor …… Appellant Versus State of Gujarat & Anr. ….. Respondents J U D G M E N T A. K. PATNAIK, J. This is an appeal by way of special leave under
+   (Judgment id 40593, paragraph 2, page 1)
+Text:
+2. The facts very briefly are that the appellant was married to Laxmiben in 1980. The appellant, who was a teacher, used to travel in a bus along with Amriben, who was also a teacher, for their work in their respective schools located at a distance of 2 kms. from each other. The appellant and Amriben fell in love and got married in 1990. A daughter was born to Amriben in 1991. The appellant, Laxmiben and Amriben were living together in different portions of one house of the appellant in village Dhuleta Palla. On 26.03.1992, a letter written by Amriben was received in Shamlaji Police Station. In this letter, Amriben alleged inter alia that the appellant was more interested in money and not in love and he had threatened and kidnapped her, although he had a wife and three children and the appellant had cheated her and persuaded her to have civil marriage on 21.08.1990. She further alleged in the letter that after marriage the appellant’s family was living on her salary and the appellant had started torturing her to a limit which was no longer tolerable by her and she was also not given meals and the appellant was threatening to kill her and for all this the appellant and his first wife Laxmiben and his other family members were involved. On 26.03.1992 in the afternoon, the appellant came to the school of Amriben and enquired from the Principal of the school and the teacher of Amriben as to whether Amriben had made a complaint to the Police Station. That evening, the appellant who usually took Amriben back from her school instead requested the Principal of her school, Ms. Timothibhai, to take seat on the scooter with him and as a result Amriben had to walk along with Lilavatiben, who was holding her little daughter, to the bus stand. During the night of 26.03.1992, the appellant slept with Laxmiben while Amriben slept with her new born daughter in another room of the house. On 27.03.1992, early in the morning, the appellant and Laxmiben heard the little daughter of Amriben crying and they found that Amriben had jumped into the well and had died.
+
+--- PASSAGE 14 ---
+Judgment: RAMJI LAL BAIRWA & ANR. versus STATE OF RAJASTHAN & ORS. (07-11-2024)
+   (Judgment id 1000256082, paragraph 25, page 22)
+Text:
+25. Thus, in unambiguous terms this Court held that before exercising the power under Section 482, Cr. PC the High Court must have due regard to the nature and gravity of the crime besides observing and holding that heinous and serious offences could not be quashed even though a victim or victim’s family and the offender had settled the dispute. This Court held that such offences are not private in nature and have a serious impact on the society. Having understood the position of law on the second question that it is the bounden duty of the court concerned to consider whether the compromise is just and fair besides being free from undue pressure we will proceed to consider the matter further. A bare perusal of the impugned order dated 04.02.2022 would reveal that the High Court has erred in not bestowing proper consideration the law laid down in Gian Singh’s case (supra) while rendering the same. The impugned order would reveal that the allegations contained in the subject FIR was not at all even adverted to, before quashing the same. We have referred to the allegations which are of serious nature revealed from the FIR. The complaint in this case is annexed to the FIR produced in this proceeding as Annexure P-1. In the said complaint which led to the registration of the FIR reads thus:- “Hence my report may be lodged and action may be taken against the offender Vimal Kumar Gupta as he is making pressure on me not to lodge report.” (underline supplied)
+
+--- PASSAGE 15 ---
+Judgment: [REPORTABLE] IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.686/2014 (arising out of S.L.P.(Criminal) No.9547 of 2013) Narinder Singh & Ors. ……Appellants Vs. State of Punjab & Anr. …Respondents J U D G M E N T A.K.SIKRI,J.
+   (Judgment id 41348, paragraph 29, page 24)
+Text:
+29. At this juncture, we would like also to add that the timing of settlement would also play a crucial role. If the settlement is arrived at immediately after the alleged commission of offence when the matter is still under investigation, the High Court may be somewhat liberal in accepting the settlement and quashing the proceedings/investigation. Of course, it would be after looking into the attendant circumstances as narrated in the previous para. Likewise, when challan is submitted but the charge has not been framed, the High Court may exercise its discretionary jurisdiction. However, at this stage, as mentioned above, since the report of the I.O. under Section 173,Cr.P.C. is also placed before the Court it would become the bounding duty of the Court to go into the said report and the evidence collected, particularly the medical evidence relating to injury etc. sustained by the victim. This aspect, however, would be examined along with another important consideration, namely, in view of settlement between the parties, whether it would be unfair or contrary to interest of justice to continue with the criminal proceedings and whether possibility of conviction is remote and bleak. If the Court finds the answer to this question in affirmative, then also such a case would be a fit case for the High Court to give its stamp of approval to the compromise arrived at between the parties, inasmuch as in such cases no useful purpose would be served in carrying out the criminal proceedings which in all likelihood would end in acquittal, in any case.
+
+--- PASSAGE 16 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No.445 OF 2016 (Arising out of SLP(Crl.)No.3821 of 2010) J.RAMESH KAMATH & ORS. .......APPELLANTS VERSUS MOHANA KURUP & ORS. .......RESPONDENTS J U D G M E N T JAGDISH SINGH KHEHAR, 
+   (Judgment id 43626, paragraph 61/1, page 9)
+Text:
+61. The position that emerges from the above discussion can be summarised thus: the power of the High Court in quashing a criminal proceeding or FIR or complaint in exercise of its inherent jurisdiction is distinct and different from the power given to a criminal court for compounding the offences under Section 320 of the Code. Inherent power is of wide plenitude with no statutory limitation but it has to be exercised in accord with the guideline engrafted in such power viz; (i) to secure the ends of justice, or (ii) to prevent abuse of the process of any Court. In what cases power to quash the criminal proceeding or complaint or F.I.R may be exercised where the offender and the victim have settled their dispute would depend on the facts and circumstances of each case and no category can be prescribed. However, before exercise of such power, the High Court must have due regard to the nature and gravity of the crime. Heinous and serious offences of mental depravity or offences like murder, rape, dacoity, etc. cannot be fittingly quashed even though the victim or victim’s family and the offender have settled the dispute. Such offences are not private in nature and have serious impact on society. Similarly, any compromise between the victim and the offender in relation to the offences under special statutes like the Prevention of Corruption Act or the offences committed by public servants while working in that capacity, etc; cannot provide for any basis for quashing criminal proceedings involving such offences.
+
+--- PASSAGE 17 ---
+Judgment: MANI PUSHPAK JOSHI versus STATE OF UTTARAKHAND & ANR. (17-10-2019)
+   (Judgment id 1000252092, paragraph 2, page 3)
+Text:
+2. An FIR was lodged by Harpreet Singh, father of prosecutrix (aged about 6 years), on April 19, 2017 at 1:23 p.m., about sexual assault on her daughter. The FIR reads as under: 1 for short, ‘Code’ UTTARAKHAND & ANR. “My daughter xxxx who is 6 years old has been mentally and physically harassed for 4-5 months in her school Aurum the Global School Haldwani. My daughter was very upset mentally for several days and would cry bitterly when asked to go to School. On my asking several times, she told me and my wife that in her School a teacher touched her private parts deliberately. He would take her to the bathroom, close her eyes and then would insert a stick like object in her vagina. This teacher had frightened her and he had instigated her not to talk about this matter to anyone. My daughter even told me that, whenever she went to the bathroom, he would follow her, and molest her there. Today, we showed the picture of this teacher to our daughter by the medium of facebook, she recognized him, and as a result we came to know that the name of this teacher is Bablu Bisht. Sir, the owner of the School Ankit Joshi, Principal Gauri Vohra and Class Teacher Nameeta Joshi are equally guilty (at fault) in this case. It is there pleaded of you, to kindly take stern action against the culprits.”
+
+--- PASSAGE 18 ---
+Judgment: DAXABEN versus THE STATE OF GUJARAT & ORS. (29-07-2022)
+   (Judgment id 1000254159, paragraph 38, page 19)
+Text:
+38. However, before exercising its power under Section 482 of the Cr.P.C. to quash an FIR, criminal complaint and/or criminal proceedings, the High Court, as observed above, has to be circumspect and have due regard to the nature and gravity of the offence. Heinous or serious crimes, which are not private in nature and have a serious impact on society cannot be quashed on the basis of a compromise between the offender and the complainant and/or the victim. Crimes like murder, rape, burglary, dacoity and even abetment to commit suicide are neither private nor civil in nature. Such crimes are against the society. In no circumstances can prosecution be quashed on compromise, when the offence is serious and grave and falls within the ambit of crime against society. 14 (1980) 2 SCC 471 15 (2021) 5 SCC 524
+
+--- PASSAGE 19 ---
+Judgment: JASWANT SINGH v. STATE OF PUNJAB & ANR. (Criminal Appeal No.1233 of 2021) OCTOBER 20, 2021 [DINESH MAHESHWARI AND VIKRAM NATH, JJ.] Code of Criminal Procedure, 1973 – s.482 – High Court declined to exercise its powers u/s.482 CrPC to quash criminal proceedings
+   (Judgment id 1000253364, paragraph 17/3, page 7)
+Text:
+In this category of cases, the High Court may quash the criminal proceedings if in its View, because of the compromise between the offender and the victim, the possibility of conviction is remote and bleak and continuation of the criminal case would put the accused to great oppression and prejudice and extreme injustice would be caused to him by not quashing the criminal case despite full and complete settlement and compromise with the victim. In other words, the High Court must consider whether it would be unfair or contrary to the interest of justice to continue with the criminal proceeding or continuation of the criminal proceeding would tantamount to abuse of process of law despite settlement and compromise between the victim and the wrongdoer and whether to secure the ends of justice, it is appropriate that the criminal case is put to an end and if the answer to the above question(s) is in the affirmative, the High Court shall be well within its jurisdiction to quash the criminal proceeding.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R19 (passages 12, 13, 14, 15, 16, 17, 18, 19).

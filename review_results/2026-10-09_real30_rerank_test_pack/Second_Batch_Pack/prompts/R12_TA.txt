@@ -1,0 +1,87 @@
+QUESTION ID: R12   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 8 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R12",
+  "marks": [
+    {"no": 13, "mark": "Yes", "evidence": "exact quote from passage 13", "reason": "one sentence", "confidence": "high"},
+    {"no": 14, "mark": "No", "evidence": "exact quote from passage 14", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 13,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 8 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 13, 14, 15, 16, 17, 18, 19, 20
+
+==============================================================================
+QUESTION: We had oral deal to sell our godown in Kanpur, buyer paid part only and then stopped, after one year we sold to someone else. Now the buyer's wife filed FIR under 420 and 406 IPC and even 354 against my mother!! Police filed chargesheet also. Magistrate earlier itself said it was civil matter. We never cheated anyone, it was their default. Can High Court quash this, and how long will this harassment go on?
+==============================================================================
+
+--- PASSAGE 13 ---
+Judgment: The Judgment of the Court was delivered by R. SUBHASH REDDY, J.
+   (Judgment id 1000252091, paragraph 9/2, page 7)
+Text:
+The second complaint filed by the appellant is self-explanatory and he is forcefully made to sign the sale deed which were executed subsequently for the lands covered by Survey Nos.115 and 117 of Ballur Village. Mere filing of the suits for recovery of the money and complaint filed under Section 138 of the N.I. Act by itself is no ground to quash the proceedings in the complaints filed by the appellant herein. When cheating and criminal conspiracy are alleged against the accused, for advancing a huge sum of Rs.9 crores, it is a matter which is to be tried, but at the same time the High Court has entered into the disputed area, at the stage of considering the petitions filed under Section 482, Cr.P.C. It is fairly well settled that power under Section 482 Cr.P.C. is to be exercised sparingly when the case is not made out for the offences alleged on the reading of the complaint itself or in cases where such complaint is filed by way of abuse of the process. Whether any Schedules were appended to the agreement or not, a finding is required to be recorded after full fledged trial. Further, as the contract is for the purpose of procuring the land, as such the same is of civil nature, as held by the High Court, is also no ground for quashing. Though the contract is of civil nature, if there is an element of cheating and fraud it is always open for a party in a contract, to prosecute the other side for the offences alleged.
+
+--- PASSAGE 14 ---
+Judgment: VIJAY KUMAR GHAI & ORS. versus THE STATE OF WEST BENGAL & ORS. (22-03-2022)
+   (Judgment id 1000253806, paragraph 35, page 24)
+Text:
+35. In Vesa Holdings Pvt. Ltd. & Anr. Vs. State of Kerala & Ors.27, this Court made the following observation:- “13. It is true that a given set of facts may make out a civil wrong as also a criminal offence and only because a civil remedy may be available to the complainant that itself cannot be ground to quash a criminal proceeding. The real test is whether the allegations in the complaint disclose the criminal offence of cheating or not. In the present case, there is nothing to show that at the very inception there was any inception on behalf of an accused person to cheat which is a condition precedent for an offence u/s 420 IPC. In our view, the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be mala fide or otherwise an abuse of the process of the courts. Superior courts while exercising this power should also strive to serve the ends of justice. In our opinion, in view of these facts allowing the police investigation to continue would amount to anabuse of the process of the court and the High Court committed an error in refusing to exercise the power under Section 482 Cr.P.C to quash the proceedings.” 26 (2000) 4 SCC 168 27 (2015) 8 SCC 293
+
+--- PASSAGE 15 ---
+Judgment: PETITIONER: AJAY AGARWAL Vs. RESPONDENT: UNION OF INDIA AND ORS DATE OF JUDGMENT05/05/1993 BENCH: RAMASWAMY, K. BENCH: RAMASWAMY, K. SAHAI, R.M. (J) CITATION: 1993 AIR 1637 1993 SCR (3) 543 1993 SCC (3) 609 JT 1993 (3) 203 1993 SCALE (2)757 ACT: Penal Code, 18
+   (Judgment id 12017, unnumbered paragraph, page 16)
+Text:
+The law had developed several or different models or technics to broach the scope of conspiracy. One such model is that of a chain, where each party performs even without knowledge of other a role that aids succeeding parties in accomplishing the criminal objectives of the conspiracy. An illustration, of a single conspiracy, its parts bound together as links in a chain, is the process of procuring and distributing narcotics or an illegal foreign drug for sale in different parts of the (,lobe. In such a case, smugglers, middlemen and retailers are privies to a single conspiracy to smuggle and distribute narcotics. The smugglers knew that the middlemen must sell to retailers-, and the retailers knew that the middlemen must buy of importers of someone or another. Thus the conspirators at one end of the chain knew that the unlawful business would not, and could not, stop with their buyers, and those at the other end knew that it had not begun with their settlers. The accused embarked upon a venture in all parts of which each was a participant and an abettor in the sense that, the success of the part with which he was immediately concerned, was dependent upon the success of the whole. It should also be considered as a spoke in the hub. There is a rim to bind all the spokes to gather in a single conspiracy.
+
+--- PASSAGE 16 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL/CRIMINAL APPELLATE JURISDICTION CIVIL APPEAL NO.__4540________OF 2013 [Arising out of S.L.P.(C) No.13120 OF 2013] CHANDRAN RATNASWAMI APPELLANT VERSUS K.C. PALANISAMY AND OTHERS RESPONDENTS WITH CRIMINAL APPEAL NOs. 736-737 
+   (Judgment id 40396, paragraph 7, page 38)
+Text:
+7. In our view petition of complaint does not disclose any criminal offence at all much less any offence either under Section 420 or Section 120-B IPC and the present case is a case of purely civil dispute between the parties for which remedy lies before a civil court by filing a properly constituted suit. In our opinion, in view of these facts allowing the police investigation to continue would amount to an abuse of the process of court and to prevent the same it was just and expedient for the High Court to quash the same by exercising the powers under Section 482 CrPC which it has erroneously refused.”
+
+--- PASSAGE 17 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 78 OF 2013 (Arising out of S.L.P. (Crl.) No. 2089 of 2011) Arun Bhandari ... Appellant Versus State of U.P. and others ...Respondents J U D G M E N T Dipak Misra, J. Leave grante
+   (Judgment id 39911, paragraph 17, page 20)
+Text:
+17. In Murari Lal Gupta (supra) a two-Judge Bench quashed the criminal complaint instituted under Sections 406 and 420 of the IPC on the following analysis: - “The complaint does not make any averment so as to infer any fraudulent or dishonest inducement having been made by the petitioner pursuant to which the respondent parted with the money. It is not the case of the respondent that the petitioner does not have the property or that the petitioner was not competent to enter into an agreement to sell or could not have transferred title in the property to the respondent. Merely because an agreement to sell was entered into which agreement the petitioner failed to honour, it cannot be said that the petitioner has cheated the respondent. No case for prosecution under Section 420 or Section 406 IPC is made out even prima facie. The complaint filed by the respondent and that too at Madhepura against the petitioner, who is a resident of Delhi, seems to be an attempt to pressurize the petitioner for coming to terms with the respondent.” In our considered opinion the factual position in the aforesaid case is demonstrably different and, hence, we have no hesitation in stating that the said decision is not applicable to the case at hand.
+
+--- PASSAGE 18 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 779 OF 2007 Rajeswar Tiwari & Ors. .... Appellant (s) Versus Nanda Kishore Roy .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed against the final o
+   (Judgment id 36724, paragraph 7/13, page 4)
+Text:
+No doubt, at the stage of quashing an FIR or complaint the High Court is not justified in embarking upon an inquiry as to the probability, reliability or genuineness of the allegation made therein. 17) In Sardar Trilok Singh and others vs. Satya Deo Tripathi (1979) 4 SCC 396, when the financer seized the truck in question due to default in payment of instalment, buyer of the vehicle launched criminal prosecution, this Court held it as an abuse of process of the court since the dispute was essentially of a civil nature and quashed the entire proceedings. 18) In G. Sagar Suri and another vs. State of U.P. and others, (2000) 2 SCC 636, this Court has held:- “8. Jurisdiction under Section 482 of the Code has to be exercised with great care. In exercise of its jurisdiction the High Court is not to examine the matter superficially. It is to be seen if a matter, which is essentially of a civil nature, has been given a cloak of criminal offence. Criminal proceedings are not a short cut of other remedies available in law. Before issuing process a criminal court has to exercise a great deal of caution. For the accused it is a serious matter. This Court has laid certain principles on the basis of which the High Court is to exercise its jurisdiction under Section 482 of the Code. Jurisdiction under this section has to be exercised to prevent abuse of the process of any court or otherwise to secure the ends of justice.” 19) In Alpic Finance Ltd. vs.
+
+--- PASSAGE 19 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2341 OF 2011 Vesa Holdings P. Ltd. & Anr. … Appellants versus State of Kerala & Ors. … Respondents With CRIMINAL APPEAL NOS.2342-2344 OF 2011 J U D G M E N T C. NAGAPPAN, J.
+   (Judgment id 42499, paragraph 9, page 10)
+Text:
+9. It is true that a given set of facts may make out a civil wrong as also a criminal offence and only because a civil remedy may be available to the complainant that itself cannot be a ground to quash a criminal proceeding. The real test is whether the allegations in the complaint disclose the criminal offence of cheating or not. In the present case there is nothing to show that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC. In our view the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be malafide or otherwise an abuse of the process of the court. Superior courts while exercising this power should also strive to serve the ends of justice. In our opinion, in view of these facts allowing the police investigation to continue would amount to an abuse of the process of court and the High Court committed an error in refusing to exercise the power under Section 482 Criminal Procedure Code to quash the proceedings.
+
+--- PASSAGE 20 ---
+Judgment: RIKHAB BIRANI & ANR. versus STATE OF UTTAR PRADESH & ANR. (16-04-2025)
+   (Judgment id 1000256582, paragraph 2, page 3)
+Text:
+2. The appellants, Rikhab Birani and Sadhna Birani, had entered into an oral agreement to sell Roti Godown No. 28/27, Birhana Road, Kanpur, Uttar Pradesh, to respondent No.2, Shilpi Gupta, for a consideration of ₹1,35,00,000/- (Rupees one crore thirty five lakhs only) in June, 2020.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R12 (passages 13, 14, 15, 16, 17, 18, 19, 20).

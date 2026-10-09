@@ -8,6 +8,8 @@ no hand pins, no topic routing), and for the questions that have a blind rewrite
 up to 30 by "section N", merged by reciprocal rank into 60 candidates) and one re-ranker (Voyage rerank-2).
 Guards: the index head must be the one recorded in the question file (`index_snapshot`); the re-rank tokens billed stay under --max-rerank-tokens (the run stops before the call that would
 cross it, saving what it has); a sealed question is run only with --final and a label. The private key is never read here.
+--safety-net adds two arms that cost no extra call: "N merged order (no re-ranker)" (the merged order before the re-ranker, top 10) and "M safety net" (the merged top 5 that version A's ten do not show),
+so that nothing the three searches agreed on is lost to the re-ranker: the list to show is A's ten followed by the net (at most 15). Off by default; the arms are labelled in the run record.
 --supplement DIR (repeatable) searches "main index + side index(es)" (see build_supplement.py): a side index holds judgments the main index left out; the main index is not touched and the run says so.
 Writes OUT/questions.jsonl as it goes (a re-run skips the questions already there), then OUT/pool.json (per question: rows to be marked, shuffled with a fixed seed and numbered, and the ordered top
 results of every version for the scorer) and OUT/spend.json. PRIVATE: the pool names which version found what.
@@ -44,8 +46,24 @@ DEFAULT_RECOURSE = "/home/user/tanbir-ahm/recourse"
 RERANK_MODEL, EMBED_MODEL = "rerank-2", si.MODEL
 PRICE_RERANK, PRICE_EMBED = 0.05, 0.12          # dollars per million tokens (rerank-2 from third-party price lists; voyage-law-2); checked against the first billed call
 VERSIONS = ("A today", "B no repeats", "E no multiplier", "C rewrite", "F merged", "S site shown")
+SAFETY_VERSIONS = ("N merged order (no re-ranker)", "M safety net")
+SAFETY_NET_DEPTH = 5                  # the merged (pre-re-ranker) top 5 must come up somewhere in the list shown
 SHUFFLE_SEED = "real30-pool-v1"
 RETRYABLE = {"RateLimitError", "ServiceUnavailableError", "APIConnectionError", "Timeout", "TryAgain", "APIError"}
+
+
+def safety_net(fused, shown, depth=SAFETY_NET_DEPTH, ident=lambda x: x):
+    """The safety net: the passages of the merged top `depth` (the order the three searches agreed on, before the re-ranker) that the list `shown` does not hold, in merged order. `ident` maps an item to the
+    identity that decides 'already shown' (the passage hash, so that a copy of the same text counts as shown). Nothing is added when the re-ranker's list already holds them all."""
+    seen = {ident(x) for x in shown}
+    out = []
+    for x in fused[:depth]:
+        i = ident(x)
+        if i in seen:
+            continue
+        seen.add(i)
+        out.append(x)
+    return out
 
 
 class SpendCapReached(RuntimeError):
@@ -93,8 +111,8 @@ def build_fts(metas):
 class Engine:
     """The pipeline of experiments/pool.py, parameterised so that it can be tested with a fake service."""
 
-    def __init__(self, metas, M, client, spend, fts, site=None, sleep=time.sleep):
-        self.metas, self.M, self.client, self.spend, self.fts, self.site, self.sleep = metas, M, client, spend, fts, site, sleep
+    def __init__(self, metas, M, client, spend, fts, site=None, sleep=time.sleep, safety=False):
+        self.metas, self.M, self.client, self.spend, self.fts, self.site, self.sleep, self.safety = metas, M, client, spend, fts, site, sleep, safety
 
     def embed(self, q):
         resp = call(self.client.embed, [q], model=EMBED_MODEL, input_type="query", sleep=self.sleep)
@@ -153,6 +171,9 @@ class Engine:
         rs_a = self.rerank(q, a["cand"])
         out["A today"] = self.order_by({r: s * self.weight(r, a["nums"]) for r, s in rs_a.items()})[:10]
         out["E no multiplier"] = self.order_by(rs_a)[:10]
+        if self.safety:                                      # no extra call: the merged order is what the re-ranker was given
+            out["N merged order (no re-ranker)"] = list(a["cand"][:10])
+            out["M safety net"] = safety_net(a["cand"], out["A today"], SAFETY_NET_DEPTH, lambda r: self.metas[r]["h"])
         b = self.retrieve(q, dedupe=True)
         rs_b = self.rerank(q, b["cand"])
         out["B no repeats"] = self.order_by({r: s * self.weight(r, b["nums"]) for r, s in rs_b.items()})[:10]
@@ -285,7 +306,7 @@ def build_question(q, lists, metas, hdocs, title, rewrite=None, top_k=5):
     """One question's record: the rows to be marked (the top k of every version, all of S, collapsed by identical text, shuffled with a fixed seed, numbered) and each version's ordered results."""
     groups = collections.OrderedDict()
     for version, lst in lists.items():
-        whole = version.startswith("S")
+        whole = version.startswith(("S", "M "))                # S site shown and M safety net are sets, pooled whole
         for rank, rid in enumerate(lst, 1):
             if not whole and rank > top_k:
                 continue
@@ -371,6 +392,7 @@ def main(argv=None):
     ap.add_argument("--retitle", metavar="POOL_JSON", help="only fill the titles a finished run left empty, from the index's document records; searches nothing, spends nothing")
     ap.add_argument("--supplement", action="append", default=[], help="a side index (build_supplement.py): search main + side index; may be given more than once; the run is labelled with each")
     ap.add_argument("--no-site", action="store_true")
+    ap.add_argument("--safety-net", action="store_true", help="also record the merged order before the re-ranker (N) and the safety net (M); no extra API call")
     ap.add_argument("--only", default="", help="comma-separated question ids")
     ap.add_argument("--allow-other-index", action="store_true", help="run on an index head other than the recorded one (the run says so)")
     ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing")
@@ -435,9 +457,9 @@ def main(argv=None):
     fts = build_fts(metas)
     site = None if a.no_site else make_site(metas, M, a.recourse_dir)
     spend = Spend(a.max_rerank_tokens)
-    engine = Engine(metas, M, si.make_client(), spend, fts, site)
+    engine = Engine(metas, M, si.make_client(), spend, fts, site, safety=a.safety_net)
     ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + a.supplement, metas, extra_titles or None), a.out)
-    run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS),
+    run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS) + (list(SAFETY_VERSIONS) if a.safety_net else []),
                 "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
                 "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_infos[0] if supp_infos else None, "side_indexes": supp_infos}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:

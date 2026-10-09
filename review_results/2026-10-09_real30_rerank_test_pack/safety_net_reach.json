@@ -1,0 +1,151 @@
+{
+ "answerable_questions": 14,
+ "A_top5": 10,
+ "A_ten": 10,
+ "A_ten_plus_net_of_5": 10,
+ "A_ten_plus_net_of_10": 10,
+ "A_ten_plus_net_of_15": 12,
+ "A_ten_plus_net_of_20": 12,
+ "not_in_the_candidates_at_all": [
+  "R14",
+  "R22"
+ ],
+ "in_the_candidates_but_not_shown_by_ten_plus_net5": [
+  "R09",
+  "R20"
+ ],
+ "detail": [
+  {
+   "qid": "R01",
+   "merged_rank": 1,
+   "A_rank": 1,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R02",
+   "merged_rank": 1,
+   "A_rank": 1,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R04",
+   "merged_rank": 3,
+   "A_rank": 2,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R08",
+   "merged_rank": 10,
+   "A_rank": 2,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R09",
+   "merged_rank": 14,
+   "A_rank": 36,
+   "in_A_top5": false,
+   "in_A_ten": false,
+   "in_ten_plus_net5": false
+  },
+  {
+   "qid": "R11",
+   "merged_rank": 1,
+   "A_rank": 3,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R12",
+   "merged_rank": 3,
+   "A_rank": 5,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R14",
+   "merged_rank": null,
+   "A_rank": null,
+   "in_A_top5": false,
+   "in_A_ten": false,
+   "in_ten_plus_net5": false
+  },
+  {
+   "qid": "R17",
+   "merged_rank": 2,
+   "A_rank": 1,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R19",
+   "merged_rank": 2,
+   "A_rank": 1,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R20",
+   "merged_rank": 15,
+   "A_rank": 11,
+   "in_A_top5": false,
+   "in_A_ten": false,
+   "in_ten_plus_net5": false
+  },
+  {
+   "qid": "R22",
+   "merged_rank": null,
+   "A_rank": null,
+   "in_A_top5": false,
+   "in_A_ten": false,
+   "in_ten_plus_net5": false
+  },
+  {
+   "qid": "R24",
+   "merged_rank": 2,
+   "A_rank": 1,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  },
+  {
+   "qid": "R26",
+   "merged_rank": 6,
+   "A_rank": 4,
+   "in_A_top5": true,
+   "in_A_ten": true,
+   "in_ten_plus_net5": true
+  }
+ ],
+ "if_added_to_the_candidates": {
+  "R14": {
+   "key passages added": 8,
+   "best key passage rank among 68": 1,
+   "its re-ranker score": 0.656,
+   "score of the 5th result": 0.531
+  },
+  "R22": {
+   "key passages added": 8,
+   "best key passage rank among 68": 10,
+   "its re-ranker score": 0.598,
+   "score of the 5th result": 0.668
+  }
+ },
+ "best_meaning_rank_of_the_named_case": {
+  "R09": 31,
+  "R14": 2241,
+  "R20": 15,
+  "R22": 58
+ }
+}

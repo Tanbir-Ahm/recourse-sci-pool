@@ -30,6 +30,8 @@ check("every mark, number and quote survives unchanged, including a bracket and 
 check("other backslashes are left alone", N.unescape_markdown('a \\" b \\\\ c \\n d')[0] == 'a \\" b \\\\ c \\n d' and N.unescape_markdown('x\\_y')[1] == 1)
 prompt = "QUESTION ID: R02   (prompt version: order A)\n\nYou are helping...\n" + "=" * 20 + "\nEND OF PASSAGES. Now reply with the single JSON object for R02 (passages 1, 2, 3).\n"
 check("a saved prompt is recognised, a reply is not", N.is_prompt_echo(prompt) and not N.is_prompt_echo(escaped) and not N.is_prompt_echo(clean))
+topup_prompt = "QUESTION ID: R02   (top-up batch, prompt version: order A)\n\nYou are helping...\n" + "=" * 20 + "\nEND OF PASSAGES. Now reply with the single JSON object for R02 (passages 10, 11).\n"
+check("a saved top-up prompt is recognised by its opening line alone", N.is_prompt_echo(topup_prompt.split("END OF PASSAGES")[0]) and N.is_prompt_echo(topup_prompt))
 
 src, out = tempfile.mkdtemp(), os.path.join(tempfile.mkdtemp(), "out")
 files = {"R03_A_ChatGPT.txt": escaped, "R03_A_Gemini.txt": clean, "R05_A_ChatGPT.txt": prompt, "R06_A_Gemini.txt": clean.replace("R03", "R06"), "R06_A_ChatGPT.txt": clean.replace("R03", "R06")}

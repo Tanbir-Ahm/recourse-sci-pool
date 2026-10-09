@@ -48,7 +48,7 @@ Three searches (by meaning, by keywords, by section number) each bring back pass
 
 ## 7. What is unknown, and the test that settles it
 
-- The re-ranker's effect on **usefulness** is not measured; only the named-authority test is clean. The decisive test is to have **the 39 never-shown merged-top-5 passages marked** (all 19 questions have some): 19 short prompts, in ChatGPT and Gemini, 38 chats, no money. It would give a real "without the re-ranker" top 5 to score against A, with the same two tools. I have not built that pack; say the word.
+- The re-ranker's effect on **usefulness** is not measured; only the named-authority test is clean. The decisive test is to have **the 39 never-shown merged-top-5 passages marked** (all 19 questions have some): 19 short prompts, in ChatGPT and Gemini, 38 chats, no money. **The pack is built** (`../2026-10-09_real30_rerank_test_pack/`, `Second_Batch_Pack.zip`; it also holds A's unmarked places 6 to 10 and two anchors per question) and the scorer is ready (`review_tools/score_rerank_arms.py`); it gives a real "without the re-ranker" top 5 to score against A, with the same two tools. A safety net (`--safety-net`) now keeps the merged top 5 in the list shown whatever the re-ranker thinks.
 - Its effect on the **answers** (the answer-writing step) has not been measured at all.
 - Whether `rerank-2` is better than another re-ranker, or than a re-ranker run only on the top 20, has not been tried.
 
