@@ -39,6 +39,7 @@
   - *Hurt, R09 (legal: which court has jurisdiction when the payee presents the cheque in Delhi):* the named case (Bridgestone, 2015) was 14th in the merged list and **36th** after the re-ranker: it preferred the older rulings that the 2015 Act replaced.
   - Also worse: R11 (1st to 3rd in A, 4th in E), R12 (3rd to 5th in A, 10th in E).
 - **What this does not show.** Whether the passages the re-ranker puts first *answer the question* is only known from the reviewers' marks, which are not in yet. "Named key authority in the top 5" is one test, and the key authority is one authority per question.
+- (Re-run on 2026-10-09 for the marks analysis, with Q15 now reproducing: 64 of 95 outside the merged top 5, 52 of 95 outside its top 10, deepest position 58; see `review_results/2026-10-09_real30_marking_analysis/RERANKER_IMPORTANCE.md`.)
 - Q15 was left out of these figures: its retrieval did not reproduce exactly on the rerun (6 of the recorded top-10 passages were not among the recomputed candidates; the question embedding and the keyword ranking can differ a little between calls). The other 18 reproduced exactly.
 
 ## 5. What was NOT used

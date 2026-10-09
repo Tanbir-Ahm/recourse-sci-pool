@@ -17,7 +17,7 @@ REPLIES = HERE + "/replies_for_the_reader"
 KEY = json.load(open(ROOT + "/review_data/ruler/real30_key_v1.json"))["questions"]
 REAL = json.load(open(ROOT + "/review_data/ruler/real30_v1.json"))
 DOMAINS = {d["code"] if isinstance(d, dict) and "code" in d else k: d for k, d in (REAL["domains"].items() if isinstance(REAL["domains"], dict) else enumerate(REAL["domains"]))}
-RERANK = json.load(open(ROOT + "/review_results/2026-10-09_real30_pool_dev/rerank_effect/rerank_effect.json"))
+FUSED = json.load(open(ROOT + "/review_results/2026-10-09_real30_pool_dev/rerank_effect/fused_lists.json"))        # the 60 merged candidates per question, in the order they have before the re-ranker (save_fused_lists.py)
 
 pool, passages = ing.load_pool(POOL)
 runs, problems, ev = ing.load_replies(REPLIES, passages, pool)
@@ -266,7 +266,7 @@ for (qid, model, order), obj in raw.items():
 out["caveats"] = {"replies": cav_tot, **cav}
 
 # ------------------------------------------------------------------ 6. the re-ranker and the marks: A's top 5 passages that came from beyond the merged top 5
-fused_pos = {r["qid"]: r["final_top5_fused_positions"] for r in RERANK["rows"] if r["qid"] not in {x for x, _ in RERANK["reproduction_problems"]}}
+fused_pos = {qid: v["A_top10_fused_positions"][:5] for qid, v in FUSED["questions"].items() if qid not in {x for x, _ in FUSED["reproduction_problems"]}}
 promoted, kept = [], []
 for q in pool:
     if q["qid"] not in fused_pos:

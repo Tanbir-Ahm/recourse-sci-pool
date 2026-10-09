@@ -2798,16 +2798,16 @@
  },
  "reranker_promoted_vs_kept": {
   "promoted_from_beyond_merged_top5": {
-   "n": 60,
-   "yes": 0.283,
-   "useful": 0.767,
-   "misleading": 0.15
+   "n": 64,
+   "yes": 0.266,
+   "useful": 0.734,
+   "misleading": 0.141
   },
   "already_in_merged_top5": {
-   "n": 30,
-   "yes": 0.467,
-   "useful": 0.8,
-   "misleading": 0.1
+   "n": 31,
+   "yes": 0.452,
+   "useful": 0.774,
+   "misleading": 0.097
   }
  },
  "A_by_rank": {

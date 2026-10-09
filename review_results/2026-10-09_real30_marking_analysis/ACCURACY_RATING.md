@@ -67,7 +67,7 @@ What the marks do hint at [Likely]:
 2. **AI marks only.** The tools agree exactly on 71% of passages; the lawyer's standard is unknown. I expect a lawyer to be **stricter** than both on "Yes" (ChatGPT gave R06 a Yes for a general principle that its own caveat says is not a complete section 479 holding). Direction [Likely], size [Guessing].
 3. **Best-case questions.** The 30 were re-told from reported cases and government sources, not taken from users. [Certain]
 4. **"Misleading" is partly a reading rule:** 8 of the 34 flags are passages that merely record a lawyer's or a party's submission; a well-built answer step would not treat those as holdings. The replaced-law flags (19 of 34, and 12 of the 16 both tools share) are the ones that can produce a wrong answer. [Likely]
-5. **Passages never shown were never marked** (35 of the 90 passages of the pre-re-ranker top 5), so what the re-ranker adds or removes is not fully visible. [Certain]
+5. **Passages never shown were never marked** (39 of the 95 passages of the pre-re-ranker top 5; see `RERANKER_IMPORTANCE.md`), so what the re-ranker adds or removes is not fully visible. [Certain]
 
 ## 4. What I expect in real use [Likely for the direction, Guessing for the size]
 - Lower than the headline if users write in everyday language: between the everyday row (about 25% direct, 60% useful) and the headline (40%, 80%).

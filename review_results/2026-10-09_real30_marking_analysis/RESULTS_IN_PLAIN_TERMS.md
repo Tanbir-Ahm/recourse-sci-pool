@@ -47,4 +47,4 @@ Out of the five passages shown, on average: **about 2 answer the question direct
 2. If the big index is connected to the site, use A's pipeline, not the site's own search.
 3. Do not adopt the rewrite as a default on this evidence.
 4. These are tuning-half and AI-only results. The sealed half and a lawyer's check still decide anything final. For a percentage rating of today's search, with the reasons, read `ACCURACY_RATING.md`; I would not call any of its figures "the accuracy of the tool", because the part that writes the answer has not been measured.
-5. Optional and cheap: have the 35 never-marked passages of the pre-re-ranker top five marked (36 short chats) to show, with marks, whether the re-ranker helps.
+5. Optional and cheap: have the 39 never-marked passages of the pre-re-ranker top five marked (38 short chats) to show, with marks, whether the re-ranker helps. What the evidence says today is in `RERANKER_IMPORTANCE.md`.
