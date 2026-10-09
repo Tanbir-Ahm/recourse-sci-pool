@@ -1,0 +1,519 @@
+{
+ "run": {
+  "when": "2026-10-09T10:02:37Z",
+  "half": "dev",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "A today",
+   "B no repeats",
+   "E no multiplier",
+   "C rewrite",
+   "F merged",
+   "S site shown"
+  ],
+  "source": "real30",
+  "site_arm": true,
+  "rewrites_file": "review_data/ruler/real30_rewrites_v1.json",
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 116248,
+   "rerank_calls": 5,
+   "embed_tokens": 203,
+   "embed_calls": 3,
+   "cap_rerank_tokens": 500000,
+   "dollars_estimate": 0.0058,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-2"
+  },
+  "side_index": {
+   "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572,
+   "built": "2026-10-09T08:03:50Z",
+   "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+  },
+  "side_indexes": [
+   {
+    "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+    "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+    "documents": 17,
+    "passages": 2572,
+    "built": "2026-10-09T08:03:50Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_documents",
+    "manifest_sha256": "4e407a307be9260aaf5176d7d48b2d5ffde1b6bbc85e2a95dec9bd7fd470d4e7",
+    "documents": 1,
+    "passages": 12,
+    "built": "2026-10-09T10:00:02Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   }
+  ],
+  "titles_filled_afterwards": {
+   "rows": 0,
+   "still_without": 0,
+   "from": "the index's document records (src.title, src.date)"
+  }
+ },
+ "questions": [
+  {
+   "qid": "R06",
+   "domain": "B",
+   "kind": "everyday",
+   "question": "My nephew is first time accused in a 2023 theft case, he's been in jail as undertrial for over a year. Does the new section 479 BNSS one-third rule help him even though the FIR was before the new law?",
+   "rewrite": "Whether Section 436A CrPC / Section 479 BNSS, including the new first-time offender provision allowing release of an undertrial after detention for one-third of the maximum sentence, applies retrospectively to a theft case registered before the BNSS came into force, where the accused has been detained for over a year.",
+   "half": "dev",
+   "rows": [
+    {
+     "h": "ec377fee9893a42b",
+     "doc": 32524,
+     "pn": "31",
+     "page": 20,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.",
+     "text": "31. So far as Section 436A is concerned, it may be stated that by the Code of Criminal Procedure (Amendment) Act, 2005, the said section came to be inserted, which reads as under; “436A. Maximum period for which an undertrial prisoner can be detained.— Where a person has, during the period of investigation, inquiry or trial under this Code of an offence under any law (not being an offence for which the punishment of death has been specified as one of the punishments under that law) undergone detention for a period extending up to one-half of the maximum period of imprisonment specified for that offence under that law, he shall be released by the Court on his personal bond with or without sureties: Provided that the Court may, after hearing the Public Prosecutor and for reasons to be recorded by it in writing, order the continued detention of such person for a period longer than one-half of the said period or release him on bail instead of the personal bond with or without sureties: Provided further that no such person shall in any case be detained during the period of investigation, inquiry or trial for more than the maximum period of imprisonment provided for the said offence under that law. Explanation.—In computing the period of detention under this section for granting bail, the period of detention passed due to delay in proceeding caused by the accused shall be excluded.”",
+     "also": [],
+     "variants": {
+      "C rewrite": 2,
+      "F merged": 5
+     },
+     "n": 1
+    },
+    {
+     "h": "876928c8240cbcd8",
+     "doc": 1000256177,
+     "pn": "11",
+     "page": 7,
+     "title": "PARTHA CHATTERJEE versus DIRECTORATE OF ENFORCEMENT (13-12-2024)",
+     "text": "11. The aggrieved Appellant is thus before us seeking bail, inter alia, on the following grounds: (i) the prolonged period of incarceration of over two years; (ii) the Appellant was neither named nor chargesheeted in the predicate offence; (iii) the Appellant does not have any criminal antecedents and has deep roots in society; (iv) he is not a flight risk or likely to tamper with evidence or witnesses; (v) no cash was recovered from the Appellant during search and seizure by the respondent ED; (vi) the Appellant is 72 years of age and suffers from multiple health ailments; (vii) the Appellant has already spent one-third of the total sentence prescribed for the offence and thus, is entitled to bail under Section 479 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS); and (viii) there is no hope in the trial commencing in view of the 442 documents and 183 witnesses cited for examination. Mr. Mukul Rohatgi, Learned Senior Counsel, lastly contended that the Appellant ought to be granted bail on the ground of parity, considering that his co-accused have already been released on bail.",
+     "also": [],
+     "variants": {
+      "S site shown": 5,
+      "A today": 8,
+      "E no multiplier": 6,
+      "B no repeats": 8
+     },
+     "n": 2
+    },
+    {
+     "h": "98d61421d01b4a90",
+     "doc": 6000000001,
+     "pn": "4",
+     "page": 7,
+     "title": "IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)",
+     "text": "4. In that view of the matter, it is deemed appropriate to direct immediate implementation of Section 479 of the BNSS by calling upon Superintendents of Jails across the country wherever accused persons are detained as undertrials, to process their applications to the concerned Courts upon their completion of one-half/one-third, as the case may be, of the period mentioned in sub-section (1) of the said provision, for their release on bail. This step will go a long way in easing overcrowding in jails which is the primary focus of this Court in the present petition.",
+     "also": [],
+     "variants": {
+      "A today": 3,
+      "E no multiplier": 5,
+      "B no repeats": 3,
+      "C rewrite": 3,
+      "F merged": 3,
+      "S site shown": 2
+     },
+     "n": 3
+    },
+    {
+     "h": "2b03a32f582379c1",
+     "doc": 32524,
+     "pn": "12",
+     "page": 7,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.",
+     "text": "12. It was also stated that by the Code of Criminal Procedure (Amendment) Act, 2005, Section 436A came to be inserted which provides that an under-trial prisoner other than the one accused of an offence for which death has been prescribed as one of the punishments, has been under detention for a period extending to onehalf of the maximum period of imprisonment provided for the alleged offence, he should be released on his personal bond, with or without sureties.",
+     "also": [],
+     "variants": {
+      "C rewrite": 5,
+      "F merged": 8
+     },
+     "n": 4
+    },
+    {
+     "h": "9e117b8f53bbe9de",
+     "doc": 6000000001,
+     "pn": "1",
+     "page": 6,
+     "title": "IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)",
+     "text": "1. This order is in continuation of the order passed on 13 th August, 2024. On the last date of hearing, Mr. Gaurav Agrawal, learned Amicus Curiae had submitted that the Bharatiya Nagarik Suraksha Sanhita, 2023 1, which has replaced the Code of Criminal Procedure, 1973 w.e.f. 01st July, 2024, contains a provision under Section 479 relating to the ‘Maximum period for which an undertrial prisoner can be detained’. The attention of this Court was drawn to the first proviso to Section 479 to urge that a first-time offender (who has never been convicted for any offence in the past) is required to be released on bond by the Court, if he has undergone detention for the period extending up to one-third of the maximum period of imprisonment specified for such an offence under a particular law.",
+     "also": [],
+     "variants": {
+      "A today": 5,
+      "E no multiplier": 4,
+      "B no repeats": 5,
+      "S site shown": 1,
+      "C rewrite": 6,
+      "F merged": 6
+     },
+     "n": 5
+    },
+    {
+     "h": "094a53a50656f3ad",
+     "doc": 1003962665,
+     "pn": "29",
+     "page": 17,
+     "title": "PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)",
+     "text": "29. A substantive right conferred under the BNSS would definitely enure to the benefit of an accused against whom none of the proceedings envisaged under Section 531(2)(a) of the BNSS has been initiated. One has to see the nature of right. It is not a case of either a retrospective or retroactive application, rather it is a prospective one when a better right has been conferred under the BNSS. LEGAL & FACTUAL ANALYSIS",
+     "also": [],
+     "variants": {
+      "A today": 1,
+      "E no multiplier": 2,
+      "B no repeats": 1,
+      "F merged": 2
+     },
+     "n": 6
+    },
+    {
+     "h": "45897d24f6ef2138",
+     "doc": 6000000001,
+     "pn": "3",
+     "page": 7,
+     "title": "IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)",
+     "text": "3. Today, Ms. Aishwarya Bhati, learned Additional Solicitor General, submits that pursuant to the aforesaid order, instructions have been obtained from the Department to the effect that the aforesaid provision under the BNSS shall apply to all undertrials in pending cases irrespective of whether the case was registered against them before 01 st July, 2024, the date when the newly minted legislation has come into effect.",
+     "also": [],
+     "variants": {
+      "A today": 4,
+      "E no multiplier": 1,
+      "B no repeats": 4,
+      "F merged": 4,
+      "S site shown": 4,
+      "C rewrite": 8
+     },
+     "n": 7
+    },
+    {
+     "h": "918fe106818926e2",
+     "doc": 1000254150,
+     "pn": "142",
+     "page": 289,
+     "title": "VIJAY MADANLAL CHOUDHARY & ORS. versus UNION OF INDIA & ORS. (27-07-2022)",
+     "text": "142. There is, however, an exception carved out to the strict compliance of the twin conditions in the form of Section 436A of the 1973 Code, which has come into being on 23.6.2006 vide Act 25 of 2005. This, being the subsequent law enacted by the Parliament, must prevail. Section 436A of the 1973 Code reads as under: “656[436A. Maximum period for which an undertrial prisoner can be detained.— Where a person has, during the period of investigation, inquiry or trial under this Code of an offence under any law (not being an offence for which the punishment of death has been specified as one of the punishments under that law) undergone detention for a period extending up to one-half of the maximum period of imprisonment specified for that offence under that law, he shall be released by the Court on his personal bond with or without sureties: Provided that the Court may, after hearing the Public Prosecutor and for reasons to be recorded by it in writing, order the continued detention of such person for a period longer than one-half of the said period or release him on bail instead of the personal bond with or without sureties: Provided further that no such person shall in any case be detained during the period of investigation, inquiry or trial for more than the maximum period of imprisonment provided for the said offence under that law. Explanation.—In computing the period of detention under this section for granting bail, the period of detention passed due to delay in proceeding caused by the accused shall be excluded.]” In the Statement of Objects and Reasons, it was stated thus: 656 Ins. by Act 25 of 2005, sec. 36 (w.e.f. 23-6-2006) “There had been instances, where under-trial prisoners were detained in jail for periods beyond the maximum period of imprisonment provided for the alleged offence. As remedial measure section 436A has been inserted to provide that where an under-trial prisoner other than the one accused of an offence for which death has been prescribed as one of the punishments, has been under detention for a period extending to one-half of the maximum period of imprisonment provided for the alleged offence, he should be released on his personal bond, with or without sureties. It has also been provided that in no case will an under-trial prisoner be detained beyond the maximum period of imprisonment for which he can be convicted for the alleged offence.”",
+     "also": [],
+     "variants": {
+      "C rewrite": 4,
+      "F merged": 7
+     },
+     "n": 8
+    },
+    {
+     "h": "57dddd153acb74f5",
+     "doc": 6000000001,
+     "pn": "2",
+     "page": 6,
+     "title": "IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)",
+     "text": "2. Having regard to the fact that the substituted provision under the BNSS is more beneficial vis-a-vis Section 436A of the Code of Criminal For short ‘the BNSS’ Procedure, 1973, wherein the period undergone by the first time offender was prescribed as up to half of the maximum period of imprisonment specified for such an offence, this Court had called upon the learned Additional Solicitor General to obtain instructions from the Department and submit a clarification regarding application of the said provision to all undertrials across the country.",
+     "also": [],
+     "variants": {
+      "A today": 2,
+      "E no multiplier": 3,
+      "B no repeats": 2,
+      "C rewrite": 1,
+      "F merged": 1,
+      "S site shown": 3
+     },
+     "n": 9
+    }
+   ],
+   "lists": {
+    "A today": [
+     {
+      "doc": 1003962665,
+      "h": "094a53a50656f3ad",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "57dddd153acb74f5",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "98d61421d01b4a90",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "45897d24f6ef2138",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "9e117b8f53bbe9de",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "8086fd7f7fb49b0e",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "f394b4ada119ed4a",
+      "also": []
+     },
+     {
+      "doc": 1000256177,
+      "h": "876928c8240cbcd8",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "e86b0c9ccc71dc5f",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "4afd4eba36d74b93",
+      "also": []
+     }
+    ],
+    "E no multiplier": [
+     {
+      "doc": 6000000001,
+      "h": "45897d24f6ef2138",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "094a53a50656f3ad",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "57dddd153acb74f5",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "9e117b8f53bbe9de",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "98d61421d01b4a90",
+      "also": []
+     },
+     {
+      "doc": 1000256177,
+      "h": "876928c8240cbcd8",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "8086fd7f7fb49b0e",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "f394b4ada119ed4a",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "e86b0c9ccc71dc5f",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "4afd4eba36d74b93",
+      "also": []
+     }
+    ],
+    "B no repeats": [
+     {
+      "doc": 1003962665,
+      "h": "094a53a50656f3ad",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "57dddd153acb74f5",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "98d61421d01b4a90",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "45897d24f6ef2138",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "9e117b8f53bbe9de",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "8086fd7f7fb49b0e",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "f394b4ada119ed4a",
+      "also": []
+     },
+     {
+      "doc": 1000256177,
+      "h": "876928c8240cbcd8",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "e86b0c9ccc71dc5f",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "4afd4eba36d74b93",
+      "also": []
+     }
+    ],
+    "C rewrite": [
+     {
+      "doc": 6000000001,
+      "h": "57dddd153acb74f5",
+      "also": []
+     },
+     {
+      "doc": 32524,
+      "h": "ec377fee9893a42b",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "98d61421d01b4a90",
+      "also": []
+     },
+     {
+      "doc": 1000254150,
+      "h": "918fe106818926e2",
+      "also": []
+     },
+     {
+      "doc": 32524,
+      "h": "2b03a32f582379c1",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "9e117b8f53bbe9de",
+      "also": []
+     },
+     {
+      "doc": 32524,
+      "h": "05253d4f9f17f44a",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "45897d24f6ef2138",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "e1c8ae781074900f",
+      "also": []
+     },
+     {
+      "doc": 1000254065,
+      "h": "d4402266b84cf56e",
+      "also": []
+     }
+    ],
+    "F merged": [
+     {
+      "doc": 6000000001,
+      "h": "57dddd153acb74f5",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "094a53a50656f3ad",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "98d61421d01b4a90",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "45897d24f6ef2138",
+      "also": []
+     },
+     {
+      "doc": 32524,
+      "h": "ec377fee9893a42b",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "9e117b8f53bbe9de",
+      "also": []
+     },
+     {
+      "doc": 1000254150,
+      "h": "918fe106818926e2",
+      "also": []
+     },
+     {
+      "doc": 32524,
+      "h": "2b03a32f582379c1",
+      "also": []
+     },
+     {
+      "doc": 1003962665,
+      "h": "e1c8ae781074900f",
+      "also": []
+     },
+     {
+      "doc": 32524,
+      "h": "05253d4f9f17f44a",
+      "also": []
+     }
+    ],
+    "S site shown": [
+     {
+      "doc": 6000000001,
+      "h": "9e117b8f53bbe9de",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "98d61421d01b4a90",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "57dddd153acb74f5",
+      "also": []
+     },
+     {
+      "doc": 6000000001,
+      "h": "45897d24f6ef2138",
+      "also": []
+     },
+     {
+      "doc": 1000256177,
+      "h": "876928c8240cbcd8",
+      "also": []
+     }
+    ]
+   },
+   "spend": {
+    "rerank_tokens": 116248,
+    "embed_tokens": 203
+   }
+  }
+ ]
+}

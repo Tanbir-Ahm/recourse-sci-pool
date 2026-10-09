@@ -1,0 +1,31 @@
+{
+ "version": "supplement-1",
+ "built": "2026-10-09T10:00:02Z",
+ "model": "voyage-law-2",
+ "main_index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+ "block_file": "5000000000-5000000249.docs1.pass12.tok3456",
+ "documents": 1,
+ "passages": 12,
+ "tokens_charged": 3456,
+ "dollars_estimate": 0.0004,
+ "docs_list": "review_data/fetched/fetched_docs.json",
+ "docs_list_sha256": "0ed983c9e156c5056fb6de83d28412ac6786944d4d6882c6d41109ec882fbce2",
+ "why": "documents that the main index does not hold and that a question needs: judgments the Overruled Register links to a ruling the main index holds but that the main index left out as 'not criminal law' (cue-word density below 10 per 10,000 characters), and documents fetched from outside the collection; added here, outside the main index",
+ "fetched_documents": [
+  {
+   "doc": 6000000001,
+   "url": "https://api.sci.gov.in/supremecourt/2013/18545/18545_2013_9_2_55018_Order_23-Aug-2024.pdf",
+   "sha256": "f5cbd0e0cccd8c21b96db1ef5bb676b849262cb875654a34537555fb17aa121a",
+   "fetched_at": "2026-10-09T09:56:18Z"
+  }
+ ],
+ "documents_detail": [
+  {
+   "doc": 6000000001,
+   "doc_key": "fetched:wpc406_2013_order_23aug2024",
+   "title": "IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013)",
+   "passages": 12,
+   "density": 5.3
+  }
+ ]
+}

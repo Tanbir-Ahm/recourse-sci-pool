@@ -1,0 +1,9 @@
+{
+  "note": "Key document that only a side index holds, for scoring this run. The key file (real30_key_v1.json) is not changed. 6000000001 is the id given to the order of 23 Aug 2024 fetched from the court's site (review_data/fetched/).",
+  "questions": {
+    "R06": {
+      "key_docs": [6000000001],
+      "label": "In Re: Inhuman Conditions in 1382 Prisons, order of 23 Aug 2024 (fetched from the court's site; held only in a side index)"
+    }
+  }
+}

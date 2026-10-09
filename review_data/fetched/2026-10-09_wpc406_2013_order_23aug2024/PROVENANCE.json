@@ -1,0 +1,24 @@
+{
+ "what": "Supreme Court of India, In Re: Inhuman Conditions in 1382 Prisons, W.P.(C) No. 406/2013, record of proceedings and order of 23 August 2024 (Hima Kohli and Sandeep Mehta JJ.). The order the owner's file gives as the key authority of Q6 (BNSS s.479).",
+ "url": "https://api.sci.gov.in/supremecourt/2013/18545/18545_2013_9_2_55018_Order_23-Aug-2024.pdf",
+ "url_source": "the owner's file (Q6, source URL)",
+ "fetched_at_utc": "2026-10-09T09:56:18Z",
+ "http": {
+  "status": 200,
+  "last_modified": "Tue, 27 Aug 2024 13:18:40 GMT",
+  "content_type": "application/pdf",
+  "content_length": 69056
+ },
+ "pdf_file": "WPC406-2013_Order_23-Aug-2024.pdf",
+ "pdf_sha256": "f5cbd0e0cccd8c21b96db1ef5bb676b849262cb875654a34537555fb17aa121a",
+ "pages": 8,
+ "text_file": "WPC406-2013_Order_23-Aug-2024.txt",
+ "text_sha256": "9da6e44d71c81e2b28d04379815a7c550eab9c866386b764a0383055b18570a2",
+ "text_tool": "pdftotext (poppler), default mode, pages separated by form feeds, no edits",
+ "public_document": true,
+ "verified_by_reading": {
+  "case_and_date": "W.P.(C) 406/2013, IN RE-INHUMAN CONDITIONS IN 1382 PRISONS, dated 23-08-2024; CORAM Hon'ble Ms. Justice Hima Kohli and Hon'ble Mr. Justice Sandeep Mehta: matches the owner's file",
+  "content": "Paras 1-7: the amicus pointed to the first proviso to s.479 BNSS (first-time offender released on bond after one-third of the maximum term); the ASG, on the Department's instructions, said the provision applies to all undertrials in pending cases irrespective of whether the case was registered before 1 July 2024; the Court directs immediate implementation: jail superintendents to process applications on completion of one-half/one-third; steps within two months; affidavits from States/UTs; District and Sessions Judges in charge of the Under Trial Review Committees to see to compliance; listed 22 Oct 2024.",
+  "difference_from_the_owners_expected_answer": "The owner's file says the Supreme Court 'held' that s.479 applies to undertrials whose cases were registered before 1 July 2024. The order records the Union's stated position (instructions from the Department) and directs implementation; it does not give reasons or say 'held'. The exclusion of offences punishable with death or life imprisonment is the statute's (s.479(1)), not stated in this order. [Certain, from the text]"
+ }
+}

@@ -147,6 +147,37 @@ try:
     except B.SupplementError as e:
         again = "already holds a supplement" in str(e)
     check("a second build into the same folder is refused (nothing is paid for twice)", again)
+
+    # documents fetched from outside the collection
+    fdir = os.path.join(tmp, "fetched")
+    os.makedirs(fdir)
+    open(os.path.join(fdir, "f1.txt"), "w", encoding="utf-8").write(civil("Fetched") + "\f" + civil("FetchedTwo", 3))
+    open(os.path.join(fdir, "short.txt"), "w", encoding="utf-8").write("A very short order.")
+    open(os.path.join(fdir, "dup.txt"), "w", encoding="utf-8").write(crawl[3])
+    write_gz(os.path.join(index, "index", "000250-000499.docs1.pass0.tok0.docs.jsonl.gz"), [doc_row(B.FETCHED_BASE + 5, "x" * 2000, skip="not_criminal")])
+
+    def fentry(key, doc, text_file):
+        return {"fetched": True, "doc_key": key, "index_doc": doc, "title": "FETCHED v. STATE (order)", "date": "2024-08-23", "url": "https://example.org/o.pdf", "sha256": "ab" * 32, "fetched_at": "2026-10-09T09:56:18Z",
+                "text_file": text_file, "pages": 3}
+    fe = fentry("f1", B.FETCHED_BASE + 1, "f1.txt")
+    prepared, problems = B.plan([fe], index, pool, bucket, root=fdir)
+    check("a fetched document is read from its text file and planned, with an id of its own and its source recorded", not problems and len(prepared["docs"]) == 1 and prepared["docs"][0]["doc"] == B.FETCHED_BASE + 1
+          and prepared["docs"][0]["src"]["source"] == "fetched" and prepared["docs"][0]["src"]["url"] == "https://example.org/o.pdf" and prepared["stats"]["passages"] >= 3, (problems, prepared["stats"]))
+    for name, e, frag in (("an id inside the main index's own range", fentry("f2", 77, "f1.txt"), "needs an id of"),
+                          ("an id the main index already has a record of", fentry("f3", B.FETCHED_BASE + 5, "f1.txt"), "already has a record"),
+                          ("a text the main index already holds", fentry("f4", B.FETCHED_BASE + 2, "dup.txt"), "already holds this very text"),
+                          ("a text file that is not there", fentry("f5", B.FETCHED_BASE + 3, "nowhere.txt"), "cannot read"),
+                          ("a text too short for the index's rules", fentry("f6", B.FETCHED_BASE + 4, "short.txt"), "skipped by the index's own rules")):
+        _, probs = B.plan([e], index, pool, bucket, root=fdir)
+        check(f"refused (fetched): {name}", len(probs) == 1 and frag in probs[0], probs)
+    out2 = os.path.join(tmp, "supp2")
+    res2 = B.build([fe], out2, index, pool, bucket, client=FakeClient(), max_tokens=10 ** 9, embed=True, log=lambda *_: None, root=fdir)
+    m2, V2, docs2 = si._load_index(out2)
+    man2 = json.load(open(os.path.join(out2, "SUPPLEMENT.json"), encoding="utf-8"))
+    check("a fetched document is embedded and written like any other, and the manifest says where it came from", res2["written"] and docs2 == {B.FETCHED_BASE + 1} and len(m2) == V2.shape[0] > 0
+          and man2["fetched_documents"] == [{"doc": B.FETCHED_BASE + 1, "url": "https://example.org/o.pdf", "sha256": "ab" * 32, "fetched_at": "2026-10-09T09:56:18Z"}], man2.get("fetched_documents"))
+    mixed, probs = B.plan(good + [fe], index, pool, bucket, root=fdir)
+    check("main-index documents and fetched documents can be planned together", not probs and len(mixed["docs"]) == 3, probs)
 finally:
     shutil.rmtree(tmp, ignore_errors=True)
 

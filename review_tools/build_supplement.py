@@ -5,6 +5,9 @@ commit) is not touched. The pool runner can search "main + supplement" as a labe
   python review_tools/build_supplement.py --docs review_results/2026-10-09_index_gap_sizing/supplement_docs.json --out ../recourse-sci-supplement            # plan only: reads, cuts, counts, spends nothing
   python review_tools/build_supplement.py --docs ... --out ../recourse-sci-supplement --embed --max-tokens 1200000                                          # embeds with voyage-law-2 and writes
 
+A list entry marked "fetched": true is a document from outside the collection (a court order the owner's file names, fetched from the court's site): it is read from a local text file, given an id of
+FETCHED_BASE and above, and must be new to the main index (no record of that id, and a text that no main-index document has).
+
 What it does, per listed judgment: finds the saved record (crawl block or bucket shard) by the document id the main index gave it, checks that its text hashes to what the main index recorded for
 that id (so it is the very text the main index saw), checks that the main index holds no passages for it (it must be a judgment the index left out), cuts it into passages with the index's own
 code (`sci_index.prepare_block`, `make_passages`) with the criminal-law test switched off for these documents only, embeds the passages and writes block files in the index's format. The documents
@@ -31,6 +34,7 @@ DEFAULT_POOL = os.path.normpath(os.path.join(ROOT, "..", "recourse-sci-pool-data
 DEFAULT_BUCKET = os.path.normpath(os.path.join(ROOT, "..", "recourse-sci-bucket-data"))
 DEFAULT_INDEX = os.path.normpath(os.path.join(ROOT, "..", "recourse-sci-index"))
 SUPPLEMENT_START = 5_000_000_000        # a file name only (the block's documents keep their own ids); outside the main index's id space
+FETCHED_BASE = 6_000_000_000            # ids of documents fetched from outside the collection (the owner's sources): above every id the main index uses
 VERSION = "supplement-1"
 
 
@@ -85,11 +89,38 @@ def criminal_test_off():
         si.is_criminal = original
 
 
-def prepare(entries, rows, with_passages, crawl_blocks, bucket_blocks):
+def fetched_record(entry, root):
+    """The record of a document fetched from outside the collection, read from its local text file (plain text of the original, unedited)."""
+    with open(os.path.join(root or ".", entry["text_file"]), encoding="utf-8") as fh:
+        text = fh.read()
+    return {"id": int(entry["index_doc"]), "status": "ok", "text": text, "pages": entry.get("pages"), "raw_text": text, "page_offset": 0, "in_crawl": False,
+            "src": {"source": "fetched", "url": entry.get("url"), "title": entry.get("title"), "date": entry.get("date"), "sha256": entry.get("sha256"), "fetched_at": entry.get("fetched_at")}}
+
+
+def prepare(entries, rows, with_passages, crawl_blocks, bucket_blocks, root=None):
     """(records, problems): the records to cut, after the identity checks. A problem is a reason a listed judgment cannot be added."""
     records, problems = [], []
+    main_hashes = {r["hash"]: d for d, r in rows.items() if r.get("hash")}
     for e in entries:
         doc = int(e["index_doc"])
+        if e.get("fetched"):
+            if doc < FETCHED_BASE:
+                problems.append(f"{e['doc_key']}: a fetched document needs an id of {FETCHED_BASE} or more, not {doc}")
+                continue
+            if doc in rows:
+                problems.append(f"{e['doc_key']}: the main index already has a record of id {doc}")
+                continue
+            try:
+                rec = fetched_record(e, root)
+            except OSError as err:
+                problems.append(f"{e['doc_key']}: cannot read {e.get('text_file')}: {err}")
+                continue
+            held = main_hashes.get(si.doc_hash(rec["text"]))
+            if held is not None:
+                problems.append(f"{e['doc_key']}: the main index already holds this very text (document {held})")
+                continue
+            records.append(rec)
+            continue
         row = rows.get(doc)
         if row is None:
             problems.append(f"{e['doc_key']}: the main index has no record of document {doc}")
@@ -113,19 +144,22 @@ def prepare(entries, rows, with_passages, crawl_blocks, bucket_blocks):
     return records, problems
 
 
-def plan(entries, index_dir, pool_dir, bucket_dir):
+def plan(entries, index_dir, pool_dir, bucket_dir, root=None):
     rows, with_passages = main_index_rows(index_dir)
     crawl_blocks = si.pool_blocks(pool_dir)
     bucket_blocks = si.bucket_blocks(bucket_dir)
-    records, problems = prepare(entries, rows, with_passages, crawl_blocks, bucket_blocks)
+    records, problems = prepare(entries, rows, with_passages, crawl_blocks, bucket_blocks, root)
     with criminal_test_off():
         prepared = si.prepare_block(records, {})
+    for d in prepared["docs"]:
+        if "skip" in d:
+            problems.append(f"document {d['doc']} was skipped by the index's own rules ({d['skip']}) and would add no passages")
     return prepared, problems
 
 
-def build(entries, out_dir, index_dir, pool_dir, bucket_dir, client=None, max_tokens=None, embed=False, docs_path=None, log=print):
+def build(entries, out_dir, index_dir, pool_dir, bucket_dir, client=None, max_tokens=None, embed=False, docs_path=None, log=print, root=None):
     """Plans, and when `embed` is set embeds and writes. Returns a dict with the plan figures (and the manifest when written). Refuses on any identity problem."""
-    prepared, problems = plan(entries, index_dir, pool_dir, bucket_dir)
+    prepared, problems = plan(entries, index_dir, pool_dir, bucket_dir, root)
     if problems:
         raise SupplementError("; ".join(problems))
     stats = prepared["stats"]
@@ -150,8 +184,9 @@ def build(entries, out_dir, index_dir, pool_dir, bucket_dir, client=None, max_to
                 "main_index_commit": head, "block_file": base, "documents": len(prepared["docs"]), "passages": stats["passages"], "tokens_charged": used,
                 "dollars_estimate": round(used * 0.12 / 1e6, 4), "docs_list": os.path.relpath(docs_path, ROOT) if docs_path else None,
                 "docs_list_sha256": hashlib.sha256(open(docs_path, "rb").read()).hexdigest() if docs_path else None,
-                "why": "judgments the Overruled Register links to a ruling the main index holds, but that the main index left out as 'not criminal law' (cue-word density below 10 per 10,000 characters); "
-                       "added here, outside the main index, so that the correcting ruling can be found next to the ruling it corrects",
+                "why": "documents that the main index does not hold and that a question needs: judgments the Overruled Register links to a ruling the main index holds but that the main index left out as "
+                       "'not criminal law' (cue-word density below 10 per 10,000 characters), and documents fetched from outside the collection; added here, outside the main index",
+                "fetched_documents": [{"doc": int(e["index_doc"]), "url": e.get("url"), "sha256": e.get("sha256"), "fetched_at": e.get("fetched_at")} for e in entries if e.get("fetched")],
                 "documents_detail": [{"doc": d["doc"], "doc_key": next(e["doc_key"] for e in entries if int(e["index_doc"]) == d["doc"]), "title": next(e["title"] for e in entries if int(e["index_doc"]) == d["doc"]),
                                       "passages": d.get("passages", 0), "density": d.get("density")} for d in prepared["docs"]]}
     with open(os.path.join(out_dir, "SUPPLEMENT.json"), "w", encoding="utf-8") as fh:
@@ -175,7 +210,8 @@ def main(argv=None):
     with open(a.docs, encoding="utf-8") as fh:
         entries = json.load(fh)["docs"]
     try:
-        build(entries, a.out, a.index_dir, a.pool_dir, a.bucket_dir, client=si.make_client() if a.embed else None, max_tokens=a.max_tokens, embed=a.embed, docs_path=a.docs)
+        build(entries, a.out, a.index_dir, a.pool_dir, a.bucket_dir, client=si.make_client() if a.embed else None, max_tokens=a.max_tokens, embed=a.embed, docs_path=a.docs,
+              root=os.path.dirname(os.path.abspath(a.docs)))
     except (SupplementError, si.EmbedStop) as e:
         print("refused:", e)
         return 1

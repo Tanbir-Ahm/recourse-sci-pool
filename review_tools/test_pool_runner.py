@@ -256,6 +256,19 @@ try:
 except ValueError as e:
     raised = str(e)
 check("refused: a folder that is not a side index", raised and "SUPPLEMENT.json" in raised, raised)
+side2 = make_side(tempfile.mkdtemp(), docs=((901, "Second Side v. State"),))
+m3, M3c, info2, extra2 = P.load_supplement(side2, m2, M2c, "abc123")
+check("a second side index is added after the first: both sets of passages are searchable, nothing already loaded is changed", len(m3) == len(m2) + 1 and M3c.shape[0] == M2c.shape[0] + 1 and {m["doc"] for m in m3} >= {900, 901} and len(m2) == metas_before + 1)
+try:
+    P.load_supplement(make_side(tempfile.mkdtemp(), docs=((900, "Again"),)), m2, M2c, "abc123")
+    raised = None
+except ValueError as e:
+    raised = str(e)
+check("refused: a second side index that repeats a document of the first", raised and "already has passages" in raised, raised)
+buf = io.StringIO()
+with redirect_stdout(buf):
+    P.main(["--out", os.path.join(tmp, "s2"), "--max-rerank-tokens", "1000", "--dry-run", "--no-site", "--supplement", "/side/one", "--supplement", "/side/two"])
+check("a dry run names every side index it would use", "side index /side/one" in buf.getvalue() and "side index /side/two" in buf.getvalue(), buf.getvalue())
 buf = io.StringIO()
 with redirect_stdout(buf):
     rc_s = P.main(["--out", os.path.join(tmp, "s"), "--max-rerank-tokens", "1000", "--dry-run", "--no-site", "--supplement", "/some/side/index"])

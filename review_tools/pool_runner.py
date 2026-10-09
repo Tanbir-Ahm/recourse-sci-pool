@@ -8,7 +8,7 @@ no hand pins, no topic routing), and for the questions that have a blind rewrite
 up to 30 by "section N", merged by reciprocal rank into 60 candidates) and one re-ranker (Voyage rerank-2).
 Guards: the index head must be the one recorded in the question file (`index_snapshot`); the re-rank tokens billed stay under --max-rerank-tokens (the run stops before the call that would
 cross it, saving what it has); a sealed question is run only with --final and a label. The private key is never read here.
---supplement DIR searches "main index + side index" (see build_supplement.py): the side index holds judgments the main index left out; the main index is not touched and the run says so.
+--supplement DIR (repeatable) searches "main index + side index(es)" (see build_supplement.py): a side index holds judgments the main index left out; the main index is not touched and the run says so.
 Writes OUT/questions.jsonl as it goes (a re-run skips the questions already there), then OUT/pool.json (per question: rows to be marked, shuffled with a fixed seed and numbered, and the ordered top
 results of every version for the scorer) and OUT/spend.json. PRIVATE: the pool names which version found what.
 """
@@ -369,14 +369,17 @@ def main(argv=None):
     ap.add_argument("--out")
     ap.add_argument("--max-rerank-tokens", type=int, help="stop before the call that would take the re-rank tokens billed past this (required for a run)")
     ap.add_argument("--retitle", metavar="POOL_JSON", help="only fill the titles a finished run left empty, from the index's document records; searches nothing, spends nothing")
-    ap.add_argument("--supplement", help="a side index (build_supplement.py): search main + side index; the run is labelled with it")
+    ap.add_argument("--supplement", action="append", default=[], help="a side index (build_supplement.py): search main + side index; may be given more than once; the run is labelled with each")
     ap.add_argument("--no-site", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated question ids")
     ap.add_argument("--allow-other-index", action="store_true", help="run on an index head other than the recorded one (the run says so)")
     ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing")
     a = ap.parse_args(argv)
     if a.retitle:
-        filled, left = retitle(a.retitle, [a.index_dir] + ([a.supplement] if a.supplement else []), supplement_titles(a.supplement) if a.supplement else None)
+        extra = {}
+        for d in a.supplement:
+            extra.update(supplement_titles(d))
+        filled, left = retitle(a.retitle, [a.index_dir] + a.supplement, extra or None)
         print(f"titles filled: {filled}; still without a title: {left}")
         return 0
     if not a.out or a.max_rerank_tokens is None:
@@ -410,20 +413,22 @@ def main(argv=None):
     if a.dry_run:
         n_rw = sum(1 for q in qs if q["id"] in rewrites)
         print(f"{len(qs)} questions ({a.half}); {n_rw} with a blind rewrite (versions C and F); site arm {'off' if a.no_site else 'on'}; cap {a.max_rerank_tokens:,} re-rank tokens"
-              + (f"; side index {a.supplement}" if a.supplement else ""))
+              + "".join(f"; side index {d}" for d in a.supplement))
         print("planned re-rank calls: %d (A/E: 1, B: 1, C: 1, F: 2 per rewritten question)" % (len(qs) * 2 + n_rw * 3))
         return 0
     t0 = time.time()
     metas, M, _ = si._load_index(a.index_dir)
     print(f"index loaded: {len(metas):,} passages in {time.time() - t0:.0f}s", flush=True)
-    supp_info, extra_titles = None, None
-    if a.supplement:
+    supp_infos, extra_titles = [], {}
+    for d in a.supplement:
         try:
-            metas, M, supp_info, extra_titles = load_supplement(a.supplement, metas, M, head, a.allow_other_index)
+            metas, M, info, extra = load_supplement(d, metas, M, head, a.allow_other_index)
         except ValueError as e:
             print("refused:", e)
             return 1
-        print(f"side index added: {supp_info['documents']} judgments, {supp_info['passages']:,} passages (made {supp_info['built']})", flush=True)
+        supp_infos.append(info)
+        extra_titles.update(extra)
+        print(f"side index added: {info['documents']} judgments, {info['passages']:,} passages (made {info['built']})", flush=True)
     hdocs = collections.defaultdict(set)
     for m in metas:
         hdocs[m["h"]].add(m["doc"])
@@ -431,10 +436,10 @@ def main(argv=None):
     site = None if a.no_site else make_site(metas, M, a.recourse_dir)
     spend = Spend(a.max_rerank_tokens)
     engine = Engine(metas, M, si.make_client(), spend, fts, site)
-    ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + ([a.supplement] if a.supplement else []), metas, extra_titles), a.out)
+    ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + a.supplement, metas, extra_titles or None), a.out)
     run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS),
                 "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
-                "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_info}
+                "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_infos[0] if supp_infos else None, "side_indexes": supp_infos}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:
         json.dump({"run": run_info, "questions": ordered}, fh, ensure_ascii=False, indent=1)
         fh.write("\n")

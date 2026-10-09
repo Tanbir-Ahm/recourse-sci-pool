@@ -1,0 +1,20 @@
+{
+ "note": "Documents fetched from outside the collection, added to a side index (not the main index). Each has a local text file (plain text from the original PDF, unedited) and a provenance file. Input of review_tools/build_supplement.py --fetched.",
+ "docs": [
+  {
+   "fetched": true,
+   "doc_key": "fetched:wpc406_2013_order_23aug2024",
+   "index_doc": 6000000001,
+   "title": "IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013)",
+   "date": "2024-08-23",
+   "year": 2024,
+   "url": "https://api.sci.gov.in/supremecourt/2013/18545/18545_2013_9_2_55018_Order_23-Aug-2024.pdf",
+   "sha256": "f5cbd0e0cccd8c21b96db1ef5bb676b849262cb875654a34537555fb17aa121a",
+   "fetched_at": "2026-10-09T09:56:18Z",
+   "text_file": "2026-10-09_wpc406_2013_order_23aug2024/WPC406-2013_Order_23-Aug-2024.txt",
+   "pages": 8,
+   "register_rows": [],
+   "for_question": "Q6"
+  }
+ ]
+}
