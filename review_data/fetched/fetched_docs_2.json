@@ -1,0 +1,20 @@
+{
+ "note": "Documents fetched from outside the collection (second list; the first, with the 23 Aug 2024 order, is fetched_docs.json). Input of review_tools/build_supplement.py.",
+ "docs": [
+  {
+   "fetched": true,
+   "doc_key": "fetched:shivangi_bansal_v_sahib_bansal_2025_insc_883",
+   "index_doc": 6000000002,
+   "title": "SHIVANGI BANSAL versus SAHIB BANSAL (judgment of 22 July 2025, 2025 INSC 883)",
+   "date": "2025-07-22",
+   "year": 2025,
+   "url": "https://indiankanoon.org/doc/41565735/",
+   "sha256": "c93c07d10d8bccf613528fbdce6999aee761c5f2735a8923b926ba4a620f1f78",
+   "fetched_at": "2026-10-09T10:11:40Z",
+   "text_file": "2026-10-09_shivangi_bansal_v_sahib_bansal_2025_insc_883/Shivangi_Bansal_v_Sahib_Bansal_2025_INSC_883.txt",
+   "pages": 19,
+   "register_rows": [],
+   "for_question": "Q15"
+  }
+ ]
+}

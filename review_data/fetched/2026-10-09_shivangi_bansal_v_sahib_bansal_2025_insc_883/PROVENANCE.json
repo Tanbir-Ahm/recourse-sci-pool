@@ -1,0 +1,19 @@
+{
+ "what": "Supreme Court of India, Shivangi Bansal v. Sahib Bansal, Transfer Petition (C) No. 2367 of 2023 with T.P.(Crl.) 631-633/2023 and SLP (Crl.) 7869/2022, 11848/2022, 2282/2023; judgment of 22 July 2025, 2025 INSC 883 (non-reportable). The judgment the owner's file names in Q15.",
+ "url": "https://indiankanoon.org/doc/41565735/",
+ "url_source": "given by the owner in chat, 2026-10-09 (the link in the owner's file, doc 81618143, is Social Action Forum 2018, not this judgment)",
+ "source_attribution": "Indian Kanoon (indiankanoon.org). One page fetched by hand-given link; no search, no API, no scraping. The raw HTML is not kept in the repository.",
+ "fetched_at_utc": "2026-10-09T10:11:40Z",
+ "raw_html_sha256": "c93c07d10d8bccf613528fbdce6999aee761c5f2735a8923b926ba4a620f1f78",
+ "raw_html_bytes": 66778,
+ "text_file": "Shivangi_Bansal_v_Sahib_Bansal_2025_INSC_883.txt",
+ "text_sha256": "fa858ebabb1a5c2c1d1050cb65a0940eed51d1c650fb091949b3c0a99184be20",
+ "text_method": "the judgment block of the page converted to plain text (tools in scratch space, html parser only); Indian Kanoon's own header lines before the Court's text were cut: \"[Cites 31, Cited by 0]\\n\\nSupreme Court of India\\n\\nShivangi Bansal vs Sahib Bansal on 22 July, 2025\\n\\nAuthor: B. R. Gavai\\n\\nBench: B. R. Gavai\" (they name 'Author: B. R. Gavai', which differs from the judgment text: 'AUGUSTINE GEORGE MASIH, J.'; the signature block shows CJI B.R. Gavai and A.G. Masih J.). Nothing else edited.",
+ "repository_visibility_checked": "private (GitHub, 2026-10-09); IK_PLAN.md asks that fetched Indian Kanoon text stays in a private repository",
+ "verified_by_reading": {
+  "match": "title, date (22 July 2025), neutral citation 2025 INSC 883, two judges (CJI B.R. Gavai and Augustine George Masih J.): matches the owner's file",
+  "nature": "a consent settlement of a matrimonial dispute: both parties asked to settle all litigation (para 5); the Court records the settlement terms (custody, visitation, waiver of alimony, quashing of all pending cases, apology, transfer of land, undertakings) and uses Article 142 to dissolve the marriage (para 25).",
+  "the_part_Q15_relies_on": "para 26 (the closing paragraph): 'The transfer petitions and special leave petitions are disposed of in terms of the above order. The guidelines framed by the High Court of Allahabad in the impugned judgment dated 13.06.2022 in Criminal Revision No. 1126 of 2022 vide paras 32 to 38, with regard to 'Constitution of Family Welfare Committees for safeguards regarding misuse of Section 498A, IPC shall remain in effect and be implemented by the appropriate authorities.' No reasons are given, Social Action Forum (2018) and Rajesh Sharma (2017) are not mentioned, and the text does not itself state a two-month cooling period or a bar on arrest (those are in the High Court's guidelines it refers to by paragraph number).",
+  "difference_from_the_owners_expected_answer": "The owner's file says the two-judge bench in Shivangi Bansal 'directed the Allahabad HC's FWC guidelines, with a 2-month cooling period and no arrest, to be implemented' and that it does not reconcile with the larger bench. The one-line direction is there (para 26), but it sits in the disposal paragraph of a consent order passed under Article 142, is marked non-reportable, and gives no reasoning; the cooling period and the bar on arrest are not in the Supreme Court's text. Whether it can be treated as a ruling that revives the Family Welfare Committees against Social Action Forum is the legal question the owner's own To Verify item 1 asks an advocate to settle. [Certain about what the text says; the legal weight is for Mr. Advocate]"
+ }
+}

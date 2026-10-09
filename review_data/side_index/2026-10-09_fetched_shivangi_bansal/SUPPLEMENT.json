@@ -1,0 +1,31 @@
+{
+ "version": "supplement-1",
+ "built": "2026-10-09T10:15:11Z",
+ "model": "voyage-law-2",
+ "main_index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+ "block_file": "5000000000-5000000249.docs1.pass23.tok4635",
+ "documents": 1,
+ "passages": 23,
+ "tokens_charged": 4635,
+ "dollars_estimate": 0.0006,
+ "docs_list": "review_data/fetched/fetched_docs_2.json",
+ "docs_list_sha256": "219acb425f8c101866940258b22207c06290c236cfc98aa7156cf655ed120b9c",
+ "why": "documents that the main index does not hold and that a question needs: judgments the Overruled Register links to a ruling the main index holds but that the main index left out as 'not criminal law' (cue-word density below 10 per 10,000 characters), and documents fetched from outside the collection; added here, outside the main index",
+ "fetched_documents": [
+  {
+   "doc": 6000000002,
+   "url": "https://indiankanoon.org/doc/41565735/",
+   "sha256": "c93c07d10d8bccf613528fbdce6999aee761c5f2735a8923b926ba4a620f1f78",
+   "fetched_at": "2026-10-09T10:11:40Z"
+  }
+ ],
+ "documents_detail": [
+  {
+   "doc": 6000000002,
+   "doc_key": "fetched:shivangi_bansal_v_sahib_bansal_2025_insc_883",
+   "title": "SHIVANGI BANSAL versus SAHIB BANSAL (judgment of 22 July 2025, 2025 INSC 883)",
+   "passages": 23,
+   "density": 8.2
+  }
+ ]
+}

@@ -1,0 +1,523 @@
+{
+ "spend": {
+  "rerank_tokens": 0,
+  "rerank_calls": 0,
+  "embed_tokens": 1155,
+  "embed_calls": 19,
+  "cap_rerank_tokens": 0,
+  "dollars_estimate": 0.0001,
+  "prices_per_million": {
+   "rerank-2": 0.05,
+   "voyage-law-2": 0.12
+  }
+ },
+ "reproduction_problems": [
+  [
+   "R15",
+   6
+  ]
+ ],
+ "rows": [
+  {
+   "qid": "R01",
+   "kind": "narrative",
+   "reachable": true,
+   "key_rank_without_reranker": 1,
+   "key_rank_with_reranker": 1,
+   "key_rank_reranker_only_E": 1,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    1,
+    5,
+    25,
+    31,
+    19
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    1,
+    5,
+    25,
+    31,
+    19
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R02",
+   "kind": "everyday",
+   "reachable": true,
+   "key_rank_without_reranker": 1,
+   "key_rank_with_reranker": 1,
+   "key_rank_reranker_only_E": 1,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    26,
+    1,
+    6,
+    21,
+    3
+   ],
+   "top5_in_common": 3,
+   "final_top5_fused_positions": [
+    3,
+    5,
+    17,
+    4,
+    26
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R04",
+   "kind": "legal",
+   "reachable": true,
+   "key_rank_without_reranker": 3,
+   "key_rank_with_reranker": 2,
+   "key_rank_reranker_only_E": 3,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    23,
+    1,
+    56,
+    36,
+    2
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    23,
+    56,
+    36,
+    2,
+    43
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R06",
+   "kind": "everyday",
+   "reachable": false,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 1,
+   "final_top5_fused_positions_E": [
+    41,
+    1,
+    45,
+    14,
+    31
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    41,
+    45,
+    1,
+    14,
+    31
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R08",
+   "kind": "everyday",
+   "reachable": true,
+   "key_rank_without_reranker": 10,
+   "key_rank_with_reranker": 2,
+   "key_rank_reranker_only_E": 5,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    8,
+    6,
+    3,
+    1,
+    28
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    3,
+    28,
+    12,
+    14,
+    4
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R09",
+   "kind": "legal",
+   "reachable": true,
+   "key_rank_without_reranker": 14,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 1,
+   "final_top5_fused_positions_E": [
+    12,
+    20,
+    1,
+    8,
+    13
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    12,
+    20,
+    1,
+    8,
+    13
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R11",
+   "kind": "everyday",
+   "reachable": true,
+   "key_rank_without_reranker": 1,
+   "key_rank_with_reranker": 3,
+   "key_rank_reranker_only_E": 4,
+   "top5_in_common_E": 0,
+   "final_top5_fused_positions_E": [
+    31,
+    20,
+    22,
+    14,
+    33
+   ],
+   "top5_in_common": 0,
+   "final_top5_fused_positions": [
+    20,
+    22,
+    14,
+    31,
+    33
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R12",
+   "kind": "narrative",
+   "reachable": true,
+   "key_rank_without_reranker": 3,
+   "key_rank_with_reranker": 5,
+   "key_rank_reranker_only_E": 10,
+   "top5_in_common_E": 1,
+   "final_top5_fused_positions_E": [
+    57,
+    2,
+    55,
+    31,
+    29
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    57,
+    2,
+    31,
+    29,
+    45
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R14",
+   "kind": "everyday",
+   "reachable": true,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 1,
+   "final_top5_fused_positions_E": [
+    1,
+    57,
+    21,
+    59,
+    38
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    21,
+    1,
+    4,
+    38,
+    57
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R15",
+   "kind": "narrative",
+   "reachable": false,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 1,
+   "final_top5_fused_positions_E": [
+    4,
+    22,
+    10,
+    16,
+    null
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    4,
+    10,
+    null,
+    22,
+    null
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R17",
+   "kind": "legal",
+   "reachable": true,
+   "key_rank_without_reranker": 2,
+   "key_rank_with_reranker": 1,
+   "key_rank_reranker_only_E": 2,
+   "top5_in_common_E": 3,
+   "final_top5_fused_positions_E": [
+    40,
+    2,
+    1,
+    4,
+    7
+   ],
+   "top5_in_common": 3,
+   "final_top5_fused_positions": [
+    2,
+    1,
+    4,
+    7,
+    9
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R19",
+   "kind": "narrative",
+   "reachable": true,
+   "key_rank_without_reranker": 2,
+   "key_rank_with_reranker": 1,
+   "key_rank_reranker_only_E": 1,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    5,
+    2,
+    47,
+    41,
+    31
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    5,
+    2,
+    47,
+    41,
+    31
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R20",
+   "kind": "legal",
+   "reachable": true,
+   "key_rank_without_reranker": 15,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    1,
+    4,
+    7,
+    29,
+    32
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    1,
+    4,
+    7,
+    29,
+    32
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R21",
+   "kind": "legal",
+   "reachable": false,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    2,
+    11,
+    1,
+    14,
+    8
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    2,
+    14,
+    8,
+    46,
+    6
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R22",
+   "kind": "narrative",
+   "reachable": true,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    51,
+    3,
+    1,
+    49,
+    33
+   ],
+   "top5_in_common": 1,
+   "final_top5_fused_positions": [
+    51,
+    3,
+    49,
+    23,
+    13
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R24",
+   "kind": "narrative",
+   "reachable": true,
+   "key_rank_without_reranker": 2,
+   "key_rank_with_reranker": 1,
+   "key_rank_reranker_only_E": 1,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    9,
+    2,
+    5,
+    20,
+    23
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    9,
+    5,
+    20,
+    23,
+    2
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R26",
+   "kind": "legal",
+   "reachable": true,
+   "key_rank_without_reranker": 6,
+   "key_rank_with_reranker": 4,
+   "key_rank_reranker_only_E": 3,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    32,
+    5,
+    6,
+    7,
+    1
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    32,
+    1,
+    5,
+    6,
+    14
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R28",
+   "kind": "everyday",
+   "reachable": null,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    29,
+    3,
+    1,
+    30,
+    58
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    29,
+    3,
+    1,
+    30,
+    58
+   ],
+   "candidates": 60
+  },
+  {
+   "qid": "R29",
+   "kind": "legal",
+   "reachable": null,
+   "key_rank_without_reranker": null,
+   "key_rank_with_reranker": null,
+   "key_rank_reranker_only_E": null,
+   "top5_in_common_E": 2,
+   "final_top5_fused_positions_E": [
+    1,
+    27,
+    7,
+    10,
+    2
+   ],
+   "top5_in_common": 2,
+   "final_top5_fused_positions": [
+    1,
+    7,
+    10,
+    2,
+    24
+   ],
+   "candidates": 60
+  }
+ ],
+ "summary": {
+  "questions_reproduced": 18,
+  "questions_not_reproduced": [
+   "R15"
+  ],
+  "answerable_questions": 14,
+  "key_authority_in_top_1_without_reranker": 3,
+  "key_authority_in_top_1_reranker_only_E": 4,
+  "key_authority_in_top_1_reranker_with_weights_A": 5,
+  "key_authority_in_top_5_without_reranker": 8,
+  "key_authority_in_top_5_reranker_only_E": 9,
+  "key_authority_in_top_5_reranker_with_weights_A": 10,
+  "key_authority_in_top_10_without_reranker": 10,
+  "key_authority_in_top_10_reranker_only_E": 10,
+  "key_authority_in_top_10_reranker_with_weights_A": 10,
+  "A_avg_top5_passages_in_common_with_the_fused_top5": 1.67,
+  "A_final_top5_passages_total": 90,
+  "A_final_top5_passages_outside_the_fused_top5": 60,
+  "A_final_top5_passages_outside_the_fused_top10": 50,
+  "A_deepest_fused_position_that_reached_a_final_top5": 58,
+  "E_avg_top5_passages_in_common_with_the_fused_top5": 1.72,
+  "E_final_top5_passages_total": 90,
+  "E_final_top5_passages_outside_the_fused_top5": 59,
+  "E_final_top5_passages_outside_the_fused_top10": 47,
+  "E_deepest_fused_position_that_reached_a_final_top5": 59
+ }
+}

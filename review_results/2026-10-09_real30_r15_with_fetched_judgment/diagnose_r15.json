@@ -1,0 +1,85 @@
+{
+ "question_terms_used_for_keyword_search": [
+  "daughter",
+  "left",
+  "house",
+  "meerut",
+  "march",
+  "2025",
+  "filed",
+  "case",
+  "section",
+  "against",
+  "husband",
+  "even"
+ ],
+ "section_numbers_seen": [
+  "85",
+  "86"
+ ],
+ "authorities": {
+  "Shivangi Bansal 2025 (side index)": {
+   "passages_in_library": 23,
+   "best_meaning_rank_of_any_passage": 172,
+   "best_passage": {
+    "pn": "4/3",
+    "text_start": "11848/2022): Special Leave Petition challenging Allahabad High Court's order quashing FIR against Manju Bansal (mother-in- law); pending bef"
+   },
+   "one_in_100_nearest_by_meaning": false,
+   "one_in_keyword_top50": false,
+   "one_in_section_search": false,
+   "one_among_60_candidates": false,
+   "best_position_in_fused_order": null,
+   "rank_after_reranker_and_weights_if_candidate": null,
+   "reranker_score_of_best_candidate": null,
+   "if_added_to_the_60": {
+    "passages_added": 8,
+    "best_rank_among_68": 11,
+    "its_reranker_score": 0.393,
+    "score_of_the_5th_result": 0.404
+   }
+  },
+  "Social Action Forum 2018": {
+   "passages_in_library": 50,
+   "best_meaning_rank_of_any_passage": 8,
+   "best_passage": {
+    "pn": "17-18",
+    "text_start": "17. Mr. V. Shekhar, learned senior counsel, was appointed as Amicus Curiae to assist the Court in the matter. 18. It was submitted by the le"
+   },
+   "one_in_100_nearest_by_meaning": true,
+   "one_in_keyword_top50": false,
+   "one_in_section_search": false,
+   "one_among_60_candidates": true,
+   "best_position_in_fused_order": 22,
+   "rank_after_reranker_and_weights_if_candidate": 4,
+   "reranker_score_of_best_candidate": 0.531
+  },
+  "Rajesh Sharma 2017": {
+   "passages_in_library": 24,
+   "best_meaning_rank_of_any_passage": 2,
+   "best_passage": {
+    "pn": "11",
+    "text_start": "11. LeamedASG suggested that there must be some preliminaiy inquiry on the lines ofobservations inLa/itaK11mari versus Government of Uttar P"
+   },
+   "one_in_100_nearest_by_meaning": true,
+   "one_in_keyword_top50": false,
+   "one_in_section_search": false,
+   "one_among_60_candidates": true,
+   "best_position_in_fused_order": 4,
+   "rank_after_reranker_and_weights_if_candidate": 1,
+   "reranker_score_of_best_candidate": 0.57
+  }
+ },
+ "spend": {
+  "rerank_tokens": 47854,
+  "rerank_calls": 2,
+  "embed_tokens": 113,
+  "embed_calls": 1,
+  "cap_rerank_tokens": 1000000,
+  "dollars_estimate": 0.0024,
+  "prices_per_million": {
+   "rerank-2": 0.05,
+   "voyage-law-2": 0.12
+  }
+ }
+}

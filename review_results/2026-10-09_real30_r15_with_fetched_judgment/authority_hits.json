@@ -1,0 +1,262 @@
+{
+ "summary": {
+  "A today": {
+   "questions": 1,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 0,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 0,
+   "gap_stale_questions": 0
+  },
+  "B no repeats": {
+   "questions": 1,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 0,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 0,
+   "gap_stale_questions": 0
+  },
+  "C rewrite": {
+   "questions": 1,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 1,
+   "stale_slots": 1,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 0,
+   "gap_stale_questions": 0
+  },
+  "E no multiplier": {
+   "questions": 1,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 0,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 0,
+   "gap_stale_questions": 0
+  },
+  "F merged": {
+   "questions": 1,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 0,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 1,
+   "gap_stale_slots": 0,
+   "gap_stale_questions": 0
+  },
+  "S site shown": {
+   "questions": 1,
+   "hit@1": 0,
+   "hit@5": 0,
+   "hit@10": 0,
+   "stale_slots": 2,
+   "stale_questions": 1,
+   "narrower_slots": 0,
+   "gap_stale_slots": 0,
+   "gap_stale_questions": 0
+  }
+ },
+ "scores": {
+  "A today": {
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     }
+    ]
+   }
+  },
+  "B no repeats": {
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     }
+    ]
+   }
+  },
+  "C rewrite": {
+   "R15": {
+    "first_rank": 6,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": true
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 3,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   }
+  },
+  "E no multiplier": {
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 1,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 2,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 3,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   }
+  },
+  "F merged": {
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 10,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000250996,
+      "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)",
+      "kind": "contested",
+      "counts_as_stale": false
+     },
+     {
+      "rank": 3,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   }
+  },
+  "S site shown": {
+   "R15": {
+    "first_rank": null,
+    "hits": {
+     "1": false,
+     "5": false,
+     "10": false
+    },
+    "shown": 5,
+    "stale": [
+     {
+      "rank": 2,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     },
+     {
+      "rank": 4,
+      "doc": 1000250111,
+      "label": "Rajesh Sharma v. State of U.P. (2017)",
+      "kind": "modified",
+      "counts_as_stale": true
+     }
+    ]
+   }
+  }
+ }
+}

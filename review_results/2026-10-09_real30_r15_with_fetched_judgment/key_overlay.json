@@ -1,0 +1,9 @@
+{
+  "note": "Key document that only a side index holds, for scoring this run. The key file (real30_key_v1.json) is not changed. 6000000002 is the id given to Shivangi Bansal v. Sahib Bansal (22 July 2025, 2025 INSC 883) fetched from Indian Kanoon by the owner's link (review_data/fetched/).",
+  "questions": {
+    "R15": {
+      "key_docs": [6000000002],
+      "label": "Shivangi Bansal v. Sahib Bansal (2025), fetched from Indian Kanoon; held only in a side index"
+    }
+  }
+}
