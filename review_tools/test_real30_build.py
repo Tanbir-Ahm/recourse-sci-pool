@@ -72,6 +72,17 @@ check("the key lists the 16 older rulings across 12 questions (the 13th trap, Q1
 check("a key authority's documents are index ids from the index files, never corpus keys", all(isinstance(d, int) for k in key["questions"].values() for d in k["key_docs"]))
 check("a stale ruling that does not count (narrower, contested) is kept in the key but flagged", [s["kind"] for s in key["questions"]["R01"]["stale_docs"]] == ["narrower"] * 3 and not any(s["counts_as_stale"] for s in key["questions"]["R01"]["stale_docs"]))
 
+# ---- the blind rewrites -------------------------------------------------------------------------------------------------------------------------------
+import hashlib
+import re
+rw = json.load(open(os.path.join(B.DATA, "real30_rewrites_v1.json"), encoding="utf-8"))
+dev_plain = [q for q in real["questions"] if q["half"] == "dev" and q["kind"] != "legal"]
+check("the rewrites cover exactly the tuning-half questions that are not in legal wording, and no sealed question", sorted(rw["rewrites"]) == sorted(q["id"] for q in dev_plain) and len(dev_plain) == 12 and not any(q["half"] == "sealed" and q["id"] in rw["rewrites"] for q in real["questions"]))
+body = "\n\n".join(f'{q["id"]}: {q["text"]}' for q in dev_plain)
+check("the rewrites were made from the questions as built (input hash) with the saved prompt (prompt hash)", rw["input_sha256"] == hashlib.sha256(body.encode()).hexdigest() and rw["prompt_sha256"] == hashlib.sha256(open(os.path.join(B.DATA, "rewrite_prompt_v1.txt"), "rb").read()).hexdigest())
+check("no rewrite names a case or runs over the prompt's 60 words, and they were saved unedited", all(len(v.split()) <= 60 and not re.search(r"\bv\.|\bversus\b|\bvs\b", v) for v in rw["rewrites"].values()) and rw["unedited"] is True)
+check("the question file does not contain the rewrites", not any(v[:40] in json.dumps(real, ensure_ascii=False) for v in rw["rewrites"].values()))
+
 # ---- reproducibility and refusals --------------------------------------------------------------------------------------------------------------------
 fresh, fkey, _, _ = B.build(index_dir=B.DEFAULT_INDEX, today=real["built"])
 a, b = copy.deepcopy(fresh), copy.deepcopy(real)

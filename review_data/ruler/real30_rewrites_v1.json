@@ -1,0 +1,56 @@
+{
+ "schema": "real-rewrites-1",
+ "written": "2026-10-09",
+ "note": "PRIVATE. Blind legal-wording rewrites of the 12 everyday and narrative tuning-half questions, made by a separate model run that was given only `rewrite_prompt_v1.txt` and the question texts (no answers, no key, no pool, no search results), and saved BEFORE any search was run. Recorded unedited; a rewrite that breaks a rule of the prompt is flagged below and kept, not re-rolled. The model that served the run is whatever served the subagent; it is not recorded here.",
+ "prompt_sha256": "7e382f11d7f172228161f78b515f12c78b764a7ded78aae0b2cf86b12d4d10da",
+ "input_sha256": "c51f9e76512668544d78b91587a9a6466905334ad4afc62b390d876cf19801a7",
+ "input_questions": [
+  "R01",
+  "R02",
+  "R06",
+  "R08",
+  "R11",
+  "R12",
+  "R14",
+  "R15",
+  "R19",
+  "R22",
+  "R24",
+  "R28"
+ ],
+ "produced_by": "subagent (general-purpose), one call, no tools used",
+ "unedited": true,
+ "checks": {
+  "ids_match_the_input": true,
+  "over_60_words": [],
+  "case_name_markers (v., versus, vs)": [],
+  "words": {
+   "R01": 54,
+   "R02": 44,
+   "R06": 50,
+   "R08": 45,
+   "R11": 42,
+   "R12": 56,
+   "R14": 46,
+   "R15": 45,
+   "R19": 55,
+   "R22": 57,
+   "R24": 50,
+   "R28": 30
+  }
+ },
+ "rewrites": {
+  "R01": "Whether a warrantless arrest, without written grounds of arrest or an arrest memo furnished to the accused, violates Article 22(1) of the Constitution and Section 50 CrPC / Section 47 BNSS, and whether such non-compliance vitiates the arrest and the magistrate's remand under Section 167 CrPC / Section 187 BNSS, entitling him to release.",
+  "R02": "Whether a notice of appearance under Section 41A CrPC / Section 35 BNSS can be validly served through WhatsApp or other electronic means, and whether police can arrest the noticee for failing to appear in response to such a notice in a cheating case.",
+  "R06": "Whether Section 436A CrPC / Section 479 BNSS, including the new first-time offender provision allowing release of an undertrial after detention for one-third of the maximum sentence, applies retrospectively to a theft case registered before the BNSS came into force, where the accused has been detained for over a year.",
+  "R08": "Whether the power to order interim compensation of up to twenty per cent of the cheque amount under Section 143A of the Negotiable Instruments Act is mandatory or discretionary, when exercised at the first hearing of a prosecution for dishonour of cheque under Section 138.",
+  "R11": "Whether a statement admitting possession of ganja, recorded from the accused by an officer of the Narcotics Control Bureau under Section 67 NDPS Act, is admissible as a confession against him in light of Section 25 Evidence Act / Section 23 BSA.",
+  "R12": "Whether an FIR and chargesheet for cheating, criminal breach of trust and outraging modesty (Sections 420, 406, 354 IPC / Sections 318(4), 316(2), 74 BNS) can be quashed under Section 482 CrPC / Section 528 BNSS where an oral agreement to sell immovable property failed after part payment and the dispute is alleged to be civil.",
+  "R14": "Whether failure to return a business partner's investment after the business suffered a loss amounts to cheating (Sections 415 and 420 IPC / Section 318 BNS) or a purely civil dispute, and whether the FIR can be quashed under Section 482 CrPC / Section 528 BNSS.",
+  "R15": "Whether the family welfare committee referral and two-month cooling-off period before arrest in complaints under Section 498A IPC / Sections 85 and 86 BNS remain operative, and whether elderly or ailing in-laws and a married sister-in-law living elsewhere can be arrested in such a complaint.",
+  "R19": "Whether proceedings under the Protection of Children from Sexual Offences (POCSO) Act for sexual assault on a minor student by a teacher can be quashed by the High Court under Section 482 CrPC / Section 528 BNSS on the basis of a compromise signed by the victim's father under alleged pressure, over the mother's objection.",
+  "R22": "Whether the High Court can commute a death sentence for double murder (Section 302 IPC / Section 103 BNS) to life imprisonment where the sentencing hearing under Section 235(2) CrPC / Section 258(2) BNSS did not examine the accused's background and legal aid was inadequate. Which mitigating circumstances, such as no antecedents and jail conduct, are relevant?",
+  "R24": "Whether, after a Special Court takes cognizance of a complaint under Section 44 of the Prevention of Money Laundering Act and summons an accused not arrested during investigation, the Enforcement Directorate can arrest him under Section 19 on appearance, and whether bail then requires the twin conditions of Section 45.",
+  "R28": "Whether the six-month cooling-off period for a divorce by mutual consent under Section 13B(2) of the Hindu Marriage Act is mandatory or directory, and whether the court can waive it."
+ }
+}
