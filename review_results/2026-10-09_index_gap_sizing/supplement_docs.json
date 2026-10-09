@@ -1,0 +1,351 @@
+{
+ "note": "The correcting judgments that sit in the collection but that the index left out as 'not criminal law' (cue-word density under 10 per 10,000 characters, no criminal heading), each linked in the Overruled Register to a ruling the index holds. Names checked as well as citation keys. Input of review_tools/build_supplement.py. PRIVATE (names register rows).",
+ "docs": [
+  {
+   "doc_key": "b2017_10_569_999",
+   "source": "bucket",
+   "src_id": "2017_10_569_999",
+   "bucket_path": "2017_10_569_999",
+   "index_doc": 1000250181,
+   "title": "JUSTICE K S PUTTASWAMY (RETD.), AND ANR. versus UNION OF INDIA AND ORS.",
+   "year": 2017,
+   "date": "2017-08-24",
+   "insc": "2017 INSC 801",
+   "text_len": 1046574,
+   "register_rows": [
+    {
+     "row": "L2-001",
+     "corrects": "M. P. SHARMA AND OTHERS v. SATISH CHANDRA, DISTRICT MAGISTRATE,DELHI, ",
+     "correcting_judgment_named_in_register": "K.S. Puttaswamy (Retd.) v. Union of India",
+     "trust": "candidate"
+    }
+   ]
+  },
+  {
+   "doc_key": "c8342",
+   "source": "crawl",
+   "src_id": "8342",
+   "bucket_path": "S_1988_1_1_169",
+   "index_doc": 8342,
+   "title": "A.R. ANTULAY v. R.S. NAYAK & ANR",
+   "year": 1988,
+   "date": "1988-04-29",
+   "insc": "1988 INSC 123",
+   "text_len": 464599,
+   "register_rows": [
+    {
+     "row": "L1-0439",
+     "corrects": "R.S.NAYAK v. A.R.ANTULAY",
+     "correcting_judgment_named_in_register": "A.R. Antulay v. R.S. Nayak and Another",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c9242",
+   "source": "crawl",
+   "src_id": "9242",
+   "bucket_path": "S_1985_2_131_301",
+   "index_doc": 9242,
+   "title": "UNION OF INDIA AND ANOTHER v. TULSIRAM PATEL AND OTHERS",
+   "year": 1985,
+   "date": "1985-07-11",
+   "insc": "1985 INSC 155",
+   "text_len": 452775,
+   "register_rows": [
+    {
+     "row": "L1-0619",
+     "corrects": "DIVISIONAL PERSONNEL OFFICER, SOUTHERN RAILWAY & ANR v. T.R",
+     "correcting_judgment_named_in_register": "Union of India and Another v. Tulsiram Patel and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c6215",
+   "source": "crawl",
+   "src_id": "6215",
+   "bucket_path": "1975_1_814_880",
+   "index_doc": 6215,
+   "title": "SHAMSHER SINGH & ANR v. STATE OF PUNJAB",
+   "year": 1974,
+   "date": "1974-08-23",
+   "insc": "1974 INSC 154",
+   "text_len": 250822,
+   "register_rows": [
+    {
+     "row": "L1-0581",
+     "corrects": "THE STATE OF UTTAR PRADESH AND OTHERS v. BABU RAM UPADHYA",
+     "correcting_judgment_named_in_register": "Samsher Singh v. State of Punjab and Another",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "b2020_7_180_282",
+   "source": "bucket",
+   "src_id": "2020_7_180_282",
+   "bucket_path": "2020_7_180_282",
+   "index_doc": 1000252655,
+   "title": "ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS.",
+   "year": 2020,
+   "date": "2020-07-14",
+   "insc": "2020 INSC 453",
+   "text_len": 240589,
+   "register_rows": [
+    {
+     "row": "L2-032",
+     "corrects": "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH",
+     "correcting_judgment_named_in_register": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal",
+     "trust": "candidate"
+    },
+    {
+     "row": "L2-033",
+     "corrects": "No. 1156/2013) TOMASO BRUNO & ANR v. STATE OF U.P",
+     "correcting_judgment_named_in_register": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal",
+     "trust": "candidate"
+    }
+   ]
+  },
+  {
+   "doc_key": "b2024_11_541_640",
+   "source": "bucket",
+   "src_id": "2024_11_541_640",
+   "bucket_path": "2024_11_541_640",
+   "index_doc": 1000256077,
+   "title": "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. versus RAMBHA DEVI & ORS.",
+   "year": 2024,
+   "date": "2024-11-06",
+   "insc": "2024 INSC 840",
+   "text_len": 212921,
+   "register_rows": [
+    {
+     "row": "L2-053",
+     "corrects": "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL",
+     "correcting_judgment_named_in_register": "Bajaj Allianz General Insurance Co. Ltd. v. Rambha Devi",
+     "trust": "candidate"
+    }
+   ]
+  },
+  {
+   "doc_key": "c16776",
+   "source": "crawl",
+   "src_id": "16776",
+   "bucket_path": "1999_3_1279_1374",
+   "index_doc": 16776,
+   "title": "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA & ORS",
+   "year": 1999,
+   "date": "1999-08-03",
+   "insc": "1999 INSC 299",
+   "text_len": 199497,
+   "register_rows": [
+    {
+     "row": "L1-0259",
+     "corrects": "\"COMMON CAUSE\", A REGISTERED SOCIETYTHROUGH ITS DIRECTOR v. UNION OF I",
+     "correcting_judgment_named_in_register": "Common Cause, A Registered Society v. Union of India and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c37891",
+   "source": "crawl",
+   "src_id": "37891",
+   "bucket_path": "2011_8_359_444",
+   "index_doc": 37891,
+   "title": "Sri Radhy Shyam (Dead) Through L.Rs. and others v. State of U.P. and others",
+   "year": 2011,
+   "date": "2011-04-15",
+   "insc": "2011 INSC 304",
+   "text_len": 130385,
+   "register_rows": [
+    {
+     "row": "L1-0079",
+     "corrects": "Radhey Shyam v. State of U.P",
+     "correcting_judgment_named_in_register": "Sri Radhy Shyam (Dead) through L.Rs. and Others v. State of U.P. and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "b2017_7_765_822",
+   "source": "bucket",
+   "src_id": "2017_7_765_822",
+   "bucket_path": "2017_7_765_822",
+   "index_doc": 1000250051,
+   "title": "MUKUND DEWANGAN versus ORIENTAL INSURANCE COMPANY LIMITED",
+   "year": 2017,
+   "date": "2017-07-03",
+   "insc": "2017 INSC 576",
+   "text_len": 128680,
+   "register_rows": [
+    {
+     "row": "D2-PRABHULAL-2017",
+     "corrects": "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL",
+     "correcting_judgment_named_in_register": "Mukund Dewangan v. Oriental Insurance Co. Ltd.",
+     "trust": "candidate"
+    }
+   ]
+  },
+  {
+   "doc_key": "c3373",
+   "source": "crawl",
+   "src_id": "3373",
+   "bucket_path": "1964_6_129_171",
+   "index_doc": 3373,
+   "title": "VIDYACHARAN SHUKLA v. KHUBCHAND BAGHEL AND OTHERS",
+   "year": 1963,
+   "date": "1963-12-20",
+   "insc": "1963 INSC 266",
+   "text_len": 102975,
+   "register_rows": [
+    {
+     "row": "L1-0542",
+     "corrects": "KAUSHALYA RANI v. GOPAL SINGH",
+     "correcting_judgment_named_in_register": "Vidyacharan Shukla v. Khubchand Baghel and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c8193",
+   "source": "crawl",
+   "src_id": "8193",
+   "bucket_path": "S_1988_2_942_977",
+   "index_doc": 8193,
+   "title": "DR. BALIRAM WAMAN HIRAY v. JUSTICE B. LENTIN AND OTHERS",
+   "year": 1988,
+   "date": "1988-09-12",
+   "insc": "1988 INSC 272",
+   "text_len": 95671,
+   "register_rows": [
+    {
+     "row": "L1-0246",
+     "corrects": "LALJI HARIDAS v. STATE OF MAHARASHTRA AND ANOTHER",
+     "correcting_judgment_named_in_register": "Dr Baliram Waman Hiray v. Justice B. Lentin and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c17693",
+   "source": "crawl",
+   "src_id": "17693",
+   "bucket_path": "2001_2_743_768",
+   "index_doc": 17693,
+   "title": "CADILA HEALTHCARE LIMITED v. CADILA PHARMACEUTICALS LIMITED",
+   "year": 2001,
+   "date": "2001-03-26",
+   "insc": "2001 INSC 173",
+   "text_len": 54837,
+   "register_rows": [
+    {
+     "row": "L1-0655",
+     "corrects": "M/S S.M. DYECHEM LTD v. M/S CADBURY (INDIA) LTD",
+     "correcting_judgment_named_in_register": "Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd.",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c3465",
+   "source": "crawl",
+   "src_id": "3465",
+   "bucket_path": "1964_4_485_497",
+   "index_doc": 3465,
+   "title": "STATE OF UTTAR PRADESH v. SINGHARA SINGH AND OTHERS",
+   "year": 1963,
+   "date": "1963-08-16",
+   "insc": "1963 INSC 173",
+   "text_len": 31650,
+   "register_rows": [
+    {
+     "row": "L1-0479",
+     "corrects": "WILLIE (WILLIAM) SLANEY v. THE STATE OF MADHYA PRADESH",
+     "correcting_judgment_named_in_register": "State of Uttar Pradesh v. Singhara Singh and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c25882",
+   "source": "crawl",
+   "src_id": "25882",
+   "bucket_path": "2004_2_511_529",
+   "index_doc": 25882,
+   "title": "Commissioner of Customs, Calcutta etc v. M/s Indian Oil Corporation Ltd. & Anr",
+   "year": 2004,
+   "date": "2004-02-17",
+   "insc": "2004 INSC 120",
+   "text_len": 17147,
+   "register_rows": [
+    {
+     "row": "L1-0569",
+     "corrects": "M/S HINDUSTAN AERONAUTICS LTD., BANGALORE v. COMMISSIONER OF INCOME TA",
+     "correcting_judgment_named_in_register": "Commissioner of Customs, Calcutta v. Indian Oil Corporation Ltd. and Another",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c25902",
+   "source": "crawl",
+   "src_id": "25902",
+   "bucket_path": "2004_2_511_529",
+   "index_doc": 25902,
+   "title": "Commissioner of Customs, Calcutta etc. etc v. M/s Indian Oil Corporation Ltd. & Anr",
+   "year": 2004,
+   "date": "2004-02-17",
+   "insc": "2004 INSC 120",
+   "text_len": 16635,
+   "register_rows": [
+    {
+     "row": "L1-0569",
+     "corrects": "M/S HINDUSTAN AERONAUTICS LTD., BANGALORE v. COMMISSIONER OF INCOME TA",
+     "correcting_judgment_named_in_register": "Commissioner of Customs, Calcutta v. Indian Oil Corporation Ltd. and Another",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c13324",
+   "source": "crawl",
+   "src_id": "13324",
+   "bucket_path": "1998_2_493_500",
+   "index_doc": 13324,
+   "title": "1. GAURAV JAIN, 2. SUPREME COURT BAR ASSOCIATION v. UNION OF INDIA & ORS",
+   "year": 1998,
+   "date": "1998-03-30",
+   "insc": "1998 INSC 160",
+   "text_len": 16210,
+   "register_rows": [
+    {
+     "row": "L1-0230",
+     "corrects": "GAURAV JAIN v. UNION OF INDIA & ORS",
+     "correcting_judgment_named_in_register": "Gaurav Jain and Supreme Court Bar Association v. Union of India and Others",
+     "trust": "verified"
+    }
+   ]
+  },
+  {
+   "doc_key": "c41774",
+   "source": "crawl",
+   "src_id": "41774",
+   "bucket_path": "2014_8_871_879",
+   "index_doc": 41774,
+   "title": "ROHTAS BHANKHAR & OTHERS v. UNION OF INDIA AND ANOTHER",
+   "year": 2014,
+   "date": "2014-07-15",
+   "insc": "2014 INSC 485",
+   "text_len": 13587,
+   "register_rows": [
+    {
+     "row": "L1-0716",
+     "corrects": "S.VINOD KUMAR AND ANR v. UNION OF INDIA AND ORS",
+     "correcting_judgment_named_in_register": "Rohtas Bhankhar v. Union of India (UOI)",
+     "trust": "verified"
+    }
+   ]
+  }
+ ]
+}

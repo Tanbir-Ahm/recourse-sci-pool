@@ -1,17 +1,17 @@
 {
  "summary": {
   "rows": 1765,
-  "overruled_in_corpus": 546,
-  "overruled_in_index": 85,
-  "overruling_in_corpus": 1593,
-  "overruling_in_index": 231,
-  "pairs_overruled_in_index_overruling_missing_from_index": 22,
-  "of_which_overruling_in_collection_but_filtered_out": 16,
+  "overruled_in_corpus": 536,
+  "overruled_in_index": 86,
+  "overruling_in_corpus": 1575,
+  "overruling_in_index": 234,
+  "pairs_overruled_in_index_overruling_missing_from_index": 23,
+  "of_which_overruling_in_collection_but_filtered_out": 17,
   "of_which_overruling_not_in_collection": 6,
-  "distinct_overruling_judgments_to_add_from_the_collection": 20,
-  "their_characters": 3805381,
-  "approx_tokens": 983303,
-  "approx_dollars_at_0.12_per_million": 0.118
+  "distinct_overruling_judgments_to_add_from_the_collection": 17,
+  "their_characters": 3475554,
+  "approx_tokens": 898076,
+  "approx_dollars_at_0.12_per_million": 0.108
  },
  "pairs": [
   {
@@ -21,7 +21,8 @@
    "overruled_in_index": [
     [
      "c33081",
-     "Radhey Shyam v. State of U.P"
+     "Radhey Shyam v. State of U.P",
+     33081
     ]
    ],
    "overruling": "Sri Radhy Shyam (Dead) through L.Rs. and Others v. State of U.P. and Others",
@@ -33,7 +34,40 @@
      "c37891",
      "Sri Radhy Shyam (Dead) Through L.Rs. and others v. State of U.P. and o",
      130385,
-     "not_criminal"
+     "not_criminal",
+     37891,
+     2011
+    ]
+   ]
+  },
+  {
+   "register_row": "L1-0230",
+   "trust": "verified",
+   "treatment": "overruled",
+   "overruled_in_index": [
+    [
+     "c13924",
+     "GAURAV JAIN v. UNION OF INDIA & ORS",
+     13924
+    ],
+    [
+     "c13925",
+     "GAURAV JAIN v. UNION OF INDIA & ORS",
+     13925
+    ]
+   ],
+   "overruling": "Gaurav Jain and Supreme Court Bar Association v. Union of India and Others",
+   "overruling_year": 1998,
+   "overruling_court": "SC",
+   "kind": "filtered_out",
+   "overruling_docs": [
+    [
+     "c13324",
+     "1. GAURAV JAIN, 2. SUPREME COURT BAR ASSOCIATION v. UNION OF INDIA & O",
+     16210,
+     "not_criminal",
+     13324,
+     1998
     ]
    ]
   },
@@ -44,7 +78,8 @@
    "overruled_in_index": [
     [
      "c3342",
-     "LALJI HARIDAS v. STATE OF MAHARASHTRA AND ANOTHER"
+     "LALJI HARIDAS v. STATE OF MAHARASHTRA AND ANOTHER",
+     3342
     ]
    ],
    "overruling": "Dr Baliram Waman Hiray v. Justice B. Lentin and Others",
@@ -56,7 +91,9 @@
      "c8193",
      "DR. BALIRAM WAMAN HIRAY v. JUSTICE B. LENTIN AND OTHERS",
      95671,
-     "not_criminal"
+     "not_criminal",
+     8193,
+     1988
     ]
    ]
   },
@@ -67,7 +104,8 @@
    "overruled_in_index": [
     [
      "c14705",
-     "\"COMMON CAUSE\", A REGISTERED SOCIETYTHROUGH ITS DIRECTOR v. UNION OF I"
+     "\"COMMON CAUSE\", A REGISTERED SOCIETYTHROUGH ITS DIRECTOR v. UNION OF I",
+     14705
     ]
    ],
    "overruling": "Common Cause, A Registered Society v. Union of India and Others",
@@ -79,58 +117,9 @@
      "c16776",
      "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA & ORS",
      199497,
-     "not_criminal"
-    ],
-    [
-     "c18169",
-     "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA",
-     5790,
-     "not_criminal"
-    ],
-    [
-     "c30337",
-     "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA",
-     5102,
-     "not_criminal"
-    ]
-   ]
-  },
-  {
-   "register_row": "L1-0262",
-   "trust": "verified",
-   "treatment": "overruled",
-   "overruled_in_index": [
-    [
-     "c1364",
-     "MANNI LAL v. SHRI PARMAI LAL & ORS"
-    ]
-   ],
-   "overruling": "P. Prabhakaran v. P. Jayarajan",
-   "overruling_year": 2005,
-   "overruling_court": "SC",
-   "kind": "not_in_collection",
-   "overruling_docs": []
-  },
-  {
-   "register_row": "L1-0278",
-   "trust": "verified",
-   "treatment": "overruled",
-   "overruled_in_index": [
-    [
-     "c14389",
-     "SATBIR AND THE STATE OF HARYANA v. SURAT SINGH & ORS"
-    ]
-   ],
-   "overruling": "General Manager, Telecom v. A. Srinivasa Rao and Others",
-   "overruling_year": 1998,
-   "overruling_court": "SC",
-   "kind": "filtered_out",
-   "overruling_docs": [
-    [
-     "c13678",
-     "GENERAL MANAGER, TELECOM v. S.SRINIVASA RAO & ORS",
-     7192,
-     "not_criminal"
+     "not_criminal",
+     16776,
+     1999
     ]
    ]
   },
@@ -141,7 +130,13 @@
    "overruled_in_index": [
     [
      "c16680",
-     "PAPARAMBAKA ROSAMMA & ORS v. STATE OF ANDHRA PRADESH"
+     "PAPARAMBAKA ROSAMMA & ORS v. STATE OF ANDHRA PRADESH",
+     16680
+    ],
+    [
+     "c16682",
+     "PAPARAMBAKA ROSAMMA & ORS v. STATE OF ANDHRA PRADESH",
+     16682
     ]
    ],
    "overruling": "Shanmugam @ Kulandaivelu v. State of Tamil Nadu",
@@ -157,7 +152,8 @@
    "overruled_in_index": [
     [
      "c17267",
-     "ABDUL WAHAB ANSARI v. STATE OF BIHAR & ANR"
+     "ABDUL WAHAB ANSARI v. STATE OF BIHAR & ANR",
+     17267
     ]
    ],
    "overruling": "Birendra K. Singh v. State of Bihar",
@@ -173,7 +169,8 @@
    "overruled_in_index": [
     [
      "c8620",
-     "A.K. SUBBAIAH & ORS v. STATE OF KARNATAKA & ORS"
+     "A.K. SUBBAIAH & ORS v. STATE OF KARNATAKA & ORS",
+     8620
     ]
    ],
    "overruling": "Anand Commercial Agencies v. The Commercial Tax Officer VI Circle, Hyderabad and Others",
@@ -189,11 +186,13 @@
    "overruled_in_index": [
     [
      "c9563",
-     "R.S.NAYAK v. A.R.ANTULAY"
+     "R.S.NAYAK v. A.R.ANTULAY",
+     9563
     ],
     [
      "c9608",
-     "R. S. NAYAK v. A. R. ANTULAY"
+     "R. S. NAYAK v. A. R. ANTULAY",
+     9608
     ]
    ],
    "overruling": "A.R. Antulay v. R.S. Nayak and Another",
@@ -205,13 +204,9 @@
      "c8342",
      "A.R. ANTULAY v. R.S. NAYAK & ANR",
      464599,
-     "not_criminal"
-    ],
-    [
-     "c8614",
-     "PRABHAKARAN NAIR, ETC v. STATE OF TAMIL NADU AND ORS",
-     72418,
-     "not_criminal"
+     "not_criminal",
+     8342,
+     1988
     ]
    ]
   },
@@ -222,7 +217,8 @@
    "overruled_in_index": [
     [
      "c792",
-     "WILLIE (WILLIAM) SLANEY v. THE STATE OF MADHYA PRADESH"
+     "WILLIE (WILLIAM) SLANEY v. THE STATE OF MADHYA PRADESH",
+     792
     ]
    ],
    "overruling": "State of Uttar Pradesh v. Singhara Singh and Others",
@@ -234,7 +230,9 @@
      "c3465",
      "STATE OF UTTAR PRADESH v. SINGHARA SINGH AND OTHERS",
      31650,
-     "not_criminal"
+     "not_criminal",
+     3465,
+     1963
     ]
    ]
   },
@@ -245,7 +243,8 @@
    "overruled_in_index": [
     [
      "c3442",
-     "KAUSHALYA RANI v. GOPAL SINGH"
+     "KAUSHALYA RANI v. GOPAL SINGH",
+     3442
     ]
    ],
    "overruling": "Vidyacharan Shukla v. Khubchand Baghel and Others",
@@ -257,7 +256,43 @@
      "c3373",
      "VIDYACHARAN SHUKLA v. KHUBCHAND BAGHEL AND OTHERS",
      102975,
-     "not_criminal"
+     "not_criminal",
+     3373,
+     1963
+    ]
+   ]
+  },
+  {
+   "register_row": "L1-0569",
+   "trust": "verified",
+   "treatment": "overruled",
+   "overruled_in_index": [
+    [
+     "c16330",
+     "M/S HINDUSTAN AERONAUTICS LTD., BANGALORE v. COMMISSIONER OF INCOME TA",
+     16330
+    ]
+   ],
+   "overruling": "Commissioner of Customs, Calcutta v. Indian Oil Corporation Ltd. and Another",
+   "overruling_year": 2004,
+   "overruling_court": "unknown",
+   "kind": "filtered_out",
+   "overruling_docs": [
+    [
+     "c25882",
+     "Commissioner of Customs, Calcutta etc v. M/s Indian Oil Corporation Lt",
+     17147,
+     "not_criminal",
+     25882,
+     2004
+    ],
+    [
+     "c25902",
+     "Commissioner of Customs, Calcutta etc. etc v. M/s Indian Oil Corporati",
+     16635,
+     "not_criminal",
+     25902,
+     2004
     ]
    ]
   },
@@ -268,7 +303,8 @@
    "overruled_in_index": [
     [
      "c57",
-     "THE STATE OF UTTAR PRADESH AND OTHERS v. BABU RAM UPADHYA"
+     "THE STATE OF UTTAR PRADESH AND OTHERS v. BABU RAM UPADHYA",
+     57
     ]
    ],
    "overruling": "Samsher Singh v. State of Punjab and Another",
@@ -280,7 +316,9 @@
      "c6215",
      "SHAMSHER SINGH & ANR v. STATE OF PUNJAB",
      250822,
-     "not_criminal"
+     "not_criminal",
+     6215,
+     1974
     ]
    ]
   },
@@ -291,27 +329,15 @@
    "overruled_in_index": [
     [
      "c7898",
-     "RAJNIKANT JIVANLAL PATEL & ANOTHER v. INTELLIGENCE OFFICER NARCOTIC CO"
+     "RAJNIKANT JIVANLAL PATEL & ANOTHER v. INTELLIGENCE OFFICER NARCOTIC CO",
+     7898
     ]
    ],
    "overruling": "Aslam Babalal Desai v. State of Maharashtra",
    "overruling_year": 1993,
    "overruling_court": "SC",
-   "kind": "filtered_out",
-   "overruling_docs": [
-    [
-     "c12503",
-     "DAGI RAM PINDI LAL AND ANR v. TRILOK CHAND JAIN AND ORS",
-     52195,
-     "not_criminal"
-    ],
-    [
-     "c12622",
-     "MOHAN KUMAR SINGHANIA AND ORS. ETC. ETC v. UNION OF INDIA AND ORS. ETC",
-     186626,
-     "not_criminal"
-    ]
-   ]
+   "kind": "not_in_collection",
+   "overruling_docs": []
   },
   {
    "register_row": "L1-0619",
@@ -320,7 +346,8 @@
    "overruled_in_index": [
     [
      "c5876",
-     "DIVISIONAL PERSONNEL OFFICER, SOUTHERN RAILWAY & ANR v. T.R"
+     "DIVISIONAL PERSONNEL OFFICER, SOUTHERN RAILWAY & ANR v. T.R",
+     5876
     ]
    ],
    "overruling": "Union of India and Another v. Tulsiram Patel and Others",
@@ -332,25 +359,37 @@
      "c9242",
      "UNION OF INDIA AND ANOTHER v. TULSIRAM PATEL AND OTHERS",
      452775,
-     "not_criminal"
+     "not_criminal",
+     9242,
+     1985
     ]
    ]
   },
   {
-   "register_row": "L1-0626",
+   "register_row": "L1-0655",
    "trust": "verified",
    "treatment": "overruled",
    "overruled_in_index": [
     [
-     "c10145",
-     "VIDYA CHARAN SHUKLA v. PURSHOTTAM LAL KAUSHIK"
+     "c16344",
+     "M/S S.M. DYECHEM LTD v. M/S CADBURY (INDIA) LTD",
+     16344
     ]
    ],
-   "overruling": "P. Prabhakaran v. P. Jayarajan",
-   "overruling_year": 2005,
+   "overruling": "Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd.",
+   "overruling_year": 2001,
    "overruling_court": "SC",
-   "kind": "not_in_collection",
-   "overruling_docs": []
+   "kind": "filtered_out",
+   "overruling_docs": [
+    [
+     "c17693",
+     "CADILA HEALTHCARE LIMITED v. CADILA PHARMACEUTICALS LIMITED",
+     54837,
+     "not_criminal",
+     17693,
+     2001
+    ]
+   ]
   },
   {
    "register_row": "L1-0678",
@@ -359,21 +398,15 @@
    "overruled_in_index": [
     [
      "c8394",
-     "USMANBHAI DAWOODBHAI MENON & ORS. ETC v. STATE OF GUJARAT"
+     "USMANBHAI DAWOODBHAI MENON & ORS. ETC v. STATE OF GUJARAT",
+     8394
     ]
    ],
    "overruling": "Kartar Singh v. State of Punjab",
    "overruling_year": 1993,
    "overruling_court": "SC",
-   "kind": "filtered_out",
-   "overruling_docs": [
-    [
-     "c12101",
-     "T.M. BALAKRISHNA MUDALIAR v. M. SATYANARAYANA RAO AND OTHERS",
-     21858,
-     "not_criminal"
-    ]
-   ]
+   "kind": "not_in_collection",
+   "overruling_docs": []
   },
   {
    "register_row": "L1-0683",
@@ -382,7 +415,8 @@
    "overruled_in_index": [
     [
      "c13562",
-     "JAGDISH v. STATE OF HARYANA"
+     "JAGDISH v. STATE OF HARYANA",
+     13562
     ]
    ],
    "overruling": "Kondiba Dagadu Kadam v. Savitribai Sopan Gujar and Others",
@@ -392,13 +426,40 @@
    "overruling_docs": []
   },
   {
+   "register_row": "L1-0716",
+   "trust": "verified",
+   "treatment": "overruled",
+   "overruled_in_index": [
+    [
+     "c14998",
+     "S.VINOD KUMAR AND ANR v. UNION OF INDIA AND ORS",
+     14998
+    ]
+   ],
+   "overruling": "Rohtas Bhankhar v. Union of India (UOI)",
+   "overruling_year": 2014,
+   "overruling_court": "SC",
+   "kind": "filtered_out",
+   "overruling_docs": [
+    [
+     "c41774",
+     "ROHTAS BHANKHAR & OTHERS v. UNION OF INDIA AND ANOTHER",
+     13587,
+     "not_criminal",
+     41774,
+     2014
+    ]
+   ]
+  },
+  {
    "register_row": "L2-001",
    "trust": "candidate",
    "treatment": "overruled",
    "overruled_in_index": [
     [
      "c954",
-     "M. P. SHARMA AND OTHERS v. SATISH CHANDRA, DISTRICT MAGISTRATE,DELHI, "
+     "M. P. SHARMA AND OTHERS v. SATISH CHANDRA, DISTRICT MAGISTRATE,DELHI, ",
+     954
     ]
    ],
    "overruling": "K.S. Puttaswamy (Retd.) v. Union of India",
@@ -410,7 +471,9 @@
      "b2017_10_569_999",
      "JUSTICE K S PUTTASWAMY (RETD.), AND ANR. v. UNION OF INDIA AND ORS.",
      1046574,
-     "not_criminal"
+     "not_criminal",
+     1000250181,
+     2017
     ]
    ]
   },
@@ -421,7 +484,8 @@
    "overruled_in_index": [
     [
      "b2018_1_790_796",
-     "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH"
+     "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH",
+     1000250501
     ]
    ],
    "overruling": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal",
@@ -433,7 +497,9 @@
      "b2020_7_180_282",
      "ARJUN PANDITRAO KHOTKAR v. KAILASH KUSHANRAO GORANTYAL AND ORS.",
      240589,
-     "not_criminal"
+     "not_criminal",
+     1000252655,
+     2020
     ]
    ]
   },
@@ -444,7 +510,8 @@
    "overruled_in_index": [
     [
      "c42313",
-     "No. 1156/2013) TOMASO BRUNO & ANR v. STATE OF U.P"
+     "No. 1156/2013) TOMASO BRUNO & ANR v. STATE OF U.P",
+     42313
     ]
    ],
    "overruling": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal",
@@ -456,7 +523,9 @@
      "b2020_7_180_282",
      "ARJUN PANDITRAO KHOTKAR v. KAILASH KUSHANRAO GORANTYAL AND ORS.",
      240589,
-     "not_criminal"
+     "not_criminal",
+     1000252655,
+     2020
     ]
    ]
   },
@@ -467,7 +536,8 @@
    "overruled_in_index": [
     [
      "c29947",
-     "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL"
+     "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL",
+     29947
     ]
    ],
    "overruling": "Bajaj Allianz General Insurance Co. Ltd. v. Rambha Devi",
@@ -479,7 +549,9 @@
      "b2024_11_541_640",
      "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. v. RAMBHA DEVI & ORS.",
      212921,
-     "not_criminal"
+     "not_criminal",
+     1000256077,
+     2024
     ]
    ]
   },
@@ -490,7 +562,8 @@
    "overruled_in_index": [
     [
      "c29947",
-     "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL"
+     "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL",
+     29947
     ]
    ],
    "overruling": "Mukund Dewangan v. Oriental Insurance Co. Ltd.",
@@ -502,15 +575,684 @@
      "b2017_7_765_822",
      "MUKUND DEWANGAN v. ORIENTAL INSURANCE COMPANY LIMITED",
      128680,
-     "not_criminal"
-    ],
-    [
-     "c43391",
-     "Mukund Dewangan v. Oriental Insurance Co. Ltd. etc",
-     97062,
-     "not_criminal"
+     "not_criminal",
+     1000250051,
+     2017
     ]
    ]
   }
- ]
+ ],
+ "earlier_loose_matching": {
+  "note": "first version of this sizing (2026-10-09): a shared citation key alone made two judgments 'the same decision'. It also matched Dagi Ram Pindi Lal and Mohan Kumar Singhania (for Aslam Babalal Desai), T.M. Balakrishna Mudaliar (for Kartar Singh), Prabhakaran Nair (for Antulay), later Common Cause orders and the 2016 reference order in Mukund Dewangan; the figures above require the names to agree as well and prefer the register's own year.",
+  "summary": {
+   "rows": 1765,
+   "overruled_in_corpus": 546,
+   "overruled_in_index": 88,
+   "overruling_in_corpus": 1593,
+   "overruling_in_index": 241,
+   "pairs_overruled_in_index_overruling_missing_from_index": 25,
+   "of_which_overruling_in_collection_but_filtered_out": 19,
+   "of_which_overruling_not_in_collection": 6,
+   "distinct_overruling_judgments_to_add_from_the_collection": 24,
+   "their_characters": 3907587,
+   "approx_tokens": 1009712,
+   "approx_dollars_at_0.12_per_million": 0.121
+  },
+  "pairs": [
+   {
+    "register_row": "L1-0079",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c33081",
+      "Radhey Shyam v. State of U.P",
+      33081
+     ]
+    ],
+    "overruling": "Sri Radhy Shyam (Dead) through L.Rs. and Others v. State of U.P. and Others",
+    "overruling_year": 2011,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c37891",
+      "Sri Radhy Shyam (Dead) Through L.Rs. and others v. State of U.P. and o",
+      130385,
+      "not_criminal",
+      37891,
+      2011
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0246",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c3342",
+      "LALJI HARIDAS v. STATE OF MAHARASHTRA AND ANOTHER",
+      3342
+     ]
+    ],
+    "overruling": "Dr Baliram Waman Hiray v. Justice B. Lentin and Others",
+    "overruling_year": 1988,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c8193",
+      "DR. BALIRAM WAMAN HIRAY v. JUSTICE B. LENTIN AND OTHERS",
+      95671,
+      "not_criminal",
+      8193,
+      1988
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0259",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c14705",
+      "\"COMMON CAUSE\", A REGISTERED SOCIETYTHROUGH ITS DIRECTOR v. UNION OF I",
+      14705
+     ]
+    ],
+    "overruling": "Common Cause, A Registered Society v. Union of India and Others",
+    "overruling_year": 1999,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c16776",
+      "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA & ORS",
+      199497,
+      "not_criminal",
+      16776,
+      1999
+     ],
+     [
+      "c18169",
+      "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA",
+      5790,
+      "not_criminal",
+      18169,
+      2001
+     ],
+     [
+      "c30337",
+      "COMMON CAUSE, A REGISTERED SOCIETY v. UNION OF INDIA",
+      5102,
+      "not_criminal",
+      30337,
+      2001
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0262",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c1364",
+      "MANNI LAL v. SHRI PARMAI LAL & ORS",
+      1364
+     ]
+    ],
+    "overruling": "P. Prabhakaran v. P. Jayarajan",
+    "overruling_year": 2005,
+    "overruling_court": "SC",
+    "kind": "not_in_collection",
+    "overruling_docs": []
+   },
+   {
+    "register_row": "L1-0278",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c14389",
+      "SATBIR AND THE STATE OF HARYANA v. SURAT SINGH & ORS",
+      14389
+     ]
+    ],
+    "overruling": "General Manager, Telecom v. A. Srinivasa Rao and Others",
+    "overruling_year": 1998,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c13678",
+      "GENERAL MANAGER, TELECOM v. S.SRINIVASA RAO & ORS",
+      7192,
+      "not_criminal",
+      13678,
+      1997
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0292",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c16680",
+      "PAPARAMBAKA ROSAMMA & ORS v. STATE OF ANDHRA PRADESH",
+      16680
+     ],
+     [
+      "c16682",
+      "PAPARAMBAKA ROSAMMA & ORS v. STATE OF ANDHRA PRADESH",
+      16682
+     ]
+    ],
+    "overruling": "Shanmugam @ Kulandaivelu v. State of Tamil Nadu",
+    "overruling_year": 2003,
+    "overruling_court": "SC",
+    "kind": "not_in_collection",
+    "overruling_docs": []
+   },
+   {
+    "register_row": "L1-0296",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c17267",
+      "ABDUL WAHAB ANSARI v. STATE OF BIHAR & ANR",
+      17267
+     ]
+    ],
+    "overruling": "Birendra K. Singh v. State of Bihar",
+    "overruling_year": 2000,
+    "overruling_court": "SC",
+    "kind": "not_in_collection",
+    "overruling_docs": []
+   },
+   {
+    "register_row": "L1-0421",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c8620",
+      "A.K. SUBBAIAH & ORS v. STATE OF KARNATAKA & ORS",
+      8620
+     ]
+    ],
+    "overruling": "Anand Commercial Agencies v. The Commercial Tax Officer VI Circle, Hyderabad and Others",
+    "overruling_year": 1998,
+    "overruling_court": "SC",
+    "kind": "not_in_collection",
+    "overruling_docs": []
+   },
+   {
+    "register_row": "L1-0439",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c9563",
+      "R.S.NAYAK v. A.R.ANTULAY",
+      9563
+     ],
+     [
+      "c9608",
+      "R. S. NAYAK v. A. R. ANTULAY",
+      9608
+     ]
+    ],
+    "overruling": "A.R. Antulay v. R.S. Nayak and Another",
+    "overruling_year": 1988,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c8342",
+      "A.R. ANTULAY v. R.S. NAYAK & ANR",
+      464599,
+      "not_criminal",
+      8342,
+      1988
+     ],
+     [
+      "c8614",
+      "PRABHAKARAN NAIR, ETC v. STATE OF TAMIL NADU AND ORS",
+      72418,
+      "not_criminal",
+      8614,
+      1987
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0479",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c792",
+      "WILLIE (WILLIAM) SLANEY v. THE STATE OF MADHYA PRADESH",
+      792
+     ]
+    ],
+    "overruling": "State of Uttar Pradesh v. Singhara Singh and Others",
+    "overruling_year": 1964,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c3465",
+      "STATE OF UTTAR PRADESH v. SINGHARA SINGH AND OTHERS",
+      31650,
+      "not_criminal",
+      3465,
+      1963
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0542",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c3442",
+      "KAUSHALYA RANI v. GOPAL SINGH",
+      3442
+     ]
+    ],
+    "overruling": "Vidyacharan Shukla v. Khubchand Baghel and Others",
+    "overruling_year": 1964,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c3373",
+      "VIDYACHARAN SHUKLA v. KHUBCHAND BAGHEL AND OTHERS",
+      102975,
+      "not_criminal",
+      3373,
+      1963
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0569",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c16330",
+      "M/S HINDUSTAN AERONAUTICS LTD., BANGALORE v. COMMISSIONER OF INCOME TA",
+      16330
+     ]
+    ],
+    "overruling": "Commissioner of Customs, Calcutta v. Indian Oil Corporation Ltd. and Another",
+    "overruling_year": 2004,
+    "overruling_court": "unknown",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c25882",
+      "Commissioner of Customs, Calcutta etc v. M/s Indian Oil Corporation Lt",
+      17147,
+      "not_criminal",
+      25882,
+      2004
+     ],
+     [
+      "c25902",
+      "Commissioner of Customs, Calcutta etc. etc v. M/s Indian Oil Corporati",
+      16635,
+      "not_criminal",
+      25902,
+      2004
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0581",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c57",
+      "THE STATE OF UTTAR PRADESH AND OTHERS v. BABU RAM UPADHYA",
+      57
+     ]
+    ],
+    "overruling": "Samsher Singh v. State of Punjab and Another",
+    "overruling_year": 1974,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c6215",
+      "SHAMSHER SINGH & ANR v. STATE OF PUNJAB",
+      250822,
+      "not_criminal",
+      6215,
+      1974
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0618",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c7898",
+      "RAJNIKANT JIVANLAL PATEL & ANOTHER v. INTELLIGENCE OFFICER NARCOTIC CO",
+      7898
+     ]
+    ],
+    "overruling": "Aslam Babalal Desai v. State of Maharashtra",
+    "overruling_year": 1993,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c12503",
+      "DAGI RAM PINDI LAL AND ANR v. TRILOK CHAND JAIN AND ORS",
+      52195,
+      "not_criminal",
+      12503,
+      1992
+     ],
+     [
+      "c12622",
+      "MOHAN KUMAR SINGHANIA AND ORS. ETC. ETC v. UNION OF INDIA AND ORS. ETC",
+      186626,
+      "not_criminal",
+      12622,
+      1991
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0619",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c5876",
+      "DIVISIONAL PERSONNEL OFFICER, SOUTHERN RAILWAY & ANR v. T.R",
+      5876
+     ]
+    ],
+    "overruling": "Union of India and Another v. Tulsiram Patel and Others",
+    "overruling_year": 1985,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c9242",
+      "UNION OF INDIA AND ANOTHER v. TULSIRAM PATEL AND OTHERS",
+      452775,
+      "not_criminal",
+      9242,
+      1985
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0626",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c10145",
+      "VIDYA CHARAN SHUKLA v. PURSHOTTAM LAL KAUSHIK",
+      10145
+     ]
+    ],
+    "overruling": "P. Prabhakaran v. P. Jayarajan",
+    "overruling_year": 2005,
+    "overruling_court": "SC",
+    "kind": "not_in_collection",
+    "overruling_docs": []
+   },
+   {
+    "register_row": "L1-0655",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c16344",
+      "M/S S.M. DYECHEM LTD v. M/S CADBURY (INDIA) LTD",
+      16344
+     ]
+    ],
+    "overruling": "Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd.",
+    "overruling_year": 2001,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c17693",
+      "CADILA HEALTHCARE LIMITED v. CADILA PHARMACEUTICALS LIMITED",
+      54837,
+      "not_criminal",
+      17693,
+      2001
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0678",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c8394",
+      "USMANBHAI DAWOODBHAI MENON & ORS. ETC v. STATE OF GUJARAT",
+      8394
+     ]
+    ],
+    "overruling": "Kartar Singh v. State of Punjab",
+    "overruling_year": 1993,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c12101",
+      "T.M. BALAKRISHNA MUDALIAR v. M. SATYANARAYANA RAO AND OTHERS",
+      21858,
+      "not_criminal",
+      12101,
+      1993
+     ]
+    ]
+   },
+   {
+    "register_row": "L1-0683",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c13562",
+      "JAGDISH v. STATE OF HARYANA",
+      13562
+     ]
+    ],
+    "overruling": "Kondiba Dagadu Kadam v. Savitribai Sopan Gujar and Others",
+    "overruling_year": 1999,
+    "overruling_court": "SC",
+    "kind": "not_in_collection",
+    "overruling_docs": []
+   },
+   {
+    "register_row": "L1-0716",
+    "trust": "verified",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c14998",
+      "S.VINOD KUMAR AND ANR v. UNION OF INDIA AND ORS",
+      14998
+     ]
+    ],
+    "overruling": "Rohtas Bhankhar v. Union of India (UOI)",
+    "overruling_year": 2014,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "c41774",
+      "ROHTAS BHANKHAR & OTHERS v. UNION OF INDIA AND ANOTHER",
+      13587,
+      "not_criminal",
+      41774,
+      2014
+     ]
+    ]
+   },
+   {
+    "register_row": "L2-001",
+    "trust": "candidate",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c954",
+      "M. P. SHARMA AND OTHERS v. SATISH CHANDRA, DISTRICT MAGISTRATE,DELHI, ",
+      954
+     ]
+    ],
+    "overruling": "K.S. Puttaswamy (Retd.) v. Union of India",
+    "overruling_year": 2017,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "b2017_10_569_999",
+      "JUSTICE K S PUTTASWAMY (RETD.), AND ANR. v. UNION OF INDIA AND ORS.",
+      1046574,
+      "not_criminal",
+      1000250181,
+      2017
+     ]
+    ]
+   },
+   {
+    "register_row": "L2-032",
+    "trust": "candidate",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "b2018_1_790_796",
+      "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH",
+      1000250501
+     ]
+    ],
+    "overruling": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal",
+    "overruling_year": 2020,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "b2020_7_180_282",
+      "ARJUN PANDITRAO KHOTKAR v. KAILASH KUSHANRAO GORANTYAL AND ORS.",
+      240589,
+      "not_criminal",
+      1000252655,
+      2020
+     ]
+    ]
+   },
+   {
+    "register_row": "L2-033",
+    "trust": "candidate",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c42313",
+      "No. 1156/2013) TOMASO BRUNO & ANR v. STATE OF U.P",
+      42313
+     ]
+    ],
+    "overruling": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal",
+    "overruling_year": 2020,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "b2020_7_180_282",
+      "ARJUN PANDITRAO KHOTKAR v. KAILASH KUSHANRAO GORANTYAL AND ORS.",
+      240589,
+      "not_criminal",
+      1000252655,
+      2020
+     ]
+    ]
+   },
+   {
+    "register_row": "L2-053",
+    "trust": "candidate",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c29947",
+      "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL",
+      29947
+     ]
+    ],
+    "overruling": "Bajaj Allianz General Insurance Co. Ltd. v. Rambha Devi",
+    "overruling_year": 2024,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "b2024_11_541_640",
+      "M/S BAJAJ ALLIANCE GENERAL INSURANCE CO. LTD. v. RAMBHA DEVI & ORS.",
+      212921,
+      "not_criminal",
+      1000256077,
+      2024
+     ]
+    ]
+   },
+   {
+    "register_row": "D2-PRABHULAL-2017",
+    "trust": "candidate",
+    "treatment": "overruled",
+    "overruled_in_index": [
+     [
+      "c29947",
+      "NEW INDIA ASSURANCE CO. LTD v. PRABHU LAL",
+      29947
+     ]
+    ],
+    "overruling": "Mukund Dewangan v. Oriental Insurance Co. Ltd.",
+    "overruling_year": 2017,
+    "overruling_court": "SC",
+    "kind": "filtered_out",
+    "overruling_docs": [
+     [
+      "b2017_7_765_822",
+      "MUKUND DEWANGAN v. ORIENTAL INSURANCE COMPANY LIMITED",
+      128680,
+      "not_criminal",
+      1000250051,
+      2017
+     ],
+     [
+      "c43391",
+      "Mukund Dewangan v. Oriental Insurance Co. Ltd. etc",
+      97062,
+      "not_criminal",
+      43391,
+      2016
+     ]
+    ]
+   }
+  ]
+ }
 }
