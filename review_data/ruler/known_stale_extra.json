@@ -1,20 +1,82 @@
 {
-  "note": "PRIVATE. Cases whose view is known to have been overtaken, added to goodlaw/targets/known.json for the currency pass. 'treatment' says what the later court did in its own words; nothing here is a verdict on good law and none of it is lawyer-checked. Written 2026-10-08.",
+  "note": "PRIVATE. Cases whose view is known to have been overtaken, added to goodlaw/targets/known.json for the currency pass. 'treatment' says what the later court did in its own words; nothing here is a verdict on good law and none of it is lawyer-checked. Written 2026-10-08. Extended 2026-10-09 with eight older rulings the owner's 30-question file sets its trap questions against (basis and source on each line; see real30_stale_status_v1.json); Mohan Lal, Rajesh Sharma and Dashrath were already listed.",
   "cases": [
     {
-      "name": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)", "doc_key": "c30108", "expect": "adverse_in_part",
+      "name": "Krishna Janardhan Bhat v. Dattatraya G. Hegde (2008)",
+      "doc_key": "c30108",
+      "expect": "adverse_in_part",
       "basis": "Rangappa v. Sri Mohan (2010), three judges: 'the impugned observations in Krishna Janardhan Bhat (supra) may not be correct. However, this does not in any way cast doubt on the correctness of the decision in that case since it was based on the specific facts and circumstances therein.' The observation in question is that Section 139 does not raise a presumption that a legally enforceable debt exists. Not overruled: the decision stands, one view in it does not.",
       "source": "text of Rangappa (corpus id 29368), read 2026-10-08; three passages of it were in the first review pool"
     },
     {
-      "name": "Mohan Lal v. State of Punjab (2018)", "doc_key": "b2018_9_1006_1023", "expect": "adverse",
+      "name": "Mohan Lal v. State of Punjab (2018)",
+      "doc_key": "b2018_9_1006_1023",
+      "expect": "adverse",
       "basis": "Overruled by Mukesh Singh v. State (Narcotic Branch of Delhi) (2020), Constitution Bench ('not good law and ... specifically overruled'). In the collection and embedded in the index (doc 1000250931, 'MOHANLAL versus THE STATE OF PUNJAB'), so its own passages can appear in a search; the register holds it as a candidate row (L2-034).",
       "source": "goodlaw/data/register/register.json (candidate row L2-034) and Recourse's NDPS doctrine map"
     },
     {
-      "name": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)", "doc_key": "c37199", "expect": "adverse_in_part",
+      "name": "Siddharam Satlingappa Mhetre v. State of Maharashtra (2011)",
+      "doc_key": "c37199",
+      "expect": "adverse_in_part",
       "basis": "Overruled in part by Sushila Aggarwal v. State (NCT of Delhi) (2020), Constitution Bench, on the time limit of an anticipatory-bail order. The register holds it as a candidate row.",
       "source": "goodlaw/data/register/register.json and the checker's flag ledger"
+    },
+    {
+      "name": "Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996)",
+      "doc_key": "c10195",
+      "expect": "adverse",
+      "basis": "Sushila Aggarwal v. State (NCT of Delhi) (2020), Constitution Bench: 'held not good law' (headnote and para 7.4).",
+      "source": "text of Sushila Aggarwal, read 2026-10-09 (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Ritu Chhabaria v. Union of India (2023)",
+      "doc_key": "b2023_3_826_843",
+      "expect": "adverse_in_part",
+      "basis": "Order of 26 Apr 2023 on default bail after an incomplete charge-sheet, deferred by the order of 1 May 2023 and clarified on 12 May 2023; CBI v. Kapil Wadhawan (2024, three judges) takes the contrary view. Mr. Advocate to confirm what became of the Union's recall application (the file's own To Verify item 2).",
+      "source": "owner's file (Q5); Kapil Wadhawan not tested against the text (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Damodar S. Prabhu v. Sayed Babalal H. (2010)",
+      "doc_key": "c36294",
+      "expect": "adverse_in_part",
+      "basis": "Sanjabij Tari v. Kishore S. Borcar (2025), para 38: 'the aforesaid guidelines of compounding are modified as under' (nil / 5% / 7.5% / 10%).",
+      "source": "text of Sanjabij Tari, read 2026-10-09 (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Kanhaiyalal v. Union of India (2008)",
+      "doc_key": "c30081",
+      "expect": "adverse",
+      "basis": "Tofan Singh v. State of Tamil Nadu (2020): Raj Kumar Karwal and Kanhaiyalal 'overruled' (headnote). The register does not hold it; the sweep queue has it as P-0235 (unreviewed).",
+      "source": "text of Tofan Singh, read 2026-10-09 (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Raj Kumar Karwal v. Union of India (1990)",
+      "doc_key": "c7598",
+      "expect": "adverse",
+      "basis": "Tofan Singh v. State of Tamil Nadu (2020), headnote 'overruled'. In the register as D2-KARWAL (candidate).",
+      "source": "text of Tofan Singh, read 2026-10-09 (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Shafhi Mohammad v. State of Himachal Pradesh (2018)",
+      "doc_key": "b2018_1_790_796",
+      "expect": "adverse",
+      "basis": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal (2020), three judges: 'Shafhi Mohammad ... overruled' (headnote). The overruling case is not in the index.",
+      "source": "text of Arjun Panditrao, read 2026-10-09 (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Subhash Kashinath Mahajan v. State of Maharashtra (2018)",
+      "doc_key": "b2018_4_877_954",
+      "expect": "adverse_in_part",
+      "basis": "Directions recalled in the review order of 1 Oct 2019 (Union of India v. State of Maharashtra); Prathvi Raj Chauhan (2020): 'Dr. Subhash Kashinath's case have already been recalled'.",
+      "source": "text of Prathvi Raj Chauhan, read 2026-10-09 (real30_stale_status_v1.json)"
+    },
+    {
+      "name": "Sangeet v. State of Haryana (2013)",
+      "doc_key": "c39731",
+      "expect": "adverse_in_part",
+      "basis": "Overruled on one point (fixed-term sentences without remission) by Union of India v. V. Sriharan (2015, Constitution Bench) and Ravishankar (2019); the file's point (remission only on application) is displaced by In Re: Policy Strategy for Grant of Bail (2025). Both in the sweep queue (P-0329, P-0064).",
+      "source": "sweep proposals P-0329 and P-0064; text of In Re: Policy Strategy, read 2026-10-09 (real30_stale_status_v1.json)"
     }
   ]
 }

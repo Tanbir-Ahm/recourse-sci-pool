@@ -96,8 +96,8 @@ kc = CP.known_cases()
 exp = {}
 for c in kc:
     exp[c["expect"]] = exp.get(c["expect"], 0) + 1
-check("the known lists hold the checker's 7 adverse and 13 settled cases plus 3 added", exp.get("adverse") == 8 and exp.get("not_adverse") == 13 and exp.get("adverse_in_part") == 2, exp)
-check("every added stale case says what the later court said", all(c.get("basis") and c.get("source") for c in kc if c["name"].startswith(("Krishna", "Mohan", "Siddharam"))))
+check("the known lists hold the checker's 7 adverse and 13 settled cases plus 11 added (2026-10-08 and 2026-10-09)", exp.get("adverse") == 12 and exp.get("not_adverse") == 13 and exp.get("adverse_in_part") == 6, exp)
+check("every added stale case says what the later court said", all(c.get("basis") and c.get("source") for c in json.load(open(CP.DEFAULT_EXTRA, encoding="utf-8"))["cases"]))
 
 # ---- the real first pool --------------------------------------------------------------------------------------------------------------------------------
 

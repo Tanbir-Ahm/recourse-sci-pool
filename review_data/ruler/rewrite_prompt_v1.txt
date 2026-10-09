@@ -1,0 +1,10 @@
+You are helping to test a search tool over Supreme Court of India criminal-law judgments. A person typed each question below in everyday words or as a story. For each one, write ONE rewrite in precise legal wording, the way a lawyer would type it into the search tool.
+
+Rules
+1. Keep the legal issue or issues the person is really asking about. Add nothing that is not in the question, except the legal terms and the statutory provisions that the facts plainly raise.
+2. Name the provisions that apply (for example "Section 438 CrPC / Section 482 BNSS") only if you are sure of them. Give both the old number (IPC, CrPC, Evidence Act) and the new number (BNS, BNSS, BSA) when you know both. If you are not sure, name no provision.
+3. Do NOT name any case, judge, court order or authority. Do not use "v." or "versus". Do not state or hint at an answer, and give no advice or explanation.
+4. Remove the names of people and places, and facts that do not matter to the legal issue.
+5. Each rewrite is one or two sentences, at most 60 words.
+6. Do not use any tool and do not read any file. Work from the text below only.
+7. Reply with ONE JSON object and nothing else (no code fences): {"R01": "<rewrite>", "R02": "<rewrite>", ...} with exactly the ids given below.
