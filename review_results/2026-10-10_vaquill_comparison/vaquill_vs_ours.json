@@ -1,0 +1,138 @@
+{
+ "periods": {
+  "1950-67": {
+   "IK": null,
+   "crawl": 3473,
+   "bucket": 3483,
+   "vq_table": 3304,
+   "vq_rows": 3455
+  },
+  "1968-79": {
+   "IK": 5919,
+   "crawl": 3623,
+   "bucket": 3619,
+   "vq_table": 3607,
+   "vq_rows": 3617
+  },
+  "1980-89": {
+   "IK": 4473,
+   "crawl": 2786,
+   "bucket": 2700,
+   "vq_table": 2865,
+   "vq_rows": 2689
+  },
+  "1990-99": {
+   "IK": 11983,
+   "crawl": 6910,
+   "bucket": 6497,
+   "vq_table": 6469,
+   "vq_rows": 6454
+  },
+  "2000-04": {
+   "IK": 6688,
+   "crawl": 4561,
+   "bucket": 3276,
+   "vq_table": 3276,
+   "vq_rows": 3267
+  },
+  "2005-09": {
+   "IK": 8843,
+   "crawl": 7934,
+   "bucket": 5815,
+   "vq_table": 4057,
+   "vq_rows": 4063
+  },
+  "2010-14": {
+   "IK": 5460,
+   "crawl": 5148,
+   "bucket": 4007,
+   "vq_table": 3974,
+   "vq_rows": 3954
+  },
+  "2015-17": {
+   "IK": 2337,
+   "crawl": 2437,
+   "bucket": 2080,
+   "vq_table": 2019,
+   "vq_rows": 2012
+  },
+  "2018-23": {
+   "IK": 6201,
+   "crawl": 3,
+   "bucket": 4996,
+   "vq_table": 4200,
+   "vq_rows": 4910
+  },
+  "2024-25": {
+   "IK": 2445,
+   "crawl": 0,
+   "bucket": 1679,
+   "vq_table": 1183,
+   "vq_rows": 1175
+  },
+  "2026": {
+   "IK": 983,
+   "crawl": 0,
+   "bucket": 214,
+   "vq_table": null,
+   "vq_rows": 0
+  }
+ },
+ "years_where_vaquill_holds_under_70_percent_of_the_bucket": {
+  "2009": {
+   "bucket": 1324,
+   "vq_rows": 13,
+   "vq_table": 6,
+   "IK": 2218
+  },
+  "2025": {
+   "bucket": 897,
+   "vq_rows": 437,
+   "vq_table": 439,
+   "IK": 1421
+  },
+  "2026": {
+   "bucket": 214,
+   "vq_rows": 0,
+   "vq_table": null,
+   "IK": 983
+  }
+ },
+ "totals": {
+  "IK 1950-2025": 54349,
+  "IK 1968-2025": 54349,
+  "crawl 1950-2025": 36875,
+  "crawl 1968-2025": 33402,
+  "bucket 1950-2025": 38152,
+  "bucket 1968-2025": 34669,
+  "vq_table 1950-2025": 34954,
+  "vq_table 1968-2025": 31650,
+  "vq_rows 1950-2025": 35596,
+  "vq_rows 1968-2025": 32141
+ },
+ "differences_between_vaquill_table_and_vaquill_rows": {
+  "years_differing_by_more_than_50": {
+   "1955": -94,
+   "1960": 65,
+   "1961": 133,
+   "1964": -153,
+   "1965": 64,
+   "1966": -56,
+   "1968": 82,
+   "1970": -65,
+   "1977": -85,
+   "1980": -54,
+   "1985": -123,
+   "1986": 70,
+   "1987": 76,
+   "1988": -152,
+   "2019": 231,
+   "2020": 102,
+   "2021": 297,
+   "2022": 78
+  },
+  "sum_of_positive_differences": 1662,
+  "sum_of_negative_differences": -1020,
+  "note": "Vaquill's published yearly table and the rows of its parquet (as read by Recourse) differ year by year; cause not known (the table says 'measured July 2026', the parquet is the v2026.08.1 snapshot)."
+ }
+}

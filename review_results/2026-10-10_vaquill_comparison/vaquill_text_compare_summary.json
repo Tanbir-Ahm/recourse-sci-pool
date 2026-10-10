@@ -1,0 +1,27 @@
+{
+ "judgments_in_the_vaquill_pool": 103,
+ "matched_to_our_text": 101,
+ "our_source_of_the_matches": {
+  "crawl": 26,
+  "bucket": 75
+ },
+ "median_chars_vaquill_stored_text": 109133,
+ "median_chars_our_text": 39950,
+ "median_chars_vaquill_english_only": 52959,
+ "judgments_over_5pct_non_latin": 91,
+ "judgments_over_30pct_non_latin": 89,
+ "median_non_latin_share": 0.613,
+ "judgments_with_SECTION_tags": 101,
+ "median_SECTION_tags_per_judgment": 50,
+ "judgments_with_Case_header_lines": 101,
+ "median_Case_header_lines": 30,
+ "median_share_of_our_8_word_runs_found_in_vaquill_english": 0.782,
+ "median_share_of_vaquill_english_8_word_runs_found_in_ours": 0.533,
+ "implied_word_level_difference_if_independent": 0.0303,
+ "judgments_with_less_than_80pct_of_our_runs_in_vaquill_english": 54,
+ "by_our_source_median_share_of_our_runs_in_vaquill": {
+  "crawl": 0.782,
+  "bucket": 0.802
+ },
+ "reading": "The language mix, the tags and the headers come from how Recourse's first builder read the file (all languages, the `text` column), not from the dataset's English text. The English part agrees with our text about as well as our own two sources agree with each other (crawl against bucket on scanned years: median 76% of 8-word runs, coverage/COVERAGE_NOTE.md section 3): a word-level difference of about 3%, so no gain in accuracy, and no evidence of a loss either. No ground truth was checked."
+}

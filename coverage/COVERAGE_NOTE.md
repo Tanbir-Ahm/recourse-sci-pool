@@ -110,3 +110,7 @@ Decided with the project owner: text only is kept (no PDFs in any repo); the dat
 - The `Judgments` sheet of the authority workbook (is each case still good law) is still blank.
 - Five bucket rows have no file under the standard name (listed in `bucket_match/MATCH_REPORT.md`; 4 are in the download lists).
 - The text quality of the 2018 to 2025 downloads has not been tested against ground truth (no second copy exists); the 2017 judgments are scans with machine-read text, so expect the same small errors as the crawl's older texts.
+
+## 8. Vaquill's open dataset (added 2026-10-10)
+
+Compared in `review_results/2026-10-10_vaquill_comparison/`. Measured there: Vaquill's Supreme Court layer is a processed copy of the open bucket (all 35,596 of its case ids are in the bucket, none is unique to it) with holes in 2006, 2008, 2009 (13 of the bucket's 1,324), 2025 and 2026; it holds 32,141 judgments for 1968 to 2025 against 34,669 in the bucket, 33,402 in the crawl and 54,349 on IK's list. It does not close any part of the gap against IK in this note. Its own yearly table (34,954) disagrees with its parquet (35,596 ids) year by year.

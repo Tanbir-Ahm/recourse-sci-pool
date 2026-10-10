@@ -1,0 +1,550 @@
+{
+ "what": "row counts of the public AWS High Court metadata tables (footers only) against Vaquill's own per-court, per-year table (README 'Courts', data/coverage/02-judgments-by-year.csv)",
+ "aws": {
+  "metadata_files": 1494,
+  "rows_all_years": 20673084,
+  "rows_2026": 981161,
+  "rows_through_2025": 19691923,
+  "courts": 25
+ },
+ "vaquill_high_court_total": 12813690,
+ "vaquill_share_of_aws_rows_through_2025": 0.6507,
+ "vaquill_extracted_texts_held_total": 14600558,
+ "vaquill_held_share_of_aws_rows_through_2025": 0.7414,
+ "vaquill_readme_says_aws_holds": "~17.8M judgments, ~1.25 TiB (README lines 424 to 428)",
+ "vaquill_share_of_that_17_8M": 0.7199,
+ "by_court": [
+  {
+   "court": "Allahabad",
+   "aws_code": "9_13",
+   "aws_rows": 3501587,
+   "aws_rows_through_2025": 3342568,
+   "vaquill": 1498250,
+   "vaquill_share_of_aws_through_2025": 0.4482,
+   "aws_first_year": 1987,
+   "vaquill_first_year": 1992,
+   "vaquill_extracted_texts_held": 1567283,
+   "vaquill_held_share_of_aws_through_2025": 0.4689
+  },
+  {
+   "court": "Bombay",
+   "aws_code": "27_1",
+   "aws_rows": 2454997,
+   "aws_rows_through_2025": 2307560,
+   "vaquill": 1595948,
+   "vaquill_share_of_aws_through_2025": 0.6916,
+   "aws_first_year": 1950,
+   "vaquill_first_year": 1953,
+   "vaquill_extracted_texts_held": 1382734,
+   "vaquill_held_share_of_aws_through_2025": 0.5992
+  },
+  {
+   "court": "Punjab and Haryana",
+   "aws_code": "3_22",
+   "aws_rows": 1866684,
+   "aws_rows_through_2025": 1779511,
+   "vaquill": 483253,
+   "vaquill_share_of_aws_through_2025": 0.2716,
+   "aws_first_year": 1950,
+   "vaquill_first_year": 2008,
+   "vaquill_extracted_texts_held": 797830,
+   "vaquill_held_share_of_aws_through_2025": 0.4483
+  },
+  {
+   "court": "Patna",
+   "aws_code": "10_8",
+   "aws_rows": 1708722,
+   "aws_rows_through_2025": 1648679,
+   "vaquill": 1615041,
+   "vaquill_share_of_aws_through_2025": 0.9796,
+   "aws_first_year": 1967,
+   "vaquill_first_year": 1967,
+   "vaquill_extracted_texts_held": 1627284,
+   "vaquill_held_share_of_aws_through_2025": 0.987
+  },
+  {
+   "court": "Madras",
+   "aws_code": "33_10",
+   "aws_rows": 1701380,
+   "aws_rows_through_2025": 1588012,
+   "vaquill": 1494952,
+   "vaquill_share_of_aws_through_2025": 0.9414,
+   "aws_first_year": 1953,
+   "vaquill_first_year": 1997,
+   "vaquill_extracted_texts_held": 1518793,
+   "vaquill_held_share_of_aws_through_2025": 0.9564
+  },
+  {
+   "court": "Rajasthan",
+   "aws_code": "8_9",
+   "aws_rows": 1099058,
+   "aws_rows_through_2025": 1077087,
+   "vaquill": 324567,
+   "vaquill_share_of_aws_through_2025": 0.3013,
+   "aws_first_year": 1989,
+   "vaquill_first_year": 1989,
+   "vaquill_extracted_texts_held": 1057775,
+   "vaquill_held_share_of_aws_through_2025": 0.9821
+  },
+  {
+   "court": "Telangana",
+   "aws_code": "36_29",
+   "aws_rows": 1046400,
+   "aws_rows_through_2025": 1033581,
+   "vaquill": 1004138,
+   "vaquill_share_of_aws_through_2025": 0.9715,
+   "aws_first_year": 1963,
+   "vaquill_first_year": 1963,
+   "vaquill_extracted_texts_held": 1009749,
+   "vaquill_held_share_of_aws_through_2025": 0.9769
+  },
+  {
+   "court": "Kerala",
+   "aws_code": "32_4",
+   "aws_rows": 1036247,
+   "aws_rows_through_2025": 1036159,
+   "vaquill": 916190,
+   "vaquill_share_of_aws_through_2025": 0.8842,
+   "aws_first_year": 1950,
+   "vaquill_first_year": 1950,
+   "vaquill_extracted_texts_held": 1029079,
+   "vaquill_held_share_of_aws_through_2025": 0.9932
+  },
+  {
+   "court": "Karnataka",
+   "aws_code": "29_3",
+   "aws_rows": 968102,
+   "aws_rows_through_2025": 912123,
+   "vaquill": 581276,
+   "vaquill_share_of_aws_through_2025": 0.6373,
+   "aws_first_year": 1997,
+   "vaquill_first_year": 1998,
+   "vaquill_extracted_texts_held": 693491,
+   "vaquill_held_share_of_aws_through_2025": 0.7603
+  },
+  {
+   "court": "Orissa",
+   "aws_code": "21_11",
+   "aws_rows": 801186,
+   "aws_rows_through_2025": 752783,
+   "vaquill": 283063,
+   "vaquill_share_of_aws_through_2025": 0.376,
+   "aws_first_year": 1970,
+   "vaquill_first_year": 1992,
+   "vaquill_extracted_texts_held": 0,
+   "vaquill_held_share_of_aws_through_2025": 0.0
+  },
+  {
+   "court": "Madhya Pradesh",
+   "aws_code": "23_23",
+   "aws_rows": 693440,
+   "aws_rows_through_2025": 689853,
+   "vaquill": 402632,
+   "vaquill_share_of_aws_through_2025": 0.5836,
+   "aws_first_year": 1996,
+   "vaquill_first_year": 2000,
+   "vaquill_extracted_texts_held": 650006,
+   "vaquill_held_share_of_aws_through_2025": 0.9422
+  },
+  {
+   "court": "Chhattisgarh",
+   "aws_code": "22_18",
+   "aws_rows": 677843,
+   "aws_rows_through_2025": 637267,
+   "vaquill": 508791,
+   "vaquill_share_of_aws_through_2025": 0.7984,
+   "aws_first_year": 1963,
+   "vaquill_first_year": 1970,
+   "vaquill_extracted_texts_held": 519416,
+   "vaquill_held_share_of_aws_through_2025": 0.8151
+  },
+  {
+   "court": "Jharkhand",
+   "aws_code": "20_7",
+   "aws_rows": 465006,
+   "aws_rows_through_2025": 437336,
+   "vaquill": 246374,
+   "vaquill_share_of_aws_through_2025": 0.5634,
+   "aws_first_year": 1989,
+   "vaquill_first_year": 1993,
+   "vaquill_extracted_texts_held": 430252,
+   "vaquill_held_share_of_aws_through_2025": 0.9838
+  },
+  {
+   "court": "Calcutta",
+   "aws_code": "19_16",
+   "aws_rows": 426917,
+   "aws_rows_through_2025": 373726,
+   "vaquill": 202565,
+   "vaquill_share_of_aws_through_2025": 0.542,
+   "aws_first_year": 1950,
+   "vaquill_first_year": 1960,
+   "vaquill_extracted_texts_held": 358926,
+   "vaquill_held_share_of_aws_through_2025": 0.9604
+  },
+  {
+   "court": "Gujarat",
+   "aws_code": "24_17",
+   "aws_rows": 424200,
+   "aws_rows_through_2025": 416562,
+   "vaquill": 411638,
+   "vaquill_share_of_aws_through_2025": 0.9882,
+   "aws_first_year": 1982,
+   "vaquill_first_year": 1982,
+   "vaquill_extracted_texts_held": 414751,
+   "vaquill_held_share_of_aws_through_2025": 0.9957
+  },
+  {
+   "court": "Delhi",
+   "aws_code": "7_26",
+   "aws_rows": 393256,
+   "aws_rows_through_2025": 355891,
+   "vaquill": 322940,
+   "vaquill_share_of_aws_through_2025": 0.9074,
+   "aws_first_year": 1960,
+   "vaquill_first_year": 1960,
+   "vaquill_extracted_texts_held": 334250,
+   "vaquill_held_share_of_aws_through_2025": 0.9392
+  },
+  {
+   "court": "Andhra Pradesh",
+   "aws_code": "28_2",
+   "aws_rows": 361918,
+   "aws_rows_through_2025": 330138,
+   "vaquill": 254482,
+   "vaquill_share_of_aws_through_2025": 0.7708,
+   "aws_first_year": 1995,
+   "vaquill_first_year": 1995,
+   "vaquill_extracted_texts_held": 264599,
+   "vaquill_held_share_of_aws_through_2025": 0.8015
+  },
+  {
+   "court": "Gauhati",
+   "aws_code": "18_6",
+   "aws_rows": 327686,
+   "aws_rows_through_2025": 307772,
+   "vaquill": 285714,
+   "vaquill_share_of_aws_through_2025": 0.9283,
+   "aws_first_year": 1988,
+   "vaquill_first_year": 2000,
+   "vaquill_extracted_texts_held": 300922,
+   "vaquill_held_share_of_aws_through_2025": 0.9777
+  },
+  {
+   "court": "Himachal Pradesh",
+   "aws_code": "2_5",
+   "aws_rows": 295428,
+   "aws_rows_through_2025": 264984,
+   "vaquill": 184175,
+   "vaquill_share_of_aws_through_2025": 0.695,
+   "aws_first_year": 1970,
+   "vaquill_first_year": 1970,
+   "vaquill_extracted_texts_held": 255579,
+   "vaquill_held_share_of_aws_through_2025": 0.9645
+  },
+  {
+   "court": "Uttarakhand",
+   "aws_code": "5_15",
+   "aws_rows": 236815,
+   "aws_rows_through_2025": 226321,
+   "vaquill": 123853,
+   "vaquill_share_of_aws_through_2025": 0.5472,
+   "aws_first_year": 1950,
+   "vaquill_first_year": 1950,
+   "vaquill_extracted_texts_held": 222556,
+   "vaquill_held_share_of_aws_through_2025": 0.9834
+  },
+  {
+   "court": "Jammu and Kashmir",
+   "aws_code": "1_12",
+   "aws_rows": 115715,
+   "aws_rows_through_2025": 107422,
+   "vaquill": 40289,
+   "vaquill_share_of_aws_through_2025": 0.3751,
+   "aws_first_year": 1950,
+   "vaquill_first_year": 2003,
+   "vaquill_extracted_texts_held": 103044,
+   "vaquill_held_share_of_aws_through_2025": 0.9592
+  },
+  {
+   "court": "Tripura",
+   "aws_code": "16_20",
+   "aws_rows": 33872,
+   "aws_rows_through_2025": 32941,
+   "vaquill": 18942,
+   "vaquill_share_of_aws_through_2025": 0.575,
+   "aws_first_year": 2001,
+   "vaquill_first_year": 2013,
+   "vaquill_extracted_texts_held": 31749,
+   "vaquill_held_share_of_aws_through_2025": 0.9638
+  },
+  {
+   "court": "Manipur",
+   "aws_code": "14_25",
+   "aws_rows": 21184,
+   "aws_rows_through_2025": 19590,
+   "vaquill": 7903,
+   "vaquill_share_of_aws_through_2025": 0.4034,
+   "aws_first_year": 2005,
+   "vaquill_first_year": 2017,
+   "vaquill_extracted_texts_held": 16837,
+   "vaquill_held_share_of_aws_through_2025": 0.8595
+  },
+  {
+   "court": "Meghalaya",
+   "aws_code": "17_21",
+   "aws_rows": 12986,
+   "aws_rows_through_2025": 11699,
+   "vaquill": 6261,
+   "vaquill_share_of_aws_through_2025": 0.5352,
+   "aws_first_year": 2010,
+   "vaquill_first_year": 2010,
+   "vaquill_extracted_texts_held": 11336,
+   "vaquill_held_share_of_aws_through_2025": 0.969
+  },
+  {
+   "court": "Sikkim",
+   "aws_code": "11_24",
+   "aws_rows": 2455,
+   "aws_rows_through_2025": 2358,
+   "vaquill": 453,
+   "vaquill_share_of_aws_through_2025": 0.1921,
+   "aws_first_year": 2000,
+   "vaquill_first_year": 2000,
+   "vaquill_extracted_texts_held": 2317,
+   "vaquill_held_share_of_aws_through_2025": 0.9826
+  }
+ ],
+ "court_years_with_a_gap": 794,
+ "sum_of_gaps": 6878389,
+ "share_of_the_gaps_in_the_25_largest_court_years": 0.5382,
+ "largest_gaps": [
+  {
+   "court": "Bombay",
+   "year": 2025,
+   "aws_rows": 386281,
+   "vaquill": 44981,
+   "gap": 341300
+  },
+  {
+   "court": "Allahabad",
+   "year": 2025,
+   "aws_rows": 487750,
+   "vaquill": 160377,
+   "gap": 327373
+  },
+  {
+   "court": "Allahabad",
+   "year": 2018,
+   "aws_rows": 456951,
+   "vaquill": 187627,
+   "gap": 269324
+  },
+  {
+   "court": "Allahabad",
+   "year": 2023,
+   "aws_rows": 534053,
+   "vaquill": 272770,
+   "gap": 261283
+  },
+  {
+   "court": "Allahabad",
+   "year": 2022,
+   "aws_rows": 525018,
+   "vaquill": 271667,
+   "gap": 253351
+  },
+  {
+   "court": "Allahabad",
+   "year": 2019,
+   "aws_rows": 468045,
+   "vaquill": 227729,
+   "gap": 240316
+  },
+  {
+   "court": "Bombay",
+   "year": 2024,
+   "aws_rows": 277355,
+   "vaquill": 73777,
+   "gap": 203578
+  },
+  {
+   "court": "Allahabad",
+   "year": 2021,
+   "aws_rows": 351964,
+   "vaquill": 171291,
+   "gap": 180673
+  },
+  {
+   "court": "Allahabad",
+   "year": 2024,
+   "aws_rows": 264889,
+   "vaquill": 84325,
+   "gap": 180564
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2023,
+   "aws_rows": 149388,
+   "vaquill": 3023,
+   "gap": 146365
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2024,
+   "aws_rows": 154801,
+   "vaquill": 8594,
+   "gap": 146207
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2025,
+   "aws_rows": 145495,
+   "vaquill": 2,
+   "gap": 145493
+  },
+  {
+   "court": "Allahabad",
+   "year": 2020,
+   "aws_rows": 251574,
+   "vaquill": 122436,
+   "gap": 129138
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2012,
+   "aws_rows": 85301,
+   "vaquill": 0,
+   "gap": 85301
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2022,
+   "aws_rows": 133062,
+   "vaquill": 50529,
+   "gap": 82533
+  },
+  {
+   "court": "Rajasthan",
+   "year": 2023,
+   "aws_rows": 119187,
+   "vaquill": 38256,
+   "gap": 80931
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2019,
+   "aws_rows": 120442,
+   "vaquill": 46905,
+   "gap": 73537
+  },
+  {
+   "court": "Rajasthan",
+   "year": 2017,
+   "aws_rows": 99660,
+   "vaquill": 26553,
+   "gap": 73107
+  },
+  {
+   "court": "Orissa",
+   "year": 2022,
+   "aws_rows": 116446,
+   "vaquill": 44831,
+   "gap": 71615
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2013,
+   "aws_rows": 95949,
+   "vaquill": 24989,
+   "gap": 70960
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2015,
+   "aws_rows": 110668,
+   "vaquill": 40264,
+   "gap": 70404
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2014,
+   "aws_rows": 103796,
+   "vaquill": 34949,
+   "gap": 68847
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2016,
+   "aws_rows": 107677,
+   "vaquill": 39726,
+   "gap": 67951
+  },
+  {
+   "court": "Punjab and Haryana",
+   "year": 2018,
+   "aws_rows": 119171,
+   "vaquill": 51243,
+   "gap": 67928
+  },
+  {
+   "court": "Madras",
+   "year": 2025,
+   "aws_rows": 221936,
+   "vaquill": 158328,
+   "gap": 63608
+  },
+  {
+   "court": "Rajasthan",
+   "year": 2018,
+   "aws_rows": 90032,
+   "vaquill": 26891,
+   "gap": 63141
+  },
+  {
+   "court": "Rajasthan",
+   "year": 2024,
+   "aws_rows": 91384,
+   "vaquill": 29186,
+   "gap": 62198
+  },
+  {
+   "court": "Rajasthan",
+   "year": 2022,
+   "aws_rows": 93383,
+   "vaquill": 33371,
+   "gap": 60012
+  },
+  {
+   "court": "Karnataka",
+   "year": 2025,
+   "aws_rows": 91473,
+   "vaquill": 31685,
+   "gap": 59788
+  },
+  {
+   "court": "Orissa",
+   "year": 2021,
+   "aws_rows": 93187,
+   "vaquill": 33667,
+   "gap": 59520
+  }
+ ],
+ "court_years_where_vaquill_exceeds_the_bucket": [
+  {
+   "court": "Gauhati",
+   "year": 2022,
+   "aws_rows": 26000,
+   "vaquill": 26009,
+   "gap": -9
+  },
+  {
+   "court": "Gauhati",
+   "year": 2023,
+   "aws_rows": 27799,
+   "vaquill": 27946,
+   "gap": -147
+  }
+ ],
+ "caution": "A row is a document of a case (an order or a judgment). Vaquill may have left out interim orders on purpose; the metadata cannot say. The comparison shows where Vaquill holds fewer documents than the bucket it cites, not that those are all judgments."
+}
