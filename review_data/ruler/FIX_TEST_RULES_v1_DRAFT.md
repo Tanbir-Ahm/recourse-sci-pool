@@ -1,0 +1,87 @@
+# Fix-test rules, version 1: DRAFT of 2026-10-10 (PRIVATE; not frozen until the owner accepts it)
+
+**Status.** Written at the owner's request ("draft the pre-registered test") after the sealed run missed two floors and the diagnosis (`review_results/2026-10-10_wrong_regime_diagnosis/`) found different causes in different questions. **No fix has been coded, no variant has been run, no new question exists.** Every threshold is a **[Guessing]** and may be changed only by a dated amendment at the end of this file **before** the dev run (section 3). Once the owner accepts, the file is frozen by recording its SHA-256 in `FOLLOW_UPS.md` and `fix_test_rules_v1.freeze` (command in section 9). All results are LLM-judged (ChatGPT and Gemini, run by J and S) unless a lawyer's sheet is added; nothing is lawyer-validated.
+
+## In one page
+1. **What it decides:** whether any of three small changes to the search recipe, alone, is better than today's recipe (rerank-3-lite, 60 candidates), and, in the same run, whether the chosen recipe meets the connection floors F1 to F4 of `SEALED_RUN_RULES_v1.md` on questions nobody has tuned on. It decides nothing about the layperson mode, answer writing, or the verified answer path.
+2. **Why new questions:** the sealed 11 and the tuning 19 have been looked at; R16, R23 and R03 are the reason the changes exist. They may be used to check that a change does what it was built for (section 3), never as evidence that it works.
+3. **Two stages.** Stage D (development, free of marks): a mechanical gate on the 19 tuning questions plus the three known failures. Stage F (final): one run, one marking round, on at least 24 NEW questions, all arms in one shuffled list, once.
+4. **Status quo wins ties.** A change is adopted only if it passes rules 1 to 6 of section 5. Otherwise the recipe stays as it is.
+5. **A pass is not "X% accurate"** and is not a lawyer's clearance. Mr. Advocate reads every passage anyone marked Misleading plus a random 20 before anything leaves the project.
+
+## 1. What is tested (exact definitions; coded and unit-tested before any paid call)
+| Arm | Change from the baseline B (rerank-3-lite on 60 candidates, weights and 1.10 section boost as now) |
+|---|---|
+| **B** | nothing (today's final recipe) |
+| **W** | candidate pool of **100** instead of 60 (same lists, same fusion, cut at 100); one re-rank call on 100 passages |
+| **C** | **cap of 2 per judgment in the top 5**: fill places 1 to 5 in score order, skipping a passage when two passages of its judgment already hold places; skipped passages follow in score order from place 6; places 6 to 10 otherwise unchanged |
+| **N1** | **named-Act boost, factor 1.10**: if the question contains a trigger phrase of an Act in Appendix A, passages containing a marker of that Act have their final score multiplied by 1.10 (once per passage; the section boost is unchanged) |
+| **N2** | the same with factor **1.25** |
+
+The Appendix A table is fixed before any final question is searched and cannot be extended afterwards. It was drafted from the Acts the index is mostly about, not from the failing questions; Mr. Advocate should review it before the freeze. A change that fails stage D is dropped, not retuned; a new magnitude needs an amendment before stage D starts.
+
+## 2. Data
+- **Stage D:** the 19 tuning questions (R01, R02, R04, R06, R08, R09, R11, R12, R14, R15, R17, R19 to R22, R24, R26, R28, R29; the sealed 11 are not among them) and, labelled "known failures, a check not a test", R16, R23, R03.
+- **Stage F:** **at least 24 new questions** (30 preferred), same workbook format as the owner's 30, written **by someone who has not seen the sealed or tuning questions** (Mr. Advocate preferred; not Claude), with the key (expected answer, key authorities, older rulings) written and sealed with a freeze hash **before any search**, the same way `real30_v1.json` was. Required mix: the domains A to K spread as before; **at least 8 look-alike questions** (a question whose obvious neighbour is a different Act or section: for example a question under one special Act whose wording also fits ordinary criminal procedure), of which at least 3 do **not** name the Act in the question's own words; at least 2 index-gap or control questions, reported apart.
+
+## 3. Stage D: the mechanical gate (no marks; cost under about $1)
+Each of W, C, N1, N2 is run on the stage D questions. It goes to stage F only if **all** hold, against B on the same questions:
+1. the named authority in the top 10 on the answerable tuning questions is **at least B's count**;
+2. known-stale passages in the top 5, summed, **at most B's**;
+3. on the three known failures it does what it was built for: **W** must bring the key passage of R23 into the top 10; **each of C, N1 and N2** must bring a passage of the key judgment of R16 into the top 5 (C and N are not judged on R23, W is not judged on R16);
+4. re-rank tokens per question **at most 1.8 times** B's.
+The result table is committed before stage F questions are searched. A change that passes stage D has shown only that it does not obviously break the old questions.
+
+## 4. Stage F: the run
+One pool per question: the union of the top 10 of B and the top 5 of each arm that passed stage D, shuffled with a fixed seed; the prompt says nothing about arms; both tools on every file, order A; coverage must be 100% before any score is read; replies kept as received, cleaned by `normalise_replies.py` only; reliability flag as in the sealed rules (agreement under 60% = weak). The key is opened only after the marks are scored, once.
+
+## 5. Choosing a change (the status quo wins ties)
+An arm V replaces B only if all of the following hold, on the Stage F questions with marks (rules 1 to 5 are rules 1 to 5 of the sealed rules, V in place of R and B in place of A):
+1. In all four settlements V's mean top-5 grade is at least B's.
+2. In both "both" settlements V's Misleading share is at most B's + 2 points and V's useful share at least B's - 2 points.
+3. In both "both" settlements V is better on at least two more questions than it is worse (a question differs when the mean grade of the top 5 differs by 0.4 or more).
+4. Automatic: named authority in the top 5 at least B's count; known-stale passages in the top 5 at most B's.
+5. The reliability note is not "weak".
+6. **It helps what it was built for:** on the look-alike questions, V's Misleading share (both, ties to the lower mark) is at least 5 points lower than B's, **or** V has the key authority in the top 5 on more look-alike questions than B.
+If more than one arm passes, the one with the highest mean grade (both, ties to the lower mark) is adopted; on a tie, the cheaper in re-rank tokens. **Combinations are not tested in this run**; a combination needs its own run on new questions. If none passes, B stays.
+
+## 6. Floors and outcomes
+The chosen recipe (V or B) is held to the **unchanged floors** F1 to F4 of `SEALED_RUN_RULES_v1.md` section 4 (useful at least 70% with ties to the lower mark; Misleading at most 15% and at most 10% with ties to the higher mark; named authority in the top 10 for at least 60% of the answerable questions; direct answers at least 25%), clear or weak pass as there, and to the outcome table of section 7 of those rules. Meeting the floors still leads only to shadow mode in the eligible domains and never to the verified answer path. I expect, at 24 questions and with the two judges agreeing on about 64%, that a recipe as good as the tuning half would still miss at least one floor in roughly **30 to 40%** of runs [Guessing]; a miss would again mean new questions.
+
+## 7. What the test cannot show
+Whether a change helps questions unlike the new ones; whether two changes together help; anything a lawyer would grade; answer writing; real users. Twenty-four questions cannot show a difference smaller than about 8 to 10 points; the rules ask for **no loss** plus a gain on the look-alikes, not for a large gain.
+
+## 8. Order of events and hygiene
+1. Owner accepts or amends; Mr. Advocate reviews Appendix A; the file is frozen and hashed.
+2. Code the four arms in `pool_runner.py` (a `--variant` option, off by default, output unchanged without it), with tests; commit; record the commit in every run label.
+3. Stage D; commit its table. Arms that fail are dropped.
+4. In parallel, the question writer prepares the new questions; they are sealed with a freeze hash and a hand-out guard (the same machinery as the 30) **before** any search. The writer sees none of the results of stages D or F.
+5. Preflight (rules hash, clean pushed checkout, index head, freeze hash, no hand-out logged, Voyage balance above the $5 reserve; cost about $0.30).
+6. Stage F search once; pack built; J and S mark (about 50 chats for 24 questions); stage 1 on marks only; stage 2 opens the key once; report in plain words. Nothing is re-run and nothing is changed after a mark exists; a technical failure before any mark may be repeated and logged.
+7. The index stays frozen at `3c80a26` until the run is over.
+
+## 9. Freezing, amending, and what the owner must decide
+Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ruler/fix_test_rules_v1.freeze` (renamed to `FIX_TEST_RULES_v1.md` at the same time), commit, record the hash in `FOLLOW_UPS.md`. Amendments are appended below with a date and reason, before stage D; never after stage F's questions are searched.
+
+**Decisions for the owner (defaults in brackets):**
+1. Accept the five arms, or drop some? [accept W, N1, N2, C; drop C if you want fewer marking passages]
+2. Who writes the new questions, and by when? [Mr. Advocate; at least 24]
+3. Is another marking round of about 50 chats acceptable to J and S? [yes]
+4. Stage D spend under about $1? [yes]
+5. Mr. Advocate reviews Appendix A before the freeze? [yes]
+
+## Appendix A: Acts, trigger phrases (in the question) and markers (in the passage); case-insensitive; DRAFT
+| Act | trigger phrases | passage markers |
+|---|---|---|
+| Protection of Women from Domestic Violence Act, 2005 | domestic violence; DV Act; shared household; protection order; residence order | domestic violence; protection of women |
+| Narcotic Drugs and Psychotropic Substances Act, 1985 | NDPS; narcotic; ganja; charas; heroin; contraband; psychotropic | NDPS; narcotic drugs |
+| Protection of Children from Sexual Offences Act, 2012 | POCSO; protection of children from sexual | POCSO; protection of children from sexual |
+| SC/ST (Prevention of Atrocities) Act, 1989 | SC/ST; atrocities; scheduled caste; scheduled tribe | atrocities; SC/ST; scheduled castes |
+| Negotiable Instruments Act, 1881 | cheque; section 138; bounced; dishonour | negotiable instruments; cheque |
+| Prevention of Money-Laundering Act, 2002 | PMLA; money laundering; Enforcement Directorate | prevention of money; PMLA |
+| Unlawful Activities (Prevention) Act, 1967 | UAPA; unlawful activities | UAPA; unlawful activities |
+| Dowry Prohibition Act, 1961 | dowry | dowry prohibition |
+| Juvenile Justice Act | juvenile; Juvenile Justice | juvenile justice |
+
+## Amendments
+(none)
