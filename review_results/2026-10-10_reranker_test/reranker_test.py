@@ -69,13 +69,18 @@ def load_world():
     del key_all
     qids = [q for q in dev if key[q].get("reachable")]
     key_docs = {q: {int(d) for d in key[q]["key_docs"]} for q in qids}
-    rowof = {}
+    rowsof = collections.defaultdict(list)
     for i, m in enumerate(metas):
-        rowof.setdefault((m["doc"], m["h"]), i)
+        rowsof[(m["doc"], m["h"])].append(i)             # a judgment can hold the same passage text twice: duplicates are handed out in index order
     saved = json.load(open(FUSED))["questions"]
     cands = {}
     for q in qids:
-        rows = [rowof[(int(it["doc"]), it["h"])] for it in saved[q]["fused"]]
+        used = collections.Counter()
+        rows = []
+        for it in saved[q]["fused"]:
+            k = (int(it["doc"]), it["h"])
+            rows.append(rowsof[k][used[k]])
+            used[k] += 1
         assert len(rows) == 60 and len(set(rows)) == len(rows), (q, len(rows))
         cands[q] = rows
     return metas, qtext, qids, key_docs, cands, saved
