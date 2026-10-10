@@ -1,0 +1,88 @@
+QUESTION ID: R01   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 8 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R01",
+  "marks": [
+    {"no": 12, "mark": "Yes", "evidence": "exact quote from passage 12", "reason": "one sentence", "confidence": "high"},
+    {"no": 13, "mark": "No", "evidence": "exact quote from passage 13", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 12,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 8 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 12, 13, 14, 15, 16, 17, 18, 19
+
+==============================================================================
+QUESTION: Police picked up my brother last night from Andheri after his car hit a scooter, they just said 'come with us' and took his phone, no paper nothing, my mother is crying since morning. Today they took him to magistrate for remand. The lawyer says it's fine but I read online they must give reasons?? Is this arrest even legal, can we get him out because they gave nothing in writing?
+==============================================================================
+
+--- PASSAGE 12 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS. 2295-2296 OF 2010 Adambhai Sulemanbhai Ajmeri & Ors. …Appellants Versus State of Gujarat ...Respondent WITH CRIMINAL APPEAL NO. 45 OF 2011 J U D G M E N T V.GOPALA GOWDA, J. The
+   (Judgment id 41558, paragraph 92/8, page 155)
+Text:
+After two to three days, I and Adam had gone to Kalupur Darwaja on my scooter, and Nasir Doman had also come along on his scooter. From STD/ ISD booth named Kohinoor Telecom, Adam had dialed number at Saudi Arabia and firstly he had done all the talk in Arabic language, and thereafter to give us assurance, he had talked in Hindi language and asked to exchange greetings with the people involved with me in Crl.A.Nos.2295-2296 of 2010 -162- work. By saying this, Adam handed over the receiver to me……. I was asked from the other side in Gujarati, ‘brother, what you need,’. Prior to this, Adam had asked me to demand for Rs. 20 Lac for the work. Therefore, on my say that it would take Rs. 20 lac for the work, I was asked from the other side to give the phone to Adambhai. And Adam had done some talk in Arabic language. We could not understand the said language. … In the last week of May 2002, Nashir had called me to his house by sending message through someone. And when I went, Nashir, Adam and Adam’s brother Ahmed was present. Adam had given me Rs. 5000/- and had said to me that guests are going to come and you have to arrange for their lodging. And he had also given Rs.5000/- to Nashir and he said to buy two mobile phones from it and give it to Rehman, and had said that the numbers for the same will be given to the guests and had said that thereby they will remain in contact.
+
+--- PASSAGE 13 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1674 OF 2012 (Arising out of SLP (Crl.) No. 10547/2010) Geeta Mehrotra & Anr. ..Appellants Versus State of U.P. & Anr. . Respondents J U D G M E N T GYAN SUDHA MISRA, J.
+   (Judgment id 39680, paragraph 5, page 6)
+Text:
+5. After persistent efforts, Shyamji finally got a job in Chennai and he went to Chennai for the job in May, 2003. But, it is alleged that there was no change in his behaviour even after going to Chennai. The complainant often called him on phone to talk to him but he always did irrelevant conversation. He never spoke properly with the complainant whenever he visited home and often used to hurl filthy abuses. The complainant states that she often wept and tolerated the tortures of the accused persons for a long time but did not complain to her family members, as that would have made them feel sad. At last, when the complainant realized that even her life was in danger, she was compelled to tell everything to her father on phone who was very upset on hearing her woes. On 15.7.2003 complainant heard some conversation of her mother-inlaw and sister-in-law from which it appeared to her that they want to kill the complainant in the night only. Thereupon the complainant apprised her father of the situation on phone to which her father replied that he will call back her father-in-law and she should go with him immediately and he will come in the morning. The father-in-law Satish Dhawan and his wife who were living in NOIDA thereafter came in the night and somehow took the complainant to their home who also came to know of everything. The complainant’s father and brother later went to her matrimonial home on 16.7.2003. On seeing her father and brother, Kamla Mehrotra and Geeta Mehrotra started speaking loudly and started saying that Shyamji would be coming by the evening and so he should come in the evening for talking to them. Her father and brother then went away from there. That very day, her husband Shyamji and brother-in-law Ramji also reached home. On reaching there, Shyamji abused her on phone and told her to send her father.
+
+--- PASSAGE 14 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 55, page 34)
+Text:
+55. It goes without saying that if the abovesaid schedule for supplying the grounds of arrest in writing is not adhered to, the arrest will be rendered illegal entitling the release of the arrestee. On such release, an application for remand or custody, if required, will be moved along with the reasons and necessity for the same, after the supply of the grounds of arrest in writing setting forth the explanation for non-supply thereof within the above stipulated schedule. On receipt of such an application, the magistrate shall decide the same expeditiously and preferably within a week of submission thereof by adhering to the principles of natural justice.
+
+--- PASSAGE 15 ---
+Judgment: KASIREDDY UPENDER REDDY versus STATE OF ANDHRA PRADESH AND ORS. (22-05-2025)
+   (Judgment id 1000256770, paragraph 20, page 26)
+The same text also appears in judgment id(s): 1000256350
+Text:
+20. When an arrested person is produced before a Judicial Magistrate for remand, it is the duty of the Magistrate to ascertain whether compliance with Article 22(1) has been made. The reason is that due to non-compliance, the arrest is rendered illegal; therefore, the arrestee cannot be remanded after the arrest is rendered illegal. It is the obligation of all the Courts to uphold the fundamental rights. CONCLUSIONS
+
+--- PASSAGE 16 ---
+Judgment: VIHAAN KUMAR versus STATE OF HARYANA & ANR. (06-02-2025)
+   (Judgment id 1000256350, paragraph 21, page 22)
+Text:
+21. Therefore, we conclude: a) The requirement of informing a person arrested of grounds of arrest is a mandatory requirement of Article 22(1); b) The information of the grounds of arrest must be provided to the arrested person in such a manner that sufficient knowledge of the basic facts constituting the grounds is imparted and communicated to the arrested person effectively in the language which he understands. The mode and method of communication must be such that the object of the constitutional safeguard is achieved; c) When arrested accused alleges non-compliance with the requirements of Article 22(1), the burden will always be on the Investigating Officer/Agency to prove compliance with the requirements of Article 22(1); d) Non-compliance with Article 22(1) will be a violation of the fundamental rights of the accused guaranteed by the said Article. Moreover, it will amount to a violation of the right to personal liberty guaranteed by Article 21 of the Constitution. Therefore, non-compliance with the requirements of Article 22(1) vitiates the arrest of the accused. Hence, further orders passed by a criminal court of remand are also vitiated. Needless to add that it will not vitiate the investigation, charge sheet and trial. But, at the same time, filing of chargesheet will not validate a breach of constitutional mandate under Article 22(1); 446 e) When an arrested person is produced before a Judicial Magistrate for remand, it is the duty of the Magistrate to ascertain whether compliance with Article 22(1) and other mandatory safeguards has been made; and f) When a violation of Article 22(1) is established, it is the duty of the court to forthwith order the release of the accused. That will be a ground to grant bail even if statutory restrictions on the grant of bail exist. The statutory restrictions do not affect the power of the court to grant bail when the violation of Articles 21 and 22 of the Constitution is established. FACTUAL ADJUDICATION
+
+--- PASSAGE 17 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1277 OF 2014 (@SPECIAL LEAVE PETITION (CRL.) No.9127 of 2013) ARNESH KUMAR ..... APPELLANT VERSUS STATE OF BIHAR & ANR. .... RESPONDENTS J U D G M E N T Chandramauli Kr. Prasad T
+   (Judgment id 41736, unnumbered paragraph, page 10)
+Text:
+Law further requires the police officers to record the reasons in writing for not making the arrest. In pith and core, the police office before arrest must put a question to himself, why arrest? Is it really required? What purpose it will serve? What object it will achieve? It is only after these questions are addressed and one or the other conditions as enumerated above is satisfied, the power of arrest needs to be exercised. In fine, before arrest first the police officers should have reason to believe on the basis of information and material that the accused has committed the offence. Apart from this, the police officer has to be satisfied further that the arrest is necessary for one or the more purposes envisaged by sub-clauses (a) to (e) of clause (1) of Section 41 of Cr.PC. An accused arrested without warrant by the police has the constitutional right under Article 22(2) of the Constitution of India and Section 57, Cr.PC to be produced before the Magistrate without unnecessary delay and in no circumstances beyond 24 hours excluding the time necessary for the journey. During the course of investigation of a case, an accused can be kept in detention beyond a period of 24 hours only when it is authorised by the Magistrate in exercise of power under Section 167 Cr.PC. The power to authorise detention is a very solemn function.
+
+--- PASSAGE 18 ---
+Judgment: PRABIR PURKAYASTHA versus STATE (NCT OF DELHI) (15-05-2024)
+   (Judgment id 1000255745, paragraph 47-48, page 31)
+Text:
+47. Now, coming to the aspect as to whether the grounds of arrest were actually conveyed to the appellant in writing before he was remanded to the custody of the Investigating Officer. 48. We have carefully perused the arrest memo (Annexure P-7) and find that the same nowhere conveys the grounds on which the accused was being arrested. The arrest memo is simply a proforma indicating the formal ‘reasons’ for which the accused was being arrested.
+
+--- PASSAGE 19 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph preamble/29, page 10)
+Text:
+8.3. The Magistrate before authorising detention will record his own satisfaction, may be in brief but the said satisfaction must reflect from his order. It shall never be based upon the ipse dixit of the police officer, for example, in case the police officer considers the arrest necessary to prevent such person from committing any further offence or for proper investigation of the case or for preventing an accused from tampering with evidence or making inducement, etc. the police officer shall furnish to the Magistrate the facts, the reasons and materials on the basis of which the police officer had reached its conclusion. Those shall be perused by the Magistrate while authorising the detention and only after recording his satisfaction in writing that the Magistrate will authorise the detention of the accused. 8.4. In fine, when a suspect is arrested and produced before a Magistrate for authorising detention, the Magistrate has to address the question whether specific reasons have been recorded for arrest and if so, prima facie those reasons are relevant, and secondly, a reasonable conclusion could at all be reached by the police officer that one or the other conditions stated above are attracted. To this limited extent the Magistrate will make judicial scrutiny. 9. …The aforesaid provision makes it clear that in all cases where the arrest of a person is not required under Section 41(1) CrPC, the police officer is required to issue notice directing the accused to appear before him at a specified place and time.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R01 (passages 12, 13, 14, 15, 16, 17, 18, 19).

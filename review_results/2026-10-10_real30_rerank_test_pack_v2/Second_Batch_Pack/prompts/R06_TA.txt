@@ -1,0 +1,93 @@
+QUESTION ID: R06   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 9 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R06",
+  "marks": [
+    {"no": 14, "mark": "Yes", "evidence": "exact quote from passage 14", "reason": "one sentence", "confidence": "high"},
+    {"no": 15, "mark": "No", "evidence": "exact quote from passage 15", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 14,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 9 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 14, 15, 16, 17, 18, 19, 20, 21, 22
+
+==============================================================================
+QUESTION: My nephew is first time accused in a 2023 theft case, he's been in jail as undertrial for over a year. Does the new section 479 BNSS one-third rule help him even though the FIR was before the new law?
+==============================================================================
+
+--- PASSAGE 14 ---
+Judgment: CASE NO.: Criminal.M.P (PR) 9478 of 2002 PETITIONER: MALIYAKKAL ABDUL AZEEZ RESPONDENT: ASSISTANT COLLECTOR KERALA AND ANR. DATE OF JUDGMENT: 17/01/2003 BENCH: SHIVARAJ V. PATIL & ARIJIT PASAYAT JUDGMENT: 2003(1) SCR 423 The following Order of the Court was de
+   (Judgment id 20855, unnumbered paragraph, page 2)
+Text:
+If the above two conditions are satisfied then the operative part of, the provision comes into play i.e. if the sentence of imprisonment awarded is longer than the period of detention undergone by him during the stages of investigation, enquiry or trial, the convicted person need undergo only the balance period of imprisonment after deducting the earlier period from the total period of imprisonment awarded. Section 428 of the Code was brought on the statute book for the first time in 1973. It was incorporated in the light of the proposal put forward by the Joint Select Committee. It was noticed by the Committee that in many cases the accused persons are kept in prison for a very long period as under-trial prisoners and in some cases the period spent in jail by undertrial prisoners far exceeded the sentence of imprisonment ultimately awarded. It was also noticed by the Committee with concern that large number of prisoners in the over-crowded jails of the country were undertrial prisoners. Provision was introduced to remedy the unsatisfactory state of affairs, by providing for setting off the period of detention as under-trial prisoners against the sentence of imprisonment imposed on the accused. Views of the Committee were expressed in following words: "The Committee has noted the distressing fact that in many cases accused persons are kept in prison for very long period as undertrial prisoners and in some cases the sentence of imprisonment ultimately awarded is a fraction of the period spent in jail as undertrial prisoner.
+
+--- PASSAGE 15 ---
+Judgment: THE CENTRAL BUREAU OF INVESTIGATION versus MIR USMAN @ ARA @ MIR USMAN ALI (22-09-2025)
+   (Judgment id 1000257041, paragraph 19/1, page 15)
+Text:
+19. There are various other provisions in the Cr.P.C. (now BNSS, 2023) which ensure speedy trial and an early investigation: I. Under Section 157(1) of Cr.P.C. (now Section 176 of the BNSS, 2023) every officer in charge of a police station is bound to proceed, to the spot, to investigate the facts and circumstances of the case, and if necessary, to take measures for the discovery and arrest of the offender. II. Section 167(2)(a) of Cr.P.C. (now Section 187 of the BNSS, 2023) provides that no magistrate shall authorise the detention of the accused person in custody for total period exceeding; (i) 90 days, where the investigation relates to an offence punishable with death, life imprisonment for life or imprisonment for a term of not less than 10 years; (ii) 60 days, where the investigation relates to any other offence, and on the expiration of such period as case may be the accused shall be released on bail. III. Section 173(1) of Cr.P.C. (now Section 173(1) of the BNSS, 2023) provides that every investigation under chapter XII shall be completed without unnecessary delay. IV. Section 173(1A) of Cr.P.C. (now Section 173 of the BNSS, 2023) provides that the investigation in relation to rape of a child may be completed within three months from the date on which the information was recorded by the officer in charge of the police station.
+
+--- PASSAGE 16 ---
+Judgment: PARTHA CHATTERJEE versus DIRECTORATE OF ENFORCEMENT (13-12-2024)
+   (Judgment id 1000256177, paragraph 12, page 7)
+Text:
+12. Per contra, Shri S.V. Raju, Learned Additional Solicitor General of India, has opposed the prayer for bail, urging primarily that: (i) the provisions of the first proviso to Section 479 of the BNSS would not be applicable as the Appellant is not a first time offender; (ii) the Appellant would not be entitled to bail in view of Section 479(2) of BNSS, as multiple cases are registered against him; (iii) the Appellant being in a high ranking position of a Minister and having indulged in an offence involving moral turpitude cannot seek parity with other co-accused who are much lower in rank and status than him; (iv) the close acquaintance of the Appellant and from whose residence huge amount of valuables were recovered has in her statement under Section 50 of the PMLA expressed apprehension of threat to life at the hands of the Appellant; and (v) the seizure and attachment, in this case, stands at a hefty Rs. 151.2 crores, which are the proceeds of crime generated out of criminal activities related to scheduled offences under the PMLA. 634
+
+--- PASSAGE 17 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.
+   (Judgment id 32524, paragraph 33, page 22)
+Text:
+33. The learned counsel for the respondents are, prima facie, right in submitting that no retrospective effect has been given to the said provision and as such Section 436A does not directly apply to the facts of the case.
+
+--- PASSAGE 18 ---
+Judgment: NARCOTIC CONTROL BUREAU versus LAKHWINDER SINGH (29-01-2025)
+   (Judgment id 1000256314, paragraph 5/1, page 3)
+Text:
+5. The relevant part of paragraph 15 and paragraph 16 of the said decision read thus: “15. ... We, therefore, direct as under: (i) Where the undertrial is accused of an offence(s) under the Act prescribing a punishment of imprisonment of five years or less and fine, such an undertrial shall be released on bail if he has been in jail for a period which is not less than half the punishment provided for the offence with which he is charged and where he is charged with more than (1994) 6 SCC 731 1584 one offence, the offence providing the highest punishment. If the offence with which he is charged prescribes the maximum fine, the bail amount shall be 50% of the said amount with two sureties for like amount. If the maximum fine is not prescribed bail shall be to the satisfaction of the Special Judge concerned with two sureties for like amount. (ii) Where the undertrial accused is charged with an offence(s) under the Act providing for punishment exceeding five years and fine, such an undertrial shall be released on bail on the term set out in (i) above provided that his bail amount shall in no case be less than Rs 50,000 with two sureties for like amount. (iii) Where the undertrial accused is charged with an offence(s) under the Act punishable with minimum imprisonment of ten years and a minimum fine of Rupees one lakh, such an undertrial shall be released on bail if he has been in jail for not less than five years provided he furnishes bail in the sum of Rupees one lakh with two sureties for like amount.
+
+--- PASSAGE 19 ---
+Judgment: OM PRAKASH AMBADKAR versus THE STATE OF MAHARASHTRA & ORS. (16-01-2025)
+   (Judgment id 1000256275, paragraph 28, page 16)
+Text:
+28. However, before we part with the matter, we deem it necessary to discuss the changes brought to the scheme of Section 156 of the Cr.P.C. by the enactment of the Bharatiya Nagarik Suraksha Sanhita, 2023 (for short, “the BNSS”).
+
+--- PASSAGE 20 ---
+Judgment: Opening header not available
+   (Judgment id 35744, paragraph 11, page 13)
+Text:
+11. In fact, a similar situation arose in the case of Maliyakkal Abdul Azeez vs. Asstt. Collector, Kerala & Anr. [(2003) 2 SCC 439], wherein it was sought to be argued on behalf of the petitioner that he was entitled to the benefit of set-off under Section 428 Cr.P.C. for the period of detention under the Conservation of Foreign Exchange and Prevention of Smuggling Activities Act, 1974. While deciding the said case, the Hon’ble Judges observed that Section 428 Cr.P.C. had been brought on the statute book for the first time in 1973 and was incorporated in the light of the proposal put forward by the Joint Select Committee which noticed that in many cases the accused persons were kept in prison for a very long period as undertrial prisoners and in some cases the period spent in jail by undertrial prisoners far exceeded the sentence of imprisonment ultimately awarded. It was also noticed by the Select Committee with concern that a large number of prisoners in the overcrowded jails of the country were undertrial prisoners and that Section 428 Cr.P.C. was introduced to remedy the unsatisfactory state of affairs by providing for setting-off of the period of detention as an undertrial prisoner against the sentence of imprisonment imposed on the accused.
+
+--- PASSAGE 21 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 27, page 16)
+Text:
+27. Though Chapter XVI of the BNSS lays down the procedural law dealing with complaints made to a Magistrate, we hold that the aforesaid proviso is substantive in nature, as it does not merely regulate the manner in which the proceedings are to be conducted, rather it confers a right upon the accused to be heard before taking cognizance which forms a part of the right of an accused to a fair trial enshrined under Article 21 of the Constitution of India, 1950. We further hold that the word “shall” occurring in the said proviso has to be construed to be mandatory in nature, which enures to the benefit of an accused. Resultantly, cognizance of an offence taken by a Court without due compliance of the aforestated proviso would be void ab initio. Section 531 of the BNSS, 2023 “531. Repeal and savings.— (1) The Code of Criminal Procedure, 1973 (2 of 1974) is hereby repealed. (2) Notwithstanding such repeal— 502 (a) if, immediately before the date on which this Sanhita comes into force, there is any appeal, application, trial, inquiry or investigation pending, then, such appeal, application, trial, inquiry or investigation shall be disposed of, continued, held or made, as the case may be, in accordance with the provisions of the Code of Criminal Procedure, 1973 (2 of 1974), as in force immediately before such commencement (hereinafter referred to as the said Code), as if this Sanhita had not come into force;” *** (emphasis supplied)
+
+--- PASSAGE 22 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION WRIT PETITION (CRL.) NO. 58 OF 2007 PRAMOD KUMAR SAXENA … APPELLANT VERSUS UNION OF INDIA & ORS. … RESPONDENTS J U D G M E N T C.K. THAKKER, J.
+   (Judgment id 32524, paragraph 32, page 21)
+Text:
+32. In the statement of objects and reasons it was stated; There had been instances, where under-trial prisoners were detained in jail for periods beyond the maximum period of imprisonment provided for the alleged offence. As remedial measure section 436A has been inserted to provide that where an under-trial prisoner other than the one accused of an offence for which death has been prescribed as one of the punishments, has been under detention for a period extending to one-half of the maximum period of imprisonment provided for the alleged offence, he should be released on his personal bond, with or without sureties. It has also been provided that in no case will an under-trial prisoner be detained beyond the maximum period of imprisonment for which he can be convicted for the alleged offence.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R06 (passages 14, 15, 16, 17, 18, 19, 20, 21, 22).

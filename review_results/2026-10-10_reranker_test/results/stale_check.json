@@ -1,0 +1,32 @@
+{
+ "totals": {
+  "baseline_stale_in_top5": 1,
+  "R_stale_in_top5": 1,
+  "stale_entering": 0,
+  "stale_leaving": 0
+ },
+ "per_question_with_any": {
+  "R09": {
+   "baseline_stale_in_top5": [
+    {
+     "doc": 41801,
+     "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+     "kind": "superseded_by_statute",
+     "counts_as_stale": true,
+     "h": "961baa21bb8c7f0d"
+    }
+   ],
+   "R_stale_in_top5": [
+    {
+     "doc": 41801,
+     "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)",
+     "kind": "superseded_by_statute",
+     "counts_as_stale": true,
+     "h": "961baa21bb8c7f0d"
+    }
+   ],
+   "stale_entering": [],
+   "stale_leaving": []
+  }
+ }
+}

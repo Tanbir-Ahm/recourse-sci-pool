@@ -13,6 +13,9 @@ that version A's ten do not show). The extended pool names the arms and is PRIVA
 
   python review_tools/build_rerank_test_pack.py --pool review_results/DATE_real30_pool_dev/pool.json --fused review_results/DATE_real30_pool_dev/rerank_effect/fused_lists.json --out DIR [--index-dir ...]
 
+--challenger FILE (optional; JSON {"name", "top5": {qid: [{"h", "doc"}, ...]}, "baseline_top5": {...}}): the top 5 another re-ranker gives each question, and (optional) the top 5 the current re-ranker gives today. Its passages that are not marked yet and are not core or extra are added as kind "rr" (in the same
+shuffle, so nothing in the prompt shows them apart); the arm "R challenger re-ranker top 5" is added to every row and to the lists, for score_challenger_arm.py. Without the flag the pack is byte-identical to before.
+
 Needs the index only to read the text of the new passages (read-only; it must be the commit the pool was made on). No network, no spend.
 """
 import argparse
@@ -36,6 +39,8 @@ ANCHOR_SALT = "rerank-anchor-v1"
 TOOLS = ("ChatGPT", "Gemini")
 PACK_NAME = "Second_Batch_Pack"                 # what the reviewers see: nothing in the pack says what it is for
 N_ARM, M_ARM = P.SAFETY_VERSIONS
+B_ARM = "B today's re-ranker top 5 (baseline for R)"   # optional with R: what the current re-ranker gives today, which can differ from the recorded version A
+R_ARM = "R challenger re-ranker top 5"           # optional: the top 5 of another re-ranker on the same candidates (--challenger); its unmarked passages ride along, nothing else changes
 
 
 def pick_anchors(rows, qid, k=2):
@@ -44,7 +49,7 @@ def pick_anchors(rows, qid, k=2):
     return ordered[:k]
 
 
-def plan_question(pool_q, fused_q, depth=P.SAFETY_NET_DEPTH, anchors=2):
+def plan_question(pool_q, fused_q, depth=P.SAFETY_NET_DEPTH, anchors=2, challenger=None, baseline=None):
     """What this question needs. Returns a dict of lists of (h, doc): core, extra, anchors (rows), and the arms' orders (hashes)."""
     have = {r["h"] for r in pool_q["rows"]}
     merged = [it["h"] for it in fused_q["fused"]]
@@ -55,7 +60,8 @@ def plan_question(pool_q, fused_q, depth=P.SAFETY_NET_DEPTH, anchors=2):
     core = list(dict.fromkeys(h for h in merged[:depth] if h not in have))
     extra = list(dict.fromkeys(h for h in a10[5:10] if h not in have and h not in core))
     net = P.safety_net(merged, a10, depth)
-    return {"core": [(h, doc_of[h]) for h in core], "extra": [(h, doc_of[h]) for h in extra], "anchors": pick_anchors(pool_q["rows"], pool_q["qid"], anchors),
+    rr = list(dict.fromkeys((it["h"], it["doc"]) for it in list(challenger or []) + list(baseline or []) if it["h"] not in have and it["h"] not in core and it["h"] not in extra))
+    return {"core": [(h, doc_of[h]) for h in core], "extra": [(h, doc_of[h]) for h in extra], "rr": rr, "anchors": pick_anchors(pool_q["rows"], pool_q["qid"], anchors),
             "merged": merged, "a10": a10, "net": net}
 
 
@@ -77,17 +83,23 @@ def fetch_records(index_dir, wanted):
     return by
 
 
-def extend_question(pool_q, fused_q, records, depth=P.SAFETY_NET_DEPTH, anchors=2):
+def extend_question(pool_q, fused_q, records, depth=P.SAFETY_NET_DEPTH, anchors=2, challenger=None, baseline=None):
     """The question with its new rows (flagged topup, numbered on, shuffled with a fixed seed) and the two arms added to every row. Returns (extended question, list of the new rows, plan)."""
-    plan = plan_question(pool_q, fused_q, depth, anchors)
+    plan = plan_question(pool_q, fused_q, depth, anchors, challenger, baseline)
     q = copy.deepcopy(pool_q)
     merged, a10, net = plan["merged"], plan["a10"], plan["net"]
     pos_merged = {h: i for i, h in enumerate(merged[:10], 1)}
     pos_net = {h: i for i, h in enumerate(net, 1)}
     pos_a = {h: i for i, h in enumerate(a10, 1)}
+    pos_r = {it["h"]: i for i, it in enumerate(challenger or [], 1)}
+    pos_b = {it["h"]: i for i, it in enumerate(baseline or [], 1)}
 
     def arms(h):
         v = {}
+        if h in pos_r:
+            v[R_ARM] = pos_r[h]
+        if h in pos_b:
+            v[B_ARM] = pos_b[h]
         if h in pos_merged:
             v[N_ARM] = pos_merged[h]
         if h in pos_net:
@@ -97,7 +109,7 @@ def extend_question(pool_q, fused_q, records, depth=P.SAFETY_NET_DEPTH, anchors=
         r["variants"].update(arms(r["h"]))
     top = max(r["n"] for r in q["rows"])
     new = []
-    for kind in ("core", "extra"):
+    for kind in ("core", "extra", "rr"):
         for h, doc in plan[kind]:
             row = dict(records[(h, doc)])
             row["variants"] = dict(arms(h), **({"A today": pos_a[h]} if h in pos_a else {}))
@@ -118,6 +130,14 @@ def extend_question(pool_q, fused_q, records, depth=P.SAFETY_NET_DEPTH, anchors=
     by_h = {it["h"]: it for it in pool_q["lists"]["A today"]}
     for it in fused_q["fused"]:
         by_h.setdefault(it["h"], {"doc": it["doc"], "h": it["h"], "also": []})
+    if challenger:
+        for it in challenger:
+            by_h.setdefault(it["h"], {"doc": it["doc"], "h": it["h"], "also": []})
+        q["lists"][R_ARM] = [dict(by_h[it["h"]]) for it in challenger]
+    if baseline:
+        for it in baseline:
+            by_h.setdefault(it["h"], {"doc": it["doc"], "h": it["h"], "also": []})
+        q["lists"][B_ARM] = [dict(by_h[it["h"]]) for it in baseline]
     q["lists"][N_ARM] = [dict(by_h[h]) for h in merged[:10]]
     q["lists"][M_ARM] = [dict(by_h[h]) for h in net]
     return q, new, plan
@@ -165,7 +185,7 @@ The marks mean:
 """
 
 
-def build(pool_path, fused_path, out_dir, index_dir=P.DEFAULT_INDEX, records=None, anchors=2, depth=P.SAFETY_NET_DEPTH):
+def build(pool_path, fused_path, out_dir, index_dir=P.DEFAULT_INDEX, records=None, anchors=2, depth=P.SAFETY_NET_DEPTH, challenger=None):
     """Writes out_dir/Second_Batch_Pack/ (+ .zip), out_dir/pool_with_rerank_arms.json and out_dir/build_info.json. Returns a summary dict."""
     with open(pool_path, encoding="utf-8") as fh:
         pool = json.load(fh)
@@ -181,14 +201,16 @@ def build(pool_path, fused_path, out_dir, index_dir=P.DEFAULT_INDEX, records=Non
             raise SystemExit(f"the index at {index_dir} is at {head[:7]}, the pool was made on {pool['run']['index_commit'][:7]}")
         wanted = set()
         for q in pool["questions"]:
-            p = plan_question(q, fused["questions"][q["qid"]], depth, anchors)
-            wanted |= set(p["core"]) | set(p["extra"])
+            p = plan_question(q, fused["questions"][q["qid"]], depth, anchors, (challenger or {}).get("top5", {}).get(q["qid"]), (challenger or {}).get("baseline_top5", {}).get(q["qid"]))
+            wanted |= set(p["core"]) | set(p["extra"]) | set(p["rr"])
         records = fetch_records(index_dir, wanted)
     ext_questions, packs, plans = [], [], {}
     for q in pool["questions"]:
-        eq, new, plan = extend_question(q, fused["questions"][q["qid"]], records, depth, anchors)
+        eq, new, plan = extend_question(q, fused["questions"][q["qid"]], records, depth, anchors, (challenger or {}).get("top5", {}).get(q["qid"]), (challenger or {}).get("baseline_top5", {}).get(q["qid"]))
         ext_questions.append(eq)
         plans[q["qid"]] = {"core": len(plan["core"]), "extra": len(plan["extra"]), "anchors": len(plan["anchors"]), "net": len(plan["net"])}
+        if challenger:
+            plans[q["qid"]]["rr"] = len(plan["rr"])
         if new:
             packs.append({"qid": q["qid"], "question": q["question"], "rows": sorted(new, key=lambda r: r["n"])})
     os.makedirs(out_dir, exist_ok=True)
@@ -216,9 +238,9 @@ def build(pool_path, fused_path, out_dir, index_dir=P.DEFAULT_INDEX, records=Non
     rc.write_zip(folder, zip_path, PACK_NAME)
     ext = {"run": dict(pool["run"], extended_by={"builder": "review_tools/build_rerank_test_pack.py", "fused_lists_sha256": hashlib.sha256(open(fused_path, "rb").read()).hexdigest(),
                                                   "pool_sha256": hashlib.sha256(open(pool_path, "rb").read()).hexdigest(), "arms_added": list(P.SAFETY_VERSIONS), "safety_net_depth": depth,
-                                                  "anchors_per_question": anchors, "note": "top-up rows (flagged topup) continue the first-batch numbers; anchors repeat first-batch passages (anchor_of) and belong to no version"}),
+                                                  "anchors_per_question": anchors, **({"challenger": {"name": challenger["name"], "model": challenger.get("model")}} if challenger else {}), "note": "top-up rows (flagged topup) continue the first-batch numbers; anchors repeat first-batch passages (anchor_of) and belong to no version"}),
            "questions": ext_questions}
-    ext["run"]["versions"] = list(pool["run"]["versions"]) + [v for v in P.SAFETY_VERSIONS if v not in pool["run"]["versions"]]
+    ext["run"]["versions"] = list(pool["run"]["versions"]) + [v for v in P.SAFETY_VERSIONS if v not in pool["run"]["versions"]] + ([R_ARM] if challenger else []) + ([B_ARM] if (challenger or {}).get("baseline_top5") else [])
     with open(os.path.join(out_dir, "pool_with_rerank_arms.json"), "w", encoding="utf-8") as fh:
         json.dump(ext, fh, ensure_ascii=False, indent=1)
         fh.write("\n")
@@ -238,8 +260,10 @@ def main(argv=None):
     ap.add_argument("--out", required=True)
     ap.add_argument("--index-dir", default=P.DEFAULT_INDEX)
     ap.add_argument("--anchors", type=int, default=2)
+    ap.add_argument("--challenger", help="JSON {name, model, top5: {qid: [{h, doc}, ...]}}: another re-ranker's top 5; its unmarked passages are added to the pack")
     a = ap.parse_args(argv)
-    info = build(a.pool, a.fused, a.out, a.index_dir, anchors=a.anchors)
+    challenger = json.load(open(a.challenger, encoding="utf-8")) if a.challenger else None
+    info = build(a.pool, a.fused, a.out, a.index_dir, anchors=a.anchors, challenger=challenger)
     print(f"built {a.out}/{PACK_NAME}.zip ({info['zip_bytes']:,} bytes): {info['prompt_files']} prompt files, {info['chats']} chats, {info['new_passages']} passages {info['by_kind']}")
 
 

@@ -54,7 +54,7 @@ For the top 5 of the 14 questions (70 slots), 19 passages under rerank-3-lite (2
 
 ## 7. What changes (consequences fixed in advance, section 7 of the pre-registration)
 
-A confirmed pass means "worth a proper trial", not a switch. In order: (a) the weights against the new scores, tuning half only (first look in section 3, nothing tuned); (b) J and S mark the passages newly in the top 5 of the chosen model (19 for rerank-3-lite; best bundled into the deferred 38-chat round rather than made a separate round); (c) only then does the sealed run use it. `rerank-2` stays in production use until (b) is done. A side benefit if the listed prices are right: rerank-3-lite costs $0.02 per million against $0.05.
+A confirmed pass means "worth a proper trial", not a switch. In order: (a) the weights against the new scores, tuning half only (first look in section 3, nothing tuned); (b) J and S mark the passages newly in the top 5 of the chosen model (19 for rerank-3-lite, of which only 4 were unmarked and outside the built second pack; **bundled into the deferred 38-chat round on the owner's instruction, 2026-10-10: `../2026-10-10_real30_rerank_test_pack_v2/`**); (c) only then does the sealed run use it. `rerank-2` stays in production use until (b) is done. A side benefit if the listed prices are right: rerank-3-lite costs $0.02 per million against $0.05.
 
 ## Files
 `PREREGISTRATION.md`, `reranker_test.py`, `extra_after_verdict.py` (exploratory), `results/results.json`, `results/raw_scores.json` (every score of every call, so any ordering can be recomputed), `results/extra_after_verdict.json`, `results/spend.json`. Re-run: `python3 -P reranker_test.py run --out DIR` (needs `VOYAGE_API_KEY`; the same spend).

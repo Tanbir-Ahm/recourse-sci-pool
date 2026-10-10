@@ -1,0 +1,63 @@
+QUESTION ID: R02   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 4 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R02",
+  "marks": [
+    {"no": 10, "mark": "Yes", "evidence": "exact quote from passage 10", "reason": "one sentence", "confidence": "high"},
+    {"no": 11, "mark": "No", "evidence": "exact quote from passage 11", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 10,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 4 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 10, 11, 12, 13
+
+==============================================================================
+QUESTION: Police sent me a notice on WhatsApp under section 35 BNSS to come to the station tomorrow in a cheating case. Is a WhatsApp notice valid? Can they arrest me if I don't go?
+==============================================================================
+
+--- PASSAGE 10 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 11, page 7)
+Text:
+11. The learned Senior Counsel/Amicus Curiae submitted that notice served through WhatsApp or other modes of electronic communication is not contemplated as a mode of service under Section 35 of the BNSS, 2023 since the same is not in accordance with Chapter VI of the BNSS, 2023, and hence cannot be treated as a valid mode of serving notice under Section 35 of the BNSS, 2023.
+
+--- PASSAGE 11 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 18, page 9)
+Text:
+18. The issue before us lies within a narrow compass – whether the usage of electronic communication can also be extended to the procedure governing the service of a notice, contemplated under Section 35 of the BNSS, 2023. To answer the same, a purposive interpretation must be given to the BNSS, 2023, especially the aforementioned provision. NOTICES BY THE INVESTIGATING AGENCY
+
+--- PASSAGE 12 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 38, page 18)
+Text:
+38. The contention of the applicant that a notice under Section 35 of the BNSS, 2023 falls within the same category as a summons under Section 71 of the BNSS, 2023, and therefore, since the latter allows electronic mode of service, the former must also be permitted to be transmitted electronically, cannot be accepted, for the simple reason that a summons under Section 71 of the BNSS, 2023, has no immediate bearing on the liberty of an individual in case of its non-compliance. However, a notice under Section 35 of the BNSS, 2023 could have an immediate bearing on the liberty of the individual in case of its non-compliance, as laid down under Section 35(6) of the BNSS, 2023.
+
+--- PASSAGE 13 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 43, page 20)
+Text:
+43. Hence, when viewed from any lens, we are unable to convince ourselves that electronic communication is a valid mode of service of notice under Section 35 of the BNSS, 2023, since its conscious omission is a clear manifestation of the legislative intent. Introducing a procedure into Section 35 of the BNSS, 2023, that has not been specifically provided for by the Legislature, would be violative of its intent. 1878
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R02 (passages 10, 11, 12, 13).

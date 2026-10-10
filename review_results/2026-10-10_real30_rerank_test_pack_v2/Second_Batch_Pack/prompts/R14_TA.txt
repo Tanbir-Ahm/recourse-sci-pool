@@ -1,0 +1,81 @@
+QUESTION ID: R14   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 7 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R14",
+  "marks": [
+    {"no": 16, "mark": "Yes", "evidence": "exact quote from passage 16", "reason": "one sentence", "confidence": "high"},
+    {"no": 17, "mark": "No", "evidence": "exact quote from passage 17", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 16,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 7 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 16, 17, 18, 19, 20, 21, 22
+
+==============================================================================
+QUESTION: My business partner filed a cheating FIR against me because I couldn't return the money he invested after the business made a loss. Can this FIR be cancelled?
+==============================================================================
+
+--- PASSAGE 16 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 925 OF 2008 [Arising out of SLP (Crl.) No. 6351 of 2006] V.R. Dalal & Ors. …Appellants Versus Yougendra Naranji Thakkar & Anr. …Respondents J U D G M E N T S.B. SINHA, J :
+   (Judgment id 31628, paragraph 3, page 2)
+Text:
+3. It appears that the firm ‘M/s. Gandhi Dalal and Shah’ which was constituted with effect from 1.02.2000 was cancelled from the very inception as the same is said to have not been acted upon. The name M/s. Gandhi Dalal and Shah was surrendered to the Chartered Accountants of India. Indisputably, in the complaint petition itself, it has been accepted that the said M/s. Gandhi Dalal and Shah is no longer in existence. It has further not been disputed that one Mahendra Thakkar also signed in the original deed of partnership dated 10.02.2001. In relation to the cancellation of the said partnership, it is alleged: “The Complainant states that they have with some dishonest intention have not prepared any Deed of dissolution which is mandatory for cancellation of any Deed of partnership. Merely by canceling Deed on piece of paper has no meaning in the eyes of law and it is misguiding but in law the Deed of partnership will remain in force till it is dissolved by deed of dissolution. The Accused have again played fraud upon the complainant by misrepresenting him that they have cancelled the Deed of partnership. They have also filed false documents with Institute of Chartered Accountants in order to commit fraud.”
+
+--- PASSAGE 17 ---
+Judgment: PETITIONER: VELJI RAGHAVJI PATEL Vs. RESPONDENT: STATE OF MAHARASHTRA DATE OF JUDGMENT: 11/12/1964 BENCH: MUDHOLKAR, J.R. BENCH: MUDHOLKAR, J.R. DAYAL, RAGHUBAR CITATION: 1965 AIR 1433 1965 SCR (2) 429 CITATOR INFO : F 1967 SC1342 (4) RF 1968 SC 700 (8) R 1985
+   (Judgment id 3084, unnumbered paragraph, page 2)
+Text:
+By virtue of this agreement the appellant’s share in the firm’s business was to be of 50 nP. in a rupee while the other partners had different shares in the remaining 50 nP. Nagindas Jivraj Mehta, who is the complainant in this case had a share to the extent of 6 nP. Under this agreement the parties decided not to undertake new work. The agreement required the appellant to complete all the accounts and prohibited from borrowing money in the name of the firm. It required him "to use his best efforts to realise all pending bills, security deposits, claims etc." as well as to dispose of the plant, machinery etc. The agreement also provided that partners, other than the appellant, would procure, if the need arose, further finance to the maximum limit of Rs. 25,000/- but that if a sum in excess of this amount was required, that excess was to be brought in by all the partners including the appellant "individually pro rata in proportion to their shares of profits and losses in the firm". Clause 8 of this agreement permitted the appellant to withdraw on his own account a sum of Rs. 10,000 "no sooner he is able to realise any of the pending claims of bills of the firm or security deposits". We have dealt with this agreement at some length because it will be relevant to consider these matters in the context of the argument of Mr.
+
+--- PASSAGE 18 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1097 OF 2003 RADHESHYAM KEJRIWAL ..… APPELLANT VERSUS STATE OF WEST BENGAL & ANR. ..... RESPONDENTS J U D G M E N T CHANDRAMAULI KR. PRASAD, J. 1. We have gone through the draft j
+   (Judgment id 37573, unnumbered paragraph, page 49)
+Text:
+13) The last decision relied on by the counsel is Uttam Chand (supra). This decision also arose under the Income Tax Act. Without adverting to any statutory provisions and the earlier decisions, confining to the facts of this case, noting the finding recorded by the Income Tax Appellate Tribunal that one Smt. Janak Rani was a partner of the assessee firm and that the firm was a genuine firm, this Court quashed the criminal proceeding initiated against her for filing false returns. 14) The first two decisions admittedly arose from the Income Tax Act. It is not demonstrated before us that whether identical provisions, namely, Sections 50, 51 and 56 of the FERA are available in the Income Tax Act. Even otherwise, in the light of the language used in Section 56(1) of the FERA, there cannot be any bar irrespective of the decision under Section 50, which I will elaborate in the succeeding paragraphs. The third decision relied on by the appellant relates to power of the Court under Section 482 of the Code for quashing the complaint/FIR and the last decision relied on has to be confined to the facts of that case since no other material was available. In other words, there is no ratio for being considered for other cases. 15) Now, let me consider the stand of the Department as projected by Mr. P.P.
+
+--- PASSAGE 19 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL/CRIMINAL APPELLATE JURISDICTION CIVIL APPEAL NO.__4540________OF 2013 [Arising out of S.L.P.(C) No.13120 OF 2013] CHANDRAN RATNASWAMI APPELLANT VERSUS K.C. PALANISAMY AND OTHERS RESPONDENTS WITH CRIMINAL APPEAL NOs. 736-737 
+   (Judgment id 40396, paragraph 8, page 11)
+Text:
+8. It is clearly seen from the deposition of the petitioner and the complaint that the respondents have arranged for about 17 million American Dollars through a firm Odyssey. It is also seen that the said sum is with the Cheran Holdings Private Limited and the affidavit filed in the Hon’ble High Court at Delhi confirms the same, while examining details, it is seen that a sum of 17 million American Dollars have come to Cheran Holdings Limited in which the complainant is a share holder. Hence the petitioner complainant might not have sustained any loss. There is no explanation in the complaint as to whether after the receipt of 17 million American Dollars, it was invested in the business. In the first meeting of the petitioner with the respondents, it was agreed that foreign investments are to be made accordingly the same has been done. It is seen from the deposition of the petitioner that 17 million American Dollars, it is not believable that the respondents have cheated the petitioner/complainant.
+
+--- PASSAGE 20 ---
+Judgment: STATE REPRESENTED BY THE PRJNCIPAL SECRETARY TO GOVERNMENT, HOME (POLICE XIX) DEPARTMENT AND OTHERS versus K. S. PALANICHAMY AND ORS. (09-05-2017)
+   (Judgment id 1000250013, paragraph 3, page 3)
+Text:
+3. Brief facts of the case which are necessary for adjudication of dispute before us are, on 01.11.2010, a complaint was registered with Deputy Superintendent of Police against the respondents herein alleging that, respondents were c.onjointly running a Financial Establishment in the naine of Global Capital Trading Services atMadurai, offering high rate of returns on investments in their Financial Establishment. Basing· on the assurance given by the respondents herein, the complainant along with his relatives deposited huge sums of money with the Financial Establishment, administered by the respondents herein. Furthermore it is alleged that respondent no. I has returned back only a part ()f the deposited amount to the complainant and thereafter absconded. In light of the above averred facts, complaint was registered /as (FIR No. 06/2010) was registered on 02.11.2010.under Section 406, 420 STATE REP. BY THE PRINCWAL SECRETARY TO GOVT. v. oflndian Penal Code, 1860 read with Section 5 of the Act. Based on the afotesaid complaint, G.O, dated 24.12.2012, was issued attaching the immovable properties of the respondents herein who are the partners of the financial institution under Section 3 of the Act.
+
+--- PASSAGE 21 ---
+Judgment: RAJ REDDY KALLEM versus THE STATE OF HARYANA & ANR. (08-04-2024)
+   (Judgment id 1000255654, paragraph 13, page 11)
+Text:
+13. As far as FIR case under Sections 406, 420, 120B of IPC against the appellant is concerned, in any case we do not find any merit in the allegations that the appellant from the very beginning had the intention of cheating the complainant. It is a fact that the appellant failed to procure and supply the ‘machine’ even after taking the advance money from the complainant but there is nothing on record to show that the appellant had any ill intention of cheating or defrauding the complainant from the very inception. The transaction between the parties was purely civil in nature which does not attract criminal law in any way.
+
+--- PASSAGE 22 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. OF 2008 (Arising out of SLP (Crl.) No.3234 of 2006) Vasudev …Appellant Versus Parvinder Kumar & Ors. …Respondents Dr. ARIJIT PASAYAT, J.
+   (Judgment id 32248, paragraph 7, page 5)
+Text:
+7. Since the petition filed by the appellant was rejected by the High Court on the basis of the statement made by the learned counsel for the State and the accused persons that the FIR has been cancelled, it was but natural that there should be some order in that regard. It is not understood as to why the same has not been brought on record as yet. If there is no such order in existence, obviously the disposal of the petition filed by the appellant on the ground that the FIR has been cancelled cannot be maintained.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R14 (passages 16, 17, 18, 19, 20, 21, 22).

@@ -1,5 +1,8 @@
 # The re-ranker test pack and the safety net (built 2026-10-09; PRIVATE; only `Second_Batch_Pack.zip` goes to J and S)
 
+> **Superseded 2026-10-10:** the zip below was never sent. `../2026-10-10_real30_rerank_test_pack_v2/` carries the same pack plus 4 passages (R09, R14, R17, R26) for the re-ranker test; send that one.
+
+
 ## 1. What was built
 
 | File | What it is | Who sees it |

@@ -1,0 +1,81 @@
+QUESTION ID: R22   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 7 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R22",
+  "marks": [
+    {"no": 17, "mark": "Yes", "evidence": "exact quote from passage 17", "reason": "one sentence", "confidence": "high"},
+    {"no": 18, "mark": "No", "evidence": "exact quote from passage 18", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 17,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 7 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 17, 18, 19, 20, 21, 22, 23
+
+==============================================================================
+QUESTION: My younger brother was convicted under 302 IPC for killing two people in 2019 village land fight and the sessions court gave death sentence in 10 days after conviction, the judge didn't even ask about his background, he has a small child, he was never in trouble before, works in the jail bakery now. We are poor, the legal aid lawyer barely met him. Can the High Court change it to life? What can we show?
+==============================================================================
+
+--- PASSAGE 17 ---
+Judgment: PETITIONER: EDIGA ANAMMA Vs. RESPONDENT: STATE OF ANDHRA PRADESH DATE OF JUDGMENT11/02/1974 BENCH: KRISHNAIYER, V.R. BENCH: KRISHNAIYER, V.R. SARKARIA, RANJIT SINGH CITATION: 1974 AIR 799 1974 SCR (3) 329 1974 SCC (4) 443 CITATOR INFO : F 1974 SC1039 (12) F 19
+   (Judgment id 6343, unnumbered paragraph, page 10)
+Text:
+We make this survey to just if your general preference where s.302 keeps two options open and the question is of great moment. Let us crystallise the positive indicators against death sentence under Indian Law currently. Where the murderer is too young or too old, the clemency of penal justice helps him. Where the offender suffers from socioeconomic, psychic or penal compulsions insufficient to attract a legal exception or to downgrade the crime into a lesser one, judicial commutation is permissible. Other general social pressures, warranting judicial notice, with an extenuating impact may, in special cases, induce the lesser penalty. Extraordinary features in the judicial process, such as that the death sentence has hung over the head of the culprit excruciatingly long, may persuade the court to be compassionate. Likewise, if others involved in the crime and similarly situated have received the benefit of life imprisonment or if the offence is only constructive, being .under s. 302 read with s. 149, or again the accused has acted suddenly under another’s instigation, without premeditation, perhaps the court may humanely opt for life, even like where a just cause or real suspicion of wifely infidelity pushed the criminal into the crime. On the other hand, the weapons used and the manner of their use, the borrandous features of the crime and hapless, helpless state of the victim, and the like, steal the heart of the law for a sterner sentence.
+
+--- PASSAGE 18 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.203 OF 2005 State of Karnataka …Appellant Versus Shantappa Madivalappa Galapuji and Ors. ...Respondents J U D G M E N T Dr. ARIJIT PASAYAT, J.
+   (Judgment id 34397, paragraph 2/1, page 2)
+Text:
+2. The prosecution version as unfolded during trial is as follows: The complainant is the native of Biraladinni village in Basavanabagewadi Taluk in Bijapur District and he is residing at Bijapur. He owned landed and house properties. His father and younger brother are looking after the agriculture. The complainant though is residing in Bijapur, visits Biraladinni village once every week. He has got two younger sisters and one brother. Annapurna is one of the sisters. The marriage of Annapurna took place with Shantappa (A.1). The said Annapurna after the marriage went to the house of A.1 to lead marital life. She gave birth to three children. The brother of A.l who is A.2 is residing in Ainapur Village since 10 years and he is residing in Gubbimaddi land after erecting a hut. Along with him A.3 and A.4 are also residing. A.1 is addicted to bad vices like drinking liquor and he always used to pick up quarrel with the complainant's sister i.e., Annapurna. About one year prior to the death of Annapurna, A.1 had brought the deceased Annapurna and her children to Beeraladinni and left them in her parents’ place. About three months prior to the incident, A.1 had come to Beeraladdinni village and requested the complainant and his family members that he will take his wife and children and he will look after them properly.
+
+--- PASSAGE 19 ---
+Judgment: GURWINDER SINGH @ SONU ETC. versus STATE OF PUNJAB AND ANR. (08-05-2018)
+   (Judgment id 1000250789, paragraph 2, page 4)
+Text:
+2. Case of the prosecution is that Sukhwinder Singh (PW-6) is the son of deceased Harbhajan Singh. Satnam Singh who is the younger brother of deceased Harbhajan Singh is residing separately in the village and other two younger brothers of Harbhajan Singh have gone to Italy. The land falling to other brothers’ share is being cultivated by Satnam Singh; but they desired that their land should be cultivated by Harbhajan Singh. For amicable settlement, the matter went to the Panchayat several times; but could not be solved. Few days prior to the occurrence, dog of Satnam Singh went missing, who blamed the family of Harbhajan Singh for missing of the said dog. On 02.11.2007 at about 04.00 p.m., both families gathered to discuss the issue regarding the land and missing of dog. Complainant-Sukhwinder Singh, deceased Harbhajan Singh, his uncle Satnam Singh, Gurwinder Singh alias Sonu son of Satnam Singh and other villagers namely Sandeep Singh, Makhan Singh also participated in the said gathering, which took place on the tubewell situated near village Dasupur. During discussion for settlement, there was exchange of hot words and the appellants Satnam Singh and Gurwinder Singh gave fist and kick blows to them. Satnam Singh also raised ‘Lalkara’ to catch hold Harbhajan Singh to teach him a lesson for partitioning the land. In the meanwhile, appellant Gurwinder Singh brought an axe from the room near the tubewell and Satnam Singh held Harbhajan Singh from the arms. Gurwinder Singh gave axe blow to Harbhajan Singh which hit him on his head and Harbhajan Singh became soiled with blood.
+
+--- PASSAGE 20 ---
+Judgment: Opening header not available
+   (Judgment id 40330, paragraph 24, page 79)
+Text:
+24. Santosh Kumar Singh v. State, (2010) 9 SCC 747 was a case in which the sentence of death was converted to life imprisonment by this Court since the accused had been acquitted by the Trial Court and the High Court had reversed the acquittal on circumstantial evidence. The accused was young man of 24 years when the incident occurred; he had got married in the meanwhile and had a daughter; his father had died a year after his conviction; his family faced a dismal future; and there was nothing to suggest that he was not capable of reform. It was held: “Furthermore, we see that the mitigating circumstances need to be taken into account, more particularly that the High Court has reversed a judgment of acquittal based on circumstantial evidence. The appellant was a young man of 24 at the time of the incident and, after acquittal, had got married and was the father of a girl child. Undoubtedly also, the appellant would have had time for reflection over the events of the last fifteen years, and to ponder over the predicament that he now faces, the reality that his father died a year after his conviction and the prospect of a dismal future for his young family. On the contrary, there is nothing to suggest that he would not be capable of reform. “There are extremely aggravating circumstances as well. In particular we notice the tendency of parents to be overindulgent to their progeny often resulting in the most horrendous of situations. These situations are exacerbated when an accused belongs to a category with unlimited power or pelf or even more dangerously, a volatile and heady cocktail of the two. The reality that such a class does exist is for all to see and is evidenced by regular and alarming incidents such as the present one. “Nevertheless, to our mind, the balance sheet tilts marginally in favour of the appellant, and the ends of justice would be met if the sentence awarded to him is commuted from death to life imprisonment under Section 302 of the Penal Code; the other part of the sentence being retained as it is.”
+
+--- PASSAGE 21 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 868 OF 2006 Sham @ Kishor Bhaskarrao Matkari .... Appellant(s) Versus The State of Maharashtra .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed aga
+   (Judgment id 38719, unnumbered paragraph, page 20)
+Text:
+No weapon much less dangerous was used in commission of offence. As pointed out earlier, only on account of property dispute, the appellant went to the extent of committing murders. This is clear from the prosecution evidence and the conclusion of the trial Court. As rightly pointed out by the counsel for the appellant, there is no reason to disbelieve that the appellant cannot be reformed or rehabilitated and that he is likely to continue criminal acts of violence as would constitute a continued threat to the society. Considering the facts and circumstances, it cannot be said that the appellant-accused would be a menace to the society. We are satisfied that the reasonings assigned by the High Court for awarding extreme penalty of death sentence are not acceptable. It is relevant to point out that the trial Court which had the opportunity of noting demeanour of all the witnesses and the accused thought it fit that life sentence would be appropriate. However, the High Court while enhancing the same from life to death, in our view, has not assigned adequate and acceptable reasons. In our opinion, it is not a rarest of rare case where extreme penalty of death is called for instead sentence of imprisonment for life as ordered by the trial Court would be appropriate. 15) In the light of the above discussion, while maintaining the conviction of the appellant-accused for the offence under Section 302 IPC, award of extreme penalty of death by the High Court is set aside and we restore the sentence of life imprisonment as directed by the trial Court.
+
+--- PASSAGE 22 ---
+Judgment: PETITIONER: DILBAG SINGH Vs. RESPONDENT: STATE OF PUNJAB DATE OF JUDGMENT25/01/1979 BENCH: KRISHNAIYER, V.R. BENCH: KRISHNAIYER, V.R. DESAI, D.A. SEN, A.P. (J) CITATION: 1979 AIR 680 1979 SCR (2)1134 1979 SCC (2) 103 ACT: Sentence-Sentencing power under Sectio
+   (Judgment id 4888, unnumbered paragraph, page 2)
+Text:
+Enacted law is guilty of inaction, because its obscure presence on the statute book escapes the vigilance of the Bar. Where even the court ignores what is vital to the little man the guarantee of 1136 sentencing legality becomes a casualty. This case is an instance in point. Now the brief story which enlivens the ’sentencing’ submissions. Four villagers of rural Punjab, of whom the appellant is one, set upon Arjan Singh, a small official, while on his way back home. The sound and fury of the attack with sticks brought out the ill-starred, innocent Srimati Rakhi, Arjan Singh’s brother’s wife. Her daughter too came to the spot attracted by the fracas. Arjan Singh received blows, being the angry target of the assailants. But poor Rakhi, who came in accidentally, was hit on the head with a takua by Jagir Singh, one of the accused. She eventually died; and her daughter and Arjan Singh were hurt by the beating. Four persons were charged by the police with offences under s. 302, 324 and 323 I.P.C. including constructive liability under s. 34. Two of them were acquitted by the trial court and the other two were convicted but appealed to the High Court. The man who dealt the fatal cut was Jagir Singh. His conviction under s. 302 I.P.C. and award of life imprisonment by the Sessions Court was converted into one under s.
+
+--- PASSAGE 23 ---
+Judgment: The Judgment of the Court was delivered by S. RAVINDRA BHAT, J.
+   (Judgment id 1000254323, paragraph 239, page 18)
+Text:
+239. It is unfortunate to note that both the trial Court, and High Court, failed to provide an effective sentencing hearing to the accused, at the relevant stage, which is a right under Section 235(2) CrPC recognised by this court in several cases. In fact, it was argued by the accused that the trial court in contravention of this court’s judgments, had proceeded to hear on sentencing almost immediately, depriving the accused of the opportunity to put forth their case for a less stringent sentence. The trial court order on sentencing, records in passing - the plea of ‘young age’ and ‘socio-economic factors’ as mitigating circumstances, but reflects, at best, a mechanical consideration of the same. Swayed by the brutality of the crime and “shock of the collective and judicial conscience”, the High Court affirmed imposition of the death penalty solely on the basis of the aggravating circumstances of the crime, with negligible consideration of mitigating circumstances of the criminal. This is in direct contravention of Bachan Singh.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R22 (passages 17, 18, 19, 20, 21, 22, 23).

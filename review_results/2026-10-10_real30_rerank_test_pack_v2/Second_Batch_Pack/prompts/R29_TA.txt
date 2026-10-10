@@ -1,0 +1,87 @@
+QUESTION ID: R29   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 8 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R29",
+  "marks": [
+    {"no": 8, "mark": "Yes", "evidence": "exact quote from passage 8", "reason": "one sentence", "confidence": "high"},
+    {"no": 9, "mark": "No", "evidence": "exact quote from passage 9", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 8,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 8 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 8, 9, 10, 11, 12, 13, 14, 15
+
+==============================================================================
+QUESTION: Does Section 38 BNSS entitle an arrested person to have his advocate physically present throughout custodial interrogation?
+==============================================================================
+
+--- PASSAGE 8 ---
+Judgment: MAHABIR & ORS. versus STATE OF HARYANA (29-01-2025)
+   (Judgment id 1000256310, paragraph 45, page 21)
+Text:
+45. This Court in Nandini Satpathy v. P.L. Dani & Anr. reported in (1978) 2 SCC 424 held that the right to consult an advocate of choice shall not be denied to any person who is arrested. This does not mean that persons who are not under arrest or custody can be denied such right. The spirit and ethos of Article 22(1) is that it is fundamental to the rule of law that the service of a lawyer shall be available for consultation to the accused person under circumstances of near custodial interrogation. Moreover, the right against self-incrimination is best practiced & best promoted by conceding to the accused, the right to consult a legal practitioner of his choice. Lawyers’ presence is a constitutional claim in some circumstances of our country, and in the context of Article 20(3), is an assurance of awareness and observance of the right to silence.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.1899-1900 OF 2011 MOHAMMED AJMAL MOHAMMAD AMIR KASAB @ ABU MUJAHID … APPELLANT VERSUS STATE OF MAHARASHTRA … RESPONDENT WITH CRIMINAL APPEAL NO.1961 OF 2011 STATE OF MAHARASHTRA 
+   (Judgment id 39511, paragraph 457/2, page 279)
+Text:
+Articles 20(3) and 22(1) may be telescoped by making it prudent for the police to permit the advocate of the accused to be present at the time he is examined. Overreaching Article 20(3) and Section 161(2) will be obviated by this requirement. But it is not as if the police must secure the services of a lawyer, for, that will lead to ‘police station-lawyer’ system with all its attendant vices. If however an accused expresses the wish to have his lawyer by his side at the time of examination, this facility shall not be denied, because, by denying the facility, the police will be exposed to the serious reproof that they are trying to secure in secrecy and by coercing the will an involuntary self-incrimination. It is not as if a lawyer’s presence is a panacea for all problems of self-incrimination, because, he cannot supply answers or whisper hints or otherwise interfere with the course of questioning except to intercept where intimidatory tactics are tried and to caution his client where incrimination is attempted and to insist on questions and answers being noted where objections are not otherwise fully appreciated. The lawyer cannot harangue the police, but may help his client and complain on his behalf. The police also need not wait for more than a reasonable time for the advocate’s arrival.
+
+--- PASSAGE 10 ---
+Judgment: CASE NO.: Appeal (crl.) 373-375 of 2004 PETITIONER: STATE (N.C.T. OF DELHI) RESPONDENT: NAVJOT SANDHU@ AFSAN GURU DATE OF JUDGMENT: 04/08/2005 BENCH: P. VENKATARAMA REDDI & P.P. NAOLEKAR JUDGMENT: WITH CRIMINAL APPEAL Nos. 376-378 OF 2004 STATE (N.C.T. OF DELH
+   (Judgment id 27092, paragraph preamble/187, page 1)
+Text:
+Krishna Iyer, J. observed- " The spirit and sense of Article 22(1) is that it is fundamental to the rule of law that the services of a lawyer shall be available for consultation to any accused person under circumstances of nearcustodial interrogation. Moreover, the observance of the right against self-incrimination is best promoted by conceding to the accused the right to consult a legal practitioner of his choice." Article 22(1) was viewed to be complementary to Article 20(3). It was observed-"we think that Article 20(3) and Article 22(1) may, in a way, be telescoped by making it prudent for the police to permit the advocate of the accused, if there be one to be present at the time he is examined". It was pointed out that lawyer’s presence, in the context of Article 20(3), "is an assurance of awareness and observance of the right to silence". It was then clarified-"we do not lay down that the police must secure the services of a lawyer  but all that we mean is that if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied", without being exposed to the charge of securing involuntary self-incrimination. It was also clarified that the police need not wait more than for a reasonable while for an advocate’s arrival.
+
+--- PASSAGE 11 ---
+Judgment: PETITIONER: NANDINI SATPATHY Vs. RESPONDENT: DANI (P.L.) AND ANR. DATE OF JUDGMENT07/04/1978 BENCH: KRISHNAIYER, V.R. BENCH: KRISHNAIYER, V.R. SINGH, JASWANT TULZAPURKAR, V.D. CITATION: 1978 AIR 1025 1978 SCR (3) 608 1978 SCC (2) 424 CITATOR INFO : R 1979 SC 4
+   (Judgment id 5091, paragraph 10/61, page 14)
+Text:
+The spirit and sense of Art. 22 (1 ) is that it is fundamental to the rule of law that the services of a lawyer shall be available for consultation to any accused person under circumstances of ’near-custodial interrogation. Moreover, the observance of the right against self-incrimination is best promoted by conceding to the accused the right to consult a legal practitioner of his choice. Lawyer’s presence is a constitutional claim in some circumstances in our country also, and, in the context of Art. 20(3), is an assurance of awareness and observance of the right to silence. The Miranda decision has insisted that if an accused person asks for lawyer’s assistance, at the stage of interrogation, it shall be granted before Commencing or continuing with the questioning. We think that Art. 20 (3) and Art. 22(1) may, in a way, be telescoped by making it prudent for the Police to permit the advocate of the accused, if there be one, to be present at the time be is examined. Over-reaching Art. 20(3) and section 161(2) will be obviated by this requirement. We do not lay down that the Police must secure the services of a lawyer. That will lead to ’police-station-lawyer’ system, an abuse which breeds other vices. But all that we mean is that if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied, without being exposed to the serious reproof that involuntary self-crimination secured in secrecy and by coercing the will, was the project.
+
+--- PASSAGE 12 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 36, page 25)
+Text:
+36. This statutory safeguard of legal assistance stands also reinforced by Section 38 of the BNSS 2023, which confers upon an arrested person 2024 SCC OnLine SC 3031 (2025) 2 SCC 381 : 2024 SCC OnLine SC 3580 316 the right to meet an advocate of his choice during interrogation, albeit not throughout its course. The object of this provision is to ensure meaningful access to legal assistance at the earliest stage, so that the advocate, once informed, may effectively exercise the rights available in law, including representation during remand proceedings and invocation of the right to seek bail.
+
+--- PASSAGE 13 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1266 OF 2011 [Arising out of SLP (Crl.) No.628 of 2008] Senior Intelligence Officer … Appellant Versus Jugal Kishore Samra … Respondent J U D G M E N T AFTAB ALAM, J.
+   (Judgment id 38176, paragraph 18, page 9)
+Text:
+18. In Nandini Satpathy, the Court proceeded further, and though the issue neither arose in the facts of the case nor it was one of the issues framed in paragraph 10 of the judgment, proceeded to dwell upon the need for the presence of the advocate at the time of interrogation of a person in connection with a case. In paragraphs 61-65 of the judgment, the Court made the following observations: “61. It may not be sufficient merely to state the rules of jurisprudence in a branch like this. The man who has to work it is the average police head constable in the Indian countryside. The man who has to defend himself with the constitutional shield is the little individual, by and large. The place where these principles have to have play is the unpleasant police station, unused to constitutional nuances and habituated to other strategies. Naturally, practical points which lend themselves to adoption without much sophistication must be indicated if this judgment is to have full social relevance. In this perspective we address ourselves to the further task of concretising guidelines.
+
+--- PASSAGE 14 ---
+Judgment: CASE NO.: Appeal (crl.) 373-375 of 2004 PETITIONER: STATE (N.C.T. OF DELHI) RESPONDENT: NAVJOT SANDHU@ AFSAN GURU DATE OF JUDGMENT: 04/08/2005 BENCH: P. VENKATARAMA REDDI & P.P. NAOLEKAR JUDGMENT: WITH CRIMINAL APPEAL Nos. 376-378 OF 2004 STATE (N.C.T. OF DELH
+   (Judgment id 27092, paragraph preamble/188, page 1)
+Text:
+It was also clarified that the police need not wait more than for a reasonable while for an advocate’s arrival. But they must invariably warn-and record that fact about the right to silence. It was aptly and graphically said-"Article 20(3) is not a paper tiger but a provision to police the police and to silence coerced crimination". Based on the observations in Nadini Satpathy’s case, it is possible to agree that the constitutional guarantee under Article 22(1) only implies that the suspect in the police custody shall not be denied the right to meet and consult his lawyer even at the stage of interrogation. In other words, if he wishes to have the presence of the lawyer, he shall not be denied that opportunity. Perhaps, Nandini Satpathy does not go so far as Miranda in establishing access to lawyer at interrogation stage. But, Section 52(2) of POTA makes up this deficiency. It goes a step further and casts an imperative on the police officer to inform the person arrested of his right to consult a legal practitioner, soon after he is brought to the police station. Thus, the police officer is bound to apprise the arrested person of his right to consult the lawyer. To that extent, Section 52(2) affords an additional safeguard to the person in custody. Section 52(2) is founded on the MIRANDA rule.
+
+--- PASSAGE 15 ---
+Judgment: RADHIKA AGARWAL versus UNION OF INDIA AND OTHERS (27-02-2025)
+   (Judgment id 1000256420, paragraph 27, page 28)
+Text:
+27. Reference can also be made to Section 50A of the Code,37 which states that every police officer or other person making an arrest under the Code shall forthwith give information regarding such arrest and place where the arrested person is being held to any of his friends, In 2009, Section 41D was inserted in the Code vide Act 4 of 2009, in furtherance of the principles laid down in D.K. Basu (supra). It reads: “41-D. Right of arrested person to meet an advocate of his choice during interrogation.— When any person is arrested and interrogated by the police, he shall be entitled to meet an advocate of his choice during interrogation, though not throughout interrogation.” (2011) 12 SCC 362. 50-A. Obligation of person making arrest to inform about the arrest, etc., to a nominated person.— (1) Every police officer or other person making any arrest under this Code shall forthwith give the information regarding such arrest and place where the arrested person is being held to any of his friends, relatives or such other persons as may be disclosed or nominated by the arrested person for the purpose of giving such information. (2) The police officer shall inform the arrested person of his rights under sub-section (1) as soon as he is brought to the police station. (3) An entry of the fact as to who has been informed of the arrest of such person shall be made in a book to be kept in the police station in such form as may be prescribed in this behalf by the State Government. (4) It shall be the duty of the Magistrate before whom such arrested person is produced, to satisfy himself that the requirements of sub-section (2) and sub-section (3) have been complied with in respect of such arrested person. relatives, or other person as may be disclosed or nominated by the arrested person for the purpose of giving such information. The arrested person must be informed of this right. In our opinion, the details of compliance with this mandate must be entered into the diary maintained by customs officer. It is the duty of the Magistrate, when an arrested person is produced, to satisfy himself that the requirements of Section 50A(2) and (3) have been complied with. Thus, we hold that these stipulations will apply in cases of arrests made by the customs officers.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R29 (passages 8, 9, 10, 11, 12, 13, 14, 15).

@@ -1,0 +1,87 @@
+QUESTION ID: R28   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 8 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R28",
+  "marks": [
+    {"no": 11, "mark": "Yes", "evidence": "exact quote from passage 11", "reason": "one sentence", "confidence": "high"},
+    {"no": 12, "mark": "No", "evidence": "exact quote from passage 12", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 11,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 8 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 11, 12, 13, 14, 15, 16, 17, 18
+
+==============================================================================
+QUESTION: Me and my wife both want divorce by mutual consent. Can the court skip the 6-month waiting period?
+==============================================================================
+
+--- PASSAGE 11 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JURISDICTION TRANSFER PETITION (CRL) NO. 27 OF 2009 Harpreet Singh Popli and others …Petitioner (s) Versus Manmeet Kaur Popli and another …Respondent(s) With TRANSFER PETITION (C) NO. 342 OF 2009 Manmeet Kaur …Pe
+   (Judgment id 35664, paragraph 6, page 5)
+Text:
+6. Accordingly, H.M.A. Petition No. 51 of 2009, pending on the file of the District Judge, Tis Hazari Courts, Delhi is withdrawn to this Court and a decree of divorce by mutual consent is passed in terms of Section 13B of the Act by waiving the requirement of six months period specified in subsection (2) thereof.
+
+--- PASSAGE 12 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 650 OF 2008 A.B. Bhaskara Rao .... Appellant(s) Versus Inspector of Police, CBI Visakhapatnam .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed agai
+   (Judgment id 38688, unnumbered paragraph, page 21)
+Text:
+However, it is to be made clear that this power cannot be used to supplant the law applicable to the case. This means that acting under Article 142, the Supreme Court cannot pass an order or grant relief which is totally inconsistent or goes against the substantive or statutory enactments pertaining to the case. The power is to be used sparingly in cases which cannot be effectively and appropriately tackled by the existing provisions of law or when the existing provisions of law cannot bring about complete justice between the parties.” (Emphasis added) After elaborately discussing almost all the case laws on this subject about jurisdiction of this Court under Article 142, in para 19, summarised the same in the following words: 19. Therefore, the law in this regard can be summarised to the effect that in exercise of the power under Article 142 of the Constitution, this Court generally does not pass an order in contravention of or ignoring the statutory provisions nor is the power exercised merely on sympathy. After saying so, the Court rejected the request of the parties to waive the statutory period of six months under the Act. 15) In Mota Ram vs. State of Haryana, (2009) 12 SCC 727, this Court, while reiterating the above principles has concluded that Article 142 cannot be exercised to negate the statutory provisions.
+
+--- PASSAGE 13 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.741 OF 2009 SHLOK BHARDWAJ … APPELLANT VERSUS RUNIKA BHARDWAJ & ORS. … RESPONDENTS J U D G M E N T ADARSH KUMAR GOEL, J.
+   (Judgment id 42173, paragraph 6, page 2)
+Text:
+6. The divorce petition filed by the husband was ordered to be transferred to Jabalpur at the instance of the wife. The wife also filed a divorce petition at Jabalpur. The husband filed Transfer Petition (Civil) No.150 of 2004 before this Court which was disposed of on 11th March, 2005. This Court noted that since both the parties had sought divorce, the marriage had broken down and the parties had agreed to a decree of divorce by mutual consent. Accordingly, this Court directed the Family Court, Jabalpur, to take up the matter on 4th April, 2005 without entertaining any prayer for adjournment and pass a decree of divorce. Accordingly, the Family Court, Jabalpur passed the decree of divorce on 4th April, 2005 after recording the statement of the parties that they mutually agreed to decree of divorce. The wife did not press her counter claim for maintenance. She also did not reserve liberty for any other action against the husband.
+
+--- PASSAGE 14 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1635 of 2011 (Arising out of SLP(Crl.) No. 7787 of 2010) Inderjit Singh Grewal …Appellant Versus State of Punjab & Anr. …Respondents J U D G M E N T Dr. B.S. CHAUHAN, J.
+   (Judgment id 38403, paragraph 8/2, page 7)
+Text:
+Six months time was given to us to ponder over the matter but we could not reconcile. One child was born from our wedlock namely Gurarjit Singh Grewal whose custody has been handed over by me to my husband Inderjit Singh Grewal and he shall look after the welfare of the said child. We have settled all our disputes regarding dowry articles and past and future permanent alimony. Now there is nothing left out against each other. A draft of Rs.3,00,000/- ….has been received by me towards permanent alimony and maintenance and in lieu of dowry articles left by me in the matrimonial home. We are living separately since 23.9.2005. After that there is no co-habitation between us. There is no scope of our living together as husband and wife. I will remain bound by the terms and conditions as enshrined in the petition. I have left with no claim against petitioner No.1. Our marriage may be dissolved by passing a decree of divorce by mutual consent.” V. The learned District Judge, Ludhiana granted the decree of divorce dated 20.3.2008 observing as under: “They have settled all their disputes regarding dowry articles, past and future alimony….They are living separately from each other since 23.9.2005…The petitioners have not been able to reconcile….The petitioners have settled all their disputes regarding dowry, stridhan and past and future permanent alimony….The custody of the son of the petitioners is handed over to Inderjit Singh Grewal by Amandeep Kaur.
+
+--- PASSAGE 15 ---
+Judgment: Sanghamitra Ghosh v. Kajal Kumar Ghosh (20/11/2006)
+   (Judgment id 28288, paragraph 8/8, page 5)
+Text:
+Strictly speaking, the preconditions of such claim have not been laid inasmuch as a petition to that effect has not been filed under Section 13-B of the Hindu Marriage Act, 1955 (the Act) before the first matrimonial court, and that the statutory period of 6 months has not even commenced. Be that as it may, it stands established beyond doubt on our summoning of the original file - HMA Case No.863 of 1994 - that the parties were married about 14 years ago, have spent the prime of their life in acrimony and litigating and that it is time that their mutuality bears some fruit in putting them apart. Therefore, we take the divorce petition HMA Case No.863 of 1994 on our own file and import thereto the compromise deed put on record by the parties jointly. In terms therewith, a sum of Rs.7 lakhs stands paid to the wife by means of 3 separate bank drafts of Rs.2 lakhs, Rs.2 lakhs and Rs.3 lakhs. Recurring provision has been made therein for their children’s education and visitation rights of the father. We have questioned the parties and they are eager to dissolve the matrimonial tie so that they can rearrange their lives well in time. We, therefore, in the spirit of Section 13-B of the Act, and in view of the fact that all hopes to unite them together have gone, hereby grant to the parties divorce by a decree of dissolution by mutual consent to end their prolonged unhappiness.
+
+--- PASSAGE 16 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1635 of 2011 (Arising out of SLP(Crl.) No. 7787 of 2010) Inderjit Singh Grewal …Appellant Versus State of Punjab & Anr. …Respondents J U D G M E N T Dr. B.S. CHAUHAN, J.
+   (Judgment id 38403, paragraph 20, page 17)
+Text:
+20. For grant of divorce in such a case, the Court has to be satisfied about the existence of mutual consent between the parties on some tangible materials which demonstrably disclose such consent. (Vide: Hitesh Bhatnagar v. Deepa Bhatnagar, AIR 2011 SC 1637).
+
+--- PASSAGE 17 ---
+Judgment: Sanghamitra Ghosh v. Kajal Kumar Ghosh (20/11/2006)
+   (Judgment id 28288, paragraph 8/7, page 5)
+Text:
+Keeping that in view, we entertain this application and grant them divorce by mutual consent in exercise of our powers under Article 142 of the Constitution, for which there is ample authority reflective from past decisions of this Court. The divorce petition pending in the Family Court at Patna, shall stand disposed of automatically by this order. The transfer petition and the divorce petitions are disposed of accordingly." In another transfer petition in the matrimonial matter, in Anita Sabharwal v. Anil Sabharwal reported in (1997) 11 SCC 490, this Court was of the view that there was no hope for the parties to live together and passed the following order: "A divorce petition being HMA Case No.863 of 1994 preferred by the respondenthusband was pending in the Court of Shri A.K. Pathak, Additional District Judge, Delhi. The instant transfer petition was moved by the petitioner-wife seeking transfer of the said case to the Family Court, Mumbai. During the pendency of the transfer petition, parties as well as their counsel had on 9.9.1996 put on record a compromise deed wherein they have agreed to get divorce by mutual consent. Strictly speaking, the preconditions of such claim have not been laid inasmuch as a petition to that effect has not been filed under Section 13-B of the Hindu Marriage Act, 1955 (the Act) before the first matrimonial court, and that the statutory period of 6 months has not even commenced.
+
+--- PASSAGE 18 ---
+Judgment: DHANANJAY RATHI versus RUCHIKA RATHI (13-04-2026)
+   (Judgment id 1003962640, paragraph 19, page 13)
+Text:
+19. Furthermore, it is submitted that in terms of settled principles governing divorce by mutual consent, the consent of the parties must subsist not only at the stage of filing of the petition but also, is required to continue to exist till the passing of the final decree. Reference in this regard was made to the judgment of this Court in Smt Sureshta Devi v. Om Prakash, reported as (1991) 2 SCC 25, wherein it was held as follows: 188 “14. Sub-section (2) requires the court to hear the parties which means both the parties. If one of the parties at that stage says that “I have withdrawn my consent”, or “I am not a willing party to the divorce”, the court cannot pass a decree of divorce by mutual consent. If the court is held to have the power to make a decree solely based on the initial petition, it negates the whole idea of mutuality and consent for divorce. Mutual consent to the divorce is a sine qua non for passing a decree for divorce under Section 13-B. Mutual consent should continue till the divorce decree is passed. It is a positive requirement for the court to pass a decree of divorce. “The consent must continue to decree nisi and must be valid subsisting consent when the case is heard”. [See (i) Halsbury’s Laws of England, 4th edn., vol. 13 para 645; (ii) Rayden on Divorce, 12th edn., vol. 1, p. 291; and (iii) Beales v. Beales [(1972) 2 All ER 667, 674].”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R28 (passages 11, 12, 13, 14, 15, 16, 17, 18).

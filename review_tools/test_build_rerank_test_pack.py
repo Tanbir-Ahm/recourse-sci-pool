@@ -145,6 +145,34 @@ cons, pair, var_rows = ing.analyse(runs, passages, pool_l)
 names_scored = {r["variant"] for r in var_rows}
 check("the two new arms are scored by the usual tool (N by its top five, M as a set)", {N_ARM, M_ARM} <= names_scored, sorted(names_scored))
 
+# ---- the optional challenger arm: another re-ranker's top 5; only its unmarked passages ride along ------------------------------------------------------
+chal_items = [{"h": "m1", "doc": 101}, {"h": "a2", "doc": 102}, {"h": "m2", "doc": 160}, {"h": "n1", "doc": 177}, {"h": "n2", "doc": 178}]
+chal = {"name": B.R_ARM, "model": "invented", "top5": {"R90": chal_items}}
+pc = B.plan_question(q1, fused["questions"]["R90"], challenger=chal_items)
+check("challenger: only passages with no row and not core or extra are added (m1 and a2 are marked, m2 is core)", pc["rr"] == [("n1", 177), ("n2", 178)], pc["rr"])
+check("challenger: without the flag nothing is added", B.plan_question(q1, fused["questions"]["R90"])["rr"] == [])
+recs_c = dict(recs)
+for h, doc in pc["rr"]:
+    recs_c[(h, doc)] = {"h": h, "doc": doc, "pn": "9", "page": 4, "title": f"Case {doc} v. State", "text": f"Passage text of {h} about custody and the accused person.", "also": []}
+out_c = os.path.join(tmp, "out_c")
+info_c = B.build(pool_p, fused_p, out_c, records=recs_c, challenger=chal)
+ext_c = json.load(open(os.path.join(out_c, "pool_with_rerank_arms.json")))
+eqc = next(q for q in ext_c["questions"] if q["qid"] == "R90")
+newc = [r for r in eqc["rows"] if r.get("topup")]
+check("challenger: R90 gets the 2 extra passages (10 new rows), still one prompt file per question and 4 chats", len(newc) == 10 and sorted(r["n"] for r in newc) == list(range(8, 18)) and info_c["prompt_files"] == 2 and info_c["chats"] == 4 and info_c["by_kind"].get("rr") == 2, (len(newc), info_c))
+check("challenger: the kinds are hidden by the shuffle as before", [r["kind"] for r in sorted(newc, key=lambda r: r["n"])] != sorted(r["kind"] for r in newc))
+check("challenger: every row of the top 5 carries the arm with its place, nothing else does", {r["h"]: r["variants"][B.R_ARM] for r in eqc["rows"] if B.R_ARM in r["variants"]} == {"m1": 1, "a2": 2, "m2": 3, "n1": 4, "n2": 5}, {r["h"]: r["variants"].get(B.R_ARM) for r in eqc["rows"]})
+check("challenger: the list for the scorer holds the five in order and the run record names the arm", [it["h"] for it in eqc["lists"][B.R_ARM]] == ["m1", "a2", "m2", "n1", "n2"] and B.R_ARM in ext_c["run"]["versions"] and ext_c["run"]["extended_by"]["challenger"]["name"] == B.R_ARM)
+base_items = [{"h": "m1", "doc": 101}, {"h": "a2", "doc": 102}, {"h": "a3", "doc": 103}, {"h": "a4", "doc": 104}, {"h": "a5", "doc": 105}]
+pcb = B.plan_question(q1, fused["questions"]["R90"], challenger=chal_items, baseline=base_items)
+check("baseline: marked passages of today's re-ranker add nothing; an unmarked one would be added", pcb["rr"] == pc["rr"] and B.plan_question(q1, fused["questions"]["R90"], baseline=[{"h": "z9", "doc": 190}])["rr"] == [("z9", 190)])
+eqb, newb, _pl = B.extend_question(q1, fused["questions"]["R90"], recs_c, challenger=chal_items, baseline=base_items)
+check("baseline: the arm is carried by the five rows and listed in order", {r["h"]: r["variants"][B.B_ARM] for r in eqb["rows"] if B.B_ARM in r["variants"]} == {"m1": 1, "a2": 2, "a3": 3, "a4": 4, "a5": 5} and [it["h"] for it in eqb["lists"][B.B_ARM]] == ["m1", "a2", "a3", "a4", "a5"])
+check("challenger: a question the challenger does not mention is built exactly as before (same prompt bytes)", open(os.path.join(out_c, "Second_Batch_Pack", "prompts", "R91_TA.txt"), "rb").read() == open(os.path.join(out, "Second_Batch_Pack", "prompts", "R91_TA.txt"), "rb").read())
+txt_c = open(os.path.join(out_c, "Second_Batch_Pack", "prompts", "R90_TA.txt"), encoding="utf-8").read()
+check("challenger: the prompt of R90 holds the 2 extra passages and still says nothing about the search or the challenger", "custody and the accused person" in txt_c and not [w for w in leaks + ["challenger", "invented"] if re.search(r"\b" + re.escape(w), re.sub(r"(?s)RULES.*?REQUIRED JSON SHAPE", "", txt_c), re.I)])
+check("challenger: the old rows and the first eight new rows' texts are untouched in content", [r["text"] for r in eqc["rows"][:7]] == [r["text"] for r in q1["rows"]])
+
 # ---- guards -----------------------------------------------------------------------------------------------------------------------------------------
 bad_f = dict(fused, index_commit="d" * 40)
 json.dump(bad_f, open(os.path.join(tmp, "bad.json"), "w"))

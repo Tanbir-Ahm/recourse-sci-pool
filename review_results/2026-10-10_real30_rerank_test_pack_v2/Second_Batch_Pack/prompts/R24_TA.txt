@@ -1,0 +1,81 @@
+QUESTION ID: R24   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 7 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R24",
+  "marks": [
+    {"no": 13, "mark": "Yes", "evidence": "exact quote from passage 13", "reason": "one sentence", "confidence": "high"},
+    {"no": 14, "mark": "No", "evidence": "exact quote from passage 14", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 13,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 7 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 13, 14, 15, 16, 17, 18, 19
+
+==============================================================================
+QUESTION: ED questioned my father 4 times in 2023 but never arrested him. Now the special court has taken cognizance of their complaint and sent summons. Our CA says the moment he walks into court ED will arrest him and he'll need to pass those impossible twin conditions for bail that Supreme Court upheld in 2022. Should he just not go? We are terrified.
+==============================================================================
+
+--- PASSAGE 13 ---
+Judgment: SAUMYA CHAURASIA versus DIRECTORATE OF ENFORCEMENT (14-12-2023)
+   (Judgment id 1000255435, paragraph 3/2, page 4)
+Text:
+09.12.2022 ED filed the Prosecution Complaint against the accused- Suryakant Tiwari for the oﬀ ence under Section 3 punishable under Section 4 of the PMLA. 14.12.2022 The ED sought judicial custody of the appellant for fourteen days, however, the Special Court granted the judicial custody initially for ﬁ ve days, which subsequently came to be extended from time to time at the instance of the ED till 27.01.2023. 13.01.2023 The appellant ﬁ led an application under Section 437 of Cr.P.C. read with Sections 45 & 65 of the PMLA in the court of IVth Additional Sessions Judge (Special Judge, PMLA) at Raipur, Chhattisgarh (hereinafter referred to as the ‘Special Court’). 20.01.2023 The Special Court rejected the bail application of the appellant. 30.01.2023 ED ﬁ led a supplementary complaint naming the appellant amongst others as the accused. 10.02.2023 The appellant ﬁ led a Bail Application being No. 1258 of 2023 before the High Court of Chhattisgarh at Bilaspur. 17.04.2023 The arguments were advanced by the learned counsels for the parties, and the bail application was reserved for orders by the High Court. 08.06.2023 When the judgment in the bail application was awaited in the High Court, the Karnataka Police ﬁ led the charge-sheet against the accused – Suryakant Tiwari in respect of the FIR No.
+
+--- PASSAGE 14 ---
+Judgment: The Judgment of the Court was delivered by DR. DHANANJAYA Y CHANDRACHUD, CJI
+   (Judgment id 1000254946, paragraph 21-22, page 4)
+Text:
+21. The first respondent moved an application for anticipatory bail. 22. The High Court by its order dated 18 April, 2023 directed that the first respondent shall attend the office of the CBI between 19 and 25 April 2023; the questions and answers shall be in the printed/written form and a questionnaire may also be handed over to the first respondent. In the meantime, the High Court has directed that the first respondent shall not be arrested and directed the proceedings to stand over to 25 April, 2023.
+
+--- PASSAGE 15 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 18, page 24)
+Text:
+18. When a warrant is issued in the cases mentioned in paragraph 16 above, the Special Court can always entertain an application for cancellation of the warrant and can cancel the warrant depending upon the conduct of the accused. While cancelling the warrant, the Court can always take an undertaking from the accused to appear before the Court on every date unless appearance is specifically exempted. When the ED has not taken the custody of the accused during the investigation, usually, the Special Court will exercise the power of cancellation of the warrant without insisting on taking the accused in custody provided an undertaking is furnished by the accused to appear regularly before the Court. When the Special Court deals with an application for cancellation of a warrant, the Special Court is not dealing with an application for bail. Hence, Section 45(1) will have no application to such an application.
+
+--- PASSAGE 16 ---
+Judgment: SERIOUS FRAUD INVESTIGATION OFFICE versus ADITYA SARDA (08-04-2025)
+   (Judgment id 1000256569, paragraph 28, page 35)
+Text:
+28. A faint attempt was made by the learned counsels for the Respondents to rely upon the decision in case of Tarsem Lal vs. Directorate of Enforcement Jalandhar Zonal Office,9 to submit that if the respondents were not arrested by the SFIO during the course of investigation till the filing of the complaint, the Special Court while taking cognizance of the alleged offences should have issued a summons only to the respondents-accused and not a warrant. The said submission is bereft of merits. As discussed earlier, as per Section 204, Cr.P.C. in a complaint case, which appears to be a warrant case, the Court taking cognizance of the offence, has the discretion to issue warrant or summons as it thinks fit, for causing the accused to be brought or to appear before it. As held by three Judge Bench of this Court in case of Inder Mohan Goswami and Another (supra), the Court is empowered to issue even a non-bailable warrant to bring a person to the Court, when it is reasonable for the Court to believe that the person will not voluntarily appear in the Court or the police authorities are unable to find the person to serve him with a summons. There cannot be a strait jacket formula, as sought to be submitted by the learned advocates for the Respondents that the Court must first issue a summons even in case of a warrant case, irrespective of the gravity or seriousness of the offence. As well settled by now, whether the attendance of the accused can be best secured by issuing a bailable warrant or non-bailable warrant, would (2024) 7 SCC 61 520 be a matter, which entirely rests at the discretion of the concerned Court.10 Although the discretion should be exercised judiciously, diverse considerations such as the nature and seriousness of the offence, the circumstances peculiar to the accused, possibility of his concealing or absconding, larger interest of public and state etc. also must be seriously considered by the court.
+
+--- PASSAGE 17 ---
+Judgment: The Judgment of the Court was delivered by DR. DHANANJAYA Y CHANDRACHUD, CJI
+   (Judgment id 1000254946, paragraph 29, page 9)
+Text:
+29. The above finding of the High Court at this stage is premature, particularly in the context of what has been stated by the CBI on affidavit. Having due regard to what has been stated by the CBI in its affidavit, we are clearly of the view that the High Court has misapplied itself and passed an extraordinary order in terms of the directions which have been issued. The High Court has observed that the first respondent may not appear for investigation apprehending arrest and seek alternative remedies. While directing that the first respondent should be available for questioning “along with A6 and A7 who are given police custody, and the High Court has directed that the first respondent shall attend the office of the CBI between 19 and 25 April 2023 and that (i) the question and answer shall be in printed/written form; and (ii) the questionnaire may also be handed over to the respondent.
+
+--- PASSAGE 18 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 3/2, page 7)
+Text:
+Assistant Director, Directorate of Enforcement1. As there is no inconsistency between Section 88 of the CrPC and the provisions of the PMLA if, after service of summons, the accused offers to furnish bonds for appearance in terms of Section 88 of the CrPC, the Special Court should normally accept the bonds. After furnishing the bonds, if the accused fails to appear before the Special Court, recourse can always be taken by the Special Court to Section 89 by issuing a warrant for procuring the presence of the accused before the Special Court; (d) Once cognizance is taken based on a complaint, the Special Court cannot exercise the power of remand under Section 167 (2) of the CrPC. After cognizance is taken, the power can be exercised at the highest under Section 309 (2) of the CrPC; (e) In view of this Court’s decision in Satender Kumar Antil v. Central Bureau of Investigation & Anr.2, as clarified (2018) 16 SCC 158 (2021) 10 SCC 773 872 in the subsequent decision in Satender Kumar Antil v. Central Bureau of Investigation and Anr.3, when during the investigation, the prosecution does not seek the custody of the accused, after the Court takes cognizance, there is no need to arrest the accused; (f) When the accused is not arrested during the investigation, after he appears before the Special Court pursuant to a summons, it is not necessary for him to apply for bail.
+
+--- PASSAGE 19 ---
+Judgment: RAM KISHOR ARORA versus DIRECTORATE OF ENFORCEMENT (15-12-2023)
+   (Judgment id 1000255445, paragraph 4, page 4)
+Text:
+4. The bare minimum facts required to decide the above questions of law are as follows: - (i) The appellant was the founder of M/s Supertech Limited, a real estate company which along with its group companies had undertaken various projects in Delhi NCR and at other places in Uttar Pradesh during the period 1988-2015. (ii) Due to various reasons, 26 FIRs came to be registered against the appellant in various jurisdictions. (iii) On 09.09.2021, the respondent ED registered an ECIR bearing no. ECIR/21/STF/2021 against M/s Supertech Ltd. and others and started investigation under the PMLA. The appellant was also summoned under Section 50 of PMLA on various dates during which his statements were also recorded. (iv) During March 2022, some insolvency proceedings came to be ﬁ led against the company M/s Supertech Ltd. before the NCLT, which passed some interlocutory orders. The matter was also taken up by the appellant before the NCLAT with settlement proposal, however during the pendency of the insolvency proceedings, the respondent ED passed a provisional attachment order on 11.04.2023, provisionally attaching certain personal properties of the appellant and filed an original complaint (OC No. 1974/2023) on 04.05.2023, before the Adjudicating Authority, PMLA, seeking confirmation of the provisional attachment order in terms of Section 8 of PMLA. (v) On 12.05.2023, the Adjudicating Authority, PMLA, issued a notice to the appellant under Section 8(1) of the PMLA calling upon the appellant to show cause as to why the properties provisionally attached should not be conﬁ rmed as the properties involved in money laundering. (vi) According to the appellant, before he could reply to the said show cause notice, on 27.06.2023 he was arrested by the respondent ED without serving to the appellant the ground of arrest. (vii) On 28.06.2023, the appellant was produced before the Special Court, New Delhi, where the ED sought remand. The Special Court remanded the appellant to the ED custody till 10.07.2023 and thereafter the appellant was sent to judicial custody for 14 days till 24.07.2023. (viii) The appellant had ﬁ led a bail application on 12.07.2023 before the Special Court, the same came to be dismissed by the Special Court on 22.07.2023. The appellant was sent to the judicial custody for further period of 14 days i.e till 07.08.2023, which subsequently came to be extended till 21.08.2023. (ix) The appellant filed a Writ Petition being no. W.P. (Crl.) No.336/2023 before this Court challenging the order dated 22.07.2023 passed by the Special Court dismissing his bail application. The said writ petition came to be withdrawn by the appellant with liberty to approach the High Court. (x) Thereafter, the appellant ﬁ led the writ petition being W.P. (Crl.) No. 2408/2023, which came to be dismissed by the High Court vide the impugned order dated 22.09.2023.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R24 (passages 13, 14, 15, 16, 17, 18, 19).

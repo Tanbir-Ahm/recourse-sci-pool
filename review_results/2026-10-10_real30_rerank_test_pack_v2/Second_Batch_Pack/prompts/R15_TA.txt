@@ -1,0 +1,99 @@
+QUESTION ID: R15   (top-up batch, prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. This is a short second batch for a question that has been reviewed before; judge each passage as an answer to that question, on its own.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R15",
+  "marks": [
+    {"no": 16, "mark": "Yes", "evidence": "exact quote from passage 16", "reason": "one sentence", "confidence": "high"},
+    {"no": 17, "mark": "No", "evidence": "exact quote from passage 17", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 16,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage in this batch answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage in this batch, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+
+==============================================================================
+QUESTION: My daughter-in-law left our house in Meerut in March 2025 and now filed case under section 85 and 86 BNS against my son, me, my husband and even my married daughter in Pune. I am 64 with sugar problem. Neighbours say police will come and arrest all of us. I read there is family welfare committee and 2 month no-arrest rule?? Is that true or was it cancelled? We never asked for any dowry.
+==============================================================================
+
+--- PASSAGE 16 ---
+Judgment: S.N. VIJAYLAKSHMI & ORS. versus STATE OF KARNATAKA & ANR. (31-07-2025)
+   (Judgment id 1000256887, paragraph 58, page 28)
+Text:
+58. At this stage, we take note of the fact that BDA has filed SLP (C) Nos.10134-10135/2025 against the Order dated 03.02.2025, wherein a Coordinate Bench has issued notice on 02.05.2025. That being the position, though a deeper scrutiny into the saga, as has unfolded above, is warranted; however, to maintain judicial propriety, in our considered opinion, the present issue should be left to be gone into in the above-mentioned case filed by the BDA before this Court.
+
+--- PASSAGE 17 ---
+Judgment: ACHIN GUPTA versus STATE OF HARYANA & ANR. (03-05-2024)
+   (Judgment id 1000255715, paragraph 39, page 34)
+Text:
+39. The aforesaid is nothing but verbatim reproduction of Section 498A of the IPC. The only difference is that the Explanation to Section 498A of the IPC, is now by way of a separate provision, i.e., Section 86 of the Bhartiya Nyaya Sanhita, 2023.
+
+--- PASSAGE 18 ---
+Judgment: RAJESH SHARMA & ORS. versus STATE OF U.P. & ANR. (27-07-2017)
+   (Judgment id 1000250111, paragraph 19/1, page 13)
+Text:
+19. Thus, after careful consideration of the whole issue, we consider it fit to give following directions:- i) (a)In eyery district one or more.Family Welfare Committees be constituted by the District Legal Services Authorities preferably comprising of three members. The constitution and working of such committees may be reviewed from time to time and at least · once in a year by the District and Sessions Judge of the district who is also the Chainnan of the District Legal Services Authority. (b) The Committees may be constituted out of para legal volunteers/social workers/retired persons/wives of working officers/other citizens who may be found suitable and willing. (c) The Committee members will not be c.alled as witnesses. (d) Every complaint under Sectiori 498A received by the police or the Magistrate be referred to and looked into by such committee. Such committee may have interaction with the ·parties personally . or by means of telephone or any other mode of communication including electronic communication. · (e) Report of such committee be given to th~ Authority by whom G the complaint is refen:ed to it latest within one month from the date ofreceipt of complaint. (f) The committee may give its brief report about the factual aspects and its opinion in the matter. ' i (2017] 9 S.C.R.
+
+--- PASSAGE 19 ---
+Judgment: The Judgment of the Court was delivered by ADARSH KUMAR GOEL, J. I. Leave granted.
+   (Judgment id 1000250111, paragraph 11, page 10)
+Text:
+11. LeamedASG suggested that there must be some preliminaiy inquiry on the lines ofobservations inLa/itaK11mari versus Government of Uttar Prades/1 7. Arrest of a relative .other than husband could only be after pennission from the concerned Magistrate. There should be no arrest of relatives aged above 70 years, Power of the.police to straight G away arrest must be prohibited. While granting permission, the court must ascertain that there is prima facie material of the accused having done some overt and covert act. The offence should be made· compoundable and bailable. The role of each accused must be specified in the complaint and the complaint must be accompanied by a signed 1 (20I4J 2 sec 1 v. STATE OF U.P. & ANR. {ADARSH KUMAR GOEL, J.) affidavit. The copy of the preliminary enquiry report should be furnished to the accused.
+
+--- PASSAGE 20 ---
+Judgment: ACHIN GUPTA versus STATE OF HARYANA & ANR. (03-05-2024)
+   (Judgment id 1000255715, paragraph 27, page 25)
+Text:
+27. In the aforesaid context, we may refer to and rely upon the decision of this Court in the case of Arnesh Kumar v. State of Bihar, (Criminal Appeal No. 1277 of 2014, decided on 2nd July, 2014). In the said case, the petitioner, apprehending arrest in a case under Section 498A of the IPC and Section 4 of the Dowry Prohibition Act, 1961, prayed for anticipatory bail before this Court, having failed to obtain the same from the High Court. In that context, the observations made by this Court in paras 6, 7 and 8 respectively are worth taking note of. They are reproduced below: - “6. There is phenomenal increase in matrimonial disputes in recent years. The institution of marriage is greatly revered in this country. Section 498-A of the IPC was introduced with avowed object to combat the menace of harassment to a woman at the hands of her husband and his relatives. The fact that Section 498-A is a cognizable and non-bailable offence has lent it a dubious place of pride amongst the provisions that are used as weapons rather than shield by disgruntled wives. The simplest way to harass is to get the husband and his relatives arrested under this provision. In a quite number of cases, bed-ridden grand-fathers and grand-mothers of the husbands, their sisters living abroad for decades are arrested. Crime in India 2012 Statistics published by National Crime Records Bureau, Ministry of Home Affairs shows arrest of 1,97,762 persons all over India during the year 2012 for offence under Section 498- A of the IPC, 9.4% more than the year 2011. Nearly a quarter of those arrested under this provision in 2012 were women i.e. 47,951 which depicts that mothers and sisters of the husbands were liberally included in their arrest net. Its share is 6% out of the total persons arrested under the crimes committed under Penal Code, 1860. It accounts for 4.5% of total crimes committed under different sections of penal code, more than any other crimes excepting theft and hurt. The rate of charge-sheeting in cases under Section 498A, IPC is as high as 93.6%, while the conviction rate 154 is only 15%, which is lowest across all heads. As many as 3,72,706 cases are pending trial of which on current estimate, nearly 3,17,000 are likely to result in acquittal.
+
+--- PASSAGE 21 ---
+Judgment: DHANANJAY RATHI versus RUCHIKA RATHI (13-04-2026)
+   (Judgment id 1003962640, paragraph 7, page 6)
+Text:
+7. Subsequently, the Respondent-Wife withdrew her consent for the mutual divorce and in response, the Appellant-Husband filed a Contempt Petition No. 07/2025 before the Principal Judge, Family Court, South District, Saket District Court, New Delhi. Later, a complaint bearing DV Complaint No. 3186 of 2025, was filed, before the Chief Metropolitan Magistrate, Saket Courts, Delhi, by the Respondent-Wife under Section 12 of the D.V. Act, against the Appellant-Husband and his mother on 16.10.2025 wherein, vide order dated 13.11.2025, summons were issued against them.
+
+--- PASSAGE 22 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 992 OF 2007 M.P. STATE APPELLANT(S) VERSUS PRADEEP KUMAR GUPTA RESPONDENT(S) A.K. GANGULY, J. This appeal is filed at the instance of the State impugning the order of the High Co
+   (Judgment id 38124, paragraph 11-12, page 3)
+Text:
+11. Similarly, under Rule 2(i) service has been defined as follows: (i) “Service” means the Municipal Service for the State constituted under sub-section (i) of Section 86 of the Act. 12. Rule 32 of the said Rule provides as follows:
+
+--- PASSAGE 23 ---
+Judgment: BALWINDER SINGH Vs. v. STATE OF PUNJAB (09/11/1995)
+   (Judgment id 10375, unnumbered paragraph, page 5)
+Text:
+The evidence of PW-5, Mohinder Singh, the father-in-law of the sister of the appellant does not inspire confidence. DW-1, Mohinder Kaur, wife of Amrik Singh, daughter-in-law of PW-5 asserted in her statement that the appellant had never visited her house in March 1984 alongwith his children and that when she came to know on March 23, 1984 that the children of her brother were missing from their house, she had visited his house. She stated that her father-in-law was residing separately from her and that she and her husband had separated from him within six months of their marriage. She and her husband were not even on visiting terms with her father-in-law. These assertions of DW1 have remained unchallenged. These was, thus, no occasion for the appellant to go to the house of the fatherin-law of her sister, with whom admittedly his sister was having strained relations and not visiting his sister at all on that day. In the face of the statement of DW-1, the correctness of the statement of PW-5 becomes doubtful. PW-5 appears to have come forward to depose against the appellant, who is the only brother of his daughter of his daughter-in-law DW-1 Mohinder Kaur, posslbly because of his strained relations with her. It appears to us that the delay in lodging the first information report was utilised by the complainant party in giving twist to the facts and introducing interested witnesses like PW-4 and PW-5 in the case.
+
+--- PASSAGE 24 ---
+Judgment: PAUL versus STATE OF KERALA (21-01-2020)
+   (Judgment id 1000252343, paragraph 25, page 20)
+Text:
+25. We may no doubt notice Section 86 of the IPC. Section 86 reads as follows: “86. Offence requiring a particular intent or knowledge committed by one who is intoxicated.—In cases where an act done is not an offence unless done with a particular knowledge or intent, a person who does the act in a state of intoxication shall be liable to be dealt with as if he had the same knowledge as he would have had if he had not been intoxicated, unless the thing which intoxicated him was administered to him without his knowledge or against his will.”
+
+--- PASSAGE 25 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 992 OF 2007 M.P. STATE APPELLANT(S) VERSUS PRADEEP KUMAR GUPTA RESPONDENT(S) A.K. GANGULY, J. This appeal is filed at the instance of the State impugning the order of the High Co
+   (Judgment id 38124, paragraph 8-9, page 2)
+Text:
+8. These facts were also available before the High Court, but unfortunately, the High Court has not at all considered these facts. 9. Now, coming to the legal question, it appears that Section 86 of the M.P. Municipalities Act, 1961 (hereinafter referred to as the said Act) provides for constitution of State Municipal Services. In Section 86 it is also made clear that such services to be constituted by the State Government shall make rules in respect of the recruitment, qualification, appointment, promotion, etc. and also for dismissal, removal, conduct, departmental punishment under Section 86(2) of the Act. Section 86(4) also provides that the State Government may transfer any member of the said municipal service from one municipal council to another municipal council.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R15 (passages 16, 17, 18, 19, 20, 21, 22, 23, 24, 25).

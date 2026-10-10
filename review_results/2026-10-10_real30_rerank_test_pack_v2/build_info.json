@@ -1,0 +1,149 @@
+{
+ "questions_with_new_passages": 19,
+ "prompt_files": 19,
+ "chats": 38,
+ "new_passages": 147,
+ "by_kind": {
+  "core": 39,
+  "anchor": 38,
+  "extra": 66,
+  "rr": 4
+ },
+ "per_question": {
+  "R01": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2,
+   "rr": 0
+  },
+  "R02": {
+   "core": 1,
+   "extra": 1,
+   "anchors": 2,
+   "net": 1,
+   "rr": 0
+  },
+  "R04": {
+   "core": 3,
+   "extra": 4,
+   "anchors": 2,
+   "net": 4,
+   "rr": 0
+  },
+  "R06": {
+   "core": 3,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R08": {
+   "core": 1,
+   "extra": 3,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R09": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3,
+   "rr": 1
+  },
+  "R11": {
+   "core": 4,
+   "extra": 4,
+   "anchors": 2,
+   "net": 4,
+   "rr": 0
+  },
+  "R12": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R14": {
+   "core": 1,
+   "extra": 3,
+   "anchors": 2,
+   "net": 3,
+   "rr": 1
+  },
+  "R15": {
+   "core": 3,
+   "extra": 5,
+   "anchors": 2,
+   "net": 4,
+   "rr": 0
+  },
+  "R17": {
+   "core": 1,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2,
+   "rr": 1
+  },
+  "R19": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R20": {
+   "core": 2,
+   "extra": 3,
+   "anchors": 2,
+   "net": 2,
+   "rr": 0
+  },
+  "R21": {
+   "core": 2,
+   "extra": 2,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R22": {
+   "core": 2,
+   "extra": 3,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R24": {
+   "core": 3,
+   "extra": 2,
+   "anchors": 2,
+   "net": 3,
+   "rr": 0
+  },
+  "R26": {
+   "core": 1,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2,
+   "rr": 1
+  },
+  "R28": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2,
+   "rr": 0
+  },
+  "R29": {
+   "core": 2,
+   "extra": 4,
+   "anchors": 2,
+   "net": 2,
+   "rr": 0
+  }
+ },
+ "zip_sha256": "21fa214e8dd6dfd2b1d715728dfdfddd91d5ac6993fa43ceea50c06549836da8",
+ "zip_bytes": 106060
+}
