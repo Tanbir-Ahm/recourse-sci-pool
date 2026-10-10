@@ -1,0 +1,23 @@
+{
+ "source_folder": "/home/user/recourse-sci-pool/review_results/2026-10-10_sealed_run/replies_reasked_as_pasted",
+ "files": {
+  "R07_A_ChatGPT.txt": {
+   "sha256_as_received": "85aca2b46638d8f324c2b8163eaa47bc57f3eceb74c72d72aa98a8febf14f8f6",
+   "markdown_escapes_removed": 8,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "67adb5d5f5c7ca758e106a5ebe7a7e1618a2f7245604e23aca8f9009f08e00ea"
+  },
+  "R23_A_ChatGPT.txt": {
+   "sha256_as_received": "5db03bc0d1622ae57c9bdeadf6acfc8905388c2daaf0de9eba58faa459edcb87",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 2,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "24ed67eb9022a26d7881e0860e7d70276415ff4b5f685bd9a815c254851b11fd"
+  }
+ },
+ "identical_files": [],
+ "prompt_echoes": []
+}

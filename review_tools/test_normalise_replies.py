@@ -60,6 +60,27 @@ except SystemExit:
     bad = True
 check("a --drop that names no file is refused", bad)
 
+# 2026-10-10 (third batch): a backtick escape, and a doubled-escaped quotation mark inside a quote
+bt = {"question_id": "R07", "marks": [{"no": 1, "mark": "Partly", "evidence": "a `fine' serves", "reason": "r", "confidence": "high"}, {"no": 2, "mark": "No", "evidence": 'He said "I will see." and left', "reason": "r", "confidence": "high"}], "good_answer_present": "Yes", "best_passage_no": 1, "caveats": ""}
+bt_text = json.dumps(bt)                                          # the model's own valid JSON: a backtick, and a quoted \" inside a quote
+bt_copy = bt_text.replace("`", "\\`").replace('\\"', '\\\\"').replace("_", "\\_")      # what the copy button hands over
+check("the copy-button version of that reply cannot be read", ing.parse_reply(bt_copy)[0] is None, bt_copy[:120])
+u1, n1 = N.unescape_markdown(bt_copy)
+check("a backslash before a backtick is undone, like the other three escapes", "`" in u1 and "\\`" not in u1 and n1 >= 1, u1[:100])
+u2, n2 = N.repair_doubled_quote_escapes(u1)
+check("a doubled-escaped quotation mark is repaired, and only then the reply reads", ing.parse_reply(u1)[0] is None and n2 == 2 and ing.parse_reply(u2)[0] is not None, (n2, u2[:150]))
+check("every mark, number and quote survives the two repairs (the evidence is the text the model wrote)", ing.parse_reply(u2)[0] == bt, ing.parse_reply(u2)[0])
+check("a reply that already reads is never touched by the doubled-quote repair, even if it holds an escaped backslash before a closing quote",
+      N.repair_doubled_quote_escapes(json.dumps({"marks": [{"no": 1, "mark": "Yes", "evidence": "ends with a backslash \\"}]})) == (json.dumps({"marks": [{"no": 1, "mark": "Yes", "evidence": "ends with a backslash \\"}]}), 0))
+unfixable = '{"marks": [{"no": 1, "mark": "Yes", "evidence": "bad \\\\" here"}, {"no": 2 "mark": "No"}]}'
+check("a file the repair cannot make readable is left exactly as it was", N.repair_doubled_quote_escapes(unfixable) == (unfixable, 0))
+src3, out3 = tempfile.mkdtemp(), os.path.join(tempfile.mkdtemp(), "out")
+open(os.path.join(src3, "R07_A_ChatGPT.txt"), "w", encoding="utf-8").write(bt_copy)
+m3 = N.run(src3, out3)
+w3 = open(os.path.join(out3, "R07_A_ChatGPT.txt"), encoding="utf-8").read()
+check("run() writes the repaired file, reads back to the original, and the manifest counts both repairs", ing.parse_reply(w3)[0] == bt and m3["files"]["R07_A_ChatGPT.txt"]["doubled_quote_escapes_repaired"] == 2 and m3["files"]["R07_A_ChatGPT.txt"]["markdown_escapes_removed"] >= 1, m3)
+check("the file as received is untouched by run()", open(os.path.join(src3, "R07_A_ChatGPT.txt"), encoding="utf-8").read() == bt_copy)
+
 print()
 print("FAILED: " + ", ".join(FAILS) if FAILS else "all passed")
 sys.exit(1 if FAILS else 0)
