@@ -1,0 +1,43 @@
+OK    rules equal their frozen hash  [file 1936fdc23a02, freeze 1936fdc23a02]
+OK    amendments to the frozen rules (listed, none is an error)  [0 amendment line(s): []]
+OK    checkout clean (tracked files)  [commit c7544ea0cb; changed: []]
+OK    this commit is pushed  [0 commit(s) ahead of origin/claude/sharp-euler-unyfv0]
+OK    index head is the recorded commit  [head 3c80a26e42, recorded 3c80a26e42]
+OK    sealed content still has its freeze hash  [8aa158ba8893]
+OK    no sealed hand-out is logged for the 30 questions  [0 entries]
+OK    no hand-out is logged for the ruler's frozen half  [0 entries]
+OK    side index present and made for this index: 2026-10-09_correcting_judgments
+OK    side index present and made for this index: 2026-10-09_fetched_documents
+OK    side index present and made for this index: 2026-10-09_fetched_shivangi_bansal
+OK    VOYAGE_API_KEY is set
+OK    the scorer, rehearsed on the tuning data, reproduces the tuning-half comparators  [F1 75%, F2 13% and 6%, F3 71%, F4 33%]
+OK    tests pass: test_pool_runner.py  [all passed]
+OK    tests pass: test_build_sealed_pack.py  [all passed]
+OK    tests pass: test_score_sealed_run.py  [all passed]
+OK    tests pass: test_real_questions.py  [all passed]
+OK    tests pass: test_ingest_llm_reviews.py  [ALL PASSED]
+OK    tests pass: test_normalise_replies.py  [all passed]
+OK    tests pass: test_score_rerank_arms.py  [all passed]
+OK    tests pass: test_sealed_preflight.py  [all passed]
+OPEN  OWNER: the register patch is applied (staging first) or the run does not wait for it  [open]
+OPEN  OWNER: Mr. Advocate has reviewed the 16 older rulings or the run does not wait for him  [open]
+OPEN  OWNER: the 2026-10-12 bucket-refresh reminder is answered 'after the sealed run'  [open]
+OPEN  OWNER: the Voyage balance, read on the dashboard, stays above the $5 reserve after about $0.05  [open]
+
+NOT READY: OWNER: the register patch is applied (staging first) or the run does not wait for it; OWNER: Mr. Advocate has reviewed the 16 older rulings or the run does not wait for him; OWNER: the 2026-10-12 bucket-refresh reminder is answered 'after the sealed run'; OWNER: the Voyage balance, read on the dashboard, stays above the $5 reserve after about $0.05
+
+The commands, once ready:
+  1. the search (hands the questions out ONCE; the guard adds the rules hash and code commit to the label) 
+     python3 -P review_tools/pool_runner.py --half sealed --final --final-recipe --label "sealed run, final recipe" --max-rerank-tokens 2000000 --supplement review_data/side_index/2026-10-09_correcting_judgments --supplement review_data/side_index/2026-10-09_fetched_documents --supplement review_data/side_index/2026-10-09_fetched_shivangi_bansal --out review_results/2026-MM-DD_sealed_run
+  2. the ruler's frozen half (key-paragraph test only; its own guard) 
+     python3 -P review_tools/pool_runner.py --source ruler --half sealed --final --final-recipe --label "sealed run, ruler frozen half" --max-rerank-tokens 2000000 --supplement review_data/side_index/2026-10-09_correcting_judgments --supplement review_data/side_index/2026-10-09_fetched_documents --supplement review_data/side_index/2026-10-09_fetched_shivangi_bansal --out review_results/2026-MM-DD_sealed_run_ruler  # then: python3 review_tools/ruler_keytest.py --pool review_results/2026-MM-DD_sealed_run_ruler/pool.json --out review_results/2026-MM-DD_sealed_run_ruler
+  3. the marking pack for J and S (send only the zip) 
+     python3 -P review_tools/build_sealed_pack.py --pool review_results/2026-MM-DD_sealed_run/pool.json --out review_results/2026-MM-DD_sealed_run/pack
+  4. when the replies come back: keep them as received, then 
+     python3 -P review_tools/normalise_replies.py --src review_results/2026-MM-DD_sealed_run/replies_as_received --out review_results/2026-MM-DD_sealed_run/replies_for_the_reader
+  5. stage 1, marks only (the key is not opened) 
+     python3 -P review_tools/score_sealed_run.py marks --pool review_results/2026-MM-DD_sealed_run/pool.json --replies review_results/2026-MM-DD_sealed_run/replies_for_the_reader --out review_results/2026-MM-DD_sealed_run/scores
+  6. stage 2, the key (refuses unless stage 1 is complete and unchanged); add --tuning-pool and --tuning-replies for the combined lights 
+     python3 -P review_tools/score_sealed_run.py key --pool review_results/2026-MM-DD_sealed_run/pool.json --replies review_results/2026-MM-DD_sealed_run/replies_for_the_reader --out review_results/2026-MM-DD_sealed_run/scores --half sealed --tuning-pool review_results/2026-10-10_real30_rerank_test_pack_v2/pool_with_rerank_arms.json --tuning-replies review_results/2026-10-10_second_batch_marking/replies_both_batches
+  7. the register arm (offline; the register's commit is recorded) 
+     python3 review_tools/currency_pass.py ... (see its docstring) on the saved pool, then pass --register-flags to stage 2 and run it again
