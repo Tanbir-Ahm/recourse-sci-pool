@@ -1,0 +1,127 @@
+{
+"question_id": "R30",
+"marks": [
+{
+"no": 1,
+"mark": "No",
+"evidence": "Sections 420, 201, 120-B read with Section 34 of the Indian Penal Code",
+"reason": "It mentions IPC sections for a crime but does not provide the new BNS sections or punishments.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "Section 53 of IPC Section 4 of BNS",
+"reason": "It compares general punishment provisions rather than sections for 420 and 406 IPC.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "The Indian Penal Code (IPC) was the official Criminal Code... replaced by the Bharatiya Nyaya Sanhita (“BNS”) in December 2023 which came into effect on 1st July 2024.",
+"reason": "It discusses the replacement of the IPC by the BNS generally but does not specify the exact sections for cheating or criminal breach of trust.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "No",
+"evidence": "offences covered under sub-sections (5) and (6) of section 7",
+"reason": "It deals with provisions under the Serious Fraud Investigation Office and does not state BNS sections for 420 or 406 IPC.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "punishable under Section 420 IPC",
+"reason": "It discusses the ingredients of Section 420 IPC without mentioning the corresponding BNS sections.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "Section 316(2) of the BNS, 2023 reads thus:- 316. Criminal breach of trust... Section 318(2) of the BNS,2023 reads thus:- 318. Cheating.",
+"reason": "It provides BNS sections for criminal breach of trust and cheating along with punishments, but does not list comprehensive sub-sections or mention 420/406 explicitly.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "Section 53 of IPC has been adopted as it is in Section 4 of BNS",
+"reason": "It discusses punishments generally rather than the specific offences of cheating and criminal breach of trust.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "Sections 120B, 406 and 420 IPC",
+"reason": "It lists old IPC sections without providing their BNS equivalents or punishments.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "offence punishable under Sections 409, 420, 120-B read with Sections 34 & 37 of the Indian Penal Code, 1860 respectively (now Sections 316(5), 318(4), 61(2), 3(5) & 3(8) of the Bharatiya Nyaya Sanhita, 2023)",
+"reason": "It directly correlates the old IPC sections (including 420) with their corresponding BNS sections.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "Section 420 IPC, provides that",
+"reason": "It explains Section 420 IPC and its punishment term but does not mention BNS sections.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "No",
+"evidence": "Section 13(1)(b) and Section 12 read with Section 13(2) of the Prevention of Corruption Act",
+"reason": "It deals with offenses under the Prevention of Corruption Act, unrelated to Section 420 or 406 IPC/BNS.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "ambit of Section 420 IPC",
+"reason": "It lists the ingredients of Section 420 IPC without mentioning BNS equivalents.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "mens rea i.e. intention to defraud or the dishonest intention must be present",
+"reason": "It discusses mens rea for fraud-related offenses without providing BNS sections or punishments.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "No",
+"evidence": "mens rea i.e. intention to defraud or the dishonest intention must be present",
+"reason": "It discusses requirements for criminal intent without mentioning BNS sections or punishments.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "Sections 75(2), 79 and 137(2) of the BNS and Sections 9(g) and 10 of the POCSO Act",
+"reason": "It refers to sexual offenses under BNS and POCSO rather than property or fraud offenses like 420 and 406 IPC.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "No",
+"evidence": "punishable under Sections 406 and 420 of the IPC",
+"reason": "It discusses simultaneous charges under Sections 406 and 420 IPC under old law without providing BNS sections.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "No",
+"evidence": "offences under Sections 406, 420, 465, 467, 468, 471 read with Section 120B",
+"reason": "It lists old IPC sections across various FIRs without providing the new BNS equivalents or punishments.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 9,
+"caveats": "Passage 9 provides the mapping for Section 420 and related sections to the BNS, but specific punishments can be cross-referenced with general BNS provisions."
+}

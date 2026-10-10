@@ -38,3 +38,11 @@ Eight questions from four topics (two per topic) are not eight independent trial
 2. Replies are saved **as received** into `replies_as_received/` here, then `normalise_replies.py`, then `score_sealed_run.py marks` (stage 1, key not opened; coverage must be 100%).
 3. Stage 2 (`score_sealed_run.py key`) opens the key only after stage 1 is saved and complete; then the register arm; then the plain-terms report; Mr. Advocate reads every passage anyone marked Misleading and a random 20 of the others.
 4. **Nothing is re-run and nothing is changed after a mark exists.** A technical failure before any mark may be repeated and must be logged as such. The stale list stays at version 1 (sha256 `8498ae5f...`); the owner reported that Mr. Advocate agrees with it, which is relayed, not a ruling-by-ruling sign-off, so every figure that uses the list says "not lawyer-checked".
+
+## Replies received 2026-10-10 (before any scoring)
+
+`Third_Batch_J_and_S_as_received.zip` (sha256 `dc85a5e8dae8968e37b34f12f77212f5cbaf716bcd90da279dea901fad95cd10`), unpacked as received into `replies_as_received/`; `normalise_replies.py` output in `replies_for_the_reader/` (77 markdown escapes removed in 11 files, 0 left out, no prompt echoes, no identical files).
+
+- Gemini: 22 of 22 files hold 181 of 181 passages. ChatGPT: 20 of 22 files usable, 151 of 181 passages.
+- **Unusable, not scored: `R07_A_ChatGPT.txt` and `R23_A_ChatGPT.txt`** (invalid JSON inside a quoted `evidence` text; not truncated). Coverage is therefore 30 passages short, and the rules say no score is read before every passage is marked by both tools. Stage 1 has not been run. To be re-asked from J and S.
+- Quote warnings (an `evidence` quote not found verbatim in the passage): 30 of 332 readable marks, Gemini 24 and ChatGPT 6; by a mark-blind check 19 keep both ends of the quote (an ellipsis or punctuation edit), 6 keep one end, 5 neither. A warning only; no mark is dropped for it.

@@ -1,0 +1,106 @@
+{
+"question_id": "R10",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "this Court refused to set aside the conviction and acquit the accused on the aforesaid ground by observing that the accused failed to show that the investigation by the complainant – police officer himself has caused prejudice or was biased",
+"reason": "The passage clearly states that an NDPS prosecution is not vitiated solely because the informant is the investigator unless prejudice or bias is shown.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "merely because the informant police officer himself investigated the case, would not by itself vitiate the investigation.",
+"reason": "It directly answers the question by stating that the investigation is not vitiated merely because the informant is the investigator.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "The objection that PW-6, Subinspector Satbir Singh being the complainant could not have investigated relying on Rajangam, (supra) and Megha Singh, (supra) was rejected",
+"reason": "It mentions the rejection of an objection regarding an informant-investigator under the NDPS Act, but provides limited details on the broader legal rule.",
+"confidence": "medium"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "merely because a detecting officer himself is investigating officer or the officer of the same ranks as that of the detecting officer is investigating the case and files report before the Court will not vitiate the proceedings under N.D.P.S. act",
+"reason": "Although the later part states the correct rule, the beginning of the passage quotes an older view that was explicitly overruled.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "the NDPS Act does not specifically bar the informant/complainant to be an investigator and officer in charge of a police station for the investigation of the offences under the NDPS Act.",
+"reason": "It directly explains that the NDPS Act does not bar the informant from acting as the investigator.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "conducting entire investigation i.e. preparation of seizure memo, site plan, recording statements of witnesses by complainant himself has caused miscarriage of justice to accused qua fair investigation.",
+"reason": "This passage cites a view holding that an informant conducting the investigation causes a miscarriage of justice, which contradicts the settled Constitution Bench holding.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Misleading",
+"evidence": "where the complainant himself conducts investigation, it causes miscarriage of justice to accused qua fair investigation.",
+"reason": "It quotes a high court view that an informant conducting the investigation vitiates fairness, which is contrary to the established legal position.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Misleading",
+"evidence": "The whole bedrock of the investigation on the basis of which the appellant has been prosecuted is found be unfair and against the basic tenets of criminal jurisprudence, the conviction and sentence based on such a highly infirm investigation as aforesaid cannot be sustained",
+"reason": "This passage records contentions and views arguing that an informant cannot investigate, which were ultimately rejected by the Constitution Bench.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "it is not proper to lay down a broad and unqualified proposition that in every case where the police officer who registered the case by lodging the first information, conducts the investigation that itself had caused prejudice to the accused and thereby it vitiates the entire prosecution case",
+"reason": "It directly answers that the prosecution is not vitiated merely because the informant conducts the investigation unless bias or prejudice is proved.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "the investigation is to be done by a person other than the complainant and that the investigation done by the complainant is bound to suffer and vitiate the entire proceeding.",
+"reason": "It states a view that investigation by a complainant vitiates the proceedings, reflecting a legal approach that was later rejected.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Misleading",
+"evidence": "the entire Criminal proceedings stands vitiated.",
+"reason": "This passage summarizes contentions claiming that the proceedings stand vitiated when the informant is the investigator.",
+"confidence": "medium"
+},
+{
+"no": 12,
+"mark": "Yes",
+"evidence": "an investigation is not vitiated only because the same officer, who was the complainant against the accused offender also investigated into the offence as Investigating Officer.",
+"reason": "It provides a clear and direct holding from a Constitution Bench that the investigation is not vitiated in such circumstances.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Yes",
+"evidence": "there cannot be any general proposition of law to be laid down that in every case where the informant is the investigator, the trial is vitiated and the accused is entitled to acquittal.",
+"reason": "It directly clarifies that there is no general rule vitiating trials under the NDPS Act when the informant is also the investigator.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "We find no principle or binding authority to hold that the moment the competent police officer, on the basis of information received, makes out an FIR incorporating his name as the informant, he forfeits his right to investigate.",
+"reason": "It supports the view that an informant can investigate, though it discusses a case under the Prevention of Corruption Act rather than directly focusing on the NDPS Act.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 12,
+"caveats": "Several passages quote earlier conflicting high court views or opposing contentions that were overruled or rejected by the Supreme Court's Constitution Bench in Mukesh Singh."
+}

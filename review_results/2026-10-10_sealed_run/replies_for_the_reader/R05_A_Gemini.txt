@@ -1,0 +1,120 @@
+{
+"question_id": "R05",
+"marks": [
+{
+"no": 1,
+"mark": "Misleading",
+"evidence": "Such a chargesheet, if filed by an investigating authority without first completing the investigation, would not extinguish the right to default bail under Section 167(2) CrPC.",
+"reason": "This view from Ritu Chhabaria was later narrowed/rejected regarding pending investigation qua other accused by larger benches.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Misleading",
+"evidence": "Thus, in Ritu Chhabaria (supra), the facts were altogether different. ... We are of the view that the aforesaid decision of this Court is of no avail to the accused in the present case.",
+"reason": "It distinguishes and limits Ritu Chhabaria, showing that filing a chargesheet when investigation against others is pending does not automatically grant default bail.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "once the chargesheet is filed, the said right of the accused ceases, and such a right does not revive merely because a further investigation remains pending",
+"reason": "Directly answers that filing a chargesheet stops default bail even if further investigation is pending against other accused.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "where the investigation is not completed within 60 days or 90 days, as the case may be, and no chargesheet is filed by 60th or 90th day, accused gets an “indefeasible right” to default bail",
+"reason": "Explains general default bail rules when no chargesheet is filed, but doesn't address the 'incomplete chargesheet / pending investigation against others' scenario directly.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "The relevant portion Hereinafter ‘CrPC’. 544 of Section 167 of the CrPC and the corresponding Section 187 of the BNSS reads",
+"reason": "Merely introduces the statutory provisions of Section 167 CrPC and Section 187 BNSS without resolving the specific question.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "Our attention was drawn by the learned counsel appearing for the accused to a very recent pronouncement of this Court, in the case of Ritu Chhabaria v. Union of India",
+"reason": "Merely introduces the arguments and issues concerning Ritu Chhabaria raised by counsel, without giving the final ruling in this specific paragraph.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "if the charge-sheet is not filed and the right for “default bail” has ripened into the status of indefeasibility, it cannot be frustrated by the prosecution on any pretext.",
+"reason": "Discusses general principles of default bail when a charge-sheet is not filed, but does not address the effect of a chargesheet filed with pending investigation against others.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "the issue of cognizance had nothing to do with the default bail, in as much as the right under Section 167(2) is a statutory right, when the chargesheet is not filed within the prescribed time limit",
+"reason": "Summarizes the respondent's arguments regarding incomplete chargesheets and statutory rights under Section 167(2).",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "Once the chargesheet is filed, in compliance with the form prescribed under Section 193(3) BNSS, within the aforesaid period, the right to default bail ceases.",
+"reason": "Confirms under the BNSS framework that filing a chargesheet terminates the right to default bail.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "Therefore, the only requirement for getting the default bail/statutory bail under Section 167(2), Cr.P.C. is that the accused is in jail for more than 60 or 90 days",
+"reason": "Discusses general requirements for default bail and bars on imposing financial conditions, but does not address incomplete chargesheets or pending investigations.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Yes",
+"evidence": "the respondents could not have claimed the statutory right of default bail under Section 167(2) on the ground that the investigation qua other accused was pending.",
+"reason": "Directly holds that pending investigation against other accused does not entitle an accused to default bail once a chargesheet is filed.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "The respondents thereafter filed another application under Section167(2) after the cognizance of the offences was taken by the Special Court, on the ground that the chargesheet filed against them was an incomplete chargesheet.",
+"reason": "Outlines the factual background and nature of the dispute regarding an alleged incomplete chargesheet.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Misleading",
+"evidence": "a supplementary chargesheet, wherein it is explicitly stated that the investigation is still pending, cannot under any circumstance, be used to scuttle the right of default bail",
+"reason": "This specific ruling from Ritu Chhabaria regarding incomplete/supplementary chargesheets was subsequently overruled/clarified by larger benches such as Kapil Wadhawan.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "The pendency of the further investigation qua the other accused... would neither vitiate the chargesheet, nor would it entitle the accused to claim right to get default bail on the ground that the chargesheet was an incomplete chargesheet",
+"reason": "Explicitly rules that pending investigation against other accused does not make a chargesheet incomplete for default bail purposes.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Yes",
+"evidence": "The pendency of the further investigation qua the other accused or for production of some documents... would neither vitiate the chargesheet, nor would it entitle the accused to claim right to get default bail",
+"reason": "Affirms via Kapil Wadhawan that pending investigation against other accused does not confer a right to default bail.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "dismissed by the Special Judge, CBI, Greater Mumbai, observing that the appellant had failed to point out any authoritative ruling, entitling an accused to default bail, on the ground of non-filing of certain documents or non-supply of the chargesheet",
+"reason": "Describes the lower court proceedings and arguments in a recent case regarding non-supply of documents/chargesheet under BNSS.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 3,
+"caveats": "While Ritu Chhabaria initially supported the view that an incomplete chargesheet filed with pending investigation does not extinguish default bail, subsequent larger bench rulings (such as CBI v. Kapil Wadhawan) explicitly held that filing a chargesheet stops default bail even if further investigation against other accused remains pending."
+}

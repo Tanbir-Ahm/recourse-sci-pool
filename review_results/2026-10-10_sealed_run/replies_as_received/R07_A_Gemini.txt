@@ -1,0 +1,113 @@
+{
+"question_id": "R07",
+"marks": [
+{
+"no": 1,
+"mark": "No",
+"evidence": "Credited to the account of M/s Shantadurga Stores, Margao, the amount of Rs. Fifteen Thousand only",
+"reason": "This passage discusses a receipt and transaction details from Margao, but does not answer the legal settlement costs or compounding rules.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "The complainant alleged that after developing such friendship, the accused demanded from him a sum of Rs. 22,50,000/- as loan",
+"reason": "This passage recounts the facts and allegations of a different case regarding a loan and bounced cheques.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "No",
+"evidence": "We, accordingly, direct the accused-respondent herein to pay a compensation and fine of Rs. 5,38,425/-",
+"reason": "This passage issues specific compensation and fine orders for a particular appeal rather than general rules on settlement costs.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "In Damodar S. Prabhu (supra) this Court had emphasised that the compensatory aspect of the remedy under Section 138 of the NI Act must be preferred",
+"reason": "It discusses the compensatory nature of Section 138 and compounding, but does not specify the exact percentage required for settlement.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "the Appellant is liable to the extent of Rs.1,49,500/-",
+"reason": "This passage addresses the specific monetary liabilities and sentence reduction of the appellant in that particular case.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "As per the 213th Report of the Law Commission of India, more than 38 lakh cheque bouncing cases were pending",
+"reason": "It discusses general statistics and the legislative purpose behind Section 138 rather than settlement percentages.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "we hold that where the cheque amount with interest and cost as assessed by the Court is paid by a specified date, the Court is entitled to close the proceedings",
+"reason": "It confirms that courts can close proceedings when payment is made, but omits the specific 10% or 15% cost guidelines.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "as per the rigours of Damodar S. Prabhu (supra), 15% f the cheque amount had to be necessarily deposited by the accused person",
+"reason": "It mentions the 15% cost requirement under older guidelines, but is focused on Lok Adalat referrals.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "even in absence of such consent, the court, in the interests of justice, on being satisfied that the complainant has been duly compensated, can in its discretion close the proceedings and discharge the accused.",
+"reason": "It addresses court power to close proceedings without consent, but does not state the precise settlement percentage rules.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "The accused is a very good friend of the complainant. The accused requested the Complainant a hand loan",
+"reason": "This passage relates to the factual background and dates of a loan transaction in another case.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Yes",
+"evidence": "if the application for compounding is made before the Sessions Court or a High Court in revision or appeal, such compounding may be allowed on the condition that the accused pays 15% of the cheque amount by way of costs.",
+"reason": "It sets out the 15% cost requirement for compounding during appeal or revision stages under previous Supreme Court guidelines.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "The appellant gave receipt dated 6.10.89 for a sum of Rs.6,500/- as well as receipt dated 6.10.89 for a sum of Rs.25,102/-.",
+"reason": "This passage deals with an Advocates Act disciplinary matter concerning misappropriation of funds and is irrelevant.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Yes",
+"evidence": "If the accused pays the cheque amount before recording of his evidence (namely defence evidence), then the Trial Court may allow compounding of the offence without imposing any cost or penalty on the accused.",
+"reason": "It provides the updated Supreme Court rule stating that if payment is made before recording defence evidence, no cost or penalty is imposed.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "No",
+"evidence": "The petitioner agreed to pay the cheque amount sum of Rs.1,00,000/-",
+"reason": "It records a specific interim payment agreement in a particular case rather than general rules.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Yes",
+"evidence": "if an application for compounding is made before the Magistrate at a subsequent stage, compounding can be allowed subject to the condition that the accused will be required to pay 10% of the cheque amount",
+"reason": "It outlines the graded cost scheme from Damodar S. Prabhu, requiring 10% or 15% depending on the stage of compounding.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 13,
+"caveats": "Passage 13 updates and modifies the older 2010 guidelines from Damodar S. Prabhu, stating that if payment is made before recording defence evidence, no cost or penalty is imposed."
+}

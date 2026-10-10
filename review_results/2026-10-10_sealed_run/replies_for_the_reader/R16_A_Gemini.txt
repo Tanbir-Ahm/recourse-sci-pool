@@ -1,0 +1,155 @@
+{
+"question_id": "R16",
+"marks": [
+{
+"no": 1,
+"mark": "Misleading",
+"evidence": "The complaint was admittedly within the period of three years from the date of demand and refusal of stridhana",
+"reason": "This discusses limitation rules under Section 406 IPC for criminal breach of trust regarding stridhana, not a domestic violence case.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "since the last couple of years (from 2022-23), the Respondent-Wife is living separately from the Appellant-Husband.",
+"reason": "It mentions the couple living separately for a couple of years and discusses the timing of a DV petition, but does not state a direct rule on limitation.",
+"confidence": "medium"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "we hold that there is a continuance of domestic violence committed by the respondent­husband against the appellant­wife.",
+"reason": "It establishes that if a husband does not allow the wife to reside in the shared household, it amounts to continuing domestic violence.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "An act of domestic violence once committed, subsequent decree of divorce will not absolve the liability",
+"reason": "It addresses continuing liability for domestic violence after a divorce, but does not directly answer whether a delay of three years bars filing a case.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Misleading",
+"evidence": "That consideration cannot be extended to matrimonial offences, where the allegations are of cruelty, torture and assault",
+"reason": "This passage discusses limitation for Section 498A IPC offences rather than applications under the Protection of Women from Domestic Violence Act, 2005.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "the complaint could be filed only within a period of one year from the date of the incident",
+"reason": "This passage records a submission regarding the one-year limitation period, which was later rejected by the Supreme Court in subsequent rulings.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "The High Court made an apparent error in holding that the conduct of the parties prior to the coming into force PWD Act, 2005 cannot be taken into consideration",
+"reason": "It shows that past and ongoing conduct within a marriage can be considered, supporting that relief can still be pursued.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Misleading",
+"evidence": "the complaint could be filed only within a period of one year from the date of the incident",
+"reason": "It cites an older view that a complaint under the DV Act is subject to a one-year limitation period under the CrPC, which has since been overruled.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Misleading",
+"evidence": "could a case be registered against the appellant under Section 498A I.P.C. in 1997?",
+"reason": "This discusses the limitation and registration of an offence under Section 498A IPC rather than a domestic violence act application.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "limitation-Applicability of-Matrimonial Offences like cruelty, by husband",
+"reason": "This deals with criminal complaints for matrimonial cruelty under the IPC and CrPC rather than civil applications under the Domestic Violence Act.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Misleading",
+"evidence": "the object of Section 468 Cr.P.C. is to create a bar against belated prosecutions",
+"reason": "It discusses the general principles of criminal limitation under Section 468 CrPC in the context of matrimonial offences, not the DV Act.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Misleading",
+"evidence": "Courts which are confronted with provisions which lay down a rule of limitation governing prosecutions",
+"reason": "This passage discusses CrPC limitation provisions and Section 473 for criminal prosecutions, not civil applications under the DV Act.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Misleading",
+"evidence": "whenever the bar of Section 468 is applicable, the court has to apply its mind on the question",
+"reason": "It discusses condoning delay under Section 473 CrPC for criminal prosecutions, which does not apply to DV Act applications.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "the High Court was in error in observing that the application under Section 12 of the Act ought to have been filed within a period of one year",
+"reason": "The Supreme Court explicitly rules that a DV Act application is not barred by a one-year limitation period.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "All the evidence on behalf of the complainantprosecution has admittedly not been adduced within four years therefrom.",
+"reason": "This discusses the time limit for concluding a trial under Section 245(3) CrPC, which is entirely unrelated to the question.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Misleading",
+"evidence": "the application ought to have been filed within one year of the incident and since the appellant had left the matrimonial home in the year 2008, the application was abuse",
+"reason": "This passage summarizes a flawed High Court view that an application must be filed within one year of leaving, which the Supreme Court overturned.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Misleading",
+"evidence": "the object of introducing Section 468 was to put a bar of limitation on prosecutions",
+"reason": "It addresses criminal prosecution limitation under the CrPC rather than applications under the Domestic Violence Act.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "No",
+"evidence": "legislature never intended to exclude female relatives of the husband or male partner from the ambit of a complaint",
+"reason": "This addresses who can be made a respondent in a domestic violence complaint, not whether a delayed filing is barred.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "Misleading",
+"evidence": "whenever the bar of Section 468 is applicable, the court has to apply its mind on the question, whether it is necessary to condone such delay",
+"reason": "It discusses CrPC limitation and condonation of delay for criminal charges, not DV Act applications.",
+"confidence": "high"
+},
+{
+"no": 20,
+"mark": "No",
+"evidence": "The Respondent-Wife has failed to mention any event describing any sort of violence carried out either by the Appellant-Husband or his mother.",
+"reason": "This discusses the lack of specific allegations of violence in a particular complaint rather than any rule of limitation or delay.",
+"confidence": "high"
+},
+{
+"no": 21,
+"mark": "Partly",
+"evidence": "In fact, the very purpose of enacting the DV Act was to provide for a remedy which is an amalgamation of civil rights",
+"reason": "It explains the remedial and civil nature of the DV Act and its objectives, but does not directly address limitation or delayed filings.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 14,
+"caveats": "The Supreme Court has clarified that applications under Section 12 of the Protection of Women from Domestic Violence Act are not subject to the strict one-year limitation period under Section 468 of the CrPC, as they are not ordinary criminal complaints."
+}

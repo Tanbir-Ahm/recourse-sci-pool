@@ -1,0 +1,141 @@
+{
+"question_id": "R03",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "Every police officer while making an arrest shall— (a) bear an accurate, visible and clear identification of his name which will facilitate easy identification",
+"reason": "This passage directly states the procedure and obligations of the arresting officer under Section 41B in furtherance of D.K. Basu.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Misleading",
+"evidence": "Failure to inform the person to be searched and if such person so requires, failure to take him to the Gazetted Officer or the Magistrate, would amount to non-compliance of Section 50",
+"reason": "This discusses Section 50 of the NDPS Act/CrPC regarding searches, not the specific arrest obligations under Sections 41B, 41D, or 50A.",
+"confidence": "medium"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "Every police officer or other person making any arrest under this Code shall forthwith give the information regarding such arrest and place where the arrested person is being held",
+"reason": "It directly outlines the statutory requirements of Section 50A and Section 41D in line with D.K. Basu.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "No",
+"evidence": "If there is total noncompliance of this provision the same affects the prosecution case.",
+"reason": "This passage discusses searches and Sections 100 and 165 CrPC rather than the arrest sections 41B, 41D, or 50A.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "Failure to inform the person to be searched and if such person so requires, failure to take him to the Gazetted Officer or the Magistrate, would amount to non-compliance of Section 50",
+"reason": "This passage focuses entirely on Section 50 search provisions rather than Sections 41B, 41D, or 50A of the CrPC.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "If there is total non-compliance of this provision the same affects the prosecution case.",
+"reason": "This passage refers to Sections 100 and 165 CrPC and search procedures, which is off-topic for Sections 41B, 41D, and 50A.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "The Police Officer is also under an obligation to inform, under Section 50A of the CrPC, a nominated person about the factum of arrest.",
+"reason": "It mentions Section 50A briefly, but does not provide the full scope or consequences of non-compliance under D.K. Basu.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "In the said case, this Court issued various directions in regard to safeguards to be observed in the matter of effecting arrest. They are found in paragraph-35",
+"reason": "It quotes the D.K. Basu guidelines, but does not discuss Sections 41B, 41D, or 50A directly.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "No",
+"evidence": "If there is total non-compliance of this provision the same affects the prosecution case.",
+"reason": "This passage deals with Sections 100 and 165 CrPC search rules, not the arrest provisions requested.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "No",
+"evidence": "Failure to inform the person to be searched and if such person so requires, failure to take him to the gazetted officer or the Magistrate, would amount to non-compliance of Section 50",
+"reason": "This is focused on Section 50 search requirements and does not address the specified sections.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "Section 41B deals with the procedure of arrest along with mandatory duty on the part of the officer.",
+"reason": "It introduces Section 41B but focuses primarily on Section 41A and Arnesh Kumar guidelines rather than detailing 41B, 41D, or 50A.",
+"confidence": "medium"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "This Court has also cautioned that failure to comply with the requirements aforesaid, shall apart from rendering the official concerned liable for departmental action, also render him liable to be punished for Contempt of Court.",
+"reason": "It mentions consequences of non-compliance with D.K. Basu guidelines, but does not detail Sections 41B, 41D, or 50A.",
+"confidence": "medium"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "This Court observed that the requirements it had enunciated emanated from Articles 21 and 22(1) of the Constitution and “need to be strictly followed” failing which action for contempt of court would be initiated.",
+"reason": "It discusses D.K. Basu requirements and consequences, but lacks specific details on Sections 41B, 41D, or 50A.",
+"confidence": "medium"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "It was in that connection that this Court issued guidelines incorporating the requirements that “the arrestee may be permitted to meet his lawyer during interrogation, though not throughout the interrogation”.",
+"reason": "It touches upon the lawyer-meeting right corresponding to Section 41D, but lacks comprehensive coverage of all requested sections.",
+"confidence": "medium"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "In D.K. Basu versus State of W.B., this Court, to check abuse of arrest and drastic police power, directed as follows...",
+"reason": "It reproduces D.K. Basu arrest requirements but does not cover the statutory CrPC sections mentioned in the query.",
+"confidence": "medium"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "Section 41B of Code of Criminal Procedure emphasises the importance of an independent witness while making an arrest.",
+"reason": "It quotes Section 41B text, but does not cover Section 41D, 50A, or the full consequences of non-compliance.",
+"confidence": "medium"
+},
+{
+"no": 17,
+"mark": "No",
+"evidence": "Section 41-A CrPC, which has been inserted by Section 6 of the Code of Criminal Procedure (Amendment) Act, 2008 was introduced",
+"reason": "This passage focuses exclusively on Section 41A, which is distinct from the requested sections.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Yes",
+"evidence": "Section 41B of the CrPC... casts a duty on a Police Officer, making an arrest, to bear an accurate, visible and clear identification of his name... Section 41D of the CrPC confers a right on the arrested person to meet an Advocate",
+"reason": "It details the exact obligations under Sections 41B and 41D and relates them to arrest procedures.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "No",
+"evidence": "43. Arrest by private person and procedure on such arrest.",
+"reason": "This passage discusses private person arrests under Section 43, which is off-topic.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 3,
+"caveats": ""
+}

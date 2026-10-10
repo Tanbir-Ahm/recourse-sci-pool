@@ -1,0 +1,127 @@
+{
+"question_id": "R25",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "Section 18 of the Atrocities Act excludes grant of anticipatory bail when on prima facie judicial scrutiny, allegations are found to be not free from doubt.",
+"reason": "It discusses whether Section 18 excludes anticipatory bail under the Atrocities Act.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "It is evident from the above provision of Section 18 that it expressly excludes the applicability of Section 438 of the Code of Criminal Procedure, 1973",
+"reason": "It explains the exclusion of Section 438 CrPC under Section 18 of the SC/ST Act.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "18-A. No enquiry or approval required.—(1) For the purposes of this Act— (a) preliminary enquiry shall not be required for registration of a first information report against any person; or (b) the investigating officer shall not require approval for the arrest... (2) The provisions of Section 438 of the Code shall not apply to a case under this Act",
+"reason": "It explicitly quotes the provisions addressing both anticipatory bail bar and the lack of requirement for preliminary enquiry or approval for arrest.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Section 18 of the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1984 provides that nothing in Section 438 of the Criminal Procedure Code shall apply",
+"reason": "It covers the maintainability of anticipatory bail but does not address preliminary enquiry or approval.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "exclusion of anticipatory bail provisions of the Code of Criminal Procedure (by Section 18 of the Act) did not constitute an absolute bar for the grant of bail, where it was discernable to the court that the allegations... were false.",
+"reason": "It discusses the bar on anticipatory bail and the overruling of directions on preliminary inquiry and approval.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "To avoid false implication of an innocent, a preliminary enquiry may be conducted by the DSP concerned to find out whether the allegations make out a case under the Atrocities Act",
+"reason": "It outlines previous directions regarding preliminary inquiry and approval, which were later overruled.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3(1) of the SC/ST Act has been prima facie made out.",
+"reason": "It explains the bar on anticipatory bail under Section 18 and the exception when no prima facie case is made out.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "preliminary enquiry shall not be required for registration of a First Information Report against any person; or (b) the investigating officer shall not require approval for the arrest... (2) The provisions of section 438 of the Code shall not apply",
+"reason": "It quotes Section 18-A which directly answers whether preliminary enquiry/approval are required and whether anticipatory bail applies.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "When a provision has been enacted in the Special Act to protect the persons who belong to the Scheduled Castes and the Scheduled Tribes and a bar has been imposed in granting bail under Section 438 of the Code, the provision in the Special Act cannot be easily brushed aside",
+"reason": "It discusses the bar on anticipatory bail under the special act.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "To avoid false implication of an innocent, a preliminary enquiry may be conducted by the DSP concerned to find out whether the allegations make out a case under the Atrocities Act",
+"reason": "It lists old guidelines concerning preliminary enquiry before they were overruled.",
+"confidence": "medium"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "We have to consider whether a denial of this right to apply for anticipatory bail in respect of offences committed under the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1 989, can be considered as violative",
+"reason": "It introduces the question of denying anticipatory bail under the Atrocities Act.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint",
+"reason": "It discusses the statutory bar on anticipatory bail under Section 18.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Yes",
+"evidence": "(a) preliminary enquiry shall not be required for registration of a First Information Report against any person; or (b) the investigating officer shall not require approval for the arrest... (2) The provisions of section 438 of the Code shall not apply to a case under this Act",
+"reason": "It reproduces Section 18A which explicitly resolves both preliminary inquiry/approval requirements and the exclusion of Section 438.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "Section 18 of the SC/ST Act creates a bar for invoking ·Section 438 of the Code and the High Court has committed grave error in granting anticipatory bail",
+"reason": "It affirms the bar on anticipatory bail under Section 18.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "The said provisions provide that Section 438 of the CrPC shall not apply to cases under the Act, 1989. That despite the statutory bar under Sections 18 and 18A(2)... if a complaint does not make out a prima facie case... the bar shall not apply.",
+"reason": "It details the restriction on anticipatory bail and the exception when no prima facie case is made out.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "exclusion of Section 438 Cr.P.C. in connection with offences under the Act had to be viewed in the context of prevailing social conditions",
+"reason": "It discusses the constitutional validity and reasoning behind the exclusion of anticipatory bail.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "holding that the allegations in the FIR are prima facie sufficient to attract the offence under the Act, 1989 and the bar of Section 18 of the said Act prohibits the court from exercising powers under Section 438 of the CrPC.",
+"reason": "It illustrates an instance where anticipatory bail was denied due to the bar under Section 18.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 3,
+"caveats": "Section 18-A was added by the 2018 Amendment Act to nullify the preliminary enquiry and approval requirements previously introduced in the Subhash Kashinath Mahajan case."
+}

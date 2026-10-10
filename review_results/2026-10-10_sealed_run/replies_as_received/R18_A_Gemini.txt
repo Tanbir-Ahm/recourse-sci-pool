@@ -1,0 +1,106 @@
+{
+"question_id": "R18",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "restricting the meaning of the word ‘physical contact’ to ‘skin to skin contact’ would be a narrow interpretation of the said provision",
+"reason": "It details submissions and arguments against the skin-to-skin contact requirement rather than giving the final holding.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "the prosecution was not required to prove a “skin to skin” contact for the purpose of proving the charge of sexual assault under Section 7 of the Act.",
+"reason": "It directly holds that skin-to-skin contact is not required for an offence under Section 7 of the POCSO Act.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "We have no doubt that it was not Parliament’s intention by the use of that language to make it impossible to regard as a sexual assault touching which took place by touching what the victim was wearing at that time.",
+"reason": "It discusses foreign case law regarding touching through clothing, providing useful background context.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "In both the judgments, the argument that contact or touch through clothing did not amount to an offence, was decisively rejected.",
+"reason": "It discusses foreign judicial interpretations on touch through clothing.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "Viewed so, physical contact without penetration, may not necessarily involve touch.",
+"reason": "It explains the legal interpretation of physical contact under the statute.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "According to the interpretation placed by the High Court, for any act to be an offence, the touching of any of the parts mentioned by the statute must be of the organ, and there should be a “skin to skin” contact.",
+"reason": "It describes the incorrect view of the High Court that was later overturned on appeal.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "The High Court further erred in holding that there was no offence since there was no direct physical contact i.e. “skin to skin” with sexual intent.",
+"reason": "It highlights the facts of a case involving breast pressing over clothing and notes the High Court's error.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "It is not the presence or lack of intervening material which should be focused upon, but whether the contact made through the material, comes within the definition prescribed for a particular statue, has to be seen.",
+"reason": "It summarizes foreign precedents stating that skin-to-skin contact is unnecessary.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "touching the breast of a child victim constituted sexual assault under Section 7, punishable under Section 8.",
+"reason": "It cites supporting high court decisions confirming that touching through clothing constitutes sexual assault.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "Crucially, neither Section 7 nor any other provision of POCSO even remotely suggests that ‘direct’ physical contact unimpeded by clothing is essential for an offence to be committed.",
+"reason": "It links POCSO with the IPC definition of force to show clothing does not prevent contact.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "The word “Touch” has been used specifically with regard to the sexual parts of the body, whereas the word “physical contact” has been used for any other act.",
+"reason": "It analyzes the dictionary meanings of touch and physical contact in Section 7.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "touching in an indecent manner with culpable mental state, would amount to “sexual assault” within the meaning of Section 7 of the said Act, even though there was no ‘skin to skin contact’",
+"reason": "It summarizes counsel's arguments supporting that skin-to-skin contact is not needed.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "He submitted that all the alleged acts of the accused i.e. taking the victim to his house, trying to remove her salwar, pressing her breast... were the acts amounting to “sexual assault”",
+"reason": "It outlines the Attorney General's arguments against requiring skin-to-skin contact.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "Restricting getBitmap the interpretation of the words “touch” or “physical contact” to “skin to skin contact” would not only be a narrow and pedantic interpretation... but it would lead to an absurd interpretation",
+"reason": "It explicitly concludes that skin-to-skin contact is not required for an offence under Section 7.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 2,
+"caveats": ""
+}

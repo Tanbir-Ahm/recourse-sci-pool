@@ -1,0 +1,134 @@
+{
+  "question_id": "R13",
+  "marks": [
+    {
+      "no": 1,
+      "mark": "Partly",
+      "evidence": "Quashing of offence or criminal proceedings on the ground of settlement between an offender and victim is not the same thing as compounding of offence.",
+      "reason": "It explains the distinction between compounding and quashing under inherent jurisdiction, but lacks specific parameters for commercial disputes.",
+      "confidence": "high"
+    },
+    {
+      "no": 2,
+      "mark": "Yes",
+      "evidence": "certain offences which overwhelmingly and predominantly bear civil flavour having arisen out of civil, mercantile, commercial, financial, partnership or such like transactions",
+      "reason": "It directly details the parameters and principles for exercising inherent power to quash non-compoundable offences arising from commercial disputes.",
+      "confidence": "high"
+    },
+    {
+      "no": 3,
+      "mark": "Partly",
+      "evidence": "Quashing of offence or criminal proceedings on the ground of settlement between an offender and victim is not the same thing as compounding of offence.",
+      "reason": "It discusses general principles regarding settlements and inherent powers without focusing on commercial disputes.",
+      "confidence": "high"
+    },
+    {
+      "no": 4,
+      "mark": "Yes",
+      "evidence": "certain offences which overwhelmingly and predominantly bear civil flavour having arisen out of civil, mercantile, commercial, financial, partnership or such like transactions",
+      "reason": "It sets out the exact parameters for quashing non-compoundable offences in commercial and financial disputes upon settlement.",
+      "confidence": "high"
+    },
+    {
+      "no": 5,
+      "mark": "Partly",
+      "evidence": "whether FIR and the consequential proceedings alleging non-compoundable offences could be quashed by the High Court in exercise of its jurisdiction under Section 482 of Cr.P.C.",
+      "reason": "It introduces the question of quashing non-compoundable offences under inherent powers but mentions Section 320 rather than commercial parameters.",
+      "confidence": "medium"
+    },
+    {
+      "no": 6,
+      "mark": "Partly",
+      "evidence": "The invocation of the jurisdiction of the High Court to quash a first information report or a criminal proceeding on the ground that a settlement has been arrived at between the offender and the victim is not the same as the invocation of jurisdiction for the purpose of compounding an offence.",
+      "reason": "It outlines general guidelines for exercising inherent jurisdiction upon settlement, but lacks specific focus on commercial disputes.",
+      "confidence": "high"
+    },
+    {
+      "no": 7,
+      "mark": "Partly",
+      "evidence": "the power of the High Court in quashing a criminal proceeding or FIR or complaint in exercise of its inherent jurisdiction is distinct and different from the power given to a criminal court for compounding the offences",
+      "reason": "It summarizes the distinct nature of inherent power to quash versus compounding, without addressing commercial disputes specifically.",
+      "confidence": "high"
+    },
+    {
+      "no": 8,
+      "mark": "Yes",
+      "evidence": "certain offences which overwhelmingly and predominantly bear civil flavour having arisen out of civil, mercantile, commercial, financial, partnership or such like transactions",
+      "reason": "It provides clear parameters for exercising inherent powers to quash proceedings based on a settlement in commercial contexts.",
+      "confidence": "high"
+    },
+    {
+      "no": 9,
+      "mark": "Partly",
+      "evidence": "Power conferred under Section 482 of the Code is to be distinguished from the power which lies in the Court to compound the offences under Section 320 of the Code.",
+      "reason": "It outlines foundational propositions for exercising inherent jurisdiction upon settlements, but does not detail the commercial dispute aspect.",
+      "confidence": "high"
+    },
+    {
+      "no": 10,
+      "mark": "Yes",
+      "evidence": "those criminal cases having overwhelmingly and predominantly civil character, particularly those arising out of commercial transactions or arising out of matrimonial relationship or family disputes should be quashed when the parties have resolved their entire disputes among themselves.",
+      "reason": "It explicitly specifies that predominantly civil and commercial cases should be quashed upon settlement under inherent jurisdiction.",
+      "confidence": "high"
+    },
+    {
+      "no": 11,
+      "mark": "Partly",
+      "evidence": "There is a subtle distinction between compounding of offences by the parties before the trial court or in appeal on the one hand and the exercise of power by the High Court to quash the prosecution under Section 482 CrPC on the other.",
+      "reason": "It explains the distinction between compounding and quashing, but declines to enumerate specific factual situations like commercial disputes.",
+      "confidence": "high"
+    },
+    {
+      "no": 12,
+      "mark": "Partly",
+      "evidence": "Power conferred under Section 482 of the Code is to be distinguished from the power which lies in the Court to compound the offences under Section 320 of the Code.",
+      "reason": "It lists general principles for quashing proceedings based on settlements without specifically detailing commercial dispute parameters.",
+      "confidence": "high"
+    },
+    {
+      "no": 13,
+      "mark": "Partly",
+      "evidence": "Section 482 preserves the inherent powers of the High Court to prevent an abuse of the process of any court or to secure the ends of justice.",
+      "reason": "It summarizes broad propositions regarding inherent powers and settlements without focusing on commercial transactions.",
+      "confidence": "high"
+    },
+    {
+      "no": 14,
+      "mark": "Partly",
+      "evidence": "Section 482 preserves the inherent powers of the High Court to prevent an abuse of the process of any court .or to secure the ends of justice.",
+      "reason": "It summarizes general propositions on inherent powers and settlements without detailing the criteria for commercial disputes.",
+      "confidence": "high"
+    },
+    {
+      "no": 15,
+      "mark": "Partly",
+      "evidence": "Power conferred under Section 482 of the Code is to be distinguished from the power which lies in the Court to compound the offences under Section 320 of the Code.",
+      "reason": "It lists general principles for considering settlements under inherent powers, stopping before commercial dispute specifics.",
+      "confidence": "high"
+    },
+    {
+      "no": 16,
+      "mark": "Yes",
+      "evidence": "certain offences which overwhelmingly and predominantly bear civil flavour having arisen out of civil, mercantile, commercial, financial, partnership or such like transactions",
+      "reason": "It directly establishes the parameters under inherent power to quash non-compoundable offences arising from commercial disputes upon settlement.",
+      "confidence": "high"
+    },
+    {
+      "no": 17,
+      "mark": "Yes",
+      "evidence": "Criminal cases involving offences which arise from commercial, financial, mercantile, partnership or similar transactions with an essentially civil flavour may in appropriate situations fall for quashing where parties have settled the dispute.",
+      "reason": "It directly states the rules and parameters for quashing criminal proceedings originating from commercial disputes when settled.",
+      "confidence": "high"
+    },
+    {
+      "no": 18,
+      "mark": "No",
+      "evidence": "Economic offences involving the financial and economic well-being of the State have implications which lie beyond the domain of a mere dispute be",
+      "reason": "The passage text is cut off and focuses on exceptions for economic offences rather than the parameters for commercial disputes.",
+      "confidence": "medium"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 2,
+  "caveats": "Note that while older cases refer to Section 482 of the CrPC, Section 528 of the Bharatiya Nagarik Suraksha Sanhita (BNSS) is the corresponding provision in the new criminal procedure code."
+}

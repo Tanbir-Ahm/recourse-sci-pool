@@ -1,0 +1,113 @@
+{
+"question_id": "R27",
+"marks": [
+{
+"no": 1,
+"mark": "No",
+"evidence": "imprisonment for life shall be reckoned as equivalent to imprisonment for twenty years.",
+"reason": "It discusses calculation of life imprisonment fractions for remission but does not address who must start the application process.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "A sentence of transportation for life or imprisonment for life must prima facie be treated as transportation or imprisonment for the whole",
+"reason": "It discusses the nature of life sentences and prison rules but does not explain who starts the remission application process.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "No",
+"evidence": "That is why the Rules provide for a procedure to enable the appropriate Government to remit the sentence under Section 401",
+"reason": "It mentions that rules provide a procedure for remission under the old Code but does not specify who initiates it.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "No",
+"evidence": "a specific order under Section 432 of the Cr.P.C. will have to be passed by the appropriate Government.",
+"reason": "It explains that a specific order under Section 432 is required for a life convict, but does not address application requirements.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "making an application to the appropriate Government for the suspension or remission of a sentence, either by the convict or someone on his behalf.",
+"reason": "It confirms that an application can be made by the convict or someone on their behalf, such as a relative.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "eligibility requirement to obtain furlough is of '3 Annual good conduct reports' and not '3 Annual good conduct remissions'.",
+"reason": "It discusses eligibility requirements for furlough rather than the process or application for remission.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "That is why the Rules provide for a procedure to enable the appropriate Government to remit the sentence under Section 401",
+"reason": "It describes the general nature of life imprisonment and remission under old provisions without answering who initiates the process.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "A convict undergoing life imprisonment is expected to remain in custody till the end of his life, subject to any remission granted",
+"reason": "It notes that life convicts remain in custody unless granted remission, but does not state who starts the application.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "the superintendent-in-charge of a prison has to initiate a case of a prisoner for grant of premature release.",
+"reason": "It states that the prison superintendent initiates premature release cases under prison manuals, addressing who starts the process.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "Since the convict will be in jail, any of his relatives can make an application in terms thereof.",
+"reason": "It explicitly confirms that relatives can submit the remission application on behalf of the jailed convict.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "No",
+"evidence": "The days of remission so earned by a prisoner are added to the period of his actual imprisonment",
+"reason": "It explains how monthly or annual jail remissions are calculated and credited, not application procedures.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "Ordinary remission shall be awarded on the following scale: - (a) two days per month for thoroughly good conduct",
+"reason": "It provides the scale and rules for calculating ordinary jail remissions rather than application requirements.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "A convict undergoing life imprisonment is expected to remain in custody till the end of his life, subject to any remission",
+"reason": "It discusses substantive and procedural checks under Section 432 but does not explain who files the initial application.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "Sub-sections (2) to (5) of Section 432 of the Code lay down basic procedure for making an application to the appropriate Government for suspension or remission of sentence either by the convict or someone on his behalf.",
+"reason": "It details that an application for remission under Section 432 can be made by the convict or someone acting on their behalf.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "In calculating fractions of terms of punishment, imprisonment for life shall be reckoned as equivalent to imprisonment for twenty years.",
+"reason": "It discusses the statutory interpretation of life sentence fractions and does not address the initiation of remission applications.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 10,
+"caveats": "Prison manuals vary by state, so rules applicable in Uttar Pradesh/Lucknow jail govern the exact initiation process."
+}
