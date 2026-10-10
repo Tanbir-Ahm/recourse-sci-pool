@@ -1,0 +1,338 @@
+{
+ "stage": "marks",
+ "pool_sha256": "d2bd65746fee0b906c0b995be0333c173d59a5961d4dcbdada69a1016d509a41",
+ "replies_sha256": "3fbbae061200824f85c6faeabb7c5609140a778ea5973728be58cfa7026ff6d7",
+ "names": {
+  "a": "A today",
+  "r": "R challenger re-ranker",
+  "s": "S site shown",
+  "na": "M safety net",
+  "nr": "M safety net (challenger)"
+ },
+ "questions": 11,
+ "passages": 181,
+ "runs": {
+  "ChatGPT/A": 181,
+  "Gemini/A": 181
+ },
+ "file_problems": 30,
+ "quote_problems": 30,
+ "coverage_complete": true,
+ "passages_not_marked_by_both_tools": 0,
+ "tool_agreement_exact": 0.6353591160220995,
+ "reliability": "ok",
+ "settlements": {
+  "ChatGPT alone": {
+   "A today": {
+    "questions": 11,
+    "yes": 0.4,
+    "useful": 0.818181818181818,
+    "mis": 0.10909090909090909,
+    "grade": 2.109090909090909
+   },
+   "R challenger re-ranker": {
+    "questions": 11,
+    "yes": 0.43636363636363645,
+    "useful": 0.9272727272727272,
+    "mis": 0.05454545454545456,
+    "grade": 2.309090909090909
+   },
+   "S site shown": {
+    "questions": 11,
+    "yes": 0.19090909090909092,
+    "useful": 0.6984848484848485,
+    "mis": 0.11969696969696969,
+    "grade": 1.7696969696969695
+   },
+   "M safety net": {
+    "questions": 11,
+    "yes": 0.18484848484848485,
+    "useful": 0.5772727272727273,
+    "mis": 0.13636363636363635,
+    "grade": 1.6257575757575757
+   },
+   "M safety net (challenger)": {
+    "questions": 11,
+    "yes": 0.1545454545454545,
+    "useful": 0.5545454545454546,
+    "mis": 0.13636363636363635,
+    "grade": 1.5727272727272728
+   }
+  },
+  "Gemini alone": {
+   "A today": {
+    "questions": 11,
+    "yes": 0.3272727272727273,
+    "useful": 0.6545454545454545,
+    "mis": 0.18181818181818182,
+    "grade": 1.8
+   },
+   "R challenger re-ranker": {
+    "questions": 11,
+    "yes": 0.4181818181818182,
+    "useful": 0.6909090909090909,
+    "mis": 0.18181818181818182,
+    "grade": 1.9272727272727275
+   },
+   "S site shown": {
+    "questions": 11,
+    "yes": 0.19848484848484846,
+    "useful": 0.5621212121212121,
+    "mis": 0.12727272727272726,
+    "grade": 1.6333333333333335
+   },
+   "M safety net": {
+    "questions": 11,
+    "yes": 0.2212121212121212,
+    "useful": 0.5272727272727272,
+    "mis": 0.0606060606060606,
+    "grade": 1.6878787878787878
+   },
+   "M safety net (challenger)": {
+    "questions": 11,
+    "yes": 0.19090909090909092,
+    "useful": 0.5121212121212121,
+    "mis": 0.0606060606060606,
+    "grade": 1.6424242424242423
+   }
+  },
+  "both, ties to the lower mark": {
+   "A today": {
+    "questions": 11,
+    "yes": 0.27272727272727276,
+    "useful": 0.6545454545454545,
+    "mis": 0.21818181818181823,
+    "grade": 1.7090909090909088
+   },
+   "R challenger re-ranker": {
+    "questions": 11,
+    "yes": 0.34545454545454546,
+    "useful": 0.6909090909090909,
+    "mis": 0.18181818181818182,
+    "grade": 1.8545454545454545
+   },
+   "S site shown": {
+    "questions": 11,
+    "yes": 0.15303030303030302,
+    "useful": 0.5015151515151516,
+    "mis": 0.18787878787878787,
+    "grade": 1.4666666666666666
+   },
+   "M safety net": {
+    "questions": 11,
+    "yes": 0.18484848484848485,
+    "useful": 0.43333333333333335,
+    "mis": 0.13636363636363635,
+    "grade": 1.481818181818182
+   },
+   "M safety net (challenger)": {
+    "questions": 11,
+    "yes": 0.1545454545454545,
+    "useful": 0.41818181818181815,
+    "mis": 0.13636363636363635,
+    "grade": 1.4363636363636365
+   }
+  },
+  "both, ties to the higher mark": {
+   "A today": {
+    "questions": 11,
+    "yes": 0.45454545454545453,
+    "useful": 0.818181818181818,
+    "mis": 0.07272727272727274,
+    "grade": 2.1999999999999997
+   },
+   "R challenger re-ranker": {
+    "questions": 11,
+    "yes": 0.509090909090909,
+    "useful": 0.9272727272727272,
+    "mis": 0.05454545454545456,
+    "grade": 2.381818181818182
+   },
+   "S site shown": {
+    "questions": 11,
+    "yes": 0.23636363636363636,
+    "useful": 0.759090909090909,
+    "mis": 0.05909090909090909,
+    "grade": 1.9363636363636365
+   },
+   "M safety net": {
+    "questions": 11,
+    "yes": 0.2212121212121212,
+    "useful": 0.6712121212121211,
+    "mis": 0.0606060606060606,
+    "grade": 1.8318181818181818
+   },
+   "M safety net (challenger)": {
+    "questions": 11,
+    "yes": 0.19090909090909092,
+    "useful": 0.6484848484848486,
+    "mis": 0.0606060606060606,
+    "grade": 1.7787878787878788
+   }
+  }
+ },
+ "R_against_A": {
+  "ChatGPT alone": {
+   "questions": 11,
+   "A": {
+    "yes": 0.4,
+    "useful": 0.818181818181818,
+    "mis": 0.10909090909090909,
+    "grade": 2.109090909090909
+   },
+   "R": {
+    "yes": 0.43636363636363645,
+    "useful": 0.9272727272727272,
+    "mis": 0.05454545454545456,
+    "grade": 2.309090909090909
+   },
+   "R_better": [
+    "R03",
+    "R07"
+   ],
+   "R_worse": []
+  },
+  "Gemini alone": {
+   "questions": 11,
+   "A": {
+    "yes": 0.3272727272727273,
+    "useful": 0.6545454545454545,
+    "mis": 0.18181818181818182,
+    "grade": 1.8
+   },
+   "R": {
+    "yes": 0.4181818181818182,
+    "useful": 0.6909090909090909,
+    "mis": 0.18181818181818182,
+    "grade": 1.9272727272727275
+   },
+   "R_better": [
+    "R03",
+    "R10"
+   ],
+   "R_worse": [
+    "R05"
+   ]
+  },
+  "both, ties to the lower mark": {
+   "questions": 11,
+   "A": {
+    "yes": 0.27272727272727276,
+    "useful": 0.6545454545454545,
+    "mis": 0.21818181818181823,
+    "grade": 1.7090909090909088
+   },
+   "R": {
+    "yes": 0.34545454545454546,
+    "useful": 0.6909090909090909,
+    "mis": 0.18181818181818182,
+    "grade": 1.8545454545454545
+   },
+   "R_better": [
+    "R03",
+    "R07",
+    "R10"
+   ],
+   "R_worse": [
+    "R05"
+   ]
+  },
+  "both, ties to the higher mark": {
+   "questions": 11,
+   "A": {
+    "yes": 0.45454545454545453,
+    "useful": 0.818181818181818,
+    "mis": 0.07272727272727274,
+    "grade": 2.1999999999999997
+   },
+   "R": {
+    "yes": 0.509090909090909,
+    "useful": 0.9272727272727272,
+    "mis": 0.05454545454545456,
+    "grade": 2.381818181818182
+   },
+   "R_better": [
+    "R03",
+    "R07"
+   ],
+   "R_worse": []
+  }
+ },
+ "marks_rules": {
+  "rule1_grade_all_four_settlements": true,
+  "rule2_misleading_and_useful_margins": true,
+  "rule3_two_more_questions_better": true,
+  "rule5_reliability_not_weak": true,
+  "marks_rules_hold": true
+ },
+ "floors": {
+  "A": {
+   "F1_useful_lower": 0.6545454545454545,
+   "F2_mis_lower": 0.21818181818181823,
+   "F2_mis_higher": 0.07272727272727274,
+   "F4_yes_lower": 0.27272727272727276,
+   "F1": false,
+   "F2": false,
+   "F4": true,
+   "intervals": {
+    "F1_useful_lower": [
+     0.4727,
+     0.8182
+    ],
+    "F2_mis_lower": [
+     0.0545,
+     0.4182
+    ],
+    "F2_mis_higher": [
+     0.0,
+     0.1636
+    ],
+    "F4_yes_lower": [
+     0.1273,
+     0.4545
+    ]
+   }
+  },
+  "R": {
+   "F1_useful_lower": 0.6909090909090909,
+   "F2_mis_lower": 0.18181818181818182,
+   "F2_mis_higher": 0.05454545454545456,
+   "F4_yes_lower": 0.34545454545454546,
+   "F1": false,
+   "F2": false,
+   "F4": true,
+   "intervals": {
+    "F1_useful_lower": [
+     0.5091,
+     0.8545
+    ],
+    "F2_mis_lower": [
+     0.0364,
+     0.3636
+    ],
+    "F2_mis_higher": [
+     0.0,
+     0.1273
+    ],
+    "F4_yes_lower": [
+     0.2,
+     0.4909
+    ]
+   }
+  }
+ },
+ "nets": {
+  "na": {
+   "passages": 34,
+   "mis_lower": 0.13636363636363635,
+   "useful_lower": 0.43333333333333335,
+   "yes_by_every_run": 6
+  },
+  "nr": {
+   "passages": 33,
+   "mis_lower": 0.13636363636363635,
+   "useful_lower": 0.41818181818181815,
+   "yes_by_every_run": 5
+  }
+ }
+}

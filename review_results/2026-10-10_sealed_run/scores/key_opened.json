@@ -1,0 +1,17 @@
+{
+ "key_file_sha256": "d6bf6607b5930a97b734d3bbf02746defa6ff56efb091c586c7732c96a4bd378",
+ "questions_read": [
+  "R03",
+  "R05",
+  "R07",
+  "R10",
+  "R13",
+  "R16",
+  "R18",
+  "R23",
+  "R25",
+  "R27",
+  "R30"
+ ],
+ "after_stage1_pool_sha256": "d2bd65746fee0b906c0b995be0333c173d59a5961d4dcbdada69a1016d509a41"
+}

@@ -1,0 +1,969 @@
+{
+ "judges": {
+  "passages": 181,
+  "exact_agreement": 0.6353591160220995,
+  "kappa": 0.4807441536990351,
+  "ChatGPT_share": {
+   "Yes": 0.20994475138121546,
+   "Partly": 0.5193370165745856,
+   "No": 0.13812154696132597,
+   "Misleading": 0.13259668508287292
+  },
+  "Gemini_share": {
+   "Yes": 0.20994475138121546,
+   "Partly": 0.3812154696132597,
+   "No": 0.27071823204419887,
+   "Misleading": 0.13812154696132597
+  },
+  "confusion_chatgpt_rows_gemini_cols": {
+   "Yes": {
+    "Yes": 28,
+    "Partly": 9,
+    "No": 1,
+    "Misleading": 0
+   },
+   "Partly": {
+    "Yes": 9,
+    "Partly": 52,
+    "No": 19,
+    "Misleading": 14
+   },
+   "No": {
+    "Yes": 0,
+    "Partly": 1,
+    "No": 24,
+    "Misleading": 0
+   },
+   "Misleading": {
+    "Yes": 1,
+    "Partly": 7,
+    "No": 5,
+    "Misleading": 11
+   }
+  },
+  "agree_on_useful_vs_not": 0.7624309392265194,
+  "chatgpt_misleading_gemini_not": 13,
+  "gemini_misleading_chatgpt_not": 14,
+  "both_misleading": 11
+ },
+ "per_question": {
+  "R03": {
+   "domain": "A",
+   "question": "What are the mandatory obligations of the arresting officer under Sections 41B, 41D and 50A CrPC, and what are the consequences of non-compliance in light of the D.K. Basu requirements?",
+   "answerable": true,
+   "key_authority": [
+    "D.K. Basu v. State of West Bengal (1996/97)"
+   ],
+   "stale_rulings": [],
+   "passages": 19,
+   "A": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 0.4,
+     "mis": 0.6,
+     "grade": 1.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.2,
+     "useful": 0.4,
+     "mis": 0.2,
+     "grade": 1.4
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.4,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.6,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.6
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.167,
+     "useful": 0.833,
+     "mis": 0.167,
+     "grade": 1.833
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.167,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.167
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 1
+  },
+  "R05": {
+   "domain": "B",
+   "question": "my father is in jail since 88 days in a CBI bank fraud case. CBI filed chargesheet on day 87 but says investigation against 'other accused' is still going on and they didn't even give us copy of chargesheet yet. Our lawyer is saying we can get default bail under section 187 BNSS because chargesheet is incomplete, citing some Ritu Chhabaria case. Someone else told me that case was stopped by Supreme Court. Please tell what is the actual position, we are very confused.",
+   "answerable": true,
+   "key_authority": [
+    "CBI v. Kapil Wadhawan (2024)",
+    "Shaurya Sunil Kumar Singh v. CBI (2026)"
+   ],
+   "stale_rulings": [
+    "Ritu Chhabaria v. Union of India (2023)"
+   ],
+   "passages": 16,
+   "A": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.8,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.8
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.8,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.8
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.6,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.6,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.6
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": 2,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.5,
+     "mis": 0.5,
+     "grade": 1.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.25,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.25
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 4
+  },
+  "R07": {
+   "domain": "C",
+   "question": "I gave my old friend 6 lakhs cash for his shop, he gave cheque, it bounced, case going on in Margao court for four years now. Now suddenly he is ready to pay the cheque amount but my lawyer says he will have to pay 10% or 15% extra to settle as per some 2010 Supreme Court rules. His evidence is not recorded yet. How much extra does he actually have to pay, and can court close it even if I want to punish him?",
+   "answerable": true,
+   "key_authority": [
+    "Sanjabij Tari v. Kishore S. Borcar (2025)"
+   ],
+   "stale_rulings": [
+    "Damodar S. Prabhu v. Sayed Babalal H. (2010)"
+   ],
+   "passages": 15,
+   "A": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 0.6,
+     "mis": 0.0,
+     "grade": 1.8
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.6,
+     "useful": 0.6,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.8,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.8
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.25,
+     "useful": 0.5,
+     "mis": 0.0,
+     "grade": 1.75
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.5,
+     "useful": 0.5,
+     "mis": 0.0,
+     "grade": 2.0
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 3
+  },
+  "R10": {
+   "domain": "D",
+   "question": "Whether a prosecution under the NDPS Act stands vitiated merely because the informant/complainant police officer also conducted the investigation.",
+   "answerable": true,
+   "key_authority": [
+    "Mukesh Singh v. State (Narcotic Branch of Delhi) (2020)"
+   ],
+   "stale_rulings": [
+    "Mohan Lal v. State of Punjab (2018)"
+   ],
+   "passages": 14,
+   "A": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 0.6,
+     "mis": 0.4,
+     "grade": 1.4
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.4,
+     "useful": 0.6,
+     "mis": 0.4,
+     "grade": 1.6
+    },
+    "stale_in_top5": 4
+   },
+   "R": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.6,
+     "useful": 0.6,
+     "mis": 0.4,
+     "grade": 1.8
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.6,
+     "useful": 0.6,
+     "mis": 0.4,
+     "grade": 1.8
+    },
+    "stale_in_top5": 2
+   },
+   "S": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.6,
+     "useful": 0.6,
+     "mis": 0.4,
+     "grade": 1.8
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.6,
+     "useful": 0.6,
+     "mis": 0.4,
+     "grade": 1.8
+    },
+    "stale_in_top5": 1
+   },
+   "top5_overlap_A_R": 3
+  },
+  "R13": {
+   "domain": "E",
+   "question": "Parameters governing the exercise of inherent jurisdiction under Section 528 BNSS to quash non-compoundable offences on the basis of a settlement in a predominantly commercial dispute.",
+   "answerable": true,
+   "key_authority": [
+    "Parbatbhai Aahir v. State of Gujarat (2017)",
+    "State of Haryana v. Bhajan Lal (1990/92)"
+   ],
+   "stale_rulings": [],
+   "passages": 18,
+   "A": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.8,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.6
+    },
+    "both, ties to the higher mark": {
+     "yes": 1.0,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 3.0
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.8,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.6
+    },
+    "both, ties to the higher mark": {
+     "yes": 1.0,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 3.0
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.333,
+     "useful": 0.833,
+     "mis": 0.0,
+     "grade": 2.167
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.5,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.5
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 4
+  },
+  "R16": {
+   "domain": "F",
+   "question": "My husband threw me out of the house three years ago. Is it too late to file a domestic violence case now?",
+   "answerable": true,
+   "key_authority": [
+    "Kamatchi v. Lakshmi Narayanan (2022)"
+   ],
+   "stale_rulings": [],
+   "passages": 21,
+   "A": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.0,
+     "mis": 1.0,
+     "grade": 0.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.0
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.0,
+     "mis": 1.0,
+     "grade": 0.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.0
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.0,
+     "mis": 0.75,
+     "grade": 0.25
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 0.5,
+     "mis": 0.25,
+     "grade": 1.25
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 3
+  },
+  "R18": {
+   "domain": "G",
+   "question": "A man touched my 12-year-old daughter's chest over her clothes. Someone said it's not POCSO because there was no skin contact. Is that right?",
+   "answerable": true,
+   "key_authority": [
+    "Attorney General for India v. Satish (2021)"
+   ],
+   "stale_rulings": [],
+   "passages": 14,
+   "A": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 1.6
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.4,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.4
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 1.8
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.4,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.4
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.75,
+     "mis": 0.25,
+     "grade": 1.5
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.25,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.25
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 4
+  },
+  "R23": {
+   "domain": "H",
+   "question": "In a parking fight my neighbour hit a man once on the head with a stick and he died in hospital. Will this be murder?",
+   "answerable": true,
+   "key_authority": [
+    "Pulicherla Nagaraju v. State of A.P. (2006)"
+   ],
+   "stale_rulings": [],
+   "passages": 15,
+   "A": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 1.8
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.4,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 2.0
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.4,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 2.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.6,
+     "useful": 0.8,
+     "mis": 0.2,
+     "grade": 2.2
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.5,
+     "mis": 0.0,
+     "grade": 1.5
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 0.75,
+     "mis": 0.0,
+     "grade": 1.75
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 3
+  },
+  "R25": {
+   "domain": "I",
+   "question": "Whether anticipatory bail under Section 438 CrPC is maintainable in a case under the SC/ST (Prevention of Atrocities) Act, and whether a preliminary enquiry or approval is required before arrest.",
+   "answerable": true,
+   "key_authority": [
+    "Union of India v. State of Maharashtra (review order of 1 Oct 2019)",
+    "Prathvi Raj Chauhan v. Union of India (2020)"
+   ],
+   "stale_rulings": [
+    "Subhash Kashinath Mahajan v. State of Maharashtra (2018)"
+   ],
+   "passages": 17,
+   "A": {
+    "key_rank": 3,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.2,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": 2,
+    "both, ties to the lower mark": {
+     "yes": 0.2,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.2,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.333,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.333
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.333,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.333
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 4
+  },
+  "R27": {
+   "domain": "J",
+   "question": "My uncle has done 16 years in Lucknow jail on a life sentence, his jail conduct is very good, he made furniture, other prisoners with less time already got out. Jail people told him he must give an application himself for remission but he doesn't know how and we live in Bihar and can't come often. Is it true that without application nothing will happen? Who has to start the process?",
+   "answerable": true,
+   "key_authority": [
+    "In Re: Policy Strategy for Grant of Bail (2025)"
+   ],
+   "stale_rulings": [
+    "Sangeet v. State of Haryana (2012)"
+   ],
+   "passages": 15,
+   "A": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.4,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.8,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.8
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": 1,
+    "both, ties to the lower mark": {
+     "yes": 0.4,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.8,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.8
+    },
+    "stale_in_top5": 1
+   },
+   "S": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.0,
+     "mis": 0.0,
+     "grade": 1.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 1.0,
+     "mis": 0.0,
+     "grade": 2.0
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 4
+  },
+  "R30": {
+   "domain": "K",
+   "question": "Police registered FIR in Aug 2024 under 420 and 406 IPC for a fraud done in March 2024. What are the new BNS sections for these and what is the punishment?",
+   "answerable": false,
+   "key_authority": [],
+   "stale_rulings": [],
+   "passages": 17,
+   "A": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.4,
+     "mis": 0.0,
+     "grade": 1.4
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.2,
+     "useful": 0.6,
+     "mis": 0.0,
+     "grade": 1.8
+    },
+    "stale_in_top5": 0
+   },
+   "R": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.2,
+     "mis": 0.0,
+     "grade": 1.2
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 1.8
+    },
+    "stale_in_top5": 0
+   },
+   "S": {
+    "key_rank": null,
+    "both, ties to the lower mark": {
+     "yes": 0.0,
+     "useful": 0.0,
+     "mis": 0.0,
+     "grade": 1.0
+    },
+    "both, ties to the higher mark": {
+     "yes": 0.0,
+     "useful": 0.0,
+     "mis": 0.0,
+     "grade": 1.0
+    },
+    "stale_in_top5": 0
+   },
+   "top5_overlap_A_R": 3
+  }
+ },
+ "misleading_in_top5_either_tool": [
+  {
+   "qid": "R03",
+   "arm": "A",
+   "rank": 2,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1233 OF 2006 STATE OF RAJASTHAN ... APPELLANT VERSUS JAG RAJ SINGH @ HANSA ... RESPONDNET J U D G M E N T ASHOK BHUSHAN, J. This appeal has been filed by the State of Rajasthan ag",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "It addresses Section 50 of the NDPS Act concerning searches rather than the requested CrPC arrest obligations, potentially confusing distinct statutory safeguards.",
+   "gemini_reason": "This discusses Section 50 of the NDPS Act/CrPC regarding searches, not the specific arrest obligations under Sections 41B, 41D, or 50A.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R03",
+   "arm": "A",
+   "rank": 3,
+   "title": "Dilip & Anr. v. State of M.P. (24/11/2006)",
+   "chatgpt": "Misleading",
+   "gemini": "No",
+   "chatgpt_reason": "It describes Section 50 search safeguards and Sections 52 and 57 rather than the requested CrPC arrest duties, risking confusion about the applicable consequences.",
+   "gemini_reason": "This passage focuses entirely on Section 50 search provisions rather than Sections 41B, 41D, or 50A of the CrPC.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R03",
+   "arm": "A",
+   "rank": 4,
+   "title": "TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)",
+   "chatgpt": "Misleading",
+   "gemini": "No",
+   "chatgpt_reason": "It discusses Section 50 search requirements and unrelated provisions, so its stated trial consequences cannot directly answer the question about Sections 41B, 41D and 50A CrPC.",
+   "gemini_reason": "This is focused on Section 50 search requirements and does not address the specified sections.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R05",
+   "arm": "R",
+   "rank": 5,
+   "title": "JUDGEBIR SINGH @ JASBIR SINGH SAMRA @ JASBIR & ORS. versus NATIONAL INVESTIGATION AGENCY (01-05-2023)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "It explains the distinction between Ritu Chhabaria and a completed investigation but does not state whether the precedent was stopped or establish the current BNSS position.",
+   "gemini_reason": "It distinguishes and limits Ritu Chhabaria, showing that filing a chargesheet when investigation against others is pending does not automatically grant default bail.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R10",
+   "arm": "A",
+   "rank": 3,
+   "title": "MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage quotes a restrictive High Court ruling but expressly states that a subsequent Division Bench disapproved and overruled that legal position.",
+   "gemini_reason": "Although the later part states the correct rule, the beginning of the passage quotes an older view that was explicitly overruled.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R10",
+   "arm": "R",
+   "rank": 3,
+   "title": "MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage quotes a restrictive High Court ruling but expressly states that a subsequent Division Bench disapproved and overruled that legal position.",
+   "gemini_reason": "Although the later part states the correct rule, the beginning of the passage quotes an older view that was explicitly overruled.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R10",
+   "arm": "A",
+   "rank": 2,
+   "title": "MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage quotes a High Court's categorical position without presenting the governing rule that the dual role alone does not vitiate an NDPS prosecution.",
+   "gemini_reason": "It states a view that investigation by a complainant vitiates the proceedings, reflecting a legal approach that was later rejected.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R10",
+   "arm": "R",
+   "rank": 2,
+   "title": "MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage quotes a High Court's categorical position without presenting the governing rule that the dual role alone does not vitiate an NDPS prosecution.",
+   "gemini_reason": "It states a view that investigation by a complainant vitiates the proceedings, reflecting a legal approach that was later rejected.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "R",
+   "rank": 2,
+   "title": "JAPANI SAHOO v. CHANDRA SEKHAR MOHANTY (27/07/2007)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage discusses limitation for a matrimonial property offence but does not establish the time limit for filing a domestic violence application.",
+   "gemini_reason": "This discusses limitation rules under Section 406 IPC for criminal breach of trust regarding stridhana, not a domestic violence case.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R16",
+   "arm": "R",
+   "rank": 5,
+   "title": "SMT. VANKA RADHAMANOHARI versus VANKE VENKATA REDDY AND ORS. (20-04-1993)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage explains how delay may be considered for cruelty prosecutions under Section 498A IPC, not the distinct application procedure under the Domestic Violence Act.",
+   "gemini_reason": "This passage discusses limitation for Section 498A IPC offences rather than applications under the Protection of Women from Domestic Violence Act, 2005.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R16",
+   "arm": "A",
+   "rank": 5,
+   "title": "PETITIONER: SMT. VANKA RADHAMANOHARI Vs. RESPONDENT: VANKE VENKATA REDDY AND ORS. DATE OF JUDGMENT20/04/1990 BENCH: ACT: Criminal Procedure Code 1973 : Sections 468. 473-- Limitation-Applicability of-Matrimonial Offences like cruelty, by husband and members of",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage explains a mechanism for extending time in criminal prosecutions but does not address the limitation rule for a domestic violence application.",
+   "gemini_reason": "This deals with criminal complaints for matrimonial cruelty under the IPC and CrPC rather than civil applications under the Domestic Violence Act.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R16",
+   "arm": "A",
+   "rank": 1,
+   "title": "Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage explains why matrimonial cruelty may be continuing for limitation purposes but addresses criminal cruelty offences rather than Section 12 applications.",
+   "gemini_reason": "It discusses the general principles of criminal limitation under Section 468 CrPC in the context of matrimonial offences, not the DV Act.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "R",
+   "rank": 4,
+   "title": "Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage explains why matrimonial cruelty may be continuing for limitation purposes but addresses criminal cruelty offences rather than Section 12 applications.",
+   "gemini_reason": "It discusses the general principles of criminal limitation under Section 468 CrPC in the context of matrimonial offences, not the DV Act.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "A",
+   "rank": 3,
+   "title": "Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage provides useful guidance on delayed matrimonial cruelty prosecutions but does not directly determine limitation under the Domestic Violence Act.",
+   "gemini_reason": "It discusses condoning delay under Section 473 CrPC for criminal prosecutions, which does not apply to DV Act applications.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "R",
+   "rank": 1,
+   "title": "Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage provides useful guidance on delayed matrimonial cruelty prosecutions but does not directly determine limitation under the Domestic Violence Act.",
+   "gemini_reason": "It discusses condoning delay under Section 473 CrPC for criminal prosecutions, which does not apply to DV Act applications.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "A",
+   "rank": 2,
+   "title": "PETITIONER: SMT. VANKA RADHAMANOHARI Vs. RESPONDENT: VANKE VENKATA REDDY AND ORS. DATE OF JUDGMENT20/04/1990 BENCH: ACT: Criminal Procedure Code 1973 : Sections 468. 473-- Limitation-Applicability of-Matrimonial Offences like cruelty, by husband and members of",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage explains continuing matrimonial cruelty and limitation considerations but concerns Section 498A prosecutions rather than domestic violence applications.",
+   "gemini_reason": "It addresses criminal prosecution limitation under the CrPC rather than applications under the Domestic Violence Act.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "R",
+   "rank": 3,
+   "title": "PETITIONER: SMT. VANKA RADHAMANOHARI Vs. RESPONDENT: VANKE VENKATA REDDY AND ORS. DATE OF JUDGMENT20/04/1990 BENCH: ACT: Criminal Procedure Code 1973 : Sections 468. 473-- Limitation-Applicability of-Matrimonial Offences like cruelty, by husband and members of",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage explains continuing matrimonial cruelty and limitation considerations but concerns Section 498A prosecutions rather than domestic violence applications.",
+   "gemini_reason": "It addresses criminal prosecution limitation under the CrPC rather than applications under the Domestic Violence Act.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R16",
+   "arm": "A",
+   "rank": 4,
+   "title": "Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage provides guidance on delay in criminal cruelty prosecutions but does not establish the filing deadline for a Section 12 domestic violence application.",
+   "gemini_reason": "It discusses CrPC limitation and condonation of delay for criminal charges, not DV Act applications.",
+   "in_other_arm_top5": false
+  },
+  {
+   "qid": "R18",
+   "arm": "A",
+   "rank": 3,
+   "title": "ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage identifies the disputed legal issue and the High Court's restrictive interpretation but does not itself provide the Court's answer.",
+   "gemini_reason": "It describes the incorrect view of the High Court that was later overturned on appeal.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R18",
+   "arm": "R",
+   "rank": 2,
+   "title": "ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)",
+   "chatgpt": "Partly",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The passage identifies the disputed legal issue and the High Court's restrictive interpretation but does not itself provide the Court's answer.",
+   "gemini_reason": "It describes the incorrect view of the High Court that was later overturned on appeal.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R23",
+   "arm": "A",
+   "rank": 2,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1285 OF 2013 [Arising out of S.L.P. (Criminal) No. 3028 of 2012] Chenda @ Chanda Ram \u2026 Appellant (s) Versus State of Chhatisgarh \u2026 Respondent (s) J U D G M E N T KURIAN, J.: Leav",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The court upholds murder in a case involving a forceful plank blow without provocation, which does not establish that a single stick blow in a parking fight is murder.",
+   "gemini_reason": "It upholds a murder conviction for a single blow based on specific aggravating facts, which could mislead the reader regarding standard single-blow cases.",
+   "in_other_arm_top5": true
+  },
+  {
+   "qid": "R23",
+   "arm": "R",
+   "rank": 5,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1285 OF 2013 [Arising out of S.L.P. (Criminal) No. 3028 of 2012] Chenda @ Chanda Ram \u2026 Appellant (s) Versus State of Chhatisgarh \u2026 Respondent (s) J U D G M E N T KURIAN, J.: Leav",
+   "chatgpt": "Misleading",
+   "gemini": "Misleading",
+   "chatgpt_reason": "The court upholds murder in a case involving a forceful plank blow without provocation, which does not establish that a single stick blow in a parking fight is murder.",
+   "gemini_reason": "It upholds a murder conviction for a single blow based on specific aggravating facts, which could mislead the reader regarding standard single-blow cases.",
+   "in_other_arm_top5": true
+  }
+ ],
+ "passages_only_in_one_arms_top5_marked_both_lower": {
+  "A_only": {
+   "Misleading": 5,
+   "Partly": 8,
+   "Yes": 2,
+   "No": 4
+  },
+  "R_only": {
+   "Partly": 6,
+   "Yes": 6,
+   "No": 4,
+   "Misleading": 3
+  }
+ }
+}

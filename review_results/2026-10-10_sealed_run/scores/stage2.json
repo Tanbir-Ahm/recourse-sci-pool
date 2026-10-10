@@ -1,0 +1,255 @@
+{
+ "stage": "key",
+ "half": "sealed",
+ "key_opened_after_marks": true,
+ "answerable": [
+  "R03",
+  "R05",
+  "R07",
+  "R10",
+  "R13",
+  "R16",
+  "R18",
+  "R23",
+  "R25",
+  "R27"
+ ],
+ "gaps_or_controls": [
+  "R30"
+ ],
+ "named_authority": {
+  "A today": {
+   "top5": 6,
+   "top10": 6,
+   "answerable": 10
+  },
+  "R challenger re-ranker": {
+   "top5": 6,
+   "top10": 6,
+   "answerable": 10
+  }
+ },
+ "stale_in_top5": {
+  "A today": 4,
+  "R challenger re-ranker": 3
+ },
+ "rule4_authority_and_stale_not_worse": true,
+ "marks_rules": {
+  "rule1_grade_all_four_settlements": true,
+  "rule2_misleading_and_useful_margins": true,
+  "rule3_two_more_questions_better": true,
+  "rule5_reliability_not_weak": true,
+  "marks_rules_hold": true
+ },
+ "R_replaces_A": true,
+ "chosen_arm": "R challenger re-ranker",
+ "floors_chosen_arm": {
+  "F1": false,
+  "F2": false,
+  "F3": true,
+  "F4": true,
+  "F3_named_authority_top10": 0.6,
+  "values": {
+   "F1_useful_lower": 0.6909090909090909,
+   "F2_mis_lower": 0.18181818181818182,
+   "F2_mis_higher": 0.05454545454545456,
+   "F4_yes_lower": 0.34545454545454546
+  },
+  "clear_or_weak": {
+   "F1": "weak pass",
+   "F2": "weak pass",
+   "F3": "weak pass",
+   "F4": "weak pass"
+  }
+ },
+ "floors_met": false,
+ "safety_net_D3": {
+  "keep_the_net": false,
+  "passages": 33,
+  "mis_lower": 0.13636363636363635,
+  "useful_lower": 0.41818181818181815,
+  "yes_by_every_run": 5
+ },
+ "currency_overall": {
+  "light": "amber",
+  "let_through": "3 of 8"
+ },
+ "domains": {
+  "A": {
+   "relevance": {
+    "both, ties to the lower mark": "green",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "B": {
+   "relevance": {
+    "both, ties to the lower mark": "green",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "green",
+   "currency_let_through": "0 of 2",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "C": {
+   "relevance": {
+    "both, ties to the lower mark": "amber",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "amber",
+   "currency_let_through": "1 of 2",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "D": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "red"
+   },
+   "currency": "amber",
+   "currency_let_through": "1 of 2",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "red"
+    ],
+    "both, ties to the higher mark": [
+     "red"
+    ]
+   },
+   "eligible": false
+  },
+  "E": {
+   "relevance": {
+    "both, ties to the lower mark": "amber",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "F": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "red"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "G": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "red"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "H": {
+   "relevance": {
+    "both, ties to the lower mark": "green",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "I": {
+   "relevance": {
+    "both, ties to the lower mark": "green",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "green",
+   "currency_let_through": "0 of 1",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  },
+  "J": {
+   "relevance": {
+    "both, ties to the lower mark": "green",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "red",
+   "currency_let_through": "1 of 1",
+   "sealed_question_alone_relevance": {
+    "both, ties to the lower mark": [
+     "green"
+    ],
+    "both, ties to the higher mark": [
+     "green"
+    ]
+   },
+   "eligible": false
+  }
+ },
+ "tuning_added": {
+  "tuning_questions_added": 14,
+  "version": "R challenger re-ranker top 5"
+ },
+ "reliability": "ok",
+ "outcome": "A floor is missed: nothing is connected; the sealed half is used up, any new final test needs new questions"
+}
