@@ -1,0 +1,6 @@
+vocabulary size 22580 from 1500 typeset 2019+ judgments
+OOV rate (share of tokens outside the clean-text vocabulary), median over judgments:
+  all:       Vaquill 0.039 | ours 0.0157 | n 448
+  our source crawl : Vaquill 0.0384 | ours 0.016 | n 358 | Vaquill worse in 335 of 358
+  our source bucket: Vaquill 0.0706 | ours 0.012 | n 90 | Vaquill worse in 70 of 90
+  by decade (Vaquill / ours): {1950: (0.0506, 0.022), 1960: (0.05, 0.0149), 1970: (0.0486, 0.0178), 1980: (0.0328, 0.0178), 1990: (0.0268, 0.0177), 2000: (0.02, 0.014), 2010: (0.022, 0.0123), 2020: (0.0794, 0.0086)}

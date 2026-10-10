@@ -1,0 +1,44 @@
+English rows 371247 cases 35596
+
+English cases per year (selected): {2005: 629, 2006: 974, 2007: 1321, 2008: 1121, 2009: 6, 2010: 904, 2011: 845, 2023: 847, 2024: 738, 2025: 437}
+decision_date year == year column: 0.8554893808293067
+latest decision_date: 2025-11-06 | earliest: 1950-03-14
+
+per English case: chunks present vs total_chunks
+  cases: 35596 | complete (distinct indexes == total): 35596 | missing some: 0 | duplicate chunk_index rows: 0 | total_chunks inconsistent: 0
+  chunk-count per case: median 7.0 mean 10.4 max 852 | cases with 1 chunk: 782 | with <=2: 2620
+
+chunk length (char_end-char_start): median 3738 p10 2647 p90 4056 max 4096 min 400
+overlap with previous chunk (chars): median 192 p10 -2 p90 476 | share with overlap>0: 0.7999082380210397 | gaps (negative overlap): 0.20009176197896028
+document length by char_end (median): 23856 | sum chars (indexed text volume incl overlaps): 1302488783
+
+page_start/page_end: null 0 | page_start==0: 0 | median page span 1.0 | chunks spanning >1 page: 0.891258380539102
+first chunk starts on page: {2: 34495, 1: 1097}
+
+section_type, English:
+section_type
+body               155765
+paragraph          120229
+section             84096
+conclusion           7569
+issues               1619
+header                442
+facts                 363
+statutes              305
+arguments             271
+procedure             223
+analysis              203
+ratio_decidendi        95
+obiter_dicta           33
+relief                 17
+judgment               15
+precedents              2
+section_priority values: {}
+
+bench_strength distribution: {0: 14, 1: 31030, 2: 3654, 3: 775, 4: 16, 5: 98, 6: 2, 7: 6, 9: 1}
+len(judges) distribution: {0: 14, 1: 31030, 2: 3654, 3: 775, 4: 16, 5: 98, 6: 2, 7: 6, 9: 1}
+bench_strength == len(judges): 1.0 | bench_strength==1 share: 0.8717271603550961
+examples: [{'case_id': '1950_INSC_1', 'bench_strength': 3, 'judges': array(['HARILAL JEKISUNDAS KANIA', 'M. PATANJALI SASTRI',
+       'SIR SYED FAZL ALI'], dtype=object)}, {'case_id': '1950_INSC_10', 'bench_strength': 1, 'judges': array(['HARILAL JEKISUNDAS KANIA'], dtype=object)}, {'case_id': '1950_INSC_11', 'bench_strength': 1, 'judges': array(['M. PATANJALI SASTRI'], dtype=object)}, {'case_id': '1950_INSC_12', 'bench_strength': 1, 'judges': array(['HARILAL JEKISUNDAS KANIA'], dtype=object)}, {'case_id': '1950_INSC_13', 'bench_strength': 1, 'judges': array(['HARILAL JEKISUNDAS KANIA'], dtype=object)}, {'case_id': '1950_INSC_14', 'bench_strength': 1, 'judges': array(['HARILAL JEKISUNDAS KANIA'], dtype=object)}]
+
+disposition top: {'Appeal(s) allowed': 13427, 'Dismissed': 13329, 'Disposed off': 4455, 'Case Partly allowed': 1699, '': 916, 'Case Allowed': 724, 'Directions issued': 306, 'Matter referred to larger bench': 151}

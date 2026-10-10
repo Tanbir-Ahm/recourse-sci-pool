@@ -1,0 +1,68 @@
+rows 1113313 distinct case_id 37014 distinct chunk_id 1113313
+
+language_code (rows / distinct case_id):
+                 rows  cases
+language_code               
+en             371247  35596
+hin            307509  35431
+pun            306477  36127
+guj             27077   4785
+tam             25264   3661
+mal             18991   3739
+mar             16601   3097
+ben             14825   4973
+tel              8002   2198
+kan              6954   2101
+urd              4309   2213
+ori              3551    662
+asm               957    332
+nep               882    171
+san               551     55
+kok               116     15
+
+court/court_type values: {'Supreme Court of India': 1113313} {'supreme_court': 1113313}
+
+section_type (all rows):
+section_type
+body               554296
+paragraph          454820
+section             92766
+conclusion           7628
+issues               1630
+header                446
+facts                 435
+statutes              306
+arguments             271
+procedure             224
+analysis              205
+precedents            122
+ratio_decidendi        97
+obiter_dicta           34
+relief                 17
+judgment               16
+
+box_aware: {True: 1113009, False: 304}
+
+year dtype/min/max: 1950 2025 | null years: 0
+
+fill rates over ALL rows (non-null and non-empty):
+  source_url                0.0%
+  citation                100.0%
+  case_number               0.0%
+  decision_date           100.0%
+  date_of_registration      0.0%
+  title                   100.0%
+  petitioner               99.9%
+  respondent               99.9%
+  disposition              96.8%
+  bench                     0.0%
+  description               0.0%
+  court_code              100.0%
+  judges                  100.0%
+  bench_strength>0        100.0%
+
+example rows (English first chunk):
+            case_id            chunk_id  total_chunks  char_start  char_end  page_start  page_end section_type             citation case_number decision_date source_url  bench_strength
+45   2016_INSC_1151  2016_INSC_1151_000            18           0      3566           2         2         body  [2016] 8 S.C.R. 984                2016-12-15                          1
+72    2021_INSC_327   2021_INSC_327_000            10           0      3834           2         2         body   [2021] 8 S.C.R. 48                2021-07-09                          1
+115   2025_INSC_155   2025_INSC_155_000            28           0      3964           2         2    paragraph  [2025] 2 S.C.R. 476                2025-02-06                          1

@@ -1,0 +1,99 @@
+{
+ "questions": {
+  "R01": {
+   "pool_chunks": 52,
+   "pool_judgments": 8,
+   "rank_voyage4large": 1,
+   "rank_voyagelaw2": 3
+  },
+  "R02": {
+   "pool_chunks": 105,
+   "pool_judgments": 28,
+   "rank_voyage4large": 3,
+   "rank_voyagelaw2": 1
+  },
+  "R04": {
+   "pool_chunks": 103,
+   "pool_judgments": 12,
+   "rank_voyage4large": 1,
+   "rank_voyagelaw2": 2
+  },
+  "R08": {
+   "pool_chunks": 40,
+   "pool_judgments": 16,
+   "rank_voyage4large": 1,
+   "rank_voyagelaw2": 1
+  },
+  "R09": {
+   "pool_chunks": 40,
+   "pool_judgments": 12,
+   "rank_voyage4large": 7,
+   "rank_voyagelaw2": 8
+  },
+  "R11": {
+   "pool_chunks": 221,
+   "pool_judgments": 28,
+   "rank_voyage4large": 2,
+   "rank_voyagelaw2": 7
+  },
+  "R14": {
+   "pool_chunks": 58,
+   "pool_judgments": 30,
+   "rank_voyage4large": 30,
+   "rank_voyagelaw2": 24
+  },
+  "R17": {
+   "pool_chunks": 55,
+   "pool_judgments": 20,
+   "rank_voyage4large": 7,
+   "rank_voyagelaw2": 8
+  },
+  "R19": {
+   "pool_chunks": 47,
+   "pool_judgments": 19,
+   "rank_voyage4large": 1,
+   "rank_voyagelaw2": 1
+  },
+  "R20": {
+   "pool_chunks": 49,
+   "pool_judgments": 14,
+   "rank_voyage4large": 3,
+   "rank_voyagelaw2": 9
+  },
+  "R22": {
+   "pool_chunks": 149,
+   "pool_judgments": 32,
+   "rank_voyage4large": 30,
+   "rank_voyagelaw2": 22
+  },
+  "R24": {
+   "pool_chunks": 45,
+   "pool_judgments": 18,
+   "rank_voyage4large": 1,
+   "rank_voyagelaw2": 1
+  },
+  "R26": {
+   "pool_chunks": 48,
+   "pool_judgments": 23,
+   "rank_voyage4large": 2,
+   "rank_voyagelaw2": 2
+  }
+ },
+ "n": 13,
+ "voyage_4_large_stored_vectors": {
+  "top1": 5,
+  "top3": 9,
+  "top5": 9,
+  "top10": 11
+ },
+ "voyage_law_2_same_chunk_text": {
+  "top1": 4,
+  "top3": 7,
+  "top5": 7,
+  "top10": 11
+ },
+ "tokens": {
+  "voyage-law-2": 1059040,
+  "voyage-4-large": 652
+ }
+}

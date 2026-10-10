@@ -1,0 +1,142 @@
+{
+ "qdrant_manifest": {
+  "qdrant_version": "1.16.3",
+  "base_url": "https://oss-data-in.vaquill.ai/qdrant",
+  "collections": [
+   {
+    "name": "acts_india",
+    "shard_number": 2,
+    "total_bytes": 11207628288,
+    "shards": [
+     {
+      "shard": 0,
+      "snapshot": "acts_india-shard-0-2026-08-22-13-22-37.snapshot",
+      "bytes": 5930720768,
+      "sha256": "dea38a877e5a52e53d88c3f66e8ea5194590ec9da8efa48d37ea3761cfa2c11e"
+     },
+     {
+      "shard": 1,
+      "snapshot": "acts_india-shard-1-2026-08-22-13-23-59.snapshot",
+      "bytes": 5276907520,
+      "sha256": "d00c67519c3e87b3e2a8a635f5efa1e53cf466ad3416015a7b564c999ae59903"
+     }
+    ]
+   },
+   {
+    "name": "legal_corpus_v1",
+    "shard_number": 4,
+    "total_bytes": 272836016640,
+    "shards": [
+     {
+      "shard": 0,
+      "snapshot": "legal_corpus_v1-shard-0-2026-08-22-12-00-11.snapshot",
+      "bytes": 63219269120,
+      "sha256": "7328aebb9646ab6adcaa70b26b97d1b6a6922edc4369a4480e92baecc3991b13"
+     },
+     {
+      "shard": 1,
+      "snapshot": "legal_corpus_v1-shard-1-2026-08-22-12-16-34.snapshot",
+      "bytes": 82584460288,
+      "sha256": "672da4cb8babd087456eee07d2aa840bdc1a8776c7783b8ff71cabb37e6acb2a"
+     },
+     {
+      "shard": 2,
+      "snapshot": "legal_corpus_v1-shard-2-2026-08-22-12-38-53.snapshot",
+      "bytes": 62825139712,
+      "sha256": "5c2f7b3e399c1bd2dbb714a92695dbef7dd69522e8b0a23de7c52600ce10acf5"
+     },
+     {
+      "shard": 3,
+      "snapshot": "legal_corpus_v1-shard-3-2026-08-22-12-54-27.snapshot",
+      "bytes": 64207147520,
+      "sha256": "894b6bf7eb2ce63c0d06b6847468455be40a418e89b78e0b998f814bd57585ca"
+     }
+    ]
+   },
+   {
+    "name": "legal_corpus_v2",
+    "shard_number": 4,
+    "total_bytes": 179587603968,
+    "shards": [
+     {
+      "shard": 0,
+      "snapshot": "legal_corpus_v2-shard-0-2026-08-22-12-38-53.snapshot",
+      "bytes": 42000218112,
+      "sha256": "b0e8effc6bf604f0f4ede211d3e30b402e4ca75b2d2a826d6c04f530db722ad7"
+     },
+     {
+      "shard": 1,
+      "snapshot": "legal_corpus_v2-shard-1-2026-08-22-12-54-29.snapshot",
+      "bytes": 53861669888,
+      "sha256": "c4e75b32a1b0466f98870a5cbb70d59b16c91d7d171e6bf00e001f5d07a32d24"
+     },
+     {
+      "shard": 2,
+      "snapshot": "legal_corpus_v2-shard-2-2026-08-22-13-06-10.snapshot",
+      "bytes": 41329489408,
+      "sha256": "727b16e8c5ad71c8f1d8df5ab8b19cf872f4dd580e3a1b317a02af8fd9e87a45"
+     },
+     {
+      "shard": 3,
+      "snapshot": "legal_corpus_v2-shard-3-2026-08-22-13-14-06.snapshot",
+      "bytes": 42396226560,
+      "sha256": "17117ff65ab28740f6f5500fb6fe0ac53d4a71e92eafbdc5d20be39ffd044f92"
+     }
+    ]
+   }
+  ]
+ },
+ "supreme_court_points_found": {
+  "sc_shard0": {
+   "slots": 110152,
+   "sc_points": 86650,
+   "by_type_language": {
+    "('high_court', None)": 20191,
+    "undecodable": 3311,
+    "('supreme_court', 'EN')": 86650
+   },
+   "seconds": 63
+  },
+  "sc_shard1": {
+   "slots": 135065,
+   "sc_points": 111640,
+   "by_type_language": {
+    "('high_court', None)": 19228,
+    "undecodable": 4197,
+    "('supreme_court', 'EN')": 111640
+   },
+   "seconds": 75
+  },
+  "sc_shard2": {
+   "slots": 106816,
+   "sc_points": 85532,
+   "by_type_language": {
+    "('high_court', None)": 18022,
+    "undecodable": 3262,
+    "('supreme_court', 'EN')": 85532
+   },
+   "seconds": 63
+  },
+  "sc_shard3": {
+   "slots": 109972,
+   "sc_points": 87041,
+   "by_type_language": {
+    "('high_court', None)": 22879,
+    "undecodable": 52,
+    "('supreme_court', 'EN')": 87041
+   },
+   "seconds": 70
+  },
+  "sc_shard3b": {
+   "slots": 3785,
+   "sc_points": 296,
+   "by_type_language": {
+    "('supreme_court', 'EN')": 296,
+    "('high_court', None)": 3489
+   },
+   "seconds": 9
+  }
+ },
+ "note": "Supreme Court points sit in ONE segment per shard (the last one in shard 0, 1, 2; the second in shard 3, plus 296 in shard 3's first segment). Counts are from decoding every payload of those segments.",
+ "total_supreme_court_points": 371159
+}

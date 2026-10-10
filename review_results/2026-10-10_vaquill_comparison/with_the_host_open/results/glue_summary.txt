@@ -1,0 +1,8 @@
+glued-word rate (share of tokens), median over judgments; judgments with rate >1%
+  all                                              n=448  Vaquill median 0.0010 (>1%: 51)   ours median 0.0010 (>1%: 6)
+  our source crawl (older judis PDFs)              n=358  Vaquill median 0.0009 (>1%: 5)   ours median 0.0011 (>1%: 6)
+  our source bucket (same e-SCR PDFs as Vaquill)   n= 90  Vaquill median 0.0326 (>1%: 46)   ours median 0.0007 (>1%: 0)
+  decision year 2018+                              n= 69  Vaquill median 0.0422 (>1%: 46)   ours median 0.0006 (>1%: 0)
+  decision year before 2018                        n=379  Vaquill median 0.0009 (>1%: 5)   ours median 0.0011 (>1%: 6)
+  by decade, Vaquill median glue: {1950: 0.0012, 1960: 0.0007, 1970: 0.0008, 1980: 0.0007, 1990: 0.0012, 2000: 0.0008, 2010: 0.001, 2020: 0.0399}
+  by decade, share of judgments where Vaquill glue >1%: {1950: 0.05, 1960: 0.0, 1970: 0.0, 1980: 0.0, 1990: 0.0, 2000: 0.04, 2010: 0.23, 2020: 0.59}

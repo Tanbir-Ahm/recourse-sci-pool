@@ -1,0 +1,180 @@
+{
+ "questions": {
+  "R01": {
+   "ours_same_judgments_doc_rank": 1,
+   "vaquill_doc_rank": 1,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 1,
+   "ours_same_judgments_first_rank": 1,
+   "vaquill_first_rank": 1
+  },
+  "R02": {
+   "ours_same_judgments_doc_rank": 3,
+   "vaquill_doc_rank": 3,
+   "key_docs": 3,
+   "key_docs_in_vaquill": 2,
+   "ours_whole_index_first_rank": 1,
+   "ours_same_judgments_first_rank": 3,
+   "vaquill_first_rank": 3
+  },
+  "R04": {
+   "ours_same_judgments_doc_rank": 5,
+   "vaquill_doc_rank": 1,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 8,
+   "ours_same_judgments_first_rank": 8,
+   "vaquill_first_rank": 1
+  },
+  "R08": {
+   "ours_same_judgments_doc_rank": 4,
+   "vaquill_doc_rank": 1,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 7,
+   "ours_same_judgments_first_rank": 7,
+   "vaquill_first_rank": 1
+  },
+  "R09": {
+   "ours_same_judgments_doc_rank": 9,
+   "vaquill_doc_rank": 7,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 31,
+   "ours_same_judgments_first_rank": 18,
+   "vaquill_first_rank": 12
+  },
+  "R11": {
+   "ours_same_judgments_doc_rank": 1,
+   "vaquill_doc_rank": 2,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 1,
+   "ours_same_judgments_first_rank": 1,
+   "vaquill_first_rank": 2
+  },
+  "R12": {
+   "ours_same_judgments_doc_rank": null,
+   "vaquill_doc_rank": null,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 0,
+   "ours_whole_index_first_rank": 23,
+   "ours_same_judgments_first_rank": null,
+   "vaquill_first_rank": null
+  },
+  "R14": {
+   "ours_same_judgments_doc_rank": 626,
+   "vaquill_doc_rank": 405,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": null,
+   "ours_same_judgments_first_rank": 1654,
+   "vaquill_first_rank": 946
+  },
+  "R17": {
+   "ours_same_judgments_doc_rank": 1,
+   "vaquill_doc_rank": 7,
+   "key_docs": 2,
+   "key_docs_in_vaquill": 2,
+   "ours_whole_index_first_rank": 1,
+   "ours_same_judgments_first_rank": 1,
+   "vaquill_first_rank": 9
+  },
+  "R19": {
+   "ours_same_judgments_doc_rank": 1,
+   "vaquill_doc_rank": 1,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 1,
+   "ours_same_judgments_first_rank": 1,
+   "vaquill_first_rank": 1
+  },
+  "R20": {
+   "ours_same_judgments_doc_rank": 9,
+   "vaquill_doc_rank": 3,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 15,
+   "ours_same_judgments_first_rank": 13,
+   "vaquill_first_rank": 3
+  },
+  "R22": {
+   "ours_same_judgments_doc_rank": 34,
+   "vaquill_doc_rank": 87,
+   "key_docs": 3,
+   "key_docs_in_vaquill": 3,
+   "ours_whole_index_first_rank": 58,
+   "ours_same_judgments_first_rank": 49,
+   "vaquill_first_rank": 163
+  },
+  "R24": {
+   "ours_same_judgments_doc_rank": 5,
+   "vaquill_doc_rank": 1,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 7,
+   "ours_same_judgments_first_rank": 7,
+   "vaquill_first_rank": 1
+  },
+  "R26": {
+   "ours_same_judgments_doc_rank": 7,
+   "vaquill_doc_rank": 2,
+   "key_docs": 1,
+   "key_docs_in_vaquill": 1,
+   "ours_whole_index_first_rank": 10,
+   "ours_same_judgments_first_rank": 7,
+   "vaquill_first_rank": 2
+  }
+ },
+ "ours_same_judgments": {
+  "questions": 13,
+  "top1": 4,
+  "top5": 5,
+  "top10": 9,
+  "top20": 11,
+  "top50": 12,
+  "top100": 12
+ },
+ "vaquill": {
+  "questions": 13,
+  "top1": 5,
+  "top5": 9,
+  "top10": 10,
+  "top20": 11,
+  "top50": 11,
+  "top100": 11
+ },
+ "ours_whole_index": {
+  "questions": 13,
+  "top1": 5,
+  "top5": 5,
+  "top10": 9,
+  "top20": 10,
+  "top50": 11,
+  "top100": 12
+ },
+ "ours_same_judgments_by_judgment": {
+  "questions": 13,
+  "top1": 4,
+  "top3": 5,
+  "top5": 8,
+  "top10": 11,
+  "top20": 11
+ },
+ "vaquill_by_judgment": {
+  "questions": 13,
+  "top1": 5,
+  "top3": 9,
+  "top5": 9,
+  "top10": 11,
+  "top20": 11
+ },
+ "tokens": {
+  "voyage-law-2": 878,
+  "voyage-4-large": 751
+ },
+ "vaquill_chunks": 67127,
+ "our_passages_same_judgments": 171383,
+ "judgments_shared": 6992
+}

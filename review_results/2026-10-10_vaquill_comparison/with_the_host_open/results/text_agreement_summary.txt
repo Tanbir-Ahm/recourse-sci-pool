@@ -1,0 +1,13 @@
+matched 33653 | sample 448 | decades {1950: 969, 1960: 3136, 1970: 2906, 1980: 2670, 1990: 6236, 2000: 7041, 2010: 6401, 2020: 4294}
+integrity of reassembly: {'header_found': 4281, 'len_matches_offsets': 4281, 'overlap_chunks': 3029}
+n compared: 448
+words, Vaquill / ours (median ratio): 1.009 | p10 0.922 p90 1.375
+share of OUR 5-grams found in Vaquill (median): 0.788 p10 0.656 p90 0.897
+share of VAQUILL 5-grams found in ours (median): 0.724 p10 0.589 p90 0.847
+longest run of our words missing from Vaquill (median / p90 / max): 49.0 101 2993
+longest run of Vaquill words absent from ours (median / p90 / max): 36.0 180 5148
+our words before first match in Vaquill (median/p90): 18.0 66 | after last match: 1.0 15
+margin-letter lines per judgment: Vaquill median 17.0 | ours median 0.0
+tilde per judgment: Vaquill median 7.0 mean 13.9 | ours median 0.0 mean 0.4
+by decade, median share of our 5-grams found in Vaquill: {1950: 0.771, 1960: 0.761, 1970: 0.748, 1980: 0.799, 1990: 0.782, 2000: 0.841, 2010: 0.858, 2020: 0.703}
+by our source: {'crawl': (358, 0.788), 'bucket': (90, 0.761)}

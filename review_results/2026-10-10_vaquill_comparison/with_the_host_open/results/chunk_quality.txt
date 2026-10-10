@@ -1,0 +1,26 @@
+Vaquill English chunks (random 60,000 of 371247)
+  chunks: 60000
+  mean chars (full): 3623
+  header 'Case:' present: 100.0%
+  [TAG] lines per chunk: 2.23
+  chunks with a lone A-H margin letter line: 77.5%
+  margin-letter lines per 10k chars: 12.51
+  running-header lines per 10k chars: 0.38
+  '~' per 10k chars: 3.47
+  chunks starting with lowercase letter: 6.6%
+  chunks not ending at sentence end: 47.3%
+  paragraph-number lines per chunk: 1.48
+  'Section:' header values (20k sample): {'Section: BODY': 8462, 'Section: PARAGRAPH': 6462, 'Section: SECTION': 4516, 'Section: CONCLUSION': 363, 'Section: ISSUES': 78, 'Section: HEADER': 23, 'Section: FACTS': 20, 'Section: ANALYSIS': 17}
+
+Our passages (random 60,000 of 236155)
+  chunks: 60000
+  mean chars (full): 1089
+  header 'Case:' present: 0.0%
+  [TAG] lines per chunk: 0.0
+  chunks with a lone A-H margin letter line: 0.0%
+  margin-letter lines per 10k chars: 0.0
+  running-header lines per 10k chars: 0.0
+  '~' per 10k chars: 0.08
+  chunks starting with lowercase letter: 0.0%
+  chunks not ending at sentence end: 4.7%
+  paragraph-number lines per chunk: 0.55

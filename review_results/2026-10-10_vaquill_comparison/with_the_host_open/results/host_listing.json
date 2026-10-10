@@ -1,0 +1,362 @@
+{
+ "fetched": "2026-10-10",
+ "url": "https://oss-data-in.vaquill.ai/index.html",
+ "files": [
+  [
+   "in_allahabad_judgments.parquet",
+   "3,023.0 MB"
+  ],
+  [
+   "in_andhra-pradesh_judgments.parquet",
+   "1,055.1 MB"
+  ],
+  [
+   "in_bombay_judgments.parquet",
+   "4,341.3 MB"
+  ],
+  [
+   "in_calcutta_judgments.parquet",
+   "727.4 MB"
+  ],
+  [
+   "in_chhattisgarh_judgments.parquet",
+   "2,565.0 MB"
+  ],
+  [
+   "in_delhi_judgments.parquet",
+   "1,988.1 MB"
+  ],
+  [
+   "in_gauhati_judgments.parquet",
+   "1,143.7 MB"
+  ],
+  [
+   "in_gujarat_judgments.parquet",
+   "2,254.1 MB"
+  ],
+  [
+   "in_himachal-pradesh_judgments.parquet",
+   "1,012.5 MB"
+  ],
+  [
+   "in_jammu-and-kashmir_judgments.parquet",
+   "257.9 MB"
+  ],
+  [
+   "in_jharkhand_judgments.parquet",
+   "1,114.2 MB"
+  ],
+  [
+   "in_karnataka_judgments.parquet",
+   "2,937.1 MB"
+  ],
+  [
+   "in_kerala_judgments.parquet",
+   "4,564.5 MB"
+  ],
+  [
+   "in_madhya-pradesh_judgments.parquet",
+   "1,489.5 MB"
+  ],
+  [
+   "in_madras_judgments.parquet",
+   "4,624.8 MB"
+  ],
+  [
+   "in_manipur_judgments.parquet",
+   "58.5 MB"
+  ],
+  [
+   "in_meghalaya_judgments.parquet",
+   "44.0 MB"
+  ],
+  [
+   "in_orissa_judgments.parquet",
+   "1,031.6 MB"
+  ],
+  [
+   "in_patna_judgments.parquet",
+   "3,681.7 MB"
+  ],
+  [
+   "in_punjab-and-haryana_judgments.parquet",
+   "2,309.2 MB"
+  ],
+  [
+   "in_rajasthan_judgments.parquet",
+   "4,000.5 MB"
+  ],
+  [
+   "in_sikkim_judgments.parquet",
+   "22.9 MB"
+  ],
+  [
+   "in_supreme-court_judgments.parquet",
+   "3,761.6 MB"
+  ],
+  [
+   "in_telangana_judgments.parquet",
+   "4,922.9 MB"
+  ],
+  [
+   "in_tripura_judgments.parquet",
+   "183.2 MB"
+  ],
+  [
+   "in_uttarakhand_judgments.parquet",
+   "444.1 MB"
+  ],
+  [
+   "in_andaman-nicobar_legislation.parquet",
+   "1.6 MB"
+  ],
+  [
+   "in_andhra-pradesh_legislation.parquet",
+   "2.8 MB"
+  ],
+  [
+   "in_arunachal-pradesh_legislation.parquet",
+   "2.2 MB"
+  ],
+  [
+   "in_assam_legislation.parquet",
+   "5.0 MB"
+  ],
+  [
+   "in_bihar_legislation.parquet",
+   "3.8 MB"
+  ],
+  [
+   "in_central_legislation.parquet",
+   "26.3 MB"
+  ],
+  [
+   "in_chandigarh_legislation.parquet",
+   "7.8 MB"
+  ],
+  [
+   "in_chhattisgarh_legislation.parquet",
+   "12.4 MB"
+  ],
+  [
+   "in_dadra-nagar-haveli_legislation.parquet",
+   "5.0 MB"
+  ],
+  [
+   "in_delhi_legislation.parquet",
+   "3.0 MB"
+  ],
+  [
+   "in_goa_legislation.parquet",
+   "4.1 MB"
+  ],
+  [
+   "in_gujarat_legislation.parquet",
+   "4.3 MB"
+  ],
+  [
+   "in_haryana_legislation.parquet",
+   "4.3 MB"
+  ],
+  [
+   "in_himachal-pradesh_legislation.parquet",
+   "2.8 MB"
+  ],
+  [
+   "in_jammu-kashmir_legislation.parquet",
+   "2.2 MB"
+  ],
+  [
+   "in_jharkhand_legislation.parquet",
+   "4.2 MB"
+  ],
+  [
+   "in_karnataka_legislation.parquet",
+   "7.5 MB"
+  ],
+  [
+   "in_kerala_legislation.parquet",
+   "5.9 MB"
+  ],
+  [
+   "in_ladakh_legislation.parquet",
+   "0.7 MB"
+  ],
+  [
+   "in_lakshadweep_legislation.parquet",
+   "0.1 MB"
+  ],
+  [
+   "in_madhya-pradesh_legislation.parquet",
+   "6.9 MB"
+  ],
+  [
+   "in_maharashtra_legislation.parquet",
+   "9.1 MB"
+  ],
+  [
+   "in_manipur_legislation.parquet",
+   "2.0 MB"
+  ],
+  [
+   "in_meghalaya_legislation.parquet",
+   "1.2 MB"
+  ],
+  [
+   "in_mizoram_legislation.parquet",
+   "0.6 MB"
+  ],
+  [
+   "in_nagaland_legislation.parquet",
+   "1.7 MB"
+  ],
+  [
+   "in_odisha_legislation.parquet",
+   "4.1 MB"
+  ],
+  [
+   "in_puducherry_legislation.parquet",
+   "1.8 MB"
+  ],
+  [
+   "in_punjab_legislation.parquet",
+   "6.7 MB"
+  ],
+  [
+   "in_rajasthan_legislation.parquet",
+   "8.0 MB"
+  ],
+  [
+   "in_sikkim_legislation.parquet",
+   "2.2 MB"
+  ],
+  [
+   "in_tamil-nadu_legislation.parquet",
+   "5.3 MB"
+  ],
+  [
+   "in_telangana_legislation.parquet",
+   "4.1 MB"
+  ],
+  [
+   "in_tripura_legislation.parquet",
+   "2.7 MB"
+  ],
+  [
+   "in_uttar-pradesh_legislation.parquet",
+   "4.1 MB"
+  ],
+  [
+   "in_uttarakhand_legislation.parquet",
+   "4.0 MB"
+  ],
+  [
+   "in_west-bengal_legislation.parquet",
+   "11.4 MB"
+  ],
+  [
+   "in_cbic_regulations.parquet",
+   "1.4 MB"
+  ],
+  [
+   "in_cpcb_regulations.parquet",
+   "4.5 MB"
+  ],
+  [
+   "in_dfs_regulations.parquet",
+   "8.2 MB"
+  ],
+  [
+   "in_dgft_regulations.parquet",
+   "1.3 MB"
+  ],
+  [
+   "in_irdai_regulations.parquet",
+   "7.5 MB"
+  ],
+  [
+   "in_law-commission_regulations.parquet",
+   "41.0 MB"
+  ],
+  [
+   "in_mca_regulations.parquet",
+   "18.6 MB"
+  ],
+  [
+   "in_moefcc_regulations.parquet",
+   "39.7 MB"
+  ],
+  [
+   "in_rbi_regulations.parquet",
+   "46.1 MB"
+  ],
+  [
+   "in_sebi_regulations.parquet",
+   "33.1 MB"
+  ],
+  [
+   "in_state-gst_regulations.parquet",
+   "13.9 MB"
+  ],
+  [
+   "in_trai_regulations.parquet",
+   "8.7 MB"
+  ],
+  [
+   "acts_india-shard-0-2026-08-22-13-22-37.snapshot",
+   "5.9 GB"
+  ],
+  [
+   "acts_india-shard-1-2026-08-22-13-23-59.snapshot",
+   "5.3 GB"
+  ],
+  [
+   "legal_corpus_v1-shard-0-2026-08-22-12-00-11.snapshot",
+   "63.2 GB"
+  ],
+  [
+   "legal_corpus_v1-shard-1-2026-08-22-12-16-34.snapshot",
+   "82.6 GB"
+  ],
+  [
+   "legal_corpus_v1-shard-2-2026-08-22-12-38-53.snapshot",
+   "62.8 GB"
+  ],
+  [
+   "legal_corpus_v1-shard-3-2026-08-22-12-54-27.snapshot",
+   "64.2 GB"
+  ],
+  [
+   "legal_corpus_v2-shard-0-2026-08-22-12-38-53.snapshot",
+   "42.0 GB"
+  ],
+  [
+   "legal_corpus_v2-shard-1-2026-08-22-12-54-29.snapshot",
+   "53.9 GB"
+  ],
+  [
+   "legal_corpus_v2-shard-2-2026-08-22-13-06-10.snapshot",
+   "41.3 GB"
+  ],
+  [
+   "legal_corpus_v2-shard-3-2026-08-22-13-14-06.snapshot",
+   "42.4 GB"
+  ],
+  [
+   "README.md",
+   "0.0 MB"
+  ],
+  [
+   "SHA256SUMS.json",
+   "0.0 MB"
+  ],
+  [
+   "open-india-law-v2026.08-parquet.tar",
+   "459.6 MB"
+  ],
+  [
+   "totals.json",
+   "0.0 MB"
+  ]
+ ]
+}

@@ -1,0 +1,19 @@
+# Output of scripts/e1_identify_model.py, run 2026-10-10 (paid: 27,970 tokens, about $0.003). Three stored Supreme Court chunks (1997_INSC_705_019, 1986_INSC_29_008, 2014_INSC_145_001; 2,404 to 2,568 characters)
+# were embedded with each candidate model and compared (cosine) with the vector stored in Vaquill's Qdrant snapshot (legal_corpus_v2, shard 0, last segment).
+voyage-4-large  | full text (header kept)  | input_type=document | cosine with stored vector: [0.9995, 0.9994, 0.9995]
+voyage-4-large  | full text (header kept)  | input_type=None     | cosine with stored vector: [0.9838, 0.9832, 0.9837]
+voyage-4-large  | header removed           | input_type=document | cosine with stored vector: [0.9184, 0.9685, 0.9676]
+voyage-4-large  | header removed           | input_type=None     | cosine with stored vector: [0.9077, 0.9580, 0.9842]
+voyage-4        | full text (header kept)  | input_type=document | cosine with stored vector: [0.9404, 0.9466, 0.9569]
+voyage-4        | full text (header kept)  | input_type=None     | cosine with stored vector: [0.9347, 0.9245, 0.9579]
+voyage-4        | header removed           | input_type=document | cosine with stored vector: [0.8795, 0.9107, 0.9441]
+voyage-4        | header removed           | input_type=None     | cosine with stored vector: [0.8674, 0.8895, 0.9433]
+voyage-4-lite   | full text (header kept)  | input_type=document | cosine with stored vector: [0.9195, 0.9210, 0.9247]
+voyage-4-lite   | full text (header kept)  | input_type=None     | cosine with stored vector: [0.9139, 0.9031, 0.9270]
+voyage-4-lite   | header removed           | input_type=document | cosine with stored vector: [0.8573, 0.8819, 0.9137]
+voyage-4-lite   | header removed           | input_type=None     | cosine with stored vector: [0.8491, 0.8654, 0.9087]
+voyage-law-2    | full text (header kept)  | input_type=document | cosine with stored vector: [0.0322, -0.0143, 0.0350]
+voyage-law-2    | full text (header kept)  | input_type=None     | cosine with stored vector: [0.0365, -0.0246, 0.0356]
+voyage-law-2    | header removed           | input_type=document | cosine with stored vector: [0.0240, -0.0077, 0.0392]
+voyage-law-2    | header removed           | input_type=None     | cosine with stored vector: [0.0294, -0.0178, 0.0463]
+tokens spent: 27970 => about $0.0034 at $0.12 per million
