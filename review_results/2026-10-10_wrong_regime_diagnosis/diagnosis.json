@@ -1,0 +1,843 @@
+{
+ "R16": {
+  "question": "My husband threw me out of the house three years ago. Is it too late to file a domestic violence case now?",
+  "key_docs": [
+   1000253879
+  ],
+  "key_passages_in_index": 44,
+  "meaning_rank_of_best_key_passage": 1,
+  "meaning_rank_of_top3_key_passages": [
+   1,
+   6,
+   40
+  ],
+  "meaning_top10": [
+   {
+    "rank": 1,
+    "title": "1000253879",
+    "text": "However, with regard to the petition filed by the respondent, the High Court took the view that the application ought to have been filed within one year of the incident a"
+   },
+   {
+    "rank": 2,
+    "title": "29259",
+    "text": "44. It is thus clear in that case the complaint itself was filed after the expiry of period of limitation which was held barred under Section 468 of the Code. 45. In Rash"
+   },
+   {
+    "rank": 3,
+    "title": "1000001385",
+    "text": "7. It is true that the object of introducing Section 468 was to put a bar oflimitation on prosecutions and to prevent the parties from filing cases after a long time, as "
+   },
+   {
+    "rank": 4,
+    "title": "1000001559",
+    "text": "7. In this case, the accused appeared in the Court for the first time on November 5, 1977. All the evidence on behalf of the complainantprosecution has admittedly not bee"
+   },
+   {
+    "rank": 5,
+    "title": "7544",
+    "text": "(291-F) 3.In view of Section473 of the Cr.P.C.a court can take cognizance of an offence even after the period prescribed under Section 468. if the court is satisfied on t"
+   },
+   {
+    "rank": 6,
+    "title": "1000253879",
+    "text": "Rule 6(1) sets out that an application under Section 12 of the Act shall be as per Form II appended to the Act. Thus, an application under Section 12 not being a complain"
+   },
+   {
+    "rank": 7,
+    "title": "7544",
+    "text": "The general rule of limitation is based on the Latin maxim: vigilantibus, et non dormientibus, jura subveniunt (the vigilant, and not the sleepy, are assisted by the laws"
+   },
+   {
+    "rank": 8,
+    "title": "40988",
+    "text": "9. The High Court after taking into consideration the stand taken by the parties held as follows: \u201c5. This court would first concern itself with whether acts which now co"
+   },
+   {
+    "rank": 9,
+    "title": "7544",
+    "text": "It is only as a last resort that a wife openly comes before a Court to unfold and relate the day to day torture and cruelty faced by her, inside the house, which many of "
+   },
+   {
+    "rank": 10,
+    "title": "1000256796",
+    "text": "It was averred that the cognizance on the Complaint was only taken on 27.07.2004, which is beyond the limitation period as provided under section 468 of the Code of Crimi"
+   }
+  ],
+  "stages": {
+   "keyword_list_(top50)": 3,
+   "section_list": null,
+   "section_numbers_read_from_the_question": [],
+   "meaning_list_(top100)": 1,
+   "fused_order_position": 4,
+   "in_the_60_candidates": true
+  },
+  "keyword_terms_used": [
+   "husband",
+   "threw",
+   "house",
+   "three",
+   "years",
+   "late",
+   "file",
+   "domestic",
+   "violence",
+   "case"
+  ],
+  "candidates_60": {
+   "Domestic Violence Act": 40,
+   "498A / limitation CrPC": 20
+  },
+  "whole_index": {
+   "passages_mentioning_domestic_violence": 284,
+   "judgments_mentioning_it": 75,
+   "passages_mentioning_498A_or_limitation": 5269
+  },
+  "key_passages_best3": [
+   {
+    "meaning_rank": 1,
+    "text": "However, with regard to the petition filed by the respondent, the High Court took the view that the application ought to have been filed within one year of the incident and since the appellant had left the matrimonial home in the year 2008, the application was abuse of process of the court. The relevant observations made were :- \u201c5. The only point for consideration is limitation. In this regard, it is relevant to rely upon the judgment in the case of Inderjit Singh Grewal vs. State of Punjab & Anr., reported in 2012 Crl.L.J. 309. Sections 28 and 32 of the Protection of Women from Domestic Viol"
+   },
+   {
+    "meaning_rank": 6,
+    "text": "Rule 6(1) sets out that an application under Section 12 of the Act shall be as per Form II appended to the Act. Thus, an application under Section 12 not being a complaint as defined under Section 2(d) of the Cr.P.C, the procedure for cognizance set out under Section 190(1)(a) of the Code followed by the procedure set out in Chapter XV of the Code for taking cognizance will have no application to a proceeding under the D.V. Act. To reiterate, Section 190(1)(a) of the Code and the procedure set out in the subsequent Chapter XV of the Code will apply only in cases of complaints, under Section 2("
+   },
+   {
+    "meaning_rank": 40,
+    "text": "For setting aside such an order, even if void, the party has to approach the appropriate forum. [Vide State of Kerala v. M.K. Kunhikannan Nambiar Manjeri Manikoth23 and Tayabbhai M. Bagasarwalla v. Hind Rubber Industries (P) Ltd.24]\u201d The plea based on the issue of limitation was then considered in paragraphs 32 and 33 and it was observed: - \u201c32. Submissions made by Shri Ranjit Kumar on the issue of limitation, in view of the provisions of Section 468 CrPC, that the complaint could be filed only within a period of one year from the date of the incident seem to be preponderous in view of the pro"
+   }
+  ],
+  "rerank-2": {
+   "top5": [
+    {
+     "title": "30017",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "7544",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "30017",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "30017",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "7544",
+     "regime_a": false,
+     "regime_b": true
+    }
+   ],
+   "key_position_after_weights": 11,
+   "key_position_raw_score": 13,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 1,
+    "best_key_position_in_61_to_63": 11,
+    "key_position_raw_score": 13
+   }
+  },
+  "rerank-3-lite": {
+   "top5": [
+    {
+     "title": "30017",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "7544",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "29259",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "30017",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "1000001385",
+     "regime_a": false,
+     "regime_b": true
+    }
+   ],
+   "key_position_after_weights": 11,
+   "key_position_raw_score": 9,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 1,
+    "best_key_position_in_61_to_63": 11,
+    "key_position_raw_score": 9
+   }
+  }
+ },
+ "R03": {
+  "question": "What are the mandatory obligations of the arresting officer under Sections 41B, 41D and 50A CrPC, and what are the consequences of non-compliance in light of the D.K. Basu requirements?",
+  "key_docs": [
+   14580
+  ],
+  "key_passages_in_index": 49,
+  "meaning_rank_of_best_key_passage": 137,
+  "meaning_rank_of_top3_key_passages": [
+   137,
+   197,
+   208
+  ],
+  "meaning_top10": [
+   {
+    "rank": 1,
+    "title": "1000251049",
+    "text": "28. It was in DK Basu v State of West Bengal,21 that this Court laid down requirements to be followed in all cases of arrest, which included the following: \u201c(2) That the "
+   },
+   {
+    "rank": 2,
+    "title": "1000252702",
+    "text": "77. At this juncture, it is necessary to notice the judgment of this Court in D.K. Basu v. State of West Bengal11. In the said case, this Court issued various directions "
+   },
+   {
+    "rank": 3,
+    "title": "29412",
+    "text": "(10) The arrestee may be permitted to meet his lawyer during interrogation, though not throughout the interrogation. (11) A police control room should be provided at all "
+   },
+   {
+    "rank": 4,
+    "title": "1000250634",
+    "text": "37. In D.K. Basu versus State of W.B.44, this Court, to check abuse of arrest and drastic police power, directed as follows: \u201c35. We, therefore, consider it appropriate t"
+   },
+   {
+    "rank": 5,
+    "title": "41970",
+    "text": "8. In D.K. Basu1, this Court was concerned with custodial violence and deaths in police lockups. While framing the requirements to be followed in all cases of arrest or d"
+   },
+   {
+    "rank": 6,
+    "title": "1000250996",
+    "text": "Law obliges such an accused to appear before the police officer and it further mandates that if such an accused complies with the terms of notice he shall not be arrested"
+   },
+   {
+    "rank": 7,
+    "title": "29412",
+    "text": "An arrested person being held in custody is entitled, if he so requests to have one friend, relative or other person who is known to him or likely to take an interest in "
+   },
+   {
+    "rank": 8,
+    "title": "1000250996",
+    "text": "28. In D.K. Basu v. State of W.B.7, after referring to the authorities in Joginder Kumar (supra), Nilabati Behera v. State of Orissa and others8 and State of M.P. v. Shya"
+   },
+   {
+    "rank": 9,
+    "title": "1000254065",
+    "text": "Section 41A deals with the procedure for appearance before the police officer who is required to issue a notice to the person against whom a reasonable complaint has been"
+   },
+   {
+    "rank": 10,
+    "title": "43679",
+    "text": "18. In D.K. Basu v. State of W.B.3, after referring to the authorities in Joginder Kumar (supra), Nilabati Behera v. State of Orissa4 and State of M.P. v. Shyamsunder Tri"
+   }
+  ],
+  "stages": {
+   "keyword_list_(top50)": null,
+   "section_list": null,
+   "section_numbers_read_from_the_question": [
+    "41B",
+    "41D",
+    "50A"
+   ],
+   "meaning_list_(top100)": null,
+   "fused_order_position": null,
+   "in_the_60_candidates": false
+  },
+  "keyword_terms_used": [
+   "mandatory",
+   "obligations",
+   "arresting",
+   "officer",
+   "sections",
+   "crpc",
+   "consequences",
+   "compliance",
+   "light",
+   "basu",
+   "requirements"
+  ],
+  "candidates_60": {
+   "CrPC arrest duties (41B, 41D, 50A)": 31,
+   "NDPS section 50 searches": 11
+  },
+  "rerank-2": {
+   "top5": [
+    {
+     "title": "1000256420",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "43714",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "28314",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "1000252784",
+     "regime_a": false,
+     "regime_b": true
+    },
+    {
+     "title": "1000252702",
+     "regime_a": true,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": null,
+   "key_position_raw_score": null,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 3,
+    "best_key_position_in_61_to_63": 46,
+    "key_position_raw_score": 48
+   }
+  },
+  "rerank-3-lite": {
+   "top5": [
+    {
+     "title": "1000256420",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000256420",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000252702",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "43750",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000251049",
+     "regime_a": true,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": null,
+   "key_position_raw_score": null,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 3,
+    "best_key_position_in_61_to_63": 47,
+    "key_position_raw_score": 46
+   }
+  }
+ },
+ "R10": {
+  "question": "Whether a prosecution under the NDPS Act stands vitiated merely because the informant/complainant police officer also conducted the investigation.",
+  "key_docs": [
+   1000252711
+  ],
+  "key_passages_in_index": 86,
+  "meaning_rank_of_best_key_passage": 1,
+  "meaning_rank_of_top3_key_passages": [
+   1,
+   2,
+   4
+  ],
+  "meaning_top10": [
+   {
+    "rank": 1,
+    "title": "1000252711",
+    "text": "11. Therefore, as such, there is no reason to doubt the credibility of the informant and doubt the entire case of the prosecution solely on the ground that the informant "
+   },
+   {
+    "rank": 2,
+    "title": "1000252711",
+    "text": "Further, the accused will also be deprived of his valuable right of contradicting the previous information recorded under section 154 or 155 Cr.P.C. and previous statemen"
+   },
+   {
+    "rank": 3,
+    "title": "1000250931",
+    "text": "21. A similar view has been taken in Shri Fayas Ali vs. State of Mizoram Crl. Appeal No. 26 of 2013 (J) dated 19.09.2013, relating to prosecution under the NDPS Act, by t"
+   },
+   {
+    "rank": 4,
+    "title": "1000252711",
+    "text": "Similar powers are with the State Government. The only change in Sections 42 and 53 is that in Section 42 the word \u201cpolice\u201d is there, however in Section 53 the word \u201cpoli"
+   },
+   {
+    "rank": 5,
+    "title": "1000250931",
+    "text": "15. The discussion in the present case may not be understood as confined to the requirements of a fair investigation under the NDPS Act only carrying a reverse burden of "
+   },
+   {
+    "rank": 6,
+    "title": "1000250931",
+    "text": "5. We have considered the submissions on behalf of the parties. The primary question for our consideration in the present appeal is, whether in a criminal prosecution, it"
+   },
+   {
+    "rank": 7,
+    "title": "1000252711",
+    "text": "Even in the said decision, this Court did not consider the aspect of prejudice to be established and proved by the accused in case the investigation has been carried out "
+   },
+   {
+    "rank": 8,
+    "title": "1000250931",
+    "text": "23. A Single Judge of the Kerala High Court in Naushad vs. State of Kerala, 2000 (1) KLT 785, relating to the NDPS Act held as follows: \u201c\u2026In a case of this nature, when t"
+   },
+   {
+    "rank": 9,
+    "title": "1000252711",
+    "text": "13. Viewed from any angle, we see no illegality in the process of investigation set in motion by the Inspector of Police (appellant) and his action in submitting the fina"
+   },
+   {
+    "rank": 10,
+    "title": "1000250931",
+    "text": "17. Hardip Singh vs. State of Punjab, 2008 (8) SCC 557 concerned a prosecution under the NDPS Act. The contention was that the Inspector, PW-5 being the complainant himse"
+   }
+  ],
+  "stages": {
+   "keyword_list_(top50)": 2,
+   "section_list": null,
+   "section_numbers_read_from_the_question": [],
+   "meaning_list_(top100)": 1,
+   "fused_order_position": 1,
+   "in_the_60_candidates": true
+  },
+  "keyword_terms_used": [
+   "prosecution",
+   "ndps",
+   "stands",
+   "vitiated",
+   "merely",
+   "because",
+   "informant",
+   "complainant",
+   "police",
+   "officer",
+   "conducted",
+   "investigation"
+  ],
+  "candidates_60": {
+   "NDPS dual role (Mukesh Singh)": 17,
+   "Mohan Lal (overruled)": 5
+  },
+  "rerank-2": {
+   "top5": [
+    {
+     "title": "1000252711",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000250931",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000250931",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000250931",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000250931",
+     "regime_a": true,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": 1,
+   "key_position_raw_score": 1
+  },
+  "rerank-3-lite": {
+   "top5": [
+    {
+     "title": "1000252711",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000250931",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000250931",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000252711",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000252784",
+     "regime_a": true,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": 1,
+   "key_position_raw_score": 1
+  }
+ },
+ "R13": {
+  "question": "Parameters governing the exercise of inherent jurisdiction under Section 528 BNSS to quash non-compoundable offences on the basis of a settlement in a predominantly commercial dispute.",
+  "key_docs": [
+   7332,
+   1000250282
+  ],
+  "key_passages_in_index": 43,
+  "meaning_rank_of_best_key_passage": 13,
+  "meaning_rank_of_top3_key_passages": [
+   13,
+   59,
+   81
+  ],
+  "meaning_top10": [
+   {
+    "rank": 1,
+    "title": "41348",
+    "text": "In respect of serious offences like murder, rape, dacoity, etc. or other offences of mental depravity under IPC or offences of moral turpitude under special statutes, lik"
+   },
+   {
+    "rank": 2,
+    "title": "1000256082",
+    "text": "57. Quashing of offence or criminal proceedings on the ground of settlement between an offender and victim is not the same thing as compounding of offence. They are diffe"
+   },
+   {
+    "rank": 3,
+    "title": "39579",
+    "text": "Quashing of offence or criminal proceedings on the ground of settlement between an offender and victim is not the same thing as compounding of offence. They are different"
+   },
+   {
+    "rank": 4,
+    "title": "41891",
+    "text": "Joshi, Nikhil Merchant, Manoj Sharma and Shiji this Court has compounded the noncompoundable offences indirectly ? We do not think so. There does exist the distinction be"
+   },
+   {
+    "rank": 5,
+    "title": "41891",
+    "text": "They are different and not interchangeable. Strictly speaking, the power of compounding of offences given to a court under Section 320 is materially different from the qu"
+   },
+   {
+    "rank": 6,
+    "title": "39579",
+    "text": "Singh, learned counsel for the respondent has rightly expressed his concern that the decision in B.S. Joshi case should not be understood to have meant that Judges can qu"
+   },
+   {
+    "rank": 7,
+    "title": "1000251468",
+    "text": "(2) The invocation of the jurisdiction of the High Court to quash a first information report or a criminal proceeding on the ground that a settlement has been arrived at "
+   },
+   {
+    "rank": 8,
+    "title": "1000251427",
+    "text": "(2) The invocation of the jurisdiction of the High Court to quash a first information report or a criminal proceeding on the ground that a settlement has been arrived at "
+   },
+   {
+    "rank": 9,
+    "title": "1000253364",
+    "text": "The power to quash under Section 482 is attracted even if the offence is non-compoundable. 16.3. In forming an opinion whether a criminal proceeding or complaint should b"
+   },
+   {
+    "rank": 10,
+    "title": "39795",
+    "text": "57. The position that emerges from the above discussion can be summarised thus: the power of the High Court in quashing a criminal proceeding or FIR or complaint in exerc"
+   }
+  ],
+  "stages": {
+   "keyword_list_(top50)": 5,
+   "section_list": null,
+   "section_numbers_read_from_the_question": [
+    "528"
+   ],
+   "meaning_list_(top100)": 13,
+   "fused_order_position": 5,
+   "in_the_60_candidates": true
+  },
+  "keyword_terms_used": [
+   "parameters",
+   "governing",
+   "exercise",
+   "inherent",
+   "jurisdiction",
+   "section",
+   "bnss",
+   "quash",
+   "compoundable",
+   "offences",
+   "basis",
+   "settlement"
+  ],
+  "candidates_60": {
+   "settlement quashing, s.482/528": 46,
+   "-": 0
+  },
+  "rerank-2": {
+   "top5": [
+    {
+     "title": "41348",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "41903",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000256082",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000256014",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000254159",
+     "regime_a": false,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": 20,
+   "key_position_raw_score": 23,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 2,
+    "best_key_position_in_61_to_63": 9,
+    "key_position_raw_score": 13
+   }
+  },
+  "rerank-3-lite": {
+   "top5": [
+    {
+     "title": "41348",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000254159",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000256082",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000256014",
+     "regime_a": false,
+     "regime_b": false
+    },
+    {
+     "title": "1000253220",
+     "regime_a": false,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": 21,
+   "key_position_raw_score": 27,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 2,
+    "best_key_position_in_61_to_63": 11,
+    "key_position_raw_score": 15
+   }
+  }
+ },
+ "R23": {
+  "question": "In a parking fight my neighbour hit a man once on the head with a stick and he died in hospital. Will this be murder?",
+  "key_docs": [
+   27950
+  ],
+  "key_passages_in_index": 28,
+  "meaning_rank_of_best_key_passage": 46,
+  "meaning_rank_of_top3_key_passages": [
+   46,
+   112,
+   248
+  ],
+  "meaning_top10": [
+   {
+    "rank": 1,
+    "title": "26654",
+    "text": "The deceased sustained injuries and there was profuse bleeding. PW-1, PW-2 and Murgesan immediately went near him and when the accused saw them coming near ran towards we"
+   },
+   {
+    "rank": 2,
+    "title": "40704",
+    "text": "There was only a single blow with the stick, the same happened to be on the head, it was done on the spur of the moment, it was without any premeditation and that it was "
+   },
+   {
+    "rank": 3,
+    "title": "792",
+    "text": "William was on terms of intimacy with Beryl P.W. 13. She was the sister of Donald Smythe. The accused was practically living with her in her house. The brother did not li"
+   },
+   {
+    "rank": 4,
+    "title": "18507",
+    "text": "She had filed a civil suit laying challenge to the validity of the deed of settlement wherein the accused and the deceased were impleaded as parties. This civil litigatio"
+   },
+   {
+    "rank": 5,
+    "title": "31366",
+    "text": "2. Hardev Singh was a resident of Derabassi. He was a teacher. He, along with Karam Chand, came to village Budhanpur to meet his father on 24.4.1988. There was a vacant l"
+   },
+   {
+    "rank": 6,
+    "title": "31366",
+    "text": "22. Keeping in view the aforementioned legal principles in mind, we may notice the facts of the present case. In the instant case, the reverse side of a kassi was used by"
+   },
+   {
+    "rank": 7,
+    "title": "8759",
+    "text": "On the date of incident the deceased had gone to the house of PW 2 for recital of Bhagbat. Some other villagers including the respondent was also present there. At about "
+   },
+   {
+    "rank": 8,
+    "title": "31366",
+    "text": "2. Contusion 2\u201d x 1\u201d present over the upper right eye bluish in colouration. 3. Complaints of pain over right shoulder. Tenderness positive XXX XXX XXX 1) Black eye right"
+   },
+   {
+    "rank": 9,
+    "title": "32023",
+    "text": "2. Background facts in a nutshell are as follows: The house of Abdul Jabbar Qureshi (hereinafter referred to as the \u2018deceased\u2019) was adjacent to the house of the appellant"
+   },
+   {
+    "rank": 10,
+    "title": "29876",
+    "text": "He came out with the electric tube and piece of bamboo from the godown. Meanwhile, he found that the quarrel has shifted before the Audi Pan Shop. PW1 complainant was abo"
+   }
+  ],
+  "stages": {
+   "keyword_list_(top50)": null,
+   "section_list": null,
+   "section_numbers_read_from_the_question": [],
+   "meaning_list_(top100)": 46,
+   "fused_order_position": 88,
+   "in_the_60_candidates": false
+  },
+  "keyword_terms_used": [
+   "parking",
+   "fight",
+   "neighbour",
+   "once",
+   "head",
+   "stick",
+   "died",
+   "hospital",
+   "murder"
+  ],
+  "candidates_60": {
+   "single blow, s.304 / exception 4": 13,
+   "-": 0
+  },
+  "rerank-2": {
+   "top5": [
+    {
+     "title": "17615",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "40704",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "40704",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "40704",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "39679",
+     "regime_a": true,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": null,
+   "key_position_raw_score": null,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 3,
+    "best_key_position_in_61_to_63": 2,
+    "key_position_raw_score": 5
+   }
+  },
+  "rerank-3-lite": {
+   "top5": [
+    {
+     "title": "17615",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "1000255126",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "40704",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "792",
+     "regime_a": true,
+     "regime_b": false
+    },
+    {
+     "title": "40704",
+     "regime_a": true,
+     "regime_b": false
+    }
+   ],
+   "key_position_after_weights": null,
+   "key_position_raw_score": null,
+   "ORACLE_if_retrieval_had_brought_the_key_passages": {
+    "added": 3,
+    "best_key_position_in_61_to_63": 3,
+    "key_position_raw_score": 4
+   }
+  }
+ },
+ "_spend": {
+  "rerank_tokens": 359730,
+  "rerank_calls": 18,
+  "embed_tokens": 186,
+  "embed_calls": 5,
+  "cap_rerank_tokens": 1000000,
+  "dollars_estimate": 0.018,
+  "prices_per_million": {
+   "rerank-2": 0.05,
+   "voyage-law-2": 0.12
+  },
+  "rerank_tokens_by_model": {
+   "rerank-2": 179865,
+   "rerank-3-lite": 179865
+  }
+ }
+}
