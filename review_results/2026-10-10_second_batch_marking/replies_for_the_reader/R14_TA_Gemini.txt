@@ -1,0 +1,57 @@
+{
+"question_id": "R14",
+"marks": [
+{
+"no": 16,
+"mark": "No",
+"evidence": "It appears that the firm ‘M/s. Gandhi Dalal and Shah’ which was constituted with effect from 1.02.2000 was cancelled from the very inception",
+"reason": "It discusses partnership cancellation disputes without addressing whether a cheating FIR arising from business losses can be cancelled.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "No",
+"evidence": "By virtue of this agreement the appellant’s share in the firm’s business was to be of 50 nP.",
+"reason": "It outlines partnership agreement terms and facts of a specific case unrelated to cancelling an FIR filed over business losses.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "No",
+"evidence": "This decision also arose under the Income Tax Act.",
+"reason": "It discusses income tax and FERA provisions and quashing under section 482 in an unrelated context.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "No",
+"evidence": "It is clearly seen from the deposition of the petitioner and the complaint that the respondents have arranged for about 17 million American Dollars",
+"reason": "It addresses foreign investments and corporate shareholder disputes rather than the cancellation of an FIR for business financial loss.",
+"confidence": "high"
+},
+{
+"no": 20,
+"mark": "No",
+"evidence": "respondents were c.onjointly running a Financial Establishment in the naine of Global Capital Trading Services atMadurai",
+"reason": "It deals with a financial establishment accused of offering high returns and absconding, not a business partnership loss.",
+"confidence": "high"
+},
+{
+"no": 21,
+"mark": "Yes",
+"evidence": "The transaction between the parties was purely civil in nature which does not attract criminal law in any way.",
+"reason": "It directly holds that a business transaction failure without initial fraudulent intent is civil in nature, supporting FIR cancellation.",
+"confidence": "high"
+},
+{
+"no": 22,
+"mark": "No",
+"evidence": "Since the petition filed by the appellant was rejected by the High Court on the basis of the statement made by the learned counsel for the State",
+"reason": "It focuses on procedural aspects of a High Court petition regarding a cancellation statement, not the substantive grounds for cancelling an FIR.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 21,
+"caveats": ""
+}

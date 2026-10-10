@@ -1,0 +1,78 @@
+{
+"question_id": "R15",
+"marks": [
+{
+"no": 16,
+"mark": "No",
+"evidence": "At this stage, we take note of the fact that BDA has filed SLP (C) Nos.10134-10135/2025 against the Order dated 03.02.2025",
+"reason": "This passage deals with BDA land/property matters and has no relation to matrimonial or BNS cases.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "The Explanation to Section 498A of the IPC, is now by way of a separate provision, i.e., Section 86 of the Bhartiya Nyaya Sanhita, 2023.",
+"reason": "It relates section 86 BNS to the former section 498A IPC, but does not address arrest rules or family welfare committees.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Misleading",
+"evidence": "Every district one or more.Family Welfare Committees be constituted by the District Legal Services Authorities",
+"reason": "It mentions the Family Welfare Committee guideline, but this direction from Rajesh Sharma was later modified/withdrawn by subsequent benches, making it misleading today.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "Misleading",
+"evidence": "Arrest of a relative .other than husband could only be after pennission from the concerned Magistrate.",
+"reason": "It records submissions and suggestions regarding preliminary inquiries and arrest restrictions that were later altered or superseded.",
+"confidence": "medium"
+},
+{
+"no": 20,
+"mark": "Partly",
+"evidence": "In a quite number of cases, bed-ridden grand-fathers and grand-mothers of the husbands, their sisters living abroad for decades are arrested.",
+"reason": "It discusses the misuse of Section 498A and mentions Arnesh Kumar guidelines against automatic arrests, but does not give the current legal status of the 2-month rule.",
+"confidence": "high"
+},
+{
+"no": 21,
+"mark": "No",
+"evidence": "a complaint bearing DV Complaint No. 3186 of 2025, was filed, before the Chief Metropolitan Magistrate",
+"reason": "It discusses procedural facts of a specific unrelated domestic violence case between private parties.",
+"confidence": "high"
+},
+{
+"no": 22,
+"mark": "No",
+"evidence": "Municipal Service for the State constituted under sub-section (i) of Section 86 of the Act.",
+"reason": "This passage concerns state municipal service rules under a municipal act, entirely irrelevant to criminal law or BNS.",
+"confidence": "high"
+},
+{
+"no": 23,
+"mark": "No",
+"evidence": "The evidence of PW-5, Mohinder Singh, the father-in-law of the sister of the appellant does not inspire confidence.",
+"reason": "It evaluates witness testimony in an old criminal appeal regarding missing children and evidence appreciation.",
+"confidence": "high"
+},
+{
+"no": 24,
+"mark": "No",
+"evidence": "Offence requiring a particular intent or knowledge committed by one who is intoxicated",
+"reason": "It discusses criminal intoxication under Section 86 of the IPC, which is unrelated to matrimonial cruelty under the BNS.",
+"confidence": "high"
+},
+{
+"no": 25,
+"mark": "No",
+"evidence": "Section 86 of the M.P. Municipalities Act, 1961 provides for constitution of State Municipal Services.",
+"reason": "It deals with provisions of the M.P. Municipalities Act, completely unrelated to the user's criminal law query.",
+"confidence": "high"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": "The Family Welfare Committee direction originally created in Rajesh Sharma (2017) was subsequently modified and largely recalled by the Supreme Court in Social Action Forum for Manav Adhikar v. Union of India (2018); hence, those committees are no longer active or mandatory in the manner originally outlined."
+}

@@ -1,0 +1,50 @@
+{
+"question_id": "R08",
+"marks": [
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "to insert a new section 143A in the said Act to provide that the Court trying an offence under section 138, may order the drawer of the cheque to pay interim compensation",
+"reason": "It mentions the provision for interim compensation under Section 143A but does not discuss whether it is mandatory or discretionary.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "The provisions contained in Section 143A have two dimensions. First, the Section creates a liability in that an accused can be ordered to pay over upto 20% of the cheque amount",
+"reason": "It explains the nature and effect of Section 143A but does not directly address whether ordering 20% compensation on the first date is compulsory.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "this Court is of the view that it is time to ‘revisit and tweak the guidelines’. Accordingly, the aforesaid guidelines of compounding are modified as under",
+"reason": "This passage deals with guidelines for compounding cheque bounce cases rather than interim compensation under Section 143A.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "Before the Court of the learned Magistrate, the respondent moved an application under Section 143A of the N.I. Act seeking a direction against the appellant/accused to pay 20 per cent of the cheque amount",
+"reason": "It narrates facts where interim compensation was ordered by a magistrate, but does not provide the legal rule on whether it is compulsory.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Yes",
+"evidence": "Hence, we have no manner of doubt that the word “may” used in Section 143A, cannot be construed or interpreted as “shall”. Therefore, the power under sub-section (1) of Section 143A is discretionary.",
+"reason": "It directly holds that Section 143A is discretionary and not mandatory, meaning it is not compulsory.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "143A. Power to direct interim compensation. – (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), the Court trying an offence under section 138 may order the drawer of the cheque to pay interim compensation",
+"reason": "It reproduces the text of Section 143A showing the use of the word 'may', but does not explicitly analyze whether the order is compulsory.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 17,
+"caveats": ""
+}

@@ -1,0 +1,661 @@
+{
+ "second_batch_marks_per_question": {
+  "R01": {
+   "ChatGPT": {
+    "No": 2,
+    "Yes": 3,
+    "Partly": 3
+   },
+   "Gemini": {
+    "No": 2,
+    "Yes": 3,
+    "Partly": 3
+   }
+  },
+  "R02": {
+   "ChatGPT": {
+    "Partly": 3,
+    "Yes": 1
+   },
+   "Gemini": {
+    "Misleading": 1,
+    "Partly": 2,
+    "Yes": 1
+   }
+  },
+  "R04": {
+   "ChatGPT": {
+    "Partly": 5,
+    "Yes": 2,
+    "Misleading": 2
+   },
+   "Gemini": {
+    "Yes": 4,
+    "Partly": 3,
+    "No": 1,
+    "Misleading": 1
+   }
+  },
+  "R06": {
+   "ChatGPT": {
+    "Partly": 7,
+    "No": 1,
+    "Misleading": 1
+   },
+   "Gemini": {
+    "No": 8,
+    "Partly": 1
+   }
+  },
+  "R08": {
+   "ChatGPT": {
+    "Partly": 3,
+    "No": 2,
+    "Yes": 1
+   },
+   "Gemini": {
+    "Partly": 4,
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "R09": {
+   "ChatGPT": {
+    "Yes": 2,
+    "Partly": 5,
+    "Misleading": 1,
+    "No": 1
+   },
+   "Gemini": {
+    "Yes": 2,
+    "Partly": 3,
+    "Misleading": 1,
+    "No": 3
+   }
+  },
+  "R11": {
+   "ChatGPT": {
+    "Partly": 6,
+    "No": 3,
+    "Yes": 1
+   },
+   "Gemini": {
+    "Partly": 5,
+    "No": 4,
+    "Yes": 1
+   }
+  },
+  "R12": {
+   "ChatGPT": {
+    "Partly": 3,
+    "Yes": 3,
+    "No": 1,
+    "Misleading": 1
+   },
+   "Gemini": {
+    "Partly": 6,
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "R14": {
+   "ChatGPT": {
+    "Partly": 4,
+    "No": 2,
+    "Yes": 1
+   },
+   "Gemini": {
+    "No": 6,
+    "Yes": 1
+   }
+  },
+  "R15": {
+   "ChatGPT": {
+    "No": 6,
+    "Partly": 2,
+    "Misleading": 2
+   },
+   "Gemini": {
+    "No": 6,
+    "Partly": 2,
+    "Misleading": 2
+   }
+  },
+  "R17": {
+   "ChatGPT": {
+    "Partly": 2,
+    "Yes": 6
+   },
+   "Gemini": {
+    "Partly": 3,
+    "Yes": 5
+   }
+  },
+  "R19": {
+   "ChatGPT": {
+    "Partly": 4,
+    "No": 1,
+    "Yes": 3
+   },
+   "Gemini": {
+    "Partly": 6,
+    "No": 2
+   }
+  },
+  "R20": {
+   "ChatGPT": {
+    "Partly": 6,
+    "Misleading": 1
+   },
+   "Gemini": {
+    "Partly": 7
+   }
+  },
+  "R21": {
+   "ChatGPT": {
+    "Misleading": 3,
+    "Partly": 2,
+    "Yes": 1
+   },
+   "Gemini": {
+    "Partly": 3,
+    "Misleading": 1,
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "R22": {
+   "ChatGPT": {
+    "Yes": 4,
+    "No": 2,
+    "Partly": 1
+   },
+   "Gemini": {
+    "Yes": 4,
+    "No": 2,
+    "Partly": 1
+   }
+  },
+  "R24": {
+   "ChatGPT": {
+    "No": 3,
+    "Partly": 1,
+    "Yes": 2,
+    "Misleading": 1
+   },
+   "Gemini": {
+    "No": 4,
+    "Partly": 1,
+    "Misleading": 1,
+    "Yes": 1
+   }
+  },
+  "R26": {
+   "ChatGPT": {
+    "No": 2,
+    "Partly": 6
+   },
+   "Gemini": {
+    "No": 2,
+    "Partly": 6
+   }
+  },
+  "R28": {
+   "ChatGPT": {
+    "Yes": 3,
+    "Misleading": 1,
+    "Partly": 4
+   },
+   "Gemini": {
+    "Yes": 3,
+    "Misleading": 1,
+    "Partly": 4
+   }
+  },
+  "R29": {
+   "ChatGPT": {
+    "Partly": 7,
+    "Yes": 1
+   },
+   "Gemini": {
+    "Partly": 7,
+    "Yes": 1
+   }
+  }
+ },
+ "misleading_marks_by_kind": {
+  "first batch": {
+   "a party's argument, not the court's holding": 16,
+   "rejected, distinguished or a different issue": 8,
+   "old or replaced law": 33,
+   "other": 13
+  },
+  "second batch": {
+   "a party's argument, not the court's holding": 2,
+   "other": 9,
+   "old or replaced law": 7,
+   "rejected, distinguished or a different issue": 3
+  }
+ },
+ "misleading_distinct_passages": {
+  "first batch": 34,
+  "second batch": 14
+ },
+ "safety_net_passages_that_every_run_marked_Yes": {
+  "R04": [
+   {
+    "n": 12,
+    "title": "SUSHILA AGGARWAL AND OTHERS versus STATE (NCT OF DELHI) AND ANOTHER (29-01-2020)",
+    "para": "7/2",
+    "merged_place": 3,
+    "a_place": null
+   }
+  ],
+  "R09": [
+   {
+    "n": 4,
+    "title": "M/S CELESTIUM FINANCIAL versus A. GNANASEKARAN ETC (08-04-2025)",
+    "para": "142",
+    "merged_place": 5,
+    "a_place": null
+   },
+   {
+    "n": 7,
+    "title": "M/S SHRI SENDHUR AGRO & OIL INDUSTRIES versus KOTAK MAHINDRA BANK LTD. (06-03-2025)",
+    "para": "3",
+    "merged_place": 4,
+    "a_place": null
+   },
+   {
+    "n": 17,
+    "title": "M/S SHRI SENDHUR AGRO & OIL INDUSTRIES versus KOTAK MAHINDRA BANK LTD. (06-03-2025)",
+    "para": "62",
+    "merged_place": 2,
+    "a_place": null
+   }
+  ],
+  "R17": [
+   {
+    "n": 6,
+    "title": "Judgment / Order of the Supreme Court K. Vinod Chandran, J. Whether every allegation or accusation levelled, a reprimand or rebuke made, an insinuation or insult voiced or even continuous acts 970\b of ill-treatment, harassment and defamation; as alleged in thi",
+    "para": "22",
+    "merged_place": 5,
+    "a_place": null
+   },
+   {
+    "n": 13,
+    "title": "UDE SINGH & ORS. versus STATE OF HARYANA (25-07-2019)",
+    "para": "43",
+    "merged_place": 3,
+    "a_place": null
+   }
+  ],
+  "R21": [
+   {
+    "n": 9,
+    "title": "RAVINDER SINGH @ KAKU versus STATE OF PUNJAB (04-05-2022)",
+    "para": "20",
+    "merged_place": 3,
+    "a_place": null
+   }
+  ],
+  "R24": [
+   {
+    "n": 18,
+    "title": "TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)",
+    "para": "3/2",
+    "merged_place": 4,
+    "a_place": null
+   }
+  ],
+  "R28": [
+   {
+    "n": 17,
+    "title": "Sanghamitra Ghosh v. Kajal Kumar Ghosh (20/11/2006)",
+    "para": "8/7",
+    "merged_place": 5,
+    "a_place": null
+   }
+  ]
+ },
+ "gap_and_control_questions_second_batch": {
+  "R06": [
+   {
+    "n": 14,
+    "title": "CASE NO.: Criminal.M.P (PR) 9478 of 2002 PETITIONE",
+    "para": null,
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage explains the purpose of undertrial detention set-off under Section 428 CrPC but does not address the Section 479 BNSS one-third rule or its retrospective application."
+   },
+   {
+    "n": 15,
+    "title": "THE CENTRAL BUREAU OF INVESTIGATION versus MIR USM",
+    "para": "19/1",
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage discusses investigation-stage detention limits and default bail, not the one-third undertrial detention rule or its application to pending cases."
+   },
+   {
+    "n": 16,
+    "title": "PARTHA CHATTERJEE versus DIRECTORATE OF ENFORCEMEN",
+    "para": "12",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage identifies the first-time-offender condition under Section 479 but only records the prosecution's argument and does not establish the court's ruling or transitional applicability."
+   },
+   {
+    "n": 17,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JU",
+    "para": "33",
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage raises the issue of retrospective application of an analogous undertrial detention provision but concerns Section 436A CrPC and does not resolve Section 479 BNSS applicability."
+   },
+   {
+    "n": 18,
+    "title": "NARCOTIC CONTROL BUREAU versus LAKHWINDER SINGH (2",
+    "para": "5/1",
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage describes a detention-based bail rule under the NDPS Act, not Section 479 BNSS, and does not address first-time offenders or retrospective application."
+   },
+   {
+    "n": 19,
+    "title": "OM PRAKASH AMBADKAR versus THE STATE OF MAHARASHTR",
+    "para": "28",
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage concerns changes to the investigation provisions under Section 156 CrPC and does not address undertrial detention limits or Section 479 BNSS."
+   },
+   {
+    "n": 20,
+    "title": "",
+    "para": "11",
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage explains the purpose of Section 428 CrPC set-off but does not address the one-third rule or whether Section 479 BNSS applies to an earlier FIR."
+   },
+   {
+    "n": 21,
+    "title": "PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT ",
+    "para": "27",
+    "ChatGPT": "Misleading",
+    "Gemini": "No",
+    "chatgpt_reason": "The savings clause suggests that pending proceedings continue under the old Code, but the passage concerns a different procedural provision and does not establish the rule governing Section 479 BNSS."
+   },
+   {
+    "n": 22,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JU",
+    "para": "32",
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage explains the half-maximum-sentence threshold under Section 436A CrPC but does not address Section 479 BNSS, its one-third threshold for first-time offenders, or retrospective application."
+   }
+  ],
+  "R15": [
+   {
+    "n": 16,
+    "title": "S.N. VIJAYLAKSHMI & ORS. versus STATE OF KARNATAKA",
+    "para": "58",
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage concerns a dispute involving the Bangalore Development Authority and says nothing about matrimonial complaints, arrest safeguards, or Family Welfare Committees."
+   },
+   {
+    "n": 17,
+    "title": "ACHIN GUPTA versus STATE OF HARYANA & ANR. (03-05-",
+    "para": "39",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage connects BNS Section 86 to IPC Section 498A but does not address arrest safeguards, committee referrals, or the alleged two-month rule."
+   },
+   {
+    "n": 18,
+    "title": "RAJESH SHARMA & ORS. versus STATE OF U.P. & ANR. (",
+    "para": "19/1",
+    "ChatGPT": "Misleading",
+    "Gemini": "Misleading",
+    "chatgpt_reason": "The passage reproduces the 2017 Rajesh Sharma directions without explaining whether the Family Welfare Committee requirement remains operative or was subsequently invalidated."
+   },
+   {
+    "n": 19,
+    "title": "The Judgment of the Court was delivered by ADARSH ",
+    "para": "11",
+    "ChatGPT": "Misleading",
+    "Gemini": "Misleading",
+    "chatgpt_reason": "The passage presents proposed safeguards suggested by the Additional Solicitor General, not an established judicial holding protecting relatives from arrest."
+   },
+   {
+    "n": 20,
+    "title": "ACHIN GUPTA versus STATE OF HARYANA & ANR. (03-05-",
+    "para": "27",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage explains concerns about misuse of IPC Section 498A and arrests of relatives but does not reproduce the complete arrest safeguards or resolve the committee question."
+   },
+   {
+    "n": 21,
+    "title": "DHANANJAY RATHI versus RUCHIKA RATHI (13-04-2026)",
+    "para": "7",
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage recounts facts about a domestic violence complaint and summons without stating any relevant rule on BNS dowry-harassment arrests."
+   },
+   {
+    "n": 22,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "11-12",
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage concerns municipal service rules and has no relevant connection to BNS Sections 85 and 86 or matrimonial arrest safeguards."
+   },
+   {
+    "n": 23,
+    "title": "BALWINDER SINGH Vs. v. STATE OF PUNJAB (09/11/1995",
+    "para": null,
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage assesses witness credibility in a different criminal case and does not address dowry-harassment law or arrest protections."
+   },
+   {
+    "n": 24,
+    "title": "PAUL versus STATE OF KERALA (21-01-2020)",
+    "para": "25",
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage discusses IPC Section 86 concerning intoxication and criminal intent rather than BNS Section 86 or matrimonial arrest safeguards."
+   },
+   {
+    "n": 25,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "8-9",
+    "ChatGPT": "No",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage concerns municipal service administration and provides no useful information about dowry-harassment complaints or arrest safeguards."
+   }
+  ],
+  "R21": [
+   {
+    "n": 12,
+    "title": "SHAFHI MOHAMMAD v. THE STATE OF HIMACHAL PRADESH (",
+    "para": "2",
+    "ChatGPT": "Misleading",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage records a submission arguing that certification is not mandatory, rather than establishing the court's holding on admissibility."
+   },
+   {
+    "n": 13,
+    "title": "STATE BY KARNATAKA LOKAYUKTA POLICE STATION, BENGA",
+    "para": "12-13/1",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage identifies the certification requirement for secondary electronic evidence but does not provide the complete rule or its application to CCTV footage."
+   },
+   {
+    "n": 14,
+    "title": "CHANDRABHAN SUDAM SANAP versus THE STATE OF MAHARA",
+    "para": "36",
+    "ChatGPT": "Misleading",
+    "Gemini": "Misleading",
+    "chatgpt_reason": "The passage quotes an earlier judgment permitting alternative secondary evidence without certification, but does not establish whether that position governs the question posed."
+   },
+   {
+    "n": 15,
+    "title": "STATE OF KARNATAKA versus T. NASEER @ NASIR @ THAN",
+    "para": "13",
+    "ChatGPT": "Partly",
+    "Gemini": "No",
+    "chatgpt_reason": "The passage describes a procedural dispute over certification but does not state the governing legal test or resolve admissibility when the original device is absent."
+   },
+   {
+    "n": 16,
+    "title": "CHANDRABHAN SUDAM SANAP versus THE STATE OF MAHARA",
+    "para": "38-39",
+    "ChatGPT": "Misleading",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage states an exception allowing relaxation of certification requirements but does not establish whether that view remains authoritative for the question posed."
+   },
+   {
+    "n": 17,
+    "title": "RAVINDER SINGH @ KAKU versus STATE OF PUNJAB (04-0",
+    "para": "21",
+    "ChatGPT": "Yes",
+    "Gemini": "Yes",
+    "chatgpt_reason": "The passage directly states that certification is mandatory for admissibility of electronic evidence, although it does not specifically discuss CCTV footage or non-production of the original device."
+   }
+  ],
+  "R28": [
+   {
+    "n": 11,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL ORIGINAL JU",
+    "para": "6",
+    "ChatGPT": "Yes",
+    "Gemini": "Yes",
+    "chatgpt_reason": "The passage directly confirms that the Supreme Court waived the six-month waiting period and granted divorce by mutual consent."
+   },
+   {
+    "n": 12,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": null,
+    "ChatGPT": "Misleading",
+    "Gemini": "Misleading",
+    "chatgpt_reason": "The passage describes rejection of a waiver request and could wrongly suggest that the waiting period can never be waived."
+   },
+   {
+    "n": 13,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "6",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage describes an expedited mutual-consent divorce but does not expressly address waiver of the statutory six-month waiting period."
+   },
+   {
+    "n": 14,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "8/2",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage records the parties' agreement to divorce and settlement of disputes but does not state whether the waiting period may be waived."
+   },
+   {
+    "n": 15,
+    "title": "Sanghamitra Ghosh v. Kajal Kumar Ghosh (20/11/2006",
+    "para": "8/8",
+    "ChatGPT": "Yes",
+    "Gemini": "Yes",
+    "chatgpt_reason": "The passage demonstrates the Supreme Court granting mutual-consent divorce despite the statutory six-month period not having commenced, although it does not formulate a general test for waiver."
+   },
+   {
+    "n": 16,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "20",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage explains the requirement to establish continuing mutual consent but does not address whether the six-month waiting period can be waived."
+   },
+   {
+    "n": 17,
+    "title": "Sanghamitra Ghosh v. Kajal Kumar Ghosh (20/11/2006",
+    "para": "8/7",
+    "ChatGPT": "Yes",
+    "Gemini": "Yes",
+    "chatgpt_reason": "The passage supports the Supreme Court's ability to grant mutual-consent divorce under Article 142 despite ordinary procedural requirements, although it does not expressly state a general waiver test."
+   },
+   {
+    "n": 18,
+    "title": "DHANANJAY RATHI versus RUCHIKA RATHI (13-04-2026)",
+    "para": "19",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage explains that mutual consent must continue until the decree but does not answer whether the six-month waiting period may be waived."
+   }
+  ],
+  "R29": [
+   {
+    "n": 8,
+    "title": "MAHABIR & ORS. versus STATE OF HARYANA (29-01-2025",
+    "para": "45",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage supports access to legal consultation during near-custodial interrogation but does not establish a right to physical presence throughout interrogation under Section 38 BNSS."
+   },
+   {
+    "n": 9,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "457/2",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage discusses conditional lawyer presence during examination but does not address Section 38 BNSS or establish presence throughout custodial interrogation."
+   },
+   {
+    "n": 10,
+    "title": "CASE NO.: Appeal (crl.) 373-375 of 2004 PETITIONER",
+    "para": "preamble/187",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage supports access to a lawyer during examination upon request but does not address Section 38 BNSS or guarantee presence throughout interrogation."
+   },
+   {
+    "n": 11,
+    "title": "PETITIONER: NANDINI SATPATHY Vs. RESPONDENT: DANI ",
+    "para": "10/61",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage discusses conditional lawyer presence during examination but does not establish a right to continuous physical presence under Section 38 BNSS."
+   },
+   {
+    "n": 12,
+    "title": "MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ",
+    "para": "36",
+    "ChatGPT": "Yes",
+    "Gemini": "Yes",
+    "chatgpt_reason": "The passage directly interprets Section 38 BNSS and expressly clarifies that the right to meet an advocate does not extend throughout interrogation."
+   },
+   {
+    "n": 13,
+    "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE J",
+    "para": "18",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage introduces observations about advocate presence during interrogation but does not itself provide the complete relevant rule or address Section 38 BNSS."
+   },
+   {
+    "n": 14,
+    "title": "CASE NO.: Appeal (crl.) 373-375 of 2004 PETITIONER",
+    "para": "preamble/188",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage addresses access to counsel during interrogation under constitutional provisions and POTA but does not directly interpret Section 38 BNSS or establish continuous presence."
+   },
+   {
+    "n": 15,
+    "title": "RADHIKA AGARWAL versus UNION OF INDIA AND OTHERS (",
+    "para": "27",
+    "ChatGPT": "Partly",
+    "Gemini": "Partly",
+    "chatgpt_reason": "The passage states the analogous safeguard under Section 41D of the former Code, but it does not directly interpret Section 38 BNSS."
+   }
+  ]
+ }
+}

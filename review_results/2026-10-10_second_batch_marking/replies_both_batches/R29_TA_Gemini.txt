@@ -1,0 +1,64 @@
+{
+"question_id": "R29",
+"marks": [
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "the right to consult an advocate of choice shall not be denied to any person who is arrested.",
+"reason": "It supports the right to consult an advocate during near-custodial interrogation but does not specifically address Section 38 BNSS or physical presence throughout.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "If however an accused expresses the wish to have his lawyer by his side at the time of examination, this facility shall not be denied",
+"reason": "It discusses the presence of a lawyer during examination but does not mention Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied",
+"reason": "It explains the principles from Nandini Satpathy regarding a lawyer's presence during examination without referencing Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied",
+"reason": "It covers the general rule on allowing an advocate during examination but lacks mention of Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Yes",
+"evidence": "Section 38 of the BNSS 2023, which confers upon an arrested person... the right to meet an advocate of his choice during interrogation, albeit not throughout its course.",
+"reason": "It directly answers the question by stating that Section 38 BNSS entitles an arrested person to meet an advocate during interrogation, but explicitly not throughout its course.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "In Nandini Satpathy, the Court proceeded further... to dwell upon the need for the presence of the advocate at the time of interrogation",
+"reason": "It provides background commentary on the Nandini Satpathy judgment regarding advocates at interrogation but does not answer the specific question about Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "if he wishes to have the presence of the lawyer, he shall not be denied that opportunity.",
+"reason": "It discusses the suspect's right to consult and have a lawyer present during interrogation based on case law, not Section 38 BNSS.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "When any person is arrested and interrogated by the police, he shall be entitled to meet an advocate of his choice during interrogation, though not throughout interrogation.",
+"reason": "It quotes the predecessor provision Section 41D of the CrPC which mirrors the wording on interrogation rights, but does not explicitly analyze Section 38 BNSS.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 12,
+"caveats": ""
+}

@@ -1,0 +1,416 @@
+{
+ "questions": 19,
+ "baseline": "B today's re-ranker top 5 (baseline for R)",
+ "settlements": {
+  "ChatGPT alone": {
+   "entering": {
+    "marked": 19,
+    "yes": 8,
+    "useful": 17,
+    "misleading": 2,
+    "passages": 19
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 5,
+    "useful": 14,
+    "misleading": 4,
+    "passages": 19
+   },
+   "R_top5_minus_baseline_top5": {
+    "yes": {
+     "R_minus_baseline": 0.04285714285714287,
+     "ci95_over_questions": [
+      -0.0286,
+      0.1143
+     ],
+     "questions": 14,
+     "R_better": 3,
+     "same": 10,
+     "R_worse": 1
+    },
+    "useful": {
+     "R_minus_baseline": 0.042857142857142864,
+     "ci95_over_questions": [
+      -0.0286,
+      0.1286
+     ],
+     "questions": 14,
+     "R_better": 4,
+     "same": 8,
+     "R_worse": 2
+    },
+    "mis": {
+     "R_minus_baseline": -0.028571428571428577,
+     "ci95_over_questions": [
+      -0.1143,
+      0.0429
+     ],
+     "questions": 14,
+     "R_better": 2,
+     "same": 9,
+     "R_worse": 3
+    }
+   }
+  },
+  "Gemini alone": {
+   "entering": {
+    "marked": 19,
+    "yes": 8,
+    "useful": 16,
+    "misleading": 1,
+    "passages": 19
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 4,
+    "useful": 13,
+    "misleading": 4,
+    "passages": 19
+   },
+   "R_top5_minus_baseline_top5": {
+    "yes": {
+     "R_minus_baseline": 0.05714285714285714,
+     "ci95_over_questions": [
+      0.0143,
+      0.1
+     ],
+     "questions": 14,
+     "R_better": 4,
+     "same": 10,
+     "R_worse": 0
+    },
+    "useful": {
+     "R_minus_baseline": 0.04285714285714286,
+     "ci95_over_questions": [
+      -0.0143,
+      0.1
+     ],
+     "questions": 14,
+     "R_better": 4,
+     "same": 9,
+     "R_worse": 1
+    },
+    "mis": {
+     "R_minus_baseline": -0.042857142857142864,
+     "ci95_over_questions": [
+      -0.0857,
+      0.0
+     ],
+     "questions": 14,
+     "R_better": 0,
+     "same": 11,
+     "R_worse": 3
+    }
+   }
+  },
+  "both, ties to the lower mark": {
+   "entering": {
+    "marked": 19,
+    "yes": 8,
+    "useful": 15,
+    "misleading": 2,
+    "passages": 19
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 3,
+    "useful": 13,
+    "misleading": 4,
+    "passages": 19
+   },
+   "R_top5_minus_baseline_top5": {
+    "yes": {
+     "R_minus_baseline": 0.07142857142857142,
+     "ci95_over_questions": [
+      0.0143,
+      0.1429
+     ],
+     "questions": 14,
+     "R_better": 4,
+     "same": 10,
+     "R_worse": 0
+    },
+    "useful": {
+     "R_minus_baseline": 0.028571428571428574,
+     "ci95_over_questions": [
+      -0.0429,
+      0.1
+     ],
+     "questions": 14,
+     "R_better": 4,
+     "same": 8,
+     "R_worse": 2
+    },
+    "mis": {
+     "R_minus_baseline": -0.028571428571428574,
+     "ci95_over_questions": [
+      -0.0857,
+      0.0286
+     ],
+     "questions": 14,
+     "R_better": 1,
+     "same": 10,
+     "R_worse": 3
+    }
+   }
+  },
+  "both, ties to the higher mark": {
+   "entering": {
+    "marked": 19,
+    "yes": 8,
+    "useful": 18,
+    "misleading": 1,
+    "passages": 19
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 7,
+    "useful": 15,
+    "misleading": 2,
+    "passages": 19
+   },
+   "R_top5_minus_baseline_top5": {
+    "yes": {
+     "R_minus_baseline": 0.014285714285714287,
+     "ci95_over_questions": [
+      -0.0286,
+      0.0571
+     ],
+     "questions": 14,
+     "R_better": 2,
+     "same": 11,
+     "R_worse": 1
+    },
+    "useful": {
+     "R_minus_baseline": 0.04285714285714285,
+     "ci95_over_questions": [
+      -0.0143,
+      0.1
+     ],
+     "questions": 14,
+     "R_better": 4,
+     "same": 9,
+     "R_worse": 1
+    },
+    "mis": {
+     "R_minus_baseline": -0.014285714285714287,
+     "ci95_over_questions": [
+      -0.0571,
+      0.0286
+     ],
+     "questions": 14,
+     "R_better": 1,
+     "same": 11,
+     "R_worse": 2
+    }
+   }
+  }
+ },
+ "coverage": {
+  "baseline top 5": {
+   "passages": 70,
+   "not_marked_by_any_run": 0
+  },
+  "R top 5": {
+   "passages": 70,
+   "not_marked_by_any_run": 0
+  },
+  "entering (R only)": {
+   "passages": 19,
+   "not_marked_by_any_run": 0
+  },
+  "leaving (baseline only)": {
+   "passages": 19,
+   "not_marked_by_any_run": 0
+  }
+ },
+ "per_question": {
+  "R01": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  },
+  "R02": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  },
+  "R04": {
+   "entering (R only)": [
+    13
+   ],
+   "leaving (baseline only)": [
+    9
+   ]
+  },
+  "R06": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  },
+  "R08": {
+   "entering (R only)": [
+    14
+   ],
+   "leaving (baseline only)": [
+    11
+   ]
+  },
+  "R09": {
+   "entering (R only)": [
+    9,
+    11
+   ],
+   "leaving (baseline only)": [
+    2,
+    3
+   ]
+  },
+  "R11": {
+   "entering (R only)": [
+    12,
+    18
+   ],
+   "leaving (baseline only)": [
+    6,
+    7
+   ]
+  },
+  "R12": {
+   "entering (R only)": [
+    17
+   ],
+   "leaving (baseline only)": [
+    2
+   ]
+  },
+  "R14": {
+   "entering (R only)": [
+    19,
+    21
+   ],
+   "leaving (baseline only)": [
+    13,
+    15
+   ]
+  },
+  "R15": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  },
+  "R17": {
+   "entering (R only)": [
+    6,
+    15,
+    17
+   ],
+   "leaving (baseline only)": [
+    2,
+    8,
+    10
+   ]
+  },
+  "R19": {
+   "entering (R only)": [
+    12
+   ],
+   "leaving (baseline only)": [
+    4
+   ]
+  },
+  "R20": {
+   "entering (R only)": [
+    11
+   ],
+   "leaving (baseline only)": [
+    6
+   ]
+  },
+  "R21": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  },
+  "R22": {
+   "entering (R only)": [
+    11,
+    20
+   ],
+   "leaving (baseline only)": [
+    5,
+    16
+   ]
+  },
+  "R24": {
+   "entering (R only)": [
+    2
+   ],
+   "leaving (baseline only)": [
+    6
+   ]
+  },
+  "R26": {
+   "entering (R only)": [
+    5,
+    17
+   ],
+   "leaving (baseline only)": [
+    1,
+    2
+   ]
+  },
+  "R28": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  },
+  "R29": {
+   "entering (R only)": [],
+   "leaving (baseline only)": []
+  }
+ },
+ "rule": {
+  "verdict": "PROCEED",
+  "complete": true,
+  "both_settlements": [
+   {
+    "entering": {
+     "marked": 19,
+     "yes": 8,
+     "useful": 15,
+     "misleading": 2,
+     "passages": 19
+    },
+    "leaving": {
+     "marked": 19,
+     "yes": 3,
+     "useful": 13,
+     "misleading": 4,
+     "passages": 19
+    }
+   },
+   {
+    "entering": {
+     "marked": 19,
+     "yes": 8,
+     "useful": 18,
+     "misleading": 1,
+     "passages": 19
+    },
+    "leaving": {
+     "marked": 19,
+     "yes": 7,
+     "useful": 15,
+     "misleading": 2,
+     "passages": 19
+    }
+   }
+  ],
+  "note": "the stale-ruling check on the entering passages is separate and must also be clean"
+ },
+ "runs": {
+  "ChatGPT/A": 217,
+  "ChatGPT/B": 69,
+  "ChatGPT/TA": 147,
+  "Gemini/A": 217,
+  "Gemini/B": 69,
+  "Gemini/TA": 147
+ },
+ "reply_problems": 69
+}

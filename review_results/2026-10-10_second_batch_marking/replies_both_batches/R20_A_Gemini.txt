@@ -1,0 +1,78 @@
+{
+"question_id": "R20",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "Prosecution must lead positive evidence to give rise to inference beyond reasonable doubt that accused had no intention to marry prosecutrix at all from inception",
+"reason": "It explains the legal test for false promise of marriage constituting rape but does not mention Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "There is also a distinction between mere breach of a promise and not fulfilling a false promise.",
+"reason": "It distinguishes between a breach of promise and a false promise regarding consensual sex, but omits Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "If a full grown girl consents to the act of sexual intercourse on a promise of marriage and continues to indulge in such activity until she becomes pregnant it is an act of promiscuity",
+"reason": "It discusses consent based on a promise of marriage under old jurisprudence, but lacks any mention of Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape.",
+"reason": "The sentence contains a glaring typo/inversion typical of corrupt text by attributing mala fide intentions to the complainant rather than the accused, making it misleading.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "There is a distinction between the mere breach of a promise, and not fulfilling a false promise.",
+"reason": "It details how to evaluate a false promise of marriage versus a breach, but fails to address Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "An offence under Section 375 IPC could only be made out, if promise of marriage was made by the accused solely with a view to obtain consent",
+"reason": "It outlines the standard IPC position on promise of marriage, but contains no information on Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "it cannot be said that there was vitiation of consent under misconception of fact.",
+"reason": "It discusses how prolonged relationships affect claims of misconception of fact, but ignores Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "Hence, it is evident that there must be adequate evidence to show that at the relevant time i.e. at the initial stage itself, the accused had no intention whatsoever, of keeping his promise to marry the victim.",
+"reason": "It explains the initial intent requirement for false promises under the IPC framework, without covering Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "The promise of marriage must have been a false promise, given in bad faith and with no intention of being adhered to at the time it was given.",
+"reason": "It summarizes the established two-pronged test for determining consent under Section 375 IPC, but does not address Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape.",
+"reason": "Like passage 4, this passage preserves a textual corruption attributing mala fide intentions to the complainant instead of the accused, making it misleading.",
+"confidence": "high"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": "None of the passages provide information regarding Section 69 of the Bharatiya Nagarik Suraksha Sanhita (or Bharatiya Nyaya Sanhita) altering the position for post-1 July 2024 conduct."
+}

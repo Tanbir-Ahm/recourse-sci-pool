@@ -1,0 +1,50 @@
+{
+"question_id": "R21",
+"marks": [
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "It was submitted that if the electronic evidence was relevant and produced by a person who was not in custody of the device from which the electronic document was generated, requirement of such certificate could not be mandatory.",
+"reason": "It discusses whether the certificate requirement is mandatory when the person is not in custody of the device, but only records submissions rather than a final holding.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "The fundamental basis on which the High Court proceeded to quash the proceedings is its hypothesis that Section 65B, which requires the production of a certificate for leading secondary evidence of an electronic record mandate the production of such a certificate at this stage",
+"reason": "It introduces the statutory provision and context regarding the Section 65B certificate requirement without providing the definitive answer.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Misleading",
+"evidence": "Irrespective of the compliance with the requirements of Section 65-B, which is a provision dealing with admissibility of electronic records, there is no bar to adducing secondary evidence under the other provisions of the Evidence Act",
+"reason": "It quotes the overruled Navjot Sandhu view that a 65B certificate is not mandatory, which was subsequently overruled by Anvar P.V.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "However, the Trial Court vide order dated 07.04.2017 declined to take the same on record in the absence of a certiﬁ cate under Section 65B of the Act.",
+"reason": "It only describes procedural facts about the rejection of a report due to a missing Section 65B certificate in a specific case.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "In Shafhi Mohammad v. The State of Himachal Pradesh (2018) 2 SCC 801 (delivered on 30.01.2018), a two Judge Bench of this Court after noticing Anvar P.V. (supra) held that a party who is not in possession of device from which the document is produced cannot be required to produce the certificate under Section 65-B(4)",
+"reason": "It mentions the Shafhi Mohammad ruling relaxing the certificate requirement for parties not in possession of the device, but later rulings modified this position.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Yes",
+"evidence": "Oral evidence in the place of such certificate, as is the case in the present matter, cannot possibly suffice as Section 65B(4) is a mandatory requirement of the law.",
+"reason": "It directly states that Section 65B(4) is a mandatory requirement and oral evidence cannot replace the certificate.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 17,
+"caveats": "Note that interpretations of Section 65B have evolved across various judgments (such as Shafhi Mohammad being clarified or overruled by later benches like Arjun Panditrao Khotkar), so the applicable precedent depends on the precise timeline and subsequent Constitution Bench rulings."
+}

@@ -1,0 +1,78 @@
+{
+"question_id": "R28",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "The parties filed an application under Section 13-B(1) of the Hindu Marriage Act, 1955 before the Family Court, Delhi seeking divorce by mutual consent.",
+"reason": "It mentions filing for divorce by mutual consent and an application to waive the six-month period, but does not state the rule or holding on whether it can be skipped.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "In Smt. Sureshta Devi v. Om Prakash, AIR 1992 SC 1304, this Court held that mere filing the petition for divorce by mutual consent does not authorise the court to make a decree for divorce.",
+"reason": "It discusses mutual consent divorce requirements and the waiting period's purpose, but does not explicitly address whether the court can skip the six-month waiting period.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "court was not competent to waive the required statutory period of six months under the Act and such a waiver was permissible only under the directions of the Supreme Court",
+"reason": "It explains that regular courts cannot waive the six-month period and that only the Supreme Court can do so under specific powers, partially answering the query.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "No",
+"evidence": "Both the parties humbly request that all the transfer petitions pending in this Court (as mentioned earlier in para 4) to be dismissed as infructuous.",
+"reason": "This passage deals with a request to dismiss transfer petitions as infructuous and is off-topic regarding the waiting period for mutual consent divorce.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "In HMA No.37/2006 the divorce by mutual consent be passed in terms of Section 13B(1) and 13B(2) of the Hindu Marriage Act, 1956",
+"reason": "It orders a divorce by mutual consent under Section 13B, but does not discuss whether or how the six-month waiting period can be skipped.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "My agreement to divorce by mutual consent is subject to that condition and in the event that amount is not paid, I shall not be bound by this statement",
+"reason": "It records statements by parties agreeing to divorce and settlement terms under Section 125 Cr.P.C., with no mention of the six-month waiting period.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "a decree of divorce by mutual consent is passed in terms of Section 13B of the Act by waiving the requirement of six months period specified in subsection (2) thereof.",
+"reason": "The passage directly shows that the Supreme Court can waive the six-month waiting period for a divorce by mutual consent.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "After saying so, the Court rejected the request of the parties to waive the statutory period of six months under the Act.",
+"reason": "It discusses the limits of court powers regarding the statutory period, but mainly focuses on why Article 142 cannot be used to negate statutory provisions in that context.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "the Second Motion Petition was to be filed on or before 20.02.2025. However, the Respondent- Wife refused to sign the Second Motion Petition within the stipulated time period",
+"reason": "It mentions the filing of first and second motion petitions in a mutual consent divorce case, but does not discuss skipping the waiting period.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "In Anil Kumar Jain, this Court held that an order of waiving the statutory requirements can be passed only by this Court in exercise of its powers under Article 142 of the Constitution. The said power is not vested with any other court.",
+"reason": "It explicitly states that the statutory requirement of the waiting period can be waived by the Supreme Court.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 10,
+"caveats": ""
+}

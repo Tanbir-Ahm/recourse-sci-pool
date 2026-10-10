@@ -1,0 +1,71 @@
+{
+"question_id": "R02",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "Hence, the aforesaid section clearly does not permit service of notice under Section 35 of the BNSS, 2023 through WhatsApp or other modes of electronic communication.",
+"reason": "It explains that Section 35 notices cannot be served via WhatsApp, but omits the arrest consequence aspect.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "we are unable to convince ourselves that electronic communication is a valid mode of service of notice under Section 35 of the BNSS, 2023",
+"reason": "The court definitively rules that electronic communication like WhatsApp is not a valid mode of service under Section 35.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "it is appropriate that such a notice be served in person on the accused, and not through the mode of electronic communication.",
+"reason": "It touches on the invalidity of electronic service, but reflects a submission rather than the final ruling.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "Service of notice through the mode of electronic communication is required to ensure that the concerned person does not evade service",
+"reason": "It records a contrary argument by the State defending electronic service, which the court ultimately rejects.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "Noncompliance with a notice does not ipso facto mandate arrest, as there lies a discretion with the Investigating Agency",
+"reason": "It directly answers whether non-compliance leads to automatic arrest by stating arrest is not mandatory and requires discretion.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "the Investigating Agency is mandated to issue a written notice directing the person to appear before it",
+"reason": "It explains the requirement for a written notice under Section 35(3), but does not discuss WhatsApp validity or arrest upon non-compliance.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "specifically excluded the service of a notice under Section 35 of the BNSS, 2023 from the ambit of procedures permissible through electronic communication",
+"reason": "It supports that Section 35 notices are excluded from electronic communication, but lacks details on arrest consequences.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Misleading",
+"evidence": "notice served through WhatsApp or other modes of electronic communication is not contemplated as a mode of service",
+"reason": "It only states a lawyer's submission rather than the court's definitive holding, though the conclusion happens to match.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "Noncompliance with the notice does not ipso facto mandate arrest, as there lies a discretion with the Investigating Agency",
+"reason": "It clearly answers whether failure to go leads to immediate arrest.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 2,
+"caveats": "The passages establish that WhatsApp is not a valid mode of service under Section 35 BNSS, and non-compliance does not lead to automatic arrest."
+}

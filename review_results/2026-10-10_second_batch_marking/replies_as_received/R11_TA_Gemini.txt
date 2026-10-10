@@ -1,0 +1,78 @@
+{
+"question_id": "R11",
+"marks": [
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "The confession so recorded shall be shown, read or played back to the person concerned",
+"reason": "It details how confessions must be read back or recorded, but does not directly address whether an NCB officer's statement is usable in court.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "The confession so recorded shall be shown, read or played back to the person concerned",
+"reason": "It outlines procedural safeguards for recording a confession rather than its admissibility before an NCB officer.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "Therefore, what needs to be considered is as to whether the officers of the Central Bureau of Narcotics, who had recorded the confessions, are police officers",
+"reason": "It raises the core issue of whether narcotics officers are police officers under the Evidence Act, but does not give the final ruling here.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "No",
+"evidence": "364 (3) will not vitiate the confessions nor will it make them inadmissible.",
+"reason": "This passage discusses judicial confessions under the Code of Criminal Procedure and section 80 of the Evidence Act, unrelated to NCB office statements.",
+"confidence": "high"
+},
+{
+"no": 20,
+"mark": "Partly",
+"evidence": "a confession made before an officer of the Department of Revenue Intelligence under the NDPS Act may not be hit by Section 25",
+"reason": "It discusses that NDPS statements may not be hit by Section 25, but notes they require closer scrutiny.",
+"confidence": "high"
+},
+{
+"no": 21,
+"mark": "No",
+"evidence": "Section 25 of the Evidence Act and Section 162 of the Code of Criminal Procedure provides for an embargo as regard admissibility",
+"reason": "This passage discusses departmental proceedings and general police statements under Section 162 rather than an NCB statement under the NDPS Act.",
+"confidence": "high"
+},
+{
+"no": 22,
+"mark": "No",
+"evidence": "The Superintendent of Police, CBI has signed as such. The Respondents have also signed.",
+"reason": "It deals with confessional statements made to a CBI Superintendent under different contexts rather than answering whether an NCB statement can be used.",
+"confidence": "medium"
+},
+{
+"no": 23,
+"mark": "Yes",
+"evidence": "this vital difference, which allows a statement made under Section 67 of the N.D.P.S. Act to be used as a confession against the person making it",
+"reason": "It explicitly explains that statements made to officers under Section 67 of the NDPS Act can be used as confessions against the maker.",
+"confidence": "high"
+},
+{
+"no": 24,
+"mark": "Partly",
+"evidence": "Since the appellant Kanhaiyalal was convicted on the basis of the statement made by him under Section 67 of the NDPS Act",
+"reason": "It mentions conviction based on a Section 67 NDPS statement and retraction issues, but discusses them by citing another case.",
+"confidence": "high"
+},
+{
+"no": 25,
+"mark": "No",
+"evidence": "Presumption as to documents produced as record of evidence",
+"reason": "This passage outlines the general evidentiary presumption of documents or statements under the Evidence Act, not specific to NCB confessions.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 23,
+"caveats": "Note that subsequent Constitution Bench rulings (such as Tofan Singh v. State of Tamil Nadu) held that officers under Section 67 of the NDPS Act are police officers and statements made to them are not admissible, but passage 23 reflects the older view shown in the search text."
+}

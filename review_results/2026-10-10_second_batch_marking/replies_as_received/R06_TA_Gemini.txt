@@ -1,0 +1,71 @@
+{
+"question_id": "R06",
+"marks": [
+{
+"no": 14,
+"mark": "No",
+"evidence": "Section 428 of the Code was brought on the statute book for the first time in 1973.",
+"reason": "This passage discusses Section 428 of the old Code regarding set-off of sentence, which is unrelated to Section 479 BNSS undertrial release.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "Section 167(2)(a) of Cr.P.C. (now Section 187 of the BNSS, 2023) provides that no magistrate shall authorise the detention",
+"reason": "This passage lists general investigation and custody timelines under Section 167 CrPC and Section 187 BNSS, not the Section 479 BNSS one-third rule.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "(i) the provisions of the first proviso to Section 479 of the BNSS would not be applicable as the Appellant is not a first time offender;",
+"reason": "It mentions Section 479 BNSS and first-time offenders, but discusses exceptions to applicability in a PMLA matter rather than answering the retrospective FIR issue directly.",
+"confidence": "medium"
+},
+{
+"no": 17,
+"mark": "No",
+"evidence": "no retrospective effect has been given to the said provision and as such Section 436A does not directly apply",
+"reason": "This passage discusses Section 436A of the old Code rather than Section 479 BNSS or the specific query about a 2023 theft case FIR.",
+"confidence": "medium"
+},
+{
+"no": 18,
+"mark": "No",
+"evidence": "Where the undertrial is accused of an offence(s) under the Act prescribing a punishment",
+"reason": "This passage concerns bail rules for undertrials under the NDPS Act, which is irrelevant to a theft case under Section 479 BNSS.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "No",
+"evidence": "discuss the changes brought to the scheme of Section 156 of the Cr.P.C. by the enactment of the Bharatiya Nagarik Suraksha Sanhita, 2023",
+"reason": "It only introduces changes to Section 156 CrPC/BNSS and does not address Section 479 BNSS or undertrial detention periods.",
+"confidence": "high"
+},
+{
+"no": 20,
+"mark": "No",
+"evidence": "entitled to the benefit of set-off under Section 428 Cr.P.C. for the period of detention",
+"reason": "This passage discusses set-off under Section 428 CrPC rather than the one-third detention rule under Section 479 BNSS.",
+"confidence": "high"
+},
+{
+"no": 21,
+"mark": "No",
+"evidence": "if, immediately before the date on which this Sanhita comes into force, there is any appeal, application, trial, inquiry or investigation pending",
+"reason": "Although it quotes the repeal and savings section (Section 531 BNSS), it discusses procedural inquiries and taking cognizance rather than the Section 479 one-third rule.",
+"confidence": "medium"
+},
+{
+"no": 22,
+"mark": "No",
+"evidence": "As remedial measure section 436A has been inserted to provide that where an under-trial prisoner",
+"reason": "This passage refers to the old Section 436A CrPC statement of objects and reasons rather than Section 479 BNSS applicability to prior FIRs.",
+"confidence": "high"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": ""
+}

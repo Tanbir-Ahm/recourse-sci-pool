@@ -1,0 +1,57 @@
+{
+"question_id": "R24",
+"marks": [
+{
+"no": 13,
+"mark": "No",
+"evidence": "13.01.2023 The appellant ﬁ led an application under Section 437 of Cr.P.C. read with Sections 45 & 65 of the PMLA",
+"reason": "This passage only lists procedural dates and history in a different PMLA case without answering the user's specific concern about arrest upon appearance.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "No",
+"evidence": "21. The first respondent moved an application for anticipatory bail.",
+"reason": "The passage discusses CBI proceedings and anticipatory bail rather than the PMLA summons and arrest issue raised by the user.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "When the ED has not taken the custody of the accused during the investigation, usually, the Special Court will exercise the power of cancellation of the warrant without insisting on taking the accused in custody",
+"reason": "It addresses warrants and custody after cognizance in PMLA cases, but it focuses on warrants rather than the situation where a summons is issued.",
+"confidence": "medium"
+},
+{
+"no": 16,
+"mark": "Misleading",
+"evidence": "As discussed earlier, as per Section 204, Cr.P.C. in a complaint case, which appears to be a warrant case, the Court taking cognizance of the offence, has the discretion to issue warrant or summons as it thinks fit",
+"reason": "It discusses SFIO complaint cases and court discretion to issue warrants, which could wrongly discourage someone who received a summons.",
+"confidence": "medium"
+},
+{
+"no": 17,
+"mark": "No",
+"evidence": "The above finding of the High Court at this stage is premature, particularly in the context of what has been stated by the CBI on affidavit.",
+"reason": "This passage relates to a CBI investigation and High Court directions, making it irrelevant to the user's PMLA summons query.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Yes",
+"evidence": "(f) When the accused is not arrested during the investigation, after he appears before the Special Court pursuant to a summons, it is not necessary for him to apply for bail.",
+"reason": "It directly addresses the user's fear by stating that if not arrested during investigation, appearing pursuant to a summons does not require applying for bail.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "No",
+"evidence": "(vi) According to the appellant, before he could reply to the said show cause notice, on 27.06.2023 he was arrested by the respondent ED",
+"reason": "This passage merely details the background facts and arrest of a specific appellant in another PMLA case.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 18,
+"caveats": "Passage 18 directly contradicts the CA's advice by clarifying that bail is unnecessary if the accused was not arrested during investigation and appears pursuant to a summons."
+}

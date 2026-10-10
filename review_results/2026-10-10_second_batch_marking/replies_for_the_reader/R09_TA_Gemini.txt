@@ -1,0 +1,71 @@
+{
+"question_id": "R09",
+"marks": [
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated;",
+"reason": "This passage directly cites Section 142(2)(a) stating jurisdiction lies where the payee maintains the account for collection.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "Applying the decisions aforementioned to the facts of the present case, I do not consider it fit to state that just because the cheques were presented at Delhi or the demand notice was sent from Delhi, Courts at Delhi would have jurisdiction to try the present case.",
+"reason": "It discusses presentation at Delhi under previous case law but doesn't fully state the current statutory rule under Section 142(2)(a).",
+"confidence": "medium"
+},
+{
+"no": 11,
+"mark": "Misleading",
+"evidence": "mere presentation of cheques before banks in Delhi when the drawee bank is situated outside Delhi will not confer jurisdiction upon the Delhi courts",
+"reason": "It reflects older pre-amendment case law view that presentation alone doesn't confer jurisdiction, which is contrary to current Section 142(2)(a).",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "It is not in dispute that the cheque in question was issued by the respondent on Syndicate Bank, Gokaran branch in Karnataka which was presented for collection by the complainant at Krishnapuram, Kayamkulam, Kerala",
+"reason": "This passage discusses facts and jurisdiction regarding Kerala and Karnataka courts rather than Delhi.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "It is not in dispute that the cheque in question was issued by the respondent on Syndicate Bank, Gokaran branch in Karnataka which was presented for collection by the complainant at Krishnapuram, Kayamkulam, Kerala",
+"reason": "This passage is identical to passage 12 and discusses facts irrelevant to Delhi jurisdiction.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "No",
+"evidence": "In view of the same and in the light of the law laid down by this Court in K.Bhaskaran (supra), we are of the view that the learned Magistrate at Bhiwani has territorial jurisdiction",
+"reason": "This passage focuses on the territorial jurisdiction of Bhiwani rather than Delhi.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "the complainant filed a complaint at Delhi. In the complaint, it was stated that the Delhi Court has jurisdiction to try the case because the complainant was carrying on business at Delhi",
+"reason": "It sets out background facts involving a Delhi complaint and arguments about jurisdiction, but does not provide the definitive rule.",
+"confidence": "medium"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "Ultimately, this Court held that the Chandigarh Court had jurisdiction to entertain the complaint",
+"reason": "It discusses the Chandigarh and Delhi jurisdictional issues from Harman Electronics, offering background context rather than the direct rule for payee branch presentation.",
+"confidence": "medium"
+},
+{
+"no": 17,
+"mark": "Yes",
+"evidence": "the court of the place where such cheque was presented for collection, will have the jurisdiction to entertain the complaint alleging the commission of offence punishable under Section 138 of the N.I. Act.",
+"reason": "It clearly explains that the branch where the payee maintains the account for collection determines territorial jurisdiction under Section 142(2)(a).",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 9,
+"caveats": "Section 142(2) was introduced by the Negotiable Instruments (Amendment) Act, 2015, superseding older judgments like Dashrath Rupsingh Rathod that required filing at the drawee bank branch."
+}

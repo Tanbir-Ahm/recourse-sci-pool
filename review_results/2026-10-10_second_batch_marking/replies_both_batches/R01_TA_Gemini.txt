@@ -1,0 +1,64 @@
+{
+"question_id": "R01",
+"marks": [
+{
+"no": 12,
+"mark": "No",
+"evidence": "After two to three days, I and Adam had gone to Kalupur Darwaja on my scooter",
+"reason": "This passage describes criminal conspiracy testimony about phone calls and has no relevance to arrest grounds.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "After persistent efforts, Shyamji finally got a job in Chennai and he went to Chennai for the job",
+"reason": "This passage details marital disputes and family allegations, completely unrelated to arrest legality or grounds.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "if the abovesaid schedule for supplying the grounds of arrest in writing is not adhered to, the arrest will be rendered illegal",
+"reason": "It directly states that failing to supply grounds of arrest in writing renders the arrest illegal.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Yes",
+"evidence": "due to non-compliance, the arrest is rendered illegal; therefore, the arrestee cannot be remanded after the arrest is rendered illegal.",
+"reason": "It explains that non-compliance with constitutional safeguards makes the arrest illegal and prevents remand.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Yes",
+"evidence": "Non-compliance with the requirements of Article 22(1) vitiates the arrest of the accused.",
+"reason": "It clearly answers that failure to inform grounds of arrest violates fundamental rights and vitiates the arrest.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "Law further requires the police officers to record the reasons in writing for not making the arrest.",
+"reason": "It discusses reasons for arrest and production before a magistrate, but focuses on section 41/41A and remand rather than written grounds of arrest.",
+"confidence": "medium"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "We have carefully perused the arrest memo and find that the same nowhere conveys the grounds on which the accused was being arrested.",
+"reason": "It addresses whether an arrest memo conveys grounds of arrest, but lacks the broader rule on overall legality.",
+"confidence": "medium"
+},
+{
+"no": 19,
+"mark": "Partly",
+"evidence": "The Magistrate before authorising detention will record his own satisfaction",
+"reason": "It discusses magistrate duties during remand and police reasons, but does not focus directly on providing written grounds of arrest.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 16,
+"caveats": ""
+}

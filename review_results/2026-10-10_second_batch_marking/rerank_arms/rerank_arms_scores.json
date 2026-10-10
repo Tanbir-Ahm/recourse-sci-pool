@@ -1,0 +1,514 @@
+{
+ "questions": 19,
+ "settlements": {
+  "ChatGPT alone": {
+   "groups": {
+    "A top 5": {
+     "questions": 19,
+     "yes": 0.4526315789473685,
+     "useful": 0.8421052631578947,
+     "mis": 0.10526315789473684
+    },
+    "A places 6 to 10": {
+     "questions": 19,
+     "yes": 0.2,
+     "useful": 0.7157894736842106,
+     "mis": 0.1368421052631579
+    },
+    "N top 5": {
+     "questions": 19,
+     "yes": 0.3052631578947369,
+     "useful": 0.7368421052631579,
+     "mis": 0.08421052631578947
+    },
+    "M safety net": {
+     "questions": 19,
+     "yes": 0.17982456140350878,
+     "useful": 0.7017543859649124,
+     "mis": 0.030701754385964907
+    },
+    "A ten plus M": {
+     "questions": 19,
+     "yes": 0.2978644162854689,
+     "useful": 0.7617557880715775,
+     "mis": 0.1030504583136162
+    },
+    "kept (in both top 5)": {
+     "questions": 18,
+     "yes": 0.5370370370370371,
+     "useful": 0.8055555555555556,
+     "mis": 0.1388888888888889
+    },
+    "promoted (A only)": {
+     "questions": 19,
+     "yes": 0.4035087719298246,
+     "useful": 0.8385964912280702,
+     "mis": 0.1043859649122807
+    },
+    "demoted (N only)": {
+     "questions": 19,
+     "yes": 0.18859649122807018,
+     "useful": 0.6824561403508772,
+     "mis": 0.07894736842105263
+    }
+   },
+   "passages_pooled": {
+    "kept (in both top 5)": {
+     "n": 31,
+     "yes": 0.5806451612903226,
+     "useful": 0.8709677419354839,
+     "mis": 0.0967741935483871,
+     "passages": 31
+    },
+    "promoted (A only)": {
+     "n": 64,
+     "yes": 0.390625,
+     "useful": 0.828125,
+     "mis": 0.109375,
+     "passages": 64
+    },
+    "demoted (N only)": {
+     "n": 64,
+     "yes": 0.171875,
+     "useful": 0.671875,
+     "mis": 0.078125,
+     "passages": 64
+    }
+   },
+   "A_top5_minus_N_top5": {
+    "yes": {
+     "A_minus_N": 0.1473684210526316,
+     "ci95_over_questions": [
+      0.0316,
+      0.2632
+     ],
+     "questions": 19,
+     "A_better": 11,
+     "same": 6,
+     "A_worse": 2
+    },
+    "useful": {
+     "A_minus_N": 0.10526315789473684,
+     "ci95_over_questions": [
+      0.0211,
+      0.2
+     ],
+     "questions": 19,
+     "A_better": 9,
+     "same": 7,
+     "A_worse": 3
+    },
+    "mis": {
+     "A_minus_N": 0.021052631578947375,
+     "ci95_over_questions": [
+      -0.0526,
+      0.0947
+     ],
+     "questions": 19,
+     "A_better": 4,
+     "same": 13,
+     "A_worse": 2
+    }
+   }
+  },
+  "Gemini alone": {
+   "groups": {
+    "A top 5": {
+     "questions": 19,
+     "yes": 0.38947368421052636,
+     "useful": 0.7578947368421053,
+     "mis": 0.10526315789473684
+    },
+    "A places 6 to 10": {
+     "questions": 19,
+     "yes": 0.15789473684210528,
+     "useful": 0.7157894736842106,
+     "mis": 0.05263157894736842
+    },
+    "N top 5": {
+     "questions": 19,
+     "yes": 0.2736842105263158,
+     "useful": 0.6210526315789472,
+     "mis": 0.05263157894736842
+    },
+    "M safety net": {
+     "questions": 19,
+     "yes": 0.19736842105263158,
+     "useful": 0.5745614035087719,
+     "mis": 0.017543859649122806
+    },
+    "A ten plus M": {
+     "questions": 19,
+     "yes": 0.26020032598979964,
+     "useful": 0.7021750179644917,
+     "mis": 0.06532064426801268
+    },
+    "kept (in both top 5)": {
+     "questions": 18,
+     "yes": 0.4537037037037038,
+     "useful": 0.75,
+     "mis": 0.08333333333333333
+    },
+    "promoted (A only)": {
+     "questions": 19,
+     "yes": 0.36403508771929827,
+     "useful": 0.7640350877192983,
+     "mis": 0.1219298245614035
+    },
+    "demoted (N only)": {
+     "questions": 19,
+     "yes": 0.1929824561403509,
+     "useful": 0.5710526315789474,
+     "mis": 0.039473684210526314
+    }
+   },
+   "passages_pooled": {
+    "kept (in both top 5)": {
+     "n": 31,
+     "yes": 0.4838709677419355,
+     "useful": 0.7741935483870968,
+     "mis": 0.06451612903225806,
+     "passages": 31
+    },
+    "promoted (A only)": {
+     "n": 64,
+     "yes": 0.34375,
+     "useful": 0.75,
+     "mis": 0.125,
+     "passages": 64
+    },
+    "demoted (N only)": {
+     "n": 64,
+     "yes": 0.171875,
+     "useful": 0.546875,
+     "mis": 0.046875,
+     "passages": 64
+    }
+   },
+   "A_top5_minus_N_top5": {
+    "yes": {
+     "A_minus_N": 0.11578947368421054,
+     "ci95_over_questions": [
+      0.0211,
+      0.2211
+     ],
+     "questions": 19,
+     "A_better": 8,
+     "same": 10,
+     "A_worse": 1
+    },
+    "useful": {
+     "A_minus_N": 0.1368421052631579,
+     "ci95_over_questions": [
+      0.0211,
+      0.2421
+     ],
+     "questions": 19,
+     "A_better": 12,
+     "same": 3,
+     "A_worse": 4
+    },
+    "mis": {
+     "A_minus_N": 0.05263157894736842,
+     "ci95_over_questions": [
+      -0.0211,
+      0.1263
+     ],
+     "questions": 19,
+     "A_better": 6,
+     "same": 12,
+     "A_worse": 1
+    }
+   }
+  },
+  "both, ties to the lower mark": {
+   "groups": {
+    "A top 5": {
+     "questions": 19,
+     "yes": 0.3263157894736842,
+     "useful": 0.7473684210526317,
+     "mis": 0.12631578947368424
+    },
+    "A places 6 to 10": {
+     "questions": 19,
+     "yes": 0.11578947368421055,
+     "useful": 0.6526315789473685,
+     "mis": 0.11578947368421054
+    },
+    "N top 5": {
+     "questions": 19,
+     "yes": 0.24210526315789482,
+     "useful": 0.6,
+     "mis": 0.08421052631578947
+    },
+    "M safety net": {
+     "questions": 19,
+     "yes": 0.17982456140350878,
+     "useful": 0.5614035087719299,
+     "mis": 0.030701754385964907
+    },
+    "A ten plus M": {
+     "questions": 19,
+     "yes": 0.21347073978652925,
+     "useful": 0.669628616997038,
+     "mis": 0.10225301014774697
+    },
+    "kept (in both top 5)": {
+     "questions": 18,
+     "yes": 0.42592592592592593,
+     "useful": 0.7222222222222222,
+     "mis": 0.1388888888888889
+    },
+    "promoted (A only)": {
+     "questions": 19,
+     "yes": 0.2807017543859649,
+     "useful": 0.7508771929824561,
+     "mis": 0.1350877192982456
+    },
+    "demoted (N only)": {
+     "questions": 19,
+     "yes": 0.15350877192982457,
+     "useful": 0.531578947368421,
+     "mis": 0.07894736842105263
+    }
+   },
+   "passages_pooled": {
+    "kept (in both top 5)": {
+     "n": 31,
+     "yes": 0.45161290322580644,
+     "useful": 0.7741935483870968,
+     "mis": 0.0967741935483871,
+     "passages": 31
+    },
+    "promoted (A only)": {
+     "n": 64,
+     "yes": 0.265625,
+     "useful": 0.734375,
+     "mis": 0.140625,
+     "passages": 64
+    },
+    "demoted (N only)": {
+     "n": 64,
+     "yes": 0.140625,
+     "useful": 0.515625,
+     "mis": 0.078125,
+     "passages": 64
+    }
+   },
+   "A_top5_minus_N_top5": {
+    "yes": {
+     "A_minus_N": 0.08421052631578947,
+     "ci95_over_questions": [
+      -0.0316,
+      0.1895
+     ],
+     "questions": 19,
+     "A_better": 8,
+     "same": 9,
+     "A_worse": 2
+    },
+    "useful": {
+     "A_minus_N": 0.14736842105263157,
+     "ci95_over_questions": [
+      0.0211,
+      0.2632
+     ],
+     "questions": 19,
+     "A_better": 12,
+     "same": 4,
+     "A_worse": 3
+    },
+    "mis": {
+     "A_minus_N": 0.042105263157894736,
+     "ci95_over_questions": [
+      -0.0421,
+      0.1263
+     ],
+     "questions": 19,
+     "A_better": 5,
+     "same": 12,
+     "A_worse": 2
+    }
+   }
+  },
+  "both, ties to the higher mark": {
+   "groups": {
+    "A top 5": {
+     "questions": 19,
+     "yes": 0.505263157894737,
+     "useful": 0.8736842105263158,
+     "mis": 0.06315789473684211
+    },
+    "A places 6 to 10": {
+     "questions": 19,
+     "yes": 0.2210526315789474,
+     "useful": 0.7894736842105263,
+     "mis": 0.06315789473684211
+    },
+    "N top 5": {
+     "questions": 19,
+     "yes": 0.3368421052631579,
+     "useful": 0.7578947368421053,
+     "mis": 0.05263157894736842
+    },
+    "M safety net": {
+     "questions": 19,
+     "yes": 0.19736842105263158,
+     "useful": 0.7149122807017543,
+     "mis": 0.017543859649122806
+    },
+    "A ten plus M": {
+     "questions": 19,
+     "yes": 0.33126522600206804,
+     "useful": 0.8075214259424786,
+     "mis": 0.053236237446763764
+    },
+    "kept (in both top 5)": {
+     "questions": 18,
+     "yes": 0.5833333333333334,
+     "useful": 0.8611111111111112,
+     "mis": 0.05555555555555555
+    },
+    "promoted (A only)": {
+     "questions": 19,
+     "yes": 0.45614035087719296,
+     "useful": 0.869298245614035,
+     "mis": 0.07368421052631578
+    },
+    "demoted (N only)": {
+     "questions": 19,
+     "yes": 0.2017543859649123,
+     "useful": 0.6956140350877194,
+     "mis": 0.06578947368421052
+    }
+   },
+   "passages_pooled": {
+    "kept (in both top 5)": {
+     "n": 31,
+     "yes": 0.6451612903225806,
+     "useful": 0.9032258064516129,
+     "mis": 0.03225806451612903,
+     "passages": 31
+    },
+    "promoted (A only)": {
+     "n": 64,
+     "yes": 0.4375,
+     "useful": 0.859375,
+     "mis": 0.078125,
+     "passages": 64
+    },
+    "demoted (N only)": {
+     "n": 64,
+     "yes": 0.1875,
+     "useful": 0.6875,
+     "mis": 0.0625,
+     "passages": 64
+    }
+   },
+   "A_top5_minus_N_top5": {
+    "yes": {
+     "A_minus_N": 0.16842105263157897,
+     "ci95_over_questions": [
+      0.0842,
+      0.2632
+     ],
+     "questions": 19,
+     "A_better": 12,
+     "same": 6,
+     "A_worse": 1
+    },
+    "useful": {
+     "A_minus_N": 0.11578947368421054,
+     "ci95_over_questions": [
+      0.0316,
+      0.2
+     ],
+     "questions": 19,
+     "A_better": 9,
+     "same": 8,
+     "A_worse": 2
+    },
+    "mis": {
+     "A_minus_N": 0.010526315789473687,
+     "ci95_over_questions": [
+      -0.0526,
+      0.0737
+     ],
+     "questions": 19,
+     "A_better": 2,
+     "same": 16,
+     "A_worse": 1
+    }
+   }
+  }
+ },
+ "anchors": {
+  "ChatGPT": {
+   "pairs": 38,
+   "same_mark": 0.7368421052631579,
+   "same_useful_or_not": 0.868421052631579,
+   "mean_grade_shift_second_minus_first": 0.18421052631578946,
+   "second_higher": 6,
+   "second_lower": 4
+  },
+  "Gemini": {
+   "pairs": 38,
+   "same_mark": 0.7105263157894737,
+   "same_useful_or_not": 0.868421052631579,
+   "mean_grade_shift_second_minus_first": 0.07894736842105263,
+   "second_higher": 6,
+   "second_lower": 5
+  },
+  "both": {
+   "pairs": 76,
+   "same_mark": 0.7236842105263158,
+   "same_useful_or_not": 0.868421052631579,
+   "mean_grade_shift_second_minus_first": 0.13157894736842105,
+   "second_higher": 12,
+   "second_lower": 9
+  }
+ },
+ "coverage": {
+  "A top 5": {
+   "passages": 95,
+   "not_marked_by_any_run": 0
+  },
+  "A places 6 to 10": {
+   "passages": 95,
+   "not_marked_by_any_run": 0
+  },
+  "N top 5": {
+   "passages": 95,
+   "not_marked_by_any_run": 0
+  },
+  "M safety net": {
+   "passages": 52,
+   "not_marked_by_any_run": 0
+  },
+  "A ten plus M": {
+   "passages": 242,
+   "not_marked_by_any_run": 0
+  },
+  "kept (in both top 5)": {
+   "passages": 31,
+   "not_marked_by_any_run": 0
+  },
+  "promoted (A only)": {
+   "passages": 64,
+   "not_marked_by_any_run": 0
+  },
+  "demoted (N only)": {
+   "passages": 64,
+   "not_marked_by_any_run": 0
+  }
+ },
+ "runs": {
+  "ChatGPT/A": 217,
+  "ChatGPT/B": 69,
+  "ChatGPT/TA": 147,
+  "Gemini/A": 217,
+  "Gemini/B": 69,
+  "Gemini/TA": 147
+ },
+ "reply_problems": 69
+}

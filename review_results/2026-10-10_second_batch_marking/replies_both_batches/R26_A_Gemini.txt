@@ -1,0 +1,78 @@
+{
+"question_id": "R26",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "when the sentence is life imprisonment the consideration for suspension of sentence could be of a different approach.",
+"reason": "It discusses the approach for life imprisonment sentences upon suspension, but does not address evidence re-appreciation.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "when the sentence is life imprisonment, the consideration for suspension of sentence could be of a different approach.",
+"reason": "It acknowledges a different approach for life imprisonment sentences, but provides no details on evidence re-appreciation.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "The power of suspension of sentence under Section 389 of the CrPC (Corresponding to Section 430 of the Bharatiya Nagarik Suraksha Sanhita, 2023) is vested in the Appellate Court",
+"reason": "It notes the statutory equivalent for suspension powers, but does not state standards or rules on re-appreciating evidence.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "A suspension of sentence is an act of keeping the sentence in abeyance, pending the final adjudication.",
+"reason": "It discusses suspension generally, but does not provide specific standards for life imprisonment or evidence re-appreciation.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "No",
+"evidence": "Section 433 empowers the appropriate Government to commute",
+"reason": "The passage is about government commutation powers and statutory bars under specific acts, off-topic for standard of suspension.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "The issue involved in this appeal is as regards the legality of the conditions imposed while remitting the life sentence",
+"reason": "The passage concerns the remission of a life sentence rather than the suspension of sentence pending appeal.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "Section 389 of the Code deals with suspension of execution of sentence pending the appeal and release of the appellant on bail.",
+"reason": "It introduces considerations under Section 389 for serious offences, but does not directly cover the standard or re-appreciation.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "when the sentence is life imprisonment the consideration for suspension of sentence could be of a different approach.",
+"reason": "It mentions the differing approach for life sentences via precedent, but does not address evidence re-appreciation.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "Where there is evidence that has been considered by the Trial Court, it is not open to a Court considering application under Section 389 to re-assess and/or re-analyze the same evidence",
+"reason": "It directly states the standard that the appellate court should not re-assess or re-analyze evidence when considering suspension.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "The High Court could not have gone into the issues like over-writings in the First Information Report, inordinate delay in lodging the First Information Report etc. while considering the plea of the convicts for suspension of sentence of life imprisonment.",
+"reason": "It directly illustrates that an appellate court should not appreciate evidence or probe into factual details when deciding on the suspension of a life sentence.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 9,
+"caveats": "Section 389 of the old CrPC corresponds to Section 430 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS)."
+}

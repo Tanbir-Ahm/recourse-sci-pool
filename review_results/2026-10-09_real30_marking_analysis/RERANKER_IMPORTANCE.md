@@ -1,5 +1,8 @@
 # How important is the re-ranker? (2026-10-09; PRIVATE; every mark is an AI mark, no lawyer; the 19 tuning questions)
 
+> **Update 2026-10-10:** the pack this note asked for was marked (J and S, 38 chats). Measured: the re-ranker adds 8 to 17 points of direct answers and 10 to 15 points of useful passages to the top 5, with a few more Misleading ones; see `../2026-10-10_second_batch_marking/README.md`. The guess below is superseded.
+
+
 Tags: [Certain] = counted from the saved runs and marks, [Likely] = strong inference, [Guessing] = filling a gap. Numbers come from `rerank_vs_marks.json` (`python rerank_vs_marks.py`, no network, no spend), `../2026-10-09_real30_pool_dev/rerank_effect/` and `analysis.json`.
 
 ## Verdict

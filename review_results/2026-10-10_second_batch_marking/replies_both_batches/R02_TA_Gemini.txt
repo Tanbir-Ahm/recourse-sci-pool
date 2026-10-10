@@ -1,0 +1,36 @@
+{
+"question_id": "R02",
+"marks": [
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "The learned Senior Counsel/Amicus Curiae submitted that notice served through WhatsApp or other modes of electronic communication is not contemplated",
+"reason": "It records an argument by a counsel rather than the court's final ruling.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "The issue before us lies within a narrow compass \u2013 whether the usage of electronic communication can also be extended to the procedure governing the service of a notice, contemplated under Section 35 of the BNSS, 2023.",
+"reason": "It introduces the issue being examined by the court but does not provide the answer.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "a notice under Section 35 of the BNSS, 2023 could have an immediate bearing on the liberty of the individual in case of its non-compliance",
+"reason": "It discusses the consequences of non-compliance but does not resolve whether WhatsApp notice is valid.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Yes",
+"evidence": "we are unable to convince ourselves that electronic communication is a valid mode of service of notice under Section 35 of the BNSS, 2023",
+"reason": "The court directly holds that electronic communication is not a valid mode of service under Section 35.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 13,
+"caveats": "Passage 10 records a lawyer's argument, whereas Passage 13 contains the court's final holding."
+}

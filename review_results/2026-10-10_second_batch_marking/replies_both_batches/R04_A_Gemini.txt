@@ -1,0 +1,78 @@
+{
+"question_id": "R04",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "we are unable to read any restriction on the power of the courts empowered to grant anticipatory bail under Section 438 of the Crl. P.C.",
+"reason": "It discusses the duration of anticipatory bail and whether it should be limited, but critiques an older view rather than giving the definitive final rule.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "in view of the clear declaration of the law by the Constitution Bench, the life of the order under Section 438 CrPC granting bail cannot be curtailed.",
+"reason": "It directly states that an anticipatory bail order's life cannot be limited and need not end after a short duration.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Misleading",
+"reason": "It discusses older case law requiring limited duration and regular bail surrender, which was subsequently reconsidered or clarified by the Constitution Bench.",
+"evidence": "what the Court desired to convey was that an order of anticipatory bail does not enure till the end of trial but it must be of limited duration",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the Court, or when charges are framed, but can continue till the end of the trial.",
+"reason": "It directly answers that anticipatory bail does not need to be limited in time and can continue till the end of trial.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "the court should not limit the order only for a specified period till the charge-sheet is filed and thereafter compel the accused to surrender and ask for regular bail",
+"reason": "It outlines a submission and critiques past limitations on anticipatory bail, but is part of an argument rather than the final ruling.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the court, or when charges are framed, but can continue till the end of the trial.",
+"reason": "It quotes the Constitution Bench holding that anticipatory bail should not invariably be limited to a fixed period and can continue till trial.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "the protection granted under Section 438 Cr. PC should not always or ordinarily be limited to a fixed period; it should inure in favour of the accused without any restriction as to time.",
+"reason": "It directly provides the authoritative answer from the Constitution Bench that anticipatory bail is not necessarily limited in time.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the court, or when charges are framed, but can continue till the end of the 96 trial.",
+"reason": "It explicitly reiterates the Constitution Bench ruling that anticipatory bail can continue till the end of the trial without a fixed time limit.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "the same is ordinarily not limited to a fixed period and would subsist till the end of the trial.",
+"reason": "It directly confirms that anticipatory bail is not normally limited to a fixed period and subsists till the end of the trial.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "the life of the order under Section 438 CrPC granting bail cannot be curtailed.",
+"reason": "It directly concludes that the duration of an anticipatory bail order cannot be improperly curtailed or limited in time.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 7,
+"caveats": ""
+}

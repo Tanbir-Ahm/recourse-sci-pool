@@ -1,0 +1,85 @@
+{
+"question_id": "R01",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "It is by now settled that if the grounds of arrest are not furnished to the arrestee in writing, this non-compliance will result in breach of the constitutional and statutory safeguards hence rendering the arrest and remand illegal",
+"reason": "This passage directly states that failing to furnish grounds of arrest in writing renders the arrest and remand illegal, answering the user's core question.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "It goes without saying that if the abovesaid schedule for supplying the grounds of arrest in writing is not adhered to, the arrest will be rendered illegal entitling the release of the arrestee.",
+"reason": "It directly confirms that failure to provide written grounds within the proper timeline renders the arrest illegal and entitles the arrestee to release.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "Unquestionably, till that time, the grounds of arrest had not been conveyed to the appellant in writing.",
+"reason": "It discusses the lack of written grounds of arrest during remand proceedings in a specific case, but focuses on factual chronology rather than laying down the general legal rule.",
+"confidence": "medium"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Mentioning the grounds of arrest in the remand report is no compliance with the requirement of informing the arrestee of the grounds of arrest.",
+"reason": "It addresses whether putting grounds in a remand report satisfies the requirement, but does not provide a comprehensive answer to whether the arrest is illegal overall.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "The grounds of arrest must be given in writing to the arrestee before he is produced before the Magistrate in terms of Section 104(2).",
+"reason": "It clearly affirms the legal requirement that grounds of arrest must be provided in writing to the arrestee.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "Later, a written copy of grounds of arrest must be supplied to the arrested person within a reasonable time and in no event later than two hours prior to production of the arrestee before the magistrate for remand proceedings.",
+"reason": "It outlines the timing rules and exceptional circumstances for supplying written grounds of arrest rather than addressing the overall illegality directly.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "The second issue which requires consideration is when grounds of arrest are not furnished either prior to arrest or immediately after the arrest, would it vitiate the arrest for non-compliance",
+"reason": "It merely frames the legal issue regarding whether not furnishing grounds vitiates the arrest, without answering it in this specific snippet.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "Therefore, non-compliance with the requirements of Article 22(1) vitiates the arrest of the accused. Hence, further orders passed by a criminal court of remand are also vitiated.",
+"reason": "It directly supports the user's concern by stating that non-compliance with Article 22(1) vitiates both the arrest and subsequent remand orders.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "The law mandates the police officer to state the facts and record the reasons in writing which led him to come to a conclusion covered by any of the provisions aforesaid",
+"reason": "It discusses the requirement for police to record reasons for arrest in writing, but is focused on general arrest provisions rather than the specific provision of grounds of arrest to the accused.",
+"confidence": "medium"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "non supply of grounds of arrest in writing to the arrestee prior to or immediately after arrest would not vitiate such arrest... provided the said grounds are supplied in writing within a reasonable time",
+"reason": "It provides a nuanced condition under which delayed supply does not vitiate the arrest, which adds important context but is a partial view.",
+"confidence": "medium"
+},
+{
+"no": 11,
+"mark": "Yes",
+"evidence": "Therefore, non-compliance with the requirements of Article 22(1) vitiates the arrest of the accused. Hence, further orders passed by a criminal court of remand are also vitiated.",
+"reason": "It directly confirms that failing to comply with constitutional safeguards vitiates the arrest and remand orders.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 8,
+"caveats": "Different passages reflect differing nuances or evolving judicial interpretations regarding the exact timeline and exceptions for providing grounds of arrest in writing."
+}

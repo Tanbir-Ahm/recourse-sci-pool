@@ -1,0 +1,92 @@
+{
+"question_id": "R24",
+"marks": [
+{
+"no": 1,
+"mark": "No",
+"evidence": "Thus, it is evident that CBI did not feel the need and necessity to arrest the appellant",
+"reason": "This passage discusses a CBI arrest and is off-topic regarding ED complaint summons and PMLA bail conditions.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "When the accused is granted bail in the same case, it is not necessary to arrest him after taking cognizance.",
+"reason": "It directly addresses what happens when cognizance is taken and whether the accused needs to be arrested.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "After the filing of the complaint, after he appears in compliance with the summons, he is taken into custody and forced to apply for bail. Hence, such a practice, if followed by some Special Courts, is completely illegal.",
+"reason": "It directly rules that taking an unarrested accused into custody upon appearance via summons is completely illegal.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "hence, in such a case, an apprehension that the ED will arrest such an accused by exercising powers under Section 19 can never exist.",
+"reason": "It directly refutes the fear that the ED can arrest the accused after the complaint and cognizance.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "if the accused appears before the Special Court pursuant to the summons, he shall not be treated as if he is in custody. Therefore, it is not necessary for him to apply for bail.",
+"reason": "It clearly states that an accused appearing via summons is not in custody and does not need to apply for bail.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "Thus, an order accepting bonds under Section 88 from the accused does not amount to a grant of bail;",
+"reason": "It explains bond procedures rather than directly answering whether the accused will be arrested or needs twin conditions.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "The first respondent moved an application for anticipatory bail.",
+"reason": "This passage relates to factual background of a CBI anticipatory bail matter, unrelated to the user's specific PMLA query.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "The above finding of the High Court at this stage is premature",
+"reason": "It discusses a CBI investigation and High Court interim protection, which is off-topic for ED complaint summons procedures.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "When an accused is not arrested until the filing of the complaint and when an accused appears pursuant to summons before the Special Court, Section 437 of the CrPC will not apply, and it is not necessary for the accused to seek bail.",
+"reason": "It directly confirms that bail applications/conditions are not required when appearing pursuant to a summons.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "When the Special Court deals with an application for cancellation of a warrant, the Special Court is not dealing with an application for bail. Hence, Section 45(1) will have no application",
+"reason": "It confirms that strict bail provisions like Section 45(1) do not apply when dealing with post-summons appearance procedures.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "While hearing such an application, the Court may permit custody only if it is satisfied that custodial interrogation at that stage is required",
+"reason": "It discusses when custody may be permitted upon ED application after appearance, but doesn't fully cover the general rule.",
+"confidence": "medium"
+},
+{
+"no": 12,
+"mark": "No",
+"evidence": "CBI moved an application on 24.06.2024 before the Special Judge (PC Act) under Section 41A of the CrPC",
+"reason": "This passage details CBI custody and factual developments in a different case, making it completely off-topic.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 3,
+"caveats": ""
+}

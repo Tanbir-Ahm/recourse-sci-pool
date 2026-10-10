@@ -1,0 +1,57 @@
+{
+"question_id": "R20",
+"marks": [
+{
+"no": 11,
+"mark": "Partly",
+"evidence": "There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim",
+"reason": "It explains the legal position on consensual sex versus rape under a false promise of marriage but does not discuss Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "There is also a distinction between mere breach of a promise and not fulfilling a false promise.",
+"reason": "It addresses whether a broken promise of marriage constitutes rape, but it lacks any mention of Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "The complaint of alleged rape on false promise of marriage was made five years after they had started having relations.",
+"reason": "It discusses the factual context of a false promise of marriage case without addressing Section 69 BNS or general legal definitions.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine",
+"reason": "It cites the precedent distinguishing rape and consensual sex on a promise to marry, omitting Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "It is trite that there is a distinction between rape and consensual intercourse.",
+"reason": "It outlines the distinction between consensual sex and rape based on a promise of marriage, but says nothing about Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "Hence, it is evident that there must be adequate evidence to show that at the relevant time i.e. at the initial stage itself, the accused had no intention whatsoever, of keeping his promise to marry the victim.",
+"reason": "It elaborates on the initial intention requirement for a false promise of marriage case, without mentioning Section 69 BNS.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "Whether the Criminal Appeal No.282 of 2025 @ SLP(Crl.) No.12663 of 2022 For brevity ‘I.P.C.’ 954 accused had duped the victim to have sexual intercourse with him on the promise of marriage, was a matter of trial",
+"reason": "It touches upon a case involving a promise of marriage, but does not answer the core question or mention Section 69 BNS.",
+"confidence": "high"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": "None of the passages mention Section 69 BNS or how it alters the post-July 1, 2024 position."
+}

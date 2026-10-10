@@ -1,0 +1,64 @@
+{
+"question_id": "R19",
+"marks": [
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "In this category of cases, the High Court may quash the criminal proceedings if in its view, because of the compromise",
+"reason": "It explains when a High Court may quash proceedings due to a compromise, but lacks context on whether it applies to sexual offences against minors.",
+"confidence": "medium"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "2. The facts very briefly are that the appellant was married to Laxmiben in 1980.",
+"reason": "This passage describes the unrelated facts of a specific case involving bigamy and suicide rather than police case quashing.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "heinous and serious offences could not be quashed even though a victim or victim’s family and the offender had settled the dispute.",
+"reason": "It highlights that serious offences cannot be quashed on compromise, but does not explicitly detail POCSO offences.",
+"confidence": "medium"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "If the settlement is arrived at immediately after the alleged commission of offence when the matter is still under investigation, the High Court may be somewhat liberal",
+"reason": "It discusses timing considerations for compromises, but does not address heinous crimes or offences against children.",
+"confidence": "medium"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "Heinous and serious offences of mental depravity or offences like murder, rape, dacoity, etc. cannot be fittingly quashed even though the victim or victim’s family and the offender had settled the dispute.",
+"reason": "It states that heinous and serious offences cannot be quashed on compromise, but does not specifically address school teacher molestation or POCSO.",
+"confidence": "medium"
+},
+{
+"no": 17,
+"mark": "No",
+"evidence": "1. An FIR was lodged by Harpreet Singh, father of prosecutrix (aged about 6 years), on April 19, 2017 at 1:23 p.m., about sexual assault on her daughter.",
+"reason": "It only narrates the factual background and allegations of another school sexual assault case without discussing whether FIRs can be closed via compromise.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "Heinous or serious crimes, which are not private in nature and have a serious impact on society cannot be quashed on the basis of a compromise",
+"reason": "It explains that serious crimes cannot be quashed via compromise, though it lacks direct facts regarding minor school victims.",
+"confidence": "medium"
+},
+{
+"no": 19,
+"mark": "Partly",
+"evidence": "In this category of cases, the High Court may quash the criminal proceedings if in its View, because of the compromise",
+"reason": "It discusses the general criteria for High Court quashing based on a compromise, without mentioning offences against children.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": "None of the passages directly address whether a POCSO case or sexual assault on a minor can be quashed based on a family compromise, though several state that serious/heinous crimes cannot be quashed."
+}

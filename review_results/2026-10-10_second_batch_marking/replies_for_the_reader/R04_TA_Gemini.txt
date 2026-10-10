@@ -1,0 +1,71 @@
+{
+"question_id": "R04",
+"marks": [
+{
+"no": 11,
+"mark": "Yes",
+"evidence": "Should the operation of an order passed under Section 438(1) be limited in point of time? Not necessarily.",
+"reason": "The passage directly answers that an anticipatory bail order need not necessarily be limited in time.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Yes",
+"evidence": "there is nothing in the language of the Section which goes to show that the pre-arrest bail granted under Section 438 has to be time bound.",
+"reason": "It explicitly states that Section 438 anticipatory bail does not have to be time-bound.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "Yes",
+"evidence": "the life or duration of an anticipatory bail order does not end normally at the time and stage when the accused is summoned by the court, or when charges are framed, but can continue till the end of the trial.",
+"reason": "It clarifies that anticipatory bail can continue until the end of the trial rather than being necessarily time-limited.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Yes",
+"evidence": "we are unable to read any restriction on the power of the courts empowered to grant anticipatory bail under Section 438 of the Crl. P.C.",
+"reason": "It affirms that courts have the power to grant anticipatory bail without mandatory time restrictions.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "Whether the protection granted to a person under Section 438, CrPC should be limited to a fixed period so as to enable the person to surrender before the Trial Court and seek regular bail",
+"reason": "It introduces the point regarding whether protection should be limited to a fixed period, but serves as background/framing rather than directly answering.",
+"confidence": "medium"
+},
+{
+"no": 16,
+"mark": "No",
+"evidence": "Section 438(2) lays down the conditions that may be imposed by the Court while granting the relief.",
+"reason": "It only outlines the structure and provisions of Section 438 without answering whether anticipatory bail must be time-limited.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "in an appropriate case and looking to the facts and circumstances of the case and the stage at which the pre-arrest bail application was made, the court concerned can limit the operation of the order in relation to a period of time",
+"reason": "It discusses court discretion to limit anticipatory bail in time, but focuses heavily on historical conflict and misreadings.",
+"confidence": "medium"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "one line of judgments... held that anticipatory bail orders should invariably contain conditions, either with reference to time... [while] another line of cases... held that no conditions ought to be imposed",
+"reason": "It summarizes conflicting judicial views on whether anticipatory bail should be time-limited, acting as background.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "Misleading",
+"evidence": "By this, what the Court desired to convey was that an order of anticipatory bail does not enure till the end of trial but it must be of limited duration as the regular court cannot be bypassed.",
+"reason": "Read on its own, it records an older restrictive view of anticipatory bail duration that was subsequently overruled by later Constitution Benches.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 13,
+"caveats": "Passage 19 reflects an older, restricted view of anticipatory bail duration that was later superseded."
+}

@@ -1,0 +1,64 @@
+{
+"question_id": "R26",
+"marks": [
+{
+"no": 11,
+"mark": "No",
+"evidence": "Section 432 deals with power to suspend or remit sentences.",
+"reason": "This passage discusses remission and commutation under Section 432/433-A CrPC, not suspension of sentence pending appeal.",
+"confidence": "high"
+},
+{
+"no": 12,
+"mark": "Partly",
+"evidence": "Section 389 of the Code of Criminal Procedure, 1973 reads as under",
+"reason": "It quotes the statutory provision for suspension of sentence pending appeal, but does not discuss the standard or re-appreciation of evidence.",
+"confidence": "high"
+},
+{
+"no": 13,
+"mark": "No",
+"evidence": "The issue involved in this appeal is as regards the legality of the conditions imposed while remitting the life sentence",
+"reason": "The passage relates to the legality of conditions imposed during the remission of a life sentence rather than suspension pending appeal.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "Section 389 of the Code empowers the Court to suspend the sentence pending the appeal",
+"reason": "It reproduces Section 389 CrPC regarding suspension of sentence pending appeal but lacks specific discussion on the standard or re-appreciation of evidence.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "Partly",
+"evidence": "Similarly, when the sentence is life imprisonment the consideration for suspension of sentence could be of a different approach.",
+"reason": "It discusses the approach to suspension of sentence for life imprisonment, but does not address evidence re-appreciation.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "Section 389 of the CrPC reads thus",
+"reason": "It sets out the statutory text of Section 389 CrPC for suspension of sentence pending appeal without detailing the specific standard or evidence rules.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "during the pendency of appeal, an appellate Court is empowered to suspend sentence on the appellant by releasing him on bail.",
+"reason": "It mentions the general power to suspend a sentence under Section 389, but does not explain the standard or re-appreciation of evidence.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "Section 389 of the CrPC reads thus",
+"reason": "It reproduces the text of Section 389 CrPC on suspension of sentence pending appeal without discussing evidentiary standards.",
+"confidence": "high"
+}
+],
+"good_answer_present": "No",
+"best_passage_no": null,
+"caveats": ""
+}

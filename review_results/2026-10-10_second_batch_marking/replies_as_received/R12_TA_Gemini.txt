@@ -1,0 +1,64 @@
+{
+"question_id": "R12",
+"marks": [
+{
+"no": 13,
+"mark": "Partly",
+"evidence": "Whether any Schedules were appended to the agreement or not, a finding is required to be recorded after full fledged trial.",
+"reason": "Discusses High Court powers under Section 482 CrPC regarding civil contracts with fraud elements, but lacks specific context.",
+"confidence": "high"
+},
+{
+"no": 14,
+"mark": "Partly",
+"evidence": "In our opinion, in view of these facts allowing the police investigation to continue would amount to anabuse of the process of the court",
+"reason": "Explains that purely civil disputes lacking initial criminal intent can be quashed under Section 482, but facts differ.",
+"confidence": "high"
+},
+{
+"no": 15,
+"mark": "No",
+"evidence": "The law had developed several or different models or technics to broach the scope of conspiracy.",
+"reason": "Discusses the legal scope and mechanics of criminal conspiracy rather than property disputes or quashing.",
+"confidence": "high"
+},
+{
+"no": 16,
+"mark": "Partly",
+"evidence": "present case is a case of purely civil dispute between the parties for which remedy lies before a civil court",
+"reason": "Affirms quashing a criminal complaint under Section 482 for a civil dispute, though facts are general.",
+"confidence": "high"
+},
+{
+"no": 17,
+"mark": "Partly",
+"evidence": "Merely because an agreement to sell was entered into which agreement the petitioner failed to honour, it cannot be said that the petitioner has cheated",
+"reason": "Analyzes quashing an agreement-to-sell dispute under Sections 406/420 IPC, though distinguished in that case.",
+"confidence": "high"
+},
+{
+"no": 18,
+"mark": "Partly",
+"evidence": "when the financer seized the truck in question due to default in payment of instalment... this Court held it as an abuse of process",
+"reason": "Cites precedent where default disputes disguised as criminal cases were quashed under Section 482.",
+"confidence": "high"
+},
+{
+"no": 19,
+"mark": "Partly",
+"evidence": "In our view the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be malafide",
+"reason": "Reiterates principles for quashing criminal proceedings under Section 482 when initial intent to cheat is absent.",
+"confidence": "high"
+},
+{
+"no": 20,
+"mark": "Yes",
+"evidence": "The appellants, Rikhab Birani and Sadhna Birani, had entered into an oral agreement to sell Roti Godown No. 28/27, Birhana Road, Kanpur, Uttar Pradesh",
+"reason": "Directly matches the specific facts and parties concerning the Kanpur godown oral agreement dispute.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 20,
+"caveats": ""
+}

@@ -1,0 +1,1619 @@
+{
+ "A_second_batch": {
+  "passages_marked_by_both": 147,
+  "mark_mix": {
+   "ChatGPT": {
+    "No": 26,
+    "Yes": 34,
+    "Partly": 74,
+    "Misleading": 13
+   },
+   "Gemini": {
+    "No": 43,
+    "Yes": 29,
+    "Partly": 67,
+    "Misleading": 8
+   }
+  },
+  "same_mark": 0.755,
+  "same_useful_or_not": 0.837,
+  "kappa": 0.634,
+  "chatgpt_more_generous_on": 26,
+  "gemini_more_generous_on": 10,
+  "quotes_not_found_in_second_batch_files": 15,
+  "second_batch_marks": 294
+ },
+ "A_first_batch_order_A_for_comparison": {
+  "passages": 217,
+  "same_mark": 0.705,
+  "kappa": 0.573
+ },
+ "B_where_the_marks_come_from": {
+  "entering": {
+   "second batch only": 14,
+   "first batch only": 5
+  },
+  "leaving": {
+   "first batch only": 19
+  }
+ },
+ "B_batch_matched": {
+  "first-batch marks only (A, B) / ties to the lower mark": {
+   "entering": {
+    "marked": 5,
+    "yes": 2,
+    "useful": 4,
+    "misleading": 0,
+    "mean_grade": 2.2
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 3,
+    "useful": 13,
+    "misleading": 4,
+    "mean_grade": 1.63
+   }
+  },
+  "first-batch marks only (A, B) / ties to the higher mark": {
+   "entering": {
+    "marked": 5,
+    "yes": 2,
+    "useful": 5,
+    "misleading": 0,
+    "mean_grade": 2.4
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 7,
+    "useful": 15,
+    "misleading": 2,
+    "mean_grade": 2.05
+   }
+  },
+  "second-batch marks only (TA) / ties to the lower mark": {
+   "entering": {
+    "marked": 14,
+    "yes": 6,
+    "useful": 11,
+    "misleading": 2,
+    "mean_grade": 2.07
+   },
+   "leaving": {
+    "marked": 0,
+    "yes": 0,
+    "useful": 0,
+    "misleading": 0,
+    "mean_grade": null
+   }
+  },
+  "second-batch marks only (TA) / ties to the higher mark": {
+   "entering": {
+    "marked": 14,
+    "yes": 6,
+    "useful": 13,
+    "misleading": 1,
+    "mean_grade": 2.29
+   },
+   "leaving": {
+    "marked": 0,
+    "yes": 0,
+    "useful": 0,
+    "misleading": 0,
+    "mean_grade": null
+   }
+  },
+  "all marks / ties to the lower mark": {
+   "entering": {
+    "marked": 19,
+    "yes": 8,
+    "useful": 15,
+    "misleading": 2,
+    "mean_grade": 2.11
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 3,
+    "useful": 13,
+    "misleading": 4,
+    "mean_grade": 1.63
+   }
+  },
+  "all marks / ties to the higher mark": {
+   "entering": {
+    "marked": 19,
+    "yes": 8,
+    "useful": 18,
+    "misleading": 1,
+    "mean_grade": 2.32
+   },
+   "leaving": {
+    "marked": 19,
+    "yes": 7,
+    "useful": 15,
+    "misleading": 2,
+    "mean_grade": 2.05
+   }
+  }
+ },
+ "B_grade_difference": {
+  "ties to the lower mark": {
+   "mean_grade_entering_minus_leaving": 0.474,
+   "ci95_over_questions": [
+    0.0,
+    0.857
+   ],
+   "questions": 12
+  },
+  "ties to the higher mark": {
+   "mean_grade_entering_minus_leaving": 0.263,
+   "ci95_over_questions": [
+    -0.176,
+    0.667
+   ],
+   "questions": 12
+  }
+ },
+ "B_every_passage": [
+  {
+   "qid": "R04",
+   "side": "ENTERING",
+   "n": 13,
+   "title": "NATHU SINGH versus STATE OF UTTAR PRADESH & ORS. (28-05-2021)",
+   "para": "13",
+   "page": 6,
+   "doc": 1000253107,
+   "marks": {
+    "ChatGPT/TA": "Yes",
+    "Gemini/TA": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R04",
+   "side": "LEAVING",
+   "n": 9,
+   "title": "The Judgment of the Court was delivered by N. V. RAMANA, CJI",
+   "para": "14",
+   "page": 7,
+   "doc": 1000253107,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "ChatGPT/B": "Yes",
+    "Gemini/A": "Yes",
+    "Gemini/B": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R08",
+   "side": "ENTERING",
+   "n": 14,
+   "title": "G. .J. RAJA versus TEJRAJ SURANA (30-07-2019)",
+   "para": "17-18",
+   "page": 11,
+   "doc": 1000251858,
+   "marks": {
+    "ChatGPT/TA": "Partly",
+    "Gemini/TA": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R08",
+   "side": "LEAVING",
+   "n": 11,
+   "title": "RAKESH RANJAN SHRIVASTAVA versus THE STATE OF JHARKHAND & ANR. (15-03-2024)",
+   "para": "4",
+   "page": 6,
+   "doc": 1000255600,
+   "marks": {
+    "ChatGPT/A": "No",
+    "Gemini/A": "No"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R09",
+   "side": "ENTERING",
+   "n": 9,
+   "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD. (01-03-2021)",
+   "para": "preamble/73",
+   "page": 23,
+   "doc": 1000252963,
+   "marks": {
+    "ChatGPT/TA": "Yes",
+    "Gemini/TA": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R09",
+   "side": "ENTERING",
+   "n": 11,
+   "title": "TIMES BUSINESS SOLUTION LTD. versus DATABYTE (04-09-2014)",
+   "para": "3",
+   "page": 3,
+   "doc": 1000004468,
+   "marks": {
+    "ChatGPT/TA": "Misleading",
+    "Gemini/TA": "Misleading"
+   },
+   "misleading_reasons": [
+    "ChatGPT/TA: The passage states the earlier rule under Dashrath Rupsingh Rathod without addressing the later statutory rule assigning jurisdiction to the payee's account branch for collection through an account.",
+    "Gemini/TA: It reflects older pre-amendment case law view that presentation alone doesn't confer jurisdiction, which is contrary to current Section 142(2)(a)."
+   ]
+  },
+  {
+   "qid": "R09",
+   "side": "LEAVING",
+   "n": 2,
+   "title": "IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 8468 OF 2014 (Arising out of S.L.P. (C) No.29044 of 2009) Vinay Kumar Shailendra \u2026Appellant Versus Delhi High Court Legal Services Committee and Anr. \u2026Respondents With CIVIL APPEAL NO.",
+   "para": "preamble/8",
+   "page": 1,
+   "doc": 41877,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "Gemini/A": "Misleading"
+   },
+   "misleading_reasons": [
+    "Gemini/A: This old view regarding deposit in a payee's bank was superseded by statutory amendments (Section 142(2)) and rulings like Nishant Aggarwal."
+   ]
+  },
+  {
+   "qid": "R09",
+   "side": "LEAVING",
+   "n": 3,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 808 OF 2013 (Arising out of S.L.P. (Crl.) No. 9434 of 2011) Nishant Aggarwal .... Appellant(s) Versus Kailash Kumar Sharma .... Respondent(s) J U D G M E N T P.Sathasivam,J. 1) L",
+   "para": null,
+   "page": 14,
+   "doc": 40477,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R11",
+   "side": "ENTERING",
+   "n": 12,
+   "title": "TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)",
+   "para": null,
+   "page": 29,
+   "doc": 1000252784,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "ChatGPT/B": "Misleading",
+    "Gemini/A": "Partly",
+    "Gemini/B": "Partly"
+   },
+   "misleading_reasons": [
+    "ChatGPT/B: Although it discusses general evidentiary principles and involuntary confessions, it reproduces an earlier position suggesting Section 67 statements may be admitted without stating the controlling prohibition."
+   ]
+  },
+  {
+   "qid": "R11",
+   "side": "ENTERING",
+   "n": 18,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.451-452 OF 2005 RAM SINGH \u2026 APPELLANT VERSUS CENTRAL BUREAU OF NARCOTICS \u2026RESPONDENT J U D G M E N T CHANDRAMAULI KR. PRASAD, J.",
+   "para": "8/1",
+   "page": 5,
+   "doc": 38022,
+   "marks": {
+    "ChatGPT/TA": "Partly",
+    "Gemini/TA": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R11",
+   "side": "LEAVING",
+   "n": 6,
+   "title": "BALWINDER SINGH (BINDA) versus THE NARCOTICS CONTROL BUREAU (22-09-2023)",
+   "para": "6-7",
+   "page": 13,
+   "doc": 1000255268,
+   "marks": {
+    "ChatGPT/A": "Misleading",
+    "ChatGPT/B": "Misleading",
+    "Gemini/A": "Misleading",
+    "Gemini/B": "Misleading"
+   },
+   "misleading_reasons": [
+    "ChatGPT/A: It describes the High Court's acceptance of the NCB's argument and the earlier admissibility position rather than stating the later governing rule.",
+    "ChatGPT/B: It describes the High Court's acceptance of an earlier admissibility position without supplying the later governing rejection of that position.",
+    "Gemini/A: It summarizes previous case law holding such confessions admissible, which is no longer good law after Tofan Singh.",
+    "Gemini/B: It describes older precedents that permitted such confessions, which were subsequently overruled."
+   ]
+  },
+  {
+   "qid": "R11",
+   "side": "LEAVING",
+   "n": 7,
+   "title": null,
+   "para": null,
+   "page": 6,
+   "doc": 32020,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "ChatGPT/B": "Misleading",
+    "Gemini/A": "Partly",
+    "Gemini/B": "Partly"
+   },
+   "misleading_reasons": [
+    "ChatGPT/B: It primarily recounts an earlier case's question and counsel's arguments without clearly giving the controlling answer, while the quoted earlier approach conflicts with the later ruling."
+   ]
+  },
+  {
+   "qid": "R12",
+   "side": "ENTERING",
+   "n": 17,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 78 OF 2013 (Arising out of S.L.P. (Crl.) No. 2089 of 2011) Arun Bhandari ... Appellant Versus State of U.P. and others ...Respondents J U D G M E N T Dipak Misra, J. Leave grante",
+   "para": "17",
+   "page": 20,
+   "doc": 39911,
+   "marks": {
+    "ChatGPT/TA": "Misleading",
+    "Gemini/TA": "Partly"
+   },
+   "misleading_reasons": [
+    "ChatGPT/TA: Although it quotes a relevant rule concerning failed sale agreements and Sections 406 and 420 IPC, the passage expressly distinguishes that precedent and rejects its applicability to the case before the Court."
+   ]
+  },
+  {
+   "qid": "R12",
+   "side": "LEAVING",
+   "n": 2,
+   "title": null,
+   "para": null,
+   "page": 7,
+   "doc": 42611,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R14",
+   "side": "ENTERING",
+   "n": 19,
+   "title": "IN THE SUPREME COURT OF INDIA CIVIL/CRIMINAL APPELLATE JURISDICTION CIVIL APPEAL NO.__4540________OF 2013 [Arising out of S.L.P.(C) No.13120 OF 2013] CHANDRAN RATNASWAMI APPELLANT VERSUS K.C. PALANISAMY AND OTHERS RESPONDENTS WITH CRIMINAL APPEAL NOs. 736-737 ",
+   "para": "8",
+   "page": 11,
+   "doc": 40396,
+   "marks": {
+    "ChatGPT/TA": "Partly",
+    "Gemini/TA": "No"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R14",
+   "side": "ENTERING",
+   "n": 21,
+   "title": "RAJ REDDY KALLEM versus THE STATE OF HARYANA & ANR. (08-04-2024)",
+   "para": "13",
+   "page": 11,
+   "doc": 1000255654,
+   "marks": {
+    "ChatGPT/TA": "Yes",
+    "Gemini/TA": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R14",
+   "side": "LEAVING",
+   "n": 13,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2341 OF 2011 Vesa Holdings P. Ltd. & Anr. \u2026 Appellants versus State of Kerala & Ors. \u2026 Respondents With CRIMINAL APPEAL NOS.2342-2344 OF 2011 J U D G M E N T C. NAGAPPAN, J.",
+   "para": "4",
+   "page": 6,
+   "doc": 42499,
+   "marks": {
+    "ChatGPT/A": "Misleading",
+    "ChatGPT/B": "Partly",
+    "Gemini/A": "Misleading",
+    "Gemini/B": "Partly"
+   },
+   "misleading_reasons": [
+    "ChatGPT/A: The passage presents the respondent's counsel's argument against quashing, not the court's holding, and could mislead if treated as its conclusion.",
+    "Gemini/A: It records arguments made by the opposing counsel arguing against quashing, which could mislead if read as the court's final holding."
+   ]
+  },
+  {
+   "qid": "R14",
+   "side": "LEAVING",
+   "n": 15,
+   "title": "KIM WANSOO versus STATE OF UTTAR PRADESH & ORS. (01-01-2025)",
+   "para": "5/1",
+   "page": 4,
+   "doc": 1000256233,
+   "marks": {
+    "ChatGPT/A": "Misleading",
+    "ChatGPT/B": "No",
+    "Gemini/A": "No",
+    "Gemini/B": "No"
+   },
+   "misleading_reasons": [
+    "ChatGPT/A: The passage indicates that the appellant's quashing contentions failed before the High Court and describes a different construction-business dispute, so it does not support quashing on the stated facts."
+   ]
+  },
+  {
+   "qid": "R17",
+   "side": "ENTERING",
+   "n": 6,
+   "title": "Judgment / Order of the Supreme Court K. Vinod Chandran, J. Whether every allegation or accusation levelled, a reprimand or rebuke made, an insinuation or insult voiced or even continuous acts 970\b of ill-treatment, harassment and defamation; as alleged in thi",
+   "para": "22",
+   "page": 14,
+   "doc": 1000256939,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "ChatGPT/B": "Yes",
+    "Gemini/A": "Yes",
+    "Gemini/B": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R17",
+   "side": "ENTERING",
+   "n": 15,
+   "title": "JAYEDEEPSINH PRAVINSINH CHAVDA & ORS. versus STATE OF GUJARAT (10-12-2024)",
+   "para": "18",
+   "page": 9,
+   "doc": 1000256158,
+   "marks": {
+    "ChatGPT/TA": "Yes",
+    "Gemini/TA": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R17",
+   "side": "ENTERING",
+   "n": 17,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2091 OF 2009 (Arising out of S.L.P. (Crl.) No. 9483 of 2008) Amalendu Pal @ Jhantu \u2026. Appellant Versus State of West Bengal \u2026. Respondent Dr. MUKUNDAKAM SHARMA, J.",
+   "para": "15",
+   "page": 8,
+   "doc": 35671,
+   "marks": {
+    "ChatGPT/TA": "Yes",
+    "Gemini/TA": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R17",
+   "side": "LEAVING",
+   "n": 2,
+   "title": "Judgment / Order of the Supreme Court Ujjal Bhuyan, J. This appeal by special leave is directed against the judgment and order dated 17.12.2013 passed by the High Court of Gujarat at Ahmedabad (briefly \u2018the High Court\u2019 hereinafter) in Criminal Appeal No. 626 o",
+   "para": "21",
+   "page": 10,
+   "doc": 1000256452,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "ChatGPT/B": "Yes",
+    "Gemini/A": "Partly",
+    "Gemini/B": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R17",
+   "side": "LEAVING",
+   "n": 8,
+   "title": "Judgment / Order of the Supreme Court K. Vinod Chandran, J. Whether every allegation or accusation levelled, a reprimand or rebuke made, an insinuation or insult voiced or even continuous acts 970\b of ill-treatment, harassment and defamation; as alleged in thi",
+   "para": "16",
+   "page": 12,
+   "doc": 1000256939,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "ChatGPT/B": "Partly",
+    "Gemini/A": "Yes",
+    "Gemini/B": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R17",
+   "side": "LEAVING",
+   "n": 10,
+   "title": "KAMALAKAR versus STATE OF KARNATAKA (12-10-2023)",
+   "para": "13",
+   "page": 8,
+   "doc": 1000255314,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "ChatGPT/B": "Yes",
+    "Gemini/A": "Yes",
+    "Gemini/B": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R19",
+   "side": "ENTERING",
+   "n": 12,
+   "title": "ANIL MISHRA versus STATE OF U.P. & ORS. (01-03-2024)",
+   "para": "11/3",
+   "page": 6,
+   "doc": 1000255562,
+   "marks": {
+    "ChatGPT/TA": "Partly",
+    "Gemini/TA": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R19",
+   "side": "LEAVING",
+   "n": 4,
+   "title": "The Judgment of the Court was delivered by V. RAMASUBRAMANIAN, J. Permission to file Special Leave Petition(s) is granted in D.No.11748 of 2022.",
+   "para": "37/3",
+   "page": 24,
+   "doc": 1000254292,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R20",
+   "side": "ENTERING",
+   "n": 11,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2322 of 2010 Deepak Gulati \u2026Appellant Versus State of Haryana \u2026Respondent J U D G M E N T Dr. B.S. CHAUHAN, J.",
+   "para": "18",
+   "page": 13,
+   "doc": 40427,
+   "marks": {
+    "ChatGPT/TA": "Partly",
+    "Gemini/TA": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R20",
+   "side": "LEAVING",
+   "n": 6,
+   "title": "Judgment / Order of the Supreme Court Satish Chandra Sharma, J. Leave granted.",
+   "para": "14",
+   "page": 8,
+   "doc": 1000256550,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R22",
+   "side": "ENTERING",
+   "n": 11,
+   "title": "MANOJ PRATAP SINGH versus THE STATE OF RAJASTHAN (24-06-2022)",
+   "para": null,
+   "page": 95,
+   "doc": 1000254058,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R22",
+   "side": "ENTERING",
+   "n": 20,
+   "title": null,
+   "para": "24",
+   "page": 79,
+   "doc": 40330,
+   "marks": {
+    "ChatGPT/TA": "Yes",
+    "Gemini/TA": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R22",
+   "side": "LEAVING",
+   "n": 5,
+   "title": "PETITIONER: SEVAKA PERUMAL, ETC. Vs. RESPONDENT: STATE OF TAMIL NADU DATE OF JUDGMENT07/05/1991 BENCH: RAMASWAMY, K. BENCH: RAMASWAMY, K. AHMADI, A.M. (J) CITATION: 1991 AIR 1463 1991 SCR (2) 711 1991 SCC (3) 471 JT 1991 (2) 546 1991 SCALE (1)914 ACT: Indian P",
+   "para": null,
+   "page": 9,
+   "doc": 12722,
+   "marks": {
+    "ChatGPT/A": "Misleading",
+    "Gemini/A": "Misleading"
+   },
+   "misleading_reasons": [
+    "ChatGPT/A: Although it discusses sentencing hearings and family circumstances, it rejects family responsibilities as grounds for interference and does not establish that the sentence should be reduced.",
+    "Gemini/A: Although it mentions family factors like a young wife and child, it concludes that these compassionate grounds do not warrant reducing a death sentence."
+   ]
+  },
+  {
+   "qid": "R22",
+   "side": "LEAVING",
+   "n": 16,
+   "title": "[REPORTABLE] IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 87 OF 2007 Santosh Kumar Singh \u2026.Appellant Versus State thr. CBI \u2026Respondent J U D G M E N T HARJIT SINGH BEDI,J. This appeal arises out of the following facts:",
+   "para": "38/3",
+   "page": 92,
+   "doc": 36948,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "Gemini/A": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R24",
+   "side": "ENTERING",
+   "n": 2,
+   "title": "TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)",
+   "para": "8",
+   "page": 14,
+   "doc": 1000255755,
+   "marks": {
+    "ChatGPT/A": "Yes",
+    "Gemini/A": "Yes"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R24",
+   "side": "LEAVING",
+   "n": 6,
+   "title": "TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)",
+   "para": "23/2",
+   "page": 27,
+   "doc": 1000255755,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R26",
+   "side": "ENTERING",
+   "n": 5,
+   "title": "CASE NO.: Writ Petition (crl.) 169 of 1999 Writ Petition (crl.) 243 of 1999 PETITIONER: DADU @ TULSIDAS Vs. RESPONDENT: STATE OF MAHARASHTRA DATE OF JUDGMENT: 12/10/2000 BENCH: K.T.Thomas, R.P. Sethi & S.N. Variava. JUDGMENT: SETHI, J: L...I...T.......T.......",
+   "para": null,
+   "page": 6,
+   "doc": 17410,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "No"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R26",
+   "side": "ENTERING",
+   "n": 17,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL MISCELLANEOUS PETITION NO. 1775 OF 2007 IN CRIMINAL APPEAL NO. 179 OF 2007 SIDHARTH VASHISHT @ MANU SHARMA ... APPELLANT VERSUS THE STATE (N.C.T. OF DELHI) ... RESPONDENT J U D G M E N T C.",
+   "para": "26",
+   "page": 20,
+   "doc": 31518,
+   "marks": {
+    "ChatGPT/TA": "Partly",
+    "Gemini/TA": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R26",
+   "side": "LEAVING",
+   "n": 1,
+   "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2034 OF 2008 (Arising out of SLP (Crl) No. 6647 of 2008) Shiv Kumar \u2026Appellant Versus State of N.C.T. of Delhi \u2026Respondent J U D G M E N T Dr. ARIJIT PASAYAT, J.",
+   "para": "4-6",
+   "page": 2,
+   "doc": 33333,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  },
+  {
+   "qid": "R26",
+   "side": "LEAVING",
+   "n": 2,
+   "title": "AASIF @ PASHA versus THE STATE OF U.P. & ORS. (06-08-2025)",
+   "para": "13-14",
+   "page": 4,
+   "doc": 1000256908,
+   "marks": {
+    "ChatGPT/A": "Partly",
+    "Gemini/A": "Partly"
+   },
+   "misleading_reasons": []
+  }
+ ],
+ "C_key_authority_passages": {
+  "R01": [
+   {
+    "n": 1,
+    "para": "49",
+    "variants": {
+     "A today": 3,
+     "R challenger re-ranker top 5": 1,
+     "B today's re-ranker top 5 (baseline for R)": 3
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 2,
+    "para": "55",
+    "variants": {
+     "A today": 1,
+     "R challenger re-ranker top 5": 5,
+     "B today's re-ranker top 5 (baseline for R)": 1
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 6,
+    "para": "52",
+    "variants": {
+     "A today": 2,
+     "R challenger re-ranker top 5": 4,
+     "B today's re-ranker top 5 (baseline for R)": 2
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 7,
+    "para": "48",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 10,
+    "para": "54",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R02": [
+   {
+    "n": 1,
+    "para": "13",
+    "variants": {
+     "A today": 9
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 2,
+    "para": "43",
+    "variants": {
+     "A today": 4,
+     "R challenger re-ranker top 5": 3,
+     "B today's re-ranker top 5 (baseline for R)": 4
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 3,
+    "para": "14",
+    "variants": {
+     "A today": 10
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 4,
+    "para": "5",
+    "variants": {
+     "A today": 5,
+     "R challenger re-ranker top 5": 4,
+     "B today's re-ranker top 5 (baseline for R)": 5
+    },
+    "mark_lower": "Misleading",
+    "mark_higher": "Misleading"
+   },
+   {
+    "n": 5,
+    "para": "23",
+    "variants": {
+     "A today": 2,
+     "R challenger re-ranker top 5": 2,
+     "B today's re-ranker top 5 (baseline for R)": 2
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 6,
+    "para": "21",
+    "variants": {
+     "A today": 7
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 7,
+    "para": "27",
+    "variants": {
+     "A today": 3,
+     "R challenger re-ranker top 5": 5,
+     "B today's re-ranker top 5 (baseline for R)": 3
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 8,
+    "para": "11",
+    "variants": {
+     "A today": 8
+    },
+    "mark_lower": "Misleading",
+    "mark_higher": "Misleading"
+   },
+   {
+    "n": 9,
+    "para": "22",
+    "variants": {
+     "A today": 1,
+     "R challenger re-ranker top 5": 1,
+     "B today's re-ranker top 5 (baseline for R)": 1
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 11,
+    "para": "18",
+    "variants": {
+     "A today": 6
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 12,
+    "para": "38",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   }
+  ],
+  "R04": [
+   {
+    "n": 3,
+    "para": "9",
+    "variants": {},
+    "mark_lower": "Misleading",
+    "mark_higher": "Misleading"
+   },
+   {
+    "n": 7,
+    "para": "77",
+    "variants": {
+     "A today": 2,
+     "R challenger re-ranker top 5": 4,
+     "B today's re-ranker top 5 (baseline for R)": 2
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 12,
+    "para": "7/2",
+    "variants": {},
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 15,
+    "para": "37",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 17,
+    "para": "11/1",
+    "variants": {
+     "A today": 8
+    },
+    "mark_lower": "Misleading",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 18,
+    "para": "4",
+    "variants": {
+     "A today": 10
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   }
+  ],
+  "R08": [
+   {
+    "n": 2,
+    "para": "1",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 7,
+    "para": "14",
+    "variants": {
+     "A today": 2,
+     "R challenger re-ranker top 5": 1,
+     "B today's re-ranker top 5 (baseline for R)": 2
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 11,
+    "para": "4",
+    "variants": {
+     "A today": 3,
+     "B today's re-ranker top 5 (baseline for R)": 3
+    },
+    "mark_lower": "No",
+    "mark_higher": "No"
+   }
+  ],
+  "R11": [
+   {
+    "n": 2,
+    "para": null,
+    "variants": {
+     "A today": 3,
+     "R challenger re-ranker top 5": 3,
+     "B today's re-ranker top 5 (baseline for R)": 3
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 12,
+    "para": null,
+    "variants": {
+     "A today": 7,
+     "R challenger re-ranker top 5": 5
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 15,
+    "para": null,
+    "variants": {},
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R12": [
+   {
+    "n": 5,
+    "para": "15",
+    "variants": {
+     "A today": 5
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 20,
+    "para": "2",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R17": [
+   {
+    "n": 1,
+    "para": "9",
+    "variants": {
+     "A today": 1,
+     "R challenger re-ranker top 5": 2,
+     "B today's re-ranker top 5 (baseline for R)": 1
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 13,
+    "para": "43",
+    "variants": {},
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R19": [
+   {
+    "n": 2,
+    "para": "22/1",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 3,
+    "para": "25",
+    "variants": {},
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 7,
+    "para": "30",
+    "variants": {
+     "A today": 2,
+     "R challenger re-ranker top 5": 5,
+     "B today's re-ranker top 5 (baseline for R)": 2
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 9,
+    "para": "32",
+    "variants": {
+     "A today": 1,
+     "R challenger re-ranker top 5": 4,
+     "B today's re-ranker top 5 (baseline for R)": 1
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R22": [
+   {
+    "n": 15,
+    "para": "223",
+    "variants": {},
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R24": [
+   {
+    "n": 2,
+    "para": "8",
+    "variants": {
+     "A today": 6,
+     "R challenger re-ranker top 5": 4
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 3,
+    "para": "21",
+    "variants": {
+     "A today": 2,
+     "R challenger re-ranker top 5": 3,
+     "B today's re-ranker top 5 (baseline for R)": 2
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 4,
+    "para": "20",
+    "variants": {
+     "A today": 1,
+     "R challenger re-ranker top 5": 1,
+     "B today's re-ranker top 5 (baseline for R)": 1
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 6,
+    "para": "23/2",
+    "variants": {
+     "A today": 4,
+     "B today's re-ranker top 5 (baseline for R)": 4
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 9,
+    "para": "3/3",
+    "variants": {
+     "A today": 5,
+     "R challenger re-ranker top 5": 5,
+     "B today's re-ranker top 5 (baseline for R)": 5
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 10,
+    "para": "23/3",
+    "variants": {
+     "A today": 3,
+     "R challenger re-ranker top 5": 2,
+     "B today's re-ranker top 5 (baseline for R)": 3
+    },
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 11,
+    "para": "23/4",
+    "variants": {},
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 15,
+    "para": "18",
+    "variants": {
+     "A today": 9
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 18,
+    "para": "3/2",
+    "variants": {},
+    "mark_lower": "Yes",
+    "mark_higher": "Yes"
+   }
+  ],
+  "R26": [
+   {
+    "n": 8,
+    "para": "27",
+    "variants": {
+     "A today": 4,
+     "R challenger re-ranker top 5": 3,
+     "B today's re-ranker top 5 (baseline for R)": 4
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   },
+   {
+    "n": 10,
+    "para": "12",
+    "variants": {},
+    "mark_lower": "Misleading",
+    "mark_higher": "Yes"
+   },
+   {
+    "n": 18,
+    "para": "20",
+    "variants": {
+     "A today": 7
+    },
+    "mark_lower": "Partly",
+    "mark_higher": "Partly"
+   }
+  ]
+ },
+ "D_other_rerankers_partial_lower_ties": {
+  "rerank-3": {
+   "entering": {
+    "yes": 9,
+    "useful": 14,
+    "mis": 3,
+    "marked": 17,
+    "unmarked": 4
+   },
+   "leaving": {
+    "yes": 3,
+    "useful": 13,
+    "mis": 6,
+    "marked": 21,
+    "unmarked": 0
+   }
+  },
+  "rerank-2.5": {
+   "entering": {
+    "yes": 8,
+    "useful": 13,
+    "mis": 3,
+    "marked": 17,
+    "unmarked": 4
+   },
+   "leaving": {
+    "yes": 3,
+    "useful": 15,
+    "mis": 4,
+    "marked": 21,
+    "unmarked": 0
+   }
+  },
+  "rerank-3-lite": {
+   "entering": {
+    "yes": 8,
+    "useful": 15,
+    "mis": 2,
+    "marked": 19,
+    "unmarked": 0
+   },
+   "leaving": {
+    "yes": 3,
+    "useful": 13,
+    "mis": 4,
+    "marked": 19,
+    "unmarked": 0
+   }
+  }
+ },
+ "E_safety_net": {
+  "passages": 52,
+  "marks_lower_ties": {
+   "No": 23,
+   "Partly": 18,
+   "Misleading": 2,
+   "Yes": 9
+  },
+  "marks_higher_ties": {
+   "No": 15,
+   "Partly": 26,
+   "Yes": 10,
+   "Misleading": 1
+  },
+  "yes_by_both_tools_agreeing": 9
+ },
+ "E_reranker_effect_per_question": {
+  "R01": {
+   "lower": {
+    "A_yes": 0.6,
+    "N_yes": 0.2,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.6,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R02": {
+   "lower": {
+    "A_yes": 0.8,
+    "N_yes": 0.6,
+    "A_useful": 0.8,
+    "N_useful": 0.8,
+    "A_mis": 0.2,
+    "N_mis": 0.2
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.6,
+    "A_useful": 0.8,
+    "N_useful": 0.8,
+    "A_mis": 0.2,
+    "N_mis": 0.2
+   }
+  },
+  "R04": {
+   "lower": {
+    "A_yes": 0.8,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.2
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R06": {
+   "lower": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.2,
+    "N_useful": 0.0,
+    "A_mis": 0.2,
+    "N_mis": 0.2
+   },
+   "higher": {
+    "A_yes": 0.2,
+    "N_yes": 0.0,
+    "A_useful": 0.8,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R08": {
+   "lower": {
+    "A_yes": 0.2,
+    "N_yes": 0.0,
+    "A_useful": 0.4,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.2,
+    "N_yes": 0.0,
+    "A_useful": 0.8,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R09": {
+   "lower": {
+    "A_yes": 0.0,
+    "N_yes": 0.6,
+    "A_useful": 0.4,
+    "N_useful": 0.8,
+    "A_mis": 0.6,
+    "N_mis": 0.2
+   },
+   "higher": {
+    "A_yes": 0.4,
+    "N_yes": 0.6,
+    "A_useful": 0.8,
+    "N_useful": 0.8,
+    "A_mis": 0.2,
+    "N_mis": 0.2
+   }
+  },
+  "R11": {
+   "lower": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.6,
+    "N_useful": 0.6,
+    "A_mis": 0.4,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.6,
+    "N_useful": 0.8,
+    "A_mis": 0.4,
+    "N_mis": 0.0
+   }
+  },
+  "R12": {
+   "lower": {
+    "A_yes": 0.4,
+    "N_yes": 0.2,
+    "A_useful": 1.0,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.6,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R14": {
+   "lower": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.4,
+    "N_useful": 0.0,
+    "A_mis": 0.2,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.8,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R15": {
+   "lower": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.2,
+    "N_useful": 0.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.4,
+    "N_useful": 0.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R17": {
+   "lower": {
+    "A_yes": 0.6,
+    "N_yes": 0.8,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 1.0,
+    "N_yes": 1.0,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R19": {
+   "lower": {
+    "A_yes": 0.4,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.4,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R20": {
+   "lower": {
+    "A_yes": 0.0,
+    "N_yes": 0.0,
+    "A_useful": 0.6,
+    "N_useful": 0.8,
+    "A_mis": 0.4,
+    "N_mis": 0.2
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.6,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R21": {
+   "lower": {
+    "A_yes": 0.2,
+    "N_yes": 0.2,
+    "A_useful": 0.8,
+    "N_useful": 0.4,
+    "A_mis": 0.2,
+    "N_mis": 0.6
+   },
+   "higher": {
+    "A_yes": 0.6,
+    "N_yes": 0.2,
+    "A_useful": 0.8,
+    "N_useful": 0.4,
+    "A_mis": 0.2,
+    "N_mis": 0.6
+   }
+  },
+  "R22": {
+   "lower": {
+    "A_yes": 0.8,
+    "N_yes": 0.2,
+    "A_useful": 0.8,
+    "N_useful": 0.6,
+    "A_mis": 0.2,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.2,
+    "A_useful": 0.8,
+    "N_useful": 0.6,
+    "A_mis": 0.2,
+    "N_mis": 0.0
+   }
+  },
+  "R24": {
+   "lower": {
+    "A_yes": 0.6,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.6,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R26": {
+   "lower": {
+    "A_yes": 0.2,
+    "N_yes": 0.0,
+    "A_useful": 1.0,
+    "N_useful": 0.6,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.2,
+    "N_yes": 0.0,
+    "A_useful": 1.0,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R28": {
+   "lower": {
+    "A_yes": 0.4,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 0.8,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.4,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  },
+  "R29": {
+   "lower": {
+    "A_yes": 0.2,
+    "N_yes": 0.2,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   },
+   "higher": {
+    "A_yes": 0.8,
+    "N_yes": 0.4,
+    "A_useful": 1.0,
+    "N_useful": 1.0,
+    "A_mis": 0.0,
+    "N_mis": 0.0
+   }
+  }
+ }
+}

@@ -1,0 +1,85 @@
+{
+"question_id": "R21",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "In the absence of the certificate, mandatorily required under Section 65-B of the Evidence Act [Section 63 of the BSA], the call detail records become inadmissible in evidence",
+"reason": "It addresses the mandatory certificate requirement under Section 63 BSA / 65B Evidence Act, but specifically concerning call detail records rather than CCTV footage.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "As rightly stated above, Oral evidence in the place of such certificate, as is the case in the present matter, cannot possibly suffice as Section 65B(4) is a mandatory requirement of the law.",
+"reason": "It affirms that Section 65B(4) certification is mandatory for electronic evidence generally, but does not explicitly discuss CCTV footage or the original device.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "It is correct to say that I have not collected the certificate for CCTV footage.",
+"reason": "It references the absence of a Section 65-B certificate specifically for CCTV footage through witness testimony, but does not formulate the legal rule on its mandatory nature.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "if an electronic record as such is used as primary evidence under . G Section 62 of the Evidence Act, the same is admissible _in evidence, without compliance with the conditions in Section 65-B",
+"reason": "It directly answers whether a certificate is required when dealing with primary evidence/original devices versus secondary electronic records.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "the requirement of a certificate under Section 6-5B of the Evidence Act [Section 63 of the BSA] for admissibility of electronic evidence is mandatory and cannot be dispensed with",
+"reason": "It explicitly establishes that the certificate under Section 65B (Section 63 BSA) is a mandatory condition precedent for electronic evidence.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "Thus, requirement of certificate under Section 65B(h) is not always mandatory.",
+"reason": "This view holding that the certificate requirement is not always mandatory was subsequently overruled by the Supreme Court in Arjun Panditrao Khotkar.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Misleading",
+"evidence": "It was submitted that if the electronic evidence was relevant and produced by a person who was not in custody of the device... requirement of such certificate could not be mandatory.",
+"reason": "This passage records legal submissions and a perspective on relaxing certificate requirements that was later overruled by larger bench rulings.",
+"confidence": "medium"
+},
+{
+"no": 8,
+"mark": "Misleading",
+"evidence": "Thus, requirement of certificate under s.65B(4) is not always mandatory",
+"reason": "It summarizes the Shafhi Mohammad ruling which stated the certificate is not always mandatory, a legal position that was subsequently overruled.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "certificate required under Section 65B(4) is a condition precedent to the admissibility of evidence by way of electronic record... Also, the judgment in... Shafhi Mohammad... do not lay down the law correctly and are therefore overruled.",
+"reason": "It definitively settles that the Section 65B certificate is a mandatory condition precedent for electronic records and clarifies the rule regarding original devices.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "when PW-38 was in the witness box a specific question was put to him and subsequent to evidence, he deposed that he was aware of the necessity of furnishing 65-B certificate while collecting electronic evidence.",
+"reason": "It discusses the procedural objection regarding a missing Section 65-B certificate for CCTV footage in a capital case, but provides factual context rather than the general rule.",
+"confidence": "high"
+},
+{
+"no": 11,
+"mark": "Yes",
+"evidence": "Most importantly, the prosecution failed to produce the certificate under Section 65B of the Evidence Act concerning the CD. Therefore, the evidence in the form of the CD will have to be kept out of consideration as it is not admissible in evidence.",
+"reason": "It directly applies the rule that a Section 65B certificate is mandatory for admissibility when dealing with a downloaded CCTV footage CD.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 9,
+"caveats": "Passages 6, 7, and 8 reflect the view from Shafhi Mohammad, which was subsequently overruled by Arjun Panditrao Khotkar."
+}
