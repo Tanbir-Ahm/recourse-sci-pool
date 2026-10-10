@@ -1,0 +1,14 @@
+{
+ "tokens": {
+  "rerank-2": 547242,
+  "rerank-3": 273621,
+  "rerank-3-lite": 547242,
+  "rerank-2.5": 273621
+ },
+ "calls": {
+  "rerank-2": 28,
+  "rerank-3": 14,
+  "rerank-3-lite": 28,
+  "rerank-2.5": 14
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "X_rerank-2.5_against_the_same_conditions_(first_run_only,_not_confirmed,_not_in_the_rule)": {
+  "gain": [
+   "R20"
+  ],
+  "loss": [],
+  "top5_guard_ok": true,
+  "hits5": 10,
+  "control_hits5": [
+   9,
+   9
+  ],
+  "passed": true
+ },
+ "N1_rerank-3_against_the_same_conditions": {
+  "gain": [
+   "R20"
+  ],
+  "loss": [
+   "R12"
+  ],
+  "top5_guard_ok": true,
+  "hits5": 10,
+  "control_hits5": [
+   9,
+   9
+  ],
+  "passed": false
+ },
+ "N2_rerank-3-lite_second_run_identical_to_first": true,
+ "controls_identical_in_every_key_place": true,
+ "unweighted_conditions": {
+  "N1": {
+   "gain": [
+    "R09",
+    "R20"
+   ],
+   "loss": [],
+   "top5_guard_ok": true,
+   "hits5": 10,
+   "control_hits5": [
+    9,
+    9
+   ],
+   "passed": true
+  },
+  "N2": {
+   "gain": [
+    "R20"
+   ],
+   "loss": [],
+   "top5_guard_ok": true,
+   "hits5": 9,
+   "control_hits5": [
+    9,
+    9
+   ],
+   "passed": true
+  },
+  "X": {
+   "gain": [
+    "R09",
+    "R12",
+    "R20"
+   ],
+   "loss": [],
+   "top5_guard_ok": true,
+   "hits5": 9,
+   "control_hits5": [
+    9,
+    9
+   ],
+   "passed": true
+  }
+ },
+ "R09_unweighted_place": {
+  "C1": 23,
+  "N1": 10,
+  "N2": 14,
+  "X": 10
+ },
+ "R09_weighted_place": {
+  "C1": 35,
+  "N1": 27,
+  "N2": 31,
+  "X": 27
+ }
+}
