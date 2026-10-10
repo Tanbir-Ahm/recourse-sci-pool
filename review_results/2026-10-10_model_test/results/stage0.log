@@ -1,0 +1,27 @@
+billed so far: embed {'voyage-law-2': 878, 'voyage-4-large': 751, 'voyage-4-lite': 751, 'voyage-4': 751} | rerank 0 | about $0.0003 at the listed (unchecked) prices
+building the keyword table over 236155 passages ...
+  Vaquill sc_shard0: 86,650 points, kept 15,713
+  Vaquill sc_shard1: 111,640 points, kept 20,174
+  Vaquill sc_shard2: 85,532 points, kept 15,419
+  Vaquill sc_shard3: 87,041 points, kept 15,703
+  Vaquill sc_shard3b: 296 points, kept 118
+Vaquill English chunks of shared judgments: 67127
+V1 (merge replica == engine): True {'R01': True, 'R02': True, 'R04': True, 'R08': True, 'R09': True, 'R11': True, 'R12': True, 'R14': True, 'R17': True, 'R19': True, 'R20': True, 'R22': True, 'R24': True, 'R26': True}
+V2 (recomputed candidates == saved): 14 of 14 {}
+pool {'law2_near': 300, 'v4_docs': 12, 'shrunk': []}: 12,063 passages, 10,505 unique texts, estimate 3,201,776 tokens (about $0.384)
+R01 {'KEY': 78, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 830, 'pool_passages': 1036, 'pool_docs': 120, 'vaquill_nearest100_judgments_mapped_to_ours': 100, 'of_these_with_some_passage_in_pool': 55, 'of_these_with_every_passage_in_pool': 12}
+R02 {'KEY': 213, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 1314, 'pool_passages': 1605, 'pool_docs': 174, 'vaquill_nearest100_judgments_mapped_to_ours': 101, 'of_these_with_some_passage_in_pool': 54, 'of_these_with_every_passage_in_pool': 12}
+R04 {'KEY': 225, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 757, 'pool_passages': 890, 'pool_docs': 61, 'vaquill_nearest100_judgments_mapped_to_ours': 100, 'of_these_with_some_passage_in_pool': 33, 'of_these_with_every_passage_in_pool': 12}
+R08 {'KEY': 20, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 284, 'pool_passages': 506, 'pool_docs': 132, 'vaquill_nearest100_judgments_mapped_to_ours': 100, 'of_these_with_some_passage_in_pool': 53, 'of_these_with_every_passage_in_pool': 12}
+R09 {'KEY': 13, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 15, 'V4_NEAR_rows': 327, 'pool_passages': 535, 'pool_docs': 108, 'vaquill_nearest100_judgments_mapped_to_ours': 103, 'of_these_with_some_passage_in_pool': 62, 'of_these_with_every_passage_in_pool': 15}
+R11 {'KEY': 482, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 1472, 'pool_passages': 1726, 'pool_docs': 133, 'vaquill_nearest100_judgments_mapped_to_ours': 101, 'of_these_with_some_passage_in_pool': 57, 'of_these_with_every_passage_in_pool': 12}
+R12 {'KEY': 35, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 231, 'pool_passages': 548, 'pool_docs': 189, 'vaquill_nearest100_judgments_mapped_to_ours': 101, 'of_these_with_some_passage_in_pool': 65, 'of_these_with_every_passage_in_pool': 12}
+R14 {'KEY': 37, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 273, 'pool_passages': 614, 'pool_docs': 186, 'vaquill_nearest100_judgments_mapped_to_ours': 102, 'of_these_with_some_passage_in_pool': 52, 'of_these_with_every_passage_in_pool': 12}
+R17 {'KEY': 111, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 360, 'pool_passages': 657, 'pool_docs': 134, 'vaquill_nearest100_judgments_mapped_to_ours': 101, 'of_these_with_some_passage_in_pool': 62, 'of_these_with_every_passage_in_pool': 12}
+R19 {'KEY': 46, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 372, 'pool_passages': 636, 'pool_docs': 130, 'vaquill_nearest100_judgments_mapped_to_ours': 100, 'of_these_with_some_passage_in_pool': 44, 'of_these_with_every_passage_in_pool': 12}
+R20 {'KEY': 29, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 342, 'pool_passages': 531, 'pool_docs': 71, 'vaquill_nearest100_judgments_mapped_to_ours': 100, 'of_these_with_some_passage_in_pool': 37, 'of_these_with_every_passage_in_pool': 12}
+R22 {'KEY': 319, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 357, 'pool_passages': 985, 'pool_docs': 201, 'vaquill_nearest100_judgments_mapped_to_ours': 100, 'of_these_with_some_passage_in_pool': 62, 'of_these_with_every_passage_in_pool': 13}
+R24 {'KEY': 39, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 615, 'pool_passages': 878, 'pool_docs': 159, 'vaquill_nearest100_judgments_mapped_to_ours': 103, 'of_these_with_some_passage_in_pool': 55, 'of_these_with_every_passage_in_pool': 12}
+R26 {'KEY': 54, 'CAND': 60, 'LAW2_NEAR': 300, 'V4_NEAR_docs': 12, 'V4_NEAR_rows': 630, 'pool_passages': 916, 'pool_docs': 185, 'vaquill_nearest100_judgments_mapped_to_ours': 101, 'of_these_with_some_passage_in_pool': 53, 'of_these_with_every_passage_in_pool': 12}
+billed so far: embed {'voyage-law-2': 878, 'voyage-4-large': 751, 'voyage-4-lite': 751, 'voyage-4': 751} | rerank 0 | about $0.0003 at the listed (unchecked) prices
+exit: 0

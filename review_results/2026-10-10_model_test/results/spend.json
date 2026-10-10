@@ -1,0 +1,15 @@
+{
+ "embed": {
+  "voyage-law-2": 878,
+  "voyage-4-large": 2660941,
+  "voyage-4-lite": 751,
+  "voyage-4": 751
+ },
+ "rerank": 382726,
+ "calls": {
+  "voyage-law-2": 14,
+  "voyage-4-large": 65,
+  "voyage-4-lite": 14,
+  "voyage-4": 14
+ }
+}

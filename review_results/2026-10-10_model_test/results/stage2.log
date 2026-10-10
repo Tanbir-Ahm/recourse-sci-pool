@@ -1,0 +1,181 @@
+billed so far: embed {'voyage-law-2': 878, 'voyage-4-large': 2660941, 'voyage-4-lite': 751, 'voyage-4': 751} | rerank 0 | about $0.3195 at the listed (unchecked) prices
+building the keyword table over 236155 passages ...
+R01 {'A0': (1, True), 'A1': (1, True), 'A2': (1, True), 'A2b': (1, True)} V3 True
+R02 {'A0': (1, True), 'A1': (1, True), 'A2': (1, True), 'A2b': (1, True)} V3 True
+R04 {'A0': (2, True), 'A1': (2, True), 'A2': (2, True), 'A2b': (2, True)} V3 True
+R08 {'A0': (2, True), 'A1': (2, True), 'A2': (2, True), 'A2b': (2, True)} V3 True
+R09 {'A0': (None, True), 'A1': (None, True), 'A2': (None, True), 'A2b': (None, True)} V3 True
+R11 {'A0': (3, True), 'A1': (2, True), 'A2': (9, True), 'A2b': (4, True)} V3 True
+R12 {'A0': (6, True), 'A1': (None, True), 'A2': (None, True), 'A2b': (None, True)} V3 True
+R14 {'A0': (None, False), 'A1': (None, False), 'A2': (None, False), 'A2b': (None, False)} V3 True
+R17 {'A0': (1, True), 'A1': (1, True), 'A2': (1, True), 'A2b': (1, True)} V3 True
+R19 {'A0': (1, True), 'A1': (1, True), 'A2': (1, True), 'A2b': (1, True)} V3 True
+R20 {'A0': (None, True), 'A1': (None, True), 'A2': (None, True), 'A2b': (None, True)} V3 True
+R22 {'A0': (None, False), 'A1': (None, False), 'A2': (None, False), 'A2b': (None, False)} V3 True
+R24 {'A0': (1, True), 'A1': (1, True), 'A2': (1, True), 'A2b': (1, True)} V3 True
+R26 {'A0': (4, True), 'A1': (2, True), 'A2': (2, True), 'A2b': (2, True)} V3 True
+{
+ "when": "2026-10-10T07:42:41Z",
+ "config": {
+  "law2_near": 300,
+  "v4_docs": 12,
+  "shrunk": []
+ },
+ "questions": [
+  "R01",
+  "R02",
+  "R04",
+  "R08",
+  "R09",
+  "R11",
+  "R12",
+  "R14",
+  "R17",
+  "R19",
+  "R20",
+  "R22",
+  "R24",
+  "R26"
+ ],
+ "validity": {
+  "V1_merge_replica_equals_engine": true,
+  "V2_candidates_equal_saved": true,
+  "V3_pool_A0_first_stage_equals_whole_index": true,
+  "V4_A0_reproduces_recorded_ranks": true,
+  "V4_detail_off": {
+   "R12": [
+    6,
+    5
+   ]
+  },
+  "V5_vector_sizes_checked_at_embedding": true,
+  "all_ok": true
+ },
+ "summary": {
+  "A0": {
+   "hit@1": 5,
+   "hit@5": 9,
+   "hit@10": 10,
+   "candidates_with_key": 12,
+   "dense_pool_judgment_hits": {
+    "top1": 5,
+    "top3": 5,
+    "top5": 8,
+    "top10": 9
+   },
+   "dense_pool_mrr": 0.4302
+  },
+  "A1": {
+   "hit@1": 5,
+   "hit@5": 9,
+   "hit@10": 9,
+   "candidates_with_key": 12,
+   "dense_pool_judgment_hits": {
+    "top1": 5,
+    "top3": 7,
+    "top5": 9,
+    "top10": 11
+   },
+   "dense_pool_mrr": 0.4846
+  },
+  "A2": {
+   "hit@1": 5,
+   "hit@5": 8,
+   "hit@10": 9,
+   "candidates_with_key": 12,
+   "dense_pool_judgment_hits": {
+    "top1": 3,
+    "top3": 7,
+    "top5": 8,
+    "top10": 11
+   },
+   "dense_pool_mrr": 0.3965
+  },
+  "A2b": {
+   "hit@1": 5,
+   "hit@5": 9,
+   "hit@10": 9,
+   "candidates_with_key": 12,
+   "dense_pool_judgment_hits": {
+    "top1": 5,
+    "top3": 8,
+    "top5": 9,
+    "top10": 11
+   },
+   "dense_pool_mrr": 0.4797
+  }
+ },
+ "rule_A1": {
+  "arm": "A1",
+  "rescues": [],
+  "gain5": 0,
+  "gain10": -1,
+  "losses": [
+   "R12"
+  ],
+  "conditions": {
+   "rescues>=1": false,
+   "gain10>=1": false,
+   "losses==0": false,
+   "gain5>=0": true
+  },
+  "passed": false,
+  "candidate_mix_effects": [
+   "R11",
+   "R26"
+  ]
+ },
+ "rule_A2_same_test": {
+  "arm": "A2",
+  "rescues": [],
+  "gain5": -1,
+  "gain10": -1,
+  "losses": [
+   "R12"
+  ],
+  "conditions": {
+   "rescues>=1": false,
+   "gain10>=1": false,
+   "losses==0": false,
+   "gain5>=0": false
+  },
+  "passed": false,
+  "candidate_mix_effects": [
+   "R26"
+  ]
+ },
+ "verdict": "NOT-PASS",
+ "rerank_union_sizes": {
+  "R01": 89,
+  "R02": 69,
+  "R04": 77,
+  "R08": 78,
+  "R09": 81,
+  "R11": 98,
+  "R12": 97,
+  "R14": 92,
+  "R17": 89,
+  "R19": 89,
+  "R20": 76,
+  "R22": 88,
+  "R24": 94,
+  "R26": 80
+ },
+ "spend": {
+  "embed": {
+   "voyage-law-2": 878,
+   "voyage-4-large": 2660941,
+   "voyage-4-lite": 751,
+   "voyage-4": 751
+  },
+  "rerank": 382726,
+  "calls": {
+   "voyage-law-2": 14,
+   "voyage-4-large": 65,
+   "voyage-4-lite": 14,
+   "voyage-4": 14
+  }
+ },
+ "dollars_at_listed_prices": 0.3386
+}
+exit: 0

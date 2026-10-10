@@ -1,0 +1,912 @@
+{
+ "R01": {
+  "pool_passages": 1036,
+  "key_passages_in_pool": 78,
+  "A0_whole_index_best_key_passage_rank": 1,
+  "A0": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 5,
+   "key_passages_in_top100": 8,
+   "score_of_best_key_passage": 0.5424,
+   "score_at_place_40": 0.4647,
+   "score_at_place_100": 0.4429,
+   "five_best_key_ranks": [
+    1,
+    3,
+    13,
+    30,
+    40
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 3,
+   "key_passages_in_top40": 14,
+   "key_passages_in_top100": 21,
+   "score_of_best_key_passage": 0.534,
+   "score_at_place_40": 0.4763,
+   "score_at_place_100": 0.4551,
+   "five_best_key_ranks": [
+    3,
+    4,
+    6,
+    7,
+    8
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 3,
+   "key_passages_in_top40": 14,
+   "key_passages_in_top100": 23,
+   "score_of_best_key_passage": 0.5185,
+   "score_at_place_40": 0.4609,
+   "score_at_place_100": 0.4371,
+   "five_best_key_ranks": [
+    3,
+    4,
+    5,
+    7,
+    9
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 3,
+   "key_passages_in_top40": 14,
+   "key_passages_in_top100": 23,
+   "score_of_best_key_passage": 0.5375,
+   "score_at_place_40": 0.482,
+   "score_at_place_100": 0.4604,
+   "five_best_key_ranks": [
+    3,
+    4,
+    5,
+    7,
+    9
+   ]
+  }
+ },
+ "R02": {
+  "pool_passages": 1605,
+  "key_passages_in_pool": 213,
+  "A0_whole_index_best_key_passage_rank": 1,
+  "A0": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 24,
+   "key_passages_in_top100": 39,
+   "score_of_best_key_passage": 0.5804,
+   "score_at_place_40": 0.4178,
+   "score_at_place_100": 0.3827,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 24,
+   "key_passages_in_top100": 40,
+   "score_of_best_key_passage": 0.5725,
+   "score_at_place_40": 0.4321,
+   "score_at_place_100": 0.3759,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 2,
+   "key_passages_in_top40": 17,
+   "key_passages_in_top100": 36,
+   "score_of_best_key_passage": 0.5245,
+   "score_at_place_40": 0.4151,
+   "score_at_place_100": 0.3777,
+   "five_best_key_ranks": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 24,
+   "key_passages_in_top100": 39,
+   "score_of_best_key_passage": 0.5741,
+   "score_at_place_40": 0.4383,
+   "score_at_place_100": 0.3953,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    4,
+    6
+   ]
+  }
+ },
+ "R04": {
+  "pool_passages": 890,
+  "key_passages_in_pool": 225,
+  "A0_whole_index_best_key_passage_rank": 8,
+  "A0": {
+   "best_key_passage_rank_in_pool": 8,
+   "key_passages_in_top40": 14,
+   "key_passages_in_top100": 32,
+   "score_of_best_key_passage": 0.717,
+   "score_at_place_40": 0.6476,
+   "score_at_place_100": 0.6148,
+   "five_best_key_ranks": [
+    8,
+    10,
+    13,
+    15,
+    17
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 15,
+   "key_passages_in_top100": 43,
+   "score_of_best_key_passage": 0.5618,
+   "score_at_place_40": 0.4784,
+   "score_at_place_100": 0.426,
+   "five_best_key_ranks": [
+    1,
+    2,
+    8,
+    11,
+    12
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 20,
+   "key_passages_in_top100": 43,
+   "score_of_best_key_passage": 0.5235,
+   "score_at_place_40": 0.4706,
+   "score_at_place_100": 0.4134,
+   "five_best_key_ranks": [
+    1,
+    3,
+    5,
+    7,
+    8
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 17,
+   "key_passages_in_top100": 42,
+   "score_of_best_key_passage": 0.5983,
+   "score_at_place_40": 0.5131,
+   "score_at_place_100": 0.4581,
+   "five_best_key_ranks": [
+    1,
+    7,
+    9,
+    10,
+    12
+   ]
+  }
+ },
+ "R08": {
+  "pool_passages": 506,
+  "key_passages_in_pool": 20,
+  "A0_whole_index_best_key_passage_rank": 7,
+  "A0": {
+   "best_key_passage_rank_in_pool": 7,
+   "key_passages_in_top40": 8,
+   "key_passages_in_top100": 11,
+   "score_of_best_key_passage": 0.5484,
+   "score_at_place_40": 0.4628,
+   "score_at_place_100": 0.4206,
+   "five_best_key_ranks": [
+    7,
+    10,
+    17,
+    19,
+    20
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 6,
+   "key_passages_in_top40": 8,
+   "key_passages_in_top100": 13,
+   "score_of_best_key_passage": 0.5135,
+   "score_at_place_40": 0.4192,
+   "score_at_place_100": 0.3752,
+   "five_best_key_ranks": [
+    6,
+    9,
+    12,
+    18,
+    23
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 6,
+   "key_passages_in_top40": 8,
+   "key_passages_in_top100": 10,
+   "score_of_best_key_passage": 0.5026,
+   "score_at_place_40": 0.424,
+   "score_at_place_100": 0.3774,
+   "five_best_key_ranks": [
+    6,
+    8,
+    9,
+    18,
+    19
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 4,
+   "key_passages_in_top40": 7,
+   "key_passages_in_top100": 10,
+   "score_of_best_key_passage": 0.5123,
+   "score_at_place_40": 0.4245,
+   "score_at_place_100": 0.3803,
+   "five_best_key_ranks": [
+    4,
+    12,
+    13,
+    15,
+    24
+   ]
+  }
+ },
+ "R09": {
+  "pool_passages": 535,
+  "key_passages_in_pool": 13,
+  "A0_whole_index_best_key_passage_rank": 31,
+  "A0": {
+   "best_key_passage_rank_in_pool": 31,
+   "key_passages_in_top40": 1,
+   "key_passages_in_top100": 3,
+   "score_of_best_key_passage": 0.6112,
+   "score_at_place_40": 0.6031,
+   "score_at_place_100": 0.5543,
+   "five_best_key_ranks": [
+    31,
+    48,
+    68,
+    112,
+    123
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 22,
+   "key_passages_in_top40": 1,
+   "key_passages_in_top100": 6,
+   "score_of_best_key_passage": 0.6008,
+   "score_at_place_40": 0.5854,
+   "score_at_place_100": 0.534,
+   "five_best_key_ranks": [
+    22,
+    44,
+    49,
+    65,
+    67
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 26,
+   "key_passages_in_top40": 2,
+   "key_passages_in_top100": 6,
+   "score_of_best_key_passage": 0.5701,
+   "score_at_place_40": 0.5617,
+   "score_at_place_100": 0.5149,
+   "five_best_key_ranks": [
+    26,
+    33,
+    50,
+    75,
+    90
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 35,
+   "key_passages_in_top40": 2,
+   "key_passages_in_top100": 5,
+   "score_of_best_key_passage": 0.5869,
+   "score_at_place_40": 0.5842,
+   "score_at_place_100": 0.5382,
+   "five_best_key_ranks": [
+    35,
+    36,
+    47,
+    64,
+    82
+   ]
+  }
+ },
+ "R11": {
+  "pool_passages": 1726,
+  "key_passages_in_pool": 482,
+  "A0_whole_index_best_key_passage_rank": 1,
+  "A0": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 5,
+   "key_passages_in_top100": 12,
+   "score_of_best_key_passage": 0.5009,
+   "score_at_place_40": 0.4523,
+   "score_at_place_100": 0.4352,
+   "five_best_key_ranks": [
+    1,
+    3,
+    11,
+    16,
+    40
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 4,
+   "key_passages_in_top100": 6,
+   "score_of_best_key_passage": 0.5118,
+   "score_at_place_40": 0.4553,
+   "score_at_place_100": 0.4319,
+   "five_best_key_ranks": [
+    1,
+    2,
+    19,
+    38,
+    94
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 2,
+   "key_passages_in_top40": 3,
+   "key_passages_in_top100": 10,
+   "score_of_best_key_passage": 0.4806,
+   "score_at_place_40": 0.4278,
+   "score_at_place_100": 0.4088,
+   "five_best_key_ranks": [
+    2,
+    3,
+    32,
+    51,
+    70
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 5,
+   "key_passages_in_top100": 14,
+   "score_of_best_key_passage": 0.5462,
+   "score_at_place_40": 0.4705,
+   "score_at_place_100": 0.4534,
+   "five_best_key_ranks": [
+    1,
+    2,
+    12,
+    36,
+    39
+   ]
+  }
+ },
+ "R12": {
+  "pool_passages": 548,
+  "key_passages_in_pool": 35,
+  "A0_whole_index_best_key_passage_rank": 23,
+  "A0": {
+   "best_key_passage_rank_in_pool": 23,
+   "key_passages_in_top40": 1,
+   "key_passages_in_top100": 2,
+   "score_of_best_key_passage": 0.5078,
+   "score_at_place_40": 0.4936,
+   "score_at_place_100": 0.4759,
+   "five_best_key_ranks": [
+    23,
+    51,
+    148,
+    238,
+    301
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 64,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 1,
+   "score_of_best_key_passage": 0.4383,
+   "score_at_place_40": 0.4507,
+   "score_at_place_100": 0.4216,
+   "five_best_key_ranks": [
+    64,
+    163,
+    207,
+    220,
+    259
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 19,
+   "key_passages_in_top40": 1,
+   "key_passages_in_top100": 1,
+   "score_of_best_key_passage": 0.4581,
+   "score_at_place_40": 0.4457,
+   "score_at_place_100": 0.4165,
+   "five_best_key_ranks": [
+    19,
+    113,
+    147,
+    245,
+    250
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 30,
+   "key_passages_in_top40": 1,
+   "key_passages_in_top100": 1,
+   "score_of_best_key_passage": 0.4685,
+   "score_at_place_40": 0.4634,
+   "score_at_place_100": 0.439,
+   "five_best_key_ranks": [
+    30,
+    110,
+    174,
+    193,
+    251
+   ]
+  }
+ },
+ "R14": {
+  "pool_passages": 614,
+  "key_passages_in_pool": 37,
+  "A0_whole_index_best_key_passage_rank": 2241,
+  "A0": {
+   "best_key_passage_rank_in_pool": 360,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 0,
+   "score_of_best_key_passage": 0.3392,
+   "score_at_place_40": 0.4511,
+   "score_at_place_100": 0.4344,
+   "five_best_key_ranks": [
+    360,
+    380,
+    391,
+    397,
+    411
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 190,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 0,
+   "score_of_best_key_passage": 0.2876,
+   "score_at_place_40": 0.3418,
+   "score_at_place_100": 0.3166,
+   "five_best_key_ranks": [
+    190,
+    290,
+    304,
+    316,
+    343
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 141,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 0,
+   "score_of_best_key_passage": 0.3519,
+   "score_at_place_40": 0.3881,
+   "score_at_place_100": 0.3651,
+   "five_best_key_ranks": [
+    141,
+    241,
+    311,
+    348,
+    358
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 93,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 1,
+   "score_of_best_key_passage": 0.3853,
+   "score_at_place_40": 0.4067,
+   "score_at_place_100": 0.3835,
+   "five_best_key_ranks": [
+    93,
+    202,
+    279,
+    319,
+    326
+   ]
+  }
+ },
+ "R17": {
+  "pool_passages": 657,
+  "key_passages_in_pool": 111,
+  "A0_whole_index_best_key_passage_rank": 1,
+  "A0": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 3,
+   "key_passages_in_top100": 4,
+   "score_of_best_key_passage": 0.6505,
+   "score_at_place_40": 0.5681,
+   "score_at_place_100": 0.5401,
+   "five_best_key_ranks": [
+    1,
+    9,
+    30,
+    78,
+    120
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 6,
+   "key_passages_in_top40": 6,
+   "key_passages_in_top100": 7,
+   "score_of_best_key_passage": 0.567,
+   "score_at_place_40": 0.5271,
+   "score_at_place_100": 0.4982,
+   "five_best_key_ranks": [
+    6,
+    11,
+    24,
+    32,
+    36
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 10,
+   "key_passages_in_top40": 3,
+   "key_passages_in_top100": 6,
+   "score_of_best_key_passage": 0.4385,
+   "score_at_place_40": 0.4127,
+   "score_at_place_100": 0.3785,
+   "five_best_key_ranks": [
+    10,
+    23,
+    39,
+    84,
+    91
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 8,
+   "key_passages_in_top40": 3,
+   "key_passages_in_top100": 6,
+   "score_of_best_key_passage": 0.491,
+   "score_at_place_40": 0.4588,
+   "score_at_place_100": 0.4293,
+   "five_best_key_ranks": [
+    8,
+    14,
+    19,
+    52,
+    56
+   ]
+  }
+ },
+ "R19": {
+  "pool_passages": 636,
+  "key_passages_in_pool": 46,
+  "A0_whole_index_best_key_passage_rank": 1,
+  "A0": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 5,
+   "key_passages_in_top100": 10,
+   "score_of_best_key_passage": 0.5579,
+   "score_at_place_40": 0.4948,
+   "score_at_place_100": 0.4707,
+   "five_best_key_ranks": [
+    1,
+    3,
+    6,
+    14,
+    22
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 10,
+   "key_passages_in_top100": 14,
+   "score_of_best_key_passage": 0.5819,
+   "score_at_place_40": 0.4466,
+   "score_at_place_100": 0.4206,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    5,
+    6
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 11,
+   "key_passages_in_top100": 13,
+   "score_of_best_key_passage": 0.5158,
+   "score_at_place_40": 0.4088,
+   "score_at_place_100": 0.383,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    5,
+    7
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 9,
+   "key_passages_in_top100": 11,
+   "score_of_best_key_passage": 0.5397,
+   "score_at_place_40": 0.4355,
+   "score_at_place_100": 0.4115,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    4,
+    10
+   ]
+  }
+ },
+ "R20": {
+  "pool_passages": 531,
+  "key_passages_in_pool": 29,
+  "A0_whole_index_best_key_passage_rank": 15,
+  "A0": {
+   "best_key_passage_rank_in_pool": 15,
+   "key_passages_in_top40": 5,
+   "key_passages_in_top100": 8,
+   "score_of_best_key_passage": 0.527,
+   "score_at_place_40": 0.5065,
+   "score_at_place_100": 0.4703,
+   "five_best_key_ranks": [
+    15,
+    25,
+    28,
+    36,
+    38
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 2,
+   "key_passages_in_top40": 4,
+   "key_passages_in_top100": 7,
+   "score_of_best_key_passage": 0.5274,
+   "score_at_place_40": 0.4467,
+   "score_at_place_100": 0.3981,
+   "five_best_key_ranks": [
+    2,
+    9,
+    23,
+    29,
+    70
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 3,
+   "key_passages_in_top40": 4,
+   "key_passages_in_top100": 7,
+   "score_of_best_key_passage": 0.4897,
+   "score_at_place_40": 0.4187,
+   "score_at_place_100": 0.3706,
+   "five_best_key_ranks": [
+    3,
+    9,
+    26,
+    37,
+    54
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 4,
+   "key_passages_in_top40": 4,
+   "key_passages_in_top100": 7,
+   "score_of_best_key_passage": 0.5422,
+   "score_at_place_40": 0.4789,
+   "score_at_place_100": 0.4313,
+   "five_best_key_ranks": [
+    4,
+    8,
+    26,
+    33,
+    45
+   ]
+  }
+ },
+ "R22": {
+  "pool_passages": 985,
+  "key_passages_in_pool": 319,
+  "A0_whole_index_best_key_passage_rank": 58,
+  "A0": {
+   "best_key_passage_rank_in_pool": 58,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 2,
+   "score_of_best_key_passage": 0.5528,
+   "score_at_place_40": 0.5569,
+   "score_at_place_100": 0.5423,
+   "five_best_key_ranks": [
+    58,
+    90,
+    201,
+    301,
+    305
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 112,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 0,
+   "score_of_best_key_passage": 0.4347,
+   "score_at_place_40": 0.4665,
+   "score_at_place_100": 0.4381,
+   "five_best_key_ranks": [
+    112,
+    134,
+    145,
+    158,
+    187
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 130,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 0,
+   "score_of_best_key_passage": 0.4243,
+   "score_at_place_40": 0.4561,
+   "score_at_place_100": 0.4351,
+   "five_best_key_ranks": [
+    130,
+    178,
+    187,
+    190,
+    192
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 99,
+   "key_passages_in_top40": 0,
+   "key_passages_in_top100": 1,
+   "score_of_best_key_passage": 0.4507,
+   "score_at_place_40": 0.4739,
+   "score_at_place_100": 0.4505,
+   "five_best_key_ranks": [
+    99,
+    152,
+    157,
+    158,
+    174
+   ]
+  }
+ },
+ "R24": {
+  "pool_passages": 878,
+  "key_passages_in_pool": 39,
+  "A0_whole_index_best_key_passage_rank": 7,
+  "A0": {
+   "best_key_passage_rank_in_pool": 7,
+   "key_passages_in_top40": 6,
+   "key_passages_in_top100": 11,
+   "score_of_best_key_passage": 0.5043,
+   "score_at_place_40": 0.4741,
+   "score_at_place_100": 0.4549,
+   "five_best_key_ranks": [
+    7,
+    8,
+    10,
+    24,
+    28
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 14,
+   "key_passages_in_top100": 21,
+   "score_of_best_key_passage": 0.5024,
+   "score_at_place_40": 0.4205,
+   "score_at_place_100": 0.3911,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    4,
+    6
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 9,
+   "key_passages_in_top100": 14,
+   "score_of_best_key_passage": 0.4375,
+   "score_at_place_40": 0.3851,
+   "score_at_place_100": 0.3698,
+   "five_best_key_ranks": [
+    1,
+    2,
+    7,
+    12,
+    17
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 1,
+   "key_passages_in_top40": 14,
+   "key_passages_in_top100": 19,
+   "score_of_best_key_passage": 0.4924,
+   "score_at_place_40": 0.4169,
+   "score_at_place_100": 0.3905,
+   "five_best_key_ranks": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  }
+ },
+ "R26": {
+  "pool_passages": 916,
+  "key_passages_in_pool": 54,
+  "A0_whole_index_best_key_passage_rank": 10,
+  "A0": {
+   "best_key_passage_rank_in_pool": 10,
+   "key_passages_in_top40": 6,
+   "key_passages_in_top100": 7,
+   "score_of_best_key_passage": 0.4228,
+   "score_at_place_40": 0.3882,
+   "score_at_place_100": 0.3657,
+   "five_best_key_ranks": [
+    10,
+    19,
+    21,
+    22,
+    30
+   ]
+  },
+  "A1": {
+   "best_key_passage_rank_in_pool": 6,
+   "key_passages_in_top40": 8,
+   "key_passages_in_top100": 11,
+   "score_of_best_key_passage": 0.3827,
+   "score_at_place_40": 0.3309,
+   "score_at_place_100": 0.2946,
+   "five_best_key_ranks": [
+    6,
+    13,
+    16,
+    17,
+    25
+   ]
+  },
+  "A2": {
+   "best_key_passage_rank_in_pool": 6,
+   "key_passages_in_top40": 8,
+   "key_passages_in_top100": 10,
+   "score_of_best_key_passage": 0.3571,
+   "score_at_place_40": 0.3128,
+   "score_at_place_100": 0.2789,
+   "five_best_key_ranks": [
+    6,
+    10,
+    12,
+    16,
+    21
+   ]
+  },
+  "A2b": {
+   "best_key_passage_rank_in_pool": 3,
+   "key_passages_in_top40": 8,
+   "key_passages_in_top100": 11,
+   "score_of_best_key_passage": 0.3782,
+   "score_at_place_40": 0.3094,
+   "score_at_place_100": 0.2769,
+   "five_best_key_ranks": [
+    3,
+    9,
+    17,
+    20,
+    23
+   ]
+  }
+ }
+}
