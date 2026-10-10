@@ -1,0 +1,141 @@
+QUESTION ID: R30   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 17 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R30",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 17 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+
+==============================================================================
+QUESTION: Police registered FIR in Aug 2024 under 420 and 406 IPC for a fraud done in March 2024. What are the new BNS sections for these and what is the punishment?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: SUBHELAL @ SUSHIL SAHU versus THE STATE OF CHHATTISGARH (17-02-2025)
+   (Judgment id 1000256392, paragraph 2, page 3)
+Text:
+2. This appeal arises from the impugned order passed by the High Court of Chhattisgarh, Bilaspur dated 22-7-2024 in MCRC No.2810/2024 by which the High Court denied regular bail to the appellant in connection with Crime No.460/2023 registered at Police Station Dindayal Upadhyay Nagar, District Raipur, Chhattisgarh for the offence punishable under Sections 420, 201, 120-B read with Section 34 of the Indian Penal Code.
+
+--- PASSAGE 2 ---
+Judgment: MILIND S/O ASHRUBA DHANVE AND ORS. versus THE STATE OF MAHARASHTRA (10-04-2026)
+   (Judgment id 1003962634, paragraph 22, page 14)
+Text:
+22. Having considered the contentions as advanced and to appreciate them, it would be necessary to refer to Section 53 of IPC and corresponding provisions of Section 4 of BNS. Both the Sections are reproduced hereunder in tabular form for comparison – Section 53 of IPC Section 4 of BNS
+
+--- PASSAGE 3 ---
+Judgment: DELHI RACE CLUB (1940) LTD. & ORS. versus STATE OF UTTAR PRADESH & ANR. (23-08-2024)
+   (Judgment id 1000255917, paragraph 40-41, page 29)
+Text:
+40. In such circumstances referred to above, the continuation of the criminal proceeding would be nothing but abuse of the process of law. FINAL CONCLUSION 41. Before we close this matter, we would like to say something as regards the casual approach of the courts below in cases like the one at hand. The Indian Penal Code (IPC) was the official Criminal Code in the Republic of India inherited from the British India after independence. The IPC came into force in the sub-continent during the British rule in 1862. The IPC remained in force for almost a period of 162 years until it was repealed and replaced by the Bharatiya Nyaya Sanhita (“BNS”) in December 2023 which came into effect on 1st July 2024. It is indeed very sad to note that even after these many years, the courts have not been able to understand the fine distinction between criminal breach of trust and cheating.
+
+--- PASSAGE 4 ---
+Judgment: SERIOUS FRAUD INVESTIGATION OFFICE versus RAHUL MODI AND ANR. ETC. (27-03-2019)
+   (Judgment id 1000251550, paragraph preamble/64, page 1)
+Text:
+17, for “the offences covered under sub-sections (5) and (6) of section 7, section 34, section 36, sub-section (1) of section 38, sub-sections (5) of section 46, sub-section (7) of section 56, sub-section (10) of section 66, sub-section (5) of section 140, sub-section (4) of section 206, section 213, section 229, sub-section (1) of section 251, sub-section (3) of section 339 and section 448 which attract the punishment for fraud provided in section 447”. Provided that a person, who, is under the age of sixteen years or is a woman or is sick or infirm, may be released on bail, if the Special Court so directs: Provided further that the Special Court shall not take cognizance of any offence referred to this sub-section except upon a complaint in writing made by – (i) The Director, Serious Fraud Investigation Office; or (ii) Any officer of the Central Government authorised, by a general or special order in writing in this behalf by that Government. (7) The limitation on granting of bail specified in sub-section (5) is in addition to the limitations under the Code of Criminal Procedure, 1973 (2 of 1974) or any other law for the time being in force on granting of bail. (8) If the Director, Additional Director or Assistant Director of Serious Fraud Investigation Office authorised in this behalf by the Central Government by general or special order, has on the basis of material in his possession reason to believe (the reason for such belief to be recorded in writing) that any person has been guilty of any offence punishable under sections referred to in subsection (6), he may arrest such person and shall, as soon as may be, inform him of the grounds for such arrest.
+
+--- PASSAGE 5 ---
+Judgment: N. RAGHAVENDER versus STATE OF ANDHRA PRADESH, CBI (13-12-2021)
+   (Judgment id 1000253534, paragraph 48, page 27)
+Text:
+48. It is equally well-settled that the phrase ‘dishonestly’ emphasizes a deliberate intention to cause wrongful gain or wrongful loss, and when this is coupled with cheating and delivery of property, the offence becomes punishable under Section 420 IPC. Contrarily, the mere breach of contract cannot give rise to criminal prosecution under Section 420 unless fraudulent or dishonest intention is shown right at the beginning of the transaction. It is equally important that for the purpose of holding a person guilty under Section 420, the evidence adduced must establish beyond reasonable doubt, mens rea on his part. Unless the complaint showed that the accused had dishonest or fraudulent intention ‘at the time the complainant parted with the monies’, it would not amount to an offence under Section 420 IPC and it may only amount to breach of contract. Ingredients necessary to prove a charge under Section 477- A IPC:
+
+--- PASSAGE 6 ---
+Judgment: SHAILESH KUMAR SINGH ALIAS SHAILESH R. SINGH versus STATE OF UTTAR PRADESH & ORS. (14-07-2025)
+   (Judgment id 1000256806, unnumbered paragraph, page 6)
+Text:
+6. Section 316(2) of the BNS, 2023 reads thus:- 316. Criminal breach of trust. (2) Whoever commits criminal breach of trust shall be punished with imprisonment of either description for a term which may extend to five years, or with fine, or with both. 7. Section 318(2) of the BNS,2023 reads thus:- 318. Cheating. (2) Whoever cheats shall be punished with imprisonment of either description for a term which may extend to three years, or with fine, or with both. 8. We called upon the learned counsel appearing for the Respondent No.4 to make us understand in what manner the FIR discloses commission of a cognizable offence. We also called upon the learned counsel appearing for the Respondent No.4 to make us understand in what manner his client could be said to have been cheated so as to constitute the offence of cheating. 9. What we have been able to understand is that there is an oral agreement between the parties. The Respondent No.4 might have parted with some money in accordance with the oral agreement and it may be that the appellant – herein owes a particular amount to be paid to the Respondent No.4. However, the question is whether prima facie any offence of cheating could be said to have been committed by the appellant. 10. How many times the High Courts are to be reminded that to constitute an offence of cheating, there has to be something more than prima facie on record to indicate that the intention of the accused was to cheat the complainant right from the inception.
+
+--- PASSAGE 7 ---
+Judgment: MILIND S/O ASHRUBA DHANVE AND ORS. versus THE STATE OF MAHARASHTRA (10-04-2026)
+   (Judgment id 1003962634, paragraph 23, page 15)
+Text:
+23. In view of the above, it is clear that Section 53 of IPC has been adopted as it is in Section 4 of BNS while also adding another punishment in nature of community service. This is also indicative of the paradigm shift in the legislative intent from deterrence to reformation which has been reaffirmed while prescribing the mode of punishment in BNS.
+
+--- PASSAGE 8 ---
+Judgment: SURESH KUMAR AGARWAL versus M/S HALDIA STEELS LIMITED & ANR (15-04-2025)
+   (Judgment id 1000256574, paragraph 12, page 6)
+Text:
+12. The said complaint was forwarded to the concerned police station for investigation under Section 156(3) of the Code of Criminal Procedure5 where FIR Case No. 318 of 2014 was registered for the offences punishable under Sections 120B, 406 and 420 IPC.
+
+--- PASSAGE 9 ---
+Judgment: P KRISHNA MOHAN REDDY versus THE STATE OF ANDHRA PRADESH (16-05-2025)
+   (Judgment id 1000256743, paragraph 2, page 5)
+Text:
+2. The petitioners have been denied anticipatory bail by the High Court in connection with Crime No.21 of 2024 registered at CID Police Station, \angalagiri, Guntur District for the offence punishable under Sections 409, 420, 120-B read with Sections 34 & 37 of the Indian Penal Code, 1860 respectively (now Sections 316(5), 318(4), 61(2), 3(5) & 3(8) of the Bharatiya Nyaya Sanhita, 2023) & Sections 7, 7A, 8 and 13(1)(b) and 13(2) of the Prevention of Corruption Act, 1988.
+
+--- PASSAGE 10 ---
+Judgment: N. RAGHAVENDER versus STATE OF ANDHRA PRADESH, CBI (13-12-2021)
+   (Judgment id 1000253534, paragraph 46, page 27)
+Text:
+46. Section 420 IPC, provides that whoever cheats and thereby dishonestly induces a person deceived to deliver any property to any person, or to make, alter or destroy, the whole or any part of valuable security, or anything, which is signed or sealed, and which is capable of being converted into a valuable security, shall be liable to be punished for a term which may extend to seven years and shall also be liable to fine.
+
+--- PASSAGE 11 ---
+Judgment: STATE OF KARNATAKA versus T.N. SUDHAKAR REDDY (17-02-2025)
+   (Judgment id 1000256390, paragraph 2, page 3)
+Text:
+2. The present appeal by special leave is preferred by the appellant- State, challenging the judgment and final order dated 4th March, 2024 1244 passed by the High Court of Karnataka at Bengaluru,1 whereby the High Court allowed the Criminal Petition No. 13460 of 2023, filed by respondent-accused2 under Section 482 of the Code of Criminal Procedure, 1973,3 and quashed the FIR being Crime No. 56 of 2023 registered by the Karnataka Lokayukta Police Station, Bangalore against the respondent for the offences punishable under Section 13(1)(b) and Section 12 read with Section 13(2) of the Prevention of Corruption Act, 1988.4 Brief facts:
+
+--- PASSAGE 12 ---
+Judgment: HDFC BANK LTD. versus THE STATE OF BIHAR & ORS. (22-10-2024)
+   (Judgment id 1000256049, paragraph 19-20, page 12)
+Text:
+19. In the present case, the FIR does not show that the appellant-bank had induced anyone since inception. 20. For bringing out the offence under the ambit of Section 420 IPC, the FIR must disclose the following ingredients: 1914 (a) That the appellant-bank had induced anyone since inception; (b) That the said inducement was fraudulent or dishonest; and (c) That mens rea existed at the time of such inducement.
+
+--- PASSAGE 13 ---
+Judgment: V.D. RAVEESHA versus THE STATE OF KARNATAKA (22-10-2024)
+   (Judgment id 1000256050, paragraph 37, page 11)
+Text:
+37. Further, in both the aforesaid sections, mens rea i.e. intention to defraud or the dishonest intention must be present, and in the case of cheating it must be there from the very beginning or inception. xxx
+
+--- PASSAGE 14 ---
+Judgment: DELHI RACE CLUB (1940) LTD. & ORS. versus STATE OF UTTAR PRADESH & ANR. (23-08-2024)
+   (Judgment id 1000255917, paragraph 26, page 23)
+Text:
+26. Further, in both the aforesaid sections, mens rea i.e. intention to defraud or the dishonest intention must be present, and in the case of cheating it must be there from the very beginning or inception.
+
+--- PASSAGE 15 ---
+Judgment: X versus THE STATE OF UTTAR PRADESH & ANOTHER (09-01-2026)
+   (Judgment id 1003962531, paragraph 3/2, page 4)
+Text:
+However, the police failed to register the FIR on 01.12.2024 and instead advised the minor victim and her family members to compromise and settle the matter with the accused persons. Ultimately, FIR No. 426/2024 came to be registered on 02.12.2024 under Sections 75(2), 79 and 137(2) of the BNS and Sections 9(g) and 10 of the POCSO Act against five accused persons including Respondent No. 2. Hereinafter referred to as “the High Court” For short, “BNS” For short, “POCSO Act” 488 3.3. During the course of investigation, on 03.12.2024, the statements of the minor victim and her uncle were recorded under Section 180 of the Bharatiya Nagarik Suraksha Sanhita, 20234 (corresponding to Section 161 of the Code of Criminal Procedure, 19735). The investigating officer obtained a certificate from Inter College, Ailum, District Shamli, certifying the date of birth of the minor victim as 18.07.2010, which established that she was around 14 years of age at the time of the commission of the offence. On 05.12.2024, the statement of the minor victim was recorded under Section 183 of the BNSS (corresponding to Section 164 Cr.P.C.) before the learned Magistrate, District Shamli, Uttar Pradesh. Thereafter, on 08.12.2024 the minor victim was medically examined and a medico-legal examination report was obtained, which revealed the gravity of the sexual offence committed against her.
+
+--- PASSAGE 16 ---
+Judgment: S.N. VIJAYLAKSHMI & ORS. versus STATE OF KARNATAKA & ANR. (31-07-2025)
+   (Judgment id 1000256887, paragraph 37, page 20)
+Text:
+37. Purely from a legal lens, it is now settled that the same person cannot be simultaneously charged for offences punishable under Sections 406 and 420 of the IPC with regard to one particular transaction, as per the decision rendered in Delhi Race Club (1940) Limited (supra). In this regard, reference may also be made to a subsequent decision by us in V D Raveesha v State of Karnataka, 2024 INSC 1060 (penned by Ahsanuddin Amanullah, J.), which noticed the exposition in Delhi Race Club (1940) Limited (supra). In V D Raveesha (supra), the distinction between Sections 406 and 420 of the IPC was duly taken note of, but charges under Sections 406 and 420 of the IPC against the same person were upheld, not being part of a single transaction and committed against different persons. The relevant passage from V D Raveesha (supra) reads thus: ‘21. Though, having regard to the afore-enumerated position of law, on an overall conspectus of the factual aspects juxtaposed with the evidence on record, as regards fulfilment of the ingredients of Sections 406 and 420 of the IPC, at first sight, it may appear that the petitioner cannot be convicted both under Sections 406 and 420 of the IPC, but, in the present case, on a proper consideration of the issue in its entirety, there is a fine distinction inasmuch as, there are two different persons against whom the petitioner has committed the respective offences under the Sections supra: first, the Company and second, Mallikarjuna (PW4 and husband of purchaser Savithramma). Thus, in the facts and circumstances of the present case, evidently the petitioner is guilty of offence committed against the Company punishable under Section 406 of the IPC and also, of offence committed against Mallikarjuna (PW4 and husband of purchaser Savithramma) punishable under Section 420 of the IPC.’ (emphasis supplied)
+
+--- PASSAGE 17 ---
+Judgment: RAVINDER SINGH SIDHU versus THE STATE OF PUNJAB & ORS. (19-05-2025)
+   (Judgment id 1000256754, paragraph 4, page 4)
+Text:
+4. The different FIRs are primarily for offences under Sections 406, 420, 465, 467, 468, 471 read with Section 120B, 34, 263, 114 of the Indian Penal Code, 1860 (IPC). Some of the Sections referred to herein have been invoked in a few FIRs and in some all the Sections have been invoked. Along with this in some FIRs the local Acts of the State like the Gujarat Police Act, 1951, the Haryana Protection of Interest of Depositors in Financial Establishment Act, 2013, the Prize Chits And Money Circulation Schemes (Banning) Act, 1978, the Madhya Pradesh Nikshepakon Ke Hiton Ka Sanrakshan Adhiniyam, 2000 and the Uttarakhand Protection of Interests of Depositors (in Financial Establishments) Act, 2005 have been invoked depending upon the State concerned.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R30 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17).

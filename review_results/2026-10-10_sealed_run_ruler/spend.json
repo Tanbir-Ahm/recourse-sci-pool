@@ -1,0 +1,124 @@
+{
+ "run": {
+  "when": "2026-10-10T12:03:04Z",
+  "half": "sealed",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "A today",
+   "R challenger re-ranker",
+   "S site shown",
+   "M safety net",
+   "M safety net (challenger)"
+  ],
+  "source": "ruler",
+  "site_arm": true,
+  "rewrites_file": null,
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 286408,
+   "rerank_calls": 16,
+   "embed_tokens": 303,
+   "embed_calls": 8,
+   "cap_rerank_tokens": 2000000,
+   "dollars_estimate": 0.0144,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   },
+   "rerank_tokens_by_model": {
+    "rerank-2": 143204,
+    "rerank-3-lite": 143204
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-2",
+   "challenger": "rerank-3-lite"
+  },
+  "side_index": {
+   "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572,
+   "built": "2026-10-09T08:03:50Z",
+   "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+  },
+  "side_indexes": [
+   {
+    "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+    "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+    "documents": 17,
+    "passages": 2572,
+    "built": "2026-10-09T08:03:50Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_documents",
+    "manifest_sha256": "4e407a307be9260aaf5176d7d48b2d5ffde1b6bbc85e2a95dec9bd7fd470d4e7",
+    "documents": 1,
+    "passages": 12,
+    "built": "2026-10-09T10:00:02Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_shivangi_bansal",
+    "manifest_sha256": "2839f1829a211eda61e1c2fdb474cb37fcf25564dd9807e0f6e5e91511e13cf7",
+    "documents": 1,
+    "passages": 23,
+    "built": "2026-10-09T10:15:11Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   }
+  ],
+  "final_recipe": {
+   "challenger": "rerank-3-lite",
+   "top_k": 10,
+   "label": "sealed run, ruler frozen half | rules 1936fdc23a02 | code 3cee53fdf2",
+   "rules_sha256": "1936fdc23a022a9cfeeb76c1b5e1bdb170948bf727c7ceb50d4635fc0d7ad29c",
+   "rules_frozen_sha256": "1936fdc23a022a9cfeeb76c1b5e1bdb170948bf727c7ceb50d4635fc0d7ad29c",
+   "code_commit": "3cee53fdf21f51eb3b6e5ecce7690bc9891c9d57",
+   "code_uncommitted": [],
+   "side_indexes": [
+    "review_data/side_index/2026-10-09_correcting_judgments",
+    "review_data/side_index/2026-10-09_fetched_documents",
+    "review_data/side_index/2026-10-09_fetched_shivangi_bansal"
+   ],
+   "rewrites_used": false
+  }
+ },
+ "per_question": {
+  "Q15": {
+   "rerank_tokens": 34266,
+   "embed_tokens": 40
+  },
+  "Q16": {
+   "rerank_tokens": 39032,
+   "embed_tokens": 46
+  },
+  "Q23": {
+   "rerank_tokens": 34270,
+   "embed_tokens": 33
+  },
+  "Q24": {
+   "rerank_tokens": 34094,
+   "embed_tokens": 48
+  },
+  "Q25": {
+   "rerank_tokens": 40442,
+   "embed_tokens": 29
+  },
+  "Q26": {
+   "rerank_tokens": 41272,
+   "embed_tokens": 38
+  },
+  "Q31": {
+   "rerank_tokens": 31018,
+   "embed_tokens": 30
+  },
+  "Q32": {
+   "rerank_tokens": 32014,
+   "embed_tokens": 39
+  }
+ }
+}

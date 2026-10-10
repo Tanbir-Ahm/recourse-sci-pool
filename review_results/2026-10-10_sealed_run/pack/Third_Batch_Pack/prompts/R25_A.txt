@@ -1,0 +1,141 @@
+QUESTION ID: R25   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 17 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R25",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 17 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+
+==============================================================================
+QUESTION: Whether anticipatory bail under Section 438 CrPC is maintainable in a case under the SC/ST (Prevention of Atrocities) Act, and whether a preliminary enquiry or approval is required before arrest.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: DR. SUBHASH KASHINATH MAHAJAN versus THE STATE OF MAHARASHTRA AND ANR. (20-03-2018)
+   (Judgment id 1000250634, paragraph 61/1, page 62)
+Text:
+61. The Gujarat High Court in Pankaj D Suthar (supra) considered the question whether Section 18 of the Atrocities Act excludes grant of anticipatory bail when on prima facie judicial scrutiny, allegations are found to be not free from doubt. The said question was answered as follows: “4. Now undoubtedly it is true that the alleged offence under the Atrocities Act is a very serious offence and if indeed the complaint is ultimately found to be truthful and genuine one, there cannot be any two views about the strictest possible view taken in such matter. Not only that but if the complaint is also found to be prima facie dependable one that is to say, free from doubt, then as a warranted under Section 18 of the Atrocities Act, even the anticipatory bail to such accused has got to be refused. In fact, the Parliament in its utmost wisdom has rightly evidenced great concern and anxiety over the atrocities which are going on unabatedly on S.Cs. & S.Ts. by inserting the provisions under Section 18 of the Atrocities Act disabling the accused from obtaining the anticipatory bail under Section 438 of the Code. This indeed is a welcome step and in accordance with the axiomatic truth, viz., ‘the disease grown desperately must be treated desperately else not’. The disease of commission of offences by way of atrocities against the members of S.Cs. and S.Ts. are unabatedly going on since last hundreds of years and in the recent past have become alarmingly increasing and has become so rampant, breath taking and has reached such a desperate pass that it indeed needed a very stringent and desperate legislation which could help save the situation by effectively providing the legal protection to such cursed, crushed and downtrodden members of S.Cs. & S.Ts. communities.
+
+--- PASSAGE 2 ---
+Judgment: KIRAN versus RAJKUMAR JIVRAJ JAIN & ANR. (01-09-2025)
+   (Judgment id 1000256991, paragraph 5/3, page 8)
+Text:
+5.2 It is evident from the above provision of Section 18 that it expressly excludes the applicability of Section 438 of the Code of Criminal Procedure, 1973 (“hereinafter referred to as “the Cr.PC”). In another words, in relation to any case involving arrest of a person who is facing the accusation about committing offence under this Act, protection of Section 438, Cr.P.C. would not be available. The Legislature has taken away the benefit of anticipatory bail in respect of the arrest for the offences alleged under the SC/ST Act. The bar in Section 18 of the SC/ST Act would operate. 5.3 While upholding the Constitutional validity of Section 18 of the Act, this Court in State of M.P. & Anr. vs. Ram Krishna Balothia & Anr.4 observed as under, “… The offences enumerated under the said Act fall into a separate and special class. Article 17 of the Constitution expressly deals with abolition of ‘untouchability’ and forbids its practice in any form. It also provides that enforcement of any disability arising out of ‘untouchability’ shall be an offence punishable in accordance with law. The offences, therefore, which are enumerated under Section 3(1) arise out of the practice of ‘untouchability’.” (Para 6) 5.3.1 The court proceeded to observe, “The exclusion of Section 438 CrPC in connection with offences under the Act has to be viewed in the contest of the prevailing social conditions which give rise to such offences, and the apprehension that perpetrators of such atrocities are likely to threaten and intimidate their victims and prevent or obstruct (1995) 3 SCC 221 them in the prosecution of these offenders, if the offenders are allowed to avail of anticipatory bail as pointed out in the Statement of Objects and Reasons of the Act.
+
+--- PASSAGE 3 ---
+Judgment: RAHNA JALAL versus STATE OF KERALA AND ANOTHER (17-12-2020)
+   (Judgment id 1000252854, paragraph 14, page 12)
+Text:
+14. The Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act 1989 also contains similar provisions, which exclude the application of Section 438 of CrPC. Sections 18 and 18-A provide as follows: “18. Section 438 of the Code not to apply to persons committing an offence under the Act.— Nothing in Section 438 of the Code shall apply in relation to any case involving the arrest of any person on an accusation of having committed an offence under this Act. 18-A. No enquiry or approval required.—(1) For the purposes of this Act— (a) preliminary enquiry shall not be required for registration of a first information report against any person; or (b) the investigating officer shall not require approval for the arrest, if necessary, of any person, against whom an accusation of having committed an offence under this Act has been made, and no procedure other than that provided under this Act or the Code shall apply. (2) The provisions of Section 438 of the Code shall not apply to a case under this Act, notwithstanding any judgment or order or direction of any Court.” 8 MCOCA
+
+--- PASSAGE 4 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.595 OF 2013 (SPECIAL LEAVE PETITION(CRL.)NO.8490 OF 2012) SHAKUNTLA DEVI APPELLANT VERSUS BALJINDER SINGH RESPONDENT O R D E R
+   (Judgment id 40321, paragraph 4, page 1)
+Text:
+4. We find that Section 18 of the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1984 provides that nothing in Section 438 of the Criminal Procedure Code shall apply in relation to any case involving the arrest of any person on an accusation of having committed an offence under this Act. This Court has also held in Vilas Pandurang Pawar & Anr. Vs. State of Maharashtra & Ors., reported in 2012 (8) SCALE, 577 that Section 18 of the Act creates a specific bar to the grant of anticipatory bail to a person against whom any offence is registered under the : 2 : provisions of the aforesaid Act and, therefore no Court shall entertain an application for anticipatory bail unless it, prima facie, finds that an offence under the Act is not made out.
+
+--- PASSAGE 5 ---
+Judgment: PRATHVI RAJ CHAUHAN versus UNION OF INDIA & OTHERS (10-02-2020)
+   (Judgment id 1000252416, unnumbered paragraph, page 33)
+Text:
+State of Maharashtra & Ors9, a two judge bench of this court held that the exclusion of anticipatory bail provisions of the Code of Criminal Procedure (by Section 18 of the Act) did not constitute an absolute bar for the grant of bail, where it was discernable to the court that the allegations about atrocities or violation of the provisions of the Act were false. It was also held, more crucially, that public servants could be arrested only after approval by the appointing authority (of such public servant) and in other cases, after approval by the Senior Superintendent of Police. It was also directed that cases under the Act could be registered only after a preliminary enquiry into the complaint. These directions were seen to be contrary to the spirit of the Act and received considerable comment in the public domain; the Union of India too moved this court for their review. In the review proceedings, a three judge bench of this court, in Union of India v. State of Maharastra10 recalled and overruled those directions. 16. In the meanwhile, Parliament enacted the amendment of 201811 (by Act No. 27 of 2019), which is the subject matter of challenge 9 2018 (4) SCC 454 10 2019 (13) SCALE 280 11 The operative part of the amendment, a brief one, reads as follows: “ 2. After section 18 of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989, the following section shall be inserted, namely:— “18A.
+
+--- PASSAGE 6 ---
+Judgment: VINOD DUA versus UNION OF INDIA & ORS. (03-06-2021)
+   (Judgment id 1000253111, paragraph 63, page 100)
+Text:
+63. A Bench of two Judges of this Court (to which one of us i.e. Lalit, J. was a party) in its decision in Dr. Subhash Kashinath Mahajan v. State of Maharashtra and another83 issued following directions in connection with prosecutions instituted in relation to the offences punishable under the provisions of the Scheduled Cases and Scheduled Tribes (Prevention of Atrocities) Act, 1989; (the “Atrocities Act”, or “the 1989 Act”, for short): “79. Our conclusions are as follows: 79.1. Proceedings in the present case are clear abuse of process of court and are quashed. 79.2. There is no absolute bar against grant of anticipatory bail in cases under the Atrocities Act if no prima facie case is made out or where on judicial scrutiny the complaint is found to be prima facie mala fide. We approve the view taken and approach of the Gujarat High Court in Pankaj D. Suthar v. State of Gujarat84, and N.T. Desai v. State of Gujarat85, and clarify the judgments of this Court in State of M.P. v. Ram Kishna Balothia86, and Manju Devi v. Onkarjit Singh Ahluwalia87; 79.3. In view of acknowledged abuse of law of arrest in cases under the Atrocities Act, arrest of a public servant can only be after approval of the appointing authority and of a non-public servant after approval by the SSP which may be granted in appropriate cases if considered necessary for reasons recorded. Such reasons must be scrutinised by the Magistrate for permitting further detention. 79.4. To avoid false implication of an innocent, a preliminary enquiry may be conducted by the DSP concerned to find out whether the allegations make out a case under the Atrocities Act and that the allegations are not frivolous or motivated. 79.5. Any violation of Directions 79.3 and 79.4 will be actionable by way of disciplinary action as well as contempt. 79.6. The above directions are prospective.” 83 (2018) 6 SCC 454 84 (1992) 1 Guj LR 405 85 (1997) 2 Guj LR 942 86 (1995) 3 SCC 221 : 1995 SCC (Cri) 439 87 (2017) 13 SCC 439 : (2017) 4 SCC (Cri) 662 During the course of its decision, the Bench had noticed paragraph 120.6 of the decision in Lalita Kumari5 as well as the decision in P. Sirajuddin69. In terms of directions in paragraph 79.3 and 79.4, it was directed that an arrest of a public servant could be effected only after approval of the appointing authority and that of a non-public servant could be effected only after approval by the Special Superintendent of Police; that the reasons for arrest could be scrutinised by the Magistrate for permitting further detention; and that a preliminary enquiry be conducted by the DSP concerned to find out whether the allegations making out a case under the provisions of Atrocities Act were frivolous or motivated.
+
+--- PASSAGE 7 ---
+Judgment: KIRAN versus RAJKUMAR JIVRAJ JAIN & ANR. (01-09-2025)
+   (Judgment id 1000256991, paragraph 5/4, page 8)
+Text:
+In these circumstances, if anticipatory bail is not made available to persons who commit such offences, such a denial cannot be considered as unreasonable or violative of Article 14, as these offences form a distinct class by themselves and cannot be compared with other offences” (para 6) 5.4 The aforesaid bar is held to be not violative of Article 21 of the Constitution. In Kartar Singh vs. State of Punjab5 it was stated that taking away the right of pre-arrest bail under Section 438 of the Cr.PC, under Section 18 of the SC/ST Act would not infringe the right to personal liberty. 5.5 In Vilas Pandurang Pawar vs. State of Maharashtra6, this Court explained the bar under Section 18 of the SC/ST Act against grant of anticipatory bail in the following words, “Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3(1) of the SC/ST Act has been prima facie made out. In other words, if there is a specific averment in the complaint, namely, insult or intimidation with intent to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail.” (Para 9) 5.5.1 It was further stated in Vilas Pandurang Pawar (supra), “Moreover, while considering the application for bail, scope for appreciation of evidence and other material (1994) 3 SCC 569 (2012) 8 SCC 795 294 on record is limited.
+
+--- PASSAGE 8 ---
+Judgment: P. SURENDRAN versus STATE BY INSPECTOR OF POLICE (29-03-2019)
+   (Judgment id 1000251561, paragraph 7, page 3)
+Text:
+7. Recently, the Government amended the SC/ST Act, through The Scheduled Castes and The Scheduled Tribes (Prevention of Atrocities) Amendment Act, 2018 No. 27 of 2018, wherein a new provision being Section 18-A was inserted, which reads as under- 18A. (1) For the purposes of this Act,— (a) preliminary enquiry shall not be required for registration of a First Information Report against any person; or (b) the investigating officer shall not require approval for the arrest, if necessary, of any person, against whom an accusation of having committed an offence under this Act has been made and no procedure other than that provided under this Act or the Code shall apply. (2) The provisions of section 438 of the Code shall not apply to a case under this Act, notwithstanding any judgment or order or direction of any Court.”. (emphasis added) P. SURENDRAN v. STATE BY INSPECTOR OF POLICE [N.V. RAMANA. J.]
+
+--- PASSAGE 9 ---
+Judgment: KIRAN versus RAJKUMAR JIVRAJ JAIN & ANR. (01-09-2025)
+   (Judgment id 1000256991, paragraph 5/5, page 8)
+Text:
+The court is not expected to indulge in critical analysis of the evidence on record. When a provision has been enacted in the Special Act to protect the persons who belong to the Scheduled Castes and the Scheduled Tribes and a bar has been imposed in granting bail under Section 438 of the Code, the provision in the Special Act cannot be easily brushed aside by elaborate discussion on the evidence.” Para 10) 5.6 A three judge bench of this Court in Prathvi Raj Chauhan (supra) expressed itself thus, “… exclusion of Section 438 CrPC in connection with offences under the Act has to be viewed in the context of the prevailing social conditions which give rise to such offences, and the apprehension that perpetrators of such atrocities are likely to threaten and intimidate their victims and prevent or obstruct them in the prosecution of these offenders, if the offenders are allowed to avail of anticipatory bail as pointed out in the Statement of Objects and Reasons of the Act.” (Para 6) 5.6.1 This Court emphasised in Prithvi Raj Chauhan (supra) that anticipatory bail cannot be granted as a matter of right. It was stated that bail is essentially a statutory right and cannot be said to be an essential ingredient of Article 21of the Constitution. It was further observed that if anticipatory bail is not made available to persons who commit such offences, such a denial cannot be considered as unreasonable or violative of Article 14, as these offences form a distinct class by themselves and cannot be compared with other offences.
+
+--- PASSAGE 10 ---
+Judgment: PRATHVI RAJ CHAUHAN versus UNION OF INDIA & OTHERS (10-02-2020)
+   (Judgment id 1000252416, unnumbered paragraph, page 7)
+Text:
+(for himself and Vineet Saran, J.) (iii) In view of acknowledged abuse of law of arrest in cases under the Atrocities Act, arrest of a public servant can only be after approval of the appointing authority and of a non-public servant after approval by the S.S.P. which may be granted in appropriate cases if considered necessary for reasons recorded. Such reasons must be scrutinised by the Magistrate for permitting further detention. (iv) To avoid false implication of an innocent, a preliminary enquiry may be conducted by the DSP concerned to find out whether the allegations make out a case under the Atrocities Act and that the allegations are not frivolous or motivated. (v) Any violation of directions (iii) and (iv) will be actionable by way of disciplinary action as well as contempt. The above directions are prospective.” 3. It has been submitted that this Court has noted in Dr. Subhash Kashinath (supra) that the provisions of the Act of 1989 are being misused as such the amendment is arbitrary, unjust, irrational and violative of Article 21 of the Constitution of India. There could not have been any curtailment of the right to obtain anticipatory bail under section 438 Cr.PC. Prior scrutiny and proper investigation are necessary. Most of the safeguards have been provided under the Act of 1989 to prevent undue harassment.
+
+--- PASSAGE 11 ---
+Judgment: STATE OF M.P. & ANR. Vs. v. RAM KRISHNA BALOTHIA & ANR. (06/02/1995)
+   (Judgment id 10902, paragraph 4, page 1)
+Text:
+4. Section 438 of the Code of Criminal Procedure provides for grant of bail to persons apprehending arrest. It provides, inter alia, that when any person has reason to apprehend that he may be arrested on an accusation of having committed a non-bailable offence, he may apply to the High Court or to a Court of Sessions for a direction that in the even of such arrest, he shall be released on bail. We have to consider whether a denial of this right to apply for anticipatory bail in respect of offences committed under the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1 989, can be considered as violative of Articles 14 and 21 of the Constitution.
+
+--- PASSAGE 12 ---
+Judgment: MANJU DEVI versus ONKARJIT SINGH AHLUWALIA @ OMKARJEET SINGH & OTHERS (24-03-2017)
+   (Judgment id 1000004818, paragraph 16, page 11)
+Text:
+16. In view of the above, it would be relevant to quote a decision of this Court in Vilas Pandurang Pawar amt Another vs. State of Maharashtra and Others (2012) 8 SCC 795 wherein this Court has held as under:- "9. Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3( I) of the SC/ST Act has been prima facie made out. In other words, ifthere is a specific averment in the complaint, namely, insult or intimidation with intent to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail.
+
+--- PASSAGE 13 ---
+Judgment: PRATHVI RAJ CHAUHAN versus UNION OF INDIA & OTHERS (10-02-2020)
+   (Judgment id 1000252416, unnumbered paragraph, page 33)
+Text:
+After section 18 of the Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989, the following section shall be inserted, namely:— “18A. (1) For the purposes of this Act,— (a) preliminary enquiry shall not be required for registration of a First Information Report against any person; or (b) the investigating officer shall not require approval for the arrest, if necessary, of any person, against whom an accusation of having committed an offence under this Act has been made and no procedure other than that provided under this Act or the Code shall apply. (2) The provisions of section 438 of the Code shall not apply to a case under this Act, notwithstanding any judgment or order or direction of any Court.”. [S. RAVINDRA BHAT, J.] in these proceedings. The clear intention of Parliament was to undo the effect of this court’s declaration in Subhash Kashinath Mahajan (supra). The provisions of the amendment expressly override the directions in Subhash Kashinath Mahajan, that a preliminary inquiry within seven days by the Deputy Superintendent of Police concerned, to find out whether the allegations make out a case under the Act, and that arrest in appropriate cases may be made only after approval by the Senior Superintendent of Police. The Parliamentary intent was to allay the concern that this would delay registration of First Information Report (FIR) and would impede strict enforcement of the provision of the Act.
+
+--- PASSAGE 14 ---
+Judgment: MANJU DEVI versus ONKARJIT SINGH AHLUWALIA @ OMKARJEET SINGH & OTHERS (24-03-2017)
+   (Judgment id 1000004818, paragraph 21, page 13)
+Text:
+21. In view of the above discussion and in the light of the specific averments in the complaint made by the complainant, we are of the considered opinion that Section 18 of the SC/ST Act creates a bar for invoking ·Section 438 of the Code and the High Court has committed grave error in granting anticipatory bail to the respondents. Accordingly, the order dated 03.12.2014, passed by the High Court, is set aside.
+
+--- PASSAGE 15 ---
+Judgment: DHANRAJ ASWANI versus AMAR S. MULCHANDANI & ANR. (09-09-2024)
+   (Judgment id 1000255956, paragraph 7/3, page 9)
+Text:
+A Constitution Bench of this Court, in Sushila Aggarwal (supra) while considering the statutory restrictions on Section 438 of the CrPC held that where the Parliament intended to exclude or restrict the powers of the Court under Section 438 of the CrPC, it did so in categorical terms (such as Section 438(4)). The omission on the part of the legislature to restrict the right of any person accused of having committed a non-bailable offence to seek anticipatory bail can lead one to assume that neither a blanket restriction can be read into the text of Section 438 CrPC by this Court, nor can inflexible guidelines in the exercise of discretion be insisted as that would amount to judicial legislation. vii. A statutory restriction on the right to apply for pre-arrest bail is also found under Sections 18 and 18A(2) respectively of the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989 (for short, “the Act, 1989”). The said provisions provide that Section 438 of the CrPC shall not apply to cases under the Act, 1989. That despite the statutory bar under Sections 18 and 18A(2) respectively of the Act, 1989 a three- Judge Bench of this Court in Prathvi Raj Chauhan v. Union of India reported in (2020) 4 SCC 727 held that if a complaint does not make out a prima facie case for applicability of the Act, 1989 the bar under Sections 18 and 18A(2) respectively of the said Act shall not apply.
+
+--- PASSAGE 16 ---
+Judgment: DR. SUBHASH KASHINATH MAHAJAN versus THE STATE OF MAHARASHTRA AND ANR. (20-03-2018)
+   (Judgment id 1000250634, paragraph 50, page 57)
+Text:
+50. In Balothia (supra), Section 18 was held not to be violative of Articles 14 and 21 of the Constitution. It was observed that exclusion of Section 438 Cr.P.C. in connection with offences under the Act had to be viewed in the context of prevailing social conditions and the apprehension that perpetrators of such atrocities are likely to threaten and intimidate the victims and prevent or obstruct them in the prosecution of these offenders, if they are granted anticipatory bail. Referring to the Statement of Objects and Reasons, it was observed that members of SC and ST are vulnerable and are denied number of civil rights and they are subjected to humiliation and harassment. They assert their rights and demand statutory protection. Vested interests try to cow them down and terrorise them. There was increase in disturbing trend of commission of atrocities against members of SC and ST. Thus, the persons who are alleged to have committed such offences can misuse their liberty, if anticipatory bail is granted. They can terrorise the victims and prevent investigation.
+
+--- PASSAGE 17 ---
+Judgment: SHAJAN SKARIA versus THE STATE OF KERALA & ANR. (23-08-2024)
+   (Judgment id 1000255914, paragraph 6, page 15)
+Text:
+6. Apprehending his arrest, the appellant went before the Court of Special Judge for Scheduled Castes and Scheduled Tribes (Prevention of Atrocities Act), 1989, Ernakulam Division, praying for grant of anticipatory bail under Section 438 of the Criminal Procedure Code, 1973 (the “CrPC”). The Special Judge, vide order dated 16.06.2023, rejected the anticipatory bail application of the appellant, holding that the allegations in the FIR are prima facie sufficient to attract the offence under the Act, 1989 and the bar of Section 18 of the said Act prohibits the court from exercising powers under Section 438 of the CrPC.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R25 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17).

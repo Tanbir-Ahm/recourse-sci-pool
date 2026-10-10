@@ -1,0 +1,123 @@
+QUESTION ID: R10   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 14 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R10",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 14 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+
+==============================================================================
+QUESTION: Whether a prosecution under the NDPS Act stands vitiated merely because the informant/complainant police officer also conducted the investigation.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI) (31-08-2020)
+   (Judgment id 1000252711, paragraph 13, page 41)
+Text:
+13. Viewed from any angle, we see no illegality in the process of investigation set in motion by the Inspector of Police (appellant) and his action in submitting the final report to the Court of Special Judge.” (emphasis supplied) 8.2.2 In the case of S. Jeevanantham (supra), though the investigation was carried out by the complainant – police officer himself and it was submitted relying upon the decision of this Court in the case of Megha Singh (supra), that in case the informant/complainant and the investigator is the same, the trial is vitiated, this Court refused to set aside the conviction and acquit the accused on the aforesaid ground by observing that the accused failed to show that the investigation by the complainant – police officer himself has caused prejudice or was biased against the accused. It is required to be noted that it was also a case under the NDPS Act. The relevant observations are as under: “2. We heard the learned counsel for the appellants. The counsel for the appellants contended that PW 8, the Inspector after conducting search prepared the FIR and it was on the basis of the statement of PW 8 the case was registered against the appellants and it is argued that PW 8 was the complainant and he himself conducted the investigation of the case and this is illegal and the entire investigation of the case is vitiated. Reliance was placed on the decision in Megha Singh v. State of Haryana wherein this Court observed that the constable, who was the de facto complainant had himself investigated the case and this affects impartial investigation. This Court said that the Head Constable who arrested the accused, conducted the search, recovered the pistol and on his complaint FIR was lodged and the case was initiated and later he himself recorded the statement of the witnesses under Section 161 CrPC as part of the investigation and such practice may not be resorted to as it may affect fair and impartial investigation. This decision was later referred to by this Court in State v. V. Jayapaul wherein it was observed that: (SCC p. 227, para 6) “We find no principle or binding authority to hold that the moment the competent police officer, on the basis of information received, makes out an FIR incorporating his name as the informant, he forfeits his right to investigate. If at all, such investigation could only be assailed on the ground of bias or real likelihood of bias on the part of the investigating officer. The question of bias would depend on the facts and circumstances of each case and it is not proper to lay down a broad and unqualified proposition, in the manner in which it has been done….”
+
+--- PASSAGE 2 ---
+Judgment: MANOJ TEJRAJ JAIN versus STATE OF GUJARAT (28-08-2025)
+   (Judgment id 1000256984, paragraph 28-29, page 14)
+Text:
+28. Till the aforesaid, no evidence of conspiracy or violation of Section 9A has been discussed or analysed nor any finding has been given. 29. From paras 22 to 23.9 respectively, the High Court has discussed the judgment of this Court in Mukesh Singh v. State reported in (2020) 10 SCC 120 to hold that merely because the informant police officer himself investigated the case, would not by itself vitiate the investigation. The High Court holds that though the panch witnesses in the case had turned hostile yet their evidence deserved to be scrutinised closely and notes that prosecution has examined police witnesses PW 29 to PW 35, PW 38 and PW 41 in support of its case.
+
+--- PASSAGE 3 ---
+Judgment: MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)
+   (Judgment id 1000250931, paragraph 19, page 15)
+Text:
+19. In Surender (supra),theprosecution was under the NDPS Act. There was no independent witness. The objection that PW-6, Subinspector Satbir Singh being the complainant could not have investigated relying on Rajangam, (supra) and Megha Singh, (supra) was rejected on the ground that he was not the sole person investigating the case, and that the ground had not been raised before the High Court in appeal.
+
+--- PASSAGE 4 ---
+Judgment: MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)
+   (Judgment id 1000250931, paragraph 23, page 16)
+Text:
+23. A Single Judge of the Kerala High Court in Naushad vs. State of Kerala, 2000 (1) KLT 785, relating to the NDPS Act held as follows: “…In a case of this nature, when the complainants himself is a Police Official, the investigation should have been conducted by his top ranking officer and the final report also ought to have been filed by the higher official. A complainant being a police officer cannot be an Investigating Officer. For, in such case, the accused and the prosecution will be deprived of their valuable rights of contradicting and corroborating, the previous information recorded under Ss. 154 or 155 Cr.P.C. and previous statement of the witness, being a police officer, complaint recorded, under S. 161 Cr.P.C. enjoined in S. 145 and 157 of the Indian Evidence Act and proviso of S. 162 Cr.P.C. In the instant case, before me, PW1 is an Assistant Sub Inspector of Police, and I understand from the Public Prosecutor as well as from the Counsel for the petitioner that the particular Police Station has got a Sub Inspector of Police. Therefore, in this case, the investigation ought to have been conducted by the Sub Inspector of Police or any other Police Officer above the rank of PW1. In the instant case, thus an incurable infirmity and flaw have been committed by the prosecution, quite against the proposition of law. Therefore, on that score itself, the petitioner is entitled to get an order of acquittal. In view of my above conclusion on the footing of position of law, this is a fit case, which has to be allowed by acquitting the petitioner.” Disapproving of the same, a Division Bench in Kader vs. State of Kerala, 2001 CriLJ 4044,held: “6. Unlike usual cases under the Criminal Procedure Code, in cases under the NDPS Act, by the time of arrest, main part of investigation will be completed and duty of the investigating officer is mainly in sending the samples for chemical analysis and other routine work and there is no likelihood of any prejudice in usual circumstances. Therefore, we are of the opinion that merely because a detecting officer himself is investigating officer or the officer of the same ranks as that of the detecting officer is investigating the case and files report before the Court will not vitiate the proceedings under N.D.P.S. act in the absence of proof of specific prejudice to the accused. Therefore, legal position stated in Naushad v. State of Kerala 2000 (1) KLT 785 to the contrary is overruled.”
+
+--- PASSAGE 5 ---
+Judgment: MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI) (31-08-2020)
+   (Judgment id 1000252711, paragraph 57/8, page 51)
+Text:
+Similar powers are with the State Government. The only change in Sections 42 and 53 is that in Section 42 the word “police” is there, however in Section 53 the word “police” is not there. There is an obvious reason as for police such requirement is not warranted as he always can be the officer in charge of a police station as per the definition of an “officer in charge of a police station” as defined under the Cr. P.C. 9.5 Therefore, as such, the NDPS Act does not specifically bar the informant/complainant to be an investigator and officer in charge of a police station for the investigation of the offences under the NDPS Act. On the contrary, it permits, as observed hereinabove. To take a contrary view would be amending Section 53 and the relevant provisions of the NDPS Act and/or adding something which is not there, which is not permissible.
+
+--- PASSAGE 6 ---
+Judgment: MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)
+   (Judgment id 1000250931, paragraph 20, page 15)
+Text:
+20. In the nature of the controversy, it would be useful to also notice the view taken by different High Courts on the issue. In State of Himachal Pradesh vs. Atul Sharma 2015 (2) shimLC 693 (Crl. Appeal No. 246 of 2008, decided on 28.02.2015), under the NDPS Act, it was observed as follows: “10.8 In present case it is proved on record that complainant is SI Bahadur Singh as per FIR Ext.PW12/A and it is proved on record that entire investigation has been conducted by complainant himself and there is no evidence on record in order to prove that investigation was handed over to some other independent Investigating Officer. It is not the case of prosecution that no other independent Investigating Officer was available to conduct impartial investigation. We are of the opinion that conducting entire investigation i.e. preparation of seizure memo, site plan, recording statements of witnesses by complainant himself has caused miscarriage of justice to accused qua fair investigation.”
+
+--- PASSAGE 7 ---
+Judgment: MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)
+   (Judgment id 1000250931, paragraph 22, page 16)
+Text:
+22. The Punjab & Haryana High Court in Gannu and Ors. vs. State of Punjab, 2017 (3) RCR (criminal)566 (Crl. Appeal No. 1688- SB of 2004 dated 26.05.2017) relating to the NDPS Act, after referring to Noor Aga, (supra)and the views of the Calcutta High Court also apart from Atul Sharma (supra), concluded as follows: “14. Another aspect of the matter is that in sheer violation of the principles of fair and impartial investigation, the complainant and the investigating officer is the same person, which makes the prosecution case doubtful. In Laltu Prasad v. State of West Bengal, 2017(2) R.C.R. (Criminal) 237 (Calcutta) (DB), it was held that the complainant himself acting as the investigating officer violating the principles of fair and impartial investigation is a practice, to say the least, should not be resorted to and it is a disturbing feature. To the same effect, is a Division Bench judgment of Hon’ble Himachal Pradesh High Court reported as State of Himachal Pradesh v. Atul Sharma and others, 2015 (6) R.C.R. (Criminal) 949, wherein, it has been held that where the complainant himself conducts investigation, it causes miscarriage of justice to accused qua fair investigation.”
+
+--- PASSAGE 8 ---
+Judgment: MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI) (31-08-2020)
+   (Judgment id 1000252711, paragraph 4/3, page 22)
+Text:
+Further, the accused will also be deprived of his valuable right of contradicting the previous information recorded under section 154 or 155 Cr.P.C. and previous statements of the witnesses, being a police officer, complaint recorded under section 151 Cr.P.C. enjoined in section 145 and 157 of Indian Evidence Act and proviso to section 152 Cr.P.C. g) The meaningful reading of the scheme of NDPS Act as discussed above also indicate that the Informer/complainant/raiding officer cannot Investigate the said case. h) There is no compulsion for the Police/any other agency to get the Investigation conducted by the complainant/informer and on the other hand it can be an easy tool of false implication. i) Investigating Officer could not be placed on any pedestal higher than of a complainant and the complainant himself cannot be the sole agency of investigation. The whole bedrock of the investigation on the basis of which the appellant has been prosecuted is found be unfair and against the basic tenets of criminal jurisprudence, the conviction and sentence based on such a highly infirm investigation as aforesaid cannot be sustained in the eye of law and accordingly the whole proceedings based on such investigation as aforesaid deserve to be quashed and set aside.
+
+--- PASSAGE 9 ---
+Judgment: MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI) (31-08-2020)
+   (Judgment id 1000252711, paragraph 11/2, page 56)
+Text:
+Only in a case where the accused has been able to establish and prove the bias and/or unfair investigation by the informant-cum-investigator and the case of the prosecution is merely based upon the deposition of the informant-cum-investigator, meaning thereby prosecution does not rely upon other witnesses, more particularly the independent witnesses, in that case, where the complainant himself had conducted the investigation, such aspect of the matter can certainly be given due weightage while assessing the evidence on record. Therefore, as rightly observed by this Court in the case of Bhaskar Ramappa Madar (supra), the matter has to be decided on a case to case basis without any universal generalisation. As rightly held by this Court in the case of V. Jayapaul (supra), there is no bar against the informant police officer to investigate the case. As rightly observed, if at all, such investigation could only be assailed on the ground of bias or real likelihood of bias on the part of the investigating officer the question of bias would depend on the facts and circumstances of each case and therefore it is not proper to lay down a broad and unqualified proposition that in every case where the police officer who registered the case by lodging the first information, conducts the investigation that itself had caused prejudice to the accused and thereby it vitiates the entire prosecution case and the accused is entitled to acquittal.
+
+--- PASSAGE 10 ---
+Judgment: MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)
+   (Judgment id 1000250931, paragraph 21, page 15)
+Text:
+21. A similar view has been taken in Shri Fayas Ali vs. State of Mizoram Crl. Appeal No. 26 of 2013 (J) dated 19.09.2013, relating to prosecution under the NDPS Act, by the Gauhati High Court as follows: “From the evidence of PWs 1 and 4, it is clearly found that the major part of the investigation including the arrest of the accused, preparation of seizure, taking of sample, examination of the seizure witnesses and examination of the accused person, was completed by the PW1, who was the informant/complainant in the present case. Therefore, it is clearly found that the investigation, in its true sense, was done by the complainant himself. In the case of State by Inspector of Police, Narcotic Intelligence Bureau, Madurai(supra), the Supreme Court, relying on the decision held in the case of Megha Singh (supra), observed that the investigation is to be done by a person other than the complainant and that the investigation done by the complainant is bound to suffer and vitiate the entire proceeding.”
+
+--- PASSAGE 11 ---
+Judgment: MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI) (31-08-2020)
+   (Judgment id 1000252711, paragraph 4/2, page 22)
+Text:
+In this regard he is relying upon para 14, 18 and 31 of Mohan Lal (Supra). b) In such case like NDPS where there is reverse burden of proof in sections 35, 54, 66 and 68, the burden shall be on the prosecution to prove that no prejudice is caused to the accused in the investigation conducted by the complainant/Informer. In this regard he is relying upon para 14 and 18 of Mohan Lal (Supra). c) In such case, the complainant will always be interested in filing charge sheet against the accused (which is normal human behavior). He will have personal bias against the accused and there will be no objectivity in the Investigation. He is relying upon Megha Singh (Supra), Bhagwan Singh (supra), Mohan Lal (supra). d) This Hon’ble Court has consistently considered this as a serious infraction to the guaranteed constitutional rights of accused and declared it to be the grave infirmity which reflects on the credibility of the prosecution case. e) Giving due weightage as observed in Mukeshsingh (supra) will have same result because if the evidence of the Complainant/ Investigating officer is discarded, nothing remains in the prosecution case and the entire Criminal proceedings stands vitiated. f) The Accused will be deprived of his valuable rights of cross examining the complainant/informer and the Investigation officer separately if both are same.
+
+--- PASSAGE 12 ---
+Judgment: TOFAN SINGH versus STATE OF TAMIL NADU (29-10-2020)
+   (Judgment id 1000252784, unnumbered paragraph, page 206)
+Text:
+Section 67 empowers an authorized officer, referred to in Section 42, to do the following acts during the course of an enquiry: “(a) call for information from any person for the purpose of satisfying himself whether there has been any contravention of the provisions of this Act or any rule or order made thereunder; (b) require any person to produce or deliver any document or thing useful or relevant to the enquiry; (c) examine any person acquainted with the facts and circumstances of the case.” 107. Investigation of an offence under the NDPS Act, is a part of an inquiry under Chapter V of the said Act. Investigation of an offence under the NDPS Act can be carried out by the same officer empowered under Section 42, who triggered the proceedings under Chapter V of the NDPS Act and carried out search, seizure and/or arrest, if that officer is also invested under Section 53 of the NDPS Act, with the powers of an Officer in Charge of a Police Station, for the purpose of investigation. 108. In Mukesh Singh v. State (Narcotic Branch of Delhi)12 a Constitution Bench of this Court, unanimously held that an investigation is not vitiated only because the same officer, who was the complainant against the accused offender also investigated into the offence as Investigating Officer. The investigation may also be carried out by a different officer, invested under Section 53 with the powers of an Officer in Charge of the Police Station for the purpose of investigation under the NDPS Act.
+
+--- PASSAGE 13 ---
+Judgment: MUKESH SINGH versus STATE (NARCOTIC BRANCH OF DELHI) (31-08-2020)
+   (Judgment id 1000252711, paragraph 11/1, page 56)
+Text:
+11. Therefore, as such, there is no reason to doubt the credibility of the informant and doubt the entire case of the prosecution solely on the ground that the informant has investigated the case. Solely on the basis of some apprehension or the doubts, the entire prosecution version cannot be discarded and the accused is not to be straightway acquitted unless and until the accused is able to establish and prove the bias and the prejudice. As held by this Court in the case of Ram Chandra (supra) the question of prejudice or bias has to be established and not inferred. The question of bias will have to be decided on the facts of each case [See Vipan Kumar Jain (supra)]. At this stage, it is required to be noted and as observed hereinabove, NDPS Act is a Special Act with the special purpose and with special provisions including Section 68 which provides that no officer acting in exercise of powers vested in him under any provision of the NDPS Act or any rule or order made thereunder shall be compelled to say from where he got any information as to the commission of any offence. Therefore, considering the NDPS Act being a special Act with special procedure to be followed under Chapter V, and as observed hereinabove, there is no specific bar against conducting the investigation by the informant himself and in view of the safeguard provided under the Act itself, namely, Section 58, we are of the opinion that there cannot be any general proposition of law to be laid down that in every case where the informant is the investigator, the trial is vitiated and the accused is entitled to acquittal.Similarly, even with respect to offences under the IPC, as observed hereinabove, there is no specific bar against the informant/complainant investigating the case.
+
+--- PASSAGE 14 ---
+Judgment: MOHANLAL versus THE STATE OF PUNJAB (16-08-2018)
+   (Judgment id 1000250931, paragraph 17, page 14)
+Text:
+17. Hardip Singh vs. State of Punjab, 2008 (8) SCC 557 concerned a prosecution under the NDPS Act. The contention was that the Inspector, PW-5 being the complainant himself would be an interested person and should not have been made the investigating officer. The argument was repelled relying on State rep. by Inspector of Police, Vigilance and Anti-Corruption, Tiruchirapalli, Tamil Nadu vs. V. Jayapaul, 2004 (5) SCC 223 observing as follows: “6…. We find no principle or binding authority to hold that the moment the competent police officer, on the basis of information received, makes out an FIR incorporating his name as the informant, he forfeits his right to investigate. If at all, such investigation could only be assailed on the ground of bias or real likelihood of bias on the part of the investigating officer. The question of bias would depend on the facts and circumstances of each case and it is not proper to lay down a broad and unqualified proposition, in the manner in which it has been done by the High Court, that whenever a police officer proceeds to investigate after registering the FIR on his own, the investigation would necessarily be unfair or biased.” Significantly, V. Jayapaul, (supra) related to a prosecution under the Prevention of Corruption Act which sought to distinguish Megha Singh, (supra) on its facts.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R10 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).

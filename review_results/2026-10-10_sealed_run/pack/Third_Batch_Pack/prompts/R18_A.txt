@@ -1,0 +1,123 @@
+QUESTION ID: R18   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 14 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R18",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 14 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+
+==============================================================================
+QUESTION: A man touched my 12-year-old daughter's chest over her clothes. Someone said it's not POCSO because there was no skin contact. Is that right?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 13, page 26)
+Text:
+13. Supplementing the said submissions made by the learned Attorney General, the learned Senior Counsel Ms. Geeta Luthra relied upon the objects and reasons for enacting the POCSO Act to submit that since the sexual offences against women were not adequately addressed by the existing laws, the POCSO Act was specifically enacted to protect the children from the offences of sexual assault, sexual harassment and pornography. Ms. Luthra also relied upon the views of the Parliamentary Committee appointed for the purpose of examining the Bill with regard to the Protection of children from sexual harassment to submit that the sexual offences as defined in Clauses 3 and 7 of the Bill intended to cover all the likely situations required to be covered thereunder. Ms. Luthra also relied upon a number of judgments of various courts of the United Kingdom and of the United States of America, as also of this Court to emphasis the legislative intent behind enacting the POCSO Act. Taking the court to the dictionary meaning of the word ‘touch’, ‘physical contact’ and ‘sexual intent’, she empathetically submitted that the legislature has interchangeably used the words ‘touch’ and ‘physical contact’ in Section 7 and therefore, restricting the meaning of the word ‘physical contact’ to ‘skin to skin contact’ would be a narrow interpretation of the said provision, defeating the very object of the Act. She also pointed out that the High Court had grossly erred in applying the principle of ‘ejusdem generis’, which otherwise should not apply where it would defeat the object of the enactment. Similarly, according to Ms. Luthra, the Rule of Lenity also would not be applicable, there being no obscurity or uncertainty in the provisions of the POCSO Act.
+
+--- PASSAGE 2 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 41, page 38)
+Text:
+41. The interpretation of Section 7 at the instance of the High Court on the premise of the principle of “ejusdem generis” is also thoroughly misconceived. It may be noted that the principle of “ejusdem generis” should be applied only as an aid to the construction of the statute. It should not be applied where it would defeat the very legislative intent. As per the settled legal position, if the specific words used in the section exhaust a class, it has to be construed that the legislative intent was to use the general word beyond the class denoted by the specific words. So far as Section 7 of the POCSO Act is concerned, the first part thereof exhausts a class of act of sexual assault using specific words, and the other part uses the general act beyond the class denoted by the specific words. In other words, whoever, with sexual intent touches the vagina, penis, anus or breast of the child or makes the child touch the vagina, penis, anus or breast of such person or any other person, would be committing an offence of “sexual assault”. Similarly, whoever does any other act with sexual intent which involves physical contact without penetration, would also be committing the offence of “sexual assault” under Section 7 of the POCSO Act. In view of the discussion made earlier, the prosecution was not required to prove a “skin to skin” contact for the purpose of proving the charge of sexual assault under Section 7 of the Act.
+
+--- PASSAGE 3 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 26, page 51)
+Text:
+26. The inference by the High Court that “touch” cannot necessarily involve contact with a child’s sexual body parts (in one of these cases, the breast) through clothes, is based on a disingenuous argument. Unsurprisingly, that argument had its roots in other jurisdictions. In Regina v H14 the UK Court of Appeal, whilst interpreting the words “touching includes (a) with any part of the body; (b) with anything else or (c) through anything, and in particular, includes touching amounts to penetration”per Section 79 (8) of the UK Sexual Offences Act, repelled an argument on that the individual accused of an act in relation to a victim, that involved grabbing “her track-bottoms by the area of the right pocket” was not “touching”. It was observed by the court, that “The opening words of section 79 (8) are “Touching includes touching” and in particular “through anything”. Subsection (8) is not a definition section. We have no doubt that it was not Parliament’s intention by the use of that language to make it impossible to regard as a sexual assault touching which took place by touching what the victim was wearing at that time.”
+
+--- PASSAGE 4 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 27, page 51)
+Text:
+27. Likewise, in State of Iowa v Walter James Fippes15 as well as State of Iowa v Kris Kanon Pearson16 the court had to consider whether a “sex act” or “sexual activity” (criminalised by Section 709.1, 14 2005 (1) WLR 2005 15 442 NW 2d 611 (Iowa App. 1989). 16 514 NW 2d 452 (Iowa 1994). [S. RAVINDRA BHAT, J.] 709.3 and 709.17) meant only sexual contact between two or more persons, i.e., through penetration, mouth and genitalia or by contact between genitalia of one person and that of another. In both the judgments, the argument that contact or touch through clothing did not amount to an offence, was decisively rejected. The test indicated (per Pearson) was that prohibited contact occurs when: (i) specified body parts or substitutes touch and (ii) intervening material would not prevent participants, viewed objectively, from perceiving that they had touched. Interestingly, in these decisions one comes across the argument that what is an offence is one that involves direct or “skin to skin” touch or contact.
+
+--- PASSAGE 5 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 22-23, page 50)
+Text:
+22. Collins Dictionary13, likewise, states that “Your sense of touch is your ability to tell what something is like when you feel it with your hands.” 23. “Contact” on the other hand, which is used in the second limb, has a wider connotation; it encompasses - but is not always limited to – ‘touch’. While it is not immediately apparent why the term ‘physical contact’ has been used in the second limb, its use in conjunction with “any other act” (controlled by the overarching expression “with sexual intent”), indicates that ‘physical contact’ means something which is of wider import than ‘touching’. Viewed so, physical contact without penetration, may not necessarily involve touch. The “other act” involving “physical contact” may involve: direct physical contact by the offender, with any other body part (not mentioned in the first limb) of the victim; other acts, such as use of an object by the offender, engaging physical contact with the victim; or in the given circumstances of the case, even no contact by the offender (the expression “any other act” is sufficiently wide to connote, for instance, the victim being coerced to touch oneself).
+
+--- PASSAGE 6 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 3, page 43)
+Text:
+3. To place the matter in perspective, what is in issue is the true interpretation of the expression “with sexual intent touches the vagina, penis, anus or breast of the child” at someone’s behest. Such an act, under Section 7 of the Protection of Children from Sexual Offences Act, 2012 (“POCSO” hereafter) is an offence of sexual assault, and punishable under Section 8. According to the interpretation placed by the High Court, for any act to be an offence, the touching of any of the parts mentioned by the statute (vagina, penis, anus or breast) must be of the organ, and there should be a “skin to skin” contact.
+
+--- PASSAGE 7 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 40, page 38)
+Text:
+40. In the light of the afore-discussed legal position, if the findings recorded by the High Court are appreciated, it clearly emerges that the High Court fell into error in case of the accused-Satish in holding him guilty for the minor offences under Sections 342 and 354 of IPC and acquitting him for the offence under Section 8 of the POCSO Act. The High Court while specifically accepting the consistent versions of the victim and her mother i.e. informant about the accused having taken the victim to his house, having pressed the breast of the victim, having attempted to remove her salwar and pressing her mouth, had committed gross error in holding that the act of pressing of breast of the child aged 12 years in absence of any specific details as to whether the top was removed or whether he inserted his hands inside the top and pressed her breast, would not fall in the definition of sexual assault, and would fall within the definition of offence under Section 354 of the IPC. The High Court further erred in holding that there was no offence since there was no direct physical contact i.e. “skin to skin” with sexual intent.
+
+--- PASSAGE 8 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 34, page 35)
+Text:
+34. At this juncture, it may also be beneficial to refer to the observations made by the Foreign Courts in the judgments cited by Ms. Geetha Luthra, wherein the said courts while interpreting analogous provisions as prevalent in such countries, have held that “skin to skin contact” is not required to constitute an offence of sexual assault. It is not the presence or lack of intervening material which should be focused upon, but whether the contact made through the material, comes within the definition prescribed for a particular statue, has to be seen. Of course, the judgments of the said courts proceed on the interpretation arising out of the terms defined in the provisions contained in the concerned legislations and are not pari-materia to the language of Section 7 of the POCSO Act, nonetheless they would be relevant for the purpose of interpreting the expression “touch” and “sexual assault”. In Regina v. H (2005) 1 WLR 2005, the Court of Appeal while interpreting the word “touching” contained in Section 3 of the Sexual Offences Act, 2003 as in force in U.K, observed that the touching of clothing would constitute “touching” for the purpose of said Section 3. Similarly, in State of Iowa V. Walter James Phipps 442 N.W.2d.611 the Court of Appeals of Iowa held that a lack of skin-to-skin contact alone does not as a matter of law put the defendant’s conduct outside the definition of “sex act” or “sexual activity”, which has been defined in Section 702.17 of Iowa Code.
+
+--- PASSAGE 9 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 31, page 53)
+Text:
+31. Similarly, the Tripura High Court decision in Tushar Singha v. State of Tripura18 and judgments of Delhi High Court in Jitender v. State19 and Rakesh v. State (GNCTD)20 consistently held that touching the breast of a child victim constituted sexual assault under Section 7, punishable under Section 8. In all these judgments, the courts uniformly highlighted the ‘sexual intent’ of the offender. I am of the opinion that those judgments (of the Tripura and Delhi High Court) have correctly interpreted the law, having regard to the overall Parliamentary intent, which led to the enactment of POCSO.
+
+--- PASSAGE 10 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 32, page 53)
+Text:
+32. Another reason why the High Court’s reasoning in the impugned judgment is unacceptable is that the term ‘contact’ is comprehended in the expression ‘force’ under Section 349 of IPC in such manner, that the causing to any substance motion, change of motion, etc. which “brings that substance into contact with any part of that other’s body, or with anything which that other is wearing or carrying, or with anything so situated that such contact affects that other’s sense of feeling”.21 Section 2(2) of POCSO enacts that “The words and expressions used herein and not defined but defined in the Indian Penal Code (45 of 1860), the Code of Criminal Procedure, 18 Crl. (A) J/2/2020, decided on 04.05.21 19 Crl. (A) 564/2019 decided on 19.03.20 20 2018 SCCOnline Del 1179 21 349. Force.—A person is said to use force to another if he causes motion, change of motion, or cessation of motion to that other, or if he causes to any substance such motion, or change of mo-tion, or cessation of motion as brings that substance into con -tact with any part of that other’s body, or with anything which that other is wearing or carrying, or with anything so situated that such contact affects that other’s sense of feeling: Provided that the person causing the motion, or change of motion, or cessation of motion, causes that motion, change of motion, or cessation of motion in one of the three ways hereinafter de-scribed. First— By his own bodily power. Secondly—By disposing any substance in such a manner that the motion or change or cessation of motion takes place without any further act on his part, or on the part of any other person. Thirdly— By inducing any animal to move, to change its motion, or to cease to move. [S. RAVINDRA BHAT, J.] 1974 (2 of 1974), [the Juvenile Justice (Care and Protection of Children) Act, 2015 (2 of 2016)] and the Information Technology Act, 2000 (21 of 2000) shall have the meanings respectively assigned to them in the said Codes or the Acts”.The idea of ‘contact’ by a person with another through their clothing would hence, imply a physical contact. This is because of a combined operation of Section 2(2) of POCSO and Section 349 of IPC. Crucially, neither Section 7 nor any other provision of POCSO even remotely suggests that ‘direct’ physical contact unimpeded by clothing is essential for an offence to be committed.
+
+--- PASSAGE 11 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 32, page 33)
+Text:
+32. The word “Touch” as defined in the Oxford Advanced Learner’s Dictionary means “the sense that enables you to be aware of things and what are like when you put your hands and fingers on them”. The word “physical“ as defined in the Advanced Law Lexicon, 3rd Edition, means “of or relating to body………..” and the word “contact” means “the state or condition of touching; touch; the act of touching……”. Thus, having regard to the dictionary meaning of the words “touch” and “physical contact”, the Court finds much force in the submission of Ms. Geetha Luthra, learned senior Advocate appearing for the National Commission for Women that both the said words have been interchangeably used in Section 7 by the legislature. The word “Touch” has been used specifically with regard to the sexual parts of the body, whereas the word “physical contact” has been used for any other act. Therefore, the act of touching the sexual part of body or any other act involving physical contact, if done with “sexual intent” would amount to “sexual assault” within the meaning of Section 7 of the POCSO Act.
+
+--- PASSAGE 12 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 14, page 26)
+Text:
+14. The learned senior advocate Mr. Siddharth Dave, appointed as an amicus curiae also took the Court to the scheme of the POCSO Act, and specifically to Sections 2 and 3 to submit that what is important for the purpose of Section 7 is “sexual intent”. Bisecting Section 7 into two parts, Mr. Dave submitted that the first part thereof pertains to the act of touching with sexual intent the vagina, penis, anus or breast of the child or making the child touch the said organs of such person or any other person, and the second part pertains to ‘any other act’ with sexual intent which involves physical contact without penetration. Thus, according to him, in both the limbs of Section 7, the mens rea i.e. culpable mental state - the sexual intent of the person accused of the said offence is very material. Pressing into service Section 29 & 30 of the POCSO Act, Mr. Dave submitted that the Court is required to presume the existence of culpable mental state on the part of the accused, and it is for the accused to prove in defence that he had no such mental state with respect to the act charged as an offence. Mr. Dave also relied upon the unreported judgments of various High Courts to buttress his submission that touching in an indecent manner with culpable mental state, would amount to “sexual assault” within the meaning of Section 7 of the said Act, even though there was no ‘skin to skin contact’ between the victim and the accused.
+
+--- PASSAGE 13 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 12, page 25)
+Text:
+12. The learned Attorney General for India, Mr. K.K. Venugopal expressing grave concern about the manner in which the provisions contained in the POCSO Act were interpreted by the High Court, vehemently submitted that such interpretation would lead to devastating effect in the society at large. According to him, the High Court could not have acquitted the accused-Satish mis-interpreting the provisions contained in Section 7 on the ground that there was no direct physical contact i.e. skin to skin contact made by the accused with the victim. He submitted that all the alleged acts of the accused i.e. taking the victim to his house, trying to remove her salwar, pressing her breast and pressing her mouth when she started shouting, were the acts amounting to “sexual assault” within the meaning of Section 7 punishable with Section 8 of the POCSO Act.
+
+--- PASSAGE 14 ---
+Judgment: ATTORNEY GENERAL FOR INDIA versus SATISH AND ANOTHER (18-11-2021)
+   (Judgment id 1000253440, paragraph 33, page 34)
+Text:
+33. There cannot be any disagreement with the submission made by Mr. Luthra for the accused that the expression “sexual intent” having not been explained in Section 7, it cannot be confined to any predetermined format or structure and that it would be a question of fact, however, the submission of Mr. Luthra that the expression ‘physical contact’ used in Section 7 has to be construed as ‘skin to skin’ contact cannot be accepted. As per the rule of construction contained in the maxim “Ut Res Magis Valeat Quam Pereat”, the construction of a rule should give effect to the rule rather than destroying it. Any narrow and pedantic interpretation of the provision which would defeat the object of the provision, cannot be accepted. It is also needless to say that where the intention of the Legislature cannot be given effect to, the courts would accept the bolder construction for the purpose of bringing about an effective result. Restricting the interpretation of the words “touch” or “physical contact” to “skin to skin contact” would not only be a narrow and pedantic interpretation of the provision contained in Section 7 of the POCSO Act, but it would lead to an absurd interpretation of the said provision. “skin to skin contact” for constituting an offence of “sexual assault” could not have been intended or contemplated by the Legislature. The very object of enacting the POCSO Act is to protect the children from sexual abuse, and if such a narrow interpretation is accepted, it would lead to a very detrimental situation, frustrating the very object of the Act, inasmuch as in that case touching the sexual or non sexual parts of the body of a child with gloves, condoms, sheets or with cloth, though done with sexual intent would not amount to an offence of sexual assault under Section 7 of the POCSO Act. The most important ingredient for constituting the offence of sexual assault under Section 7 of the Act is the “sexual intent” and not the “skin to skin” contact with the child.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R18 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14).

@@ -1,0 +1,135 @@
+QUESTION ID: R05   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 16 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "R05",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 16 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16
+
+==============================================================================
+QUESTION: my father is in jail since 88 days in a CBI bank fraud case. CBI filed chargesheet on day 87 but says investigation against 'other accused' is still going on and they didn't even give us copy of chargesheet yet. Our lawyer is saying we can get default bail under section 187 BNSS because chargesheet is incomplete, citing some Ritu Chhabaria case. Someone else told me that case was stopped by Supreme Court. Please tell what is the actual position, we are very confused.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: RITU CHHABARIA versus UNION OF INDIA & ORS. (26-04-2023)
+   (Judgment id 1000254957, paragraph 32, page 17)
+Text:
+32. In view of the above mentioned discussions, the issues framed by us stand answered as under:- I. Without completing the investigation of a case, a chargesheet or prosecution complaint cannot be filed by an investigating agency only to deprive an arrested accused of his right to default bail under Section 167(2) of the CrPC. II. Such a chargesheet, if filed by an investigating authority without first completing the investigation, would not extinguish the right to default bail under Section 167(2) CrPC. III. The trial court, in such cases, cannot continue to remand an arrested person beyond the maximum stipulated time without offering the arrested person default bail. 12 2016 (4) SCC 160 13 (2003) 3 SCC 641 14 (2007) 1 SCC 70 CONCLUSION
+
+--- PASSAGE 2 ---
+Judgment: JUDGEBIR SINGH @ JASBIR SINGH SAMRA @ JASBIR & ORS. versus NATIONAL INVESTIGATION AGENCY (01-05-2023)
+   (Judgment id 1000254991, paragraph 62, page 47)
+Text:
+62. Thus, in Ritu Chhabaria (supra), the facts were altogether different. In the said case, indisputably, the investigation was in progress, but as the statutory time period to file the chargesheet was coming to an end, the chargesheet was filed clarifying that the investigation was still pending. In such circumstances, this Court took the view that there is no question of filing any supplementary chargesheet, taking the aid of sub section (8) of Section 173 of the CrPC, as sub section (8) of Section 173 of the CrPC comes into play only after the investigation is completed and the chargesheet is laid. We are of the view that the aforesaid decision of this Court is of no avail to the accused in the present case. In the case on hand, the chargesheet was filed after the entire investigation was completed. This fact is not in dispute.
+
+--- PASSAGE 3 ---
+Judgment: CENTRAL BUREAU OF INVESTIGATION versus KAPIL WADHAWAN & ANR. (24-01-2024)
+   (Judgment id 1000255489, paragraph 10, page 6)
+Text:
+10. The learned ASG, Mr. S.V. Raju for the appellant vehemently submitted that the chargesheet was filed by the appellant-CBI on the completion of the investigation qua 75 accused including the present respondents stating that further investigation qua some other accused was pending, which did not mean that an incomplete chargesheet was filed against the respondents. Learned ASG submitted that report under Section 173 Cr.P.C. filed by the CBI was complete containing all the details as required by law. In the instant case, the statutory bail under Section 167(2) Cr.P.C. has been granted by the courts below after the Special Court took the cognizance of the alleged offences against the respondents, which is against the statutory scheme of the Code. According to him, it is only when a chargesheet is not filed and investigation is kept pending, the benefit of the proviso appended to sub-section (2) of Section 167 of the Code would be available to the offender, however once the chargesheet is filed, the said right of the accused ceases, and such a right does not revive merely because a further investigation remains pending within the meaning of Section 173(8) of the Code. To buttress his submissions, Mr. S.V. Raju has placed heavy reliance on the decision in case of Dinesh Dalmia vs. CBI1. He also relied upon the judgment in M. Ravindran v. Intelligence Officer, Directorate of Revenue Intelligence2, to submit that where the accused fails to apply for default bail when his right accrues, and subsequently a chargesheet, additional complaint or a report seeking extension of time is preferred before the Magistrate, the right to default bail would be extinguished.
+
+--- PASSAGE 4 ---
+Judgment: SARAVANAN versus STATE REP. BY THE INSPECTOR OF POLICE (15-10-2020)
+   (Judgment id 1000252775, paragraph 9/1, page 7)
+Text:
+9. Having heard the learned counsel for the respective parties and considering the scheme and the object and purpose of default bail/ statutory bail, we are of the opinion that the High Court has committed a grave error in imposing condition that the appellant shall deposit a sum of Rs.8,00,000/- while releasing the appellant on default bail/statutory bail. It appears that the High Court has imposed such a condition taking into consideration the fact that earlier at the time of hearing of the regular bail application, before the learned Magistrate, the wife of the appellant filed an affidavit agreeing to deposit Rs.7,00,000/-. However, as observed by this Court in catena of decisions and more particularly in the case of Rakesh Kumar Paul (supra), where the investigation is not completed within 60 days or 90 days, as the case may be, and no chargesheet is filed by 60th or 90th day, accused gets an “indefeasible right” to default bail, and the accused becomes entitled to default bail once the accused applies for default bail and furnish bail. Therefore, the only requirement for getting the default bail/statutory bail under Section 167(2), Cr.P.C. is that the accused is in jail for more than 60 or 90 days, as the case may be, and within 60 or 90 days, as the case may be, the investigation is not completed and no chargesheet is filed by 60th or 90th day and the accused applies for default bail and is prepared to furnish bail.
+
+--- PASSAGE 5 ---
+Judgment: SHAURYA SUNIL KUMAR SINGH versus CENTRAL BUREAU OF INVESTIGATION (01-07-2026)
+   (Judgment id 1003962695, paragraph 16, page 6)
+Text:
+16. At the outset, we deem it appropriate to extract the statutory provisions concerning default bail in the BNSS and corresponding sections of the erstwhile Criminal Procedure Code, 19735. The relevant portion Hereinafter ‘CrPC’. 544 of Section 167 of the CrPC and the corresponding Section 187 of the BNSS reads: Section 167 CrPC Section 187 BNSS
+
+--- PASSAGE 6 ---
+Judgment: JUDGEBIR SINGH @ JASBIR SINGH SAMRA @ JASBIR & ORS. versus NATIONAL INVESTIGATION AGENCY (01-05-2023)
+   (Judgment id 1000254991, paragraph 60, page 45)
+Text:
+60. Our attention was drawn by the learned counsel appearing for the accused to a very recent pronouncement of this Court, in the case of Ritu Chhabaria v. Union of India and Others, Writ Petition (Crl.) No. 60 of 2023 decided on 26.04.2023. This decision has been relied upon to fortify the submission that right of an accused to seek default bail cannot be defeated by filing incomplete chargesheet. Ritu Chhabaria filed a writ petition under Article 32 of the Constitution, seeking release of her husband on default bail. In the facts of the said case, three issues fell for the consideration of this Court: i. Can a chargesheet or a prosecution complaint be filed in piecemeal without first completing the investigation of the case? ii.Whether the filing of such a chargesheet without completing the investigation will extinguish the right of an accused for grant of default bail? iii. Whether the remand of an accused can be continued by the trial court during the pendency of investigation beyond the stipulated time as prescribed by the CrPC?
+
+--- PASSAGE 7 ---
+Judgment: BIKRAMJIT SINGH versus THE STATE OF PUNJAB (12-10-2020)
+   (Judgment id 1000252765, unnumbered paragraph, page 34)
+Text:
+472, para 24) “‘13. (3) On the expiry of the said period of 90 days or 60 days, as the case may be, an indefeasible right accrues in favour of the accused for being released on bail on account of default by the investigating agency in the completion of the investigation within the period prescribed and the accused is entitled to be released on bail, if he is prepared to and furnishes the bail as directed by the Magistrate.’ (Uday Mohanlal case [Uday Mohanlal Acharya v. State of Maharashtra, (2001) 5 SCC 453 : 2001 SCC (Cri) 760] , SCC p. 473, para 13)” 38. This Court also dealt with the decision rendered in Sanjay Dutt [Sanjay Dutt v. State, (1994) 5 SCC 410 : 1994 SCC (Cri) 1433] and noted that the principle laid down by the Constitution Bench is to the effect that if the charge-sheet is not filed and the right for “default bail” has ripened into the status of indefeasibility, it cannot be frustrated by the prosecution on any pretext. The accused can avail his liberty by filing an application stating that the statutory period for filing the charge-sheet or challan has expired and the same has not yet been filed and therefore the indefeasible right has accrued in his or her favour and further the accused is prepared to furnish the bail bond. 39. This Court also noted that apart from the possibility of the prosecution frustrating the indefeasible right, there are occasions when even the court frustrates the indefeasible right.
+
+--- PASSAGE 8 ---
+Judgment: CENTRAL BUREAU OF INVESTIGATION versus KAPIL WADHAWAN & ANR. (24-01-2024)
+   (Judgment id 1000255489, paragraph 11, page 6)
+Text:
+11. Per contra, the learned Senior Advocate Mr. Mukul Rohatgi for the respondent no. 1 submitted that the issue of cognizance had nothing to do with the default bail, in as much as the right under Section 167(2) is a statutory right, when the chargesheet is not filed within the prescribed time limit and even if filed, a complete chargesheet is not filed. According to him, the courts below have concluded that it was an incomplete chargesheet that was filed by the CBI, which entitled the respondents to the statutory right of getting the benefit of default (2007) 8 SCC 770 (2021) 2 SCC 485 bail under Section 167(2) of Cr.P.C. Mr. Mukul Rohatgi has relied upon the decision in Suresh Kumar Bhikamchand Jain Vs. State of Maharashtra & Anr.3 to buttress his submission that cognizance is not relevant basis for determining whether the investigation is complete or not for the purpose of default bail under Section 167(2) Cr.P.C. Reliance is also placed on the decision in case of Rakesh Kumar Paul vs. State of Assam4, to submit that if the chargesheet is not filed and the right for default bail has ripened into the status of indefeasibility, it cannot be frustrated by the prosecution on any pretext. Mr. Rohatgi sought to distinguish the Dalmia’s case (supra) relied upon by Ld. ASG Mr. S.V. Raju by submitting that in the said case, the accused was absconding and the chargesheet was already filed, whereas in the instant case, the chargesheet filed has been held to be incomplete. According to him, the concurrent findings recorded by two courts, unless perverse should not be interfered with, even if there was an error of law. He further submitted that once the bail is granted and interim order staying the operation of such order passed by the High Court is not passed by the Supreme Court, the proceeding partakes the colour of cancellation of bail for which the criteria are absolutely different.
+
+--- PASSAGE 9 ---
+Judgment: SHAURYA SUNIL KUMAR SINGH versus CENTRAL BUREAU OF INVESTIGATION (01-07-2026)
+   (Judgment id 1003962695, paragraph 23, page 13)
+Text:
+23. Applying the aforesaid exposition of law, in our considered view, the non-filing of additional copies of the charge-sheet under Section 193(8) would not vitiate the chargesheet/police report itself. As was the case under the erstwhile CrPC, the position under BNSS is to remain that the right to default bail arises when the chargesheet is not filed within a period of sixty or ninety days, as applicable. Once the chargesheet is filed, in compliance with the form prescribed under Section 193(3) BNSS, within the aforesaid period, the right to default bail ceases. Non-compliance with Section 193(8) of the BNSS cannot be construed to give the same result as Section 187(3) of the BNSS.
+
+--- PASSAGE 10 ---
+Judgment: SARAVANAN versus STATE REP. BY THE INSPECTOR OF POLICE (15-10-2020)
+   (Judgment id 1000252775, paragraph 9/2, page 7)
+Text:
+Therefore, the only requirement for getting the default bail/statutory bail under Section 167(2), Cr.P.C. is that the accused is in jail for more than 60 or 90 days, as the case may be, and within 60 or 90 days, as the case may be, the investigation is not completed and no chargesheet is filed by 60th or 90th day and the accused applies for default bail and is prepared to furnish bail. No other condition of deposit of the alleged amount involved can be imposed. Imposing such condition while releasing the accused on default bail/statutory bail would frustrate the very object and purpose of default bail under Section 167(2), Cr.P.C. As observed by this Court in the case of Rakesh Kumar Paul (supra) and in other decisions, the accused is entitled to default bail/statutory bail, subject to the eventuality occurring in Section 167, Cr.P.C., namely, investigation is not completed within 60 days or 90 days, as the case may be, and no chargesheet is filed by 60th or 90th day and the accused applies for default bail and is prepared to furnish bail. 9.1 As observed hereinabove and even from the impugned orders passed by the High Court, it appears that the High Court while releasing the appellant on default bail/statutory bail has imposed the condition to deposit Rs.8,00,000/- taking into consideration that earlier before the learned Magistrate and while considering the regular bail application under Section 437 Cr.P.C., the wife of the accused filed an affidavit to deposit Rs.7,00,000/-.
+
+--- PASSAGE 11 ---
+Judgment: CENTRAL BUREAU OF INVESTIGATION versus KAPIL WADHAWAN & ANR. (24-01-2024)
+   (Judgment id 1000255489, paragraph 25, page 20)
+Text:
+25. In view of the afore-stated legal position, we have no hesitation in holding that the chargesheet having been filed against the respondents-accused within the prescribed time limit and the cognizance having been taken by the Special Court of the offences allegedly committed by them, the respondents could not have claimed the statutory right of default bail under Section 167(2) on the ground that the investigation qua other accused was pending. Both, the Special Court as well as the High Court having committed serious error of law in disregarding the legal position enunciated and settled by this Court, the impugned orders deserve to be set aside and are accordingly set aside.
+
+--- PASSAGE 12 ---
+Judgment: CENTRAL BUREAU OF INVESTIGATION versus KAPIL WADHAWAN & ANR. (24-01-2024)
+   (Judgment id 1000255489, paragraph 19, page 14)
+Text:
+19. The Special Court thereafter had taken cognizance of the alleged offences as per the order dated 26.11.2022. It appears that earlier the Special Court had rejected the application of the respondents (accused) seeking statutory bail under Section 167(2) Cr.P.C., however at that time the issue was whether qua the offences against the respondents, period of sixty days or ninety days was applicable for grant of mandatory bail due to non-filing of chargesheet by the investigating agency, and it was held by the Special Court that the period of ninety days was applicable in case of the respondents, in which the chargesheet could be filed by the CBI. The respondents thereafter filed another application under Section167(2) after the cognizance of the offences was taken by the Special Court, on the ground that the chargesheet filed against them was an incomplete chargesheet.
+
+--- PASSAGE 13 ---
+Judgment: RITU CHHABARIA versus UNION OF INDIA & ORS. (26-04-2023)
+   (Judgment id 1000254957, paragraph 24, page 15)
+Text:
+24. This right of statutory bail, however, is extinguished, if the charge sheet is filed within the stipulated period. The question of resorting to a supplementary chargesheet u/s 173(8) of the Cr.PC only arises after the main chargesheet has been filed, and as such, a supplementary chargesheet, wherein it is explicitly stated that the investigation is still pending, cannot under any circumstance, be used to scuttle the right of default bail, for then, the entire purpose of default bail is defeated, and the filing of a chargesheet or a supplementary chargesheet becomes a mere formality, and a tool, to ensue that the right of default bail is scuttled.
+
+--- PASSAGE 14 ---
+Judgment: CENTRAL BUREAU OF INVESTIGATION versus KAPIL WADHAWAN & ANR. (24-01-2024)
+   (Judgment id 1000255489, paragraph 23, page 16)
+Text:
+23. The benefit of proviso appended to sub-section (2) of Section 167 of the Code would be available to the offender only when a chargesheet is not filed and the investigation is kept pending against him. Once however, a chargesheet is filed, the said right ceases. It may be noted that the right of the investigating officer to pray for further investigation in terms of sub-section (8) of Section 173 is not taken away only because a chargesheet is filed under sub-section (2) thereof against the accused. Though ordinarily all documents relied upon by the prosecution should accompany the chargesheet, nonetheless for some reasons, if all the documents are not filed along with the chargesheet, that reason by itself would not invalidate or vitiate the chargesheet. It is also well settled that the court takes cognizance of the offence and not the offender. Once from the material produced along with the chargesheet, the court is satisfied about the commission of an offence and takes cognizance of the offence allegedly committed by the accused, it is immaterial whether the further investigation in terms of Section 173(8) is pending or not. The pendency of the further investigation qua the other accused or for production of some documents not available at the time of filing of chargesheet would neither vitiate the chargesheet, nor would it entitle the accused to claim right to get default bail on the ground that the chargesheet was an incomplete chargesheet or that the chargesheet was not filed in terms of Section 173(2) of Cr.P.C.
+
+--- PASSAGE 15 ---
+Judgment: SHAURYA SUNIL KUMAR SINGH versus CENTRAL BUREAU OF INVESTIGATION (01-07-2026)
+   (Judgment id 1003962695, paragraph 22, page 12)
+Text:
+22. More recently, we place reliance on the exposition of this Court in CBI v. Kapil Wadhawan14, wherein this Court expounded that even in the scenario that all documents relied upon by the prosecution are not filed with the charge-sheet, the same would not invalidate or vitiate the chargesheet itself. It was observed: “23. The benefit of proviso appended to sub-section (2) of Section 167 of the Code would be available to the offender only when a charge-sheet is not filed and the investigation is kept pending against him. Once however, a charge-sheet is filed, the said right ceases. It may be noted that the right of the investigating officer to pray for further investigation in terms of sub-section (8) of Section 173 is not taken away only because a chargesheet is filed under sub-section (2) thereof against the accused. Though ordinarily all documents relied upon by the prosecution should accompany the charge-sheet, (2023) 17 SCC 48. (2024) 3 SCC 734. 550 nonetheless for some reasons, if all the documents are not filed along with the charge-sheet, that reason by itself would not invalidate or vitiate the charge-sheet. It is also well settled that the court takes cognizance of the offence and not the offender. Once from the material produced along with the charge-sheet, the court is satisfied about the commission of an offence and takes cognizance of the offence allegedly committed by the accused, it is immaterial whether the further investigation in terms of Section 173(8) is pending or not. The pendency of the further investigation qua the other accused or for production of some documents not available at the time of filing of charge-sheet would neither vitiate the chargesheet, nor would it entitle the accused to claim right to get default bail on the ground that the charge-sheet was an incomplete charge-sheet or that the charge-sheet was not filed in terms of Section 173(2)CrPC.” (emphasis supplied)
+
+--- PASSAGE 16 ---
+Judgment: SHAURYA SUNIL KUMAR SINGH versus CENTRAL BUREAU OF INVESTIGATION (01-07-2026)
+   (Judgment id 1003962695, paragraph 9, page 5)
+Text:
+9. Pertinently, it is the case of the appellant that the copies of the charge-sheet along with documents related thereto were not filed and supplied to him within the statutory period. Hence, he became eligible for default bail on 11.09.2025, for copies of the chargesheet had still not been filed or supplied to him. Consequently, on 17.09.2025 the appellant filed an application seeking default bail under Section 187(3) of the Bharatiya Nagarik Suraksha Sanhita, 20234 before Special Judge, CBI which, Vide order dated 25.09.2025 was dismissed by the Special Judge, CBI, Greater Mumbai, observing that the appellant had failed to point out any authoritative ruling, entitling an accused Hereinafter ‘BNSS’. to default bail, on the ground of non-filing of certain documents or non-supply of the chargesheet to the accused.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for R05 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16).

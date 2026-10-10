@@ -1,0 +1,16 @@
+index loaded: 236,155 passages in 24s
+side index added: 17 judgments, 2,572 passages (made 2026-10-09T08:03:50Z)
+side index added: 1 judgments, 12 passages (made 2026-10-09T10:00:02Z)
+side index added: 1 judgments, 23 passages (made 2026-10-09T10:15:11Z)
+R03 legal     versions 5 rows 19 rerank tokens   42,186 (total 42,186, about $0.002)
+R05 narrative versions 5 rows 16 rerank tokens   43,812 (total 85,998, about $0.004)
+R07 narrative versions 5 rows 15 rerank tokens   47,314 (total 133,312, about $0.007)
+R10 legal     versions 5 rows 14 rerank tokens   40,166 (total 173,478, about $0.009)
+R13 legal     versions 5 rows 18 rerank tokens   38,968 (total 212,446, about $0.011)
+R16 everyday  versions 5 rows 21 rerank tokens   32,170 (total 244,616, about $0.012)
+R18 everyday  versions 5 rows 14 rerank tokens   36,084 (total 280,700, about $0.014)
+R23 everyday  versions 5 rows 15 rerank tokens   43,624 (total 324,324, about $0.016)
+R25 legal     versions 5 rows 17 rerank tokens   39,820 (total 364,144, about $0.018)
+R27 narrative versions 5 rows 15 rerank tokens   42,152 (total 406,296, about $0.020)
+R30 everyday  versions 5 rows 17 rerank tokens   31,160 (total 437,456, about $0.022)
+done: 11 of 11 questions; re-rank tokens billed 437,456; about $0.022
