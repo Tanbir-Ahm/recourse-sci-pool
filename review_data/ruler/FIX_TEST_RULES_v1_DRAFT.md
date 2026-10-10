@@ -3,7 +3,7 @@
 **Status.** Written at the owner's request ("draft the pre-registered test") after the sealed run missed two floors and the diagnosis (`review_results/2026-10-10_wrong_regime_diagnosis/`) found different causes in different questions. **No fix has been coded, no variant has been run, no new question exists.** Every threshold is a **[Guessing]** and may be changed only by a dated amendment at the end of this file **before** the dev run (section 3). Once the owner accepts, the file is frozen by recording its SHA-256 in `FOLLOW_UPS.md` and `fix_test_rules_v1.freeze` (command in section 9). All results are LLM-judged (ChatGPT and Gemini, run by J and S) unless a lawyer's sheet is added; nothing is lawyer-validated.
 
 ## In one page
-1. **What it decides:** whether any of three small changes to the search recipe, alone, is better than today's recipe (rerank-3-lite, 60 candidates), and, in the same run, whether the chosen recipe meets the connection floors F1 to F4 of `SEALED_RUN_RULES_v1.md` on questions nobody has tuned on. It decides nothing about the layperson mode, answer writing, or the verified answer path.
+1. **What it decides:** whether any of three small changes (C, N1, N2; the wider pool W was dropped before the freeze, see the disclosure at the end) to the search recipe, alone, is better than today's recipe (rerank-3-lite, 60 candidates), and, in the same run, whether the chosen recipe meets the connection floors F1 to F4 of `SEALED_RUN_RULES_v1.md` on questions nobody has tuned on. It decides nothing about the layperson mode, answer writing, or the verified answer path.
 2. **Why new questions:** the sealed 11 and the tuning 19 have been looked at; R16, R23 and R03 are the reason the changes exist. They may be used to check that a change does what it was built for (section 3), never as evidence that it works.
 3. **Two stages.** Stage D (development, free of marks): a mechanical gate on the 19 tuning questions plus the three known failures. Stage F (final): one run, one marking round, on at least 24 NEW questions, all arms in one shuffled list, once.
 4. **Status quo wins ties.** A change is adopted only if it passes rules 1 to 6 of section 5. Otherwise the recipe stays as it is.
@@ -13,7 +13,6 @@
 | Arm | Change from the baseline B (rerank-3-lite on 60 candidates, weights and 1.10 section boost as now) |
 |---|---|
 | **B** | nothing (today's final recipe) |
-| **W** | candidate pool of **100** instead of 60 (same lists, same fusion, cut at 100); one re-rank call on 100 passages |
 | **C** | **cap of 2 per judgment in the top 5**: fill places 1 to 5 in score order, skipping a passage when two passages of its judgment already hold places; skipped passages follow in score order from place 6; places 6 to 10 otherwise unchanged |
 | **N1** | **named-Act boost, factor 1.10**: if the question contains a trigger phrase of an Act in Appendix A, passages containing a marker of that Act have their final score multiplied by 1.10 (once per passage; the section boost is unchanged) |
 | **N2** | the same with factor **1.25** |
@@ -25,10 +24,10 @@ The Appendix A table is fixed before any final question is searched and cannot b
 - **Stage F:** **at least 24 new questions** (30 preferred), same workbook format as the owner's 30, written **by someone who has not seen the sealed or tuning questions** (Mr. Advocate preferred; not Claude), with the key (expected answer, key authorities, older rulings) written and sealed with a freeze hash **before any search**, the same way `real30_v1.json` was. Required mix: the domains A to K spread as before; **at least 8 look-alike questions** (a question whose obvious neighbour is a different Act or section: for example a question under one special Act whose wording also fits ordinary criminal procedure), of which at least 3 do **not** name the Act in the question's own words; at least 2 index-gap or control questions, reported apart.
 
 ## 3. Stage D: the mechanical gate (no marks; cost under about $1)
-Each of W, C, N1, N2 is run on the stage D questions. It goes to stage F only if **all** hold, against B on the same questions:
+Each of C, N1, N2 is run on the stage D questions. It goes to stage F only if **all** hold, against B on the same questions:
 1. the named authority in the top 10 on the answerable tuning questions is **at least B's count**;
 2. known-stale passages in the top 5, summed, **at most B's**;
-3. on the three known failures it does what it was built for: **W** must bring the key passage of R23 into the top 10; **each of C, N1 and N2** must bring a passage of the key judgment of R16 into the top 5 (C and N are not judged on R23, W is not judged on R16);
+3. on the three known failures it does what it was built for: **each of C, N1 and N2** must bring a passage of the key judgment of R16 into the top 5 (R23 is not a target of any arm: see the disclosure);
 4. re-rank tokens per question **at most 1.8 times** B's.
 The result table is committed before stage F questions are searched. A change that passes stage D has shown only that it does not obviously break the old questions.
 
@@ -53,7 +52,7 @@ Whether a change helps questions unlike the new ones; whether two changes togeth
 
 ## 8. Order of events and hygiene
 1. Owner accepts or amends; Mr. Advocate reviews Appendix A; the file is frozen and hashed.
-2. Code the four arms in `pool_runner.py` (a `--variant` option, off by default, output unchanged without it), with tests; commit; record the commit in every run label.
+2. Code the three arms in `pool_runner.py` (a `--variant` option, off by default, output unchanged without it), with tests; commit; record the commit in every run label.
 3. Stage D; commit its table. Arms that fail are dropped.
 4. In parallel, the question writer prepares the new questions; they are sealed with a freeze hash and a hand-out guard (the same machinery as the 30) **before** any search. The writer sees none of the results of stages D or F.
 5. Preflight (rules hash, clean pushed checkout, index head, freeze hash, no hand-out logged, Voyage balance above the $5 reserve; cost about $0.30).
@@ -64,11 +63,11 @@ Whether a change helps questions unlike the new ones; whether two changes togeth
 Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ruler/fix_test_rules_v1.freeze` (renamed to `FIX_TEST_RULES_v1.md` at the same time), commit, record the hash in `FOLLOW_UPS.md`. Amendments are appended below with a date and reason, before stage D; never after stage F's questions are searched.
 
 **Decisions for the owner (defaults in brackets):**
-1. Accept the five arms, or drop some? [accept W, N1, N2, C; drop C if you want fewer marking passages]
-2. Who writes the new questions, and by when? [Mr. Advocate; at least 24]
-3. Is another marking round of about 50 chats acceptable to J and S? [yes]
-4. Stage D spend under about $1? [yes]
-5. Mr. Advocate reviews Appendix A before the freeze? [yes]
+1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner on 2026-10-10 for C, N1, N2; W's removal awaits the owner's confirmation]
+2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; at least 24, in the columns of the owner's 30-question workbook]
+3. Is another marking round of about 50 chats acceptable to J and S? [yes, confirmed 2026-10-10]
+4. Stage D spend under about $1? [yes, approved 2026-10-10]
+5. Mr. Advocate reviews Appendix A before the freeze? [yes, confirmed 2026-10-10; the freeze waits for his review]
 
 ## Appendix A: Acts, trigger phrases (in the question) and markers (in the passage); case-insensitive; DRAFT
 | Act | trigger phrases | passage markers |
@@ -82,6 +81,14 @@ Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ru
 | Unlawful Activities (Prevention) Act, 1967 | UAPA; unlawful activities | UAPA; unlawful activities |
 | Dowry Prohibition Act, 1961 | dowry | dowry prohibition |
 | Juvenile Justice Act | juvenile; Juvenile Justice | juvenile justice |
+
+## Disclosure: a look at the data before the freeze (2026-10-10), and why W is gone
+Before this file was frozen the owner asked whether the wider pool W was wise. A descriptive look (`review_results/2026-10-10_wide_pool_look/`, `wide_pool_look.py`, about $0.05, the 19 tuning and 11 sealed questions, all already used) ran W and three alternatives (Wd: pool of 100 with places 61 to 100 discounted by 0.90; L: 60 plus 15 best-by-meaning; J: "case first", 60 plus the 3 best passages of each of the 10 judgments with the highest summed meaning-list score over the top 300). Checks: the re-ranker's scores did not depend on the size of the call (difference 0.0000), the baseline B reproduced the sealed run's saved top 5 on 11 of 11 questions. Findings, which are the only use made of the look:
+- **No arm raised the named authority** on the 24 answerable questions (top 5: 15 for B and for every arm; top 10: B 17, W 16, Wd 17, L 17, J 17) and none rescued R23 or R16.
+- W changed the top 5 on 13 of 30 questions (18 passages, all from fused places 61 to 100, none of them marked); L 10, J 11, Wd 3.
+- **R23 is not a pool-size problem:** the key judgment's passage at meaning rank 46 (fused place 88, inside a pool of 100) ends 24th; the passage that the re-ranker likes (3rd) is at meaning rank 248, outside every list. An earlier statement that a pool of 100 would put it 2nd or 3rd was wrong.
+- The earlier remark that deeper lists "add noise" came from the safety-net depth in the re-ranker test pack, not from the candidate pool; for the pool the look shows churn without a gain, not harm.
+Decision (proposed to the owner): drop W; do not add Wd, L or J. R23's kind of miss (the right passage deep in the meaning list) is left as a known limitation. These were chosen after a look at dev data, so they are tested only on the new questions.
 
 ## Amendments
 (none)
