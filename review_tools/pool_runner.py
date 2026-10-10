@@ -12,6 +12,9 @@ cross it, saving what it has); a sealed question is run only with --final and a 
 so that nothing the three searches agreed on is lost to the re-ranker: the list to show (`list_to_show`) is A's ten, untouched, followed by the net (at most 15), the net ranked by the same query-based score as A
 (re-ranker times weights). The top 5 is always A's top 5 under the rules already set; the net only comes after place ten. Off by default; the arms are labelled in the run record.
 --supplement DIR (repeatable) searches "main index + side index(es)" (see build_supplement.py): a side index holds judgments the main index left out; the main index is not touched and the run says so.
+--final-recipe (the sealed run's recipe, SEALED_RUN_RULES_v1.md): only A today (rerank-2), R challenger re-ranker (--challenger-model, default rerank-3-lite) on the SAME 60 candidates, S site shown, and the two safety nets
+(M safety net for A, M safety net (challenger) for R); no B, E, C, F, no rewrites; the top 10 of A and R are pooled (--top-k 10). A sealed run is REFUSED without it, before the questions are handed out, and it also needs the
+frozen rules (hash checked against sealed_run_rules_v1.freeze), a clean checkout of the code, and at most 2,000,000 re-rank tokens; the label gets the rules hash and the code commit appended. The ruler's frozen half obeys the same.
 Writes OUT/questions.jsonl as it goes (a re-run skips the questions already there), then OUT/pool.json (per question: rows to be marked, shuffled with a fixed seed and numbered, and the ordered top
 results of every version for the scorer) and OUT/spend.json. PRIVATE: the pool names which version found what.
 """
@@ -48,6 +51,12 @@ RERANK_MODEL, EMBED_MODEL = "rerank-2", si.MODEL
 PRICE_RERANK, PRICE_EMBED = 0.05, 0.12          # dollars per million tokens (rerank-2 from third-party price lists; voyage-law-2); checked against the first billed call
 VERSIONS = ("A today", "B no repeats", "E no multiplier", "C rewrite", "F merged", "S site shown")
 SAFETY_VERSIONS = ("N merged order (no re-ranker)", "M safety net")
+R_VERSION, M_R_VERSION = "R challenger re-ranker", "M safety net (challenger)"        # the final recipe's second re-ranker and its own net
+FINAL_VERSIONS = ("A today", R_VERSION, "S site shown", "M safety net", M_R_VERSION)
+CHALLENGER_DEFAULT = "rerank-3-lite"
+FINAL_RERANK_CAP = 2_000_000
+RULES_PATH = os.path.join(DATA, "SEALED_RUN_RULES_v1.md")
+FREEZE_PATH = os.path.join(DATA, "sealed_run_rules_v1.freeze")
 SAFETY_NET_DEPTH = 5                  # the merged (pre-re-ranker) top 5 must come up somewhere in the list shown
 SHUFFLE_SEED = "real30-pool-v1"
 RETRYABLE = {"RateLimitError", "ServiceUnavailableError", "APIConnectionError", "Timeout", "TryAgain", "APIError"}
@@ -94,6 +103,7 @@ class Spend:
     def __init__(self, cap_rerank_tokens):
         self.cap = cap_rerank_tokens
         self.rerank = self.embed = self.rerank_calls = self.embed_calls = 0
+        self.rerank_by_model = collections.Counter()
 
     def room_for(self, estimate):
         if self.rerank + estimate > self.cap:
@@ -104,7 +114,7 @@ class Spend:
 
     def as_dict(self):
         return {"rerank_tokens": self.rerank, "rerank_calls": self.rerank_calls, "embed_tokens": self.embed, "embed_calls": self.embed_calls, "cap_rerank_tokens": self.cap,
-                "dollars_estimate": round(self.dollars(), 4), "prices_per_million": {"rerank-2": PRICE_RERANK, "voyage-law-2": PRICE_EMBED}}
+                "dollars_estimate": round(self.dollars(), 4), "prices_per_million": {"rerank-2": PRICE_RERANK, "voyage-law-2": PRICE_EMBED}, "rerank_tokens_by_model": dict(self.rerank_by_model)}
 
 
 def call(fn, *args, tries=4, pause=2.0, sleep=time.sleep, **kw):
@@ -167,11 +177,14 @@ class Engine:
             cand = ranked[:pool]
         return {"q": q, "cand": cand, "nums": nums}
 
-    def rerank(self, q, cand):
+    def rerank(self, q, cand, model=None):
+        model = model or RERANK_MODEL
         texts = [self.metas[r]["text"][:3500] for r in cand]
         self.spend.room_for(int(len(texts) * (len(q) / 3.5) + sum(len(t) for t in texts) / 3.5 * 1.1))
-        resp = call(self.client.rerank, q, texts, model=RERANK_MODEL, top_k=len(texts), sleep=self.sleep)
-        self.spend.rerank += getattr(resp, "total_tokens", 0) or 0
+        resp = call(self.client.rerank, q, texts, model=model, top_k=len(texts), sleep=self.sleep)
+        billed = getattr(resp, "total_tokens", 0) or 0
+        self.spend.rerank += billed
+        self.spend.rerank_by_model[model] += billed
         self.spend.rerank_calls += 1
         return {cand[x.index]: x.relevance_score for x in resp.results}
 
@@ -181,6 +194,24 @@ class Engine:
     @staticmethod
     def order_by(scores):
         return [r for r, _ in sorted(scores.items(), key=lambda x: -x[1])]
+
+    def lists_for_final(self, q, challenger):
+        """The final (sealed-run) recipe for one question: A today (rerank-2 x weights), R (the challenger re-ranker x the same weights) on the SAME 60 candidates, the site's list, and each arm's safety net
+        (the merged top 5 that the arm's ten do not show, ranked by the arm's own score). One embedding, two re-rank calls (plus the site arm's own work)."""
+        out = {}
+        a = self.retrieve(q)
+        rs_a = self.rerank(q, a["cand"])
+        final_a = {r: s * self.weight(r, a["nums"]) for r, s in rs_a.items()}
+        out["A today"] = self.order_by(final_a)[:10]
+        rs_r = self.rerank(q, a["cand"], model=challenger)
+        final_r = {r: s * self.weight(r, a["nums"]) for r, s in rs_r.items()}
+        out[R_VERSION] = self.order_by(final_r)[:10]
+        ident = lambda r: self.metas[r]["h"]
+        out["M safety net"] = safety_net(a["cand"], out["A today"], SAFETY_NET_DEPTH, ident, score=lambda r: final_a[r])
+        out[M_R_VERSION] = safety_net(a["cand"], out[R_VERSION], SAFETY_NET_DEPTH, ident, score=lambda r: final_r[r])
+        if self.site:
+            out["S site shown"] = list(self.site(q))
+        return out
 
     def lists_for(self, q, rewrite=None):
         """{version: [index row ids, best first]} for one question (top 10 each; S whole)."""
@@ -206,6 +237,8 @@ class Engine:
         if self.site:
             out["S site shown"] = list(self.site(q))
         return out
+
+
 
 
 def make_site(metas, M, recourse_dir):
@@ -367,7 +400,7 @@ def read_done(path):
         return {r["qid"]: r for r in map(json.loads, (l for l in fh if l.strip()))}
 
 
-def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print):
+def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, challenger=None, top_k=5):
     """Runs the questions one by one, saving each as it finishes. Returns the compiled pool and whether the cap stopped it."""
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "questions.jsonl")
@@ -380,12 +413,12 @@ def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print):
         before = (engine.spend.rerank, engine.spend.embed)
         rw = (rewrites or {}).get(q["id"])
         try:
-            lists = engine.lists_for(q["text"], rw)
+            lists = engine.lists_for_final(q["text"], challenger) if challenger else engine.lists_for(q["text"], rw)
         except SpendCapReached as e:
             stopped = f"stopped before {q['id']}: {e}"
             log(stopped)
             break
-        rec = build_question(q, lists, engine.metas, hdocs, title, rw)
+        rec = build_question(q, lists, engine.metas, hdocs, title, rw, top_k=top_k)
         rec["spend"] = {"rerank_tokens": engine.spend.rerank - before[0], "embed_tokens": engine.spend.embed - before[1]}
         with open(path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -393,6 +426,61 @@ def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print):
         log(f"{q['id']} {q['kind']:9} versions {len(lists)} rows {len(rec['rows']):>2} rerank tokens {rec['spend']['rerank_tokens']:>8,} (total {engine.spend.rerank:,}, about ${engine.spend.dollars():.3f})")
     ordered = [done[q["id"]] for q in questions if q["id"] in done]
     return ordered, stopped
+
+
+FINAL_SIDE_INDEXES = ("review_data/side_index/2026-10-09_correcting_judgments", "review_data/side_index/2026-10-09_fetched_documents", "review_data/side_index/2026-10-09_fetched_shivangi_bansal")
+
+
+def code_state():
+    """(commit, dirty): this repository's commit and the tracked files that differ from it. The code that runs a sealed run must be the code that was committed."""
+    commit = subprocess.run(["git", "-C", ROOT, "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
+    out = subprocess.run(["git", "-C", ROOT, "status", "--porcelain", "--untracked-files=no"], capture_output=True, text=True, check=True).stdout
+    return commit, [l[3:] for l in out.splitlines() if l.strip()]
+
+
+def rules_state(rules_path=RULES_PATH, freeze_path=FREEZE_PATH):
+    """(sha256 of the rules file, sha256 recorded in the freeze file or None)."""
+    with open(rules_path, "rb") as fh:
+        have = hashlib.sha256(fh.read()).hexdigest()
+    recorded = None
+    if os.path.exists(freeze_path):
+        m = re.search(r"sha256\s+([0-9a-f]{64})", open(freeze_path, encoding="utf-8").read())
+        recorded = m.group(1) if m else None
+    return have, recorded
+
+
+def final_guard(a, code=None, rules=None):
+    """Reasons to refuse a SEALED run BEFORE the questions are handed out (select() logs the hand-out, so nothing may be handed out and then refused). `a` carries the parsed arguments.
+    An empty list means go. Not used for the tuning half, which may use the final recipe freely (a rehearsal)."""
+    if a.half != "sealed":
+        return []
+    bad = []
+    if not a.final_recipe:
+        bad.append("a sealed run needs --final-recipe (SEALED_RUN_RULES_v1.md): the older multi-version recipe must not be run on the sealed questions")
+        return bad
+    if a.challenger_model != CHALLENGER_DEFAULT:
+        bad.append(f"the rules fix the challenger re-ranker at {CHALLENGER_DEFAULT}, not {a.challenger_model}")
+    if a.top_k != 10:
+        bad.append("the rules pool the top 10 of both arms: --top-k 10")
+    if a.no_site:
+        bad.append("the rules include the site's search as the reference arm: drop --no-site")
+    if a.allow_other_index:
+        bad.append("--allow-other-index is not allowed for the sealed run (the index stays at its recorded commit)")
+    if a.max_rerank_tokens is None or a.max_rerank_tokens > FINAL_RERANK_CAP:
+        bad.append(f"the re-rank cap for the sealed run is at most {FINAL_RERANK_CAP:,} tokens")
+    have_dirs = {os.path.normpath(os.path.abspath(d)) for d in a.supplement}
+    for rel in FINAL_SIDE_INDEXES:
+        if os.path.normpath(os.path.join(ROOT, rel)) not in have_dirs:
+            bad.append(f"the rules include the side index {rel}: add --supplement {rel}")
+    have, recorded = rules if rules else rules_state()
+    if recorded is None:
+        bad.append("no frozen rules: sealed_run_rules_v1.freeze is missing or has no hash")
+    elif have != recorded:
+        bad.append(f"SEALED_RUN_RULES_v1.md differs from the frozen hash ({have[:10]} against {recorded[:10]}): an amendment after the freeze must be recorded before the hand-out, then re-frozen by the owner")
+    commit, dirty = code or code_state()
+    if dirty:
+        bad.append(f"the checkout has uncommitted changes ({', '.join(dirty[:4])}{' ...' if len(dirty) > 4 else ''}): commit them first, the run records the commit")
+    return bad
 
 
 def main(argv=None):
@@ -414,8 +502,13 @@ def main(argv=None):
     ap.add_argument("--safety-net", action="store_true", help="also record the merged order before the re-ranker (N) and the safety net (M); no extra API call")
     ap.add_argument("--only", default="", help="comma-separated question ids")
     ap.add_argument("--allow-other-index", action="store_true", help="run on an index head other than the recorded one (the run says so)")
-    ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing")
+    ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing (a sealed dry run does not hand the questions out)")
+    ap.add_argument("--final-recipe", action="store_true", help="the sealed run's recipe: A today (rerank-2), R (the challenger re-ranker) on the same candidates, S, and both safety nets; see SEALED_RUN_RULES_v1.md")
+    ap.add_argument("--challenger-model", default=CHALLENGER_DEFAULT)
+    ap.add_argument("--top-k", type=int, default=None, help="how many places of each ranked version are pooled for marking (5; 10 with --final-recipe)")
     a = ap.parse_args(argv)
+    if a.top_k is None:
+        a.top_k = 10 if a.final_recipe else 5
     if a.retitle:
         extra = {}
         for d in a.supplement:
@@ -434,6 +527,21 @@ def main(argv=None):
     if head != want and not a.allow_other_index:
         print(f"refused: the index head is {head[:7]}, the experiment is recorded on {want[:7]}")
         return 1
+    code = code_state()
+    rules = rules_state() if os.path.exists(RULES_PATH) else (None, None)
+    refusals = final_guard(a, code, rules) if (a.half == "sealed" and a.final and not a.dry_run) else []
+    if refusals:
+        print("refused before the questions were handed out:")
+        for r in refusals:
+            print("  -", r)
+        return 5
+    if a.half == "sealed" and a.dry_run and a.final:
+        n = str(len([q for q in real["questions"] if q["half"] == "sealed"])) if a.source == "real30" else "the ruler's frozen half"
+        problems = final_guard(a, code, rules) or "none"
+        print(f"sealed dry run: {n} questions would be handed out (not handed out now); problems if run now: {problems}")
+        return 0
+    if a.final and a.half == "sealed":
+        a.label = f"{a.label} | rules {rules[0][:12] if rules[0] else 'none'} | code {code[0][:10]}"
     try:
         if a.source == "ruler":
             qs = ruler_questions(a.ruler, a.half, final=a.final, label=a.label)
@@ -455,7 +563,10 @@ def main(argv=None):
         n_rw = sum(1 for q in qs if q["id"] in rewrites)
         print(f"{len(qs)} questions ({a.half}); {n_rw} with a blind rewrite (versions C and F); site arm {'off' if a.no_site else 'on'}; cap {a.max_rerank_tokens:,} re-rank tokens"
               + "".join(f"; side index {d}" for d in a.supplement))
-        print("planned re-rank calls: %d (A/E: 1, B: 1, C: 1, F: 2 per rewritten question)" % (len(qs) * 2 + n_rw * 3))
+        if a.final_recipe:
+            print("planned re-rank calls: %d (final recipe: rerank-2 and %s on the same 60 candidates, per question)" % (len(qs) * 2, a.challenger_model))
+        else:
+            print("planned re-rank calls: %d (A/E: 1, B: 1, C: 1, F: 2 per rewritten question)" % (len(qs) * 2 + n_rw * 3))
         return 0
     t0 = time.time()
     metas, M, _ = si._load_index(a.index_dir)
@@ -477,10 +588,16 @@ def main(argv=None):
     site = None if a.no_site else make_site(metas, M, a.recourse_dir)
     spend = Spend(a.max_rerank_tokens)
     engine = Engine(metas, M, si.make_client(), spend, fts, site, safety=a.safety_net)
-    ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + a.supplement, metas, extra_titles or None), a.out)
+    ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + a.supplement, metas, extra_titles or None), a.out,
+                           challenger=a.challenger_model if a.final_recipe else None, top_k=a.top_k)
     run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS) + (list(SAFETY_VERSIONS) if a.safety_net else []),
                 "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
                 "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_infos[0] if supp_infos else None, "side_indexes": supp_infos}
+    if a.final_recipe:
+        run_info["versions"] = [v for v in FINAL_VERSIONS if v != "S site shown" or not a.no_site]
+        run_info["models"] = {"embed": EMBED_MODEL, "rerank": RERANK_MODEL, "challenger": a.challenger_model}
+        run_info["final_recipe"] = {"challenger": a.challenger_model, "top_k": a.top_k, "label": a.label, "rules_sha256": rules[0], "rules_frozen_sha256": rules[1], "code_commit": code[0], "code_uncommitted": code[1],
+                                   "side_indexes": [i["dir"] for i in supp_infos], "rewrites_used": False}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:
         json.dump({"run": run_info, "questions": ordered}, fh, ensure_ascii=False, indent=1)
         fh.write("\n")

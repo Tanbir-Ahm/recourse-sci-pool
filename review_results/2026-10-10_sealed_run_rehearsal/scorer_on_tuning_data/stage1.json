@@ -1,0 +1,303 @@
+{
+ "stage": "marks",
+ "pool_sha256": "c71b264ce1dd8a03ab6bbd0a853a4616c5ac96099a7871044a989d8d49ad815a",
+ "replies_sha256": "096fce5cad0b4e57533e94be5e2d9d1cb1dc137de7841e2122bbd4f035fb7718",
+ "names": {
+  "a": "A today",
+  "r": "R challenger re-ranker top 5",
+  "s": "S site shown",
+  "na": "M safety net",
+  "nr": "none"
+ },
+ "questions": 19,
+ "passages": 364,
+ "runs": {
+  "ChatGPT/A": 217,
+  "ChatGPT/B": 69,
+  "ChatGPT/TA": 147,
+  "Gemini/A": 217,
+  "Gemini/B": 69,
+  "Gemini/TA": 147
+ },
+ "file_problems": 69,
+ "quote_problems": 69,
+ "coverage_complete": true,
+ "passages_not_marked_by_both_tools": 0,
+ "tool_agreement_exact": 0.7252747252747253,
+ "reliability": "ok",
+ "settlements": {
+  "ChatGPT alone": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.4526315789473685,
+    "useful": 0.8421052631578947,
+    "mis": 0.10526315789473684,
+    "grade": 2.189473684210526
+   },
+   "R challenger re-ranker top 5": {
+    "questions": 14,
+    "yes": 0.5571428571428572,
+    "useful": 0.9142857142857144,
+    "mis": 0.08571428571428572,
+    "grade": 2.3857142857142857
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.3245614035087719,
+    "useful": 0.7333333333333334,
+    "mis": 0.11228070175438594,
+    "grade": 1.9456140350877194
+   },
+   "M safety net": {
+    "questions": 19,
+    "yes": 0.17982456140350878,
+    "useful": 0.7017543859649124,
+    "mis": 0.030701754385964907,
+    "grade": 1.8508771929824563
+   }
+  },
+  "Gemini alone": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.38947368421052636,
+    "useful": 0.7578947368421053,
+    "mis": 0.10526315789473684,
+    "grade": 2.0421052631578944
+   },
+   "R challenger re-ranker top 5": {
+    "questions": 14,
+    "yes": 0.5,
+    "useful": 0.8428571428571427,
+    "mis": 0.08571428571428573,
+    "grade": 2.257142857142857
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.2675438596491228,
+    "useful": 0.6798245614035089,
+    "mis": 0.05877192982456139,
+    "grade": 1.8885964912280706
+   },
+   "M safety net": {
+    "questions": 19,
+    "yes": 0.19736842105263158,
+    "useful": 0.5745614035087719,
+    "mis": 0.017543859649122806,
+    "grade": 1.7543859649122808
+   }
+  },
+  "both, ties to the lower mark": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.3263157894736842,
+    "useful": 0.7473684210526317,
+    "mis": 0.12631578947368424,
+    "grade": 1.9473684210526316
+   },
+   "R challenger re-ranker top 5": {
+    "questions": 14,
+    "yes": 0.4714285714285715,
+    "useful": 0.8142857142857143,
+    "mis": 0.1142857142857143,
+    "grade": 2.1714285714285713
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.23684210526315788,
+    "useful": 0.6394736842105262,
+    "mis": 0.08684210526315789,
+    "grade": 1.7894736842105263
+   },
+   "M safety net": {
+    "questions": 19,
+    "yes": 0.17982456140350878,
+    "useful": 0.5614035087719299,
+    "mis": 0.030701754385964907,
+    "grade": 1.7105263157894737
+   }
+  },
+  "both, ties to the higher mark": {
+   "A today": {
+    "questions": 19,
+    "yes": 0.505263157894737,
+    "useful": 0.8736842105263158,
+    "mis": 0.06315789473684211,
+    "grade": 2.31578947368421
+   },
+   "R challenger re-ranker top 5": {
+    "questions": 14,
+    "yes": 0.5857142857142856,
+    "useful": 0.9428571428571428,
+    "mis": 0.05714285714285715,
+    "grade": 2.4714285714285715
+   },
+   "S site shown": {
+    "questions": 19,
+    "yes": 0.35526315789473684,
+    "useful": 0.774561403508772,
+    "mis": 0.04999999999999999,
+    "grade": 2.079824561403509
+   },
+   "M safety net": {
+    "questions": 19,
+    "yes": 0.19736842105263158,
+    "useful": 0.7149122807017543,
+    "mis": 0.017543859649122806,
+    "grade": 1.894736842105263
+   }
+  }
+ },
+ "R_against_A": {
+  "ChatGPT alone": {
+   "questions": 14,
+   "A": {
+    "yes": 0.5,
+    "useful": 0.8714285714285713,
+    "mis": 0.11428571428571428,
+    "grade": 2.257142857142857
+   },
+   "R": {
+    "yes": 0.5571428571428572,
+    "useful": 0.9142857142857144,
+    "mis": 0.08571428571428572,
+    "grade": 2.3857142857142857
+   },
+   "R_better": [
+    "R11",
+    "R14"
+   ],
+   "R_worse": []
+  },
+  "Gemini alone": {
+   "questions": 14,
+   "A": {
+    "yes": 0.42857142857142866,
+    "useful": 0.8,
+    "mis": 0.1285714285714286,
+    "grade": 2.0999999999999996
+   },
+   "R": {
+    "yes": 0.5,
+    "useful": 0.8428571428571427,
+    "mis": 0.08571428571428573,
+    "grade": 2.257142857142857
+   },
+   "R_better": [
+    "R11",
+    "R14"
+   ],
+   "R_worse": []
+  },
+  "both, ties to the lower mark": {
+   "questions": 14,
+   "A": {
+    "yes": 0.38571428571428573,
+    "useful": 0.7857142857142857,
+    "mis": 0.14285714285714288,
+    "grade": 2.0285714285714285
+   },
+   "R": {
+    "yes": 0.4714285714285715,
+    "useful": 0.8142857142857143,
+    "mis": 0.1142857142857143,
+    "grade": 2.1714285714285713
+   },
+   "R_better": [
+    "R11",
+    "R14"
+   ],
+   "R_worse": []
+  },
+  "both, ties to the higher mark": {
+   "questions": 14,
+   "A": {
+    "yes": 0.5428571428571429,
+    "useful": 0.9,
+    "mis": 0.07142857142857142,
+    "grade": 2.371428571428571
+   },
+   "R": {
+    "yes": 0.5857142857142856,
+    "useful": 0.9428571428571428,
+    "mis": 0.05714285714285715,
+    "grade": 2.4714285714285715
+   },
+   "R_better": [
+    "R11",
+    "R14"
+   ],
+   "R_worse": []
+  }
+ },
+ "marks_rules": {
+  "rule1_grade_all_four_settlements": true,
+  "rule2_misleading_and_useful_margins": true,
+  "rule3_two_more_questions_better": true,
+  "rule5_reliability_not_weak": true,
+  "marks_rules_hold": true
+ },
+ "floors": {
+  "A": {
+   "F1_useful_lower": 0.7473684210526317,
+   "F2_mis_lower": 0.12631578947368424,
+   "F2_mis_higher": 0.06315789473684211,
+   "F4_yes_lower": 0.3263157894736842,
+   "F1": true,
+   "F2": true,
+   "F4": true,
+   "intervals": {
+    "F1_useful_lower": [
+     0.6105,
+     0.8737
+    ],
+    "F2_mis_lower": [
+     0.0526,
+     0.2105
+    ],
+    "F2_mis_higher": [
+     0.0211,
+     0.1158
+    ],
+    "F4_yes_lower": [
+     0.2,
+     0.4632
+    ]
+   }
+  },
+  "R": {
+   "F1_useful_lower": 0.8142857142857143,
+   "F2_mis_lower": 0.1142857142857143,
+   "F2_mis_higher": 0.05714285714285715,
+   "F4_yes_lower": 0.4714285714285715,
+   "F1": true,
+   "F2": true,
+   "F4": true,
+   "intervals": {
+    "F1_useful_lower": [
+     0.7143,
+     0.9143
+    ],
+    "F2_mis_lower": [
+     0.0286,
+     0.2143
+    ],
+    "F2_mis_higher": [
+     0.0,
+     0.1286
+    ],
+    "F4_yes_lower": [
+     0.3,
+     0.6571
+    ]
+   }
+  }
+ },
+ "nets": {
+  "na": {
+   "passages": 52,
+   "mis_lower": 0.030701754385964907,
+   "useful_lower": 0.5614035087719299,
+   "yes_by_every_run": 9
+  }
+ }
+}

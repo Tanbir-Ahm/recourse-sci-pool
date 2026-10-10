@@ -1,0 +1,7 @@
+prompt file,question,order,passages,tool,save the reply as,done (tick)
+R01_A.txt,R01,A,14,ChatGPT,R01_A_ChatGPT.txt,
+R01_A.txt,R01,A,14,Gemini,R01_A_Gemini.txt,
+R09_A.txt,R09,A,16,ChatGPT,R09_A_ChatGPT.txt,
+R09_A.txt,R09,A,16,Gemini,R09_A_Gemini.txt,
+R20_A.txt,R20,A,19,ChatGPT,R20_A_ChatGPT.txt,
+R20_A.txt,R20,A,19,Gemini,R20_A_Gemini.txt,

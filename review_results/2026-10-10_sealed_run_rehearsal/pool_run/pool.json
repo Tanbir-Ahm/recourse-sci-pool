@@ -1,0 +1,1314 @@
+{
+ "run": {
+  "when": "2026-10-10T11:13:54Z",
+  "half": "dev",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "A today",
+   "R challenger re-ranker",
+   "S site shown",
+   "M safety net",
+   "M safety net (challenger)"
+  ],
+  "source": "real30",
+  "site_arm": true,
+  "rewrites_file": "review_data/ruler/real30_rewrites_v1.json",
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 122344,
+   "rerank_calls": 6,
+   "embed_tokens": 187,
+   "embed_calls": 3,
+   "cap_rerank_tokens": 400000,
+   "dollars_estimate": 0.0061,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   },
+   "rerank_tokens_by_model": {
+    "rerank-2": 61172,
+    "rerank-3-lite": 61172
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-2",
+   "challenger": "rerank-3-lite"
+  },
+  "side_index": {
+   "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572,
+   "built": "2026-10-09T08:03:50Z",
+   "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+  },
+  "side_indexes": [
+   {
+    "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+    "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+    "documents": 17,
+    "passages": 2572,
+    "built": "2026-10-09T08:03:50Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_documents",
+    "manifest_sha256": "4e407a307be9260aaf5176d7d48b2d5ffde1b6bbc85e2a95dec9bd7fd470d4e7",
+    "documents": 1,
+    "passages": 12,
+    "built": "2026-10-09T10:00:02Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_shivangi_bansal",
+    "manifest_sha256": "2839f1829a211eda61e1c2fdb474cb37fcf25564dd9807e0f6e5e91511e13cf7",
+    "documents": 1,
+    "passages": 23,
+    "built": "2026-10-09T10:15:11Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   }
+  ],
+  "final_recipe": {
+   "challenger": "rerank-3-lite",
+   "top_k": 10,
+   "label": "",
+   "rules_sha256": "1936fdc23a022a9cfeeb76c1b5e1bdb170948bf727c7ceb50d4635fc0d7ad29c",
+   "rules_frozen_sha256": "1936fdc23a022a9cfeeb76c1b5e1bdb170948bf727c7ceb50d4635fc0d7ad29c",
+   "code_commit": "39a99cf77866d5ee2b7573a3032bd82fc3dd5f24",
+   "code_uncommitted": [
+    "review_tools/pool_runner.py",
+    "review_tools/test_pool_runner.py"
+   ],
+   "side_indexes": [
+    "review_data/side_index/2026-10-09_correcting_judgments",
+    "review_data/side_index/2026-10-09_fetched_documents",
+    "review_data/side_index/2026-10-09_fetched_shivangi_bansal"
+   ],
+   "rewrites_used": false
+  }
+ },
+ "questions": [
+  {
+   "qid": "R01",
+   "domain": "A",
+   "kind": "narrative",
+   "question": "Police picked up my brother last night from Andheri after his car hit a scooter, they just said 'come with us' and took his phone, no paper nothing, my mother is crying since morning. Today they took him to magistrate for remand. The lawyer says it's fine but I read online they must give reasons?? Is this arrest even legal, can we get him out because they gave nothing in writing?",
+   "rewrite": "Whether a warrantless arrest, without written grounds of arrest or an arrest memo furnished to the accused, violates Article 22(1) of the Constitution and Section 50 CrPC / Section 47 BNSS, and whether such non-compliance vitiates the arrest and the magistrate's remand under Section 167 CrPC / Section 187 BNSS, entitling him to release.",
+   "half": "dev",
+   "rows": [
+    {
+     "h": "46ff79ab7d6074e6",
+     "doc": 1000254065,
+     "pn": "preamble/29",
+     "page": 10,
+     "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)",
+     "text": "8.3. The Magistrate before authorising detention will record his own satisfaction, may be in brief but the said satisfaction must reflect from his order. It shall never be based upon the ipse dixit of the police officer, for example, in case the police officer considers the arrest necessary to prevent such person from committing any further offence or for proper investigation of the case or for preventing an accused from tampering with evidence or making inducement, etc. the police officer shall furnish to the Magistrate the facts, the reasons and materials on the basis of which the police officer had reached its conclusion. Those shall be perused by the Magistrate while authorising the detention and only after recording his satisfaction in writing that the Magistrate will authorise the detention of the accused. 8.4. In fine, when a suspect is arrested and produced before a Magistrate for authorising detention, the Magistrate has to address the question whether specific reasons have been recorded for arrest and if so, prima facie those reasons are relevant, and secondly, a reasonable conclusion could at all be reached by the police officer that one or the other conditions stated above are attracted. To this limited extent the Magistrate will make judicial scrutiny. 9. …The aforesaid provision makes it clear that in all cases where the arrest of a person is not required under Section 41(1) CrPC, the police officer is required to issue notice directing the accused to appear before him at a specified place and time.",
+     "also": [],
+     "variants": {
+      "A today": 7,
+      "R challenger re-ranker": 7
+     },
+     "n": 1
+    },
+    {
+     "h": "0e69e8fa52ea33b7",
+     "doc": 41558,
+     "pn": "92/8",
+     "page": 155,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS. 2295-2296 OF 2010 Adambhai Sulemanbhai Ajmeri & Ors. …Appellants Versus State of Gujarat ...Respondent WITH CRIMINAL APPEAL NO. 45 OF 2011 J U D G M E N T V.GOPALA GOWDA, J. The",
+     "text": "After two to three days, I and Adam had gone to Kalupur Darwaja on my scooter, and Nasir Doman had also come along on his scooter. From STD/ ISD booth named Kohinoor Telecom, Adam had dialed number at Saudi Arabia and firstly he had done all the talk in Arabic language, and thereafter to give us assurance, he had talked in Hindi language and asked to exchange greetings with the people involved with me in Crl.A.Nos.2295-2296 of 2010 -162- work. By saying this, Adam handed over the receiver to me……. I was asked from the other side in Gujarati, ‘brother, what you need,’. Prior to this, Adam had asked me to demand for Rs. 20 Lac for the work. Therefore, on my say that it would take Rs. 20 lac for the work, I was asked from the other side to give the phone to Adambhai. And Adam had done some talk in Arabic language. We could not understand the said language. … In the last week of May 2002, Nashir had called me to his house by sending message through someone. And when I went, Nashir, Adam and Adam’s brother Ahmed was present. Adam had given me Rs. 5000/- and had said to me that guests are going to come and you have to arrange for their lodging. And he had also given Rs.5000/- to Nashir and he said to buy two mobile phones from it and give it to Rehman, and had said that the numbers for the same will be given to the guests and had said that thereby they will remain in contact.",
+     "also": [],
+     "variants": {
+      "M safety net": 1,
+      "M safety net (challenger)": 2
+     },
+     "n": 2
+    },
+    {
+     "h": "40367a3f3b6eef1e",
+     "doc": 1000257082,
+     "pn": "55",
+     "page": 34,
+     "title": "MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)",
+     "text": "55. It goes without saying that if the abovesaid schedule for supplying the grounds of arrest in writing is not adhered to, the arrest will be rendered illegal entitling the release of the arrestee. On such release, an application for remand or custody, if required, will be moved along with the reasons and necessity for the same, after the supply of the grounds of arrest in writing setting forth the explanation for non-supply thereof within the above stipulated schedule. On receipt of such an application, the magistrate shall decide the same expeditiously and preferably within a week of submission thereof by adhering to the principles of natural justice.",
+     "also": [],
+     "variants": {
+      "A today": 1,
+      "R challenger re-ranker": 5,
+      "S site shown": 1
+     },
+     "n": 3
+    },
+    {
+     "h": "79c1ad03be43f2e1",
+     "doc": 1000255745,
+     "pn": "35",
+     "page": 27,
+     "title": "PRABIR PURKAYASTHA versus STATE (NCT OF DELHI) (15-05-2024)",
+     "text": "35. It is apparent that the appellant had objected to the appearance of the remand counsel before the learned Remand Judge and this is the reason, the Investigating Officer undertook a charade of informing of the Advocate engaged by the appellant on mobile. The learned Remand Judge recorded the presence of Shri Arshdeep Khurana, Advocate, mentioning that he had been informed and heard on the remand application through telephone call. The initial information about the accused appellant being presented before the learned Remand Judge was sent by the arresting officer to the appellant’s relative Shri Rishab Bailey at around 6:46 a.m. and he, in turn, informed the Advocate Shri Arshdeep Khurana around 7:00 a.m. These facts are manifested from perusal of the call logs presented for the perusal of the Court. Thus, by the time, the Advocate engaged by the accused appellant had been informed, the order of remand had already been passed. Unquestionably, till that time, the grounds of arrest had not been conveyed to the appellant in writing.",
+     "also": [],
+     "variants": {
+      "S site shown": 4
+     },
+     "n": 4
+    },
+    {
+     "h": "22f92ff8d93ddece",
+     "doc": 39680,
+     "pn": "5",
+     "page": 6,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1674 OF 2012 (Arising out of SLP (Crl.) No. 10547/2010) Geeta Mehrotra & Anr. ..Appellants Versus State of U.P. & Anr. . Respondents J U D G M E N T GYAN SUDHA MISRA, J.",
+     "text": "5. After persistent efforts, Shyamji finally got a job in Chennai and he went to Chennai for the job in May, 2003. But, it is alleged that there was no change in his behaviour even after going to Chennai. The complainant often called him on phone to talk to him but he always did irrelevant conversation. He never spoke properly with the complainant whenever he visited home and often used to hurl filthy abuses. The complainant states that she often wept and tolerated the tortures of the accused persons for a long time but did not complain to her family members, as that would have made them feel sad. At last, when the complainant realized that even her life was in danger, she was compelled to tell everything to her father on phone who was very upset on hearing her woes. On 15.7.2003 complainant heard some conversation of her mother-inlaw and sister-in-law from which it appeared to her that they want to kill the complainant in the night only. Thereupon the complainant apprised her father of the situation on phone to which her father replied that he will call back her father-in-law and she should go with him immediately and he will come in the morning. The father-in-law Satish Dhawan and his wife who were living in NOIDA thereafter came in the night and somehow took the complainant to their home who also came to know of everything. The complainant’s father and brother later went to her matrimonial home on 16.7.2003. On seeing her father and brother, Kamla Mehrotra and Geeta Mehrotra started speaking loudly and started saying that Shyamji would be coming by the evening and so he should come in the evening for talking to them. Her father and brother then went away from there. That very day, her husband Shyamji and brother-in-law Ramji also reached home. On reaching there, Shyamji abused her on phone and told her to send her father.",
+     "also": [],
+     "variants": {
+      "M safety net": 2,
+      "M safety net (challenger)": 3
+     },
+     "n": 5
+    },
+    {
+     "h": "8064b220cb23da0c",
+     "doc": 1000257082,
+     "pn": "52",
+     "page": 33,
+     "title": "MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)",
+     "text": "52. We thus hold, that, in cases where the police are already in possession of documentary material furnishing a cogent basis for the arrest, the written grounds of arrest must be furnished to the arrestee on his arrest. However, in exceptional circumstances such as offences against body or property committed in flagrante delicto, where informing the grounds of arrest in writing on arrest is rendered impractical, it shall be sufficient for the police officer or other person making the arrest to orally convey the same to the person at the time of arrest. Later, a written copy of grounds of arrest must be supplied to the arrested person within a reasonable time and in no event later than two hours prior to production of the arrestee before the magistrate for remand proceedings. The remand papers shall contain the grounds of arrest and in case there is delay in supply thereof, a note indicating a cause for it be included for the information of the magistrate.",
+     "also": [],
+     "variants": {
+      "A today": 2,
+      "R challenger re-ranker": 4,
+      "S site shown": 3
+     },
+     "n": 6
+    },
+    {
+     "h": "4a76d7fffc63e35e",
+     "doc": 1000256350,
+     "pn": "20",
+     "page": 22,
+     "title": "VIHAAN KUMAR versus STATE OF HARYANA & ANR. (06-02-2025)",
+     "text": "20. When an arrested person is produced before a Judicial Magistrate for remand, it is the duty of the Magistrate to ascertain whether compliance with Article 22(1) has been made. The reason is that due to non-compliance, the arrest is rendered illegal; therefore, the arrestee cannot be remanded after the arrest is rendered illegal. It is the obligation of all the Courts to uphold the fundamental rights. CONCLUSIONS",
+     "also": [
+      1000256770
+     ],
+     "variants": {
+      "A today": 10,
+      "R challenger re-ranker": 8
+     },
+     "n": 7
+    },
+    {
+     "h": "c4d94853c462bb86",
+     "doc": 1000256420,
+     "pn": "47",
+     "page": 39,
+     "title": "RADHIKA AGARWAL versus UNION OF INDIA AND OTHERS (27-02-2025)",
+     "text": "47. Lastly, Section 104(1) requires that a person arrested as soon as may be is required to be informed of the grounds of such arrest. The grounds of arrest must be given in writing to the arrestee before he is produced before the Magistrate in terms of Section 104(2). This is necessary as it enables the accused to contest and challenge his arrest and seek bail from the court. To deny and not give the grounds in writing would be to deprive the accused of his right in terms of Section 104(1) and also to seek right of bail under the provisions of the Code. This interpretation would be in consonance with Article 22(1) of the Constitution which states that no person who is arrested shall be detained in custody without being informed as soon as may be of the grounds of such arrest, nor shall such arrest be denied the right to consult and to be defended by a legal practitioner of his choice.",
+     "also": [],
+     "variants": {
+      "A today": 4,
+      "R challenger re-ranker": 2
+     },
+     "n": 8
+    },
+    {
+     "h": "5638faa5797f099d",
+     "doc": 40541,
+     "pn": null,
+     "page": 33,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 763 OF 2003 Jitendra Singh @ Babboo Singh & Anr. ... Appellants Versus State of U.P. ... Respondent J U D G M E N T Madan B. Lokur, J. 1. Three principal issues arise for conside",
+     "text": "State of West Bengal, (1997) 1 SCC 416 this Court laid down some important requirements for being adhered to by the police “in all cases of arrest or detention till legal provisions are made in that behalf as preventive measures”. The Criminal Procedure Code has since been amended and some of the important requirements laid down by this Court have been given statutory recognition. These are equally applicable, mutatis mutandis, to a child or a juvenile in conflict with law. 64. Attention may be drawn to Section 41-B of the Code which requires a police officer making an arrest to prepare a memorandum of arrest which shall be attested by at least one witness who is a member of the family of the person arrested or a respectable member of the locality where the arrest is made. The police officer is also mandated to inform the arrested person, if the memorandum of arrest is not attested by a member of his family, that he has a right to have a relative or a friend named by him to be informed of his arrest. Section 41-B of the Code reads as follows: “41-B. Procedure of arrest and duties of officer making arrest.— Every police officer while making an arrest shall— (a) bear an accurate, visible and clear identification of his name which will facilitate easy identification; (b) prepare a memorandum of arrest which shall be— (i) attested by at least one witness, who is a member of the family of the person arrested or a respectable member of the locality where the arrest is made;",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 10
+     },
+     "n": 9
+    },
+    {
+     "h": "a2c75c6d80996ad1",
+     "doc": 1000257082,
+     "pn": "49",
+     "page": 32,
+     "title": "MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)",
+     "text": "49. It is by now settled that if the grounds of arrest are not furnished to the arrestee in writing, this non-compliance will result in breach of the constitutional and statutory safeguards hence rendering the arrest and remand illegal and the person will be entitled to be set at liberty. The statute is silent with regard to the mode, nature or the time and stage at which the grounds of arrest has to be communicated. Article 22 says ‘as soon as may be’ which would obviously not mean prior to arrest but can be on arrest or thereafter. The indication is as early as it can be conveyed. There may be situations wherein it may not be practically possible to supply such grounds of arrest to the arrested person at the time of his arrest or immediately.",
+     "also": [],
+     "variants": {
+      "A today": 3,
+      "R challenger re-ranker": 1
+     },
+     "n": 10
+    },
+    {
+     "h": "b74d2daa58785887",
+     "doc": 1000255745,
+     "pn": "47-48",
+     "page": 31,
+     "title": "PRABIR PURKAYASTHA versus STATE (NCT OF DELHI) (15-05-2024)",
+     "text": "47. Now, coming to the aspect as to whether the grounds of arrest were actually conveyed to the appellant in writing before he was remanded to the custody of the Investigating Officer. 48. We have carefully perused the arrest memo (Annexure P-7) and find that the same nowhere conveys the grounds on which the accused was being arrested. The arrest memo is simply a proforma indicating the formal ‘reasons’ for which the accused was being arrested.",
+     "also": [],
+     "variants": {
+      "A today": 8
+     },
+     "n": 11
+    },
+    {
+     "h": "d782a297b73c979e",
+     "doc": 1000254065,
+     "pn": "preamble/27",
+     "page": 10,
+     "title": "SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)",
+     "text": "These are the conclusions, which one may reach based on facts. 7.2. The law mandates the police officer to state the facts and record the reasons in writing which led him to come to a conclusion covered by any of the provisions aforesaid, while making such arrest. The law further requires the police officers to record the reasons in writing for not making the arrest. 7.3. In pith and core, the police officer before arrest must put a question to himself, why arrest? Is it really required? What purpose it will serve? What object it will achieve? It is only after these questions are addressed and one or the other conditions as enumerated above is satisfied, the power of arrest needs to be exercised. In fine, before arrest first the police officers should have reason to believe on the basis of information and material that the accused has committed the offence. Apart from this, the police officer has to be satisfied further that the arrest is necessary for one or the more purposes envisaged by sub-clauses (a) to (e) of clause (1) of Section 41 CrPC. 8. An accused arrested without warrant by the police has the constitutional right under Article 22(2) of the Constitution of India and Section 57 CrPC to be produced before the Magistrate without unnecessary delay and in no circumstances beyond 24 hours excluding the time necessary for the journey: 8.1.",
+     "also": [],
+     "variants": {
+      "A today": 5,
+      "R challenger re-ranker": 3
+     },
+     "n": 12
+    },
+    {
+     "h": "acd7be3a289365d3",
+     "doc": 41736,
+     "pn": null,
+     "page": 10,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1277 OF 2014 (@SPECIAL LEAVE PETITION (CRL.) No.9127 of 2013) ARNESH KUMAR ..... APPELLANT VERSUS STATE OF BIHAR & ANR. .... RESPONDENTS J U D G M E N T Chandramauli Kr. Prasad T",
+     "text": "Law further requires the police officers to record the reasons in writing for not making the arrest. In pith and core, the police office before arrest must put a question to himself, why arrest? Is it really required? What purpose it will serve? What object it will achieve? It is only after these questions are addressed and one or the other conditions as enumerated above is satisfied, the power of arrest needs to be exercised. In fine, before arrest first the police officers should have reason to believe on the basis of information and material that the accused has committed the offence. Apart from this, the police officer has to be satisfied further that the arrest is necessary for one or the more purposes envisaged by sub-clauses (a) to (e) of clause (1) of Section 41 of Cr.PC. An accused arrested without warrant by the police has the constitutional right under Article 22(2) of the Constitution of India and Section 57, Cr.PC to be produced before the Magistrate without unnecessary delay and in no circumstances beyond 24 hours excluding the time necessary for the journey. During the course of investigation of a case, an accused can be kept in detention beyond a period of 24 hours only when it is authorised by the Magistrate in exercise of power under Section 167 Cr.PC. The power to authorise detention is a very solemn function.",
+     "also": [],
+     "variants": {
+      "A today": 6,
+      "R challenger re-ranker": 6
+     },
+     "n": 13
+    },
+    {
+     "h": "d80c00d6fd80d810",
+     "doc": 1000256350,
+     "pn": "25",
+     "page": 24,
+     "title": "VIHAAN KUMAR versus STATE OF HARYANA & ANR. (06-02-2025)",
+     "text": "25. A contention has been raised in the written argument that the grounds of arrest were incorporated in the remand report. This contention has been raised for the first time in written submissions before this Court. This is not pleaded in the reply filed before the High Court and this Court. The police submit a remand report before the learned Magistrate for seeking remand without serving a copy thereof to the arrestee. The reason is that the Police cannot divulge the details of the investigation to the accused till the final report is filed. Mentioning the grounds of arrest in the remand report is no compliance with the requirement of informing the arrestee of the grounds of arrest. 448\b",
+     "also": [],
+     "variants": {
+      "A today": 9,
+      "M safety net (challenger)": 1,
+      "S site shown": 2
+     },
+     "n": 14
+    }
+   ],
+   "lists": {
+    "A today": [
+     {
+      "doc": 1000257082,
+      "h": "40367a3f3b6eef1e",
+      "also": []
+     },
+     {
+      "doc": 1000257082,
+      "h": "8064b220cb23da0c",
+      "also": []
+     },
+     {
+      "doc": 1000257082,
+      "h": "a2c75c6d80996ad1",
+      "also": []
+     },
+     {
+      "doc": 1000256420,
+      "h": "c4d94853c462bb86",
+      "also": []
+     },
+     {
+      "doc": 1000254065,
+      "h": "d782a297b73c979e",
+      "also": []
+     },
+     {
+      "doc": 41736,
+      "h": "acd7be3a289365d3",
+      "also": []
+     },
+     {
+      "doc": 1000254065,
+      "h": "46ff79ab7d6074e6",
+      "also": []
+     },
+     {
+      "doc": 1000255745,
+      "h": "b74d2daa58785887",
+      "also": []
+     },
+     {
+      "doc": 1000256350,
+      "h": "d80c00d6fd80d810",
+      "also": []
+     },
+     {
+      "doc": 1000256350,
+      "h": "4a76d7fffc63e35e",
+      "also": [
+       1000256770
+      ]
+     }
+    ],
+    "R challenger re-ranker": [
+     {
+      "doc": 1000257082,
+      "h": "a2c75c6d80996ad1",
+      "also": []
+     },
+     {
+      "doc": 1000256420,
+      "h": "c4d94853c462bb86",
+      "also": []
+     },
+     {
+      "doc": 1000254065,
+      "h": "d782a297b73c979e",
+      "also": []
+     },
+     {
+      "doc": 1000257082,
+      "h": "8064b220cb23da0c",
+      "also": []
+     },
+     {
+      "doc": 1000257082,
+      "h": "40367a3f3b6eef1e",
+      "also": []
+     },
+     {
+      "doc": 41736,
+      "h": "acd7be3a289365d3",
+      "also": []
+     },
+     {
+      "doc": 1000254065,
+      "h": "46ff79ab7d6074e6",
+      "also": []
+     },
+     {
+      "doc": 1000256350,
+      "h": "4a76d7fffc63e35e",
+      "also": [
+       1000256770
+      ]
+     },
+     {
+      "doc": 1000256770,
+      "h": "4a76d7fffc63e35e",
+      "also": [
+       1000256350
+      ]
+     },
+     {
+      "doc": 40541,
+      "h": "5638faa5797f099d",
+      "also": []
+     }
+    ],
+    "M safety net": [
+     {
+      "doc": 41558,
+      "h": "0e69e8fa52ea33b7",
+      "also": []
+     },
+     {
+      "doc": 39680,
+      "h": "22f92ff8d93ddece",
+      "also": []
+     }
+    ],
+    "M safety net (challenger)": [
+     {
+      "doc": 1000256350,
+      "h": "d80c00d6fd80d810",
+      "also": []
+     },
+     {
+      "doc": 41558,
+      "h": "0e69e8fa52ea33b7",
+      "also": []
+     },
+     {
+      "doc": 39680,
+      "h": "22f92ff8d93ddece",
+      "also": []
+     }
+    ],
+    "S site shown": [
+     {
+      "doc": 1000257082,
+      "h": "40367a3f3b6eef1e",
+      "also": []
+     },
+     {
+      "doc": 1000256350,
+      "h": "d80c00d6fd80d810",
+      "also": []
+     },
+     {
+      "doc": 1000257082,
+      "h": "8064b220cb23da0c",
+      "also": []
+     },
+     {
+      "doc": 1000255745,
+      "h": "79c1ad03be43f2e1",
+      "also": []
+     }
+    ]
+   },
+   "spend": {
+    "rerank_tokens": 44908,
+    "embed_tokens": 91
+   }
+  },
+  {
+   "qid": "R09",
+   "domain": "C",
+   "kind": "legal",
+   "question": "Where the payee presents a dishonoured cheque through his account at the branch of his bank in Delhi, though the cheque is drawn on a Kolkata bank, which court has territorial jurisdiction to try the complaint?",
+   "rewrite": null,
+   "half": "dev",
+   "rows": [
+    {
+     "h": "f514aaa60c58f7d9",
+     "doc": 40783,
+     "pn": null,
+     "page": 4,
+     "title": null,
+     "text": "In view of the same and in the light of the law laid down by this Court in K.Bhaskaran (supra), we are of the view that the learned Magistrate at Bhiwani has territorial jurisdiction to try the complaint filed by the respondent as the respondent is undisputedly a resident of Bhiwani. Further, in K. Bhaskaran (supra), while considering the territorial jurisdiction at great length, this Court has concluded that the amplitude of territorial jurisdiction pertaining to a complaint under the N.I. Act is very wide and expansive and we are in entire agreement with the same. *** *** *** (12) Mr. Ahmadi, learned senior counsel for the appellant has also relied on a decision of this Court in Harman Electronics Private Limited and Another vs. National Panasonic India Private Limited, (2009) 1 SCC 720. In Harman Electronics (supra), the complainant and the accused entered into a business transaction. The accused was a resident of Chandigarh. He carried on the business in Chandigarh and issued a cheque in question at Chandigarh. The complainant had a Branch Office at Chandigarh although his Head Office was at Delhi. He presented the cheque given by the accused at Chandigarh. The cheque was dishonoured at Chandigarh. The complainant issued a notice upon the accused asking him to pay the amount from New Delhi.",
+     "also": [],
+     "variants": {
+      "A today": 8,
+      "R challenger re-ranker": 10
+     },
+     "n": 1
+    },
+    {
+     "h": "e597817405f27988",
+     "doc": 40477,
+     "pn": null,
+     "page": 16,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 808 OF 2013 (Arising out of S.L.P. (Crl.) No. 9434 of 2011) Nishant Aggarwal .... Appellant(s) Versus Kailash Kumar Sharma .... Respondent(s) J U D G M E N T P.Sathasivam,J. 1) L",
+     "text": "Ultimately, this Court held that the Chandigarh Court had jurisdiction to entertain the complaint because the parties were carrying on business at Chandigarh, Branch Office of the complainant was also in Chandigarh, the transactions were carried on only from Chandigarh and the cheque was issued and presented at Chandigarh. This Court pointed out that the complaint did not show that the cheque was presented at Delhi, because it was absolutely silent in that regard and, therefore, there was no option but to presume that the cheque was presented at Chandigarh. It is not in dispute that the dishonour of the cheque also took place at Chandigarh and, therefore, the only question which arose before this Court for consideration was whether the sending of notice from Delhi itself would give rise to a cause of action in taking cognizance under the N.I. Act. In such circumstances, we are of the view that Harman Electronics (supra) is only an authority on the question where a court will have jurisdiction because only notice is issued from the place which falls within its jurisdiction and it does not deviate from the other principles laid down in K. Bhaskaran (supra). This Court has accepted that the place where the cheque was presented and dishonoured has jurisdiction to try the complaint. In this way, this Court concluded that issuance of notice would not by itself give rise to a cause of action but communication of the notice would.",
+     "also": [],
+     "variants": {
+      "A today": 7,
+      "R challenger re-ranker": 5
+     },
+     "n": 2
+    },
+    {
+     "h": "66894e443d0e8cec",
+     "doc": 40783,
+     "pn": null,
+     "page": 7,
+     "title": null,
+     "text": "We have heard learned counsel for the rival parties. The reason for posting the instant matter for hearing after the disposal of Nishant Aggarwal’s case (supra) was, that the controversy arising herein, was exactly the same as was sought to be determined by this court in Nishant Aggarwal’s case (supra). The factual position necessary for the disposal of the instant Civil Appeal, was noticed in paragraph 13 of the impugned order, passed by the Delhi High Court. The same is being extracted hereunder: “13. Thus M/s Religare Finvest (supra) relied on by the Petitioner was a case where even the drawer bank’s clearing branch which dishonoured the cheque was also situated at New Delhi. In the said case, the jurisdiction was vested in the Courts at Delhi because of the drawer’s bank’s clearing branch being at Delhi and not because the cheque was presented in the payee bank or that the legal notice of demand was issued from a place at Delhi. Applying the decisions aforementioned to the facts of the present case, I do not consider it fit to state that just because the cheques were presented at Delhi or the demand notice was sent from Delhi, Courts at Delhi would have jurisdiction to try the present case.” (emphasis is ours) 4. Having taken into consideration the fact that the cheque was presented for encashment by the complainant at Delhi, and having referred to the judgments rendered by this Court in K.",
+     "also": [],
+     "variants": {
+      "A today": 3,
+      "R challenger re-ranker": 4
+     },
+     "n": 3
+    },
+    {
+     "h": "b745e0af004a9e96",
+     "doc": 41877,
+     "pn": "3",
+     "page": 19,
+     "title": "IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 8468 OF 2014 (Arising out of S.L.P. (C) No.29044 of 2009) Vinay Kumar Shailendra …Appellant Versus Delhi High Court Legal Services Committee and Anr. …Respondents With CIVIL APPEAL NO.",
+     "text": "3. It is not in dispute that the cheque in question was issued by the respondent on Syndicate Bank, Gokaran branch in Karnataka which was presented for collection by the complainant at Krishnapuram, Kayamkulam, Kerala but dishonoured for insufficiency of funds. The complainant then filed complaint at Kayamkulam in the State of Kerala which were returned by the Magistrate to be filed before the proper Court as the Court at Kayamkulam, Kerala, had no territorial jurisdiction to entertain the same. The matter was taken up before the High Court by the complainants in Crl. M.C. Nos.514 of 2011 and 1653 of 2011 which the High Court has dismissed by the impugned order holding that the presentation of the cheque to a Bank in Kerala would not by itself confer jurisdiction upon the Kerala Court. The High Court has in support of that view relied upon the decision of this Court in Harman Electronics Private Limited and Anr. v. National Panasonic India Private Limited (2009) 1 SCC 720 where this Court held that the issue of notice to the drawer of the cheque does not by itself give rise to a cause of action to confer jurisdiction upon the Court to take cognizance.",
+     "also": [],
+     "variants": {
+      "A today": 9
+     },
+     "n": 4
+    },
+    {
+     "h": "961baa21bb8c7f0d",
+     "doc": 41801,
+     "pn": "3",
+     "page": 55,
+     "title": null,
+     "text": "3. Ishar Alloy’s case (supra) did not deal with the question of jurisdiction of the Courts nor was Bhaskaran noticed by the Court while holding that the presentation of the cheque ought to be within six months to the drawee bank. But that does not, in our view, materially affect the logic underlying the pronouncement, which pronouncement coming as it is from a bench of coordinate jurisdiction binds us. When logically extended to the question of jurisdiction of the Court to take cognizance, we find it difficult to appreciate how a payee of the cheque can by presentation of the cheque to his own bank confer jurisdiction upon the Court where such bank is situate. If presentation referred to in Section 138 means presentation to the “drawee bank”, there is no gainsaying that dishonour would be localised and confined to the place where such bank is situated. The question is not whether or not the payee can deposit his cheque in any bank of his choice at any place. The question is whether by such deposit can the payee confer jurisdiction on a Court of his choice? Our answer is in the negative. The payee may and indeed can present the cheque to any bank for collection from the drawee bank, but such presentation will be valid only if the drawee bank receives the cheque for payment within the period of six months from the date of issue. Dishonour of the cheque would be localised at the place where the drawee bank is situated. Presentation of the cheque at any place, we have no manner of doubt, cannot confer jurisdiction upon the Court within whose territorial limits such presentation may have taken place.",
+     "also": [],
+     "variants": {
+      "A today": 5,
+      "R challenger re-ranker": 3,
+      "S site shown": 4
+     },
+     "n": 5
+    },
+    {
+     "h": "ce23160beaf5e49f",
+     "doc": 40477,
+     "pn": null,
+     "page": 14,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 808 OF 2013 (Arising out of S.L.P. (Crl.) No. 9434 of 2011) Nishant Aggarwal .... Appellant(s) Versus Kailash Kumar Sharma .... Respondent(s) J U D G M E N T P.Sathasivam,J. 1) L",
+     "text": "The complainant had a Branch Office at Chandigarh although his Head Office was at Delhi. He presented the cheque given by the accused at Chandigarh. The cheque was dishonoured at Chandigarh. The complainant issued a notice upon the accused asking him to pay the amount from New Delhi. The said notice was served on the accused at Chandigarh. On failure on the part of the accused to pay the amount within 15 days from the date of the communication of the said letter, the complainant filed a complaint at Delhi. In the complaint, it was stated that the Delhi Court has jurisdiction to try the case because the complainant was carrying on business at Delhi, the demand notice was issued from Delhi, the amount of cheque was payable at Delhi and the accused failed to make the payment of the said cheque within the statutory period of 15 days from the date of receipt of notice. It is further seen that the cognizance of the offence was taken by the learned Magistrate at Delhi. The accused questioned the jurisdiction of the Magistrate at Delhi before the Addl. Sessions Judge, New Delhi. The Sessions Judge held that the Magistrate at Delhi had jurisdiction to entertain the complaint as, admitedly, the notice was sent by the complainant to the accused from Delhi and the complainant was having its Registered Office at Delhi and was carrying on business at Delhi.",
+     "also": [],
+     "variants": {
+      "A today": 4,
+      "R challenger re-ranker": 8,
+      "S site shown": 1
+     },
+     "n": 6
+    },
+    {
+     "h": "71afc1df9309ba4a",
+     "doc": 1000256462,
+     "pn": "62",
+     "page": 64,
+     "title": "M/S SHRI SENDHUR AGRO & OIL INDUSTRIES versus KOTAK MAHINDRA BANK LTD. (06-03-2025)",
+     "text": "62. A conjoint reading of Section 142(2)(a) along with the explanation thereof, makes the position emphatically clear that, when a cheque is delivered or issued to a person with liberty to present the cheque for collection at any branch of the bank where the payee or holder in due course, as the case may be, maintains the account then, the cheque shall be deemed to have been delivered or issued to the branch of the bank, in which, the payee or holder in due course, as the case may be, maintains the account, and the court of the place where such cheque was presented for collection, will have the jurisdiction to entertain the complaint alleging the commission of offence punishable under Section 138 of the N.I. Act. In that view of the position of law, the word ‘delivered’ used in Section 142(2) (a) of the N.I. Act has no significance. What is of significance is the expression ‘for collection through an account’. That is to say, delivery of the cheque takes place where the cheque was issued and presentation of the cheque will be through the account of the payee or holder in due course, and the said place is decisive to determine the question of jurisdiction.",
+     "also": [],
+     "variants": {
+      "M safety net": 2,
+      "M safety net (challenger)": 1
+     },
+     "n": 7
+    },
+    {
+     "h": "f4ab4de107d9ca66",
+     "doc": 41877,
+     "pn": "preamble/8",
+     "page": 1,
+     "title": "IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 8468 OF 2014 (Arising out of S.L.P. (C) No.29044 of 2009) Vinay Kumar Shailendra …Appellant Versus Delhi High Court Legal Services Committee and Anr. …Respondents With CIVIL APPEAL NO.",
+     "text": "In the light of the above pronouncement of this Court we have no hesitation in holding that the issue of a notice from Delhi or deposit of the cheque in a Delhi bank by the payee or receipt of the notice by the accused demanding payment in Delhi would not confer jurisdiction upon the Courts in Delhi. What is important is whether the drawee bank who dishonoured the cheque is situate within the jurisdiction of the Court taking cognizance. In that view, we see no reason to interfere with the order passed by the High Court which simply requires the Magistrate to examine and return the complaints if they do not have the jurisdiction to entertain the same in the light of the legal position as stated in Harman’s case (supra). All that we need to add is that while examining the question of jurisdiction the Metropolitan Magistrates concerned to whom the High Court has issued directions shall also keep in view the decision of this Court in Dashrath’s case (supra). 7. With the above observations these appeals fail and are hereby dismissed but in the circumstances without any orders as to costs. ………………………………….…..…J. (T.S. THAKUR) .……………………………….…..…J. (V. GOPALA GOWDA) ………………………..……………..J. (C. NAGAPPAN) New Delhi September 4, 2014 IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.",
+     "also": [],
+     "variants": {
+      "A today": 2,
+      "R challenger re-ranker": 7
+     },
+     "n": 8
+    },
+    {
+     "h": "08c4134684a34fa5",
+     "doc": 1000256564,
+     "pn": "142",
+     "page": 29,
+     "title": "M/S CELESTIUM FINANCIAL versus A. GNANASEKARAN ETC (08-04-2025)",
+     "text": "142. Cognizance of offences.— (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974),— (a) no court shall take cognizance of any offence punishable under section 138 except upon a complaint, in writing, made by the payee or, as the case may be, the holder in due course of the cheque; (b) such complaint is made within one month of the date on which the cause of action arises under clause (c) of the proviso to section 138: Provided that the cognizance of a complaint may be taken by the Court after the prescribed period, if the complainant satisfies the Court that he had sufficient cause for not making a complaint within such period; (c) no court inferior to that of a Metropolitan Magistrate or a Judicial Magistrate of the first class shall try any offence punishable under section 138. (2) The offence under section 138 shall be inquired into and tried only by a court within whose local jurisdiction,— (a) if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated; or (b) if the cheque is presented for payment by the payee or holder in due course, otherwise through an account, the branch of the drawee bank where the drawer maintains the account, is situated. Explanation.—For the purposes of clause (a), where a cheque is delivered for collection at any branch of the bank of the payee or holder in due course, then, the cheque shall be deemed to have been delivered to the branch of the bank in which the payee or holder in due course, as the case may be, maintains the account.",
+     "also": [],
+     "variants": {
+      "M safety net": 3,
+      "M safety net (challenger)": 3,
+      "S site shown": 5
+     },
+     "n": 9
+    },
+    {
+     "h": "c4c4544eeb1df1e7",
+     "doc": 1000252963,
+     "pn": "preamble/73",
+     "page": 23,
+     "title": "P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD. (01-03-2021)",
+     "text": "Cognizance of offences.—(1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974),— (a) no court shall take cognizance of any offence punishable under Section 138 except upon a complaint, in writing, made by the payee or, as the case may be, the holder in due course of the cheque; (b) such complaint is made within one month of the date on which the cause of action arises under clause (c) of the proviso to Section 138: Provided that the cognizance of a complaint may be taken by the court after the prescribed period, if the complainant satisfies the court that he had sufficient cause for not making a complaint within such period. (c) no court inferior to that of a Metropolitan Magistrate or a Judicial Magistrate of the first class shall try any offence punishable under Section 138. (2) The offence under Section 138 shall be inquired into and tried only by a court within whose local jurisdiction,— (a) if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated; or (b) if the cheque is presented for payment by the payee or holder in due course, otherwise through an account, the branch of the drawee bank where the drawer maintains the account, is situated.",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 6
+     },
+     "n": 10
+    },
+    {
+     "h": "19e3647a93474965",
+     "doc": 40477,
+     "pn": null,
+     "page": 10,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 808 OF 2013 (Arising out of S.L.P. (Crl.) No. 9434 of 2011) Nishant Aggarwal .... Appellant(s) Versus Kailash Kumar Sharma .... Respondent(s) J U D G M E N T P.Sathasivam,J. 1) L",
+     "text": "In view of the same and in the light of the law laid down by this Court in K.Bhaskaran (supra), we are of the view that the learned Magistrate at Bhiwani has territorial jurisdiction to try the complaint filed by the respondent as the respondent is undisputedly a resident of Bhiwani. Further, in K. Bhaskaran (supra), while considering the territorial jurisdiction at great length, this Court has concluded that the amplitude of territorial jurisdiction pertaining to a complaint under the N.I. Act is very wide and expansive and we are in entire agreement with the same. 10) Mr. Ahmadi, learned senior counsel for the appellant in support of his claim that the Court at Bhiwani has no jurisdiction heavily relied on the decision of this Court in Shri Ishar Alloy Steels Ltd. vs. Jayaswals Neco Ltd., (2001) 3 SCC 609. We were taken through the entire judgment. Though the case is also related to N.I. Act, the issue of territorial jurisdiction was not the subject-matter thereof. In Ishar Alloy Steels (supra), a three-Judge Bench of this Court defined the term “the bank” appearing in clause (a) of Section 138 of the N.I. Act as the drawer’s bank. It was defined in the context of the statutory period of six months as mentioned in clause (a), hence, this Court held that the date of presentation of the cheque for calculating the statutory time period of six months will be the date of presentation of the cheque to the drawer’s bank i.e. payee bank and not the drawee’s bank i.e. collecting bank.",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 9
+     },
+     "n": 11
+    },
+    {
+     "h": "4e63cb950bfc5a30",
+     "doc": 1000256462,
+     "pn": "3",
+     "page": 61,
+     "title": "M/S SHRI SENDHUR AGRO & OIL INDUSTRIES versus KOTAK MAHINDRA BANK LTD. (06-03-2025)",
+     "text": "3. In the principal Act, section 142 shall be numbered as sub-section (1) thereof and after sub-section (1) as so numbered, the following sub-section shall be inserted, namely:— “(2) The offence under section 138 shall be inquired into and tried only by a court within whose local jurisdiction,- (a) if the cheque is delivered for collection through an account, the branch of the bank where the payee or holder in due course, as the case may be, maintains the account, is situated; or (b) if the cheque is presented for payment by the payee or holder in due course, otherwise through an account, the branch of the drawee bank where the drawer maintains the account, is situated. Explanation.- For the purposes of clause (a), where a cheque is delivered for collection at any branch of the bank of the payee or holder in due course, then, the cheque shall be deemed to have been delivered to the branch of the bank in which the payee or holder in due course, as the case may be, maintains the account.”.",
+     "also": [],
+     "variants": {
+      "M safety net": 1,
+      "M safety net (challenger)": 2,
+      "S site shown": 6
+     },
+     "n": 12
+    },
+    {
+     "h": "8ecb0817f9c3045f",
+     "doc": 1000004467,
+     "pn": "3",
+     "page": 3,
+     "title": "SUKU versus JAGDISH & ANR. (04-09-2014)",
+     "text": "3. It is not in dispute that the cheque in question was issued by the respondent on Syndicate Bank, Gokaran branch in Karnataka which was presented for collection by the complainant at Krishnapuram, Kayamkulam, Kerala but dishonoured for insufficiency of funds. The complainant then F filed complaint at Kayamkulam in the State of Kerala which were returned by the Magistrate to be filed before the proper Court as the Court at Kayamkulam, Kerala, had no territorial jurisdiction to entertain the same. The matter was taken up before the High Court by the complainants in Crl. M.C. Nos.514 G of 2011 and 1653 of 2011 which the High Court has dismissed by the impugned order holding that the presentation of the cheque to a Bank in Kerala would not by itself confer jurisdiction upon the Kerala Court. The High Court has in support of that view relied upon the decision of this Court in Harman . H Electronics Private Limited and Anr. v. National Panasonic SUKU v. JAGDISH [T.S. THAKUR, J.] India Private Limited (2009) 1 SCC 720 where this Court held that the issue of notice to the drawer of the cheque does not by itself give rise to a cause cif action to confer jurisdiction upon the Court to take cognizance.",
+     "also": [],
+     "variants": {
+      "A today": 10
+     },
+     "n": 13
+    },
+    {
+     "h": "d015be8b8daceaf9",
+     "doc": 1000004468,
+     "pn": "3",
+     "page": 3,
+     "title": "TIMES BUSINESS SOLUTION LTD. versus DATABYTE (04-09-2014)",
+     "text": "3. It is common ground that the cheques in all the three cases had been issued on different branches namely, Bank of India, Ruby Park and ICICI Bank, Kolkata and Punjab National E Bank, Chapraula, Gautam Budh Nagar, U.P. which are outside Delhi. Complaints under Section 138 of the NI Act were all the same filed in Delhi because the cheques had been deposited by the complainants in their Delhi bank accounts for collection and because notice of dishonour was issued to the accused F persons from Delhi. Relying upon the decision of this Court in /shar Alloy Steels Ltd. v. Jayaswals Neco Ltd. (2001) 3 SCC • 609 the High Court held that mere presentation of cheques before banks in Delhi when the drawee bank is situated outside Delhi will not confer jurisdiction upon the Delhi courts G nor will the issue of a notice of dishonour from Delhi would do so. That view, in our opinion, is unexceptionable having regard to the decision of this Court in Dashrath Rupsingh Rathod v. State of Maharashtra and Another (2014) 9 SCALE 97. This Court has in that case examined at length the principles TIMES BUSINESS SOLUTION LTD. v. DATABYTE [T.S. THAKUR, J.] underlying Section 138 and held that a unilateral act of A presentation of the cheque anywhere in the country or issue of a notice of dishonour from a place chosen by the complainant does not by itself confer jurisdiction upon the Court from within whose jurisdiction such presentation is made or notice issued. Following the view taken by this Court in Dashrath's case (supra) we have no hesitation in holding that the High Court was justified in refusing to interfere with the orders passed by the Metropolitan Magistrate. These appeals accordingly fail and are hereby dismissed but in the circumstances without any no orders as to costs. c Nidhi jain Appeals dismissed.",
+     "also": [],
+     "variants": {
+      "A today": 6,
+      "R challenger re-ranker": 2
+     },
+     "n": 14
+    },
+    {
+     "h": "49d6b1322302e6a2",
+     "doc": 33328,
+     "pn": "2",
+     "page": 1,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2021 OF 2008 [arising out of SLP (Criminal) No. 1712 of 2004] M/S. HARMAN ELECTRONICS (P) LTD. & ANR. … APPELLANTS VERSUS M/S. NATIONAL PANASONIC INDIA LTD. … RESPONDENT J U D G ",
+     "text": "2. Territorial jurisdiction of a court to try an offence under Section 138 of the Negotiable Instruments Act, 1881 (for short, “the Act”) is in question in this appeal. The said question arose in the following circumstances. Appellants and respondent entered into a business transaction. Appellant is a resident of Chandigarh. He carries on business in Chandigarh. The cheque in question admittedly was issued at Chandigarh. Complainant also has a branch office at Chandigarh although his Head Office is said to be at Delhi. It is stated that the cheque was presented at Chandigarh. However, it is in dispute as to whether the said cheque was sent for collection to Delhi. The cheque was dishonoured also at Chandigarh. However, the complainant – respondent issued a notice upon the appellant asking him to pay the amount from New Delhi. Admittedly, the said notice was served upon the respondent at Chandigarh. On failure on the part of the appellant to pay the amount within a period of 15 days from the date of communication of the said letter, a complaint petition was filed at Delhi. In the complaint petition, it was stated: “10. That the complainant presented aforesaid cheque for encashment through its banker Citi Bank NA. The Punjab & Sind Bank, the banker of the accused returned the said cheque unpaid with an endorsement “Payment stopped by drawer” vide their memo dated 30.12.2000. The aforesaid memo dated 30.12.2000 was received by the complainant on 3.1.2001.",
+     "also": [],
+     "variants": {
+      "S site shown": 2
+     },
+     "n": 15
+    },
+    {
+     "h": "c5e3808a3f1b156a",
+     "doc": 40783,
+     "pn": null,
+     "page": 7,
+     "title": null,
+     "text": "Having taken into consideration the fact that the cheque was presented for encashment by the complainant at Delhi, and having referred to the judgments rendered by this Court in K. Bhaskaran vs. Shankaran Vaidhyam Balan & Anr., (1999) 7 SCC 510, Shri Ishar Alloys Steels Ltd. Vs. Jayaswal NECO Ltd., (2003) 3 SCC 609, and Harman Electronics Private Ltd. Vs. National Panasonic India Pvt. Ltd., (2009) 1 SCC 720, the High Court accepted the prayer made by the drawee of the cheque (i.e. the respondent herein) to conclude, that the Courts at Delhi did not have the jurisdiction to try the complaint filed by the appellant, under Section 138 of the Negotiable Instruments Act. Having so concluded, the Metropolitan Magistrate before whom the matter was pending, was directed to return the complaint to the respondent. Liberty was granted to the appellant, to file the returned petition before the jurisdictional Court at Kolkata. 5. It is apparent, that the conclusion drawn by the High Court, in the impugned order dated 27.4.2012, is not in consonance with the decision rendered by this Court in Nishant Aggarwal’s case (supra). Therein it has been concluded, that the Court within the jurisdiction whereof, the dishonoured cheque was presented for encashment, would have the jurisdiction to entertain the complaint filed under Section 138 of the Negotiable Instruments Act.",
+     "also": [],
+     "variants": {
+      "A today": 1,
+      "R challenger re-ranker": 1,
+      "S site shown": 3
+     },
+     "n": 16
+    }
+   ],
+   "lists": {
+    "A today": [
+     {
+      "doc": 40783,
+      "h": "c5e3808a3f1b156a",
+      "also": []
+     },
+     {
+      "doc": 41877,
+      "h": "f4ab4de107d9ca66",
+      "also": []
+     },
+     {
+      "doc": 40783,
+      "h": "66894e443d0e8cec",
+      "also": []
+     },
+     {
+      "doc": 40477,
+      "h": "ce23160beaf5e49f",
+      "also": []
+     },
+     {
+      "doc": 41801,
+      "h": "961baa21bb8c7f0d",
+      "also": []
+     },
+     {
+      "doc": 1000004468,
+      "h": "d015be8b8daceaf9",
+      "also": []
+     },
+     {
+      "doc": 40477,
+      "h": "e597817405f27988",
+      "also": []
+     },
+     {
+      "doc": 40783,
+      "h": "f514aaa60c58f7d9",
+      "also": []
+     },
+     {
+      "doc": 41877,
+      "h": "b745e0af004a9e96",
+      "also": []
+     },
+     {
+      "doc": 1000004467,
+      "h": "8ecb0817f9c3045f",
+      "also": []
+     }
+    ],
+    "R challenger re-ranker": [
+     {
+      "doc": 40783,
+      "h": "c5e3808a3f1b156a",
+      "also": []
+     },
+     {
+      "doc": 1000004468,
+      "h": "d015be8b8daceaf9",
+      "also": []
+     },
+     {
+      "doc": 41801,
+      "h": "961baa21bb8c7f0d",
+      "also": []
+     },
+     {
+      "doc": 40783,
+      "h": "66894e443d0e8cec",
+      "also": []
+     },
+     {
+      "doc": 40477,
+      "h": "e597817405f27988",
+      "also": []
+     },
+     {
+      "doc": 1000252963,
+      "h": "c4c4544eeb1df1e7",
+      "also": []
+     },
+     {
+      "doc": 41877,
+      "h": "f4ab4de107d9ca66",
+      "also": []
+     },
+     {
+      "doc": 40477,
+      "h": "ce23160beaf5e49f",
+      "also": []
+     },
+     {
+      "doc": 40477,
+      "h": "19e3647a93474965",
+      "also": []
+     },
+     {
+      "doc": 40783,
+      "h": "f514aaa60c58f7d9",
+      "also": []
+     }
+    ],
+    "M safety net": [
+     {
+      "doc": 1000256462,
+      "h": "4e63cb950bfc5a30",
+      "also": []
+     },
+     {
+      "doc": 1000256462,
+      "h": "71afc1df9309ba4a",
+      "also": []
+     },
+     {
+      "doc": 1000256564,
+      "h": "08c4134684a34fa5",
+      "also": []
+     }
+    ],
+    "M safety net (challenger)": [
+     {
+      "doc": 1000256462,
+      "h": "71afc1df9309ba4a",
+      "also": []
+     },
+     {
+      "doc": 1000256462,
+      "h": "4e63cb950bfc5a30",
+      "also": []
+     },
+     {
+      "doc": 1000256564,
+      "h": "08c4134684a34fa5",
+      "also": []
+     }
+    ],
+    "S site shown": [
+     {
+      "doc": 40477,
+      "h": "ce23160beaf5e49f",
+      "also": []
+     },
+     {
+      "doc": 33328,
+      "h": "49d6b1322302e6a2",
+      "also": []
+     },
+     {
+      "doc": 40783,
+      "h": "c5e3808a3f1b156a",
+      "also": []
+     },
+     {
+      "doc": 41801,
+      "h": "961baa21bb8c7f0d",
+      "also": []
+     },
+     {
+      "doc": 1000256564,
+      "h": "08c4134684a34fa5",
+      "also": []
+     },
+     {
+      "doc": 1000256462,
+      "h": "4e63cb950bfc5a30",
+      "also": []
+     }
+    ]
+   },
+   "spend": {
+    "rerank_tokens": 42322,
+    "embed_tokens": 51
+   }
+  },
+  {
+   "qid": "R20",
+   "domain": "G",
+   "kind": "legal",
+   "question": "Whether consensual sexual relations on a promise of marriage that was later broken constitute rape, and how Section 69 BNS alters the position for conduct after 1 July 2024.",
+   "rewrite": null,
+   "half": "dev",
+   "rows": [
+    {
+     "h": "61927315166394d4",
+     "doc": 1000256134,
+     "pn": "23/2",
+     "page": 15,
+     "title": "MAHESH DAMU KHARE versus THE STATE OF MAHARASHTRA & ANR. (26-11-2024)",
+     "text": "Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.” “24. Hence, it is evident that there must be adequate evidence to show that at the relevant time i.e. at the initial stage itself, the accused had no intention whatsoever, of keeping his promise to marry the victim. There may, of course, be circumstances, when a person having the best of intentions is unable to marry the victim owing to various unavoidable circumstances. The “failure to keep [2013] 6 SCR 544 : (2013) 7 SCC 675 902\b a promise made with respect to a future uncertain date, due to reasons that are not very clear from the evidence available, does not always amount to misconception of fact.",
+     "also": [],
+     "variants": {
+      "S site shown": 1
+     },
+     "n": 1
+    },
+    {
+     "h": "9a8533b080638c87",
+     "doc": 1000256110,
+     "pn": "22",
+     "page": 9,
+     "title": "PRASHANT versus STATE OF NCT OF DELHI (20-11-2024)",
+     "text": "22. Recently this Court in XXXX vs. State of Madhya Pradesh, (2024) 3 SCC 496 held that when the relationship between the parties was purely consensual and when the complainant was aware of the consequences of her actions, the ingredients of the offence of rape were not made out. Similarly, in Pramod Suryabhan Pawar v. State of Maharashtra, (2019) 9 SCC 608 arising out of identical facts, this Court has enumerated the following: “18. To summarise the legal position that emerges from the above cases, the “consent” of a woman with respect to Section 375 must involve an active and reasoned deliberation towards the proposed act. To establish whether the “consent” was vitiated by a “misconception of fact” arising out of a promise to marry, two propositions must be established. The promise of marriage must have been a false promise, given in bad faith and with no intention of being adhered to at the time it was given. The false promise itself must be of immediate relevance, or bear a direct nexus to the woman’s decision to engage in the sexual act.”",
+     "also": [],
+     "variants": {
+      "A today": 1,
+      "R challenger re-ranker": 3,
+      "S site shown": 6
+     },
+     "n": 2
+    },
+    {
+     "h": "cad3b16a4660054e",
+     "doc": 1000254666,
+     "pn": "16",
+     "page": 12,
+     "title": "NAIM AHAMED versus STATE (NCT OF DELHI) (30-01-2023)",
+     "text": "16. In Deepak Gulati vs. State of Haryana5, this Court gave one more dimension of the word ‘consent’ by distinguishing ‘Rape’ and ‘consensual sex’ and observed as under: 5 (2013) 7 SCC 675 “21. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.",
+     "also": [],
+     "variants": {
+      "A today": 10
+     },
+     "n": 3
+    },
+    {
+     "h": "a5927d4547ae58b8",
+     "doc": 1000256496,
+     "pn": "6",
+     "page": 3,
+     "title": "JOTHIRAGAWAN versus STATE REP. BY THE INSPECTOR OF POLICE & ANR. (24-03-2025)",
+     "text": "6. The High Court had relied on a decision of this Court and found that the victim and the accused were aged about 22 years, were close relatives and the complaint given by the victim clearly indicates that the accused obtained a forced consent from her by giving a promise to marry her. It was also found that the victim had categorically stated that subsequently the accused had refused to marry her. Whether the Criminal Appeal No.282 of 2025 @ SLP(Crl.) No.12663 of 2022 For brevity ‘I.P.C.’ 954\b accused had duped the victim to have sexual intercourse with him on the promise of marriage, was a matter of trial, held the Learned Sessions Judge. The application hence, was dismissed.",
+     "also": [],
+     "variants": {
+      "A today": 9
+     },
+     "n": 4
+    },
+    {
+     "h": "aa665e94f4f3dce3",
+     "doc": 40427,
+     "pn": "18",
+     "page": 13,
+     "title": "IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2322 of 2010 Deepak Gulati …Appellant Versus State of Haryana …Respondent J U D G M E N T Dr. B.S. CHAUHAN, J.",
+     "text": "18. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly, understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of mis-representation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.",
+     "also": [],
+     "variants": {
+      "A today": 7,
+      "R challenger re-ranker": 4
+     },
+     "n": 5
+    },
+    {
+     "h": "8542308cee8535d4",
+     "doc": 1000251932,
+     "pn": "14",
+     "page": 15,
+     "title": "PRAMOD SURYABHAN PAWAR versus THE STATE OF MAHARASHTRA & ANR. (21-08-2019)",
+     "text": "14. In the present case, the “misconception of fact” alleged by the complainant is the appellant’s promise to marry her. Specifically in the context of a promise to marry, this Court has observed that there is a distinction between a false promise given on the understanding by the maker that it will be broken, and the breach of a promise which is made in good faith but subsequently not fulfilled. In Anurag Soni v State of Chhattisgarh9, this Court held: “37. The sum and substance of the aforesaid decisions would be that if it is established and proved that from the inception the accused who gave the promise to the prosecutrix to marry, did not have any intention to marry and the prosecutrix gave the consent for sexual intercourse on such an assurance by the accused that he would marry her, such a consent can be said to be a consent obtained on a misconception of fact as per Section 90 of the IPC and, in such a case, such a consent would not excuse the offender and such an offender can be said to have committed the rape as defined under Sections 375 of the IPC and can be convicted for the offence under Section 376 of the IPC.” Similar observations were made by this Court in Deepak Gulati v State of Haryana10 (“Deepak Gulati”): “21. … There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused…”",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 7
+     },
+     "n": 6
+    },
+    {
+     "h": "b5347374dc2630cc",
+     "doc": 1000254666,
+     "pn": "17",
+     "page": 14,
+     "title": "NAIM AHAMED versus STATE (NCT OF DELHI) (30-01-2023)",
+     "text": "17. Again in Dr. Dhruvaram Murlidhar Sonar Vs. State of Maharashtra and others (supra), this Court interpreting the Section 90 and the Clause – Secondly in Section 375 of IPC, observed as under: - “23. Thus, there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is also a distinction between mere breach of a promise and not fulfilling a false promise. If the accused has not made the promise with the sole intention to seduce the prosecutrix to indulge in sexual acts, such an act would not amount to rape. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused and not solely on account of the misconception created by accused, or where an accused, on account of circumstances which he could not have foreseen or which were beyond his control, was unable to marry her despite having every intention to do. Such cases must be treated differently. If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape. The acknowledged consensual physical relationship between the parties would not constitute an offence under Section 376 IPC.”",
+     "also": [],
+     "variants": {
+      "A today": 4,
+      "R challenger re-ranker": 5
+     },
+     "n": 7
+    },
+    {
+     "h": "1478d5692468f3bb",
+     "doc": 1000256438,
+     "pn": "34",
+     "page": 11,
+     "title": "RAJNISH SINGH @ SONI versus STATE OF U.P. AND ANOTHER (02-03-2025)",
+     "text": "34. It is trite that there is a distinction between rape and consensual intercourse. This Court in Deepak Gulati v. State of Haryana,8 differentiated between a mere breach of promise and not fulfilling a false promise and held that an accused will only be liable if the Courts concludes that his intentions are mala fide and he has clandestine motives. The relevant extract is reproduced hereinbelow: - “21. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court (2013) 7 SCC 675 314\b must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives. . . .",
+     "also": [],
+     "variants": {
+      "M safety net": 1,
+      "M safety net (challenger)": 1
+     },
+     "n": 8
+    },
+    {
+     "h": "360d16cfe6807d82",
+     "doc": 1000251599,
+     "pn": "19/1",
+     "page": 16,
+     "title": "ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)",
+     "text": "19. In the present case, the accused had sexual intercourse with the prosecutrix by giving false assurance to the prosecutrix that he would marry her. After she got pregnant, he refused to do so. From this, it is evident that he never intended to marry her and procured her consent only for the reason of having sexual relations with her, which act of the accused falls squarely under the definition of rape as he had sexual intercourse with her consent which was consent obtained under a misconception of fact as defined under Section 90 IPC. Thus, the alleged consent said to have been obtained by the accused was not voluntary consent and this Court is of the view that the accused indulged in sexual intercourse with the prosecutrix by misconstruing to her his true intentions. It is apparent from the evidence that the accused only wanted to indulge in sexual intercourse with her and was under no intention of actually marrying the prosecutrix. .........” 10.5 Even in the case of Dr. Dhruvaram Murlidhar Sonar (supra), upon which reliance has been placed by the learned counsel appearing on behalf of the accused, in paragraph 23, this Court has observed that there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception, this Court observed and held as under: “23.",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 6
+     },
+     "n": 9
+    },
+    {
+     "h": "8339354b4f9340e9",
+     "doc": 1000251599,
+     "pn": "19/2",
+     "page": 16,
+     "title": "ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)",
+     "text": "The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception, this Court observed and held as under: “23. Thus, there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception. There is also a distinction between mere breach of a promise and not fulfilling a false promise. If the accused has not made the promise with the sole intention to seduce the prosecutrix to indulge in sexual acts, such an act would not amount to rape. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused and not solely on account of the misconception created by accused, or where an accused, on account of circumstances which he could not have foreseen or which were beyond his control, was unable to marry her despite having every intention to do. Such cases must be treated differently.",
+     "also": [],
+     "variants": {
+      "A today": 6,
+      "R challenger re-ranker": 2
+     },
+     "n": 10
+    },
+    {
+     "h": "2748c62fa119d0cf",
+     "doc": 19076,
+     "pn": null,
+     "page": 7,
+     "title": "Uday v. State of Karnataka (19/02/2003)",
+     "text": "Acting on such assurance the prosecutrix started cohabiting with the accused and this continued for several months during which period the accused spent several nights with her. Eventually when she conceived and insisted that the marriage should be performed as quickly as possible, the accused suggested an abortion and agreed to marry her later. Since the proposal was not acceptable to the prosecutrix, the accused disowned the promise and stopped visiting her house. A Division Bench of the Calcutta High Court noticed the provisions of Section 90 of the Indian Penal Code and concluded :- \"The failure to keep the promise at a future uncertain date due to reasons not very clear on the evidence does not always amount to a misconception of fact at the inception of the act itself. In order to come within the meaning of misconception of fact, the fact must have an immediate relevance. The matter would have been different if the consent was obtained by creating a belief that they were already married. In such a case the consent could be said to result from a misconception of fact. But here the fact alleged is a promise to marry we do not know when. If a full grown girl consents to the act of sexual intercourse on a promise of marriage and continues to indulge in such activity until she becomes pregnant it is an act of promiscuity on her part and not an act induced by misconception of fact.",
+     "also": [],
+     "variants": {
+      "S site shown": 4
+     },
+     "n": 11
+    },
+    {
+     "h": "0b2f9989883de191",
+     "doc": 1000256550,
+     "pn": "14",
+     "page": 8,
+     "title": "JASPAL SINGH KAURAL versus THE STATE OF NCT OF DELHI & ANR. (06-04-2025)",
+     "text": "14. The decision in Naim Ahmed (supra) is squarely applicable to the conspectus of present case. It has been time and again settled by this Hon’ble Court, that the mere fact that physical relations were established pursuant to a promise to marry will not amount to a rape in every case. An offence under Section 375 IPC could only be made out, if promise of marriage was made by the accused solely with a view to obtain consent for sexual relations without having any intent of fulfilling said promise from the very beginning, and that such false promise of marriage had a direct bearing on the prosecutrix giving her consent for sexual relations.2",
+     "also": [],
+     "variants": {
+      "A today": 3
+     },
+     "n": 12
+    },
+    {
+     "h": "c1a771ff90336f1a",
+     "doc": 1000255579,
+     "pn": "9/1",
+     "page": 6,
+     "title": "XXXX versus STATE OF MADHYA PRADESH & ANOTHER (06-03-2024)",
+     "text": "9. Similar issue was considered by this Court in Naim Ahamed’s case (supra) on almost identical facts where the prosecutrix herself was already a married woman having three children. The complaint of alleged rape on false promise of marriage was made five years after they had started having relations. She even got pregnant from the loins of the accused. Therein she got divorce from her existing marriage much after the relations between the parties started. This Court found that there cannot be any stretch of imagination that the prosecutrix had given her consent for sexual relationship under misconception. The accused was not held to be guilty. Relevant paragraph 21 thereof is extracted below: “21. In the instant case, the prosecutrix who herself was a married woman having three children, could not be said to have acted under the alleged false promise given by the appellant or under the misconception of fact while giving the consent to have sexual relationship with the appellant. Undisputedly, she continued to have such relationship with him at least for about five years till she gave complaint in the year 2015. Even if the allegations made by her in her deposition before the court, are taken on their face value, then also to construe such allegations as ‘rape’ by the appellant, would be stretching the case too far.",
+     "also": [],
+     "variants": {
+      "M safety net": 2,
+      "M safety net (challenger)": 2
+     },
+     "n": 13
+    },
+    {
+     "h": "12301e4792c96757",
+     "doc": 1000251599,
+     "pn": "19/3",
+     "page": 16,
+     "title": "ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)",
+     "text": "Such cases must be treated differently. If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape. The acknowledged consensual physical relationship between the parties would not constitute an offence under Section 376 of the IPC.” 10.6 The High Court of Delhi in Sujit Ranjan v. State [Criminal Appeal No. 248 of 2011 decided on 27.01.2011], after referring to and considering several decisions of this Court, ultimately in paragraph 16, observed and held as under: “16. Legal position which can be culled out from the judicial pronouncements referred above is that the consent given by the prosecutrix to have sexual intercourse with whom she is in love, on a promise that he would marry her on a later date, cannot be considered as given under “misconception of fact”. Whether consent given by the prosecutrix to sexual intercourse is voluntary or whether it is given under “misconception of fact” depends on the facts of each case. While considering the question of consent, the Court must consider the evidence before it and the surrounding circumstances before reaching a conclusion. Evidence adduced by the prosecution has to be weighed keeping in mind that the burden is on the prosecution to prove each and every ingredient of the offence. Prosecution must lead positive evidence to give rise to inference beyond reasonable doubt that accused had no intention to marry prosecutrix at all from inception and that promise made was false to his knowledge.",
+     "also": [],
+     "variants": {
+      "A today": 5
+     },
+     "n": 14
+    },
+    {
+     "h": "579065ea5454a6eb",
+     "doc": 1000256647,
+     "pn": "12",
+     "page": 6,
+     "title": "RAVISH SINGH RANA versus STATE OF UTTARAKHAND & ANR. (28-04-2025)",
+     "text": "12. In Deepak Gulati v. State of Haryana8, this Court observed: “21. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise and not fulfilling a promise. Thus, the court must examine whether there was made, at an early stage, a false promise of marriage by the accused; and whether the consent involved was given after fully understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutor agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches to a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.” (2013) 7 SCC 675 2728\b",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 10
+     },
+     "n": 15
+    },
+    {
+     "h": "828614d66697398c",
+     "doc": 1000256438,
+     "pn": "27",
+     "page": 9,
+     "title": "RAJNISH SINGH @ SONI versus STATE OF U.P. AND ANOTHER (02-03-2025)",
+     "text": "27. In conclusion, the Court held that unless it can be shown that the physical relationship was purely because of the promise of marriage 2024 SCC OnLine SC 3471 312\b and without being influenced by any other consideration, it cannot be said that there was vitiation of consent under misconception of fact. It was further held that even if it is assumed that a false promise of marriage was made to the complainant initially by the accused, the fact that the relationship continued for a period of nine long years would render the plea of the complainant that her consent for all these years was under misconception of the fact that the accused would marry her implausible.",
+     "also": [],
+     "variants": {
+      "S site shown": 3
+     },
+     "n": 16
+    },
+    {
+     "h": "ffece49088efe767",
+     "doc": 1000256293,
+     "pn": "16",
+     "page": 8,
+     "title": "MANISH YADAV versus STATE OF UTTAR PRADESH & ANR. (22-01-2025)",
+     "text": "16. This Court, in the case of Deepak Gulati v. State of Haryana9, while discussing the nature of the ‘consent’ in cases where sexual intercourse occurs on the promise of marriage, distinguished between a mere ‘breach of promise’ and ‘not fulfilling a false promise’. The Court held as follows: “21. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.",
+     "also": [],
+     "variants": {
+      "R challenger re-ranker": 8
+     },
+     "n": 17
+    },
+    {
+     "h": "ffb590f52b4af626",
+     "doc": 1000251143,
+     "pn": "20",
+     "page": 14,
+     "title": "DR. DHRUVARAM MURLIDHAR SONAR versus THE STATE OF MAHARASHTRA & ORS. (22-11-2018)",
+     "text": "20. Thus, there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception. There is also a distinction between mere breach of a promise and not fulfilling a false promise. If the accused has not made the promise with the sole intention to seduce the prosecutrix to indulge in sexual acts, such an act would not amount to rape. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused and not solely on account of the misconception created by accused, or where an accused, on account of circumstances which he could not have foreseen or which were beyond his control, was unable to marry her despite having every intention to do. Such cases must be treated differently. If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape. The acknowledged consensual physical relationship between the parties would not constitute an offence under Section 376 of the IPC.",
+     "also": [],
+     "variants": {
+      "A today": 2,
+      "R challenger re-ranker": 1,
+      "S site shown": 5
+     },
+     "n": 18
+    },
+    {
+     "h": "ef3e6414437b67fb",
+     "doc": 1000251599,
+     "pn": "10/3",
+     "page": 11,
+     "title": "ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)",
+     "text": "There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.",
+     "also": [],
+     "variants": {
+      "A today": 8,
+      "R challenger re-ranker": 9,
+      "S site shown": 2
+     },
+     "n": 19
+    }
+   ],
+   "lists": {
+    "A today": [
+     {
+      "doc": 1000256110,
+      "h": "9a8533b080638c87",
+      "also": []
+     },
+     {
+      "doc": 1000251143,
+      "h": "ffb590f52b4af626",
+      "also": []
+     },
+     {
+      "doc": 1000256550,
+      "h": "0b2f9989883de191",
+      "also": []
+     },
+     {
+      "doc": 1000254666,
+      "h": "b5347374dc2630cc",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "12301e4792c96757",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "8339354b4f9340e9",
+      "also": []
+     },
+     {
+      "doc": 40427,
+      "h": "aa665e94f4f3dce3",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "ef3e6414437b67fb",
+      "also": []
+     },
+     {
+      "doc": 1000256496,
+      "h": "a5927d4547ae58b8",
+      "also": []
+     },
+     {
+      "doc": 1000254666,
+      "h": "cad3b16a4660054e",
+      "also": []
+     }
+    ],
+    "R challenger re-ranker": [
+     {
+      "doc": 1000251143,
+      "h": "ffb590f52b4af626",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "8339354b4f9340e9",
+      "also": []
+     },
+     {
+      "doc": 1000256110,
+      "h": "9a8533b080638c87",
+      "also": []
+     },
+     {
+      "doc": 40427,
+      "h": "aa665e94f4f3dce3",
+      "also": []
+     },
+     {
+      "doc": 1000254666,
+      "h": "b5347374dc2630cc",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "360d16cfe6807d82",
+      "also": []
+     },
+     {
+      "doc": 1000251932,
+      "h": "8542308cee8535d4",
+      "also": []
+     },
+     {
+      "doc": 1000256293,
+      "h": "ffece49088efe767",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "ef3e6414437b67fb",
+      "also": []
+     },
+     {
+      "doc": 1000256647,
+      "h": "579065ea5454a6eb",
+      "also": []
+     }
+    ],
+    "M safety net": [
+     {
+      "doc": 1000256438,
+      "h": "1478d5692468f3bb",
+      "also": []
+     },
+     {
+      "doc": 1000255579,
+      "h": "c1a771ff90336f1a",
+      "also": []
+     }
+    ],
+    "M safety net (challenger)": [
+     {
+      "doc": 1000256438,
+      "h": "1478d5692468f3bb",
+      "also": []
+     },
+     {
+      "doc": 1000255579,
+      "h": "c1a771ff90336f1a",
+      "also": []
+     }
+    ],
+    "S site shown": [
+     {
+      "doc": 1000256134,
+      "h": "61927315166394d4",
+      "also": []
+     },
+     {
+      "doc": 1000251599,
+      "h": "ef3e6414437b67fb",
+      "also": []
+     },
+     {
+      "doc": 1000256438,
+      "h": "828614d66697398c",
+      "also": []
+     },
+     {
+      "doc": 19076,
+      "h": "2748c62fa119d0cf",
+      "also": []
+     },
+     {
+      "doc": 1000251143,
+      "h": "ffb590f52b4af626",
+      "also": []
+     },
+     {
+      "doc": 1000256110,
+      "h": "9a8533b080638c87",
+      "also": []
+     }
+    ]
+   },
+   "spend": {
+    "rerank_tokens": 35114,
+    "embed_tokens": 45
+   }
+  }
+ ]
+}

@@ -342,6 +342,75 @@ with redirect_stdout(buf):
     rc_head = P.main(["--out", os.path.join(tmp, "z"), "--max-rerank-tokens", "1000", "--dry-run"])
 P.index_head = real_head
 check("another index head is refused", rc_head == 1 and "refused" in buf.getvalue(), buf.getvalue())
+# ---- the final (sealed-run) recipe ----------------------------------------------------------------------------------------------------------------------
+class ModelClient(FakeClient):
+    """Remembers which re-ranker model each call asked for, and lets a model change a passage's score."""
+
+    def __init__(self, model_overrides=None, **kw):
+        super().__init__(**kw)
+        self.models, self.model_overrides = [], model_overrides or {}
+
+    def rerank(self, query, docs, model, top_k):
+        self.models.append(model)
+        resp = super().rerank(query, docs, model, top_k)
+        for r in resp.results:
+            for frag, val in self.model_overrides.get(model, {}).items():
+                if frag in docs[r.index]:
+                    r.relevance_score = val
+        resp.results.sort(key=lambda r: -r.relevance_score)
+        return resp
+
+
+mc = ModelClient({"rerank-3-lite": {"case 5 paragraph 1 ": 0.99}})
+ef = P.Engine(metas, M, mc, P.Spend(10**9), fts, lambda q: [3, 4], sleep=lambda s: None)
+lf = ef.lists_for_final(Q, "rerank-3-lite")
+check("the final recipe returns exactly A, R, S and the two nets", sorted(lf) == sorted(P.FINAL_VERSIONS), sorted(lf))
+check("one embedding and two re-rank calls: rerank-2 first, the challenger second, on the same candidates", mc.models == ["rerank-2", "rerank-3-lite"] and ef.client.embed_calls == 1, (mc.models, ef.client.embed_calls))
+check("A and R hold ten passages each, from the same 60 candidates", len(lf["A today"]) == 10 and len(lf[P.R_VERSION]) == 10 and set(lf["A today"]) | set(lf[P.R_VERSION]) <= set(engine().retrieve(Q)["cand"]))
+check("the challenger's own scores reorder its list (a passage it likes is first), and A is not affected", metas[lf[P.R_VERSION][0]]["text"].startswith("") and "case 5 paragraph 1 " in metas[lf[P.R_VERSION][0]]["text"] and "case 5 paragraph 1 " not in metas[lf["A today"][0]]["text"] or lf["A today"] != lf[P.R_VERSION])
+shown_a, shown_r = {metas[r]["h"] for r in lf["A today"]}, {metas[r]["h"] for r in lf[P.R_VERSION]}
+check("each net holds only merged-top-5 passages that its own arm's ten do not show", all(metas[r]["h"] not in shown_a for r in lf["M safety net"]) and all(metas[r]["h"] not in shown_r for r in lf[P.M_R_VERSION]))
+check("tokens are counted per model", set(ef.spend.rerank_by_model) == {"rerank-2", "rerank-3-lite"} and sum(ef.spend.rerank_by_model.values()) == ef.spend.rerank and "rerank_tokens_by_model" in ef.spend.as_dict())
+check("the site arm is carried whole", lf["S site shown"] == [3, 4])
+rq = {"id": "RX1", "domain": "B", "kind": "legal", "text": Q, "half": "dev"}
+rec10 = P.build_question(rq, lf, metas, hdocs, title, None, top_k=10)
+rec5 = P.build_question(rq, lf, metas, hdocs, title, None, top_k=5)
+check("pooling the top 10 of both arms puts places 6 to 10 into the rows (more rows, ranks up to 9 or 10 present); the top 5 does not", len(rec10["rows"]) > len(rec5["rows"]) and max(r["variants"].get("A today", 0) for r in rec10["rows"]) >= 9 and max(r["variants"].get("A today", 0) for r in rec5["rows"]) < 9)
+check("the net and site versions are pooled whole, the re-rankers by top-k", all(any(r["variants"].get(P.M_R_VERSION) for r in rec10["rows"]) or not lf[P.M_R_VERSION] for _ in [0]))
+tmp_f = tempfile.mkdtemp()
+ordered_f, stopped_f = P.run({}, [rq], {}, ModelClient() and P.Engine(metas, M, ModelClient(), P.Spend(10**9), fts, None, sleep=lambda s: None), hdocs, title, tmp_f, log=lambda *a: None, challenger="rerank-3-lite", top_k=10)
+check("run() with a challenger writes the final versions and the pooled rows", stopped_f is None and set(ordered_f[0]["lists"]) == {"A today", P.R_VERSION, "M safety net", P.M_R_VERSION}, (stopped_f, sorted(ordered_f[0]["lists"])))
+
+# the guard that decides whether a sealed run may start: nothing may be handed out and then refused
+def args(**kw):
+    base = dict(half="sealed", final=True, final_recipe=True, challenger_model="rerank-3-lite", top_k=10, no_site=False, allow_other_index=False, max_rerank_tokens=2_000_000,
+                supplement=[os.path.join(P.ROOT, d) for d in P.FINAL_SIDE_INDEXES], dry_run=False)
+    base.update(kw)
+    return SimpleNamespace(**base)
+ok_rules, ok_code = ("a" * 64, "a" * 64), ("c" * 40, [])
+check("the guard lets a complete, frozen, clean sealed request through", P.final_guard(args(), ok_code, ok_rules) == [], P.final_guard(args(), ok_code, ok_rules))
+check("the guard does not apply to the tuning half (a rehearsal may use the final recipe freely)", P.final_guard(args(half="dev", no_site=True, supplement=[]), ok_code, ok_rules) == [])
+for label, kw, frag in [("a sealed run without the final recipe", dict(final_recipe=False), "needs --final-recipe"), ("another challenger", dict(challenger_model="rerank-3"), "challenger"),
+                        ("top 5 instead of 10", dict(top_k=5), "top 10"), ("no site arm", dict(no_site=True), "no-site"), ("another index head allowed", dict(allow_other_index=True), "allow-other-index"),
+                        ("a cap above 2 million", dict(max_rerank_tokens=3_000_000), "cap"), ("a missing side index", dict(supplement=[]), "side index")]:
+    got = P.final_guard(args(**kw), ok_code, ok_rules)
+    check(f"the guard refuses {label}", bool(got) and any(frag in g for g in got), got)
+check("the guard refuses rules that differ from the frozen hash", any("frozen hash" in g for g in P.final_guard(args(), ok_code, ("b" * 64, "a" * 64))))
+check("the guard refuses when no freeze exists", any("no frozen rules" in g for g in P.final_guard(args(), ok_code, ("a" * 64, None))))
+check("the guard refuses a dirty checkout", any("uncommitted" in g for g in P.final_guard(args(), ("c" * 40, ["review_tools/pool_runner.py"]), ok_rules)))
+handed = []
+real_select = P.RQ.select
+P.RQ.select = lambda *a, **k: handed.append(1) or []
+buf = io.StringIO()
+with redirect_stdout(buf):
+    rc_g = P.main(["--out", os.path.join(tmp, "g1"), "--max-rerank-tokens", "1000", "--half", "sealed", "--final", "--label", "x"])
+check("a sealed request without the final recipe is refused BEFORE the questions are handed out (select() was never called)", rc_g == 5 and not handed and "refused before the questions were handed out" in buf.getvalue(), (rc_g, handed, buf.getvalue()[:200]))
+buf = io.StringIO()
+with redirect_stdout(buf):
+    rc_g2 = P.main(["--out", os.path.join(tmp, "g2"), "--max-rerank-tokens", "1000", "--half", "sealed", "--final", "--label", "x", "--dry-run", "--final-recipe"])
+check("a sealed DRY run never hands the questions out either, and names what would block a real run", rc_g2 == 0 and not handed and "not handed out now" in buf.getvalue(), (rc_g2, handed, buf.getvalue()[:300]))
+P.RQ.select = real_select
+
 src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "pool_runner.py"), encoding="utf-8").read()
 check("the runner never reads the private key", "real30_key" not in src.replace("The private key is never read here", "") and "real30_score" not in src)
 

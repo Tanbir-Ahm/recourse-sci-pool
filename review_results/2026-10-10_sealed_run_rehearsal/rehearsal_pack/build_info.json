@@ -1,0 +1,16 @@
+{
+ "rehearsal": true,
+ "questions": 3,
+ "prompt_files": 3,
+ "chats": 6,
+ "passages": 49,
+ "per_question": {
+  "R01": 14,
+  "R09": 16,
+  "R20": 19
+ },
+ "pool_sha256": "4e65b9b19f84e5e51d67c48cddb64b7948ec41fc7ffd2cf9b1127de04e10a987",
+ "zip_sha256": "a4a7025e269f2926bd58a73204d4ea60db4bce48ef676455aec4c90376b9078a",
+ "zip_bytes": 25624,
+ "run_label": ""
+}

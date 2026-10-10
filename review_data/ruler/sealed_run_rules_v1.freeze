@@ -1,0 +1,7 @@
+SEALED_RUN_RULES_v1.md  sha256 1936fdc23a022a9cfeeb76c1b5e1bdb170948bf727c7ceb50d4635fc0d7ad29c
+Frozen 2026-10-10 on the owner's instruction: "Accept all defaults and build it".
+Accepted as drafted: every threshold in sections 4 to 6; side indexes in the sealed run (yes); reference arm S (yes); safety-net tail as an arm (yes);
+the 2026-10-12 bucket-refresh reminder is answered "after the sealed run" (yes); timing (default 5): the run waits until the register patch has been applied by the owner
+(staging first) and Mr. Advocate has reviewed the 16 older rulings, if that is a matter of weeks. The machinery is built now; the sealed questions are NOT handed out by the build.
+Amendments after this point: appended to SEALED_RUN_RULES_v1.md under "Amendments" with a date and a reason, only before the sealed hand-out; the original hash above stays the record of what was accepted.
+The sealed questions have not been opened, handed out or searched (real_frozen_runs.jsonl holds no sealed entry; checked by review_tools/sealed_preflight.py once built).
