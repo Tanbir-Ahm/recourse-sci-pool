@@ -1,0 +1,423 @@
+{
+ "index_passages": 238762,
+ "judgments": 10522,
+ "marker_audit": {
+  "PWDVA": {
+   "passages": 262,
+   "judgments": 45,
+   "judgments_3plus": 18
+  },
+  "NDPS": {
+   "passages": 2584,
+   "judgments": 462,
+   "judgments_3plus": 222
+  },
+  "POCSO": {
+   "passages": 721,
+   "judgments": 106,
+   "judgments_3plus": 58
+  },
+  "SC/ST": {
+   "passages": 543,
+   "judgments": 194,
+   "judgments_3plus": 52
+  },
+  "NI Act": {
+   "passages": 1935,
+   "judgments": 398,
+   "judgments_3plus": 186
+  },
+  "PMLA": {
+   "passages": 810,
+   "judgments": 77,
+   "judgments_3plus": 48
+  },
+  "UAPA": {
+   "passages": 568,
+   "judgments": 94,
+   "judgments_3plus": 40
+  },
+  "DPA": {
+   "passages": 536,
+   "judgments": 294,
+   "judgments_3plus": 56
+  },
+  "JJ Act": {
+   "passages": 677,
+   "judgments": 149,
+   "judgments_3plus": 67
+  },
+  "BNS/IPC": {
+   "passages": 33184,
+   "judgments": 7643,
+   "judgments_3plus": 4262
+  },
+  "BNSS/CrPC": {
+   "passages": 28057,
+   "judgments": 6122,
+   "judgments_3plus": 2974
+  },
+  "BSA/IEA": {
+   "passages": 6486,
+   "judgments": 1845,
+   "judgments_3plus": 743
+  },
+  "PC Act": {
+   "passages": 3374,
+   "judgments": 974,
+   "judgments_3plus": 401
+  },
+  "Arms Act": {
+   "passages": 2056,
+   "judgments": 801,
+   "judgments_3plus": 253
+  },
+  "IT Act": {
+   "passages": 234,
+   "judgments": 63,
+   "judgments_3plus": 16
+  },
+  "ITPA": {
+   "passages": 21,
+   "judgments": 14,
+   "judgments_3plus": 1
+  },
+  "PCMA": {
+   "passages": 6,
+   "judgments": 5,
+   "judgments_3plus": 0
+  },
+  "PCR Act": {
+   "passages": 30,
+   "judgments": 23,
+   "judgments_3plus": 2
+  },
+  "MV Act": {
+   "passages": 210,
+   "judgments": 61,
+   "judgments_3plus": 16
+  },
+  "PDPP": {
+   "passages": 91,
+   "judgments": 27,
+   "judgments_3plus": 11
+  },
+  "Companies Act": {
+   "passages": 737,
+   "judgments": 248,
+   "judgments_3plus": 69
+  },
+  "CGST": {
+   "passages": 20,
+   "judgments": 5,
+   "judgments_3plus": 2
+  },
+  "Muslim Women Act": {
+   "passages": 3,
+   "judgments": 3,
+   "judgments_3plus": 0
+  }
+ },
+ "fired": {
+  "R01": {
+   "BNSS/CrPC": {
+    "lawyer": [
+     "police remand"
+    ],
+    "lay_high": [
+     "police took my phone or belongings",
+     "complaint to a Magistrate because police did nothing"
+    ],
+    "lay_broad": [
+     "arrest",
+     "remand"
+    ]
+   }
+  },
+  "R02": {
+   "BNS/IPC": {
+    "lay_broad": [
+     "cheating"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lay_broad": [
+     "arrest"
+    ]
+   }
+  },
+  "R03": {
+   "BNSS/CrPC": {
+    "lay_broad": [
+     "arrest"
+    ]
+   }
+  },
+  "R04": {
+   "BNSS/CrPC": {
+    "lawyer": [
+     "anticipatory bail"
+    ]
+   }
+  },
+  "R05": {
+   "PMLA": {
+    "lay_broad": [
+     "financial fraud investigation"
+    ]
+   },
+   "BNS/IPC": {
+    "lay_broad": [
+     "fraud"
+    ]
+   },
+   "Companies Act": {
+    "lawyer": [
+     "serious fraud investigation"
+    ]
+   }
+  },
+  "R06": {
+   "BNS/IPC": {
+    "lawyer": [
+     "theft"
+    ],
+    "lay_broad": [
+     "theft"
+    ]
+   }
+  },
+  "R07": {
+   "NI Act": {
+    "lay_high": [
+     "my cheque bounced",
+     "case filed over a bounced cheque"
+    ]
+   },
+   "BSA/IEA": {
+    "lay_broad": [
+     "evidence",
+     "recording"
+    ]
+   }
+  },
+  "R08": {
+   "NI Act": {
+    "lawyer": [
+     "section 138 cheque-bounce case"
+    ],
+    "lay_high": [
+     "cheque-bounce case"
+    ]
+   }
+  },
+  "R09": {
+   "NI Act": {
+    "lay_broad": [
+     "bank did not clear cheque"
+    ]
+   },
+   "PMLA": {
+    "lay_high": [
+     "ED froze my bank account"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lay_broad": [
+     "police complaint"
+    ]
+   }
+  },
+  "R10": {
+   "NDPS": {
+    "lawyer": [
+     "NDPS case"
+    ]
+   }
+  },
+  "R11": {
+   "BSA/IEA": {
+    "lawyer": [
+     "confession"
+    ]
+   }
+  },
+  "R12": {
+   "BNS/IPC": {
+    "lay_broad": [
+     "cheating"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lawyer": [
+     "quashing of FIR"
+    ],
+    "lay_high": [
+     "no FIR filed"
+    ]
+   }
+  },
+  "R13": {},
+  "R14": {
+   "BNS/IPC": {
+    "lay_broad": [
+     "cheating"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lay_high": [
+     "no FIR filed"
+    ]
+   },
+   "Companies Act": {
+    "lay_broad": [
+     "business collected money and failed to return it"
+    ]
+   }
+  },
+  "R15": {
+   "DPA": {
+    "lay_broad": [
+     "husband\u2019s family asking for money"
+    ]
+   },
+   "JJ Act": {
+    "lawyer": [
+     "Child Welfare Committee"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lay_broad": [
+     "arrest"
+    ]
+   }
+  },
+  "R16": {
+   "PWDVA": {
+    "lawyer": [
+     "domestic violence complaint under the DV Act"
+    ]
+   }
+  },
+  "R17": {},
+  "R18": {
+   "POCSO": {
+    "lawyer": [
+     "POCSO case"
+    ]
+   }
+  },
+  "R19": {
+   "BNSS/CrPC": {
+    "lay_high": [
+     "no FIR filed"
+    ]
+   }
+  },
+  "R20": {
+   "POCSO": {
+    "lay_high": [
+     "rape or sexual assault of someone under 18"
+    ]
+   },
+   "BNS/IPC": {
+    "lawyer": [
+     "rape"
+    ]
+   }
+  },
+  "R21": {
+   "BSA/IEA": {
+    "lawyer": [
+     "electronic evidence admissibility",
+     "section 65B certificate"
+    ],
+    "lay_high": [
+     "CCTV footage as evidence"
+    ],
+    "lay_broad": [
+     "evidence"
+    ]
+   }
+  },
+  "R22": {},
+  "R23": {
+   "BNS/IPC": {
+    "lay_broad": [
+     "murder"
+    ]
+   }
+  },
+  "R24": {
+   "POCSO": {
+    "lawyer": [
+     "Special Court under POCSO"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lawyer": [
+     "cognizance"
+    ],
+    "lay_high": [
+     "need bail after arrest"
+    ],
+    "lay_broad": [
+     "arrest",
+     "police complaint"
+    ]
+   }
+  },
+  "R25": {
+   "SC/ST": {
+    "lawyer": [
+     "anticipatory bail under section 18/18A SC/ST Act"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lawyer": [
+     "anticipatory bail"
+    ],
+    "lay_high": [
+     "need bail after arrest"
+    ],
+    "lay_broad": [
+     "arrest"
+    ]
+   }
+  },
+  "R26": {
+   "BSA/IEA": {
+    "lay_broad": [
+     "evidence"
+    ]
+   }
+  },
+  "R27": {
+   "PWDVA": {
+    "lawyer": [
+     "application under section 12 DV Act"
+    ]
+   }
+  },
+  "R28": {},
+  "R29": {
+   "BNSS/CrPC": {
+    "lay_broad": [
+     "arrest"
+    ]
+   }
+  },
+  "R30": {
+   "BNS/IPC": {
+    "lay_broad": [
+     "fraud"
+    ]
+   },
+   "BNSS/CrPC": {
+    "lay_high": [
+     "police refused to register an FIR"
+    ]
+   }
+  }
+ }
+}

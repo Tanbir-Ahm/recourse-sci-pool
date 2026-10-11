@@ -14,10 +14,10 @@
 |---|---|
 | **B** | nothing (today's final recipe) |
 | **C** | **cap of 2 per judgment in the top 5**: fill places 1 to 5 in score order, skipping a passage when two passages of its judgment already hold places; skipped passages follow in score order from place 6; places 6 to 10 otherwise unchanged |
-| **N1** | **named-Act boost, factor 1.10**: if the question contains a trigger phrase of an Act in Appendix A, passages containing a marker of that Act have their final score multiplied by 1.10 (once per passage; the section boost is unchanged) |
+| **N1** | **named-Act boost, factor 1.10, judgment-level label**: if the question fires an Act of the Machine Spec (workbook sheet 'Machine Spec (draft)', 13 Acts, literal anchors), every passage of every judgment that carries that Act's strong marker in **3 or more** passages has its final score multiplied by 1.10 (once per passage; the section boost is unchanged). General codes (BNS/IPC, BNSS/CrPC, BSA/IEA) never boost |
 | **N2** | the same with factor **1.25** |
 
-The Appendix A table is fixed before any final question is searched and cannot be extended afterwards. It was drafted from the Acts the index is mostly about, not from the failing questions; Mr. Advocate should review it before the freeze. A change that fails stage D is dropped, not retuned; a new magnitude needs an amendment before stage D starts.
+The Machine Spec is fixed before any final question is searched and cannot be extended afterwards. It was written from the owner's trigger workbook (`review_data/ruler/inputs/2026-10-11_trigger_workbook_with_claude_appends.xlsx`: five original sheets untouched, three appended: 'Claude Review', 'Index Reality Check', 'Machine Spec (draft)'), not from any result of this test. Mr. Advocate reviews it before the freeze. A change that fails stage D is dropped, not retuned; a new magnitude needs an amendment before stage D starts.
 
 ## 2. Data
 - **Stage D:** the 19 tuning questions (R01, R02, R04, R06, R08, R09, R11, R12, R14, R15, R17, R19 to R22, R24, R26, R28, R29; the sealed 11 are not among them) and, labelled "known failures, a check not a test", R16, R23, R03.
@@ -51,7 +51,7 @@ The chosen recipe (V or B) is held to the **unchanged floors** F1 to F4 of `SEAL
 Whether a change helps questions unlike the new ones; whether two changes together help; anything a lawyer would grade; answer writing; real users. Twenty-four questions cannot show a difference smaller than about 8 to 10 points; the rules ask for **no loss** plus a gain on the look-alikes, not for a large gain.
 
 ## 8. Order of events and hygiene
-1. Owner accepts or amends; Mr. Advocate reviews Appendix A; the file is frozen and hashed.
+1. Owner accepts or amends; Mr. Advocate reviews the Machine Spec and the 'Claude Review' sheet of the workbook; the file is frozen and hashed.
 2. Code the three arms in `pool_runner.py` (a `--variant` option, off by default, output unchanged without it), with tests; commit; record the commit in every run label.
 3. Stage D; commit its table. Arms that fail are dropped.
 4. In parallel, the question writer prepares the new questions; they are sealed with a freeze hash and a hand-out guard (the same machinery as the 30) **before** any search. The writer sees none of the results of stages D or F.
@@ -67,20 +67,10 @@ Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ru
 2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; at least 24, in the columns of the owner's 30-question workbook]
 3. Is another marking round of about 50 chats acceptable to J and S? [yes, confirmed 2026-10-10]
 4. Stage D spend under about $1? [yes, approved 2026-10-10]
-5. Mr. Advocate reviews Appendix A before the freeze? [yes, confirmed 2026-10-10; the freeze waits for his review]
+5. Mr. Advocate reviews the Machine Spec (workbook, 13 Acts) before the freeze? [yes, confirmed 2026-10-10; the freeze waits for his review; the first 9-row Appendix A is withdrawn]
 
-## Appendix A: Acts, trigger phrases (in the question) and markers (in the passage); case-insensitive; DRAFT
-| Act | trigger phrases | passage markers |
-|---|---|---|
-| Protection of Women from Domestic Violence Act, 2005 | domestic violence; DV Act; shared household; protection order; residence order | domestic violence; protection of women |
-| Narcotic Drugs and Psychotropic Substances Act, 1985 | NDPS; narcotic; ganja; charas; heroin; contraband; psychotropic | NDPS; narcotic drugs |
-| Protection of Children from Sexual Offences Act, 2012 | POCSO; protection of children from sexual | POCSO; protection of children from sexual |
-| SC/ST (Prevention of Atrocities) Act, 1989 | SC/ST; atrocities; scheduled caste; scheduled tribe | atrocities; SC/ST; scheduled castes |
-| Negotiable Instruments Act, 1881 | cheque; section 138; bounced; dishonour | negotiable instruments; cheque |
-| Prevention of Money-Laundering Act, 2002 | PMLA; money laundering; Enforcement Directorate | prevention of money; PMLA |
-| Unlawful Activities (Prevention) Act, 1967 | UAPA; unlawful activities | UAPA; unlawful activities |
-| Dowry Prohibition Act, 1961 | dowry | dowry prohibition |
-| Juvenile Justice Act | juvenile; Juvenile Justice | juvenile justice |
+## Appendix A: withdrawn
+The first draft table (9 Acts, with markers such as 'cheque', 'prevention of money', 'contraband', 'protection of women') is withdrawn: the owner's trigger workbook shows those markers misfire, and the index check confirms the general-code families cannot discriminate. The Machine Spec in the workbook replaces it. For stage F the new-question workbook gets one more column, 'Act(s) the question concerns (if any)', so trigger precision and recall can be measured before any search.
 
 ## Disclosure: a look at the data before the freeze (2026-10-10), and why W is gone
 Before this file was frozen the owner asked whether the wider pool W was wise. A descriptive look (`review_results/2026-10-10_wide_pool_look/`, `wide_pool_look.py`, about $0.05, the 19 tuning and 11 sealed questions, all already used) ran W and three alternatives (Wd: pool of 100 with places 61 to 100 discounted by 0.90; L: 60 plus 15 best-by-meaning; J: "case first", 60 plus the 3 best passages of each of the 10 judgments with the highest summed meaning-list score over the top 300). Checks: the re-ranker's scores did not depend on the size of the call (difference 0.0000), the baseline B reproduced the sealed run's saved top 5 on 11 of 11 questions. Findings, which are the only use made of the look:
@@ -89,6 +79,9 @@ Before this file was frozen the owner asked whether the wider pool W was wise. A
 - **R23 is not a pool-size problem:** the key judgment's passage at meaning rank 46 (fused place 88, inside a pool of 100) ends 24th; the passage that the re-ranker likes (3rd) is at meaning rank 248, outside every list. An earlier statement that a pool of 100 would put it 2nd or 3rd was wrong.
 - The earlier remark that deeper lists "add noise" came from the safety-net depth in the re-ranker test pack, not from the candidate pool; for the pool the look shows churn without a gain, not harm.
 Decision (proposed to the owner): drop W; do not add Wd, L or J. R23's kind of miss (the right passage deep in the meaning list) is left as a known limitation. These were chosen after a look at dev data, so they are tested only on the new questions.
+
+### Second look, 2026-10-11 (the owner's trigger workbook)
+`review_results/2026-10-11_trigger_sheet_review/`. Findings used: the workbook's separation of question triggers from passage markers is adopted; its false-positive audit is right about the first draft table; the three general codes mark 12 to 14% (BNS/IPC, BNSS/CrPC) and 2.7% (BSA) of all passages and are excluded from boosting; six families have under 100 marked passages in this index and are parked; a passage-level marker marks only 19 to 40% of an on-topic judgment's passages (operative paragraphs say 'the Act'), so the label is placed at the judgment level (3 or more marked passages), a design choice made from this audit and not tested on results; the workbook's long phrases do not match real questions, so literal anchors are used (they fire on 11 of the 30 used questions, none looked wrong), and semantic routing was tried and rejected (nearest-Act cosines 0.2 to 0.5 for every question). These were looked at on already-used questions.
 
 ## Amendments
 (none)

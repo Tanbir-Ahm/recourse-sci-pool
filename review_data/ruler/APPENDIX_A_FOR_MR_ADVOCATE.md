@@ -1,3 +1,5 @@
+**SUPERSEDED 2026-10-11:** do not use this table. Send Mr. Advocate the workbook `2026-10-11_trigger_workbook_with_claude_appends.xlsx` (sheets 'Claude Review' and 'Machine Spec (draft)').
+
 # For Mr. Advocate: please check this short table (PRIVATE; 5 minutes)
 
 We are testing a small change to the search: if a person's question names one of these Acts, passages that mention the same Act get a slight boost. The table says which words in a **question** switch the boost on (trigger phrases) and which words in a **passage** count as mentioning the Act (markers). Nothing here says anything about what the law is.
