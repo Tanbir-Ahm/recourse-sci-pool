@@ -5,7 +5,7 @@
 ## In one page
 1. **What it decides:** whether any of three small changes (C, N1, N2; the wider pool W was dropped before the freeze, see the disclosure at the end) to the search recipe, alone, is better than today's recipe (rerank-3-lite, 60 candidates), and, in the same run, whether the chosen recipe meets the connection floors F1 to F4 of `SEALED_RUN_RULES_v1.md` on questions nobody has tuned on. It decides nothing about the layperson mode, answer writing, or the verified answer path.
 2. **Why new questions:** the sealed 11 and the tuning 19 have been looked at; R16, R23 and R03 are the reason the changes exist. They may be used to check that a change does what it was built for (section 3), never as evidence that it works.
-3. **Two stages.** Stage D (development, free of marks): a mechanical gate on the 19 tuning questions plus the three known failures. Stage F (final): one run, one marking round, on at least 24 NEW questions, all arms in one shuffled list, once.
+3. **Two stages.** Stage D (development, free of marks): a mechanical gate on the 19 tuning questions plus the three known failures. Stage F (final): one run, one marking round, on 30 NEW questions, all arms in one shuffled list, once.
 4. **Status quo wins ties.** A change is adopted only if it passes rules 1 to 6 of section 5. Otherwise the recipe stays as it is.
 5. **A pass is not "X% accurate"** and is not a lawyer's clearance. Mr. Advocate reads every passage anyone marked Misleading plus a random 20 before anything leaves the project.
 
@@ -21,7 +21,7 @@ The Machine Spec is fixed before any final question is searched and cannot be ex
 
 ## 2. Data
 - **Stage D:** the 19 tuning questions (R01, R02, R04, R06, R08, R09, R11, R12, R14, R15, R17, R19 to R22, R24, R26, R28, R29; the sealed 11 are not among them) and, labelled "known failures, a check not a test", R16, R23, R03.
-- **Stage F:** **at least 24 new questions** (30 preferred), same workbook format as the owner's 30, written **by someone who has not seen the sealed or tuning questions** (Mr. Advocate preferred; not Claude), with the key (expected answer, key authorities, older rulings) written and sealed with a freeze hash **before any search**, the same way `real30_v1.json` was. Required mix: the domains A to K spread as before; **at least 8 look-alike questions** (a question whose obvious neighbour is a different Act or section: for example a question under one special Act whose wording also fits ordinary criminal procedure), of which at least 3 do **not** name the Act in the question's own words; at least 2 index-gap or control questions, reported apart.
+- **Stage F:** **30 new questions (27 scored in domains A to J, 3 controls in K) plus up to 3 reserves; 24 usable is the floor below which the test is cancelled** (full rules: `review_data/ruler/question_rules/New_Test_Questions_Rules_and_Guidelines.docx`), same workbook format as the owner's 30, written **by someone who has not seen the sealed or tuning questions** (Mr. Advocate preferred; not Claude), with the key (expected answer, key authorities, older rulings) written and sealed with a freeze hash **before any search**, the same way `real30_v1.json` was. Required mix: the domains A to K spread as before; **at least 8 look-alike questions** (a question whose obvious neighbour is a different Act or section: for example a question under one special Act whose wording also fits ordinary criminal procedure), of which at least 3 do **not** name the Act in the question's own words; at least 2 index-gap or control questions, reported apart.
 
 ## 3. Stage D: the mechanical gate (no marks; cost under about $1)
 Each of C, N1, N2 is run on the stage D questions. It goes to stage F only if **all** hold, against B on the same questions:
@@ -56,7 +56,7 @@ Whether a change helps questions unlike the new ones; whether two changes togeth
 3. Stage D; commit its table. Arms that fail are dropped.
 4. In parallel, the question writer prepares the new questions; they are sealed with a freeze hash and a hand-out guard (the same machinery as the 30) **before** any search. The writer sees none of the results of stages D or F.
 5. Preflight (rules hash, clean pushed checkout, index head, freeze hash, no hand-out logged, Voyage balance above the $5 reserve; cost about $0.30).
-6. Stage F search once; pack built; J and S mark (about 50 chats for 24 questions); stage 1 on marks only; stage 2 opens the key once; report in plain words. Nothing is re-run and nothing is changed after a mark exists; a technical failure before any mark may be repeated and logged.
+6. Stage F search once; pack built; J and S mark (about 60 chats for 30 questions); stage 1 on marks only; stage 2 opens the key once; report in plain words. Nothing is re-run and nothing is changed after a mark exists; a technical failure before any mark may be repeated and logged.
 7. The index stays frozen at `3c80a26` until the run is over.
 
 ## 9. Freezing, amending, and what the owner must decide
@@ -65,7 +65,7 @@ Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ru
 **Decisions for the owner (defaults in brackets):**
 1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner for C, N1, N2; W's removal and the judgment-level label confirmed 2026-10-11]
 2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; at least 24, in the columns of the owner's 30-question workbook]
-3. Is another marking round of about 50 chats acceptable to J and S? [yes, confirmed 2026-10-10]
+3. Is another marking round of about 60 chats acceptable to J and S? [yes, confirmed 2026-10-10]
 4. Stage D spend under about $1? [yes, approved 2026-10-10]
 5. Mr. Advocate reviews the Machine Spec (workbook, 13 Acts) before the freeze? [yes, confirmed 2026-10-10; the freeze waits for his review; the first 9-row Appendix A is withdrawn]
 
@@ -84,6 +84,8 @@ Decision (proposed to the owner): drop W; do not add Wd, L or J. R23's kind of m
 `review_results/2026-10-11_trigger_sheet_review/`. Findings used: the workbook's separation of question triggers from passage markers is adopted; its false-positive audit is right about the first draft table; the three general codes mark 12 to 14% (BNS/IPC, BNSS/CrPC) and 2.7% (BSA) of all passages and are excluded from boosting; six families have under 100 marked passages in this index and are parked; a passage-level marker marks only 19 to 40% of an on-topic judgment's passages (operative paragraphs say 'the Act'), so the label is placed at the judgment level (3 or more marked passages), a design choice made from this audit and not tested on results; the workbook's long phrases do not match real questions, so literal anchors are used (they fire on 11 of the 30 used questions, none looked wrong), and semantic routing was tried and rejected (nearest-Act cosines 0.2 to 0.5 for every question). These were looked at on already-used questions.
 
 Owner decisions of 2026-10-11: "drop W" confirmed; "use the judgment-level label" confirmed. The remaining conditions before the freeze are Mr. Advocate's review of the Machine Spec and the new questions' format (with the 'Act(s) the question concerns' column).
+
+Owner request 2026-10-11: the rules and guidelines for the new questions were issued as `review_data/ruler/question_rules/New_Test_Questions_Rules_and_Guidelines.docx` (30 questions = 27 + 3 controls, up to 3 reserves; the owner's message said 29, which breaks the domain table, so 30 was specified and the owner is asked to confirm). The mix rules there (phrasing, code tags, traps, Act-concerning, look-alikes, twin pairs, index gaps) are binding for the question set.
 
 ## Amendments
 (none)
