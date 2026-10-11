@@ -63,7 +63,7 @@ Whether a change helps questions unlike the new ones; whether two changes togeth
 Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ruler/fix_test_rules_v1.freeze` (renamed to `FIX_TEST_RULES_v1.md` at the same time), commit, record the hash in `FOLLOW_UPS.md`. Amendments are appended below with a date and reason, before stage D; never after stage F's questions are searched.
 
 **Decisions for the owner (defaults in brackets):**
-1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner on 2026-10-10 for C, N1, N2; W's removal awaits the owner's confirmation]
+1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner for C, N1, N2; W's removal and the judgment-level label confirmed 2026-10-11]
 2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; at least 24, in the columns of the owner's 30-question workbook]
 3. Is another marking round of about 50 chats acceptable to J and S? [yes, confirmed 2026-10-10]
 4. Stage D spend under about $1? [yes, approved 2026-10-10]
@@ -82,6 +82,8 @@ Decision (proposed to the owner): drop W; do not add Wd, L or J. R23's kind of m
 
 ### Second look, 2026-10-11 (the owner's trigger workbook)
 `review_results/2026-10-11_trigger_sheet_review/`. Findings used: the workbook's separation of question triggers from passage markers is adopted; its false-positive audit is right about the first draft table; the three general codes mark 12 to 14% (BNS/IPC, BNSS/CrPC) and 2.7% (BSA) of all passages and are excluded from boosting; six families have under 100 marked passages in this index and are parked; a passage-level marker marks only 19 to 40% of an on-topic judgment's passages (operative paragraphs say 'the Act'), so the label is placed at the judgment level (3 or more marked passages), a design choice made from this audit and not tested on results; the workbook's long phrases do not match real questions, so literal anchors are used (they fire on 11 of the 30 used questions, none looked wrong), and semantic routing was tried and rejected (nearest-Act cosines 0.2 to 0.5 for every question). These were looked at on already-used questions.
+
+Owner decisions of 2026-10-11: "drop W" confirmed; "use the judgment-level label" confirmed. The remaining conditions before the freeze are Mr. Advocate's review of the Machine Spec and the new questions' format (with the 'Act(s) the question concerns' column).
 
 ## Amendments
 (none)
