@@ -40,6 +40,7 @@ ROOT = os.path.normpath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
 sys.path.insert(0, ROOT)
 import fix_arms as FA                      # noqa: E402
+import fix_test_set as FT                  # noqa: E402
 import machine_spec_v2 as MS               # noqa: E402
 import real_questions as RQ                # noqa: E402
 import sci_index as si                     # noqa: E402
@@ -63,6 +64,10 @@ FIX2_RULES_PATH = os.path.join(DATA, "FIX_TEST_RULES_v2.md")
 FIX2_FREEZE_PATH = os.path.join(DATA, "fix_test_rules_v2.freeze")
 FIX_RERANK_CAP = 3_000_000
 # Stage D (FIX_TEST_RULES_v1.md, section 2): the 19 tuning questions and, as a check not a test, the three known failures. No other question may be run with --fix-test D.
+FINALISTS_PATH = os.path.join(ROOT, "review_results", "2026-10-12_fix_test_stage_d2", "stage_d2_gate.json")       # rules v2, section 1.4: the finalists chosen by the frozen gate
+STAGE_D2_POOL = os.path.join(ROOT, "review_results", "2026-10-12_fix_test_stage_d2", "pool.json")
+F_TOP_B, F_TOP_ARM = 10, 5            # rules v1 section 4: the pool is the top 10 of B and the top 5 of each finalist
+META_KEYS = ("look_alike", "soft_overlap", "control_type", "acts", "acts_named", "trap", "twin_of")
 STAGE_D_IDS = ("R01", "R02", "R04", "R06", "R08", "R09", "R11", "R12", "R14", "R15", "R17", "R19", "R20", "R21", "R22", "R24", "R26", "R28", "R29", "R16", "R23", "R03")
 RULES_PATH = os.path.join(DATA, "SEALED_RUN_RULES_v1.md")
 FREEZE_PATH = os.path.join(DATA, "sealed_run_rules_v1.freeze")
@@ -375,8 +380,9 @@ def build_question(q, lists, metas, hdocs, title, rewrite=None, top_k=5):
     groups = collections.OrderedDict()
     for version, lst in lists.items():
         whole = version.startswith(("S", "M "))                # S site shown and M safety net are sets, pooled whole
+        k = top_k.get(version, 0) if isinstance(top_k, dict) else top_k       # the fix test pools the top 10 of B and the top 5 of each finalist
         for rank, rid in enumerate(lst, 1):
-            if not whole and rank > top_k:
+            if not whole and rank > k:
                 continue
             g = groups.setdefault(metas[rid]["h"], {"primary": rid, "variants": {}})
             g["variants"][version] = min(rank, g["variants"].get(version, 99))
@@ -416,7 +422,7 @@ def read_done(path):
         return {r["qid"]: r for r in map(json.loads, (l for l in fh if l.strip()))}
 
 
-def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, challenger=None, top_k=5, fix_labels=None, fix_v2=False):
+def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, challenger=None, top_k=5, fix_labels=None, fix_v2=False, fix_arms=None):
     """Runs the questions one by one, saving each as it finishes. Returns the compiled pool and whether the cap stopped it."""
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "questions.jsonl")
@@ -432,6 +438,8 @@ def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, cha
             fired = None
             if fix_labels is not None:
                 lists, fired = engine.lists_for_fix(q["text"], challenger, fix_labels, v2=fix_v2)
+                if fix_arms is not None:                       # stage F: B and the finalists only (same scores, nothing recomputed)
+                    lists = {v: l for v, l in lists.items() if v == FA.B_VERSION or v in fix_arms}
             else:
                 lists = engine.lists_for_final(q["text"], challenger) if challenger else engine.lists_for(q["text"], rw)
         except SpendCapReached as e:
@@ -441,6 +449,9 @@ def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, cha
         rec = build_question(q, lists, engine.metas, hdocs, title, rw, top_k=top_k)
         if fired is not None:
             rec["acts_fired"] = fired
+        meta = {k: q[k] for k in META_KEYS if k in q}
+        if meta:
+            rec["meta"] = meta
         rec["spend"] = {"rerank_tokens": engine.spend.rerank - before[0], "embed_tokens": engine.spend.embed - before[1]}
         with open(path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -475,8 +486,8 @@ def fix_guard(a, code=None, files=None):
     """Reasons to refuse a --fix-test run (FIX_TEST_RULES_v1.md): the rules, the Machine Spec and its tests must be exactly what was frozen, the checkout clean (the run records the commit), the
     re-ranker and cap as the rules say, and Stage D limited to its own questions. Empty list = go. `files`: {path: (sha256 now, sha256 frozen or None)}."""
     bad = []
-    if a.fix_test not in ("D", "D2"):
-        bad.append(f"--fix-test {a.fix_test}: only stage D (rules v1) and stage D2 (rules v2) are coded here; stage F's loader is added, tested and committed after the question set is sealed and before its search")
+    if a.fix_test not in ("D", "D2", "F"):
+        bad.append(f"--fix-test {a.fix_test}: only stage D (rules v1), stage D2 (rules v2) and stage F are coded here")
     if a.challenger_model != CHALLENGER_DEFAULT:
         bad.append(f"the arms use {CHALLENGER_DEFAULT}, not {a.challenger_model}")
     if a.max_rerank_tokens is None or a.max_rerank_tokens > FIX_RERANK_CAP:
@@ -500,9 +511,50 @@ def fix_guard(a, code=None, files=None):
     return bad
 
 
+def read_finalists(gate_path=FINALISTS_PATH):
+    """The finalist version names chosen by the frozen stage D2 gate (rules v2 section 1.4): N1's and N2's, those that exist."""
+    if not os.path.exists(gate_path):
+        return []
+    fin = json.load(open(gate_path, encoding="utf-8"))["table"]["finalists"]
+    return [v for v in (fin.get("N1"), fin.get("N2")) if v]
+
+
+def fix_guard_f(a, head, runs_path=None, stage_d2_pool=None, finalists=None):
+    """Reasons to refuse the stage F search (FIX_TEST_RULES_v2.md sections 3 to 5), checked BEFORE the questions are handed out. Returns (reasons, public, key, finalists)."""
+    bad = []
+    finalists = read_finalists() if finalists is None else finalists
+    if not finalists:
+        bad.append("no finalist: rules v2 section 3 says B stays and no marking round is run for arms")
+    if a.fix_arms:
+        want = [x.strip() for x in a.fix_arms.split(",") if x.strip()]
+        if sorted(want) != sorted(finalists):
+            bad.append(f"--fix-arms {want} differs from the finalists the frozen gate chose {finalists}")
+    public = key = None
+    try:
+        public, key = FT.load(a.fix_set), json.load(open(a.fix_key, encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        bad.append(f"cannot read the sealed question file or its key: {e}")
+    if public is not None:
+        bad += [f"question file: {b}" for b in FT.check(public, key)]
+        if (public.get("index_snapshot") or {}).get("commit") != head:
+            bad.append(f"the index head is {head[:7]}, the question file is recorded on {str((public.get('index_snapshot') or {}).get('commit'))[:7]}")
+        prior = FT.read_runs(runs_path or FT.DEFAULT_RUNS)
+        if prior and not a.fix_repeat:
+            bad.append(f"the questions were already handed out on {prior[0]['ts']}; a repeat after a technical failure needs --fix-repeat and is logged")
+    pool_path = stage_d2_pool or STAGE_D2_POOL
+    if os.path.exists(pool_path):
+        recorded = json.load(open(pool_path, encoding="utf-8"))["run"].get("fix_test", {}).get("rules_sha256")
+        have = fix_frozen_files(*fix_paths("F"))[os.path.relpath(FIX2_RULES_PATH, ROOT)][0]
+        if recorded != have:
+            bad.append(f"stage D2 was run under rules {str(recorded)[:10]}, the rules file is {have[:10]}")
+    else:
+        bad.append("the stage D2 pool (which records the rules it ran under) is missing")
+    return bad, public, key, finalists
+
+
 def fix_paths(stage):
     """(freeze file, rules file) of the stage: rules v1 for D, rules v2 for D2."""
-    return (FIX2_FREEZE_PATH, FIX2_RULES_PATH) if stage == "D2" else (FIX_FREEZE_PATH, FIX_RULES_PATH)
+    return (FIX2_FREEZE_PATH, FIX2_RULES_PATH) if stage in ("D2", "F") else (FIX_FREEZE_PATH, FIX_RULES_PATH)
 
 
 def fix_frozen_files(freeze_path=FIX_FREEZE_PATH, rules_path=FIX_RULES_PATH, root=ROOT):
@@ -577,7 +629,11 @@ def main(argv=None):
     ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing (a sealed dry run does not hand the questions out)")
     ap.add_argument("--final-recipe", action="store_true", help="the sealed run's recipe: A today (rerank-2), R (the challenger re-ranker) on the same candidates, S, and both safety nets; see SEALED_RUN_RULES_v1.md")
     ap.add_argument("--challenger-model", default=CHALLENGER_DEFAULT)
-    ap.add_argument("--fix-test", choices=["D", "D2"], help="the fix test's arms B, C, N1, N2 (FIX_TEST_RULES_v1.md) on the stage D questions: one retrieval and one re-rank call per question (the challenger), no site arm, no rewrites. Off by default")
+    ap.add_argument("--fix-set", default=FT.DEFAULT_SET, help="stage F: the sealed question file (fix_test_set.py)")
+    ap.add_argument("--fix-key", default=FT.DEFAULT_KEY, help="stage F: its private key file (only its hash is checked here; the key is never read for any score)")
+    ap.add_argument("--fix-arms", default="", help="stage F: the finalists, by name, comma-separated; must equal the finalists of the frozen stage D2 gate (default: those)")
+    ap.add_argument("--fix-repeat", action="store_true", help="stage F: repeat the search after a technical failure BEFORE any mark exists; logged as a repeat")
+    ap.add_argument("--fix-test", choices=["D", "D2", "F"], help="the fix test's arms B, C, N1, N2 (FIX_TEST_RULES_v1.md) on the stage D questions: one retrieval and one re-rank call per question (the challenger), no site arm, no rewrites. Off by default")
     ap.add_argument("--top-k", type=int, default=None, help="how many places of each ranked version are pooled for marking (5; 10 with --final-recipe)")
     a = ap.parse_args(argv)
     if a.top_k is None:
@@ -602,8 +658,13 @@ def main(argv=None):
         return 1
     code = code_state()
     rules = rules_state() if os.path.exists(RULES_PATH) else (None, None)
+    fx_public = fx_key = None
+    fx_finalists = []
     if a.fix_test:
         refusals = fix_guard(a, code)
+        if a.fix_test == "F":
+            more, fx_public, fx_key, fx_finalists = fix_guard_f(a, head)
+            refusals += more
         if refusals:
             print("refused:")
             for r in refusals:
@@ -625,7 +686,12 @@ def main(argv=None):
     if a.final and a.half == "sealed":
         a.label = f"{a.label} | rules {rules[0][:12] if rules[0] else 'none'} | code {code[0][:10]}"
     try:
-        if a.fix_test:
+        if a.fix_test == "F":
+            if a.dry_run:
+                qs = [dict(q, half="final") for q in fx_public["questions"]]            # a dry run hands nothing out and logs nothing
+            else:
+                qs = FT.select(fx_public, final=True, label=a.label, allow_repeat=a.fix_repeat)      # the single hand-out; logged
+        elif a.fix_test:
             by_id = {q["id"]: q for q in real["questions"]}
             qs = [by_id[i] for i in STAGE_D_IDS]                     # used questions only (rules, section 2); the key is never read here
         elif a.source == "ruler":
@@ -645,7 +711,10 @@ def main(argv=None):
         with open(a.rewrites, encoding="utf-8") as fh:
             rewrites = json.load(fh)["rewrites"]
     if a.fix_test and a.dry_run:
-        print(f"fix test stage {a.fix_test}: {len(qs)} questions, {len(FA.V2_VERSIONS) if a.fix_test == 'D2' else len(FA.FIX_VERSIONS)} arms from ONE re-rank call ({a.challenger_model}) per question; cap {a.max_rerank_tokens:,}; label: {a.label}")
+        if a.fix_test == "F":
+            print(f"fix test stage F (dry run, nothing handed out): {len(qs)} questions; arms B + {fx_finalists}; pool = top {F_TOP_B} of B + top {F_TOP_ARM} of each finalist; ONE re-rank call ({a.challenger_model}) per question; cap {a.max_rerank_tokens:,}; label: {a.label}")
+        else:
+            print(f"fix test stage {a.fix_test}: {len(qs)} questions, {len(FA.V2_VERSIONS) if a.fix_test == 'D2' else len(FA.FIX_VERSIONS)} arms from ONE re-rank call ({a.challenger_model}) per question; cap {a.max_rerank_tokens:,}; label: {a.label}")
         return 0
     if a.dry_run:
         n_rw = sum(1 for q in qs if q["id"] in rewrites)
@@ -682,7 +751,8 @@ def main(argv=None):
     spend = Spend(a.max_rerank_tokens)
     engine = Engine(metas, M, si.make_client(), spend, fts, site, safety=a.safety_net)
     ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + a.supplement, metas, extra_titles or None), a.out,
-                           challenger=a.challenger_model if (a.final_recipe or a.fix_test) else None, top_k=a.top_k, fix_labels=fix_labels, fix_v2=a.fix_test == "D2")
+                           challenger=a.challenger_model if (a.final_recipe or a.fix_test) else None, top_k=({FA.B_VERSION: F_TOP_B, **{v: F_TOP_ARM for v in fx_finalists}} if a.fix_test == "F" else a.top_k), fix_labels=fix_labels,
+                           fix_v2=a.fix_test in ("D2", "F"), fix_arms=(fx_finalists if a.fix_test == "F" else None))
     run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS) + (list(SAFETY_VERSIONS) if a.safety_net else []),
                 "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
                 "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_infos[0] if supp_infos else None, "side_indexes": supp_infos}
@@ -693,9 +763,14 @@ def main(argv=None):
                                    "side_indexes": [i["dir"] for i in supp_infos], "rewrites_used": False}
     if a.fix_test:
         ffiles = fix_frozen_files(*fix_paths(a.fix_test))
-        run_info["versions"] = list(FA.V2_VERSIONS if a.fix_test == "D2" else FA.FIX_VERSIONS)
+        run_info["versions"] = [FA.B_VERSION] + fx_finalists if a.fix_test == "F" else list(FA.V2_VERSIONS if a.fix_test == "D2" else FA.FIX_VERSIONS)
         run_info["fix_test"] = {"stage": a.fix_test, "label": a.label, "rules_sha256": ffiles[os.path.relpath(fix_paths(a.fix_test)[1], ROOT)][0], "frozen_files": {k: v[0] for k, v in ffiles.items()},
                                 "code_commit": code[0], "code_uncommitted": code[1], "labelled_judgments": {k: len(v) for k, v in fix_labels.items()}, "side_indexes": [i["dir"] for i in supp_infos]}
+        if a.fix_test == "F":
+            run_info["half"] = "final"
+            run_info["source"] = "fix_test_f"
+            run_info["fix_test"].update({"finalists": fx_finalists, "pool": {"B": F_TOP_B, "each_finalist": F_TOP_ARM}, "question_freeze_sha256": fx_public["freeze"]["sha256"], "key_sha256": fx_public["freeze"]["key_sha256"],
+                                         "writer_text_sha256": fx_public["provenance"]["writer_text_sha256"], "questions": len(fx_public["questions"]), "repeat": bool(a.fix_repeat)})
         run_info["models"] = {"embed": EMBED_MODEL, "rerank": a.challenger_model}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:
         json.dump({"run": run_info, "questions": ordered}, fh, ensure_ascii=False, indent=1)

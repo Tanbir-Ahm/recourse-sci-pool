@@ -12,7 +12,7 @@ The pool (review_data/pool_all.json) is the PRIVATE answer key: it records which
 import argparse, collections, csv, itertools, json, os, re, sys
 
 MARKS = ["Yes", "Partly", "No", "Misleading"]
-NAME_RE = re.compile(r"^([QR])(\d{1,2})_(T?[AB])_(.+?)\.(?:txt|json|md)$", re.I)        # Q01_A_ChatGPT5.txt (the first 12 questions); R01_A_Gemini.txt (the 30 real questions)
+NAME_RE = re.compile(r"^([QRN])(\d{1,2})_(T?[AB])_(.+?)\.(?:txt|json|md)$", re.I)       # Q01_A_ChatGPT5.txt (the first 12 questions); R01_A_Gemini.txt (the 30 real questions); N01_A_Gemini.txt (the fix test's 30 new questions)
 DEFAULT_POOL = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "review_data", "pool_all.json"))
 SET_VARIANTS = ("S ", "M ")          # versions named like 'S site shown' are sets of what a method showed, scored on all of it, not on a top 5
 MARK_ALIASES = {"yes": "Yes", "partly": "Partly", "partial": "Partly", "partially": "Partly", "no": "No", "misleading": "Misleading"}

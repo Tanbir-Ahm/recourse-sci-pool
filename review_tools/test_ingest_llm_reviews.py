@@ -90,6 +90,7 @@ check("norm_mark aliases", ing.norm_mark("partially") == "Partly" and ing.norm_m
 k, po = ing.cohen_kappa(["a", "b", "a", "b"], ["a", "b", "a", "b"]); check("kappa perfect", abs(k - 1) < 1e-9 and po == 1)
 k, po = ing.cohen_kappa(["a", "a", "b", "b"], ["a", "b", "a", "b"]); check("kappa chance-level = 0", abs(k) < 1e-9 and po == 0.5, f"{k} {po}")
 check("kappa degenerate -> None", ing.cohen_kappa(["a", "a"], ["a", "a"])[0] is None)
+check("reply file names: N01_A_ChatGPT.txt (the fix test's questions) is accepted and read as N01", ing.NAME_RE.match("N01_A_ChatGPT.txt") and ing.NAME_RE.match("n30_a_Gemini.md").group(1).upper() == "N" and not ing.NAME_RE.match("X01_A_ChatGPT.txt") and not ing.NAME_RE.match("NR1_A_ChatGPT.txt"))
 check("reply file names: Q3_A and q03_b are accepted, Qxx_C is not",
       ing.NAME_RE.match("Q3_A_x.txt") and ing.NAME_RE.match("q03_b_x.json") and ing.NAME_RE.match("Q03_TB_x.md") and not ing.NAME_RE.match("Q03_C_x.txt"))
 

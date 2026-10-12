@@ -80,7 +80,7 @@ def args(**kw):
 ok_files, ok_code = {"r.md": ("a" * 64, "a" * 64)}, ("c" * 40, [])
 check("the guard lets a frozen, clean stage D request through", P.fix_guard(args(), ok_code, ok_files) == [], P.fix_guard(args(), ok_code, ok_files))
 for label, kw, frag in [("another challenger", dict(challenger_model="rerank-3"), "arms use"), ("a cap over 3 million", dict(max_rerank_tokens=4_000_000), "cap"), ("another index", dict(allow_other_index=True), "allow-other-index"),
-                        ("the ruler as source", dict(source="ruler"), "real30"), ("a missing side index", dict(supplement=[]), "side index"), ("stage F, not coded", dict(fix_test="F"), "only stage D")]:
+                        ("the ruler as source", dict(source="ruler"), "real30"), ("a missing side index", dict(supplement=[]), "side index"), ("an unknown stage", dict(fix_test="X"), "only stage D")]:
     got = P.fix_guard(args(**kw), ok_code, ok_files)
     check(f"the guard refuses {label}", bool(got) and any(frag in g for g in got), got)
 check("stage D2 is accepted by the guard", P.fix_guard(args(fix_test="D2"), ok_code, ok_files) == [])
