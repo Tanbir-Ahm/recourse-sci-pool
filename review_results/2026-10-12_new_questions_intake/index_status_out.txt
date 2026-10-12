@@ -1,0 +1,34 @@
+N01  primary ABSENT   acceptable 1/3  older rulings in index 0/0  key authority reachable: yes
+N02  primary IN       acceptable 3/3  older rulings in index 0/0  key authority reachable: yes
+N03  primary IN       acceptable 1/1  older rulings in index 0/0  key authority reachable: yes
+N04  primary IN       acceptable 2/2  older rulings in index 0/0  key authority reachable: yes
+N05  primary ABSENT   acceptable 1/2  older rulings in index 0/0  key authority reachable: yes
+N06  primary IN       acceptable 4/4  older rulings in index 0/0  key authority reachable: yes
+N07  primary IN       acceptable 2/3  older rulings in index 0/0  key authority reachable: yes
+N08  primary IN       acceptable 1/1  older rulings in index 1/1  key authority reachable: yes
+N09  primary IN       acceptable 1/2  older rulings in index 0/0  key authority reachable: yes
+N10  primary IN       acceptable 0/0  older rulings in index 1/1  key authority reachable: yes
+N11  primary IN       acceptable 3/5  older rulings in index 0/0  key authority reachable: yes
+N12  primary IN       acceptable 2/2  older rulings in index 0/0  key authority reachable: yes
+N13  primary IN       acceptable 2/3  older rulings in index 0/0  key authority reachable: yes
+N14  primary IN       acceptable 0/0  older rulings in index 0/0  key authority reachable: yes
+N15  primary LEFT_OUT acceptable 1/2  older rulings in index 0/1  key authority reachable: yes
+N16  primary IN       acceptable 0/1  older rulings in index 0/0  key authority reachable: yes
+N17  primary IN       acceptable 0/0  older rulings in index 0/0  key authority reachable: yes
+N18  primary IN       acceptable 1/2  older rulings in index 0/0  key authority reachable: yes
+N19  primary IN       acceptable 2/3  older rulings in index 0/0  key authority reachable: yes
+N20  primary IN       acceptable 1/1  older rulings in index 0/0  key authority reachable: yes
+N21  primary IN       acceptable 1/2  older rulings in index 0/0  key authority reachable: yes
+N22  primary IN       acceptable 1/1  older rulings in index 0/0  key authority reachable: yes
+N23  primary IN       acceptable 1/2  older rulings in index 1/2  key authority reachable: yes
+N24  primary IN       acceptable 0/0  older rulings in index 1/1  key authority reachable: yes
+N25  primary IN       acceptable 1/2  older rulings in index 0/0  key authority reachable: yes
+N26  primary IN       acceptable 1/1  older rulings in index 0/1  key authority reachable: yes
+N27  primary IN       acceptable 1/2  older rulings in index 0/0  key authority reachable: yes
+NR1  primary IN       acceptable 1/1  older rulings in index 0/1  key authority reachable: yes
+NR2  primary IN       acceptable 0/0  older rulings in index 3/3  key authority reachable: yes
+NR3  primary -        acceptable 0/0  older rulings in index 0/0  key authority reachable: NO
+
+primary authority outside the index (scored questions): ['N01', 'N05', 'N15'] | reserves: []
+no key authority in the index at all (scored): []
+currency traps whose older ruling is in the index (measurable): ['N08', 'N10', 'N23', 'N24']

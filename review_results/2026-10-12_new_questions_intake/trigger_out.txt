@@ -1,0 +1,6 @@
+tagged scored questions: 16; the tagged Act fires under N1 on 9, under N2 on 13
+fires at all (scored):  N1 10 ['N04', 'N07', 'N08', 'N09', 'N10', 'N13', 'N16', 'N19', 'N24', 'N25'] 
+                        N2 14 ['N02', 'N04', 'N07', 'N08', 'N09', 'N10', 'N13', 'N14', 'N15', 'N16', 'N19', 'N21', 'N24', 'N25']
+fires for an Act the writer did not tag (misfire): N1 [('N13', ['NI Act'])] N2 [('N13', ['NI Act'])]
+tagged but neither N1 nor N2 fires: ['N06', 'N11', 'N18']
+N1 and N2 differ only on: ['N02', 'N14', 'N15', 'N21']

@@ -1,0 +1,218 @@
+[
+ {
+  "id": "F1",
+  "rule": "sheet 'Questions' present",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "id": "F1",
+  "rule": "sheet 'Key' present",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "id": "F1",
+  "rule": "sheet 'Declaration' present",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "id": "F2",
+  "rule": "Questions columns exactly as in the rules (section 11.1)",
+  "ok": true,
+  "detail": "missing [], extra []"
+ },
+ {
+  "id": "F3",
+  "rule": "Key columns exactly as in the rules (section 11.1)",
+  "ok": true,
+  "detail": "missing [], extra []"
+ },
+ {
+  "id": "F4",
+  "rule": "ids N01 to N30 each once, in order; reserves NR1 to NR3 at most",
+  "ok": true,
+  "detail": "reserves ['NR1', 'NR2', 'NR3']"
+ },
+ {
+  "id": "F5",
+  "rule": "every question has a key row and every key row a question",
+  "ok": true,
+  "detail": "questions without key [], keys without question []"
+ },
+ {
+  "id": "R1",
+  "rule": "domain counts A3 B3 C3 D2 E3 F3 G3 H3 I2 J2 K3 (27 scored + 3 controls)",
+  "ok": true,
+  "detail": "found {'A': 3, 'B': 3, 'C': 3, 'D': 2, 'E': 3, 'F': 3, 'G': 3, 'H': 3, 'I': 2, 'J': 2, 'K': 3}"
+ },
+ {
+  "id": "R2",
+  "rule": "controls: exactly one each of K1, K2, K3",
+  "ok": true,
+  "detail": "['K1', 'K2', 'K3']"
+ },
+ {
+  "id": "R3",
+  "rule": "phrasing among the 27: at least 6 each of E, L, N",
+  "ok": true,
+  "detail": "E 9, L 10, N 8"
+ },
+ {
+  "id": "R4",
+  "rule": "Hinglish 0 to 3 (counted as everyday)",
+  "ok": true,
+  "detail": "['N11']"
+ },
+ {
+  "id": "R5",
+  "rule": "code tags among the 27: NEW at least 6, OLD at least 6, NONE at least 8",
+  "ok": true,
+  "detail": "NEW 7, OLD 6, NONE 14"
+ },
+ {
+  "id": "R5b",
+  "rule": "the code tag agrees with the numbers actually written in the question text",
+  "ok": true,
+  "detail": "tag given vs read from text: []"
+ },
+ {
+  "id": "R6",
+  "rule": "currency traps among the 27: at least 4 (target 6)",
+  "ok": true,
+  "detail": "6: ['N08', 'N10', 'N15', 'N23', 'N24', 'N26']"
+ },
+ {
+  "id": "R7",
+  "rule": "best law from 2017 or later: at least 10 of the 27",
+  "ok": true,
+  "detail": "15"
+ },
+ {
+  "id": "R8a",
+  "rule": "every Act tag is one of the 13 listed Acts or 'none'",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "R8b",
+  "rule": "Act-concerning questions: at least 14 of the 27",
+  "ok": true,
+  "detail": "16"
+ },
+ {
+  "id": "R8c",
+  "rule": "at least 10 of the 13 Acts covered",
+  "ok": true,
+  "detail": "12 covered; missing ['MV Act']"
+ },
+ {
+  "id": "R8d",
+  "rule": "NDPS, NI Act, PWDVA and POCSO at least 2 each",
+  "ok": true,
+  "detail": "{'NDPS': 3, 'NI Act': 3, 'PWDVA': 2, 'POCSO': 2}"
+ },
+ {
+  "id": "R9",
+  "rule": "general criminal-law questions (no listed Act): at least 8",
+  "ok": true,
+  "detail": "11"
+ },
+ {
+  "id": "R10a",
+  "rule": "look-alikes: at least 8 (target 10)",
+  "ok": true,
+  "detail": "17"
+ },
+ {
+  "id": "R10b",
+  "rule": "look-alikes under a listed Act that do not name it: at least 3 (target 5)",
+  "ok": true,
+  "detail": "8: ['N02', 'N06', 'N11', 'N14', 'N15', 'N16', 'N18', 'N21']"
+ },
+ {
+  "id": "R10c",
+  "rule": "every look-alike names its neighbour regime",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "R11",
+  "rule": "twin pairs: at least 2, cross-referenced both ways",
+  "ok": true,
+  "detail": "[('N07', 'N13'), ('N15', 'N17'), ('N18', 'N20')]"
+ },
+ {
+  "id": "R12",
+  "rule": "reserves marked with the domain they can replace",
+  "ok": true,
+  "detail": "[('NR1', 'B'), ('NR2', 'I'), ('NR3', 'K')]"
+ },
+ {
+  "id": "S1",
+  "rule": "length by style: everyday up to about 60 words, legal up to about 50, narrative up to about 120",
+  "ok": true,
+  "detail": "over the limit (id, style, words, limit): []"
+ },
+ {
+  "id": "S2",
+  "rule": "narrative questions have four to eight sentences",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "S3",
+  "rule": "no case name, case number, phone number or e-mail in a question",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "K1",
+  "rule": "no empty cell in the key",
+  "ok": true,
+  "detail": "rows with an empty cell: []"
+ },
+ {
+  "id": "K2",
+  "rule": "Conf is C, L or G",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "K3",
+  "rule": "'secondary source only' forces Conf = G (rules section 10)",
+  "ok": false,
+  "detail": "secondary-only but not G: ['N29']"
+ },
+ {
+  "id": "K4",
+  "rule": "each currency trap states the older ruling, the change, what changed and the current authority (section 7)",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "K5",
+  "rule": "every scored key lists other acceptable authorities (at least two where they exist); 'none' is listed for review",
+  "ok": false,
+  "detail": "'none' for: ['N10', 'N14', 'N17', 'N24', 'NR2']"
+ },
+ {
+  "id": "K6",
+  "rule": "primary authority decided on or before 30 June 2026",
+  "ok": true,
+  "detail": "[]"
+ },
+ {
+  "id": "D1",
+  "rule": "declaration names any AI tool used and for what (rules section 3 and 11.1)",
+  "ok": false,
+  "detail": "no 'AI tools used and for what' line"
+ },
+ {
+  "id": "D2",
+  "rule": "declaration: the writer has not seen the trigger-word list (rules section 3: do NOT consult it while writing)",
+  "ok": false,
+  "detail": "declared: Y. All eight sheets of '2026-10-11_trigger_workbook_with_claude_appends.xlsx' were read be"
+ }
+]
