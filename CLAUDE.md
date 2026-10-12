@@ -10,6 +10,7 @@ When the owner says the big index, the checker, the search phases and the Overru
 
 - Nothing here says a case is "good law". The register and the checker only subtract trust or warn; a row that is not confirmed by a person is worded as "reported ... not yet confirmed by our reviewer".
 - Nothing is merged to `main`, no pull request is opened, and no scheduled routine is created without the owner's say-so. Development is on `claude/sharp-euler-unyfv0`.
+- **Owner's say-so, 2026-10-12:** the branch was merged into `main` ("commit and push everything to the main"). That covers this one merge only; later merges, pull requests and routines still need his say-so. Stage F is finished: B stays, the Act-boost (N1/N2) is shelved (`review_results/2026-10-12_fix_test_f/RESULTS_IN_PLAIN_TERMS.md`). The Recourse site is still not connected and not touched by this repository.
 - One routine exists with the owner's say-so (2026-10-08): the **weekly register review sheet** (`REGISTER_ROUTINE_RUNBOOK.md`). It is read-only on the register and pushes only `register_review/` to `claude/sharp-euler-unyfv0`. Do not create other routines without asking.
 - The register's reviewer is Mr. Advocate (the owner's statement of 2026-10-07; list 1 only is recorded as verified). Flags are reviewed once every 7 days.
 - Indian Kanoon spending: keep at least Rs 200 in reserve; see `IK_PLAN.md`.
