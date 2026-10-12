@@ -1,6 +1,6 @@
-# Fix-test rules, version 1: DRAFT of 2026-10-10 (PRIVATE; not frozen until the owner accepts it)
+# Fix-test rules, version 1 (FROZEN 2026-10-12; PRIVATE until the run is over)
 
-**Status.** Written at the owner's request ("draft the pre-registered test") after the sealed run missed two floors and the diagnosis (`review_results/2026-10-10_wrong_regime_diagnosis/`) found different causes in different questions. **No fix has been coded, no variant has been run, no new question exists.** Every threshold is a **[Guessing]** and may be changed only by a dated amendment at the end of this file **before** the dev run (section 3). Once the owner accepts, the file is frozen by recording its SHA-256 in `FOLLOW_UPS.md` and `fix_test_rules_v1.freeze` (command in section 9). All results are LLM-judged (ChatGPT and Gemini, run by J and S) unless a lawyer's sheet is added; nothing is lawyer-validated.
+**Status.** Written at the owner's request ("draft the pre-registered test") after the sealed run missed two floors and the diagnosis (`review_results/2026-10-10_wrong_regime_diagnosis/`) found different causes in different questions. **At the time of the freeze no fix has been coded, no variant has been run, no new question exists.** Every threshold is a **[Guessing]** and may be changed only by a dated amendment at the end of this file **before** the dev run (section 3). Frozen on 2026-10-12 after Mr. Advocate's review of Machine Spec v2 (see 'Owner decisions of 2026-10-12 (second)' below); the freeze is done by recording its SHA-256 in `FOLLOW_UPS.md` and `fix_test_rules_v1.freeze` (command in section 9). All results are LLM-judged (ChatGPT and Gemini, run by J and S) unless a lawyer's sheet is added; nothing is lawyer-validated.
 
 ## In one page
 1. **What it decides:** whether any of three small changes (C, N1, N2; the wider pool W was dropped before the freeze, see the disclosure at the end) to the search recipe, alone, is better than today's recipe (rerank-3-lite, 60 candidates), and, in the same run, whether the chosen recipe meets the connection floors F1 to F4 of `SEALED_RUN_RULES_v1.md` on questions nobody has tuned on. It decides nothing about the layperson mode, answer writing, or the verified answer path.
@@ -45,13 +45,13 @@ An arm V replaces B only if all of the following hold, on the Stage F questions 
 If more than one arm passes, the one with the highest mean grade (both, ties to the lower mark) is adopted; on a tie, the cheaper in re-rank tokens. **Combinations are not tested in this run**; a combination needs its own run on new questions. If none passes, B stays.
 
 ## 6. Floors and outcomes
-The chosen recipe (V or B) is held to the **unchanged floors** F1 to F4 of `SEALED_RUN_RULES_v1.md` section 4 (useful at least 70% with ties to the lower mark; Misleading at most 15% and at most 10% with ties to the higher mark; named authority in the top 10 for at least 60% of the answerable questions; direct answers at least 25%), clear or weak pass as there, and to the outcome table of section 7 of those rules. Meeting the floors still leads only to shadow mode in the eligible domains and never to the verified answer path. I expect, at 24 questions and with the two judges agreeing on about 64%, that a recipe as good as the tuning half would still miss at least one floor in roughly **30 to 40%** of runs [Guessing]; a miss would again mean new questions.
+The chosen recipe (V or B) is held to the **unchanged floors** F1 to F4 of `SEALED_RUN_RULES_v1.md` section 4 (useful at least 70% with ties to the lower mark; Misleading at most 15% and at most 10% with ties to the higher mark; named authority in the top 10 for at least 60% of the answerable questions; direct answers at least 25%), clear or weak pass as there, and to the outcome table of section 7 of those rules. Meeting the floors still leads only to shadow mode in the eligible domains and never to the verified answer path. I expect, at 27 scored questions (24 at the floor) and with the two judges agreeing on about 64%, that a recipe as good as the tuning half would still miss at least one floor in roughly **30 to 40%** of runs [Guessing]; a miss would again mean new questions.
 
 ## 7. What the test cannot show
-Whether a change helps questions unlike the new ones; whether two changes together help; anything a lawyer would grade; answer writing; real users. Twenty-four questions cannot show a difference smaller than about 8 to 10 points; the rules ask for **no loss** plus a gain on the look-alikes, not for a large gain.
+Whether a change helps questions unlike the new ones; whether two changes together help; anything a lawyer would grade; answer writing; real users. Twenty-seven questions cannot show a difference smaller than about 8 to 10 points; the rules ask for **no loss** plus a gain on the look-alikes, not for a large gain.
 
 ## 8. Order of events and hygiene
-1. Owner accepts or amends; Mr. Advocate reviews the Machine Spec and the 'Claude Review' sheet of the workbook; the file is frozen and hashed.
+1. Owner accepts or amends; Mr. Advocate reviews the Machine Spec and the 'Claude Review' sheet of the workbook (done 2026-10-12, twice); the file is frozen and hashed (done 2026-10-12, hash in `fix_test_rules_v1.freeze` and `FOLLOW_UPS.md`, together with the hashes of `review_tools/machine_spec_v2.py` and `review_data/ruler/machine_spec_v2.json`).
 2. Code the three arms in `pool_runner.py` (a `--variant` option, off by default, output unchanged without it), with tests; commit; record the commit in every run label.
 3. Stage D; commit its table. Arms that fail are dropped.
 4. In parallel, the question writer prepares the new questions; they are sealed with a freeze hash and a hand-out guard (the same machinery as the 30) **before** any search. The writer sees none of the results of stages D or F.
@@ -60,14 +60,14 @@ Whether a change helps questions unlike the new ones; whether two changes togeth
 7. The index stays frozen at `3c80a26` until the run is over.
 
 ## 9. Freezing, amending, and what the owner must decide
-Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ruler/fix_test_rules_v1.freeze` (renamed to `FIX_TEST_RULES_v1.md` at the same time), commit, record the hash in `FOLLOW_UPS.md`. Amendments are appended below with a date and reason, before stage D; never after stage F's questions are searched.
+Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1.md > review_data/ruler/fix_test_rules_v1.freeze` (renamed to `FIX_TEST_RULES_v1.md` at the same time), commit, record the hash in `FOLLOW_UPS.md`. Amendments are appended below with a date and reason, before stage D; never after stage F's questions are searched.
 
 **Decisions for the owner (defaults in brackets):**
 1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner for C, N1, N2; W's removal and the judgment-level label confirmed 2026-10-11; on 2026-10-12 the owner approved N1 = precise anchors and N2 = broader union, both at 1.10, and asked for Machine Spec v2]
-2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; at least 24, in the columns of the owner's 30-question workbook]
+2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; 30 specified (27 scored + 3 controls), 24 usable at the floor, in the columns of the owner's 30-question workbook]
 3. Is another marking round of about 60 chats acceptable to J and S? [yes, confirmed 2026-10-10]
 4. Stage D spend under about $1? [yes, approved 2026-10-10]
-5. Mr. Advocate reviews the Machine Spec (workbook, 13 Acts) before the freeze? [yes, confirmed 2026-10-10; the freeze waits for his review; the first 9-row Appendix A is withdrawn]
+5. Mr. Advocate reviews the Machine Spec (workbook, 13 Acts) before the freeze? [yes, confirmed 2026-10-10; his review of v2 is complete (2026-10-12, two rounds); the first 9-row Appendix A is withdrawn]
 
 ## Appendix A: withdrawn
 The first draft table (9 Acts, with markers such as 'cheque', 'prevention of money', 'contraband', 'protection of women') is withdrawn: the owner's trigger workbook shows those markers misfire, and the index check confirms the general-code families cannot discriminate. The Machine Spec in the workbook replaces it. For stage F the new-question workbook gets one more column, 'Act(s) the question concerns (if any)', so trigger precision and recall can be measured before any search.
@@ -87,7 +87,9 @@ Owner decisions of 2026-10-11: "drop W" confirmed; "use the judgment-level label
 
 Owner request 2026-10-11: the rules and guidelines for the new questions were issued as `review_data/ruler/question_rules/New_Test_Questions_Rules_and_Guidelines.docx` (30 questions = 27 + 3 controls, up to 3 reserves; the owner's message said 29, which breaks the domain table, so 30 was specified and the owner is asked to confirm). The mix rules there (phrasing, code tags, traps, Act-concerning, look-alikes, twin pairs, index gaps) are binding for the question set.
 
-Owner decision 2026-10-12: N1 and N2 as defined above; Machine Spec v2 produced (`review_data/ruler/machine_spec_v2.json`, workbook `2026-10-12_trigger_workbook_with_spec_v2.xlsx`, tests `review_tools/test_machine_spec_v2.py`). The freeze now waits for Mr. Advocate's review of v2 and for the question set.
+Owner decision 2026-10-12: N1 and N2 as defined above; Machine Spec v2 produced (`review_data/ruler/machine_spec_v2.json`, workbook `2026-10-12_trigger_workbook_with_spec_v2.xlsx`, tests `review_tools/test_machine_spec_v2.py`). Mr. Advocate reviewed v2 twice (first audit, then a second review of the section subjects and plain-language phrases).
+
+Owner decisions of 2026-10-12 (second), relaying Mr. Advocate: (1) the leading case Satish Chander Ahuja (not in the index) is not to be mentioned now; it will be embedded some other time from another verifiable source, and no question or key may rely on it; (2) the other 10 Acts can stay as they are; (3) he sees no guard or anchor that would misfire in a real client's words; (4) bare "Domestic Violence Act" and "Juvenile Justice Act" (including the 1986 and 2000 versions) are acceptable markers. Nothing in Machine Spec v2 was changed by these decisions. The only thing the test still waits for is the question set (sealed before any search). The 30-versus-29 question count is still to be confirmed by the owner; the rules use 30.
 
 ## Amendments
 (none)
