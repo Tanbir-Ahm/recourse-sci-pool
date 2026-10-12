@@ -95,3 +95,16 @@ Alternative (simpler, riskier): load the index in the website container.
 
 ## 7. What I need to start Phase 1 now (historical: Phase 1 was started on the owner's instruction)
 Nothing more from you: say "start Phase 1" and I begin with steps 7 to 10 on this repository. Steps 1 to 6 and 11 to 12 are yours or need your access.
+
+## 8. Should the first deployment be production? (analysis for the owner, 2026-10-12)
+Facts: the patch is on branch `register-hooks-and-overlay` of `Tanbir-Ahm/recourse` (head `4e4e25b`); Recourse's 63 free tests pass; **the real model has never run with it**. Which branch each Railway service deploys from is not known to me (check: Railway, each service, Settings, Source). The WhatsApp bot is the same engine, so a merge to the branch both services follow changes both [Likely].
+
+| Piece | Reaches users? | Verdict |
+|---|---|---|
+| Register + cards patch | Yes, every answer on the site and WhatsApp | **Production is acceptable, with conditions** (below). It only adds; exceptions fail open; `REGISTER_HOOKS=off` is an instant switch. Risk that remains: the model's wording around a REGISTER FACT line, and the "not checked" sentence appearing on many answers (the cards cover 76 cases) |
+| Search service (`sci_search_service.py`) | No: nothing calls it | Safe to deploy as a separate service, but it needs about 3 GB of memory and a volume, and it costs nothing in users' eyes until the site calls it. **Do not connect it to what users see** until the names table exists |
+| Search tier shown in the site | Yes | **Not production-first.** Shadow mode first (log only), then limited show |
+
+Conditions for putting the patch straight into production: (1) set `REGISTER_HOOKS=off` in Railway first, merge, confirm the site and a WhatsApp message behave as before, then flip to `on` and ask five ordinary questions plus three that name a register case (Mohan Lal 2018, Raj Deo Sharma 1999, Bilal Ahmed Kaloo 1997) on the site and on WhatsApp; (2) you watch it for the first day; (3) you accept that this is the first time the real model sees the REGISTER FACT line, on real users. If you do not accept (3), the cheaper way to get the same test without users is a second Railway service from the same repository and branch, with its own `*.up.railway.app` address and the same environment variables, which takes about ten minutes and lets the criminal exam run before the merge. My recommendation is the second service, because it costs one more container for a day and removes (3); but the call is yours, and the setting-`off`-first route is a sound second choice. The answer PDF (`answer_pdf.py`) does not yet carry the currency notes: a gap, not a breakage.
+
+The final website you describe (a layman module and a lawyers' research module) is a design step after this: the lawyers' module is where the search tier belongs (passages with names, links, the register and card notes beside each), the laymen's module stays on the existing verified answers. That needs the names table, a link lookup and a lawyer-facing page; none exists yet.

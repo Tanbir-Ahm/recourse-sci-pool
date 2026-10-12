@@ -180,10 +180,10 @@ index 0000000..be7a8ae
 +        return empty
 diff --git a/test_register_hooks.py b/test_register_hooks.py
 new file mode 100644
-index 0000000..5b18eb7
+index 0000000..d6ed378
 --- /dev/null
 +++ b/test_register_hooks.py
-@@ -0,0 +1,78 @@
+@@ -0,0 +1,83 @@
 +"""
 +test_register_hooks.py -- the Overruled Register hooks (register_hooks.py + the three call sites in chat_assistant.py / recourse_app.py).
 +Fully offline and free: no API calls, nothing written. Run: python -X utf8 test_register_hooks.py
@@ -260,5 +260,26 @@ index 0000000..5b18eb7
 +    builtins.__import__ = real_import
 +check(ok, "with the bundle missing every hook returns empty and does not raise")
 +
++# WhatsApp: the same notes go out as one message, before the judgment links
++import whatsapp_formatter as WF
++msgs = WF.format_answer_for_whatsapp({"state": "single_match", "response_text": "Some answer.", "register_notes": ["Mohan Lal v. State of Punjab (2018): reported to have been overruled."], "register_not_checked": "Cases named in this answer that we have not checked: X v. Y."})
++check(any(m.startswith("*Currency notes*") and "Mohan Lal" in m and "not checked" in m for m in msgs), "WhatsApp carries the register notes and the 'not checked' sentence as one message")
++check(WF.format_answer_for_whatsapp({"state": "single_match", "response_text": "Some answer."}) == ["Some answer."], "and an answer without notes is unchanged")
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
+diff --git a/whatsapp_formatter.py b/whatsapp_formatter.py
+index 95fdec3..74d0774 100644
+--- a/whatsapp_formatter.py
++++ b/whatsapp_formatter.py
+@@ -127,6 +127,11 @@ def format_answer_for_whatsapp(result: dict) -> list:
+             messages.append(
+                 "Want a draft court petition based on this? Reply *DRAFT* and I'll prepare one you can download."
+             )
++        # Overruled Register (register_hooks.py via chat_assistant._attach_register_notes): added by code, not written by the model.
++        notes = result.get("register_notes")
++        not_checked = result.get("register_not_checked")
++        if notes or not_checked:
++            messages.append("\n".join(["*Currency notes* (checked by code, not by the model):"] + [f"- {n}" for n in (notes or [])] + ([not_checked] if not_checked else [])))
+         cited = result.get("cited_judgment_links")
+         if cited:
+             messages.append(_format_cited_judgments(cited))

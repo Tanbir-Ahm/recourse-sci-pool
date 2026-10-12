@@ -1,6 +1,6 @@
 # Patch notes for the Recourse owner: connecting the Overruled Register to the live site
 
-**Status (2026-10-12): written and tested on a scratch copy of Recourse at commit `721e063` (still its head on 2026-10-12); NOT applied to the live repository.** The Recourse repository is read-only for this project, so you apply it yourself. Everything fails open: if the bundle is missing or anything raises, the answer goes out exactly as it does today, and `REGISTER_HOOKS=off` switches all three locks off without a redeploy.
+**Status (2026-10-12): written and tested on a scratch copy of Recourse at commit `721e063` (still its head on 2026-10-12); applied to a branch, not deployed.** It was applied by Claude with the owner's say-so, to a branch only. Everything fails open: if the bundle is missing or anything raises, the answer goes out exactly as it does today, and `REGISTER_HOOKS=off` switches all three locks off without a redeploy.
 
 ## 0. Apply it (4 steps)
 
