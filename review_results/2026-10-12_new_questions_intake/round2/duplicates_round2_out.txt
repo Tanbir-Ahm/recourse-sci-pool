@@ -1,0 +1,59 @@
+1. BY QUESTION WORDING (1.00 = identical; 0.30 and above is read by eye)
+    N01  best 0.07 with R14        next 0.05 with ruler Q19
+   *N02  best 0.03 with R24        next 0.02 with R11
+    N03  best 0.08 with ruler Q16  next 0.06 with ruler Q22
+    N04  best 0.19 with ruler Q16  next 0.06 with ruler Q10
+    N05  best 0.07 with R14        next 0.05 with ruler Q20
+    N06  best 0.07 with ruler Q03  next 0.05 with R15
+    N07  best 0.14 with R08        next 0.12 with ruler Q29
+    N08  best 0.06 with R02        next 0.04 with R07
+    N09  best 0.05 with R02        next 0.03 with ruler Q01
+    N10  best 0.09 with ruler Q24  next 0.04 with ruler Q12
+    N11  best 0.02 with R01        next 0.01 with ruler Q03
+   *N12  best 0.08 with ruler Q03  next 0.07 with ruler Q20
+    N13  best 0.10 with ruler Q29  next 0.09 with R07
+    N14  best 0.04 with R02        next 0.03 with R17
+   *N15  best 0.10 with R16        next 0.07 with ruler Q31
+    N16  best 0.06 with R15        next 0.04 with R16
+    N17  best 0.10 with ruler Q17  next 0.05 with R15
+    N18  best 0.04 with ruler Q25  next 0.04 with ruler Q21
+    N19  best 0.07 with R19        next 0.03 with ruler Q23
+    N20  best 0.07 with R20        next 0.06 with R21
+    N21  best 0.10 with ruler Q09  next 0.06 with R18
+    N22  best 0.03 with R01        next 0.03 with R22
+    N23  best 0.07 with ruler Q28  next 0.04 with R21
+    N24  best 0.06 with R24        next 0.02 with ruler Q12
+    N25  best 0.03 with ruler Q11  next 0.03 with ruler Q07
+    N26  best 0.07 with R27        next 0.04 with R26
+    N27  best 0.06 with ruler Q22  next 0.03 with R26
+    N28  best 0.04 with ruler Q17  next 0.03 with R23
+    N29  best 0.03 with ruler Q20  next 0.03 with ruler Q03
+    N30  best 0.08 with ruler Q03  next 0.06 with R30
+    NR1  best 0.10 with R05        next 0.09 with ruler Q15
+    NR2  best 0.05 with ruler Q06v2 next 0.05 with ruler Q06
+    NR3  best 0.07 with R22        next 0.05 with R26
+
+   the replaced round-1 questions against the round-2 ones (should be different):
+     N02: round 1 vs round 2 wording similarity 0.01
+     N12: round 1 vs round 2 wording similarity 0.01
+     N15: round 1 vs round 2 wording similarity 0.03
+
+2. BY EXPECTED ANSWER (new key's answer against the earlier 30's answers; same scale)
+   N02: R01 answer 0.05; R11 answer 0.04; R05 answer 0.04
+   N12: R13 answer 0.20; R19 answer 0.07; R12 answer 0.06
+   N15: R08 answer 0.04; R07 answer 0.03; R14 answer 0.03
+   (all new answers, best earlier answer:)
+     N02  0.05 with R01 answer
+     N12  0.20 with R13 answer
+     N15  0.04 with R08 answer
+
+3. BY AUTHORITY: documents named in the FINAL key (round 1 minus the replaced questions, plus round 2) that an earlier question or ruler topic also uses
+   N01  acceptable Satender Kumar Antil v. CBI (2022)                             doc 1000254065: ['R02 key']
+   N04  primary    Bikramjit Singh v. State of Punjab (2020)                      doc 1000252765: ['ruler T08 expected']
+   N04  acceptable M. Ravindran v. Intelligence Officer, DRI (2020/21)            doc 1000252778: ['ruler T08 expected']
+   N06  acceptable Prathvi Raj Chauhan v. Union of India (2020)                   doc 1000252416: ['R25 key']
+   N11  acceptable Union of India v. Md. Nawaz Khan (2021)                        doc 1000253281: ['ruler T12 expected']
+   N02  primary    D.K. Basu v. State of West Bengal (1996/97)                    doc 14580: ['R03 key']
+   N02  acceptable Arnesh Kumar v. State of Bihar (2014)                          doc 41736: ['R02 key', 'ruler T01 expected']
+   N12  acceptable Parbatbhai Aahir v. State of Gujarat (2017)                    doc 1000250282: ['R13 key']
+   (8 overlaps)

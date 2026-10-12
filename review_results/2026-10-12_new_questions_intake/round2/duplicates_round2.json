@@ -1,0 +1,86 @@
+{
+ "changed": [
+  "N02",
+  "N12",
+  "N15"
+ ],
+ "overlaps": {
+  "N01": [
+   [
+    "acceptable",
+    "Satender Kumar Antil v. CBI (2022)",
+    1000254065,
+    [
+     "R02 key"
+    ]
+   ]
+  ],
+  "N04": [
+   [
+    "primary",
+    "Bikramjit Singh v. State of Punjab (2020)",
+    1000252765,
+    [
+     "ruler T08 expected"
+    ]
+   ],
+   [
+    "acceptable",
+    "M. Ravindran v. Intelligence Officer, DRI (2020/21)",
+    1000252778,
+    [
+     "ruler T08 expected"
+    ]
+   ]
+  ],
+  "N06": [
+   [
+    "acceptable",
+    "Prathvi Raj Chauhan v. Union of India (2020)",
+    1000252416,
+    [
+     "R25 key"
+    ]
+   ]
+  ],
+  "N11": [
+   [
+    "acceptable",
+    "Union of India v. Md. Nawaz Khan (2021)",
+    1000253281,
+    [
+     "ruler T12 expected"
+    ]
+   ]
+  ],
+  "N02": [
+   [
+    "primary",
+    "D.K. Basu v. State of West Bengal (1996/97)",
+    14580,
+    [
+     "R03 key"
+    ]
+   ],
+   [
+    "acceptable",
+    "Arnesh Kumar v. State of Bihar (2014)",
+    41736,
+    [
+     "R02 key",
+     "ruler T01 expected"
+    ]
+   ]
+  ],
+  "N12": [
+   [
+    "acceptable",
+    "Parbatbhai Aahir v. State of Gujarat (2017)",
+    1000250282,
+    [
+     "R13 key"
+    ]
+   ]
+  ]
+ }
+}
