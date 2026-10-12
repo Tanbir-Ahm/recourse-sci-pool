@@ -14,8 +14,8 @@
 |---|---|
 | **B** | nothing (today's final recipe) |
 | **C** | **cap of 2 per judgment in the top 5**: fill places 1 to 5 in score order, skipping a passage when two passages of its judgment already hold places; skipped passages follow in score order from place 6; places 6 to 10 otherwise unchanged |
-| **N1** | **named-Act boost, factor 1.10, judgment-level label**: if the question fires an Act of the Machine Spec (workbook sheet 'Machine Spec (draft)', 13 Acts, literal anchors), every passage of every judgment that carries that Act's strong marker in **3 or more** passages has its final score multiplied by 1.10 (once per passage; the section boost is unchanged). General codes (BNS/IPC, BNSS/CrPC, BSA/IEA) never boost |
-| **N2** | the same with factor **1.25** |
+| **N1** | **named-Act boost, precise anchors, factor 1.10, judgment-level label**: if the question fires an Act by a PRECISE anchor of Machine Spec v2 (`review_tools/machine_spec_v2.py`, 13 Acts; Mr. Advocate's anchors, repaired), every passage of every judgment that carries that Act's strong passage marker in **3 or more distinct passages** has its final score multiplied by 1.10 (once per passage; the section boost is unchanged). General codes (BNS/IPC, BNSS/CrPC, BSA/IEA) never boost; a judgment with 3 or more Section 66A passages is never labelled IT Act |
+| **N2** | **the same boost (factor 1.10, same labels), broader trigger**: the Act also fires on the plain-language anchors of Machine Spec v2, each Act with its own exclusion guard. N1 against N2 therefore tests precision against recall of the trigger, not the size of the boost (the earlier 1.25 setting had no evidence behind it and was dropped) |
 
 The Machine Spec is fixed before any final question is searched and cannot be extended afterwards. It was written from the owner's trigger workbook (`review_data/ruler/inputs/2026-10-11_trigger_workbook_with_claude_appends.xlsx`: five original sheets untouched, three appended: 'Claude Review', 'Index Reality Check', 'Machine Spec (draft)'), not from any result of this test. Mr. Advocate reviews it before the freeze. A change that fails stage D is dropped, not retuned; a new magnitude needs an amendment before stage D starts.
 
@@ -63,7 +63,7 @@ Whether a change helps questions unlike the new ones; whether two changes togeth
 Freeze: `sha256sum review_data/ruler/FIX_TEST_RULES_v1_DRAFT.md > review_data/ruler/fix_test_rules_v1.freeze` (renamed to `FIX_TEST_RULES_v1.md` at the same time), commit, record the hash in `FOLLOW_UPS.md`. Amendments are appended below with a date and reason, before stage D; never after stage F's questions are searched.
 
 **Decisions for the owner (defaults in brackets):**
-1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner for C, N1, N2; W's removal and the judgment-level label confirmed 2026-10-11]
+1. The arms: C, N1, N2 (W dropped on the evidence in the disclosure). [accepted by the owner for C, N1, N2; W's removal and the judgment-level label confirmed 2026-10-11; on 2026-10-12 the owner approved N1 = precise anchors and N2 = broader union, both at 1.10, and asked for Machine Spec v2]
 2. Who writes the new questions, and by when? [owner: "brand new questions would be provided"; at least 24, in the columns of the owner's 30-question workbook]
 3. Is another marking round of about 60 chats acceptable to J and S? [yes, confirmed 2026-10-10]
 4. Stage D spend under about $1? [yes, approved 2026-10-10]
@@ -86,6 +86,8 @@ Decision (proposed to the owner): drop W; do not add Wd, L or J. R23's kind of m
 Owner decisions of 2026-10-11: "drop W" confirmed; "use the judgment-level label" confirmed. The remaining conditions before the freeze are Mr. Advocate's review of the Machine Spec and the new questions' format (with the 'Act(s) the question concerns' column).
 
 Owner request 2026-10-11: the rules and guidelines for the new questions were issued as `review_data/ruler/question_rules/New_Test_Questions_Rules_and_Guidelines.docx` (30 questions = 27 + 3 controls, up to 3 reserves; the owner's message said 29, which breaks the domain table, so 30 was specified and the owner is asked to confirm). The mix rules there (phrasing, code tags, traps, Act-concerning, look-alikes, twin pairs, index gaps) are binding for the question set.
+
+Owner decision 2026-10-12: N1 and N2 as defined above; Machine Spec v2 produced (`review_data/ruler/machine_spec_v2.json`, workbook `2026-10-12_trigger_workbook_with_spec_v2.xlsx`, tests `review_tools/test_machine_spec_v2.py`). The freeze now waits for Mr. Advocate's review of v2 and for the question set.
 
 ## Amendments
 (none)
