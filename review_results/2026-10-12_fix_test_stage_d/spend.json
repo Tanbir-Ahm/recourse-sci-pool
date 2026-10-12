@@ -1,0 +1,195 @@
+{
+ "run": {
+  "when": "2026-10-12T07:31:45Z",
+  "half": "dev",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "B baseline (rerank-3-lite)",
+   "C cap 2 per judgment",
+   "N1 named-Act boost (precise)",
+   "N2 named-Act boost (broad)"
+  ],
+  "source": "real30",
+  "site_arm": false,
+  "rewrites_file": "review_data/ruler/real30_rewrites_v1.json",
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 422012,
+   "rerank_calls": 22,
+   "embed_tokens": 1264,
+   "embed_calls": 22,
+   "cap_rerank_tokens": 3000000,
+   "dollars_estimate": 0.0213,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   },
+   "rerank_tokens_by_model": {
+    "rerank-3-lite": 422012
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-3-lite"
+  },
+  "side_index": {
+   "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572,
+   "built": "2026-10-09T08:03:50Z",
+   "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+  },
+  "side_indexes": [
+   {
+    "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+    "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+    "documents": 17,
+    "passages": 2572,
+    "built": "2026-10-09T08:03:50Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_documents",
+    "manifest_sha256": "4e407a307be9260aaf5176d7d48b2d5ffde1b6bbc85e2a95dec9bd7fd470d4e7",
+    "documents": 1,
+    "passages": 12,
+    "built": "2026-10-09T10:00:02Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_shivangi_bansal",
+    "manifest_sha256": "2839f1829a211eda61e1c2fdb474cb37fcf25564dd9807e0f6e5e91511e13cf7",
+    "documents": 1,
+    "passages": 23,
+    "built": "2026-10-09T10:15:11Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   }
+  ],
+  "fix_test": {
+   "stage": "D",
+   "label": " | fix test stage D | rules 0190876e3258 | code 1740db78fe",
+   "rules_sha256": "0190876e32589fd27060506ad5e620e74aff24721f938c1992abd4edccdb3ac6",
+   "frozen_files": {
+    "review_data/ruler/FIX_TEST_RULES_v1.md": "0190876e32589fd27060506ad5e620e74aff24721f938c1992abd4edccdb3ac6",
+    "review_data/ruler/machine_spec_v2.json": "ca9afa8c3c42c92683782bb7a2c0110d81f4c5ccaafd43066fddd66b5f58ebf8",
+    "review_tools/machine_spec_v2.py": "9e41f52debb2460e320cda4190776eca444070ec6d2468734ba03cfab0d6acf0",
+    "review_tools/test_machine_spec_v2.py": "b76caf893965c0516f434d8ad6d1a3a1489fc51ff67f3755667b287847be4673"
+   },
+   "code_commit": "1740db78fe1753a01189d151a34fccf221584cd7",
+   "code_uncommitted": [],
+   "labelled_judgments": {
+    "PWDVA": 21,
+    "NDPS": 241,
+    "POCSO": 58,
+    "SC/ST": 50,
+    "NI Act": 199,
+    "PMLA": 50,
+    "UAPA": 45,
+    "DPA": 64,
+    "JJ Act": 93,
+    "PC Act": 407,
+    "Arms Act": 255,
+    "IT Act": 16,
+    "MV Act": 16
+   },
+   "side_indexes": [
+    "review_data/side_index/2026-10-09_correcting_judgments",
+    "review_data/side_index/2026-10-09_fetched_documents",
+    "review_data/side_index/2026-10-09_fetched_shivangi_bansal"
+   ]
+  }
+ },
+ "per_question": {
+  "R01": {
+   "rerank_tokens": 22454,
+   "embed_tokens": 91
+  },
+  "R02": {
+   "rerank_tokens": 14027,
+   "embed_tokens": 50
+  },
+  "R04": {
+   "rerank_tokens": 18541,
+   "embed_tokens": 45
+  },
+  "R06": {
+   "rerank_tokens": 19081,
+   "embed_tokens": 62
+  },
+  "R08": {
+   "rerank_tokens": 16960,
+   "embed_tokens": 35
+  },
+  "R09": {
+   "rerank_tokens": 21161,
+   "embed_tokens": 51
+  },
+  "R11": {
+   "rerank_tokens": 19370,
+   "embed_tokens": 30
+  },
+  "R12": {
+   "rerank_tokens": 24028,
+   "embed_tokens": 113
+  },
+  "R14": {
+   "rerank_tokens": 19158,
+   "embed_tokens": 39
+  },
+  "R15": {
+   "rerank_tokens": 22594,
+   "embed_tokens": 113
+  },
+  "R17": {
+   "rerank_tokens": 14537,
+   "embed_tokens": 43
+  },
+  "R19": {
+   "rerank_tokens": 22625,
+   "embed_tokens": 98
+  },
+  "R20": {
+   "rerank_tokens": 17557,
+   "embed_tokens": 45
+  },
+  "R21": {
+   "rerank_tokens": 17710,
+   "embed_tokens": 46
+  },
+  "R22": {
+   "rerank_tokens": 23110,
+   "embed_tokens": 104
+  },
+  "R24": {
+   "rerank_tokens": 21676,
+   "embed_tokens": 92
+  },
+  "R26": {
+   "rerank_tokens": 18631,
+   "embed_tokens": 42
+  },
+  "R28": {
+   "rerank_tokens": 13822,
+   "embed_tokens": 26
+  },
+  "R29": {
+   "rerank_tokens": 16057,
+   "embed_tokens": 30
+  },
+  "R16": {
+   "rerank_tokens": 16085,
+   "embed_tokens": 25
+  },
+  "R23": {
+   "rerank_tokens": 21812,
+   "embed_tokens": 29
+  },
+  "R03": {
+   "rerank_tokens": 21016,
+   "embed_tokens": 55
+  }
+ }
+}
