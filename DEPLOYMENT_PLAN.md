@@ -38,7 +38,8 @@ Correction to something I said on 12 Oct: "everything is on `main`" is true of t
 4. **Shared credit.** Each question to the new tier costs one embedding and one re-rank (stage F: 29 questions cost about 3 cents in Voyage). The Voyage balance is shared with the live site, reserve $5. The answer-writing step (Anthropic) is the larger cost and already exists.
 5. **No lawyer has checked anything yet.** Marks are ChatGPT and Gemini; the key and the register are unreviewed; the site's own promise is that it cannot misstate law.
 6. **I cannot deploy.** I have no Railway access, the Recourse repository is read-only for this project, and this session's network blocks WebSockets, so I cannot even read a real answer from the live site.
-7. **Fragile working copy.** This container is temporary. Everything worth keeping must be pushed (it is), and `corpus.sqlite` must be rebuilt after any reset.
+7. **(Added 2026-10-12) Case names.** 5,678 of 10,522 judgments in the index (54%) are named only by their opening lines and 324 by nothing; the site's panel shows a name and a link. Needs a names table before anything is shown (`SEARCH_SERVICE.md`, limit 1).
+8. **Fragile working copy.** This container is temporary. Everything worth keeping must be pushed (it is), and `corpus.sqlite` must be rebuilt after any reset.
 
 ## 4. The design I recommend
 
@@ -84,5 +85,13 @@ Alternative (simpler, riskier): load the index in the website container.
 **Phase 5: later**
 18. Never feed the tier to the verified answer path without a lawyer-reviewed pass. D, F, G, J only after their own test. Refresh the index monthly (bucket refresh) and re-run a small check each time.
 
-## 6. What I need to start Phase 1 now
+## 6. Phase 1 status (updated 2026-10-12, same day; all on branch `claude/sharp-euler-unyfv0`, nothing on the live site)
+| Step | State |
+|---|---|
+| 7. Cards overlay + "not checked by us" | **Built and tested** (`goodlaw/overlay.py`, `test_goodlaw_overlay.py`). Covers the 76 library cases only; wider coverage needs the corpus store rebuilt |
+| 8. Site patch refreshed | **Built and tested on a scratch copy at 721e063**: `site_patch/recourse_721e063.patch` applies cleanly; Recourse's free suite 63 of 63 pass; Streamlit render checked. **Not applied** (yours to apply). No real-model run |
+| 9. Trap exam | **Runner and a criminal-domain exam built and tested with a stand-in assistant; not run** (needs the real model and keys, on your machine). Finding: 35+ of the original 50 questions are outside criminal law, so a new 28-question exam over the 14 register rows that are in the index was made (`site_patch/README.md`) |
+| 10. Search service | **Built, tested, run on the real index**: same list as the saved stage F B list on 4 of 4 questions; about 1.5 GB memory, 27 to 33 s start, 1.3 to 3.7 s per question (`SEARCH_SERVICE.md`). **New blocker found: 54% of judgments in the index have only their opening lines as a "name"** |
+
+## 7. What I need to start Phase 1 now (historical: Phase 1 was started on the owner's instruction)
 Nothing more from you: say "start Phase 1" and I begin with steps 7 to 10 on this repository. Steps 1 to 6 and 11 to 12 are yours or need your access.
