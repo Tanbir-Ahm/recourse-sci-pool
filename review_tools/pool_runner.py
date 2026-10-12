@@ -39,6 +39,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.normpath(os.path.join(HERE, ".."))
 sys.path.insert(0, HERE)
 sys.path.insert(0, ROOT)
+import fix_arms as FA                      # noqa: E402
+import machine_spec_v2 as MS               # noqa: E402
 import real_questions as RQ                # noqa: E402
 import sci_index as si                     # noqa: E402
 
@@ -55,6 +57,11 @@ R_VERSION, M_R_VERSION = "R challenger re-ranker", "M safety net (challenger)"  
 FINAL_VERSIONS = ("A today", R_VERSION, "S site shown", "M safety net", M_R_VERSION)
 CHALLENGER_DEFAULT = "rerank-3-lite"
 FINAL_RERANK_CAP = 2_000_000
+FIX_RULES_PATH = os.path.join(DATA, "FIX_TEST_RULES_v1.md")
+FIX_FREEZE_PATH = os.path.join(DATA, "fix_test_rules_v1.freeze")
+FIX_RERANK_CAP = 3_000_000
+# Stage D (FIX_TEST_RULES_v1.md, section 2): the 19 tuning questions and, as a check not a test, the three known failures. No other question may be run with --fix-test D.
+STAGE_D_IDS = ("R01", "R02", "R04", "R06", "R08", "R09", "R11", "R12", "R14", "R15", "R17", "R19", "R20", "R21", "R22", "R24", "R26", "R28", "R29", "R16", "R23", "R03")
 RULES_PATH = os.path.join(DATA, "SEALED_RUN_RULES_v1.md")
 FREEZE_PATH = os.path.join(DATA, "sealed_run_rules_v1.freeze")
 SAFETY_NET_DEPTH = 5                  # the merged (pre-re-ranker) top 5 must come up somewhere in the list shown
@@ -212,6 +219,13 @@ class Engine:
         if self.site:
             out["S site shown"] = list(self.site(q))
         return out
+
+    def lists_for_fix(self, q, challenger, labels):
+        """The fix test's arms (fix_arms.py) for one question: ONE retrieval and ONE re-rank call (the challenger), then B, C, N1 and N2 from the same scores. Returns (lists, {'N1': acts, 'N2': acts})."""
+        a = self.retrieve(q)
+        rs = self.rerank(q, a["cand"], model=challenger)
+        final = {r: s * self.weight(r, a["nums"]) for r, s in rs.items()}
+        return FA.arms(q, final, lambda r: self.metas[r]["doc"], labels)
 
     def lists_for(self, q, rewrite=None):
         """{version: [index row ids, best first]} for one question (top 10 each; S whole)."""
@@ -400,7 +414,7 @@ def read_done(path):
         return {r["qid"]: r for r in map(json.loads, (l for l in fh if l.strip()))}
 
 
-def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, challenger=None, top_k=5):
+def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, challenger=None, top_k=5, fix_labels=None):
     """Runs the questions one by one, saving each as it finishes. Returns the compiled pool and whether the cap stopped it."""
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, "questions.jsonl")
@@ -413,12 +427,18 @@ def run(real, questions, rewrites, engine, hdocs, title, out_dir, log=print, cha
         before = (engine.spend.rerank, engine.spend.embed)
         rw = (rewrites or {}).get(q["id"])
         try:
-            lists = engine.lists_for_final(q["text"], challenger) if challenger else engine.lists_for(q["text"], rw)
+            fired = None
+            if fix_labels is not None:
+                lists, fired = engine.lists_for_fix(q["text"], challenger, fix_labels)
+            else:
+                lists = engine.lists_for_final(q["text"], challenger) if challenger else engine.lists_for(q["text"], rw)
         except SpendCapReached as e:
             stopped = f"stopped before {q['id']}: {e}"
             log(stopped)
             break
         rec = build_question(q, lists, engine.metas, hdocs, title, rw, top_k=top_k)
+        if fired is not None:
+            rec["acts_fired"] = fired
         rec["spend"] = {"rerank_tokens": engine.spend.rerank - before[0], "embed_tokens": engine.spend.embed - before[1]}
         with open(path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -447,6 +467,51 @@ def rules_state(rules_path=RULES_PATH, freeze_path=FREEZE_PATH):
         m = re.search(r"sha256\s+([0-9a-f]{64})", open(freeze_path, encoding="utf-8").read())
         recorded = m.group(1) if m else None
     return have, recorded
+
+
+def fix_guard(a, code=None, files=None):
+    """Reasons to refuse a --fix-test run (FIX_TEST_RULES_v1.md): the rules, the Machine Spec and its tests must be exactly what was frozen, the checkout clean (the run records the commit), the
+    re-ranker and cap as the rules say, and Stage D limited to its own questions. Empty list = go. `files`: {path: (sha256 now, sha256 frozen or None)}."""
+    bad = []
+    if a.fix_test != "D":
+        bad.append(f"--fix-test {a.fix_test}: only stage D is coded here; stage F's loader is added, tested and committed after the question set is sealed and before its search")
+    if a.challenger_model != CHALLENGER_DEFAULT:
+        bad.append(f"the arms use {CHALLENGER_DEFAULT}, not {a.challenger_model}")
+    if a.max_rerank_tokens is None or a.max_rerank_tokens > FIX_RERANK_CAP:
+        bad.append(f"the re-rank cap for the fix test is at most {FIX_RERANK_CAP:,} tokens")
+    if a.allow_other_index:
+        bad.append("--allow-other-index is not allowed in the fix test")
+    if a.source != "real30":
+        bad.append("stage D uses the 30 real questions' file (--source real30)")
+    have_dirs = {os.path.normpath(os.path.abspath(d)) for d in a.supplement}
+    for rel in FINAL_SIDE_INDEXES:
+        if os.path.normpath(os.path.join(ROOT, rel)) not in have_dirs:
+            bad.append(f"the baseline B is the sealed run's recipe with its side index {rel}: add --supplement {rel}")
+    for path, (now, frozen) in (files if files is not None else fix_frozen_files()).items():
+        if frozen is None:
+            bad.append(f"{path} is not listed in the freeze file")
+        elif now != frozen:
+            bad.append(f"{path} differs from the frozen hash ({now[:10]} against {frozen[:10]}): an amendment must be recorded in the rules before stage D and re-frozen")
+    commit, dirty = code or code_state()
+    if dirty:
+        bad.append(f"the checkout has uncommitted changes ({', '.join(dirty[:4])}{' ...' if len(dirty) > 4 else ''}): commit them first, the run records the commit")
+    return bad
+
+
+def fix_frozen_files(freeze_path=FIX_FREEZE_PATH, root=ROOT):
+    """{relative path: (sha256 now, sha256 in the freeze file or None)} for every file the freeze file pins, plus the rules file itself."""
+    recorded = {}
+    if os.path.exists(freeze_path):
+        for line in open(freeze_path, encoding="utf-8"):
+            m = re.match(r"([0-9a-f]{64})\s+(\S+)", line)
+            if m:
+                recorded[m.group(2)] = m.group(1)
+    out = {}
+    for rel in sorted(set(recorded) | {os.path.relpath(FIX_RULES_PATH, ROOT)}):
+        fp = os.path.join(root, rel)
+        now = hashlib.sha256(open(fp, "rb").read()).hexdigest() if os.path.exists(fp) else "missing"
+        out[rel] = (now, recorded.get(rel))
+    return out
 
 
 def final_guard(a, code=None, rules=None):
@@ -505,6 +570,7 @@ def main(argv=None):
     ap.add_argument("--dry-run", action="store_true", help="show the plan and call nothing (a sealed dry run does not hand the questions out)")
     ap.add_argument("--final-recipe", action="store_true", help="the sealed run's recipe: A today (rerank-2), R (the challenger re-ranker) on the same candidates, S, and both safety nets; see SEALED_RUN_RULES_v1.md")
     ap.add_argument("--challenger-model", default=CHALLENGER_DEFAULT)
+    ap.add_argument("--fix-test", choices=["D"], help="the fix test's arms B, C, N1, N2 (FIX_TEST_RULES_v1.md) on the stage D questions: one retrieval and one re-rank call per question (the challenger), no site arm, no rewrites. Off by default")
     ap.add_argument("--top-k", type=int, default=None, help="how many places of each ranked version are pooled for marking (5; 10 with --final-recipe)")
     a = ap.parse_args(argv)
     if a.top_k is None:
@@ -529,7 +595,16 @@ def main(argv=None):
         return 1
     code = code_state()
     rules = rules_state() if os.path.exists(RULES_PATH) else (None, None)
-    refusals = final_guard(a, code, rules) if (a.half == "sealed" and a.final and not a.dry_run) else []
+    if a.fix_test:
+        refusals = fix_guard(a, code)
+        if refusals:
+            print("refused:")
+            for r in refusals:
+                print("  -", r)
+            return 5
+        a.no_site, a.top_k = True, 10
+        a.label = f"{a.label} | fix test stage {a.fix_test} | rules {fix_frozen_files()[os.path.relpath(FIX_RULES_PATH, ROOT)][0][:12]} | code {code[0][:10]}"
+    refusals = final_guard(a, code, rules) if (a.half == "sealed" and a.final and not a.dry_run and not a.fix_test) else []
     if refusals:
         print("refused before the questions were handed out:")
         for r in refusals:
@@ -543,7 +618,10 @@ def main(argv=None):
     if a.final and a.half == "sealed":
         a.label = f"{a.label} | rules {rules[0][:12] if rules[0] else 'none'} | code {code[0][:10]}"
     try:
-        if a.source == "ruler":
+        if a.fix_test:
+            by_id = {q["id"]: q for q in real["questions"]}
+            qs = [by_id[i] for i in STAGE_D_IDS]                     # used questions only (rules, section 2); the key is never read here
+        elif a.source == "ruler":
             qs = ruler_questions(a.ruler, a.half, final=a.final, label=a.label)
         else:
             qs = RQ.select(real, a.half, final=a.final, label=a.label)
@@ -559,6 +637,9 @@ def main(argv=None):
     if a.source == "real30" and os.path.exists(a.rewrites):
         with open(a.rewrites, encoding="utf-8") as fh:
             rewrites = json.load(fh)["rewrites"]
+    if a.fix_test and a.dry_run:
+        print(f"fix test stage {a.fix_test}: {len(qs)} questions, {len(FA.FIX_VERSIONS)} arms from ONE re-rank call ({a.challenger_model}) per question; cap {a.max_rerank_tokens:,}; label: {a.label}")
+        return 0
     if a.dry_run:
         n_rw = sum(1 for q in qs if q["id"] in rewrites)
         print(f"{len(qs)} questions ({a.half}); {n_rw} with a blind rewrite (versions C and F); site arm {'off' if a.no_site else 'on'}; cap {a.max_rerank_tokens:,} re-rank tokens"
@@ -585,11 +666,16 @@ def main(argv=None):
     for m in metas:
         hdocs[m["h"]].add(m["doc"])
     fts = build_fts(metas)
+    fix_labels = None
+    if a.fix_test:
+        t0 = time.time()
+        fix_labels = MS.judgment_labels((m["doc"], m["h"], m["text"]) for m in metas)
+        print(f"judgment labels computed in {time.time() - t0:.0f}s: " + ", ".join(f"{k} {len(v)}" for k, v in fix_labels.items()), flush=True)
     site = None if a.no_site else make_site(metas, M, a.recourse_dir)
     spend = Spend(a.max_rerank_tokens)
     engine = Engine(metas, M, si.make_client(), spend, fts, site, safety=a.safety_net)
     ordered, stopped = run(real, qs, rewrites, engine, hdocs, titles([a.index_dir] + a.supplement, metas, extra_titles or None), a.out,
-                           challenger=a.challenger_model if a.final_recipe else None, top_k=a.top_k)
+                           challenger=a.challenger_model if (a.final_recipe or a.fix_test) else None, top_k=a.top_k, fix_labels=fix_labels)
     run_info = {"when": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "half": a.half, "index_commit": head, "index_matches_record": head == want, "versions": list(VERSIONS) + (list(SAFETY_VERSIONS) if a.safety_net else []),
                 "source": a.source, "site_arm": not a.no_site, "rewrites_file": os.path.relpath(a.rewrites, ROOT) if rewrites else None, "stopped": stopped, "spend": spend.as_dict(),
                 "question_file_split_sha256": real["freeze"]["split_sha256"], "models": {"embed": EMBED_MODEL, "rerank": RERANK_MODEL}, "side_index": supp_infos[0] if supp_infos else None, "side_indexes": supp_infos}
@@ -598,6 +684,11 @@ def main(argv=None):
         run_info["models"] = {"embed": EMBED_MODEL, "rerank": RERANK_MODEL, "challenger": a.challenger_model}
         run_info["final_recipe"] = {"challenger": a.challenger_model, "top_k": a.top_k, "label": a.label, "rules_sha256": rules[0], "rules_frozen_sha256": rules[1], "code_commit": code[0], "code_uncommitted": code[1],
                                    "side_indexes": [i["dir"] for i in supp_infos], "rewrites_used": False}
+    if a.fix_test:
+        run_info["versions"] = list(FA.FIX_VERSIONS)
+        run_info["fix_test"] = {"stage": a.fix_test, "label": a.label, "rules_sha256": fix_frozen_files()[os.path.relpath(FIX_RULES_PATH, ROOT)][0], "frozen_files": {k: v[0] for k, v in fix_frozen_files().items()},
+                                "code_commit": code[0], "code_uncommitted": code[1], "labelled_judgments": {k: len(v) for k, v in fix_labels.items()}, "side_indexes": [i["dir"] for i in supp_infos]}
+        run_info["models"] = {"embed": EMBED_MODEL, "rerank": a.challenger_model}
     with open(os.path.join(a.out, "pool.json"), "w", encoding="utf-8") as fh:
         json.dump({"run": run_info, "questions": ordered}, fh, ensure_ascii=False, indent=1)
         fh.write("\n")
