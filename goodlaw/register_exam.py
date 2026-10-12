@@ -70,6 +70,26 @@ def build_exam(reg, n_list1=36, n_list2=10, n_chain=4, seed=7):
     return qs, key
 
 
+def build_exam_rows(reg, row_ids, per_row=2):
+    """A questions/key pair for chosen register rows (a row id twice in a decision group is asked once), `per_row` different phrasings each. Same key format as build_exam."""
+    qs, key, done, k = [], {}, set(), 0
+    for rid in row_ids:
+        r = reg.by_id[rid]
+        group = {x["id"] for x in [r] + reg.same_decision_rows(r)}
+        if group & done:
+            continue
+        done |= group
+        o = r["overruled"]
+        for j in range(per_row):
+            tmpl = TEMPLATES[(k + j) % len(TEMPLATES)]
+            cite = f" ({o['cites'][0]})" if o.get("cites") and "{cite}" in tmpl else ""
+            k += 1
+            qid = f"C{k:02d}"
+            qs.append({"id": qid, "question": tmpl.format(name=_clean(o["name"]), year=o["year"], cite=cite).replace("  ", " ")})
+            key[qid] = {"row_id": r["id"], "case": f"{o['name']} ({o['year']})", "overruling": r["overruling"]["name"], "kind": r["source"], "trust": r["trust"]}
+    return qs, key
+
+
 def write_exam(reg, out_dir, seed=7):
     qs, key = build_exam(reg, seed=seed)
     os.makedirs(out_dir, exist_ok=True)
