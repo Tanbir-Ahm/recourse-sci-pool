@@ -1,0 +1,78 @@
+{
+"question_id": "N25",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "in the absence of the complainant due to his death proceeded to convict the accused based on the evidence available on record and further held that for the purpose of reaching a conclusion",
+"reason": "This passage shows precedents where conviction occurred despite the complainant's death using circumstantial evidence, though it lists contrasting cases as well.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "In the instant case P.W. 1 has no axe to grind against A- 1. It is not in dispute that he had to get a patta issued by A-1 and he categorically stated that A-1 made the demand.",
+"reason": "This passage discusses corroboration of a live complainant's testimony, not proving demand without the complainant's evidence.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "In the event the complainant turns “hostile”, or has died or is unavailable to let in his evidence during trial, demand of illegal gratiﬁ cation can be proved by letting in the evidence of any other witness",
+"reason": "It explicitly quotes a Constitution Bench holding that demand of illegal gratification can be proved by other oral, documentary, or circumstantial evidence when the complainant has died.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "This Court observed that the complainant did not support the case of the prosecution insofar as demand made by the accused for the bribe is concerned and the prosecution did not examine any other witness present",
+"reason": "This passage describes the facts of B. Jayaraj where demand was not proved because no other witness was examined, potentially misleading one into thinking it can never be proved.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "Such a proof can be adduced even by way of circumstantial evidence in the absence of direct evidence. This would be so particularly in trap cases as the prosecution has to prove that the accused had demanded a bribe",
+"reason": "It establishes that demand can be proved via circumstantial evidence in trap cases, but does not explicitly address the specific situation of the complainant's death.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "number of judgments where accused was convicted even when the evidence of complainant was not available either due to death of complainant or where the complainant had turned hostile.",
+"reason": "It directly states that an accused can be convicted based on tell-tale circumstances proving demand even when the complainant's evidence is unavailable due to death.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "No",
+"evidence": "We are afraid, the evidence of PW-10 hardly establishes the demand allegedly made by the accused. The factum of demand, thus, remains not proved.",
+"reason": "This passage discusses specific insufficient evidence of a witness in a particular case rather than answering the general rule on proving demand without a complainant.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "Although A-1 had not been entrapped per se, he was found to be conclusively incriminated by the circumstances and evidence of the complainant.",
+"reason": "This passage deals with a case where the complainant actually testified and gave evidence regarding the demand.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "In the absence of the complainant, the onus lay upon the prosecution to adduce credible evidence and to prove the guilt beyond the periphery of doubt.",
+"reason": "It shows that in the absence of the complainant, prosecution can prove guilt with credible evidence, though on its facts the evidence was contradictory.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "When the complainant himself had disowned what he had stated in the initial complaint (Ext. P-11) before LW 9, and there is no other evidence to prove that the accused had made any demand",
+"reason": "It shows acquittal due to lack of other evidence of demand, which could give a misleading impression that failure is mandatory without the complainant.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 3,
+"caveats": ""
+}

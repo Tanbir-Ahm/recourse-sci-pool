@@ -1,0 +1,78 @@
+{
+"question_id": "N27",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "proviso to Section 372 of CrPC does not indicate that a victim while filing an appeal THE STATE OF KARNATAKA [DEEPAK GUPTA, J.] in the High Court must file a petition for leave",
+"reason": "The passage explicitly addresses the proviso to Section 372 and states that a victim filing an appeal is not required to obtain leave.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "if a victim, whether he is a complainant or not, files an appeal in terms of proviso to 2134 Section 372 CrPC, then the mandate of seeking special leave to appeal would not arise.",
+"reason": "The passage clearly holds that a victim appealing under the proviso to Section 372 CrPC does not need to seek leave to appeal.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Misleading",
+"evidence": "My only difference of opinion is with regard to the conclusion drawn in the judgment of my learned brother that the victim, even in appeal filed in the High Court, is not required to seek leave",
+"reason": "This records a dissenting opinion and quotes a prior view requiring leave, which does not represent the majority view of the court.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Misleading",
+"evidence": "conferred upon the victim including the legal heir and others, as defined under Section 2(wa) Cr.P.C., under the proviso to Section 372, but only after obtaining the leave of the High Court",
+"reason": "This states the older Satya Pal Singh view requiring leave, which was later departed from by larger benches.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "if the victim of an offence, who may or may not be the complainant, proceeds under the proviso to Section 372 of the CrPC, then in our view, such a victim need not seek special leave",
+"reason": "The passage directly answers that a victim appealing under the proviso to Section 372 does not need to seek leave.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Misleading",
+"evidence": "Further, sub-Section (3) to Section 378 of Cr.P.C. provides that for preferring an appeal to the High Court against an order of acquittal it is necessary to obtain its leave.",
+"reason": "This is from Satya Pal Singh holding leave is required, which was subsequently overruled/clarified by larger benches.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "We thus hold that a ‘victim’ is not obligated to seek ‘leave’ or ‘special leave’ of the High Court for presentation of appeal under proviso to Section 372 of the Code.",
+"reason": "The passage directly quotes approvingly that a victim is not required to seek leave under the proviso to Section 372 CrPC.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "Deepak Gupta, J. was of the opinion that one cannot ignore the rights of the accused and the procedure prescribed by law. Hence, he disagreed with Lokur, J.’s view",
+"reason": "The passage summarizes the minority/dissenting opinion of Deepak Gupta, J. without affirming it as the governing rule.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "In Satya Pal Singhv.State of Madhya Pradesh &Ors.21 this Courtgave what appears to be a rather expansive interpretation to the proviso to Section 372 of the Cr.P.C.",
+"reason": "The passage merely quotes the previous decision in Satya Pal Singh as background text before addressing its correctness.",
+"confidence": "medium"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "conferred upon the victim including the legal heir and others, as defined under Section 2(wa) CrPC, under the proviso to Section 372, but only after obtaining the leave of the High Court",
+"reason": "This passage quotes the earlier Satya Pal Singh ruling requiring leave, which was distinguished/overruled in the main judgment.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 2,
+"caveats": "Earlier Supreme Court decisions like Satya Pal Singh held that leave under Section 378(3) was required, but later larger bench rulings (e.g., Mallikarjun Kodagali and subsequent cases) settled that a victim does not need leave to file an appeal under the proviso to Section 372 CrPC."
+}

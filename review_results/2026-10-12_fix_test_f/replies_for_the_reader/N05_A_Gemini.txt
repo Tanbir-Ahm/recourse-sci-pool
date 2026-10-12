@@ -1,0 +1,71 @@
+{
+"question_id": "N05",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "imposing of financial deposit as a condition for bail is not permissible and that the process of Criminal Law particularly, in matters of grant of bail are not akin to money recovery proceedings",
+"reason": "It directly states that imposing a financial deposit as a condition for bail is impermissible in criminal law.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "the process of criminal law cannot be utilised for arm-twisting and money recovery, particularly while opposing the prayer for bail",
+"reason": "It addresses the rule against using bail proceedings for money recovery but does not explicitly settle financial conditions.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "such an approach would not be warranted in cases of private disputes where private parties complain of their money being involved in the offence of cheating",
+"reason": "It directly holds that requiring deposit of money for bail is not permissible in private cheating disputes.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "that cannot be a compensation to be deposited and disbursed as if that grant has to take place as a condition of the person being enlarged on bail",
+"reason": "It discusses monetary conditions for bail but lacks a fully direct and clear answer on disputed private recovery.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "the process of criminal law cannot be utilised for arm-twisting and money recovery, particularly while opposing the prayer for bail",
+"reason": "It explains that criminal bail process cannot be used for money recovery, serving as useful background principles.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "there is no justification in adopting such a course that for the purpose of being given the concession of pre-arrest bail, the person apprehending arrest ought to make payment",
+"reason": "It states that requiring payment for bail is generally unjustified, though it specifically references pre-arrest bail.",
+"confidence": "medium"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "a direction to pay a portion of the amount misappropriated by the accused to the complainant as a condition for bail is unwarranted",
+"reason": "It explicitly cites precedent holding that directing payment to the complainant as a bail condition is unwarranted.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "FDR with the investigating officer as a condition precedent for grant of anticipatory bail is evidently onerous and unreasonable",
+"reason": "It discusses onerous monetary deposit conditions in anticipatory bail without comprehensively answering the general question.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "The circumstances while considering the regular bail application under Section 437 Cr.P.C. are different, while considering the application for default bail/statutory bail.",
+"reason": "It addresses monetary deposit conditions specifically within the context of default bail rather than regular bail.",
+"confidence": "medium"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 1,
+"caveats": ""
+}

@@ -1,0 +1,78 @@
+{
+"question_id": "N07",
+"marks": [
+{
+"no": 1,
+"mark": "Misleading",
+"evidence": "a cheque given by way of security cannot attract Section 138 of the Negotiable Instruments Act.",
+"reason": "This passage quotes the High Court view that security cheques do not attract Section 138, which was set aside on appeal.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "Therefore, there cannot be a hard and fast rule that a cheque which is issued as security can never be presented by the drawee of the cheque.",
+"reason": "It explicitly explains that a cheque given as security matures for presentation under Section 138 if the loan is defaulted on the agreed date.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "where in the case of a loan transaction, the borrower agrees to repay the amount in a specified time frame and issues a cheque as a security to secure the repayment and the loan is not repaid, the cheque which is issued as security would mature for presentation.",
+"reason": "It directly states that a security cheque matures for presentation and action under Section 138 when a loan is not repaid within the specified timeframe.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "if the loan amount is not repaid in any other form before the due date or if there is no other understanding or agreement between the parties to defer the payment of amount, the cheque which is issued as security would mature for presentation and the drawee of the cheque would be entitled to present the same.",
+"reason": "It answers the question directly by holding that a defaulted loan allows a security cheque to mature for presentation and trigger Section 138 consequences.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "if the loan amount is not repaid in any other form before the due date or if there is no other understanding or agreement between the parties to defer the payment of amount, the cheque which is issued as security would mature for presentation and the drawee of the cheque would be entitled to present the same.",
+"reason": "It directly states that security cheques mature for presentation under Section 138 when the loan amount is not repaid on time.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "if a cheque is issued as security and if the debt is not repaid in any other form before the due date or if there is no understanding or agreement between the parties to defer the repayment, the cheque would mature for presentation",
+"reason": "It directly clarifies that failure to repay a loan on time allows a security cheque to mature for presentation and attract Section 138.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "Keeping in mind this fine but real distinction, the said judgment cannot be applied to a case of present nature where the cheque was for repayment of loan installment which had fallen due though such deposit of cheques towards repayment of installments was also described as “security” in the loan agreement.",
+"reason": "It holds that dishonour of a cheque issued towards a loan installment that has fallen due falls under Section 138, even if described as security.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "When a cheque is issued even though as ‘security’ the consequence flowing therefrom is also known to the drawer of the cheque and in the circumstance stated above if the cheque is presented and dishonoured, the holder of the cheque/drawee would have the option of initiating the civil proceedings for recovery or the criminal proceedings for punishment in the fact situation",
+"reason": "It confirms criminal proceedings can be initiated for dishonour of security cheques, but is an incomplete fragment of a larger discussion.",
+"confidence": "medium"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "Therefore, there cannot be a hard and fast rule that a cheque which is issued as security can never be presented by the drawee of the cheque.",
+"reason": "It explains directly that a security cheque matures for presentation once the time period for repayment expires without discharge of liability.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Misleading",
+"evidence": "when a cheque has been issued as a security, no complaint will lie under Section 138 of the Negotiable Instruments Act.",
+"reason": "It quotes lower court views holding security cheques immune from Section 138, just before assessing their acceptability.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 4,
+"caveats": ""
+}

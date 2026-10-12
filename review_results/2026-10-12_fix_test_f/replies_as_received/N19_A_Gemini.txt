@@ -1,0 +1,78 @@
+{
+"question_id": "N19",
+"marks": [
+{
+"no": 1,
+"mark": "Partly",
+"evidence": "Such evidence is not conclusive evidence but only a very useful guiding factor to be considered in the absence of documents mentioned in Section 94(2) of the JJ Act, 2015.",
+"reason": "It discusses Section 94(2) of the JJ Act and credibility of school/matriculation documents, but does not explicitly mention Aadhaar or resolve the conflict with Aadhaar.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "That when the determination of age is on the basis of evidence such as school records, it is necessary that the same would have to be considered as per Section 35",
+"reason": "It discusses principles regarding school records under JJ Act age determination, but does not directly mention Aadhaar or specify statutory priority between Aadhaar and school documents.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "(ii) the date of birth certificate from the school (other than a play school) first attended; and in the absence whereof; (iii) the birth certificate given by a corporation",
+"reason": "It outlines the statutory hierarchy for age determination under JJ rules (school certificate given priority over medical test), but does not specifically address Aadhaar.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Any document which is in consonance with public documents, such as matriculation certificate, could be accepted by the Court or the JJ Board provided such public document is credible",
+"reason": "It references statutory documents under Section 94(2) of the JJ Act, 2015, but does not address Aadhaar cards.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "(ix) That when the determination of age is on the basis of evidence such as school records, it is necessary that the same would have to be considered",
+"reason": "It covers general principles on using school records under the JJ Act, 2015, without specifically comparing them to Aadhaar.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Partly",
+"evidence": "There may be situations where the entry made in the matriculation or equivalent certificates, date of birth certificate from the school first attended and even the birth certificate",
+"reason": "It addresses the primary reliance on school certificates under the JJ Act, but does not discuss Aadhaar cards.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Partly",
+"evidence": "That when the determination of age is on the basis of evidence such as school records, it is necessary that the same would have to be considered",
+"reason": "It lays down legal principles on school records for JJ Act age determination without mentioning Aadhaar.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "(i) the date of birth certificate from the school, or the matriculation or equivalent certificate from the concerned examination Board, if available; and in the absence thereof;",
+"reason": "It sets out Section 94 of the JJ Act 2015, showing school certificates are primary evidence and Aadhaar is not listed among statutory proof.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "There may be situations where the entry made in the matriculation or equivalent certificates, date of birth certificate from the school first attended",
+"reason": "It explains that court relies on school certificates for age determination under JJ Act unless fabricated, but does not mention Aadhaar.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "The three documents in order of which the Juvenile Justice Act requires consideration is that the concerned court has to determine the age by considering the following documents: “(i) the date of birth certificate from the school",
+"reason": "It directly specifies the exact priority of documents under Section 94 of JJ Act in POCSO cases, placing school certificates first.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 10,
+"caveats": ""
+}

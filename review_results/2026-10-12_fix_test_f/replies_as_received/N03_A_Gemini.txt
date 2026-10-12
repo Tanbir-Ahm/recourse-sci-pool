@@ -1,0 +1,78 @@
+{
+"question_id": "N03",
+"marks": [
+{
+"no": 1,
+"mark": "Yes",
+"evidence": "when he surrenders before the Court and submits to its directions.",
+"reason": "It explicitly states that a person is in judicial custody when they surrender before the court and submit to its directions.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Yes",
+"evidence": "He can be stated to be in judicial custody when he surrenders before the court and submits to its directions.",
+"reason": "It affirms that surrendering before the court puts the accused in custody and confers jurisdiction on the Sessions Court under Section 439.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "there cannot be any doubt that unless a person is in custody, an application for bail under Section 439 of the Code would not be maintainable.",
+"reason": "It notes that custody is required for Section 439, but cuts off before explaining if surrendering constitutes custody.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Yes",
+"evidence": "or having offered himself to the court’s jurisdiction and submitted to its orders by physical presence.",
+"reason": "It quotes precedent establishing that physically submitting to the court's jurisdiction constitutes custody under Section 439 CrPC.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "or having offered himself to the court’s jurisdiction and submitted to its orders by physical presence.",
+"reason": "It holds directly that offering oneself to the court's jurisdiction by physical presence constitutes custody for Section 439 CrPC.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "or having offered himself to the court’s jurisdiction and submitted to its orders by physical presence.",
+"reason": "It defines custody under Section 439 as including when an accused offers themselves to the court's jurisdiction by physical presence.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "or having offered himself to the court’s jurisdiction and submitted to its orders by physical presence.",
+"reason": "It confirms that submitting to the court's jurisdiction by physical presence constitutes custody for Section 439 bail applications.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Yes",
+"evidence": "He can be stated to be in judicial custody when he surrenders before the court and submits to its directions.",
+"reason": "It explicitly confirms that surrendering before the court gives the Sessions Court jurisdiction under Section 439.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Yes",
+"evidence": "He can, be stated to be in judicial custody when he surrenders before the court and submits to its directions.",
+"reason": "It directly defines custody under Section 439 to include surrendering in court and submitting to its directions.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Partly",
+"evidence": "The accused were not absconding but had appeared and surrendered before the Sessions Judge.",
+"reason": "It sets up the argument and mentions the accused surrendered, but cuts off before delivering the full rule on custody.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 9,
+"caveats": ""
+}

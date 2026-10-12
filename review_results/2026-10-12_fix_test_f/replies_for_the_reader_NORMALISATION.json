@@ -1,0 +1,471 @@
+{
+ "source_folder": "/home/user/recourse-sci-pool/review_results/2026-10-12_fix_test_f/replies_as_received",
+ "files": {
+  "N01_A_ChatGPT.txt": {
+   "sha256_as_received": "5f76f912a1971ca09e074b097aa35199f959c9c9fea3e6e955fc315913a49ba7",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "d488a1615decc18ad22893d8d75d0de2ae0a24f117573d2cec200672b9595246"
+  },
+  "N01_A_Gemini.txt": {
+   "sha256_as_received": "62c7a037b08a3263635c11c6e58e57310efbdb43e77994b9fd12f05bf281fcaf",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "62c7a037b08a3263635c11c6e58e57310efbdb43e77994b9fd12f05bf281fcaf"
+  },
+  "N02_A_ChatGPT.txt": {
+   "sha256_as_received": "b36738c65e8010511e4ddbe1de154cc56b6ad2ffc702d84e5171d5ddca0293da",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "7e77fd80730f5253e9c36d5a6b8b009c0a540571a03d303a1afbd00f112738ad"
+  },
+  "N02_A_Gemini.txt": {
+   "sha256_as_received": "f8b40b30ab53fc0f51add6c93d2a9334cc1cb1f8acfe121927f6c5d5661ebbe0",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "f8b40b30ab53fc0f51add6c93d2a9334cc1cb1f8acfe121927f6c5d5661ebbe0"
+  },
+  "N03_A_ChatGPT.txt": {
+   "sha256_as_received": "8981557d7fd036656c1e83c83c7f025b21d482466dd65f0a4e864ea85908b49f",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "57a4378df39ea28be748be9a2913217ab1893841577fd250f2ee6d9f5b279801"
+  },
+  "N03_A_Gemini.txt": {
+   "sha256_as_received": "d5d5a383406ea461286daeaf82a27dc653830ec28895efa2f7f2803f301a9b27",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "d5d5a383406ea461286daeaf82a27dc653830ec28895efa2f7f2803f301a9b27"
+  },
+  "N04_A_ChatGPT.txt": {
+   "sha256_as_received": "1a3b2bd1e9943bf118873147afb27ede740f5bee6d2498d1d4e908b0322344a6",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "2b4f4c3fe267f3a55280214855ed89dd4d8329e95ed91d3c5b5b07448a0ad447"
+  },
+  "N04_A_Gemini.txt": {
+   "sha256_as_received": "7c6894d51ad03aa258fa48f363b7000bfaad3abf7b250340c4d3d401bd8e2c7a",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "7c6894d51ad03aa258fa48f363b7000bfaad3abf7b250340c4d3d401bd8e2c7a"
+  },
+  "N05_A_ChatGPT.txt": {
+   "sha256_as_received": "86c533782942a717a56f76c7dd8322842462aee10e1f38a0d5fe1c4666af66ed",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "15566419b5bd06df414c2397ce84693648fe70c6bea821b7b749f83bfffcabb8"
+  },
+  "N05_A_Gemini.txt": {
+   "sha256_as_received": "1d1bcef8bf7b5802adaec294d4f6033944d670ccf9c00a487b7122c8cf0e6418",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "1d1bcef8bf7b5802adaec294d4f6033944d670ccf9c00a487b7122c8cf0e6418"
+  },
+  "N06_A_ChatGPT.txt": {
+   "sha256_as_received": "e6aff2d1f4ff63ee684ee34a0e66117d10ef1201363aef7ff8569e094517e2f5",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "969b1d5478dab109378ba5fb03fe095479d6d7964ad3789aa824f244e60eb9bf"
+  },
+  "N06_A_Gemini.txt": {
+   "sha256_as_received": "5cc865d97d7db910c551d22b8ac248b1f6b7cfa6a12729d5264b2af2abb566ee",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "5cc865d97d7db910c551d22b8ac248b1f6b7cfa6a12729d5264b2af2abb566ee"
+  },
+  "N07_A_ChatGPT.txt": {
+   "sha256_as_received": "41ca5e50e5aae47c901fd018f5fe93f4524a18348ce879262684834df9af5d87",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "d9726574a7c55da89afad2e38ee1c87d7692b9e703f1218b878781fcb5ff11bf"
+  },
+  "N07_A_Gemini.txt": {
+   "sha256_as_received": "6fadad8ac9980661ce6be03534f7d51264ccdd2daf95f8713394cb3b30624499",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "6fadad8ac9980661ce6be03534f7d51264ccdd2daf95f8713394cb3b30624499"
+  },
+  "N08_A_ChatGPT.txt": {
+   "sha256_as_received": "d5a9fe58cf1099e533604ea75652481adebb4c109bf64a5a81e67a1fb9f2e51a",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "65206ce8023d0b351b9bb7ea41038cc8f602dbf0fa347c89f0285394c60f895b"
+  },
+  "N08_A_Gemini.txt": {
+   "sha256_as_received": "79da394f162197c45ccbc2f39e917c571346aeda57fb3e93ac250d9805e97849",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "79da394f162197c45ccbc2f39e917c571346aeda57fb3e93ac250d9805e97849"
+  },
+  "N09_A_ChatGPT.txt": {
+   "sha256_as_received": "b51c5be29c19d417029f8f0e05e03f668ade39622ab4a8775120bbe3f39c4c54",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 4,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "bf5163964476c8f37a6e5104f4e85ac047030ca47376ebf8ef6e5ab0af4c83b4"
+  },
+  "N09_A_Gemini.txt": {
+   "sha256_as_received": "459634632e11ff1ca3141b3c74ac8ecf94d6fed87cbc295215b73c6e7fd1f61b",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "459634632e11ff1ca3141b3c74ac8ecf94d6fed87cbc295215b73c6e7fd1f61b"
+  },
+  "N10_A_ChatGPT.txt": {
+   "sha256_as_received": "6dd5da44a040ab144c22a13d5094d3476db2c8e44d5bc641c09327789fc04ee6",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "fac9528dfeac73308ef844182da47fd670075e63d9e0acd8165353b08183876f"
+  },
+  "N10_A_Gemini.txt": {
+   "sha256_as_received": "97b0c73fc5eeb99b767aca4a37c6e7247815d2eb5a78edfa50aec535b03e3c33",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "97b0c73fc5eeb99b767aca4a37c6e7247815d2eb5a78edfa50aec535b03e3c33"
+  },
+  "N11_A_ChatGPT.txt": {
+   "sha256_as_received": "3b859d69fdbaca601733063fa3c76a484e666075e8a4284d6186a1c767a8f146",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "db05233f78abbdae73479b80def49362d31925f46899b7ecb55efb4e1d5c214c"
+  },
+  "N11_A_Gemini.txt": {
+   "sha256_as_received": "34caac3961743e49ec8a59da48a8778c40ae63894e138fa1f13607ee14e6a6db",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "34caac3961743e49ec8a59da48a8778c40ae63894e138fa1f13607ee14e6a6db"
+  },
+  "N13_A_ChatGPT.txt": {
+   "sha256_as_received": "4fd5fbd2055bd74ba1daae3a1c453cbf0eb4753a1819755bdcd8eabe3ad71516",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "3da457d6bf9322619cf0ed6a9fc026d8f9daf21c144ca97e7ee3b52c6e0e4fc4"
+  },
+  "N13_A_Gemini.txt": {
+   "sha256_as_received": "348d9369f979207461a6aaf6b1a7566d7322a5e93790a7532bef554f645c2ec3",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "348d9369f979207461a6aaf6b1a7566d7322a5e93790a7532bef554f645c2ec3"
+  },
+  "N14_A_ChatGPT.txt": {
+   "sha256_as_received": "aa6d8de2b9f3925c2e05c5b950919efc2c94c3331957bc9c10d2d23541f27ab3",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "df9aacab1c366f25cfacaadc06d76ba8e2cc069fae1cbd318dd43d86b58c4ae3"
+  },
+  "N14_A_Gemini.txt": {
+   "sha256_as_received": "2763c5d9933ae6e9ce562f8c8cfe514f08fea42329c223c3d8ed7b0c11b16d94",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "2763c5d9933ae6e9ce562f8c8cfe514f08fea42329c223c3d8ed7b0c11b16d94"
+  },
+  "N15_A_ChatGPT.txt": {
+   "sha256_as_received": "6893e11d10bf0b444ae835f1a05226d4005a1dea1f4ab14673795070acd967ea",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "c0d0aa3a79a502c230e70a36f74dd7ddc5d5e78b1e6f4e163791919c338f9641"
+  },
+  "N15_A_Gemini.txt": {
+   "sha256_as_received": "3c03365343416ff47d6e46a69ac779f7b00a75068407def491166ddd3d9ad59b",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "3c03365343416ff47d6e46a69ac779f7b00a75068407def491166ddd3d9ad59b"
+  },
+  "N16_A_ChatGPT.txt": {
+   "sha256_as_received": "95c3b38774e1fc45ec5ba3aca19fc962e45a3818f3c7413fed73c7be766efd1a",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "910a4bc9bbd8824c3779978c98b8c8181802dd66c1949bd7c3aa79f63724d54c"
+  },
+  "N16_A_Gemini.txt": {
+   "sha256_as_received": "0cd681263aae6666d3c5f354bb39badf8a2304783092b1a0511132217935927e",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "0cd681263aae6666d3c5f354bb39badf8a2304783092b1a0511132217935927e"
+  },
+  "N17_A_ChatGPT.txt": {
+   "sha256_as_received": "91980b9b33b606b4159dcdaf87349e94dfa249eb2510029fabcd00230e49a19a",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "9ff2317f96d5afc8e2ba2c4dece2a15c8cb6961a70f03267b8b272bf70e52b85"
+  },
+  "N17_A_Gemini.txt": {
+   "sha256_as_received": "b9efad9b6664fa851d6e16303bc3448291b96bc27dfd8912cab7745df02270e6",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "b9efad9b6664fa851d6e16303bc3448291b96bc27dfd8912cab7745df02270e6"
+  },
+  "N18_A_ChatGPT.txt": {
+   "sha256_as_received": "ec73f79cb243b8d6d20f94dec38026b7623c79d49f638c9bd73947feb3ca1f56",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "e5d448a0eaa53242ce78922eab656056d4afbee0f0225350c047997d0a266e69"
+  },
+  "N18_A_Gemini.txt": {
+   "sha256_as_received": "dcba0437a8328cf98edbe3b3fd7abe510c4729b0daf4d649470346d729654aee",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "dcba0437a8328cf98edbe3b3fd7abe510c4729b0daf4d649470346d729654aee"
+  },
+  "N19_A_ChatGPT.txt": {
+   "sha256_as_received": "65bc7cae18fc28fbe43b9a947afa4bc4c0181428e90a6201cd512c022eb640ab",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "c16bda2974b00fc432aff813510a91a4659a61231bbbfd6045b42572d5a3251c"
+  },
+  "N19_A_Gemini.txt": {
+   "sha256_as_received": "43ec83ac55803d2d2fedddb5524109ce8564e14e9e54cb40eaf93d89e6f39693",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "43ec83ac55803d2d2fedddb5524109ce8564e14e9e54cb40eaf93d89e6f39693"
+  },
+  "N20_A_ChatGPT.txt": {
+   "sha256_as_received": "748dd51c3b8a894154e5ef16e67a3704629173d7994a0f122604a86b2aca91a1",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "02d67eaa21aa188a1d4740c65bccf9079b2a873b51b89c72956e4ec51c4f47c0"
+  },
+  "N20_A_Gemini.txt": {
+   "sha256_as_received": "b6e4223a8e257ba57f31fee79fdafa714c0b0c7cbb30060aeb9935e0a4361529",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "b6e4223a8e257ba57f31fee79fdafa714c0b0c7cbb30060aeb9935e0a4361529"
+  },
+  "N21_A_ChatGPT.txt": {
+   "sha256_as_received": "2718823dc7848d453c6663b988a4ed1076f8ec8fa971a49888dd3e54aaf422fa",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "7ce50fd1b02d656917c1c795594adadfd01c505eb9cbfc3e64bdc3ef15d4fb04"
+  },
+  "N21_A_Gemini.txt": {
+   "sha256_as_received": "0bb234020e1b9ec48a6f3c14b7f8d64bcd06ac19bdb406957602bd2fff310472",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "0bb234020e1b9ec48a6f3c14b7f8d64bcd06ac19bdb406957602bd2fff310472"
+  },
+  "N22_A_ChatGPT.txt": {
+   "sha256_as_received": "d7313f7383c24805881a78cce2e33e57b09f2633e72ea7214b748acb5ea1e544",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "c0d351f2a5974e49ed072876bac940e1f4b126a505770be9f9e485bbd87675a4"
+  },
+  "N22_A_Gemini.txt": {
+   "sha256_as_received": "4d320f0a9796ca4d5696da2407fc7c1f09d2052b2e2fe01eb4e2f0f9e63ec09e",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "4d320f0a9796ca4d5696da2407fc7c1f09d2052b2e2fe01eb4e2f0f9e63ec09e"
+  },
+  "N23_A_ChatGPT.txt": {
+   "sha256_as_received": "33935a8d59d14124758b11d1d057e0f4c43a0cf406468d69eebe8b9b480929d5",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "46a7248823434e180b39b77a7f7e6be6295ffc9b4b1f0317d7293242b40c199b"
+  },
+  "N23_A_Gemini.txt": {
+   "sha256_as_received": "b24e34ae47bdfc40cc3bbfeaebcb7b7ecf9cde404bf3758544b4330ca1bd40e7",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "b24e34ae47bdfc40cc3bbfeaebcb7b7ecf9cde404bf3758544b4330ca1bd40e7"
+  },
+  "N24_A_ChatGPT.txt": {
+   "sha256_as_received": "c9e4de59ed1a04b5429c602db914c3f723c4001d70d5ab409b149bfef27bfb3b",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "987313357d2279ac8c8ef8ac1bcf0998c3482482a7cab50157a658435d44f8db"
+  },
+  "N24_A_Gemini.txt": {
+   "sha256_as_received": "a0f3bbc599bbe6efc13ae24e5e5843f05caf78fb609c30de1dc5249c83f7a182",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "a0f3bbc599bbe6efc13ae24e5e5843f05caf78fb609c30de1dc5249c83f7a182"
+  },
+  "N25_A_ChatGPT.txt": {
+   "sha256_as_received": "5fe89fe038ada08d803f3e2d3351ce3ccc9336ff979af36f75a0b87ff26eb8c1",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "b5c8816c3f6dc3f5e4391b1ecfd3d57ce4a348be382de9e2da012a6b46098664"
+  },
+  "N25_A_Gemini.txt": {
+   "sha256_as_received": "fae99b96eac3eb6871addd31e6fc31759811821d7ef4d2c2233c6e63b4bf7eb7",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "fae99b96eac3eb6871addd31e6fc31759811821d7ef4d2c2233c6e63b4bf7eb7"
+  },
+  "N26_A_ChatGPT.txt": {
+   "sha256_as_received": "ce9eab17515c06547560e4ad1394bc7f0bd6b85930edebdb5cb91f48d706a218",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "e18bf3394e35fb3be6448635e2fcae99fc21306303ecc2951087a36b8c6ff23d"
+  },
+  "N26_A_Gemini.txt": {
+   "sha256_as_received": "31c458ff5ea90715b7efe8171b1eb644a69a87868be68e6c1a511f661bd00da1",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "31c458ff5ea90715b7efe8171b1eb644a69a87868be68e6c1a511f661bd00da1"
+  },
+  "N27_A_ChatGPT.txt": {
+   "sha256_as_received": "c5debc8f8ead9ee06a8e2cf6b585095cee2c97049fb74762f1db2be9ce1667d9",
+   "markdown_escapes_removed": 9,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "7e822e994e9a6709d1f0523fea0d257e6460b06acd939027f7238ba47c168cf5"
+  },
+  "N27_A_Gemini.txt": {
+   "sha256_as_received": "084e49aa7e1e31128bbeb985b72d380ad3ce881606143e726b3fb484c95f1a30",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "084e49aa7e1e31128bbeb985b72d380ad3ce881606143e726b3fb484c95f1a30"
+  },
+  "N28_A_ChatGPT.txt": {
+   "sha256_as_received": "bff5a0b618139ee7b5ba32648c510a346ebfbaacd498549254591c9baa689f8a",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "66e5650dbe95ac52710565c05e2bcf98fd99c5a78536de0fab258c58a5797bf6"
+  },
+  "N28_A_Gemini.txt": {
+   "sha256_as_received": "d99974467440b0ecf78e8703ecefa5f80fe3f5ee24e0dda9c38f984aff027dc2",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "d99974467440b0ecf78e8703ecefa5f80fe3f5ee24e0dda9c38f984aff027dc2"
+  },
+  "N29_A_ChatGPT.txt": {
+   "sha256_as_received": "646a32f473e6a1519b6f65ef1b3a53ed52d54f259b700db17a5ae254d605d3e7",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "a8a7e9a0b4a362868e630b0a46d70bce42bfd4d35bb20a685490351f80a41d6a"
+  },
+  "N29_A_Gemini.txt": {
+   "sha256_as_received": "c06dbe99ed5bffb986941f8d557dd410d9ab61f7d98c60e200e3899a3ea288b3",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "c06dbe99ed5bffb986941f8d557dd410d9ab61f7d98c60e200e3899a3ea288b3"
+  },
+  "N30_A_ChatGPT.txt": {
+   "sha256_as_received": "81fb6d7f268b28e8a0a7cee01a0203f0da8e1256a633625078406012e51ef545",
+   "markdown_escapes_removed": 7,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "80dc0f345b03d394bea37b3d7ed816cd4b56b3474bfcb32756ade2aaf469a2ef"
+  },
+  "N30_A_Gemini.txt": {
+   "sha256_as_received": "acd53a3c2ff4414a39ad936fb8b57fab9576c37f2e12e0483d6a9933a3941832",
+   "markdown_escapes_removed": 0,
+   "doubled_quote_escapes_repaired": 0,
+   "problems": [],
+   "dropped": false,
+   "sha256_as_written": "acd53a3c2ff4414a39ad936fb8b57fab9576c37f2e12e0483d6a9933a3941832"
+  }
+ },
+ "identical_files": [],
+ "prompt_echoes": []
+}

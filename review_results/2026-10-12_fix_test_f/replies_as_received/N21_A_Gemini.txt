@@ -1,0 +1,78 @@
+{
+"question_id": "N21",
+"marks": [
+{
+"no": 1,
+"mark": "No",
+"evidence": "Mere discovery cannot be interpreted as sufficient to infer authorship of concealment by the person who discovered the weapon.",
+"reason": "This passage deals with Section 27 discovery disclosures rather than constructive possession or knowledge of an unlicensed weapon in a joint family house.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "Partly",
+"evidence": "To bring home a charge it was obviously necessary for the prosecution to establish intention and consciousness of the A-4 of the fire arms and ammunition found in A-4’s house.",
+"reason": "It addresses the requirement of proving intention/consciousness and control over weapons found in a house, but lacks the specific illustration regarding third-party concealment in an owner's absence.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Yes",
+"evidence": "he cannot be charged with the offence unless it can be shown that he had knowledge of the weapon being placed in his house.",
+"reason": "It directly lays down that recovery from a house without proof of knowledge/consciousness is insufficient to charge the occupant under the Arms Act.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Once possession is established, the person who claims that it was not a conscious possession has to establish it",
+"reason": "It discusses conscious possession under the Arms Act, but addresses the burden of proof once possession is established rather than directly answering recovery from a joint house without prior knowledge.",
+"confidence": "medium"
+},
+{
+"no": 5,
+"mark": "Partly",
+"evidence": "it is necessary to prove that the accused was in conscious possession at some point in time before the discovery and retained control",
+"reason": "It states the general rule requiring conscious possession and control for recovery, but lacks full context regarding joint house premises.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "Yes",
+"evidence": "he cannot be charged with the· offence u.nless it can be shown that he had knowledge of the weapon being placed in his house.",
+"reason": "It directly states that a person cannot be charged for a weapon found in their house unless knowledge of its presence is established.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Yes",
+"evidence": "he cannot be charged with the offence unless it can be shown that he had knowledge of the weapon being placed in his house.",
+"reason": "It explicitly provides the legal rule that mere presence of a concealed weapon in one's house without knowledge does not constitute an offence.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "No",
+"evidence": "It leads to the discovery of the fact that a knife is concealed in the house of the informant to his knowledge",
+"reason": "This passage focuses on the admissibility of information leading to discovery under Section 27 of the Evidence Act rather than establishing possession under the Arms Act.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "No",
+"evidence": "In the present case, the gun was owned by the father and his only explanation is that the gun was hidden by the children.",
+"reason": "This passage describes the specific factual background and statements under Section 313 of a different case involving gun ownership.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "this Court held that a person cannot be charged with the offences unless it can be shown that he had the knowledge that any sort of prohibited item was present in his house.",
+"reason": "It directly states the legal holding that a person cannot be charged unless knowledge of the prohibited item in their house is shown, citing Section 35 regarding joint premises.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 3,
+"caveats": ""
+}

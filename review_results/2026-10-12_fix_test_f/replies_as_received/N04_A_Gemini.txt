@@ -1,0 +1,81 @@
+```json
+{
+  "question_id": "N04",
+  "marks": [
+    {
+      "no": 1,
+      "mark": "No",
+      "evidence": "Sub-section (2) of Section 167 of the CrPC pertains to the power of the Magistrate to remand an accused",
+      "reason": "This passage discusses general remand principles under Section 167(2) CrPC without addressing UAPA or Section 43D(2) extension orders.",
+      "confidence": "high"
+    },
+    {
+      "no": 2,
+      "mark": "No",
+      "evidence": "if the accused applies for bail under Section 167(2), CrPC read with Section 36A (4), NDPS Act",
+      "reason": "This passage lays down principles regarding default bail under the NDPS Act rather than UAPA investigated by State police.",
+      "confidence": "high"
+    },
+    {
+      "no": 3,
+      "mark": "Partly",
+      "evidence": "Not only is the retrospectivity of the order of the Chief Metropolitan Magistrate untenable, it could not also defeat the statutory right which had accrued to the appellant",
+      "reason": "It addresses default bail under Section 43D UAPA and Section 167(2) CrPC, but lacks the specific jurisdictional holding regarding State police and Magistrates.",
+      "confidence": "medium"
+    },
+    {
+      "no": 4,
+      "mark": "No",
+      "evidence": "by virtue of Section 43D of the UAPA, the investigating agency gets 90+90 days = 180 days to complete the investigation.",
+      "reason": "This passage only explains the standard statutory time limits under Section 43D of the UAPA without addressing invalid Magistrate orders.",
+      "confidence": "high"
+    },
+    {
+      "no": 5,
+      "mark": "Partly",
+      "evidence": "the right of the accused to statutory bail, which was exercised at the time his bail application was filed, remained unaffected by the subsequent application for extension",
+      "reason": "It discusses default bail under UAPA Section 43D(2)(b) when an extension is filed subsequently, but does not address a Magistrate extending time without jurisdiction.",
+      "confidence": "medium"
+    },
+    {
+      "no": 6,
+      "mark": "Partly",
+      "evidence": "dismissed on the ground that by an order dated 13 February 2019, the SDJM had already extended time from 90 to 180 days under Section 167 of the CrPC",
+      "reason": "This passage narrates the procedural background of Bikramjit Singh involving a Magistrate's extension order under UAPA without providing the Supreme Court's direct ruling.",
+      "confidence": "high"
+    },
+    {
+      "no": 7,
+      "mark": "Yes",
+      "evidence": "under the UAPA read with the NIA Act, the Special Court alone had jurisdiction to extend time to 180 days under the first proviso in Section 43-D(2)(b).",
+      "reason": "It directly holds that a Magistrate lacks jurisdiction to extend investigation time under UAPA, meaning such an order cannot defeat the right to default bail.",
+      "confidence": "high"
+    },
+    {
+      "no": 8,
+      "mark": "Partly",
+      "evidence": "The High Court then observed that since the investigation was being carried out by the State Police, the Magistrate had the power under Section 167(2)",
+      "reason": "It recites the High Court's view and begins setting up the Supreme Court's statutory analysis under UAPA and the NIA Act without completing the holding.",
+      "confidence": "medium"
+    },
+    {
+      "no": 9,
+      "mark": "No",
+      "evidence": "Section 43 D(2) of UAPA reads as follows",
+      "reason": "This passage merely quotes the statutory text of Section 43D(2) of the UAPA without providing any holding or analysis.",
+      "confidence": "high"
+    },
+    {
+      "no": 10,
+      "mark": "No",
+      "evidence": "the Magistrate no longer had the authority to extend the period of detention beyond the said period of 90 days",
+      "reason": "This passage discusses standard CrPC Section 167(2) default bail rules for general offenses rather than UAPA cases.",
+      "confidence": "high"
+    }
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 7,
+  "caveats": ""
+}
+
+```

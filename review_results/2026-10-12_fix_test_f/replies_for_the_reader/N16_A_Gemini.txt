@@ -1,0 +1,78 @@
+{
+"question_id": "N16",
+"marks": [
+{
+"no": 1,
+"mark": "Misleading",
+"evidence": "articles given in those circumstances did not constitute dowry within the meaning of s. 2 of the Act.",
+"reason": "This passage cites a Delhi High Court decision holding post-marriage demands for smooth relations are not dowry, which could mislead the user.",
+"confidence": "high"
+},
+{
+"no": 2,
+"mark": "No",
+"evidence": "From a bare perusal of the above mentioned paragraphs it can be seen that one of the important factors",
+"reason": "This passage focuses on quashing an FIR based on factual discrepancies in specific complaints rather than declaring the legal rule.",
+"confidence": "high"
+},
+{
+"no": 3,
+"mark": "Partly",
+"evidence": "If a demand for property or valuable security, directly or indirectly, has a nexus with marriage, in our opinion, such demand would constitute ‘demand for dowry’",
+"reason": "It explains the general principle that any property demand connected to marriage constitutes dowry, but does not specifically address house construction demands.",
+"confidence": "high"
+},
+{
+"no": 4,
+"mark": "Partly",
+"evidence": "Section 2 of the Dowry Prohibition Act, 1961, so far as it is material to this case, states that dowry means any property or valuable security given or agreed to be given",
+"reason": "It discusses post-marriage demands having a connection to marriage, but analyzes a business demand rather than a house construction demand.",
+"confidence": "high"
+},
+{
+"no": 5,
+"mark": "Yes",
+"evidence": "the trial Court has correctly interpreted the demand for money raised by the respondents on the deceased for construction of a house as falling within the definition of the word “dowry”.",
+"reason": "This passage explicitly affirms that a demand for money to build or construct a house falls squarely within the legal definition of dowry.",
+"confidence": "high"
+},
+{
+"no": 6,
+"mark": "No",
+"evidence": "We are concerned in the present case with a complaint in which it has been alleged that the demand for the sum of Rs. 50,000 as dowry was made",
+"reason": "This passage discusses demands made during marriage ceremonies for passage to the United States, which is off-topic to the specific question.",
+"confidence": "high"
+},
+{
+"no": 7,
+"mark": "Misleading",
+"evidence": "A demand for money on account of some financial stringency or for meeting some urgent domestic expenses or for purchasing manure cannot be termed as a demand for dowry",
+"reason": "It quotes older precedent stating domestic expenses are not dowry, which gives a wrong impression unless read with later clarifying rulings.",
+"confidence": "high"
+},
+{
+"no": 8,
+"mark": "Partly",
+"evidence": "Thus, any ’demand’ of money, property or valuable security made from the bride or her parents or other relatives by the bridegroom or his parents or other relatives or vice-versa would fall within the mischief of ’dowry’",
+"reason": "It explains the general statutory definition and scope of dowry demands post-marriage, but does not explicitly address house construction demands.",
+"confidence": "high"
+},
+{
+"no": 9,
+"mark": "Partly",
+"evidence": "when persistent demands for TV and scooter are made from the bride after marriage or from her parents, it would constitute to be in connection with the marriage",
+"reason": "It establishes that demands made after marriage without a prior agreement can still be dowry, but applies this to scooters and fridges.",
+"confidence": "high"
+},
+{
+"no": 10,
+"mark": "Yes",
+"evidence": "the High Court fell into an error by holding that the demand of money for construction of a house cannot be treated as a dowry demand.",
+"reason": "It directly states that demanding money for the construction of a house is indeed treated as a dowry demand in law.",
+"confidence": "high"
+}
+],
+"good_answer_present": "Yes",
+"best_passage_no": 10,
+"caveats": "Passages 3, 7, and 10 note that earlier decisions (such as Appasaheb and Vipin Jaiswal) taking a narrow view of dowry demands were later overruled or clarified by the Supreme Court to adopt an expansive interpretation."
+}
