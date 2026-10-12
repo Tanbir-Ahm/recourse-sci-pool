@@ -1,0 +1,99 @@
+QUESTION ID: N07   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N07",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: I gave my old friend 6 lakhs cash for his shop, he gave cheque, it bounced, case going on in Margao court for four years now. Now suddenly he is ready to pay the cheque amount but my lawyer says he will have to pay 10% or 15% extra to settle as per some 2010 Supreme Court rules. His evidence is not recorded yet. How much extra does he actually have to pay, and can court close it even if I want to punish him?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: M/S GIMPEX PRIVATE LIMITED versus MANOJ GOEL (08-10-2021)
+   (Judgment id 1000253352, paragraph 31, page 21)
+Text:
+31. Thus, under the shadow of Section 138 of the NI Act, parties are encouraged to settle the dispute resulting in ultimate closure of the case rather than continuing with a protracted litigation before the court. This is beneficial for the complainant as it results in early recovery of money; alteration of the terms of the contract for higher compensation and avoidance of litigation. Equally, the accused is benefitted as it leads to avoidance of a conviction and sentence or payment of a fine. It also leads to unburdening of the judicial system, which has a huge pendency of complaints filed under Section 138 of the NI Act. In Damodar S. Prabhu (supra) this Court had emphasised that the compensatory aspect of the remedy under Section 138 of the NI Act must be preferred and has encouraged litigants to resolve disputes amicably. The Court observed: “18. It is quite obvious that with respect to the offence of dishonour of cheques, it is the compensatory aspect of the remedy which should be given priority over the punitive aspect. There is also some support for the apprehensions raised by the learned Attorney General that a majority of cheque bounce cases are indeed being compromised or settled by way of compounding, albeit during the later stages of litigation thereby contributing to undue delay in justice delivery. The problem herein is with the tendency of litigants to belatedly choose compounding as a means to resolve their dispute. Furthermore, the written submissions filed on behalf of the learned Attorney General have stressed on the fact that unlike Section 320 CrPC, Section 147 of the Negotiable Instruments Act provides no explicit guidance as to what stage compounding can or cannot be done and whether compounding can be done at the instance of the complainant or with the leave of the court.
+
+--- PASSAGE 2 ---
+Judgment: M/S. METERS AND INSTRUMENTS PRIVATE LIMITED & ANR. versus KANCHAN MEHTA (05-10-2017)
+   (Judgment id 1000250291, paragraph 19, page 19)
+Text:
+19. In view of the above, we hold that where the cheque amount with interest and cost as assessed by the Court is paid by a specified date, the Court is entitled to close the proceedings in exercise of its E powers under Section 143 of the Act read with Section 258 Cr.P.C. As already observed, normal rule for trial of cases under Chapter XVII of the Act is to follow the summary procedure and summons trial procedure can be followed where sentence exceeding one year may be necessary taking into account the fact that compensation under Section 357(3) Cr.P.C. with sentence ofless than one year will not be adequate, having regard to the amount of cheque, conduct of the accused and other circumstances.
+
+--- PASSAGE 3 ---
+Judgment: R. Rajeshwari v. H.N. Jagadish (05/03/2008)
+   (Judgment id 30712, paragraph 2, page 2)
+Text:
+2. The petitioner agreed to pay the cheque amount sum of Rs.1,00,000/- (Rupees one lakh only) accordingly the petitioner today is paying sum of Rs.25,000/- (Rupees Twenty Five Thousand only) in addition to the amount of Rs.75,000/- (Rupees Seventy Five Thousand only) already deposited in the above case in compliance of the interim order.
+
+--- PASSAGE 4 ---
+Judgment: SANJABIJ TARI versus KISHORE S. BORCAR & ANR. (25-09-2025)
+   (Judgment id 1000257049, paragraph 38, page 23)
+Text:
+38. Since a very large number of cheque bouncing cases are still pending and interest rates have fallen in the last few years, this Court is of the view that it is time to ‘revisit and tweak the guidelines’. Accordingly, the aforesaid guidelines of compounding are modified as under:- (a) If the accused pays the cheque amount before recording of his evidence (namely defence evidence), then the Trial Court may allow compounding of the offence without imposing any cost or penalty on the accused. (b) If the accused makes the payment of the cheque amount post the recording of his evidence but prior to the pronouncement of judgment by the Trial Court, the Magistrate may allow compounding of the offence on payment of additional 5% of the cheque amount with the Legal Services Authority or such other Authority as the Court deems fit. (c) Similarly, if the payment of cheque amount is made before the Sessions Court or a High Court in Revision or Appeal, such Court may compound the offence on the condition that the accused pays 7.5% of the cheque amount by way of costs. (d) Finally, if the cheque amount is tendered before this Court, the figure would increase to 10% of the cheque amount.
+
+--- PASSAGE 5 ---
+Judgment: P. MOHANRAJ & ORS. versus M/S. SHAH BROTHERS ISPAT PVT. LTD. (01-03-2021)
+   (Judgment id 1000252963, paragraph preamble/108, page 23)
+Text:
+Thus read, principle of Section 258 CrPC will apply and the court can close the proceedings and discharge the accused on satisfaction that the cheque amount with assessed costs and interest is paid and if there is no reason to proceed with the punitive aspect. 18.2. The object of the provision being primarily compensatory, punitive element being mainly with the object of enforcing the compensatory element, compounding at the initial stage has to be encouraged but is not debarred at later stage subject to appropriate compensation as may be found acceptable to the parties or the court. 18.3. Though compounding requires consent of both parties, even in absence of such consent, the court, in the interests of justice, on being satisfied that the complainant has been duly compensated, can in its discretion close the proceedings and discharge the accused. 18.4. Procedure for trial of cases under Chapter XVII of the Act has normally to be summary. The discretion of the Magistrate under second proviso to Section 143, to hold that it was undesirable to try the case summarily as sentence of more than one year may have to be passed, is to be exercised after considering the further fact that apart from the sentence of imprisonment, the court has jurisdiction under Section 357(3) CrPC to award suitable compensation with default sentence under Section 64 IPC and with further powers of recovery under Section 431 CrPC.
+
+--- PASSAGE 6 ---
+Judgment: Opening header not available
+   (Judgment id 41902, unnumbered paragraph, page 7)
+Text:
+(c) Similarly, if the application for compounding is made before the Sessions Court or a High Court in revision or appeal, such compounding may be allowed on the condition that the accused pays 15% of the cheque amount by way of costs. (d) Finally, if the application for compounding is made before the Supreme Court, the figure would increase to 20% of the cheque amount." 12) The question of consideration in the aforesaid backdrop is as to whether directions/guidelines given by this Court in the aforesaid judgment are inapplicable in cases which are resolved/settled in Lok Adalats. 13) What was argued before us by the learned counsel for the appellant was that these guidelines containing the schedule of costs should not be made applicable to the settlements which are arrived at in the Lok Adalats inasmuch as provision for imposition of such costs would run contrary to the very purpose of Lok Adalats constituted under Section 19 of the 1987 Act. It was emphasized that Lok Adalats were constituted to promote the resolution of disputes pending before Court by amicable settlement between the parties and in order to reduce the pendency of cases before the Courts, including appellate Courts. Learned counsel also referred to the judgment of this Court in K.N. Govindan Kutty Menon v. C.D. Shaji, (2012) 2 SCC 51, wherein it is held that a compromise or settlement arrived at before the Lok Adalat and award passed pursuant thereto is to be treated as decree of civil Court by virtue of deeming provision contained in Section 21 and Section 2(aaa) and (c) of the 1987 Act.
+
+--- PASSAGE 7 ---
+Judgment: BASALINGAPPA versus MUDIBASAPPA (09-04-2019)
+   (Judgment id 1000251590, paragraph 26, page 20)
+Text:
+26. There is one more aspect of the matter which also needs to be noticed. In the complaint filed by the complainant as well as in examination-in-chief the complainant has not mentioned as to on which date, the loan of Rs.6 lakhs was given to the accused. It was during cross-examination, he gave the date as November, 2011. Under Section 118(b), a presumption shall be made as to date that every negotiable instrument was made or drawn on such date. Admittedly, the cheque is dated 27.02.2012, there is not even a suggestion by the complainant that a post dated cheque was given to him in November, 2011 bearing dated 27.02.2012. Giving of a cheque on 27.02.2012, which was deposited on 01.03.2012 is not compatible with the case of the complainant when we read the complaint submitted by the complainant especially Para 1 of the complaint, which is extracted as below:- “1. The accused is a very good friend of the complainant. The accused requested the Complainant a hand loan to meet out urgent and family necessary a sum of Rs.6,00,000/- (Rupees Six Lakh) and on account of long standing friendship and knowing the difficulties, which is being faced by the accused the complainant agreed to lend hand loan to meet out the financial difficulties of the accused and accordingly the Complainant lend hand loan Rs.6,00,000/- (Rupees Six Lakh) dated 27.02.2012 in favour of the Complainant stating that on its presentation it will be honored. But to the surprise of the Complainant on presentation of the same for collection through his Bank the Cheque was returned by the Bank with an endorsement “Funds Insufficient” on 01-03-2012.”
+
+--- PASSAGE 8 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1651 OF 2013 [Arising out of S.L.P.(Crl.)No.6191 of 2011] Somnath Sarkar ..Appellant Versus Utpal Basu Mallick & Anr. ....Respondents J U D G M E N T VIKRAMAJIT SEN, J. 1. Leave 
+   (Judgment id 40873, unnumbered paragraph, page 2)
+Text:
+In these circumstances, Criminal Revision Record No.2447 of 2004 was filed in the High Court of Calcutta which was pleased to substitute the six months’ sentence by an additional payment of Rs.69,500/-. C.R.R. No.2447 of 2004 was heard and decided along with C.R.R. No.2865 of 2004 also filed by the Appellant. Accordingly, as against the cheque amount of Rs.69,500/- the Appellant is liable to the extent of Rs.1,49,500/-. Faced with the prospects of jail the Appellant had earlier agreed to payment of the additional sum of Rs.80,000/- and for these reasons his plea for reduction thereto was turned down by the High Court in the impugned order. The Appellant was directed to pay a sum of Rs.19,500/- by May 31, 2011 and the balance of Rs.50,000/- in five equal instalments thereafter. Unfortunately, despite repeated readings of the Orders and related documents, the total liability of the Appellant is not clear as also the payments made till date. 2. Although the learned counsel for the complainant has appeared before us and has endeavoured to persuade us to uphold the impugned order, we find it unnecessary to hear him since the complainant has indubitably already received the sum of the dishonourned cheque alongwith the compensation thereon aggregating Rupees Eighty Thousand. 3. It seems to us that since the Appellant has already faced prosecution in the Magistracy in which he presented virtually no defence, and has thereafter filed an appeal before the Sessions Court, and subsequently two Revisions before the High Court, the ends of justice will be met, were he be directed to pay a sum of Rs.20,000/- only, in default, of which he would be liable to undergo the punishment of simple imprisonment for a term of six months as imposed by the aforementioned Magistrate.
+
+--- PASSAGE 9 ---
+Judgment: Opening header not available
+   (Judgment id 41902, unnumbered paragraph, page 13)
+Text:
+We, therefore, deprecate this tendency of referring even those matters to the Lok Adalat which have already been settled. This tendency of sending settled matters to the Lok Adalats just to inflate the figures of decision/settlement therein for statistical purposes is not a healthy practice. We are also not oblivious of the criticism from the lawyers, intelligentsia and general public in adopting this kind of methodology for window dressing and showing lucrative outcome of particular Lok Adalats. 19) Be that as it may, reverting to the facts of the present case, we find that when the case had been settled between the parties and application in this behalf was made before the Court, it cannot be denied that had the Court passed the compouding order on this application under Section 147 of the Act, as per the rigours of Damodar S. Prabhu (supra), 15% f the cheque amount had to be necessarily deposited by the accused person (respondent No.2). If we hold that such a cost is not to be paid when the matter is sent to the Lok Adalat, this route would be generally resorted to, to bypass the applicability of the directions contained in Damodar S. Prabhu (supra). Such a situation cannot be countenanced. 20) The purpose of laying down the guidelines in Damodar S. Prabhu (supra) is explained in the said judgment itself.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1902 OF 2011 (Arising out of SLP (Crl.) No.2586 of 2007) R.Vijayan … Appellant Vs. Baby & Anr. … Respondents J U D G M E N T R.V.RAVEENDRAN, J. Leave granted. Heard.
+   (Judgment id 38750, paragraph 13/2, page 9)
+Text:
+(b) If the accused does not make an application for compounding as aforesaid, then if an application for compounding is made before the Magistrate at a subsequent stage, compounding can be allowed subject to the condition that the accused will be required to pay 10% of the cheque amount to be deposited as a condition for compounding with the Legal Services Authority, or such authority as the Court deems fit. (c) Similarly, if the application for compounding is made before the Sessions Court or a High Court in revision or appeal, such compounding may be allowed on the condition that the accused pays 15% of the cheque amount by way of costs. (d) Finally, if the application for compounding is made before the Supreme Court, the figure would increase to 20% of the cheque amount. x x x x x The graded scheme for imposing costs is a means to encourage compounding at an early stage of litigation. In the status quo, valuable time of the Court is spent on the trial of these cases and the parties are not liable to pay any Court fee since the proceedings are governed by the Code of Criminal Procedure, even though the impact of the offence is largely confined to the private parties. Even though the imposition of costs by the competent court is a matter of discretion, the scale of costs has been suggested in the interest of uniformity.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N07 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

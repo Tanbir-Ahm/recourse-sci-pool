@@ -1,0 +1,100 @@
+QUESTION ID: N29   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N29",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Does Section 38 BNSS entitle an arrested person to have his advocate physically present throughout custodial interrogation?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: CASE NO.: Appeal (crl.) 373-375 of 2004 PETITIONER: STATE (N.C.T. OF DELHI) RESPONDENT: NAVJOT SANDHU@ AFSAN GURU DATE OF JUDGMENT: 04/08/2005 BENCH: P. VENKATARAMA REDDI & P.P. NAOLEKAR JUDGMENT: WITH CRIMINAL APPEAL Nos. 376-378 OF 2004 STATE (N.C.T. OF DELH
+   (Judgment id 27092, paragraph preamble/217, page 1)
+Text:
+The importance of the provision to afford the assistance of counsel even at the stage of custodial interrogation need not be gainsaid. The requirement is in keeping with the Miranda ruling and the philosophy underlying Articles 21, 20(3) & 22(1). This right cannot be allowed to be circumvented by subtle ingenuities or innovative police strategies. The access to a lawyer at the stage of interrogation serves as a sort of counterweight to the intimidating atmosphere that surrounds the detenu and gives him certain amount of guidance as to his rights and the obligations of the police. The lawyer’s presence could pave the way, to some extent, to ease himself of the mental tension and trauma. In the felicitous words of Finlay, CJ of Ireland in The People Vs. Healy [(1990) 2 IR 73]: "The undoubted right of reasonable access to a solicitor enjoyed by a person who is in detention must be interpreted as being directed towards the vital function of ensuring that such a person is aware of his rights and has the independent advice which would be appropriate in order to permit him to reach a truly free decision as to his attitude to interrogation or to the making of any statement, be it exculpatory or inculpatory. The availability of advice must, in my view, be seen as a contribution, at least, towards some measure of equality in the position of the detained person and his interrogators." The Parliament advisedly introduced a Miranda ordained safeguard which was substantially reiterated in Nandini Satpathy by expressly enacting in sub-Sections (2)&(4) of Section 52 the obligation to inform the arrestee of his right to consult a lawyer and to permit him to meet the lawyer.
+
+--- PASSAGE 2 ---
+Judgment: SOCIAL ACTION FORUM FOR MANAV ADHIKAR AND ANOTHER versus UNION OF INDIA MINISTRY OF LAW AND JUSTICE AND OTHERS (14-09-2018)
+   (Judgment id 1000250996, paragraph 28/3, page 24)
+The same text also appears in judgment id(s): 43679, 1000252702
+Text:
+(8) The arrestee should be subjected to medical examination by a trained doctor every 48 hours during his detention in custody by a doctor on the panel of approved doctors appointed by Director, Health Services of the State or Union Territory concerned. Director, Health Services should prepare such a panel for all tehsils and districts as well. (9) Copies of all the documents including the memo of arrest, referred to above, should be sent to the Illaqa Magistrate for his record. (10) The arrestee may be permitted to meet his lawyer during interrogation, though not throughout the interrogation. (11) A police control room should be provided at all district and State headquarters, where information regarding the arrest and the place of custody of the arrestee shall be communicated by the officer causing the arrest, within 12 hours of effecting the arrest and at the police control room it should be displayed on a conspicuous notice board.”
+
+--- PASSAGE 3 ---
+Judgment: PETITIONER: NANDINI SATPATHY Vs. RESPONDENT: DANI (P.L.) AND ANR. DATE OF JUDGMENT07/04/1978 BENCH: KRISHNAIYER, V.R. BENCH: KRISHNAIYER, V.R. SINGH, JASWANT TULZAPURKAR, V.D. CITATION: 1978 AIR 1025 1978 SCR (3) 608 1978 SCC (2) 424 CITATOR INFO : R 1979 SC 4
+   (Judgment id 5091, paragraph 10/61, page 14)
+Text:
+The spirit and sense of Art. 22 (1 ) is that it is fundamental to the rule of law that the services of a lawyer shall be available for consultation to any accused person under circumstances of ’near-custodial interrogation. Moreover, the observance of the right against self-incrimination is best promoted by conceding to the accused the right to consult a legal practitioner of his choice. Lawyer’s presence is a constitutional claim in some circumstances in our country also, and, in the context of Art. 20(3), is an assurance of awareness and observance of the right to silence. The Miranda decision has insisted that if an accused person asks for lawyer’s assistance, at the stage of interrogation, it shall be granted before Commencing or continuing with the questioning. We think that Art. 20 (3) and Art. 22(1) may, in a way, be telescoped by making it prudent for the Police to permit the advocate of the accused, if there be one, to be present at the time be is examined. Over-reaching Art. 20(3) and section 161(2) will be obviated by this requirement. We do not lay down that the Police must secure the services of a lawyer. That will lead to ’police-station-lawyer’ system, an abuse which breeds other vices. But all that we mean is that if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied, without being exposed to the serious reproof that involuntary self-crimination secured in secrecy and by coercing the will, was the project.
+
+--- PASSAGE 4 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS.1899-1900 OF 2011 MOHAMMED AJMAL MOHAMMAD AMIR KASAB @ ABU MUJAHID … APPELLANT VERSUS STATE OF MAHARASHTRA … RESPONDENT WITH CRIMINAL APPEAL NO.1961 OF 2011 STATE OF MAHARASHTRA 
+   (Judgment id 39511, paragraph 457/2, page 279)
+Text:
+Articles 20(3) and 22(1) may be telescoped by making it prudent for the police to permit the advocate of the accused to be present at the time he is examined. Overreaching Article 20(3) and Section 161(2) will be obviated by this requirement. But it is not as if the police must secure the services of a lawyer, for, that will lead to ‘police station-lawyer’ system with all its attendant vices. If however an accused expresses the wish to have his lawyer by his side at the time of examination, this facility shall not be denied, because, by denying the facility, the police will be exposed to the serious reproof that they are trying to secure in secrecy and by coercing the will an involuntary self-incrimination. It is not as if a lawyer’s presence is a panacea for all problems of self-incrimination, because, he cannot supply answers or whisper hints or otherwise interfere with the course of questioning except to intercept where intimidatory tactics are tried and to caution his client where incrimination is attempted and to insist on questions and answers being noted where objections are not otherwise fully appreciated. The lawyer cannot harangue the police, but may help his client and complain on his behalf. The police also need not wait for more than a reasonable time for the advocate’s arrival.
+
+--- PASSAGE 5 ---
+Judgment: DR. SUBHASH KASHINATH MAHAJAN versus THE STATE OF MAHARASHTRA AND ANR. (20-03-2018)
+   (Judgment id 1000250634, paragraph 37/3, page 44)
+Text:
+(8) The arrestee should be subjected to medical examination by a trained doctor every 48 hours during his detention in custody by a doctor on the panel of approved doctors appointed by Director, Health Services of the State or Union Territory concerned. Director, Health Services should prepare such a panel for all tehsils and districts as well. (9) Copies of all the documents including the memo of arrest, referred to above, should be sent to the Illaqa Magistrate for his record. (10) The arrestee may be permitted to meet his lawyer during interrogation, though not throughout the interrogation. (11) A police control room should be provided at all district and State headquarters, where information regarding the arrest and the place of custody of the arrestee shall be communicated by the officer causing the arrest, within 12 hours of effecting the arrest and at the police control room it should be displayed on a conspicuous notice board.
+
+--- PASSAGE 6 ---
+Judgment: CASE NO.: Appeal (crl.) 373-375 of 2004 PETITIONER: STATE (N.C.T. OF DELHI) RESPONDENT: NAVJOT SANDHU@ AFSAN GURU DATE OF JUDGMENT: 04/08/2005 BENCH: P. VENKATARAMA REDDI & P.P. NAOLEKAR JUDGMENT: WITH CRIMINAL APPEAL Nos. 376-378 OF 2004 STATE (N.C.T. OF DELH
+   (Judgment id 27092, paragraph preamble/187, page 1)
+Text:
+Krishna Iyer, J. observed- " The spirit and sense of Article 22(1) is that it is fundamental to the rule of law that the services of a lawyer shall be available for consultation to any accused person under circumstances of nearcustodial interrogation. Moreover, the observance of the right against self-incrimination is best promoted by conceding to the accused the right to consult a legal practitioner of his choice." Article 22(1) was viewed to be complementary to Article 20(3). It was observed-"we think that Article 20(3) and Article 22(1) may, in a way, be telescoped by making it prudent for the police to permit the advocate of the accused, if there be one to be present at the time he is examined". It was pointed out that lawyer’s presence, in the context of Article 20(3), "is an assurance of awareness and observance of the right to silence". It was then clarified-"we do not lay down that the police must secure the services of a lawyer  but all that we mean is that if an accused person expresses the wish to have his lawyer by his side when his examination goes on, this facility shall not be denied", without being exposed to the charge of securing involuntary self-incrimination. It was also clarified that the police need not wait more than for a reasonable while for an advocate’s arrival.
+
+--- PASSAGE 7 ---
+Judgment: RADHIKA AGARWAL versus UNION OF INDIA AND OTHERS (27-02-2025)
+   (Judgment id 1000256420, paragraph 26, page 28)
+Text:
+26. We also hold that Section 41-D of the Code is applicable for offences under the Customs Act. Accordingly, a person arrested by a customs officer has the right to meet an advocate of his choice during interrogation, but not throughout interrogation.35 In Senior Intelligence Officer, Directorate of Revenue Intelligence v. Jugal Kishore Samra,36 this Court held that an advocate/authorised person may be present within visual distance during interrogation, but he cannot be within hearing distance of the proceedings nor can there be any consultations with such advocate/authorised person during the course of the interrogation. The relevant portion reads: “29. Taking a cue, therefore, from the direction made in D.K. Basu and having regard to the special facts and circumstances of the case, we deem it appropriate to direct that the interrogation of the respondent may be held within the sight of his advocate or any other person duly authorised by him. The advocate or the person authorised by the respondent may watch the proceedings from a distance or from beyond a glass partition but he will not be within the hearing distance and it will not be open to the respondent to have consultations with him in the course of the interrogation.”
+
+--- PASSAGE 8 ---
+Judgment: MIHIR RAJESH SHAH versus STATE OF MAHARASHTRA AND ANOTHER (06-11-2025)
+   (Judgment id 1000257082, paragraph 36, page 25)
+Text:
+36. This statutory safeguard of legal assistance stands also reinforced by Section 38 of the BNSS 2023, which confers upon an arrested person 2024 SCC OnLine SC 3031 (2025) 2 SCC 381 : 2024 SCC OnLine SC 3580 316 the right to meet an advocate of his choice during interrogation, albeit not throughout its course. The object of this provision is to ensure meaningful access to legal assistance at the earliest stage, so that the advocate, once informed, may effectively exercise the rights available in law, including representation during remand proceedings and invocation of the right to seek bail.
+
+--- PASSAGE 9 ---
+Judgment: CASE NO.: Appeal (crl.) 109 of 2001 PETITIONER: Ahmed Noormohmed Bhatti RESPONDENT: State of Gujarat and Ors. DATE OF JUDGMENT: 16/03/2005 BENCH: N. Santosh Hegde & B.P. Singh & S.B. Sinha JUDGMENT: B.P. SINGH, J. The petitioner herein filed a petition before 
+   (Judgment id 29412, unnumbered paragraph, page 4)
+Text:
+(5) The person arrested must be made aware of this right to have someone informed of his arrest or detention as soon as he is put under arrest or is detained. (6) An entry must be made in the diary at the place of detention regarding the arrest of the person which shall also disclose the name of the next friend of the person who has been informed of the arrest and the names and particulars of the police officials in whose custody the arrestee is. (7) The arrestee should, where he so requests, be also examined at the time of his arrest and major and minor injuries, if any present on his/her body, must be recorded at that time. The ‘‘Inspection Memo’’ must be signed both by the arrestee and the police officer effecting the arrest and its copy provided to the arrestee. (8) The arrestee should be subjected to medical examination by a trained doctor every 48 hours during his detention in custody by a doctor on the panel of approved doctors appointed by Director, Health Services of the State or Union Territory concerned. Director, Health Services should prepare such a panel for all tehsils and districts as well. (9) Copies of all the documents including the memo of arrest, referred to above, should be sent to the Illaqa Magistrate for his record. (10) The arrestee may be permitted to meet his lawyer during interrogation, though not throughout the interrogation.
+
+--- PASSAGE 10 ---
+Judgment: Opening header not available
+   (Judgment id 36303, paragraph 105, page 116)
+Text:
+105. The opinion also explained the significance of having a counsel present during a custodial interrogation. It was noted, Id. at pp. 469-470: “The circumstances surrounding in-custody interrogation can operate very quickly to overbear the will of one merely made aware of his privilege by his interrogators. Therefore, the right to have counsel present at the interrogation is indispensable to the protection of the Fifth Amendment privilege under the system we delineate today. Our aim is to assure that the individual's right to choose between silence and speech remains unfettered throughout the interrogation process. A once-stated warning, delivered by those who will conduct the interrogation, cannot itself suffice to that end among those who most require knowledge of their rights. A mere warning given by the interrogators is not alone sufficient to accomplish that end. Prosecutors themselves claim that the admonishment of the right to remain silent without more ‘will benefit only the recidivist and the professional.’ [Brief for the National District Attorneys Association as amicus curiae, p. 14] Even preliminary advice given to the accused by his own attorney can be swiftly overcome by the secret interrogation process. [Cited from Escobedo v. State of Illinois, 378 U.S. 478, 485 …] Thus, the need for counsel to protect the Fifth Amendment privilege comprehends not merely a right to consult with counsel prior to questioning, but also to have counsel present during any questioning if the defendant so desires.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N29 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

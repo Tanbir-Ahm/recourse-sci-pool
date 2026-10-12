@@ -1,0 +1,240 @@
+{
+ "run": {
+  "when": "2026-10-12T09:34:50Z",
+  "half": "final",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+  "index_matches_record": true,
+  "versions": [
+   "B baseline (rerank-3-lite)",
+   "N1-125 named-Act boost x1.25 (precise)",
+   "N2-125 named-Act boost x1.25 (broad)"
+  ],
+  "source": "fix_test_f",
+  "site_arm": false,
+  "rewrites_file": "review_data/ruler/real30_rewrites_v1.json",
+  "stopped": null,
+  "spend": {
+   "rerank_tokens": 581955,
+   "rerank_calls": 30,
+   "embed_tokens": 1813,
+   "embed_calls": 30,
+   "cap_rerank_tokens": 3000000,
+   "dollars_estimate": 0.0293,
+   "prices_per_million": {
+    "rerank-2": 0.05,
+    "voyage-law-2": 0.12
+   },
+   "rerank_tokens_by_model": {
+    "rerank-3-lite": 581955
+   }
+  },
+  "question_file_split_sha256": "6e42f467c5ce6e69dacf6e631dcf4f58e428fbb5f1b75810b68c31c6be32e9e0",
+  "models": {
+   "embed": "voyage-law-2",
+   "rerank": "rerank-3-lite"
+  },
+  "side_index": {
+   "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572,
+   "built": "2026-10-09T08:03:50Z",
+   "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+  },
+  "side_indexes": [
+   {
+    "dir": "review_data/side_index/2026-10-09_correcting_judgments",
+    "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+    "documents": 17,
+    "passages": 2572,
+    "built": "2026-10-09T08:03:50Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_documents",
+    "manifest_sha256": "4e407a307be9260aaf5176d7d48b2d5ffde1b6bbc85e2a95dec9bd7fd470d4e7",
+    "documents": 1,
+    "passages": 12,
+    "built": "2026-10-09T10:00:02Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   },
+   {
+    "dir": "review_data/side_index/2026-10-09_fetched_shivangi_bansal",
+    "manifest_sha256": "2839f1829a211eda61e1c2fdb474cb37fcf25564dd9807e0f6e5e91511e13cf7",
+    "documents": 1,
+    "passages": 23,
+    "built": "2026-10-09T10:15:11Z",
+    "made_for_main_index": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+   }
+  ],
+  "fix_test": {
+   "stage": "F",
+   "label": "REHEARSAL on used questions | fix test stage F | rules d2f2be58da05 | code d80df2faf4",
+   "rules_sha256": "d2f2be58da051c62b5a6ce44f7352172d0b17957d42ca194d04e29201b04b0fa",
+   "frozen_files": {
+    "review_data/ruler/FIX_TEST_RULES_v1.md": "0190876e32589fd27060506ad5e620e74aff24721f938c1992abd4edccdb3ac6",
+    "review_data/ruler/FIX_TEST_RULES_v2.md": "d2f2be58da051c62b5a6ce44f7352172d0b17957d42ca194d04e29201b04b0fa",
+    "review_data/ruler/machine_spec_v2.json": "ca9afa8c3c42c92683782bb7a2c0110d81f4c5ccaafd43066fddd66b5f58ebf8",
+    "review_tools/machine_spec_v2.py": "9e41f52debb2460e320cda4190776eca444070ec6d2468734ba03cfab0d6acf0",
+    "review_tools/test_machine_spec_v2.py": "b76caf893965c0516f434d8ad6d1a3a1489fc51ff67f3755667b287847be4673"
+   },
+   "code_commit": "d80df2faf4efcd0be28c7e29819f3e47e1785f76",
+   "code_uncommitted": [],
+   "labelled_judgments": {
+    "PWDVA": 21,
+    "NDPS": 241,
+    "POCSO": 58,
+    "SC/ST": 50,
+    "NI Act": 199,
+    "PMLA": 50,
+    "UAPA": 45,
+    "DPA": 64,
+    "JJ Act": 93,
+    "PC Act": 407,
+    "Arms Act": 255,
+    "IT Act": 16,
+    "MV Act": 16
+   },
+   "side_indexes": [
+    "review_data/side_index/2026-10-09_correcting_judgments",
+    "review_data/side_index/2026-10-09_fetched_documents",
+    "review_data/side_index/2026-10-09_fetched_shivangi_bansal"
+   ],
+   "finalists": [
+    "N1-125 named-Act boost x1.25 (precise)",
+    "N2-125 named-Act boost x1.25 (broad)"
+   ],
+   "pool": {
+    "B": 10,
+    "each_finalist": 5
+   },
+   "question_freeze_sha256": "5cdd2e966eb767bdabbc7369358dd239cbe75a3a16225889ef84fae51627a4b6",
+   "key_sha256": "9c87e0a9323b17ed9c8b10167be90c83c7d37121c2532c1a4ef3f649b7d4d220",
+   "writer_text_sha256": null,
+   "questions": 30,
+   "repeat": false
+  }
+ },
+ "per_question": {
+  "N01": {
+   "rerank_tokens": 22454,
+   "embed_tokens": 91
+  },
+  "N02": {
+   "rerank_tokens": 14027,
+   "embed_tokens": 50
+  },
+  "N03": {
+   "rerank_tokens": 21016,
+   "embed_tokens": 55
+  },
+  "N04": {
+   "rerank_tokens": 18541,
+   "embed_tokens": 45
+  },
+  "N05": {
+   "rerank_tokens": 21906,
+   "embed_tokens": 119
+  },
+  "N06": {
+   "rerank_tokens": 19081,
+   "embed_tokens": 62
+  },
+  "N07": {
+   "rerank_tokens": 23657,
+   "embed_tokens": 114
+  },
+  "N08": {
+   "rerank_tokens": 16960,
+   "embed_tokens": 35
+  },
+  "N09": {
+   "rerank_tokens": 21161,
+   "embed_tokens": 51
+  },
+  "N10": {
+   "rerank_tokens": 20083,
+   "embed_tokens": 32
+  },
+  "N11": {
+   "rerank_tokens": 19370,
+   "embed_tokens": 30
+  },
+  "N12": {
+   "rerank_tokens": 24028,
+   "embed_tokens": 113
+  },
+  "N13": {
+   "rerank_tokens": 19484,
+   "embed_tokens": 45
+  },
+  "N14": {
+   "rerank_tokens": 19158,
+   "embed_tokens": 39
+  },
+  "N15": {
+   "rerank_tokens": 22594,
+   "embed_tokens": 113
+  },
+  "N16": {
+   "rerank_tokens": 16085,
+   "embed_tokens": 25
+  },
+  "N17": {
+   "rerank_tokens": 14537,
+   "embed_tokens": 43
+  },
+  "N18": {
+   "rerank_tokens": 18042,
+   "embed_tokens": 42
+  },
+  "N19": {
+   "rerank_tokens": 22625,
+   "embed_tokens": 98
+  },
+  "N20": {
+   "rerank_tokens": 17557,
+   "embed_tokens": 45
+  },
+  "N21": {
+   "rerank_tokens": 17915,
+   "embed_tokens": 46
+  },
+  "N22": {
+   "rerank_tokens": 23110,
+   "embed_tokens": 104
+  },
+  "N23": {
+   "rerank_tokens": 21812,
+   "embed_tokens": 29
+  },
+  "N24": {
+   "rerank_tokens": 21676,
+   "embed_tokens": 92
+  },
+  "N25": {
+   "rerank_tokens": 19910,
+   "embed_tokens": 51
+  },
+  "N26": {
+   "rerank_tokens": 18631,
+   "embed_tokens": 42
+  },
+  "N27": {
+   "rerank_tokens": 21076,
+   "embed_tokens": 93
+  },
+  "N28": {
+   "rerank_tokens": 13822,
+   "embed_tokens": 26
+  },
+  "N29": {
+   "rerank_tokens": 16057,
+   "embed_tokens": 30
+  },
+  "N30": {
+   "rerank_tokens": 15580,
+   "embed_tokens": 53
+  }
+ }
+}

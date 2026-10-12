@@ -1,0 +1,99 @@
+QUESTION ID: N24   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N24",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: ED questioned my father 4 times in 2023 but never arrested him. Now the special court has taken cognizance of their complaint and sent summons. Our CA says the moment he walks into court ED will arrest him and he'll need to pass those impossible twin conditions for bail that Supreme Court upheld in 2022. Should he just not go? We are terrified.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 20, page 25)
+Text:
+20. Once cognizance is taken of the offence punishable under Section 4 of the PMLA, the Special Court is seized of the matter. After the cognizance is taken, the ED and other authorities named in Section 19 cannot exercise the power of arrest of the accused shown in the complaint. The reason is that the accused shown in the Complaint are under the jurisdiction of the Special Court dealing with the complaint. Therefore, after cognizance of the complaint under 44(1) (b) of the PMLA is taken by the Court, the ED and other authorities named in Section 19 are powerless to arrest an accused named in the complaint. Hence, in such a case, an apprehension that the ED will arrest such an accused by exercising powers under Section 19 can never exist.
+
+--- PASSAGE 2 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 23/2, page 27)
+Text:
+Initially, the Special Court should issue a bailable warrant. If it is not possible to effect service of the bailable warrant, then the recourse can be taken to issue a non-bailable warrant; f) A bond furnished according to Section 88 is only an undertaking by an accused who is not in custody to appear before the Court on the date fixed. Thus, an order accepting bonds under Section 88 from the accused does not amount to a grant of bail; g) In a case where the accused has furnished bonds under Section 88 of the CrPC, if he fails to appear on subsequent dates, the Special Court has the powers under Section 89 read with Sections 70 of the CrPC to issue a warrant directing that the accused shall be arrested and produced before the Special Court; If such a warrant is issued, it will always be open for the accused to apply for cancellation of the warrant by giving an undertaking to the Special Court to appear before the said Court on all the dates fixed by it. While cancelling the warrant, the Court can always take an undertaking from the accused to appear before the Court on every date unless appearance is specifically exempted. When the ED has not taken the custody of the accused during the investigation, usually, the Special Court will exercise the power of cancellation of the warrant without insisting on taking the accused in custody provided an undertaking is furnished by the accused to appear regularly before the Court.
+
+--- PASSAGE 3 ---
+Judgment: ARVIND KEJRIWAL versus CENTRAL BUREAU OF INVESTIGATION (13-09-2024)
+   (Judgment id 1000255971, paragraph 23, page 31)
+Text:
+23. Thus, it is evident that CBI did not feel the need and necessity to arrest the appellant from 17.08.2022 till 26.06.2024 i.e. for over 22 months. It was only after the learned Special Judge granted regular bail to the appellant in the ED case that the CBI activated its machinery and took the appellant into custody. Such action on the part of the CBI raises a serious question mark on the timing of the arrest; rather on 714 the arrest itself. For 22 months, CBI does not arrest the appellant but after the learned Special Judge grants regular bail to the appellant in the ED case, CBI seeks his custody. In the circumstances, a view may be taken that such an arrest by the CBI was perhaps only to frustrate the bail granted to the appellant in the ED case.
+
+--- PASSAGE 4 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 23/3, page 27)
+Text:
+When the ED has not taken the custody of the accused during the investigation, usually, the Special Court will exercise the power of cancellation of the warrant without insisting on taking the accused in custody provided an undertaking is furnished by the accused to appear regularly before the Court. When the Special Court deals with an application for cancellation of a warrant, the Special Court is not dealing with an application for bail. Hence, Section 45(1) will have no application to such an application; h) When an accused appears pursuant to a summons, the Special Court is empowered to take bonds under Section 88 of the CrPC in a given case. However, it is not mandatory in every case to direct furnishing of bonds. However, if a warrant of arrest has been issued on account of non-appearance or proceedings under Section 82 and/or Section 83 of the CrPC have been issued against an accused, he cannot be let off by taking a bond under Section 88 of the CrPC, and the accused will have to apply for cancellation of the warrant; i) After cognizance is taken of the offence punishable under Section 4 of the PMLA based on a complaint under Section 44 (1)(b), the ED and its officers are powerless to exercise power under Section 19 to arrest a person shown as an accused in the complaint; and j) If the ED wants custody of the accused who appears after service of summons for conducting further investigation in the same offence, the ED will have to seek custody of the accused by applying to the Special Court.
+
+--- PASSAGE 5 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 21, page 25)
+Text:
+21. We are informed across the Bar by the learned counsel of the appellants that some of the Special Courts under the PMLA are following the practice of taking the accused into custody after they appear pursuant to the summons issued on the complaint. Therefore, the accused are compelled to apply for bail or for anticipatory bail apprehending arrest upon issuance of summons. We cannot countenance a situation where, before the filing of the complaint, the accused is not arrested; after the filing of the complaint, after he appears in compliance with the summons, he is taken into custody and forced to apply for bail. Hence, such a practice, if followed by some Special Courts, is completely illegal. Such a practice may offend the right to liberty guaranteed by Article 21 of the Constitution of India. If the ED wants custody of the accused who appears after service of summons for conducting further investigation in the same offence, the ED will have to seek custody of the accused by applying to the Special Court. After hearing the accused, the Special Court must pass an order on the application by recording brief reasons. While hearing such an application, the Court may permit custody only if it is satisfied that custodial interrogation at that stage is required, even though the accused was never arrested under Section 19. However, when the ED wants to conduct a further investigation concerning the same offence, it may arrest a person not shown as an accused in the complaint already filed under Section 44(1)(b), provided the requirements of Section 19 are fulfilled. ON FACTUAL ASPECTS OF THE APPEALS
+
+--- PASSAGE 6 ---
+Judgment: SERIOUS FRAUD INVESTIGATION OFFICE versus ADITYA SARDA (08-04-2025)
+   (Judgment id 1000256569, paragraph 28, page 35)
+Text:
+28. A faint attempt was made by the learned counsels for the Respondents to rely upon the decision in case of Tarsem Lal vs. Directorate of Enforcement Jalandhar Zonal Office,9 to submit that if the respondents were not arrested by the SFIO during the course of investigation till the filing of the complaint, the Special Court while taking cognizance of the alleged offences should have issued a summons only to the respondents-accused and not a warrant. The said submission is bereft of merits. As discussed earlier, as per Section 204, Cr.P.C. in a complaint case, which appears to be a warrant case, the Court taking cognizance of the offence, has the discretion to issue warrant or summons as it thinks fit, for causing the accused to be brought or to appear before it. As held by three Judge Bench of this Court in case of Inder Mohan Goswami and Another (supra), the Court is empowered to issue even a non-bailable warrant to bring a person to the Court, when it is reasonable for the Court to believe that the person will not voluntarily appear in the Court or the police authorities are unable to find the person to serve him with a summons. There cannot be a strait jacket formula, as sought to be submitted by the learned advocates for the Respondents that the Court must first issue a summons even in case of a warrant case, irrespective of the gravity or seriousness of the offence. As well settled by now, whether the attendance of the accused can be best secured by issuing a bailable warrant or non-bailable warrant, would (2024) 7 SCC 61 520 be a matter, which entirely rests at the discretion of the concerned Court.10 Although the discretion should be exercised judiciously, diverse considerations such as the nature and seriousness of the offence, the circumstances peculiar to the accused, possibility of his concealing or absconding, larger interest of public and state etc. also must be seriously considered by the court.
+
+--- PASSAGE 7 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 18, page 24)
+Text:
+18. When a warrant is issued in the cases mentioned in paragraph 16 above, the Special Court can always entertain an application for cancellation of the warrant and can cancel the warrant depending upon the conduct of the accused. While cancelling the warrant, the Court can always take an undertaking from the accused to appear before the Court on every date unless appearance is specifically exempted. When the ED has not taken the custody of the accused during the investigation, usually, the Special Court will exercise the power of cancellation of the warrant without insisting on taking the accused in custody provided an undertaking is furnished by the accused to appear regularly before the Court. When the Special Court deals with an application for cancellation of a warrant, the Special Court is not dealing with an application for bail. Hence, Section 45(1) will have no application to such an application.
+
+--- PASSAGE 8 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 8, page 14)
+Text:
+8. While taking cognizance on a complaint under Section 44 (1)(b), if the Court finds that till the filing of the complaint, the accused was not arrested, generally at the first instance, as a rule, the Court must issue a summons on the complaint. If the accused was not arrested till the filing of the complaint but has not cooperated with the investigation by defying summons issued under Section 50 of the PMLA, the Special Court may issue a bailable warrant at the first instance while issuing the process. But even in such a case, it is not mandatory to issue a warrant while issuing process; instead issuance of a summons would suffice. When an accused is on bail, while issuing the process, the Special Court will have to issue only a summons. When the accused is granted bail in the same case, it is not necessary to arrest him after taking cognizance. If such an accused does not remain present after service of summons without seeking an exemption, the Special Court can always issue a warrant to secure his presence.
+
+--- PASSAGE 9 ---
+Judgment: SERIOUS FRAUD INVESTIGATION OFFICE versus ADITYA SARDA (08-04-2025)
+   (Judgment id 1000256569, paragraph 10, page 30)
+Text:
+10. When a Court grants anticipatory bail what it actually does is only to make an order that in the event of arrest, the arrestee shall be released on bail, subject to the terms (2024) SCC OnLine SC 282 and conditions. Taking note of the fact the said power is to be exercised in exceptional circumstances and that it may cause some hinderance to the normal flow of investigation method when called upon to exercise the power under Section 438, Cr.PC, courts must keep reminded of the position that law aides only the abiding and certainly not its resistant. By saying so, we mean that a person, having subjected to investigation on a serious offence and upon making out a case, is included in a charge sheet or even after filing of a refer report, later, in accordance with law, the Court issues a summons to a person, he is bound to submit himself to the authority of law. It only means that though he will still be at liberty, rather, in his right, to take recourse to the legal remedies available only in accordance with law, but not in its defiance. We will dilate this discussion with reference to the factual matrix of this case. However, we think that before dealing with the same, a small deviation to have a glance at the scope and application of the provisions under Section 82, Cr.PC will not be inappropriate. 11 to 24…………………………
+
+--- PASSAGE 10 ---
+Judgment: TARSEM LAL versus DIRECTORATE OF ENFORCEMENT JALANDHAR ZONAL OFFICE (16-05-2024)
+   (Judgment id 1000255755, paragraph 3/3, page 7)
+Text:
+(f) When the accused is not arrested during the investigation, after he appears before the Special Court pursuant to a summons, it is not necessary for him to apply for bail. The Special Court can always take recourse to Section 88 of the CrPC. In such a situation, if the ED is seeking remand by taking recourse under Section 309(2) of the CrPC, it will be incumbent upon the Special Court to give an opportunity of being heard to the accused and pass an order recording reasons in brief; (g) As held in the second case of Satender Kumar Antil 3, Section 170 of the CrPC is merely a procedural compliance. It is submitted that in case of an offence punishable under the PMLA, a complaint under Section 44 (1)(b) partakes the character of a report/chargesheet under Section 173 of the CrPC. Once cognizance is taken based on the complaint, the authorities cannot invoke Section 19 of the PMLA and arrest an accused who has not been arrested till the date of the Special Court taking cognizance. If they require custody of the accused for further investigation to enable them to file a supplementary complaint, the officers of the ED will have to apply to the Special Court for a grant of custody; and (h) When an accused is not arrested until the filing of the complaint and when an accused appears pursuant to summons before the Special Court, Section 437 of the CrPC will not apply, and it is not necessary for the accused to seek bail.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N24 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

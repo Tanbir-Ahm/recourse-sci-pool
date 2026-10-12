@@ -1,0 +1,99 @@
+QUESTION ID: N12   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N12",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: We had oral deal to sell our godown in Kanpur, buyer paid part only and then stopped, after one year we sold to someone else. Now the buyer's wife filed FIR under 420 and 406 IPC and even 354 against my mother!! Police filed chargesheet also. Magistrate earlier itself said it was civil matter. We never cheated anyone, it was their default. Can High Court quash this, and how long will this harassment go on?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: VIJAY KUMAR GHAI & ORS. versus THE STATE OF WEST BENGAL & ORS. (22-03-2022)
+   (Judgment id 1000253806, paragraph 35, page 24)
+Text:
+35. In Vesa Holdings Pvt. Ltd. & Anr. Vs. State of Kerala & Ors.27, this Court made the following observation:- “13. It is true that a given set of facts may make out a civil wrong as also a criminal offence and only because a civil remedy may be available to the complainant that itself cannot be ground to quash a criminal proceeding. The real test is whether the allegations in the complaint disclose the criminal offence of cheating or not. In the present case, there is nothing to show that at the very inception there was any inception on behalf of an accused person to cheat which is a condition precedent for an offence u/s 420 IPC. In our view, the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be mala fide or otherwise an abuse of the process of the courts. Superior courts while exercising this power should also strive to serve the ends of justice. In our opinion, in view of these facts allowing the police investigation to continue would amount to anabuse of the process of the court and the High Court committed an error in refusing to exercise the power under Section 482 Cr.P.C to quash the proceedings.” 26 (2000) 4 SCC 168 27 (2015) 8 SCC 293
+
+--- PASSAGE 2 ---
+Judgment: KAMALADEVIAGARWAL v. STATE OF WEST BENGAL AND ORS. (17/10/2001)
+   (Judgment id 20481, unnumbered paragraph, page 3)
+Text:
+1 SCC 335, Rajesh Bajaj v. State NCT of Delhi, [1999] 3 SCC 259 this Court in Trisuns Chemical Industry v. Rajesh Agarwal & Ors., [1999] 8 SCC 686 held : "Time and again this Court has been pointing out that quashing of FIR or a complaint in exercise of the inherent powers of the High Court should be limited to very extreme exceptions (vide State of Haryana v. Bhajan Lal, [1992] Supp. 1 SCC 335 and Rajesh Bajaj v. State NCT of Delhi, [1999] 3 SCC 259. In the last referred case this court also pointed out that merely because an act has a civil profile is not sufficient to denude it of its criminal outfit. We quote the following observations : (SCC p.263, para 10) "10. It may be that the facts narrated in the present complaint would as well reveal a commercial transaction or money transac-tion. But that is hardly a reason for holding that the offence of cheating were committed in the course of commercial and also money transactions." In Medchi Chemical & Pharma (P) Ltd. v. Biological E. Ltd. & Ors., [2000] 3 SCC 269 this Court again reiterated the position and held : "Exercise of jurisdiction under the inherent power as envisaged in Section 482 of the Code to have the complaint or the charge-sheet quashed is an exception rather than a rule and the case for quashing at the initial stage must have to be treated as rarest of rare so as not to scuttle the prosecution.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 779 OF 2007 Rajeswar Tiwari & Ors. .... Appellant (s) Versus Nanda Kishore Roy .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) This appeal is directed against the final o
+   (Judgment id 36724, paragraph 7/13, page 4)
+Text:
+No doubt, at the stage of quashing an FIR or complaint the High Court is not justified in embarking upon an inquiry as to the probability, reliability or genuineness of the allegation made therein. 17) In Sardar Trilok Singh and others vs. Satya Deo Tripathi (1979) 4 SCC 396, when the financer seized the truck in question due to default in payment of instalment, buyer of the vehicle launched criminal prosecution, this Court held it as an abuse of process of the court since the dispute was essentially of a civil nature and quashed the entire proceedings. 18) In G. Sagar Suri and another vs. State of U.P. and others, (2000) 2 SCC 636, this Court has held:- “8. Jurisdiction under Section 482 of the Code has to be exercised with great care. In exercise of its jurisdiction the High Court is not to examine the matter superficially. It is to be seen if a matter, which is essentially of a civil nature, has been given a cloak of criminal offence. Criminal proceedings are not a short cut of other remedies available in law. Before issuing process a criminal court has to exercise a great deal of caution. For the accused it is a serious matter. This Court has laid certain principles on the basis of which the High Court is to exercise its jurisdiction under Section 482 of the Code. Jurisdiction under this section has to be exercised to prevent abuse of the process of any court or otherwise to secure the ends of justice.” 19) In Alpic Finance Ltd. vs.
+
+--- PASSAGE 4 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL/CRIMINAL APPELLATE JURISDICTION CIVIL APPEAL NO.__4540________OF 2013 [Arising out of S.L.P.(C) No.13120 OF 2013] CHANDRAN RATNASWAMI APPELLANT VERSUS K.C. PALANISAMY AND OTHERS RESPONDENTS WITH CRIMINAL APPEAL NOs. 736-737 
+   (Judgment id 40396, paragraph 7, page 38)
+Text:
+7. In our view petition of complaint does not disclose any criminal offence at all much less any offence either under Section 420 or Section 120-B IPC and the present case is a case of purely civil dispute between the parties for which remedy lies before a civil court by filing a properly constituted suit. In our opinion, in view of these facts allowing the police investigation to continue would amount to an abuse of the process of court and to prevent the same it was just and expedient for the High Court to quash the same by exercising the powers under Section 482 CrPC which it has erroneously refused.”
+
+--- PASSAGE 5 ---
+Judgment: RIKHAB BIRANI & ANR. versus STATE OF UTTAR PRADESH & ANR. (16-04-2025)
+   (Judgment id 1000256582, paragraph 15, page 6)
+Text:
+15. During the last couple of months, a number of judgments/orders have been pronounced by this Court, especially in cases arising from the State of Uttar Pradesh, deprecating the stance of the police as well as the courts in failing to distinguish between a civil wrong in the form of a breach of contract, non-payment of money or disregard to and violation of contractual terms; and a criminal offence under Sections 420 and 406 of the IPC, the ingredients of which are quite different and requires mens rea at the time when the contract is entered into itself to not abide by the terms thereof.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO(S).729-732 OF 2010 RAJIB RANJAN & ORS. …..APPELLANT(S) VERSUS R. VIJAYKUMAR …..RESPONDENT(S) J U D G M E N T A.K. SIKRI, J. These appeals are filed by four appellants, who were ar
+   (Judgment id 42017, paragraph 18, page 21)
+Text:
+18. Having regard to the circumstances narrated and explained above, we are also of the view that attempt is made by the respondent to convert a case with civil nature into criminal prosecution. In a case like this, High Court would have been justified in quashing the proceedings in exercise of its inherent powers under Section 482 of the Code. It would be of benefit to refer to the judgment in the case of Indian Oil Corpn. v. NEPC India Ltd. and others, (2006) 6 SCC 736, wherein the Court adversely commented upon this very tendency of filing criminal complaints even in cases relating to commercial transaction for which civil remedy is available is available or has been availed. The Court held that the following observations of the Court in this behalf are taken note of: “13. While on this issue, it is necessary to take notice of a growing tendency in business circles to convert purely civil disputes into criminal cases. This is obviously on account of a prevalent impression that civil law remedies are time consuming and do not adequately protect the interests of lenders/creditors. Such a tendency is seen in several family disputes also, leading to irretrievable breakdown of marriages/families. There is also an impression that if a person could somehow be entangled in a criminal prosecution, there is a likelihood of imminent settlement. Any effort to settle civil disputes and claims, which do not involve any criminal offence, by applying pressure through criminal prosecution should be deprecated and discouraged. In G. Sagar Suri v. State of U.P., (2000) 2 SCC 636, this Court observed: (SCC p. 643, para 8) “It is to be seen if a matter, which is essentially of a civil nature, has been given a cloak of criminal offence. Criminal proceedings are not a short cut of other remedies available in law. Before issuing process a criminal court has to exercise a great deal of caution. For the accused it is a serious matter. This Court has laid certain principles on the basis of which the High Court is to exercise its jurisdiction under Section 482 of the Code. Jurisdiction under this section has to be exercised to prevent abuse of the process of any court or otherwise to secure the ends of justice.”
+
+--- PASSAGE 7 ---
+Judgment: VIJAY KUMAR GHAI & ORS. versus THE STATE OF WEST BENGAL & ORS. (22-03-2022)
+   (Judgment id 1000253806, paragraph 33, page 23)
+Text:
+33. The following observation made by this Court in the case of Uma Shankar Gopalika Vs. State of Bihar & Anr.25 with almost similar facts and circumstances may be relevant to note at this stage:- “6. Now the question to be examined by us is as to whether on the facts disclosed in the petition of the complaint any criminal offence whatsoever is made out much less offences under Section 420/120-B IPC. The only allegation in the complaint petitioner against the accused person is that they assured the complainant that when they receive the insurance claim amounting to Rs. 4,20,000, they would pay a sum of Rs. 2,60,000 to the complainant out of that but the same has never been paid. It was pointed out that on behalf of the complainant that the accused fraudulently persuaded the complainant to agree so that the accused persons may take steps for moving the consumer forum in relation to the claim of Rs. 4,20,0000. It is well settled that every breach of contract would not give rise to an offence of cheating and only in those cases of breach of contract would amount to cheating where there was any deception played at the very inception. If the intention to cheat has developed later on, the same cannot amount to cheating. In the present case, it has nowhere been stated that at the very inception that there was intention on behalf of the accused person to cheat which is a condition precedent for an offence under 420 IPC. “7. In our view petition of complaint does not disclose any criminal offence at all much less any offence either under Section 420 or Section 120-B IPC and the present case is a case of purely civil dispute between the parties for which remedy lies before a civil court by filing a properly constituted suit. In our opinion, in view of these facts allowing the police 25 (2005) 10 SCC 336 investigation to continue would amount to an abuse of the process of court and to prevent the same it was just and expedient for the High Court to quash the same by exercising the powers under Section 482 Cr.P.C which it has erroneously refused.”
+
+--- PASSAGE 8 ---
+Judgment: Opening header not available
+   (Judgment id 42611, unnumbered paragraph, page 7)
+Text:
+Applying the aforesaid parameters we have no hesitation in coming to hold that neither the FIR nor the protest petition was mala fide, frivolous or vexatious. It is also not a case where there is no substance in the complaint. The manner in which the investigation was conducted by the officer who eventually filed the final report and the transfer of the investigation earlier to another officer who had almost completed the investigation and the entire case diary which has been adverted to in detail in the protest petition prima facie makes out a case against the husband and the wife regarding collusion and the intention to cheat from the very beginning, inducing the appellant to hand over a huge sum of money to both of them. Their conduct of not stating so many aspects, namely, the power of attorney executed by the original owner, the will and also the sale effected by the wife in the name of Monika Singh on 28-7-2008 cannot be brushed aside at this stage.” 10. No doubt, where the criminal complaints are filed in respect of property disputes of civil in nature only to harass the accused, and to pressurize him in the civil litigation pending, and there is prima facie abuse of process of law, it is well within the jurisdiction of the High Court to exercise its powers under Section 482 of the Code to quash the criminal proceedings.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 78 OF 2013 (Arising out of S.L.P. (Crl.) No. 2089 of 2011) Arun Bhandari ... Appellant Versus State of U.P. and others ...Respondents J U D G M E N T Dipak Misra, J. Leave grante
+   (Judgment id 39911, paragraph 17, page 20)
+Text:
+17. In Murari Lal Gupta (supra) a two-Judge Bench quashed the criminal complaint instituted under Sections 406 and 420 of the IPC on the following analysis: - “The complaint does not make any averment so as to infer any fraudulent or dishonest inducement having been made by the petitioner pursuant to which the respondent parted with the money. It is not the case of the respondent that the petitioner does not have the property or that the petitioner was not competent to enter into an agreement to sell or could not have transferred title in the property to the respondent. Merely because an agreement to sell was entered into which agreement the petitioner failed to honour, it cannot be said that the petitioner has cheated the respondent. No case for prosecution under Section 420 or Section 406 IPC is made out even prima facie. The complaint filed by the respondent and that too at Madhepura against the petitioner, who is a resident of Delhi, seems to be an attempt to pressurize the petitioner for coming to terms with the respondent.” In our considered opinion the factual position in the aforesaid case is demonstrably different and, hence, we have no hesitation in stating that the said decision is not applicable to the case at hand.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2341 OF 2011 Vesa Holdings P. Ltd. & Anr. … Appellants versus State of Kerala & Ors. … Respondents With CRIMINAL APPEAL NOS.2342-2344 OF 2011 J U D G M E N T C. NAGAPPAN, J.
+   (Judgment id 42499, paragraph 9, page 10)
+Text:
+9. It is true that a given set of facts may make out a civil wrong as also a criminal offence and only because a civil remedy may be available to the complainant that itself cannot be a ground to quash a criminal proceeding. The real test is whether the allegations in the complaint disclose the criminal offence of cheating or not. In the present case there is nothing to show that at the very inception there was any intention on behalf of the accused persons to cheat which is a condition precedent for an offence under Section 420 IPC. In our view the complaint does not disclose any criminal offence at all. Criminal proceedings should not be encouraged when it is found to be malafide or otherwise an abuse of the process of the court. Superior courts while exercising this power should also strive to serve the ends of justice. In our opinion, in view of these facts allowing the police investigation to continue would amount to an abuse of the process of court and the High Court committed an error in refusing to exercise the power under Section 482 Criminal Procedure Code to quash the proceedings.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N12 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

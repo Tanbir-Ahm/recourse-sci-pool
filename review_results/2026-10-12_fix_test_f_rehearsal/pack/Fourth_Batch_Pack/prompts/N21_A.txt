@@ -1,0 +1,99 @@
+QUESTION ID: N21   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N21",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether a certificate under Section 63 BSA (formerly Section 65B Evidence Act) is a mandatory condition for admissibility of CCTV footage where the original device is not produced.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: POORANMAL versus THE STATE OF RAJASTHAN & ANR. (10-03-2026)
+   (Judgment id 1003962585, paragraph 52, page 20)
+Text:
+52. Admittedly, in the present case, the certificate under Section 65-B of the Evidence Act [Section 63 of the BSA] was not proved by the prosecution. In the absence of the certificate, mandatorily required under Section 65-B of the Evidence Act [Section 63 of the BSA], the call detail records become inadmissible in evidence and cannot be relied upon to support the prosecution’s case. CONCLUSION
+
+--- PASSAGE 2 ---
+Judgment: ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS. (14-07-2020)
+   (Judgment id 1000252655, paragraph 43, page 52)
+Text:
+43. Thus, it is clear that the major premise of Shafhi Mohammad (supra) that such certificate cannot be secured by persons who are not in possession of an electronic device is wholly incorrect. An application can always be made to a Judge for production of such a certificate from the requisite person under Section 65B(4) in cases in which such person refuses to give it.
+
+--- PASSAGE 3 ---
+Judgment: SHAFHI MOHAMMAD versus THE STATE OF HIMACHAL PRADESH (30-01-2018)
+   (Judgment id 1000250501, paragraph 10, page 6)
+Text:
+10. Expression “data” is defined in Section 2(o) of the Information Technology Act as follows. “Data” means a representation of information, knowledge, facts, concepts or instructions which are being prepared or have been prepared in a formalised manner, and is intended to be processed, is being processed or has been processed in a computer system or computer network, and may be in any form (including computer printouts magnetic or optical storage media, punched cards, punched tapes) or stored internally in the memory of the computer.” 11.The applicability of procedural requirement under Section 65B(4) of the Evidence Act of furnishing certificate is to be applied only when such electronic evidence is produced by a person who is in a position to produce such certificate being in control of the said device and not of the opposite party. In a case where electronic evidence is produced by a party who is not in possession of a device, applicability of Sections 63 and 65 of the Evidence Act cannot be held to be excluded. In such case, procedure under the said Sections can certainly be invoked. If this is not so permitted, it will be denial of justice to the person who is in possession of authentic evidence/witness but on account of manner of proving, such document is kept out of consideration by the court in absence of certificate under Section 65B(4) of the Evidence Act, which party producing cannot possibly secure. Thus, requirement of certificate under Section 65B(h) is not always mandatory. 12.Accordingly, we clarify the legal position on the subject on the admissibility of the electronic evidence, especially by a party who is not in possession of device from which the document is produced. Such party cannot be required to produce certificate under Section 65B(4) of the Evidence Act. The applicability of requirement of certificate being procedural can be relaxed by Court wherever interest of justice so justifies. 13.To consider the remaining aspects, including finalisation of the road-map for use of the videography in the crime scene and the Standard Operating Procedure (SOP), we adjourn the matter to 13th February, 2018.
+
+--- PASSAGE 4 ---
+Judgment: RANDEEP SINGH @ RANA & ANR. versus STATE OF HARYANA & ORS. (22-11-2024)
+   (Judgment id 1000256118, paragraph 10, page 7)
+Text:
+10. PW-24 claims to be a CCTV engineer. He stated that Balaji Digital Security Advisor, where he worked as an engineer, had a contract with the Bank. He claimed that he prepared a CD from the security system of the Bank of Baroda as per the request made by the Police. He accepted that he did not put his identification on the CD or make any markings on the CD. He admitted that editing could be made of the CCTV footage on the CD and that the CD could be tampered with. He also did not depose that he had seen the CCTV footage before downloading on the CD. Thus, neither PW-1 nor PW-24 had seen the CCTV footage downloaded on the CD. Moreover, the CD did not bear any marking or sign from either of the witnesses. Most importantly, the prosecution failed to produce the certificate under Section 65B of the Evidence Act concerning the CD. Therefore, the evidence in the form of the CD will have to be kept out of consideration as it is not admissible in evidence.
+
+--- PASSAGE 5 ---
+Judgment: ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS. (14-07-2020)
+   (Judgment id 1000252655, paragraph 30, page 48)
+Text:
+30. Accordingly, we clarify the legal position on the subject on the admissibility of the electronic evidence, especially by a party who is not in possession of device from which the document is produced. Such party cannot be required to produce certificate under Section 65-B(4) of the Evidence Act. The applicability of requirement of certificate being procedural can be relaxed by the court wherever interest of justice so justifies.”
+
+--- PASSAGE 6 ---
+Judgment: POORANMAL versus THE STATE OF RAJASTHAN & ANR. (10-03-2026)
+   (Judgment id 1003962585, paragraph 51, page 20)
+Text:
+51. Subsequently, this Court in Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal15, reaffirmed and clarified the position laid down in Anvar P.V. (supra), observing that the requirement of a certificate under Section 65-B of the Evidence Act [Section 63 of the BSA] for admissibility of electronic evidence is mandatory and cannot be dispensed with, and held as follows:- “61. We may reiterate, therefore, that the certificate required under Section 65-B(4) is a condition precedent to the admissibility of evidence by way of electronic record, as correctly held in Anvar P.V. [Anvar P.V. v. P.K. Basheer, (2014) 10 SCC 473 : (2015) 1 SCC (Civ) 27 : (2015) 1 SCC (Cri) 24 : (2015) 1 SCC (L&S) 108], and incorrectly “clarified” in Shafhi Mohammad [Shafhi Mohammad v. State of H.P., (2018) 2 SCC 801 : (2018) 2 SCC 807 : (2018) 2 SCC (Civ) 346 : (2018) 2 SCC (Civ) 351 : (2018) 1 SCC (Cri) 860 : (2018) 1 SCC (Cri) 865] . Oral evidence in the place of such certificate cannot possibly suffice as Section 65-B(4) is a mandatory requirement of the law. Indeed, the hallowed principle in Taylor v. Taylor [Taylor v. Taylor, (1875) LR 1 Ch D 426] , which has been followed in a number of the judgments of this Court, can also be applied. Section 65-B(4) of the Evidence Act clearly states that secondary evidence is admissible only if led in the manner stated and not otherwise. To hold otherwise would render Section 65-B(4) otiose.”
+
+--- PASSAGE 7 ---
+Judgment: ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS. (14-07-2020)
+   (Judgment id 1000252655, paragraph 59, page 64)
+Text:
+59. We may reiterate, therefore, that the certificate required under Section 65B(4) is a condition precedent to the admissibility of evidence by way of electronic record, as correctly held in Anvar P.V. (supra), and incorrectly “clarified” in Shafhi Mohammed (supra). Oral evidence in the place of such certificate cannot possibly suffice as Section 65B(4) is a mandatory requirement of the law. Indeed, the hallowed principle in Taylor v. Taylor (1876) 1 Ch.D 426, which has been followed in a number of the judgments of this Court, can also be applied. Section 65B(4) of the Evidence Act clearly states that secondary evidence is admissible only if lead in the manner stated and not otherwise. To hold otherwise would render Section 65B(4) otiose.
+
+--- PASSAGE 8 ---
+Judgment: CHANDRABHAN SUDAM SANAP versus THE STATE OF MAHARASHTRA (28-01-2025)
+   (Judgment id 1000256308, paragraph 36, page 24)
+Text:
+36. Mr. Shri Singh learned counsel for the appellant fairly submits that when the CCTV footage was introduced as evidence through PW-1 on 28.08.2014, the judgment of this Court in State (N.C.T. of Delhi) v. Navjot Sandhu @ Afsan Guru, (2005) 11 SCC 600 was holding the field. In Navjot Sandhu (supra), this Court held as follows: “150. According to Section 63, secondary evidence means and includes, among other things, “copies made from the original by mechanical processes which in themselves insure the accuracy of the copy, and copies compared with such copies”. Section 65 enables secondary evidence of the contents of a document to be adduced if the original is of such a nature as not to be easily movable. It is not in dispute that the information contained in the call records is stored in huge servers which cannot be easily moved and produced in the court. That is what the High Court has also observed at para 276. Hence, printouts taken from the computers/servers by mechanical process and certified by a responsible official of the service-providing company can be led in evidence through a witness who can identify the signatures of the certifying officer or otherwise speak of the facts based on his personal knowledge. Irrespective of the compliance with the requirements of Section 65-B, which is a provision dealing with admissibility of electronic records, there is no bar to adducing secondary evidence under the other provisions of the Evidence Act, namely, Sections 63 and 65. It may be that the certificate containing the details in sub-section (4) of Section 65-B is not filed in the instant case, but that does not mean that secondary evidence cannot be given even if the law permits such evidence to be given in the circumstances mentioned in the relevant provisions, namely, Sections 63 and 65.”
+
+--- PASSAGE 9 ---
+Judgment: ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS. (14-07-2020)
+   (Judgment id 1000252655, paragraph 56, page 63)
+Text:
+56. In Kundan Singh(supra), a Division Bench of the Delhi High Court held: “50. Anwar P.V. (supra) partly overruled the earlier decision of the Supreme Court on the procedure to prove electronic record(s) in Navjot Sandhu (supra), holding that Section 65B is a specific provision relating to the admissibility of electronic record(s) and, therefore, production of a certificate under Section 65B(4) is mandatory. Anwar P.V. (supra) does not state or hold that the said certificate cannot be produced in exercise of powers of the trial court under Section 311 Cr.P.C or, at the appellate stage under Section 391 Cr.P.C. Evidence Act is a procedural law and in view of the pronouncement in Anwar P.V. (supra) partly overruling Navjot Sandhu (supra), the prosecution may be entitled to invoke the aforementioned provisions, when justified and required. Of course, it is open to the court/presiding officer at that time to ascertain and verify whether the responsible officer could issue the said certificate and meet the requirements of Section 65B.”
+
+--- PASSAGE 10 ---
+Judgment: ARJUN PANDITRAO KHOTKAR versus KAILASH KUSHANRAO GORANTYAL AND ORS. (14-07-2020)
+   (Judgment id 1000252655, paragraph 29, page 47)
+Text:
+29. The applicability of procedural requirement under Section 65- B(4) of the Evidence Act of furnishing certificate is to be applied only when such electronic evidence is produced by a person who is in a position to produce such certificate being in control of the said device and not of the opposite party. In a case where electronic evidence is produced by a party who is not in possession of a device, applicability of Sections 63 and 65 of the Evidence Act cannot be held to be excluded. In such case, procedure under the said sections can certainly be invoked. If this is not so permitted, it will be denial of justice to the person who is in possession of authentic evidence/witness but on account of manner of proving, such document is kept out of consideration by the court in the absence of certificate under Section 65-B(4) of the Evidence Act, which party producing cannot possibly secure. Thus, requirement of certificate under Section 65-B(4) is not always mandatory.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N21 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

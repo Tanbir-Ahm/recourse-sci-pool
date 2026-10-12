@@ -1,0 +1,99 @@
+QUESTION ID: N06   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N06",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My nephew is first time accused in a 2023 theft case, he's been in jail as undertrial for over a year. Does the new section 479 BNSS one-third rule help him even though the FIR was before the new law?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph 47, page 68)
+Text:
+47. Under this provision, when a person has undergone detention for a period extending to one-half of the maximum period of imprisonment specified for that offense, he shall be released by the court on his personal bond with or without sureties. The word ‘shall’ clearly denotes the mandatory compliance of this provision. We do feel that there is not even a need for a bail application in a case of this nature particularly when the reasons for delay are not attributable against the accused. We are also conscious of the fact that while taking a decision the public prosecutor is to be heard, and the court, if it is of the view that there is a need for continued detention longer than one-half of the said period, has to do so. However, such an exercise of power is expected to be undertaken sparingly being an exception to the general rule. Once again, we have to reiterate that ‘bail is the rule and jail is an exception’ coupled with the principle governing the presumption of innocence. We have no doubt in our mind that this provision is asubstantive one, facilitating liberty, being the core intendment of Article 21. The only caveat as furnished under the Explanation being the delay in the proceeding caused on account of the accused to be excluded. This court in Bhim Singh v. Union of India, (2015) 13 SCC 605, while dealing with the aforesaid provision, has directed that: “5. Having given our thoughtful consideration to the legislative policy engrafted in Section 436-A and large number of undertrial prisoners housed in the prisons, we are of the considered view that some order deserves to be passed by us so that the undertrial prisoners do not continue to be detained in prison beyond the maximum period provided under Section 436-A.
+
+--- PASSAGE 2 ---
+Judgment: NARCOTIC CONTROL BUREAU versus LAKHWINDER SINGH (29-01-2025)
+   (Judgment id 1000256314, paragraph 5/1, page 3)
+Text:
+5. The relevant part of paragraph 15 and paragraph 16 of the said decision read thus: “15. ... We, therefore, direct as under: (i) Where the undertrial is accused of an offence(s) under the Act prescribing a punishment of imprisonment of five years or less and fine, such an undertrial shall be released on bail if he has been in jail for a period which is not less than half the punishment provided for the offence with which he is charged and where he is charged with more than (1994) 6 SCC 731 1584 one offence, the offence providing the highest punishment. If the offence with which he is charged prescribes the maximum fine, the bail amount shall be 50% of the said amount with two sureties for like amount. If the maximum fine is not prescribed bail shall be to the satisfaction of the Special Judge concerned with two sureties for like amount. (ii) Where the undertrial accused is charged with an offence(s) under the Act providing for punishment exceeding five years and fine, such an undertrial shall be released on bail on the term set out in (i) above provided that his bail amount shall in no case be less than Rs 50,000 with two sureties for like amount. (iii) Where the undertrial accused is charged with an offence(s) under the Act punishable with minimum imprisonment of ten years and a minimum fine of Rupees one lakh, such an undertrial shall be released on bail if he has been in jail for not less than five years provided he furnishes bail in the sum of Rupees one lakh with two sureties for like amount.
+
+--- PASSAGE 3 ---
+Judgment: IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)
+   (Judgment id 6000000001, paragraph 1, page 6)
+Text:
+1. This order is in continuation of the order passed on 13 th August, 2024. On the last date of hearing, Mr. Gaurav Agrawal, learned Amicus Curiae had submitted that the Bharatiya Nagarik Suraksha Sanhita, 2023 1, which has replaced the Code of Criminal Procedure, 1973 w.e.f. 01st July, 2024, contains a provision under Section 479 relating to the ‘Maximum period for which an undertrial prisoner can be detained’. The attention of this Court was drawn to the first proviso to Section 479 to urge that a first-time offender (who has never been convicted for any offence in the past) is required to be released on bond by the Court, if he has undergone detention for the period extending up to one-third of the maximum period of imprisonment specified for such an offence under a particular law.
+
+--- PASSAGE 4 ---
+Judgment: IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)
+   (Judgment id 6000000001, paragraph 2, page 6)
+Text:
+2. Having regard to the fact that the substituted provision under the BNSS is more beneficial vis-a-vis Section 436A of the Code of Criminal For short ‘the BNSS’ Procedure, 1973, wherein the period undergone by the first time offender was prescribed as up to half of the maximum period of imprisonment specified for such an offence, this Court had called upon the learned Additional Solicitor General to obtain instructions from the Department and submit a clarification regarding application of the said provision to all undertrials across the country.
+
+--- PASSAGE 5 ---
+Judgment: FRANK VITUS versus NARCOTICS CONTROL BUREAU & ORS. (08-07-2024)
+   (Judgment id 1000255793, paragraph 11/2, page 14)
+Text:
+Counsel immediately realised that such a distinction if drawn would result in cases of Indian citizens being further delayed at the behest of foreigners, a procedure which may not be consistent with law. He, therefore, rightly sought permission to amend the cause-title and prayer clauses of the petition which was permitted. In substance the petitioner now prays that all undertrials who are in jail for the commission of any offence or offences under the Act for a period exceeding two years on account of the delay in the disposal of cases lodged against them should be forthwith released from jail declaring their further detention to be illegal and void and pending decision of this Court on the said larger issue, they should in any case be released on bail. ………….” (emphasis added) In the same paragraph 15, directions have been issued which read thus: “We, therefore, direct as under: (i) Where the undertrial is accused of an offence(s) under the Act prescribing a punishment of imprisonment of five years 112 or less and fine, such an undertrial shall be released on bail if he has been in jail for a period which is not less than half the punishment provided for the offence with which he is charged and where he is charged with more than one offence, the offence providing the highest punishment.
+
+--- PASSAGE 6 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 29, page 17)
+Text:
+29. A substantive right conferred under the BNSS would definitely enure to the benefit of an accused against whom none of the proceedings envisaged under Section 531(2)(a) of the BNSS has been initiated. One has to see the nature of right. It is not a case of either a retrospective or retroactive application, rather it is a prospective one when a better right has been conferred under the BNSS. LEGAL & FACTUAL ANALYSIS
+
+--- PASSAGE 7 ---
+Judgment: PARTHA CHATTERJEE versus DIRECTORATE OF ENFORCEMENT (13-12-2024)
+   (Judgment id 1000256177, paragraph 11, page 7)
+Text:
+11. The aggrieved Appellant is thus before us seeking bail, inter alia, on the following grounds: (i) the prolonged period of incarceration of over two years; (ii) the Appellant was neither named nor chargesheeted in the predicate offence; (iii) the Appellant does not have any criminal antecedents and has deep roots in society; (iv) he is not a flight risk or likely to tamper with evidence or witnesses; (v) no cash was recovered from the Appellant during search and seizure by the respondent ED; (vi) the Appellant is 72 years of age and suffers from multiple health ailments; (vii) the Appellant has already spent one-third of the total sentence prescribed for the offence and thus, is entitled to bail under Section 479 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS); and (viii) there is no hope in the trial commencing in view of the 442 documents and 183 witnesses cited for examination. Mr. Mukul Rohatgi, Learned Senior Counsel, lastly contended that the Appellant ought to be granted bail on the ground of parity, considering that his co-accused have already been released on bail.
+
+--- PASSAGE 8 ---
+Judgment: IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)
+   (Judgment id 6000000001, paragraph 5, page 7)
+Text:
+5. The aforesaid steps shall be taken as expeditiously as possible, preferably within two months from today. Reports shall be submitted by the Superintendent Jails to their respective Heads of the Department within the same time line for a comprehensive affidavit to be filed by each State Government/Union Territory through their respective Chief Secretaries. The affidavits shall furnish the details of the number of undertrials who would be entitled to extension of the benefit of Section 479 of the BNSS, the number of applications moved before the concerned Courts for their release and the number of undertrials actually released by the date of filing of the affidavits.
+
+--- PASSAGE 9 ---
+Judgment: IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)
+   (Judgment id 6000000001, paragraph 3, page 7)
+Text:
+3. Today, Ms. Aishwarya Bhati, learned Additional Solicitor General, submits that pursuant to the aforesaid order, instructions have been obtained from the Department to the effect that the aforesaid provision under the BNSS shall apply to all undertrials in pending cases irrespective of whether the case was registered against them before 01 st July, 2024, the date when the newly minted legislation has come into effect.
+
+--- PASSAGE 10 ---
+Judgment: IN RE-INHUMAN CONDITIONS IN 1382 PRISONS (order of 23 August 2024, W.P.(C) 406/2013) (2024-08-23)
+   (Judgment id 6000000001, paragraph 4, page 7)
+Text:
+4. In that view of the matter, it is deemed appropriate to direct immediate implementation of Section 479 of the BNSS by calling upon Superintendents of Jails across the country wherever accused persons are detained as undertrials, to process their applications to the concerned Courts upon their completion of one-half/one-third, as the case may be, of the period mentioned in sub-section (1) of the said provision, for their release on bail. This step will go a long way in easing overcrowding in jails which is the primary focus of this Court in the present petition.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N06 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

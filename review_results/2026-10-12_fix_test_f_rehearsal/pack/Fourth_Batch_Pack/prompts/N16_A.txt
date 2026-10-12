@@ -1,0 +1,117 @@
+QUESTION ID: N16   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 13 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N16",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 13 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13
+
+==============================================================================
+QUESTION: My husband threw me out of the house three years ago. Is it too late to file a domestic violence case now?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1635 of 2011 (Arising out of SLP(Crl.) No. 7787 of 2010) Inderjit Singh Grewal …Appellant Versus State of Punjab & Anr. …Respondents J U D G M E N T Dr. B.S. CHAUHAN, J.
+   (Judgment id 38403, paragraph 24, page 20)
+Text:
+24. Submissions made by Shri Ranjit Kumar on the issue of limitation, in view of the provisions of Section 468 Cr.P.C., that the complaint could be filed only within a period of one year from the date of the incident seem to be preponderous in view of the provisions of Sections 28 and 32 of the Act 2005 read with Rule 15(6) of The Protection of Women from Domestic Violence Rules, 2006 which make the provisions of Cr.P.C. applicable and stand fortified by the judgments of this court in Japani Sahoo v. Chandra Sekhar Mohanty, AIR 2007 SC 2762; and Noida Entrepreneurs Association v. Noida & Ors., (2011) 6 SCC 508.
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1999 OF 2013 (arising out of SLP(Crl.)No.2190 of 2012) SARASWATHY …. APPELLANT VERSUS BABU ….RESPONDENT J U D G M E N T SUDHANSU JYOTI MUKHOPADHAYA, J. Leave granted. This appeal
+   (Judgment id 40988, paragraph 13, page 15)
+Text:
+13. In the present case, in view of the fact that even after the order passed by the Subordinate Judge the respondent­husband has not allowed the appellant­wife to reside in the shared household matrimonial house, we hold that there is a continuance of domestic violence committed by the respondent­husband against the appellant­wife. In view of the such continued domestic violence, it is not necessary for the courts below to decide whether the domestic violence is committed prior to the coming into force of the Protection of Women from Domestic Violence Act, 2005 and whether such act falls within the definition of the term ‘Domestic Violence’ as defined under Section 3 of the PWD Act, 2005.
+
+--- PASSAGE 3 ---
+Judgment: Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)
+   (Judgment id 30017, unnumbered paragraph, page 5)
+Text:
+It is a matter of common experience that victim is subjected to such cruelty repeatedly and it is more or less like a continuing offence. It is only as a last resort that a wife openly comes before a court to unfold and relate the day-to-day torture and cruelty faced by her, inside the house, which many of such victims do not like to be made public. As such, courts while considering the question of limitation for an offence under Section 498-A i.e. subjecting a woman to cruelty by her husband or the relative of her husband, should judge that question, in the light of Section 473 of the Code, which requires the Court, not only to examine as to whether the delay has been properly explained, but as to whether "it is necessary to do so in the interests of justice". [ Emphasis added ] The court then compared Section 473 Cr.P.C. with Section 5 of the Limitation Act and observed : " For exercise of power under Section 5 of the Limitation Act, the onus is on the appellant or the applicant to satisfy the court that there was sufficient cause for condonation of the delay, whereas Section 473 enjoins a duty on the court to examine not only whether such delay has been explained but as to whether it is the requirement of the justice to condone or ignore such delay. As such, whenever the bar of Section 468 is applicable, the court has to apply its mind on the question, whether it is necessary to condone such delay in the interests of justice.
+
+--- PASSAGE 4 ---
+Judgment: KAMATCHI versus LAKSHMI NARAYANAN (13-04-2022)
+   (Judgment id 1000253879, unnumbered paragraph, page 27)
+Text:
+Rule 6(1) sets out that an application under Section 12 of the Act shall be as per Form II appended to the Act. Thus, an application under Section 12 not being a complaint as defined under Section 2(d) of the Cr.P.C, the procedure for cognizance set out under Section 190(1)(a) of the Code followed by the procedure set out in Chapter XV of the Code for taking cognizance will have no application to a proceeding under the D.V. Act. To reiterate, Section 190(1)(a) of the Code and the procedure set out in the subsequent Chapter XV of the Code will apply only in cases of complaints, under Section 2(d) of Cr.P.C, given to a Magistrate and not to an application under Section 12 of the Act.” 20. It is thus clear that the High Court wrongly equated filing of an application under Section 12 of the Act to lodging of a complaint or initiation of prosecution. In our considered view, the High Court was in error in observing that the application under Section 12 of the Act ought to have been filed within a period of one year of the alleged acts of domestic violence. 21. It is, however, true that as noted by the Protection Officer in his Domestic Inspection Report dated 2.08.2018, there appears to be a period of almost 10 years after 16.09.2008, when nothing was alleged by the appellant against the husband.
+
+--- PASSAGE 5 ---
+Judgment: JAPANI SAHOO v. CHANDRA SEKHAR MOHANTY (27/07/2007)
+   (Judgment id 29259, paragraph 44-45, page 11)
+Text:
+44. It is thus clear in that case the complaint itself was filed after the expiry of period of limitation which was held barred under Section 468 of the Code. 45. In Rashmi Kumar (Smt.) v. Mahesh Kumar Bhada, (1997) 2 SCC 397 : JT 1996 (11) SC 175, a complaint was filed by the wife against her husband on September 10, 1990 for an offence punishable under Section 406, IPC. It was alleged in the complaint that she demanded from the respondent-husband return of jewellery and household articles on December 5, 1987, but the respondent refused to return stridhana to the complainant-wife and she was forced to leave matrimonial home. The complaint was admittedly within the period of three years from the date of demand and refusal of stridhana by the respondent-husband. The complaint was held to be within time and the matter was decided on merits.
+
+--- PASSAGE 6 ---
+Judgment: PETITIONER: SMT. VANKA RADHAMANOHARI Vs. RESPONDENT: VANKE VENKATA REDDY AND ORS. DATE OF JUDGMENT20/04/1990 BENCH: ACT: Criminal Procedure Code 1973 : Sections 468. 473-- Limitation-Applicability of-Matrimonial Offences like cruelty, by husband and members of
+   (Judgment id 7544, unnumbered paragraph, page 5)
+Text:
+It is only as a last resort that a wife openly comes before a Court to unfold and relate the day to day torture and cruelty faced by her, inside the house, which many of such victims do not like to be made public. As such Courts while considering the question of limitation for an offence under Section 498 A i.e. subjecting a woman to cruelty by her husband or the relative of her husband, should judge that question, in the light of Section 473 of the Code, which requires the court, not only to examine as to whether the delay has been properly explained, but as to whether "it is necessary to do so in the interest of Justice". 8.In the case of Bhagirath Kanoria v. State of M. P. AIR 1984 SC 1688, this court even after having held that nonpayment of the employer’s contribution to the Provident Fund before the due date, was a continuing offence, and as such the period of limitation prescribed by Section 468 was not applicable, still referred to Section 473 of the Code. In respect of Section 473 it was said: "That section is in the nature of an overriding provision according to which notwithstanding anything contained in the provisions of chapter XXXVI of the Code, any Court may take cognizance of an offence after the expiry of the period of limitation if, inter alia, it is satisfied that it is necessary to do so in the interest of justice.
+
+--- PASSAGE 7 ---
+Judgment: PETITIONER: SMT. VANKA RADHAMANOHARI Vs. RESPONDENT: VANKE VENKATA REDDY AND ORS. DATE OF JUDGMENT20/04/1990 BENCH: ACT: Criminal Procedure Code 1973 : Sections 468. 473-- Limitation-Applicability of-Matrimonial Offences like cruelty, by husband and members of
+   (Judgment id 7544, unnumbered paragraph, page 5)
+Text:
+The general rule of limitation is based on the Latin maxim: vigilantibus, et non dormientibus, jura subveniunt (the vigilant, and not the sleepy, are assisted by the laws). That maxim cannot be applied in connection with offences relating to cruelty against women. 7.It is true that the object of introducing Section 468 was to put a bar of limitation on prosecutions and to prevent the parties from filing cases after a long time, as it was thought proper that after a long lapse of time, launching of prosecution may be vexatious, because by that time even the evidence may disappear. This aspect has been mentioned in the statement and object, for introducing a period of limitation, as well as by this court in the case of State of punjab v. Sarwan Singh, AIR 1981 SC 1054. But, that consideration cannot be extended to matrimonial offences, where the allegations are of cruelty, torture and assault by the husband or other members of the family to the complainant. It is a matter of common experience that victim is subjected to such cruelty repeatedly and it is more or less like a continuing offence. It is only as a last resort that a wife openly comes before a Court to unfold and relate the day to day torture and cruelty faced by her, inside the house, which many of such victims do not like to be made public.
+
+--- PASSAGE 8 ---
+Judgment: PRABHA TYAGI versus KAMLESH DEVI (12-05-2022)
+   (Judgment id 1000253984, paragraph 21/2, page 32)
+Text:
+Act could be taken into consideration while passing an order under Sections 18, 19 and 20 thereof. The wife who had shared a household in the past but was no longer residing with her husband can file a petition under section 12 if subjected to domestic violence. It was further observed that where an act of domestic violence is once committed, then a subsequent decree of divorce will not absolve the liability of the respondent from the offence committed or to deny the benefit to which the aggrieved person is entitled to. b) In the case of Krishna Bhattacharjee vs. Sarathi Choudhury and Another - [(2016) 2 SCC 705], this Court held that a claim for recovery of Stridhana, two years after a decree of judicial separation is maintainable. The Court held that judicial separation does not change the status of a wife as an aggrieved person under Section 2(a) read with Section 12 of the D.V. Act and does not end the domestic relationship under Section 2(f) of the D.V. Act. It was further held that a judicial separation was a mere suspension of husband-wife relationship and not a complete severance of relationship as in the case of a divorce. Moreover, an application filed under section 12 of the D.V. Act by the wife is not barred by any limitation. In the said case, this Court referred to Saraswathy vs.
+
+--- PASSAGE 9 ---
+Judgment: Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)
+   (Judgment id 30017, unnumbered paragraph, page 5)
+Text:
+Sarwan Singh [1981 (3) SCC 34], this Court noted that the object of Section 468 Cr.P.C. is to create a bar against belated prosecutions and to prevent abuse of the process of the court and observed that this is in consonance with the concept of fairness of trial enshrined in Article 21 of the Constitution. In Venka Radhamanohari v. Vanka Venkata Reddy [1993 (3) SCC 4] this Court considered the applicability of Section 468 to the cases involving matrimonial offences, referred to the judgment in Sarwan Singh's case (supra) and observed: " It is true that the object of introducing Section 468 was to put a bar of limitation on prosecutions and to prevent the parties from filing cases after a long time, as it was thought proper that after a long lapse of time, launching of prosecution may be vexatious, because by that time even the evidence may disappear. This aspect has been mentioned in the statement and object, for introducing a period of limitation, as well as by this Court in the case of Sarwan Singh (supra). But, that consideration cannot be extended to matrimonial offences, where the allegations are of cruelty, torture and assault by the husband or other members of the family to the complainant. It is a matter of common experience that victim is subjected to such cruelty repeatedly and it is more or less like a continuing offence.
+
+--- PASSAGE 10 ---
+Judgment: SMT. VANKA RADHAMANOHARI versus VANKE VENKATA REDDY AND ORS. (20-04-1993)
+   (Judgment id 1000001385, paragraph 7, page 7)
+Text:
+7. It is true that the object of introducing Section 468 was to put a bar oflimitation on prosecutions and to prevent the parties from filing cases after a long time, as it was thought proper that after a long lapse of time, launching of prosecution may be vexatious, because by that time even the evidence may disappear. This aspect has been mentioned in the statement and object, for introducing a period of limitation, as well as by this court in th~case of State of Punjab v. Sarwan Singh, AIR 1981 SC 1054. But, that consideration cannot be extended to matrimonial offences, where the allegations are of cruelty, torture and assault by the husband or other members of the family to the complainant. It is a matter of common experience that victim is subjected to such cruelty repeatedly and it is more or less like a continuing offence. It is only as a last resort that a wife openly comes before a Court to unfold and relate the day to day torture and cruelty faced by her, inside the house, which many of such victims do not like to be made public. As such Courts while considering the question oflimitation for an offence c A under Section 498 A. i.e. subjecting a woman to cruelty by her husband or the relative of her husband, should judge that question, in the light of Section 473 of the Code, which requires the court, not only to examine as to whether the delay has been properly explained, but as to whether "it is necessary to do so in the interest of Justice".
+
+--- PASSAGE 11 ---
+Judgment: JUVERIA ABDUL MAJID PATNI versus ATIF IQBAL MANSOORI AND ANR. (18-09-2014)
+   (Judgment id 1000004478, paragraph 31, page 26)
+Text:
+31. An act of domestic violence once committed, subsequent decree of divorce will not absolve the liability of the H respondent from the offence committed or to deny the benefit to which the aggrieved person is entitled under the Domestic Violence Act, 2005 including monetary relief under Section 20, Child Custody under Section 21, Compensation under Section 22 and interim or ex parte order under Section 23 of the Domestic Violence Act, 2005.
+
+--- PASSAGE 12 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1545 OF 2015 (@ SLP(Crl) No. 10223 OF 2014) Krishna Bhatacharjee ... Appellant Versus Sarathi Choudhury and Anr. ... Respondents J U D G M E N T Dipak Misra, J. Leave granted.
+   (Judgment id 43128, paragraph 16, page 13)
+Text:
+16. It may be noted that a submission was advanced by the wife with regard to the applicability of Section 468 CrPC. While dealing with the submission on the issue of limitation, the Court opined:- “...... in view of the provisions of Section 468 CrPC, that the complaint could be filed only within a period of one year from the date of the incident seem to be preponderous in view of the provisions of Sections 28 and 32 of the 2005 Act read with Rule 15(6) of the Protection of Women from Domestic Violence Rules, 2006 which make the provisions of CrPC applicable and stand fortified by the judgments of this Court in Japani Sahoo v. Chandra Sekhar Mohanty, (2007) 7 SCC 394, and NOIDA Entrepreneurs Assn. v. NOIDA, (2011) 6 SCC 508.”
+
+--- PASSAGE 13 ---
+Judgment: Sanapareddy Maheedhar and Another v. State of Andhra Pradesh and Another (13/12/2007)
+   (Judgment id 30017, unnumbered paragraph, page 5)
+Text:
+As such, whenever the bar of Section 468 is applicable, the court has to apply its mind on the question, whether it is necessary to condone such delay in the interests of justice. While examining the question as to whether it is necessary to condone the delay in the interest of justice, the Court has to take note of the nature of offence, the class to which the victim belongs, including the background of the victim. If the power under Section 473 of the Code is to be exercised in the interests of justice, then while considering the grievance by a lady, of torture, cruelty and inhuman treatment, by the husband and the relatives of the husband, the interest of justice requires a deeper examination of such grievances, instead of applying the rule of limitation and saying that with lapse of time the cause of action itself has come to an end. The general rule of limitation is based on the Latin maxim : v igilantibus, et non, dormientibus, jura subveniunt (the vigilant, and not the sleepy, are assisted by the laws). That maxim cannot be applied in connection with offences relating to cruelty against women." [ Emphasis added] In Arun Vyas v. Anita Vyas [1999 (4) SCC 690 : 1999 SCC (Cri) 629] this Court again considered the applicability of Section 473, Cr.P.C. in cases relating to matrimonial offences and observed: "The first limb confers power on every competent court to take cognizance of an offence after the period of limitation if it is satisfied on the facts and in the circumstances of the case that the delay has been properly explained and the second limb empowers such a court to take cognizance of an offence if it is satisfied on the facts and in the circumstances of the case that it is necessary so to do in the interests of justice.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N16 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13).

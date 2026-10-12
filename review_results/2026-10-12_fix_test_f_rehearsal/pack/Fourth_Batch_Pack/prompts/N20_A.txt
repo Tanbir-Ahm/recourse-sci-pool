@@ -1,0 +1,99 @@
+QUESTION ID: N20   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N20",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether consensual sexual relations on a promise of marriage that was later broken constitute rape, and how Section 69 BNS alters the position for conduct after 1 July 2024.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: PRAMOD SURYABHAN PAWAR versus THE STATE OF MAHARASHTRA & ANR. (21-08-2019)
+   (Judgment id 1000251932, paragraph 14, page 15)
+Text:
+14. In the present case, the “misconception of fact” alleged by the complainant is the appellant’s promise to marry her. Specifically in the context of a promise to marry, this Court has observed that there is a distinction between a false promise given on the understanding by the maker that it will be broken, and the breach of a promise which is made in good faith but subsequently not fulfilled. In Anurag Soni v State of Chhattisgarh9, this Court held: “37. The sum and substance of the aforesaid decisions would be that if it is established and proved that from the inception the accused who gave the promise to the prosecutrix to marry, did not have any intention to marry and the prosecutrix gave the consent for sexual intercourse on such an assurance by the accused that he would marry her, such a consent can be said to be a consent obtained on a misconception of fact as per Section 90 of the IPC and, in such a case, such a consent would not excuse the offender and such an offender can be said to have committed the rape as defined under Sections 375 of the IPC and can be convicted for the offence under Section 376 of the IPC.” Similar observations were made by this Court in Deepak Gulati v State of Haryana10 (“Deepak Gulati”): “21. … There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused…”
+
+--- PASSAGE 2 ---
+Judgment: ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)
+   (Judgment id 1000251599, paragraph 10/3, page 11)
+Text:
+There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.
+
+--- PASSAGE 3 ---
+Judgment: NAIM AHAMED versus STATE (NCT OF DELHI) (30-01-2023)
+   (Judgment id 1000254666, paragraph 17, page 14)
+Text:
+17. Again in Dr. Dhruvaram Murlidhar Sonar Vs. State of Maharashtra and others (supra), this Court interpreting the Section 90 and the Clause – Secondly in Section 375 of IPC, observed as under: - “23. Thus, there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is also a distinction between mere breach of a promise and not fulfilling a false promise. If the accused has not made the promise with the sole intention to seduce the prosecutrix to indulge in sexual acts, such an act would not amount to rape. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused and not solely on account of the misconception created by accused, or where an accused, on account of circumstances which he could not have foreseen or which were beyond his control, was unable to marry her despite having every intention to do. Such cases must be treated differently. If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape. The acknowledged consensual physical relationship between the parties would not constitute an offence under Section 376 IPC.”
+
+--- PASSAGE 4 ---
+Judgment: RAVISH SINGH RANA versus STATE OF UTTARAKHAND & ANR. (28-04-2025)
+   (Judgment id 1000256647, paragraph 12, page 6)
+Text:
+12. In Deepak Gulati v. State of Haryana8, this Court observed: “21. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise and not fulfilling a promise. Thus, the court must examine whether there was made, at an early stage, a false promise of marriage by the accused; and whether the consent involved was given after fully understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutor agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches to a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.” (2013) 7 SCC 675 2728
+
+--- PASSAGE 5 ---
+Judgment: MANISH YADAV versus STATE OF UTTAR PRADESH & ANR. (22-01-2025)
+   (Judgment id 1000256293, paragraph 16, page 8)
+Text:
+16. This Court, in the case of Deepak Gulati v. State of Haryana9, while discussing the nature of the ‘consent’ in cases where sexual intercourse occurs on the promise of marriage, distinguished between a mere ‘breach of promise’ and ‘not fulfilling a false promise’. The Court held as follows: “21. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of misrepresentation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.
+
+--- PASSAGE 6 ---
+Judgment: ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)
+   (Judgment id 1000251599, paragraph 19/1, page 16)
+Text:
+19. In the present case, the accused had sexual intercourse with the prosecutrix by giving false assurance to the prosecutrix that he would marry her. After she got pregnant, he refused to do so. From this, it is evident that he never intended to marry her and procured her consent only for the reason of having sexual relations with her, which act of the accused falls squarely under the definition of rape as he had sexual intercourse with her consent which was consent obtained under a misconception of fact as defined under Section 90 IPC. Thus, the alleged consent said to have been obtained by the accused was not voluntary consent and this Court is of the view that the accused indulged in sexual intercourse with the prosecutrix by misconstruing to her his true intentions. It is apparent from the evidence that the accused only wanted to indulge in sexual intercourse with her and was under no intention of actually marrying the prosecutrix. .........” 10.5 Even in the case of Dr. Dhruvaram Murlidhar Sonar (supra), upon which reliance has been placed by the learned counsel appearing on behalf of the accused, in paragraph 23, this Court has observed that there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception, this Court observed and held as under: “23.
+
+--- PASSAGE 7 ---
+Judgment: ANURAG SONI versus STATE OF CHHATTISGARH (09-04-2019)
+   (Judgment id 1000251599, paragraph 19/2, page 16)
+Text:
+The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception, this Court observed and held as under: “23. Thus, there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception. There is also a distinction between mere breach of a promise and not fulfilling a false promise. If the accused has not made the promise with the sole intention to seduce the prosecutrix to indulge in sexual acts, such an act would not amount to rape. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused and not solely on account of the misconception created by accused, or where an accused, on account of circumstances which he could not have foreseen or which were beyond his control, was unable to marry her despite having every intention to do. Such cases must be treated differently.
+
+--- PASSAGE 8 ---
+Judgment: DR. DHRUVARAM MURLIDHAR SONAR versus THE STATE OF MAHARASHTRA & ORS. (22-11-2018)
+   (Judgment id 1000251143, paragraph 20, page 14)
+Text:
+20. Thus, there is a clear distinction between rape and consensual sex. The court, in such cases, must very carefully examine whether the complainant had actually wanted to marry the victim or had mala fide motives and had made a false promise to this effect only to satisfy his lust, as the later falls within the ambit of cheating or deception. There is also a distinction between mere breach of a promise and not fulfilling a false promise. If the accused has not made the promise with the sole intention to seduce the prosecutrix to indulge in sexual acts, such an act would not amount to rape. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused and not solely on account of the misconception created by accused, or where an accused, on account of circumstances which he could not have foreseen or which were beyond his control, was unable to marry her despite having every intention to do. Such cases must be treated differently. If the complainant had any mala fide intention and if he had clandestine motives, it is a clear case of rape. The acknowledged consensual physical relationship between the parties would not constitute an offence under Section 376 of the IPC.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2322 of 2010 Deepak Gulati …Appellant Versus State of Haryana …Respondent J U D G M E N T Dr. B.S. CHAUHAN, J.
+   (Judgment id 40427, paragraph 18, page 13)
+Text:
+18. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly, understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of mis-representation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.
+
+--- PASSAGE 10 ---
+Judgment: PRASHANT versus STATE OF NCT OF DELHI (20-11-2024)
+   (Judgment id 1000256110, paragraph 22, page 9)
+Text:
+22. Recently this Court in XXXX vs. State of Madhya Pradesh, (2024) 3 SCC 496 held that when the relationship between the parties was purely consensual and when the complainant was aware of the consequences of her actions, the ingredients of the offence of rape were not made out. Similarly, in Pramod Suryabhan Pawar v. State of Maharashtra, (2019) 9 SCC 608 arising out of identical facts, this Court has enumerated the following: “18. To summarise the legal position that emerges from the above cases, the “consent” of a woman with respect to Section 375 must involve an active and reasoned deliberation towards the proposed act. To establish whether the “consent” was vitiated by a “misconception of fact” arising out of a promise to marry, two propositions must be established. The promise of marriage must have been a false promise, given in bad faith and with no intention of being adhered to at the time it was given. The false promise itself must be of immediate relevance, or bear a direct nexus to the woman’s decision to engage in the sexual act.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N20 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

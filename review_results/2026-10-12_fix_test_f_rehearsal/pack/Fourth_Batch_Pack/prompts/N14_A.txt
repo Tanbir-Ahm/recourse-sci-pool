@@ -1,0 +1,99 @@
+QUESTION ID: N14   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N14",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My business partner filed a cheating FIR against me because I couldn't return the money he invested after the business made a loss. Can this FIR be cancelled?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: S.N. VIJAYLAKSHMI & ORS. versus STATE OF KARNATAKA & ANR. (31-07-2025)
+   (Judgment id 1000256887, paragraph 13, page 9)
+Text:
+13. In contrast, it was pointed out, it is alleged in the FIR by the complainant himself that ‘after the increase in the market value of the said property, the accused started cheating the complainant.’ Thus, the complainant’s own statement militates against any claim of inducement at the inception or harbouring of a dishonest intention at the time of making the promise. This statement by itself, it was urged, is fatal to any FIR alleging cheating.
+
+--- PASSAGE 2 ---
+Judgment: RAJ REDDY KALLEM versus THE STATE OF HARYANA & ANR. (08-04-2024)
+   (Judgment id 1000255654, paragraph 13, page 11)
+Text:
+13. As far as FIR case under Sections 406, 420, 120B of IPC against the appellant is concerned, in any case we do not find any merit in the allegations that the appellant from the very beginning had the intention of cheating the complainant. It is a fact that the appellant failed to procure and supply the ‘machine’ even after taking the advance money from the complainant but there is nothing on record to show that the appellant had any ill intention of cheating or defrauding the complainant from the very inception. The transaction between the parties was purely civil in nature which does not attract criminal law in any way.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1504 OF 2010 (Arising out of SLP (Crl) No.5768 of 2008) M.A.A. Annamalai .. Appellant Versus State of Karnataka & Another .. Respondents J U D G M E N T Dalveer Bhandari, J.
+   (Judgment id 36657, paragraph 41, page 21)
+Text:
+41. We have carefully considered the rival contentions. It emerges that: a) In the instant case, the appellant ceased to be a Director of the company from 27.12.1997 whereas the alleged offences, if any, were committed during the period from 24.5.1998 to 17.9.1999. b) Admittedly, there are no allegations against the appellant in the First Information Report. c) The company had invited investment from the depositors to invest in the business/benefit funds after receiving due approval of the scheme from the Reserve Bank of India. Therefore, in any event, the element of cheating as alleged cannot be made out by any stretch of imagination. d) The complainant/respondent no.2 submitted in writing to this Court that he does not want to proceed against the appellant because according to him the appellant has been inadvertently included as an accused by the Investigating Officer. He further mentioned in the letter that he had already received 55% of the deposited amount from the Official Liquidator and he did not want to proceed against the appellant. e) Even assuming that there could have been a vicarious liability thrust on the appellant, even then there cannot be any such vicarious liability in absence of any allegations and material to show that the appellant was in-charge of or responsible for the conduct of the company’s business which had given rise to the offence. From any angle of the matter, the appellant cannot be compelled to face the criminal trial in this case.
+
+--- PASSAGE 4 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL/CRIMINAL APPELLATE JURISDICTION CIVIL APPEAL NO.__4540________OF 2013 [Arising out of S.L.P.(C) No.13120 OF 2013] CHANDRAN RATNASWAMI APPELLANT VERSUS K.C. PALANISAMY AND OTHERS RESPONDENTS WITH CRIMINAL APPEAL NOs. 736-737 
+   (Judgment id 40396, paragraph 8, page 11)
+Text:
+8. It is clearly seen from the deposition of the petitioner and the complaint that the respondents have arranged for about 17 million American Dollars through a firm Odyssey. It is also seen that the said sum is with the Cheran Holdings Private Limited and the affidavit filed in the Hon’ble High Court at Delhi confirms the same, while examining details, it is seen that a sum of 17 million American Dollars have come to Cheran Holdings Limited in which the complainant is a share holder. Hence the petitioner complainant might not have sustained any loss. There is no explanation in the complaint as to whether after the receipt of 17 million American Dollars, it was invested in the business. In the first meeting of the petitioner with the respondents, it was agreed that foreign investments are to be made accordingly the same has been done. It is seen from the deposition of the petitioner that 17 million American Dollars, it is not believable that the respondents have cheated the petitioner/complainant.
+
+--- PASSAGE 5 ---
+Judgment: DHANASINGH PRABHU versus CHANDRASEKAR & ANOTHER (14-07-2025)
+   (Judgment id 1000256817, unnumbered paragraph, page 26)
+Text:
+In point of law, a partner may be the debtor or the creditor of his co-partners, but he cannot be either debtor or creditor of a firm of which he is himself a member.” (Underlining by us) Liability of Partners: 7.19 The liability of partners for the debts of the business is unlimited and they are jointly and severally liable for all business obligations of the partnership firm. Sections 25 and 26 of the Partnership Act are relevant in this regard, which are reproduced as under: “25. Liability of a partner for acts of the firm.— Every partner is liable, jointly with all the other partners and also severally, for all acts of the firm done while he is a partner. 26. Liability of the firm for wrongful acts of a partner.—Where, by the wrongful act or omission of a partner acting in the ordinary course of the business of a firm, or with the authority of his partners, loss or injury is caused to any third party, or any penalty is incurred, the firm is liable therefor to the same extent as the partner.” Section 25 provides that every partner is liable jointly with all the other partners and also severally for all acts of the firm done by the partner. Since a firm is not a legal entity but only a collective name for all the partners, it does not have any legal existence apart from its partners.
+
+--- PASSAGE 6 ---
+Judgment: KIM WANSOO versus STATE OF UTTAR PRADESH & ORS. (01-01-2025)
+   (Judgment id 1000256233, paragraph 5/1, page 4)
+Text:
+5. Multifarious contentions have been raised, unsuccessfully, by the appellant to support his prayer for quashment of the subject FIR before the High Court. He reiterated such contentions before us, as well. But before dealing with such contentions, as also the challenge against the impugned judgment it is only apposite to refer to the relevant recitals from the subject FIR, which read as follows: - “About all aforementioned people conniving with intention to cause loss to the Applicant and to make gain for themselves, hatching criminal conspiracy, committing cheating, fraud and. forgery against the Applicant and misappropriating Applicant’s money - Hon’ble Sir, This is to submit that Applicant Tahir, Partner M/s RT Construction, 202 B/9, Ground Floor, Thatwari Complex, Westend Road, Near Meerut Public School, Meerut ant, Meerut has been doing his) business from a long time. The Applicant has been doing business of construction for approximately the last 30 years. Applicant’s brother Nasir and Partner Ravindra to look after the said business along with the Applicant. Applicant has been providing various services in construction including providing services of skilled and unskilled labourers to other companies. Aforementioned No. - 6 SEUNG HWI, HER (Managing Director) YOU SEUNG SANG SA INDIA CONSTRUCTION PVT LTD (YSSS), which is a subsidiary company of the main company MS HUNDAI MOTOR INDIA GROUP, had issued a work order to the Applicant on 15.06.2018 because the Applicant has been providing labourers to Korean company for long time.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. OF 2008 (Arising out of SLP (Crl.) No.3234 of 2006) Vasudev …Appellant Versus Parvinder Kumar & Ors. …Respondents Dr. ARIJIT PASAYAT, J.
+   (Judgment id 32248, paragraph 7, page 5)
+Text:
+7. Since the petition filed by the appellant was rejected by the High Court on the basis of the statement made by the learned counsel for the State and the accused persons that the FIR has been cancelled, it was but natural that there should be some order in that regard. It is not understood as to why the same has not been brought on record as yet. If there is no such order in existence, obviously the disposal of the petition filed by the appellant on the ground that the FIR has been cancelled cannot be maintained.
+
+--- PASSAGE 8 ---
+Judgment: THE STATE OF ARUNACHAL PRADESH versus KAMAL AGARWAL & ORS. ETC (18-04-2024)
+   (Judgment id 1000255673, paragraph 13, page 8)
+Text:
+13. A simple reading of the FIR itself does not disclose any cognizable offence for which the FIR should be registered and maintained. Although Chandra Mohan Badaya appellant has sought to explain that he had already returned Rs.37 lakhs by bank transfer to the complainant and had further executed two transfer deeds in favour of the wife and sister-in-law of Anil Agrawal, the power of attorney holder which valued at total amount of more than Rs.1.45 Crores. Even if we do not accept this contention as the same would be subject matter of evidence, what we find is that the complaint lodged by the respondent No.2 was not worth being registered as a complaint and that too in the State of Arunachal Pradesh.
+
+--- PASSAGE 9 ---
+Judgment: STATE OF NCT OF DELHI versus SHIV CHARAN BANSAL & ORS. (05-12-2019)
+   (Judgment id 1000252226, paragraph 23-24/1, page 14)
+Text:
+23. The Forensic Report, Handwriting expert Report and the Ballistic Report were placed on record along with a Supplementary Charge on 26.11.2006. 24. As per the case of the prosecution, the material gathered during the investigation revealed a larger criminal conspiracy in which all the accused persons had participated. Shiv Charan Bansal and his son Sachin Bansal were in the business of running committees where monies would be invested. S.N. Gupta – the deceased and his son Rajesh Gupta had invested a substantial amount of money in these committees. Rajesh Gupta had been in partnership with Shiv Charan Bansal in a firm M/s Akash International which was subsequently dissolved. Rajesh Gupta and Sachin Bansal were also running another firm i.e. M/s. Accent Shoes Pvt. Ltd., the factory of which was located at Bahadurgarh. Rajesh Gupta and his father late S.N. Gupta had invested a substantial amount of money in these businesses. The monies invested in this firm by S.N. Gupta and his son were not returned by Shiv Charan Bansal and Sachin Bansal. The apprehension expressed by deceased S.N. Gupta to his brother Suresh Gupta was that the accused Shiv Charan Bansal and Sachin Bansal might take over the factory at Bahadurgarh. When S.N. Gupta and Rajesh Gupta would demand return of their investment in the factory at Bahadurgarh, Shiv Charan Bansal and Sachin Bansal would refuse on one pretext or the other. According to the prosecution, Narendra Mann had given seven lakhs to Naveen Gupta – nephew of the deceased on the recommendation made by Sachin Bansal.
+
+--- PASSAGE 10 ---
+Judgment: ANAND KUMAR MOHATTA AND ANR. versus STATE (GOVT. OF NCT OF DELHI) DEPARTMENT OF HOME AND ANR. (15-11-2018)
+   (Judgment id 1000251130, paragraph 7, page 7)
+Text:
+7. Following which, the Appellants approached the High Court under Section 482 of the Cr. P.C seeking to quash FIR dated 20.08.2014. According to the Appellants, the FIR was completely untenable in the facts and circumstances of the case. Mainly, the amount of Rs. One crore was rightfully retained by them and there was no question of such retention constituting a criminal breach of trust. Moreover, assuming that the Respondent No. 2 had a grievance only about the retention of money, the redressal ought to have been sought before a Civil Court. Therefore, the lodging of the FIR was mala fide in nature and done with the intention to pressurize the Appellants to agree to certain new terms and conditions of the agreement to which the Appellants did not want to proceed with.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N14 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

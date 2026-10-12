@@ -1,0 +1,99 @@
+QUESTION ID: N17   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N17",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: What are the essential ingredients to sustain a charge under Section 306 IPC, and does persistent matrimonial harassment without a proximate act of instigation suffice?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: MARIANO ANTO BRUNO & ANR. versus THE INSPECTOR OF POLICE (12-10-2022)
+   (Judgment id 1000254393, paragraph 38, page 18)
+Text:
+38. This Court has time and again reiterated that before convicting an accused under Section 306 IPC, the Court must scrupulously examine the facts and circumstances of the case and also assess the evidence adduced before it in order to find out whether cruelty and harassment meted out to the victim had left the victim with no other alternative but to put an end to her life. It is also to be borne in mind that in cases of alleged abetment of suicide, there must be proof of direct or indirect acts of incitement to the commission of suicide. Merely on the allegation of harassment without their being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable.
+
+--- PASSAGE 2 ---
+Judgment: KUMAR @ SHIVA KUMAR versus STATE OF KARNATAKA (01-03-2024)
+   (Judgment id 1000255561, paragraph 9, page 23)
+Text:
+9. Conviction under Section 306 IPC is not sustainable on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused, which led or compelled the person to commit suicide. In order to bring a case within the purview of Section 306 IPC, there must be a case of suicide and in the commission of the said offence, the person who is said to have abetted the commission of suicide must have played an active role by an act of instigation or by doing certain act to facilitate the commission of suicide. Therefore, the act of abetment by the person charged with the said offence must be proved and established by the prosecution before he could be convicted under Section 306 IPC.
+
+--- PASSAGE 3 ---
+Judgment: ABHINAV MOHAN DELKAR versus THE STATE OF MAHARASHTRA & ORS. (18-08-2025)
+   (Judgment id 1000256939, paragraph 22, page 14)
+Text:
+22. What comes out essentially from the various decisions herein before cited is that, even if there is allegation of constant harassment, continued over a long period; to bring in the ingredients of Section 306 read with Section 107, still there has to be a proximate prior act to clearly find that the suicide was the direct consequence of such continuous harassment, the last proximate incident having finally driven the subject to the extreme act of taking one’s life. Figuratively, ‘the straw that broke the camel’s back’; that final event, in a series, that occasioned a larger, sudden impact resulting in the unpredictable act of suicide. What drove the victim to that extreme act, often depends on individual predilections; but whether it is goaded, definitively and demonstrably, by a particular act of another, is the test to find mens rea. Merely because the victim was continuously harassed and at one point, he or she succumbed to the extreme act of taking his life cannot by itself result in finding a positive instigation constituting abetment. Mens rea cannot be gleaned merely by what goes on in the mind of the victim.
+
+--- PASSAGE 4 ---
+Judgment: KAMALAKAR versus STATE OF KARNATAKA (12-10-2023)
+   (Judgment id 1000255314, paragraph 45, page 8)
+Text:
+45. The intention of the legislature and the ratio of the cases decided by this Court are clear that in order to convict a person under Section 306 IPC there has to be a clear mens rea to commit the oﬀ ence. It also requires an active act or direct act which led the deceased to commit suicide seeing no option and this act must have been intended to push the deceased into such a position that he/she committed suicide.” 8.5. The essential ingredients which are to be meted out in order to bring a case under Section 306 IPC were also discussed in Amalendu Pal alias Jhantu v. State of West Bengal3 in the following paragraphs: “12. Thus, this Court has consistently taken the view that before holding an accused guilty of an oﬀ ence under Section 306 IPC, the court must scrupulously examine the facts and circumstances of the case and also assess the evidence adduced before it in order to ﬁ nd out whether the cruelty and harassment meted out to the victim had left the victim with no other alternative but to put an end to her life. It is also to be borne in mind that in cases of alleged abetment of suicide there must be proof of direct or indirect acts of incitement to the commission of suicide. Merely on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2091 OF 2009 (Arising out of S.L.P. (Crl.) No. 9483 of 2008) Amalendu Pal @ Jhantu …. Appellant Versus State of West Bengal …. Respondent Dr. MUKUNDAKAM SHARMA, J.
+   (Judgment id 35671, paragraph 15, page 8)
+Text:
+15. Thus, this Court has consistently taken the view that before holding an accused guilty of an offence under Section 306 IPC, the Court must scrupulously examine the facts and circumstances of the case and also assess the evidence adduced before it in order to find out whether the cruelty and harassment meted out to the victim had left the victim with no other alternative but to put an end to her life. It is also to be borne in mind that in cases of alleged abetment of suicide there must be proof of direct or indirect acts of incitement to the commission of suicide. Merely on the allegation of harassment without their being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable.
+
+--- PASSAGE 6 ---
+Judgment: KAMALAKAR versus STATE OF KARNATAKA (12-10-2023)
+   (Judgment id 1000255314, paragraph 13, page 8)
+Text:
+13. In order to bring a case within the purview of Section 306 IPC there must be a case of suicide and in the commission of the said oﬀ ence, (2010) 1 SCC 707 the person who is said to have abetted the commission of suicide must have played an active role by an act of instigation or by doing certain act to facilitate the commission of suicide. Therefore, the act of abetment by the person charged with the said oﬀ ence must be proved and established by the prosecution before he could be convicted under Section 306 IPC.” 8.6. On a careful reading of the factual matrix of the instant case and the law regarding Section 306 IPC, there seems to be no proximate link between the marital discord between the deceased and the appellant and her subsequent death by burning herself. The appellant has not committed any positive or direct act to instigate or aid in the commission of suicide by the deceased. 8.7. Hence as the ingredients of Section 306 IPC have not been fulﬁ lled in the case at hand, the conviction of the appellant under Section 306 IPC cannot be sustained.
+
+--- PASSAGE 7 ---
+Judgment: GEO VARGHESE versus THE STATE OF RAJASTHAN & ANR. (05-10-2021)
+   (Judgment id 1000253333, paragraph 20/1, page 14)
+Text:
+20. At this stage, we may also refer to another recent judgment of a two-Judge Bench of this Court in the case of Ude Singh & Ors. Vs. State of Haryana5, which elucidated on the essential ingredients of the offence under Section 306 IPC in the following words:- “16. In cases of alleged abetment of suicide, there must be a proof of direct or indirect act/s of incitement to the commission of suicide. It could hardly be disputed that the question of cause of a suicide, particularly in the context of an offence of abetment of suicide, remains a vexed one, involving multifaceted and complex attributes of human behaviour and responses/reactions. In the case of accusation for abetment of suicide, the Court would be looking for cogent and convincing proof of the act/s of incitement to the commission of suicide. In the case of suicide, mere allegation of harassment of the deceased by another person would not suffice unless there be such action on the part of the accused which compels the person to commit suicide; and such an offending action ought to be proximate to the time of occurrence. Whether a person has abetted in the commission of suicide by another or not, could only be gathered from the facts and circumstances of each case. 16.1. For the purpose of finding out if a person has abetted commission of suicide by another; the consideration would be if the accused is guilty of the act of instigation of the act of suicide.
+
+--- PASSAGE 8 ---
+Judgment: JAYEDEEPSINH PRAVINSINH CHAVDA & ORS. versus STATE OF GUJARAT (10-12-2024)
+   (Judgment id 1000256158, paragraph 18, page 9)
+Text:
+18. For a conviction under Section 306 of the IPC, it is a well-established legal principle that the presence of clear mens rea—the intention to abet the act—is essential. Mere harassment, by itself, is not sufficient to find an accused guilty of abetting suicide. The prosecution must demonstrate an active or direct action by the accused that led the deceased to take his/her own life. The element of mens rea cannot simply be presumed or inferred; it must be evident and explicitly discernible. Without this, the foundational requirement for establishing abetment under the law is not satisfied, underscoring the necessity 448 of a deliberate and conspicuous intent to provoke or contribute to the act of suicide. The same position was laid down by this Court in S.S. Chheena v. Vijay Kumar Mahajan,5 wherein it was observed that: “25. Abetment involves a mental process of instigating a person or intentionally aiding a person in doing of a thing. Without a positive act on the part of the accused to instigate or aid in committing suicide, conviction cannot be sustained. The intention of the legislature and the ratio of the cases decided by the Supreme Court is clear that in order to convict a person under Section 306IPC there has to be a clear mens rea to commit the offence. It also requires an active act or direct act which led the deceased to commit suicide seeing no option and that act must have been intended to push the deceased into such a position that he committed suicide.”
+
+--- PASSAGE 9 ---
+Judgment: ARNAB MANORANJAN GOSWAMI versus THE STATE OF MAHARASHTRA & ORS. (27-11-2020)
+   (Judgment id 1000252819, paragraph 39/2, page 40)
+Text:
+The question of mens rea on the part of the accused in such cases would be examined with reference to the actual acts and deeds of the accused and if the acts and deeds are only of such nature where the accused intended nothing more than harassment or snap show of anger, a particular case may fall short of the offence of abetment of suicide. However, if the accused kept on irritating or annoying the deceased by words or deeds until the deceased reacted or was provoked, a particular case may be that of abetment of suicide. Such being the matter of delicate analysis of human behaviour, each case is required to be examined on its own facts, while taking note of all the surrounding factors having bearing on the actions and psyche of the accused and the deceased.” Similarly, in Rajesh vs State of Haryana27, a two judge Bench of this Court, speaking through Justice L. Nageswara Rao, held as follows: “9. Conviction under Section 306 IPC is not sustainable on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused, which led or compelled the person to commit suicide. In order to bring a case within the purview of Section 306 IPC, there must be a case of suicide and in the commission of the said offence, the person who is said to have abetted the commission of suicide must have played an active role by an act of instigation or by doing certain act to facilitate the commission of suicide.
+
+--- PASSAGE 10 ---
+Judgment: ABHINAV MOHAN DELKAR versus THE STATE OF MAHARASHTRA & ORS. (18-08-2025)
+   (Judgment id 1000256939, paragraph 16, page 12)
+Text:
+16. Amalendu Pal vs. State of West Bengal12 also held: “Merely on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N17 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

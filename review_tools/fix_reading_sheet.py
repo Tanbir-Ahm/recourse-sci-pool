@@ -10,6 +10,7 @@ import argparse
 import json
 import os
 import random
+import re
 import sys
 
 import openpyxl
@@ -19,6 +20,14 @@ from openpyxl.utils import get_column_letter
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import ingest_llm_reviews as ing
+
+
+ILLEGAL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+
+def clean(x):
+    """Court text sometimes carries control characters (form feeds) that a worksheet cell cannot hold."""
+    return ILLEGAL.sub(" ", x) if isinstance(x, str) else x
 
 
 def collect(pool_path, replies):
@@ -65,7 +74,7 @@ def build(pool_path, replies, out_dir, seed="fix-test-reading-v1", n_random=20):
     for group, keys in (("marked Misleading by at least one run", mis), ("random check", rnd)):
         for p in keys:
             r = passages[p]
-            ws.append([group, p[0], q_text[p[0]], p[1], r.get("title"), r["text"], marks[p].get("ChatGPT"), marks[p].get("Gemini"), None, None, None])
+            ws.append([group, p[0], clean(q_text[p[0]]), p[1], clean(r.get("title")), clean(r["text"]), marks[p].get("ChatGPT"), marks[p].get("Gemini"), None, None, None])
             for c in ws[ws.max_row]:
                 c.alignment = Alignment(wrap_text=True, vertical="top")
             for col in (9, 10, 11):

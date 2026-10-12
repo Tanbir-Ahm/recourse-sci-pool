@@ -1,0 +1,368 @@
+{
+ "stage": "key",
+ "key_opened_after_marks": true,
+ "answerable": [
+  "N01",
+  "N02",
+  "N03",
+  "N04",
+  "N05",
+  "N07",
+  "N08",
+  "N09",
+  "N10",
+  "N11",
+  "N12",
+  "N13",
+  "N14",
+  "N16",
+  "N17",
+  "N18",
+  "N19",
+  "N20",
+  "N22",
+  "N23",
+  "N24",
+  "N25",
+  "N26",
+  "N27"
+ ],
+ "gaps": [
+  "N06",
+  "N15",
+  "N21"
+ ],
+ "controls": [
+  "N28",
+  "N29",
+  "N30"
+ ],
+ "named_authority": {
+  "B baseline (rerank-3-lite)": {
+   "top5": 15,
+   "top10": 17,
+   "answerable": 24
+  },
+  "N1-125 named-Act boost x1.25 (precise)": {
+   "top5": 16,
+   "top10": 18,
+   "answerable": 24
+  },
+  "N2-125 named-Act boost x1.25 (broad)": {
+   "top5": 16,
+   "top10": 18,
+   "answerable": 24
+  }
+ },
+ "stale_in_top5": {
+  "B baseline (rerank-3-lite)": 8,
+  "N1-125 named-Act boost x1.25 (precise)": 8,
+  "N2-125 named-Act boost x1.25 (broad)": 8
+ },
+ "verdicts": {
+  "N1-125 named-Act boost x1.25 (precise)": {
+   "rule1": false,
+   "rule2": true,
+   "rule3": false,
+   "rule4_named_authority_and_stale_not_worse": true,
+   "rule5": true,
+   "rule6_helps_the_look_alikes": true,
+   "rule6a_marks": false,
+   "rule6b_key_authority_top5_on_more_lookalikes": true,
+   "named_top5_lookalikes": {
+    "B": 7,
+    "V": 8
+   },
+   "passes": false
+  },
+  "N2-125 named-Act boost x1.25 (broad)": {
+   "rule1": false,
+   "rule2": true,
+   "rule3": false,
+   "rule4_named_authority_and_stale_not_worse": true,
+   "rule5": true,
+   "rule6_helps_the_look_alikes": true,
+   "rule6a_marks": false,
+   "rule6b_key_authority_top5_on_more_lookalikes": true,
+   "named_top5_lookalikes": {
+    "B": 7,
+    "V": 8
+   },
+   "passes": false
+  }
+ },
+ "passing": [],
+ "adopted": null,
+ "chosen_recipe": "B baseline (rerank-3-lite)",
+ "floors_chosen": {
+  "F1": false,
+  "F2": true,
+  "F3": true,
+  "F4": false,
+  "F3_named_authority_top10": 0.7083333333333334,
+  "values": {
+   "F1_useful_lower": 0.6148148148148148,
+   "F2_mis_lower": 0.1111111111111111,
+   "F2_mis_higher": 0.06666666666666667,
+   "F4_yes_lower": 0.23703703703703705
+  },
+  "clear_or_weak": {
+   "F1": "weak pass",
+   "F2": "weak pass",
+   "F3": "weak pass",
+   "F4": "weak pass"
+  }
+ },
+ "floors_met": false,
+ "domains": {
+  "A": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "eligible": false
+  },
+  "B": {
+   "relevance": {
+    "both, ties to the lower mark": "amber",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "green",
+   "currency_let_through": "0 of 2",
+   "eligible": false
+  },
+  "C": {
+   "relevance": {
+    "both, ties to the lower mark": "amber",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "amber",
+   "currency_let_through": "1 of 2",
+   "eligible": false
+  },
+  "D": {
+   "relevance": {
+    "both, ties to the lower mark": "green",
+    "both, ties to the higher mark": "green"
+   },
+   "currency": "amber",
+   "currency_let_through": "1 of 2",
+   "eligible": false
+  },
+  "E": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "eligible": false
+  },
+  "F": {
+   "relevance": {
+    "both, ties to the lower mark": "amber",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "red",
+   "currency_let_through": "1 of 1",
+   "eligible": false
+  },
+  "G": {
+   "relevance": {
+    "both, ties to the lower mark": "amber",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "no trap",
+   "currency_let_through": "0 of 0",
+   "eligible": false
+  },
+  "H": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "red"
+   },
+   "currency": "red",
+   "currency_let_through": "1 of 1",
+   "eligible": false
+  },
+  "I": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "red"
+   },
+   "currency": "green",
+   "currency_let_through": "0 of 1",
+   "eligible": false
+  },
+  "J": {
+   "relevance": {
+    "both, ties to the lower mark": "red",
+    "both, ties to the higher mark": "amber"
+   },
+   "currency": "red",
+   "currency_let_through": "1 of 1",
+   "eligible": false
+  }
+ },
+ "currency_overall": {
+  "light": "amber",
+  "let_through": "5 of 10"
+ },
+ "controls_apart": {
+  "N28": {
+   "control_type": "K1",
+   "shares_top5_lower_mark": {
+    "B baseline (rerank-3-lite)": {
+     "n": 5,
+     "yes": 0.2,
+     "useful": 0.6,
+     "mis": 0.0,
+     "grade": 1.8,
+     "mis3": false,
+     "first_yes": 4
+    },
+    "N1-125 named-Act boost x1.25 (precise)": {
+     "n": 5,
+     "yes": 0.2,
+     "useful": 0.6,
+     "mis": 0.0,
+     "grade": 1.8,
+     "mis3": false,
+     "first_yes": 4
+    },
+    "N2-125 named-Act boost x1.25 (broad)": {
+     "n": 5,
+     "yes": 0.2,
+     "useful": 0.6,
+     "mis": 0.0,
+     "grade": 1.8,
+     "mis3": false,
+     "first_yes": 4
+    }
+   },
+   "stale_in_top5": {
+    "B baseline (rerank-3-lite)": 0,
+    "N1-125 named-Act boost x1.25 (precise)": 0,
+    "N2-125 named-Act boost x1.25 (broad)": 0
+   }
+  },
+  "N29": {
+   "control_type": "K3",
+   "shares_top5_lower_mark": {
+    "B baseline (rerank-3-lite)": {
+     "n": 5,
+     "yes": 0.2,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.0,
+     "mis3": false,
+     "first_yes": 4
+    },
+    "N1-125 named-Act boost x1.25 (precise)": {
+     "n": 5,
+     "yes": 0.2,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.0,
+     "mis3": false,
+     "first_yes": 4
+    },
+    "N2-125 named-Act boost x1.25 (broad)": {
+     "n": 5,
+     "yes": 0.2,
+     "useful": 0.8,
+     "mis": 0.0,
+     "grade": 2.0,
+     "mis3": false,
+     "first_yes": 4
+    }
+   },
+   "stale_in_top5": {
+    "B baseline (rerank-3-lite)": 0,
+    "N1-125 named-Act boost x1.25 (precise)": 0,
+    "N2-125 named-Act boost x1.25 (broad)": 0
+   }
+  },
+  "N30": {
+   "control_type": "K3",
+   "shares_top5_lower_mark": {
+    "B baseline (rerank-3-lite)": {
+     "n": 5,
+     "yes": 0.0,
+     "useful": 0.4,
+     "mis": 0.0,
+     "grade": 1.4,
+     "mis3": false,
+     "first_yes": null
+    },
+    "N1-125 named-Act boost x1.25 (precise)": {
+     "n": 5,
+     "yes": 0.0,
+     "useful": 0.4,
+     "mis": 0.0,
+     "grade": 1.4,
+     "mis3": false,
+     "first_yes": null
+    },
+    "N2-125 named-Act boost x1.25 (broad)": {
+     "n": 5,
+     "yes": 0.0,
+     "useful": 0.4,
+     "mis": 0.0,
+     "grade": 1.4,
+     "mis3": false,
+     "first_yes": null
+    }
+   },
+   "stale_in_top5": {
+    "B baseline (rerank-3-lite)": 0,
+    "N1-125 named-Act boost x1.25 (precise)": 0,
+    "N2-125 named-Act boost x1.25 (broad)": 0
+   }
+  }
+ },
+ "without_soft_overlaps": {
+  "questions_left": 21,
+  "named_authority": {
+   "B baseline (rerank-3-lite)": {
+    "top5": 13,
+    "top10": 15
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "top5": 14,
+    "top10": 16
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "top5": 14,
+    "top10": 16
+   }
+  },
+  "marks_rules": {
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "rule1_grade_all_four_settlements": false,
+    "rule2_misleading_and_useful_margins": true,
+    "rule3_two_more_questions_better": false,
+    "rule5_reliability_not_weak": true,
+    "marks_rules_hold": false,
+    "rule6a_lookalike_misleading_5_points_lower": false
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "rule1_grade_all_four_settlements": false,
+    "rule2_misleading_and_useful_margins": true,
+    "rule3_two_more_questions_better": false,
+    "rule5_reliability_not_weak": true,
+    "marks_rules_hold": false,
+    "rule6a_lookalike_misleading_5_points_lower": false
+   }
+  },
+  "floors_chosen": {
+   "F1": false,
+   "F2": true,
+   "F4": true
+  }
+ },
+ "reliability": "ok",
+ "outcome": "B stays: no finalist satisfies rules 1 to 6 of FIX_TEST_RULES_v1.md section 5; a floor is missed by the chosen recipe: nothing is connected, and any new final test needs new questions"
+}

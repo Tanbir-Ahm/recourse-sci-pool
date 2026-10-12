@@ -1,0 +1,810 @@
+{
+ "stage": "marks",
+ "pool_sha256": "501a25f24b94cbefa8888c3e7ddb1405b628a4043c3145b14452c7de58df9aaf",
+ "replies_sha256": "33c493ce951e286aec70b7cfc444bc98804dca9b436c7d0b5fee371d82e0c14a",
+ "set_freeze_sha256": "5cdd2e966eb767bdabbc7369358dd239cbe75a3a16225889ef84fae51627a4b6",
+ "versions": [
+  "B baseline (rerank-3-lite)",
+  "N1-125 named-Act boost x1.25 (precise)",
+  "N2-125 named-Act boost x1.25 (broad)"
+ ],
+ "questions": 30,
+ "scored_questions": 27,
+ "controls": [
+  "N28",
+  "N29",
+  "N30"
+ ],
+ "look_alike_questions": [
+  "N02",
+  "N04",
+  "N06",
+  "N08",
+  "N10",
+  "N12",
+  "N14",
+  "N16",
+  "N18",
+  "N20",
+  "N22",
+  "N24",
+  "N26"
+ ],
+ "soft_overlap_questions": [
+  "N04",
+  "N06",
+  "N07",
+  "N13"
+ ],
+ "passages": 304,
+ "runs": {
+  "ChatGPT/A": 304,
+  "Gemini/A": 304
+ },
+ "file_problems": 0,
+ "coverage_complete": true,
+ "passages_not_marked_by_both_tools": 0,
+ "tool_agreement_exact": 0.743421052631579,
+ "reliability": "ok",
+ "settlements": {
+  "ChatGPT alone": {
+   "B baseline (rerank-3-lite)": {
+    "questions": 27,
+    "yes": 0.28148148148148155,
+    "useful": 0.6666666666666666,
+    "mis": 0.08148148148148147,
+    "grade": 1.8666666666666667
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "questions": 27,
+    "yes": 0.27407407407407414,
+    "useful": 0.6740740740740742,
+    "mis": 0.08888888888888889,
+    "grade": 1.8592592592592594
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "questions": 27,
+    "yes": 0.28148148148148155,
+    "useful": 0.6814814814814816,
+    "mis": 0.08888888888888889,
+    "grade": 1.8740740740740742
+   }
+  },
+  "Gemini alone": {
+   "B baseline (rerank-3-lite)": {
+    "questions": 27,
+    "yes": 0.2888888888888889,
+    "useful": 0.666666666666667,
+    "mis": 0.09629629629629628,
+    "grade": 1.8592592592592594
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "questions": 27,
+    "yes": 0.2740740740740741,
+    "useful": 0.6740740740740743,
+    "mis": 0.09629629629629628,
+    "grade": 1.851851851851852
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "questions": 27,
+    "yes": 0.2740740740740741,
+    "useful": 0.6740740740740743,
+    "mis": 0.09629629629629628,
+    "grade": 1.8518518518518519
+   }
+  },
+  "both, ties to the lower mark": {
+   "B baseline (rerank-3-lite)": {
+    "questions": 27,
+    "yes": 0.23703703703703705,
+    "useful": 0.6148148148148148,
+    "mis": 0.1111111111111111,
+    "grade": 1.740740740740741
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "questions": 27,
+    "yes": 0.22222222222222227,
+    "useful": 0.6222222222222223,
+    "mis": 0.11851851851851852,
+    "grade": 1.7259259259259263
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "questions": 27,
+    "yes": 0.22222222222222227,
+    "useful": 0.6296296296296298,
+    "mis": 0.11851851851851852,
+    "grade": 1.7333333333333334
+   }
+  },
+  "both, ties to the higher mark": {
+   "B baseline (rerank-3-lite)": {
+    "questions": 27,
+    "yes": 0.3333333333333334,
+    "useful": 0.7185185185185186,
+    "mis": 0.06666666666666667,
+    "grade": 1.9851851851851856
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "questions": 27,
+    "yes": 0.32592592592592595,
+    "useful": 0.725925925925926,
+    "mis": 0.06666666666666667,
+    "grade": 1.9851851851851856
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "questions": 27,
+    "yes": 0.3333333333333333,
+    "useful": 0.725925925925926,
+    "mis": 0.06666666666666667,
+    "grade": 1.9925925925925927
+   }
+  }
+ },
+ "floors": {
+  "B baseline (rerank-3-lite)": {
+   "F1_useful_lower": 0.6148148148148148,
+   "F2_mis_lower": 0.1111111111111111,
+   "F2_mis_higher": 0.06666666666666667,
+   "F4_yes_lower": 0.23703703703703705,
+   "F1": false,
+   "F2": true,
+   "F4": false,
+   "intervals": {
+    "F1_useful_lower": [
+     0.5333,
+     0.6963
+    ],
+    "F2_mis_lower": [
+     0.0593,
+     0.163
+    ],
+    "F2_mis_higher": [
+     0.0296,
+     0.1111
+    ],
+    "F4_yes_lower": [
+     0.163,
+     0.3111
+    ]
+   }
+  },
+  "N1-125 named-Act boost x1.25 (precise)": {
+   "F1_useful_lower": 0.6222222222222223,
+   "F2_mis_lower": 0.11851851851851852,
+   "F2_mis_higher": 0.06666666666666667,
+   "F4_yes_lower": 0.22222222222222227,
+   "F1": false,
+   "F2": true,
+   "F4": false,
+   "intervals": {
+    "F1_useful_lower": [
+     0.5407,
+     0.7037
+    ],
+    "F2_mis_lower": [
+     0.0667,
+     0.1704
+    ],
+    "F2_mis_higher": [
+     0.0296,
+     0.1111
+    ],
+    "F4_yes_lower": [
+     0.1481,
+     0.3037
+    ]
+   }
+  },
+  "N2-125 named-Act boost x1.25 (broad)": {
+   "F1_useful_lower": 0.6296296296296298,
+   "F2_mis_lower": 0.11851851851851852,
+   "F2_mis_higher": 0.06666666666666667,
+   "F4_yes_lower": 0.22222222222222227,
+   "F1": false,
+   "F2": true,
+   "F4": false,
+   "intervals": {
+    "F1_useful_lower": [
+     0.5481,
+     0.7111
+    ],
+    "F2_mis_lower": [
+     0.0667,
+     0.1704
+    ],
+    "F2_mis_higher": [
+     0.0296,
+     0.1111
+    ],
+    "F4_yes_lower": [
+     0.1481,
+     0.3037
+    ]
+   }
+  }
+ },
+ "finalists": {
+  "N1-125 named-Act boost x1.25 (precise)": {
+   "compare": {
+    "ChatGPT alone": {
+     "questions": 27,
+     "A": {
+      "yes": 0.28148148148148155,
+      "useful": 0.6666666666666666,
+      "mis": 0.08148148148148147,
+      "grade": 1.8666666666666667
+     },
+     "R": {
+      "yes": 0.27407407407407414,
+      "useful": 0.6740740740740742,
+      "mis": 0.08888888888888889,
+      "grade": 1.8592592592592594
+     },
+     "R_better": [
+      "N25"
+     ],
+     "R_worse": [
+      "N07"
+     ]
+    },
+    "Gemini alone": {
+     "questions": 27,
+     "A": {
+      "yes": 0.2888888888888889,
+      "useful": 0.666666666666667,
+      "mis": 0.09629629629629628,
+      "grade": 1.8592592592592594
+     },
+     "R": {
+      "yes": 0.2740740740740741,
+      "useful": 0.6740740740740743,
+      "mis": 0.09629629629629628,
+      "grade": 1.851851851851852
+     },
+     "R_better": [],
+     "R_worse": []
+    },
+    "both, ties to the lower mark": {
+     "questions": 27,
+     "A": {
+      "yes": 0.23703703703703705,
+      "useful": 0.6148148148148148,
+      "mis": 0.1111111111111111,
+      "grade": 1.740740740740741
+     },
+     "R": {
+      "yes": 0.22222222222222227,
+      "useful": 0.6222222222222223,
+      "mis": 0.11851851851851852,
+      "grade": 1.7259259259259263
+     },
+     "R_better": [],
+     "R_worse": [
+      "N07"
+     ]
+    },
+    "both, ties to the higher mark": {
+     "questions": 27,
+     "A": {
+      "yes": 0.3333333333333334,
+      "useful": 0.7185185185185186,
+      "mis": 0.06666666666666667,
+      "grade": 1.9851851851851856
+     },
+     "R": {
+      "yes": 0.32592592592592595,
+      "useful": 0.725925925925926,
+      "mis": 0.06666666666666667,
+      "grade": 1.9851851851851856
+     },
+     "R_better": [
+      "N25"
+     ],
+     "R_worse": []
+    }
+   },
+   "marks_rules": {
+    "rule1_grade_all_four_settlements": false,
+    "rule2_misleading_and_useful_margins": true,
+    "rule3_two_more_questions_better": false,
+    "rule5_reliability_not_weak": true,
+    "marks_rules_hold": false,
+    "rule6a_lookalike_misleading_5_points_lower": false
+   },
+   "lookalike_misleading": {
+    "B": 0.12307692307692308,
+    "V": 0.13846153846153847,
+    "questions": 13
+   },
+   "changed_top5_questions": [
+    "N07",
+    "N08",
+    "N09",
+    "N16",
+    "N25"
+   ],
+   "without_soft_overlaps": {
+    "questions": 23,
+    "compare": {
+     "ChatGPT alone": {
+      "questions": 23,
+      "A": {
+       "yes": 0.30434782608695654,
+       "useful": 0.6608695652173913,
+       "mis": 0.07826086956521738,
+       "grade": 1.8869565217391304
+      },
+      "R": {
+       "yes": 0.30434782608695654,
+       "useful": 0.6782608695652174,
+       "mis": 0.08695652173913043,
+       "grade": 1.8956521739130436
+      },
+      "R_better": [
+       "N25"
+      ],
+      "R_worse": []
+     },
+     "Gemini alone": {
+      "questions": 23,
+      "A": {
+       "yes": 0.30434782608695654,
+       "useful": 0.6608695652173914,
+       "mis": 0.08695652173913043,
+       "grade": 1.8782608695652174
+      },
+      "R": {
+       "yes": 0.2956521739130435,
+       "useful": 0.6695652173913045,
+       "mis": 0.08695652173913043,
+       "grade": 1.8782608695652172
+      },
+      "R_better": [],
+      "R_worse": []
+     },
+     "both, ties to the lower mark": {
+      "questions": 23,
+      "A": {
+       "yes": 0.2521739130434783,
+       "useful": 0.6086956521739131,
+       "mis": 0.10434782608695652,
+       "grade": 1.7565217391304346
+      },
+      "R": {
+       "yes": 0.24347826086956528,
+       "useful": 0.6260869565217392,
+       "mis": 0.11304347826086955,
+       "grade": 1.7565217391304346
+      },
+      "R_better": [],
+      "R_worse": []
+     },
+     "both, ties to the higher mark": {
+      "questions": 23,
+      "A": {
+       "yes": 0.35652173913043483,
+       "useful": 0.7130434782608696,
+       "mis": 0.0608695652173913,
+       "grade": 2.008695652173913
+      },
+      "R": {
+       "yes": 0.3565217391304348,
+       "useful": 0.7217391304347827,
+       "mis": 0.0608695652173913,
+       "grade": 2.0173913043478264
+      },
+      "R_better": [
+       "N25"
+      ],
+      "R_worse": []
+     }
+    },
+    "marks_rules": {
+     "rule1_grade_all_four_settlements": false,
+     "rule2_misleading_and_useful_margins": true,
+     "rule3_two_more_questions_better": false,
+     "rule5_reliability_not_weak": true,
+     "marks_rules_hold": false,
+     "rule6a_lookalike_misleading_5_points_lower": false
+    },
+    "lookalike_misleading": {
+     "B": 0.12727272727272726,
+     "V": 0.14545454545454548,
+     "questions": 11
+    },
+    "floors": {
+     "F1_useful_lower": 0.6260869565217392,
+     "F2_mis_lower": 0.11304347826086955,
+     "F2_mis_higher": 0.0608695652173913,
+     "F4_yes_lower": 0.24347826086956528,
+     "F1": false,
+     "F2": true,
+     "F4": false,
+     "intervals": {
+      "F1_useful_lower": [
+       0.5391,
+       0.7217
+      ],
+      "F2_mis_lower": [
+       0.0609,
+       0.1739
+      ],
+      "F2_mis_higher": [
+       0.0174,
+       0.113
+      ],
+      "F4_yes_lower": [
+       0.1565,
+       0.3304
+      ]
+     }
+    }
+   }
+  },
+  "N2-125 named-Act boost x1.25 (broad)": {
+   "compare": {
+    "ChatGPT alone": {
+     "questions": 27,
+     "A": {
+      "yes": 0.28148148148148155,
+      "useful": 0.6666666666666666,
+      "mis": 0.08148148148148147,
+      "grade": 1.8666666666666667
+     },
+     "R": {
+      "yes": 0.28148148148148155,
+      "useful": 0.6814814814814816,
+      "mis": 0.08888888888888889,
+      "grade": 1.8740740740740742
+     },
+     "R_better": [
+      "N25"
+     ],
+     "R_worse": [
+      "N07"
+     ]
+    },
+    "Gemini alone": {
+     "questions": 27,
+     "A": {
+      "yes": 0.2888888888888889,
+      "useful": 0.666666666666667,
+      "mis": 0.09629629629629628,
+      "grade": 1.8592592592592594
+     },
+     "R": {
+      "yes": 0.2740740740740741,
+      "useful": 0.6740740740740743,
+      "mis": 0.09629629629629628,
+      "grade": 1.8518518518518519
+     },
+     "R_better": [],
+     "R_worse": []
+    },
+    "both, ties to the lower mark": {
+     "questions": 27,
+     "A": {
+      "yes": 0.23703703703703705,
+      "useful": 0.6148148148148148,
+      "mis": 0.1111111111111111,
+      "grade": 1.740740740740741
+     },
+     "R": {
+      "yes": 0.22222222222222227,
+      "useful": 0.6296296296296298,
+      "mis": 0.11851851851851852,
+      "grade": 1.7333333333333334
+     },
+     "R_better": [],
+     "R_worse": [
+      "N07"
+     ]
+    },
+    "both, ties to the higher mark": {
+     "questions": 27,
+     "A": {
+      "yes": 0.3333333333333334,
+      "useful": 0.7185185185185186,
+      "mis": 0.06666666666666667,
+      "grade": 1.9851851851851856
+     },
+     "R": {
+      "yes": 0.3333333333333333,
+      "useful": 0.725925925925926,
+      "mis": 0.06666666666666667,
+      "grade": 1.9925925925925927
+     },
+     "R_better": [
+      "N25"
+     ],
+     "R_worse": []
+    }
+   },
+   "marks_rules": {
+    "rule1_grade_all_four_settlements": false,
+    "rule2_misleading_and_useful_margins": true,
+    "rule3_two_more_questions_better": false,
+    "rule5_reliability_not_weak": true,
+    "marks_rules_hold": false,
+    "rule6a_lookalike_misleading_5_points_lower": false
+   },
+   "lookalike_misleading": {
+    "B": 0.12307692307692308,
+    "V": 0.13846153846153847,
+    "questions": 13
+   },
+   "changed_top5_questions": [
+    "N07",
+    "N08",
+    "N09",
+    "N11",
+    "N15",
+    "N16",
+    "N19",
+    "N25"
+   ],
+   "without_soft_overlaps": {
+    "questions": 23,
+    "compare": {
+     "ChatGPT alone": {
+      "questions": 23,
+      "A": {
+       "yes": 0.30434782608695654,
+       "useful": 0.6608695652173913,
+       "mis": 0.07826086956521738,
+       "grade": 1.8869565217391304
+      },
+      "R": {
+       "yes": 0.3130434782608696,
+       "useful": 0.6869565217391305,
+       "mis": 0.08695652173913043,
+       "grade": 1.9130434782608696
+      },
+      "R_better": [
+       "N25"
+      ],
+      "R_worse": []
+     },
+     "Gemini alone": {
+      "questions": 23,
+      "A": {
+       "yes": 0.30434782608695654,
+       "useful": 0.6608695652173914,
+       "mis": 0.08695652173913043,
+       "grade": 1.8782608695652174
+      },
+      "R": {
+       "yes": 0.2956521739130435,
+       "useful": 0.6695652173913045,
+       "mis": 0.08695652173913043,
+       "grade": 1.8782608695652172
+      },
+      "R_better": [],
+      "R_worse": []
+     },
+     "both, ties to the lower mark": {
+      "questions": 23,
+      "A": {
+       "yes": 0.2521739130434783,
+       "useful": 0.6086956521739131,
+       "mis": 0.10434782608695652,
+       "grade": 1.7565217391304346
+      },
+      "R": {
+       "yes": 0.24347826086956528,
+       "useful": 0.6347826086956523,
+       "mis": 0.11304347826086955,
+       "grade": 1.7652173913043478
+      },
+      "R_better": [],
+      "R_worse": []
+     },
+     "both, ties to the higher mark": {
+      "questions": 23,
+      "A": {
+       "yes": 0.35652173913043483,
+       "useful": 0.7130434782608696,
+       "mis": 0.0608695652173913,
+       "grade": 2.008695652173913
+      },
+      "R": {
+       "yes": 0.3652173913043478,
+       "useful": 0.7217391304347827,
+       "mis": 0.0608695652173913,
+       "grade": 2.0260869565217394
+      },
+      "R_better": [
+       "N25"
+      ],
+      "R_worse": []
+     }
+    },
+    "marks_rules": {
+     "rule1_grade_all_four_settlements": false,
+     "rule2_misleading_and_useful_margins": true,
+     "rule3_two_more_questions_better": false,
+     "rule5_reliability_not_weak": true,
+     "marks_rules_hold": false,
+     "rule6a_lookalike_misleading_5_points_lower": false
+    },
+    "lookalike_misleading": {
+     "B": 0.12727272727272726,
+     "V": 0.14545454545454548,
+     "questions": 11
+    },
+    "floors": {
+     "F1_useful_lower": 0.6347826086956523,
+     "F2_mis_lower": 0.11304347826086955,
+     "F2_mis_higher": 0.0608695652173913,
+     "F4_yes_lower": 0.24347826086956528,
+     "F1": false,
+     "F2": true,
+     "F4": false,
+     "intervals": {
+      "F1_useful_lower": [
+       0.5391,
+       0.7304
+      ],
+      "F2_mis_lower": [
+       0.0609,
+       0.1739
+      ],
+      "F2_mis_higher": [
+       0.0174,
+       0.113
+      ],
+      "F4_yes_lower": [
+       0.1565,
+       0.3304
+      ]
+     }
+    }
+   }
+  }
+ },
+ "without_soft_overlaps_floors_B": {
+  "F1_useful_lower": 0.6086956521739131,
+  "F2_mis_lower": 0.10434782608695652,
+  "F2_mis_higher": 0.0608695652173913,
+  "F4_yes_lower": 0.2521739130434783,
+  "F1": false,
+  "F2": true,
+  "F4": true,
+  "intervals": {
+   "F1_useful_lower": [
+    0.5217,
+    0.7043
+   ],
+   "F2_mis_lower": [
+    0.0522,
+    0.1652
+   ],
+   "F2_mis_higher": [
+    0.0174,
+    0.113
+   ],
+   "F4_yes_lower": [
+    0.1739,
+    0.3391
+   ]
+  }
+ },
+ "floors_including_controls": {
+  "B baseline (rerank-3-lite)": {
+   "F1_useful_lower": 0.6133333333333334,
+   "F2_mis_lower": 0.1,
+   "F2_mis_higher": 0.05999999999999999,
+   "F4_yes_lower": 0.22666666666666668,
+   "F1": false,
+   "F2": true,
+   "F4": false
+  },
+  "N1-125 named-Act boost x1.25 (precise)": {
+   "F1_useful_lower": 0.6200000000000002,
+   "F2_mis_lower": 0.10666666666666667,
+   "F2_mis_higher": 0.05999999999999999,
+   "F4_yes_lower": 0.21333333333333337,
+   "F1": false,
+   "F2": true,
+   "F4": false
+  },
+  "N2-125 named-Act boost x1.25 (broad)": {
+   "F1_useful_lower": 0.6266666666666668,
+   "F2_mis_lower": 0.10666666666666667,
+   "F2_mis_higher": 0.05999999999999999,
+   "F4_yes_lower": 0.21333333333333337,
+   "F1": false,
+   "F2": true,
+   "F4": false
+  }
+ },
+ "controls_apart": {
+  "N28": {
+   "B baseline (rerank-3-lite)": {
+    "n": 5,
+    "yes": 0.2,
+    "useful": 0.6,
+    "mis": 0.0,
+    "grade": 1.8,
+    "mis3": false,
+    "first_yes": 4
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "n": 5,
+    "yes": 0.2,
+    "useful": 0.6,
+    "mis": 0.0,
+    "grade": 1.8,
+    "mis3": false,
+    "first_yes": 4
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "n": 5,
+    "yes": 0.2,
+    "useful": 0.6,
+    "mis": 0.0,
+    "grade": 1.8,
+    "mis3": false,
+    "first_yes": 4
+   }
+  },
+  "N29": {
+   "B baseline (rerank-3-lite)": {
+    "n": 5,
+    "yes": 0.2,
+    "useful": 0.8,
+    "mis": 0.0,
+    "grade": 2.0,
+    "mis3": false,
+    "first_yes": 4
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "n": 5,
+    "yes": 0.2,
+    "useful": 0.8,
+    "mis": 0.0,
+    "grade": 2.0,
+    "mis3": false,
+    "first_yes": 4
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "n": 5,
+    "yes": 0.2,
+    "useful": 0.8,
+    "mis": 0.0,
+    "grade": 2.0,
+    "mis3": false,
+    "first_yes": 4
+   }
+  },
+  "N30": {
+   "B baseline (rerank-3-lite)": {
+    "n": 5,
+    "yes": 0.0,
+    "useful": 0.4,
+    "mis": 0.0,
+    "grade": 1.4,
+    "mis3": false,
+    "first_yes": null
+   },
+   "N1-125 named-Act boost x1.25 (precise)": {
+    "n": 5,
+    "yes": 0.0,
+    "useful": 0.4,
+    "mis": 0.0,
+    "grade": 1.4,
+    "mis3": false,
+    "first_yes": null
+   },
+   "N2-125 named-Act boost x1.25 (broad)": {
+    "n": 5,
+    "yes": 0.0,
+    "useful": 0.4,
+    "mis": 0.0,
+    "grade": 1.4,
+    "mis3": false,
+    "first_yes": null
+   }
+  }
+ }
+}

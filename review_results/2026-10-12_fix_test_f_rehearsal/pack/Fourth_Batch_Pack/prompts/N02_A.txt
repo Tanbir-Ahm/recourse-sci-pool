@@ -1,0 +1,99 @@
+QUESTION ID: N02   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N02",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Police sent me a notice on WhatsApp under section 35 BNSS to come to the station tomorrow in a cheating case. Is a WhatsApp notice valid? Can they arrest me if I don't go?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 27, page 14)
+Text:
+27. The Legislature, in its wisdom, has specifically excluded the service of a notice under Section 35 of the BNSS, 2023 from the ambit of procedures permissible through electronic communication, that have been delineated under Section 530 of the BNSS, 2023.
+
+--- PASSAGE 2 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 19/1, page 10)
+Text:
+19. The BNSS, 2023, keeping in tune with the erstwhile provisions of the CrPC, 1973 provides for situations where a person may be arrested by the Investigating Agency, without a warrant. Section 35 of the BNSS, 2023 “35. When police may arrest without warrant.—(1) Any police officer may without an order from a Magistrate and without a warrant, arrest any person— (a) who commits, in the presence of a police officer, a cognizable offence; or (b) against whom a reasonable complaint has been made, or credible information has been received, or a reasonable suspicion exists that he has committed a cognizable offence punishable with imprisonment for a term which may be less than seven years or which may extend to seven years whether with or without fine, if the following conditions are satisfied, namely:— (i) the police officer has reason to believe on the basis of such complaint, information, or suspicion that such person has committed the said offence;
+
+--- PASSAGE 3 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 43, page 20)
+Text:
+43. Hence, when viewed from any lens, we are unable to convince ourselves that electronic communication is a valid mode of service of notice under Section 35 of the BNSS, 2023, since its conscious omission is a clear manifestation of the legislative intent. Introducing a procedure into Section 35 of the BNSS, 2023, that has not been specifically provided for by the Legislature, would be violative of its intent. 1878
+
+--- PASSAGE 4 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 22, page 13)
+Text:
+22. Section 35(4) of the BNSS, 2023 imposes a duty on the recipient of the notice to the effect that once the notice is served, the person must comply with every term of the notice. Section 35(5) of the BNSS, 2023 provides that as long as the person to whom the notice is issued, appears as is required and continues to comply with the notice, they cannot be arrested in relation to the alleged offence. Arrest may be made only if the Investigating Agency records specific reasons as to why the arrest is necessary.
+
+--- PASSAGE 5 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 23, page 13)
+Text:
+23. Section 35(6) of the BNSS, 2023 lays down the procedure to be followed in case of non-compliance with the notice issued by the Investigating Agency under Section 35(3) of the BNSS, 2023. Noncompliance with a notice does not ipso facto mandate arrest, as there lies a discretion with the Investigating Agency, which must be of the opinion that the arrest of the concerned person is necessary for the purpose of investigation. In other words, failure to comply with the notice does not lead to automatic arrest. Rather, it is the last resort available to the Investigating Agency, after due exercise of discretion regarding the necessity of arrest.
+
+--- PASSAGE 6 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 21, page 13)
+Text:
+21. Section 35(3) of the BNSS, 2023 mandates the service of a notice whenever the Investigating Agency, on the basis of a reasonable complaint, credible information or suspicion, determines that a person may have committed a cognizable offence, but does not deem the arrest of such person necessary. In such a scenario, the Investigating Agency is mandated to issue a written notice directing the person to appear before it, or at such other place as may be specified in the notice.
+
+--- PASSAGE 7 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 11, page 7)
+Text:
+11. The learned Senior Counsel/Amicus Curiae submitted that notice served through WhatsApp or other modes of electronic communication is not contemplated as a mode of service under Section 35 of the BNSS, 2023 since the same is not in accordance with Chapter VI of the BNSS, 2023, and hence cannot be treated as a valid mode of serving notice under Section 35 of the BNSS, 2023.
+
+--- PASSAGE 8 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 5, page 6)
+Text:
+5. At the outset, it is submitted by the learned counsel appearing on behalf of the Applicant/State of Haryana that a notice under Section 35 of the BNSS, 2023 is only an information to the concerned person that he is required to join the investigation, and is not liable to be arrested at that time. Service of notice through the mode of electronic communication is required to ensure that the concerned person does not evade service of notice, and that precious resources of the State are not wasted.
+
+--- PASSAGE 9 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 18, page 9)
+Text:
+18. The issue before us lies within a narrow compass – whether the usage of electronic communication can also be extended to the procedure governing the service of a notice, contemplated under Section 35 of the BNSS, 2023. To answer the same, a purposive interpretation must be given to the BNSS, 2023, especially the aforementioned provision. NOTICES BY THE INVESTIGATING AGENCY
+
+--- PASSAGE 10 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (16-07-2025)
+   (Judgment id 1000256838, paragraph 14, page 8)
+Text:
+14. Finally, it is submitted that since a notice under Section 35 of the BNSS, 2023 is issued by the Investigating Agency, and the breach thereof leads to arrest and deprivation of the liberty of an individual, it is appropriate that such a notice be served in person on the accused, and not through the mode of electronic communication. DISCUSSION
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N02 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

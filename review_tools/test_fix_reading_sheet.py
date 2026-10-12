@@ -21,7 +21,7 @@ def check(name, cond, detail=""):
 t = tempfile.mkdtemp()
 qs = []
 for qid in ("N01", "N02", "N03"):
-    rows = [{"n": i, "h": f"{qid}h{i}", "doc": 100 + i, "pn": str(i), "page": i, "title": f"Case {i}", "text": f"{i}. Passage {i} of {qid} about the point.", "also": [], "variants": {"B baseline (rerank-3-lite)": i}} for i in range(1, 13)]
+    rows = [{"n": i, "h": f"{qid}h{i}", "doc": 100 + i, "pn": str(i), "page": i, "title": f"Case {i}", "text": f"{i}. Passage {i} of {qid} about the point." + ("\x0c form feed and \x00 null in court text" if i == 3 else ""), "also": [], "variants": {"B baseline (rerank-3-lite)": i}} for i in range(1, 13)]
     qs.append({"qid": qid, "domain": "B", "kind": "legal", "question": f"Question text of {qid}?", "rows": rows, "lists": {}})
 json.dump({"run": {}, "questions": qs}, open(os.path.join(t, "pool.json"), "w"))
 rep = os.path.join(t, "rep"); os.makedirs(rep)
@@ -44,5 +44,6 @@ check("the sheet does not say which search version showed a passage", not any("b
 info2 = R.build(os.path.join(t, "pool.json"), rep, os.path.join(t, "out2"), n_random=20)
 rows2 = list(openpyxl.load_workbook(os.path.join(t, "out2", "Reading_Sheet_for_Mr_Advocate.xlsx"))["Passages"].iter_rows(min_row=2, values_only=True))
 check("the random draw is reproducible from its seed", [(r[1], r[3]) for r in rows] == [(r[1], r[3]) for r in rows2])
+check("control characters in court text (a form feed, a null) do not stop the sheet being written and are replaced by spaces", all("\x0c" not in str(r[5]) and "\x00" not in str(r[5]) for r in rows))
 print("\nall passed" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)
