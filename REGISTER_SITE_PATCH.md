@@ -1,6 +1,25 @@
 # Patch notes for the Recourse owner: connecting the Overruled Register to the live site
 
-**Status: written, not applied, not tested inside Recourse.** The Recourse repository is read-only for this project. The insertion points below were read from the checkout at commit `721e063` (`chat_assistant.py`, `recourse_app.py`, `citation_currency.py`); line numbers will have moved. Everything below fails open: if the bundle is missing or anything raises, the answer goes out exactly as it does today.
+**Status (2026-10-12): written and tested on a scratch copy of Recourse at commit `721e063` (still its head on 2026-10-12); NOT applied to the live repository.** The Recourse repository is read-only for this project, so you apply it yourself. Everything fails open: if the bundle is missing or anything raises, the answer goes out exactly as it does today, and `REGISTER_HOOKS=off` switches all three locks off without a redeploy.
+
+## 0. Apply it (4 steps)
+
+```
+# in the Recourse checkout, on a new branch (not main), at 721e063 or a descendant
+git checkout -b register-hooks
+git apply <this repo>/site_patch/recourse_721e063.patch        # chat_assistant.py, recourse_app.py, + new register_hooks.py, test_register_hooks.py
+python sci_goodlaw.py register-export-site --out <recourse checkout>/overruled_register     # run in this repository; writes the register AND the cards overlay
+python run_tests.py                                              # in Recourse: 63 free test files, all exit 0 (62 before the patch + test_register_hooks.py)
+```
+
+What was run on the scratch copy: `git apply --check` on a clean `721e063` checkout passes; Recourse's own free suite 63 of 63 files pass (the baseline was 62 of 62); `test_register_hooks.py` (16 checks: demotion, prompt lines, answer notes, the off switch, the missing-bundle case); and a Streamlit `AppTest` render of `render_answer` with a register note and the "not checked" sentence shows both, no exception. **Not run:** anything that calls the real model (no Anthropic key in this session), so the wording the model writes around a REGISTER FACT line is untested; the 50-question trap exam is the test for that (`site_patch/README.md`).
+
+What the patch changes in behaviour (so you can decide before applying):
+- **Lock (a)** at the top of `format_retrieved_text_for_prompt`: a retrieved judgment that is a verified register row moves to the end of the prompt list and is badged. This is the one place all three answer paths (lines ~2611, ~2849, ~3088 at `721e063`) pass through, so none is missed. Candidate rows are badged, not moved.
+- **Lock (b)**: a "[Overruled Register -- not optional ...]" block in the prompt for such a case, and one new rule in `RESPONSE_GENERATION_PROMPT` ("A line that starts REGISTER FACT is not optional ..."). This is a change to the system prompt shared with the WhatsApp bot.
+- **Lock (c)**: `answer_question` now ends with `_attach_register_notes(...)`, adding `register_notes` (register sentences plus the checker's warning cards: Mohan Lal 2018 and Mhetre 2011) and `register_not_checked` (one fixed sentence naming cases the answer cites that are on neither list). The Streamlit page shows both under "Currency notes (checked by code, not by the model)". **The WhatsApp bot ignores these two fields until its sender code is changed; I did not see that code.**
+- A case with a quiet card (no later adverse judgment among those we hold) adds nothing to the page: silence, not an assurance.
+- Expect the "not checked" sentence on many answers: the cards cover only the 76 library cases, so any other case the answer names gets it. That is deliberate (the safe direction) and can be noisy.
 
 The register itself, its rules and its numbers are in `REGISTER.md`. Nothing in the register says a case is "good law": it only words what a row says (verified or confirmed rows firmly, candidate rows as "reported ... not yet confirmed by our reviewer"). That keeps `citation_currency.py`'s rule (code never decides good law) intact.
 
@@ -12,7 +31,7 @@ python sci_goodlaw.py register-export-site --out <recourse checkout>/overruled_r
 
 writes a package of three modules (`cites.py`, `register.py`, `register_guard.py`), an `__init__.py` with `load()`, and `register_slim.json` (about 790 KB, no history or evidence text). It needs nothing else from this repository (the test suite imports it from an empty directory). Re-export it after each weekly review (the review changes row trust and treatment) and redeploy.
 
-## 2. One thin wrapper, `register_hooks.py` (new file in Recourse)
+## 2. One thin wrapper, `register_hooks.py` (new file in Recourse; the version below is the 2026-10-07 draft, the tested one is `site_patch/register_hooks.py` and also looks in the cards overlay)
 
 ```python
 """Fail-open hooks around the Overruled Register bundle (overruled_register/). Every function returns its input unchanged on any error."""
