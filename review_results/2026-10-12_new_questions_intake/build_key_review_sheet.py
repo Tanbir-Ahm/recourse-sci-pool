@@ -56,6 +56,7 @@ readme = [
     ("What the index columns mean. 'IN the index' means the judgment's text is in the collection the search runs over, so a search can return it. 'NOT in the index' means no search can ever return it; the question can then be answered only through the other authorities. 'Document no.' is the index number of the judgment, so that its passages can be read.", False),
     ("What Claude's check means. Claude read passages of the judgments that are in the index and noted whether they contain the words the key relies on. That is evidence that the words are there, NOT a legal opinion that the judgment decides the point. Where Claude found a mismatch it says so.", False),
     ("Rows shaded red are being returned to the writer for replacement (N02, N12, N15): you need not review them. Rows N28 to N30 are controls (no case-law answer is expected). NR1 to NR3 are reserves.", False),
+    ("The writer is an independent legal person who used an AI tool to find the citations and cases (owner, 12 October). Treat every citation as unverified until you have checked it exists as cited.", False),
     ("Everything in the project is 'LLM-judged', not lawyer-validated; your review is the first lawyer's check on this key.", False),
 ]
 for i, (t, b) in enumerate(readme, 1):

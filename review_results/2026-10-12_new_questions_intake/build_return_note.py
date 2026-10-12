@@ -57,7 +57,7 @@ bullets([
     "N29: Conf must be G, because the verification rests on secondary sources only (rules, section 10).",
     "N10, N14, N17, N24 and NR2: say whether any other acceptable authority exists, or confirm that none does. N20: add modern authority on consent if it exists (only Mango Ram, 2000, and Gurmit Singh, 1996, are listed).",
     "N19: the primary authority (P. Yuvaprakash) concerns the age of a victim; the question concerns an accused. Choose the primary again or list both Yuvaprakash and Rishipal Singh Solanki.",
-    "Declaration: add the line 'AI tools used and for what'. If an AI tool drafted any question or any part of a key, name the tool and say what it did (rules, section 3). Confirm that no wording was chosen to match or avoid the trigger words you read.",
+    "Declaration: add the line 'AI tools used and for what'. The owner tells us you used an AI tool to find the citations and cases: name the tool and say exactly what it did, and say whether you checked each citation yourself or are leaving that to Mr. Advocate (rules, section 3: everything an AI tool produced must be checked against the judgment text). The owner has accepted, as a disclosed deviation, that you read the trigger-word list before writing.",
     "Mr. Advocate will review the key; expect his corrections to come back through the owner.",
 ])
 h("7. How to return it")

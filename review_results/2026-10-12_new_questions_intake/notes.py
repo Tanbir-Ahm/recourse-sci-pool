@@ -66,6 +66,7 @@ FLAGS = {
  "NR3": "Reserve for control K2.",
 }
 OPEN_POINTS = [
+ ("all", "The writer used an AI tool to find the citations and cases. Please check that EVERY authority named in the key exists as cited (case name, court, date, citation) and is the case the key says it is, not only what it holds. Claude found 58 of the 77 authorities named for N01 to N27 in the index; a name that is not in the index may be a real case outside the collection or a wrong or invented citation, and the index cannot tell which. Priority: Aman Preet Singh, Womb Laboratories, K. Bhaskaran, Sarabjit Kaur, Surendra Bangali, Jagtar Singh (2023), Suresh v. State of U.P. (2024), Rajinder Singh v. State of Punjab (2015), Mohan Lal v. State of Rajasthan (2015), Sorabkhan Gandhkhan Pathan, U.N. Gupta, Dilip Singh (2021), Jagdish Lakra (2026), Vishnu Kumar Gupta (2026)."),
  ("N19", "Which is the primary authority for an ACCUSED's age claim: P. Yuvaprakash (2023, a victim's age) or Rishipal Singh Solanki (2021, an accused's juvenility claim)? Is Aadhaar really outside the list in s.94(2)?"),
  ("N16, N17, N25, N27", "The key calls Appasaheb, Abraham Ajith / Ramesh v. State of T.N., B. Jayaraj and Satya Pal Singh 'not a counted trap'. Should any of them count as a stale ruling (Supreme Court ruling overruled, modified or replaced)? Only rulings that count will be scored as stale."),
  ("N14", "Is the answer (the IT Act s.67 charge excludes IPC s.292 for the same act) still right after the Bombay High Court Full Bench the writer mentions?"),
