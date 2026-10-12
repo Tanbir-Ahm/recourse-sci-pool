@@ -313,14 +313,26 @@ def run_register(a):
         return 0 if table["passes"] else 1
     if a.cmd == "register-export-site":
         import shutil
+        from goodlaw import overlay as OV
         os.makedirs(a.out, exist_ok=True)
-        for f_ in ("cites.py", "register.py", "register_guard.py"):
+        files = ["cites.py", "register.py", "register_guard.py"] + ([] if a.no_overlay else ["overlay.py"])
+        for f_ in files:
             shutil.copy(os.path.join(HERE, "goodlaw", f_), os.path.join(a.out, f_))
-        open(os.path.join(a.out, "__init__.py"), "w", encoding="utf-8").write('"""The Overruled Register bundle (exported from recourse-sci-pool; see REGISTER.md there)."""\nfrom . import register, register_guard\n\n\ndef load(path=None):\n    import os\n    return register.Register.load(path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "register_slim.json"))\n')
+        init = ('"""The Overruled Register bundle (exported from recourse-sci-pool; see REGISTER.md there)."""\nfrom . import register, register_guard' + ("" if a.no_overlay else ", overlay") + '\n\n\n'
+                'def load(path=None):\n    import os\n    return register.Register.load(path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "register_slim.json"))\n')
+        if not a.no_overlay:
+            init += ('\n\ndef load_overlay(path=None):\n    import os\n    return overlay.Overlay.load(path or os.path.join(os.path.dirname(os.path.abspath(__file__)), "overlay_slim.json"))\n')
+        open(os.path.join(a.out, "__init__.py"), "w", encoding="utf-8").write(init)
         doc = {"schema": R.SCHEMA, **{k: v for k, v in reg.meta.items()}, "rows": R.slim(reg.rows), "slim": True}
         with open(os.path.join(a.out, "register_slim.json"), "w", encoding="utf-8") as fh:
             json.dump(doc, fh, ensure_ascii=False, separators=(",", ":"))
-        print(f"bundle in {a.out}: {len(doc['rows'])} rows, {os.path.getsize(os.path.join(a.out, 'register_slim.json')) // 1024} KB")
+        msg = f"bundle in {a.out}: {len(doc['rows'])} rows, {os.path.getsize(os.path.join(a.out, 'register_slim.json')) // 1024} KB"
+        if not a.no_overlay:
+            ov = OV.build_overlay(json.load(open(a.cards, encoding="utf-8")))
+            with open(os.path.join(a.out, "overlay_slim.json"), "w", encoding="utf-8") as fh:
+                json.dump(ov, fh, ensure_ascii=False, separators=(",", ":"))
+            msg += f"; overlay {len(ov['entries'])} cards {ov['counts']}, {os.path.getsize(os.path.join(a.out, 'overlay_slim.json')) // 1024} KB"
+        print(msg)
         return 0
     flags_path = a.flags_file if getattr(a, "flags_file", None) else RV.FLAGS_PATH
     props_path = a.proposals_file if getattr(a, "proposals_file", None) else RV.PROPOSALS_PATH
@@ -480,8 +492,10 @@ def main(argv=None):
     rx.add_argument("--out", default=os.path.join(HERE, "register_exam"))
     rx.add_argument("--answers")
     rx.add_argument("--seed", type=int, default=7)
-    re2 = sub.add_parser("register-export-site")
+    re2 = sub.add_parser("register-export-site", help="the bundle for the Recourse site: the register, its three locks and the cards overlay (--no-overlay leaves the overlay out)")
     re2.add_argument("--out", required=True)
+    re2.add_argument("--cards", default=os.path.join(HERE, "cards", "currency_cards.json"))
+    re2.add_argument("--no-overlay", action="store_true")
     rr = sub.add_parser("register-review")
     rr.add_argument("--sheet", required=True)
     rr.add_argument("--reviewer", default="Mr. Advocate")

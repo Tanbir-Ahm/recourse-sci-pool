@@ -52,6 +52,16 @@ When the overruling decision B is itself the overruled decision of another row, 
 
 A word of overruling counts as the answer saying it only when it belongs to the mention: after it in the same sentence, at the start of a next sentence that refers back ("It was later overruled"), or directly before it ("In overruling X"). "X was overruled by Y" acknowledges X, not Y; a neighbouring case's overruling does not count. The Recourse site is read-only for this project, so nothing here is connected to it: the patch for its owner is `REGISTER_SITE_PATCH.md`, and `python sci_goodlaw.py register-export-site --out DIR` writes the dependency-free bundle (three modules and a 789 KB slim register).
 
+## The cards overlay and the "not checked by us" wording (`goodlaw/overlay.py`, built 2026-10-12)
+
+For a case that is NOT on the register the site looks up the checker's card, computed ahead of time (`overlay_slim.json`, 76 entries, 34 KB: 46 quiet, 28 not checkable or too little text, 2 warnings = Mohan Lal 2018 and Mhetre 2011). Order on the site: register, then overlay, then the fixed sentence `NOT_CHECKED` ("Not checked by us: we have not checked whether this decision is still good law. Please ask a lawyer before relying on it.").
+
+- A warning/caution card uses the checker's own plain note and one verified quote. A quiet card says only that no later judgment among those we hold goes against the case, "not a finding that it is still good law". Nothing says "good law".
+- Cases are found by reported citation or by both party names plus a year within one, never by a bare name; a case described without its name is invisible.
+- `audit_answer(reg, overlay, text)` returns register notes, card notes, quiet cards, and the cases named but on neither list (a fixed "Cases named in this answer that we have not checked: ..." sentence).
+- `python sci_goodlaw.py register-export-site --out DIR [--cards FILE] [--no-overlay]` writes the register and the overlay; tests: `test_goodlaw_overlay.py`.
+- Limit: the overlay covers the 76 library cases only. Extending it to every case the big index can return needs the corpus store rebuilt (about 15 minutes, needs the data branches); until then such a case gets the fixed "not checked" sentence, which is the safe direction.
+
 ## The weekly review (every 7 days)
 
 `python sci_goodlaw.py register-review-queue --out review_queue.csv` writes the week's sheet; the reviewer fills `decision` (and the extra columns the sheet asks for); `python sci_goodlaw.py register-review --sheet review_queue.csv --reviewer "Mr. Advocate"` records it. An item left undecided, or marked `keep`, returns seven days later. The sheet holds, most important first: **flags** (the checker's ADVERSE_SIGNAL / QUESTIONED cards, kept in `flags.json`), **candidate** and **unchecked** rows, **chain** rows, the sweep's **proposals** (at most 20 a week), **listing** rows (list 1's own inconsistencies) and **match** rows (at most 20 a week); the sheet is capped at 60 items, flags never cut.
