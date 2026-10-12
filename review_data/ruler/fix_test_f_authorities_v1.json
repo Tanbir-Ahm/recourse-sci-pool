@@ -1,0 +1,855 @@
+[
+ {
+  "qid": "N01",
+  "role": "primary",
+  "label": "Siddharth v. State of U.P. (2021)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N01",
+  "role": "acceptable",
+  "label": "Aman Preet Singh v. CBI (2021)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N01",
+  "role": "acceptable",
+  "label": "Satender Kumar Antil v. CBI (2022)",
+  "status": "IN",
+  "docs": [
+   1000254065
+  ]
+ },
+ {
+  "qid": "N01",
+  "role": "acceptable",
+  "label": "Joginder Kumar v. State of U.P. (1994)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N02",
+  "role": "primary",
+  "label": "D.K. Basu v. State of West Bengal (1996/97)",
+  "status": "IN",
+  "docs": [
+   14580
+  ],
+  "note": "Mentions the 24-hour rule only as a recital of Article 22(2) and s.57 CrPC; Arnesh Kumar (doc 41736) states the rule in its own reasoning. Mr. Advocate: which is the primary?"
+ },
+ {
+  "qid": "N02",
+  "role": "acceptable",
+  "label": "Arnesh Kumar v. State of Bihar (2014)",
+  "status": "IN",
+  "docs": [
+   41736
+  ]
+ },
+ {
+  "qid": "N02",
+  "role": "acceptable",
+  "label": "Joginder Kumar v. State of U.P. (1994)",
+  "status": "ABSENT",
+  "docs": [],
+  "note": "Not in the index; the opening-text hit 1000256233 is a different judgment quoting a High Court order that cites it."
+ },
+ {
+  "qid": "N03",
+  "role": "primary",
+  "label": "Niranjan Singh v. Prabhakar Rajaram Kharote (1980)",
+  "status": "IN",
+  "docs": [
+   4587
+  ]
+ },
+ {
+  "qid": "N03",
+  "role": "acceptable",
+  "label": "Sundeep Kumar Bafna v. State of Maharashtra (2014)",
+  "status": "IN",
+  "docs": [
+   41343
+  ]
+ },
+ {
+  "qid": "N04",
+  "role": "primary",
+  "label": "Bikramjit Singh v. State of Punjab (2020)",
+  "status": "IN",
+  "docs": [
+   1000252765
+  ]
+ },
+ {
+  "qid": "N04",
+  "role": "acceptable",
+  "label": "Hitendra Vishnu Thakur v. State of Maharashtra (1994)",
+  "status": "IN",
+  "docs": [
+   1000001711
+  ]
+ },
+ {
+  "qid": "N04",
+  "role": "acceptable",
+  "label": "M. Ravindran v. Intelligence Officer, DRI (2020/21)",
+  "status": "IN",
+  "docs": [
+   1000252778
+  ]
+ },
+ {
+  "qid": "N05",
+  "role": "primary",
+  "label": "Dilip Singh v. State of M.P. (2021)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N05",
+  "role": "acceptable",
+  "label": "Ramesh Kumar v. State (NCT of Delhi) (2023)",
+  "status": "IN",
+  "docs": [
+   1000255096
+  ]
+ },
+ {
+  "qid": "N05",
+  "role": "acceptable",
+  "label": "U.N. Gupta @ Udhav Narayan Gupta v. State of Bihar (2024)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N06",
+  "role": "primary",
+  "label": "Shajan Skaria v. State of Kerala (2024)",
+  "status": "IN",
+  "docs": [
+   1000255914
+  ]
+ },
+ {
+  "qid": "N06",
+  "role": "acceptable",
+  "label": "Hitesh Verma v. State of Uttarakhand (2020)",
+  "status": "IN",
+  "docs": [
+   1000252799
+  ]
+ },
+ {
+  "qid": "N06",
+  "role": "acceptable",
+  "label": "Swaran Singh v. State (2008)",
+  "status": "IN",
+  "docs": [
+   32269
+  ]
+ },
+ {
+  "qid": "N06",
+  "role": "acceptable",
+  "label": "Ramesh Chandra Vaishya v. State of U.P. (2023)",
+  "status": "IN",
+  "docs": [
+   1000255070
+  ]
+ },
+ {
+  "qid": "N06",
+  "role": "acceptable",
+  "label": "Prathvi Raj Chauhan v. Union of India (2020)",
+  "status": "IN",
+  "docs": [
+   1000252416
+  ]
+ },
+ {
+  "qid": "N07",
+  "role": "primary",
+  "label": "Sripati Singh v. State of Jharkhand (2021)",
+  "status": "IN",
+  "docs": [
+   1000253391
+  ]
+ },
+ {
+  "qid": "N07",
+  "role": "acceptable",
+  "label": "Sampelly Satyanarayana Rao v. IREDA (2016)",
+  "status": "IN",
+  "docs": [
+   43948
+  ]
+ },
+ {
+  "qid": "N07",
+  "role": "acceptable",
+  "label": "Womb Laboratories v. Vijay Ahuja (2019)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N07",
+  "role": "acceptable",
+  "label": "Indus Airways v. Magnum Aviation (2014)",
+  "status": "IN",
+  "docs": [
+   41392
+  ]
+ },
+ {
+  "qid": "N08",
+  "role": "primary",
+  "label": "Yogendra Pratap Singh v. Savitri Pandey (2014)",
+  "status": "IN",
+  "docs": [
+   41940,
+   39246
+  ]
+ },
+ {
+  "qid": "N08",
+  "role": "acceptable",
+  "label": "Sarav Investment v. Llyods Register of Shipping (2007)",
+  "status": "IN",
+  "docs": [
+   29653
+  ]
+ },
+ {
+  "qid": "N08",
+  "role": "trap_old",
+  "label": "Narsingh Das Tapadia v. Goverdhan Das Partani (2000)",
+  "status": "IN",
+  "docs": [
+   17418
+  ],
+  "stale": {
+   "kind": "overruled by Yogendra Pratap Singh (3 judges, 2014)",
+   "counts_as_stale": true
+  }
+ },
+ {
+  "qid": "N09",
+  "role": "primary",
+  "label": "C.C. Alavi Haji v. Palapetty Muhammed (2007)",
+  "status": "IN",
+  "docs": [
+   29085
+  ]
+ },
+ {
+  "qid": "N09",
+  "role": "acceptable",
+  "label": "K. Bhaskaran v. Sankaran Vaidhyan Balan (1999)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N09",
+  "role": "acceptable",
+  "label": "Vinod Shivappa v. Nanda Belliappa (2006)",
+  "status": "IN",
+  "docs": [
+   27788
+  ]
+ },
+ {
+  "qid": "N10",
+  "role": "primary",
+  "label": "Hira Singh v. Union of India (2020)",
+  "status": "IN",
+  "docs": [
+   1000252568
+  ]
+ },
+ {
+  "qid": "N10",
+  "role": "trap_old",
+  "label": "E. Micheal Raj v. Intelligence Officer, NCB (2008)",
+  "status": "IN",
+  "docs": [
+   30812
+  ],
+  "stale": {
+   "kind": "held 'not a good law' in Hira Singh (3 judges, 2020)",
+   "counts_as_stale": true
+  }
+ },
+ {
+  "qid": "N11",
+  "role": "primary",
+  "label": "Madan Lal v. State of H.P. (2003)",
+  "status": "IN",
+  "docs": [
+   19299
+  ]
+ },
+ {
+  "qid": "N11",
+  "role": "acceptable",
+  "label": "Avtar Singh v. State of Punjab (2002)",
+  "status": "IN",
+  "docs": [
+   18827
+  ]
+ },
+ {
+  "qid": "N11",
+  "role": "acceptable",
+  "label": "Mohan Lal v. State of Rajasthan (2015)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N11",
+  "role": "acceptable",
+  "label": "Dharampal Singh v. State of Punjab (2010)",
+  "status": "IN",
+  "docs": [
+   36871
+  ]
+ },
+ {
+  "qid": "N11",
+  "role": "acceptable",
+  "label": "Sorabkhan Gandhkhan Pathan v. State of Gujarat (2004)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N11",
+  "role": "acceptable",
+  "label": "Union of India v. Md. Nawaz Khan (2021)",
+  "status": "IN",
+  "docs": [
+   1000253281
+  ]
+ },
+ {
+  "qid": "N13",
+  "role": "primary",
+  "label": "Hridaya Ranjan Prasad Verma v. State of Bihar (2000)",
+  "status": "IN",
+  "docs": [
+   20323
+  ]
+ },
+ {
+  "qid": "N13",
+  "role": "acceptable",
+  "label": "Sripati Singh v. State of Jharkhand (2021)",
+  "status": "IN",
+  "docs": [
+   1000253391
+  ]
+ },
+ {
+  "qid": "N13",
+  "role": "acceptable",
+  "label": "Sarabjit Kaur v. State of Punjab (2023)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N13",
+  "role": "acceptable",
+  "label": "Delhi Race Club (1940) v. State of U.P. (2024)",
+  "status": "IN",
+  "docs": [
+   1000255917
+  ]
+ },
+ {
+  "qid": "N14",
+  "role": "primary",
+  "label": "Sharat Babu Digumarti v. Govt. of NCT of Delhi (2016)",
+  "status": "IN",
+  "docs": [
+   44402
+  ]
+ },
+ {
+  "qid": "N15",
+  "role": "primary",
+  "label": "Rajnesh v. Neha (2020)",
+  "status": "IN",
+  "docs": [
+   1000252794
+  ],
+  "note": "The key gives the SCC cite (2020) 15 SCC 17; later judgments in the index cite (2021) 2 SCC 324 (e.g. doc 1000255376). Decided 4 Nov 2020."
+ },
+ {
+  "qid": "N15",
+  "role": "acceptable",
+  "label": "Shyamlal Devda v. Parimala (2020)",
+  "status": "IN",
+  "docs": [
+   1000252355
+  ],
+  "note": "The indexed judgment is about territorial jurisdiction under s.27 DV Act; it does not mention interim maintenance or social justice (the key says it does). Its SCC cite (2020) 3 SCC 14 is not repeated in any other indexed judgment. Mr. Advocate: keep or remove?"
+ },
+ {
+  "qid": "N15",
+  "role": "acceptable",
+  "label": "Juveria Abdul Majid Patni v. Atif Iqbal Mansoori (2014)",
+  "status": "IN",
+  "docs": [
+   1000004478
+  ]
+ },
+ {
+  "qid": "N16",
+  "role": "primary",
+  "label": "State of M.P. v. Jogendra (2022)",
+  "status": "IN",
+  "docs": [
+   1000253600
+  ]
+ },
+ {
+  "qid": "N16",
+  "role": "acceptable",
+  "label": "Rajinder Singh v. State of Punjab (2015)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N16",
+  "role": "note",
+  "label": "Appasaheb v. State of Maharashtra (2007) (not a counted trap)",
+  "status": "IN",
+  "docs": [
+   31195
+  ],
+  "stale": {
+   "kind": "held in Rajinder Singh (2015, not in the index) not to state the law correctly; key says not counted; Mr. Advocate to decide",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "N17",
+  "role": "primary",
+  "label": "Rupali Devi v. State of U.P. (2019)",
+  "status": "IN",
+  "docs": [
+   1000251591
+  ]
+ },
+ {
+  "qid": "N17",
+  "role": "note",
+  "label": "Y. Abraham Ajith v. Inspector of Police (2004) (not a counted trap)",
+  "status": "IN",
+  "docs": [
+   26334
+  ],
+  "stale": {
+   "kind": "narrower view; departed from, not overruled, by Rupali Devi; Mr. Advocate to decide",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "N18",
+  "role": "primary",
+  "label": "In Re: Right to Privacy of Adolescents (2024)",
+  "status": "IN",
+  "docs": [
+   1000255899
+  ]
+ },
+ {
+  "qid": "N18",
+  "role": "acceptable",
+  "label": "Independent Thought v. Union of India (2017)",
+  "status": "LEFT_OUT",
+  "docs": [
+   1000250306
+  ]
+ },
+ {
+  "qid": "N18",
+  "role": "acceptable",
+  "label": "Anversinh v. State of Gujarat (2021)",
+  "status": "IN",
+  "docs": [
+   1000252878
+  ]
+ },
+ {
+  "qid": "N19",
+  "role": "primary",
+  "label": "P. Yuvaprakash v. State (2023)",
+  "status": "IN",
+  "docs": [
+   1000255124
+  ],
+  "note": "About the age of a victim, not of an accused (round 1); the writer now lists it as primary together with Rishipal Singh Solanki."
+ },
+ {
+  "qid": "N19",
+  "role": "primary",
+  "label": "Rishipal Singh Solanki v. State of U.P. (2022)",
+  "status": "IN",
+  "docs": [
+   1000253442
+  ]
+ },
+ {
+  "qid": "N19",
+  "role": "acceptable",
+  "label": "Vinod Katara v. State of U.P. (2022/24)",
+  "status": "IN",
+  "docs": [
+   1000254297
+  ]
+ },
+ {
+  "qid": "N19",
+  "role": "acceptable",
+  "label": "Suresh v. State of U.P. (2024)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N20",
+  "role": "primary",
+  "label": "State of H.P. v. Mango Ram (2000)",
+  "status": "IN",
+  "docs": [
+   17136
+  ]
+ },
+ {
+  "qid": "N20",
+  "role": "acceptable",
+  "label": "State of Punjab v. Gurmit Singh (1996)",
+  "status": "IN",
+  "docs": [
+   16186
+  ]
+ },
+ {
+  "qid": "N20",
+  "role": "acceptable",
+  "label": "Mahmood Farooqui v. State (Govt. of NCT of Delhi) (2017)",
+  "status": "ABSENT",
+  "docs": [],
+  "note": "Not in the index. The cite (2017) 6 SCC 631 given in the key is the cite of Vasanta Sampat Dupare v. State of Maharashtra in later judgments; Claude believes the Farooqui judgment is a Delhi High Court decision. Mr. Advocate to check."
+ },
+ {
+  "qid": "N21",
+  "role": "primary",
+  "label": "Gunwantlal v. State of M.P. (1972)",
+  "status": "IN",
+  "docs": [
+   1000000735
+  ]
+ },
+ {
+  "qid": "N21",
+  "role": "acceptable",
+  "label": "Sanjay Dutt v. State through CBI (1994)",
+  "status": "IN",
+  "docs": [
+   1000001771
+  ]
+ },
+ {
+  "qid": "N21",
+  "role": "acceptable",
+  "label": "State of Jharkhand v. Jagdish Lakra (2026; after 30 June)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N22",
+  "role": "primary",
+  "label": "Alister Anthony Pareira v. State of Maharashtra (2012)",
+  "status": "IN",
+  "docs": [
+   38962
+  ]
+ },
+ {
+  "qid": "N22",
+  "role": "acceptable",
+  "label": "State v. Sanjeev Nanda (2012)",
+  "status": "IN",
+  "docs": [
+   35162
+  ]
+ },
+ {
+  "qid": "N23",
+  "role": "primary",
+  "label": "Laxman v. State of Maharashtra (2002)",
+  "status": "IN",
+  "docs": [
+   18615
+  ]
+ },
+ {
+  "qid": "N23",
+  "role": "acceptable",
+  "label": "Koli Chunilal Savji v. State of Gujarat (1999)",
+  "status": "IN",
+  "docs": [
+   16637
+  ]
+ },
+ {
+  "qid": "N23",
+  "role": "acceptable",
+  "label": "Surendra Bangali v. State of Jharkhand (2021)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N23",
+  "role": "trap_old",
+  "label": "Paparambaka Rosamma v. State of A.P. (1999)",
+  "status": "IN",
+  "docs": [
+   16680
+  ],
+  "stale": {
+   "kind": "held not correctly decided in Laxman (Constitution Bench, 2002)",
+   "counts_as_stale": true
+  }
+ },
+ {
+  "qid": "N23",
+  "role": "trap_old",
+  "label": "Laxmi v. Om Prakash (2001)",
+  "status": "LEFT_OUT",
+  "docs": [
+   1000003312
+  ],
+  "stale": {
+   "kind": "narrower or contested",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "N24",
+  "role": "primary",
+  "label": "Kushal Kumar Agarwal v. Directorate of Enforcement (2025)",
+  "status": "IN",
+  "docs": [
+   1000256707
+  ]
+ },
+ {
+  "qid": "N24",
+  "role": "trap_old",
+  "label": "Manharibhai Muljibhai Kakadia v. Shaileshbhai Mohanbhai Patel (2012)",
+  "status": "IN",
+  "docs": [
+   39617
+  ],
+  "stale": {
+   "kind": "replaced for complaints filed from 1 July 2024 by the first proviso to s.223(1) BNSS",
+   "counts_as_stale": true
+  }
+ },
+ {
+  "qid": "N25",
+  "role": "primary",
+  "label": "Neeraj Dutta v. State (Govt. of NCT of Delhi) (2022)",
+  "status": "IN",
+  "docs": [
+   1000254584
+  ]
+ },
+ {
+  "qid": "N25",
+  "role": "acceptable",
+  "label": "Jagtar Singh v. State of Punjab (2023)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N25",
+  "role": "acceptable",
+  "label": "P. Satyanarayana Murthy v. Dist. Inspector of Police (2015)",
+  "status": "IN",
+  "docs": [
+   42944
+  ]
+ },
+ {
+  "qid": "N25",
+  "role": "note",
+  "label": "B. Jayaraj v. State of A.P. (2014) (not a counted trap)",
+  "status": "IN",
+  "docs": [
+   41352
+  ],
+  "stale": {
+   "kind": "narrowed by Neeraj Dutta; not overruled",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "N26",
+  "role": "primary",
+  "label": "Bilkis Yakub Rasool v. Union of India (2024)",
+  "status": "IN",
+  "docs": [
+   1000255467
+  ]
+ },
+ {
+  "qid": "N26",
+  "role": "acceptable",
+  "label": "Union of India v. V. Sriharan (2015/16)",
+  "status": "IN",
+  "docs": [
+   43153
+  ]
+ },
+ {
+  "qid": "N26",
+  "role": "trap_old",
+  "label": "Radheshyam Bhagwandas Shah v. State of Gujarat (2022)",
+  "status": "ABSENT",
+  "docs": [],
+  "stale": {
+   "kind": "NOT IN THE INDEX: the older ruling cannot be shown, so the trap cannot be measured",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "N27",
+  "role": "primary",
+  "label": "Mallikarjun Kodagali v. State of Karnataka (2018)",
+  "status": "IN",
+  "docs": [
+   1000251075
+  ]
+ },
+ {
+  "qid": "N27",
+  "role": "acceptable",
+  "label": "Vishnu Kumar Gupta v. State of M.P. (2026; after 30 June)",
+  "status": "ABSENT",
+  "docs": []
+ },
+ {
+  "qid": "N27",
+  "role": "acceptable",
+  "label": "Celestium Financial v. A. Gnanasekaran (2025)",
+  "status": "IN",
+  "docs": [
+   1000256564
+  ]
+ },
+ {
+  "qid": "N27",
+  "role": "note",
+  "label": "Satya Pal Singh v. State of M.P. (2015) (not a counted trap)",
+  "status": "IN",
+  "docs": [
+   43002
+  ],
+  "stale": {
+   "kind": "read as misunderstood by the Mallikarjun Kodagali majority; not overruled",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "NR1",
+  "role": "primary",
+  "label": "Enforcement Directorate v. Kapil Wadhawan (2023)",
+  "status": "IN",
+  "docs": [
+   1000254853
+  ]
+ },
+ {
+  "qid": "NR1",
+  "role": "acceptable",
+  "label": "Chaganti Satyanarayana v. State of A.P. (1986)",
+  "status": "IN",
+  "docs": [
+   9024
+  ]
+ },
+ {
+  "qid": "NR1",
+  "role": "trap_old",
+  "label": "State of M.P. v. Rustam (1995)",
+  "status": "ABSENT",
+  "docs": [],
+  "stale": {
+   "kind": "narrower or contested",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "NR2",
+  "role": "primary",
+  "label": "Arup Bhuyan v. State of Assam (2023)",
+  "status": "IN",
+  "docs": [
+   1000254850
+  ]
+ },
+ {
+  "qid": "NR2",
+  "role": "trap_old",
+  "label": "Arup Bhuyan v. State of Assam (2011)",
+  "status": "IN",
+  "docs": [
+   37441
+  ],
+  "stale": {
+   "kind": "narrower or contested",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "NR2",
+  "role": "trap_old",
+  "label": "State of Kerala v. Raneef (2010/11)",
+  "status": "IN",
+  "docs": [
+   37314
+  ],
+  "stale": {
+   "kind": "narrower or contested",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "NR2",
+  "role": "trap_old",
+  "label": "Indra Das v. State of Assam (2011)",
+  "status": "IN",
+  "docs": [
+   37455
+  ],
+  "stale": {
+   "kind": "narrower or contested",
+   "counts_as_stale": false
+  }
+ },
+ {
+  "qid": "NR3",
+  "role": "note",
+  "label": "Vishnu Kumar Gupta v. State of M.P. (2026) (post-cutoff; K2 reserve)",
+  "status": "ABSENT",
+  "docs": [],
+  "stale": {
+   "kind": "narrower or contested",
+   "counts_as_stale": false
+  }
+ }
+]

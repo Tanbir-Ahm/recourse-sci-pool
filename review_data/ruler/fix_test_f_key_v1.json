@@ -1,0 +1,1406 @@
+{
+ "built": "2026-10-12",
+ "questions": {
+  "N01": {
+   "authorities": [
+    {
+     "index_docs": [],
+     "label": "Siddharth v. State of U.P. (2021)",
+     "role": "primary",
+     "where": "absent"
+    },
+    {
+     "index_docs": [],
+     "label": "Aman Preet Singh v. CBI (2021)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      1000254065
+     ],
+     "label": "Satender Kumar Antil v. CBI (2022)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Joginder Kumar v. State of U.P. (1994)",
+     "role": "acceptable",
+     "where": "absent"
+    }
+   ],
+   "code": "BNSS applies: the FIR and investigation are from 2025, after 1 July 2024, so the charge-sheet is filed under s.193 BNSS and s.190 BNSS governs production of the accused. The rule is the same as under s.170 CrPC. If the alleged cheating took place after 1 July 2024, the offence is BNS s.318(4); before that date, IPC s.420.",
+   "conf": "C",
+   "expected_answer": "No. Section 190 BNSS (old s.170 CrPC) does not oblige the officer to arrest every accused when filing the charge-sheet. 'Custody' there only means presenting the accused before the court. If he has joined the investigation and there is no reason to think he will abscond or ignore summons, he need not be arrested. The magistrate cannot refuse to take the charge-sheet on record because the accused was not produced in custody; the ordinary course is to issue summons.",
+   "how_verified": "Read judgment text (Siddharth: full text, copy hosted by MP State Judicial Academy). Aman Preet Singh and Antil not opened.",
+   "id": "N01",
+   "key_docs": [
+    1000254065
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "None known.",
+   "other_acceptable": "Aman Preet Singh v. CBI, SC, 2 Sep 2021, Crl. A. 929 of 2021 (s.170 does not require arrest; summons ordinarily to issue); Satender Kumar Antil v. CBI, (2022) 10 SCC 51 (endorsing Siddharth on s.170 and setting guidelines); Joginder Kumar v. State of U.P., (1994) 4 SCC 260 (power to arrest versus justification for arrest)",
+   "primary_authority": "Siddharth v. State of Uttar Pradesh, Supreme Court, 16 Aug 2021, Crl. A. 838 of 2021, (2022) 1 SCC 676 (Kaul & Roy JJ.)",
+   "primary_key_docs": [],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://mpsja.mphc.gov.in/Joti/pdf/LU/Siddharth_vs_The_State_Of_Uttar_Pradesh_on_16_August_2021.PDF\nhttps://www.livelaw.in/amp/top-stories/supreme-court-section-170-crpc-custody-arrest-filing-of-charge-sheet-179865\nhttps://vakeel360.com/crpc-to-bnss/section-170-cases-to-magistrate",
+   "stale_docs": [],
+   "to_verify": "Confirm the SCC citation (2022) 1 SCC 676. Aman Preet Singh and Antil were not opened. Antil was also used in the earlier 30 (on a different point); our duplicate check may flag it. Confirm the CrPC 170 to BNSS 190 mapping against the India Code text."
+  },
+  "N02": {
+   "authorities": [
+    {
+     "index_docs": [
+      14580
+     ],
+     "label": "D.K. Basu v. State of West Bengal (1996/97)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      41736
+     ],
+     "label": "Arnesh Kumar v. State of Bihar (2014)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Joginder Kumar v. State of U.P. (1994)",
+     "role": "acceptable",
+     "where": "absent"
+    }
+   ],
+   "code": "BNSS s.58(2) (old CrPC s.57) and Article 22(2) apply whatever the date. Even if the pills are found to be NDPS contraband, the NDPS Act (s.36A, s.52A) does not extend the 24-hour production limit.",
+   "conf": "C",
+   "expected_answer": "No. Under Article 22(2) of the Constitution and s.58(2) BNSS (old s.57/167 CrPC), every person arrested must be produced before the nearest Magistrate within 24 hours of arrest, excluding the time of the journey. This is a non-derogable right. The police cannot detain anyone beyond 24 hours without a Magistrate's remand order, regardless of the nature of the offence or whether investigation is complete. The NDPS Act does not override this requirement.",
+   "how_verified": "Read judgment text (D.K. Basu on Indian Kanoon). Arnesh Kumar and Joginder Kumar read through secondary sources.",
+   "id": "N02",
+   "key_docs": [
+    14580,
+    41736
+   ],
+   "neighbour_regime": "NDPS Act procedural provisions (s.36A, s.52A), which do not extend the 24-hour Magistrate-production requirement",
+   "older_ruling": "None known.",
+   "other_acceptable": "Arnesh Kumar v. State of Bihar, (2014) 8 SCC 273 (arrest safeguards; endorses D.K. Basu); Joginder Kumar v. State of U.P., (1994) 4 SCC 260 (guidelines on arrest and production); statute: Article 22(2), BNSS s.58(2), old CrPC s.57",
+   "primary_authority": "D.K. Basu v. State of West Bengal, Supreme Court, (1997) 1 SCC 416",
+   "primary_key_docs": [
+    14580
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "source_urls": "https://future.indiankanoon.org/doc/501198\nhttps://www.livelaw.in/amp/top-stories/supreme-court-dk-basu-guidelines-arrest-police-custody-11-requirements-guidelines",
+   "stale_docs": [],
+   "to_verify": "Confirm the SCC citation (1997) 1 SCC 416. Arnesh Kumar was used in the earlier 30 on a different point (necessity of arrest); our duplicate check may flag the name. Confirm 24-hour counting (arrest hour excluded)."
+  },
+  "N03": {
+   "authorities": [
+    {
+     "index_docs": [
+      4587
+     ],
+     "label": "Niranjan Singh v. Prabhakar Rajaram Kharote (1980)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      41343
+     ],
+     "label": "Sundeep Kumar Bafna v. State of Maharashtra (2014)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "CrPC s.439 applies, as the question states (proceedings that began before 1 July 2024 continue under the CrPC by s.531 BNSS). For proceedings from 1 July 2024, BNSS s.483 has the same rule.",
+   "conf": "C",
+   "expected_answer": "Yes. A person is 'in custody' for s.439 CrPC once he physically appears before the court and submits to its jurisdiction and directions. Arrest by police is not needed. Having surrendered, he can apply for regular bail to the Sessions Court or the High Court, and the court can decide it. The BNSS equivalent of s.439 is s.483.",
+   "how_verified": "Read judgment text (Sundeep Kumar Bafna, official SC PDF, which quotes Niranjan Singh's holding verbatim). Niranjan Singh's own text not opened.",
+   "id": "N03",
+   "key_docs": [
+    4587,
+    41343
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "None known.",
+   "other_acceptable": "Sundeep Kumar Bafna v. State of Maharashtra, Supreme Court, 27 Mar 2014, (2014) 16 SCC 623, Crl. A. 689 of 2014 (follows Niranjan Singh; holds it binding)",
+   "primary_authority": "Niranjan Singh v. Prabhakar Rajaram Kharote, Supreme Court, (1980) 2 SCC 559",
+   "primary_key_docs": [
+    4587
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/jonew/judis/41343.pdf\nhttps://www.livelaw.in/amp/accused-can-directly-approach-high-court-sessions-court-regular-bail-necessary-accused-apply-magistrate-first-sc",
+   "stale_docs": [],
+   "to_verify": "Niranjan Singh read only as quoted in Sundeep Kumar Bafna. Confirm the SCC citations."
+  },
+  "N04": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000252765
+     ],
+     "label": "Bikramjit Singh v. State of Punjab (2020)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000001711
+     ],
+     "label": "Hitendra Vishnu Thakur v. State of Maharashtra (1994)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000252778
+     ],
+     "label": "M. Ravindran v. Intelligence Officer, DRI (2020/21)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "CrPC s.167(2) read with UAPA s.43D(2) applies to an arrest before 1 July 2024. For an arrest from that date, BNSS s.187(3) is read with UAPA s.43D(2) to the same effect.",
+   "conf": "C",
+   "expected_answer": "No. Under the UAPA, only the Special Court (or, where no Special Court is designated, the Court of Session) can extend the investigation period from 90 to 180 days under s.43D(2)(b). A Magistrate has no such power, so his extension order is invalid. If the accused applies for default bail after 90 days and before the charge-sheet is filed, the right to default bail is complete. A later charge-sheet, or a wrong rejection of the application, does not defeat it.",
+   "how_verified": "Read judgment text (official SC PDF).",
+   "id": "N04",
+   "key_docs": [
+    1000001711,
+    1000252765,
+    1000252778
+   ],
+   "neighbour_regime": "Ordinary default bail under CrPC 167(2) / BNSS 187(3): 60/90-day limits and the Magistrate's ordinary remand power",
+   "older_ruling": "None known. Note: M. Ravindran was disapproved in ED v. Kapil Wadhawan (2023) only on counting the remand day, not on the point used here.",
+   "other_acceptable": "Hitendra Vishnu Thakur v. State of Maharashtra, (1994) 4 SCC 602 (extension needs the Public Prosecutor's report, under the TADA analogue); M. Ravindran v. Intelligence Officer, DRI, (2021) 2 SCC 485 (right is 'availed' by applying; later charge-sheet does not defeat it)",
+   "primary_authority": "Bikramjit Singh v. State of Punjab, Supreme Court (3 judges), 12 Oct 2020, Crl. A. 667 of 2020, (2020) 10 SCC 616",
+   "primary_key_docs": [
+    1000252765
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2020/10353/10353_2020_33_1502_24337_Judgement_12-Oct-2020.pdf\nhttps://www.livelaw.in/amp/top-stories/all-uapa-offences-are-exclusively-triable-by-special-courts-set-up-under-nia-act-164344",
+   "stale_docs": [],
+   "to_verify": "Confirm the SCC citation (2020) 10 SCC 616. Note: UAPA bail on merits (s.43D(5), K.A. Najeeb) was referred to a larger bench in May 2026. This question avoids that point; it is about default bail only."
+  },
+  "N05": {
+   "authorities": [
+    {
+     "index_docs": [],
+     "label": "Dilip Singh v. State of M.P. (2021)",
+     "role": "primary",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      1000255096
+     ],
+     "label": "Ramesh Kumar v. State (NCT of Delhi) (2023)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "U.N. Gupta @ Udhav Narayan Gupta v. State of Bihar (2024)",
+     "role": "acceptable",
+     "where": "absent"
+    }
+   ],
+   "code": "BNSS applies: the case was registered last year (2025), after 1 July 2024, so bail is under s.483 BNSS (old s.439 CrPC). If the conduct was after 1 July 2024, the offences are BNS s.318(4) (cheating) and s.316 (criminal breach of trust).",
+   "conf": "C",
+   "expected_answer": "Generally no. Bail conditions exist to secure the accused's presence and a fair investigation and trial, not to recover money for the complainant. The Supreme Court has repeatedly struck down conditions requiring deposit of the disputed amount, holding that a criminal court granting bail is not a recovery agent. Bail must be decided on the usual principles (nature of the accusation, risk of absconding or tampering), and any condition must be reasonable and connected to those aims.",
+   "how_verified": "Read judgment text (Dilip Singh order text). Ramesh Kumar and U.N. Gupta through secondary reports only.",
+   "id": "N05",
+   "key_docs": [
+    1000255096
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "None known.",
+   "other_acceptable": "Ramesh Kumar v. State (NCT of Delhi), 2023 INSC 596 (monetary deposit condition set aside); U.N. Gupta @ Udhav Narayan Gupta v. State of Bihar, SC, 2024 (courts not recovery agents; 25% deposit condition set aside)",
+   "primary_authority": "Dilip Singh v. State of Madhya Pradesh, Supreme Court, 19 Jan 2021, Crl. A. 53 of 2021, (2021) 2 SCC 779",
+   "primary_key_docs": [],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://mpsja.mphc.gov.in/Joti/pdf/LU/Dilip%20SIngh%20v%20State%20of%20MP.pdf\nhttps://www.casemine.com/commentary/in/limits-on-monetary-conditions-for-anticipatory-bail:-ramesh-kumar-v.-the-state-of-nct-of-delhi/view\nhttps://www.verdictum.in/court-updates/supreme-court/un-gupta-udhav-narayan-gupta-v-state-of-bihar-recovery-agents-for-realization-of-dues-of-complainant-bail-or-pre-arrest-bail-patna-high-court-1545248",
+   "stale_docs": [],
+   "to_verify": "Ramesh Kumar and U.N. Gupta were read only through secondary reports; confirm their citations. Confirm the SCC citation of Dilip Singh."
+  },
+  "N06": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000255914
+     ],
+     "label": "Shajan Skaria v. State of Kerala (2024)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000252799
+     ],
+     "label": "Hitesh Verma v. State of Uttarakhand (2020)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      32269
+     ],
+     "label": "Swaran Singh v. State (2008)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000255070
+     ],
+     "label": "Ramesh Chandra Vaishya v. State of U.P. (2023)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000252416
+     ],
+     "label": "Prathvi Raj Chauhan v. Union of India (2020)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "SC/ST Act s.3(1)(r)/(s) and s.18 apply whatever the date. Anticipatory bail is under BNSS s.482 for an FIR registered from 1 July 2024, and CrPC s.438 before that. Any accompanying general offences (insult, intimidation) are BNS s.352/351 or IPC s.504/506 depending on the date of the incident.",
+   "conf": "C",
+   "expected_answer": "No. The bar on anticipatory bail in s.18 of the SC/ST Act applies only where the complaint, read as a whole, prima facie discloses an offence under that Act. For intentional insult under s.3(1)(r), the insult must be in a place 'within public view'. It must also be meant to humiliate the person because of his caste, not merely because of a private quarrel. Abuse inside a house with only the complainant's family present is not in public view. Where these ingredients are missing, the court can consider anticipatory bail normally.",
+   "how_verified": "Read judgment text (Shajan Skaria judgment PDF). Hitesh Verma through a LiveLaw report.",
+   "id": "N06",
+   "key_docs": [
+    32269,
+    1000252416,
+    1000252799,
+    1000255070,
+    1000255914
+   ],
+   "neighbour_regime": "Ordinary insult and intimidation (IPC 504/506, BNS 352/351) and ordinary anticipatory bail rules (CrPC 438 / BNSS 482)",
+   "older_ruling": "None known for the point asked. (Subhash Kashinath Mahajan, 2018, concerns pre-arrest safeguards, not this point.)",
+   "other_acceptable": "Hitesh Verma v. State of Uttarakhand, (2020) 10 SCC 710 (abuse within four walls with no public present is not 'public view'; insult must be because of caste); Swaran Singh v. State, (2008) 8 SCC 435 (meaning of 'public view'); Ramesh Chandra Vaishya v. State of U.P., 2023 SCC OnLine SC 668; Prathvi Raj Chauhan v. Union of India, (2020) 4 SCC 727 (s.18 bar does not apply without a prima facie case)",
+   "primary_authority": "Shajan Skaria v. State of Kerala, Supreme Court, 2024 INSC 625, Crl. A. 2622 of 2024 (Pardiwala & Misra JJ.)",
+   "primary_key_docs": [
+    1000255914
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "source_urls": "https://www.verdictum.in/pdf_upload/shajan-skaria-v-the-state-of-keralawatermark-1648338.pdf\nhttps://www.livelaw.in/amp/top-stories/insulting-or-abusing-sc-st-person-within-four-walls-of-house-not-offence-165610",
+   "stale_docs": [],
+   "to_verify": "DUPLICATE RISK: the earlier set's Q25 asked whether anticipatory bail is maintainable under the SC/ST Act (answer cited Prathvi Raj Chauhan). This question's core is different (public view and caste intent), but our duplicate check may flag it. Reserve NR1 (domain B) can replace it. Confirm the date of Shajan Skaria (August 2024)."
+  },
+  "N07": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000253391
+     ],
+     "label": "Sripati Singh v. State of Jharkhand (2021)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      43948
+     ],
+     "label": "Sampelly Satyanarayana Rao v. IREDA (2016)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Womb Laboratories v. Vijay Ahuja (2019)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      41392
+     ],
+     "label": "Indus Airways v. Magnum Aviation (2014)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "NI Act s.138 applies whatever the date. Complaint procedure is under the BNSS if the complaint is filed from 1 July 2024, and under the CrPC before.",
+   "conf": "C",
+   "expected_answer": "Yes, it can. A cheque given 'as security' is not automatically outside s.138 NI Act. If the loan had become due on the agreed date and was not repaid, the cheque was presented for a legally enforceable debt. Its dishonour, followed by a valid notice and non-payment within 15 days, attracts s.138. Whether the debt was in fact due, or had already been repaid, is a defence to be proved at trial. It is different where the cheque secured a payment that never became due (for example, an advance against an order later cancelled).",
+   "how_verified": "Read judgment text (official SC PDF).",
+   "id": "N07",
+   "key_docs": [
+    41392,
+    43948,
+    1000253391
+   ],
+   "neighbour_regime": "Cheating (IPC 420 / BNS 318(4)) and civil recovery of a loan",
+   "older_ruling": "None known (Indus Airways is a distinguishable fact pattern, not an overruled ruling).",
+   "other_acceptable": "Sampelly Satyanarayana Rao v. Indian Renewable Energy Development Agency Ltd., (2016) 10 SCC 458 (debt existing on date of cheque: s.138 applies); Womb Laboratories Pvt. Ltd. v. Vijay Ahuja, SC, Crl. A. 1382-1383 of 2019 ('security' is a defence for trial); Indus Airways Pvt. Ltd. v. Magnum Aviation Pvt. Ltd., (2014) 12 SCC 539 (distinguished: advance for a cancelled purchase order)",
+   "primary_authority": "Sripati Singh v. State of Jharkhand, Supreme Court, 28 Oct 2021, Crl. A. 1269-1270 of 2021 (Bopanna & M.R. Shah JJ.)",
+   "primary_key_docs": [
+    1000253391
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "source_urls": "https://main.sci.gov.in/supremecourt/2020/920/920_2020_13_1501_31011_Judgement_28-Oct-2021.pdf\nhttps://www.livelaw.in/amp/top-stories/supreme-court-security-cheque-dishonour-138-negotiable-instrument-act-184598",
+   "stale_docs": [],
+   "to_verify": "Confirm the SCC or neutral citation for Sripati Singh (2021 SCC OnLine SC 1002 is believed but not checked)."
+  },
+  "N08": {
+   "authorities": [
+    {
+     "index_docs": [
+      41940,
+      39246
+     ],
+     "label": "Yogendra Pratap Singh v. Savitri Pandey (2014)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      29653
+     ],
+     "label": "Sarav Investment v. Llyods Register of Shipping (2007)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      17418
+     ],
+     "label": "Narsingh Das Tapadia v. Goverdhan Das Partani (2000)",
+     "role": "trap_old",
+     "where": "in_index"
+    }
+   ],
+   "code": "NI Act s.138/142 applies whatever the date. Complaint procedure is under the CrPC for a complaint filed before 1 July 2024 (as here) and the BNSS after.",
+   "conf": "C",
+   "expected_answer": "No. Under s.138(c) and s.142(b) NI Act, the cause of action arises only when the drawer fails to pay within 15 days of receiving the notice. A complaint filed before those 15 days end is no complaint in law. Cognizance cannot be taken on it, even if the 15 days have passed by the date of cognizance. The complainant's remedy is a fresh complaint. Where an earlier complaint fails on this ground, the delay in filing the fresh complaint can be condoned under the proviso to s.142(b). Here the drawer's 15 days ran to 18 April, so a complaint filed on 10 April was premature.",
+   "how_verified": "Read judgment text (SC judgment copy hosted on the Rajasthan High Court site).",
+   "id": "N08",
+   "key_docs": [
+    29653,
+    39246,
+    41940
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "OLDER RULING: Narsingh Das Tapadia v. Goverdhan Das Partani, (2000) 7 SCC 183, Supreme Court, 2000. CHANGE: Yogendra Pratap Singh v. Savitri Pandey, 3-judge bench, 2014. WHAT CHANGED: Narsingh Das Tapadia held that a premature complaint becomes maintainable if cognizance is taken after the 15 days expire; Yogendra Pratap Singh overruled it on that point and held such a complaint is not maintainable at all. CURRENT AUTHORITY: Yogendra Pratap Singh (2014).",
+   "other_acceptable": "Sarav Investment & Financial Consultancy (P) Ltd. v. Llyods Register of Shipping, (2007) 14 SCC 753 (approved in Yogendra Pratap Singh)",
+   "primary_authority": "Yogendra Pratap Singh v. Savitri Pandey, Supreme Court (3 judges), 19 Sep 2014, (2014) 10 SCC 713, [2014] 12 SCR 26, Crl. A. 605 of 2012",
+   "primary_key_docs": [
+    39246,
+    41940
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://hcraj.nic.in/sci/2012/4-605-2012_2014-09-19.pdf\nhttps://www.livelaw.in/amp/breaking-complaint-dis-honour-cheque-138-ni-act-maintainable-expiry-15-days-notice-period-remedy-re-present-file-fresh-complaint-jt-narsingh-das-ta",
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 17418,
+     "kind": "overruled by Yogendra Pratap Singh (3 judges, 2014)",
+     "label": "Narsingh Das Tapadia v. Goverdhan Das Partani (2000)"
+    }
+   ],
+   "to_verify": "Check that Narsingh Das Tapadia is in our index (needed for the trap to be measured). Confirm that the 15 days from receipt on 3 April end on 18 April (the receipt day is excluded)."
+  },
+  "N09": {
+   "authorities": [
+    {
+     "index_docs": [
+      29085
+     ],
+     "label": "C.C. Alavi Haji v. Palapetty Muhammed (2007)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "K. Bhaskaran v. Sankaran Vaidhyan Balan (1999)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      27788
+     ],
+     "label": "Vinod Shivappa v. Nanda Belliappa (2006)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "NI Act s.138 and General Clauses Act s.27 apply whatever the date. Complaint procedure is under the BNSS for complaints filed from 1 July 2024 (old CrPC before).",
+   "conf": "C",
+   "expected_answer": "Yes. A notice sent by registered post to the drawer's correct address is presumed served under s.27 of the General Clauses Act, unless the drawer proves he did not receive it and was not responsible for that. A return marked 'unclaimed' or 'refused' does not defeat the complaint. A drawer who says he never got the notice can pay the cheque amount within 15 days of receiving the court summons with the complaint. If he does not pay, he cannot then argue that the notice was not served.",
+   "how_verified": "Read judgment text (full text on LegalAuthority). Vinod Shivappa not opened.",
+   "id": "N09",
+   "key_docs": [
+    27788,
+    29085
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "None known.",
+   "other_acceptable": "K. Bhaskaran v. Sankaran Vaidhyan Balan, (1999) 7 SCC 510 (giving and receipt of notice; presumption of service); Vinod Shivappa v. Nanda Belliappa, (2006) 6 SCC 456 (evasion of notice)",
+   "primary_authority": "C.C. Alavi Haji v. Palapetty Muhammed, Supreme Court (3 judges), 18 May 2007, (2007) 6 SCC 555, Crl. A. 767 of 2007",
+   "primary_key_docs": [
+    29085
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://www.legalauthority.in/judgement/c-c-alavi-haji-vs-palapetty-muhammed-15750\nhttps://itatonline.org/digest/c-c-alavi-haji-v-palapetty-muhammed-2007-6-scc-555-2/",
+   "stale_docs": [],
+   "to_verify": "Vinod Shivappa was not opened; confirm it before keeping it as an acceptable authority."
+  },
+  "N10": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000252568
+     ],
+     "label": "Hira Singh v. Union of India (2020)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      30812
+     ],
+     "label": "E. Micheal Raj v. Intelligence Officer, NCB (2008)",
+     "role": "trap_old",
+     "where": "in_index"
+    }
+   ],
+   "code": "NDPS Act and its quantity notification apply whatever the date. No IPC/BNS issue.",
+   "conf": "C",
+   "expected_answer": "The whole mixture counts. Where a narcotic drug or psychotropic substance is seized mixed with one or more neutral substances, the neutral substance is not excluded. The total weight of the mixture, together with the actual drug content, decides whether the quantity is small, intermediate or commercial (Note 4 of the 2001 notification, inserted in 2009, upheld). The older view that only the pure drug content counts is no longer good law.",
+   "how_verified": "Read judgment text (official SC PDF).",
+   "id": "N10",
+   "key_docs": [
+    1000252568
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "OLDER RULING: E. Micheal Raj v. Intelligence Officer, Narcotic Control Bureau, (2008) 5 SCC 161, Supreme Court, 2008. CHANGE: Hira Singh v. Union of India, 3-judge bench, 22 Apr 2020. WHAT CHANGED: E. Micheal Raj held that only the actual content of the narcotic drug in a mixture counts; Hira Singh held that view 'is not a good law' and that neutral substances count with the drug. CURRENT AUTHORITY: Hira Singh (2020).",
+   "other_acceptable": "No other acceptable authority found beyond the connected matters decided with Hira Singh. Confirmed: no separate Supreme Court judgment decides this point independently.",
+   "primary_authority": "Hira Singh v. Union of India, Supreme Court (3 judges), 22 Apr 2020, Crl. A. 722 of 2017 (Arun Mishra, Indira Banerjee & M.R. Shah JJ.)",
+   "primary_key_docs": [
+    1000252568
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2014/6909/6909_2014_31_1505_21810_Judgement_22-Apr-2020.pdf\nhttps://www.livelaw.in/amp/top-stories/ndps-quantity-neutral-substances-mixture-taken-into-account-along-actual-drug-weight-small-or-commercial-quantity-155647",
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 30812,
+     "kind": "held 'not a good law' in Hira Singh (3 judges, 2020)",
+     "label": "E. Micheal Raj v. Intelligence Officer, NCB (2008)"
+    }
+   ],
+   "to_verify": "Confirm the SCC citation for Hira Singh, (2020) 20 SCC 272, which is believed but not checked. Check that E. Micheal Raj is in our index."
+  },
+  "N11": {
+   "authorities": [
+    {
+     "index_docs": [
+      19299
+     ],
+     "label": "Madan Lal v. State of H.P. (2003)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      18827
+     ],
+     "label": "Avtar Singh v. State of Punjab (2002)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Mohan Lal v. State of Rajasthan (2015)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      36871
+     ],
+     "label": "Dharampal Singh v. State of Punjab (2010)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Sorabkhan Gandhkhan Pathan v. State of Gujarat (2004)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      1000253281
+     ],
+     "label": "Union of India v. Md. Nawaz Khan (2021)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "NDPS Act s.35/54 apply whatever the date. Burden-of-proof background: Evidence Act s.106 before 1 July 2024, BSA s.109 after.",
+   "conf": "G",
+   "expected_answer": "Not automatically. The prosecution must first prove that each accused was in possession, meaning knowledge of and control over the drugs (conscious possession). Once those basic facts are shown, the NDPS Act presumes a culpable mental state and possession (s.35 and s.54), and the accused must show, on a preponderance of probability, that he did not know. Occupants of a private car travelling together who knew each other have been held in conscious possession. A passenger with no proven link or knowledge has been acquitted.",
+   "how_verified": "Secondary source only (LiveLaw explainer; the official text of State of Punjab v. Ram Pal (2009), which cites Madan Lal on s.35/54). Madan Lal's own text not opened.",
+   "id": "N11",
+   "key_docs": [
+    18827,
+    19299,
+    36871,
+    1000253281
+   ],
+   "neighbour_regime": "General possession and burden-of-proof rules (Evidence Act 106 / BSA 109) and ordinary liability of vehicle occupants",
+   "older_ruling": "None known.",
+   "other_acceptable": "Avtar Singh v. State of Punjab, AIR 2002 SC 3343 (other occupants: no presumption against one accused); Mohan Lal v. State of Rajasthan, (2015) 6 SCC 222 (possession is a mental state; s.35); Dharampal Singh v. State of Punjab, (2010) 9 SCC 608 (initial burden on prosecution, then on accused); Sorabkhan Gandhkhan Pathan v. State of Gujarat, (2004) 13 SCC 608 (passenger acquitted without proof of knowledge); Union of India v. Md. Nawaz Khan, (2021) 10 SCC 100",
+   "primary_authority": "Madan Lal v. State of Himachal Pradesh, Supreme Court, (2003) 7 SCC 465",
+   "primary_key_docs": [
+    19299
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://www.livelaw.in/amp/know-the-law/conscious-possession-under-ndps-act-explained-184041\nhttps://api.sci.gov.in/jonew/judis/34923.pdf",
+   "stale_docs": [],
+   "to_verify": "SECONDARY ONLY, so Conf is G. Read Madan Lal (2003) 7 SCC 465 and confirm the vehicle-occupant holding. Mohan Lal v. State of Rajasthan (2015) is a different case from Mohan Lal v. State of Punjab (2018), used in the earlier set; our duplicate check may still flag the name. Confirm the citations of Avtar Singh, Sorabkhan and Md. Nawaz Khan."
+  },
+  "N13": {
+   "authorities": [
+    {
+     "index_docs": [
+      20323
+     ],
+     "label": "Hridaya Ranjan Prasad Verma v. State of Bihar (2000)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000253391
+     ],
+     "label": "Sripati Singh v. State of Jharkhand (2021)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Sarabjit Kaur v. State of Punjab (2023)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      1000255917
+     ],
+     "label": "Delhi Race Club (1940) v. State of U.P. (2024)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "IPC s.420 applies because the FIR is registered under the IPC, meaning the alleged inducement was before 1 July 2024. For conduct from 1 July 2024 it would be BNS s.318(4). Quashing is under BNSS s.528 (old CrPC s.482).",
+   "conf": "C",
+   "expected_answer": "No, not by itself. Cheating needs a fraudulent or dishonest intention at the time the promise or representation was made, which induced the friend to part with the money. A later failure to repay a loan, or the dishonour of a cheque given for it, is at most a breach of contract and a civil wrong. The dishonour has its own remedy under s.138 NI Act. A cheating FIR resting only on non-repayment, with nothing showing deceit at the start, is liable to be quashed.",
+   "how_verified": "Read judgment text (Hridaya Ranjan on Indian Kanoon; Sripati Singh official PDF). Sarabjit Kaur and Delhi Race Club not opened.",
+   "id": "N13",
+   "key_docs": [
+    20323,
+    1000253391,
+    1000255917
+   ],
+   "neighbour_regime": "NI Act section 138 (dishonour of cheque), which a careless search pulls in for the same facts",
+   "older_ruling": "None known.",
+   "other_acceptable": "Sripati Singh v. State of Jharkhand, SC, 28 Oct 2021 (on loan and security-cheque facts, the s.420 IPC complaint was held not sustainable while the s.138 complaint went on); Sarabjit Kaur v. State of Punjab, (2023) 5 SCC 360 (breach of contract is not cheating without intention at inception); Delhi Race Club (1940) Ltd. v. State of U.P., 2024 INSC 626",
+   "primary_authority": "Hridaya Ranjan Prasad Verma v. State of Bihar, Supreme Court, 31 Mar 2000, (2000) 4 SCC 168",
+   "primary_key_docs": [
+    20323
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "source_urls": "https://future.indiankanoon.org/doc/853800/\nhttps://main.sci.gov.in/supremecourt/2020/920/920_2020_13_1501_31011_Judgement_28-Oct-2021.pdf",
+   "stale_docs": [],
+   "to_verify": "Do NOT extend this question to whether s.138 and s.420 can run in parallel: that point was referred to a larger bench in J. Vedhasingh v. R.M. Govindan (11 Aug 2022) and is unsettled. Sarabjit Kaur and Delhi Race Club were not opened (Delhi Race Club neutral citation unverified)."
+  },
+  "N14": {
+   "authorities": [
+    {
+     "index_docs": [
+      44402
+     ],
+     "label": "Sharat Babu Digumarti v. Govt. of NCT of Delhi (2016)",
+     "role": "primary",
+     "where": "in_index"
+    }
+   ],
+   "code": "IPC s.292 and IT Act s.67 apply because the forward was in 2023, before 1 July 2024. For conduct from 1 July 2024, BNS s.294 now expressly covers 'content in electronic form', which may change the special-versus-general analysis; that is untested.",
+   "conf": "L",
+   "expected_answer": "Generally no. Where obscene material is in electronic form, the specific offence under s.67 of the IT Act applies. That Act is a special law with overriding effect (s.81), so the same act cannot also be prosecuted as obscenity under the general penal code (IPC s.292). Once the accused is discharged of the IT Act charge for that act, he cannot be proceeded against under s.292 for it. The rule covers the same act only; distinct offences with different ingredients can still be charged.",
+   "how_verified": "Read judgment text (full text on LawRato).",
+   "id": "N14",
+   "key_docs": [
+    44402
+   ],
+   "neighbour_regime": "Obscenity under the general penal code (IPC 292 / BNS 294)",
+   "older_ruling": "None known (no later Supreme Court ruling found that changes Sharat Babu).",
+   "other_acceptable": "No other acceptable authority found. Confirmed: no other Supreme Court judgment decides the IT Act s.67 versus IPC s.292 overlap on these facts.",
+   "primary_authority": "Sharat Babu Digumarti v. Govt. of NCT of Delhi, Supreme Court, 14 Dec 2016, (2017) 2 SCC 18, Crl. A. 1222 of 2016 (Dipak Misra & Pant JJ.)",
+   "primary_key_docs": [
+    44402
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://lawrato.com/supreme-court-judgements/criminal/sharat-babu-digumarti-vs-govt-of-nct-of-delhi-173\nhttps://www.scconline.com/blog/post/2016/12/21/if-no-charge-has-been-made-out-under-section-67of-it-act-then-appellant-cannot-be-proceeded-against-under-section-292-ipc/",
+   "stale_docs": [],
+   "to_verify": "A Bombay High Court Full Bench (reference from Awadhesh Kumar Parasnath Pathak) has confined Sharat Babu to offences that are 'exactly the same'. The Supreme Court's later reading in Aman Mittal was not checked. Mr. Advocate to confirm the answer is still right for a pure obscenity forward. Note: the question deliberately uses a 2023 date to stay under the IPC."
+  },
+  "N15": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000252794
+     ],
+     "label": "Rajnesh v. Neha (2020)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000252355
+     ],
+     "label": "Shyamlal Devda v. Parimala (2020)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000004478
+     ],
+     "label": "Juveria Abdul Majid Patni v. Atif Iqbal Mansoori (2014)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "PWDVA s.12, 20 and 23 apply whatever the date. The interim maintenance power is under s.23 read with s.20. Ordinary maintenance under CrPC 125 / BNSS 144 is a parallel but separate remedy; this question is specifically about PWDVA relief during the DV case.",
+   "conf": "C",
+   "expected_answer": "Yes. Under s.20 of the PWDVA, a Magistrate can grant interim monetary relief at any stage of the proceedings, including before a final order under s.12. This can cover maintenance, rent, medical expenses and loss of earnings. The Supreme Court has laid down guidelines for fixing interim maintenance to ensure that the dependent spouse is not left without support during litigation. The Magistrate must consider both parties' income and liabilities and fix a sum that is just and reasonable without waiting for the final disposal.",
+   "how_verified": "Read judgment text (official SC PDF). Shyamlal Devda and Juveria through secondary reports.",
+   "id": "N15",
+   "key_docs": [
+    1000004478,
+    1000252355,
+    1000252794
+   ],
+   "neighbour_regime": "Cruelty (IPC 498A / BNS 85) and ordinary maintenance under CrPC 125 / BNSS 144, which are separate remedies with different procedures",
+   "older_ruling": "None known.",
+   "other_acceptable": "Shyamlal Devda v. Parimala, (2020) 3 SCC 14 (right to maintenance as a measure of social justice; interim maintenance under PWDVA); Juveria Abdul Majid Patni v. Atif Iqbal Mansoori, (2014) 10 SCC 736 (scope of monetary relief under s.20 PWDVA)",
+   "primary_authority": "Rajnesh v. Neha, Supreme Court, 4 Nov 2020, (2020) 15 SCC 17, Transfer Petition (Crl.) 1 of 2020 (Indu Malhotra J.)",
+   "primary_key_docs": [
+    1000252794
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2020/5041/5041_2020_35_1502_24538_Judgement_04-Nov-2020.pdf\nhttps://www.livelaw.in/amp/top-stories/supreme-court-interim-maintenance-overlapping-proceedings-guidelines-rajnesh-vs-neha-165456",
+   "stale_docs": [],
+   "to_verify": "Confirm the SCC citation (2020) 15 SCC 17 for Rajnesh v. Neha and (2020) 3 SCC 14 for Shyamlal Devda. Juveria was not opened. TWIN CHECK: the facts match N17 (wife forced out of in-laws' house); this one is under PWDVA s.20, N17 under general cruelty law and jurisdiction."
+  },
+  "N16": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000253600
+     ],
+     "label": "State of M.P. v. Jogendra (2022)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Rajinder Singh v. State of Punjab (2015)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      31195
+     ],
+     "label": "Appasaheb v. State of Maharashtra (2007) (not a counted trap)",
+     "role": "note",
+     "where": "in_index"
+    }
+   ],
+   "code": "Dowry Prohibition Act s.2, 3 and 4 apply whatever the date. Related offences: cruelty under BNS s.85/86 (from 1 July 2024) or IPC s.498A (before); dowry death under BNS s.80 or IPC s.304B. Being sent back to her parents may also be 'domestic violence' under PWDVA s.3 (economic abuse) and engage residence relief.",
+   "conf": "C",
+   "expected_answer": "Yes. 'Dowry' under s.2 of the Dowry Prohibition Act covers any property or valuable security given or agreed to be given in connection with the marriage, before, at or after it. The Supreme Court reads this widely. A demand for money to build or extend a house, made of the wife's family after the wedding, is a dowry demand. Nothing requires the demand to be made at the time of marriage or to be for the wedding itself.",
+   "how_verified": "Read judgment text (official SC PDF of Jogendra, which quotes Rajinder Singh).",
+   "id": "N16",
+   "key_docs": [
+    1000253600
+   ],
+   "neighbour_regime": "Cruelty (IPC 498A / BNS 85) and dowry death (IPC 304B / BNS 80)",
+   "older_ruling": "Not a counted trap. Appasaheb v. State of Maharashtra, (2007) 9 SCC 721 (money for manure is not dowry) was held in Rajinder Singh (2015) not to state the law correctly. A search may surface Appasaheb, but the change predates 2017 and is already settled.",
+   "other_acceptable": "Rajinder Singh v. State of Punjab, (2015) 6 SCC 477 (3 judges; 'in connection with the marriage' read widely; Appasaheb and Vipin Jaiswal held not correct on this point)",
+   "primary_authority": "State of Madhya Pradesh v. Jogendra, Supreme Court (3 judges), 11 Jan 2022, Crl. A. 190 of 2012 (Hima Kohli J. for the Court)",
+   "primary_key_docs": [
+    1000253600
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://main.sci.gov.in/supremecourt/2010/13698/13698_2010_31_1502_32476_Judgement_11-Jan-2022.pdf\nhttps://www.livelaw.in/amp/top-stories/supreme-court-demand-money-construction-of-house-dowry-demand-304b-ipc-189258",
+   "stale_docs": [
+    {
+     "counts_as_stale": false,
+     "doc": 31195,
+     "kind": "held in Rajinder Singh (2015, not in the index) not to state the law correctly; key says not counted; Mr. Advocate to decide",
+     "label": "Appasaheb v. State of Maharashtra (2007) (not a counted trap)"
+    }
+   ],
+   "to_verify": "Confirm the SCC citation for Jogendra. Appasaheb could be counted as a currency trap (SC-to-SC change by Rajinder Singh, 2015); Mr. Advocate to decide. It is not counted here."
+  },
+  "N17": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000251591
+     ],
+     "label": "Rupali Devi v. State of U.P. (2019)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      26334
+     ],
+     "label": "Y. Abraham Ajith v. Inspector of Police (2004) (not a counted trap)",
+     "role": "note",
+     "where": "in_index"
+    }
+   ],
+   "code": "Cruelty is BNS s.85 for conduct from 1 July 2024, and IPC s.498A before. Territorial jurisdiction is BNSS s.199 (old CrPC s.179) for an FIR or complaint from 1 July 2024.",
+   "conf": "C",
+   "expected_answer": "Yes. The adverse effects of cruelty at the matrimonial home can continue at the parental home where the wife takes shelter after leaving or being driven out. Courts there have jurisdiction, depending on the facts, because the 'consequence' of the offence ensues there. This rests on the rule that an offence may be tried where the act was done or where its consequence ensued (CrPC s.179, now BNSS s.199). The police and Magistrate at her parents' town can therefore investigate and try the cruelty complaint.",
+   "how_verified": "Read judgment text (official SC PDF).",
+   "id": "N17",
+   "key_docs": [
+    1000251591
+   ],
+   "neighbour_regime": "PWDVA residence and protection orders (the twin N15 route), and limitation for criminal complaints",
+   "older_ruling": "Not a counted trap. Y. Abraham Ajith v. Inspector of Police, (2004) 8 SCC 100 and Ramesh v. State of T.N., (2005) 3 SCC 507 took the narrower view that the parental-home court lacks jurisdiction without an overt act there. Rupali Devi (3 judges) departs from them without expressly overruling them. Mr. Advocate to decide whether to count it as a trap.",
+   "other_acceptable": "No other acceptable Supreme Court authority found. Confirmed: later High Courts follow Rupali Devi but no other Supreme Court judgment independently decides this point.",
+   "primary_authority": "Rupali Devi v. State of Uttar Pradesh, Supreme Court (3 judges), 9 Apr 2019, (2019) 5 SCC 384, Crl. A. 71 of 2012 (Gogoi CJI, Nageswara Rao & Kaul JJ.)",
+   "primary_key_docs": [
+    1000251591
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt//2011/2011__Judgement_09-Apr-2019.pdf\nhttps://blog.ipleaders.in/rupali-devi-v-state-of-uttar-pradesh-2014-and-2019/",
+   "stale_docs": [
+    {
+     "counts_as_stale": false,
+     "doc": 26334,
+     "kind": "narrower view; departed from, not overruled, by Rupali Devi; Mr. Advocate to decide",
+     "label": "Y. Abraham Ajith v. Inspector of Police (2004) (not a counted trap)"
+    }
+   ],
+   "to_verify": "Confirm the CrPC 179 to BNSS 199 mapping against the India Code text. TWIN CHECK: the facts match N15; this one is under general law, N15 under the PWDVA."
+  },
+  "N18": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000255899
+     ],
+     "label": "In Re: Right to Privacy of Adolescents (2024)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000250306
+     ],
+     "label": "Independent Thought v. Union of India (2017)",
+     "role": "acceptable",
+     "where": "left_out"
+    },
+    {
+     "index_docs": [
+      1000252878
+     ],
+     "label": "Anversinh v. State of Gujarat (2021)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "POCSO Act s.3/4 (and s.5/6 where aggravated) apply whatever the date. Under the penal code: IPC s.375 'sixthly'/s.376 for acts before 1 July 2024; BNS s.63(vi)/s.64 (or s.65) for acts from that date. The question gives no date; the answer is the same under either code.",
+   "conf": "C",
+   "expected_answer": "No. Where the girl is below 18, her consent is legally irrelevant. Penetrative sexual acts with her are 'penetrative sexual assault' under the POCSO Act and rape under the penal code, with or without her consent. A 'romantic' or 'consensual' relationship and a later wish to marry do not make it lawful, and a court cannot acquit on that basis once the ingredients are proved. They may matter only at sentencing or in exceptional relief, not to guilt.",
+   "how_verified": "Read judgment text (official SC PDF, 20 Aug 2024). The 23 May 2025 order not read in full.",
+   "id": "N18",
+   "key_docs": [
+    1000252878,
+    1000255899
+   ],
+   "neighbour_regime": "Adult rape law (IPC 375/376, BNS 63/64), where consent is a defence",
+   "older_ruling": "None known. Note: in the same suo motu matter the Court decided on 23 May 2025 not to impose a sentence (Article 142). That is case-specific relief, not a change to the law on consent.",
+   "other_acceptable": "Independent Thought v. Union of India, (2017) 10 SCC 800 (sexual intercourse with a girl below 18 is rape even within marriage; age of consent is 18); Anversinh v. State of Gujarat, (2021) 3 SCC 12 (consent of a minor is immaterial in kidnapping)",
+   "primary_authority": "In Re: Right to Privacy of Adolescents, Supreme Court, 20 Aug 2024, 2024 INSC 614 (Oka & Bhuyan JJ.), Suo Motu W.P.(C) 3 of 2023 with Crl. A. 1451 of 2024",
+   "primary_key_docs": [
+    1000255899
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2023/51208/51208_2023_6_1501_54805_Judgement_20-Aug-2024.pdf\nhttps://api.sci.gov.in/supremecourt/2023/51208/51208_2023_3_1506_62112_Judgement_23-May-2025.pdf",
+   "stale_docs": [],
+   "to_verify": "The 23 May 2025 judgment in the same matter (no sentence imposed) may be returned by search and look like a change in the law. Mr. Advocate to confirm it is case-specific. Independent Thought and Anversinh were not opened."
+  },
+  "N19": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000255124
+     ],
+     "label": "P. Yuvaprakash v. State (2023)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000253442
+     ],
+     "label": "Rishipal Singh Solanki v. State of U.P. (2022)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000254297
+     ],
+     "label": "Vinod Katara v. State of U.P. (2022/24)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Suresh v. State of U.P. (2024)",
+     "role": "acceptable",
+     "where": "absent"
+    }
+   ],
+   "code": "JJ Act 2015 s.94(2) and s.9(2) (claim before a court) apply whatever the date. The POCSO charge is unaffected; if juvenility is upheld, the case goes to the Juvenile Justice Board (with a preliminary assessment under s.15 if the offence is heinous).",
+   "conf": "L",
+   "expected_answer": "The school certificate, not Aadhaar. Section 94(2) of the JJ Act sets the order of proof. First comes the date-of-birth certificate from the school (or the matriculation certificate). Then comes a birth certificate from a corporation, municipality or panchayat. Only if neither exists does an ossification or other medical test apply. Aadhaar is not in the list. A juvenility claim can be raised at any stage, and a genuine school record raises a presumption of age. That presumption can be displaced only by stronger evidence, for example if the school record itself is shown to be unreliable.",
+   "how_verified": "Read judgment text (Yuvaprakash official SC PDF, para 14). Rishipal Singh Solanki, Vinod Katara and Suresh through secondary reports.",
+   "id": "N19",
+   "key_docs": [
+    1000253442,
+    1000254297,
+    1000255124
+   ],
+   "neighbour_regime": "Ordinary trial and bail law for adults; POCSO's own age questions about the victim",
+   "older_ruling": "None known.",
+   "other_acceptable": "Vinod Katara v. State of U.P., 2024 LiveLaw (SC) 210 (school certificate first; ossification last); Suresh v. State of U.P., SC, 1 Aug 2024 (school record based only on a parent's oral word, contradicted by better public records, may be rejected)",
+   "primary_authority": "P. Yuvaprakash v. State rep. by Inspector of Police, Supreme Court, 18 Jul 2023, 2023 INSC 676, Crl. A. 1898 of 2023 (Ravindra Bhat & Aravind Kumar JJ.); Rishipal Singh Solanki v. State of U.P., Supreme Court, (2022) 8 SCC 602 (principles for juvenility claims by an accused; school certificate first, ossification last)",
+   "primary_key_docs": [
+    1000253442,
+    1000255124
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2018/47421/47421_2018_8_1501_45230_Judgement_18-Jul-2023.pdf\nhttps://www.livelaw.in/amp/know-the-law/principles-for-determining-claim-of-juvenility-under-jj-act-supreme-court-explains-185995\nhttps://www.livelaw.in/amp/supreme-court/section-94-juvenile-justice-act-ossification-test-has-been-kept-at-the-last-rung-to-determine-age-supreme-court-251621",
+   "stale_docs": [],
+   "to_verify": "Yuvaprakash applies s.94 to a POCSO victim's age; Rishipal Singh Solanki (an accused) may be the better primary. Mr. Advocate to choose. That Aadhaar is not proof of date of birth for this purpose rests on s.94's list, not on a ruling read here. Confirm the citation of Suresh v. State of U.P."
+  },
+  "N20": {
+   "authorities": [
+    {
+     "index_docs": [
+      17136
+     ],
+     "label": "State of H.P. v. Mango Ram (2000)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      16186
+     ],
+     "label": "State of Punjab v. Gurmit Singh (1996)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Mahmood Farooqui v. State (Govt. of NCT of Delhi) (2017)",
+     "role": "acceptable",
+     "where": "absent"
+    }
+   ],
+   "code": "BNS s.63/64 apply because the question is framed under the BNS (offence on or after 1 July 2024). For earlier conduct: IPC s.375/376 and Evidence Act s.53A. The wording of Explanation 2 and its proviso is the same in both.",
+   "conf": "L",
+   "expected_answer": "No. Consent means an unequivocal voluntary agreement, communicated by words, gestures or other conduct, to the specific sexual act (Explanation 2 to s.63 BNS, formerly s.375 IPC). A woman who does not physically resist is not, for that reason alone, to be regarded as consenting. Submission under fear is not consent. Evidence of her character or previous sexual experience with any person is not relevant to the question of consent. An earlier relationship with the accused therefore does not by itself establish consent to the act charged.",
+   "how_verified": "Read judgment text (Mango Ram, copy of the SC judgment hosted on the J&K High Court site). BNS s.63 text checked on a statute site.",
+   "id": "N20",
+   "key_docs": [
+    16186,
+    17136
+   ],
+   "neighbour_regime": "POCSO, under which consent of a person below 18 is irrelevant (the twin N18 route)",
+   "older_ruling": "None known.",
+   "other_acceptable": "State of Punjab v. Gurmit Singh, (1996) 2 SCC 384 (absence of injuries or resistance does not imply consent); Mahmood Farooqui v. State (Govt. of NCT of Delhi), (2017) 6 SCC 631 (discusses consent and the distinction between reluctance and refusal; controversial but not overruled); statutory: BNS s.63 Explanation 2 and proviso; BSA s.48 (formerly Evidence Act s.53A: character and previous sexual experience not relevant to consent). No post-2017 Supreme Court judgment found that specifically defines consent under s.375/BNS s.63 beyond these.",
+   "primary_authority": "State of Himachal Pradesh v. Mango Ram, Supreme Court (3 judges), 24 Aug 2000, (2000) 7 SCC 224, Crl. A. 790 of 1996",
+   "primary_key_docs": [
+    17136
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://jkhighcourt.nic.in/doc/upload/judgments/2023/sci/S_2000_2_626_634.pdf\nhttps://www.vidhijudicial.com/section-63-of-the-bharatiya-nyaya-sanhita-(bns)-of-2023.html",
+   "stale_docs": [],
+   "to_verify": "Confirm that BSA s.48 is the successor of Evidence Act s.53A. Gurmit Singh was not opened. Mango Ram predates the 2013 Explanation 2; it supports the principle, not the statutory words. Twin of N18."
+  },
+  "N21": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000000735
+     ],
+     "label": "Gunwantlal v. State of M.P. (1972)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000001771
+     ],
+     "label": "Sanjay Dutt v. State through CBI (1994)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "State of Jharkhand v. Jagdish Lakra (2026; after 30 June)",
+     "role": "acceptable",
+     "where": "absent"
+    }
+   ],
+   "code": "Arms Act s.25 applies whatever the date. Any offence from the fight is under BNS (e.g. s.115/118 hurt, s.109 attempt to murder) if after 1 July 2024, or IPC s.323/324/307 if before.",
+   "conf": "C",
+   "expected_answer": "No. 'Possession' of a firearm under the Arms Act requires conscious possession: knowledge of the weapon and power or control over it. Mere recovery from a family house, without proof that the accused knew it was there and controlled it, is not enough. Possession can be constructive, as where an owner knowingly keeps a gun at home while absent. The prosecution must prove the mental element; the injury from the fight does not prove it.",
+   "how_verified": "Read judgment text (Gunwantlal on Indian Kanoon). Sanjay Dutt not opened; Jagdish Lakra through LiveLaw.",
+   "id": "N21",
+   "key_docs": [
+    1000000735,
+    1000001771
+   ],
+   "neighbour_regime": "Violent-crime law for the fight and injury (IPC 307/324, BNS 109/118)",
+   "older_ruling": "None known.",
+   "other_acceptable": "Sanjay Dutt v. State through CBI, (1994) 5 SCC 410 (possession under the Arms/TADA scheme needs conscious possession); State of Jharkhand v. Jagdish Lakra, 2026 INSC 686 / 2026 LiveLaw (SC) 674, 13 Jul 2026 (mere recovery without conscious possession insufficient). NOTE: Jagdish Lakra was decided after 30 June 2026 and may be absent from the index.",
+   "primary_authority": "Gunwantlal v. State of Madhya Pradesh, Supreme Court, 3 May 1972, (1972) 2 SCC 194, AIR 1972 SC 1756",
+   "primary_key_docs": [
+    1000000735
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://future.indiankanoon.org/doc/102500\nhttps://www.livelaw.in/amp/supreme-court/arms-act-mere-recovery-of-weapon-without-proof-of-conscious-possession-cant-establish-guilt-supreme-court-541206",
+   "stale_docs": [],
+   "to_verify": "Sanjay Dutt (1994) was not opened; confirm the paragraph. Jagdish Lakra post-dates 30 June 2026, so keep it as an acceptable authority only. Confirm the SCC citation (1972) 2 SCC 194."
+  },
+  "N22": {
+   "authorities": [
+    {
+     "index_docs": [
+      38962
+     ],
+     "label": "Alister Anthony Pareira v. State of Maharashtra (2012)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      35162
+     ],
+     "label": "State v. Sanjeev Nanda (2012)",
+     "role": "acceptable",
+     "where": "in_index"
+    }
+   ],
+   "code": "IPC applies because the death was in 2023, before 1 July 2024: s.304 Part II and s.304A. For incidents from 1 July 2024: BNS s.105 (culpable homicide not amounting to murder) and s.106(1) (death by negligence). MV Act s.185 (drunk driving) runs alongside in both periods.",
+   "conf": "C",
+   "expected_answer": "It depends on the facts, but s.304 Part II is open. Rash or negligent driving on a public road, done with knowledge that it is likely to cause death, can be culpable homicide not amounting to murder under s.304 Part II. Driving at speed while heavily drunk can support attributing that knowledge, so the case need not be confined to s.304A (causing death by negligence). Each case turns on its own evidence (alcohol level, speed, place, conduct). A charge under s.304 Part II can co-exist with charges for the injuries caused.",
+   "how_verified": "Read judgment text (full text on LawRato). Sanjeev Nanda not opened.",
+   "id": "N22",
+   "key_docs": [
+    35162,
+    38962
+   ],
+   "neighbour_regime": "Motor Vehicles Act s.185 (drunk driving) and death by negligence (IPC 304A / BNS 106)",
+   "older_ruling": "None known.",
+   "other_acceptable": "State through PS Lodhi Colony v. Sanjeev Nanda, (2012) 8 SCC 450 (drunk-driving deaths; conviction altered to s.304 Part II)",
+   "primary_authority": "Alister Anthony Pareira v. State of Maharashtra, Supreme Court, 12 Jan 2012, (2012) 2 SCC 648, Crl. A. 1318-1320 of 2007 (Lodha & Khehar JJ.)",
+   "primary_key_docs": [
+    38962
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://lawrato.com/supreme-court-judgements/criminal/alister-anthony-pareira-vs-state-of-maharashtra-222\nhttps://journals.christuniversity.in/index.php/culj/article/view/483",
+   "stale_docs": [],
+   "to_verify": "The question asks what the law allows, not whether this driver will be convicted. The expected answer must not predict an outcome. Sanjeev Nanda was not opened."
+  },
+  "N23": {
+   "authorities": [
+    {
+     "index_docs": [
+      18615
+     ],
+     "label": "Laxman v. State of Maharashtra (2002)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      16637
+     ],
+     "label": "Koli Chunilal Savji v. State of Gujarat (1999)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Surendra Bangali v. State of Jharkhand (2021)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      16680
+     ],
+     "label": "Paparambaka Rosamma v. State of A.P. (1999)",
+     "role": "trap_old",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      1000003312
+     ],
+     "label": "Laxmi v. Om Prakash (2001)",
+     "role": "trap_old",
+     "where": "left_out"
+    }
+   ],
+   "code": "Evidence Act s.32(1) applies because the question names it (trial of an offence before 1 July 2024, or proceedings pending on that date). For trials under the new law, BSA s.26(a) is the successor provision with the same rule.",
+   "conf": "C",
+   "expected_answer": "No. A doctor's certificate that the declarant was fit is a rule of caution, not a legal requirement. What matters is that the person recording the declaration, here a Magistrate, was satisfied that the declarant was in a fit state of mind, and that the declaration is voluntary and truthful. If so, it can be relied on even without a medical certificate. The court weighs the whole evidence.",
+   "how_verified": "Read judgment text (full text on LegalAuthority).",
+   "id": "N23",
+   "key_docs": [
+    16637,
+    18615
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "OLDER RULING: Paparambaka Rosamma v. State of A.P., (1999) 7 SCC 695, Supreme Court, 1999 (also Laxmi v. Om Prakash, 2001). CHANGE: Laxman v. State of Maharashtra, Constitution Bench, 2002. WHAT CHANGED: Paparambaka Rosamma treated a Magistrate's finding of fitness as unsafe without a medical certificate; Laxman held that statement 'too broadly stated and not the correct enunciation of law' and the case 'not correctly decided'. CURRENT AUTHORITY: Laxman (2002).",
+   "other_acceptable": "Koli Chunilal Savji v. State of Gujarat, (1999) 9 SCC 562 (affirmed in Laxman); Surendra Bangali @ Surendra Singh Routele v. State of Jharkhand, 2021 LiveLaw (SC) 82 (applies Laxman)",
+   "primary_authority": "Laxman v. State of Maharashtra, Supreme Court (Constitution Bench), 27 Aug 2002, (2002) 6 SCC 710",
+   "primary_key_docs": [
+    18615
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://www.legalauthority.in/judgement/laxman-vs-state-of-maharashtra-20548\nhttps://www.livelaw.in/amp/news-updates/dying-declaration-supreme-court-doctor-certification-unacceptable-169790",
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 16680,
+     "kind": "held not correctly decided in Laxman (Constitution Bench, 2002)",
+     "label": "Paparambaka Rosamma v. State of A.P. (1999)"
+    }
+   ],
+   "to_verify": "Confirm that BSA s.26 is the successor of Evidence Act s.32. Check that Paparambaka Rosamma is in our index."
+  },
+  "N24": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000256707
+     ],
+     "label": "Kushal Kumar Agarwal v. Directorate of Enforcement (2025)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      39617
+     ],
+     "label": "Manharibhai Muljibhai Kakadia v. Shaileshbhai Mohanbhai Patel (2012)",
+     "role": "trap_old",
+     "where": "in_index"
+    }
+   ],
+   "code": "BNSS s.223 applies because the complaint was filed in 2025, after 1 July 2024 (Kushal Kumar Agarwal applied it on that basis). PMLA s.44(1)(b) and s.46 bring in BNSS procedure. Complaints filed before 1 July 2024 stay under CrPC s.200-204.",
+   "conf": "L",
+   "expected_answer": "Yes. For a complaint filed on or after 1 July 2024, the first proviso to s.223(1) BNSS bars the court from taking cognizance without giving the accused an opportunity of being heard. A PMLA complaint under s.44(1)(b) is governed by this procedure, as the PMLA does not exclude it. A cognizance order passed without that hearing is liable to be set aside. The old CrPC s.200 had no such proviso, so complaints filed before 1 July 2024 do not get this pre-cognizance hearing.",
+   "how_verified": "Read judgment text (official SC PDF).",
+   "id": "N24",
+   "key_docs": [
+    1000256707
+   ],
+   "neighbour_regime": "Ordinary complaint procedure (CrPC 200-204: no pre-cognizance hearing) and ordinary arrest and bail law",
+   "older_ruling": "OLDER RULING: Manharibhai Muljibhai Kakadia v. Shaileshbhai Mohanbhai Patel, (2012) 10 SCC 517, Supreme Court (under the CrPC, a proposed accused has no right to be heard before process issues). CHANGE: statute: first proviso to s.223(1) BNSS, in force 1 July 2024, applied to a PMLA complaint in Kushal Kumar Agarwal (2025). WHAT CHANGED: the accused must now be heard before cognizance of a complaint filed on or after 1 July 2024. CURRENT AUTHORITY: BNSS s.223(1) proviso and Kushal Kumar Agarwal (2025).",
+   "other_acceptable": "No other acceptable authority found deciding the same point before 30 June 2026. Confirmed: the scope of the hearing and supplementary complaints were left open by Kushal Kumar Agarwal; no other SC judgment addresses s.223(1) proviso BNSS.",
+   "primary_authority": "Kushal Kumar Agarwal v. Directorate of Enforcement, Supreme Court, 9 May 2025, 2025 INSC 760, Crl. A. 2749 of 2025 (Oka & Bhuyan JJ.)",
+   "primary_key_docs": [
+    1000256707
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2025/4952/4952_2025_4_50_61678_Judgement_09-May-2025.pdf\nhttps://www.verdictum.in/court-updates/supreme-court/cause-title-kushal-kumar-agarwal-v-directorate-of-enforcement-2025-insc-760-opportunity-of-being-heard-cognizance-of-offence-crpc-pmla-complaint-1578849",
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 39617,
+     "kind": "replaced for complaints filed from 1 July 2024 by the first proviso to s.223(1) BNSS",
+     "label": "Manharibhai Muljibhai Kakadia v. Shaileshbhai Mohanbhai Patel (2012)"
+    }
+   ],
+   "to_verify": "Manharibhai Kakadia was not opened: confirm it is the right 'older ruling' and that it is in our index. Otherwise use another pre-2024 SC ruling on the no-hearing rule at the s.200-204 stage. This is a statute-replacement trap. Conf is L because the PMLA review (Vijay Madanlal) is pending; it does not affect this point but should be watched."
+  },
+  "N25": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000254584
+     ],
+     "label": "Neeraj Dutta v. State (Govt. of NCT of Delhi) (2022)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Jagtar Singh v. State of Punjab (2023)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      42944
+     ],
+     "label": "P. Satyanarayana Murthy v. Dist. Inspector of Police (2015)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      41352
+     ],
+     "label": "B. Jayaraj v. State of A.P. (2014) (not a counted trap)",
+     "role": "note",
+     "where": "in_index"
+    }
+   ],
+   "code": "Prevention of Corruption Act s.7 and s.13 as amended from 26 July 2018 apply, because the trap was in 2019. Procedure is under the CrPC (proceedings pending on 1 July 2024 continue by BNSS s.531).",
+   "conf": "C",
+   "expected_answer": "Yes. Demand and acceptance of a bribe must be proved, but they need not be proved only by the complainant's direct evidence. If the complainant has died, turned hostile or is unavailable, demand can be proved by other witnesses, documents or circumstantial evidence, and the court may draw an inference of fact from proven circumstances. The trial does not abate, and acquittal does not follow automatically. The statutory presumption arises only after the foundational facts of demand and acceptance are proved.",
+   "how_verified": "Read judgment text (official SC PDF, paras 68 and 70).",
+   "id": "N25",
+   "key_docs": [
+    42944,
+    1000254584
+   ],
+   "neighbour_regime": "Cheating or criminal breach of trust, and general rules on hostile or absent witnesses",
+   "older_ruling": "Not a counted trap. B. Jayaraj v. State of A.P., (2014) 13 SCC 55 and similar cases acquitted where demand was not proved by the complainant. Neeraj Dutta clarified that other evidence can prove demand; this narrows how those cases are read rather than overruling them.",
+   "other_acceptable": "Jagtar Singh v. State of Punjab, SC, 2023 (applies Neeraj Dutta); P. Satyanarayana Murthy v. Dist. Inspector of Police, (2015) 10 SCC 152 (proof of demand is essential)",
+   "primary_authority": "Neeraj Dutta v. State (Govt. of NCT of Delhi), Supreme Court (Constitution Bench), 15 Dec 2022, (2023) 4 SCC 731, Crl. A. 1669 of 2009",
+   "primary_key_docs": [
+    1000254584
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://api.sci.gov.in/supremecourt/2009/11311/11311_2009_3_1501_40650_Judgement_15-Dec-2022.pdf\nhttps://www.scobserver.in/?p=7956",
+   "stale_docs": [
+    {
+     "counts_as_stale": false,
+     "doc": 41352,
+     "kind": "narrowed by Neeraj Dutta; not overruled",
+     "label": "B. Jayaraj v. State of A.P. (2014) (not a counted trap)"
+    }
+   ],
+   "to_verify": "Confirm the SCC citation (2023) 4 SCC 731 and the Jagtar Singh citation. The question avoids asking whether this uncle will be convicted."
+  },
+  "N26": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000255467
+     ],
+     "label": "Bilkis Yakub Rasool v. Union of India (2024)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      43153
+     ],
+     "label": "Union of India v. V. Sriharan (2015/16)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Radheshyam Bhagwandas Shah v. State of Gujarat (2022)",
+     "role": "trap_old",
+     "where": "absent"
+    }
+   ],
+   "code": "Remission decisions taken from 1 July 2024 are under BNSS s.473 (old CrPC s.432); s.473(7)(b) has the same definition. The sentence itself was under the IPC (offence before 1 July 2024).",
+   "conf": "G",
+   "expected_answer": "The government of the State where he was tried and sentenced, not the State where the crime happened or where he is imprisoned. Under s.473(7)(b) BNSS (old s.432(7)(b) CrPC), the 'appropriate Government' for remission is the government of the State within which the offender is sentenced. Where the Supreme Court transferred the trial to another State, that State's government decides premature release under its own policy, and the home State has no power to do so.",
+   "how_verified": "Secondary source only (The Leaflet, SC Observer). The judgment's own conclusions were not reached in the text opened. BNSS s.473(7) checked on a statute site.",
+   "id": "N26",
+   "key_docs": [
+    43153,
+    1000255467
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "OLDER RULING: Radheshyam Bhagwandas Shah v. State of Gujarat, Supreme Court, 13 May 2022, (2022) 8 SCC 552 (held the State where the crime occurred was the appropriate Government and directed it to decide remission). CHANGE: Bilkis Yakub Rasool v. Union of India, 8 Jan 2024. WHAT CHANGED: the 2022 order was declared a nullity, obtained by suppression of facts and contrary to V. Sriharan; the State where the trial was held and sentence passed is the appropriate Government. CURRENT AUTHORITY: Bilkis Yakub Rasool (2024) and V. Sriharan (2016).",
+   "other_acceptable": "Union of India v. V. Sriharan, (2016) 7 SCC 1 (Constitution Bench: appropriate Government is that of the State where the offender is sentenced); statute: BNSS s.473(7)(b), CrPC s.432(7)(b)",
+   "primary_authority": "Bilkis Yakub Rasool v. Union of India, Supreme Court, 8 Jan 2024, W.P.(Crl.) 491 of 2022 (Nagarathna & Bhuyan JJ.)",
+   "primary_key_docs": [
+    1000255467
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://theleaflet.in/bilkis-bano-judgment-a-detailed-explainer\nhttps://www.scobserver.in/cases/early-release-of-bilkis-bano-gangrape-convicts/\nhttps://vidhijudicial.com/section-473-of-the-bharatiya-nagarik-suraksha-sanhita,-2023.html",
+   "stale_docs": [],
+   "to_verify": "SECONDARY ONLY, so Conf is G. Read the 8 Jan 2024 judgment's conclusions and confirm its neutral citation. Confirm that Radheshyam Bhagwandas Shah (2022) is in our index and its SCC citation. Bilkis Yakub Rasool is a writ; check it is in the index (index gap risk). Review petitions were dismissed (Sept 2024), so the law is settled."
+  },
+  "N27": {
+   "authorities": [
+    {
+     "index_docs": [
+      1000251075
+     ],
+     "label": "Mallikarjun Kodagali v. State of Karnataka (2018)",
+     "role": "primary",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [],
+     "label": "Vishnu Kumar Gupta v. State of M.P. (2026; after 30 June)",
+     "role": "acceptable",
+     "where": "absent"
+    },
+    {
+     "index_docs": [
+      1000256564
+     ],
+     "label": "Celestium Financial v. A. Gnanasekaran (2025)",
+     "role": "acceptable",
+     "where": "in_index"
+    },
+    {
+     "index_docs": [
+      43002
+     ],
+     "label": "Satya Pal Singh v. State of M.P. (2015) (not a counted trap)",
+     "role": "note",
+     "where": "in_index"
+    }
+   ],
+   "code": "CrPC s.372 proviso applies for appeals arising from trials under the CrPC (acquittal before 1 July 2024 or proceedings pending on that date). For acquittals in BNSS trials, the successor proviso is in BNSS s.413.",
+   "conf": "L",
+   "expected_answer": "No. The proviso to s.372 CrPC gives the victim a statutory right of appeal against acquittal, conviction for a lesser offence, or inadequate compensation. On the majority view, the victim need not seek leave of the High Court; the leave requirement in s.378(3)/(4) applies to appeals by the State and by complainants in complaint cases, not to the victim's appeal under the proviso.",
+   "how_verified": "Read judgment text (judgment text reproduced on SupremeCourtCases, paras 10, 69-71, 79, 86, 101).",
+   "id": "N27",
+   "key_docs": [
+    1000251075,
+    1000256564
+   ],
+   "neighbour_regime": null,
+   "older_ruling": "Not a counted trap. Satya Pal Singh v. State of M.P., (2015) 15 SCC 613 said leave is needed under s.378(3). The Mallikarjun Kodagali majority held that reading misunderstood its scope rather than overruling it, and Deepak Gupta J. dissented on leave.",
+   "other_acceptable": "Vishnu Kumar Gupta v. State of M.P., 2026 INSC 770 (relies on Mallikarjun Kodagali; decided after 30 June 2026); Celestium Financial v. A. Gnanasekaran, SC, 2025 (complainant in a s.138 case as 'victim' may appeal under the proviso)",
+   "primary_authority": "Mallikarjun Kodagali (Dead) v. State of Karnataka, Supreme Court (3 judges, 2:1), 12 Oct 2018, (2019) 2 SCC 752, Crl. A. 1281-1282 of 2018",
+   "primary_key_docs": [
+    1000251075
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "source_urls": "https://www.supremecourtcases.com/mallikarjun-kodagali-dead-represented-through-legal-representatives-v-state-of-karnataka-ors/\nhttps://www.casemine.com/in/column/the-victim's-right-to-appeal-under-section-372-crpc/view",
+   "stale_docs": [
+    {
+     "counts_as_stale": false,
+     "doc": 43002,
+     "kind": "read as misunderstood by the Mallikarjun Kodagali majority; not overruled",
+     "label": "Satya Pal Singh v. State of M.P. (2015) (not a counted trap)"
+    }
+   ],
+   "to_verify": "It is a 2:1 decision, and Satya Pal Singh was not formally overruled. Mr. Advocate to confirm the position is settled. Confirm CrPC 372 maps to BNSS 413. Celestium Financial was not opened."
+  },
+  "N28": {
+   "authorities": [],
+   "code": "Not criminal. Hindu Succession Act 1956 s.8 and Schedule, assuming the family is Hindu; other personal laws differ.",
+   "conf": "C",
+   "expected_answer": "CONTROL K1: outside criminal law. The correct behaviour is for the search to find nothing relevant in the criminal-judgment index. (For reference only: if the father was a Hindu, his widow, son and daughter are Class I heirs under s.8 of the Hindu Succession Act and take equal shares along with his mother, if alive.)",
+   "how_verified": "Statute text known; no judgment needed.",
+   "id": "N28",
+   "key_docs": [],
+   "neighbour_regime": null,
+   "older_ruling": "Not applicable.",
+   "other_acceptable": "None.",
+   "primary_authority": "None: civil succession law. No criminal-law judgment answers it.",
+   "primary_key_docs": [],
+   "reachable": null,
+   "soft_overlap": false,
+   "source_urls": "https://www.indiacode.nic.in/ (Hindu Succession Act, 1956 - search by title)",
+   "stale_docs": [],
+   "to_verify": "The reference answer assumes Hindu personal law; the question does not say so. It does not matter for the control's purpose."
+  },
+  "N29": {
+   "authorities": [],
+   "code": "BNSS s.105 (new; no CrPC equivalent requiring video recording) applies to searches from 1 July 2024.",
+   "conf": "G",
+   "expected_answer": "CONTROL K2: settled only by High Courts. The correct behaviour is 'no reliable Supreme Court authority found'. (For reference only: High Courts treat the audio-video recording of searches and seizures required by s.105 BNSS as mandatory. The Allahabad High Court has held that failure to record a recovery casts doubt on the prosecution's account and has granted bail on that footing. No Supreme Court ruling on the effect of non-compliance was found up to the date of writing.)",
+   "how_verified": "HOW CHECKED: (1) web searches on 11 Oct 2026 for any Supreme Court judgment on s.105 BNSS videography, including an extended search; none found. (2) The two High Court reports opened cite no Supreme Court ruling. (3) A page claiming 'Supreme Court Guidelines 2026 on Section 105 BNSS' named no case, bench or date, so it was discounted. Secondary sources only.",
+   "id": "N29",
+   "key_docs": [],
+   "neighbour_regime": null,
+   "older_ruling": "Not applicable.",
+   "other_acceptable": "Naseeb Ahmad v. State of U.P., Allahabad HC (Lucknow Bench), reported 24 Aug 2026 (non-compliance flagged); Khushbu v. State of Maharashtra, Bombay HC, 3 Jul 2026 (s.105 and s.185 BNSS; reported second-hand)",
+   "primary_authority": "None from the Supreme Court decided on or before 30 June 2026 (none found). High Court: Shadab v. State of U.P., Allahabad High Court, 5 Jan 2026, 2026 SCC OnLine All 5 (Deshwal J.).",
+   "primary_key_docs": [],
+   "reachable": null,
+   "soft_overlap": false,
+   "source_urls": "https://www.scconline.com/blog/post/2026/01/09/all-hc-failure-to-videograph-recovery-section-105-bnss/\nhttps://www.livelaw.in/amp/high-court/allahabad-high-court/allahabad-high-court-police-non-compliance-section-105-bnss-videography-search-seizure-547230",
+   "stale_docs": [],
+   "to_verify": "Before sealing, confirm on SCC Online/Manupatra that no Supreme Court judgment decided on or before 30 June 2026 addresses the effect of non-compliance with s.105 BNSS. If one exists, use reserve NR3 instead."
+  },
+  "N30": {
+   "authorities": [],
+   "code": "BNS s.304 applies to snatching on or after 1 July 2024. Earlier incidents are theft or robbery under IPC s.379/390-392, depending on facts.",
+   "conf": "C",
+   "expected_answer": "CONTROL K3: answered by the statute, not by a judgment. The correct behaviour is to say the point is not checked against case law. (For reference: yes. Section 304 BNS, in force from 1 July 2024, makes 'snatching' a distinct form of theft, defined as suddenly, quickly or forcibly seizing or grabbing movable property from a person. Punishment is imprisonment of either description up to three years, plus a fine.)",
+   "how_verified": "Statute text checked on a statute site (Vidhi Judicial).",
+   "id": "N30",
+   "key_docs": [],
+   "neighbour_regime": null,
+   "older_ruling": "Not applicable.",
+   "other_acceptable": "None.",
+   "primary_authority": "None: statute (BNS s.304).",
+   "primary_key_docs": [],
+   "reachable": null,
+   "soft_overlap": false,
+   "source_urls": "https://www.vidhijudicial.com/section-304-of-the-bharatiya-nyaya-sanhita-(bns)-of-2023.html\nhttps://www.indiacode.nic.in/handle/123456789/20062",
+   "stale_docs": [],
+   "to_verify": "Confirm the text against India Code."
+  }
+ },
+ "schema": "fix-test-questions-1-key"
+}
