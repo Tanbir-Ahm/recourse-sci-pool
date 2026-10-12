@@ -1,0 +1,39 @@
+# Fix-test runbook, stage F (PRIVATE; written 2026-10-12 under the frozen FIX_TEST_RULES_v1.md and FIX_TEST_RULES_v2.md)
+
+Everything below is built and tested on invented data. **Nothing has been run on the new questions**: they are not sealed, no hand-out is logged. This file records **where the code makes a choice the frozen rules left open** (interpretation, not amendment; the rules files are untouched). It is committed, and its hash recorded in `FOLLOW_UPS.md`, **before** the search.
+
+## 1. Order of events (rules v2 section 5, with what is done by whom)
+| Step | What | Who / tool |
+|---|---|---|
+| 1 | The writer returns the three replacements (N02, N12, N15) and a corrected declaration (AI tool named, its use stated) | writer, via the owner |
+| 2 | Recount, duplicates, index coverage, trigger check on the replacements | `review_tools/check_new_questions.py`, `review_results/2026-10-12_new_questions_intake/` |
+| 3 | Mr. Advocate reviews the key (`Key_Review_Sheet_for_Mr_Advocate.xlsx`); corrections are written into the key and the authorities table | Mr. Advocate, writer, Claude |
+| 4 | **Seal**: `fix_test_set.py build` writes `fix_test_f_v1.json` (public) and `fix_test_f_key_v1.json` (private) with their hashes; both committed and pushed; the hashes recorded in `FOLLOW_UPS.md` | Claude |
+| 5 | `fix_preflight.py --owner-confirms writer-declaration,advocate-key,balance,refresh-postponed --date YYYY-MM-DD` must end with READY | Claude, owner |
+| 6 | **The search, once**: `pool_runner.py --fix-test F ...` (hands the questions out once and logs it) | Claude |
+| 7 | `build_sealed_pack.py --fix-test` makes `Fourth_Batch_Pack.zip` (60 chats); only the zip goes to J and S | Claude |
+| 8 | J and S mark in ChatGPT and Gemini; replies kept as received; `normalise_replies.py` (backslashes only) | J, S, owner |
+| 9 | `score_fix_test.py marks` (key closed), then `score_fix_test.py key` (refuses unless stage 1 is complete and unchanged) | Claude |
+| 10 | `fix_reading_sheet.py` for Mr. Advocate; plain-terms report | Claude, Mr. Advocate |
+
+Guards in the code: the search refuses BEFORE the hand-out unless the frozen rules and the pinned Machine Spec files equal their hashes, the checkout is clean, the sealed question file and its key keep their hashes, the index head is the recorded one, the finalists are those of the frozen stage D2 gate (N1 at x1.25 and N2 at x1.25), the stage D2 run was made under the same rules, the cap is at most 3,000,000 re-rank tokens, the three side indexes are in, and no hand-out is logged. A repeat after a technical failure BEFORE any mark exists needs `--fix-repeat` and is logged as a repeat. After a mark exists nothing is re-run and nothing is changed.
+
+## 2. What is searched and pooled
+One embedding and one rerank-3-lite call per question (60 candidates, text cut at 3,500 characters, passage-type weights and the 1.10 section boost as in B). B and the two finalists are built from the same scores. **Pool per question = B's top 10 + each finalist's top 5**, shuffled with a fixed seed; the prompt says nothing about arms. No site arm, no safety net, no rewrite. About 30 calls, a few cents. The judgment labels for N1/N2 are computed from the pinned Machine Spec v2 at run time (about 8 minutes).
+
+## 3. Where the scorer makes a choice the rules left open (interpretations; fixed before the search)
+1. **Which questions are pooled.** The rules say "the Stage F questions with marks" and "controls reported apart". The scorer therefore pools the **27 scored questions (domains A to J)** for rules 1 to 3, 6 and for F1, F2 and F4; the **three controls (K1, K2, K3) are reported apart** (their own top-5 shares and any Yes). The sealed run pooled its single control; so that the two can be compared, stage 1 also prints F1/F2/F4 with the controls pooled in (descriptive only; never the decision). Questions whose key authority the index cannot reach would stay in the marks measures and drop out of the named-authority measures; the set has none.
+2. **"Pooled" = the mean over questions of each question's top-5 share** (macro), as in the sealed run and the tuning comparators.
+3. **"Better on a question" = the mean grade of the top 5 (Misleading 0, No 1, Partly 2, Yes 3) higher by at least 0.4**; rule 3 needs "better" to exceed "worse" by at least two in both "both" settlements.
+4. **Rules 1, 2, 3, 5** as in the sealed run, finalist in place of R and B in place of A: rule 1 in all four settlements; rule 2 in both "both" settlements (Misleading at most B's + 2 points, useful at least B's - 2 points); rule 5 the two tools agree on at least 60% of passages.
+5. **Rule 4** (needs the key): named authority in the top 5 of the answerable scored questions at least B's count, and known-stale passages in the top 5 (summed over the scored questions) at most B's. "Named authority" = any key document (primary or acceptable) in the index; "stale" = a document whose entry in the key is marked as counting as stale (Mr. Advocate decides the open ones before sealing).
+6. **Rule 6, "helps what it was built for"**, on the look-alike scored questions (the writer's look-alike flag, as sealed): either (6a) the finalist's Misleading share (both, ties to the lower mark, mean over those questions) is at least 5 percentage points lower than B's, or (6b) the finalist has a key authority in its top 5 on **strictly more** answerable look-alike questions than B. Either is enough.
+7. **A finalist passes** only if rules 1 to 6 all hold. If both pass, the one with the higher mean top-5 grade (both, ties to the lower mark) is adopted; if exactly equal, the one that changed fewer questions' top 5, then the precise trigger (N1). If neither passes, B stays. **Combinations are not tested.**
+8. **Floors** (F1 useful at least 70%, F2 Misleading at most 15% with ties to the lower mark and at most 10% with ties to the higher mark, F3 named authority in the top 10 for at least 60% of the answerable scored questions, F4 Yes at least 25%) are applied to the chosen recipe (the adopted finalist, else B). Clear pass = the 95% bootstrap interval over questions (5,000 resamples, fixed seed) lies beyond the floor; otherwise weak pass.
+9. **Lights and domain eligibility** (the outcome table of the sealed rules, section 7) are computed for the chosen recipe from the new questions only: a domain is eligible if the floors are met, its relevance light is not red under either "both" settlement, and its currency light is not red. The sealed run's "that domain's own sealed question alone is not red" guard is dropped (it belonged to one-question domains).
+10. **Reliability.** If the two tools agree on fewer than 60% of passages the result is "weak"; rule 5 then fails, so no finalist can be adopted, and Mr. Advocate's check becomes a condition of any use.
+11. **Soft overlaps** (N04, N06, N07, N13, kept by the owner on 2026-10-12): the decision uses **all** scored questions; stage 1 and 2 also print rules, named authority and floors **without** them (descriptive).
+12. **Nothing is written as "X% accurate".** Every figure is labelled LLM-judged. Mr. Advocate reads every passage anyone marked Misleading plus a random 20 of the others (blind to the arms) before anything leaves the project.
+
+## 4. What this run cannot show
+As FIX_TEST_RULES_v1.md section 7, and: with the boost firing on about half the scored questions, N1 and N2 can differ from each other only on the few questions where N2's plain-language anchors fire and N1's do not; a large share of the questions will have identical lists under all three versions and so contribute nothing to the comparison. The writer used an AI tool to find citations and may use a model of the same family as the markers; the key is therefore less independent of the markers than a lawyer-only key would be.

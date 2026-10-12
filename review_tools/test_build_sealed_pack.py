@@ -82,6 +82,31 @@ pp = os.path.join(tmp, "dev.json")
 json.dump(dev_pool, open(pp, "w"))
 ir = B.build(pp, os.path.join(tmp, "reh"), rehearsal=True)
 check("a rehearsal on a tuning pool is allowed, is named Rehearsal_Pack and says so in its record", ir["rehearsal"] and os.path.isdir(os.path.join(tmp, "reh", B.REHEARSAL_NAME)) and not os.path.isdir(os.path.join(tmp, "reh", B.PACK_NAME)))
+# the fix test's stage F pool (pool_runner.py --fix-test F): pack named Fourth_Batch_Pack, N-ids, replies read by the same reader
+fx_run = {"half": "final", "fix_test": {"stage": "F", "finalists": ["N1-125 named-Act boost x1.25 (precise)"], "label": "stage F | rules abc | code def", "code_uncommitted": []}, "versions": ["B baseline (rerank-3-lite)"]}
+def mk_n(qid, n):
+    q = mk_q(qid, n)
+    for r in q["rows"]:
+        r["variants"] = {"B baseline (rerank-3-lite)": r["n"], "N1-125 named-Act boost x1.25 (precise)": n - r["n"] + 1}
+    return dict(q, half="final")
+fp = os.path.join(tmp, "fix_pool.json")
+json.dump({"run": fx_run, "questions": [mk_n("N01", 11), mk_n("N02", 8)]}, open(fp, "w"))
+fi = B.build(fp, os.path.join(tmp, "fixout"), fixtest=True)
+fprompts = sorted(os.listdir(os.path.join(tmp, "fixout", B.FIXTEST_NAME, "prompts")))
+check("the stage F pack is named Fourth_Batch_Pack, one prompt per question, 2 chats each", fprompts == ["N01_A.txt", "N02_A.txt"] and fi["chats"] == 4 and os.path.exists(os.path.join(tmp, "fixout", B.FIXTEST_NAME + ".zip")) and not os.path.isdir(os.path.join(tmp, "fixout", B.PACK_NAME)), (fprompts, fi))
+check("its record carries the run label", fi["run_label"] == "stage F | rules abc | code def", fi["run_label"])
+ftxt = open(os.path.join(tmp, "fixout", B.FIXTEST_NAME, "prompts", "N01_A.txt"), encoding="utf-8").read()
+check("nothing in the stage F prompt or README names an arm, a finalist or the boost", not B.framing_leaks(open(os.path.join(tmp, "fixout", B.FIXTEST_NAME, "README.txt"), encoding="utf-8").read()) and "named-Act" not in ftxt and "N1-125" not in ftxt and "baseline" not in re.sub(r"(?s)QUESTION:.*", "", ftxt))
+frep = os.path.join(tmp, "freplies"); os.makedirs(frep)
+fpool_l, fpass = ing.load_pool(fp)
+for q in fpool_l:
+    for tool in ("ChatGPT", "Gemini"):
+        open(os.path.join(frep, f"{q['qid']}_A_{tool}.txt"), "w").write(json.dumps({"question_id": q["qid"], "marks": [{"no": r["n"], "mark": "Partly", "evidence": r["text"][:25], "reason": "x", "confidence": "high"} for r in q["rows"]], "good_answer_present": "Yes", "best_passage_no": None, "caveats": ""}))
+fruns, fprob, _ = ing.load_replies(frep, fpass, fpool_l)
+check("replies named N01_A_ChatGPT.txt are read against the stage F pool", not fprob and len(fruns[("ChatGPT", "A")]) == 19, (fprob[:2]))
+check("refused: a stage D2 pool offered as the stage F pool", "not the stage F pool" in (refused({"run": {"half": "dev", "fix_test": {"stage": "D2"}}, "questions": [mk_n("N01", 5)]}, fixtest=True) or ""))
+check("refused: a stage F pool made from uncommitted code", "uncommitted" in (refused({"run": {"fix_test": dict(fx_run["fix_test"], code_uncommitted=["a.py"])}, "questions": [mk_n("N01", 5)]}, fixtest=True) or ""))
+check("refused: a final-recipe pool of the sealed run is not accepted as a stage F pool", "not the stage F pool" in (refused({"run": run, "questions": [mk_q("R03", 5)]}, fixtest=True) or ""))
 src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "build_sealed_pack.py"), encoding="utf-8").read()
 check("the builder never reads the private key", "real30_key" not in src and "real30_score" not in src)
 print()

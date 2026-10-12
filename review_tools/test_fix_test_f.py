@@ -63,7 +63,7 @@ with tempfile.TemporaryDirectory() as t:
     d2pool = os.path.join(t, "pool.json")
     have = P.fix_frozen_files(*P.fix_paths("F"))[os.path.relpath(P.FIX2_RULES_PATH, P.ROOT)][0]
     json.dump({"run": {"fix_test": {"rules_sha256": have}}}, open(d2pool, "w"))
-    a = SimpleNamespace(fix_set=sp, fix_key=kp, fix_arms="", fix_repeat=False)
+    a = SimpleNamespace(fix_set=sp, fix_key=kp, fix_arms="", fix_repeat=False, fix_runs=runs)
     ok, pub, ky, fin = P.fix_guard_f(a, HEAD, runs, d2pool, finalists=[N1, N2])
     check("a complete, sealed, unhanded-out request is let through", ok == [] and pub is not None and fin == [N1, N2], ok)
     check("no finalist: refused (rules v2 section 3)", any("no finalist" in b for b in P.fix_guard_f(a, HEAD, runs, d2pool, finalists=[]) [0]))

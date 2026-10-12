@@ -632,6 +632,7 @@ def main(argv=None):
     ap.add_argument("--fix-set", default=FT.DEFAULT_SET, help="stage F: the sealed question file (fix_test_set.py)")
     ap.add_argument("--fix-key", default=FT.DEFAULT_KEY, help="stage F: its private key file (only its hash is checked here; the key is never read for any score)")
     ap.add_argument("--fix-arms", default="", help="stage F: the finalists, by name, comma-separated; must equal the finalists of the frozen stage D2 gate (default: those)")
+    ap.add_argument("--fix-runs", default=FT.DEFAULT_RUNS, help="stage F: the hand-out log (a rehearsal on used questions points this elsewhere; the real search never does)")
     ap.add_argument("--fix-repeat", action="store_true", help="stage F: repeat the search after a technical failure BEFORE any mark exists; logged as a repeat")
     ap.add_argument("--fix-test", choices=["D", "D2", "F"], help="the fix test's arms B, C, N1, N2 (FIX_TEST_RULES_v1.md) on the stage D questions: one retrieval and one re-rank call per question (the challenger), no site arm, no rewrites. Off by default")
     ap.add_argument("--top-k", type=int, default=None, help="how many places of each ranked version are pooled for marking (5; 10 with --final-recipe)")
@@ -663,7 +664,7 @@ def main(argv=None):
     if a.fix_test:
         refusals = fix_guard(a, code)
         if a.fix_test == "F":
-            more, fx_public, fx_key, fx_finalists = fix_guard_f(a, head)
+            more, fx_public, fx_key, fx_finalists = fix_guard_f(a, head, a.fix_runs)
             refusals += more
         if refusals:
             print("refused:")
@@ -690,7 +691,7 @@ def main(argv=None):
             if a.dry_run:
                 qs = [dict(q, half="final") for q in fx_public["questions"]]            # a dry run hands nothing out and logs nothing
             else:
-                qs = FT.select(fx_public, final=True, label=a.label, allow_repeat=a.fix_repeat)      # the single hand-out; logged
+                qs = FT.select(fx_public, final=True, label=a.label, runs_path=a.fix_runs, allow_repeat=a.fix_repeat)      # the single hand-out; logged
         elif a.fix_test:
             by_id = {q["id"]: q for q in real["questions"]}
             qs = [by_id[i] for i in STAGE_D_IDS]                     # used questions only (rules, section 2); the key is never read here

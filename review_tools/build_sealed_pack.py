@@ -22,7 +22,7 @@ import build_llm_pack as blp
 import review_common as rc
 
 TOOLS = ("ChatGPT", "Gemini")
-PACK_NAME, REHEARSAL_NAME = "Third_Batch_Pack", "Rehearsal_Pack"          # what the reviewers see: nothing in the pack says what it is for
+PACK_NAME, REHEARSAL_NAME, FIXTEST_NAME = "Third_Batch_Pack", "Rehearsal_Pack", "Fourth_Batch_Pack"          # what the reviewers see: nothing in the pack says what it is for
 LEAKS = ["merged", "re-rank", "rerank", "safety", "variant", "challenger", "baseline", "arm ", "sealed", "tuning", "fused", "half:", "recipe", "search version", "versions", "A today", "site shown", "key authority"]
 
 README = """MARKING PACK, THIRD BATCH: how to run it (copy and paste; every file is run twice, once in each tool)
@@ -71,13 +71,19 @@ def framing_leaks(text):
     return [w for w in LEAKS if re.search(r"\b" + re.escape(w.strip()) + (r"\b" if w.endswith(" ") else ""), text, re.I)]
 
 
-def build(pool_path, out_dir, rehearsal=False):
-    """Writes out_dir/Third_Batch_Pack/ (+ .zip) and out_dir/build_info.json. Returns the info dict."""
+def build(pool_path, out_dir, rehearsal=False, fixtest=False):
+    """Writes out_dir/Third_Batch_Pack/ (+ .zip) and out_dir/build_info.json. Returns the info dict. fixtest=True: the pool of the fix test's stage F (pool_runner.py --fix-test F), pack named Fourth_Batch_Pack."""
     with open(pool_path, encoding="utf-8") as fh:
         doc = json.load(fh)
     questions = doc["questions"] if isinstance(doc, dict) else doc
     run = doc.get("run", {}) if isinstance(doc, dict) else {}
-    if not rehearsal:
+    if fixtest:
+        ft = run.get("fix_test") or {}
+        if ft.get("stage") != "F" or not ft.get("finalists"):
+            raise SystemExit("refused: this pool is not the stage F pool of the fix test (pool_runner.py --fix-test F)")
+        if ft.get("code_uncommitted"):
+            raise SystemExit("refused: the pool was made from uncommitted code")
+    elif not rehearsal:
         if run.get("half") != "sealed" or not run.get("final_recipe"):
             raise SystemExit("refused: this pool is not the final recipe of a sealed run (use --rehearsal for a trial on the tuning half)")
         if run.get("final_recipe", {}).get("code_uncommitted"):
@@ -94,7 +100,7 @@ def build(pool_path, out_dir, rehearsal=False):
         if any(not (r.get("text") or "").strip() for r in rows):
             raise SystemExit(f"refused: {q['qid']} has an empty passage text")
         qs.append({"qid": q["qid"], "question": q["question"], "rows": rows})
-    name = REHEARSAL_NAME if rehearsal else PACK_NAME
+    name = REHEARSAL_NAME if rehearsal else FIXTEST_NAME if fixtest else PACK_NAME
     folder, zip_path = os.path.join(out_dir, name), os.path.join(out_dir, name + ".zip")
     if os.path.isdir(folder):
         shutil.rmtree(folder)
@@ -131,7 +137,7 @@ def build(pool_path, out_dir, rehearsal=False):
     rc.write_zip(folder, zip_path, name)
     info = {"rehearsal": bool(rehearsal), "questions": len(qs), "prompt_files": len(qs), "chats": len(manifest), "passages": sum(sizes), "per_question": {q["qid"]: len(q["rows"]) for q in qs},
             "pool_sha256": hashlib.sha256(open(pool_path, "rb").read()).hexdigest(), "zip_sha256": hashlib.sha256(open(zip_path, "rb").read()).hexdigest(), "zip_bytes": os.path.getsize(zip_path),
-            "run_label": run.get("final_recipe", {}).get("label")}
+            "run_label": (run.get("fix_test") or run.get("final_recipe") or {}).get("label")}
     with open(os.path.join(out_dir, "build_info.json"), "w", encoding="utf-8") as fh:
         json.dump(info, fh, indent=1)
         fh.write("\n")
@@ -143,9 +149,10 @@ def main(argv=None):
     ap.add_argument("--pool", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--rehearsal", action="store_true")
+    ap.add_argument("--fix-test", action="store_true", help="the stage F pool of the fix test (FIX_TEST_RULES_v2.md); the pack is named Fourth_Batch_Pack")
     a = ap.parse_args(argv)
     os.makedirs(a.out, exist_ok=True)
-    info = build(a.pool, a.out, a.rehearsal)
+    info = build(a.pool, a.out, a.rehearsal, a.fix_test)
     print(f"built {a.out} ({info['zip_bytes']:,} bytes): {info['prompt_files']} prompt files, {info['chats']} chats, {info['passages']} passages" + (" [REHEARSAL: not for J and S]" if info["rehearsal"] else ""))
 
 

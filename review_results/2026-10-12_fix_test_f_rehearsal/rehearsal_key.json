@@ -1,0 +1,519 @@
+{
+ "built": "2026-10-12",
+ "questions": {
+  "N01": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N01",
+   "key_docs": [
+    1000257082
+   ],
+   "primary_key_docs": [
+    1000257082
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": false,
+     "doc": 1000255278,
+     "kind": "narrower",
+     "label": "Pankaj Bansal v. Union of India (2023)"
+    },
+    {
+     "counts_as_stale": false,
+     "doc": 1000255745,
+     "kind": "narrower",
+     "label": "Prabir Purkayastha v. State (NCT of Delhi) (2024)"
+    },
+    {
+     "counts_as_stale": false,
+     "doc": 1000256350,
+     "kind": "narrower",
+     "label": "Vihaan Kumar v. State of Haryana (2025)"
+    }
+   ]
+  },
+  "N02": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N02",
+   "key_docs": [
+    41736,
+    1000254065,
+    1000256838
+   ],
+   "primary_key_docs": [
+    1000256838
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N03": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N03",
+   "key_docs": [
+    14580
+   ],
+   "primary_key_docs": [
+    14580
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N04": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N04",
+   "key_docs": [
+    1000252377
+   ],
+   "primary_key_docs": [
+    1000252377
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 10195,
+     "kind": "overruled",
+     "label": "Salauddin Abdulsamad Shaikh v. State of Maharashtra (1995/96)"
+    }
+   ]
+  },
+  "N05": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N05",
+   "key_docs": [
+    1000255489,
+    1003962695
+   ],
+   "primary_key_docs": [
+    1000255489
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 1000254957,
+     "kind": "put_on_hold",
+     "label": "Ritu Chhabaria v. Union of India (2023)"
+    }
+   ]
+  },
+  "N06": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N06",
+   "key_docs": [],
+   "primary_key_docs": [],
+   "reachable": false,
+   "soft_overlap": true,
+   "stale_docs": []
+  },
+  "N07": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N07",
+   "key_docs": [
+    1000257049
+   ],
+   "primary_key_docs": [
+    1000257049
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 36294,
+     "kind": "modified",
+     "label": "Damodar S. Prabhu v. Sayed Babalal H. (2010)"
+    }
+   ]
+  },
+  "N08": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N08",
+   "key_docs": [
+    1000255600
+   ],
+   "primary_key_docs": [
+    1000255600
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N09": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N09",
+   "key_docs": [
+    43149
+   ],
+   "primary_key_docs": [
+    43149
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 41801,
+     "kind": "superseded_by_statute",
+     "label": "Dashrath Rupsingh Rathod v. State of Maharashtra (2014)"
+    }
+   ]
+  },
+  "N10": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N10",
+   "key_docs": [
+    1000252711
+   ],
+   "primary_key_docs": [
+    1000252711
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 1000250931,
+     "kind": "overruled",
+     "label": "Mohan Lal v. State of Punjab (2018)"
+    }
+   ]
+  },
+  "N11": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N11",
+   "key_docs": [
+    1000252784
+   ],
+   "primary_key_docs": [
+    1000252784
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 30081,
+     "kind": "overruled",
+     "label": "Kanhaiyalal v. Union of India (2008)"
+    },
+    {
+     "counts_as_stale": true,
+     "doc": 7598,
+     "kind": "overruled",
+     "label": "Raj Kumar Karwal v. Union of India (1990)"
+    }
+   ]
+  },
+  "N12": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N12",
+   "key_docs": [
+    1000256582
+   ],
+   "primary_key_docs": [
+    1000256582
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N13": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N13",
+   "key_docs": [
+    7332,
+    1000250282
+   ],
+   "primary_key_docs": [
+    1000250282
+   ],
+   "reachable": true,
+   "soft_overlap": true,
+   "stale_docs": []
+  },
+  "N14": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N14",
+   "key_docs": [
+    27880
+   ],
+   "primary_key_docs": [
+    27880
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N15": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N15",
+   "key_docs": [],
+   "primary_key_docs": [],
+   "reachable": false,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 1000250111,
+     "kind": "modified",
+     "label": "Rajesh Sharma v. State of U.P. (2017)"
+    },
+    {
+     "counts_as_stale": false,
+     "doc": 1000250996,
+     "kind": "contested",
+     "label": "Social Action Forum for Manav Adhikar v. Union of India (2018)"
+    }
+   ]
+  },
+  "N16": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N16",
+   "key_docs": [
+    1000253879
+   ],
+   "primary_key_docs": [
+    1000253879
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N17": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N17",
+   "key_docs": [
+    1000251837,
+    1000255561
+   ],
+   "primary_key_docs": [
+    1000251837
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N18": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N18",
+   "key_docs": [
+    1000253440
+   ],
+   "primary_key_docs": [
+    1000253440
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N19": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N19",
+   "key_docs": [
+    1000256082
+   ],
+   "primary_key_docs": [
+    1000256082
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N20": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N20",
+   "key_docs": [
+    1000251932
+   ],
+   "primary_key_docs": [
+    1000251932
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N21": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N21",
+   "key_docs": [],
+   "primary_key_docs": [],
+   "reachable": false,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 1000250501,
+     "kind": "overruled",
+     "label": "Shafhi Mohammad v. State of H.P. (2018)"
+    }
+   ]
+  },
+  "N22": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N22",
+   "key_docs": [
+    4726,
+    4795,
+    1000254035
+   ],
+   "primary_key_docs": [
+    4726,
+    4795
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N23": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N23",
+   "key_docs": [
+    27950
+   ],
+   "primary_key_docs": [
+    27950
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N24": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N24",
+   "key_docs": [
+    1000255755
+   ],
+   "primary_key_docs": [
+    1000255755
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": false,
+     "doc": 1000254150,
+     "kind": "narrower",
+     "label": "Vijay Madanlal Choudhary v. Union of India (2022)"
+    }
+   ]
+  },
+  "N25": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N25",
+   "key_docs": [
+    1000252047,
+    1000252416
+   ],
+   "primary_key_docs": [
+    1000252047
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 1000250634,
+     "kind": "modified",
+     "label": "Subhash Kashinath Mahajan v. State of Maharashtra (2018)"
+    }
+   ]
+  },
+  "N26": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N26",
+   "key_docs": [
+    1000254993
+   ],
+   "primary_key_docs": [
+    1000254993
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N27": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N27",
+   "key_docs": [
+    1000256396
+   ],
+   "primary_key_docs": [
+    1000256396
+   ],
+   "reachable": true,
+   "soft_overlap": false,
+   "stale_docs": [
+    {
+     "counts_as_stale": true,
+     "doc": 39731,
+     "kind": "modified",
+     "label": "Sangeet v. State of Haryana (2012)"
+    }
+   ]
+  },
+  "N28": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N28",
+   "key_docs": [],
+   "primary_key_docs": [],
+   "reachable": null,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N29": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N29",
+   "key_docs": [],
+   "primary_key_docs": [],
+   "reachable": null,
+   "soft_overlap": false,
+   "stale_docs": []
+  },
+  "N30": {
+   "authorities": [],
+   "expected_answer": "(rehearsal)",
+   "id": "N30",
+   "key_docs": [],
+   "primary_key_docs": [],
+   "reachable": null,
+   "soft_overlap": false,
+   "stale_docs": []
+  }
+ },
+ "schema": "fix-test-questions-1-key"
+}
