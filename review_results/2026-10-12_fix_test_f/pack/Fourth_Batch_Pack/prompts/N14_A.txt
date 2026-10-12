@@ -1,0 +1,99 @@
+QUESTION ID: N14   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N14",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: In 2023 my brother forwarded an obscene video in a WhatsApp group. The cyber law charge against him was dropped, but police are still pursuing the obscenity charge under the ordinary penal code for the same forward. Can they do that?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: GOOGLE INDIA PRIVATE LIMITED versus M/S. VISAKHA INDUSTRIES (10-12-2019)
+   (Judgment id 1000252246, paragraph 90, page 46)
+Text:
+90. We are not inclined to accept this argument based on the dicta laid down in Sharat Babu (supra). It is true that the offences were alleged to have been committed at a time when Section 79 had not been substituted, as we notice that cognizance was taken on 14.02.2006. We may notice the reasoning in paragraph 37, which reads as follows: “37. The aforesaid passage clearly shows that if legislative intendment is discernible that a latter enactment shall prevail, the same is to be interpreted in accord with the said intention. We have already referred to the scheme of the IT Act and how obscenity pertaining to electronic record falls under the scheme of the Act. We have also referred to Sections 79 and 81 of the IT Act. Once the special provisions having the overriding effect do cover a criminal act and the offender, he gets out of the net of IPC and in this case, Section 292. It is apt to note here that electronic forms of transmission are covered by the IT Act, which is a special law. It is settled position in law that a special law shall prevail over the general and prior laws. When the Act in various provisions deals with obscenity in electronic form, it covers the offence under Section 292 IPC.”
+
+--- PASSAGE 2 ---
+Judgment: JAVED AHMAD HAJAM versus STATE OF MAHARASHTRA & ANR. (07-03-2024)
+   (Judgment id 1000255582, paragraph 14, page 12)
+Text:
+14. For the same reasons, clause (b) of sub-section (1) of Section 153-A of the IPC will not be attracted as what is depicted on the WhatsApp status of the appellant cannot be said to be prejudicial to the maintenance of harmony among various groups as stated therein. Thus, continuation of the prosecution of the appellant for the offence punishable under Section 153-A of the IPC will be a gross abuse of the process of law.
+
+--- PASSAGE 3 ---
+Judgment: THE STATE OF UTTAR PRADESH versus AMAN MITTAL & ANR. (04-09-2019)
+   (Judgment id 1000251978, paragraph 20, page 14)
+Text:
+20. The question examined was as to whether an activity emanating from electronic form which may be obscene would be punishable under Section 292 IPC or Section 67 of the IT Act or both or any other provision of the IT Act. This Court held that Section 292 IPC makes offence sale of obscene books, etc. but once the offence has a nexus or connection with the electronic record the protection and effect of Section 79 cannot be ignored and negated in view of special provision for a specific purpose. The IT Act has to be given effect to so as to make the protection effective and true to the legislative intent. The Court held as under: “31. Having noted the provisions, it has to be recapitulated that Section 67 clearly stipulates punishment for publishing, transmitting obscene materials in electronic form. The said provision read with Sections 67-A and 67-B is a complete code relating to the offences that are covered under the IT Act. Section 79, as has been interpreted, is an exemption provision conferring protection to the individuals. However, the said protection has been expanded in the dictum of Shreya Singhal [Shreya Singhal v. Union of India, (2015) 5 SCC 1 : (2015) 2 SCC (Cri) 449] and we concur with the same.
+
+--- PASSAGE 4 ---
+Judgment: GOOGLE INDIA PRIVATE LIMITED versus M/S. VISAKHA INDUSTRIES (10-12-2019)
+   (Judgment id 1000252246, paragraph 92, page 47)
+Text:
+92. Section 79, even prior to its substitution, did protect the intermediary from liability for offences under the Act. This was a case where the appellant was sought to be prosecuted under Section 292 of the IPC even though he had been discharged under Section 67 of the Act. The offence was one which properly fell within the scope of Section 67 in so far as the offending matter, was contained in an electronic record, as defined. Therefore, it could be reasoned that it having been found, he had not committed the offence under Section 67 of the Act, having regard to Section 81, the prosecution under Section 292 of the IPC, may not stand since special provisions have overriding effect. That explains the statement of the law contained in paragraph 37 of the judgment, viz., “when the Act in various provisions deals in obscenity in other forms, it covers the offence under Section 292 of the IPC.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1222 OF 2016 (Arising out of S.L.P. (Criminal) No. 7675 of 2015) Sharat Babu Digumarti …Appellant(s) Versus Govt. of NCT of Delhi …Respondent(s) J U D G M E N T Dipak Misra, J. L
+   (Judgment id 44402, paragraph 12, page 8)
+Text:
+12. It is not disputed that the appellant is the senior manager of the intermediary and the managing director of the intermediary has been discharged of all the offences as per the decision in Aneeta Hada (supra). and further that singular charge that has been framed against the appellant is in respect of Section 292 IPC. It is submitted by Dr. Singhvi that the appellant could not have been proceeded under Section 292 IPC after having been discharged under Section 67 of the IT Act. Mr. Rohatgi, learned Attorney General assisting the Court submitted that Section 67 of the IT Act is a special provision and it will override Section 292 IPC. He has made a distinction between the offences referable to the internet and the offences referable to print/conventional media or whatever is expressed in Section 292 IPC. Mr. D.S. Mahra, learned counsel appearing for the NCT of Delhi, would contend that publishing any obscene material as stipulated under Section 67 of the IT Act cannot be confused or equated with sale of obscene material as given under Section 292 IPC, for the two offences are entirely different. It is urged by him that an accused can be charged and tried for an offence independently under Section 292 IPC even if he has been discharged under Section 67 of the IT Act. According to him, there is no bar in law to charge and try for the offence under Section 292 IPC after discharge from Section 67 of the IT Act. Learned counsel would further contend that the role of person in charge of the intermediary is extremely vital as it pertains to sale of obscene material which is punishable under Section 292 IPC and not under Section 67 of the IT Act. It is put forth by the learned counsel that the plea advanced by the appellant is in the realm of technicalities and on that ground, the order of charge should not be interfered with.
+
+--- PASSAGE 6 ---
+Judgment: APOORVA ARORA & ANR. ETC. versus STATE (GOVT. OF NCT OF DELHI) & ANR. (19-03-2024)
+   (Judgment id 1000255610, paragraph 48, page 33)
+Text:
+48. No offence of publication or transmission of any material in electronic form, which is obscene, lascivious, or appealing to prurient interest, and/or having the effect of tending to deprave and corrupt persons, as provided under Section 67 of the IT act, is made out. Equally, no case of publication or transmission of material containing sexually explicit act or conduct, as provided under Section 67A, is made out from the bare reading of the complaint. It is settled that a court must exercise its jurisdiction to quash an FIR or criminal complaint when the allegations made therein, taken prima facie, do not disclose the commission of any offence.82
+
+--- PASSAGE 7 ---
+Judgment: APOORVA ARORA & ANR. ETC. versus STATE (GOVT. OF NCT OF DELHI) & ANR. (19-03-2024)
+   (Judgment id 1000255610, paragraph 47, page 33)
+Text:
+47. Section 67A criminalises publication, transmission, causing to publish or transmit – in electronic form – any material that contains sexually explicit act or conduct. Though the three expressions “explicit”, “act”, and “conduct” are open-textured and are capable of encompassing wide meaning, the phrase may have to be seen in the context of ‘obscenity’ as provided in Section 67. Thus, there could be a connect between Section 67A and Section 67 itself. For example, there could be sexually explicit act or conduct which may not be lascivious. Equally, such act or conduct might not appeal to prurient interests. On the contrary, a sexually explicit act or conduct presented in an artistic or a devotional form may have exactly the opposite effect, rather than tending to deprave and corrupt a person. C. Quashing the FIR:
+
+--- PASSAGE 8 ---
+Judgment: GOOGLE INDIA PRIVATE LIMITED versus M/S. VISAKHA INDUSTRIES (10-12-2019)
+   (Judgment id 1000252246, paragraph 87, page 45)
+Text:
+87. This Court, in Sharat Babu (supra), was dealing with a complaint under Sections 292 and 294 of the IPC and Section 67 of the Act. The central issue which arose for consideration was, whether the appellant therein, who stood discharged under Section 67 of the Act, could be proceeded under Section 292 of the IPC. Section 292 of the Code makes it an offence to sell, hire, distribute, etc., any obscene object, whatsoever. Other offences relating to dealing in obscene objects, also form the subject matter of the Section. The court referred to the definition of “electronic record” under Section 2(1)(t) of the Act and found it was a question relating to electronic record. Thereafter, the court referred to Section 67 of the Act which penalises publishing or transmitting obscene material in electronic form. Section 67B punishes and penalises publishing or transmitting of material depicting children in sexually explicit act, etc., in electronic form.
+
+--- PASSAGE 9 ---
+Judgment: JUST RIGHTS FOR CHILDREN ALLIANCE & ANR. versus S. HARISH & ORS. (23-09-2024)
+   (Judgment id 1000255983, paragraph 58, page 47)
+Text:
+58. Section 67 of the IT Act is the principal provision that criminalizes the publication or transmission of “obscene material” in any electronic form and constitutes an offence. Section 67A of the IT Act, is a more aggravated offence, prescribing enhanced punishment than the preceding provision. It does so by further amplifying the scope of ‘obscene material’ by stipulating that any obscene material that contains or depicts any sexually explicit act or conduct, when published or transmitted shall be punishable under the said provision.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1222 OF 2016 (Arising out of S.L.P. (Criminal) No. 7675 of 2015) Sharat Babu Digumarti …Appellant(s) Versus Govt. of NCT of Delhi …Respondent(s) J U D G M E N T Dipak Misra, J. L
+   (Judgment id 44402, paragraph 32, page 32)
+Text:
+32. The aforesaid passage clearly shows that if legislative intendment is discernible that a latter enactment shall prevail, the same is to be interpreted in accord with the said intention. We have already referred to the scheme of the IT Act and how 20 (2001) 3 SCC 71 obscenity pertaining to electronic record falls under the scheme of the Act. We have also referred to Sections 79 and 81 of the IT Act. Once the special provisions having the overriding effect do cover a criminal act and the offender, he gets out of the net of the IPC and in this case, Section 292. It is apt to note here that electronic forms of transmission is covered by the IT Act, which is a special law. It is settled position in law that a special law shall prevail over the general and prior laws. When the Act in various provisions deals with obscenity in electronic form, it covers the offence under Section 292 IPC.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N14 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

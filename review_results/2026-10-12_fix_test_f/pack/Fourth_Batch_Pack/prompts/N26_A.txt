@@ -1,0 +1,99 @@
+QUESTION ID: N26   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N26",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My uncle's murder trial was transferred from our state to a court in another state, which convicted him. He is now serving his life sentence in a jail in our home state. Under section 473 BNSS, which state's government decides his premature release?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: BILKIS YAKUB RASOOL versus UNION OF INDIA & OTHERS (08-01-2024)
+   (Judgment id 1000255467, paragraph 36/2, page 105)
+Text:
+In the said order, the Bombay High Court clarified that the undertrials in this case were lodged in Maharashtra Jail only because of the fact that at that time the Trial was pending in the State of Maharashtra (transferred from Gujarat to Maharashtra by the Supreme Court). The High Court further clarified that once the Trial has concluded and the prisoner has been convicted, the appropriate prison would be the State of Gujarat and accordingly, the said prisoners were transferred to the State of Gujarat from the State of Maharashtra... At this juncture, the petitioner had approached the Gujarat High Court on the ground that despite he having undergone more than actual sentence of 14 years, his case was not being considered by the respondent/authorities for premature release. The Gujarat High Court vide its order dated 17.7.19 with great respect took a completely a diametrically opposite view as that of Bombay High Court and erroneously held that since the petitioner’s case was tried in the State of Maharashtra, therefore, his case for premature release has to be considered by the State of Maharashtra and not by the State of Gujarat. Hence the instant Writ Petition under Article 32 of the Constitution issuing a writ of Mandamus or any other similar direction to the State of Gujarat praying inter alia that the case of the petitioner may be considered as per the policy dated 9.7.92 (i.e. policy existing at the time of conviction of the petitioner) in the light of settled decision in “State of Haryana Vs.
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.454 OF 2006 Swamy Shraddananda @ Murali Manohar Mishra … Appellant Vs. State of Karnataka … Respondent J U D G M E N T AFTAB ALAM,J.
+   (Judgment id 32067, paragraph 62, page 51)
+Text:
+62. We also got some enquiries made on the issue of premature release of a life convict in the State of Bihar and came to learn that the process follows basically a similar pattern. In Bihar too the order for early release of a convicted prisoner is passed by the State Government in the Department of Law (Justice) on the basis of recommendations made by the Bihar State Sentence Remission Board. But there also the significant thing is the conversion of life imprisonment into imprisonment for a fixed term. In this regard the Government Letter No.A/PM-03/81-550 dated 21 January, 1984 was brought to our notice. The letter begins by stating the Government decision that for grant of remission to a life convict and for his release from prison, imprisonment for life will be deemed to be imprisonment for a term of 20 years. Then in paragraph 1 in the letter, in its original form it was stated that a life convict would not be entitled to the benefit of set off under Section 428 of the Code of Criminal Procedure, 1973 for the period of incarceration as an under trial. Paragraph 1 of the letter was, however, deleted by letter No. 3115 dated 23 May, 1985 following the decision of this Court in Bhagirath vs. Delhi Administration (supra). Paragraph 2 of the letter as it originally stood stipulated that an accused who is given the punishment of imprisonment for life in a capital offence or whose death sentence is commuted to life imprisonment under Section 433 of the Code as well as an accused who was awarded life sentence after 18 December, 1978 would be released from prison (a) only on completion of 14 years of actual imprisonment; and (b) when the total period of their imprisonment and the days of remission add up to 20 years. Paragraph 2 of this letter too was later deleted by Government letter No. 2939, dated 29 June, 2007 that provided that the decision to release a convict undergoing life imprisonment for a capital offence or whose death sentence is commuted to life imprisonment would be taken by the State Government or by the State Sentence Remission Board constituted by the Government.
+
+--- PASSAGE 3 ---
+Judgment: IN RE: POLICY STRATEGY FOR GRANT OF BAIL versus (18-02-2025)
+   (Judgment id 1000256396, unnumbered paragraph, page 10)
+Text:
+On such an application being made, the appropriate Government is required to approach the Presiding Judge of the court before or by which the conviction was made or confirmed to opine (with reasons) whether the application should be granted or refused. Thereafter, the appropriate Government may take a decision on the remission application and pass orders granting remission subject to some conditions, or 1598 refusing remission. Apart from anything else, this statutory procedure seems quite reasonable inasmuch as there is an application of mind to the issue of grant of remission. It also eliminates “discretionary” or en masse release of convicts on “festive” occasions since each release requires a case-by-case basis scrutiny.” (emphasis added) Even the decision in the case of Mohinder Singh v. State of Punjab2, contemplates an application to be made for grant of permanent remission. The majority view in the said decision holds that suo motu power to grant remission cannot be exercised. As specified in Sub-Section (2) of both Sections 432 and 473, there is a requirement to make an application. Since the convict will be in jail, any of his relatives can make an application in terms thereof. 7) The provisions for premature release have been incorporated in prison manuals of various States. In fact, in the Model Prison Manual, it is provided that the superintendent-in-charge of a prison has to initiate a case of a prisoner for grant of premature release.
+
+--- PASSAGE 4 ---
+Judgment: IN RE: POLICY STRATEGY FOR GRANT OF BAIL versus (18-02-2025)
+   (Judgment id 1000256396, unnumbered paragraph, page 8)
+Text:
+(6) The provisions of the above sub-sections shall also apply to any order passed by a Criminal Court under any section of this Code or of any other law which restricts the liberty of any person or imposes any liability upon him or his property. (7) In this section and in Section 433, the expression “appropriate Government” means,— (a) in cases where the sentence is for an offence against, or the order referred to in sub-section (6) is passed under, any law relating to a matter to which the executive power of the Union extends, the Central Government; (b) in other cases, the Government of the State within which the offender is sentenced or the said order is passed.” The corresponding provision under the BNSS is Section 473. It is substantially similar to Section 432 of the CrPC. Therefore, we are not reproducing it. 2) Thus, the power conferred on the appropriate Government is of remitting the whole or part of the punishment to which an accused has been sentenced with or without conditions. There is also a power vested in the appropriate Government to suspend the execution of the sentence. However, we are dealing only with the power to remit the whole or part of the sentence. 3) The power under Section 432 of the CrPC is circumscribed by Section 433-A. It provides that where a sentence of imprisonment for life is imposed on conviction of a person for an offence for which death is one of the punishments provided or where a sentence of death imposed on a person has been commuted under Section 433 into one of imprisonment for life, the appropriate Government cannot grant remission unless the convict has served at least fourteen years of actual imprisonment.
+
+--- PASSAGE 5 ---
+Judgment: BILKIS YAKUB RASOOL versus UNION OF INDIA & OTHERS (08-01-2024)
+   (Judgment id 1000255467, paragraph 14, page 109)
+Text:
+14. In the instant case, once the crime was committed in the State of Gujarat, after the trial been concluded and judgment of conviction came to be passed, all further proceedings have to be considered including remission or pre-mature release, as the case may be, in terms of the policy which is applicable in the State of Gujarat where the crime was committed and not the State where the trial stands transferred and concluded for exceptional reasons under the orders of this Court.
+
+--- PASSAGE 6 ---
+Judgment: BILKIS YAKUB RASOOL versus UNION OF INDIA & OTHERS (08-01-2024)
+   (Judgment id 1000255467, paragraph 12, page 108)
+Text:
+12. Indisputedly, in the instant case, the crime was committed in the State of Gujarat which is the appropriate Government competent to examine the application filed for pre-mature release and that is the reason for which the High Court of Bombay in Criminal Writ Petition No.305 of 2013 filed at the instance of co-accused Ramesh Rupabhai under its Order dated 5th August, 2013 declined his request to consider the application for pre-mature release and left the application to be examined according to the policy applicable in the State of Gujarat by the concerned authorities.
+
+--- PASSAGE 7 ---
+Judgment: IN RE: POLICY STRATEGY FOR GRANT OF BAIL versus (18-02-2025)
+   (Judgment id 1000256396, unnumbered paragraph, page 18)
+Text:
+THE SOP OF NALSA 19) The SOP issued by NALSA on the subject of premature release is very exhaustive and needs to be implemented in its true letter and spirit. More often than not, we have noticed that the convicts whose prayer for premature release is rejected are not well informed. Writ petitions are being filed in this court wherein either the facts are not fully stated, or there is suppression of facts. The reason is that most of the convicts are placed in such a position that they find it difficult to give correct information to their advocates. Clause 4.3 of the NALSA SOP is of utmost importance and needs strict implementation. PRESIDING OFFICER’S DUTY 20) When the Presiding officer’s opinion is sought as per Sub-Sections (2) of Section 432 of the CrPC and Section 473 of the BNNS, the Presiding Officer must submit his opinion at the earliest considering the fact that the issue of liberty of the convict is involved. 21) We, therefore, record the following conclusions: a) Where there is a policy of the appropriate Government laying down guidelines for consideration of the grant of premature release under Section 432 of the CrPC or Section 473 of the BNSS, it is the obligation of the appropriate Government to consider cases of all convicts for grant of premature release as and when they become eligible for consideration in terms of the policy.
+
+--- PASSAGE 8 ---
+Judgment: PETITIONER: HANUMANT DASS Vs. RESPONDENT: VINAY KUMAR & ORS. DATE OF JUDGMENT05/04/1982 BENCH: MISRA, R.B. (J) BENCH: MISRA, R.B. (J) REDDY, O. CHINNAPPA (J) CITATION: 1982 AIR 1052 1982 SCR (3) 595 1982 SCC (2) 177 1982 SCALE (1)310 ACT: Party to an appeal ag
+   (Judgment id 9905, unnumbered paragraph, page 7)
+Text:
+That State, therefore, will continue to be a necessary party in the appeal irrespective of the fact that the appeal was filed in the Punjab High Court. Section 432(7) extracted above defines "appropriate Government". "Appropriate Government" means-(a) in cases where the sentence is for an offence against, or the order referred to in subsection (6) is passed under any law relating to a matter to which the executive power of the Union extends, the Central Government; (b) in other cases, the Government of the State within which the offender is sentenced or the said order is passed. According to this section the appropriate Government is the Government of the State of conviction and not the Government of the State where the offence was committed. A somewhat similar question came up for consideration in the State of Madhya Pradesh v. Ratan Singh & Ors.,(1) where the respondent was convicted and sentenced to imprisonment for life by a court in the State of Madhya Pradesh. At his request he was transferred o a Jail in the State H of Punjab, to which State he belonged. He applied to the Government of Punjab that under the Punjab Jail Manual he is entitled to be released since he had completed more than 20 years of imprisonment. The application was sent to the Government of Madhya Pradesh, which rejected it.
+
+--- PASSAGE 9 ---
+Judgment: BILKIS YAKUB RASOOL versus UNION OF INDIA & OTHERS (08-01-2024)
+   (Judgment id 1000255467, paragraph 33/4, page 97)
+Text:
+The intention of the Parliament is that the Government of the State within which the offender was tried and sentenced, is the appropriate Government to consider either under sub-section (1) of Section 432 of the CrPC or on an application made by the convict for remission of the sentence under sub-section (2) of Section 432 of the CrPC. This places emphasis on the place of trial and sentence of the offender rather than the place or location where the crime was committed. Such an interpretation would also include a situation, such as in the present case, where not only the investigation but also the trial of respondents No.3 to 13 herein was transferred from the State of Gujarat to the State of Maharashtra and particularly to the Special Court at Mumbai. Thus, the aforesaid definition also takes within its scope and ambit a circumstance wherein the trial is transferred by this Court for reasons to be recorded and which is in the interest of justice from one State to another State. 33.5. There may be various reasons for transferring of a trial from a competent Court within the territorial jurisdiction of one State to a Court of equivalent jurisdiction in another State, as has been done in the instant case. But what is certain is that the transfer of the trial to a court in another State would be a relevant consideration while considering as to which State has the competency to pass an order of remission.
+
+--- PASSAGE 10 ---
+Judgment: MAFABHAI MOTIBHAI SAGAR versus STATE OF GUJARAT & ORS. (21-10-2024)
+   (Judgment id 1000256037, paragraph 17/1, page 12)
+Text:
+17. Our conclusions can be summarised as under: (i) Under sub-section (1) of Section 432 of the CrPC or sub-section (1) of Section 473 of the BNSS, the appropriate Government has the power to remit the whole or any part of the punishment of a convict. The remission can be granted either unconditionally or subject to certain conditions; (ii) The decision to grant or not to grant remission has to be well-informed, reasonable and fair to all concerned; (iii) A convict cannot seek remission as a matter of right. However, he has a right to claim that his case for the grant of remission ought to be considered in accordance with the law and/or applicable policy adopted by the appropriate Government; (iv) Conditions imposed while exercising the power under subsection (1) of Section 432 or sub-section (1) of Section 473 of the BNSS must be reasonable. If the conditions imposed are arbitrary, the conditions will stand vitiated due to violation of 1460 Article 14. Such arbitrary conditions may violate the convict’s rights under Article 21 of the Constitution; (v) The effect of remitting the sentence, in part or full, results in the restoration of liberty of a convict. If the order granting remission is to be cancelled or revoked, it will naturally affect the liberty of the convict. The reason is that when action is taken under sub-section (3) of Section 432 of the CrPC or sub-section (3) of Section 473 of the BNSS, it results in the convict being taken to prison for undergoing the remaining part of the sentence.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N26 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

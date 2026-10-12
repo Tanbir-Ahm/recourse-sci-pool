@@ -1,0 +1,99 @@
+QUESTION ID: N20   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N20",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether, in a prosecution for rape under Section 64 BNS, an adult woman's earlier romantic relationship with the accused, or her not physically resisting, amounts to consent under Section 63 BNS.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: SHIV PRATAP SINGH RANA versus STATE OF MADHYA PRADESH & ANR. (08-07-2024)
+   (Judgment id 1000255792, paragraph 18, page 11)
+Text:
+18. We have carefully gone through the definition of rape provided under Section 375 IPC. We have also gone through the provisions of Section 376(2)(n) IPC, which deals with the offence of rape committed repeatedly on the same woman. Section 375 IPC defines ‘rape’ by a man if he does any of the acts in terms of clauses (a) to (d) under the seven descriptions mentioned therein. As per the second description, a man commits rape if he does any of the acts as mentioned in clauses (a) to (d) without the consent of the woman. Consent has been defined in Explanation 2 to mean an unequivocal voluntary agreement when the woman by words, gestures or any form of verbal or non-verbal communication, communicates willingness to participate in the specific sexual act. However, the proviso thereto clarifies that a woman who does not physically resist to the act of penetration shall not by the reason only of that fact, be regarded as consenting to the sexual activity.
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 769 OF 2006 State of U.P. …Appellant Versus Chhoteylal …Respondent JUDGEMENT R.M. LODHA, J. The State of Uttar Pradesh is in appeal, by special leave, because the High Court of J
+   (Judgment id 37379, paragraph 16, page 13)
+Text:
+16. In Words and Phrases, Permanent Edition, (Volume 8A) at pages 205-206, few American decisions wherein the word ‘consent’ has been considered and explained with regard to the law of rape have been referred. These are as follows : “In order to constitute “rape”, there need not be resistance to the utmost, and a woman who is assaulted need not resist to the point of risking being beaten into insensibility, and, if she resists to the point where further resistance would be useless or until her resistance is overcome by force or violence, submission thereafter is not “consent”. People v. McIlvain (55 Cal. App. 2d 322).” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . “ “Consent,” within Penal Law, § 2010, defining rape, requires exercise of intelligence based on knowledge of its significance and moral quality and there must be a choice between resistance and assent. People v. Pelvino, 214 N.Y.S. 577” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . “ “Consenting” as used in the law of rape means consent of the will and submission under the influence of fear or terror cannot amount to real consent. Hallmark v. State, 22 Okl. Cr. 422” . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .. “Will is defined as wish, desire, pleasure, inclination, choice, the faculty of conscious, and especially of deliberate, action. It is purely and solely a mental process to be ascertained, in a prosecution for rape, by what the prosecuting witness may have said or done. It being a mental process there is no other manner by which her will can be ascertained, and it must be left to the jury to determine that will by her acts and statements, as disclosed by the evidence. It is but natural, therefore, that in charging the jury upon the subject of rape, or assault with intent to commit rape, the courts should have almost universally, and, in many cases, exclusively, discussed “consent” and resistance. There can be no better evidence of willingness is a condition or state of mind no better evidence of unwillingness than resistance. No lexicographer recognizes “consent” as a synonym of willingness, and it is apparent that they are not synonymous. It is equally apparent, on the other hand, that the true relation between the words is that willingness is a condition or state of mind and “consent” one of the evidences of that condition. Likewise resistance is not a synonym of unwillingness, though it is an evidence thereof. In all cases, therefore, where the prosecuting witness has an intelligent will, the court should charge upon the elements of “consent” and resistance as being proper elements from which the jury may infer either a favourable or an opposing will. It must, however, be recognized in all cases that the real test is whether the assault was committed against the will of the prosecuting witness. State v. Schwab, 143 N.E. 29”
+
+--- PASSAGE 3 ---
+Judgment: PETITIONER: STATE OF RAJASTHAN Vs. RESPONDENT: N. K. ACCUSED DATE OF JUDGMENT: 30/03/2000 BENCH: S.N.Variava, R.C.Lahoti JUDGMENT: R.C. Lahoti, J. The State of Rajasthan has come up in appeal feeling aggrieved by an order of acquittal recorded by the High Cour
+   (Judgment id 16447, unnumbered paragraph, page 6)
+Text:
+The prosecutrix on account of age or infirmity or overpowered by fear or force may have been incapable of offering any resistance. She might have sustained injuries but on account of lapse of time the injuries might have healed and marks vanished. For the offence of rape as defined in Section 375 of the Indian Penal Code, the sexual intercourse should have been against the will of the woman or without her consent. Consent is immaterial in certain circumstances covered by clauses thirdly to sixthly, the last one being when the woman is under 16 years of age. Based on these provisions, an argument is usually advanced on behalf of the accused charged with rape that absence of proof of want of consent where the prosecutrix is not under 16 years of age takes the assault out of the purview of Section 375 of the Indian Penal Code. Certainly consent is no defence if the victim has been proved to be under 16 years of age. If she be of 16 years of age or above, her consent cannot be presumed; an inference as to consent can be drawn if only based on evidence or probabilities of the case. The victim of rape stating on oath that she was forcibly subjected to sexual intercourse or that the act was done without her consent, has to be believed and accepted like any other testimony unless there is material available to draw an inference as to her consent or else the testimony of prosecutrix is such as would be inherently improbable.
+
+--- PASSAGE 4 ---
+Judgment: PRAMOD SURYABHAN PAWAR versus THE STATE OF MAHARASHTRA & ANR. (21-08-2019)
+   (Judgment id 1000251932, paragraph 9, page 12)
+Text:
+9. The present proceedings concern an FIR registered against the appellant under Sections 376, 417, 504, and 506(2) of the IPC and Sections 3(1) (u), (w) and 3(2) (vii) of SC/ST Act. Section 376 of the IPC prescribes the punishment for the offence of rape which is set out in Section 375. Section 375 prescribes seven descriptions of how the offence of rape may be committed. For the present purposes only the second such description, along with Section 90 of the IPC is relevant and is set out below. “375. Rape – A man is said to commit “rape” if he – … 7 2018 SCC OnLine SC 3100 under the circumstances falling under any of the following seven descriptions- Firstly … Secondly. – Without her consent. … Explanation 2. – Consent means an unequivocal voluntary agreement when the woman by words, gestures or any form of verbal or non-verbal communication, communicates willingness to participate in the specific sexual act: Provided that a woman who does not physically resist to the act of penetration shall not by the reason only of that fact, be regarded as consenting to the sexual activity.” “90. Consent known to be given under fear or misconception - A consent is not such a consent as is intended by any section of this Code, if the consent is given by a person under fear of injury, or under a misconception of fact, and if the person doing the act knows, or has reason to believe, that the consent was given in consequence of such fear or misconception; or…”
+
+--- PASSAGE 5 ---
+Judgment: MANAK CHAND @ MANI versus THE STATE OF HARYANA (30-10-2023)
+   (Judgment id 1000255358, paragraph 10, page 10)
+Text:
+10. We must also keep another relevant factor into consideration. This would be the relative age of the prosecutrix and the accused. The accused at the relevant time was less than 20 years of age, or about 20 years of age, as his age is mentioned as 20 years at the time of recording of his statement under Section 313, which is months later to the alleged incident. The fact that the prosecution has a case that initially the proposal of the marriage of prosecutrix with the appellant was accepted by the family of the appellant and only when the appellant refused the oﬀ er of marriage that the FIR was ﬁ nally lodged. All these factors point out towards the fact that what was alleged as rape was not rape but could be a consensual act. The only factor which could have made the consensual aspect immaterial and made it a case of ‘rape’ was the age of the prosecutrix. The medical evidence, however, points out that she is more than 16 years of age. The only evidence placed by the prosecution for establishing the DOB as 04.04.1987 i.e., the school register has not been conclusively proved.
+
+--- PASSAGE 6 ---
+Judgment: SHAMBHU KHARWAR versus STATE OF UTTAR PRADESH & ANR. (12-08-2022)
+   (Judgment id 1000254213, paragraph 10, page 6)
+Text:
+10. An offence is punishable under Section 376 of the IPC if the offence of rape is established in terms of Section 375 which sets out the ingredients of the offence. In the present case, the second description of Section 375 along with Section 90 of the IPC is relevant which is set out below. “375. Rape – A man is said to commit “rape” if he – […] under the circumstances falling under any of the following seven descriptions Firstly … Secondly. – Without her consent. […] Explanation 2. – Consent means an unequivocal voluntary agreement when the woman by words, gestures or any form of verbal or non-verbal communication, communicates willingness to participate in the specific sexual act: Provided that a woman who does not physically resist to the act of penetration shall not by the reason only of that fact, be regarded as consenting to the sexual activity. xxx
+
+--- PASSAGE 7 ---
+Judgment: Uday v. State of Karnataka (19/02/2003)
+   (Judgment id 19076, unnumbered paragraph, page 5)
+Text:
+Consent within penal law, defining rape, requires exercise of intelligence based on knowledge of its significance and moral quality and there must be a choice between resistance and assent. Legal consent, which will be held sufficient in a prosecution for rape, assumes a capacity to the person consenting to understand and appreciate the nature of the act committed, its immoral character, and the probable or natural consequences which may attend it. (See : People vs. Perry, 26 Cal. App. 143). The Courts in India have by and large adopted these tests to discover whether the consent was voluntary or whether it was vitiated so as not to be legal consent. In Rao Harnarain Singh vs. State : AIR 1958 Punjab 123 it was observed :- " A mere act of helpless resignation in the face of inevitable compulsion, acquiescence, nonresistance, or passive giving in, when volitional faculty is either clouded by fear or vitiated by duress, cannot be deemed to be ’consent’ as understood in law. Consent, on the part of a woman as a defence to an allegation of a rape, requires voluntary participation, not only after the exercise of intelligence, based on the knowledge, of the significance and moral quality of the act, but after having freely exercised a choice between resistance and assent. Submission of her body under the influence of fear or terror is not consent.
+
+--- PASSAGE 8 ---
+Judgment: DR. DHRUVARAM MURLIDHAR SONAR versus THE STATE OF MAHARASHTRA & ORS. (22-11-2018)
+   (Judgment id 1000251143, paragraph 18, page 13)
+Text:
+18. In Deepak Gulati v. State of Haryana, (2013) 7 SCC 675, the Court has drawn a distinction between rape and consensual sex. This is a case of a prosecutrix aged 19 years at the time of the incident. She had an inclination towards the accused. The accused had been giving her assurances of the fact that he would get married to her. The prosecutrix, therefore, left her home voluntarily and of her own free will to go with the accused to get married to him. She called the accused on a phone number given to her by him, to ask him why he had not met her at the place that had been pre-decided by them. She also waited for him for a long time, and when he finally arrived, she went with him to a place called Karna Lake where they indulged in sexual intercourse. She did not raise any objection at that stage and made no complaints to anyone. Thereafter, she went to Kurukshetra with the accused, where she lived with his relatives. Here too, the prosecutrix voluntarily became intimate with the accused. She then, for some reason, went to live in the hostel at Kurukshetra University illegally, and once again came into contact with the accused at Birla Mandir there. Thereafter, she even proceeded with the accused to the old bus-stand in Kurukshetra, to leave for Ambala so that the two of them could get married at the court in Ambala. At the bus station, the accused was arrested by the police. The Court held that the physical relationship between the parties had clearly developed with the consent of the prosecutrix as there was neither a case of any resistance nor had she raised any complaint anywhere at any time, despite the fact that she had been living with the accused for several days and had travelled with him from one place to another. The Court further held that it is not possible to apprehend the circumstances in which a charge of deceit/rape can be leveled against the accused.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1156 of 2010 Dilip …Appellant Versus State of Madhya Pradesh …Respondent O R D E R
+   (Judgment id 40308, paragraph 11, page 12)
+Text:
+11. In Words and Phrases, Permanent Edn., Vol. 8-A, the following passages culled out from certain old decisions of the American courts are found: "...adult females understanding of nature and consequences of sexual act must be intelligent understanding to constitute consent." Consent within penal law, defining rape, requires exercise of intelligence based on knowledge of its significance and moral quality and there must be a choice between resistance and assent..."
+
+--- PASSAGE 10 ---
+Judgment: RAJNISH SINGH @ SONI versus STATE OF U.P. AND ANOTHER (02-03-2025)
+   (Judgment id 1000256438, paragraph 35, page 13)
+Text:
+35. It is, therefore, clear that the accused is not liable for the offence of rape if the victim has wilfully agreed to maintain sexual relations. The Court has also recognised that a prosecutrix can agree to have sexual intercourse on account of her love and passion for the accused.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N20 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

@@ -1,0 +1,99 @@
+QUESTION ID: N09   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N09",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether the statutory demand notice under Section 138 of the NI Act is deemed to be served when it is sent by registered post to the drawer's correct address but returned 'unclaimed'.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1523 OF 2014 [Arising out of Special Leave Petition (Crl.)No.8783 of 2013] M/s. Ajeet Seeds Ltd. … Appellant Vs. K. Gopala Krishnaiah … Respondent J U D G M E N T (SMT.) RANJANA P
+   (Judgment id 41790, paragraph 14, page 9)
+Text:
+14. Section 27 gives rise to a presumption that service of notice has been effected when it is sent to the correct address by registered post. In view of the said presumption, when stating that a notice has been sent by registered post to the address of the drawer, it is unnecessary to further aver in the complaint that in spite of the return of the notice unserved, it is deemed to have been served or that the addressee is deemed to have knowledge of the notice. Unless and until the contrary is proved by the addressee, service of notice is deemed to have been effected at the time at which the letter would have been delivered in the ordinary course of business. This Court has already held that when a notice is sent by registered post and is returned with a postal endorsement ‘refused’ or ‘not available in the house’ or ‘house locked’ or ‘shop closed’ or ‘addressee not in station’, due service has to be presumed. [Vide Jagdish Singh Vs. Natthu Singh (1992) 1 SCC 647; State of M.P. Vs. Hiralal & Ors. (1996) 7 SCC 523 and V.Raja Kumari Vs. P.Subbarama Naidu & Anr. (2004) 8 SCC 74] It is, therefore, manifest that in view of the presumption available under Section 27 of the Act, it is not necessary to aver in the complaint under Section 138 of the Act that service of notice was evaded by the accused or that the accused had a role to play in the return of the notice unserved.”
+
+--- PASSAGE 2 ---
+Judgment: C.C. ALAVI HAJI v. PALAPETTY MUHAMMED & ANR. (18/05/2007)
+   (Judgment id 29085, paragraph 10, page 5)
+Text:
+10. It is, thus, trite to say that where the payee dispatches the notice by registered post with correct address of the drawer of the cheque, the principle incorporated in Section 27 of the G.C. Act would be attracted; the requirement of Clause (b) of proviso to Section 138 of the Act stands complied with and cause of action to file a complaint arises on the expiry of the period prescribed in Clause (c) of the said proviso for payment by the drawer of the cheque. Nevertheless, it would be without prejudice to the right of the drawer to show that he had no knowledge that the notice was brought to his address.
+
+--- PASSAGE 3 ---
+Judgment: D. Vinod Shivappa v. Nanda Belliappa (25/05/2006)
+   (Judgment id 27788, unnumbered paragraph, page 5)
+Text:
+In view of the legislative scheme it was held, the failure on the part of the drawer to pay the amount should be within 15 days "of the receipt" of the said notice. It was clear that the "giving of notice" in the context was not the same as the receipt of notice. "Giving" was the process of which the "receipt" was the accomplishment. This Court then observed : "If a strict interpretation is given that the drawer should have actually received the notice for the period of 15 days to start running no matter that the payee sent the notice on the correct address, a trickster cheque drawer would get the premium to avoid receiving the notice by different strategies and he could escape from the legal consequences of Section 138 of the Act. It must be borne in mind that Court should not adopt in interpretation which helps a dishonest evader and clips an honest payee as that would defeat the very legislative measure." This Court noticed the position well settled in law that the notice refused to be accepted by the drawer can be presumed to have been served on him. In that case the notice was returned as "unclaimed" and not as refused. The Court posed the question "Will there be any significant difference between the two so far as the presumption of service is concerned?" Their Lordships referred to Section 27 of the General Clauses Act and observed that the principle incorporated therein could profitably be imported in a case where the sender had despatched the notice by post with the correct address written on it.
+
+--- PASSAGE 4 ---
+Judgment: D. Vinod Shivappa v. Nanda Belliappa (25/05/2006)
+   (Judgment id 27788, unnumbered paragraph, page 6)
+Text:
+The Court posed the question "Will there be any significant difference between the two so far as the presumption of service is concerned?" Their Lordships referred to Section 27 of the General Clauses Act and observed that the principle incorporated therein could profitably be imported in a case where the sender had despatched the notice by post with the correct address written on it. Then it can be deemed to have been served on the sendee, unless he proves that it was not really served and that he was not responsible for such non-service. This Court dismissed the appeal preferred by the drawer holding that where the notice is returned by the addressee as unclaimed such date of return to the sender would be the commencing date in reckoning the period of 15 days contemplated in clause (c) to the proviso of Section 138 of the Act. This would be without prejudice to the right of the drawer of the cheque to show that he had no knowledge that the notice was brought to his address. Since the appellant did not attempt to discharge the burden to rebut the aforesaid presumption, the appeal was dismissed by this Court. The aforesaid decision is significant for two reasons. Firstly it was held that the principle incorporated in Section 27 of the General Clauses Act would apply in a case where the sender despatched the notice by post with the correct address written on it, but that would be without prejudice to the right of the drawer of the cheque to show that he had no knowledge that the notice was brought to his address.
+
+--- PASSAGE 5 ---
+Judgment: D. Vinod Shivappa v. Nanda Belliappa (25/05/2006)
+   (Judgment id 27788, unnumbered paragraph, page 5)
+Text:
+In such a case the High Court ought not to exercise its jurisdiction under Section 482 of the Code of Criminal Procedure. We may now consider some of the authorities cited at the Bar. In (1999) 7 SCC 510 : K. Bhaskaran vs. Sankaran Vaidhyan Balan and another, the drawee had presented a cheque issued by the drawer but the same was dishonoured. A notice was sent by registered post but the same was returned with the endorsement that the addressee was found absent on 3rd , 4th and 5th February, 1993 and intimation was served on addressee’s house on 6th February, 2003. Thereafter the postal article remained unclaimed till 15th February, 1993 and it was returned to the sender with a further endorsement "unclaimed". The complaint filed by the drawee was dismissed on the ground of territorial jurisdiction as also on the ground that since the notice had not been received by the drawer, there was no cause of action for filing the complaint. On appeal, the High Court reversed the order of acquittal. The appellant approached this Court by special leave. This Court held in favour of the respondent on the question of territorial jurisdiction. On the question of notice this Court considered the scheme of Section 138 of the Act by particular reference to clauses (b) and (c) of the proviso thereof. In view of the legislative scheme it was held, the failure on the part of the drawer to pay the amount should be within 15 days "of the receipt" of the said notice.
+
+--- PASSAGE 6 ---
+Judgment: V. Raja Kumari v. P. Subbarama Naidu & Anr. (02/11/2004)
+   (Judgment id 26572, unnumbered paragraph, page 3)
+Text:
+It is only the mode for making such demand which the legislature has prescribed. A payee can send the notice for doing his part for giving the notice. Once it is despatched his part is over and the next depends on what the sendee does. It is well settled that a notice refused to be accepted by the addressee can be presumed to have been served on him (vide Harcharan Singh v. Shivrani (1981 (2) SCC 535) and Jagdish Singh v. Natthu Singh ((1992 (1) SCC 647). Here the notice is returned as addressee being not found and not as refused. Will there be any significant difference between the two so far as the presumption of service is concerned? In this connection a reference to Section 27 of the General Clauses Act, 1897 will be useful. The section reads thus: "27. Meaning of service by post.-Where any Central Act or Regulation made after the commencement of this Act authorises or requires any document to be served by post, whether the expression ’serve’ or either of a the expressions ’give’ or ’send’ or any other expression is used, then, unless a different intention appears, the service shall be deemed to be effected by properly addressing, preparing and posting by registered post, a letter containing the document, and unless the contrary is proved, to have been effected at the time at which the letter would be delivered in the ordinary course of post." No doubt Section 138 of the Act does not require that the notice should be given only by "post".
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO 455 OF 2006 N PARAESWARAN UNNI ... APPELLANT VERSUS G KANNAN AND ANOTHER ... RESPONDENTS J U D G M E N T N.V. RAMANA, J.
+   (Judgment id 44685, paragraph 13, page 9)
+Text:
+13. It is clear from Section 27 of the General Clauses Act, 1897 and Section 114 of the Indian Evidence Act, 1972, that once notice is sent by registered post by correctly addressing to the drawer of the cheque, the service of notice is deemed to have been effected. Then requirements under proviso (b) of Section 138 stands complied, if notice is sent in the prescribed manner. However, the drawer is at liberty to rebut this presumption.
+
+--- PASSAGE 8 ---
+Judgment: C.C. ALAVI HAJI v. PALAPETTY MUHAMMED & ANR. (18/05/2007)
+   (Judgment id 29085, paragraph 15, page 6)
+Text:
+15. Insofar as the question of disclosure of necessary particulars with regard to the issue of notice in terms of proviso (b) of Section 138 of the Act, in order to enable the Court to draw presumption or inference either under Section 27 of the G.C. Act or Section 114 of the Evidence Act, is concerned, there is no material difference between the two provisions. In our opinion, therefore, when the notice is sent by registered post by correctly addressing the drawer of the cheque, the mandatory requirement of issue of notice in terms of Clause (b) of proviso to Section 138 of the Act stands complied with. It is needless to emphasise that the complaint must contain basic facts regarding the mode and manner of the issuance of notice to the drawer of the cheque. It is well settled that at the time of taking cognizance of the complaint under Section 138 of the Act, the Court is required to be prima facie satisfied that a case under the said Section is made out and the aforenoted mandatory statutory procedural requirements have been complied with. It is then for the drawer to rebut the presumption about the service of notice and show that he had no knowledge that the notice was brought to his address or that the address mentioned on the cover was incorrect or that the letter was never tendered or that the report of the postman was incorrect. In our opinion, this interpretation of the provision would effectuate the object and purpose for which proviso to Section 138 was enacted, namely, to avoid unnecessary hardship to an honest drawer of a cheque and to provide him an opportunity to make amends.
+
+--- PASSAGE 9 ---
+Judgment: C.C. ALAVI HAJI v. PALAPETTY MUHAMMED & ANR. (18/05/2007)
+   (Judgment id 29085, paragraph 8, page 3)
+Text:
+8. Since in Bhaskaran's case (supra), the notice issued in terms of Clause (b) had been returned unclaimed and not as refused, the Court posed the question: "Will there be any significant difference between the two so far as the presumption of service is concerned?" It was observed that though Section 138 of the Act does not require that the notice should be given only by "post", yet in a case where the sender has dispatched the notice by post with correct address written on it, the principle incorporated in Section 27 of the General Clauses Act, 1897 (for short 'G.C. Act') could profitably be imported in such a case. It was held that in this situation service of notice is deemed to have been effected on the sendee unless he proves that it was not really served and that he was not responsible for such non-service.
+
+--- PASSAGE 10 ---
+Judgment: C.C. ALAVI HAJI v. PALAPETTY MUHAMMED & ANR. (18/05/2007)
+   (Judgment id 29085, paragraph 14, page 6)
+Text:
+14. Section 27 gives rise to a presumption that service of notice has been effected when it is sent to the correct address by registered post. In view of the said presumption, when stating that a notice has been sent by registered post to the address of the drawer, it is unnecessary to further aver in the complaint that in spite of the return of the notice unserved, it is deemed to have been served or that the addressee is deemed to have knowledge of the notice. Unless and until the contrary is proved by the addressee, service of notice is deemed to have been effected at the time at which the letter would have been delivered in the ordinary course of business. This Court has already held that when a notice is sent by registered post and is returned with a postal endorsement "refused" or "not available in the house" or "house locked" or "shop closed" or "addressee not in station", due service has to be presumed. [Vide Jagdish Singh Vs. Natthu Singh ; State of M.P. Vs. Hiralal & Ors. and V.Raja Kumari Vs. P.Subbarama Naidu & Anr. ] It is, therefore, manifest that in view of the presumption available under Section 27 of the Act, it is not necessary to aver in the complaint under Section 138 of the Act that service of notice was evaded by the accused or that the accused had a role to play in the return of the notice unserved.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N09 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

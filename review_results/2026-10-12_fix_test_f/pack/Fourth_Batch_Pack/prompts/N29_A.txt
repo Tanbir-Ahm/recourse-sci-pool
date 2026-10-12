@@ -1,0 +1,99 @@
+QUESTION ID: N29   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N29",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether the failure of the police to audio-video record a search and seizure, as now required by the new criminal procedure law, makes the recovered material inadmissible or doubtful.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: KAILAS S/O BAJIRAO PAWAR versus THE STATE OF MAHARASHTRA (15-09-2025)
+   (Judgment id 1000257031, paragraph 18, page 18)
+Text:
+18. In the instant case, the High Court ordered a re-trial citing following reasons: (a) Video-recording of search and seizure operation was the best evidence, but the same was not converted into admissible evidence inasmuch as, (i) video was not played while recording statement of each witness so as to enable the witness to explain the video in his own words in his deposition; (ii) no transcript of video was prepared; and (iii) when it was played in Court, in absence of explanatory statement of witnesses qua the video, its content could not be understood. (b) The Chemical Examiner / Analyst (for short CA) was not produced as a witness. (c) The prosecutor did not produce remnant samples received from the office of CA. (d) The prosecutor did not produce the representative samples drawn at the time of the seizure from the spot as well as drawn in presence of the learned Magistrate at the time of making the inventory.
+
+--- PASSAGE 2 ---
+Judgment: KAILAS S/O BAJIRAO PAWAR versus THE STATE OF MAHARASHTRA (15-09-2025)
+   (Judgment id 1000257031, paragraph 19, page 18)
+Text:
+19. As far as admissibility of video recording i.e., Compact Disc (CD) is concerned, the author of the video i.e., SW No.2 not only deposed that he recorded the video, but he also gave a certificate, as contemplated under sub-section (4) of Section 65B of the Evidence Act, to make the CD admissible in evidence. Interestingly, the High Court did not dispute that the electronic record was duly exhibited as there existed a certificate envisaged under sub-section (4) of Section 65B. However, strangely, the High Court opined that the video would become relevant only if it is played during deposition of each witness so that the witness could explain its contents in his own words resulting in a transcript of the video. In our view, this is a strange and unacceptable reasoning for the simple reason that the CD is an electronic record and once the requirement of Section 65B is fulfilled it becomes an admissible piece of evidence, like a document, and the video recorded therein is akin to contents of a document which can be seen and heard to enable the Court to draw appropriate inference(s). No doubt, there may be an occasion where to appreciate contents of a video an explanatory statement may be needed, but that would depend on the facts of a case. However, it is not the requirement of law that the contents of the video would become admissible only if it is reduced to a transcript in the words of a witness who created the video or is noticed in the video. Besides that, in the instant case, the search and seizure operation was sought to be proved by oral evidence of witnesses. The video, therefore, was perhaps to corroborate the oral testimony. Even the judgment of the trial court makes it clear that the video was played in court in the presence of all accused as well as both sides counsels and the presiding officer, upon seeing the video, could spot and confirm the presence of witnesses as well as the accused at the time of search and seizure. In such circumstances, in our view, a re-trial is not required only to explain the video.
+
+--- PASSAGE 3 ---
+Judgment: Bharatbhai Bhagwanjibhai v. State of Gujarat (29/10/2002)
+   (Judgment id 18741, unnumbered paragraph, page 2)
+Text:
+(6) After a search is conducted under subsection (5), the officer shall record the reasons for such belief which necessitated such search and within seventy-two hours send a copy thereof to his immediate official superior." "51. Provisions of the Code of Criminal Procedure, 1973 to apply to warrants, arrests, searches and seizures - The provisions of the Code of Criminal Procedure, 1973 (2 of 1974) shall apply, insofar as they are not inconsistent with the provisions of this Act, to all warrants issued and arrests, searches and seizures made under this Act." "57. Report of arrest and seizure Whenever any person makes any arrest or seizure under this Act, he shall, within forty-eight hours next after such arrest or seizure, make a full report of all the particulars of such arrest or seizure to his immediate official superior." Turning attention to the requirement of Section 50, it is now well settled that the same is mandatory in nature and thus there exists an obligation to comply with the provisions and noncompliance thereof would entail an order of acquittal in a proceeding under the NDPS Act. This Court consistently and without even sounding a contra note followed the same and as such we need not dilate thereon any further. Incidentally, Section 51 of the Act is an enabling provision under which the provisions of Code of Criminal Procedure have been made applicable to warrants, searches, arrests and seizures under the Act provided further the same be not inconsistent with the provisions of the special statute being the Act of 1985.
+
+--- PASSAGE 4 ---
+Judgment: KAILAS S/O BAJIRAO PAWAR versus THE STATE OF MAHARASHTRA (15-09-2025)
+   (Judgment id 1000257031, paragraph 14, page 9)
+Text:
+14. It is to be noted that we are in the era of technology. The technology is now being used for the purpose of investigation. This is a good sign for the criminal justice administration. Electronic evidence collected with the assistance of the technology, which may be audio recording, video recording, photography or the data from the memory card, cannot be admitted in the evidence as it is. Before such material is admitted as an evidence, proper care and procedure is required to be followed. Such material has to be converted into a legally admissible evidence. The law prescribes the procedure. The prosecutor, the presiding officer and the advocates must be well versed with the procedure, while recording the evidence of the witness with regard to the contents of the video recording or CCTV footage. If there is a lack of procedural knowledge to convert such material into legally admissible evidence collected during the course of investigation, then the very purpose of the video recording or collection of the CCTV footage capturing the incident will be frustrated. The video recording or CCTV footage without proper evidence to prove the contents of the video recording cannot be made use of against the accused. It needs to be stated that with the advent of technology and use of the technology during the investigation, all concerned are required to keep themselves abreast with the law and procedure. A great care is required to be taken while recording the evidence when such electronic evidence is produced before the court. It is the duty of the court and other stakeholders to see that it is converted into legally admissible evidence. If there is a failure on the part of the prosecutor and the presiding officer, on account of some misconception related to the subject, then it can cause miscarriage of justice. It needs to be stated that in this case on account of procedural error, apparent lacuna has crept in, and which has resulted in miscarriage of justice. It has caused prejudice not only to the appellant but to the prosecution as well. It needs to be mentioned that in 944 this case, on this count, there is an imminent flaw, which has caused prejudice not only to the appellants but to the prosecution as well.
+
+--- PASSAGE 5 ---
+Judgment: STATE OF HIMACHAL PRADESH versus SHRI PIRTHI CHAND AND ANR. (30-11-1995)
+   (Judgment id 1000002185, unnumbered paragraph, page 7)
+Text:
+State of UP., AIR {1963) SC 822, this Court held that the evidence obtained by illegal search and seizure not be rejected but H SVPREME COURT REPORTS [1995) SUPP. 6 S.C.R. A requires to be examined carefully. Jn State of Maharashtra v. Natwarlal, AIR (1980) SC 593, even if the search was illegal, it will not affect the validity of the seizure and further investigation of the authorities or the validity of the trial which followed on the complaint by the customs officials. In Shyam Lal v. State of M.P., AIR (1972) SC 886: it was held that c even if the search and seizure is illegal being in contravention of Section 165, that provision does not have any effect in its application to the subsequent steps taken in the investigation. In State of Kera/a v. A/asseny Mohd., AIR 1978 SC 933, this Court had held that failure to comply strictly with the statutory provisions, by the Food Inspector, would not vitiate the trial and conviction of the accused. It would thus be settled law that every deviation from the details of the procedure prescribed for search, does not necessarily lead to the conclusion that search by the police renders the recovery of the articles pursuant to the illegal search, irrelevant evidence nor the discovery of the D fact inadmissible at the trial. Weight to be attached to such evidence depends nn facts and circumstances in each case.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1366 OF 2005 Rabindra Kumar Pal @ Dara Singh .... Appellant(s) Versus Republic of India .... Respondent(s) WITH CRIMINAL APPEAL NO. 1259 OF 2007 AND CRIMINAL APPEAL NOS. 1357-136
+   (Judgment id 37394, unnumbered paragraph, page 40)
+Text:
+14 was produced from police custody for recording his confession while A 13 made his statement when he was on bail and in no case the Magistrate ensured the accused persons that if they decline they would not be sent to police custody. It was further highlighted that illiterate accused persons cannot be expected to have knowledge of finest nuances of procedure. It was pointed that besides all confessions being exculpatory and made after conspiracy ceases to be operative are inadmissible. Finally, it was stated that Section 164 Cr.P.C. requires faithful compliance and failure impairs their evidentiary value. 19) Section 164 Cr.P.C. speaks about recording of confessions and statements. It reads thus: “164. Recording of confessions and statements. (1) Any Metropolitan Magistrate or Judicial Magistrate may, whether or not he has jurisdiction in the case, record any confession or statement made to him in the course of an investigation under this Chapter or under any other law for the time being in force, or at any, time afterwards before the commencement of the inquiry or trial: Provided that any confession or statement made under this sub-section may also be recorded by audio-video electronic means in the presence of the advocate of the person accused of an offence: Provided that no confession shall be recorded by a police officer on whom any power of a Magistrate has been conferred under any law for the time being in force.
+
+--- PASSAGE 7 ---
+Judgment: KAILAS S/O BAJIRAO PAWAR versus THE STATE OF MAHARASHTRA (15-09-2025)
+   (Judgment id 1000257031, paragraph 16, page 11)
+Text:
+16. The CD is a part of the record. At the stage of the arguments in these appeals, the CD was played in the Court. It is evident that the video recording commenced with the apprehension of the appellant. The CD contains the recording of the inspection of hut, recovery of the substance, the description of the substance and further part of the proceedings. The CD further contains the recording of the raid and recovery at the house of Shatrughna. The learned Judge was required to play the CD at the time of recording evidence of each witness and record the contents appearing on the screen with the help of the concerned witness. If this procedure had been followed, then the contents of the CD would have become legally admissible evidence. This procedure had not been followed. This has caused prejudice to the appellants as well as to the prosecution. The important evidence collected in the form of the video recording has not been converted into legally admissible evidence. In order to verify the correct factual position, at the stage of the argument of the appeals, the video recording was played. It was very difficult to understand the contents of the CD. If the evidence of the witnesses had been recorded on playing the video recording at the time of the evidence, then the oral testimony of the witnesses on oath, as to the contents of the CD would have been part of the record.
+
+--- PASSAGE 8 ---
+Judgment: BHARAT AAMBALE versus THE STATE OF CHHATTISGARH (06-01-2025)
+   (Judgment id 1000256250, paragraph 16, page 45)
+Text:
+16. Law on the point is very clear that even if there is any sort of procedural illegality in conducting the search and seizure, the evidence collected thereby will not become inadmissible and the court would consider all the circumstances and find out whether any serious prejudice had been caused to the accused. If the search and seizure was in complete defiance of the law and procedure and there was any possibility of the evidence collected likely to have been tampered with or interpolated during the course of such search or seizure, then, it could be said that the evidence is not liable to be admissible in evidence.” (Emphasis supplied)
+
+--- PASSAGE 9 ---
+Judgment: RAJESH & ANR. versus THE STATE OF MADHYA PRADESH (21-09-2023)
+   (Judgment id 1000255264, paragraph 30, page 20)
+Text:
+30. In Khet Singh vs. Union of India14, this Court held that even if there is a procedural illegality in conducting the search and seizure, the evidence collected thereby would not become inadmissible and the Court would consider all the circumstances to ﬁ nd out whether any serious prejudice 13 Criminal Appeal Nos. 64-65 of 2022, decided on 13.10.2022 = 2022 SCC OnLine SC 14 (2002) 4 SCC 380 has been caused to the accused. However, this Court pointed out that if the search and seizure were in complete deﬁ ance of the law and procedure and there was any possibility of the evidence collected having been tampered with or interpolated during the course of such search and seizure, then that evidence could not be admitted. Though these observations were made in the context of a search and seizure under the Narcotic Drugs and Psychotropic Substances Act, 1985, they would have relevance generally.
+
+--- PASSAGE 10 ---
+Judgment: BHARAT AAMBALE versus THE STATE OF CHHATTISGARH (06-01-2025)
+   (Judgment id 1000256250, paragraph 27, page 42)
+Text:
+27. In such circumstances, particularly where there has been lapse on the part of the police in either following the procedure laid down in Section 52A of the NDPS Act or the prosecution in adequately proving compliance of the same, it would not be appropriate for the courts to resort to the statutory presumption of commission of an 1566 offence from the possession of illicit material under Section 54 of the NDPS Act, unless the court is otherwise satisfied as regards the seizure or recovery of such material from the accused persons from the other material on record. Similarly, irrespective of any failure to follow the procedure laid under Section 52A of the NDPS Act, if the other material on record adduced by the prosecution inspires confidence and satisfies the court regarding both the recovery and possession of the contraband from the accused, then even in such cases, the courts can without hesitation proceed for conviction notwithstanding any procedural defect in terms of Section 52A of the NDPS Act.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N29 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

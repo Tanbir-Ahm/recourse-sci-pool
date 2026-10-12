@@ -1,0 +1,99 @@
+QUESTION ID: N10   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N10",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether, for deciding small or commercial quantity under the NDPS Act, the weight of the entire seized mixture is counted, or only the actual content of the narcotic drug found on chemical analysis.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: HIRA SINGH AND ANOTHER versus UNION OF INDIA AND ANOTHER (22-04-2020)
+   (Judgment id 1000252568, paragraph 8/5, page 27)
+Text:
+As per example, mixture of 100 gm is seized and the mixture is consisting of two different Narcotic Drugs and Psychotropic Substance with neutral material, one drug is heroin and another is methadone, lesser of commercial quantity between the quantities given against the aforesaid two respective Narcotic Drugs and Psychotropic Substance is required to be considered. For the purpose of determination of the “small quantity or commercial quantity”, in case of entry 239 the entire weight of the mixture / drug by whatever named called weight of neutral material is also required to be considered subject to what is stated hereinabove. If the view taken by this Court in the case of E. Micheal Raj (Supra) is accepted, in that case, it would be adding something to the relevant provisions of the statute which is not there and/or it was never intended by the legislature. 8.3 At this stage, it is required to be noted that illicit drugs are seldom sold in a pure form. They are almost always adulterated or cut with other substance. Caffeine is mixed with heroin, it causes that heroin to vaporize at a lower rate. That could allow users to take the drug faster and get a big punch sooner. Aspirin, crushed tablets, they could have enough powder to amend reversal doses of drugs. Take example of heroin. It is known as powerful and illegal street drug and opiate derived from morphine.
+
+--- PASSAGE 2 ---
+Judgment: E. Micheal Raj v. Intelligence Officer, Narcotic Control Bureau (11/03/2008)
+   (Judgment id 30812, paragraph 16, page 8)
+Text:
+16. On going through Amarsingh case (supra), we do not find that the Court was considering the question of mixture of a narcotic drug or psychotropic substance with one or more neutral substance/s. In fact that was not the issue before the Court. The black-coloured liquid substance was taken as an opium derivative and the FSL report to the effect that it contained 2.8% anhydride morphine was considered only for the purposes of bringing the substance within the sweep of Section 2(xvi)(e) as ‘opium derivative' which requires a minimum 0.2% morphine. The content found of 2.8% anhydride morphine was not at all considered for the purposes of deciding whether the substance recovered was a small or commercial quantity and the Court took into consideration the entire substance as an opium derivative which was not mixed with one or more neutral substance/s. Thus, Amarsingh case (supra) cannot be taken to be an authority for advancing the proposition made by the learned counsel for the respondent that the entire substance recovered and seized irrespective of the content of the narcotic drug or psychotropic substance in it would be considered for application of Section 21 of the NDPS Act for the purpose of imposition of punishment. We are of the view that when any narcotic drug or psychotropic substance is found mixed with one or more neutral substance/s, for the purpose of imposition of punishment it is the content of the narcotic drug or psychotropic substance which shall be taken into consideration.
+
+--- PASSAGE 3 ---
+Judgment: HIRA SINGH AND ANOTHER versus UNION OF INDIA AND ANOTHER (22-04-2020)
+   (Judgment id 1000252568, paragraph 8/6, page 27)
+Text:
+It is known as powerful and illegal street drug and opiate derived from morphine. This drug can easily be “cut” with a variety of different substances. This means that drug dealer will add other drugs or non -intoxicating substances to the drug so that they can sell more of it at a lesser expense to themselves. Brown-sugar / smack is usually made available in power form. The substances is only about 20% heroin. The heroin is mixed with other substances like chalk powder, zinc oxide, because of these, impurities in the drug, brown-sugar is cheaper but more dangerous. These are only few examples to show and demonstrate that even mixture of narcotic drugs or psychotropic substance is more dangerous. Therefore, what is harmful or injurious is the entire mixture/ tablets with neutral substance and Narcotic Drugs or Psychotropic Substances. Therefore, if it is accepted that it is only the actual content by weight of offending drug which is relevant for the purpose of determining whether it would constitute small quantity or commercial quantity, in that case, the object and purpose of enactment of NDPS Act would be frustrated. There may be fewpunishment for “commercial quantity”. Certainly that would not have been the intention of the legislature. 8.4. Even considering the definition of “manufacture”, “manufactured drug” and the “preparation” conjointly, the total weight of such “manufactured drug” or “preparation”, including the neutral material is required to be considered while determining small quantity or commercial quantity.
+
+--- PASSAGE 4 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOs. 1294-1295 OF 2015 (@ SLP(Crl) Nos. 8567-8568 of 2015) State through Intelligence Officer Narcotics Control Bureau ... Appellant Versus Mushtaq Ahmad Etc. ... Respondents J U D G
+   (Judgment id 43000, unnumbered paragraph, page 18)
+Text:
+In the mixture of a narcotic drug or a psychotropic substance with one or more neutral substance(s), the quantity of the neutral substance(s) is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance. It is only the actual content by weight of the narcotic drug which is relevant for the purposes of determining whether it would constitute small quantity or commercial quantity. The intention of the legislature for introduction of the amendment as it appears to us is to punish the people who commit less serious offences with less severe punishment and those who commit grave crimes, such as trafficking in significant quantities, with more severe punishment.” 20. In the said case, the Court accepted the submission that purity of heroin was 1.4% and 1.6% respectively and, therefore, the quantity of heroin in possession was only 60 gms and on that ground treated it as a small quantity. 21. In Amar Singh Ramaji Bhai Barot (supra) the appellant was found carrying a black packet which contained black colour liquid substance that smelled like opium. The police officer weighed the said substance recovered from him and found the weight to be 920 gms. 4.250 kg of a grey coloured substance suspected to be a drug, was recovered from the other accused who had already died.
+
+--- PASSAGE 5 ---
+Judgment: HIRA SINGH AND ANOTHER versus UNION OF INDIA AND ANOTHER (22-04-2020)
+   (Judgment id 1000252568, paragraph 15/1, page 24)
+Text:
+15. It appears from the Statement of Objects and Reasons of the Amending Act of 2001 that the intention of the legislature was to rationalize the sentence structure so as to ensure that while drug traffickers who traffic in significant quantities of drugs are punished with deterrent sentence, the addicts and those who commit less serious offences are sentenced to less severe punishment. Under the rationalised sentence structure, the punishment would vary depending upon the quantity of offending material. Thus, we find it difficult to accept the argument advanced on behalf of the respondent that the rate of purity is irrelevant since any preparation which is more than the commercial quantity of 250 gms. and contains 0.2% of heroin or more would be punishable under Section 21(c) of the NDPS Act, because the intention of the legislature as it appears to us is to levy punishment based on the content of the offending drug in the mixture and not on the weight of the mixture as such. This may be tested on the following rationale. Supposing 4 gms. of heroin is recovered from an accused, it would amount to a small quantity, but when the same 4 gms. is mixed with 50 kgs. of the powered sugar, it would be quantified as a commercial quantity. In the mixture of a narcotic drug or a psychotropic substance with one or more neutral substance/s, the quantity of the neutral substance/s is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance.
+
+--- PASSAGE 6 ---
+Judgment: E. Micheal Raj v. Intelligence Officer, Narcotic Control Bureau (11/03/2008)
+   (Judgment id 30812, paragraph 13, page 6)
+Text:
+13. It appears from the Statement of Objects and Reasons of the Amending Act of 2001 that the intention of the legislature was to rationalize the sentence structure so as to ensure that while drug traffickers who traffic in significant quantities of drugs are punished with deterrent sentence, the addicts and those who commit less serious offences are sentenced to less severe punishment. Under the rationalised sentence structure, the punishment would vary depending upon the quantity of offending material. Thus, we find it difficult to accept the argument advanced on behalf of the respondent that the rate of purity is irrelevant since any preparation which is more than the commercial quantity of 250 gms. and contains 0.2% of heroin or more would be punishable under Section 21(c) of the NDPS Act, because the intention of the legislature as it appears to us is to levy punishment based on the content of the offending drug in the mixture and not on the weight of the mixture as such. This may be tested on the following rationale. Supposing 4 gms. of heroin is recovered from an accused, it would amount to a small quantity, but when the same 4 gms. is mixed with 50 kgs. of the powered sugar, it would be quantified as a commercial quantity. In the mixture of a narcotic drug or a psychotropic substance with one or more neutral substance/s, the quantity of the neutral substance/s is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance. It is only the actual content by weight of the narcotic drug which is relevant for the purposes of determining whether it would constitute small quantity or commercial quantity. The intention of the legislature for introduction of the amendment as it appear to us is to punish the people who commit less serious offences with less severe punishment and those who commit grave crimes, such as trafficking in significant quantities, with more severe punishment.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOs. 1294-1295 OF 2015 (@ SLP(Crl) Nos. 8567-8568 of 2015) State through Intelligence Officer Narcotics Control Bureau ... Appellant Versus Mushtaq Ahmad Etc. ... Respondents J U D G
+   (Judgment id 43000, unnumbered paragraph, page 18)
+Text:
+It appears from the Statement of Objects and Reasons of the amending Act of 2001 that the intention of the legislature was to rationalise the sentence structure so as to ensure that while drug traffickers who traffic in significant quantities of drugs are punished with deterrent sentence, the addicts and those who commit less serious offences are sentenced to less severe punishment. Under the rationalised sentence structure, the punishment would vary depending upon the quantity of offending material. Thus, we find it difficult to accept the argument advanced on behalf of the respondent that the rate of purity is irrelevant since any preparation which is more than the commercial quantity of 250 gm and contains 0.2% of heroin or more would be punishable under Section 21(c) of the NDPS Act, because the intention of the legislature as it appears to us is to levy punishment based on the content of the offending drug in the mixture and not on the weight of the mixture as such. This may be tested on the following rationale. Supposing 4 gm of heroin is recovered from an accused, it would amount to a small quantity, but when the same 4 gm is mixed with 50 kg of powdered sugar, it would be quantified as a commercial quantity. In the mixture of a narcotic drug or a psychotropic substance with one or more neutral substance(s), the quantity of the neutral substance(s) is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance.
+
+--- PASSAGE 8 ---
+Judgment: HIRA SINGH & ANR. versus UNION OF INDIA & ANR. (03-07-2017)
+   (Judgment id 1000250046, paragraph 8/3, page 7)
+Text:
+The punishment must be based on the volume or content of the offending drug in the mixture and not on the aggregate weight of the mixture as such. In other words, the quantity of the neutral substance is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance. It is only the actual content by weight of the narcotic drug, which is relevant for the purpose of determining the quantity with reference to the quantum of punishment. [A. M. K.HANWILKAR, J.]
+
+--- PASSAGE 9 ---
+Judgment: HIRA SINGH AND ANOTHER versus UNION OF INDIA AND ANOTHER (22-04-2020)
+   (Judgment id 1000252568, paragraph 15/2, page 24)
+Text:
+In the mixture of a narcotic drug or a psychotropic substance with one or more neutral substance/s, the quantity of the neutral substance/s is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance. It is only the actual content by weight of the narcotic drug which is relevant for the purposes of determining whether it would constitute small quantity or commercial quantity. The intention of the legislature for introduction of the amendment as it appear to us is to punish the people who commit less serious offences with less severe punishment and those who commit grave crimes, such as trafficking in significant quantities, with more severe punishment.” 6.3. On considering the aforesaid reasoning given by this Court in the case of E.Micheal Raj (Supra), we are of the opinion that while holding that in the mixture of a narcotic drug or psychotropic substance with one or more neutral substance, the quantity of neutral substance is not to be taken into consideration and it is only the actual content by weight of the narcotic drug which is relevant for the purposes of determining whether it would constitute “small quantity or commercial quantity”, this Court has not at all considered the relevant entry in the Notification dated 19.10.2001.
+
+--- PASSAGE 10 ---
+Judgment: HIRA SINGH & ANR. versus UNION OF INDIA & ANR. (03-07-2017)
+   (Judgment id 1000250046, paragraph 8/2, page 7)
+Text:
+This may be tested on the following rationale. Supposing 4 gm of heroin is recovered from an accused, it would amount to a small quantity, but when the same 4 gm is mixed with 50 kg of powdered sugar, it would be quantified as a commercial quantity. Jn the mixture of a narcotic drug or a psychotropic substance with one or more neutral substance(s). the quantity of the neutral substance(s) is not to be taken into consideration while determining the small quantity or commercial quantity of a narcotic drug or psychotropic substance. It is only the actual content by weight of the narcotic drug which is relevant (or the purposes of determining whether it would constitute small quantity or commercial quantity. The intention of the legislature for introduction of the amendment as it appears to us is to punish the people who commit less serious offences with less severe punishment and those who commit grave crimes, such as traJficking in significant quantities, with more severe punishment. " (emphasis supplied) The principle stated in this decision is that the rate of purity of the drug is decisive for determining the quantum of sentence - for "small'', "intermediary" or "commercial" quantity. The punishment must be based on the volume or content of the offending drug in the mixture and not on the aggregate weight of the mixture as such.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N10 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

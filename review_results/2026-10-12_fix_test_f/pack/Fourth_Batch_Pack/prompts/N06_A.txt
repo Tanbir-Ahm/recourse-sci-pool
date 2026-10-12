@@ -1,0 +1,99 @@
+QUESTION ID: N06   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N06",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: After a fight over a drain, our neighbour has filed a case saying my father abused him by caste inside the neighbour's own house, with only his family there. Police say that in caste cases no court can give bail before arrest. Is that correct?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: KIRAN versus RAJKUMAR JIVRAJ JAIN & ANR. (01-09-2025)
+   (Judgment id 1000256991, paragraph 4, page 7)
+Text:
+4. Mr. Amol Nirmalkumar Suryawanshi, learned counsel appearing for the appellant-herein assailed the judgment and order of the High Court to submit that the High Court not only misdirected itself in exercise of the discretion to grant bail to respondent No.1, but it plainly overlooked the provisions of Section 18 of the SC/ST Act. Highlighting the contents of and the allegations in the FIR, it was submitted that the accused used abusive language referring to caste and the appellant who was the member of the Scheduled Caste community was thereby subjected to derogation and insult. The appellant was intimidated and his mother and aunt were also abused with castiest slur and were threatened. Learned counsel for the appellant further submitted that the castiest slur and the castiest abuse employed against the appellant clearly made out the offence under Section 3 of the SC/ST Act as alleged and since the offence was prima facie committed, the pre-arrest bail could not have been granted by the High Court in view of the provision of Section 18 of the Act. 4.1 Learned counsel for the appellant relied on the decision of Vilas Pandurang Pawar vs. State of Maharashtra1 to submit that at the stage of the consideration of grant of bail or otherwise, the High Court was not expected to conduct a mini trial. It (2012) 8 SCC 795 290 was submitted that the reasoning of the High Court was not acceptable. Regarding bar created by virtue of Section 18 of the SC/ST Act, learned counsel pressed into service the decision of this Court in Prathvi Raj Chauhan vs. Union of India2. 4.2 On the other hand, learned counsel for respondent No.1 seeking to defend the order of the High Court, submitted that Section 18 of the SC/ST Act did not create an absolute bar to grant anticipatory bail. He proceeded to submit that in subsequent decision of this Court in Shajan Skaria vs. The State of Kerala & Anr.3, it was observed that the court needed to undertake an exercise to find out whether there was a prima facie substance in the allegations. According to learned counsel for respondent No.1, the allegations in the FIR were made for the sake of making and were out of anger regarding casting of vote in the assembly elections. He tried to submit that it was wrong to give a castiest colour to the allegations to conclude that any offence under the SC/ST Act was committed by the accused. 4.3 The respondent-State of Maharashtra filed the counter affidavit and opposed the grant of pre-arrest bail to respondent No.1 accused by emphasising the operational ambit of Section 18 of the SC/ST Act. It was highlighted that when prima facie material existed in the form of allegations in the FIR and other attendant factual aspects, the respondent No.1 could not have been granted the anticipatory bail by the High Court.
+
+--- PASSAGE 2 ---
+Judgment: DR. SUBHASH KASHINATH MAHAJAN versus THE STATE OF MAHARASHTRA AND ANR. (20-03-2018)
+   (Judgment id 1000250634, paragraph 59, page 62)
+Text:
+59. There can be no dispute with the proposition that mere unilateral allegation by any individual belonging to any caste, when such allegation is clearly motivated and false, cannot be treated as enough to deprive a person of his liberty without an independent scrutiny. Thus, exclusion of provision for anticipatory bail cannot possibly, by any reasonable interpretation, be treated as applicable when no case is made out or allegations are patently false or motivated. If this interpretation is not taken, it may be difficult for public servants to discharge their bona fide functions and, in given cases, they can be black mailed with the threat of a false case being registered under the Atrocities Act, without any protection of law. This cannot be the scenario in a civilized society. Similarly, even a non public servant can be black mailed to surrender his civil rights. This is not the intention of law. Such law cannot stand judicial scrutiny. It will fall foul of guaranteed fundamental rights of fair and reasonable procedure being followed if a person is deprived of life and liberty. Thus, literal interpretation cannot be preferred in the present situation.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.595 OF 2013 (SPECIAL LEAVE PETITION(CRL.)NO.8490 OF 2012) SHAKUNTLA DEVI APPELLANT VERSUS BALJINDER SINGH RESPONDENT O R D E R
+   (Judgment id 40321, paragraph 4, page 1)
+Text:
+4. We find that Section 18 of the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1984 provides that nothing in Section 438 of the Criminal Procedure Code shall apply in relation to any case involving the arrest of any person on an accusation of having committed an offence under this Act. This Court has also held in Vilas Pandurang Pawar & Anr. Vs. State of Maharashtra & Ors., reported in 2012 (8) SCALE, 577 that Section 18 of the Act creates a specific bar to the grant of anticipatory bail to a person against whom any offence is registered under the : 2 : provisions of the aforesaid Act and, therefore no Court shall entertain an application for anticipatory bail unless it, prima facie, finds that an offence under the Act is not made out.
+
+--- PASSAGE 4 ---
+Judgment: MANJU DEVI versus ONKARJIT SINGH AHLUWALIA @ OMKARJEET SINGH & OTHERS (24-03-2017)
+   (Judgment id 1000004818, paragraph 16, page 11)
+Text:
+16. In view of the above, it would be relevant to quote a decision of this Court in Vilas Pandurang Pawar amt Another vs. State of Maharashtra and Others (2012) 8 SCC 795 wherein this Court has held as under:- "9. Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3( I) of the SC/ST Act has been prima facie made out. In other words, ifthere is a specific averment in the complaint, namely, insult or intimidation with intent to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail.
+
+--- PASSAGE 5 ---
+Judgment: SHAJAN SKARIA versus THE STATE OF KERALA & ANR. (23-08-2024)
+   (Judgment id 1000255914, paragraph 28/3, page 32)
+Text:
+It is pointed out in the above Statement of Objects and Reasons that when members of the Scheduled Castes and Scheduled Tribes assert their rights and demand statutory protection, vested interests try to cow them down and terrorise them. In these circumstances, if anticipatory bail is not made available to persons who commit such offences, such a denial cannot be considered as unreasonable or violative of Article 14, as these offences form a distinct class by themselves and cannot be compared with other offences.
+
+--- PASSAGE 6 ---
+Judgment: RAHNA JALAL versus STATE OF KERALA AND ANOTHER (17-12-2020)
+   (Judgment id 1000252854, paragraph 17, page 13)
+Text:
+17. Thus, even in the context of legislation, such as the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act 1989, where a bar is interposed by the provisions of Section 18 and Sub-section (2) of Section 18-A on the application of Section 438 of the CrPC, this Court has held that the bar will not apply where the complaint does not make out “a prima facie case” for the applicability of the provisions of the Act. A statutory exclusion of the right to access remedies for bail is construed strictly, for a purpose. Excluding access to bail as a remedy, impinges upon human liberty. Hence, the decision in Chauhan (supra) held that the exclusion will not be attracted where the complaint does not prima facie indicate a case attracting the applicability of the provisions of the Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act 1989.
+
+--- PASSAGE 7 ---
+Judgment: BACHU DAS versus STATE OF BIHAR AND OTHERS (03-02-2014)
+   (Judgment id 1000004409, paragraph 8, page 3)
+Text:
+8. It is clear that the learned Magistrate carefully perused the complaint petition, as well as the statement of the complainant and four witnesses examined during enquiry and arrived a prima facie conclusion against the accused persons that offence under Sections 147, 148, 149, 323, 448 1.P.C. and Section 3 of the SC/ST Act, is made out. In such circumstance and in view of the bar under Section 18 of the SC/ST Act, the learned counsel relying on the decision of this Court reported in {2012) 7 SCC 795 [Vilas Pandurang Pawar and Another v. State of Maharashtra and Others], submitted that the High Court is not justified in granting anticipatory bail. In similar circumstance, this Court has considered the offence under Section 3(1), as well as the bar provided under Section 18 of G the SC/ST Act and concluded as under: "Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3(1) of the SC/ST l~Q:11i4f 2. ~.C.R. Act has been prima facie made out. In other Words, if there is a specific averment in the complaint, namely, insult or intimidation with int~nt to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail. The scope of Section 18 of the SC/ST Act read with Section 438 of the Code is such. that it creates a specific bar in the grant of anticipatory bail. When an offence is registered against a person under the provisions of the SC/ ST Act, no court shall entertain ,an application for anticipatory bail, unless it prima facie finds that such an offence is not made out. Moreover, while considering the application for bail, scope for appreciation of evidence and other m9terial on record is limited. The court is not _ e~pected to indulge in critical analysis of the evidence on record. When a provision has been enacted in the Special Act to protect the persons who belong to the Scheduled Castes and the Scheduled Tribes and a bar has been imposed in granting bail under Section 438 of the Code, the provision in the Special Act cannot be easily brushed aside by elaborate discussion on the evidence."
+
+--- PASSAGE 8 ---
+Judgment: SHAJAN SKARIA versus THE STATE OF KERALA & ANR. (23-08-2024)
+   (Judgment id 1000255914, paragraph 38, page 39)
+Text:
+38. It was observed by this Court that although Section 18 of the Act, 1989 creates a bar for invoking Section 438 of the CrPC yet the courts are entrusted with a duty to verify the averments in the complaint and to find out whether an offence under the Act, 1989 is prima facie made out or not. It was further observed that while considering the application for anticipatory bail, the scope for appreciation of evidence and other material is limited and the courts are not expected to undertake an intricate evidentiary inquiry of the materials on record. The relevant observations are reproduced hereinbelow: “9. Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3(1) of the SC/ ST Act has been prima facie made out. In other words, if there is a specific averment in the complaint, namely, insult or intimidation with intent to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail.
+
+--- PASSAGE 9 ---
+Judgment: KIRAN versus RAJKUMAR JIVRAJ JAIN & ANR. (01-09-2025)
+   (Judgment id 1000256991, paragraph 5/4, page 8)
+Text:
+In these circumstances, if anticipatory bail is not made available to persons who commit such offences, such a denial cannot be considered as unreasonable or violative of Article 14, as these offences form a distinct class by themselves and cannot be compared with other offences” (para 6) 5.4 The aforesaid bar is held to be not violative of Article 21 of the Constitution. In Kartar Singh vs. State of Punjab5 it was stated that taking away the right of pre-arrest bail under Section 438 of the Cr.PC, under Section 18 of the SC/ST Act would not infringe the right to personal liberty. 5.5 In Vilas Pandurang Pawar vs. State of Maharashtra6, this Court explained the bar under Section 18 of the SC/ST Act against grant of anticipatory bail in the following words, “Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3(1) of the SC/ST Act has been prima facie made out. In other words, if there is a specific averment in the complaint, namely, insult or intimidation with intent to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail.” (Para 9) 5.5.1 It was further stated in Vilas Pandurang Pawar (supra), “Moreover, while considering the application for bail, scope for appreciation of evidence and other material (1994) 3 SCC 569 (2012) 8 SCC 795 294 on record is limited.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION SPECIAL LEAVE PETITION (CRL.) NO. 6432 of 2012 Vilas Pandurang Pawar & Anr. .... Petitioner(s) Versus State of Maharashtra & Ors. .... Respondent(s) J U D G M E N T P. Sathasivam, J. 1) The short qu
+   (Judgment id 39539, unnumbered paragraph, page 6)
+Text:
+We want to go in Hospital. My complaint is read over to me and it is true as stated by me. Before Hence, written Sd/- Date: 15/06/12 Police Station Officer, Karjat Police Station. Sent to: Hon’ble JMFC Karjat. Sd/- Police Station Officer Karjat Police Station.” A perusal of the complaint shows that the petitioners and other accused persons abused the complainant and her husband by calling their caste (Mahar) and assaulted them for their action of letting rain water to their field. 8) Section 18 of the SC/ST Act creates a bar for invoking Section 438 of the Code. However, a duty is cast on the court to verify the averments in the complaint and to find out whether an offence under Section 3(1) of the SC/ST Act has been prima facie made out. In other words, if there is a specific averment in the complaint, namely, insult or intimidation with intent to humiliate by calling with caste name, the accused persons are not entitled to anticipatory bail. 9) The scope of Section 18 of the SC/ST Act read with Section 438 of the Code is such that it creates a specific bar in the grant of anticipatory bail. When an offence is registered against a person under the provisions of the SC/ST Act, no Court shall entertain application for anticipatory bail, unless it prima facie finds that such an offence is not made out.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N06 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

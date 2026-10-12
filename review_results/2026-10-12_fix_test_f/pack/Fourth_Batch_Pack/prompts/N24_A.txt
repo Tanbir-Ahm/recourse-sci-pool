@@ -1,0 +1,99 @@
+QUESTION ID: N24   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N24",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether a Special Court under the PMLA must give the proposed accused an opportunity of being heard under Section 223 BNSS before taking cognizance of a prosecution complaint filed in 2025.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: KUSHAL KUMAR AGARWAL versus DIRECTORATE OF ENFORCEMENT (09-05-2025)
+   (Judgment id 1000256707, paragraph 8, page 4)
+Text:
+8. Mr. Raju, the learned Additional Solicitor General, has made two submissions. Firstly, he submits that hearing given to the accused in terms of the proviso to sub-section (1) of Section 223 of the BNSS will be confined to the question whether a case is made out to proceed on the basis of the complaint and hence, only the complaint and the documents produced along with the complaint can be considered at the time of hearing. His second submission is that it is well settled that cognizance is taken by the criminal Court of the offence and not the offender. Therefore, after taking cognizance and after following the procedure prescribed by proviso to sub-section (1) of Section 223 of the BNSS if cognizance is taken, there will be no occasion to again take cognizance of the same offence when supplementary or further complaints are filed. Therefore, at that stage, there will be no occasion to give the accused the opportunity to be heard.
+
+--- PASSAGE 2 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 9, page 6)
+Text:
+9. The learned Senior Counsel appearing for the appellant submitted that the appellant has, admittedly, not been heard by the Special Court at the time of taking cognizance. It was further submitted that Sections 200 to 205 of the CrPC, which have been reiterated under Sections 223 to 228 of the BNSS, are applicable to the case at hand. Thus, there is no inconsistency between the said provisions 492 of the BNSS and that of the PMLA and, hence, the appellant is entitled to be heard at the time of taking cognizance, as provided under the first proviso to Section 223(1) of the BNSS. A similar view has already been taken by this Court in the case of Kushal Kumar Agarwal v. Directorate of Enforcement, 2025 SCC OnLine SC 1221, by placing reliance upon two earlier decisions of this Court in the cases of Yash Tuteja & Ors. v. Union of India, (2024) 8 SCC 465, and Tarsem Lal v. ED, (2024) 7 SCC 61.
+
+--- PASSAGE 3 ---
+Judgment: ARVIND DHAM versus DIRECTORATE OF ENFORCEMENT (06-01-2026)
+   (Judgment id 1003962508, paragraph 21, page 10)
+Text:
+21. The record reveals that the prosecution complaint was filed on 06.09.2024. The Special Judge issued notice on 07.09.2024 to all proposed accused persons under the proviso to Section 223 of BNSS. The respondent challenged the said order before the High Court, resulting in eight months stay of proceedings, before the Special Judge, which was lifted on 23.05.2025 only upon withdrawal of the petition. The delay in the trial is thus attributable only to the respondent, not the appellant.
+
+--- PASSAGE 4 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 26, page 16)
+Text:
+26. Section 223 of the BNSS deals with the examination of a complainant. The first proviso to Section 223(1) of the BNSS prohibits the Magistrate from taking cognizance of an offence, unless the accused is given an opportunity of being heard.
+
+--- PASSAGE 5 ---
+Judgment: KUSHAL KUMAR AGARWAL versus DIRECTORATE OF ENFORCEMENT (09-05-2025)
+   (Judgment id 1000256707, paragraph 6, page 4)
+Text:
+6. The proviso to sub-section (1) of Section 223 puts an embargo on the power of the Court to take cognizance by providing that no cognizance of an offence shall be taken by the Magistrate without giving the accused an opportunity of being heard.
+
+--- PASSAGE 6 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 25, page 15)
+Text:
+25. Section 213 of the BNSS bars a Court of Session from directly taking cognizance of an offence, unless the case has been committed to it by the Magistrate. However, it also makes it clear that the said bar shall not apply in case of a contrary provision existing under the BNSS or any other law. Section 223 of the BNSS, 2023 “223. Examination of complainant.— (1) A Magistrate having jurisdiction while taking cognizance of an offence on complaint shall examine upon oath the complainant and the witnesses present, if any, and the substance of such examination shall be reduced to writing and shall be signed by the complainant and the witnesses, and also by the Magistrate: Provided that no cognizance of an offence shall be taken by the Magistrate without giving the accused an opportunity of being heard: Provided further that when the complaint is made in writing, the Magistrate need not examine the complainant and the witnesses— (a) if a public servant acting or purporting to act in the discharge of his official duties or a Court has made the complaint; or (b) if the Magistrate makes over the case for inquiry or trial to another Magistrate under Section 212: Provided also that if the Magistrate makes over the case to another Magistrate under Section 212 after examining the complainant and the witnesses, the latter Magistrate need not re-examine them. (2) A Magistrate shall not take cognizance on a complaint against a public servant for any offence alleged to have been committed in course of the discharge of his official functions or duties unless— (a) such public servant is given an opportunity to make assertions as to the situation that led to the incident so alleged; and (b) a report containing facts and circumstances of the incident from the officer superior to such public servant is received.” (emphasis supplied)
+
+--- PASSAGE 7 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 33/3, page 19)
+Text:
+If the Special Court is of the view that no prima facie case of an offence under Section 3 PMLA is made out, it must exercise the power under Section 203 CrPC to dismiss the complaint. If a prima facie case is made out, the Special Court can take recourse to Section 204 CrPC.” (emphasis supplied) Kaushal Kumar Agarwal v. Directorate of Enforcement, 2025 SCC OnLine SC 1221. “5. This Court has taken a consistent view that a complaint filed by the Enforcement Directorate under Section 44 (1) (b) of the PMLA will be governed by Sections 200 to 204 of the CrPC. This view has been taken by this Court in the cases of Yash Tuteja v. Union of India, (2024) 8 SCC 465, and Tarsem Lal v. Enforcement Directorate, (2024) 7 SCC 61. Therefore, the provisions of Chapter XVI, containing Sections 223 to 226, will also apply to a complaint under Section 44 of the PMLA. As the complaint has been filed after 1st July, 2024, Section 223 of the BNSS will apply to the present complaint.
+
+--- PASSAGE 8 ---
+Judgment: PARVINDER SINGH versus DIRECTORATE OF ENFORCEMENT (19-05-2026)
+   (Judgment id 1003962665, paragraph 6, page 20)
+Text:
+6. The proviso to sub-section (1) of Section 223 puts an embargo on the power of the Court to take cognizance 506 by providing that no cognizance of an offence shall be taken by the Magistrate without giving the accused an opportunity of being heard.
+
+--- PASSAGE 9 ---
+Judgment: KUSHAL KUMAR AGARWAL versus DIRECTORATE OF ENFORCEMENT (09-05-2025)
+   (Judgment id 1000256707, paragraph 5, page 3)
+Text:
+5. This Court has taken a consistent view that a complaint filed by the Enforcement Directorate under Section 44 (1)(b) of the PMLA will be governed by Sections 200 to 204 of the CrPC. This view has been taken by this Court in the cases of Yash Tuteja v/s Union of [2025] 5 S.C.R.  Kushal Kumar Agarwal v. Directorate of Enforcement India and others1 and Tarsem Lal v/s Enforcement Directorate2. Therefore, the provisions of Chapter XVI, containing Sections 223 to 226, will also apply to a complaint under Section 44 of the PMLA. As the complaint has been filed after 1st July, 2024, Section 223 of the BNSS will apply to the present complaint.
+
+--- PASSAGE 10 ---
+Judgment: KUSHAL KUMAR AGARWAL versus DIRECTORATE OF ENFORCEMENT (09-05-2025)
+   (Judgment id 1000256707, paragraph 11-12, page 5)
+Text:
+11. We make it clear that we have not expressed any opinion on the merits of the complaint and the aforesaid contentions raised by the learned Additional Solicitor General. 12. We direct the appellant to appear before the Special Court on 14th July, 2025, so that he can be given an opportunity of being heard in terms of the proviso to sub-section (1) of Section 223 of the BNSS. We make it clear that no further notice shall be issued by the Special Court to the appellant.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N24 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

@@ -1,0 +1,99 @@
+QUESTION ID: N19   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N19",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My son has been booked in a POCSO case. Police say his Aadhaar shows he was 18, but his school certificate says he was 16 at the time. Under the JJ Act, which document does the court go by to decide his age?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: NARAYAN CHETANRAM CHAUDHARY versus THE STATE OF MAHARASHTRA (27-03-2023)
+   (Judgment id 1000254854, paragraph 31/5, page 47)
+Text:
+Any document which is in consonance with public documents, such as matriculation certificate, could be accepted by the court or the JJ Board provided such public document is credible and authentic as per the provisions of the Evidence Act viz. Section 35 and other provisions. 33.11. Ossification test cannot be the sole criterion for age determination and a mechanical view regarding the age of a person cannot be adopted solely on the basis of medical opinion by radiological examination. Such evidence is not conclusive evidence but only a very useful guiding factor to be considered in the absence of documents mentioned in Section 94(2) of the JJ Act, 2015.”
+
+--- PASSAGE 2 ---
+Judgment: NARAYAN CHETANRAM CHAUDHARY versus THE STATE OF MAHARASHTRA (27-03-2023)
+   (Judgment id 1000254854, paragraph 31/4, page 47)
+Text:
+That it is neither feasible nor desirable to lay down an abstract formula to determine the age of a person. It has to be on the basis of the material on record and on appreciation of evidence adduced by the parties in each case. 33.7. This Court has observed that a hypertechnical approach should not be adopted when evidence is adduced on behalf of the accused in support of the plea that he was a juvenile. 33.8. If two views are possible on the same evidence, the court should lean in favour of holding the accused to be a juvenile in borderline cases. This is in order to ensure that the benefit of the JJ Act, 2015 is made applicable to the juvenile in conflict with law. At the same time, the court should ensure that the JJ Act, 2015 is not misused by persons to escape punishment after having committed serious offences. 33.9. That when the determination of age is on the basis of evidence such as school records, it is necessary that the same would have to be considered as per Section 35 of the Evidence Act, inasmuch as any public or official document maintained in the discharge of official duty would have greater credibility than private documents. 33.10. Any document which is in consonance with public documents, such as matriculation certificate, could be accepted by the court or the JJ Board provided such public document is credible and authentic as per the provisions of the Evidence Act viz.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1403 OF 2012 Special Leave Petition (Crl) No. 7271 of 2011 Ashwani Kumar Saxena …….. Appellant Versus State of M.P. ……. Respondent J U D G M E N T K. S. RADHAKRISHNAN, J.
+   (Judgment id 39559, paragraph 26/3, page 17)
+Text:
+(ii) the date of birth certificate from the school (other than a play school) first attended; and in the absence whereof; (iii) the birth certificate given by a corporation or a municipal authority or a panchayat; (b) and only in the absence of either (i), (ii) or (iii) of clause (a) above, the medical opinion will be sought from a duly constituted Medical Board, which will declare the age of the juvenile or child. In case exact assessment of the age cannot be done, the Court or the Board or, as the case may be, the Committee, for the reasons to be recorded by them, may, if considered necessary, give benefit to the child or juvenile by considering his/her age on lower side within the margin of one year. and, while passing orders in such case shall, after taking into consideration such evidence as may be available, or the medical opinion, as the case may be, record a finding in respect of his age and either of the evidence specified in any of the clauses (a)(i), (ii), (iii) or in the absence whereof, clause (b) shall be the conclusive proof of the age as regards such child or the juvenile in conflict with law. (4) If the age of a juvenile or child or the juvenile in conflict with law is found to be below 18 years on the date of offence, on the basis of any of the conclusive proof specified in sub-rule (3), the court or the Board or as the case may be the Committee shall in writing pass an order stating the age and declaring the status of juvenility or otherwise, for the purpose of the Act and these rules and a copy of the order shall be given to such juvenile or the person concerned.
+
+--- PASSAGE 4 ---
+Judgment: THE STATE OF JAMMU & KASHMIR (NOW U.T. OF JAMMU & KASHMIR) & ORS. versus SHUBAM SANGRA (16-11-2022)
+   (Judgment id 1000254509, paragraph 64/5, page 43)
+Text:
+Any document which is in consonance with public documents, such as matriculation certificate, could be accepted by the Court or the JJ Board provided such public document is credible and authentic as per the provisions of the Indian Evidence Act viz., section 35 and other provisions. 33.11. Ossification Test cannot be the sole criterion for age determination and a mechanical view regarding the age of a person cannot be adopted solely on the basis of medical opinion by radiological examination. Such evidence is not conclusive evidence but only a very useful guiding factor to be considered in the absence of documents mentioned in Section 94(2) of the JJ Act, 2015.”
+
+--- PASSAGE 5 ---
+Judgment: RISHIPAL SINGH SOLANKI versus STATE OF UTTAR PRADESH & ORS. (18-11-2021)
+   (Judgment id 1000253442, paragraph 29/4, page 34)
+Text:
+(vii) This Court has observed that a hyper-technical approach should not be adopted when evidence is adduced on behalf of the accused in support of the plea that he was a juvenile. (viii) If two views are possible on the same evidence, the court should lean in favour of holding the accused to be a juvenile in borderline cases. This is in order to ensure that the benefit of the JJ Act, 2015 is made applicable to the juvenile in conflict with law. At the same time, the Court should ensure that the JJ Act, 2015 is not misused by persons to escape punishment after having committed serious offences. (ix) That when the determination of age is on the basis of evidence such as school records, it is necessary that the same would have to be considered as per Section 35 of the Indian Evidence Act, inasmuch as any public or official document maintained in the discharge of official duty would have greater credibility than private documents. (x) Any document which is in consonance with public documents, such as matriculation certificate, could be accepted by the Court or the JJ Board provided such public document is credible and authentic as per the provisions of the Indian Evidence Act viz., section 35 and other provisions. (xi) Ossification Test cannot be the sole criterion for age determination and a mechanical view regarding the age of a person cannot be adopted solely on the basis of medical opinion by radiological examination.
+
+--- PASSAGE 6 ---
+Judgment: SANJEEV KUMAR GUPTA versus THE STATE OF UTTAR PRADESH AND ANR. (25-07-2019)
+   (Judgment id 1000251838, paragraph 10/5, page 9)
+Text:
+The Court held: “34. ...There may be situations where the entry made in the matriculation or equivalent certificates, date of birth certificate from the school first attended and even the birth certificate given by a corporation or a municipal authority or a panchayat may not be correct. But court, Juvenile Justice Board or a committee functioning under the JJ Act is not expected to conduct such a roving enquiry and to go behind those certificates to examine the correctness of those documents, kept during the normal course of business. Only in cases where those documents or certificates are found to be fabricated or manipulated, the court, the Juvenile Justice Board or the committee need to go for medical report for age determination.” In the view of the Court, it was only if the above conditions were fulfilled, that a medical report could be called.
+
+--- PASSAGE 7 ---
+Judgment: THE STATE OF JAMMU & KASHMIR (NOW U.T. OF JAMMU & KASHMIR) & ORS. versus SHUBAM SANGRA (16-11-2022)
+   (Judgment id 1000254509, paragraph 64/4, page 43)
+Text:
+That it is neither feasible nor desirable to lay down an abstract formula to determine the age of a person. It has to be on the basis of the material on record and on appreciation of evidence adduced by the parties in each case. 33.7. This Court has observed that a hyper- technical approach should not be adopted when evidence is adduced on behalf of the accused in support of the plea that he was a juvenile. 33.8. If two views are possible on the same evidence, the court should lean in favour of holding the accused to be a juvenile in borderline cases. This is in order to ensure that the benefit of the JJ Act, 2015 is made applicable to the juvenile in conflict with law. At the same time, the Court should ensure that the JJ Act, 2015 is not misused by persons to escape punishment after having committed serious offences. 33.9. That when the determination of age is on the basis of evidence such as school records, it is necessary that the same would have to be considered as per Section 35 of the Indian Evidence Act, inasmuch as any public or official document maintained in the discharge of official duty would have greater credibility than private documents. 33.10. Any document which is in consonance with public documents, such as matriculation certificate, could be accepted by the Court or the JJ Board provided such public document is credible and authentic as per the provisions of the Indian Evidence Act viz., section 35 and other provisions.
+
+--- PASSAGE 8 ---
+Judgment: P. YUVAPRAKASH versus STATE REP. BY INSPECTOR OF POLICE (18-07-2023)
+   (Judgment id 1000255124, paragraph 12, page 8)
+Text:
+12. In view of Section 34(1) of the POCSO Act, Section 94 of the JJ Act, 2015 becomes relevant, and applicable. That provision is extracted below: “94. Presumption and determination of age. – (1) Where, it is obvious to the Committee or the Board, based on the appearance of the person brought before it under any of the provisions of this Act (other than for the purpose of giving evidence) that the said person is a child, the Committee or the Board shall record such observation stating the age of the child as nearly as may be and proceed with the inquiry under section 14 or section 36, as the case may be, without waiting for further confirmation of the age. (2) In case, the Committee or the Board has reasonable grounds for doubt regarding whether the person brought before it is a child or not, the Committee or the Board, as the case may be, shall undertake the process of age determination, by seeking evidence by obtaining – (i) the date of birth certificate from the school, or the matriculation or equivalent certificate from the concerned examination Board, if available; and in the absence thereof; (ii) the birth certificate given by a corporation or a municipal authority or a panchayat; (iii) and only in the absence of (i) and (ii) above, age shall be determined by an ossification test or any other latest medical age determination test conducted on the orders of the Committee or the Board: Provided such age determination test conducted on the order of the Committee or the Board shall be completed within fifteen days from the date of such order. (3) The age recorded by the Committee or the Board to be the age of person so brought before it shall, for the purpose of this Act, be deemed to be the true age of that person.”
+
+--- PASSAGE 9 ---
+Judgment: PARAG BHATI (JUVENILE) THR. LEGAL GUARDIAN- MOTHER-SMT. RAJNI BHAT! versus STATE OF UTTAR PRADESH AND ANR. (12-05-2016)
+   (Judgment id 1000004745, paragraph 34, page 18)
+Text:
+34. Age determination inquiry contemplated under the JJ Act and the 2007 Rules has nothing to do with an enquiry under other legislations, like entry in service, retirement, promotion, etc. There may be situations where the entry made in the matriculation or equivalent certificates, date of birth certificate from the school first attended and even the birth certificate given by a corporation or a municipal authority or a panchayat may not be correct. But court, Juvenile Justice Board or a committee functioning under the JJ Act is not expected to conduct such a roving enquiry and to go behind those certificates to examine the correctness of those documents, kept during the normal course of business. Only in cases where those documents or certificates are found to be fabricated or manipulated. the court. the Juvenile Justice Board or the committee need to go for medical report for age determination. (emphasis supplied by us)
+
+--- PASSAGE 10 ---
+Judgment: P. YUVAPRAKASH versus STATE REP. BY INSPECTOR OF POLICE (18-07-2023)
+   (Judgment id 1000255124, paragraph 13, page 8)
+Text:
+13. It is evident from conjoint reading of the above provisions that wherever the dispute with respect to the age of a person arises in the context of her or him being a victim under the POCSO Act, the courts have to take recourse to the steps indicated in Section 94 of the JJ Act. The three documents in order of which the Juvenile Justice Act requires consideration is that the concerned court has to determine the age by considering the following documents: “(i) the date of birth certificate from the school, or the matriculation or equivalent certificate from the concerned examination Board, if available; and in the absence thereof; (ii) the birth certificate given by a corporation or a municipal authority or a panchayat; (iii) and only in the absence of (i) and (ii) above, age shall be determined by an ossification test or any other latest medical age determination test conducted on the orders of the Committee or the Board”.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N19 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

@@ -1,0 +1,99 @@
+QUESTION ID: N18   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N18",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My cousin is 20. He was in a relationship for a year with a girl from the next lane who was 17 at the time, and they were physically intimate. She says it was her own choice and she wants to marry him. Her parents found out, filed a complaint, and the police arrested him. Everyone in our family says it cannot be a crime if she agreed and they love each other. Does it matter in law that she agreed?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: MAHESHWAR TIGGA versus THE STATE OF JHARKHAND (28-09-2020)
+   (Judgment id 1000252747, paragraph 20, page 12)
+Text:
+20. We have no hesitation in concluding that the consent of the prosecutrix was but a conscious and deliberated choice, as distinct from an involuntary action or denial and which opportunity was available to her, because of her deep-seated love for the appellant leading her to willingly permit him liberties with her body, which according to normal human behaviour are permitted only to a person with whom one is deeply in love. The observations in this regard in Uday (supra) are considered relevant: “25…It usually happens in such cases, when two young persons are madly in love, that they promise to each other several times that come what may, they will get married. As stated by the prosecutrix the appellant also made such a promise on more than one occasion. In such circumstances the promise loses all significance, particularly when they are overcome with emotions and passion and find themselves in situations and circumstances where they, in a weak moment, succumb to the temptation of having sexual relationship. This is what appears to have happened in this case as well, and the prosecutrix willingly consented to having sexual intercourse with the appellant with whom she was deeply in love, not because he promised to marry her, but because she also desired it. In these circumstances it would be very difficult to impute to the appellant knowledge that the prosecutrix had consented in consequence of a misconception of fact arising from his promise. In any event, it was not possible for the appellant to know what was in the mind of the prosecutrix when she consented, because there were more reasons than one for her to consent.”
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1365 OF 2008 (Arising out of SLP (Crl.) No. 5967 of 2006) State of Punjab ....Appellant Versus Rakesh Kumar ....Respondent J U D G M E N T Dr. ARIJIT PASAYAT, J.
+   (Judgment id 32349, paragraph 19, page 13)
+Text:
+19. Undisputedly, the victim was less than 16 years of age at the time of occurrence. Evidence also shows that the victim and accused were in love and the victim admitted that she had sexual intercourse with the accused because of that. That of course has no relevance because of her age being less than sixteen years. The father of the victim had also filed an affidavit before the High Court that since the victim is settled in life a liberal view may be taken so far as sentence is concerned.
+
+--- PASSAGE 3 ---
+Judgment: DR. DHRUVARAM MURLIDHAR SONAR versus THE STATE OF MAHARASHTRA & ORS. (22-11-2018)
+   (Judgment id 1000251143, paragraph 18, page 13)
+Text:
+18. In Deepak Gulati v. State of Haryana, (2013) 7 SCC 675, the Court has drawn a distinction between rape and consensual sex. This is a case of a prosecutrix aged 19 years at the time of the incident. She had an inclination towards the accused. The accused had been giving her assurances of the fact that he would get married to her. The prosecutrix, therefore, left her home voluntarily and of her own free will to go with the accused to get married to him. She called the accused on a phone number given to her by him, to ask him why he had not met her at the place that had been pre-decided by them. She also waited for him for a long time, and when he finally arrived, she went with him to a place called Karna Lake where they indulged in sexual intercourse. She did not raise any objection at that stage and made no complaints to anyone. Thereafter, she went to Kurukshetra with the accused, where she lived with his relatives. Here too, the prosecutrix voluntarily became intimate with the accused. She then, for some reason, went to live in the hostel at Kurukshetra University illegally, and once again came into contact with the accused at Birla Mandir there. Thereafter, she even proceeded with the accused to the old bus-stand in Kurukshetra, to leave for Ambala so that the two of them could get married at the court in Ambala. At the bus station, the accused was arrested by the police. The Court held that the physical relationship between the parties had clearly developed with the consent of the prosecutrix as there was neither a case of any resistance nor had she raised any complaint anywhere at any time, despite the fact that she had been living with the accused for several days and had travelled with him from one place to another. The Court further held that it is not possible to apprehend the circumstances in which a charge of deceit/rape can be leveled against the accused.
+
+--- PASSAGE 4 ---
+Judgment: MANISH YADAV versus STATE OF UTTAR PRADESH & ANR. (22-01-2025)
+   (Judgment id 1000256293, paragraph 14, page 6)
+Text:
+14. In our opinion, it is clearly discernible that both the appellant and the complainant were major and thus, both were competent enough to make rational decisions. As per the statement of the complainant(supra), their initial physical relations were consensual in nature, and without there being any promise of marriage being offered by the appellant. While it can be said that initially the relationship between the complainant and appellant had developed on the basis of mutual attraction and affection, the same cannot by any stretch of imagination fall within the ambit of a relationship flowing from a promise to marry.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO(S). 230 OF 2013 SATISH KUMAR JAYANTI LAL DABGAR …..APPELLANT(S) VERSUS STATE OF GUJARAT …..RESPONDENT(S) J U D G M E N T A.K. SIKRI, J. Though, this Court vide order dated 18.09.2
+   (Judgment id 42456, paragraph 5/6, page 7)
+Text:
+On this fact, clause sixthly of Section 375 of the IPC would get attracted making her consent for sexual intercourse as immaterial and inconsequential. It reads as follows: “375. Rape—A man is said to commit “rape” who, except in the case hereinafter excepted, has sexual intercourse with a woman under circumstances falling under any of the six following descriptions:— xx xx xx Sixthly - With or without her consent, when she is under sixteen years of age. Explanation.—Penetration is sufficient to constitute the sexual intercourse necessary to the offence of rape.” 15) The Legislature has introduced the aforesaid provision with sound rationale and there is an important objective behind such a provision. It is considered that a minor is incapable of thinking rationally and giving any consent. For this reason, whether it is civil law or criminal law, the consent of a minor is not treated as valid consent. Here the provision is concerning a girl child who is not only minor but less than 16 years of age. A minor girl can be easily lured into giving consent for such an act without understanding the implications thereof. Such a consent, therefore, is treated as not an informed consent given after understanding the pros and cons as well as consequences of the intended action. Therefore, as a necessary corollary, duty is cast on the other person in not taking advantage of the so-called consent given by a girl who is less than 16 years of age.
+
+--- PASSAGE 6 ---
+Judgment: Uday v. State of Karnataka (19/02/2003)
+   (Judgment id 19076, unnumbered paragraph, page 9)
+Text:
+The question still remains whether even if it were so, the appellant knew, or had reason to believe, that the prosecutrix had consented to having sexual intercourse with him only as a consequence of her belief, based on his promise, that they will get married in due course. There is hardly any evidence to prove this fact. On the contrary the circumstances of the case tend to support the conclusion that the appellant had reason to believe that the consent given by the prosecutrix was the result of their deep love for each other. It is not disputed that they were deeply in love. They met often, and it does appear that the prosecutrix permitted him liberties which, if at all, is permitted only to a person with whom one is in deep love. It is also not without significance that the prosecutrix stealthily went out with the appellant to a lonely place at 12 O’clock in the night. It usually happens in such cases, when two young persons are madly in love, that they promise to each other several times that come what may, they will get married. As stated by the prosecutrix the appellant also made such a promise on more than one occasion. In such circumstances the promise loses all significance, particularly when they are over come with emotions and passion and find themselves in situations and circumstances where they, in a weak moment, succumb to the temptation of having sexual relationship.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 2322 of 2010 Deepak Gulati …Appellant Versus State of Haryana …Respondent J U D G M E N T Dr. B.S. CHAUHAN, J.
+   (Judgment id 40427, paragraph 18, page 13)
+Text:
+18. Consent may be express or implied, coerced or misguided, obtained willingly or through deceit. Consent is an act of reason, accompanied by deliberation, the mind weighing, as in a balance, the good and evil on each side. There is a clear distinction between rape and consensual sex and in a case like this, the court must very carefully examine whether the accused had actually wanted to marry the victim, or had mala fide motives, and had made a false promise to this effect only to satisfy his lust, as the latter falls within the ambit of cheating or deception. There is a distinction between the mere breach of a promise, and not fulfilling a false promise. Thus, the court must examine whether there was made, at an early stage a false promise of marriage by the accused; and whether the consent involved was given after wholly, understanding the nature and consequences of sexual indulgence. There may be a case where the prosecutrix agrees to have sexual intercourse on account of her love and passion for the accused, and not solely on account of mis-representation made to her by the accused, or where an accused on account of circumstances which he could not have foreseen, or which were beyond his control, was unable to marry her, despite having every intention to do so. Such cases must be treated differently. An accused can be convicted for rape only if the court reaches a conclusion that the intention of the accused was mala fide, and that he had clandestine motives.
+
+--- PASSAGE 8 ---
+Judgment: DR. DHRUVARAM MURLIDHAR SONAR versus THE STATE OF MAHARASHTRA & ORS. (22-11-2018)
+   (Judgment id 1000251143, paragraph 17/2, page 12)
+Text:
+Even thereafter, the intimacy continued to the knowledge of the parents and other relations who were under the impression that the accused would marry the girl, but the accused avoided marrying her and his father took him out of the village to thwart the bid to marry. The efforts made by the father of the girl to establish the marital tie failed. Therefore, she was constrained to file the complaint after waiting for some time. With this factual back-ground, the Court held that the girl had taken a conscious decision, after active application of mind to the events that had transpired. It was further held that at best, it is a case of breach of promise to marry rather than a case of false promise to marry, for which the accused is prima facie accountable for damages under civil law. It was held thus:- “The remaining question is whether on the basis of the evidence on record, it is reasonably possible to hold that the accused with the fraudulent intention of inducing her to sexual intercourse, made a false promise to marry. We have no doubt that the accused did hold out the promise to marry her and that was the predominant reason for the victim girl to agree to the sexual intimacy with him. PW 12 was also too keen to marry him as she said so specifically. But we find no evidence which gives rise to an inference beyond reasonable doubt that the accused had no intention to marry her at all from the inception and that the promise he made was false to his knowledge.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO(S). 230 OF 2013 SATISH KUMAR JAYANTI LAL DABGAR …..APPELLANT(S) VERSUS STATE OF GUJARAT …..RESPONDENT(S) J U D G M E N T A.K. SIKRI, J. Though, this Court vide order dated 18.09.2
+   (Judgment id 42456, paragraph 5/5, page 7)
+Text:
+Another extenuating circumstance which was sought to be projected was that even though the prosecutrix was below 16 years of age at the time of incident, the entire episode was the result of love affair between the appellant and the prosecutrix and every act between them was consensual. It was also pointed out that even the prosecutrix was married and had one child and, therefore, was happily settled in her matrimonial home. On the basis of these circumstances, the plea was made that the appellant should be accorded sympathetic treatment by reducing the sentence imposed upon him. 13) Having regard to the aforesaid plea, we are called upon to consider the issue of sentence only in the present appeal. The extenuating and mitigating circumstances narrated by the learned Amicus Curiae have been duly taken note of by the High Court as well. In fact, going by these very circumstances projected by the defence, the High Court reduced the sentence of seven years rigorous imprisonment imposed under Section 376 of the IPC to 4½ years. We feel that appellant is not entitled to any further mercy. 14) First thing which is to be borne in mind is that the prosecutrix was less than 16 years of age. On this fact, clause sixthly of Section 375 of the IPC would get attracted making her consent for sexual intercourse as immaterial and inconsequential.
+
+--- PASSAGE 10 ---
+Judgment: Uday v. State of Karnataka (19/02/2003)
+   (Judgment id 19076, unnumbered paragraph, page 9)
+Text:
+She had sufficient intelligence to understand the significance and moral quality of the act she was consenting to. That is why she kept it a secret as long as she could. Despite this, she did not resist the overtures of the appellant, and in fact succumbed to it. She thus freely exercised a choice between resistance and assent. She must have known the consequences of the act, particularly when she was conscious of the fact that their marriage may not take place at all on account of caste considerations. All these circumstances lead us to the conclusion that she freely, voluntarily, and consciously consented to having sexual intercourse with the appellant, and her consent was not in consequence of any misconception of fact. There is another difficulty in the way of the prosecution. There is no evidence to prove conclusively that the appellant never intended to marry her. Perhaps he wanted to, but was not able to gather enough courage to disclose his intention to his family members for fear of strong opposition from them. Even the prosecutrix stated that she had full faith in him. It appears that the matter got complicated on account of the prosecutrix becoming pregnant. Therefore, on account of the resultant pressure of the prosecutrix and her brother the appellant distanced himself from her.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N18 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

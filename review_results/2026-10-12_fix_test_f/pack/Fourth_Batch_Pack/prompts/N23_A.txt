@@ -1,0 +1,99 @@
+QUESTION ID: N23   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N23",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether a dying declaration recorded by a Magistrate under Section 32 of the Evidence Act becomes unreliable or inadmissible solely because no doctor certified that the declarant was mentally fit to make it.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1062 OF 2008 Ashabai & Anr. .... Appellant(s) Versus State of Maharashtra .... Respondent(s) J U D G M E N T P.Sathasivam,J. 1) This appeal is directed against the judgment and o
+   (Judgment id 39895, unnumbered paragraph, page 12)
+Text:
+Such statements are relevant whether the person who made them was or was not, at the time when they were made, under expectation of death, and whatever may be the nature of the proceeding in which the cause of his death comes into question. (2) ….. ….. ….. ….. (8) …. ….” It is clear from the above provision that the statement made by the deceased by way of a declaration is admissible in evidence under Section 32(1) of the Evidence Act. It is not in dispute that her statement relates to the cause of her death. In that event, it qualifies the criteria mentioned in Section 32(1) of the Evidence Act. There is no particular form or procedure prescribed for recording a dying declaration nor it is required to be recorded only by a Magistrate. As a general rule, it is advisable to get the evidence of the declarant certified from a doctor. In appropriate cases, the satisfaction of the person recording the statement regarding the state of mind of the deceased would also be sufficient to hold that the deceased was in a position to make a statement. It is settled law that if the prosecution solely depends on the dying declaration, the normal rule is that the courts must exercise due care and caution to ensure genuineness of the dying declaration, keeping in mind that the accused had no opportunity to test the veracity of the statement of the deceased by cross-examination.
+
+--- PASSAGE 2 ---
+Judgment: Dayal Singh v. State of Maharashtra (03/05/2007)
+   (Judgment id 28960, paragraph 12, page 6)
+Text:
+12. In Kulwant Singh v. State of Punjab (2004) 9 SCC 257 it has been held that it is not essential that a dying declaration should be made only before a Magistrate. Section 32 of the Evidence Act nowhere states that the dying declaration must be recorded in the presence of a Magistrate or in other words any statement which has not been recorded before the Magistrate cannot be treated to be dying declaration. In Vidhya Devi v. State of Haryana (2004) 9 SCC 476 challenge to a dying declaration recorded by a police officer in the presence of doctor, who had given an opinion that the deceased was in a fit state of mind to make the statement, was held to be credible and reliable and sufficient to establish the guilt of the accused.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.2472 OF 2009 Shudhakar … Appellant Versus State of M.P. … Respondent J U D G M E N T Swatanter Kumar, J .
+   (Judgment id 39421, paragraph 22/3, page 25)
+Text:
+What is essential is that the person recording the dying declaration must be satisfied that the deceased was in a fit state of mind. Where it is proved by the testimony of the Magistrate that the declarant was fit to make the statement without there being the doctor's opinion to that effect, it can be acted upon provided the court ultimately holds the same to be voluntary and truthful. A certificate by the doctor is essentially a rule of caution and, therefore, the voluntary and truthful nature of a statement can be established otherwise.
+
+--- PASSAGE 4 ---
+Judgment: Vithal v. State of Maharashtra (01/11/2006)
+   (Judgment id 28170, unnumbered paragraph, page 3)
+Text:
+Where it is proved by the testimony of the Magistrate that the declarant was fit to make the statement even without examination by the doctor the declaration can be acted upon provided the court ultimately holds the same to be voluntary and truthful. A certification by the doctor is essentially a rule of caution and therefore the voluntary and truthful nature of the declaration can be established otherwise." It was further held: " It is indeed a hypertechnical view that the certification of the doctor was to the effect that the patient is conscious and there was no certification that the patient was in a fit state of mind especially when the Magistrate categorically stated in his evidence indicating the questions he had put to the patient and from the answers elicited was satisfied that the patient was in a fit state of mind whereafter he recorded the dying declaration " In Balbir Singh & Anr. v. State of Punjab [2006 (9) SCALE 537], it is stated: "The law does not provide that a dying declaration should be made in any prescribed manner or in the form of questions and answers. Only because a dying declaration was not recorded by a Magistrate, the same by itself, in our view, may not be a ground to disbelieve the entire prosecution case. When a statement of an injured is recorded, in the event of her death, the same may also be treated to be a First Information Report." In all the dying declarations the appellant had been named.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. OF 2009 (Arising out of S.L.P. (Crl.) No. 428 of 2009) Sukanti Moharana …. Appellant Versus State of Orissa …. Respondent Dr. MUKUNDAKAM SHARMA, J.
+   (Judgment id 35165, paragraph 30, page 18)
+Text:
+30. In the said decision this Court also referred to a decision of the aforesaid Constitution Bench and reiterated that there is no requirement of law that the dying declaration must necessarily contain a certification by the doctor that the patient was in a fit state of mind especially when the dying declaration was recorded by a Magistrate. It was also held in the said decision that it is the testimony of the Magistrate that the declarant was fit to make statement gains importance and that reliance can be placed upon such a declaration even in the absence of the doctor provided the court ultimately holds the same to be voluntary and truthful.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NOS. 305-306 OF 2003 State of Rajasthan ..Appellant Versus Champa Lal ..Respondent J U D G M E N T Dr. ARIJIT PASAYAT, J.
+   (Judgment id 34236, paragraph 9/3, page 7)
+Text:
+There is no requirement of law that a dying declaration must necessarily be made to a Magistrate and when such statement is recorded by a Magistrate there is no specified statutory form for such recording. Consequently, what evidential value or weight has to be attached to such statement necessarily depends on the facts and circumstances of each particular case. What is essentially required is that the person who records a dying declaration must be satisfied that the deceased was in a fit state of mind. Where it is proved by the testimony of the Magistrate that the declarant was fit to make the statement even without examination by the doctor the declaration can be acted upon provided the court ultimately holds the same to be voluntary and truthful. A certification by the doctor is essentially a rule of caution and therefore the voluntary and truthful nature of the declaration can be established otherwise.”
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1136 OF 2002 Kamalavva & Anr. …. Appellants Versus State of Karnataka …. Respondent Dr. MUKUNDAKAM SHARMA, J.
+   (Judgment id 35166, paragraph 18, page 14)
+Text:
+18. In the aforesaid decision this Court while referring to the decision of the Constitution Bench in Laxman case reiterated that there is no requirement of law that the dying declaration must necessarily contain a certification by the doctor that the patient was in a fit state of mind specially when the dying declaration was recorded by a Magistrate. It was also held in the said decision that it is the testimony of the Magistrate that the declarant was fit to make statement gains the importance and reliance can be placed upon declaration even in the absence of the doctor’s certificate provided the court ultimately holds the same to be voluntary and truthful.
+
+--- PASSAGE 8 ---
+Judgment: CASE NO.: Appeal (crl.) 1315 of 2005 PETITIONER: Nallapati Sivaiah RESPONDENT: Sub-Divisional Officer, Guntur, A.P. DATE OF JUDGMENT: 26/09/2007 BENCH: R.V. RAVEENDRAN & B.SUDERSHAN REDDY JUDGMENT: CRIMINAL APPEAL NO. 1315 OF 2005 B. Sudershan Reddy, J.
+   (Judgment id 29580, paragraph 29, page 10)
+Text:
+29. The Constitution Bench in its authoritative pronouncement declared that there is no requirement of law that dying declaration must necessarily contain a certification by the doctor that the patient was in a fit state of mind especially when a dying declaration was recorded by a Magistrate. It is the testimony of the Magistrate that the declarant was fit to make the statement gains the importance and reliance can be placed upon declaration even in the absence of the doctor provided the court ultimately holds the same to be voluntary and truthful. The judgment does not lay down a proposition that medical evidence, even if available on record, as also the other attending circumstances should altogether be ignored and kept out of consideration to assess the evidentiary value of a dying declaration whenever it is recorded by a Magistrate. The Constitution Bench resolved the difference of opinion between the decisions expressed by the two Benches of three learned Judges in Paparambaka Rosamma and ors. Vs. State of A.P. and Koli Chunilal Savji and anr. Vs. State of Gujarat (Supra) and accordingly held that there is no requirement of law that there should be always a medical certification that the injured was in a fit state of mind at the time of making a declaration and such certification by the doctor is essentially a rule of caution and even in the absence of such a certification the voluntary and truthful nature of the declaration can be established otherwise.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 973 OF 2003 Om Pal Singh … Appellant VERSUS State of U.P. …Respondent J U D G M E N T SURINDER SINGH NIJJAR, J.
+   (Judgment id 37082, paragraph 21/3, page 21)
+Text:
+When it is recorded, no oath is necessary nor is the presence of a Magistrate absolutely necessary, although to assure authenticity it is usual to call a Magistrate, if available for recording the statement of a man about to die. There is no requirement of law that a dying declaration must necessarily be made to a Magistrate and when such statement is recorded by a Magistrate there is no specified statutory form for such recording. Consequently, what evidential value or weight has to be attached to such statement necessarily depends on the facts and circumstances of each particular case. What is essentially required is that the person who records a dying declaration must be satisfied that the deceased was in a fit state of mind. Where it is proved by the testimony of the Magistrate that the declarant was fit to make the statement even without examination by the doctor the declaration can be acted upon provided the court ultimately holds the same to be voluntary and truthful. A certification by the doctor is essentially a rule of caution and therefore the voluntary and truthful nature of the declaration can be established otherwise.
+
+--- PASSAGE 10 ---
+Judgment: CASE NO.: Appeal (crl.) 280 of 2003 PETITIONER: Sohan Lal @ Sohan Singh & Ors. RESPONDENT: State of Punjab DATE OF JUDGMENT: 14/10/2003 BENCH: K. G. Balakrishnan & B. N. Srikrishna. @ SRIKRISHNA, J. This appeal by special leave is directed against the judgment
+   (Judgment id 19406, unnumbered paragraph, page 6)
+Text:
+In most cases, however, such statements are made orally before death ensues and is reduced to writing by someone like a Magistrate or a doctor or a police officer. When it is recorded, no oath is necessary nor is the presence of a Magistrate absolutely necessary, although to assure authenticity it is usual to call a Magistrate, if available for recording the statement of a man about to die. There is no requirement of law that a dying declaration must necessarily be made to a Magistrate and when such statement is recorded by a Magistrate there is no specified statutory form for such recording. Consequently, what evidential value or weight has to be attached to such statement necessarily depends on the facts and circumstances of each particular case. What is essentially required is that the person who records a dying declaration must be satisfied that the deceased was in a fit state of mind. Where it is proved by the testimony of the Magistrate that the declarant was fit to make the statement even without examination by the doctor the declaration can be acted upon provided the court ultimately holds the same to be voluntary and truthful. A certification by the doctor is essentially a rule of caution and therefore the voluntary and truthful nature of the declaration can be established otherwise." The view taken in Paparambaka Rosamma (supra) that in the absence of a medical certification as to the fitness of state of mind, it would be risky to accept a dying declaration on the subjective satisfaction of the Magistrate was overruled as having been too broadly stated and not being the correct enunciation of law.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N23 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

@@ -1,0 +1,99 @@
+QUESTION ID: N21   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N21",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: After a fight in which my cousin got hurt, police searched our joint family house and found an old pistol in a trunk in the store room. They have booked my 70-year-old father for keeping it, but he says he never knew it was there. Is it enough that it was found in his house?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: RAMANAND @ NANDLAL BHARTI versus STATE OF UTTAR PRADESH (13-10-2022)
+   (Judgment id 1000254405, paragraph 67, page 40)
+Text:
+67. What emerges from the evidence in the form of panchnama is that the appellant stated before the panch witnesses to the effect that “I will show you the weapon used in the commission of offence”. This is the exact statement which we could read from the discovery panchnama and the Investigating Officer also could not have deposed as regards the exact statement other than what has been recorded in the panchnama. This statement does not suggest that the appellant indicated anything about his involvement in concealment of the weapon. Mere discovery cannot be interpreted as sufficient to infer authorship of concealment by the person who discovered the weapon. He could have derived knowledge of the existence of that weapon at the place through some other source. He may have even seen somebody concealing the weapon, and, therefore, it cannot be presumed or inferred that because a person discovered weapon, he was the person who concealed it, least it can be presumed that he used it. Therefore, even if discovery by the appellant is accepted, what emerges from the panchnama of the discovery of weapon and the evidence in this regard is that he disclosed that he would show the weapon used in the commission of offence. In the same manner we have also perused the panchnama Exh.32 wherein the statement said to have been made by the accused before the panchas in exact words is “the accused resident of Roghada village on his own free will informs to take out cash and other valuables”.
+
+--- PASSAGE 2 ---
+Judgment: MOHMED RAFIQ ABDUL RAHIM SHAIKH versus THE STATE OF GUJARAT (13-09-2018)
+   (Judgment id 1000250991, paragraph 30, page 8)
+Text:
+30. To bring home a charge it was obviously necessary for the prosecution to establish intention and consciousness of the A-4 of the fire arms and ammunition found in A-4’s house. This was not done. But even if one considers whether A-4 was in constructive possession the charge and conviction cannot be sustained. For, in order to consider a finding of constructive possession it is necessary that either there is proof that the Accused had placed the weapons or was at least in control of the house in which they were found.
+
+--- PASSAGE 3 ---
+Judgment: Opening header not available
+   (Judgment id 42738, unnumbered paragraph, page 50)
+Text:
+The possession of a firearm under the Arms Act in our view must have, firstly the element of consciousness or knowledge of that possession in the person charged with such offence and secondly where he has not the actual physical possession, he has nonetheless a power or control over that weapon so that his possession thereon continues despite physical possession being in someone else. If this were not so, then an owner of a house who leaves an unlicensed gun in that house but is not present when it was recovered by the police can plead that he was not in possession of it even though he had himself consciously kept it there when he went out. Similarly, if he goes out of the house during the day and in the meantime some one conceals a pistol in his house and during his absence, the police arrives and discovers the pistol, he cannot be charged with the offence unless it can be shown that he had knowledge of the weapon being placed in his house. And yet again if a gun or firearm is given to his servant in the house to clean it, though the physical possession is with him nonetheless possession of it will be that of the owner. The concept of possession is not easy to comprehend as writers of Jurisprudence have had occasions to point out. In some cases under Section 19(1)(f) of the Arms Act, 1878 it has been held that the word “possession” means exclusive possession and the word “control” means effective control but this does not solve the problem.
+
+--- PASSAGE 4 ---
+Judgment: Opening header not available
+   (Judgment id 40192, paragraph 18, page 22)
+Text:
+18. In Durga Prasad Gupta v. State of Rajasthan thr. CBI (2003) 12 SCC 257, this Court explained the meaning of possession as: “The word “possession” means the legal right to possession (See Heath v. Drown). In an interesting case it was observed that where a person keeps his firearm in his mother's flat which is safer than his own home, he must be considered to be in possession of the same. (See Sullivan v. Earl of Caithness, (1976) 1 All ER 844.) Once possession is established, the person who claims that it was not a conscious possession has to establish it, because how he came to be in possession is within his special knowledge.”
+
+--- PASSAGE 5 ---
+Judgment: MOHMED RAFIQ ABDUL RAHIM SHAIKH versus THE STATE OF GUJARAT (13-09-2018)
+   (Judgment id 1000250991, paragraph 19, page 6)
+Text:
+19. We do not take the view that a remote location of the firearm of ammunition or recovery from a remote place would exonerate an accused in all cases. But it is necessary to prove that the accused was in conscious possession at some point in time before the discovery and retained control of the objects at the time of the recovery.
+
+--- PASSAGE 6 ---
+Judgment: GUNWANTLAL versus THE STATE OF MADHYA PRADESH (03-05-1972)
+   (Judgment id 1000000735, unnumbered paragraph, page 4)
+Text:
+The possession of a firearm under the Arms Act in our view must have, firstly the element of conscbusness or knowledge of that posseision in the person charged with such offence and secondly where he hls not the ac•ua! physical possession, he has none-the-less a power or control over that weaoon so that his possession thereon continues despite physical posses,ion bein~ in someone else. If th:s we e not •o. theri ari owner of a home who leaves an unlicenced gun in that house but is not present when it was recovered by the oolice can plead that he was not in possession of it even th"ugh he h1d himself comciouslv k:e"t it there when. he went out. Similarlv. if he goes out of the house du.;ng the day and in the meantime someone conceals a pistol in his house SUPREMB COURT REPORTS [1973} 1 S.C.R. ·and during his absence, the police arrives and discovers the pistol he cannot be charged with the· offence u.nless it can be shown that he had knowledge of the weapon being placed in his house. And yet. again. if a gun or firearm is given to his servant in the house to cl~an.it, though the physical possession i~ with "hiin nonethe.ess pos.;ession of ,it will be. that of the owner. The concept of po.s<i;S· sion -is not easy. l-0 comprehend as wnters of J uilol'l.Tadcnc~ have had occasions to point out. .
+
+--- PASSAGE 7 ---
+Judgment: PETITIONER: GUNWANTILAL Vs. RESPONDENT: THE STATE OF MADHYA PRADESH DATE OF JUDGMENT03/05/1972 BENCH: REDDY, P. JAGANMOHAN BENCH: REDDY, P. JAGANMOHAN MATHEW, KUTTYIL KURIEN MITTER, G.K. CITATION: 1972 AIR 1756 1973 SCR (1) 508 1972 SCC (2) 194 CITATOR INFO : 
+   (Judgment id 6804, unnumbered paragraph, page 4)
+Text:
+The possession of a firearm under the Arms Act in our view must have, firstly the element of consciousness or knowledge of that possession in the person charged with such offence and secondly where lie has not the actual physical possession, he has none-theless a power or control over that weapon so that his possession thereon continues despite physical possession being in someone else. If this were not so, then an owner of a house who leaves an unlicenced gun in that house but is not present when it was recovered by the police can plead that he was not in possession of it even though he bid himself consciously kept it there when he went out. Similarly. if he goes out of the house during the day and in the meantime someone conceals a pistol in his house and during his absence, the police arrives and discovers the pistol he cannot be charged with the offence unless it can be shown that he had knowledge of the weapon being placed in his house. And yet again if a gun or firearm is given to his servant in the house to clean it, though the physical possession is with him nonetheless possession of it will be that of the owner. The concept of possess ion is nit easy to comprehand as winters of Jutice,you have had occasions to point out. In some cases under Section 1 9 ( 1 ) (f ) of the Arms Act, 1878 it has been held that the word "possession" means exclusive possession and the word "control" means effective control but this does not solve the problem.
+
+--- PASSAGE 8 ---
+Judgment: STATE OF RAJASTHAN Vs. v. BHUP RAM (13/01/1997)
+   (Judgment id 14525, unnumbered paragraph, page 3)
+Text:
+Of course, discovery of said fact became complete only when the pistol was recovered by the police. In this context, we think it appropriate to quote the celebrated words of Sir John Beaumont in Pulukuri Kottaya vs. Emperor: (AIR 1947 PC 67): "The their Lordships’ view it is fallacious to treat the ’fact discovered’ within the section as equivalent to the object produced; the fact discovered embraces the place from which the object is produced and the knowledge of the accused as to this and the information given must relate distinctly to this fact.... Information supplied by a person in custody that "I will produce a knife concealed in the roof of my house" does not lead to the discovery of a knife; Knives were discovered many years ago. It leads to the discovery of the fact that a knife is concealed in the house of the informant to his knowledge, and if the knife is proved to have been used in the commission of the offence, the fact discovered is very relevant." (emphasis supplied) The ratio therein has become locus classicus and even the lapse of half a century after its pronouncement has not eroded its forensic worth. We may point out that this court has approvingly referred to the said ratio in a number of decisions, [e.g. Jaffer Husain Dastagir vs. The State of Maharashtra, AIR 1970 SC 1934;
+
+--- PASSAGE 9 ---
+Judgment: SUBHASH AGGARWAL versus THE STATE OF NCT OF DELHI (17-04-2025)
+   (Judgment id 1000256592, paragraph 16, page 10)
+Text:
+16. In C.T. Ponnappa v. State of Karnataka,4 the gun belonging to the father was recovered from the joint family house and the ballistic expert report also indicated that the shot was fired by the said gun. Since there was nothing to show that the owner of the gun handed it over to the accused, the mere fact of the shot having been made from the gun was not sufficient to implicate the appellant, was the finding. In the present case, the gun was owned by the father and his only explanation is that the gun was hidden by the children. No such suggestion was made to PW-1, 3 & 4. The accused towards the end of his Section 313 questioning also stated that the gun was in the house accessible to all and that the licence was misplaced: quite contrary to his earlier statement.
+
+--- PASSAGE 10 ---
+Judgment: MOHMED RAFIQ ABDUL RAHIM SHAIKH versus THE STATE OF GUJARAT (13-09-2018)
+   (Judgment id 1000250991, paragraph 20, page 6)
+Text:
+20. In Gunwantlal vs. The State of Madhya Pradesh3, this Court held that a person cannot be charged with the offences unless it can be shown that he had the knowledge that any sort of prohibited item was present in his house. “5. *********** In some cases under Section 19(1)(f) of the Arms Act, 1878 it has been held that the word “possession” means exclusive possession and the word “control” means effective control but this does not solve the problem. As we said earlier, the first precondition for an offence under Section 25(1)(a) is the element of intention, consciousness or 2 35. Criminal responsibility of persons in occupation of premises in certain cases – Where any arms or ammunition in respect of which any offence under this Act has been or is being committed are or is found in any premises, vehicle or other place in the joint occupation or under the joint control of several persons, each of such persons in respect of whom there is reason to believe that he was aware of the existence of the arms or ammunition in the premises, vehicle or other place shall, unless the contrary is proved, be liable for that offence in the same manner as if it has been or is being committed by him alone. 3 (1972) 2 SCC 194 knowledge with which a person possessed the firearm before it can be said to constitute an offence and secondly that possession need not be physical possession but can be constructive, having power and control over the gun, while the person to whom physical possession is given holds it subject to that power and control. In any disputed question of possession, specific facts admitted or proved will alone establish the existence of the de facto relation of control or the dominion of the person over it necessary to determine whether that person was or was not in possession of the thing in question.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N21 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

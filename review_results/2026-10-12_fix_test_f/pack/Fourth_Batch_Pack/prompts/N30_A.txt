@@ -1,0 +1,94 @@
+QUESTION ID: N30   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 9 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N30",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 9 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+==============================================================================
+QUESTION: Is chain snatching now a separate crime under the new criminal law, and what is the maximum punishment?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: Opening header not available
+   (Judgment id 40372, paragraph 462, page 37)
+Text:
+462. The offences dealt with apart from mischief and trespass are theft, extortion, robbery, dacoity, dacoity with murder, misappropriation of property, criminal breach of trust, dealing with stolen property and cheating.
+
+--- PASSAGE 2 ---
+Judgment: PATAN JAMAL VALI versus THE STATE OF ANDHRA PRADESH (27-04-2021)
+   (Judgment id 1000253085, paragraph 68, page 50)
+Text:
+68. Subsequently, in 2013, post the Nirbhaya case, the Criminal Law Amendment Act 2013 was brought into force which amended Section 376(1). The Parliament sought to take a tougher stand on crime against women and limited the discretion of the judiciary regarding imposition of sentences for offences involving rape by providing a minimum punishment of seven years and a maximum punishment of life imprisonment, without any exceptions for reduction of sentence. In 2018, Section 376 has been further amended by the Criminal Law Amendment 54 (2005) 8 SCC 1. Act 2018 (Act 22 of 2018) by which the minimum punishment has been enhanced to ten years, with the maximum punishment remaining the same.
+
+--- PASSAGE 3 ---
+Judgment: NENAVATH BUJJI ETC. versus THE STATE OF TELANGANA AND ORS. (21-03-2024)
+   (Judgment id 1000255620, paragraph 10, page 21)
+Text:
+10. Thus, the plain reading of the aforesaid line of reasoning adopted by the High Court would indicate that as the appellant detenu had 1202 engaged himself in unlawful activities of serious nature he could be said to have acted in a manner prejudicial to the maintenance of public order. The line of reasoning as above gives an impression that what weighed with the High Court are the allegations of chain snatching creating lot of fear and panic in the minds of the women folk. This according to the High Court was sufficient to reach to the conclusion that the alleged antisocial activities of the appellant detenu are prejudicial to the maintenance of the public order.
+
+--- PASSAGE 4 ---
+Judgment: NENAVATH BUJJI ETC. versus THE STATE OF TELANGANA AND ORS. (21-03-2024)
+   (Judgment id 1000255620, paragraph 6/3, page 12)
+Text:
+The remaining (02) offences committed by in Rachakonda Commissionerate limits vide Cr Nos: 1) 39/2023, 2) 107/2023 of Madgul P.S. are considered as grounds for your detention. You had committed all the above property theft offences including gold chain snatching offences continuously, repeatedly and in quick succession which are falling within proximity period. Thus, you have been committing offences continuously, and repeatedly in order to earn easy money to lead lavish life, which are punishable under Chapter XVII of Indian penal Code. You are also committing illegal acts (thefts) involving breach of peace and public tranquility. Your continuous presence in the area is detrimental to the maintenance of public order apart from disturbing the peace, tranquility and social harmony in the society. THE FACTS OF THE FOLLOWING (02) ROBBERIES, THEFTS/CHAIN SNATCHING OFFENCES COMMITTED BY YOU IN THE RECENT PAST WHICH AMPLY DEMONSTRATE YOUR HABITUAL NATURE OF COMMITTING CRIME CREATING LARGE SCALE FEAR IN THE MINDS OF WOMEN COMMUNITY THEREBY RESTRAINING THEM FROM FREELY MOVING ON PUBLIC STREETS EVEN DURING BROAD DAY LIGHT AND YOUR ACTIVITIES ARE PREJUDICIAL TO THE MAINTENANCE OF PUBLIC ORDER 1) Cr.No. 39/2023 U/s 394 IPC of Madgul Police Station Dt: 20-03-20223 Facts of the case are that on 20.03.2023 at 19.45 hrs received a complaint from the complainant/victim Kuntala Laxmamma S/o Anjaiah, Age 55 years, Occ: Sweeper, R/o Kolkulapally (V), Madgul (M), R.R (D) in which she stated that on 20.03.2023 at about 1800 hrs, while the complainant was on her way laid from her work place in Sri Mahalaxmi Rice Mill at Kolkulapally Gate, en-route near Jaanam well, three unknown persons aged about 25-30 years followed from her behind and started pretending as searching for Toddy, and thus, they suddenly pounced on her, pasted a plaster on her mouth and tried to remove her silver cups (vendi Kadiyalu) from her legs.
+
+--- PASSAGE 5 ---
+Judgment: NENAVATH BUJJI ETC. versus THE STATE OF TELANGANA AND ORS. (21-03-2024)
+   (Judgment id 1000255620, paragraph 21, page 21)
+Text:
+21. As discussed above, the detenus have committed the aforesaid two (02) offences of robbery and chain snatchings and creating panic and scare among the public, especially in women folk. Thus, they have engaged in unlawful activities by committing the said bodily and property offences, which are serious and grave in nature, and thereby acting in a manner prejudicial to the maintenance of ‘public order’ as it disturbs peace and tranquility in the society. Further, the police also seized motorbikes used in commission of the offences.
+
+--- PASSAGE 6 ---
+Judgment: PETITIONER: T. SUTHENTHIRARAJA,P. RAVICHANDRAN,ROBERT PAYAS & OTHERS Vs. RESPONDENT: STATE BY D.S.P., CBI, SIT, CHENNAI DATE OF JUDGMENT: 11/05/1999 BENCH: D.P. WADHWA, J. JUDGMENT: --------------- D.P. WADHWA, J. I have studied the draft judgment prepared by 
+   (Judgment id 16830, unnumbered paragraph, page 143)
+The same text also appears in judgment id(s): 16829, 16831
+Text:
+It is undoubted that the general conspiracy is distinct from number of separate offences committed while executing the offence of conspiracy. Each act constitutes separate offence punishable, independent of the conspiracy. The law had developed several or different models or technics to broach the scope of conspiracy. One such model is that of a chain, where each party performs even without knowledge of the other a role that aids succeeding parties in accomplishing the criminal objectives of the conspiracy. An illustration of a single conspiracy, its parts bound together as links in a chain, is the process of procuring and distributing narcotics or an illegal foreign drug for sale in different parts of the globe. In such a case, smugglers, middlemen and retailers are privies to a single conspiracy to smuggle and distribute narcotics. The smugglers knew that the middlemen must sell to retailers; and the retailers knew that the middlemen must buy of importers of someone or another. Thus the conspirators at one end of the chain knew that the unlawful business would not, and could not, stop with their buyers; and those at the other end knew that it had not begun with their settlers. The accused embarked upon a venture in all parts of which each was a participant and an abettor in the sense that, the success of the part with which he was immediately concerned, was dependent upon the success of the whole.
+
+--- PASSAGE 7 ---
+Judgment: PETITIONER: STATE OF KARNATAKA Vs. RESPONDENT: KRISHNA ALIAS RAJU DATE OF JUDGMENT01/01/1987 BENCH: NATRAJAN, S. (J) BENCH: NATRAJAN, S. (J) SEN, A.P. (J) CITATION: 1987 AIR 861 1987 SCR (1)1103 1987 SCC (1) 538 JT 1987 (1) 217 1987 SCALE (1)135 ACT: Indian Pe
+   (Judgment id 8852, paragraph 2, page 3)
+Text:
+2. Sec.337 IPC (Punishable with imprison- Fine of Rs.50/- ment of either description i/d to undergo for a term which may extend S.I. for twenty to six months or with fine five days. which may extend to five hundred rupees or with both. )
+
+--- PASSAGE 8 ---
+Judgment: SHANTI LAL MEENA versus STATE OF NCT OF DELHI, CBI (07-04-2015)
+   (Judgment id 1000004581, paragraph 10, page 7)
+Text:
+10. The punishments under Sections 8, 9, 10, 11 of the PC Act, 1988 were minimum six months extendable to five years with fine and under Section 14 of the Act, it was minimum two years extendable to seven years and fine. However, 1988 B Act, as it originally stood, did not provide for mandatory minimum punishment under Section 15-for an attempt to commit an offence under Section 13. Nor did the Act of 1947 provide for a mandatory minimum punishment for the said offence. However, in the 2014 amendment, a mandatory C minimum punishment of two years, which may be extended to five years and fine, has been prescribed as punishment for attempt under Section 15.
+
+--- PASSAGE 9 ---
+Judgment: NENAVATH BUJJI ETC. versus THE STATE OF TELANGANA AND ORS. (21-03-2024)
+   (Judgment id 1000255620, paragraph 42, page 38)
+Text:
+42. In the aforesaid context, we may refer to the decision of this Court in the case of Shaik Nazeen v. State of Telangana and Others reported in (2023) 9 SCC 633, wherein in paras 11 and 19 respectively, this Court observed as under: “11. The detention order was challenged by the wife of the detenu in a habeas corpus petition before the Division Bench of the Telangana High Court. The ground taken by the petitioner before the High Court was that reliance has been taken by the Authority of four cases of chain snatching, as already mentioned above. The admitted position is that in all these four cases the detenu has been released on bail by the Magistrate. Moreover, in any case, the nature of crime as alleged against the petitioner can at best be said to be a law and order situation and not the public order situation, which would have justified invoking the powers under the preventive detention law. This, however did not find favour with the Division Bench of the High Court, which dismissed the petition, upholding the validity of the detention order. xxx xxx xxx
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N30 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9).

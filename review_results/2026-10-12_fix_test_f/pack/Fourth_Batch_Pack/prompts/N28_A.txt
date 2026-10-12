@@ -1,0 +1,99 @@
+QUESTION ID: N28   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N28",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My father died without a will, leaving a house in his name. Do my mother, my sister and I each get an equal share?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 940 OF 2009 [Arising out of SLP (Crl.) No. 4998 of 2008] Devendra & Ors. …Appellant Versus State of U.P. & Anr. …Respondents J U D G M E N T S.B. SINHA, J :
+   (Judgment id 34610, paragraph 2-3, page 2)
+Text:
+2. Share of defendant Devendra and Rajendra is ¼th in disputed land. 3. Share of defendants Jai Singh, ChatarPal, Nanakchand and Jaichand is ½ in disputed land.” SOLHU Girdhar Naraina (Died issueless) Roopa Harikesh Nanak Chattar Pal Jai Singh (Died) Saharam (Died) Devendra Rajendra Jai Chand (Died) Gabru (Died issueless) Om Pal Phool Singh Janter Bharat Sunder Smt. Munni Gullu
+
+--- PASSAGE 2 ---
+Judgment: Rajinder Singh Katoch v. Chandigarh Administration & Ors (12/10/2007)
+   (Judgment id 29682, paragraph 4, page 1)
+Text:
+4. He filed an application under Section 482 of the Code of Criminal Procedure before the Punjab and Haryana High Court. The said application was dismissed by reason of the impugned judgment, stating : "The petitioner has filed this petition under Section 482 of the Cr.P.C. for issuing directions to respondents No.2 and 3 to register a case against respondent No.4 for house trespass and theft. Respondent No.4 is the real brother of the petitioner. The said house in question is a joint property of seven legal heirs. After the death of father of the petitioner, the same has been inherited by seven persons. In the reply, it has been stated that the petitioner was not residing in the aforesaid house and the allegations leveled by him found to be false being family dispute."
+
+--- PASSAGE 3 ---
+Judgment: PETITIONER: STATE OF MAHARASHTRA Vs. RESPONDENT: WASUDEO RAMCHANDRA KAIDALWAR DATE OF JUDGMENT06/05/1981 BENCH: SEN, A.P. (J) BENCH: SEN, A.P. (J) REDDY, O. CHINNAPPA (J) ISLAM, BAHARUL (J) CITATION: 1981 AIR 1186 1981 SCR (3) 675 1981 SCC (3) 199 1981 SCALE (
+   (Judgment id 10052, unnumbered paragraph, page 4)
+Text:
+He alleged that two of the sisters of his father-inlaw were the kept mistresses of Raja Dharmarao and enjoyed special favours from the late Zamindar who bestowed on them large amounts of cash, ornaments etc. They used to visit the house of his father-in-law, Hanumanthu, once or twice a month, and used to keep all their cash, gold and silver ornaments. Hanumanthu owned a grocery shop. He and his father had a liquor shop besides forest contracts. Hanumanthu used to deal in money lending business. The respondent alleged that his father-in-law deposited an amount of Rs. 30,000 in April 1957, Rs. 10,000/-in August 1957 and Rs. 35,000 in cash and Rs. 1,000 in coins and also 23 tolas of gold in September, 1957 with his wife, Smt. Sushila. He pleaded that his father-in-law died on March 10, 1958 at his house leaving behind his son, Narayan and two daughters, Smt. Shakuntala, who on her marriage with the respondent was re-named as Smt. Sushila, and Smt. Sushila, his sister-inlaw, minor at that time. He instructed him to divide the property into three equal shares among his three children. The respondent maintained that he was holding the property merely as a custodian and was not the owner thereof. The Special Judge, Chandrapur, by his judgment dated 7.6.1971, convicted the respondent for having committed an offence punishable under s.5(2) read with s.(5)(1)(e) of the Act inasmuch as he was found in possession of property worth Rs.
+
+--- PASSAGE 4 ---
+Judgment: M. SRIKANTH versus STATE OF TELANGANA AND ANR. (21-10-2019)
+   (Judgment id 1000252101, paragraph 19, page 11)
+Text:
+19. The complaint filed by respondent No. 2 runs into 26 pages and 26 paragraphs. As already discussed hereinabove, it reveals a disputed property claim based on inheritance between the complainant, her sisters and her brother, accused No. 1. A perusal of the complaint would further reveal, that the complainant also disputes with regard to the area of the property including the manner of its devolution upon the parents of the complainant and her competing interest with that of her siblings. There is not even a whisper in the complaint that the present appellant, i.e., accused No. 4 was fully aware that accused No. 1 was not the sole beneficiary by inheritance and that the property had devolved upon the complainant and her sisters. Also there is nothing to show that knowing this he has collusively entered into the lease agreement with accused No. 1, by creating a false and fabricated will. Though, there is a mention with regard to conspiracy, but there is not even a suggestion with regard to manner of such conspiracy.
+
+--- PASSAGE 5 ---
+Judgment: SMT. GARGI versus STATE OF HARYANA (19-09-2019)
+   (Judgment id 1000252019, paragraph 3/4, page 9)
+Text:
+On my enquiry, as to what had happened to my brother, I was told that I should go up-stairs and found out myself. We all went up-stairs and found the dead body of TirlokiNath hanging with a fan. The feet of my brother were touching the floor. Blood was noticed on the floor.The body was giving bad odour. I reported the matter to the police vide statement Ex. PH. It was signed by me.…….” 3.2.1. This witness PW-7, in his cross-examination on behalf of the appellant,stated, inter alia, as under:- “It is correct that I was 1½ years old when my father died. TirlokiNath was the eldest son of the second marriage of my mother.…..There are two brothers and two sisters from the second marriage of my mother. My father died as told, due to cancer at Delhi, in the year 1961. It is incorrect to suggest that TirlokiNath deceased had brought up all the children of my mother from both the marriages. ….He bore expenses for some time regarding my education etc. The marriage of my brother TirlokiNath was performed about 19-20 years ago.….My mother is having no source of income except the family pension due to my father’s death and some rental income. My mother had given on rent a house situated in Adarsh Nagar, AmbalaCantt. I joined Navy in the year 1978. I was married in the year 1984. It is incorrect to suggest that all the expenses of my joining the service and on my marriage were borne by my brother TirlokiNath.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 940 OF 2009 [Arising out of SLP (Crl.) No. 4998 of 2008] Devendra & Ors. …Appellant Versus State of U.P. & Anr. …Respondents J U D G M E N T S.B. SINHA, J :
+   (Judgment id 34610, paragraph 3-4, page 2)
+Text:
+3. The parties are co-sharers. The genealogical tree of the family is as under: 4. Solhu had five sons, viz., Girdhar, Naraina Gabru, Roopa and Harikesh. Appellant Nos. 1 and 2 are grand sons of Girdhar. Indisputably, Gabru died issueless. According to the appellants, the share of Naraina in the joint family, who died issueless, devolved upon among the three surviving brothers, viz., Girdhar, Roopa and Harikesh. However, according to the respondent No. 2, the share of Naraina devolved upon Rupa and Harikesh.
+
+--- PASSAGE 7 ---
+Judgment: PETITIONER: KUNDULA BALA SUBRAHMANYAM AND ANR. Vs. RESPONDENT: STATE OF ANDHRA PRADESH DATE OF JUDGMENT26/03/1993 BENCH: ANAND, A.S. (J) BENCH: ANAND, A.S. (J) SINGH N.P. (J) CITATION: 1993 SCR (2) 666 1993 SCC (2) 684 JT 1993 (2) 559 1993 SCALE (2)214 ACT: Ev
+   (Judgment id 12120, unnumbered paragraph, page 7)
+Text:
+On the way, he met one Ramakrishna coming on a motor-cycle and at his request Ramakrishna gave him a ride to Malakapalli. On reaching the house of the maternal uncle of the deceased, they found the brother of the deceased Vempati Sreerama Krishna Sreeram PWl was also present there. He conveyed to them the information regarding the burning of the deceased and also what he had heard the deceased telling PW2. Ramarao and PWl then went on the same motorcycle to Dharmavaram. PWl reached the house of the appellant and saw a number of persons including PWs 2 and 3 gathered there. The deceased was lying on the floor and at that time she had no clothes on her. He noticed that she had received burn injuries from her breasts downwards to her legs. On seeing her plight, PW1 started crying and hitting his head against a pillar. When the deceased noticed that PW1 had come, she asked PW2 to call her brother PWl inside. PW2 thereupon went out and brought PW1 to the kitchen where the deceased took the palm of PWl into her own palms and told him in Hindi "please tell mother and father as I am telling you. My mother-in- law poured kerosene on me and my husband set fire. You tell father and mother about this. Don’t fight. Anyhow I am dying." She also told her brother PW1 to take back the cash given to her and divide it amongst the sisters in equal share and get them married off to nice persons.
+
+--- PASSAGE 8 ---
+Judgment: PETITIONER: STATE OF MAHARASHTRA Vs. RESPONDENT: WASUDEO RAMCHANDRA KAIDALWAR DATE OF JUDGMENT06/05/1981 BENCH: SEN, A.P. (J) BENCH: SEN, A.P. (J) REDDY, O. CHINNAPPA (J) ISLAM, BAHARUL (J) CITATION: 1981 AIR 1186 1981 SCR (3) 675 1981 SCC (3) 199 1981 SCALE (
+   (Judgment id 10052, unnumbered paragraph, page 8)
+Text:
+There is no denying fact that Hanumantha was the pairokar of Raja Dharmarao Zamindar of Aheri Estate and by his close association with the Zamindar, had amassed considerable wealth. More so, because two of his sisters were the kept mistresses of the Zamindar and amply provided for. It appears that after the death of Raja Dharmarao, Hanumanthu took up his residence with his elder daughter, Smt. Sushila, who was married to the respondent. To substantiate his plea in defence, the respondent examined as many as 12 witnesses including himself as AW 12, his sisterin-law, Smt. Sushila (AW 11), Dr. Chandrasekhar Merekar (AW 6), Shri V.N. Swamy, Advocate, Chandrapur (AW 8). We cannot brush aside the unimpeachable testimony of Shri V.N. Swamy, AW 8, who was a leading advocate of Chandrapur and Member of Lok Sabha, and Dr. Chandrasekhar Merekar, AW 6, Medical Practitioner of Chandrapur, who attended on Hanumanthu at the time of his death. Both these witnesses have unequivocally stated that when Hanumanthu died at the respondents leaving his two minor children, Smt. Sushila and Narayan to the care of the respondent and his wife, Smt. Sushila, he told them that he was leaving properties worth Rs. 70 to 80 thousand comprising cash ornaments, jewellery etc., and expressed a desire that the same be divided equally among, his three children, the two daughters and son.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 870 OF 2006 Atbir .... Appellant(s) Versus Govt. of N.C.T. of Delhi .... Respondent(s) WITH CRIMINAL APPEAL NO. 877 OF 2006 J U D G M E N T P. Sathasivam, J. 1) These appeals are
+   (Judgment id 36676, unnumbered paragraph, page 31)
+Text:
+Though Jaswant Singh agreed to the request but executed a Will (Ex. PW-5/D) in 1995 bequeathing those lands in favour of Satbir and Atbir. It is further seen that these two sons, namely, Satbir and Atbir were insisting on immediate transfer by way of a registered document. In addition to the same, they also demanded a house in Mathura or share in House No. N-33 Mukherjee Nagar, Delhi. It is the categorical stand of Jaswant Singh that Atbir, Satbir and Chandra used to demand money. They also threatened that if he fails to pay the money as demanded, they would kill him. The fact that Atbir was not in a position to enjoy the lands as demanded and his father refused to pay money made Atbir and her mother to take some drastic steps. It is also their grievance and in their mind that because his father wants to part with major properties in favour of Sheela, second wife, and their children Sonu @ Savita and Manish @ Mannu, it is in their mind that so long as the second wife and her children were alive, he and his brother may not get any thing and decided to do away with the family of Sheela. In other words, all the accused persons including Atbir felt that they would not get their legitimate share in the property as long as Sheela and her children are alive and, therefore, they should do away with.
+
+--- PASSAGE 10 ---
+Judgment: Opening header not available
+   (Judgment id 34584, paragraph 4, page 2)
+Text:
+4. Factual matrix of the case is as follows: Mohd. Ishaq – PW-1 (the appellant herein) is a resident of House No. 23-2-10, Khaja-Ka-Chilla, Moghalpura, Hyderabad which is a sarfakhas property. His father, Mohd. Maqbool was working as watchman of Khaja- Ka-Chilla. He resided in the said house as per the agreement with sarfakhas. After his death, his son (PW-1) continued to live in the said house with his family members. PW-7 and Anjuna Fathima are the sisters of PW-1. PW-2 and PW-9 are daughters of PW-7. PW-8 is daughter of his another sister. PW-10 is the younger sister of PW-8. PW-13 is wife of PW-1. They were all residing together in the above-mentioned house. The said house comprises of six rooms, out of which three rooms fell to the share of PW-1, two rooms fell to the share of his sister – Ahmedi Begum (PW-7) and one room fell to the share of his another sister – Anjum Fatima. One Latif Khader Saheb had established Latifaia Arabic College by the side of house of the appellant herein. Respondent herein (A-1) is the son-in-law of said Latif Khader Saheb. Respondent (A-1) was working as Librarian in the said college. A-2 to A-5 are employees of the said college whereas A-6 and A-7 are friends of respondent (A-1).
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N28 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

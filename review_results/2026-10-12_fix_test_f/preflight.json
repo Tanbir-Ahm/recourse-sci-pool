@@ -1,0 +1,175 @@
+{
+ "ready": false,
+ "checks": [
+  {
+   "check": "frozen file equals its hash: review_data/ruler/FIX_TEST_RULES_v1.md",
+   "ok": true,
+   "detail": "file 0190876e32, freeze 0190876e32"
+  },
+  {
+   "check": "frozen file equals its hash: review_data/ruler/FIX_TEST_RULES_v2.md",
+   "ok": true,
+   "detail": "file d2f2be58da, freeze d2f2be58da"
+  },
+  {
+   "check": "frozen file equals its hash: review_data/ruler/machine_spec_v2.json",
+   "ok": true,
+   "detail": "file ca9afa8c3c, freeze ca9afa8c3c"
+  },
+  {
+   "check": "frozen file equals its hash: review_tools/machine_spec_v2.py",
+   "ok": true,
+   "detail": "file 9e41f52deb, freeze 9e41f52deb"
+  },
+  {
+   "check": "frozen file equals its hash: review_tools/test_machine_spec_v2.py",
+   "ok": true,
+   "detail": "file b76caf8939, freeze b76caf8939"
+  },
+  {
+   "check": "checkout clean (tracked files)",
+   "ok": true,
+   "detail": "commit 8046790b4c; changed: []"
+  },
+  {
+   "check": "this commit is pushed",
+   "ok": true,
+   "detail": "0 commit(s) ahead of origin/claude/sharp-euler-unyfv0"
+  },
+  {
+   "check": "the sealed question file and its key have their freeze hashes, 26 scored + 3 control questions (1 dropped before sealing: N12), no key field in the public file",
+   "ok": true,
+   "detail": "questions de4db283f15e, key 906eb6a7dd07"
+  },
+  {
+   "check": "index head is the recorded commit",
+   "ok": true,
+   "detail": "head 3c80a26e42, recorded 3c80a26e42"
+  },
+  {
+   "check": "the writer's own freeze hash matches the question texts (declared in the workbook, or confirmed by a named person)",
+   "ok": true,
+   "detail": "declared 7a6963d11599, confirmed 642613ddc861 by owner, 2026-10-12, computed 642613ddc861"
+  },
+  {
+   "check": "no hand-out is logged for the final questions",
+   "ok": true,
+   "detail": "0 entries"
+  },
+  {
+   "check": "the frozen stage D2 gate names at least one finalist (rules v2 section 3)",
+   "ok": true,
+   "detail": "['N1-125', 'N2-125']"
+  },
+  {
+   "check": "stage D2 was run under the rules that are frozen now",
+   "ok": true,
+   "detail": "D2 d2f2be58da, rules d2f2be58da"
+  },
+  {
+   "check": "side index present and made for this index: 2026-10-09_correcting_judgments",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "side index present and made for this index: 2026-10-09_fetched_documents",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "side index present and made for this index: 2026-10-09_fetched_shivangi_bansal",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "VOYAGE_API_KEY is set",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "check": "tests pass: test_pool_runner.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_fix_arms.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_fix_test_set.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_fix_test_f.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_score_fix_test.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_build_sealed_pack.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_check_new_questions.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_ingest_llm_reviews.py",
+   "ok": true,
+   "detail": "ALL PASSED"
+  },
+  {
+   "check": "tests pass: test_normalise_replies.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_machine_spec_v2.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_score_fix_stage_d.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_fix_reading_sheet.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "tests pass: test_fix_preflight.py",
+   "ok": true,
+   "detail": "all passed"
+  },
+  {
+   "check": "OWNER: the writer's corrected declaration is in (who wrote the wording and the key; AI tool named, its use stated; the confirmed freeze hash) and the replacements were re-checked",
+   "ok": false,
+   "detail": "open"
+  },
+  {
+   "check": "OWNER: Mr. Advocate has reviewed the key and his corrections are in the sealed key",
+   "ok": false,
+   "detail": "open"
+  },
+  {
+   "check": "OWNER: the Voyage balance, read on the dashboard, stays above the $5 reserve after about $0.05",
+   "ok": true,
+   "detail": "confirmed"
+  },
+  {
+   "check": "OWNER: the bucket refresh is postponed until the stage F scoring is over",
+   "ok": true,
+   "detail": "confirmed"
+  }
+ ]
+}

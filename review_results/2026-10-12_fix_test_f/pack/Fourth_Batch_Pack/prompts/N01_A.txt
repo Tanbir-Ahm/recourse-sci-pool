@@ -1,0 +1,99 @@
+QUESTION ID: N01   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N01",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My brother is named in a 2025 cheating FIR over money from a travel business that failed. He was never arrested and went to the police station every time they called, giving all his papers. Now the IO says the chargesheet is ready and that under section 190 BNSS he has to be produced in custody with it, so the magistrate will send him to jail. Our neighbour says this is how it always happens. He is the only earning member at home and we are very scared. Does he have to be arrested just because the chargesheet is being filed?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph preamble/59, page 10)
+Text:
+It is only in cases of utmost necessity, where the investigation cannot be completed without arresting the person, for instance, a person may be required for recovery of incriminating articles or weapon of offence or for eliciting some information or clue as to his accomplices or any circumstantial evidence, that his arrest may be necessary. Such an arrest may also be necessary if the investigating officer concerned or officer in charge of the police station thinks that presence of the accused will be difficult to procure because of grave and serious nature of crime as the possibility of his absconding or disobeying the process or fleeing from justice cannot be ruled out.” 6. In a subsequent judgment the Division Bench of the Delhi High Court in High Court of Delhi v. State [High Court of Delhi v. State, 2018 SCC OnLine Del 12306 : (2018) 254 DLT 641] relied on these observations in High Court of Delhi [High Court of Delhi v. CBI, 2004 SCC OnLine Del 53 : (2004) 72 DRJ 629] and observed that it is not essential in every case involving a cognizable and non-bailable offence that an accused be taken into custody when the charge-sheet/final report is filed. 7. The Delhi High Court is not alone in having adopted this view and other High Courts apparently have also followed suit on the proposition that criminal courts cannot refuse to accept a chargesheet simply because the accused has not been arrested and produced before the court.
+
+--- PASSAGE 2 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph preamble/58, page 10)
+Text:
+Had it not been so the investigating officer would not have been vested with powers to release a person on bail in a bailable offence after finding that there was sufficient evidence to put the accused on trial and it would have been obligatory upon him to produce such an accused in custody before the Magistrate for being released on bail by the Court. 16. In case the police/investigating officer thinks it unnecessary to present the accused in custody for the reason that the accused would neither abscond nor would disobey the summons as he has been cooperating in investigation and investigation can be completed without arresting him, the IO is not obliged to produce such an accused in custody. xxx xxx xxx 19. It appears that the learned Special Judge was labouring under a misconception that in every non-bailable and cognizable offence the police is required to invariably arrest a person, even if it is not essential for the purpose of investigation. 20. Rather the law is otherwise. In normal and ordinary course the police should always avoid arresting a person and sending him to jail, if it is possible for the police to complete the investigation without his arrest and if every kind of cooperation is provided by the accused to the investigating officer in completing the investigation. It is only in cases of utmost necessity, where the investigation cannot be completed without arresting the person, for instance, a person may be required for recovery of incriminating articles or weapon of offence or for eliciting some information or clue as to his accomplices or any circumstantial evidence, that his arrest may be necessary.
+
+--- PASSAGE 3 ---
+Judgment: SHARIF AHMED AND ANOTHER versus STATE OF UTTAR PRADESH AND ANOTHER (01-05-2024)
+   (Judgment id 1000255710, paragraph 15/2, page 18)
+Text:
+Clause (a) of Section 190 states that the Magistrate can take cognisance of an offence on receiving a complaint of facts which constitute such offence. Clause (b) relates to a situation where the Magistrate receives a police report carrying such facts, i.e., facts which constitute such offence. In Minu Kumari and Another v. State of Bihar and Others11 this Court referred to the options available to the Magistrate on how to proceed in terms of Section 190(1)(b) of the Code, and held: “11...The position is, therefore, now well settled that upon receipt of a police report under Section 173(2) a Magistrate is entitled to take cognizance of an offence under Section 190(1)(b) of the Code even if the police report is to the effect that no case is made out against the accused. The Magistrate can take into account the statements of the witnesses examined by the police during the investigation and take cognizance of the offence complained of and order the issue of process to the accused. Section 190(1)(b) does not lay down that a Magistrate can take cognizance of an offence only if the investigating officer gives an opinion that the investigation has made out a case against the accused. The Magistrate can ignore the conclusion arrived at by the investigating officer and independently apply his mind to the facts emerging from the investigation and take cognizance of the case, if he thinks fit, exercise his powers under Section 190(1)(b) and direct the issue [2006] 3 SCR 1086 : (2006) 4 SCC 359 of process to the accused.
+
+--- PASSAGE 4 ---
+Judgment: STATE OF GUJARAT versus AFROZ MOHAMMED HASANFATTA (05-02-2019)
+   (Judgment id 1000251346, paragraph 20, page 19)
+Text:
+20. In para (21) of Mehmood Ali Rehman, this Court has made a fine distinction between taking cognizance based upon charge sheet filed by the police under Section 190(1)(b) Cr.P.C. and a private complaint under Section 190(1)(a) Cr.P.C. and held as under:- “21. Under Section 190(1)(b) CrPC, the Magistrate has the advantage of a police report and under Section 190(1)(c) CrPC, he has the information or knowledge of commission of an offence. But under Section 190(1)(a) CrPC, he has only a complaint before him. The Code hence specifies that “a complaint of facts which constitute such offence”. Therefore, if the complaint, on the face of it, does not disclose the commission of any offence, the Magistrate shall not take cognizance under Section 190(1)(a) CrPC. The complaint is simply to be rejected.”
+
+--- PASSAGE 5 ---
+Judgment: SUMIT versus STATE OF U.P. & ANR. (09-02-2026)
+   (Judgment id 1003962566, paragraph 16, page 11)
+Text:
+16. In case the police/investigating officer thinks it unnecessary to present the accused in custody for the reason that the accused would neither abscond nor would disobey the summons as he has been cooperating in investigation and investigation can be completed without arresting him, the IO is not obliged to produce such an accused in custody. xxxx xxxx xxxx
+
+--- PASSAGE 6 ---
+Judgment: SUMIT versus STATE OF U.P. & ANR. (09-02-2026)
+   (Judgment id 1003962566, paragraph 22, page 12)
+Text:
+22. The aforesaid decision of the Delhi High Court received imprimatur of this Court in Siddharth vs. State of Uttar Pradesh & Anr., reported in (2022) 1 SCC 676, wherein it was observed as under: “9. We are in agreement with the aforesaid view of the High Courts and would like to give our imprimatur to the said judicial view. It has rightly been observed on consideration of Section 170 CrPC that it does not impose an obligation on the officer-in-charge to arrest each and every accused at the time of filing of the charge-sheet. We have, in fact, come across cases where the accused has cooperated with the investigation throughout and yet on the chargesheet being filed nonbailable warrants have been issued for his production premised on the requirement that there is an obligation to arrest the accused and produce him before the court. We are of the view that if the investigating officer does not believe that the accused will abscond or disobey summons he/she is not required to be produced in custody. The word “custody” appearing in Section 170 CrPC does not contemplate either police or judicial custody but it merely connotes the presentation of the accused by the investigating officer before the court while filing the chargesheet.
+
+--- PASSAGE 7 ---
+Judgment: PRADEEP S. WODEYAR versus THE STATE OF KARNATAKA (29-11-2021)
+   (Judgment id 1000253478, paragraph 45, page 43)
+Text:
+45. It is a well settled principle of law that cognizance as envisaged in Section 190 of the CrPC is of the offence and not of the offender. The expression “cognizance of any offence” is consistently used in the provisions of Sections 190, 191, 192 and 19334.
+
+--- PASSAGE 8 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph preamble/63, page 10)
+Text:
+State of U.P., (1994) 4 SCC 260 : 1994 SCC (Cri) 1172] . If arrest is made routine, it can cause incalculable harm to the reputation and self-esteem of a person. If the investigating officer has no reason to believe that the accused will abscond or disobey summons and has, in fact, throughout cooperated with the investigation we fail to appreciate why there should be a compulsion on the officer to arrest the accused. 11. We are, in fact, faced with a situation where contrary to the observations in Joginder Kumar case [Joginder Kumar v. State of U.P., (1994) 4 SCC 260 : 1994 SCC (Cri) 1172] how a police officer has to deal with a scenario of arrest, the trial courts are stated to be insisting on the arrest of an accused as a prerequisite formality to take the charge-sheet on record in view of the provisions of Section 170 CrPC. We consider such a course misplaced and contrary to the very intent of Section 170 CrPC.” Section 204 and 209 of the Code “204. Issue of process.—(1) If in the opinion of a Magistrate taking cognizance of an offence there is sufficient ground for proceeding, and the case appears to be— (a) a summons-case, he shall issue his summons for the attendance of the accused, or (b) a warrant-case, he may issue a warrant, or, if he thinks fit, a summons, for causing the accused to be brought or to appear at a certain time before such Magistrate or (if he has no jurisdiction himself) some other Magistrate having jurisdiction.” “209.
+
+--- PASSAGE 9 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph preamble/62, page 10)
+Text:
+We have, in fact, come across cases where the accused has cooperated with the investigation throughout and yet on the charge-sheet being filed non-bailable warrants have been issued for his production premised on the requirement that there is an obligation to arrest the accused and produce him before the court. We are of the view that if the investigating officer does not believe that the accused will abscond or disobey summons he/she is not required to be produced in custody. The word “custody” appearing in Section 170 CrPC does not contemplate either police or judicial custody but it merely connotes the presentation of the accused by the investigating officer before the court while filing the chargesheet. 10. We may note that personal liberty is an important aspect of our constitutional mandate. The occasion to arrest an accused during investigation arises when custodial investigation becomes necessary or it is a heinous crime or where there is a possibility of influencing the witnesses or accused may abscond. Merely because an arrest can be made because it is lawful does not mandate that arrest must be made. A distinction must be made between the existence of the power to arrest and the justification for exercise of it [Joginder Kumar v. State of U.P., (1994) 4 SCC 260 : 1994 SCC (Cri) 1172] .
+
+--- PASSAGE 10 ---
+Judgment: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION & ANR. (11-07-2022)
+   (Judgment id 1000254065, paragraph preamble/61, page 10)
+Text:
+Therefore, it should be impressed upon all the courts that they should accept the charge-sheet whenever it is produced by the police with any endorsement to be made on the chargesheet by the staff or the Magistrate pertaining to any omission or requirement in the charge-sheet. But when the police submits the charge-sheet, it is the duty of the court to accept it especially in view of the provisions of Section 468 of the Code which creates a limitation of taking cognizance of offence. Likewise, police authorities also should impress on all police officers that if charge-sheet is not accepted for any such reason, then attention of the Sessions Judge should be drawn to these facts and get suitable orders so that such difficulties would not arise henceforth.” 9. We are in agreement with the aforesaid view of the High Courts and would like to give our imprimatur to the said judicial view. It has rightly been observed on consideration of Section 170 CrPC that it does not impose an obligation on the officer-in-charge to arrest each and every accused at the time of filing of the chargesheet. We have, in fact, come across cases where the accused has cooperated with the investigation throughout and yet on the charge-sheet being filed non-bailable warrants have been issued for his production premised on the requirement that there is an obligation to arrest the accused and produce him before the court.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N01 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

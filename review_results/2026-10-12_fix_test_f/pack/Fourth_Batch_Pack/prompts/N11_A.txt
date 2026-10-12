@@ -1,0 +1,99 @@
+QUESTION ID: N11   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N11",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Police ne hamari car roki aur back seat ke neeche ek bag mila jisme kuch tablets aur powder tha. Car mere dost ki thi, main bas peeche baitha tha, mujhe bag ka kuch pata nahi tha. Kya law mein car mein baithe sab log us bag ke liye zimmedar maane jaate hain?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: Opening header not available
+   (Judgment id 40195, paragraph 183, page 107)
+Text:
+183. Confessional statement of Mohd. Dawood Mohd. Yusuf Khan (A-91): This accused has disclosed that 7-8 days before Ramzan in 1993 he went to M.K. Builders, Bandra on the instructions of Iijaz Bhai (A-137) from Bombay and there he met with Dev who contacted Iijaz Bhai (A-137) and told him that A-24 had arrived. At that time Iijaz (A-137) and Munna (A-24) came out of the office, and gave him the key of the vehicle parked outside. They all boarded the vehicle and Munna (A-24) sat in the back seat. He (A-24) saw a black bag lying on the back seat and Iijaz (A-137) told him about the three stunguns lying inside the bag, and asked him to keep them in his house for some time. When they reached Kurla, Iijaz (A-137) asked Munna (A-24) to leave. Thereupon, Munna (A-24) took the bag from the back seat and handed it over to the accused witness (A-91).
+
+--- PASSAGE 2 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1479 OF 2008 DHARAMPAL SINGH …. APPELLANT Versus STATE OF PUNJAB .... RESPONDENT WITH CRIMINAL APPEAL NO. 1470 OF 2008 MAJOR SINGH …. APPELLANT Versus STATE OF PUNJAB .... RESPON
+   (Judgment id 36871, paragraph 7/3, page 7)
+Text:
+It transpires from the evidence that the appellants were not the only occupants of the vehicle. One of the persons who was sitting in the cabin and another person sitting at the back of the truck made themselves scarce after seeing the police and the prosecution could not establish their identity. It is quite probable that one of them could be the custodian of the goods whether or not he was the proprietor. The persons who were merely sitting on the bags, in the absence of proof of anything more, cannot be presumed to be in possession of the goods.”
+
+--- PASSAGE 3 ---
+Judgment: GURDEEP SINGH versus THE STATE OF PUNJAB (11-08-2025)
+   (Judgment id 1000256919, paragraph 19, page 38)
+Text:
+19. Thus, the prosecution evidence clearly demonstrates that the attack on the police escort team was not a spontaneous occurrence, but a carefully orchestrated plan. The appellant, holding the post of Assistant Superintendent of Jail, was fully aware of the security protocols applicable to undertrial escorts. Instead of upholding these procedures, he misused his position and familiarity with the escort personnel to subvert the established norms. He facilitated the 728 use of a private vehicle, allegedly owned by an acquaintance, and persuaded the police officers to board it – himself occupying the front passenger seat. This was not an innocuous act but indicated prior arrangement and active complicity. 19.1. Furthermore, the presence of two unidentified persons already seated in the rear of the vehicle – where the undertrial and escort officers were also to be accommodated – not only constituted a grave breach of protocol but was inexplicable except by the appellant’s active connivance. At an isolated location, the attack was launched: red chilli powder was thrown, followed by an assault using a knife and a kirpan. Kuldeep Singh attempted to escape and was prevented from doing so only by the handcuffs and the belt secured by the complainant. Throughout the incident, the appellant neither assisted the police escort nor resisted the assailants. He remained uninjured and vanished from the scene of incident thereafter. 19.2. The appellant’s conduct during and after the incident is wholly inconsistent with that of a law-abiding officer. Rather, it reveals the mindset of a conspirator attempting to evade accountability. His role in arranging the vehicle, his suspicious seating position, the unauthorized presence of outsiders, his passive stance during the attack, his disappearance thereafter, and his failure to report the incident together form an unbroken chain of incriminating circumstances. The prosecution has rightly characterized the entire episode as a premeditated conspiracy, in which the appellant played a key role.
+
+--- PASSAGE 4 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1450 OF 2008 Jagdish Rai …..Appellant Versus State of Punjab ......Respondent J U D G M E N T AFTAB ALAM, J.
+   (Judgment id 37745, paragraph 7-8, page 4)
+Text:
+7. On hearing counsel for the parties and on going through the materials on record we are fully in agreement with the view taken by the High Court. 8. In support of the submission that the appellant cannot be presumed to be aware of the contents of the bag being carried by the other accused and no conscious possession of opium can be attributed to him, Mr. Chahar relied upon a decision of this court in Avtar Singh & Ors. v. State of Punjab, (2002) 7 SCC 419. In Avtar Singh, the three appellants before this Court were the driver of the truck and two persons sitting on the bags of poppy husk being carried on the vehicle. It is significant to note that those three appellants were not the only occupants of the truck but there were two other persons, one sitting in the cabin and the other sitting at the back of the truck who were able to run away when the vehicle was stopped by the police and the prosecution was not able to establish their identity. This Court observed that it was quite probable that one of them could be the custodian of the goods whether or not he was the proprietor. In regard to the two appellants who were sitting on the bags containing poppy husk, the Court observed as follows: “The persons who were merely sitting on the bags, in the absence of proof of anything more, cannot be presumed to be in possession of the goods. For instance, if they are labourers engaged merely for loading and unloading purposes and there is nothing to show that the goods were at least in their temporary custody, conviction under Section 15 may not be warranted. At best, they may be abettors, but, there is no such charge here. True, their silence and failure to explain the circumstances in which they were traveling in the vehicle at the odd hours, is one strong circumstance that can be put against them. A case of drawing presumption under Section 114 of the Evidence Act could perhaps be made out then to prove the possession of the accused, but the fact remains that in the course of examination under Section 313 CrPC, not even a question was asked that they were the persons in possession of poppy husk placed in the vehicle. The only question put to them was that as per the prosecution evidence, they were sitting on the bags of poppy husk.”
+
+--- PASSAGE 5 ---
+Judgment: RAKESH KUMAR RAGHUVANSHI versus THE STATE OF MADHYA PRADESH (16-01-2025)
+   (Judgment id 1000256277, paragraph 12/1, page 8)
+Text:
+12. Learned counsel appearing for the appellant invited our attention to a decision of this Court in the case of Avtar Singh v. State of Punjab reported in (2002) 7 SCC 419. Although the learned counsel seeks to rely upon this judgment for the benefit of her client yet unfortunately the ratio of the judgment or rather the dictum laid therein goes against the appellant. The relevant observations are as under: “The word ‘possession’ no doubt has different shades of meaning and it is quite elastic in its connotation. Possession and ownership need not always go together but the minimum requisite element which has to be satisfied is custody or control over the goods. Can it be said, on the basis of the evidence available on record, that the three appellants one of whom was driving the vehicle and other two sitting on the bags, were having such custody or control? It is difficult to reach such conclusion beyond reasonable doubt. It transpires from evidence that the appellants were not the only occupants of the vehicle. One of the persons who was sitting in the cabin and another person sitting at the back of the truck made themselves scarce after seeing the police and the prosecution could not establish their identity. It is quite probable that one of them could be the custodian of goods whether or not he was the proprietor.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1479 OF 2008 DHARAMPAL SINGH …. APPELLANT Versus STATE OF PUNJAB .... RESPONDENT WITH CRIMINAL APPEAL NO. 1470 OF 2008 MAJOR SINGH …. APPELLANT Versus STATE OF PUNJAB .... RESPON
+   (Judgment id 36871, paragraph 10, page 13)
+Text:
+10. Now, referring to the decision of this Court in the case of Avtar Singh (supra), the same is clearly distinguishable. In the said case, according to the prosecution itself, the vehicle loaded with bags of poppy husk was a truck and when it was stopped one person sitting in the cabin and another person sitting in the back of the truck fled away. The accused in the said case were not the only occupants and in the said background this Court held that they cannot be presumed to be in the possession of the goods and it is quite probable that one of those who fled away could have been the custodian thereof. However, in the present case the vehicle in question is not a transport vehicle and, therefore, the test applied in the case of public transport vehicles in which several persons travel cannot be applied in the facts of the present case. Similarly, in the case of Sorabkhan Gandhkhan Pathan(supra) the contraband was recovered from an autorickshaw and in the absence of specific case that the accused had knowledge of carrying the contraband, only on the ground that he was travelling in an autorickshaw, possession cannot be inferred. For the reasons aforesaid this case is of no assistance to the appellants.
+
+--- PASSAGE 7 ---
+Judgment: BISHWAJIT DEY versus THE STATE OF ASSAM (06-01-2025)
+   (Judgment id 1000256251, paragraph 29, page 30)
+Text:
+29. Though seizure of drugs/substances from conveyances can take place in a number of situations, yet broadly speaking there are four scenarios in which the drug or substance is seized from a conveyance. Firstly, where the owner of the vehicle is the person from whom the possession of contraband drugs/substance is recovered. Secondly, where the contraband is recovered from the possession of the agent of the owner i.e. like driver or cleaner hired by the owner. Thirdly, where the vehicle has been stolen by the accused and contraband is recovered from such stolen vehicle. Fourthly, where the contraband is seized / recovered from a third-party occupant (with or without consideration) of the vehicle without any allegation by the police that the contraband was stored and transported in the vehicle with the owner’s knowledge and connivance. In the first two scenarios, the owner of the vehicle and/or his agent would necessarily be arrayed as an accused. In the third and fourth scenario, the owner of the vehicle and/or his agent would not be arrayed as an accused.
+
+--- PASSAGE 8 ---
+Judgment: RANJAN KUMAR CHADHA versus STATE OF HIMACHAL PRADESH (06-10-2023)
+   (Judgment id 1000255290, paragraph 5, page 48)
+Text:
+5. We do not ﬁ nd any substance in this contention as the charas was not found on the person of the appellants but it was found kept in a bag which was hanging on the scooter on which they were riding. Therefore, this was not a case where the person of the accused was searched and from his person narcotic drug or psychotropic substance was found. The correct position of the law on this point has been stated by this Court in State of Punjab v. Baldev Singh” (Emphasis supplied)
+
+--- PASSAGE 9 ---
+Judgment: STATE OF WEST BENGAL versus RAKESH SINGH @ RAKESH KUMAR SINGH (11-07-2022)
+   (Judgment id 1000254078, paragraph 16/2, page 23)
+Text:
+One male person sited at driver sit and another male person waws sited next to the driver seat (front) and one female person sited at rear seat of the said vehicle/car. We disclosed our identity for the purpose of detention… *** *** *** …..After that the undesigned started to search the male detainees and the said vehicle/car one by one on the spot in presence of all maintaining all legal formalities and at that time the lady constable Pema Lamu Sherpa started to search the female detainee maintaining decency and decorum. During search of the vehicle bearing no. WB06P0233 on being asked the all detainees of the vehicle bearing no. WB06P0233 pointed out towards at the rear zip cover of the left front seat and under driver’s seat of the said vehicle where the contravened drugs/cocaine were found in concealed manner in black colored polythene packets. Thereafter undersigned took out two black colored polythene packets and opened those one by one. On being opened the packet found in the left side rear zip cover of driver seat, found 35 pieces transparent zip pouch each containing white colored power (sic) said to be cocaine and weighing about 40 gms. On being opened the packets found under the driver seat, found 31 pieces transparent zip pouch each containing white coloured power (sic) said to be cocaine and weighing about 36 gms….” (emphasis supplied) 16.1.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1479 OF 2008 DHARAMPAL SINGH …. APPELLANT Versus STATE OF PUNJAB .... RESPONDENT WITH CRIMINAL APPEAL NO. 1470 OF 2008 MAJOR SINGH …. APPELLANT Versus STATE OF PUNJAB .... RESPON
+   (Judgment id 36871, paragraph 13, page 16)
+Text:
+13. Bearing in mind the aforesaid principle when we consider the facts of the present case we find that the prosecution intends to prove that the appellants were in possession of the opium by disclosing that illicit article was recovered from the dicky of the vehicle driven and occupied by them. Possession is a mental state and what has been unfolded by the prosecution is that on search of dicky of the car opium was recovered. Circumstances aforesaid lead to the conclusion that the appellants were in conscious possession. Therefore, it cannot be said that appellants were not told to explain the circumstances appearing against them in the evidence.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N11 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

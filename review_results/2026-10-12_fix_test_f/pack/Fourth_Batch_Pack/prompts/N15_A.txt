@@ -1,0 +1,105 @@
+QUESTION ID: N15   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 11 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N15",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 11 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+
+==============================================================================
+QUESTION: After my in-laws forced me out, I filed a domestic violence case, but the court says it will take at least a year to decide. I have no money for rent or food right now. Can the court give me maintenance before the case is fully decided?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: RAJNESH versus NEHA & ANR. (04-11-2020)
+   (Judgment id 1000252794, paragraph preamble/74, page 15)
+Text:
+50 1993 (2) MPJR 63. Allahabad High Court in Ganga Prasad Srivastava v Additional District Judge, Gonda & Ors.51 The Court held that the date of application should always be regarded as the starting point for payment of maintenance. The Court was considering a suit for maintenance u/S. 18 of HAMA, wherein the Civil Judge directed that maintenance be paid from the date of judgment. The High Court held that the normal inference should be that the order of maintenance would be effective from the date of application. A party seeking maintenance would otherwise be deprived of maintenance due to the delay in disposal of the application, which may arise due to paucity of time of the Court, or on account of the conduct of one of the parties. In this case, there was a delay of seven years in disposing of the suit, and the wife could not be made to starve till such time. The wife was held to be entitled to maintenance from the date of application / suit. The Delhi High Court in Lavlesh Shukla v Rukmani52 held that where the wife is unemployed and is incurring expenses towards maintaining herself and the minor child / children, she is entitled to receive maintenance from the date of application. Maintenance is awarded to a wife to overcome the financial crunch, which occurs on account of her separation from her husband.
+
+--- PASSAGE 2 ---
+Judgment: RAJNESH versus NEHA & ANR. (04-11-2020)
+   (Judgment id 1000252794, paragraph preamble/16, page 15)
+Text:
+Section 24 of the HMA provides for maintenance pendente lite, where the Court may direct the respondent to pay the expenses of the proceeding, and pay such reasonable monthly amount, which is considered to be reasonable, having regard to the income of both the parties. Section 24 reads as: “24. Maintenance pendente lite and expenses of proceedings.— Where in any proceeding under this Act it appears to the court that either the wife or the husband, as the case may be, has no independent income sufficient for her or his support and the necessary expenses of the proceeding, it may, on the application of the wife or the husband, order the respondent to pay to the petitioner the expenses of the proceeding, and monthly during the proceeding such sum as, having regard to the petitioner’s own income and the income of the respondent, it may seem to the court to be reasonable. Provided that the application for the payment of the expenses of the proceeding and such monthly sum during the proceeding, shall, as far as possible, be disposed of within sixty days from the date of service of notice on the wife or the husband, as the case may be.” (emphasis supplied) The proviso to Section 24 providing a time line of 60 days for disposal of the application was inserted vide Act 49 of 2001 w.e.f. 24.09.2001.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 4666 OF 2008 ARISING OUT OF SPECIAL LEAVE PETITION (CIVIL) NO.17260 OF 2007 SHAIL KUMARI DEVI & ANR. … APPELLANTS VERSUS KRISHAN BHAGWAN PATHAK @ KISHUN B. PATHAK … RESPONDENT J U D G 
+   (Judgment id 32128, paragraph 21, page 15)
+Text:
+21. So far as ‘interim’ maintenance is concerned, it is true that Section 125 of the Code as it originally enacted did not expressly empower the Magistrate to make such order and direct payment of interim maintenance. But the Code equally did not prohibit the Magistrate from making such order. Now, having regard to the nature of proceedings, the primary object to secure relief to deserted and destitute wives, discarded and neglected children and disabled and helpless parents and to ensure that no wife, child or parent is left beggared and destitute on the scrap-heap of society so as to be tempted to commit crime or to tempt others to commit crime in regard to them, it was held that the Magistrate had ‘implied power’ to make such order. The jurisdiction of the Magistrate under Chapter IX (Order for Maintenance of Wives, Children and Parents) is not strictly criminal in nature. Moreover, the remedy provided by Section 125 of the Code is a summary remedy for securing reasonable sum by way of maintenance subject to a decree passed by a competent civil Court. Hence, in absence of any express bar or prohibition, Section 125 could be interpreted as conferring power by necessary implication to make interim order of maintenance subject to final outcome in the application.
+
+--- PASSAGE 4 ---
+Judgment: RAJNESH versus NEHA & ANR. (04-11-2020)
+   (Judgment id 1000252794, paragraph preamble/81, page 15)
+Text:
+While giving interpretation to a particular provision, the court is supposed to bridge the gap between the law and society.” (emphasis supplied) It has therefore become necessary to issue directions to bring about uniformity and consistency in the Orders passed by all Courts, by directing that maintenance be awarded from the date on which the application was made before the concerned Court. The right to claim maintenance must date back to the date of filing the application, since the period during which the maintenance proceedings remained pending is not within the control of the applicant. V Enforcement of orders of maintenance Enforcement of the order of maintenance is the most challenging issue, which is encountered by the applicants. If maintenance is not paid in a timely manner, it defeats the very object of the social welfare legislation. Execution petitions usually remain pending for months, if not years, which completely nullifies the object of the law. The Bombay High Court in Sushila Viresh Chhawda v Viresh Nagsi Chhawda63 held that : “The direction of interim alimony and expenses of litigation under Section 24 is one of urgency and it must be decided as soon as it is raised and the law takes care that nobody is disabled from prosecuting or defending the matrimonial case by starvation or lack of funds.” (i) An application for execution of an Order of Maintenance can be filed under the following provisions : (a) Section 28 A of the Hindu Marriage Act, 1956 r.w.
+
+--- PASSAGE 5 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 4666 OF 2008 ARISING OUT OF SPECIAL LEAVE PETITION (CIVIL) NO.17260 OF 2007 SHAIL KUMARI DEVI & ANR. … APPELLANTS VERSUS KRISHAN BHAGWAN PATHAK @ KISHUN B. PATHAK … RESPONDENT J U D G 
+   (Judgment id 32128, paragraph 25, page 21)
+Text:
+25. Parliament considered the object of the legislation, the decision of this Court in Savitri and the fact that though the remedy is of a summary nature, the applicant who is unable to maintain herself may have to wait for ‘several years’ for getting such relief. It, therefore, amended the provision expressly authorizing the Magistrate to grant interim maintenance.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 4666 OF 2008 ARISING OUT OF SPECIAL LEAVE PETITION (CIVIL) NO.17260 OF 2007 SHAIL KUMARI DEVI & ANR. … APPELLANTS VERSUS KRISHAN BHAGWAN PATHAK @ KISHUN B. PATHAK … RESPONDENT J U D G 
+   (Judgment id 32128, paragraph 125, page 28)
+Text:
+125. The Court, by way of illustrative cases considered certain situations, such as, ‘dilatory tactics adopted by the husband in the disposal of the proceeding’, ‘untold cruelty practised against wife’, etc. In absence of special circumstances, however, maintenance cannot be ordered from the date of application.
+
+--- PASSAGE 7 ---
+Judgment: SHAHJAHAN versus THE STATE OF UTTAR PRADESH & ANR. R1: THE STATE OF UTTAR PRADESH R2: SRI GAFFAR KHAN (04-02-2025)
+   (Judgment id 1000256344, paragraph 110, page 9)
+Text:
+110. In Shail Kumari Devi v. Krishan Bhagwan Pathak [Shail Kumari Devi v. Krishan Bhagwan Pathak, (2008) 9 SCC 632: (2008) 3 SCC (Cri) 839], this Court held that the entitlement of maintenance should not be left to the uncertain date of disposal of the case. The enormous delay in disposal of proceedings justifies the award of maintenance from the date of application. In Bhuwan Mohan Singh v. Meena [Bhuwan Mohan Singh v. Meena, (2015) 6 SCC 353: (2015) 3 SCC (Civ) 321: (2015) 4 SCC (Cri) 200], this Court held that repetitive adjournments sought by the husband in that case resulted in delay of 9 years in the adjudication of the case. The delay in adjudication was not only against human rights, but also against the basic embodiment of dignity of an individual. The delay in the conduct of the proceedings would require grant of maintenance to date back to the date of application.
+
+--- PASSAGE 8 ---
+Judgment: IN THE SUPREME COURT OF INDIA CIVIL APPELLATE JURISDICTION CIVIL APPEAL NO. 4666 OF 2008 ARISING OUT OF SPECIAL LEAVE PETITION (CIVIL) NO.17260 OF 2007 SHAIL KUMARI DEVI & ANR. … APPELLANTS VERSUS KRISHAN BHAGWAN PATHAK @ KISHUN B. PATHAK … RESPONDENT J U D G 
+   (Judgment id 32128, paragraph 45, page 35)
+Text:
+45. Moreover, duration of litigation is not within the power or in the hands of the applicant and entitlement to maintenance should not be left to the uncertain date of disposal of the case. Keeping in view this hard reality, this Court in Savitri held that in absence of prohibition to grant ‘interim’ maintenance such power could be read in the salutary provision of Section 125 of the Code ensuring maintenance to unable wife to maintain herself during the pendency of proceedings. Even Parliament took into account the reality and by the Amendment Act, 2001 express provision has been made for the purpose.
+
+--- PASSAGE 9 ---
+Judgment: RAJNESH versus NEHA & ANR. (04-11-2020)
+   (Judgment id 1000252794, paragraph preamble/72, page 15)
+Text:
+(a) From date of application The view that maintenance ought to be granted from the date when the application was made, is based on the rationale that the primary object of maintenance laws is to protect a deserted wife and dependant children from destitution and vagrancy. If maintenance is not paid from the date of application, the party 46 K. Sivaram v K. Mangalamba & Ors.1989 (1) APLJ (HC) 604. seeking maintenance would be deprived of sustenance, owing to the time taken for disposal of the application, which often runs into several years. The Orissa High Court in Susmita Mohanty v Rabindra Nath Sahu47 held that the legislature intended to provide a summary, quick and comparatively inexpensive remedy to the neglected person. Where a litigation is prolonged, either on account of the conduct of the opposite party, or due to the heavy docket in Courts, or for unavoidable reasons, it would be unjust and contrary to the object of the provision, to provide maintenance from the date of the order. In Kanhu Charan Jena v. Smt. Nirmala Jena48 , the Orissa High Court was considering an application u/S. 125 Cr.P.C., wherein it was held that even though the decision to award maintenance either from the date of application, or from the date of order, was within the discretion of the Court, it would be appropriate to grant maintenance from the date of application.
+
+--- PASSAGE 10 ---
+Judgment: REPORTA BLE IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 420 OF 2012 SURESH & ANR. ..... APPELLANTS VERSUS STATE OF HARYANA ..... RESPONDENT J U D G M E N T ADARSH KUMAR GOEL J.
+   (Judgment id 42130, paragraph 6/2, page 32)
+Text:
+This principle is embodied in the maxim “ubi aliquid conceditur, conceditur et id sine quo res ipsa esse non potest” (Where anything is conceded, there is conceded also anything without which the thing itself cannot exist). [Vide Earl Jowitt's Dictionary of English Law, 1959 Edn., p. 1797.] Whenever anything is required to be done by law and it is found impossible to do that thing unless something not authorised in express terms be also done then that something else will be supplied by necessary intendment. Such a construction though it may not always be admissible in the present case however would advance the object of the legislation under consideration. A contrary view is likely to result in grave hardship to the applicant, who may have no means to subsist until the final order is passed. There is no room for the apprehension that the recognition of such implied power would lead to the passing of interim orders in a large number of cases where the liability to pay maintenance may not exist. It is quite possible that such contingency may arise in a few cases but the prejudice caused thereby to the person against whom it is made is minimal as it can be set right quickly after hearing both the parties. The Magistrate may, however, insist upon an affidavit being filed by or on behalf of the applicant concerned stating the grounds in support of the claim for interim maintenance to satisfy himself that there is a prima facie case for making such an order.
+
+--- PASSAGE 11 ---
+Judgment: RAJNESH versus NEHA & ANR. (04-11-2020)
+   (Judgment id 1000252794, paragraph preamble/28, page 15)
+Text:
+Under the third proviso to the amended Section 125, the application for grant of interim maintenance must be disposed of as far as possible within sixty days’ from the date of service of notice on the respondent. The amended Section 125 reads as under : “125. Order for maintenance of wives, children and parents. (1) If any person having sufficient means neglects or refuses to maintain- (a) his wife, unable to maintain herself, or (b) his legitimate or illegitimate minor child, whether married or not, unable to maintain itself, or (c) his legitimate or illegitimate child (not being a married daughter) who has attained majority, where such child is, by reason of any physical or mental abnormality or injury unable to maintain itself, or (d) his father or mother, unable to maintain himself or herself, a Magistrate of the first class may, upon proof of such neglect or refusal, order such person to make a monthly allowance for the maintenance of his wife or such child, father or mother, at such monthly rate as such Magistrate thinks fit, and to pay the same to such person as the Magistrate may from time to time direct: Provided that the Magistrate may order the father of a minor female child referred to in clause (b) to make such allowance, until she attains her majority, if the Magistrate is satisfied that the husband of such minor female child, if married, is not possessed of sufficient means : Provided further that the Magistrate may, during the pendency of the proceeding regarding monthly allowance for the maintenance under this sub-section, order such person to make a monthly allow for the interim maintenance of his wife or such child, father or mother, and the expenses of such proceeding which the Magistrate considers reasonable, and to pay the same to such person as the Magistrate may from time to time direct : Provided also that an application for the monthly allowance for the interim maintenance and expenses of proceeding under the second proviso shall, as far as possible, be disposed of within sixty days from the date of the service of notice of the application to such person.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N15 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11).

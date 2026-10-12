@@ -1,0 +1,99 @@
+QUESTION ID: N22   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N22",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: In 2023, a drunk driver drove his SUV onto the footpath at night and killed my brother, who was waiting for a bus. The police test showed he was far over the alcohol limit. The FIR is only under 304A IPC, which our lawyer says carries at most two years. The driver's family is already offering money for a compromise. I keep reading that drunk-driving deaths are sometimes treated more seriously. When can such a death be prosecuted under Section 304 Part II IPC instead of only 304A?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: Naresh Giri v. State of M.P. (12/11/2007)
+   (Judgment id 29759, paragraph 6, page 2)
+Text:
+6. Section 304-A IPC applies to cases where there is no intention to cause death and no knowledge that the act done, in all probabilities, will cause death. This provision is directed at offences outside the range of Sections 299 and 300 IPC. Section 304-A applies only to such acts which are rash and negligent and are directly the cause of death of another person. Negligence and rashness are essential elements under Section 304-A.
+
+--- PASSAGE 2 ---
+Judgment: J U D G M E N T T.S. THAKUR, J. Enforcement of laws is as important as their enactment, especially where such laws deal with safety and security of citizens and create continuing obligations that call for constant vigil by those entrusted with their administra
+   (Judgment id 41301, paragraph 192, page 235)
+Text:
+192. In Alister Anthony Pereira’s case (supra), the accused was driving in an inebriated condition when he ran over a number of labourers sleeping on the pavement, killing seven of them. The Trial Court convicted the accused under Sections 304A and 337 IPC but acquitted him under Section 304 Part II and 338 IPC. The Bombay High Court set aside the acquittal and convicted the accused for offences under Sections 304 Part II, 337 and 338 IPC. This Court affirmed the said judgment of the High Court and while doing so explained the distinction between the offence under Section 304A and that punishable under Section 304 Part II IPC. This Court observed: “47. Each case obviously has to be decided on its own facts. In a case where negligence or rashness is the cause of death and nothing more, Section 304A may be attracted but where the rash or negligent act is preceded with the knowledge that such act is likely to cause death, Section 304 Part II Indian Penal Code may be attracted and if such a rash and negligent act is preceded by real intention on the part of the wrong doer to cause death, offence may be punishable under Section 302 Indian Penal Code.”
+
+--- PASSAGE 3 ---
+Judgment: STATE THROUGH C.B.I., ANTI CORRUPTION BRANCH, CHANDIGARH versus SANJIV BHALLA & ANR. (04-07-2014)
+   (Judgment id 1000004443, unnumbered paragraph, page 19)
+Text:
+Ba/winder Singh14 it was again held that the punishment for causing death by rash or negligent driving should be deterrent, in view of the C frequency of such incidents. The accident in this case resulted in the death of five persons, and the punishment Y"as six months rigorous imprisonment with a fine of Rs. 5000/-. 13. In Alister Anthony Pareira v. State of Mahaiashtra15 D the convict's driving resulted in the death of seven persons and injuries to eight others. This Court upheld his conviction by the High Court for offences punishable under Part II of Section 304, Sections 338 and 337 of the IPC and sentenced him to rigorous imprisonment for three years and a fine of Rs. 5 lakhs. This E Court also observed that the case was not a fit one for releasing the convict on probation. It was also observed that our country . has the dubious distinction of registering the maximum number of deaths in road accidents and that "It is high time that lawmakers revisit the sentencing policy reflected in Section 304-A IPC." 14. In State v. Sanjeev Nanda16 six persons were killed and one injured as a result of the convict's driving. The Trial Court convicted him for an offence punishable under Section 304 Part II of the IPC and sentence_d him to undergo rigorous G imprisonment for five years. On appeal, the High Court found the convict guilty of commission of an offence punishable under 14.
+
+--- PASSAGE 4 ---
+Judgment: Opening header not available
+   (Judgment id 39459, paragraph 48, page 75)
+Text:
+48. In a recent judgment, in Alister Anthony Pareira (supra), this Court after surveying a large number of judgments on the scope of Sections 304A and 304(II) of the IPC, came to the conclusion that in a case of drunken driving resulting in the death of seven persons and causing injury to eight persons, the scope of Sections 299, 300 and 304(I) and (II) of the IPC stated to be as follows: “Each case obviously has to be decided on its own facts. In a case where negligence or rashness is the cause of death and nothing more, Section 304A may be attracted but where the rash or negligent act is preceded with the knowledge that such act is likely to cause death, Section 304 Part II Indian Penal Code may be attracted and if such a rash and negligent act is preceded by real intention on the part of the wrong doer to cause death, offence may be punishable under Section 302 Indian Penal Code.” On facts, the court concluded as follows: “The facts and circumstances of the case which have been proved by the prosecution in bringing home the guilt of the accused under Section 304 Part II Indian Penal Code undoubtedly show despicable aggravated offence warranting punishment proportionate to the crime. Seven precious human lives were lost by the act of the accused. For an offence like this which has been proved against the Appellant, sentence of three years awarded by the High Court is too meagre and not adequate but since no appeal has been preferred by the State, we refrain from considering the matter for enhancement. By letting the Appellant away on the sentence already undergone i.e. two months in a case like this, in our view, would be travesty of justice and highly unjust, unfair, improper and disproportionate to the gravity of crime. It is true that the Appellant has paid compensation of Rs. 8,50,000/- but no amount of compensation could relieve the family of victims from the constant agony. As a matter of fact, High Court had been quite considerate and lenient in awarding to the Appellant sentence of three years for an offence under Section 304 Part II Indian Penal Code where seven persons were killed.”
+
+--- PASSAGE 5 ---
+Judgment: STATE OF PUNJAB versus DIL BAHADUR (28-03-2023)
+   (Judgment id 1000254859, unnumbered paragraph, page 6)
+Text:
+Such a crime blights not only the lives of the victims but of many others around them. It ultimately shatters the faith of the public in judicial system.” 5.2.3 Showing the concern about increasing the road accidents, it is observed in the said decision as under: - “India has a disreputable record of road accidents. There is a nonchalant attitude among the drivers. They feel that they are the “Emperors of all they survey.” Drunkenness contributes to careless driving where the other people become their prey. The poor feel that their lives are not safe, the pedestrians think of uncertainty and the civilised persons drive in constant fear but still apprehensive about the obnoxious attitude of the people who project themselves as “larger than life.” In such obtaining circumstances, the lawmakers should scrutinise, relook and revisit the sentencing policy in Section 304-A IPC, so with immense anguish.” 5.3 At this stage, another decision of this Court in the case of Surendra Singh (supra) which is also on the offences under Sections 279 and 304A of IPC, is required to be referred to. In the case before this Court, the learned Trial Court while convicting the accused for the offence under Section 304A sentenced the accused to undergo two years RI. The High Court while maintaining the conviction, reduced the sentence awarded by the learned Trial Court from two years RI to the period already undergone and granted a further compensation of Rs.
+
+--- PASSAGE 6 ---
+Judgment: Opening header not available
+   (Judgment id 39459, paragraph 38-39, page 32)
+Text:
+38. Now, we have to consider if it is a fit case where conviction should be altered to Section 304 Part II of IPC and sentence awarded should be enhanced. 39. We are of the considered view that looking to the nature and manner in which accident had taken place, it can safely be held that he had no intention to cause death but certainly had the knowledge that his act may result in death.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1625 OF 2008 ARISING OUT OF SPECIAL LEAVE PETITION (CRL.) NO. 2023 OF 2007 MAHADEV PRASAD KAUSHIK … APPELLANT VERSUS STATE OF U.P. & ANR. … RESPONDENTS J U D G M E N T C.K. THAKK
+   (Judgment id 32691, paragraph 29, page 17)
+Text:
+29. There is thus distinction between Section 304 and Section 304A. Section 304A carves out cases where death is caused by doing a rash or negligent act which does not amount to culpable homicide not amounting to murder within the meaning of Section 299 or culpable homicide amounting to murder under Section 300, IPC. In other words, Section 304A excludes all the ingredients of Section 299 as also of Section 300. Where intention or knowledge is the ‘motivating force’ of the act complained of, Section 304A will have to make room for the graver and more serious charge of culpable homicide not amounting to murder or amounting to murder as the facts disclose. The section has application to those cases where there is neither intention to cause death nor knowledge that the act in all probability will cause death.
+
+--- PASSAGE 8 ---
+Judgment: J U D G M E N T T.S. THAKUR, J. Enforcement of laws is as important as their enactment, especially where such laws deal with safety and security of citizens and create continuing obligations that call for constant vigil by those entrusted with their administra
+   (Judgment id 41301, paragraph 195, page 239)
+Text:
+195. What emerges from the two cases referred to above is that: a. Each case must be decided on its own facts to determine whether such knowledge did in fact precede the rash/negligent act. b. What converts a case apparently falling under Section 304A into one under Section 304 Part II is the knowledge that the act is likely to cause death”. c. Where the act which causes death is the act of driving a vehicle in a rash and reckless manner and in an inebriated state after consuming liquor, the accused may be attributed the knowledge that such act was likely to cause death of others using the road.
+
+--- PASSAGE 9 ---
+Judgment: State of Maharashtra v. Salman Salim Khan & Anr. (18/12/2003)
+   (Judgment id 25699, unnumbered paragraph, page 1)
+Text:
+Otherwise as has happened in this case proceedings get protracted by the intervention of the superior courts. Now coming to the present appeal : The respondent herein was originally charged of an offence punishable under sections 304A, 279, 337, 338, 427 IPC and 134(a)(b) read with sections 181 and 185 of the Motor Vehicles Act, 1998 as also under section 66(1)(b) of the Bombay Prohibition Act. All these offences are triable by a court of Magistrate of competent jurisdiction. These charges against the respondents were registered based on a complaint lodged by one Shri Ravindra Patil, a Police Constable attached to the Security Department and posted with the respondent to look after his security. It is the case of the prosecution that on the night intervening the 27th and 28th September, 2002, the respondent drove his car under the influence of alcohol, in a rash manner and caused the death of one person and caused grievous injuries to four others who happened to be sleeping on the footpath. A few days later the chargesheet filed as above, came to be modified based on the additional statement of the complainant, and instead of section 304A IPC, section 304 Part II, IPC was substituted which is an offence exclusively triable by a Court of Sessions hence the learned Magistrate who took cognizance of the offence, committed the said case to the Court of Sessions for trial.
+
+--- PASSAGE 10 ---
+Judgment: Opening header not available
+   (Judgment id 39459, paragraph 52, page 78)
+Text:
+52. The principle mentioned by this court in Alister Anthony Pareira (supra) indicates that the person must be presumed to have had the knowledge that, his act of driving the vehicle without a licence in a high speed after consuming liquor beyond the permissible limit, is likely or sufficient in the ordinary course of nature to cause death of the pedestrians on the road. In our view, Alister Anthony Pareira (supra) calls for no reconsideration. Assuming that Shri Ram Jethmalani is right in contending that while he was driving the vehicle in a drunken state, he had no intention or knowledge that his action was likely to cause death of six human beings, in our view, at least, immediately after having hit so many human beings and the bodies scattered around, he had the knowledge that his action was likely to cause death of so many human beings, lying on the road unattended. To say, still he had no knowledge about his action is too childish which no reasonable man can accept as worthy of consideration. So far as this case is concerned, it has been brought out in evidence that the accused was in an inebriated state, after consuming excessive alcohol, he was driving the vehicle without licence, in a rash and negligent manner in a high speed which resulted in the death of six persons. The accused had sufficient knowledge that his action was likely to cause death and such an action would, in the facts and circumstances of this case fall under Section 304(II) of the IPC and the trial court has rightly held so and the High Court has committed an error in converting the offence to Section 304A of the IPC.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N22 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

@@ -1,0 +1,94 @@
+QUESTION ID: N05   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 9 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N05",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 9 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9
+
+==============================================================================
+QUESTION: My father was booked last year for cheating and breach of trust after his partnership business broke down, and the other partner says he owes 8 lakhs. He was arrested and has been in jail for three weeks. The Sessions Court has said it will give bail under section 483 BNSS only if he first deposits 4 lakhs for the complainant. We cannot arrange this money and my mother is trying to sell her jewellery. Can bail be made conditional on paying the disputed money?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: GAJANAN DATTATRAY GORE versus THE STATE OF MAHARASHTRA & ANR. (28-07-2025)
+   (Judgment id 1000256876, paragraph 16, page 12)
+Text:
+16. It is trite law that imposing of financial deposit as a condition for bail is not permissible and that the process of Criminal Law particularly, in matters of grant of bail are not akin to money recovery proceedings.
+
+--- PASSAGE 2 ---
+Judgment: RAMESH KUMAR versus STATE OF NCT OF DELHI (04-07-2023)
+   (Judgment id 1000255096, paragraph 10, page 13)
+Text:
+10. We would reiterate that the process of criminal law cannot be utilised for arm-twisting and money recovery, particularly while opposing the prayer for bail. The question as to whether prearrest bail, or for that matter regular bail, in a given case is to be 5 (2021) 2 SCC 779 6 (2023) SCC OnLine SC 51 granted or not is required to be examined and the discretion is required to be exercised by the Court with reference to the material on record and the parameters governing bail considerations. Putting it in other words, in a given case, the concession of pre-arrest bail or regular bail could be declined even if the accused has made payment of the money involved or offers to make any payment; conversely, in a given case, the concession of pre-arrest bail or regular bail could be granted irrespective of any payment or any offer of payment.
+
+--- PASSAGE 3 ---
+Judgment: RAMESH KUMAR versus STATE OF NCT OF DELHI (04-07-2023)
+   (Judgment id 1000255096, paragraph 26, page 14)
+Text:
+26. Law regarding exercise of discretion while granting a prayer for bail under section 438 of the Cr. PC having been authoritatively laid down by this Court, we cannot but disapprove the imposition of a condition of the nature under challenge. Assuming that there is substance in the allegation of the complainants that the appellant (either in connivance with the builder or even in the absence of any such connivance) has cheated the complainants, the investigation is yet to result in a chargesheet being filed under section 173(2) of the Cr. PC, not to speak of the alleged offence being proved before the competent trial court in accordance with the settled procedures and the applicable laws. Subsection (2) of section 438 of the Cr. PC does empower the high court or the court of sessions to impose such conditions while making a direction under sub-section (1) as it may think fit in the light of the facts of the particular case and such direction may include the conditions as in clauses (i) to (iv) thereof. However, a reading of the precedents laid down by this Court referred to above makes the position of law clear that the conditions to be imposed must not be onerous or unreasonable or excessive. In the context of grant of bail, all such conditions that would facilitate the appearance of the accused before the investigating officer/ court, unhindered completion of investigation/trial and safety of the community assume relevance. However, inclusion of a condition for payment of money by the applicant for bail tends to create an impression that bail could be secured by depositing money alleged to have been cheated. That is really not the purpose and intent of the provisions for grant of bail. We may, however, not be understood to have laid down the law that in no case should willingness to make payment/deposit by the accused be considered before grant of an order for bail. In exceptional cases such as where an allegation of misappropriation of public money by the accused is levelled and the accused while seeking indulgence of the court to have his liberty secured/restored volunteers to account for the whole or any part of the public money allegedly misappropriated by him, it would be open to the concerned court to consider whether in the larger public interest the money misappropriated should be allowed to be deposited before the application for anticipatory bail/bail is taken up for final consideration. After all, no court should be averse to putting public money back in the system if the situation is conducive therefor. We are minded to think that this approach would be in the larger interest of the community. However, such an approach would not be warranted in cases of private disputes where private parties complain of their money being involved in the offence of cheating.
+
+--- PASSAGE 4 ---
+Judgment: DHARMESH @ DHARMENDRA @ DHAMO JAGDISHBHAI @ JAGABHAI BHAGUBHAI RATADIA & ANR. versus THE STATE OF GUJARAT (07-07-2021)
+   (Judgment id 1000253130, paragraph 17, page 6)
+Text:
+17. We may hasten to add that we are not saying that no monetary condition can be imposed for grant of bail. We say so as there are cases of offences against property or otherwise but that cannot be a compensation to be deposited and disbursed as if that grant has to take place as a condition of the person being enlarged on bail.
+
+--- PASSAGE 5 ---
+Judgment: BIMLA TIWARI versus STATE OF BIHAR & ORS. (16-01-2023)
+   (Judgment id 1000254628, paragraph 10, page 3)
+Text:
+10. We would reiterate that the process of criminal law cannot be utilised for arm-twisting and money recovery, particularly while opposing the prayer for bail. The question as to whether pre-arrest bail, or for that matter regular bail, in a given case is to be granted or not is required to be examined and the discretion is required to be exercised by the Court with reference to the material on record and the parameters governing bail considerations. Putting it in other words, in a given case, the concession of pre-arrest bail or regular bail could be declined even if the accused has made payment of the money involved or offers to make any payment; conversely, in a given case, the concession of pre-arrest bail or regular bail could be granted irrespective of any payment or any offer of payment. BIMLA TIWARI v. STATE OF BIHAR & ORS.
+
+--- PASSAGE 6 ---
+Judgment: RAMESH KUMAR versus STATE OF NCT OF DELHI (04-07-2023)
+   (Judgment id 1000255096, paragraph 11, page 14)
+Text:
+11. We would further emphasize that, ordinarily, there is no justification in adopting such a course that for the purpose of being given the concession of pre-arrest bail, the person apprehending arrest ought to make payment. Recovery of money is essentially within the realm of civil proceedings.”
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1436 OF 2013 (Arising out of Special Leave Petition (Crl.) No. 2 of 2013) Sumit Mehta …..Appellant(s) Versus State of N.C.T. of Delhi .... Respondent(s) J U D G M E N T P.Sathasiv
+   (Judgment id 40770, unnumbered paragraph, page 7)
+Text:
+Having regard to the facts and circumstances of the present case, we have no hesitation in coming to the conclusion that the imposition of condition to deposit the sum of Rs. 15 lacks in the form of FDR in the Trial Court is an unreasonable condition and, therefore, we set aside the said condition as a condition precedent for granting anticipatory bail to the accused/appellant.” 11) In Sheikh Ayub vs. State of M.P. (2004) 13 SCC 457, it was held that a direction to pay a portion of the amount misappropriated by the accused to the complainant as a condition for bail is unwarranted. Similar view was adopted by this Court in I. Glaskasden Grace and Ors. vs. Inspector of Police and Anr. (2009) 12 SCC 769, Ramathal and Ors. vs. Inspector of Police and Anr. (2009) 12 SCC 721 and Sandeep Jain vs. National Capital Territory of Delhi Rep. by Secretary, Home Deptt. (2000) 2 SCC 66. 12) While exercising power under Section 438 of the Code, the Court is duty bound to strike a balance between the individual’s right to personal freedom and the right of investigation of the police. For the same, while granting relief under Section 438(1), appropriate conditions can be imposed under Section 438(2) so as to ensure an uninterrupted investigation. The object of putting such conditions should be to avoid the possibility of the person hampering the investigation.
+
+--- PASSAGE 8 ---
+Judgment: RAMESH KUMAR versus STATE OF NCT OF DELHI (04-07-2023)
+   (Judgment id 1000255096, paragraph 14, page 12)
+The same text also appears in judgment id(s): 1000252761
+Text:
+14. Thus, in the case on hand, fixed deposit of Rs 1,00,00,000 for a period of six months in the name of the complainant and to keep the FDR with the investigating officer as a condition precedent for grant of anticipatory bail is evidently onerous and unreasonable. It must be remembered that the court has not even come to the conclusion whether the allegations made are true or not which can only be ascertained after completion of trial. Certainly, in no words are we suggesting that the power to impose a condition of this nature is totally excluded, even in cases of cheating, electricity pilferage, white-collar crimes or chit fund scams, etc.
+
+--- PASSAGE 9 ---
+Judgment: SARAVANAN versus STATE REP. BY THE INSPECTOR OF POLICE (15-10-2020)
+   (Judgment id 1000252775, paragraph 9/3, page 7)
+Text:
+That cannot be a ground to impose the condition to deposit the amount involved, while granting default bail/statutory bail. 9.2. The circumstances while considering the regular bail application under Section 437 Cr.P.C. are different, while considering the application for default bail/statutory bail. Under the circumstances, the condition imposed by the High Court to deposit Rs.8,00,000/-, while releasing the appellant on default bail/ statutory bail is unsustainable and deserves to be quashed and set aside.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N05 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9).

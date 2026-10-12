@@ -1,0 +1,99 @@
+QUESTION ID: N27   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N27",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether the victim of an offence needs the leave of the High Court to file an appeal against acquittal under the proviso to Section 372 CrPC.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: MALLIKARJUN KODAGALI (DEAD) REPRESENTED THROUGH LEGAL REPRESENTATIVES versus THE STATE OF KARNATAKA & ORS. (12-10-2018)
+   (Judgment id 1000251075, paragraph 11, page 43)
+Text:
+11. As pointed out above, even a complainant when he files an appeal against an order of acquittal in a case instituted upon a complaint is required to obtain special leave to appeal. It is true that the proviso to Section 372 of CrPC does not indicate that a victim while filing an appeal THE STATE OF KARNATAKA [DEEPAK GUPTA, J.] in the High Court must file a petition for leave to appeal before his appeal can be entertained.
+
+--- PASSAGE 2 ---
+Judgment: KHEM SINGH (D) THROUGH LRS versus STATE OF UTTARANCHAL (NOW STATE OF UTTARAKHAND) & ANOTHER ETC. (31-07-2025)
+   (Judgment id 1000256891, paragraph 8/2, page 26)
+Text:
+If the complainant is not a victim and the case is instituted upon a complaint, then sub-section (4) requires that the complainant must seek special leave to appeal from an order of acquittal from the High Court. As noted under subsection (6), if the application under sub-section (4) for grant of special leave to appeal from the order of acquittal is refused, no appeal from that order of acquittal would lie, inter alia, under sub-section (1) of Section 378 CrPC. However, if the complainant is also a victim, he could proceed under the proviso to Section 372 CrPC, in which case the rigour of sub-section (4) of Section 378 CrPC, which mandates obtaining special leave to appeal, would not arise at all, as he can prefer an appeal as a victim as a matter of right. Thus, if a victim who is a complainant proceeds under Section 378 CrPC, the necessity of seeking special leave to appeal would arise but if a victim, whether he is a complainant or not, files an appeal in terms of proviso to 2134 Section 372 CrPC, then the mandate of seeking special leave to appeal would not arise. 8.2 The reasons for the above distinction are not far to see and can be elaborated as follows: Firstly, the victim of a crime must have a right to prefer an appeal which cannot be circumscribed by any condition precedent except as provided under the provision of the CrPC.
+
+--- PASSAGE 3 ---
+Judgment: MALLIKARJUN KODAGALI (DEAD) REPRESENTED THROUGH LEGAL REPRESENTATIVES versus THE STATE OF KARNATAKA & ORS. (12-10-2018)
+   (Judgment id 1000251075, paragraph 5, page 40)
+Text:
+5. My only difference of opinion is with regard to the conclusion drawn in the judgment of my learned brother that the victim, even in appeal filed in the High Court, is not required to seek leave of the High Court. In my considered view, this matter is, in fact, no longer res integra. This Court has specifically dealt with this issue in Satya Pal Singh v. State of M.P. and Others1, wherein it held as follows: “10. The Full Bench of the High Court of Delhi in Ram Phal v. State, 2015 SCC Online Del 9802, after examining the relevant provisions under Section 2(wa) and the proviso to Section 372 CrPC, in the light of their legislative history has held that the right to prefer an appeal conferred upon the victim or relatives of the victim by virtue of the proviso to Section 372 is an independent statutory right. Therefore, it has held that there is no need for the victim in terms of definition under Section 2(wa) CrPC to seek the leave of the High Court as required under sub-section (3) of Section 378 CrPC to prefer an appeal under the proviso to Section 372 CrPC. The said view of the High Court is not legally correct for the reason that the substantive provision of Section 372 CrPC clearly provides that no appeal shall lie from any judgment and order of a criminal court except as provided for by CrPC. Further, sub-section (3) of Section 378 CrPC provides that for preferring an appeal to the High Court against an order of acquittal it is necessary to obtain its leave. xxx xxx xxx xxx xxx xxx
+
+--- PASSAGE 4 ---
+Judgment: Opening header not available
+   (Judgment id 44759, paragraph 15, page 3)
+Text:
+15. Thus, to conclude on the legal issue: 1 2015 (15) SCC 613 “whether the appellant herein, being the father of the deceased, has statutory right to prefer an appeal to the High Court against the order of acquittal under the proviso to Section 372 Cr.P.C. without obtaining the leave of the High Court as required under sub-section (3) of Section 378 Cr.P.C.?” this Court is of the view that the right of questioning the correctness of the judgment and order of acquittal by preferring an appeal to the High Court is conferred upon the victim including the legal heir and others, as defined under Section 2(wa) Cr.P.C., under the proviso to Section 372, but only after obtaining the leave of the High Court as required under sub-section (3) of Section 378 Cr.P.C. The High Court of M.P. has failed to deal with this important legal aspect of the matter while passing the impugned judgment and order.
+
+--- PASSAGE 5 ---
+Judgment: M/S CELESTIUM FINANCIAL versus A. GNANASEKARAN ETC (08-04-2025)
+   (Judgment id 1000256564, paragraph 9, page 37)
+Text:
+9. In the circumstances, we find that Section 138 of the Act being in the nature of a penal provision by a deeming fiction against an accused who is said to have committed an offence under the said provision, if acquitted, can be proceeded against by a victim of the said offence, namely, the person who is entitled to the proceeds of a cheque which has been dishonoured, in terms of the proviso to Section 372 of the CrPC, as a victim. As already noted, a victim of an offence could also be a complainant. In such a case, an appeal can be preferred either under the proviso to Section 372 or under Section 378 by such a victim. In the absence of the proviso to Section 372, a victim of an offence could not have filed an appeal as such, unless he was also a complainant, in which event he could maintain an appeal if special leave to appeal had been granted by the High Court and if no such special leave was granted then his appeal would not be maintainable at all. On the other hand, if the victim of an offence, who may or may not be the complainant, proceeds under the proviso to Section 372 of the CrPC, then in our view, such a victim need not seek special leave to appeal from the High Court. In other words, the victim of an offence would have the right to prefer an appeal, inter alia, against an order of acquittal in terms of the proviso to Section 372 without seeking any special leave to appeal from the High Court only on the grounds mentioned therein. A person who is a complainant under Section 200 of the CrPC who complains about the offence committed by a person who is charged as an accused under Section 138 of the Act, thus has the right to prefer an appeal as a victim under the proviso to Section 372 of the CrPC.
+
+--- PASSAGE 6 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 1315 OF 2015 (Arising out of S.L.P. (Crl) NO. 7954 of 2014) SATYA PAL SINGH …… APPELLANT VERSUS STATE OF M.P. AND ORS. …… RESPONDENTS J U D G M E N T V. GOPALA GOWDA, J. Leave gr
+   (Judgment id 43002, paragraph 11, page 10)
+Text:
+11. The Full Bench of the High Court of Delhi after examining the relevant provisions under Section 2(wa) and proviso to Section 372 of Cr.P.C., in the light of their legislative history has held that the right to prefer an appeal conferred upon the victim or relatives of the victim by virtue of proviso to Section 372 is an independent statutory right. Therefore, it has held that there is no need for the victim in terms of definition under Section 2(wa) of Cr.P.C. to seek the leave of the High Court as required under sub-Section (3) of Section 378 of Cr.P.C. to prefer an appeal under proviso to Section 372 of Cr.P.C. The said view of the High Court is not legally correct for the reason that the substantive provision of Section 372 of Cr.P.C. clearly provides that no appeal shall lie from any judgment and order of a Criminal Court except as provided for by Cr.P.C. Further, sub-Section (3) to Section 378 of Cr.P.C. provides that for preferring an appeal to the High Court against an order of acquittal it is necessary to obtain its leave. We have to refer to the rules of interpretation of statutes to find out what is the effect of the proviso to Section 372 of Cr.P.C., it is well established that the proviso of a statute must be given an interpretation limited to the subject-matter of the enacting provision. Reliance is placed on the decision of this Court rendered by four Judge Bench in Dwarka Prasad v. Dwarka Das Saraf2, the relevant para 18 of which reads thus: “18. … A proviso must be limited to the subject-matter of the enacting clause. It is a settled rule of construction that a proviso must prima facie be read and considered in relation to the principal matter to which it is a proviso. It is not a separate or independent enactment. “Words are dependent on the principal enacting words to which they are tacked as a proviso. They cannot be read as divorced from their context” (Thompson v. Dibdin, 1912 AC 533). If the rule of construction is that prima facie a proviso should be limited in its operation to the subject-matter of the enacting clause, the stand we have taken is sound. To expand the enacting clause, inflated by the proviso, sins against the fundamental rule of construction (1976) 1 SCC 128 that a proviso must be considered in relation to the principal matter to which it stands as a proviso. A proviso ordinarily is but a proviso, although the golden rule is to read the whole section, inclusive of the proviso, in such manner that they mutually throw light on each other and result in a harmonious construction.” (emphasis laid by this Court)
+
+--- PASSAGE 7 ---
+Judgment: MALLIKARJUN KODAGALI (DEAD) REPRESENTED THROUGH LEGAL REPRESENTATIVES versus THE STATE OF KARNATAKA & ORS. (12-10-2018)
+   (Judgment id 1000251075, paragraph 46, page 24)
+Text:
+46. The reasons for disagreement stem from the fact that the Legislature was aware of the provisions of the existing statute including the fetter imposed on the State in filing an appeal against an order of acquittal. However, that fetter was not placed on the right to appeal given to a victim under the proviso to Section 372 of the Cr.P.C. The view of the Full Bench of the Punjab and Haryana High Court was that if such fetter were to be placed on the right of the victim, it would amount to rewriting the proviso to Section 372 of the Cr.P.C. and would also defeat the legislative will. The Punjab and Haryana High Court expressed it’s opinion in the following words: “The Court shall always presume that while amending or bringing a new enactment, the Legislature was fully aware of the provisions of the existing Statute. The Parliament had thus full knowledge of the fetters imposed by it on the presentation of appeals by the State or a complaint through Section 378(3) & (4) of the Code, yet it gave the right to appeal to a ‘victim’ free from any obstacle under proviso to Section 372 of the Code. The legislative policy to grant unconditional right to appeal to a ‘victim’ is thus writ large. It would indeed not only amount to re-writing the proviso to Section 372 but would also defeat the legislative will if the restrictions expressly embedded in Section 378(3) & (4) are impliedly planted into proviso to Section 372 of the Code also. Since leave to appeal under Section 378(3) is confined only to such appeals which are presented by the State or Central Governments under sub-Section (1)(b) or sub-Section (2)(b) of Section 378 of the Code, with due regard at our command, we are unable to agree with the view taken by the Division Bench of this Court in Smt. Ram Kaur’s case (supra)12 that a ‘victim’ shall be required to seek leave/special leave to appeal while exercising his/her right to appeal under proviso to Section 372 of the Code and overrule the same to that extent. On the same analogy, we express our inability to agree with the view taken by the Patna High Court in Guru Prasad Yadav’s case (supra).13 The cumulative effect of the above discussion is that the right(s) of a ‘victim’ under the amended Code are substantive and not mere brutamfulmen hence these are not accessory or auxiliary to those of the State and are totally incomparable as both the sets of rights or duties operate in different and their respective fields. We thus hold that a ‘victim’ is not obligated to seek ‘leave’ or ‘special leave’ of the High Court for presentation of appeal under proviso to Section 372 of the Code.”
+
+--- PASSAGE 8 ---
+Judgment: M/S CELESTIUM FINANCIAL versus A. GNANASEKARAN ETC (08-04-2025)
+   (Judgment id 1000256564, paragraph 76/2, page 12)
+Text:
+However, Deepak Gupta, J. was of the opinion that one cannot ignore the rights of the accused and the procedure prescribed by law. Hence, he disagreed with Lokur, J.’s view that a victim can file an appeal in the High Court without seeking leave to appeal in terms of Section 378(3) of the CrPC. 5.5 The only difference of opinion was with regard to whether the victim is required to seek leave of the High Court even in an appeal filed in the High Court. While dealing with this issue, it was observed by Deepak Gupta, J. that prior to the insertion of the proviso to Section 372 of the CrPC, the victim had no right to file an appeal unless he was also a complainant. This was because the State would represent the victim of the crime. Therefore, the question, whether the victim, while filing an appeal against the acquittal of an accused under proviso to Section 372 of the CrPC in the High Court, is required to obtain leave under Section 378(3) of the CrPC was answered in the affirmative. In this regard, reference was made to subsection (4) of Section 378 which deals with an appeal filed by the complainant. In case the order of acquittal is passed in a case instituted upon a complaint, in such a case, an appeal has to be filed in the High Court. Such an appeal cannot be entertained unless the High Court grants special leave to appeal from the order of acquittal.
+
+--- PASSAGE 9 ---
+Judgment: MALLIKARJUN KODAGALI (DEAD) REPRESENTED THROUGH LEGAL REPRESENTATIVES versus THE STATE OF KARNATAKA & ORS. (12-10-2018)
+   (Judgment id 1000251075, paragraph 68, page 33)
+Text:
+68. In Satya Pal Singhv.State of Madhya Pradesh &Ors.21 this Courtgave what appears to be a rather expansive interpretation to the proviso to Section 372 of the Cr.P.C. and concluded as follows: “This Court is of the view that the right of questioning the correctness of the judgment and order of acquittal by preferring an appeal to the High Court is conferred upon the victim including the legal heir and others, as defined under Section 2(wa) Cr.P.C.under the proviso to Section 372, but only after obtaining the leave of the High Court as required under sub-section (3) of Section 378 Cr.P.C.”
+
+--- PASSAGE 10 ---
+Judgment: MALLIKARJUN KODAGALI (DEAD) REPRESENTED THROUGH LEGAL REPRESENTATIVES versus THE STATE OF KARNATAKA & ORS. (12-10-2018)
+   (Judgment id 1000251075, paragraph 15, page 40)
+Text:
+15. Thus, to conclude on the legal issue: “whether the appellant herein, being the father of the deceased, has statutory right to prefer an appeal to the High Court against the order of acquittal under the proviso to Section 1 (2015) 15 SCC 613 372 CrPC without obtaining the leave of the High Court as required under sub-section (3) of Section 378 CrPC?” this Court is of the view that the right of questioning the correctness of the judgment and order of acquittal by preferring an appeal to the High Court is conferred upon the victim including the legal heir and others, as defined under Section 2(wa) CrPC, under the proviso to Section 372, but only after obtaining the leave of the High Court as required under sub-section (3) of Section 378 CrPC. The High Court of M.P. has failed to deal with this important legal aspect of the matter while passing the impugned judgment and order.”
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N27 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

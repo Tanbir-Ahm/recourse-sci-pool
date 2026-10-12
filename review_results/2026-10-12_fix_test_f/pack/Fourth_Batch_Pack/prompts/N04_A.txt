@@ -1,0 +1,99 @@
+QUESTION ID: N04   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N04",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether, in a case under the UAPA investigated by the State police, an order of a Magistrate extending the period of investigation beyond 90 days under Section 43D(2) defeats the accused's right to default bail under Section 167(2) CrPC.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: ENFORCEMENT DIRECTORATE, GOVERNMENT OF INDIA versus KAPIL WADHAWAN & ANR. ETC (27-03-2023)
+   (Judgment id 1000254853, paragraph 34/3, page 22)
+Text:
+However, if the investigation is not completed and chargesheet is not filed within 60 or 90 days, a right of default bail accrues to the accused. The anterior period of custody with the police prior to the remand is not detention. It is only so, pursuant to an authorization issued from the Magistrate. The period of detention by the Magistrate runs from the very day of remand order. Sub-section (2) of Section 167 of the CrPC pertains to the power of the Magistrate to remand an accused and there is no reason why the date of the Magesterial Court’s gaze on the accused, should be excluded. In order to avoid long incarceration of an accused only because the investigation is being carried out in a leisurely manner, the legislature was prompted, to confer a right on the accused to be released on default bail if he is prepared to offer bail bond and the investigation may still continue. This is why the General Clauses Act cannot be made applicable to sub-section (2) of Section
+
+--- PASSAGE 2 ---
+Judgment: M. RAVINDRAN versus THE INTELLIGENCE OFFICER, DIRECTORATE OF REVENUE INTELLIGENCE (26-10-2020)
+   (Judgment id 1000252778, paragraph 18, page 40)
+Text:
+18. Therefore, in conclusion: 18.1 Once the accused files an application for bail under the Proviso to Section 167(2) he is deemed to have ‘availed of’ or enforced his right to be released on default bail, accruing after expiry of the stipulated time limit for investigation. Thus, if the accused applies for bail under Section 167(2), CrPC read with Section 36A (4), NDPS Act upon expiry of 180 days or the extended period, as the case may be, the Court must release him on bail forthwith without any unnecessary delay after getting necessary information from the public prosecutor, as mentioned supra. Such prompt action will restrict the prosecution from frustrating the legislative mandate to release the accused on bail in case of default by the investigative agency. 18.2 The right to be released on default bail continues to remain enforceable if the accused has applied for such bail, notwithstanding pendency of the bail application; or subsequent filing of the chargesheet or a report seeking extension of time by the prosecution before the Court; or filing of the chargesheet during the interregnum when challenge to the rejection of the bail application is pending before a higher Court. 18.3 However, where the accused fails to apply for default bail when the right accrues to him, and subsequently a chargesheet, additional complaint or a report seeking extension of time is preferred before the Magistrate, the right to default bail would be extinguished. The Magistrate would be at liberty to take cognizance of the case or grant further time for completion of the investigation, as the case may be, though the accused may still be released on bail under other provisions of the CrPC. 18.4 Notwithstanding the order of default bail passed by the Court, by virtue of Explanation I to Section 167(2), the actual release of the accused from custody is contingent on the directions passed by the competent Court granting bail. If the accused fails to furnish bail and/or comply with the terms and conditions of the bail order within the time stipulated by the Court, his continued detention in custody is valid.
+
+--- PASSAGE 3 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPEALLATE JURISDICTION CRIMINAL APPEAL NO. 786 OF 2010 Union of India through C.B.I. … Appellant Versus Nirala Yadav @ Raja Ram Yadav @ Deepak Yadav …Respondent J U D G M E N T Dipak Misra, J. The present appeal, by spec
+   (Judgment id 41765, unnumbered paragraph, page 40)
+Text:
+When the matter travelled to this Court, a question arose with regard to getting the benefit of the default bail. Be it stated, the Court was considering the provisions contained in Section 43-D of Unlawful Activities (Prevention) Act, 1967 and Section 167(2) CrPC. In that context, it observed thus: - “18. By virtue of the aforesaid modification to the provisions of Section 167(2) CrPC, the period of 90 days stipulated for completion of investigation and filing of charge-sheet was modified by virtue of the amended proviso, which indicated that if the investigation could not be completed within 90 days and if the court was satisfied with the report of the Public Prosecutor indicating the progress of the investigation and the specific reasons for detention of the accused beyond the period of 90 days, extend the said period up to 180 days. In other words, the custody of an accused could be directed initially for a period of 90 days and, thereafter, for a further period of 90 days, in all a total of 180 days, for the purpose of filing chargesheet. In the event the charge-sheet was not filed even within the extended period of 180 days, the conditions directing that the accused person shall be released on bail if he is prepared to do and does furnish bail, would become operative.” 31. Thereafter, the three-Judge Bench referred to the decision in Sanjay Dutt (supra), Uday Mohanlal Acharya (supra) and Bipin Shantilal Panchal (supra) and taking note of the fact situation held that: - “Not only is the retrospectivity of the order of the Chief Metropolitan Magistrate untenable, it could not also defeat the statutory right which had accrued to the appellant on the expiry of 90 days from the date when the appellant was taken into custody.
+
+--- PASSAGE 4 ---
+Judgment: JUDGEBIR SINGH @ JASBIR SINGH SAMRA @ JASBIR & ORS. versus NATIONAL INVESTIGATION AGENCY (01-05-2023)
+   (Judgment id 1000254991, paragraph 33, page 27)
+Text:
+33. Thus, a plain reading of the abovementioned provision of the UAPA makes it clear that the benefit of default bail shall be available to the accused for the offences alleged to have been committed under the UAPA where the investigation has not concluded within 90 days of arrest of the accused irrespective of the punishment of the offences alleged to have been committed by him. At the same time, the provision also gives right to the investigating agency to seek further period of 90 days to complete the investigation by filing a report to the public prosecutor indicating the progress of investigation. Thus, by virtue of Section 43D of the UAPA, the investigating agency gets 90+90 days = 180 days to complete the investigation.
+
+--- PASSAGE 5 ---
+Judgment: M. RAVINDRAN versus THE INTELLIGENCE OFFICER, DIRECTORATE OF REVENUE INTELLIGENCE (26-10-2020)
+   (Judgment id 1000252778, paragraph 15/5, page 32)
+Text:
+15.3 On the other hand in Sayed Mohd. Ahmad Kazmi v. State (Government of NCT of Delhi), (2012) 12 SCC 1, the accused filed an application for default bail on 17.7.2012. The Chief Metropolitan Magistrate, instead of hearing the application on the said date, re-notified the hearing for 18.7.2012. On 18.7.2012, the State filed an application seeking extension of remand under Section 43-D (2)(b) of the Unlawful Activities (Prevention) Act, 1967 (‘UAPA’) which is also in pari materia with the Proviso to Section 36A (4) of the NDPS Act. The Magistrate took up both matters on 20.7.2012 and allowed the application for extension of custody with retrospective effect from 2.6.2012 without considering the application under Section 167(2), CrPC. Subsequently, the chargesheet was filed on 31.7.2012. It was contended by the learned Additional Solicitor General, in reliance upon Sanjay Dutt, that the right to statutory bail stood extinguished once the application for extension of time was filed. The three-Judge Bench rejected the aforesaid contention and held that the right of the accused to statutory bail, which was exercised at the time his bail application was filed, remained unaffected by the subsequent application for extension of time to complete investigation. Further, the Court expressly censured the dilatory tactic adopted by the Magistrate in that case in the following words: “25.
+
+--- PASSAGE 6 ---
+Judgment: NASER BIN ABU BAKR YAFAI versus THE STATE OF MAHARASHTRA & ANR. (20-10-2021)
+   (Judgment id 1000253362, paragraph 44/1, page 34)
+Text:
+44. In support of this proposition, reliance has been placed upon a judgment of a three Judge Bench of this Court in Bikramjit Singh v. State of Punjab29 (“Bikramjit Singh”). In Bikramjit Singh (supra), an FIR was registered on 18 November 2018 implicating offences under Sections 302, 307, 452, 427, 341 and 34 of the IPC together with Section 25 of the Arms Act 1959, Sections 3 to 6 of the ES Act and Section 13 of the UAPA. The appellant was arrested on 22 November 2018. After the 90 days period expired on 31 December 2019, the appellant submitted an application for default bail to the Sub-Divisional Judicial Magistrate30, which was dismissed by an order dated 25 February 2019, on the ground that by an order dated 13 February 2019, the SDJM had already extended time from 90 to 180 days under Section 167 of the CrPC, as amended by Section 43D(2) of the UAPA. The revision petition filed by the petitioner, against the SDJM’s order dated 12 February 2019, before the ASJ, which was the Special Court designated under Section 22 of the NIA Act, succeeded on 25 March 2019 with the finding that only the Special Court was competent to pass an order on an application moved under Section 43D(2) of the UAPA. A day subsequent to it, on 26 March 2019, a charge-sheet was filed before the Special Court.
+
+--- PASSAGE 7 ---
+Judgment: BIKRAMJIT SINGH versus THE STATE OF PUNJAB (12-10-2020)
+   (Judgment id 1000252765, unnumbered paragraph, page 39)
+Text:
+So long as an application has been made for default bail on expiry of the stated period before time is further extended to the maximum period of 180 days, default bail, being an indefeasible right of the accused under the first proviso to Section 167(2), kicks in and must be granted. 29. On the facts of the present case, the High Court was wholly incorrect in stating that once the challan was presented by the prosecution on 25.03.2019 as an application was filed by the Appellant on 26.03.2019, the Appellant is not entitled to default bail. First and foremost, the High Court has got the dates all wrong. The application that was made for default bail was made on or before 25.02.2019 and not 26.03.2019. The charge sheet was filed on 26.03.2019 and not 25.03.2019. The fact that this application was wrongly dismissed on 25.02.2019 would make no difference and ought to have been corrected in revision. The sole ground for dismissing the application was that the time of 90 days had already been extended by the learned Sub-Divisional Judicial Magistrate, Ajnala by his order dated 13.02.2019. This Order was correctly set aside by the Special Court by its judgment dated 25.03.2019, holding that under the UAPA read with the NIA Act, the Special Court alone had jurisdiction to extend time to 180 days under the first proviso in Section 43-D(2)(b).
+
+--- PASSAGE 8 ---
+Judgment: NASER BIN ABU BAKR YAFAI versus THE STATE OF MAHARASHTRA & ANR. (20-10-2021)
+   (Judgment id 1000253362, paragraph 44/2, page 34)
+Text:
+A day subsequent to it, on 26 March 2019, a charge-sheet was filed before the Special Court. Thereafter, despite the order dated 25 March 2019, a revision petition filed by the appellant against the order dated 25February 2019 was dismissed by the Special Court on 11 April 2019, thereby refusing to grant default bail. The High Court then observed that since the investigation was being carried out by the State Police, the Magistrate had the power under Section 167(2) 29(2020) 10 SCC 616 30 “SDJM” of the CrPC read with Section 43A of the UAPA to extend the period of investigation up to 180 days and then commit the case to the Court of Sessions. In this backdrop, Justice Rohinton F Nariman, speaking for the three Judge Bench, held that a notification by the Government of Punjab had been issued under Section 22 for setting up Special Courts within the State of Punjab on 10 June 2014. After adverting to Sections 13(1) and Section 22(2) of the NIA Act, the Court observed: “25. When these provisions are read along with Section 2(1)(d) and the provisos in Section 43-D(2) of the UAPA, the scheme of the two Acts, which are to be read together, becomes crystal clear. Under the first proviso in Section 43-D(2)(b), the 90-day period indicated by the first proviso to Section 167(2) of the Code can be extended up to a maximum period of 180 days if “the Court” is satisfied with the report of the Public Prosecutor indicating progress of investigation and specific reasons for detention of the accused beyond the period of 90 days.
+
+--- PASSAGE 9 ---
+Judgment: GAUTAM NAVLAKHA versus NATIONAL INVESTIGATION AGENCY (12-05-2021)
+   (Judgment id 1000253103, paragraph 126, page 100)
+Text:
+126. Section 43 D(2) of UAPA reads as follows:- “(2) Section 167 of the Code shall apply in relation to a case involving an offence punishable under this Act subject to the modification that in sub-section (2), — (a) the references to “fifteen days”, “ninety days” and “sixty days”, wherever they occur, shall be construed as references to “thirty days”, “ninety days” and “ninety days” respectively; and (b) after the proviso, the following provisos shall be inserted, namely:— “Provided further that if it is not possible to complete the investigation within the said period of ninety days, the Court may if it is satisfied with the report of the Public Prosecutor indicating the progress of the investigation and the specific reasons for the detention of the accused beyond the said period of ninety days, extend the said period up to one hundred and eighty days: Provided also that if the police officer making the investigation under this Act, requests, for the purposes of investigation, for police custody from judicial custody of any person in judicial custody, he shall file an affidavit stating the reasons for doing so and shall also explain the delay, if any, for requesting such police custody”.
+
+--- PASSAGE 10 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION SPECIAL LEAVE PETITION(CRL.)NO.147 OF 2013 Suresh Kumar Bhikamchand Jain … PETITIONER Vs. State of Maharashtra & Anr. … RESPONDENTS J U D G M E N T ALTAMAS KABIR, CJI.
+   (Judgment id 40166, paragraph 14, page 15)
+Text:
+14. From the above provision, it would be amply clear that the Magistrate may authorise the detention of an accused person, otherwise than in the custody of the police, beyond a period of 15 days, if he is satisfied that there are adequate grounds for doing so, but no Magistrate is authorised to detain the accused person in custody for a total period exceeding 90 days where the investigation relates to an offence punishable with death, imprisonment for life or imprisonment for a term of not less than ten years and 60 days where the investigation relates to any other offence. In other words, if an accused was ready to offer bail, once the stipulated period for the investigation had been completed, then the Magistrate no longer had the authority to extend the period of detention beyond the said period of 90 days and, consequently, he had no option but to release the accused on bail. The language used in Sections 167(2)(a)(i) and (ii) is that on the expiry of the period of 90 days or 60 days, as the case may be, the accused person shall be released on bail, if he is prepared to and does furnish bail. The direction upon the learned Magistrate or the Trial Court is mandatory in nature and any detention beyond the said period would be illegal.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N04 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

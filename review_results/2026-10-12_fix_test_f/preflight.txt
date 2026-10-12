@@ -1,0 +1,50 @@
+OK    frozen file equals its hash: review_data/ruler/FIX_TEST_RULES_v1.md  [file 0190876e32, freeze 0190876e32]
+OK    frozen file equals its hash: review_data/ruler/FIX_TEST_RULES_v2.md  [file d2f2be58da, freeze d2f2be58da]
+OK    frozen file equals its hash: review_data/ruler/machine_spec_v2.json  [file ca9afa8c3c, freeze ca9afa8c3c]
+OK    frozen file equals its hash: review_tools/machine_spec_v2.py  [file 9e41f52deb, freeze 9e41f52deb]
+OK    frozen file equals its hash: review_tools/test_machine_spec_v2.py  [file b76caf8939, freeze b76caf8939]
+OK    checkout clean (tracked files)  [commit 8046790b4c; changed: []]
+OK    this commit is pushed  [0 commit(s) ahead of origin/claude/sharp-euler-unyfv0]
+OK    the sealed question file and its key have their freeze hashes, 26 scored + 3 control questions (1 dropped before sealing: N12), no key field in the public file  [questions de4db283f15e, key 906eb6a7dd07]
+OK    index head is the recorded commit  [head 3c80a26e42, recorded 3c80a26e42]
+OK    the writer's own freeze hash matches the question texts (declared in the workbook, or confirmed by a named person)  [declared 7a6963d11599, confirmed 642613ddc861 by owner, 2026-10-12, computed 642613ddc861]
+OK    no hand-out is logged for the final questions  [0 entries]
+OK    the frozen stage D2 gate names at least one finalist (rules v2 section 3)  [['N1-125', 'N2-125']]
+OK    stage D2 was run under the rules that are frozen now  [D2 d2f2be58da, rules d2f2be58da]
+OK    side index present and made for this index: 2026-10-09_correcting_judgments
+OK    side index present and made for this index: 2026-10-09_fetched_documents
+OK    side index present and made for this index: 2026-10-09_fetched_shivangi_bansal
+OK    VOYAGE_API_KEY is set
+OK    tests pass: test_pool_runner.py  [all passed]
+OK    tests pass: test_fix_arms.py  [all passed]
+OK    tests pass: test_fix_test_set.py  [all passed]
+OK    tests pass: test_fix_test_f.py  [all passed]
+OK    tests pass: test_score_fix_test.py  [all passed]
+OK    tests pass: test_build_sealed_pack.py  [all passed]
+OK    tests pass: test_check_new_questions.py  [all passed]
+OK    tests pass: test_ingest_llm_reviews.py  [ALL PASSED]
+OK    tests pass: test_normalise_replies.py  [all passed]
+OK    tests pass: test_machine_spec_v2.py  [all passed]
+OK    tests pass: test_score_fix_stage_d.py  [all passed]
+OK    tests pass: test_fix_reading_sheet.py  [all passed]
+OK    tests pass: test_fix_preflight.py  [all passed]
+OPEN  OWNER: the writer's corrected declaration is in (who wrote the wording and the key; AI tool named, its use stated; the confirmed freeze hash) and the replacements were re-checked  [open]
+OPEN  OWNER: Mr. Advocate has reviewed the key and his corrections are in the sealed key  [open]
+OK    OWNER: the Voyage balance, read on the dashboard, stays above the $5 reserve after about $0.05  [confirmed]
+OK    OWNER: the bucket refresh is postponed until the stage F scoring is over  [confirmed]
+
+NOT READY: OWNER: the writer's corrected declaration is in (who wrote the wording and the key; AI tool named, its use stated; the confirmed freeze hash) and the replacements were re-checked; OWNER: Mr. Advocate has reviewed the key and his corrections are in the sealed key
+
+The commands, once ready:
+  1. the search (hands the questions out ONCE and logs it; the label gets the rules hash and the code commit; about 30 re-rank calls, a few cents; the labels take about 8 minutes to compute) 
+     python3 -P review_tools/pool_runner.py --fix-test F --label "stage F, single search" --max-rerank-tokens 3000000 --supplement review_data/side_index/2026-10-09_correcting_judgments --supplement review_data/side_index/2026-10-09_fetched_documents --supplement review_data/side_index/2026-10-09_fetched_shivangi_bansal --out review_results/2026-10-12_fix_test_f
+  2. the marking pack for J and S (send only the zip: 58 chats) 
+     python3 -P review_tools/build_sealed_pack.py --fix-test --pool review_results/2026-10-12_fix_test_f/pool.json --out review_results/2026-10-12_fix_test_f/pack
+  3. when the replies come back: keep them as received, then 
+     python3 -P review_tools/normalise_replies.py --src review_results/2026-10-12_fix_test_f/replies_as_received --out review_results/2026-10-12_fix_test_f/replies_for_the_reader
+  4. stage 1, marks only (the key is not opened) 
+     python3 -P review_tools/score_fix_test.py marks --pool review_results/2026-10-12_fix_test_f/pool.json --replies review_results/2026-10-12_fix_test_f/replies_for_the_reader --out review_results/2026-10-12_fix_test_f/scores
+  5. stage 2, the key (refuses unless stage 1 is complete and unchanged) 
+     python3 -P review_tools/score_fix_test.py key --pool review_results/2026-10-12_fix_test_f/pool.json --replies review_results/2026-10-12_fix_test_f/replies_for_the_reader --out review_results/2026-10-12_fix_test_f/scores
+  6. the reading sheet for Mr. Advocate: every passage marked Misleading by any run, and a random 20 of the others 
+     python3 -P review_tools/fix_reading_sheet.py --pool review_results/2026-10-12_fix_test_f/pool.json --replies review_results/2026-10-12_fix_test_f/replies_for_the_reader --out review_results/2026-10-12_fix_test_f/scores

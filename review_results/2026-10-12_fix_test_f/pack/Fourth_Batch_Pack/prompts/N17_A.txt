@@ -1,0 +1,99 @@
+QUESTION ID: N17   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N17",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: Whether a complaint of cruelty under Section 85 BNS by a wife who was forced out of her in-laws' house can be investigated and tried at the town where she now lives with her parents, though no act of cruelty took place there.
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: RUPALI DEVI versus STATE OF UTTAR PRADESH & ORS. (09-04-2019)
+   (Judgment id 1000251591, paragraph 16, page 13)
+Text:
+16. We, therefore, hold that the courts at the place where the wife takes shelter after leaving or driven away from the matrimonial home on account of acts of cruelty committed by the husband or his relatives, would, dependent on the factual situation, also have jurisdiction to entertain a complaint alleging commission of offences under Section 498A of the Indian Penal Code.
+
+--- PASSAGE 2 ---
+Judgment: AMARENDU JYOTI & ORS. versus STATE OF CHHATISGARH & ORS. (04-08-2014)
+   (Judgment id 1000004453, paragraph 5, page 6)
+Text:
+5. In Manish Ratan's case (supra), in the complaint, the Incident was said to have taken place in Jabalpur. The wife had left her matrimonial house and started residing at Datia. B The Criminal Revision filed by the accused, questioning the , jurisdiction of the Court at Datia, was dismissed opining that the offence was a continuing one, arid therefore, the Datia Court had jurisdiction to take cognizance. The High Court held that the Court at Datia also has jurisdiction to try the case since C the harassment to the wife continued at the place where she was residing with her father "since she was forced to live at her father's place on account of the torture of the in-laws and as such it can safely be said that there was also a mental cruelty." This conclusion of the High Court was dubbed as D curious by this Court since the High Court found earlier that "there is nothing in the complaint to show that any maltreatment was given to the appellant at Datia. The allegations, which I may repeat here, are that the maltreatment was givenwithin a specific period at Jabalpur." E After looking at the decided case on the point i.e. Sujata Mukherjee v. Prashant Kumar Mukherjee, ( 1997) 5 SCC 30; State of Bihar v. Deokaran Nenshi, ( 1972) 2 SCC 890; YAbrahamAjith v. lnspectorof Police, (2004) 8 SCC 100; and Ramesh v. State of T.N., (2005) 3 SCC 507, this Court F held that the order of the High Court was unsustainable, and therefore, set it aside. ·it is not only that in the interest of justice,- while setting aside the order of the High Court, this Court directed the transfer of the criminal case pending in the Court of Chief Judicial Magistrate, Datia, where the wife was staying G with her father to the Court of Judicial Magistrate, Jabalpur (vide para 18).
+
+--- PASSAGE 3 ---
+Judgment: PRIYA INDORIA versus STATE OF KARNATAKA AND ORS. ETC. (20-11-2023)
+   (Judgment id 1000255395, paragraph 48, page 64)
+Text:
+48. Another issue that calls for reiteration is, whether, the ordinary place of inquiry and trial would include the place where the complainantwife resides after being separated from her husband. The position of law regarding the ordinary place of investigation and trial as per Section 177 of the CrPC, especially in matrimonial cases alleging cruelty and domestic violence, alleged by the wife, has advanced from the view held in the case of State of Bihar vs. Deokaran Nenshi, (1972) 2 SCC 890; Sujata Mukherjee (Smt.) vs. Prashant Kumar Mukherjee, (1997) 5 SCC 30; Y. Abraham Ajith vs. Inspector of Police, Chennai, (2004) 8 SCC 100, Ramesh vs. State of T.N. (2005) 3 SCC 507; Manish Ratan vs. State of M.P., (2007) 1 SCC 262 that if none of the ingredients constituting the oﬀ ence can be said to have occurred within the local jurisdiction, that jurisdiction cannot be the ordinary place of investigation and trial of a matrimonial oﬀ ence. A three judge Bench of this Court has however clariﬁ ed in Rupali Devi vs. State of U.P., (2019) 5 SCC 384 (Rupali Devi) that adverse eﬀ ects on mental health of the wife even while residing in her parental home on account of the acts committed in the matrimonial home would amount to commission of cruelty within the meaning of Section 498A at the parental home. It was held that the Courts at the place where the wife takes shelter after leaving or being driven away from the matrimonial home on account of acts of cruelty committed by the husband or his relatives, would, depending on the factual situation, also have jurisdiction to entertain a complaint alleging commission of oﬀ ences under Section 498-A of the IPC.
+
+--- PASSAGE 4 ---
+Judgment: Manish Ratan & Ors. v. State of M.P. & Anr. (01/11/2006)
+   (Judgment id 28175, unnumbered paragraph, page 2)
+Text:
+Somehow she managed to escape and went to her Mama’s place at Bhopal and from there she went to father’s place and was living there. Thus these facts go to show that she was forced to go to her father’s place on account of the fact that she was mal-treated; as demand of Rs. 7.00 lakhs was not fulfilled. As laid down in the aforesaid decision of this Court, the word ’cruelty’ is not only the physical cruelty, the lady was forced to live at her father’s place on account of the torture of the inlaws and as such it can safely be said that there was also a mental cruelty. The cruelty and the terror of the in-laws continued even at the place of the father where she was living. In this view of the matter, it can safely be said that the harassment continued at the place where she was residing with her father. In view of the provision of Section 178 Cr.P.C., the offence may be inquired into and tried by a Court where the physical harassment, marpeet had taken place i.e. the in-laws’ place and also where the harassment continued i.e. the place where she was residing. Thus in view of the law laid down by this Court in the aforesaid authority with which I respectfully agree, the Court at Datia had also jurisdiction to try the case." It is not denied or disputed that no part of cause of action arose within the territorial limits of the jurisdiction of the Datia Court.
+
+--- PASSAGE 5 ---
+Judgment: AMARENDU JYOTI & ORS. versus STATE OF CHHATISGARH & ORS. (04-08-2014)
+   (Judgment id 1000004453, paragraph 7, page 7)
+Text:
+7. The core question thus is whether the allegations made 8 in the F.l.R. constitute a continuing offence. We find from the F.l.R. that all the incidents alleged by the complainant in respect of the alleged cruelty are said to have occurred at Delhi. The cruel and humiliating words spoken to the 2"d respondent/wife by her husband, elder brother-in-law and elder sister-in-law C for bringing less dowry are said to have been uttered at Delhi. Allegedly, arbitrary demands of lakhs of rupees in dowry have been made in Delhi. The incident of beating and dragging the respondent no. 2 and abusing her in filthy language also is said to have taken place at Delhi. Suffice it to say that all overt D acts, which are said to have constituted cruelty have allegedly taken place at Delhi. The allegations as to what has happened atAmbikapur are as follows: "No purposeful information has been received from the E in-laws of Kiran.even on contacting on telephone till today. Tliey have been threatened and abused and two years have been elapsed and the in-laws have not shown any interest to call her to her matrimonial home and since then Kiran is making her both ends meet in her parental F home. To get rid of the ill-treatment and harassment of the in-laws of Kiran, the complainant is praying for registration of an FIR and request for immediate legal action so that Kiran may get appropriate justice."
+
+--- PASSAGE 6 ---
+Judgment: RUPALI DEVI versus STATE OF UTTAR PRADESH & ORS. (09-04-2019)
+   (Judgment id 1000251591, paragraph 5, page 7)
+Text:
+5. The above two views which the learned referring bench had considered while making the present reference, as already noticed, were founded on the peculiar facts of the two sets of cases before the Court. It may be possible to sustain both the views in the light of the facts of the cases in which such view was rendered by this court. What confronts the court in the present case is however different. Whether in a case where cruelty had been committed in a matrimonial home by the husband or the relatives of the husband and the wife leaves the matrimonial home and takes shelter in the parental home located at a different place, would the courts situated at the place of the parental home of the wife have jurisdiction to entertain the complaint under Section 498A. This is in a situation where no overt act of cruelty or harassment is alleged to have been committed by the husband at the parental home where the wife had taken shelter.
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL No. 917 OF 2011 (Arising out of S.L.P. (Crl.) No. 8078 of 2010) Sunita Kumari Kashyap .... Appellant(s) Versus State of Bihar & Anr. .... Respondent(s) WITH CRIMINAL APPEAL No. 918 O
+   (Judgment id 37871, unnumbered paragraph, page 8)
+Text:
+Act. Among the offences, offence under Section 498A IPC is the main offence relating to cruelty by husband and his relatives. It is useful to extract the same which is as under: “498A. Husband or relative of husband of a woman subjecting her to cruelty - Whoever, being the husband or the relative of the husband of a woman, subjects such woman to cruelty shall be punished with imprisonment for a term which may extend to three years and shall also be liable to fine. Explanation: For the purpose of this section, "cruelty" means- (a) any wilful conduct which is of such a nature as is likely to drive the woman to commit suicide or to cause grave injury or danger to life, limb or health (whether mental or physical) of the woman; or (b) harassment of the woman where such harassment is with a view to coercing her or any person related to her to meet any unlawful demand for any property or valuable security or is on account of failure by her or any person related to her to meet such demand.” 8) Similar allegations as found in the complaint in the case on hand with reference to the offences punishable under Sections 498A, 406/34 IPC were considered by this Court in the following decisions: i) In Sujata Mukherjee (Smt) vs. Prashant Kumar Mukherjee, (1997) 5 SCC 30, similar issue was considered by this Court and found that clause (c) of Section 178 of the Code is attracted and the Magistrate at wife’s parents’ place has also jurisdiction to entertain the complaint.
+
+--- PASSAGE 8 ---
+Judgment: RUPALI DEVI versus STATE OF UTTAR PRADESH & ORS. (09-04-2019)
+   (Judgment id 1000251591, paragraph 14, page 11)
+Text:
+14. “Cruelty” which is the crux of the offence under Section 498A IPC is defined in Black’s Law Dictionary to mean “The intentional and malicious infliction of mental or physical suffering on a living creature, esp. a human; abusive treatment; outrage (Abuse, inhuman treatment, indignity)”. Cruelty can be both physical or mental cruelty. The impact on the mental health of the wife by overt acts on the part of the husband or his relatives; the mental stress and trauma of being driven away from the matrimonial home and her helplessness to go back to the same home for fear of being illtreated are aspects that cannot be ignored while understanding the meaning of the expression “cruelty” appearing in Section 498A of the Indian Penal Code. The emotional distress or psychological effect on the wife, if not the physical injury, is bound to continue to traumatize the wife even after she leaves the matrimonial home and takes shelter at the parental home. Even if the acts of physicalcruelty committed in the matrimonial house may have ceased and such actsdo not occur at the parental home, there can be no doubt that the mental trauma and the psychological distress cause by the acts of the husband including verbal exchanges, if any, that had compelled the wife to leave the matrimonial home and take shelter with her parents would continue to persist at the parental home. Mental cruelty borne out of physical cruelty or abusive and humiliating verbal exchanges would continue in the parental home even though there may not be any overt act of physical cruelty at such place.
+
+--- PASSAGE 9 ---
+Judgment: RUPALI DEVI versus STATE OF UTTAR PRADESH & ORS. (09-04-2019)
+   (Judgment id 1000251591, paragraph 2-3, page 6)
+Text:
+2. The opinions of this Court on the aforesaid question being sharply divided, the present reference to a larger Bench has been made for consideration of the question indicated hereinabove. 3. In (i) Y. Abraham Ajith and Others v. Inspector of Police, Chennai and Another (2004) 8 SCC 100. (ii) Ramesh and Others v. State of Tamil Nadu (2005) 3 SCC 507. (iii) Manish Ratan and Others v. State of Madhya Pradesh and Another (2007) 1 SCC 262. (iv) Amarendu Jyoti and Others v. State of Chhattisgarh and Others (2014) 12 SCC 362. a view has been taken that if on account of cruelty committed to a wife in a matrimonial home she takes shelter in the parental home and if no specific act of commission of cruelty in the parental home can be attributed to the husband or his relatives, the initiation of proceedings under Section 498A in the courts having jurisdiction in the area where the parental home is situated will not be permissible. The core fact that would be required to be noted in the above cases is that there were no allegations made on behalf of the aggrieved wife that any overt act of cruelty or harassment had been caused to her at the parental home after she had left the matrimonial home. It is in these circumstances that the view had been expressed in the above cases that the offence of cruelty having been committed in the matrimonial home the same does not amount to a continuing offence committed in the parental home to which place the aggrieved wife may have later shifted.
+
+--- PASSAGE 10 ---
+Judgment: RUPALI DEVI versus STATE OF UTTAR PRADESH & ORS. (09-04-2019)
+   (Judgment id 1000251591, paragraph 1, page 6)
+Text:
+1. “Whether a woman forced to leave her matrimonial home on account of acts and conduct that constitute cruelty can initiate and access the legal process within the jurisdiction of the courts where she is forced to take shelter with the parents or other family members”. This is the precise question that arises for determination in this group of appeals.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N17 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).

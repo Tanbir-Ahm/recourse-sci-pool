@@ -1,0 +1,99 @@
+QUESTION ID: N25   (prompt version: order A)
+
+You are helping to test a legal search tool for Indian Supreme Court criminal-law judgments. Below is ONE question that a person typed into the tool, followed by 10 passages the tool showed. Judge each passage as an answer to that question.
+
+RULES
+1. Judge only the text of each passage. Do NOT use outside knowledge about whether the case is famous, important or still good law. If the passage text itself says a view was later overruled, doubted or rejected, say so in "caveats".
+2. Judge each passage on its own, as if the other passages did not exist. The order of the passages carries no meaning.
+3. Use ONE mark per passage, exactly one of: Yes, Partly, No, Misleading.
+   - Yes: The passage itself states the rule, test or holding that answers the question directly.
+   - Partly: On the topic and useful, but it does not fully answer the question (only one part, or only background).
+   - No: Not helpful for this question.
+   - Misleading: Read on its own, it could leave a wrong impression. Examples: it records an argument by a lawyer that the court then rejects; it describes another case's facts; it states a rule for a different offence or situation; it is cut off so that it says the opposite of the court's view.
+4. For every passage give "evidence": a quote copied EXACTLY (character for character, no ellipses, no paraphrase) from that passage, at most 30 words, that best supports your mark. For "No", quote the words that show it is off-topic.
+5. For every passage give "reason": one plain sentence, at most 30 words.
+6. For every passage give "confidence": "high", "medium" or "low".
+7. Do not search the web and do not use tools. If you cannot tell, choose the safer lower mark and set confidence to "low".
+8. Reply with ONE JSON object only. No text before or after it and no markdown code fences.
+
+REQUIRED JSON SHAPE (a template: use your own values)
+{
+  "question_id": "N25",
+  "marks": [
+    {"no": 1, "mark": "Yes", "evidence": "exact quote from passage 1", "reason": "one sentence", "confidence": "high"},
+    {"no": 2, "mark": "No", "evidence": "exact quote from passage 2", "reason": "one sentence", "confidence": "medium"}
+  ],
+  "good_answer_present": "Yes",
+  "best_passage_no": 1,
+  "caveats": ""
+}
+Notes: "marks" must have exactly 10 entries, one for each passage number listed below. "good_answer_present" is "Yes" if at least one passage answers the question well, otherwise "No". "best_passage_no" is the number of the single best passage, or null if none is good. "caveats" is an empty string unless a careful reader should know something.
+
+Passage numbers to cover: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+
+==============================================================================
+QUESTION: My uncle is a clerk in the revenue office and was caught in an anti-corruption trap in 2019 under the Prevention of Corruption Act. The man who complained that my uncle had asked him for 10,000 rupees died before the trial started. The trap witness only saw the money being handed over and did not hear any demand. My uncle says that without the complainant nobody can prove he asked for a bribe. The case is now at final arguments. Can the demand for a bribe be proved without the complainant's own evidence?
+==============================================================================
+
+--- PASSAGE 1 ---
+Judgment: NEERAJ DUTTA versus STATE (GOVT. OF N.C.T. OF DELHI) (15-12-2022)
+   (Judgment id 1000254584, paragraph 60, page 50)
+Text:
+60. Learned ASG and counsel also drew our attention to the following precedents: (i) In the case of State of Andhra Pradesh vs. V. Vasudeva Rao (2004) 9 SCC 319 (“V. Vasudeva Rao”), this Court, in the absence of the complainant due to his death proceeded to convict the accused based on the evidence available on record and further held that for the purpose of reaching a conclusion, the court can rely on factual presumption under section 114 of the Evidence Act. A fact may also be proved by direct testimony or by circumstantial evidence. (ii) In Kishan Chand Mangal, this Court upheld the conviction based on the evidence of the shadow witnesses. Similarly in State of Andhra Pradesh vs. P. Venkateshwarlu (2015) 7 SCC 283 (“P. Venkateshwarlu”), when the complainant died during the pendency of the trial, this Court convicted the accused by relying upon the evidence of the other witnesses, as the factum of demand, acceptance and recovery of the tainted money was proved by the prosecution. (iii) In contradiction to the aforesaid cases, our attention was drawn to Selvaraj vs. State of Karnataka (2015) 10 SCC 230 (“Selvaraj”), wherein on the death of the complainant, acquittal was ordered as the accused was relieved from his duty and was not competent to transact any official business apart from the fact that there was contradiction in the version of witnesses. (iv) In A. Subair, the acquittal was based on the ground that there was no other evidence to fall back upon in the absence of the complainant letting in evidence.
+
+--- PASSAGE 2 ---
+Judgment: M.O. SHAMSUDHIN Vs. v. STATE OF KERALA (21/03/1995)
+   (Judgment id 10836, paragraph 11/21, page 5)
+Text:
+18.Learned counsel appearing for A-1, however, placed reliance on the judgment of this Court in Panalal Damodar Rathi v. State of Maharashtra, (1979) 4 SCC 526 wherein it was observed that the evidence of the complainant in such cases should be corroborated in material particulars and while acquitting the appellant it was held that on facts there was no corroboration to the testimony of the complainant regarding the demand of money by the appellant. This Court after extracting the evidence of a panch witness who was also present at the time of giving the bribe who however did not say anything regarding the demand by the accused, held that the version of the complainant regarding the demand was not corroborated and his evidence can not be relied upon. The facts in Panalal Damodar Rathi’s case (supra) are distinguishable namely that the panch witness who was also present with the complainant who is alleged to have given the money, did not say a word about the alleged demand and in that view of the matter it was held that there was no corroboration. But it must be borne in mind that corroboration can be by way of circumstantial evidence also. In the instant case P.W. 1 has no axe to grind against A- 1. It is not in dispute that he had to get a patta issued by A-1 and he categorically stated that A-1 made the demand.
+
+--- PASSAGE 3 ---
+Judgment: P. SARANGAPANI (DEAD) THR. LR PAKA SAROJA versus STATE OF ANDHRA PRADESH (21-09-2023)
+   (Judgment id 1000255258, paragraph 9, page 5)
+Text:
+9. In our opinion, there is no substance in any of the submissions made by the learned counsel for the appellant. It is well settled proposition of law that the death of the complainant or non-availability of the complainant at (2014) 13 SCC 55 STATE OF ANDHRA PRADESH [BELA M. TRIVEDI, J.] the time of trial could be not said to be fatal to the case of prosecution, nor could it be said to be a ground to acquit the accused. It is always open for the prosecution to prove the contents of the complaint and other facts in issue by leading other oral or documentary evidence, in case of death of or non-availability of the complainant. Recently, the Constitution Bench in case of Neeraj Dutta vs. State (Government of NCT of Delhi)2, has held that: - “88.6. (f) In the event the complainant turns “hostile”, or has died or is unavailable to let in his evidence during trial, demand of illegal gratiﬁ cation can be proved by letting in the evidence of any other witness who can again let in evidence, either orally or by documentary evidence or the prosecution can prove the case by circumstantial evidence. The trial does not abate nor does it result in an order of acquittal of the accused public servant.”
+
+--- PASSAGE 4 ---
+Judgment: NEERAJ DUTTA versus STATE (GOVT. OF N.C.T. OF DELHI) (15-12-2022)
+   (Judgment id 1000254584, paragraph 10/1, page 23)
+Text:
+10. Before proceeding further, it would be useful to consider in detail the judgments referred to in the Order of Reference. (A) B. Jayaraj (i) In B.Jayaraj, PW-2 the complainant therein did not support the prosecution case under Section 7 and Section 13(1)(d) (i) and (ii) of the Act. The complainant therein disowned making the complaint and had stated in his deposition that the amount of Rs.250/- was paid to the accused with a request that the same may be deposited in the bank as fee for the renewal of his licence. The complainant was not willing to support the case of the prosecution. The complainant was therefore declared “hostile”. This Court observed that the complainant did not support the case of the prosecution insofar as demand made by the accused for the bribe is concerned and the prosecution did not examine any other witness present at the time when the money was allegedly handed over to the accused by the complainant, to prove that the same was pursuant to any demand made by the accused. When the complainant had disowned what he had stated in the initial complaint and in the absence of any other evidence to prove that the accused had made any demand, the evidence of the complainant therein and the complaint (Exh. P-11) could not be relied upon to come to the conclusion that the above material furnished proof of the demand allegedly made by the accused.
+
+--- PASSAGE 5 ---
+Judgment: NEERAJ DUTTA versus STATE (GOVT. OF N.C.T. OF DELHI) (15-12-2022)
+   (Judgment id 1000254584, paragraph 20, page 37)
+Text:
+20. That the presumption under Section 20 of the Act would apply only if the fact of demand and acceptance or of illegal gratification, as the case may be, is proved. Such a proof can be adduced even by way of circumstantial evidence in the absence of direct evidence. This would be so particularly in trap cases as the prosecution has to prove that the accused had demanded a bribe from the complainant. The factum of demand can be either proved by direct evidence or through circumstantial evidence.
+
+--- PASSAGE 6 ---
+Judgment: MRS. NEERAJ DUTTA versus STATE (GOVT. OF NCT OF DELHI) (28-02-2019)
+   (Judgment id 1000251457, paragraph 8, page 6)
+Text:
+8. The learned senior counsel has drawn our attention to number of judgments where accused was convicted even when the evidence of complainant was not available either due to death of complainant or where the complainant had turned hostile. In Kishan Chand Mangal v. State of Rajasthan (1982) 3 SCC 466, by the time of trial, the complainant Rajendra Dutt expired and he could not be examined. The Court relied upon evidence of two Motbir witnesses Ram Babu (PW-1) and Keshar Mal (PW-2), Dy. SP Mahavir Prasad (PW-7) and the factum of recovery of money from the accused and convicted the accused thereon. Affirming the conviction of the appellant/accused, this Court held that “…..the tell-tale circumstances which do indicate that there must have been a demand……and it is not proper to say that there is no evidence of demand of bribe as on November 20, 1974.”
+
+--- PASSAGE 7 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO. 639 OF 2004 A. Subair ..Appellant Versus State of Kerala ..Respondent J U D G E M E N T R.M. LODHA, J. The appellant, A. Subair, in this appeal by special leave, suffered convict
+   (Judgment id 34832, paragraph 13, page 8)
+Text:
+13. We shall now examine whether the evidence of other witnesses sufficiently proves the demand? Suffice it to say that prosecution has neither relied upon the evidence of PW-3 to PW-8, who were present in the office at the time of raid nor the evidence of panch witnesses (PW-1 and PW-2) to prove the demand. The investigating officer (PW-12) also does not state anything about the demand. The only evidence now remains is that of PW-10. He stated, “I felt that he (complainant) was talking something to the person who was sitting inside near the window (the accused). Immediately complainant took out the money from the left pocket of his shirt and offered it through the window.” We are afraid, the evidence of PW-10 hardly establishes the demand allegedly made by the accused. The factum of demand, thus, remains not proved.
+
+--- PASSAGE 8 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.787 OF 2011 D. VELAYUTHAM APPELLANT VS. STATE REP. BY INSPECTOR OF RESPONDENT POLICE, SALEM TOWN, CHENNAI WITH CRIMINAL APPEAL No.788 of 2011 J U D G M E N T VIKRAMAJIT SEN, J. Th
+   (Judgment id 42459, unnumbered paragraph, page 13)
+Text:
+A-2, A-1’s junior officer, was given the trap money in A-1’s office and on his behalf by the complainant, who was accompanied by a trap witness. On exiting the office of A-1, A-2 was at once apprehended. Although A-1 had not been entrapped per se, he was found to be conclusively incriminated by the circumstances and evidence of the complainant. The Court held: “In the instant case, PW1 has no axe to grind against A-1. It is not in dispute that he had to get a patta issued A-1 and he categorically stated that A-1 had made the demand.A-2 was his assistant and the tainted money was recovered from A-2 while he was just going out of the office of A-1. Unless A-1 has demanded the money and has also directed him to hand over the same to A-2, there was no reason at all as to why PW1 should hand over the money to A-2. PW1 has consistently stated that A-1 demanded the bribe and that A-2 received the amount as stated by him. Therefore it cannot be said that there is no corroboration regarding the demand. This is a case where each of the accused tried to throw the blame on the other but taking the overall circumstances into consideration in the light of evidence of PWs 3 and 4 along with the evidence of PWs 1 and 2 both Courts below have consistently held that the evidence of these witnesses establishes the guilt of the accused and we see no reason to come to a different conclusion”.
+
+--- PASSAGE 9 ---
+Judgment: IN THE SUPREME COURT OF INDIA CRIMINAL APPELLATE JURISDICTION CRIMINAL APPEAL NO.1172 OF 2008 Selvaraj … Appellant Versus State of Karnataka … Respondent J U D G M E N T ARUN MISHRA, J.
+   (Judgment id 42929, paragraph 13/1, page 9)
+Text:
+13. Coming to the question whether the view taken by the trial court while acquitting the accused was probable, we find that in view of the fact that complainant Peter Philip, CW-1 died before the trial, as such he was not available for cross-examination with respect to the facts which were in his knowledge as to the demand of bribe and its payment. We have to carefully look into the other evidence available. In the absence of the complainant, the onus lay upon the prosecution to adduce credible evidence and to prove the guilt beyond the periphery of doubt. K.M.Eregowda, PW-2, had stated that 10 to 12 other officials were sitting in the same room in which bribe was paid. Taking of bribe in the presence of 10 to 12 other officials of the Treasury Office is quite improbable. It assumes significance in the circumstances from which place the money was recovered; whether it was from the possession of the accused. PW-1 has stated that he found currency notes on the table, and the accused was standing behind the table. Whereas K.N. Eregowda, PW-2, has stated that the currency notes were kept by the accused beneath the book on the table. Another witness L.Somashekara, PW-8, IO, has stated that he recovered the money from the drawer of the table. The versions given by the three witnesses are different from each other.
+
+--- PASSAGE 10 ---
+Judgment: N. VIJAYAKUMAR versus STATE OF TAMIL NADU (03-02-2021)
+   (Judgment id 1000252910, paragraph 8, page 16)
+Text:
+8. In the present case, the complainant did not support the prosecution case insofar as demand by the accused is concerned. The prosecution has not examined any other witness, present at the time when the money was allegedly handed over to the accused by the complainant, to prove that the same was pursuant to any demand made by the accused. When the complainant himself had disowned what he had stated in the initial complaint (Ext. P-11) before LW 9, and there is no other evidence to prove that the accused had made any demand, the evidence of PW 1 and the contents of Ext. P-11 cannot be relied upon to come to the conclusion that the above material furnishes proof of the demand allegedly made by the accused. We are, therefore, inclined to hold that the learned trial court as well as the High Court was not correct in holding the demand alleged to be made by the accused as proved. The only other material available is the recovery of the tainted currency notes from the possession of the accused. In fact such possession is admitted by the accused himself. Mere possession and recovery of the currency notes from the accused without proof of demand will not bring home the offence under Section 7. The above also will be conclusive insofar as the offence under Sections 13(1)(d)(i) and (ii) is concerned as in the absence of any proof of demand for illegal gratification, the use of corrupt or illegal means or abuse of position as a public servant to obtain any valuable thing or pecuniary advantage cannot be held to be established.
+
+==============================================================================
+END OF PASSAGES. Now reply with the single JSON object for N25 (passages 1, 2, 3, 4, 5, 6, 7, 8, 9, 10).
