@@ -24,7 +24,12 @@
     "\\bfamily violence\\b",
     "\\b(?:threw|thrown|throw|throws|throwing|kicked|drove|driven)\\s+(?:me|her|us|my wife|his wife)\\s+out of\\s+(?:the |my |our |his )?(?:marital |matrimonial |shared )?(?:house|home)\\b",
     "\\b(?:husband|in-?laws?|mother-in-law|partner|boyfriend)\\b.{0,30}\\b(?:hits?|beats?|beat|beating|abus\\w+|tortur\\w+|harass\\w+|threaten\\w*)\\s+(?:me|her)\\b",
-    "\\bright to (?:stay|live|reside) in (?:the|my|our) (?:house|home)\\b"
+    "\\bright to (?:stay|live|reside) in (?:the|my|our) (?:house|home)\\b",
+    "(?:(?:\\b(?:evict\\w*|throw\\w*\\s+(?:me\\s+)?out|kick\\w*\\s+(?:me\\s+)?out)\\b).{0,60}(?:\\b(?:in-?laws?|husband|matrimonial|marital|mother-in-law)\\b)|(?:\\b(?:in-?laws?|husband|matrimonial|marital|mother-in-law)\\b).{0,60}(?:\\b(?:evict\\w*|throw\\w*\\s+(?:me\\s+)?out|kick\\w*\\s+(?:me\\s+)?out)\\b))",
+    "(?:(?:\\b(?:matrimonial|marital) home\\b).{0,60}(?:\\b(?:right|stay|live|reside|evict\\w*|throw\\w*|name)\\b)|(?:\\b(?:right|stay|live|reside|evict\\w*|throw\\w*|name)\\b).{0,60}(?:\\b(?:matrimonial|marital) home\\b))",
+    "\\b(?:abusive|violent)\\s+(?:husband|partner|boyfriend|spouse)\\b",
+    "(?:(?:\\b(?:emotional|mental|physical|verbal)\\s+(?:abuse|torture)\\b).{0,80}(?:\\b(?:husband|wife|partner|in-?laws?|home|house)\\b)|(?:\\b(?:husband|wife|partner|in-?laws?|home|house)\\b).{0,80}(?:\\b(?:emotional|mental|physical|verbal)\\s+(?:abuse|torture)\\b))",
+    "(?:(?:\\bprotection order\\b).{0,40}(?:\\b(?:broke|broken|breach\\w*|violat\\w*)\\b)|(?:\\b(?:broke|broken|breach\\w*|violat\\w*)\\b).{0,40}(?:\\bprotection order\\b))"
    ],
    "N2_exclude": "\\b(?:498-?A|section\\s*85|BNS\\s*85|304-?B|dowry death)\\b"
   },
@@ -46,9 +51,10 @@
     "(?:(?:\\b(?:ganja|charas|hashish|heroin|cocaine|MDMA|methamphetamine|opium|poppy husk|poppy straw|smack|brown sugar|marijuana|cannabis|ecstasy|LSD|tramadol|codeine)\\b).{0,80}(?:\\b(?:found|caught|arrest\\w*|police|NCB|bag|car|room|carry\\w*|sell\\w*|sold|peddl\\w+|smuggl\\w+|bail|statement)\\b)|(?:\\b(?:found|caught|arrest\\w*|police|NCB|bag|car|room|carry\\w*|sell\\w*|sold|peddl\\w+|smuggl\\w+|bail|statement)\\b).{0,80}(?:\\b(?:ganja|charas|hashish|heroin|cocaine|MDMA|methamphetamine|opium|poppy husk|poppy straw|smack|brown sugar|marijuana|cannabis|ecstasy|LSD|tramadol|codeine)\\b))",
     "(?-i:\\bNCB\\b)",
     "\\bnarcotics?\\b",
-    "(?:(?:\\b(?:drug|drugs)\\b).{0,40}(?:\\b(?:case|peddling|trafficking|dealer|smuggling|bail|seized|caught)\\b)|(?:\\b(?:case|peddling|trafficking|dealer|smuggling|bail|seized|caught)\\b).{0,40}(?:\\b(?:drug|drugs)\\b))"
+    "(?:(?:\\b(?:drug|drugs)\\b).{0,40}(?:\\b(?:case|peddling|trafficking|dealer|smuggling|bail|seized|caught)\\b)|(?:\\b(?:case|peddling|trafficking|dealer|smuggling|bail|seized|caught)\\b).{0,40}(?:\\b(?:drug|drugs)\\b))",
+    "(?:(?:\\b(?:drug|drugs|narcotic\\w*|contraband|illegal tablets?|illegal pills?)\\b).{0,80}(?:\\b(?:police|find|found|bag|arrested|caught|seized|carrying|search\\w*|funded|delivery|gang|tip|confess\\w*|admit\\w*|samples?|seizure|magistrate|gazetted)\\b)|(?:\\b(?:police|find|found|bag|arrested|caught|seized|carrying|search\\w*|funded|delivery|gang|tip|confess\\w*|admit\\w*|samples?|seizure|magistrate|gazetted)\\b).{0,80}(?:\\b(?:drug|drugs|narcotic\\w*|contraband|illegal tablets?|illegal pills?)\\b))"
    ],
-   "N2_exclude": "\\b(?:forensic|toxicolog\\w*|post-?mortem|autopsy|traces? of|prescri\\w+|pharmacy|medicine)\\b"
+   "N2_exclude": "\\b(?:forensic|toxicolog\\w*|post-?mortem|autopsy|traces? of|prescri\\w+|pharmacy|medicine|doctor|hospital|patient|treatment|illness|fever)\\b"
   },
   "POCSO": {
    "name": "Protection of Children from Sexual Offences Act, 2012",
@@ -144,8 +150,9 @@
    "N2_extra": [
     "\\banti[- ]terror (?:law|act)\\b",
     "(?:(?:\\bterror\\w*).{0,60}(?:\\b(?:booked|arrested|accused|charged|FIR|bail|case)\\b)|(?:\\b(?:booked|arrested|accused|charged|FIR|bail|case)\\b).{0,60}(?:\\bterror\\w*))",
-    "\\bbanned (?:organi[sz]ation|group)\\b",
-    "\\bterror funding\\b"
+    "\\bbanned\\s+(?:our\\s+|the\\s+|an?\\s+)?(?:organi[sz]ation|group|association)\\b",
+    "\\bterror funding\\b",
+    "(?:(?:\\b(?:separatist|unlawful association)\\b).{0,60}(?:\\b(?:arrest\\w*|accused|booked|supporting|member\\w*|belong\\w*|links?)\\b)|(?:\\b(?:arrest\\w*|accused|booked|supporting|member\\w*|belong\\w*|links?)\\b).{0,60}(?:\\b(?:separatist|unlawful association)\\b))"
    ],
    "N2_exclude": null
   },

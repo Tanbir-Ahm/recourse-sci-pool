@@ -33,7 +33,9 @@ SPEC["PWDVA"] = {
     "passage": [_t, r"\bsections?\s*(?:12|17|18|19|20|21|22|23|31)\s+of\s+(?:the\s+)?" + _t[:-1] + r")", r"\bprotection officers?\b", r"\baggrieved woman\b", near(r"\bshared household\b", r"\b(?:residence|protection|monetary|compensation|ex parte)\s+orders?\b", 100)],
     "N1": [_t, r"\bdomestic violence\b", r"\baggrieved woman\b", r"\bprotection officer\b", near(r"\b(?:shared household|residence order|protection order|monetary relief|compensation order)\b", r"\b(?:domestic|violence|abus\w+|aggrieved|DV Act|PWDVA|residence order|protection order|monetary relief|maintenance|evict\w*)\b", 120)],
     "N2_extra": [r"\bdomestic abuse\b", r"\bfamily violence\b", r"\b(?:threw|thrown|throw|throws|throwing|kicked|drove|driven)\s+(?:me|her|us|my wife|his wife)\s+out of\s+(?:the |my |our |his )?(?:marital |matrimonial |shared )?(?:house|home)\b",
-                 r"\b(?:husband|in-?laws?|mother-in-law|partner|boyfriend)\b.{0,30}\b(?:hits?|beats?|beat|beating|abus\w+|tortur\w+|harass\w+|threaten\w*)\s+(?:me|her)\b", r"\bright to (?:stay|live|reside) in (?:the|my|our) (?:house|home)\b"],
+                 r"\b(?:husband|in-?laws?|mother-in-law|partner|boyfriend)\b.{0,30}\b(?:hits?|beats?|beat|beating|abus\w+|tortur\w+|harass\w+|threaten\w*)\s+(?:me|her)\b", r"\bright to (?:stay|live|reside) in (?:the|my|our) (?:house|home)\b",
+                 near(r"\b(?:evict\w*|throw\w*\s+(?:me\s+)?out|kick\w*\s+(?:me\s+)?out)\b", r"\b(?:in-?laws?|husband|matrimonial|marital|mother-in-law)\b", 60), near(r"\b(?:matrimonial|marital) home\b", r"\b(?:right|stay|live|reside|evict\w*|throw\w*|name)\b", 60),
+                 r"\b(?:abusive|violent)\s+(?:husband|partner|boyfriend|spouse)\b", near(r"\b(?:emotional|mental|physical|verbal)\s+(?:abuse|torture)\b", r"\b(?:husband|wife|partner|in-?laws?|home|house)\b", 80), near(r"\bprotection order\b", r"\b(?:broke|broken|breach\w*|violat\w*)\b", 40)],
     "N2_exclude": r"\b(?:498-?A|section\s*85|BNS\s*85|304-?B|dowry death)\b",
 }
 # ------------------------------------------------------------------ NDPS
@@ -44,8 +46,9 @@ SPEC["NDPS"] = {
     "passage": [_t, r"\bsections?\s*(?:20|21|22|27A|29|37|42|43|50|52A|57|67)\s+of\s+the\s+(?:(?-i:NDPS)|Narcotic Drugs and Psychotropic Substances)\s*Act", near(r"\b(?:commercial quantity|conscious possession|intermediate quantity|small quantity)\b", r"(?:\bNDPS\b|\bnarcotic|\bpsychotropic|\bcontraband\b|" + _drugs[2:-2] + r"|\bsection\s*(?:20|21|37)\b)", 200)],
     "N1": [_t, r"\b(?:commercial quantity|intermediate quantity|conscious possession|psychotropic substances?|narcotic drugs?)\b", near(_drugs, r"\b(?:seiz\w+|possess\w*|recover\w*|commercial quantity|contraband)\b", 100),
            near(r"\b(?:recovery|seizure)\b", r"\b(?:NDPS|narcotic drug|psychotropic substance|contraband)\b", 100), near(r"\b(?:no recovery|nothing recovered|no contraband recovered)\b", r"\b(?:NDPS|narcotic|psychotropic|drug possession|commercial quantity|seizure)\b", 100)],
-    "N2_extra": [near(_drugs, r"\b(?:found|caught|arrest\w*|police|NCB|bag|car|room|carry\w*|sell\w*|sold|peddl\w+|smuggl\w+|bail|statement)\b", 80), r"(?-i:\bNCB\b)", r"\bnarcotics?\b", near(r"\b(?:drug|drugs)\b", r"\b(?:case|peddling|trafficking|dealer|smuggling|bail|seized|caught)\b", 40)],
-    "N2_exclude": r"\b(?:forensic|toxicolog\w*|post-?mortem|autopsy|traces? of|prescri\w+|pharmacy|medicine)\b",
+    "N2_extra": [near(_drugs, r"\b(?:found|caught|arrest\w*|police|NCB|bag|car|room|carry\w*|sell\w*|sold|peddl\w+|smuggl\w+|bail|statement)\b", 80), r"(?-i:\bNCB\b)", r"\bnarcotics?\b", near(r"\b(?:drug|drugs)\b", r"\b(?:case|peddling|trafficking|dealer|smuggling|bail|seized|caught)\b", 40),
+                 near(r"\b(?:drug|drugs|narcotic\w*|contraband|illegal tablets?|illegal pills?)\b", r"\b(?:police|find|found|bag|arrested|caught|seized|carrying|search\w*|funded|delivery|gang|tip|confess\w*|admit\w*|samples?|seizure|magistrate|gazetted)\b", 80)],
+    "N2_exclude": r"\b(?:forensic|toxicolog\w*|post-?mortem|autopsy|traces? of|prescri\w+|pharmacy|medicine|doctor|hospital|patient|treatment|illness|fever)\b",
 }
 # ------------------------------------------------------------------ POCSO
 _t = r"(?:(?-i:\bPOCSO\b)(?:\s+Act)?|\bP\.O\.C\.S\.O|Protection of Children from Sexual Offences Act)"
@@ -91,7 +94,7 @@ SPEC["UAPA"] = {
     "passage": [_t, r"\bsection\s*43D\s*\(\s*5\s*\)", near(r"\bterrorist act\b", r"(?:\bUAPA\b|\bsection\s*1[56]\b)", 100), near(r"\bterrorist organisation\b", r"(?:\bUAPA\b|\bSchedule\b|\bmembership\b)", 100),
                 r"\bsections?\s*(?:10|13|15|16|17|18|20|38|39|40|43D|43E)\s+of\s+the\s+" + _t[:-1] + r")"],
     "N1": [_t, near(r"\bterrorist act\b", r"\b(?:UAPA|unlawful activities|terrorist organisation|section\s*43D)\b", 100), near(r"\bterrorist organisation\b", r"\b(?:UAPA|unlawful activities|membership|funding)\b", 100), r"\bsection\s*43D\s*\(\s*5\s*\)"],
-    "N2_extra": [r"\banti[- ]terror (?:law|act)\b", near(r"\bterror\w*", r"\b(?:booked|arrested|accused|charged|FIR|bail|case)\b", 60), r"\bbanned (?:organi[sz]ation|group)\b", r"\bterror funding\b"],
+    "N2_extra": [r"\banti[- ]terror (?:law|act)\b", near(r"\bterror\w*", r"\b(?:booked|arrested|accused|charged|FIR|bail|case)\b", 60), r"\bbanned\s+(?:our\s+|the\s+|an?\s+)?(?:organi[sz]ation|group|association)\b", r"\bterror funding\b", near(r"\b(?:separatist|unlawful association)\b", r"\b(?:arrest\w*|accused|booked|supporting|member\w*|belong\w*|links?)\b", 60)],
     "N2_exclude": None,
 }
 # ------------------------------------------------------------------ DPA

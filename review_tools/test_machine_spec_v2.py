@@ -52,6 +52,11 @@ Q = [
     # IT Act
     ("someone took my OTP and emptied my account", "IT Act", False, True), ("Information Technology Act section 66C identity theft online", "IT Act", True, True), ("my IT department is outsourcing work", "IT Act", False, False),
     ("whoever uses a password online without consent, Section 66C", "IT Act", True, True),
+    # additions from Mr. Advocate's second review (plain-language tier only)
+    ("Can my in-laws evict me from their house?", "PWDVA", False, True), ("He broke the court's protection order. What can I do?", "PWDVA", False, True), ("an abusive husband keeps threatening me", "PWDVA", False, True),
+    ("we are divorcing by mutual consent and sharing the marital home papers", "PWDVA", False, False), ("mental cruelty as a ground for divorce", "PWDVA", False, False),
+    ("What happens if police find drugs in my bag?", "NDPS", False, True), ("I was caught with illegal tablets", "NDPS", False, True), ("the doctor gave me drugs for my fever and police asked nothing", "NDPS", False, False),
+    ("The government banned our organisation", "UAPA", False, True), ("I was arrested for supporting a separatist movement", "UAPA", False, True), ("Police searched my body without giving me a choice", "NDPS", False, False),
     # MV Act
     ("drunk driving accident death", "MV Act", True, True), ("rash and negligent driving by a truck driver", "MV Act", False, True), ("I want to buy a second-hand car", "MV Act", False, False),
 ]
