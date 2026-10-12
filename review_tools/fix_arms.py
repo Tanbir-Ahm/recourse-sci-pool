@@ -57,3 +57,27 @@ def arms(question, final, doc_of, labels):
         fired[tier] = acts
         out[version] = order_by(apply_boost(final, doc_of, docs))[:SHOWN]
     return out, fired
+
+
+# ---- rules v2 (FIX_TEST_RULES_v2.md): the same named-Act boost at two larger sizes, per trigger -------------------------------------------------------
+SIZES_V2 = (1.25, 1.50)
+V2_CANDIDATES = tuple((tier, size) for tier in ("N1", "N2") for size in SIZES_V2)
+
+
+def v2_name(tier, size):
+    return f"{tier}-{int(round(size * 100))} named-Act boost x{size:.2f} ({'precise' if tier == 'N1' else 'broad'})"
+
+
+V2_VERSIONS = (B_VERSION,) + tuple(v2_name(t, z) for t, z in V2_CANDIDATES)
+
+
+def arms_v2(question, final, doc_of, labels):
+    """{version: ordered top 10} for B and the four v2 candidates, and {'N1': [acts], 'N2': [acts]}. Same scores for all; only the boost size and the trigger differ."""
+    out = {B_VERSION: order_by(final)[:SHOWN]}
+    fired = {}
+    for tier in ("N1", "N2"):
+        acts, docs = boosted_docs(question, tier, labels)
+        fired[tier] = acts
+        for size in SIZES_V2:
+            out[v2_name(tier, size)] = order_by(apply_boost(final, doc_of, docs, size))[:SHOWN]
+    return out, fired

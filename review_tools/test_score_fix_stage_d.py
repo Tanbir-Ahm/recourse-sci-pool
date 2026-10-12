@@ -50,5 +50,31 @@ check("tokens above 1.8 x B fail condition 4", not table2["verdict"][FA.C_VERSIO
 ch = SD.churn(pool)
 check("churn counts questions whose top 5 / top 10 differ from B's", ch[FA.C_VERSION]["top5_changed"] == 2 and ch[FA.C_VERSION]["top10_changed"] == 2, ch)
 check("churn: N1 changed T1 (top 5) and T2 (place 10 only), nothing else", ch[FA.N1_VERSION]["top10_changed"] == 2 and ch[FA.N1_VERSION]["top5_changed"] == 1, ch[FA.N1_VERSION])
+# ---- rules v2 gate: per trigger the smaller passing size, condition 5 --------------------------------------------------------------------------
+def lists2(**over):
+    base = filler[:10]
+    d = {v: [item(x) for x in base] for v in FA.V2_VERSIONS}
+    d.update({k: [item(x) for x in v] for k, v in over.items()})
+    return d
+N1a, N1b, N2a, N2b = (FA.v2_name(t, z) for t in ("N1", "N2") for z in FA.SIZES_V2)
+pool2 = [
+    {"qid": "T1", "lists": lists2()},
+    {"qid": "T2", "lists": lists2()},
+    {"qid": "R16", "lists": lists2(**{N1b: filler[:4] + [16] + filler[:5], N2a: filler[:4] + [16] + filler[:5], N2b: filler[:4] + [16] + filler[:5]})},
+    {"qid": "R23", "lists": lists2()},
+    {"qid": "R03", "lists": lists2()},
+]
+t2, _ = SD.gate_v2(pool2, key, ["T1", "T2"])
+check("v2: N1-125 fails (R16 not in top 5), N1-150 passes", not t2["verdict"][N1a]["passes"] and t2["verdict"][N1b]["passes"], t2["verdict"][N1a])
+check("v2: N2 finalist is the SMALLER passing size (125) though 150 also passes", t2["finalists"] == {"N1": N1b, "N2": N2a}, t2["finalists"])
+pool3 = [dict(q) for q in pool2]
+pool3[0] = {"qid": "T1", "lists": lists2(**{N1b: [9] + filler[:9]})}              # N1-150 now puts a known-stale ruling in the top 5
+t3, _ = SD.gate_v2(pool3, key, ["T1", "T2"])
+check("v2: more stale slots than B fails condition 2 and, with no other size passing, N1 has no finalist", not t3["verdict"][N1b]["2 stale slots top 5 <= B"] and t3["finalists"]["N1"] is None, t3["finalists"])
+many = [{"qid": f"T{i}", "lists": lists2(**{N2a: list(reversed(filler[:10]))})} for i in range(9)]
+many += [q for q in pool2 if q["qid"] in ("R16", "R23", "R03")]
+kk = {"questions": {**{f"T{i}": {"reachable": True, "key_docs": [1], "stale_docs": [], "authorities": []} for i in range(9)}, **{q: key["questions"][q] for q in ("R16", "R23", "R03")}}}
+t4, _ = SD.gate_v2(many, kk, [f"T{i}" for i in range(9)])
+check("v2: changing the top 5 on 10 questions (9 here and R16) fails condition 5 (limit 8)", t4["rows"][N2a]["top5_changed"] == 10 and not t4["verdict"][N2a]["5 top 5 changed on <= 8 of 22"], t4["rows"][N2a])
 print("\nall passed" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)

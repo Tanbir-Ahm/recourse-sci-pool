@@ -61,6 +61,17 @@ check("four arms, ten each, from ONE re-rank call and ONE embedding", sorted(lis
 check("B equals the final recipe's challenger arm on the same question (the baseline is unchanged)", lists[FA.B_VERSION] == T.engine().lists_for_final(T.Q, "rerank-3-lite")[P.R_VERSION])
 check("the model passed is the challenger", e.spend.rerank_by_model.get("rerank-3-lite", 0) > 0 and not e.spend.rerank_by_model.get("rerank-2", 0), dict(e.spend.rerank_by_model))
 
+# ---- rules v2: four candidates (N1, N2 at 1.25 and 1.50) from the same scores ----------------------------------------------------------------------
+check("v2 versions: B plus four named candidates, sizes 1.25 and 1.50 only", len(FA.V2_VERSIONS) == 5 and FA.SIZES_V2 == (1.25, 1.50) and len(set(FA.V2_VERSIONS)) == 5, FA.V2_VERSIONS)
+fin2 = {1: 1.00, 2: 0.80, 3: 0.60}
+doc2 = {1: 5, 2: 7, 3: 7}.get
+lab2 = {a: set() for a in FA.S.ACTS}
+lab2["NI Act"] = {7}
+o2, f2 = FA.arms_v2(Q_NI, fin2, doc2, lab2)
+check("v2: 0.80 x 1.25 = 1.00 ties and 0.80 x 1.50 = 1.20 passes the 1.00 passage (sorted order is stable for the tie)", o2[FA.v2_name("N1", 1.50)][0] == 2 and o2[FA.v2_name("N1", 1.25)][:2] in ([1, 2], [2, 1]), o2)
+check("v2: B is unchanged and a question that fires nothing leaves every candidate equal to B", FA.arms_v2(Q_NONE, fin2, doc2, lab2)[0][FA.v2_name("N2", 1.50)] == [1, 2, 3])
+check("v2: a plain-language question moves only the N2 candidates", FA.arms_v2(Q_PLAIN, fin2, doc2, {**lab2, "PWDVA": {7}})[0][FA.v2_name("N1", 1.50)] == [1, 2, 3] and FA.arms_v2(Q_PLAIN, fin2, doc2, {**lab2, "PWDVA": {7}})[0][FA.v2_name("N2", 1.50)][0] == 2)
+
 # ---- the guard ----------------------------------------------------------------------------------------------------------------------------------------
 def args(**kw):
     base = dict(fix_test="D", challenger_model="rerank-3-lite", max_rerank_tokens=3_000_000, allow_other_index=False, source="real30", supplement=[os.path.join(P.ROOT, d) for d in P.FINAL_SIDE_INDEXES])
@@ -72,6 +83,10 @@ for label, kw, frag in [("another challenger", dict(challenger_model="rerank-3")
                         ("the ruler as source", dict(source="ruler"), "real30"), ("a missing side index", dict(supplement=[]), "side index"), ("stage F, not coded", dict(fix_test="F"), "only stage D")]:
     got = P.fix_guard(args(**kw), ok_code, ok_files)
     check(f"the guard refuses {label}", bool(got) and any(frag in g for g in got), got)
+check("stage D2 is accepted by the guard", P.fix_guard(args(fix_test="D2"), ok_code, ok_files) == [])
+check("D2 reads the v2 freeze file and rules", P.fix_paths("D2") == (P.FIX2_FREEZE_PATH, P.FIX2_RULES_PATH) and P.fix_paths("D") == (P.FIX_FREEZE_PATH, P.FIX_RULES_PATH))
+f2files = P.fix_frozen_files(*P.fix_paths("D2"))
+check("the real v2 freeze pins v1 rules, v2 rules, the spec code, its JSON and its tests, all matching now", len(f2files) == 5 and all(n == f for n, f in f2files.values()) and any(k.endswith("FIX_TEST_RULES_v2.md") for k in f2files) and any(k.endswith("FIX_TEST_RULES_v1.md") for k in f2files), f2files)
 check("the guard refuses a changed file", any("frozen hash" in g for g in P.fix_guard(args(), ok_code, {"r.md": ("b" * 64, "a" * 64)})))
 check("the guard refuses a file the freeze does not list", any("not listed" in g for g in P.fix_guard(args(), ok_code, {"r.md": ("b" * 64, None)})))
 check("the guard refuses a dirty checkout", any("uncommitted" in g for g in P.fix_guard(args(), ("c" * 40, ["x.py"]), ok_files)))
@@ -82,7 +97,7 @@ with tempfile.TemporaryDirectory() as d:
     open(os.path.join(d, "f.txt"), "w").write("hello")
     import hashlib
     open(fz, "w").write(hashlib.sha256(b"hello").hexdigest() + "  f.txt\n")
-    got = P.fix_frozen_files(fz, d)
+    got = P.fix_frozen_files(fz, root=d)
     check("fix_frozen_files compares a listed file with its recorded hash", got["f.txt"][0] == got["f.txt"][1], got)
 check("stage D question ids are exactly the 19 tuning questions plus R16, R23, R03", len(P.STAGE_D_IDS) == 22 and len(set(P.STAGE_D_IDS)) == 22 and {"R16", "R23", "R03"} <= set(P.STAGE_D_IDS))
 sealed_rest = {"R05", "R07", "R10", "R13", "R18", "R25", "R27", "R30"}

@@ -40,9 +40,37 @@ def gate(pool, key, tuning_ids, tokens_by_arm=None):
     return {"rows": rows, "verdict": verdict}, scores
 
 
-def churn(pool):
+MAX_CHANGED_TOP5 = 8          # rules v2, condition 5: the top 5 may differ from B's on at most this many of the 22 questions
+
+
+def gate_v2(pool, key, tuning_ids):
+    """Rules v2, section 2: the four v1 conditions plus condition 5 (collateral change) for each candidate; section 1.4: per trigger the SMALLER passing size is the finalist.
+    Returns ({'rows', 'verdict', 'finalists'}, scores)."""
+    scores = RS.score(pool, key)
+    summ = RS.summarise(scores, key, only=set(tuning_ids))
+    base = summ[FA.B_VERSION]
+    ch = churn(pool, FA.V2_VERSIONS)
+    rows, verdict = {}, {}
+    for v in FA.V2_VERSIONS:
+        s = summ[v]
+        r16 = scores[v].get("R16", {}).get("hits", {}).get("5")
+        rows[v] = {"answerable_tuning_questions": s["questions"], "named_authority_top5": s["hit@5"], "named_authority_top10": s["hit@10"], "stale_slots_top5": s["stale_slots"], "stale_questions_top5": s["stale_questions"],
+                   "R16_key_in_top5": r16, "R16_first_rank": scores[v].get("R16", {}).get("first_rank"), "R23_first_rank": scores[v].get("R23", {}).get("first_rank"), "R03_first_rank": scores[v].get("R03", {}).get("first_rank"),
+                   "top5_changed": ch.get(v, {}).get("top5_changed", 0), "rerank_tokens_ratio_to_B": 1.0}
+        if v == FA.B_VERSION:
+            continue
+        c = [s["hit@10"] >= base["hit@10"], s["stale_slots"] <= base["stale_slots"], bool(r16), True, rows[v]["top5_changed"] <= MAX_CHANGED_TOP5]
+        verdict[v] = {"1 named authority top 10 >= B": c[0], "2 stale slots top 5 <= B": c[1], "3 R16 key judgment in top 5": c[2], "4 tokens <= 1.8 x B": c[3], "5 top 5 changed on <= 8 of 22": c[4], "passes": all(c)}
+    finalists = {}
+    for tier in ("N1", "N2"):
+        passing = [z for z in FA.SIZES_V2 if verdict[FA.v2_name(tier, z)]["passes"]]
+        finalists[tier] = FA.v2_name(tier, min(passing)) if passing else None
+    return {"rows": rows, "verdict": verdict, "finalists": finalists}, scores
+
+
+def churn(pool, versions=None):
     """Per arm: number of questions whose top 5 / top 10 (as ordered lists of judgments) differs from B's."""
-    out = {v: {"top5_changed": 0, "top10_changed": 0, "questions": 0} for v in FA.FIX_VERSIONS if v != FA.B_VERSION}
+    out = {v: {"top5_changed": 0, "top10_changed": 0, "questions": 0} for v in (versions or FA.FIX_VERSIONS) if v != FA.B_VERSION}
     for q in pool:
         b = [x["h"] for x in q["lists"][FA.B_VERSION]]
         for v in out:
@@ -76,19 +104,51 @@ def report(table, ch, pool, run):
     return "\n".join(L) + "\n"
 
 
+def report_v2(table, ch, pool, run):
+    L = ["# Fix test (rules v2), stage D2: the mechanical gate (PRIVATE)", "",
+         f"Run {run.get('when', '')}; index `{run.get('index_commit', '')[:7]}`; rules v2 `{run['fix_test']['rules_sha256'][:12]}`; code `{run['fix_test']['code_commit'][:10]}`; {len(pool)} questions (19 tuning + R16, R23, R03 as a check, not a test).",
+         "Source label: the named key authority found in the index by name; no reviewer mark; nothing here says a passage answers a question. Not lawyer-checked. The R16 condition is NOT independent evidence (rules v2, section 2, condition 3).", "",
+         "| Arm | answerable tuning questions | named authority top 5 | top 10 | stale slots top 5 | R16 key judgment in top 5 (rank) | R23 rank | R03 rank | top 5 differs from B on |", "|---|---|---|---|---|---|---|---|---|"]
+    for v, r in table["rows"].items():
+        L.append(f"| {v} | {r['answerable_tuning_questions']} | {r['named_authority_top5']} | {r['named_authority_top10']} | {r['stale_slots_top5']} ({r['stale_questions_top5']}) | {'yes' if r['R16_key_in_top5'] else 'no'} (#{r['R16_first_rank']}) | #{r['R23_first_rank']} | #{r['R03_first_rank']} | {r['top5_changed']} of {len(pool)} |")
+    yn = lambda b: "yes" if b else "NO"
+    L += ["", "## Verdict (all five must hold)", "", "| Arm | 1 authority top 10 >= B | 2 stale <= B | 3 R16 | 4 tokens | 5 top 5 changed on <= 8 | passes |", "|---|---|---|---|---|---|---|"]
+    for v, x in table["verdict"].items():
+        L.append(f"| {v} | {yn(x['1 named authority top 10 >= B'])} | {yn(x['2 stale slots top 5 <= B'])} | {yn(x['3 R16 key judgment in top 5'])} | {yn(x['4 tokens <= 1.8 x B'])} | {yn(x['5 top 5 changed on <= 8 of 22'])} | **{yn(x['passes'])}** |")
+    L += ["", "## Finalists (rules v2, section 1.4: per trigger the smaller passing size)", ""]
+    for tier, f in table["finalists"].items():
+        L.append(f"- {tier}: {f or 'none (dropped)'}")
+    if not any(table["finalists"].values()):
+        L += ["", "**No finalist: B stays; no marking round is run for arms (rules v2, section 3).**"]
+    L += ["", "## Which Acts fired (question side)", "", "| Question | N1 | N2 |", "|---|---|---|"]
+    for q in pool:
+        f = q.get("acts_fired", {})
+        if f.get("N1") or f.get("N2"):
+            L.append(f"| {q['qid']} | {', '.join(f.get('N1', [])) or '-'} | {', '.join(f.get('N2', [])) or '-'} |")
+    return "\n".join(L) + "\n"
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--pool", required=True)
     ap.add_argument("--key", default=RS.DEFAULT_KEY)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--rules", choices=["v1", "v2"], default="v1", help="v1: arms B, C, N1, N2 at 1.10; v2: B and N1/N2 at 1.25 and 1.50")
     a = ap.parse_args(argv)
     doc = json.load(open(a.pool, encoding="utf-8"))
     key = json.load(open(a.key, encoding="utf-8"))
     pool = doc["questions"]
     tuning = [q["qid"] for q in pool if q["qid"] not in KNOWN_FAILURES]
+    os.makedirs(a.out, exist_ok=True)
+    if a.rules == "v2":
+        table, scores = gate_v2(pool, key, tuning)
+        ch = churn(pool, FA.V2_VERSIONS)
+        json.dump({"table": table, "churn": ch, "scores": scores}, open(os.path.join(a.out, "stage_d2_gate.json"), "w", encoding="utf-8"), indent=1)
+        open(os.path.join(a.out, "STAGE_D2_GATE.md"), "w", encoding="utf-8").write(report_v2(table, ch, pool, doc["run"]))
+        print(open(os.path.join(a.out, "STAGE_D2_GATE.md"), encoding="utf-8").read())
+        return 0
     table, scores = gate(pool, key, tuning)
     ch = churn(pool)
-    os.makedirs(a.out, exist_ok=True)
     json.dump({"table": table, "churn": ch, "scores": scores}, open(os.path.join(a.out, "stage_d_gate.json"), "w", encoding="utf-8"), indent=1)
     open(os.path.join(a.out, "STAGE_D_GATE.md"), "w", encoding="utf-8").write(report(table, ch, pool, doc["run"]))
     print(open(os.path.join(a.out, "STAGE_D_GATE.md"), encoding="utf-8").read())
