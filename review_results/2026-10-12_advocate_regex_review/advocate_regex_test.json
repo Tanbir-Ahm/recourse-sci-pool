@@ -1,0 +1,108 @@
+{
+ "summary": {
+  "PWDVA": {
+   "his_passages": 0,
+   "his_J3": 0,
+   "mine_passages": 262,
+   "mine_J3": 18,
+   "J3_only_his": 0,
+   "J3_only_mine": 18
+  },
+  "NDPS": {
+   "his_passages": 2817,
+   "his_J3": 251,
+   "mine_passages": 2584,
+   "mine_J3": 222,
+   "J3_only_his": 35,
+   "J3_only_mine": 6
+  },
+  "POCSO": {
+   "his_passages": 775,
+   "his_J3": 59,
+   "mine_passages": 721,
+   "mine_J3": 58,
+   "J3_only_his": 1,
+   "J3_only_mine": 0
+  },
+  "SC/ST": {
+   "his_passages": 331,
+   "his_J3": 37,
+   "mine_passages": 543,
+   "mine_J3": 52,
+   "J3_only_his": 0,
+   "J3_only_mine": 15
+  },
+  "NI Act": {
+   "his_passages": 1666,
+   "his_J3": 177,
+   "mine_passages": 1935,
+   "mine_J3": 186,
+   "J3_only_his": 13,
+   "J3_only_mine": 22
+  },
+  "PMLA": {
+   "his_passages": 901,
+   "his_J3": 48,
+   "mine_passages": 810,
+   "mine_J3": 48,
+   "J3_only_his": 2,
+   "J3_only_mine": 2
+  },
+  "UAPA": {
+   "his_passages": 592,
+   "his_J3": 43,
+   "mine_passages": 568,
+   "mine_J3": 40,
+   "J3_only_his": 3,
+   "J3_only_mine": 0
+  },
+  "DPA": {
+   "his_passages": 573,
+   "his_J3": 64,
+   "mine_passages": 536,
+   "mine_J3": 56,
+   "J3_only_his": 8,
+   "J3_only_mine": 0
+  },
+  "JJ Act": {
+   "his_passages": 899,
+   "his_J3": 93,
+   "mine_passages": 677,
+   "mine_J3": 67,
+   "J3_only_his": 28,
+   "J3_only_mine": 2
+  },
+  "PC Act": {
+   "his_passages": 3401,
+   "his_J3": 405,
+   "mine_passages": 3374,
+   "mine_J3": 401,
+   "J3_only_his": 4,
+   "J3_only_mine": 0
+  },
+  "Arms Act": {
+   "his_passages": 2063,
+   "his_J3": 254,
+   "mine_passages": 2056,
+   "mine_J3": 253,
+   "J3_only_his": 1,
+   "J3_only_mine": 0
+  },
+  "IT Act": {
+   "his_passages": 238,
+   "his_J3": 16,
+   "mine_passages": 234,
+   "mine_J3": 16,
+   "J3_only_his": 0,
+   "J3_only_mine": 0
+  },
+  "MV Act": {
+   "his_passages": 210,
+   "his_J3": 16,
+   "mine_passages": 210,
+   "mine_J3": 16,
+   "J3_only_his": 0,
+   "J3_only_mine": 0
+  }
+ }
+}
