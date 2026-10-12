@@ -86,6 +86,27 @@ with tempfile.TemporaryDirectory() as t:
     check("after a hand-out the guard refuses a second search ...", any("already handed out" in b for b in P.fix_guard_f(a, HEAD, runs, d2pool, finalists=[N1, N2])[0]))
     check("... unless it is declared a repeat after a technical failure", P.fix_guard_f(SimpleNamespace(**dict(vars(a), fix_repeat=True)), HEAD, runs, d2pool, finalists=[N1, N2])[0] == [])
 
+# ---- a sealed set with a question dropped before sealing (round-2 file, N12 dropped by the owner) goes through the same guard --------------------------------
+WB2 = os.path.join(P.ROOT, "review_data", "ruler", "inputs", "2026-10-12_Fix_Test_New_Questions_N01-N30_round2_as_received.xlsx")
+AUTH2 = os.path.join(P.ROOT, "review_results", "2026-10-12_new_questions_intake", "round2", "authorities_final_proposed.json")
+with tempfile.TemporaryDirectory() as t:
+    public, key = FT.build(WB2, json.load(open(AUTH2, encoding="utf-8")), ["N02", "N04", "N06", "N07", "N13"], HEAD, today="2026-10-12", drop=["N12"],
+                           confirmed_hash="642613ddc8618e1a15e1337f682179184c780de6a5c6d07189b6b41e09de424c", confirmed_by="owner")
+    sp, kp, runs = os.path.join(t, "set.json"), os.path.join(t, "key.json"), os.path.join(t, "runs.jsonl")
+    json.dump(public, open(sp, "w"), sort_keys=True); json.dump(key, open(kp, "w"), sort_keys=True)
+    d2pool = os.path.join(t, "pool.json")
+    have = P.fix_frozen_files(*P.fix_paths("F"))[os.path.relpath(P.FIX2_RULES_PATH, P.ROOT)][0]
+    json.dump({"run": {"fix_test": {"rules_sha256": have}}}, open(d2pool, "w"))
+    a = SimpleNamespace(fix_set=sp, fix_key=kp, fix_arms="", fix_repeat=False, fix_runs=runs)
+    ok, pub, ky, fin = P.fix_guard_f(a, HEAD, runs, d2pool, finalists=[N1, N2])
+    check("a sealed set with N12 dropped (29 questions) is let through the guard", ok == [] and pub is not None and len(pub["questions"]) == 29 and "N12" not in [q["id"] for q in pub["questions"]], ok)
+    bad_set = copy.deepcopy(public); bad_set["provenance"]["dropped"] = []
+    json.dump(bad_set, open(sp, "w"), sort_keys=True)
+    check("the same file with its drop record removed is refused", any("ids are not N01 to N30" in b or "changed since the freeze" in b for b in P.fix_guard_f(a, HEAD, runs, d2pool, finalists=[N1, N2])[0]), P.fix_guard_f(a, HEAD, runs, d2pool, finalists=[N1, N2])[0])
+    json.dump(public, open(sp, "w"), sort_keys=True)
+    got = FT.select(public, final=True, label="stage F", runs_path=runs)
+    check("the hand-out of the dropped set is 29 questions and is logged once", len(got) == 29 and len(FT.read_runs(runs)) == 1)
+
 # ---- the real gate file gives the finalists the frozen rule chose ---------------------------------------------------------------------------------------
 fin = P.read_finalists()
 check("the finalists read from the frozen stage D2 gate are N1-125 and N2-125", fin == [FA.v2_name("N1", 1.25), FA.v2_name("N2", 1.25)], fin)

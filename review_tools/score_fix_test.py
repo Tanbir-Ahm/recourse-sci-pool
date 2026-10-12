@@ -8,7 +8,7 @@ TWO STAGES, so that the key is opened only after the marks are in (rules v1 sect
   python review_tools/score_fix_test.py key   --pool POOL.json --replies DIR --set fix_test_f_v1.json --key fix_test_f_key_v1.json --out OUT      # refuses unless stage 1 is complete and unchanged
 
 Stage 1 (marks only, the key is not opened): coverage (every passage marked by both tools, else INCOMPLETE), reliability (exact agreement of the two tools; under 60% = weak), per version and settlement the top-5 shares
-(Yes, useful = Yes or Partly, Misleading, mean grade Misleading 0 / No 1 / Partly 2 / Yes 3) averaged over the 27 scored questions (domains A to J; the three controls are reported apart), each finalist against B on rules 1, 2, 3, 5
+(Yes, useful = Yes or Partly, Misleading, mean grade Misleading 0 / No 1 / Partly 2 / Yes 3) averaged over the scored questions (domains A to J: 27 in the plan, 26 after N12 was dropped before sealing; the three controls are reported apart), each finalist against B on rules 1, 2, 3, 5
 and the marks part of rule 6 (look-alike questions), the floors F1, F2, F4 for B and each finalist, the same again without the questions the owner kept as soft overlaps (descriptive, never the decision).
 Four settlements: ChatGPT alone, Gemini alone, both with ties to the lower mark, both with ties to the higher mark.
 Stage 2 (opens the key, only after stage 1 and only the pool's questions): answerable questions; named authority in each version's top 5 and top 10; known-stale rulings in the top 5; rule 4; the key part of rule 6; the choice (the

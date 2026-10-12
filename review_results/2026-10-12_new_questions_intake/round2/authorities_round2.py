@@ -15,3 +15,17 @@ A2_NEW = [
 ]
 # Round-1 entries that no longer apply (the three questions were replaced): all rows of N02, N12 and N15 in ../authorities.py.
 REPLACED = {"N02", "N12", "N15"}
+
+# My reading of coverage_round2.py's candidates (coverage_round2_out.txt): which index document (if any) is each authority. Same status words as ../adjudication.py.
+ADJ2 = {
+ "D.K. Basu v. State of West Bengal (1996/97)": ("IN", [14580]),
+ "Arnesh Kumar v. State of Bihar (2014)": ("IN", [41736]),
+ "Joginder Kumar v. State of U.P. (1994)": ("ABSENT", []),
+ "Gian Singh v. State of Punjab (2012)": ("IN", [39579]),
+ "Parbatbhai Aahir v. State of Gujarat (2017)": ("IN", [1000250282]),
+ "Narinder Singh v. State of Punjab (2014)": ("IN", [41348]),
+ "Rajnesh v. Neha (2020)": ("IN", [1000252794]),
+ "Shyamlal Devda v. Parimala (2020)": ("IN", [1000252355]),
+ "Juveria Abdul Majid Patni v. Atif Iqbal Mansoori (2014)": ("IN", [1000004478]),
+ "Mahmood Farooqui v. State (Govt. of NCT of Delhi) (2017)": ("ABSENT", []),
+}

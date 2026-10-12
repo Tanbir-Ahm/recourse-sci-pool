@@ -9,19 +9,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.normpath(os.pa
 sys.path.insert(0, os.path.join(HERE, "..")); sys.path.insert(0, HERE)
 from authorities import A
 from adjudication import ADJ
-from authorities_round2 import A2_NEW, REPLACED
-ADJ2 = {
- "D.K. Basu v. State of West Bengal (1996/97)": ("IN", [14580]),
- "Arnesh Kumar v. State of Bihar (2014)": ("IN", [41736]),
- "Joginder Kumar v. State of U.P. (1994)": ("ABSENT", []),
- "Gian Singh v. State of Punjab (2012)": ("IN", [39579]),
- "Parbatbhai Aahir v. State of Gujarat (2017)": ("IN", [1000250282]),
- "Narinder Singh v. State of Punjab (2014)": ("IN", [41348]),
- "Rajnesh v. Neha (2020)": ("IN", [1000252794]),
- "Shyamlal Devda v. Parimala (2020)": ("IN", [1000252355]),
- "Juveria Abdul Majid Patni v. Atif Iqbal Mansoori (2014)": ("IN", [1000004478]),
- "Mahmood Farooqui v. State (Govt. of NCT of Delhi) (2017)": ("ABSENT", []),
-}
+from authorities_round2 import A2_NEW, ADJ2, REPLACED
 STOP = set("a an the and or of to in on for is are was were be been can could would should must may might will shall do does did not that this with from by as at it its who what when how which if any all have has had than then them they their there these those under into about over after before while where whether such just only also more most other some my me i he she his her we our you your us am so no yes now but up out off too very".split())
 def toks(t):
     w = [x for x in re.findall(r"[a-z0-9]+", (t or "").lower()) if x not in STOP and len(x) > 1]

@@ -72,11 +72,11 @@ def build(path, mutate=None):
     wb.save(path)
 
 
-def run(mutate=None):
+def run(mutate=None, drop=()):
     with tempfile.TemporaryDirectory() as t:
         p = os.path.join(t, "w.xlsx")
         build(p, mutate)
-        return {r["id"]: r for r in C.check(C.read(p))}
+        return {r["id"]: r for r in C.check(C.read(p), drop)}
 
 
 base = run()
@@ -108,5 +108,20 @@ check("a missing AI-tools line in the declaration fails D1", not run(lambda wb: 
 check("'trigger-word list seen: Y' fails D2", not run(set_cell("Declaration", "has the writer seen the trigger-word list (Y/N)", "Response", "Y"))["D2"]["ok"])
 check("code_tag reads 'section 190 BNSS' as NEW, '420 IPC' as OLD, 'section 138' alone as NONE", C.code_tag("under section 190 BNSS he") == "NEW" and C.code_tag("an FIR under 420 IPC") == "OLD" and C.code_tag("a 138 cheque bounce case") == "NONE" and C.code_tag("Section 43D(2) ... Section 167(2) CrPC") == "OLD")
 check("code_tag reads 'Section 336 BNS' and 'Section 223 BNSS' as NEW and 'Section 32 of the Evidence Act' as OLD", C.code_tag("under Section 336 BNS, on") == "NEW" and C.code_tag("Section 223 BNSS before") == "NEW" and C.code_tag("under Section 32 of the Evidence Act") == "OLD")
+# a question dropped before sealing (question rules section 11)
+d1 = run(drop=("N12",))
+check("dropping a scored question keeps F4, F5, R1 and R3 passing (the counts follow) and adds U1", all(d1[c]["ok"] for c in ("F4", "F5", "R1", "R3", "U1")) and "U1" not in base, {c: d1[c]["detail"] for c in ("F4", "F5", "R1", "R3", "U1") if not d1[c]["ok"]})
+check("with a question dropped the other thresholds are unchanged: the fixture's own limits fail the same checks as without the drop", {i for i, r in d1.items() if not r["ok"]} - {"U1"} <= set(bad) | {"R5", "R6", "R7"}, {i: r["detail"] for i, r in d1.items() if not r["ok"]})
+check("without --drop the same workbook still passes F4 and R1 (a drop is never assumed)", base["F4"]["ok"] and base["R1"]["ok"])
+d2 = run(lambda wb: [wb[n].delete_rows(next(r[0].row for r in wb[n].iter_rows(min_row=2) if r[0].value == "N12"), 1) for n in ("Questions", "Key")])
+check("a missing question that was not declared as dropped fails F4 and R1", not d2["F4"]["ok"] and not d2["R1"]["ok"])
+d3 = run(drop=("N28",))
+check("a control cannot be dropped (U1 fails)", not d3["U1"]["ok"], d3["U1"]["detail"])
+d4 = run(drop=("N01", "N02", "N03", "N04", "N05", "N06", "N07"))
+check("dropping seven leaves 23 usable questions and fails U1 (the floor is 24)", not d4["U1"]["ok"] and "23 usable" in d4["U1"]["detail"], d4["U1"]["detail"])
+d5 = run(drop=("N01", "N02", "N03", "N04", "N05", "N06"))
+check("dropping six leaves exactly 24 usable questions and passes U1", d5["U1"]["ok"], d5["U1"]["detail"])
+d6 = run(drop=("N99",))
+check("an unknown id cannot be dropped (U1 fails)", not d6["U1"]["ok"], d6["U1"]["detail"])
 print("\nall passed" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)

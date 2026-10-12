@@ -6,7 +6,7 @@
 Automatic checks: the frozen rules and the pinned Machine Spec files equal their hashes (v1 and v2); the checkout is clean and its commit is pushed; the index head is the one recorded in the sealed question file; the
 sealed question file and its key still have their freeze hashes and no key field is in the public file; no hand-out is logged; the finalists of the frozen stage D2 gate exist and the D2 run was made under the same
 rules; the three side indexes are present and made for this index; the Voyage key is set; the machinery's test suites pass. Checks only a person can make are OWNER items and count as open until named in --owner-confirms:
-  writer-declaration  the writer's corrected declaration is in (AI tool named and its use stated) and the three replacements were re-checked
+  writer-declaration  the writer's corrected declaration is in (who wrote the wording and the key; the AI tool named and its use stated; the confirmed freeze hash) and the replacements were re-checked
   advocate-key        Mr. Advocate has reviewed the key and his corrections are in the sealed key
   balance             the owner has read the Voyage dashboard: the balance stays above the $5 live-site reserve after about $0.05
   refresh-postponed   the bucket refresh is postponed until the stage F scoring is over (the index stays at its recorded commit)
@@ -24,7 +24,7 @@ sys.path.insert(0, HERE)
 import fix_test_set as FT
 import pool_runner as PR
 
-OWNER_ITEMS = {"writer-declaration": "the writer's corrected declaration is in (AI tool named, its use stated) and the three replacements were re-checked",
+OWNER_ITEMS = {"writer-declaration": "the writer's corrected declaration is in (who wrote the wording and the key; AI tool named, its use stated; the confirmed freeze hash) and the replacements were re-checked",
                "advocate-key": "Mr. Advocate has reviewed the key and his corrections are in the sealed key",
                "balance": "the Voyage balance, read on the dashboard, stays above the $5 reserve after about $0.05",
                "refresh-postponed": "the bucket refresh is postponed until the stage F scoring is over"}
@@ -57,10 +57,14 @@ def checks(a):
         add("the sealed question file and its key can be read", False, str(e))
     if public is not None:
         bad = FT.check(public, key)
-        add("the sealed question file and its key have their freeze hashes, 27 + 3 questions, no key field in the public file", not bad, "; ".join(bad) if bad else f"questions {public['freeze']['sha256'][:12]}, key {public['freeze']['key_sha256'][:12]}")
+        n_s = sum(1 for q in public["questions"] if q["domain"] != "K")
+        dropped = (public.get("provenance") or {}).get("dropped") or []
+        add(f"the sealed question file and its key have their freeze hashes, {n_s} scored + {len(public['questions']) - n_s} control questions" + (f" ({len(dropped)} dropped before sealing: {', '.join(dropped)})" if dropped else "") + ", no key field in the public file",
+            not bad and n_s >= FT.CNQ.USABLE_FLOOR - 3, "; ".join(bad) if bad else f"questions {public['freeze']['sha256'][:12]}, key {public['freeze']['key_sha256'][:12]}")
         add("index head is the recorded commit", head == (public.get("index_snapshot") or {}).get("commit"), f"head {head[:10]}, recorded {str((public.get('index_snapshot') or {}).get('commit'))[:10]}")
         prov = public.get("provenance") or {}
-        add("the writer's own freeze hash matches the question texts", bool(prov.get("writer_hash_matches")), f"declared {str(prov.get('writer_declared_sha256'))[:12]}, computed {str(prov.get('writer_text_sha256'))[:12]}")
+        add("the writer's own freeze hash matches the question texts (declared in the workbook, or confirmed by a named person)", bool(prov.get("writer_hash_matches")),
+            f"declared {str(prov.get('writer_declared_sha256'))[:12]}, confirmed {str(prov.get('writer_confirmed_sha256'))[:12]} by {prov.get('writer_confirmed_by') or '-'}, computed {str(prov.get('writer_text_sha256'))[:12]}")
     runs = FT.read_runs()
     add("no hand-out is logged for the final questions", not runs, f"{len(runs)} entries")
     fin = PR.read_finalists()
@@ -86,12 +90,13 @@ def checks(a):
     return out
 
 
-def commands(date):
+def commands(date, n_questions=None):
+    chats = f"{2 * n_questions} chats" if n_questions else "2 chats per question"
     sides = " ".join(f"--supplement {d}" for d in PR.FINAL_SIDE_INDEXES)
     d = f"review_results/{date}_fix_test_f"
     return [("1. the search (hands the questions out ONCE and logs it; the label gets the rules hash and the code commit; about 30 re-rank calls, a few cents; the labels take about 8 minutes to compute)",
              f'python3 -P review_tools/pool_runner.py --fix-test F --label "stage F, single search" --max-rerank-tokens {PR.FIX_RERANK_CAP} {sides} --out {d}'),
-            ("2. the marking pack for J and S (send only the zip: 60 chats)", f"python3 -P review_tools/build_sealed_pack.py --fix-test --pool {d}/pool.json --out {d}/pack"),
+            (f"2. the marking pack for J and S (send only the zip: {chats})", f"python3 -P review_tools/build_sealed_pack.py --fix-test --pool {d}/pool.json --out {d}/pack"),
             ("3. when the replies come back: keep them as received, then", f"python3 -P review_tools/normalise_replies.py --src {d}/replies_as_received --out {d}/replies_for_the_reader"),
             ("4. stage 1, marks only (the key is not opened)", f"python3 -P review_tools/score_fix_test.py marks --pool {d}/pool.json --replies {d}/replies_for_the_reader --out {d}/scores"),
             ("5. stage 2, the key (refuses unless stage 1 is complete and unchanged)", f"python3 -P review_tools/score_fix_test.py key --pool {d}/pool.json --replies {d}/replies_for_the_reader --out {d}/scores"),
@@ -111,7 +116,11 @@ def main(argv=None):
     ready = all(r["ok"] for r in res)
     print("\nREADY: every check passed and every owner item is confirmed." if ready else "\nNOT READY: " + "; ".join(r["check"] for r in res if not r["ok"])[:700])
     print("\nThe commands, once ready:")
-    for title, cmd in commands(a.date):
+    try:
+        n_q = len(FT.load(FT.DEFAULT_SET)["questions"])
+    except (OSError, ValueError, KeyError):
+        n_q = None
+    for title, cmd in commands(a.date, n_q):
         print(" ", title, "\n    ", cmd)
     if a.out:
         json.dump({"ready": ready, "checks": res}, open(a.out, "w"), indent=1)

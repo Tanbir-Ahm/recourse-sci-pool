@@ -1,10 +1,13 @@
 """Recounts the rules for the new test questions (review_data/ruler/question_rules/New_Test_Questions_Rules_and_Guidelines.docx, sections 2, 4, 5, 9, 10, 11) on the writer's workbook.
 Nothing is searched, no service is called, nothing is spent. Reads the workbook only.
 
-    python review_tools/check_new_questions.py WORKBOOK.xlsx [--json OUT.json]
+    python review_tools/check_new_questions.py WORKBOOK.xlsx [--json OUT.json] [--drop N12,...]
 
 Returns a list of checks {id, rule, ok, detail}; exit code 0 only if every check passes. A failed check is a finding for the writer, not a verdict on the question set. Index coverage, duplicates and the
-trigger check need the index and are in review_results/2026-10-12_new_questions_intake/."""
+trigger check need the index and are in review_results/2026-10-12_new_questions_intake/.
+
+--drop: scored questions removed before sealing (question rules section 11: a failed question is replaced from the reserves or rewritten once; fewer than 24 usable questions cancels the test). The recount is then made on the set
+without them: the id and domain counts follow, every other threshold is unchanged, and check U1 says which ids were dropped and that at least 24 usable questions remain. Controls cannot be dropped."""
 import argparse
 import collections
 import json
@@ -17,6 +20,7 @@ Q_COLS = ["Id", "Domain (A to K)", "Question text", "Phr (E/L/N)", "Hinglish (Y/
           'Act(s) concerned (from the 13, or "none")', "Act, section or acronym named in the question text (Y/N)", "Look-alike (Y/N)", "Neighbour regime", "Twin of (Id or blank)", "Reserve for domain (reserves only)"]
 K_COLS = ["Id", "Expected answer", "Primary authority", "Other acceptable authorities", "Older ruling a search may wrongly show (traps) with what changed and the current authority", "Code that applies and why", "Source URLs", "How verified", "Conf", "To verify"]
 DOMAINS = {"A": 3, "B": 3, "C": 3, "D": 2, "E": 3, "F": 3, "G": 3, "H": 3, "I": 2, "J": 2, "K": 3}
+USABLE_FLOOR = 24                 # question rules section 11: below this the test is cancelled
 ACTS = {"PWDVA": "PWDVA", "NDPS Act": "NDPS", "POCSO Act": "POCSO", "SC/ST Act": "SC/ST", "NI Act": "NI Act", "PMLA": "PMLA", "UAPA": "UAPA", "Dowry Prohibition Act": "DPA", "JJ Act": "JJ Act",
         "PC Act": "PC Act", "Arms Act": "Arms Act", "IT Act": "IT Act", "MV Act": "MV Act"}
 WORD_LIMITS = {"E": (None, 60), "L": (None, 50), "N": (None, 120)}
@@ -63,8 +67,9 @@ def code_tag(text):
     return "MIXED" if new and old else "NEW" if new else "OLD" if old else "NONE"
 
 
-def check(data):
+def check(data, drop=()):
     res = []
+    drop = tuple(sorted(set(drop or ())))
 
     def add(cid, rule, ok, detail=""):
         res.append({"id": cid, "rule": rule, "ok": bool(ok), "detail": detail})
@@ -78,20 +83,32 @@ def check(data):
     add("F3", "Key columns exactly as in the rules (section 11.1)", kh == K_COLS, f"missing {[c for c in K_COLS if c not in kh]}, extra {[c for c in kh if c not in K_COLS]}")
     if qh != Q_COLS or kh != K_COLS:
         return res                       # the other checks read the columns by their exact names
+    kept_all = {r["Id"]: r for r in data["Questions"]["rows"]}                  # as received, dropped rows included
+    if drop:
+        data = dict(data, Questions=dict(data["Questions"], rows=[r for r in data["Questions"]["rows"] if r["Id"] not in drop]), Key=dict(data["Key"], rows=[r for r in data["Key"]["rows"] if r["Id"] not in drop]))
     Q = {r["Id"]: r for r in data["Questions"]["rows"]}
     K = {r["Id"]: r for r in data["Key"]["rows"]}
-    main = [f"N{i:02d}" for i in range(1, 31)]
+    main = [f"N{i:02d}" for i in range(1, 31) if f"N{i:02d}" not in drop]
     res_ids = sorted(i for i in Q if str(i).startswith("NR"))
+    plan = dict(DOMAINS)
+    for i in drop:
+        if i in kept_all and kept_all[i]["Domain (A to K)"] in plan:
+            plan[kept_all[i]["Domain (A to K)"]] -= 1
+    n_scored_plan = 27 - sum(1 for i in drop if i in kept_all and kept_all[i]["Domain (A to K)"] not in ("K", None))
+    if drop:
+        bad_drop = [i for i in drop if i not in kept_all or not re.fullmatch(r"N(0[1-9]|[12]\d|30)", i) or kept_all[i]["Domain (A to K)"] == "K"]
+        add("U1", f"dropped before sealing: only scored questions, and at least {USABLE_FLOOR} usable questions remain (question rules section 11)", not bad_drop and 30 - len(drop) >= USABLE_FLOOR,
+            f"dropped {list(drop)}; {30 - len(drop)} usable of 30" + (f"; not droppable or unknown: {bad_drop}" if bad_drop else ""))
     add("F4", "ids N01 to N30 each once, in order; reserves NR1 to NR3 at most", [r["Id"] for r in data["Questions"]["rows"] if not str(r["Id"]).startswith("NR")] == main and len(res_ids) <= 3 and all(re.fullmatch(r"NR[1-3]", i) for i in res_ids), f"reserves {res_ids}")
     add("F5", "every question has a key row and every key row a question", set(Q) == set(K), f"questions without key {sorted(set(Q) - set(K))}, keys without question {sorted(set(K) - set(Q))}")
     scored = [Q[i] for i in main if i in Q and Q[i]["Domain (A to K)"] != "K"]
     controls = [Q[i] for i in main if i in Q and Q[i]["Domain (A to K)"] == "K"]
     dom = collections.Counter(Q[i]["Domain (A to K)"] for i in main if i in Q)
-    add("R1", "domain counts A3 B3 C3 D2 E3 F3 G3 H3 I2 J2 K3 (27 scored + 3 controls)", dict(dom) == DOMAINS and len(scored) == 27 and len(controls) == 3, f"found {dict(sorted(dom.items()))}")
+    add("R1", "domain counts A3 B3 C3 D2 E3 F3 G3 H3 I2 J2 K3 (27 scored + 3 controls)", dict(dom) == plan and len(scored) == n_scored_plan and len(controls) == 3, f"found {dict(sorted(dom.items()))}" + (f"; plan after dropping {list(drop)}: {dict(sorted(plan.items()))}" if drop else ""))
     ct = sorted(str(r["Control type (K1/K2/K3, domain K only)"]) for r in controls)
     add("R2", "controls: exactly one each of K1, K2, K3", ct == ["K1", "K2", "K3"], str(ct))
     ph = collections.Counter(r["Phr (E/L/N)"] for r in scored)
-    add("R3", "phrasing among the 27: at least 6 each of E, L, N", all(ph[x] >= 6 for x in "ELN") and sum(ph.values()) == 27, f"E {ph['E']}, L {ph['L']}, N {ph['N']}")
+    add("R3", "phrasing among the 27: at least 6 each of E, L, N", all(ph[x] >= 6 for x in "ELN") and sum(ph.values()) == n_scored_plan, f"E {ph['E']}, L {ph['L']}, N {ph['N']}" + (f" ({n_scored_plan} scored after dropping {list(drop)})" if drop else ""))
     hing = [r["Id"] for r in data["Questions"]["rows"] if r["Hinglish (Y/N)"] == "Y"]
     add("R4", "Hinglish 0 to 3 (counted as everyday)", len(hing) <= 3 and all(Q[i]["Phr (E/L/N)"] == "E" for i in hing), str(hing))
     sec = collections.Counter(r["Sec (NEW/OLD/NONE)"] for r in scored)
@@ -163,8 +180,9 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("workbook")
     ap.add_argument("--json")
+    ap.add_argument("--drop", default="", help="comma-separated ids dropped before sealing (scored questions only)")
     a = ap.parse_args(argv)
-    res = check(read(a.workbook))
+    res = check(read(a.workbook), [x.strip() for x in a.drop.split(",") if x.strip()])
     for r in res:
         print(("PASS " if r["ok"] else "FAIL ") + f"{r['id']:5} {r['rule']}" + ("" if r["ok"] else f"  [{r['detail']}]"))
         if r["ok"] and r["detail"]:

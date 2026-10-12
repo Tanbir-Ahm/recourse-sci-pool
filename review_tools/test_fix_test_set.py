@@ -13,6 +13,9 @@ import fix_test_set as F
 ROOT = F.ROOT
 WB = os.path.join(ROOT, "review_data", "ruler", "inputs", "2026-10-12_Fix_Test_New_Questions_N01-N30_as_received.xlsx")
 AUTH = os.path.join(ROOT, "review_results", "2026-10-12_new_questions_intake", "authorities_as_received.json")
+WB2 = os.path.join(ROOT, "review_data", "ruler", "inputs", "2026-10-12_Fix_Test_New_Questions_N01-N30_round2_as_received.xlsx")
+AUTH2 = os.path.join(ROOT, "review_results", "2026-10-12_new_questions_intake", "round2", "authorities_final_proposed.json")
+REHEARSAL = os.path.join(ROOT, "review_results", "2026-10-12_fix_test_f_rehearsal", "rehearsal_set.json")
 FAILS = []
 
 
@@ -85,5 +88,63 @@ try:
 except ValueError as e:
     ok = "soft-overlap" in str(e)
 check("build refuses a soft-overlap id that is not in the set", ok)
+# the round-2 file with N12 dropped before sealing (owner, 2026-10-12)
+SOFT2 = ["N02", "N04", "N06", "N07", "N13"]
+CONFIRMED = "642613ddc8618e1a15e1337f682179184c780de6a5c6d07189b6b41e09de424c"
+auth2 = json.load(open(AUTH2, encoding="utf-8"))
+pub2, key2 = F.build(WB2, auth2, SOFT2, "3c80a26e42bea75e5858be6ed44a2649ec701355", today="2026-10-12", drop=["N12"], confirmed_hash=CONFIRMED, confirmed_by="owner, 2026-10-12")
+Q2, K2 = {q["id"]: q for q in pub2["questions"]}, pub2["questions"]
+ids2 = [f"N{i:02d}" for i in range(1, 31) if i != 12]
+check("dropped N12: 29 questions N01 to N30 without N12, 26 scored + 3 controls, the drop is recorded", [q["id"] for q in pub2["questions"]] == ids2 and pub2["provenance"]["dropped"] == ["N12"]
+      and sum(1 for q in pub2["questions"] if q["domain"] != "K") == 26 and sum(1 for q in pub2["questions"] if q["domain"] == "K") == 3)
+check("the dropped question's key row is not in the sealed key", sorted(key2["questions"]) == sorted(ids2) and "N12" not in key2["questions"])
+check("the set passes its own check, with and without the key", F.check(pub2) == [] and F.check(pub2, key2) == [], (F.check(pub2), F.check(pub2, key2)))
+check("the writer's hash is computed over all 33 rows as received (N12 included) and equals the one the owner confirmed", pub2["provenance"]["writer_text_sha256"] == CONFIRMED and pub2["provenance"]["writer_confirmed_sha256"] == CONFIRMED and pub2["provenance"]["writer_hash_matches"], pub2["provenance"])
+check("the old hash still in the declaration is kept as declared, and is not what matches", pub2["provenance"]["writer_declared_sha256"] == "7a6963d1159963f5611c4df2fe4d9840ce7f37423d360e656e3afec83e1c99a3" and pub2["provenance"]["writer_confirmed_by"] == "owner, 2026-10-12")
+check("without a confirmed hash the stale declared hash is reported as not matching", not F.build(WB2, auth2, SOFT2, "abc", drop=["N12"])[0]["provenance"]["writer_hash_matches"])
+check("soft overlaps are exactly N02, N04, N06, N07, N13", sorted(i for i, q in Q2.items() if q["soft_overlap"]) == SOFT2)
+check("replacements read from the round-2 file: N02 has no Act and is a look-alike, N15 is PWDVA and the twin of N17", Q2["N02"]["acts"] == [] and Q2["N02"]["look_alike"] and Q2["N15"]["acts"] == ["PWDVA"] and Q2["N15"]["twin_of"] == "N17")
+check("the replacements have a primary authority in the index: D.K. Basu (N02) and Rajnesh v. Neha (N15)", K2 and pub2 and key2["questions"]["N02"]["primary_key_docs"] == [14580] and key2["questions"]["N15"]["primary_key_docs"] == [1000252794], (key2["questions"]["N02"]["primary_key_docs"], key2["questions"]["N15"]["primary_key_docs"]))
+check("N19 now has both Yuvaprakash and Rishipal Singh Solanki as primary documents, and the 'note' on an entry does not reach the sealed key", key2["questions"]["N19"]["primary_key_docs"] == [1000253442, 1000255124] and "note" not in json.dumps(key2["questions"]["N15"]["authorities"]))
+check("the four measurable currency traps still count as stale (N08, N10, N23, N24)", {i: [s["doc"] for s in key2["questions"][i]["stale_docs"] if s["counts_as_stale"]] for i in ("N08", "N10", "N23", "N24")} == {"N08": [17418], "N10": [30812], "N23": [16680], "N24": [39617]})
+check("N15 no longer carries a trap whose older ruling is outside the index", key2["questions"]["N15"]["stale_docs"] == [])
+# tampering with the drop is detected
+p6 = copy.deepcopy(pub2); p6["provenance"]["dropped"] = []
+check("removing the drop record from the public file is detected (the ids no longer fit and the freeze hash differs)", any("ids are not N01 to N30" in b for b in F.check(p6)) and any("changed since the freeze" in b for b in F.check(p6)), F.check(p6))
+p7 = copy.deepcopy(pub2); p7["provenance"]["dropped"] = ["N12", "N13"]
+check("adding a second drop record to hide a missing question is detected", any("changed since the freeze" in b for b in F.check(p7)) or any("ids are not" in b for b in F.check(p7)), F.check(p7))
+p8 = copy.deepcopy(pub2); p8["questions"] = [q for q in p8["questions"] if q["id"] != "N28"]
+check("a missing control is detected even though its id could be 'dropped'", any("ids are not" in b for b in F.check(p8)) or any("domain counts" in b for b in F.check(p8)), F.check(p8))
+# build refuses unsafe drops
+for drop, frag in ((["N28"], "U1"), (["N01", "N02", "N03", "N04", "N05", "N06", "N07"], "23 usable"), (["N99"], "U1")):
+    try:
+        F.build(WB2, auth2, [], "abc", drop=drop); ok = False
+    except ValueError as e:
+        ok = frag in str(e)
+    check(f"build refuses drop {drop} ({frag})", ok)
+try:
+    F.build(WB2, json.load(open(AUTH, encoding="utf-8")), [], "abc", drop=["N12"]); ok = False
+except ValueError as e:
+    ok = "dropped questions ['N12']" in str(e) or "no primary" in str(e)
+check("build refuses an authorities table that still names the dropped question (or lacks the replacements)", ok)
+try:
+    F.build(WB2, auth2, ["N12"], "abc", drop=["N12"]); ok = False
+except ValueError as e:
+    ok = "soft-overlap" in str(e)
+check("build refuses a soft overlap on a dropped question", ok)
+try:
+    F.build(WB2, auth2, [], "abc"); ok = False
+except ValueError as e:
+    ok = "N12: no primary authority" in str(e)
+check("keeping N12 without authorities for it is refused (nothing is silently dropped or kept)", ok)
+# the hand-out of a set with a drop
+with tempfile.TemporaryDirectory() as t:
+    runs = os.path.join(t, "runs.jsonl")
+    got = F.select(pub2, final=True, label="stage F", runs_path=runs, now=datetime.datetime(2026, 11, 1, 9, 0, tzinfo=datetime.timezone.utc))
+    check("the hand-out returns the 29 questions (no N12) and logs exactly those ids", [q["id"] for q in got] == ids2 and F.read_runs(runs)[0]["qids"] == ids2)
+# a set with nothing dropped keeps the freeze hash it always had
+if os.path.exists(REHEARSAL):
+    reh = F.load(REHEARSAL)
+    check("a set built before the drop option existed still has its freeze hash (nothing dropped changes nothing)", F.freeze_digest(reh) == reh["freeze"]["sha256"] and not (reh.get("provenance") or {}).get("dropped"))
 print("\nall passed" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)
