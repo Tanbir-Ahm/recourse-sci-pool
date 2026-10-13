@@ -220,10 +220,10 @@ index 1845aeb..8ce5dd1 100644
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
 diff --git a/register_hooks.py b/register_hooks.py
 new file mode 100644
-index 0000000..2f27c23
+index 0000000..728240c
 --- /dev/null
 +++ b/register_hooks.py
-@@ -0,0 +1,106 @@
+@@ -0,0 +1,108 @@
 +"""Fail-open hooks around the Overruled Register bundle (overruled_register/, exported by `python sci_goodlaw.py register-export-site`).
 +Order of lookup for a case: the register (person-confirmed rows firmly, candidates as "reported ... not yet confirmed"), then the cards overlay (the checker's reading, precomputed),
 +then the fixed "not checked by us" sentence. Nothing here ever says a case is good law. Every function returns its input unchanged (or empty notes) on any error, and REGISTER_HOOKS=off turns all of it off."""
@@ -316,7 +316,9 @@ index 0000000..2f27c23
 +                continue
 +            year = int(r["date"][:4]) if r.get("date") else None
 +            cits = r.get("citations") or {}
-+            cit = cits.get("scr") or cits.get("insc") or None
++            def _one(v):                       # the names table holds a string for open-bucket judgments and a list for crawl judgments
++                return v[0] if isinstance(v, (list, tuple)) and v else (v if isinstance(v, str) else None)
++            cit = _one(cits.get("scr")) or _one(cits.get("insc")) or _one(cits.get("air")) or None
 +            hits = [h for h in reg.lookup_case(name, year, cit) if h["strength"] == "strong" and reg.clause(h["row"])]
 +            if hits:
 +                row = hits[0]["row"]
@@ -332,7 +334,7 @@ index 0000000..2f27c23
 +    return out
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..e8c058e
+index 0000000..8c0727c
 --- /dev/null
 +++ b/sci_search_tier.py
 @@ -0,0 +1,127 @@
@@ -421,7 +423,7 @@ index 0000000..e8c058e
 +            return
 +        rec = shadow_record(question, found, answer_result)
 +        line = json.dumps(rec, ensure_ascii=False)
-+        logger.info("SCI_SHADOW %s", line)
++        print("SCI_SHADOW " + line, flush=True)             # stdout: the application's logger is at WARNING level on Railway, so logger.info would never show
 +        path = os.environ.get("SCI_SHADOW_LOG_FILE")
 +        if path:
 +            with open(path, "a", encoding="utf-8") as fh:
@@ -619,10 +621,10 @@ index 0000000..350ab38
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_sci_search_tier.py b/test_sci_search_tier.py
 new file mode 100644
-index 0000000..5bdb0b6
+index 0000000..519a877
 --- /dev/null
 +++ b/test_sci_search_tier.py
-@@ -0,0 +1,123 @@
+@@ -0,0 +1,130 @@
 +"""
 +test_sci_search_tier.py -- the wider-pool search tier on the website side (sci_search_tier.py + its call in chat_assistant.answer_question + the page box).
 +Fully offline and free: a local stand-in for the sci-search service, no model, no network beyond localhost. Run: python -X utf8 test_sci_search_tier.py
@@ -648,7 +650,7 @@ index 0000000..5bdb0b6
 +SEEN = {"calls": 0, "token": None, "body": None}
 +MODE = {"kind": "ok"}
 +RES = [
-+    {"rank": 1, "doc": 1, "case_name": "Raj Deo Sharma v. The State of Bihar", "date": "1999-05-03", "paragraph": "5", "link": "https://api.sci.gov.in/jonew/judis/1.pdf", "link_kind": "court_archive_pdf", "text": "Time limit held X.", "name_to_review": False, "citations": {}},
++    {"rank": 1, "doc": 1, "case_name": "Raj Deo Sharma v. The State of Bihar", "date": "1999-05-03", "paragraph": "5", "link": "https://api.sci.gov.in/jonew/judis/1.pdf", "link_kind": "court_archive_pdf", "text": "Time limit held X.", "name_to_review": False, "citations": {"air": ["1999 AIR 2000"], "scr": ["1999 SCR (3) 1"]}},
 +    {"rank": 2, "doc": 2, "case_name": "Arnesh Kumar v. State of Bihar", "date": "2014-07-02", "paragraph": "9", "link": "https://x/2.pdf", "link_kind": "open_bucket_pdf", "text": "Arrest guidelines.", "name_to_review": False, "citations": {}},
 +    {"rank": 3, "doc": 3, "case_name": None, "date": None, "paragraph": "1", "link": "https://api.sci.gov.in/jonew/judis/3.pdf", "link_kind": "court_archive_pdf", "text": "unnamed", "name_to_review": True, "citations": {}},
 +    {"rank": 4, "doc": 1, "case_name": "Raj Deo Sharma v. The State of Bihar", "date": "1999-05-03", "paragraph": "7", "link": "https://api.sci.gov.in/jonew/judis/1.pdf", "link_kind": "court_archive_pdf", "text": "again", "name_to_review": False, "citations": {}},
@@ -703,6 +705,13 @@ index 0000000..5bdb0b6
 +check("question" not in rec and len(rec["q_hash"]) == 16, "the shadow log has a hash of the question, not the text, by default")
 +check(len(rec["results"]) == 4 and rec["results"][0]["flag"] == "register" and "overruled" in (rec["results"][0]["note"] or "").lower(), f"and a register flag on Raj Deo Sharma (overruled): {rec['results'][0]['flag']}")
 +check(rec["flagged"] >= 1 and rec["results"][2]["flag"] == "none", "unnamed judgments are not looked up")
++# the shadow line goes to stdout (what Railway's log shows), and a list-valued citation (crawl judgments) does not break the flags
++import io, contextlib
++buf = io.StringIO()
++with contextlib.redirect_stdout(buf):
++    T.attach("third question", dict(ANS), background=False)
++out_lines = [l for l in buf.getvalue().splitlines() if l.startswith("SCI_SHADOW ")]
++check(len(out_lines) == 1 and json.loads(out_lines[0][len("SCI_SHADOW "):])["results"][0]["flag"] == "register", "the shadow record is printed to stdout as one 'SCI_SHADOW {...}' line, with the register flag even when the citation is a list")
 +os.environ["SCI_SHADOW_LOG_QUESTIONS"] = "1"
 +MODE["kind"] = "ok"
 +T.attach("second?", dict(ANS), background=False)
