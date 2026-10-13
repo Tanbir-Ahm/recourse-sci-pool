@@ -12,6 +12,7 @@ Row: `doc`, `name` (readable "Petitioner v. Respondent", or null), `petitioner`,
 | 2 fetched by hand | the title recorded then | the URL recorded then |
 
 ## What was checked
+- **Link points to the right judgment (court links), 2026-10-13: 8,100 of 8,100.** Each crawl judgment's indexed passages were found inside the crawl record with the same id: 8,096 by text, and the other 4 (short records whose numbering differs slightly) by reading the opening lines.
 - **Links, live, 2026-10-13: 240 of 240.** A random 120 of each kind (`link_check.json`): every one returned a PDF whose size equals the size stored when it was downloaded. This shows the link opens the same file we read; it does not show the court will keep the URL.
 - **Names:** 10,454 of 10,522 have a name; **68 are unnamed and flagged `review`** (their link and date are kept). `review_sample.csv` lists 150 random named rows plus all 68 unnamed, beside the first 260 characters of the judgment, with columns for a person to mark. **No person has checked it yet.**
 - 727 rows have no date (modern judgments whose date is only at the end of the text and was not read).
