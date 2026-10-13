@@ -1,5 +1,7 @@
 # Staging deployment, step by step (written 2026-10-13; nothing here has been done on Railway)
 
+**For a first-timer on the Hobby plan, use `DEPLOY_STAGING_BEGINNER.md` instead (same plan, every click spelled out). This file is the technical reference.** Hobby facts found 2026-10-13: memory about $10/GB/month, volumes $0.15/GB/month and up to 5 GB, private networking is IPv6 and only within one project and environment (so the website and the search service must be in the same project).
+
 Everything Claude can do without your Railway account is done and tested (below). The steps marked **YOU** need your Railway and GitHub accounts. Railway's screens change; where I describe a screen from memory it is marked [Likely]. Nothing in this runbook touches production (`recourse.co.in`) until Part 6.
 
 ## What is ready
@@ -32,7 +34,7 @@ Everything Claude can do without your Railway account is done and tested (below)
 
 ## Part 3: connect the website to it in shadow mode (YOU, 5 minutes)
 In the staging **website** service, add variables:
-- `SCI_SEARCH_URL=http://<search service name>.railway.internal:8080` [Likely: the private address is shown under the search service's Settings, Networking]
+- `SCI_SEARCH_URL=http://sci-search.railway.internal:8080` (name the service exactly `sci-search`)
 - `SCI_SEARCH_TOKEN=` the same string as in Part 2
 - `SCI_SEARCH_MODE=shadow`
 - optional `SCI_SHADOW_LOG_FILE` is not needed (the website's logs hold the records). Leave `SCI_SHADOW_LOG_QUESTIONS` unset: the log then holds a hash of each question, not its text. Set it to `1` only on staging, for your own test questions.

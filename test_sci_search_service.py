@@ -142,6 +142,26 @@ srv, base = start(svc(enabled=False), None)
 check("the kill switch shows in /health and /search is 503", req(base + "/health")[1]["enabled"] is False and req(base + "/search", {"question": Q})[0] == 503)
 srv.shutdown()
 
+# ---- dual stack: the same server answers on IPv4 and on IPv6 (Railway's private network is IPv6) ----
+import socket as _sk
+if _sk.has_ipv6:
+    try:
+        ds = S.make_server(svc(), "::", 0, None)
+        threading.Thread(target=ds.serve_forever, daemon=True).start()
+        port = ds.server_address[1]
+        r4 = urllib.request.urlopen(f"http://127.0.0.1:{port}/health", timeout=10).status
+        r6 = urllib.request.urlopen(f"http://[::1]:{port}/health", timeout=10).status
+        check("host '::' answers on IPv4 (127.0.0.1) and on IPv6 (::1)", r4 == 200 and r6 == 200)
+        ds.shutdown()
+    except OSError as e:
+        print("SKIP dual-stack test: this machine cannot use IPv6 on loopback:", e)
+else:
+    print("SKIP dual-stack test: no IPv6 here")
+
+ms = S.make_server(svc(), "::", 0, None)
+check("host '::' always gives a working server (dual-stack where the machine has IPv6, IPv4 where it does not)", ms.server_address[1] > 0)
+ms.server_close()
+
 # ---- the command line refuses to start open ----
 env = dict(os.environ); env.pop("SCI_SEARCH_TOKEN", None)
 import subprocess

@@ -4,7 +4,7 @@ Recipe B (the stage F baseline, kept by the owner on 2026-10-12): 100 passages b
 rank (K = 60) into 60 candidates, re-ranked by rerank-3-lite, multiplied by the passage-type weights (and 1.10 when the passage names a section the question names), top 10. The side indexes
 (review_data/side_index/*) are searched with the main index. The ranking code mirrors review_tools/pool_runner.Engine; test_sci_search_service.py checks the two give the same list.
 
-    python sci_search_service.py serve [--host 0.0.0.0] [--port $PORT]     # the service; needs VOYAGE_API_KEY and SCI_SEARCH_TOKEN
+    python sci_search_service.py serve [--host ::] [--port $PORT]     # the service; needs VOYAGE_API_KEY and SCI_SEARCH_TOKEN
     python sci_search_service.py report [--json OUT]                       # sizes, load time and memory, no network, no key needed
     python sci_search_service.py ask "question text"                       # one real search from the command line (costs about a tenth of a cent of Voyage credit)
 
@@ -25,6 +25,7 @@ import json
 import os
 import re
 import resource
+import socket
 import sqlite3
 import subprocess
 import sys
@@ -451,8 +452,31 @@ def make_handler(service, token):
     return Handler
 
 
+class DualStackServer(ThreadingHTTPServer):
+    """Listens on IPv6 and IPv4 together (host '::'). Railway's private network between services is IPv6 in older environments, so a server bound only to 0.0.0.0 cannot be reached there."""
+    address_family = socket.AF_INET6
+
+    def server_bind(self):
+        try:
+            self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+        except (AttributeError, OSError):
+            pass
+        super().server_bind()
+
+
+def make_server(service, host, port, token):
+    """A dual-stack server for '::' (or ''), an ordinary one for a given IPv4 address; falls back to IPv4 when the machine has no IPv6."""
+    handler = make_handler(service, token)
+    if host in ("::", ""):
+        try:
+            return DualStackServer(("::", port), handler)
+        except OSError:
+            host = "0.0.0.0"
+    return ThreadingHTTPServer((host, port), handler)
+
+
 def serve(service, host, port, token):
-    srv = ThreadingHTTPServer((host, port), make_handler(service, token))
+    srv = make_server(service, host, port, token)
     print(f"sci-search listening on {host}:{port}; index {service.info.get('index_commit', '?')[:10] if service.info.get('index_commit') else '?'}, {service.info.get('passages'):,} passages", flush=True)
     srv.serve_forever()
 
@@ -483,7 +507,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("serve")
-    s.add_argument("--host", default="0.0.0.0")
+    s.add_argument("--host", default="::", help='"::" = IPv6 and IPv4 together (needed on Railway\'s private network); 127.0.0.1 for local tests')
     s.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8080")))
     s.add_argument("--no-auth", action="store_true", help="only with --host 127.0.0.1: no X-Search-Token")
     r = sub.add_parser("report")
