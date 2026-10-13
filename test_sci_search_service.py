@@ -76,6 +76,20 @@ s2 = svc(max_text=40)
 check("passage text is cut to SCI_MAX_TEXT", all(len(r["text"]) <= 43 for r in s2.search(Q)["results"]) and s2.search(Q)["results"][0]["text"].endswith("..."))
 check("k limits the list (1 to 20)", len(svc().search(Q, 3)["results"]) == 3 and len(svc().search(Q, 99)["results"]) == 20 and len(svc().search(Q, 0)["results"]) == 1)
 
+# ---- names and links from the names table ----
+s_n = svc()
+s_n.names = {100: {"doc": 100, "name": "Alpha v. State", "date": "2001-02-03", "citations": {"scr": "[2001] 1 SCR 1"}, "link": "https://api.sci.gov.in/jonew/judis/100.pdf", "link_kind": "court_archive_pdf", "review": False},
+             101: {"doc": 101, "name": None, "date": None, "citations": {}, "link": "https://api.sci.gov.in/jonew/judis/101.pdf", "link_kind": "court_archive_pdf", "review": True}}
+for rr in s_n.search(Q, 20)["results"]:
+    if rr["doc"] == 100:
+        check("a result carries the names-table name, date, citations and link", rr["case_name"] == "Alpha v. State" and rr["date"] == "2001-02-03" and rr["link"].endswith("/judis/100.pdf") and rr["name_to_review"] is False, rr)
+        break
+else:
+    check("doc 100 came up", False)
+r101 = [rr for rr in s_n.search(Q, 20)["results"] if rr["doc"] == 101]
+check("a row with no name still has its link and is marked for review, falling back to the old title", not r101 or (r101[0]["link"] and r101[0]["name_to_review"] is True and r101[0]["case_name"]), r101)
+check("without a table the results carry no link rather than a made-up one", all(rr["link"] is None for rr in svc().search(Q)["results"]))
+
 # ---- refusals ----
 def refused(fn):
     try:

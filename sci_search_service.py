@@ -12,7 +12,8 @@ Endpoints: GET /health (no secret, no question text); POST /search {"question": 
 the index commit, and the date the index ends. Nothing in it says a case is good law; the website puts the Overruled Register and the cards overlay on top (REGISTER_SITE_PATCH.md).
 Safety: SCI_SEARCH_ENABLED=0 turns /search off at once (503); a daily cap on re-rank tokens (SCI_DAILY_RERANK_TOKENS, default 5,000,000: about 230 questions a day at the measured 21,700 tokens each, about a quarter of a dollar) answers 429 when spent; one search
 at a time (a lock); questions over 2,000 characters are refused; the caller is expected to fail open (answer as it does today) on anything but 200.
-Environment: SCI_INDEX_DIR (default ../recourse-sci-index), SCI_SIDE_INDEXES (comma-separated folders; default the three in review_data/side_index), SCI_INDEX_COMMIT (when the index folder is not a git checkout),
+Names and links: names_table/names_table.json.gz (built by names_table/build_names_table.py for the same index commit; the service refuses to start on a table built for another commit) gives each result a readable case_name, date, citations and a link to the judgment's PDF.
+Environment: SCI_NAMES_TABLE (default names_table/names_table.json.gz), SCI_INDEX_DIR (default ../recourse-sci-index), SCI_SIDE_INDEXES (comma-separated folders; default the three in review_data/side_index), SCI_INDEX_COMMIT (when the index folder is not a git checkout),
 SCI_RERANK_MODEL (default rerank-3-lite), SCI_MAX_TEXT (characters of passage text returned, default 1500), VOYAGE_API_KEY, SCI_SEARCH_TOKEN, PORT.
 """
 import collections
@@ -141,6 +142,7 @@ class SearchService:
         self.info = info or {}
         self.rerank_model, self.daily_cap, self.max_text, self.clock, self.sleep, self.enabled = rerank_model, daily_rerank_tokens, max_text, clock, sleep, enabled
         self.header_docs = set()
+        self.names = {}
         self.lock = threading.Lock()
         self.day, self.rerank_today, self.embed_today, self.searches_today = None, 0, 0, 0
         self.started = clock()
@@ -173,6 +175,14 @@ class SearchService:
         info = {"index_commit": head, "passages": len(metas), "passages_main": n_main, "documents": len(docs), "side_indexes": sides, "as_of": as_of, "embed_model": EMBED_MODEL,
                 "documents_without_title": sum(1 for d in docs if not title(d)), "vector_dtype": str(M.dtype), "vector_dim": int(M.shape[1]), "load_seconds": round(time.time() - t0, 1)}
         svc = cls(metas, M, client or si.make_client(), title, fts, info, **kw)
+        names_path = os.environ.get("SCI_NAMES_TABLE") or os.path.join(HERE, "names_table", "names_table.json.gz")
+        if os.path.exists(names_path):
+            with gzip.open(names_path, "rt", encoding="utf-8") as fh:
+                nd = json.load(fh)
+            svc.names = {r["doc"]: r for r in nd["rows"]}
+            info["names_table"] = {"rows": len(svc.names), "named": nd.get("named"), "built": nd.get("built"), "index_commit": nd.get("index_commit")}
+            if nd.get("index_commit") and head and nd["index_commit"] != head:
+                raise ValueError(f"the names table was built for index {nd['index_commit'][:7]}, not {head[:7]}; rebuild it (names_table/build_names_table.py)")
         svc.header_docs = {d for d in docs if not ((case_meta.get(d) or {}).get("pet") or (case_meta.get(d) or {}).get("resp")) and d not in src_title and d not in extra}
         info["documents_named_from_opening_lines"] = len(svc.header_docs) - info["documents_without_title"]
         return svc
@@ -247,7 +257,9 @@ class SearchService:
             for rank, (rid, score) in enumerate(top, 1):
                 m = self.metas[rid]
                 text = re.sub(r"[ \t]+", " ", m["text"]).strip()
-                results.append({"rank": rank, "doc": m["doc"], "case_name": self.title(m["doc"]), "paragraph": m["pn"], "page": m.get("page"), "name_is_opening_lines": m["doc"] in self.header_docs, "passage_type": m["section"], "score": round(float(score), 4),
+                nm = self.names.get(m["doc"])
+                results.append({"rank": rank, "doc": m["doc"], "case_name": (nm or {}).get("name") or self.title(m["doc"]), "date": (nm or {}).get("date"), "citations": (nm or {}).get("citations") or {},
+                                "link": (nm or {}).get("link"), "link_kind": (nm or {}).get("link_kind"), "name_to_review": bool(nm["review"]) if nm else None, "paragraph": m["pn"], "page": m.get("page"), "name_is_opening_lines": (m["doc"] in self.header_docs) if not nm else (nm["name"] is None), "passage_type": m["section"], "score": round(float(score), 4),
                                 "text": text[: self.max_text] + ("..." if len(text) > self.max_text else ""), "passage_id": m["h"]})
             return {"ok": True, "tier": TIER, "recipe": "B", "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "disclaimer": DISCLAIMER,
                     "seconds": round(time.time() - t0, 2), "results": results}
