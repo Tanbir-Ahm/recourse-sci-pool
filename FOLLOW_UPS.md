@@ -17,6 +17,9 @@ Steps 7 to 10 are built and tested (details in `DEPLOYMENT_PLAN.md` section 6). 
 ## 0c. Owner's answers, 2026-10-12 (after Phase 1)
 Patch applied by Claude to branch `register-hooks-and-overlay` of Tanbir-Ahm/recourse (not main). Criminal trap exam not to be run until deployed to the main website (see DEPLOYMENT_PLAN section 8 for the risk). Names table: explained to the owner, not yet built. Phase 0: Railway payment soon; whatsapp-bot = same engine; product = layman module + lawyer module; register sheet going to Mr. Advocate.
 
+## 0d. "Proceed as per the plan", 2026-10-13
+Done by Claude: names table (all 10,522 judgments linked; 10,454 named, 68 to review), search service with names/links and an index loader, website search-tier client (off/shadow/show) on Recourse branch `register-hooks-and-overlay` (head `efbefff`, 64/64 free tests), `DEPLOY_STAGING.md`. Waiting on the owner: create the staging Railway project and services (Parts 1 to 3 of DEPLOY_STAGING.md), the memory/volume limits of the Railway plan, Mr. Advocate's review of the register sheet and `names_table/review_sample.csv`. Production merge needs the owner's explicit say-so.
+
 ## 1. Monthly refresh of the bucket text (cloud routine) - decide after the good-law checker is reviewed
 - What: a routine that, each month, lists the open bucket, downloads judgments added since the last run, extracts the text and pushes it to `claude/sci-bucket`, then updates the checker's data. `BUCKET_RUNBOOK.md` and `sci_bucket.py` already work this way for one run.
 - Why it waits: (a) a routine session starts from `main`, and `sci_bucket.py`, the checker and the runbooks are only on `claude/sharp-euler-unyfv0`; merging to `main` is the owner's decision (no PR has been opened); (b) the routine needs an environment that can reach the bucket (`sci-index` can); (c) the checker should be reviewed first, so the routine refreshes something the owner trusts.
