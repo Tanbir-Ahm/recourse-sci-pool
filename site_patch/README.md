@@ -8,11 +8,12 @@
 
 ## The trap exam (Phase 1 step 9): how to run it, and what it can and cannot show
 
-**Finding first:** 35 or more of the original 50 trap questions (`register_exam/`) are about tax, service, property or arbitration cases. The live site is a criminal-law tool and will probably refuse them, which would make the exam "pass" by saying nothing. Only 14 register rows (of 1,765) concern cases that are in the criminal-law index. So there are two exams:
+**Finding first:** 35 or more of the original 50 trap questions (`register_exam/`) are about tax, service, property or arbitration cases. The live site is a criminal-law tool and will probably refuse them, which would make the exam "pass" by saying nothing. Only 14 register rows (of 1,765) concern cases that are in the criminal-law index. So there are three exams (the first, 'situation', was added after the staging test of 13 October):
 
 | Exam | Questions | Use |
 |---|---|---|
-| `register_exam/criminal/` (`--exam criminal`, the default) | 28 (14 register rows, 2 phrasings each) | The one that can test the live site. Built by `build_criminal_exam.py` from the index titles (14 rows: 11 by party names and year, 3 added by hand after reading the titles). |
+| `register_exam/situation/` (`--exam situation`, the default since 2026-10-13) | 24 (12 register rows, each as a real fact pattern: once naming the overruled case, once not) | **The best test of the live site.** Staging showed that the site refuses bare "is X still good law?" questions (a scope filter that varies run to run), but answers situations and then adds the register note. Topics read from the judgments' own text or the overruling judgments; built by `build_situation_exam.py` |
+| `register_exam/criminal/` (`--exam criminal`) | 28 (14 register rows, 2 phrasings each) | The one that can test the live site. Built by `build_criminal_exam.py` from the index titles (14 rows: 11 by party names and year, 3 added by hand after reading the titles). |
 | `register_exam/` (`--exam original`) | 50 | Tests only the matching and the guard on cases from the whole register; expect most answers to be refusals. |
 
 Run (on your own computer: it calls the real Anthropic model and Voyage with the Recourse keys, so it costs credit; [Guessing] a few dollars for 56 answers, try `--limit 3` first):

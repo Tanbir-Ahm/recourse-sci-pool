@@ -1,5 +1,70 @@
+diff --git a/case_check.py b/case_check.py
+new file mode 100644
+index 0000000..4053b77
+--- /dev/null
++++ b/case_check.py
+@@ -0,0 +1,59 @@
++"""Case check: type one case, get what our Overruled Register and our automatic check say about it -- no model, no network, no cost, the same answer every time.
++
++Order: the register (a person-confirmed row is worded firmly, a candidate row as "reported ... not yet confirmed by our reviewer"), then the checker's card for the 76 library cases (a warning is
++shown with its quote; "no later adverse judgment found" is silence in the judgments we hold, not a finding about the law), then the fixed sentence "Not checked by us ...". A bare name ("the Mohan Lal case")
++is never matched: the register recognises a case by its reported citation, or by both party names plus the year. Nothing here says a case is good law. Fail-open: any error gives the 'not available' result.
++"""
++import logging
++
++logger = logging.getLogger(__name__)
++ASK_MORE = ("To look a case up we need both party names and the year, for example Mohan Lal v. State of Punjab (2018), or its reported citation, for example (2018) 17 SCC 627. "
++            "A single name is not enough: many cases share one.")
++LIMIT = ("This check reads only our Overruled Register and an automatic check of 76 library cases. Finding nothing is not a finding that a case is still good law; "
++         "a lawyer must confirm any case before it is cited.")
++
++
++def check_case(text):
++    """{'status': 'empty'|'need_more'|'register'|'card_warning'|'card_quiet'|'not_checked'|'unavailable', 'notes': [sentences], 'case': name or None, 'evidence': quote dict or None, 'limit': LIMIT}."""
++    out = {"status": "empty", "notes": [], "case": None, "evidence": None, "limit": LIMIT}
++    text = (text or "").strip()
++    if not text:
++        return out
++    try:
++        from overruled_register import overlay as OV
++        from overruled_register import cites as C
++        import register_hooks as RH
++        if RH._off():
++            return {"status": "unavailable", "notes": ["The case check is switched off."], "case": None, "evidence": None, "limit": LIMIT}
++        reg, ov = RH._load()
++        mentions = OV.case_mentions(text)
++        cits = C.find_cites(text)
++        name = mentions[0]["name"] if mentions else None
++        year = mentions[0]["year"] if mentions else None
++        cit = OV._key_text(cits[0][0]) if cits else None
++        if cit == "":
++            cit = None
++        if not (name or cit):
++            out.update(status="need_more", notes=[ASK_MORE])
++            return out
++        out["case"] = name or text[:120]
++        hits = reg.lookup_case(name, year, cit)
++        strong = [h for h in hits if h["strength"] == "strong" and reg.clause(h["row"])]
++        if strong:
++            row = strong[0]["row"]
++            out.update(status="register", notes=[reg.clause_group([row] + reg.same_decision_rows(row))], case=name or row["overruled"]["name"])
++            return out
++        entry = ov.lookup(name, year, cit) if ov else None
++        if entry is None and hits and not year and not cit:
++            out.update(status="need_more", notes=["We hold a case with these party names, but without the year or the citation we cannot tell which one you mean. " + ASK_MORE])
++            return out
++        if entry is not None and entry["kind"] in ("warning", "caution"):
++            out.update(status="card_warning", notes=[entry["note"]], evidence=entry.get("evidence"), case=entry["name"])
++        elif entry is not None and entry["kind"] == "quiet":
++            out.update(status="card_quiet", notes=[entry["note"]], case=entry["name"])
++        else:
++            out.update(status="not_checked", notes=[OV.NOT_CHECKED])
++        return out
++    except Exception as exc:  # noqa: BLE001 -- fail-open
++        logger.warning("case check failed: %s", type(exc).__name__)
++        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..f6b9e25 100644
+index 789f8e7..cff4909 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -462,6 +462,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
@@ -41,7 +106,7 @@ index 789f8e7..f6b9e25 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -3203,6 +3221,25 @@ def _attach_cited_judgment_links(result):
+@@ -3203,6 +3221,26 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -52,7 +117,8 @@ index 789f8e7..f6b9e25 100644
 +        if not isinstance(result, dict) or result.get("state") not in _LINK_STATES:
 +            return result
 +        from register_hooks import answer_notes
-+        res = answer_notes(result.get("response_text") or "")
++        srcs = [l.get("case_name") for l in (result.get("cited_judgment_links") or []) if isinstance(l, dict)]      # the site's own listed sources need no "not checked" line
++        res = answer_notes(result.get("response_text") or "", exclude_names=srcs)
 +        if res["notes"]:
 +            result["register_notes"] = res["notes"]
 +        if res["not_checked"]:
@@ -67,7 +133,7 @@ index 789f8e7..f6b9e25 100644
  def answer_question(question, inline_domains=frozenset()):
      """Public entry point for the chat interface. Runs _answer_question_core (all the retrieval, generation and
      state logic; see its docstring for the possible states) and then attaches 'cited_judgment_links' -- a real,
-@@ -3210,7 +3247,13 @@ def answer_question(question, inline_domains=frozenset()):
+@@ -3210,7 +3248,13 @@ def answer_question(question, inline_domains=frozenset()):
      exactly as the core produced it."""
      result = _answer_question_core(question, inline_domains=inline_domains)
      try:
@@ -83,10 +149,41 @@ index 789f8e7..f6b9e25 100644
          return result
  
 diff --git a/recourse_app.py b/recourse_app.py
-index 1845aeb..f01c706 100644
+index 1845aeb..8ce5dd1 100644
 --- a/recourse_app.py
 +++ b/recourse_app.py
-@@ -880,6 +880,34 @@ def render_answer(result: dict):
+@@ -582,8 +582,30 @@ with st.form("situation_form", border=False, clear_on_submit=False):
+ # --------------------------------------------------------------------------
+ # footer: how it works + about + disclaimer  (shown on every view)
+ # --------------------------------------------------------------------------
++def _case_check_box():
++    """For lawyers: one case against the Overruled Register and the cards (case_check.py). No model, no cost."""
++    with st.expander("For lawyers: check whether one case has been overruled"):
++        st.markdown("Type a case with both party names and the year, or its reported citation. This reads only our Overruled Register and an automatic check of 76 library cases. "
++                    "It does not use the language model.")
++        q = st.text_input("Case", key="case_check_q", placeholder="e.g. Mohan Lal v. State of Punjab (2018)   or   (2018) 17 SCC 627")
++        if q.strip():
++            try:
++                import case_check
++                r = case_check.check_case(q)
++            except Exception:
++                r = None
++            if r:
++                for n in r["notes"]:
++                    st.markdown(f'<div class="r-concord">{esc(n)}</div>', unsafe_allow_html=True)
++                ev = r.get("evidence")
++                if ev and ev.get("quote"):
++                    st.markdown(f'<div class="r-mono">{esc(ev["quote"])}</div><p class="r-foot">{esc(str(ev.get("title") or ""))} {esc(str(ev.get("date") or ev.get("year") or ""))}</p>', unsafe_allow_html=True)
++                st.markdown(f'<p class="r-foot">{esc(r["limit"])}</p>', unsafe_allow_html=True)
++
++
+ def _footer():
+     st.html('<hr class="r-rule">')
++    _case_check_box()
+ 
+     with st.expander("How Recourse works — and why it won't invent a case"):
+         st.markdown(
+@@ -880,6 +902,34 @@ def render_answer(result: dict):
                              f'<span class="r-src">{esc(cl.get("source_label", "source link"))}</span>',
                              unsafe_allow_html=True)
  
@@ -123,7 +220,7 @@ index 1845aeb..f01c706 100644
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
 diff --git a/register_hooks.py b/register_hooks.py
 new file mode 100644
-index 0000000..dd59375
+index 0000000..2f27c23
 --- /dev/null
 +++ b/register_hooks.py
 @@ -0,0 +1,106 @@
@@ -186,7 +283,7 @@ index 0000000..dd59375
 +        return matches
 +
 +
-+def answer_notes(text):
++def answer_notes(text, exclude_names=()):
 +    """Lock (c): {'notes': [sentences to show], 'not_checked': one fixed sentence or None, 'review': [weak matches for a person]} for a finished answer.
 +    notes = the register's sentences, then the checker's warning cards (worded as the card words them); a quiet card adds nothing."""
 +    empty = {"notes": [], "not_checked": None, "review": []}
@@ -195,7 +292,7 @@ index 0000000..dd59375
 +    try:
 +        from overruled_register import overlay as OV
 +        reg, ov = _load()
-+        res = OV.audit_answer(reg, ov, text or "")
++        res = OV.audit_answer(reg, ov, text or "", exclude_names=exclude_names)
 +        notes = list(res["register_notes"])
 +        for c in res["card_notes"]:
 +            notes.append(f'{c["case"]}: {c["note"]}')
@@ -366,12 +463,71 @@ index 0000000..e8c058e
 +    except Exception as exc:  # noqa: BLE001 -- fail-open
 +        logger.warning("sci tier attach failed: %s", type(exc).__name__)
 +    return result
+diff --git a/test_case_check.py b/test_case_check.py
+new file mode 100644
+index 0000000..2e8f52b
+--- /dev/null
++++ b/test_case_check.py
+@@ -0,0 +1,53 @@
++"""
++test_case_check.py -- the lawyers' case check (case_check.py + its box in recourse_app.py). Offline and free: no model, no network. Run: python -X utf8 test_case_check.py
++"""
++import os
++import sys
++
++import case_check as CC
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++os.environ.pop("REGISTER_HOOKS", None)
++r = CC.check_case("")
++check(r["status"] == "empty" and r["notes"] == [], "an empty box gives nothing")
++r = CC.check_case("Raj Deo Sharma v. State of Bihar (1999)")
++check(r["status"] == "register" and "was overruled by" in r["notes"][0] and "Ramachandra Rao" in r["notes"][0], f"a verified row is worded firmly: {r['notes']}")
++r = CC.check_case("Mohan Lal v. State of Punjab (2018)")
++check(r["status"] == "register" and "reported as" in r["notes"][0] and "not yet confirmed by our reviewer" in r["notes"][0], f"a candidate row is 'reported ... not yet confirmed': {r['notes']}")
++r = CC.check_case("(2018) 17 SCC 627")
++check(r["status"] == "register" and "Mohan Lal" in r["notes"][0], "a citation alone finds it")
++r = CC.check_case("Arnesh Kumar v. State of Bihar (2014)")
++check(r["status"] == "card_quiet" and "not a finding that it is still good law" in r["notes"][0], f"a quiet card says it is silence, not a finding: {r['notes']}")
++r = CC.check_case("Ram Prasad v. State of Bihar (2003)")
++check(r["status"] == "not_checked" and r["notes"][0].startswith("Not checked by us"), "an unknown case gets the fixed 'not checked by us' sentence")
++r = CC.check_case("the Mohan Lal case")
++check(r["status"] == "need_more" and "both party names and the year" in r["notes"][0], "a bare name is not matched; it asks for the year or citation")
++r = CC.check_case("Mohan Lal v. State of Punjab")
++check(r["status"] == "need_more", f"both names but no year or citation: asks, does not guess ({r['status']})")
++r = CC.check_case("Mohan Lal v. State of Punjab (2005)")
++check(r["status"] != "register", "a wrong year is not matched")
++allout = " ".join(" ".join(CC.check_case(q)["notes"]) for q in ("Raj Deo Sharma v. State of Bihar (1999)", "Mohan Lal v. State of Punjab (2018)", "Arnesh Kumar v. State of Bihar (2014)", "Ram Prasad v. State of Bihar (2003)", "(2018) 17 SCC 627"))
++check("is good law" not in allout.replace("not a finding that it is still good law", "").replace("still good law?", "") and "are good law" not in allout, "no result calls a case good law")
++os.environ["REGISTER_HOOKS"] = "off"
++check(CC.check_case("Raj Deo Sharma v. State of Bihar (1999)")["status"] == "unavailable", "REGISTER_HOOKS=off switches the case check off too, without raising")
++os.environ.pop("REGISTER_HOOKS")
++check(CC.check_case("x" * 5000)["status"] in ("need_more", "not_checked"), "a very long input does not raise")
++
++from streamlit.testing.v1 import AppTest
++
++
++at = AppTest.from_file(os.path.join(os.path.dirname(os.path.abspath(__file__)), "recourse_app.py"), default_timeout=90).run()
++check(not at.exception, "the page with the case check box renders")
++check(any("check whether one case has been overruled" in e.label for e in at.expander), "the box is there, labelled for lawyers")
++at.text_input(key="case_check_q").set_value("Raj Deo Sharma v. State of Bihar (1999)").run()
++check(any("was overruled by" in m.value for m in at.markdown), "typing a case in the box shows the register note")
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
 diff --git a/test_register_hooks.py b/test_register_hooks.py
 new file mode 100644
-index 0000000..d6ed378
+index 0000000..350ab38
 --- /dev/null
 +++ b/test_register_hooks.py
-@@ -0,0 +1,83 @@
+@@ -0,0 +1,89 @@
 +"""
 +test_register_hooks.py -- the Overruled Register hooks (register_hooks.py + the three call sites in chat_assistant.py / recourse_app.py).
 +Fully offline and free: no API calls, nothing written. Run: python -X utf8 test_register_hooks.py
@@ -447,6 +603,12 @@ index 0000000..d6ed378
 +finally:
 +    builtins.__import__ = real_import
 +check(ok, "with the bundle missing every hook returns empty and does not raise")
++
++# the case the answer itself relies on (listed by the site as a source) is not called "not checked"
++scen = {"state": "single_match", "response_text": "The Constitution Bench in Mukesh Singh v. State (Narcotic Branch of Delhi) held that the dual role is not by itself fatal. It overruled the earlier line, including Mohan Lal v. State of Punjab (2018) 17 SCC 627.",
++        "cited_judgment_links": [{"case_name": "Mukesh Singh v State (Narcotic Branch of Delhi)", "url": "https://x"}]}
++r_s = CA._attach_register_notes(dict(scen))
++check(any("Mohan Lal" in n for n in r_s.get("register_notes", [])) and "register_not_checked" not in r_s, f"the overruling case and the listed source are not called 'not checked': {r_s.get('register_not_checked')}")
 +
 +# WhatsApp: the same notes go out as one message, before the judgment links
 +import whatsapp_formatter as WF

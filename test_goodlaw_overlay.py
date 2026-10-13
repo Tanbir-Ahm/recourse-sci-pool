@@ -73,6 +73,15 @@ check(len(r3["card_notes"]) == 1 and "appears to overrule" in r3["card_notes"][0
 check(OV.audit_answer(None, None, "Ram Lal v. State of Delhi (2001) 1 SCC 1 held X.")["not_checked"] == ["Ram Lal v. State of Delhi"], "with no register and no overlay every named case is 'not checked'")
 check(OV.audit_answer(reg, ov, "") == {**OV.audit_answer(reg, ov, ""), "not_checked": []} and OV.audit_answer(reg, ov, None)["not_checked_sentence"] is None, "an empty answer gives nothing and does not fail")
 
+# the case an answer relies on is not called "not checked"
+tt = "In Mukesh Singh v. State (Narcotic Branch of Delhi) the Court held X. It overruled the earlier line, including Mohan Lal v. State of Punjab (2018) 17 SCC 627. Also see Ram Prasad v. State of Bihar (2003) 1 SCC 1."
+check([m["name"] for m in OV.case_mentions(tt)][:2] == ["Mukesh Singh v. State (Narcotic Branch of Delhi)", "Mohan Lal v. State of Punjab"], "a name with a closing parenthetical is read whole, and no words after it are swallowed")
+ra = OV.audit_answer(reg, ov, tt)
+check(ra["not_checked"] == ["Ram Prasad v. State of Bihar"], f"the overruling case named in a register note is not called 'not checked' ({ra['not_checked']})")
+rb = OV.audit_answer(reg, ov, tt.replace("Mohan Lal v. State of Punjab (2018) 17 SCC 627", "the earlier cases"))
+rc = OV.audit_answer(reg, ov, tt.replace("Mohan Lal v. State of Punjab (2018) 17 SCC 627", "the earlier cases"), exclude_names=["Mukesh Singh v State (Narcotic Branch of Delhi)"])
+check("Mukesh Singh v. State (Narcotic Branch of Delhi)" in rb["not_checked"] and "Mukesh Singh v. State (Narcotic Branch of Delhi)" not in rc["not_checked"] and "Ram Prasad v. State of Bihar" in rc["not_checked"], "a judgment the site lists as a source of the answer (exclude_names) is left out, other cases are not")
+
 # the export works on its own
 with tempfile.TemporaryDirectory() as d:
     out = os.path.join(d, "overruled_register")

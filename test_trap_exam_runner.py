@@ -63,5 +63,14 @@ check(set(p_naive.values()) == {"guard_note"}, f"a naive answer on all {len(ck)}
 aware = {i: f"{k['case']} was overruled by {k['overruling']}." for i, k in ck.items()}
 check(set(EX.score(reg, aware, ck)[1].values()) == {"acknowledged"}, "an answer that says it was overruled is acknowledged on every question")
 check(len(cq) == len(ck) == 28 and len({k["row_id"] for k in ck.values()}) == 14, "28 questions from 14 register rows")
+# the situation-form exam
+sk = json.load(open(os.path.join(HERE, "register_exam", "situation", "key.json"), encoding="utf-8"))
+sq = {q["id"]: q["question"] for q in T.load_questions(os.path.join(HERE, "register_exam", "situation", "questions.jsonl"))}
+check(len(sq) == len(sk) == 24 and len({k["row_id"] for k in sk.values()}) == 12, f"situation exam: 24 questions from 12 register rows ({len(sq)})")
+named = [i for i, k in sk.items() if k["variant"] == "named"]
+check(all(R.party_sigs(sk[i]["case"])[0][0] in sq[i].lower() for i in named) and all(R.party_sigs(sk[i]["case"])[0][0] not in sq[i].lower() for i in sk if sk[i]["variant"] == "unnamed"), "the named version contains the case name, the unnamed one does not")
+naive_s = {i: f"{k['case']} is good law and settles this." for i, k in sk.items()}
+check(set(EX.score(reg, naive_s, sk)[1].values()) == {"guard_note"}, "a naive answer is caught by the guard on every situation question")
+check(all(len(q.split()) < 70 and "good law" not in q for q in sq.values()), "the situation questions are plain facts, not 'is it good law' research")
 print("\nALL PASSED" if not F else f"\n{len(F)} FAILED")
 sys.exit(1 if F else 0)

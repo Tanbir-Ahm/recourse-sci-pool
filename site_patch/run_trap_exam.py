@@ -122,8 +122,8 @@ def reading_sheet(raw, key, results_off, results_on, out_path, n=20, seed=11):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--recourse", required=True, help="a Recourse checkout with the patch applied and overruled_register/ exported")
-    ap.add_argument("--exam", choices=("criminal", "original"), default="criminal",
-                    help="criminal (28 questions about register cases that are in the criminal-law index: the one that can test the live site) or original (50 questions, mostly tax/service/property that the site will refuse)")
+    ap.add_argument("--exam", choices=("criminal", "situation", "original"), default="situation",
+                    help="situation (22 questions: real fact patterns, the overruled case named or not; the best test of the live site), criminal (28 bare 'is X good law' questions about register cases in the criminal-law index; the site often refuses these), or original (50 questions, mostly tax/service/property that the site will refuse)")
     ap.add_argument("--questions", help="override the question file")
     ap.add_argument("--key", help="override the key file")
     ap.add_argument("--out-dir", required=True)
@@ -131,7 +131,7 @@ def main(argv=None):
     ap.add_argument("--limit", type=int, default=0, help="only the first N questions (try 3 first)")
     ap.add_argument("--sleep", type=float, default=0.0)
     a = ap.parse_args(argv)
-    base = os.path.join(ROOT, "register_exam", "criminal") if a.exam == "criminal" else os.path.join(ROOT, "register_exam")
+    base = {"criminal": os.path.join(ROOT, "register_exam", "criminal"), "situation": os.path.join(ROOT, "register_exam", "situation")}.get(a.exam, os.path.join(ROOT, "register_exam"))
     a.questions = a.questions or os.path.join(base, "questions.jsonl")
     a.key = a.key or os.path.join(base, "key.json")
     qs = load_questions(a.questions)
