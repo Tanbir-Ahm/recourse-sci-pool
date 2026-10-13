@@ -339,21 +339,34 @@ def has_index(index_dir):
     return bool(glob.glob(os.path.join(index_dir, "index", "*.meta.jsonl.gz"))) and bool(glob.glob(os.path.join(index_dir, "index", "*.vec.npy")))
 
 
-def fetch_index(index_dir, repo, branch, token, api="https://api.github.com", log=print):
-    """Downloads the index folder of branch `branch` of GitHub repo `owner/name` into index_dir/index and records the commit in index_dir/INDEX_COMMIT. Uses only the standard library: the token goes to the
-    API address, never to the download address, never into a message. A half-finished download is removed. Needs about the size of the index (540 MB) free on the volume once; nothing else is kept."""
+DEFAULT_INDEX_REPO = "Tanbir-Ahm/recourse-sci-pool"
+DEFAULT_INDEX_SHA = "3c80a26e42bea75e5858be6ed44a2649ec701355"      # the frozen index (claude/sci-index, ends 13 July 2026); change with SCI_INDEX_SHA when a new index is built
+
+
+def fetch_index(index_dir, repo, branch, token, api="https://api.github.com", log=print, sha=None, codeload="https://codeload.github.com"):
+    """Downloads the index folder into index_dir/index and records the commit in index_dir/INDEX_COMMIT. Two routes, standard library only:
+    - with `sha` and no token: the public archive of exactly that commit (codeload, no API call, so no anonymous API limit -- Railway's shared address hit that limit on 2026-10-13);
+    - otherwise: the API (needs `token` for a private repository or to avoid the anonymous limit), looking up the branch's commit first.
+    The token goes to the API address only, never to the download address, never into a message. A half-finished download is removed. Needs about the size of the index (540 MB) free once."""
     import shutil
     import tarfile
-    if not token:
-        log("no GITHUB_TOKEN: trying without one (works only while the repository is public)")
-    r = _get(f"{api}/repos/{repo}/commits/{urllib.parse.quote(branch, safe='')}", token, "application/vnd.github+json")
-    sha = json.loads(r.read().decode("utf-8")).get("sha")
-    if not sha:
-        raise FetchError("could not read the commit of the index branch")
-    log(f"index branch {branch} is at {sha[:10]}; downloading")
-    r = _get(f"{api}/repos/{repo}/tarball/{sha}", token, "application/vnd.github+json")
-    loc = r.headers.get("Location")
-    stream = urllib.request.urlopen(urllib.request.Request(loc, headers={"User-Agent": "recourse-sci-search/1.0"}), timeout=600) if loc else r
+    if sha and not token:
+        log(f"downloading the archive of commit {sha[:10]} (public, no API call)")
+        try:
+            stream = urllib.request.urlopen(urllib.request.Request(f"{codeload}/{repo}/tar.gz/{sha}", headers={"User-Agent": "recourse-sci-search/1.0"}), timeout=600)
+        except urllib.error.HTTPError as e:
+            raise FetchError(f"the archive download answered HTTP {e.code}") from None
+    else:
+        if not token:
+            log("no GITHUB_TOKEN: trying the API without one (works only while the repository is public and under GitHub's anonymous limit)")
+        r = _get(f"{api}/repos/{repo}/commits/{urllib.parse.quote(branch, safe='')}", token, "application/vnd.github+json")
+        sha = json.loads(r.read().decode("utf-8")).get("sha")
+        if not sha:
+            raise FetchError("could not read the commit of the index branch")
+        log(f"index branch {branch} is at {sha[:10]}; downloading")
+        r = _get(f"{api}/repos/{repo}/tarball/{sha}", token, "application/vnd.github+json")
+        loc = r.headers.get("Location")
+        stream = urllib.request.urlopen(urllib.request.Request(loc, headers={"User-Agent": "recourse-sci-search/1.0"}), timeout=600) if loc else r
     tmp = os.path.join(index_dir, ".incoming")
     shutil.rmtree(tmp, ignore_errors=True)
     os.makedirs(tmp)
@@ -382,14 +395,17 @@ def fetch_index(index_dir, repo, branch, token, api="https://api.github.com", lo
 
 
 def ensure_index(index_dir, log=print):
-    """Called before serving: nothing to do when the index is already on the volume; otherwise fetch it (SCI_INDEX_REPO, SCI_INDEX_BRANCH, GITHUB_TOKEN)."""
+    """Called before serving: nothing to do when the index is already on the volume; otherwise fetch it (SCI_INDEX_REPO, SCI_INDEX_SHA or the built-in frozen commit, optional GITHUB_TOKEN, SCI_INDEX_BRANCH)."""
     if has_index(index_dir):
         return None
-    repo = os.environ.get("SCI_INDEX_REPO")
-    if not repo:
-        raise FetchError(f"no index in {index_dir} and SCI_INDEX_REPO is not set (for example Tanbir-Ahm/recourse-sci-pool)")
+    repo = os.environ.get("SCI_INDEX_REPO") or DEFAULT_INDEX_REPO
+    sha = os.environ.get("SCI_INDEX_SHA") or (DEFAULT_INDEX_SHA if repo == DEFAULT_INDEX_REPO else None)
+    token = os.environ.get("GITHUB_TOKEN")
+    if not sha and not token and repo != DEFAULT_INDEX_REPO:
+        log("no SCI_INDEX_SHA and no GITHUB_TOKEN: using the API anonymously, which may be refused")
     os.makedirs(index_dir, exist_ok=True)
-    return fetch_index(index_dir, repo, os.environ.get("SCI_INDEX_BRANCH", "claude/sci-index"), os.environ.get("GITHUB_TOKEN"), os.environ.get("SCI_GITHUB_API", "https://api.github.com"), log)
+    return fetch_index(index_dir, repo, os.environ.get("SCI_INDEX_BRANCH", "claude/sci-index"), token, os.environ.get("SCI_GITHUB_API", "https://api.github.com"), log, sha=sha,
+                       codeload=os.environ.get("SCI_GITHUB_CODELOAD", "https://codeload.github.com"))
 
 
 def rss_mb():

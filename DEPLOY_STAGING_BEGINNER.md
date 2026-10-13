@@ -52,6 +52,8 @@ Save and accept the redeploy.
 and the deployment turning green ("Active").
 7. Settings, **Networking**: make sure there is **no public domain** on this service. If there is one, remove it. This service must only be reachable from your other service.
 
+**If it fails with "answered HTTP 403" in the logs:** GitHub refused the index download (this happened on 13 October with an earlier version). The current version downloads a plain archive of the exact commit and needs no login. If it still happens, create a GitHub token (GitHub, Settings, Developer settings, Personal access tokens, fine-grained, read-only for public repositories) and add it as a variable `GITHUB_TOKEN`.
+
 **If it fails:** copy the last 20 lines of the logs to me. The most likely causes: out of memory (then tell me what Settings shows for memory), or a typo in a variable name.
 
 ## Step 4: connect the website copy to the search service (shadow mode)

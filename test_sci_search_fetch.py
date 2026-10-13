@@ -36,6 +36,9 @@ class H(BaseHTTPRequestHandler):
             body = json.dumps({"sha": SHA}).encode(); self.send_response(200); self.send_header("Content-Length", str(len(body))); self.end_headers(); self.wfile.write(body)
         elif self.path == f"/repos/Owner/repo/tarball/{SHA}":
             self.send_response(302); self.send_header("Location", f"http://127.0.0.1:{self.server.server_address[1]}/signed/download?sig=1"); self.end_headers()
+        elif self.path == f"/Owner/repo/tar.gz/{SHA}":
+            STATE["codeload_hits"] = STATE.get("codeload_hits", 0) + 1
+            self.send_response(200); self.send_header("Content-Length", str(len(STATE["tar"]))); self.end_headers(); self.wfile.write(STATE["tar"])
         elif self.path.startswith("/signed/download"):
             self.send_response(200); self.send_header("Content-Length", str(len(STATE["tar"]))); self.end_headers(); self.wfile.write(STATE["tar"])
         else:
@@ -72,11 +75,21 @@ try:
 except S.FetchError as e:
     ok = "no index files" in str(e)
 check("a download without index files fails and leaves nothing half-written", ok and not S.has_index(d2) and not os.path.exists(os.path.join(d2, ".incoming")))
-os.environ.pop("SCI_INDEX_REPO", None)
-try:
-    S.ensure_index(tempfile.mkdtemp(), log=lambda *_: None); ok = False
-except S.FetchError as e:
-    ok = "SCI_INDEX_REPO" in str(e)
-check("ensure_index says what is missing when nothing is configured", ok)
+# the archive route: a pinned commit, no API call at all
+STATE["tar"] = make_tar()
+n_api = len(SEEN["paths"])
+d4 = tempfile.mkdtemp()
+m4 = []
+got = S.fetch_index(d4, "Owner/repo", "b", None, api, log=m4.append, sha=SHA, codeload=api)
+check("with a pinned commit and no token the archive is fetched and the API is never called", got == SHA and S.has_index(d4) and STATE.get("codeload_hits") == 1 and not any(p.startswith("/repos/") for p in SEEN["paths"][n_api:]), SEEN["paths"][n_api:])
+check("the commit is recorded and nothing is left over", open(os.path.join(d4, "INDEX_COMMIT")).read().strip() == SHA and not os.path.exists(os.path.join(d4, ".incoming")))
+os.environ.pop("GITHUB_TOKEN", None)
+os.environ.update({"SCI_INDEX_REPO": "Owner/repo", "SCI_INDEX_SHA": SHA, "SCI_GITHUB_CODELOAD": api})
+d5 = tempfile.mkdtemp()
+S.ensure_index(d5, log=lambda *_: None)
+check("ensure_index uses SCI_INDEX_SHA and the archive route", S.has_index(d5))
+for k in ("SCI_INDEX_REPO", "SCI_INDEX_SHA", "SCI_GITHUB_CODELOAD"):
+    os.environ.pop(k, None)
+check("the built-in default is the frozen index commit of the research repository", S.DEFAULT_INDEX_SHA == "3c80a26e42bea75e5858be6ed44a2649ec701355" and S.DEFAULT_INDEX_REPO == "Tanbir-Ahm/recourse-sci-pool")
 print("\nALL PASSED" if not F else f"\n{len(F)} FAILED: {F}")
 sys.exit(1 if F else 0)

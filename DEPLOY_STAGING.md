@@ -24,7 +24,7 @@ Everything Claude can do without your Railway account is done and tested (below)
 3. **Volume:** add a Volume of **2 GB** mounted at `/data` (the index is 540 MB; the loader needs it once).
 4. **Variables:**
    - `SCI_INDEX_DIR=/data/sci-index`
-   - `SCI_INDEX_REPO=Tanbir-Ahm/recourse-sci-pool` (the repository is public, so no `GITHUB_TOKEN` is needed; if you make it private again, add a read-only token as `GITHUB_TOKEN`)
+   - `SCI_INDEX_REPO=Tanbir-Ahm/recourse-sci-pool` (optional: the default is this repository and the frozen index commit `3c80a26`, fetched as a public archive with no login; if you make the repository private, add a read-only token as `GITHUB_TOKEN`; `SCI_INDEX_SHA` selects another commit)
    - `VOYAGE_API_KEY` (same key as the site; the balance is shared, reserve $5)
    - `SCI_SEARCH_TOKEN` = a long random string (make one; keep it for Part 3)
    - `PORT=8080`
