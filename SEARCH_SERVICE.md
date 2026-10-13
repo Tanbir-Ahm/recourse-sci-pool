@@ -1,6 +1,6 @@
 # sci-search: recipe B as a small private service (Phase 1 step 10, built 2026-10-12)
 
-Code `sci_search_service.py`, tests `test_sci_search_service.py`, start command `Procfile`, packages `requirements-search.txt`. Not deployed anywhere. Numbers below were measured on 2026-10-12 on the real index (`claude/sci-index` at `3c80a26`, plus the three side indexes). [Certain] = measured or read; [Guessing] = judgment.
+Code `sci_search_service.py`, tests `test_sci_search_service.py`, start command `Procfile`, packages `requirements.txt`. Not deployed anywhere. Numbers below were measured on 2026-10-12 on the real index (`claude/sci-index` at `3c80a26`, plus the three side indexes). [Certain] = measured or read; [Guessing] = judgment.
 
 ## What it does
 `POST /search {"question": "...", "k": 10}` (header `X-Search-Token`) returns the top passages by recipe B: 100 by meaning + 50 keyword + up to 30 per "section N" -> reciprocal-rank merge -> 60 candidates -> rerank-3-lite x passage-type weights x 1.10 section boost -> top k. `GET /health` shows the index commit, passages, memory and today's spend. Every answer says it is the tier "wider_pool_not_independently_verified", gives the index commit and the date the index ends (2026-07-13), and carries the sentence that the search does not say whether a decision is still good law. The Overruled Register and the cards overlay go on the website side, on top of this (`REGISTER_SITE_PATCH.md`, `site_patch/`).
@@ -33,5 +33,5 @@ Fail-open for the caller: anything but 200 means "answer as the site does today"
 4. **The index ends 13 July 2026** and has no monthly refresh yet.
 5. **Not tested here:** an HTTP call from the real website over Railway's private network; behaviour under concurrent users (searches are serialised, so a slow Voyage call blocks the next user for up to a few seconds); a deploy.
 
-## Deploying (Phase 2, yours and mine)
-Railway service from this repository's branch (the Procfile starts it); a volume holding the index folder (`claude/sci-index`, 540 MB, filled once; set `SCI_INDEX_DIR`, and `SCI_INDEX_COMMIT` because the volume is not a git checkout) and the three `review_data/side_index/*` folders (already in the repository); env `VOYAGE_API_KEY`, `SCI_SEARCH_TOKEN`. On the website side: one call to `/search` with a short timeout (suggest 6 s), inside the same fail-open pattern as the pilot tier, writing to the `unverified_related_judgments` list only, behind an env switch, in shadow mode first.
+## Deploying
+See `DEPLOY_STAGING.md` (step by step, written 2026-10-13). The service fetches the index itself on first start (`python sci_search_service.py fetch-index`; `SCI_INDEX_REPO`, optional `GITHUB_TOKEN`), tested end to end on 2026-10-13: 640 files, 542 MB, 27 seconds, commit `3c80a26`.

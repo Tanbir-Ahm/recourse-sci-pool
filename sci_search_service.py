@@ -30,6 +30,9 @@ import subprocess
 import sys
 import threading
 import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 import numpy as np
@@ -129,6 +132,9 @@ def _latest_date(title_strings):
 
 
 def git_head(path):
+    f = os.path.join(path, "INDEX_COMMIT")
+    if os.path.exists(f):
+        return open(f).read().strip() or None
     try:
         return subprocess.run(["git", "-C", path, "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
     except Exception:  # noqa: BLE001
@@ -302,6 +308,89 @@ def _add_side_index(supp_dir, metas, M, head):
     return metas + smetas, np.vstack([M, SM]), info, extra
 
 
+# ================================================================ getting the index onto the volume
+class FetchError(RuntimeError):
+    pass
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k):
+        return None
+
+
+def _get(url, token=None, accept=None, timeout=120):
+    """GET with the token sent only to the URL it was given for; a redirect is returned, not followed (the signed download address needs no token)."""
+    headers = {"User-Agent": "recourse-sci-search/1.0"}
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
+    if accept:
+        headers["Accept"] = accept
+    opener = urllib.request.build_opener(_NoRedirect)
+    try:
+        return opener.open(urllib.request.Request(url, headers=headers), timeout=timeout)
+    except urllib.error.HTTPError as e:
+        if e.code in (301, 302, 303, 307, 308) and e.headers.get("Location"):
+            return e
+        raise FetchError(f"GET {url.split('?')[0]} answered HTTP {e.code}") from None
+
+
+def has_index(index_dir):
+    return bool(glob.glob(os.path.join(index_dir, "index", "*.meta.jsonl.gz"))) and bool(glob.glob(os.path.join(index_dir, "index", "*.vec.npy")))
+
+
+def fetch_index(index_dir, repo, branch, token, api="https://api.github.com", log=print):
+    """Downloads the index folder of branch `branch` of GitHub repo `owner/name` into index_dir/index and records the commit in index_dir/INDEX_COMMIT. Uses only the standard library: the token goes to the
+    API address, never to the download address, never into a message. A half-finished download is removed. Needs about the size of the index (540 MB) free on the volume once; nothing else is kept."""
+    import shutil
+    import tarfile
+    if not token:
+        log("no GITHUB_TOKEN: trying without one (works only while the repository is public)")
+    r = _get(f"{api}/repos/{repo}/commits/{urllib.parse.quote(branch, safe='')}", token, "application/vnd.github+json")
+    sha = json.loads(r.read().decode("utf-8")).get("sha")
+    if not sha:
+        raise FetchError("could not read the commit of the index branch")
+    log(f"index branch {branch} is at {sha[:10]}; downloading")
+    r = _get(f"{api}/repos/{repo}/tarball/{sha}", token, "application/vnd.github+json")
+    loc = r.headers.get("Location")
+    stream = urllib.request.urlopen(urllib.request.Request(loc, headers={"User-Agent": "recourse-sci-search/1.0"}), timeout=600) if loc else r
+    tmp = os.path.join(index_dir, ".incoming")
+    shutil.rmtree(tmp, ignore_errors=True)
+    os.makedirs(tmp)
+    n = 0
+    try:
+        with tarfile.open(fileobj=stream, mode="r|gz") as tf:
+            for m in tf:
+                parts = m.name.split("/", 2)
+                if len(parts) < 3 or parts[1] != "index" or not m.isfile() or ".." in parts[2]:
+                    continue
+                dest = os.path.join(tmp, "index", *parts[2].split("/"))
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                with open(dest, "wb") as out:
+                    shutil.copyfileobj(tf.extractfile(m), out)
+                n += 1
+        if not has_index(tmp):
+            raise FetchError("the download held no index files")
+        old = os.path.join(index_dir, "index")
+        shutil.rmtree(old, ignore_errors=True)
+        os.rename(os.path.join(tmp, "index"), old)
+        open(os.path.join(index_dir, "INDEX_COMMIT"), "w").write(sha + "\n")
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    log(f"{n} index files in {index_dir} (commit {sha[:10]})")
+    return sha
+
+
+def ensure_index(index_dir, log=print):
+    """Called before serving: nothing to do when the index is already on the volume; otherwise fetch it (SCI_INDEX_REPO, SCI_INDEX_BRANCH, GITHUB_TOKEN)."""
+    if has_index(index_dir):
+        return None
+    repo = os.environ.get("SCI_INDEX_REPO")
+    if not repo:
+        raise FetchError(f"no index in {index_dir} and SCI_INDEX_REPO is not set (for example Tanbir-Ahm/recourse-sci-pool)")
+    os.makedirs(index_dir, exist_ok=True)
+    return fetch_index(index_dir, repo, os.environ.get("SCI_INDEX_BRANCH", "claude/sci-index"), os.environ.get("GITHUB_TOKEN"), os.environ.get("SCI_GITHUB_API", "https://api.github.com"), log)
+
+
 def rss_mb():
     ru = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss          # kilobytes on Linux
     return round(ru / 1024, 0)
@@ -399,10 +488,20 @@ def main(argv=None):
     s.add_argument("--no-auth", action="store_true", help="only with --host 127.0.0.1: no X-Search-Token")
     r = sub.add_parser("report")
     r.add_argument("--json")
+    sub.add_parser("fetch-index")
     k = sub.add_parser("ask")
     k.add_argument("question")
     a = ap.parse_args(argv)
     index_dir, sides = _paths()
+    if a.cmd in ("fetch-index", "serve", "ask"):
+        try:
+            sha = ensure_index(index_dir)
+        except FetchError as e:
+            print(f"cannot get the index: {e}", file=sys.stderr)
+            return 3
+        if a.cmd == "fetch-index":
+            print("index already present" if sha is None else f"index fetched ({sha[:10]})")
+            return 0
     if a.cmd == "report":
         out = report(index_dir, sides)
         print(json.dumps(out, indent=1))
