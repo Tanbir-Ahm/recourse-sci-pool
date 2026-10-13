@@ -49,6 +49,9 @@ Redeploy. In shadow mode a real answer is produced as before and, afterwards in 
 5. **The criminal exam** (you said after deployment): from your computer, `python site_patch/run_trap_exam.py --recourse <checkout of the staging branch> --out-dir exam_run_1 --limit 3`, then the full run. Costs Anthropic credit. Send me the folder.
 6. **WhatsApp**: cannot be tested on staging without a separate WhatsApp test number. The WhatsApp formatter change is covered by tests only. Test it after production, with the switch ready (Part 6).
 
+## Part 4b: feed mode (EXPERIMENT, staging only; added 2026-10-13)
+`SCI_SEARCH_MODE=feed` gives the wider-search passages to the language model, so the answer itself may name and rely on those cases (the site's own pilot tier only allows a descriptive mention). Overruled cases carry a REGISTER FACT line, the page lists the passages the answer read (labelled not independently verified), and the post-answer register lock still runs. It exists to show what such answers look like. It is not a way to publish them: a lawyer must read these answers first. Never switch it on for production without that review.
+
 ## Part 5: show mode (later, only after a lawyer has read shadow logs)
 `SCI_SEARCH_MODE=show` on staging puts a box "More Supreme Court judgments that may be relevant (a wider search; not independently verified)" under the answer, with names, dates, paragraph, the court/bucket link, and the register note beside any flagged case; judgments with no readable name are left out. Look at it yourself on staging first.
 
