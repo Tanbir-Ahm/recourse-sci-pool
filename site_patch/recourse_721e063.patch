@@ -247,7 +247,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..f0010ca 100644
+index 789f8e7..f285550 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,9 @@ import logging
@@ -299,7 +299,7 @@ index 789f8e7..f0010ca 100644
 +# ---------------------------------------------------------------------------
 +_V1_SHAPE_START = "## Shape and length"
 +_V2_SHAPE = """## Voice and shape
-+- Your FIRST sentence answers the question itself, in plain words, using the person's own facts (the number of years, the stage they are at, who is involved) so they can see you read their question. For example "Not automatically, but nine years of delay is something courts take seriously." Do not open with a heading, a definition or "The law provides".
++- Your FIRST sentence answers the question itself, in plain words, using the person's own facts (the number of years, the stage they are at, who is involved) so they can see you read their question. The words must be yours and fit THIS question; never reuse a stock opener. Do not open with a heading, a definition or "The law provides".
 +- If the person is in a hard moment, acknowledge it in ONE short, specific sentence that uses their facts (never a stock phrase such as "I understand this is difficult", and never invented sympathy). Then move on.
 +- If the question describes something that HAS ALREADY HAPPENED or is still going on (an arrest, a search, an FIR, a frozen account, a long trial), next give a short **"Right now"** part: 2-3 concrete things they can do or ask for. Then the law behind it. Then what you cannot tell without more facts.
 +- Write headings as what the person wants to know ("Can the case be closed?", "What you can do", "What I can't tell from here"), never as labels such as "What the law provides". Use two or three short parts, short paragraphs, at most one list.
@@ -330,7 +330,7 @@ index 789f8e7..f0010ca 100644
 +# ---------------------------------------------------------------------------
 +_V3_SHAPE = """## Voice and shape (the Adviser)
 +You write like a calm, informed adviser talking to "you": plain English, a technical term only when it is needed and explained in the same sentence. Write the answer in this order.
-+1. OPENING, with no heading. The first sentence answers the question itself and states the main condition, using the person's own facts (the number of years, the stage they are at, who is involved). The shape, not the words: "Not automatically, but nine years of delay is something courts take seriously." Never open with a heading, a definition or "The law provides". If the person is in a hard moment, add ONE short sentence using their facts to acknowledge it (never a stock phrase such as "I understand this is difficult", never invented sympathy).
++1. OPENING, with no heading. The first sentence answers the question itself and states the main condition, using the person's own facts (the number of years, the stage they are at, who is involved). The shape: a direct answer (yes, no, probably, not yet, or only if ...) plus the one condition that decides it, in words that fit THIS question; never reuse a stock opener, and do not begin with "Not automatically". Never open with a heading, a definition or "The law provides". If the person is in a hard moment, add ONE short sentence using their facts to acknowledge it (never a stock phrase such as "I understand this is difficult", never invented sympathy).
 +2. A heading, then what the law says. State the rule, give one sentence on WHY it works that way, and say what a court actually did or said (attributed to the court, from the excerpt below). One or two short paragraphs.
 +3. The heading **How this cuts for and against you**, then two groups, each introduced by an italic line: *For you:* and *Against you:*, with 2-3 short bullet points each. These are factors a court weighs. They are never a verdict on this person's case and never a prediction of the outcome. Where the answer turns on facts, write it as "if ...; if ...". Then ONE line that starts "What I can't tell from here:" and names the facts that would change the answer.
 +4. A heading, then 2-4 numbered steps. Use exactly **What you can do right now** when the question describes something that HAS ALREADY HAPPENED or is still happening to the person or someone close to them (an arrest, a search, an FIR, a frozen account, a trial that is running). Use exactly **What you can do now** for a general question. Each step starts with a verb (Ask, Raise, Bring, Keep, Write down, Check), says what the person can ask for, raise or bring (never "you must", never an order to do a legal act), and gives half a sentence of purpose. The first step is the most immediate one. Mention uploading a document only if the person has one. Put nothing after the steps: no closing line.
@@ -414,7 +414,7 @@ index 789f8e7..f0010ca 100644
  
  
  def _format_mismatch(problem: dict) -> str:
-@@ -1365,6 +1480,130 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
+@@ -1365,6 +1480,132 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
      return problems
  
  
@@ -423,8 +423,10 @@ index 789f8e7..f0010ca 100644
 +
 +def _answer_max_tokens():
 +    """Output budget for the answer call. It also pays for the model's own thinking, which is why 4000 (enough for a 300-word layman answer) was not enough for the longer lawyers' research note
-+    (staging 2026-10-14: the note stopped in mid-sentence). The research note gets 12000; every other style keeps 4000."""
-+    return 12000 if answer_style.template_key() == "v3-lawyer" else 4000
++    (staging 2026-10-14: the note stopped in mid-sentence). The research note gets 12000. The v3 layman answers get 8000: a cap costs nothing unless it is used, and a reply cut off at 4000
++    was paid for twice (staging 2026-10-14, question 5: Rs 12.46 against about Rs 3.5)."""
++    key = answer_style.template_key()
++    return 12000 if key == "v3-lawyer" else (8000 if answer_style.is_v3() else 4000)      # v1 and v2 (today's production) keep 4000
 +
 +
 +def _close_truncated(text):
@@ -545,7 +547,7 @@ index 789f8e7..f0010ca 100644
  def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
                                  pilot_matches=None):
      """Generates a plain-language answer using ONLY the given retrieved
-@@ -1498,26 +1737,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1498,26 +1739,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -592,7 +594,7 @@ index 789f8e7..f0010ca 100644
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1531,8 +1775,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1531,9 +1777,40 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
          unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
          pilot_overreach = _find_pilot_tier_overreach(response_text, pilot_matches)
  
@@ -623,9 +625,18 @@ index 789f8e7..f0010ca 100644
 -                or court_misattributions or omissions or unverified_contacts or pilot_overreach):
 +                or court_misattributions or omissions or unverified_contacts or pilot_overreach or g_enforce):
              retry_prompt = prompt
++            try:
++                _why = [n for n, v in (("ungrounded_sections", ungrounded), ("section_mismatch", mismatches), ("missing_act", missing_act), ("missing_companion", missing_companion),
++                                       ("unsupported_case_generalisation", unsupported_cases), ("court_misattribution", court_misattributions), ("cognizable_bailable_omission", omissions),
++                                       ("unverified_phone", unverified_contacts), ("pilot_overreach", pilot_overreach), ("grounding_enforce", g_enforce)) if v]
++                logger.warning("RECHECK reasons=%s", ",".join(_why))
++                print("RECHECK reasons=" + ",".join(_why), flush=True)
++            except Exception:  # noqa: BLE001
++                pass
              if ungrounded:
                  retry_prompt += _UNGROUNDED_RETRY_INSTRUCTION.format(sections=", ".join(ungrounded))
-@@ -1568,12 +1835,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+             if mismatches:
+@@ -1568,12 +1845,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                  )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
@@ -643,7 +654,7 @@ index 789f8e7..f0010ca 100644
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -1590,9 +1856,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1590,9 +1866,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                      or _find_unverified_contact_numbers(retry_text, question, retrieved_text)
                      or _find_pilot_tier_overreach(retry_text, pilot_matches)):
                  return None
@@ -657,7 +668,7 @@ index 789f8e7..f0010ca 100644
      except Exception:
          return None
  
-@@ -2262,6 +2530,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2540,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -672,7 +683,7 @@ index 789f8e7..f0010ca 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2588,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2598,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -688,7 +699,7 @@ index 789f8e7..f0010ca 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +3113,8 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3123,8 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -698,7 +709,7 @@ index 789f8e7..f0010ca 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3142,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3152,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -708,7 +719,7 @@ index 789f8e7..f0010ca 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3490,105 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3500,120 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -765,6 +776,7 @@ index 789f8e7..f0010ca 100644
 +            if isinstance(result, dict) and result.get("state") in _LINK_STATES and answer_style.is_v3():
 +                result["audience"] = answer_style.effective_audience()
 +                if result["audience"] == "lawyer":
++                    result["response_text"] = _ensure_bottom_line(result.get("response_text"))
 +                    result["authorities"] = _build_authorities(result)
 +        except Exception as exc:  # fail-open: the answer always goes out
 +            logger.warning("authorities table failed: %s", exc)
@@ -779,6 +791,20 @@ index 789f8e7..f0010ca 100644
 +            pass
 +        answer_style.set_audience(None)
 +        answer_style.set_channel(None)
++
++
++def _ensure_bottom_line(text):
++    """The lawyers' note must open with a heading 'Bottom line'. When the model's first paragraph has no heading (staging 2026-10-14, question 6), the heading is put above it; the text is not changed otherwise."""
++    try:
++        t = (text or "").lstrip()
++        if not t or re.match(r"[*#_ ]*bottom line\b", t, re.I):
++            return text
++        first = t.split("\n", 1)[0].strip()
++        if re.match(r"\*\*[^*\n]{1,90}\*\*\s*$", first) or first.startswith("#"):         # the note opens with some other heading: leave it, do not guess
++            return text
++        return "**Bottom line**\n\n" + t
++    except Exception:  # noqa: BLE001
++        return text
 +
 +
 +def _build_authorities(result):
@@ -817,7 +843,7 @@ index 789f8e7..f0010ca 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3643,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3668,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -1041,10 +1067,10 @@ index 0000000..c054d77
 +        _DAY.update({"date": None, "inr": 0.0, "loaded": False})
 diff --git a/grounding_checks.py b/grounding_checks.py
 new file mode 100644
-index 0000000..474a5d0
+index 0000000..cbf4c7d
 --- /dev/null
 +++ b/grounding_checks.py
-@@ -0,0 +1,276 @@
+@@ -0,0 +1,280 @@
 +"""grounding_checks.py -- two checks on a finished answer, run by code, not by the model.
 +
 +  1. Citation check: every case the answer names ("X v. Y") must be in the material the model was given (the question, the retrieved passages, the wider-search passages, the related-judgment list).
@@ -1260,7 +1286,8 @@ index 0000000..474a5d0
 +
 +
 +# ---- quotations ----
-+_QUOTE = re.compile(r"“([^”\n]{20,600}?)”|\"([^\"\n]{20,600}?)\"")
++_QUOTE = re.compile(r"“([^”]{1,600}?)”|\"([^\"]{1,600}?)\"")
++_MIN_QUOTE_CHARS = 20
 +_SPLIT = re.compile(r"\.\s?\.\s?\.|…|\[[^\]]*\]")
 +
 +
@@ -1287,8 +1314,11 @@ index 0000000..474a5d0
 +    bad = []
 +    try:
 +        mat = norm(material)
-+        for m in _QUOTE.finditer(answer or ""):
++        cells = [c for line in (answer or "").split("\n") for c in line.split("|")]          # quote marks are paired inside one line / table cell, in order, so a short quoted word never pairs with a mark far away
++        for m in (m for c in cells for m in _QUOTE.finditer(c)):
 +            q = m.group(1) or m.group(2)
++            if len(q) < _MIN_QUOTE_CHARS:
++                continue
 +            for frag in _fragments(q):
 +                fn = norm(frag)
 +                if fn and fn not in mat and not _fuzzy_in(fn, mat):
@@ -1659,10 +1689,10 @@ index 0000000..b499c07
 +        return {"source": "not_checked", "note": None}
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..4d9f29c
+index 0000000..b58479c
 --- /dev/null
 +++ b/sci_search_tier.py
-@@ -0,0 +1,348 @@
+@@ -0,0 +1,403 @@
 +"""The wider-pool search tier on the website side: asks the private sci-search service (recourse-sci-pool, sci_search_service.py) for Supreme Court passages and either logs them (shadow) or hands them
 +to the page (show). Fail-open: any problem, a slow service, a missing setting -- the answer goes out exactly as it does without this module.
 +
@@ -1796,6 +1826,8 @@ index 0000000..4d9f29c
 +    "EVERY TIME you name one of these cases, put the words " + LABEL + " right after its name. "
 +    "If a line starting REGISTER FACT is attached to a case, whenever you mention that case say how it was treated in the same sentence, and never present its holding as the current law; "
 +    "the case that corrected it is among the passages when it could be found, so name that case too. "
++    "Credit a principle to the case whose own words state it: if a passage quotes or restates an earlier decision, say it was an earlier decision's holding, never the named case's. "
++    "Use a passage only for the question it actually decides: a passage about delay in starting a prosecution does not answer a question about delay in a trial that is already running, and a passage about one kind of bail condition says nothing about another. "
 +    "If no passage clearly bears on the person's situation, ignore them all. Do not say that a case is good law.\n"
 +)
 +_TRAIL_PARTY = re.compile(r"(?:[,.\s]+(?:&|and)\s+(?:anr|ors|another|others)\b\.?|[,.\s]+(?:anr|ors|another|others|etc)\b\.?)+\s*$", re.I)
@@ -1853,47 +1885,100 @@ index 0000000..4d9f29c
 +    return None
 +
 +
++_V = r"\s+(?:v\.?|vs\.?|versus)\s+"
++_EXTRA = r"(?:\s*(?:,|&|and)\s*(?:anr|ors|another|others|etc)\b\.?)?"
++_LABEL_NOTE = re.compile(r"\(\s*(?:[\w ]{0,12}from a |[\w ]{0,12})?wider search,?\s*not independently verified|\([^()]{0,90}not independently verified", re.I)
++_LABEL_SPAN = re.compile(r"\([^()]{0,160}not independently verified[^()]{0,200}(?:\([^()]{0,80}\)[^()]{0,40})?\)", re.I)
++
++
 +def _labelled_here(text, pos):
-+    """True when a bracketed 'not independently verified' note comes right at `pos` (the model's own wording is tolerated). Only the very next bracket counts: a label after a LATER case must not hide this one."""
-+    return bool(re.match(r"\s*\([^)]{0,90}not independently verified[^)]{0,20}\)", text[pos:], re.I))
++    """True when a bracketed 'not independently verified' note comes right at `pos` (the model's own wording is tolerated, and a longer note such as '..., not independently verified; overruled by X' counts). Only the very next bracket counts: a label after a LATER case must not hide this one."""
++    return bool(_LABEL_NOTE.match(text[pos:].lstrip(" \t")))
++
++
++def _inside_label(text, pos):
++    """True when `pos` falls inside a label that is already in the text (inserting there would nest one label in another)."""
++    return any(m.start() < pos < m.end() for m in _LABEL_SPAN.finditer(text))
++
++
++def _words_re(p):
++    return r"\s+".join(re.escape(t) for t in p.split())
++
++
++_NAME_TOKEN = re.compile(r"\s+(?:[A-Z][\w'\u2019-]*(?:\.(?=[A-Z]))*|of|and|the|for|&)(?=[\s,;:)*_.]|$)")
++
++
++def _extend_second_party(text, end):
++    """When only the first party was found: take the ' v. <second party>' that follows it, as a run of capitalised name words (stops at a bracket, a digit, a full stop or a lower-case word)."""
++    m = re.match(_V + r"(?:the\s+)?", text[end:], re.I)
++    if not m:
++        return end
++    pos, n = end + m.end(), 0
++    first = re.match(r"[A-Z][\w'\u2019-]*(?:\.(?=[A-Z]))*", text[pos:])
++    if not first:
++        return end
++    pos += first.end()
++    while n < 7:
++        t = _NAME_TOKEN.match(text, pos)
++        if not t:
++            break
++        pos, n = t.end(), n + 1
++    return end + len(re.sub(r"(?:\s+(?:of|and|the|for|&))+$", "", text[end:pos], flags=re.I))   # never end on a connecting word
++
++
++def _tidy_labels(text):
++    """Collapses labels the model and the code both put in: one inside another, or two in a row."""
++    lab = re.escape(LABEL)
++    for _ in range(3):
++        text = re.sub(r"\(from\s+" + lab + r"\s+a wider search, not independently verified\)", LABEL, text)
++        text = re.sub(r"(" + lab + r")(?:[ \t]*([.,;]?)[ \t]*" + lab + r")+", r"\1\2", text)
++    return text
 +
 +
 +def label_fed_cases(text, cases):
 +    """Puts LABEL right after the first mention of each wider-search case in a finished answer, unless the answer already says so there. The case is found by its full name, else by a distinctive
-+    party name, allowing a typo. Returns the text unchanged on any problem."""
++    party name, allowing a typo. The label goes after the whole name (including '& Another', italics marks and a year in brackets), never inside a name or inside another label. Returns the text unchanged on any problem."""
 +    try:
 +        out = text or ""
++        seen = set()
 +        for c in cases or []:
++            key = re.sub(r"\W+", " ", (c.get("case_name") or "").lower()).strip()
++            if not key or key in seen:
++                continue
++            seen.add(key)
 +            p1, p2 = _parties(c["case_name"])
 +            end = None
 +            if p1 and p2:
-+                m = re.search(re.escape(p1) + r"\s+(?:v\.?|vs\.?|versus)\s+" + re.escape(p2), out, re.I)
++                m = re.search(r"\b(?:the\s+)?" + _words_re(p1) + _V + r"(?:the\s+)?" + _words_re(p2) + _EXTRA, out, re.I)
 +                end = m.end() if m else None
++            p1 = re.sub(r"^(?:dr|mr|mrs|ms|shri|smt)\.?\s+", "", p1, flags=re.I) if end is None else p1   # the answer may drop 'Dr.' from the name
 +            if end is None and p1 and len(p1) >= 8 and not _GENERIC_FIRST.match(p1):
-+                m = re.search(r"\b" + re.escape(p1) + r"\b", out, re.I)
++                m = re.search(r"\b" + _words_re(p1) + r"\b", out, re.I)
 +                end = m.end() if m else _fuzzy_end(out, p1)
++                if end is not None and p2:
++                    end = _extend_second_party(out, end)
++                    m = re.match(_EXTRA, out[end:], re.I)
++                    end += m.end() if m else 0
 +            if end is None and p2 and len(p2) >= 8:
 +                end = _fuzzy_end(out, p2)
 +            if end is None and p1 and p2:
 +                end = _fuzzy_end(out, p1 + " v. " + p2, 0.9)
 +            if end is None:
 +                continue
-+            if p2:                                                           # a match on the first party alone: take the " v. second party" that follows it too
-+                m3 = re.match(r"\s+(?:v\.?|vs\.?|versus)\s+" + r"\S+\s*" * len(p2.split()), out[end:], re.I)
-+                if m3:
-+                    end += len(m3.group(0).rstrip())
 +            m0 = re.match(r"[*_]{1,2}", out[end:])                        # the name is in italics (answer style v3): put the label after the closing mark, not inside it
 +            if m0:
 +                end += m0.end()
-+            if _labelled_here(out, end):
-+                continue
-+            m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:])        # a short year or citation in brackets right after the name
-+            if m2:
-+                end += m2.end()
++            for _ in range(2):                                           # a short year or citation in brackets right after the name
 +                if _labelled_here(out, end):
-+                    continue
++                    break
++                m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:])
++                if not m2 or _LABEL_NOTE.match(out[end:].lstrip()):
++                    break
++                end += m2.end()
++            if _labelled_here(out, end) or _inside_label(out, end):
++                continue
 +            out = out[:end] + " " + LABEL + out[end:]
-+        return out
++        return _tidy_labels(out)
 +    except Exception:  # noqa: BLE001
 +        return text
 +
@@ -2032,10 +2117,10 @@ index 4bc3ef1..1dfa62a 100644
              raise
 diff --git a/test_answer_style_v3.py b/test_answer_style_v3.py
 new file mode 100644
-index 0000000..a35c390
+index 0000000..c6ff9e7
 --- /dev/null
 +++ b/test_answer_style_v3.py
-@@ -0,0 +1,219 @@
+@@ -0,0 +1,226 @@
 +"""test_answer_style_v3.py -- answer style v3: 'The Adviser' (laypeople) and 'The Research Note' (lawyers), the Layman/Lawyer switch, the table of authorities, the WhatsApp version.
 +Offline and free (no model, no network). Run: python -X utf8 test_answer_style_v3.py"""
 +import os
@@ -2253,6 +2338,13 @@ index 0000000..a35c390
 +    check(got == want, f"the bot's call to the engine under {st_}: {got}")
 +os.environ["RESPONSE_STYLE"] = "v1"
 +
++
++# --- staging 2026-10-14: lawyers' note must open with the Bottom line heading
++check(CA._ensure_bottom_line("No provision allows closure.\n\nFacts assumed\n\nX").startswith("**Bottom line**\n\nNo provision"), "a note that opens with plain text gets the Bottom line heading")
++check(CA._ensure_bottom_line("**Bottom line**\n\nNo.") == "**Bottom line**\n\nNo." and CA._ensure_bottom_line("Bottom line\n\nNo.") == "Bottom line\n\nNo.", "a note that already has it is left alone")
++check(CA._ensure_bottom_line("**Delay and trials**\n\nNo.") == "**Delay and trials**\n\nNo." and CA._ensure_bottom_line("") == "" and CA._ensure_bottom_line(None) is None, "another heading is not guessed at; empty and None are safe")
++check("Not automatically, but nine years" not in CA.RESPONSE_GENERATION_PROMPT_V3 and "never reuse a stock opener" in CA.RESPONSE_GENERATION_PROMPT_V3, "the v3 prompt no longer carries a sentence the model copies as its opener")
++
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_answer_style_v3_page.py b/test_answer_style_v3_page.py
@@ -2369,7 +2461,7 @@ index 0000000..c0ef9bf
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_answer_truncation.py b/test_answer_truncation.py
 new file mode 100644
-index 0000000..23dfb5b
+index 0000000..fbe0a08
 --- /dev/null
 +++ b/test_answer_truncation.py
 @@ -0,0 +1,67 @@
@@ -2415,7 +2507,7 @@ index 0000000..23dfb5b
 +
 +check(run("v1", [("Fine.", "end_turn")]) == "Fine." and CALLS == [4000], "v1: a normal reply costs one call with the old 4000 budget")
 +check(run("v2", [("Fine.", "end_turn")]) == "Fine." and CALLS == [4000], "v2 keeps 4000")
-+check(run("v3", [("Fine.", "end_turn")]) == "Fine." and CALLS == [4000], "v3 (layman) keeps 4000")
++check(run("v3", [("Fine.", "end_turn")]) == "Fine." and CALLS == [8000], "v3 (layman) gets 8000 (a 4000 cut-off was paid for twice on staging)")
 +os.environ["RESPONSE_STYLE"] = "v3"
 +import answer_style as AS
 +AS.set_audience("lawyer")
@@ -2810,10 +2902,10 @@ index 0000000..48aa90e
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_grounding_checks.py b/test_grounding_checks.py
 new file mode 100644
-index 0000000..2ffb31e
+index 0000000..458ff2e
 --- /dev/null
 +++ b/test_grounding_checks.py
-@@ -0,0 +1,138 @@
+@@ -0,0 +1,145 @@
 +"""test_grounding_checks.py -- the citation check and the quote check (grounding_checks.py) and their wiring in generate_grounded_response / answer_question. Offline and free. Run: python -X utf8 test_grounding_checks.py"""
 +import contextlib
 +import io
@@ -2949,6 +3041,13 @@ index 0000000..2ffb31e
 +    r = CA.answer_question("My trial has gone on nine years")
 +check("grounding_notes" not in r, "in log mode the result carries no notices")
 +os.environ.pop("GROUNDING_CHECKS", None)
++
++
++# --- staging 2026-10-14: a short quoted word must not pair with a quotation mark far away (false alarm in question 7)
++_ans = 'The bench called it "freakish" and went on. It held "evidently onerous and unreasonable" here.\n| Sumit Mehta | condition "disproportionate to a legitimate bail purpose. If the amount is modest" |\n| B. Ramu | said "freakish" |'
++_mat = "evidently onerous and unreasonable. freakish. disproportionate to a legitimate bail purpose. If the amount is modest"
++check(G.check_quotes(_ans, _mat) == [], f"short quoted words and table cells do not produce a false alarm ({G.check_quotes(_ans, _mat)})")
++check(G.check_quotes('He said "this phrase was never in any passage at all" ok', _mat) == ["this phrase was never in any passage at all"], "a real invented quotation is still found")
 +
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
@@ -3109,10 +3208,10 @@ index 0000000..bfccb2a
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_sci_search_tier.py b/test_sci_search_tier.py
 new file mode 100644
-index 0000000..d3cde8c
+index 0000000..51d696e
 --- /dev/null
 +++ b/test_sci_search_tier.py
-@@ -0,0 +1,208 @@
+@@ -0,0 +1,230 @@
 +"""
 +test_sci_search_tier.py -- the wider-pool search tier on the website side (sci_search_tier.py + its call in chat_assistant.answer_question + the page box).
 +Fully offline and free: a local stand-in for the sci-search service, no model, no network beyond localhost. Run: python -X utf8 test_sci_search_tier.py
@@ -3319,6 +3418,28 @@ index 0000000..d3cde8c
 +os.environ["SCI_SEARCH_MODE"] = "off"
 +T.reset()
 +check(T.feed_block("x") == "" and "sci_related_judgments" not in T.attach("x", {"state": "single_match"}), "with the mode off feed does nothing")
++
++# --- staging 2026-10-14: label bugs found in the seven saved answers
++LB = T.LABEL
++def _one(txt, *names):
++    return T.label_fed_cases(txt, [{"case_name": n} for n in names])
++o = _one("In State Through Central Bureau of Investigation v. Hemendhra Reddy & Another (2023), the Court said X.", "State Through Central Bureau Of Investigation v. Hemendhra Reddy And Another")
++check(o.count(LB) == 1 and "Another (2023) " + LB in o, f"the label goes after '& Another (2023)', not inside the name ({o!r})")
++o = _one("per Dr. Subhash Kashinath Mahajan v. State of Maharashtra (2018) " + LB + ".", "Dr. Subhash Kashinath Mahajan v. The State Of Maharashtra And Anr.")
++check(o.count(LB) == 1 and o.endswith(LB + "."), f"a label the model already wrote is not doubled, even when the name has 'The' ({o!r})")
++o = _one("in Shaurya Sunil Kumar Singh v. CBI " + LB + " both say.", "Shaurya Sunil Kumar Singh v. Central Bureau Of Investigation")
++check(o.count(LB) == 1 and "(from (from" not in o, f"no label inside another label ({o!r})")
++o = _one("in Shaurya Sunil Kumar Singh v. CBI both say.", "Shaurya Sunil Kumar Singh v. Central Bureau Of Investigation")
++check(o == "in Shaurya Sunil Kumar Singh v. CBI " + LB + " both say.", f"first party found, the second party (an abbreviation) taken with it ({o!r})")
++o = _one("overruling Raj Deo Sharma v. State of Bihar (1999) (from a wider search, not independently verified; overruled by P. Ramachandra Rao v. State of Karnataka (2002)). Next.", "Raj Deo Sharma v. State Of Bihar", "Raj Deo Sharma v. State Of Bihar")
++check(o.count("not independently verified") == 1, f"the model's own longer label ('...; overruled by ...') counts as the label ({o!r})")
++o = _one("Sumit Mehta v State (NCT of Delhi) said x.", "Sumit Mehta v. State (Nct Of Delhi)")
++check(o == "Sumit Mehta v State (NCT of Delhi) " + LB + " said x.", f"a bracket inside the name is part of the name ({o!r})")
++o = _one("Rini Johar held it. Rini Johar again.", "Dr. Rini Johar And Another v. State Of M.P. And Ors.")
++check(o.count(LB) == 1, "the answer may drop 'Dr.' from the name; only the first mention is labelled")
++check(T._tidy_labels("A (from (from a wider search, not independently verified) a wider search, not independently verified) B " + LB + ". " + LB) == "A " + LB + " B " + LB + ".", "nested and doubled labels collapse")
++check("Credit a principle to the case whose own words state it" in T.FEED_INSTRUCTION and "already running" in T.FEED_INSTRUCTION, "the feed instruction says: credit the case whose words state it; use a passage only for the question it decides")
++
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/whatsapp_bot.py b/whatsapp_bot.py
