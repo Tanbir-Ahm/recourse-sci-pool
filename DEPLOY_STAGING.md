@@ -82,6 +82,20 @@ The site prints two kinds of line to the Deploy Logs: `COST_CALL {...}` for ever
 Optional variables on the site service: `USD_INR` (rupees per dollar; default 96.5, set the real rate), `PRICES_JSON` (override a price, e.g. `{"claude-sonnet-5": [2, 10]}`; Voyage models take one number). A call to a model with no price is flagged `unpriced`, never guessed.
 The search service now also returns the tokens each search used (`usage`), so the Voyage part is exact too (a service restart of about 40 seconds follows each deploy).
 
+## Part 4e: grounding checks and the four cost switches (added 2026-10-14)
+Every variable below is optional and defaults to today's behaviour. Change ONE at a time on `staging-site`, then ask the same questions and read the `COST_QUESTION` / `GROUNDING_CHECK` lines in the Deploy Logs.
+
+| Variable | Values | Default | What it does |
+|---|---|---|---|
+| `GROUNDING_CHECKS` | `off`, `log`, `warn`, `enforce` | `log` | The citation check (a case named in the answer that is not in the sources the model was given) and the quote check (words in quotation marks, five words or more, that are not in those sources). `log`: only a `GROUNDING_CHECK` line in the log. `warn`: also a notice under the answer ("Checked by code against the sources we read"). `enforce`: also asks the model once more with the problem named, and withholds the answer if a case found nowhere (not in the sources and not in the site's Supreme Court list) is still in it. |
+| `ANSWER_EFFORT` | `low`, `medium`, `high`, `xhigh`, `max` | unset (the model's own default) | How hard the answer model thinks. Thinking is billed as output, so `medium` or `low` is the biggest saving. Needs a read of the answers: ask the 8 test questions at `medium`, compare with the earlier answers and the `COST_QUESTION` totals. If the API refuses the setting it is dropped automatically. |
+| `SCOPE_MODEL` | a model id, e.g. `claude-haiku-5-5` | unset (Haiku 4.5) | The model for the scope check (the cheap routing call; its prompt is 16,000 characters). A Haiku 5 model is told not to think. On any error the default Haiku 4.5 is used. Check that the in-scope / out-of-scope decisions still look right on 10 questions. |
+| `PROMPT_CACHE` | `on` (5 minutes), `1h` | unset | Caches the fixed rules at the start of the answer prompt. Pays only when the same prompt is used again within the window: below about one question every 5 minutes it costs a little more. Test: ask two questions within 5 minutes and look for `cache_read` in the second `COST_CALL`. |
+| `DAILY_BUDGET_INR` | a number of rupees | unset (no limit) | From 80% of the limit (`DAILY_BUDGET_SOFT_PCT`) answers run at low effort; at the limit the site answers "Daily limit reached" and calls no model until the next Indian day. `COST_STATE_FILE` (a path on the `/data` volume, e.g. `/data/cost_state.json`) keeps the day's total across restarts. |
+
+Suggested order: (1) leave `GROUNDING_CHECKS` at `log`, ask 10 questions, search the logs for `GROUNDING_CHECK`: each line is a case or quotation the check would flag (a false alarm shows here before any user sees it); then try `warn`, then `enforce`. (2) `ANSWER_EFFORT=medium`. (3) `SCOPE_MODEL=claude-haiku-5-5`. (4) `PROMPT_CACHE=on` once there is steady traffic. (5) `DAILY_BUDGET_INR=50` plus `COST_STATE_FILE` as a safety net before the site is public.
+Not covered by these checks: what a wider-search case actually held (the model can still overstate it), the reasoning, and the "what you can do" steps.
+
 ## Part 5: show mode (later, only after a lawyer has read shadow logs)
 `SCI_SEARCH_MODE=show` on staging puts a box "More Supreme Court judgments that may be relevant (a wider search; not independently verified)" under the answer, with names, dates, paragraph, the court/bucket link, and the register note beside any flagged case; judgments with no readable name are left out. Look at it yourself on staging first.
 

@@ -247,27 +247,35 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..ac940fe 100644
+index 789f8e7..f0010ca 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
-@@ -3,6 +3,8 @@ import logging
+@@ -3,6 +3,9 @@ import logging
  import re
  from anthropic import Anthropic
  
 +import answer_style
++import grounding_checks
 +
  logger = logging.getLogger("chat_assistant")
  
  """
-@@ -343,6 +345,7 @@ def classify_scope(question):
-                 messages=[{"role": "user",
-                            "content": SCOPE_CLASSIFIER_PROMPT.format(question=question) + old_code_note + retry_correction}],
-             )
-+            _note_cost("scope_check", HAIKU_MODEL, response)
+@@ -337,12 +340,8 @@ def classify_scope(question):
+             # still falls back to the honest (None, None, None) "could not
+             # determine". The answer itself and its deterministic grounding
+             # checks stay on Sonnet (generate_grounded_response).
+-            response = client.messages.create(
+-                model=HAIKU_MODEL,
+-                max_tokens=1500,
+-                messages=[{"role": "user",
+-                           "content": SCOPE_CLASSIFIER_PROMPT.format(question=question) + old_code_note + retry_correction}],
+-            )
++            response, _scope_used = _scope_call(SCOPE_CLASSIFIER_PROMPT.format(question=question) + old_code_note + retry_correction)
++            _note_cost("scope_check", _scope_used, response)
              raw = _extract_text_from_response(response).strip()
              # Defensive: strip markdown code fences if the model adds them
              # despite the "ONLY a JSON object" instruction.
-@@ -462,6 +465,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
+@@ -462,6 +461,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
  - Cite AT MOST 4 distinct section numbers. If a retrieved section only tangentially relates, OMIT IT ENTIRELY -- do not describe it and do not explain why it doesn't apply.
  - Address the section(s) defining the OFFENCE the person asks about before general arrest-procedure sections -- the offence is usually the most direct answer.
  - If a provision or case below carries a note about its legal currency, fold it in as ONE short plain clause ("...though the exact scope of this is under review by a larger bench"). Never write a separate paragraph about verification status or "treat this with caution".
@@ -275,7 +283,7 @@ index 789f8e7..ac940fe 100644
  
  ## Shape and length
  - If the question describes something that HAS ALREADY HAPPENED to the person or someone close to them (an arrest, a search, an FIR, a frozen account), open with a short **"Right now"** part: 2-3 concrete things they can do or ask for immediately. Then the relevant law. Then what key facts are still unclear. Then the closing line.
-@@ -480,6 +484,118 @@ The legal information relevant to it (statute text and court judgments) -- prese
+@@ -480,6 +480,118 @@ The legal information relevant to it (statute text and court judgments) -- prese
  Write the answer now, following the shape and length rules above."""
  
  
@@ -394,7 +402,7 @@ index 789f8e7..ac940fe 100644
  _CONFLICT_INSTRUCTION = """- IMPORTANT: the sections below genuinely DISAGREE with each other on a key point (e.g. some are arrestable without a warrant, others are not). Do NOT blend them into one narrative paragraph. Structure your answer as clearly separated scenarios, each labeled with its exact section number, e.g.:
    "**If [scenario 1, naming the exact section]:** [what applies]"
    "**If [scenario 2, naming the exact section]:** [what applies]"
-@@ -1246,7 +1362,10 @@ def _looks_like_situation(response_text: str) -> bool:
+@@ -1246,7 +1358,10 @@ def _looks_like_situation(response_text: str) -> bool:
      for someone who's already living the situation, not a replacement."""
      if not response_text:
          return False
@@ -406,7 +414,7 @@ index 789f8e7..ac940fe 100644
  
  
  def _format_mismatch(problem: dict) -> str:
-@@ -1365,6 +1484,48 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
+@@ -1365,6 +1480,130 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
      return problems
  
  
@@ -436,14 +444,76 @@ index 789f8e7..ac940fe 100644
 +        pass
 +
 +
-+def _create_answer(model, prompt, label="answer"):
-+    """One answer call. If the reply stopped because it ran out of tokens (stop_reason 'max_tokens'), ask once more with a bigger budget; if that is cut off too, close it honestly (see _close_truncated)."""
++_EFFORTS = ("low", "medium", "high", "xhigh", "max")
++_SWITCH_BROKEN = {"effort": False}
++
++
++def _env_value(name):
++    import os
++    return (os.environ.get(name) or "").strip().strip("\"'").strip()
++
++
++def _answer_effort():
++    """Thinking effort for the answer call: ANSWER_EFFORT (low | medium | high | xhigh | max; unset = the model's own default, i.e. today's behaviour). From the soft line of DAILY_BUDGET_INR the answer runs at 'low'.
++    If the API ever rejects the setting it is dropped for the rest of the process."""
++    if _SWITCH_BROKEN["effort"]:
++        return None
++    try:
++        import cost_log
++        if cost_log.budget_state() in ("soft", "hard"):
++            return "low"
++    except Exception:  # noqa: BLE001
++        pass
++    v = _env_value("ANSWER_EFFORT").lower()
++    return v if v in _EFFORTS else None
++
++
++def _prompt_cache_mode():
++    """PROMPT_CACHE: 'on' (5-minute cache) or '1h' (one-hour cache) for the fixed part of the answer prompt; unset or off = no cache (today's behaviour). Pays only when the same prompt is used again within the window."""
++    v = _env_value("PROMPT_CACHE").lower()
++    if v == "1h":
++        return "1h"
++    return "5m" if v in ("on", "1", "true", "yes", "5m") else None
++
++
++def _scope_model():
++    """SCOPE_MODEL: the model for the scope check (unset = Haiku 4.5, today's behaviour). Any failure falls back to Haiku 4.5."""
++    return _env_value("SCOPE_MODEL") or HAIKU_MODEL
++
++
++def _messages_for(prompt, cache_prefix):
++    mode = _prompt_cache_mode()
++    if mode and cache_prefix and prompt.startswith(cache_prefix) and len(prompt) > len(cache_prefix):
++        cc = {"type": "ephemeral", "ttl": "1h"} if mode == "1h" else {"type": "ephemeral"}
++        return [{"role": "user", "content": [{"type": "text", "text": cache_prefix, "cache_control": cc}, {"type": "text", "text": prompt[len(cache_prefix):]}]}]
++    return [{"role": "user", "content": prompt}]
++
++
++def _answer_call(model, max_tokens, prompt, cache_prefix):
++    kw = {"model": model, "max_tokens": max_tokens, "messages": _messages_for(prompt, cache_prefix)}
++    eff = _answer_effort()
++    if eff:
++        kw["output_config"] = {"effort": eff}
++    try:
++        return client.messages.create(**kw)
++    except Exception as exc:  # noqa: BLE001
++        if eff and getattr(exc, "status_code", None) == 400:
++            logger.warning("the API rejected effort=%s (%s); answering without it from now on", eff, type(exc).__name__)
++            _SWITCH_BROKEN["effort"] = True
++            kw.pop("output_config", None)
++            return client.messages.create(**kw)
++        raise
++
++
++def _create_answer(model, prompt, label="answer", cache_prefix=None):
++    """One answer call. If the reply stopped because it ran out of tokens (stop_reason 'max_tokens'), ask once more with a bigger budget; if that is cut off too, close it honestly (see _close_truncated).
++    cache_prefix is the fixed start of the prompt, cached when PROMPT_CACHE is on."""
 +    budget = _answer_max_tokens()
-+    response = client.messages.create(model=model, max_tokens=budget, messages=[{"role": "user", "content": prompt}])
++    response = _answer_call(model, budget, prompt, cache_prefix)
 +    _note_cost(label, model, response)
 +    if getattr(response, "stop_reason", None) == "max_tokens":
 +        logger.warning("answer was cut off at %s tokens; asking again with %s", budget, min(budget * 2, 16000))
-+        response = client.messages.create(model=model, max_tokens=min(budget * 2, 16000), messages=[{"role": "user", "content": prompt}])
++        response = _answer_call(model, min(budget * 2, 16000), prompt, cache_prefix)
 +        _note_cost(label + "_after_cutoff", model, response)
 +    text = _extract_text_from_response(response).strip()
 +    if getattr(response, "stop_reason", None) == "max_tokens":
@@ -452,10 +522,30 @@ index 789f8e7..ac940fe 100644
 +    return text
 +
 +
++def _scope_call(content):
++    """The scope-check call. Returns (response, model used). With SCOPE_MODEL set to another model that is tried first (a Haiku 5 model is told not to think, since this is a short routing decision);
++    on any error, or a reply with no text, the default Haiku 4.5 call is made instead."""
++    sm = _scope_model()
++    if sm != HAIKU_MODEL:
++        try:
++            kw = {"model": sm, "max_tokens": 1500, "messages": [{"role": "user", "content": content}]}
++            if sm.startswith("claude-haiku-5"):
++                kw["thinking"] = {"type": "disabled"}
++                kw["output_config"] = {"effort": "low"}
++            response = client.messages.create(**kw)
++            if any(hasattr(b, "text") for b in response.content):
++                return response, sm
++            logger.warning("SCOPE_MODEL %s returned no text; using %s", sm, HAIKU_MODEL)
++        except Exception as exc:  # noqa: BLE001
++            logger.warning("SCOPE_MODEL %s failed (%s); using %s", sm, type(exc).__name__, HAIKU_MODEL)
++    response = client.messages.create(model=HAIKU_MODEL, max_tokens=1500, messages=[{"role": "user", "content": content}])
++    return response, HAIKU_MODEL
++
++
  def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
                                  pilot_matches=None):
      """Generates a plain-language answer using ONLY the given retrieved
-@@ -1498,26 +1659,29 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1498,26 +1737,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -496,11 +586,46 @@ index 789f8e7..ac940fe 100644
 +        # into a silent None (blank answer). 4000 leaves room for the
 +        # thinking pass plus the full answer. (CONFIRMED 2026-09-08.)
 +        # _create_answer keeps that budget (12000 for the lawyers' research note) and handles a reply that still runs out (2026-10-14).
-+        response_text = _create_answer(model, prompt)
++        _tpl = _response_prompt_template()
++        _cache_prefix = _tpl.split("{conflict_instruction}", 1)[0]       # the fixed part: rules, no question and no material (cached when PROMPT_CACHE is on)
++        response_text = _create_answer(model, prompt, cache_prefix=_cache_prefix)
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1568,12 +1732,7 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1531,8 +1775,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+         unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
+         pilot_overreach = _find_pilot_tier_overreach(response_text, pilot_matches)
+ 
++        # Grounding checks (grounding_checks.py): every case named, and every phrase in quotation marks, must be in the material the model was given. GROUNDING_CHECKS = off | log (default) | warn | enforce.
++        g_mode = grounding_checks.mode()
++        g_material = "\n".join([question or "", retrieved_text or "", pilot_context or "", " ".join(str(m.get("case_name") or "") for m in (matches or []) if isinstance(m, dict))])
++        g_cases, g_quotes = [], []
++        if g_mode != "off":
++            g_cases, g_quotes = grounding_checks.check_cases(response_text, g_material), grounding_checks.check_quotes(response_text, g_material)
++        g_enforce = g_mode == "enforce" and bool(g_cases or g_quotes)
++
++        def _g_finish(text, cases, quotes, retried):
++            if g_mode == "off":
++                return text
++            try:
++                if cases or quotes:
++                    import hashlib
++                    grounding_checks.log_line(hashlib.sha256((question or "").encode("utf-8")).hexdigest()[:12], cases, quotes, "after a second try" if retried else "")
++                if g_mode == "enforce" and any(c["status"] == "not_found" for c in cases):
++                    return None                                  # a case that exists nowhere we can look, still in the answer after a second try: withheld
++                if g_mode in ("warn", "enforce") and (cases or quotes):
++                    grounding_checks.add_notes(grounding_checks.notices(cases, quotes))
++            except Exception:  # noqa: BLE001
++                pass
++            return text
++
+         if (ungrounded or mismatches or missing_act or missing_companion or unsupported_cases
+-                or court_misattributions or omissions or unverified_contacts or pilot_overreach):
++                or court_misattributions or omissions or unverified_contacts or pilot_overreach or g_enforce):
+             retry_prompt = prompt
+             if ungrounded:
+                 retry_prompt += _UNGROUNDED_RETRY_INSTRUCTION.format(sections=", ".join(ungrounded))
+@@ -1568,12 +1835,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                  )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
@@ -510,11 +635,29 @@ index 789f8e7..ac940fe 100644
 -                messages=[{"role": "user", "content": retry_prompt}],
 -            )
 -            retry_text = _extract_text_from_response(retry_response).strip()
-+            retry_text = _create_answer(model, retry_prompt, label="answer_recheck")      # same thinking-block headroom as the first call
++            if g_enforce and g_cases:
++                retry_prompt += grounding_checks.RETRY_CASES.format(names="; ".join(c["name"] for c in g_cases))
++            if g_enforce and g_quotes:
++                retry_prompt += grounding_checks.RETRY_QUOTES.format(quotes="; ".join('"' + (q if len(q) <= 160 else q[:157] + "...") + '"' for q in g_quotes))
++            retry_text = _create_answer(model, retry_prompt, label="answer_recheck", cache_prefix=_cache_prefix)      # same thinking-block headroom as the first call
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -2262,6 +2421,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -1590,9 +1856,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+                     or _find_unverified_contact_numbers(retry_text, question, retrieved_text)
+                     or _find_pilot_tier_overreach(retry_text, pilot_matches)):
+                 return None
+-            return retry_text
++            if g_mode == "off":
++                return retry_text
++            return _g_finish(retry_text, grounding_checks.check_cases(retry_text, g_material), grounding_checks.check_quotes(retry_text, g_material), True)
+ 
+-        return response_text
++        return _g_finish(response_text, g_cases, g_quotes, False)
+     except Exception:
+         return None
+ 
+@@ -2262,6 +2530,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -529,7 +672,7 @@ index 789f8e7..ac940fe 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2479,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2588,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -545,7 +688,7 @@ index 789f8e7..ac940fe 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +3004,8 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3113,8 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -555,7 +698,7 @@ index 789f8e7..ac940fe 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3033,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3142,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -565,7 +708,7 @@ index 789f8e7..ac940fe 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3381,88 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3490,105 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -601,8 +744,23 @@ index 789f8e7..ac940fe 100644
 +        cost_log.begin(question)
 +    except Exception:  # noqa: BLE001
 +        pass
++    grounding_checks.reset_notes()
 +    try:
++        try:
++            import cost_log
++            if cost_log.budget_state() == "hard":
++                print("BUDGET_PAUSED " + __import__("json").dumps({"spent_today_inr": round(cost_log.spent_today_inr(), 2), "cap_inr": cost_log.budget_cap_inr()}), flush=True)
++                return {"state": "budget_paused"}
++        except Exception:  # noqa: BLE001
++            pass
 +        result = _answer_question_inner(question, inline_domains=inline_domains)
++        try:
++            if isinstance(result, dict) and result.get("state") in _LINK_STATES and grounding_checks.mode() in ("warn", "enforce"):
++                notes = grounding_checks.pop_notes()
++                if notes:
++                    result["grounding_notes"] = notes
++        except Exception as exc:  # noqa: BLE001
++            logger.warning("grounding notes failed: %s", exc)
 +        try:
 +            if isinstance(result, dict) and result.get("state") in _LINK_STATES and answer_style.is_v3():
 +                result["audience"] = answer_style.effective_audience()
@@ -614,7 +772,9 @@ index 789f8e7..ac940fe 100644
 +    finally:
 +        try:
 +            import cost_log
-+            cost_log.finish(style=answer_style.style(), audience=answer_style.effective_audience())
++            cost_log.finish(style=answer_style.style(), audience=answer_style.effective_audience(),
++                            switches={"effort": _answer_effort(), "scope_model": _scope_model(), "prompt_cache": _prompt_cache_mode(), "grounding": grounding_checks.mode(),
++                                      "budget": cost_log.budget_state()})
 +        except Exception:  # noqa: BLE001
 +            pass
 +        answer_style.set_audience(None)
@@ -657,7 +817,7 @@ index 789f8e7..ac940fe 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3517,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3643,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -667,10 +827,10 @@ index 789f8e7..ac940fe 100644
          return None, []
 diff --git a/cost_log.py b/cost_log.py
 new file mode 100644
-index 0000000..2b9fde1
+index 0000000..c054d77
 --- /dev/null
 +++ b/cost_log.py
-@@ -0,0 +1,109 @@
+@@ -0,0 +1,208 @@
 +"""cost_log.py -- what one question costs, measured from the tokens each call really used (not guessed).
 +
 +Every model call the answer path makes reports its token counts; this module turns them into dollars and rupees and prints two kinds of line the hosting log search can find:
@@ -680,7 +840,12 @@ index 0000000..2b9fde1
 +
 +Prices are USD per million tokens, from Anthropic's price list of 2026-10-06 and (for Voyage) the figures recorded in this project; PRICES_JSON overrides them ('{"model": [in, out]}'; Voyage models take one number).
 +The rupee rate is USD_INR (default 96.5, a mid-market figure read 2026-10-14: set the real rate in the hosting variables).
++
++Daily budget (DAILY_BUDGET_INR, unset = no limit): every logged call adds to today's spend (Indian date). From DAILY_BUDGET_SOFT_PCT (default 80) per cent of the limit the answer step runs at low effort;
++at the limit answer_question returns the state 'budget_paused' without calling a model. COST_STATE_FILE (a path on a volume) keeps the day's total across restarts; without it the total is per process.
++Prompt-cache reads are priced at 0.1x and writes at 1.25x the input price (2x when PROMPT_CACHE=1h).
 +"""
++import datetime
 +import hashlib
 +import json
 +import os
@@ -731,18 +896,25 @@ index 0000000..2b9fde1
 +        rec["usd"] = round(rec["usd"], 8)
 +        if getattr(_LOCAL, "calls", None) is not None:
 +            _LOCAL.calls.append(rec)
++        add_spend_inr(rec["inr"])
 +        print("COST_CALL " + json.dumps({**rec, "q": getattr(_LOCAL, "q", None)}), flush=True)
 +    except Exception:  # noqa: BLE001
 +        pass
 +
 +
 +def note_anthropic(label, model, usage):
-+    """usage is the SDK's response.usage (input_tokens, output_tokens; output includes the model's thinking)."""
++    """usage is the SDK's response.usage (input_tokens = the uncached part, output_tokens includes the model's thinking, cache_creation_input_tokens and cache_read_input_tokens when caching is on)."""
 +    try:
 +        a, _ = _prices()
 +        tin, tout = int(getattr(usage, "input_tokens", 0) or 0), int(getattr(usage, "output_tokens", 0) or 0)
++        cw, cr = int(getattr(usage, "cache_creation_input_tokens", 0) or 0), int(getattr(usage, "cache_read_input_tokens", 0) or 0)
 +        pin, pout = a.get(model, a.get(str(model).split("-2025")[0], (0.0, 0.0)))
-+        _record({"label": label, "model": model, "in": tin, "out": tout, "usd": (tin * pin + tout * pout) / 1e6, "priced": model in a or str(model).split("-2025")[0] in a})
++        write_x = 2.0 if (os.environ.get("PROMPT_CACHE") or "").strip().strip("\"'").lower() == "1h" else 1.25
++        usd = (tin * pin + cw * pin * write_x + cr * pin * 0.1 + tout * pout) / 1e6
++        rec = {"label": label, "model": model, "in": tin, "out": tout, "usd": usd, "priced": model in a or str(model).split("-2025")[0] in a}
++        if cw or cr:
++            rec["cache_write"], rec["cache_read"] = cw, cr
++        _record(rec)
 +    except Exception:  # noqa: BLE001
 +        pass
 +
@@ -766,7 +938,7 @@ index 0000000..2b9fde1
 +        pass
 +
 +
-+def finish(style="", audience=""):
++def finish(style="", audience="", switches=None):
 +    """Print the COST_QUESTION line for the question begun in this thread and clear it. Returns the dict (or None)."""
 +    try:
 +        calls = getattr(_LOCAL, "calls", None)
@@ -775,13 +947,382 @@ index 0000000..2b9fde1
 +        usd = sum(c["usd"] for c in calls)
 +        rec = {"q": getattr(_LOCAL, "q", None), "style": style, "audience": audience, "calls": calls, "usd": round(usd, 8), "usd_inr": usd_inr(), "inr": round(usd * usd_inr(), 4),
 +               "unpriced": [c["model"] for c in calls if not c.get("priced")]}
++        if switches:
++            rec["switches"] = switches
++        rec["spent_today_inr"] = round(spent_today_inr(), 4)
 +        print("COST_QUESTION " + json.dumps(rec), flush=True)
 +        _LOCAL.calls = None
 +        return rec
 +    except Exception:  # noqa: BLE001
 +        return None
++
++
++# ---------------------------------------------------------------- the daily budget
++_DAY = {"date": None, "inr": 0.0, "loaded": False}
++_DAY_LOCK = threading.Lock()
++_IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
++
++
++def _today():
++    return datetime.datetime.now(_IST).date().isoformat()
++
++
++def _state_path():
++    return (os.environ.get("COST_STATE_FILE") or "").strip().strip("\"'") or None
++
++
++def _roll_locked():
++    today = _today()
++    if not _DAY["loaded"]:
++        _DAY["loaded"] = True
++        path = _state_path()
++        if path:
++            try:
++                with open(path, encoding="utf-8") as fh:
++                    d = json.load(fh)
++                if d.get("date") == today:
++                    _DAY["date"], _DAY["inr"] = today, float(d.get("inr") or 0.0)
++            except Exception:  # noqa: BLE001
++                pass
++    if _DAY["date"] != today:
++        _DAY["date"], _DAY["inr"] = today, 0.0
++
++
++def add_spend_inr(inr):
++    try:
++        with _DAY_LOCK:
++            _roll_locked()
++            _DAY["inr"] += float(inr or 0.0)
++            path = _state_path()
++            if path:
++                try:
++                    with open(path, "w", encoding="utf-8") as fh:
++                        json.dump({"date": _DAY["date"], "inr": _DAY["inr"]}, fh)
++                except Exception:  # noqa: BLE001
++                    pass
++    except Exception:  # noqa: BLE001
++        pass
++
++
++def spent_today_inr():
++    try:
++        with _DAY_LOCK:
++            _roll_locked()
++            return float(_DAY["inr"])
++    except Exception:  # noqa: BLE001
++        return 0.0
++
++
++def budget_cap_inr():
++    try:
++        v = (os.environ.get("DAILY_BUDGET_INR") or "").strip().strip("\"'")
++        return float(v) if v else None
++    except ValueError:
++        return None
++
++
++def budget_state():
++    """'ok' (no limit set, or below the soft line), 'soft' (from DAILY_BUDGET_SOFT_PCT per cent of the limit: answers run at low effort) or 'hard' (the limit is reached: no model call)."""
++    cap = budget_cap_inr()
++    if not cap or cap <= 0:
++        return "ok"
++    try:
++        soft = float((os.environ.get("DAILY_BUDGET_SOFT_PCT") or "80").strip().strip("\"'"))
++    except ValueError:
++        soft = 80.0
++    spent = spent_today_inr()
++    if spent >= cap:
++        return "hard"
++    return "soft" if spent >= cap * soft / 100.0 else "ok"
++
++
++def _reset_day_for_tests():
++    with _DAY_LOCK:
++        _DAY.update({"date": None, "inr": 0.0, "loaded": False})
+diff --git a/grounding_checks.py b/grounding_checks.py
+new file mode 100644
+index 0000000..474a5d0
+--- /dev/null
++++ b/grounding_checks.py
+@@ -0,0 +1,276 @@
++"""grounding_checks.py -- two checks on a finished answer, run by code, not by the model.
++
++  1. Citation check: every case the answer names ("X v. Y") must be in the material the model was given (the question, the retrieved passages, the wider-search passages, the related-judgment list).
++     A case that is not there came from the model's memory, which the prompt forbids. Each one is also looked up in the site's list of Supreme Court judgments (case_lookup) so the notice can say
++     "real but not among our sources" or "not found in our list". The model may mention a case that a passage itself names (a passage that quotes Ramachandra Rao makes Ramachandra Rao part of the material).
++  2. Quote check: words in quotation marks (five words or more) must appear in the material, apart from small differences of spacing, punctuation and case. "..." and [bracketed] insertions split a quotation
++     into pieces and each piece is checked.
++
++GROUNDING_CHECKS = off | log | warn | enforce.  log (the default) only prints a GROUNDING_CHECK line to the application log: nothing the user sees changes. warn adds a plain notice under the answer.
++enforce also asks the model once more with the problem named, and withholds the answer when a case that cannot be found anywhere is still in it. Nothing here ever says a case is good law; a notice only withdraws trust.
++Every function swallows its own errors (a failure of a check never breaks an answer).
++"""
++import difflib
++import json
++import os
++import re
++import threading
++
++MODES = ("off", "log", "warn", "enforce")
++QUOTE_MIN_WORDS = 5
++_LOCAL = threading.local()
++
++_GENERIC = re.compile(r"^(?:the\s+)?(?:state|union|commissioner|collector|central|govt|government|cbi|police|inspector|director|chief|secretary|ministry|bureau|board|authority|corporation|bank|company|ltd|"
++                      r"national|nia|enforcement|customs|income|revenue|public|prosecution|home|district|superintendent|officer|station|house|sho)\b", re.I)
++_TRAIL = re.compile(r"(?:[,.\s]+(?:&|and)\s+(?:anr|ors|another|others)\b\.?|[,.\s]+(?:anr|ors|another|others|etc|dead|by lrs?)\b\.?)+\s*$", re.I)
++_STOP = {"v", "vs", "versus", "the", "of", "and", "anr", "ors", "another", "others", "etc", "state", "u", "p"}
++
++
++def mode():
++    v = (os.environ.get("GROUNDING_CHECKS") or "log").strip().strip("\"'").strip().lower()
++    return v if v in MODES else "log"
++
++
++# ---- notices travel from the generation step to answer_question in a thread-local ----
++def reset_notes():
++    _LOCAL.notes = []
++
++
++def add_notes(notes):
++    if not hasattr(_LOCAL, "notes") or _LOCAL.notes is None:
++        _LOCAL.notes = []
++    for n in notes:
++        if n not in _LOCAL.notes:
++            _LOCAL.notes.append(n)
++
++
++def pop_notes():
++    n = getattr(_LOCAL, "notes", None) or []
++    _LOCAL.notes = []
++    return n
++
++
++# ---- text normalising ----
++def norm(s):
++    s = (s or "").lower()
++    s = s.replace("‘", "'").replace("’", "'").replace("“", '"').replace("”", '"')
++    s = re.sub(r"[‐-―\-]", " ", s)
++    s = re.sub(r"[^a-z0-9\s]", " ", s)
++    return re.sub(r"\s+", " ", s).strip()
++
++
++def _nospace(s):
++    return norm(s).replace(" ", "")
++
++
++# ---- case names ----
++_VS = {"v", "v.", "vs", "vs.", "versus"}
++_CONNECT = {"of", "the", "and", "for", "in", "on", "&", "by", "de", "la", "at", "through", "thru"}
++_ABBREV = {"ltd", "pvt", "anr", "ors", "etc", "govt", "dept", "corp", "co", "inc", "bros", "assn", "ors.", "anr."}
++_COURT_WORDS = {"court", "supreme", "high", "bench", "apex", "magistrate", "tribunal", "judge", "judges"}
++_STARTERS = {"in", "see", "also", "under", "section", "court", "held", "and", "but", "while", "however", "as", "on", "for", "by", "at", "after", "before", "since", "because", "whether", "that", "this",
++             "these", "those", "then", "there", "it", "its", "a", "an", "if", "when", "where", "which", "who", "with", "from", "to", "so", "thus", "hence", "per", "cf", "compare", "like", "unlike", "unless",
++             "although", "though", "even", "yet", "now", "here", "both", "each", "every", "any", "some", "all", "no", "not", "only", "just", "likewise", "similarly", "moreover", "furthermore", "finally"}
++
++
++def _is_name_token(tok, first_party):
++    core = tok.strip(",;:()\"'\u201c\u201d")
++    if not core:
++        return False
++    low = core.lower().rstrip(".")
++    if first_party and low in _STARTERS:
++        return False
++    return core[0].isupper() or low in _CONNECT or low in _ABBREV or core == "&" or core[0].isdigit()
++
++
++def _mentions(text):
++    """Case names written 'X v. Y' (also vs., versus). The first party is read backwards from the 'v.', the second forwards, each stopping at a sentence start, a lowercase word that is not a name
++    connector (of, the, and ...), the end of a sentence, or 'the Court'. A short parenthesis after the second party stays with it."""
++    names = []
++    toks = re.findall(r"\S+", text or "")
++    for i, t in enumerate(toks):
++        if t.strip(",;:()\"'\u201c\u201d").lower() not in _VS:
++            continue
++        back = []
++        j = i - 1
++        while j >= 0 and len(back) < 6:
++            tk = toks[j]
++            core = tk.strip(",;:()\"'\u201c\u201d")
++            if not _is_name_token(tk, True):
++                break
++            if tk.endswith((",", ";", ":")) and back:
++                break
++            if tk.endswith(".") and len(core.rstrip(".")) > 3 and core.rstrip(".").lower() not in _ABBREV and back:
++                break                                   # the end of the previous sentence
++            back.append(core)
++            j -= 1
++        back.reverse()
++        while back and back[0].lower().rstrip(".") in _CONNECT and back[0].lower() != "the":
++            back.pop(0)
++        fwd = []
++        k = i + 1
++        while k < len(toks) and len(fwd) < 7:
++            tk = toks[k]
++            core = tk.strip(",;:()\"'\u201c\u201d")
++            if tk.startswith("(") and fwd:
++                grp = [tk]
++                m = k
++                while not toks[m].endswith(")") and m + 1 < len(toks) and m - k < 8:
++                    m += 1
++                    grp.append(toks[m])
++                if toks[m].rstrip(".,;:").endswith(")"):
++                    gtxt = " ".join(grp).rstrip(".,;:")
++                    if re.search(r"[A-Za-z]{4,}", gtxt) and not re.search(r"\b(?:SCC|AIR|SCR|SCALE|INSC|JT)\b", gtxt):     # a name's own parenthesis, not a year or a citation
++                        fwd.append(gtxt)
++                    k = m + 1
++                    break
++                break
++            if not _is_name_token(tk, False):
++                break
++            if core.lower() == "the" and k + 1 < len(toks) and toks[k + 1].strip(",;:()\"'").lower() in _COURT_WORDS:
++                break
++            fwd.append(core)
++            k += 1
++            if tk.endswith((",", ";", ":")):
++                break
++            if tk.endswith(".") and len(core.rstrip(".")) > 3 and core.rstrip(".").lower() not in _ABBREV:
++                break
++        while fwd and fwd[-1].lower() in _CONNECT:
++            fwd.pop()
++        if back and fwd:
++            names.append(" ".join(back).rstrip(".") + " v. " + " ".join(fwd).rstrip("."))
++    return names
++
++
++def _parties(name):
++    parts = re.split(r"\s+(?:v\.?|vs\.?|versus)\s+", name or "", maxsplit=1, flags=re.I)
++    clean = lambda p: _TRAIL.sub("", re.sub(r"\([^)]*\)", " ", (p or ""))).strip(" .,;")
++    return (clean(parts[0]), clean(parts[1])) if len(parts) == 2 else (clean(name), "")
++
++
++def _distinctive(name):
++    p1, p2 = _parties(name)
++    for p in (p1, p2):
++        if p and not _GENERIC.match(p.strip()) and len(_nospace(p)) >= 5:
++            return p
++    return None
++
++
++def supported_in_material(name, material_nospace):
++    """True when the case's distinctive party name appears in the material (spacing and punctuation ignored; a leading initial such as the 'P.' of 'P. Ramachandra Rao' is optional)."""
++    d = _distinctive(name)
++    if d is None:
++        return True                      # nothing distinctive to look for: never a basis for a notice
++    words = d.split()
++    forms = [d]
++    while words and len(norm(words[0]).replace(" ", "")) <= 1:
++        words = words[1:]
++        if words:
++            forms.append(" ".join(words))
++    return any(len(_nospace(f)) >= 5 and _nospace(f) in material_nospace for f in forms)
++
++
++def _tokens(party):
++    return {t for t in norm(party).split() if t not in _STOP}
++
++
++def sc_list_has(name):
++    """True / False / None (could not look). True only when a title in the Supreme Court list has the same first party and a similar second party; lookalikes are not enough."""
++    try:
++        import case_lookup
++        p1, p2 = _parties(name)
++        a1, a2 = _tokens(p1), _tokens(p2)
++        if not a1:
++            return None
++        res = case_lookup.search_cases_detailed(name, 8)
++        for c in res.get("cases") or []:
++            q1, q2 = _parties(c.get("title") or "")
++            b1, b2 = _tokens(q1), _tokens(q2)
++            if a1 == b1 and (not a2 or not b2 or len(a2 & b2) / max(1, len(a2 | b2)) >= 0.5):
++                return True
++        return False
++    except Exception:  # noqa: BLE001
++        return None
++
++
++def check_cases(answer, material, exists_fn=sc_list_has):
++    """[{'name', 'status'}] for each case named in the answer that is not in the material. status: 'real_not_supplied' (in the Supreme Court list), 'not_found' (not in it), 'unknown' (could not look)."""
++    out, seen = [], set()
++    try:
++        mat = _nospace(material)
++        for name in _mentions(answer):
++            key = _nospace(name)
++            if key in seen:
++                continue
++            seen.add(key)
++            if supported_in_material(name, mat):
++                continue
++            ex = exists_fn(name) if exists_fn else None
++            out.append({"name": name, "status": "real_not_supplied" if ex is True else ("not_found" if ex is False else "unknown")})
++    except Exception:  # noqa: BLE001
++        return []
++    return out
++
++
++# ---- quotations ----
++_QUOTE = re.compile(r"“([^”\n]{20,600}?)”|\"([^\"\n]{20,600}?)\"")
++_SPLIT = re.compile(r"\.\s?\.\s?\.|…|\[[^\]]*\]")
++
++
++def _fragments(quote):
++    return [f.strip(" ,.;:") for f in _SPLIT.split(quote) if len(norm(f).split()) >= QUOTE_MIN_WORDS]
++
++
++def _fuzzy_in(frag_norm, material_norm, threshold=0.95):
++    words, mw = frag_norm.split(), material_norm.split()
++    n = len(words)
++    if n == 0 or len(mw) < n:
++        return False
++    first = words[0]
++    for i, w in enumerate(mw[: len(mw) - n + 1]):
++        if w != first and difflib.SequenceMatcher(None, w, first).ratio() < 0.8:
++            continue
++        if difflib.SequenceMatcher(None, " ".join(mw[i:i + n]), frag_norm).ratio() >= threshold:
++            return True
++    return False
++
++
++def check_quotes(answer, material):
++    """The quotations (five words or more) whose words cannot be found in the material. Returns the original quotation texts."""
++    bad = []
++    try:
++        mat = norm(material)
++        for m in _QUOTE.finditer(answer or ""):
++            q = m.group(1) or m.group(2)
++            for frag in _fragments(q):
++                fn = norm(frag)
++                if fn and fn not in mat and not _fuzzy_in(fn, mat):
++                    bad.append(q.strip())
++                    break
++    except Exception:  # noqa: BLE001
++        return []
++    return bad
++
++
++# ---- wording ----
++def notices(cases, quotes):
++    out = []
++    for c in cases:
++        if c["status"] == "not_found":
++            out.append(f"The case “{c['name']}” is named in this answer, but it is not among the sources we read for it and we could not find it in our list of Supreme Court judgments. Please do not rely on it.")
++        else:
++            out.append(f"The case “{c['name']}” is named in this answer, but it is not among the sources we read for it. Please do not rely on it unless you have read the judgment yourself.")
++    for q in quotes:
++        shown = q if len(q) <= 160 else q[:157].rstrip() + "..."
++        out.append(f"The words “{shown}” are in quotation marks in this answer, but we could not find them in the sources we read. Treat them as unverified.")
++    return out
++
++
++RETRY_CASES = ("\n\nCORRECTION NEEDED: your answer names these cases, which are not among the passages given above: {names}. Rewrite the answer without naming any case that has no passage above "
++               "(describe the point generally if you need to). Everything else stays as it was.\n")
++RETRY_QUOTES = ("\n\nCORRECTION NEEDED: these words are in quotation marks in your answer but do not appear in the passages given above: {quotes}. Either quote the passage exactly, or remove the quotation "
++                "marks and say it in your own words. Everything else stays as it was.\n")
++
++
++def log_line(question_hash, found_cases, found_quotes, note=""):
++    print("GROUNDING_CHECK " + json.dumps({"q": question_hash, "mode": mode(), "cases": found_cases, "quotes": [q[:120] for q in found_quotes], "note": note}), flush=True)
 diff --git a/recourse_app.py b/recourse_app.py
-index 1845aeb..667d9e3 100644
+index 1845aeb..1e105b5 100644
 --- a/recourse_app.py
 +++ b/recourse_app.py
 @@ -26,6 +26,8 @@ import logging
@@ -874,7 +1415,20 @@ index 1845aeb..667d9e3 100644
  
      with st.expander("How Recourse works — and why it won't invent a case"):
          st.markdown(
-@@ -796,12 +834,23 @@ def render_answer(result: dict):
+@@ -786,6 +824,12 @@ def render_answer(result: dict):
+     note, or a technical-trouble note -- never a silent guess."""
+     state = result.get("state")
+ 
++    if state == "budget_paused":
++        st.markdown('<div class="r-label">Daily limit reached</div>', unsafe_allow_html=True)
++        st.markdown("Recourse has reached its usage limit for today, so it cannot answer new questions until tomorrow. "
++                    "If your situation is urgent, please contact a lawyer or your nearest District Legal Services Authority (free).")
++        return False
++
+     if state in ("single_match", "conflicting_matches"):
+         st.markdown('<div class="r-label">Your situation</div>', unsafe_allow_html=True)
+         if state == "conflicting_matches":
+@@ -796,12 +840,23 @@ def render_answer(result: dict):
          with st.container(border=True):
              st.markdown('<span class="r-ansmark"></span>', unsafe_allow_html=True)
              if reply:
@@ -899,7 +1453,7 @@ index 1845aeb..667d9e3 100644
          reply_lc = (reply or "").lower()
          all_matches = result.get("matches") or []
  
-@@ -873,6 +922,8 @@ def render_answer(result: dict):
+@@ -873,6 +928,8 @@ def render_answer(result: dict):
          # (chat_assistant._attach_cited_judgment_links) -- these are the tool's own verified sources, unlike
          # the unverified expander below, so they are shown plainly, not hidden behind a caution.
          cited_links = result.get("cited_judgment_links")
@@ -908,7 +1462,7 @@ index 1845aeb..667d9e3 100644
          if cited_links:
              st.markdown('<div class="r-label">Judgments this answer relies on</div>', unsafe_allow_html=True)
              for cl in cited_links:
-@@ -880,6 +931,35 @@ def render_answer(result: dict):
+@@ -880,6 +937,42 @@ def render_answer(result: dict):
                              f'<span class="r-src">{esc(cl.get("source_label", "source link"))}</span>',
                              unsafe_allow_html=True)
  
@@ -920,6 +1474,13 @@ index 1845aeb..667d9e3 100644
 +                st.markdown(f'<div class="r-concord">{esc(n)}</div>', unsafe_allow_html=True)
 +            if result.get("register_not_checked"):
 +                st.markdown(f'<p class="r-foot">{esc(result["register_not_checked"])}</p>', unsafe_allow_html=True)
++
++        # Notices from the grounding checks (grounding_checks.py; GROUNDING_CHECKS=warn or enforce): a case or a quotation in the answer that is not in the sources we read. Written by code.
++        g_notes = result.get("grounding_notes")
++        if g_notes:
++            st.markdown('<div class="r-label">Checked by code against the sources we read</div>', unsafe_allow_html=True)
++            for n in g_notes:
++                st.markdown(f'<div class="r-concord">{esc(n)}</div>', unsafe_allow_html=True)
 +
 +        # The wider Supreme Court pool (sci_search_tier.py, off unless SCI_SEARCH_MODE=show): its own box, never mixed with the verified sources above.
 +        sci_rel = result.get("sci_related_judgments")
@@ -944,7 +1505,7 @@ index 1845aeb..667d9e3 100644
          unverified = result.get("unverified_related_judgments")
          if unverified:
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
-@@ -1210,7 +1290,8 @@ if _busy:
+@@ -1210,7 +1303,8 @@ if _busy:
          # inline from the shared corpus rather than dead-ended with a
          # "covered elsewhere" redirect that points nowhere here.
          st.session_state.answer = _answer_question(
@@ -1696,10 +2257,10 @@ index 0000000..a35c390
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_answer_style_v3_page.py b/test_answer_style_v3_page.py
 new file mode 100644
-index 0000000..4a3833f
+index 0000000..c0ef9bf
 --- /dev/null
 +++ b/test_answer_style_v3_page.py
-@@ -0,0 +1,82 @@
+@@ -0,0 +1,106 @@
 +"""test_answer_style_v3_page.py -- the page side of answer style v3: the Layman / Lawyer switch (only under RESPONSE_STYLE=v3), the audience reaching answer_question, headings kept as headings,
 +the lawyers' authorities tables, and no change to a v1 answer. Offline and free (the model is replaced by a stub). Run: python -X utf8 test_answer_style_v3_page.py"""
 +import os
@@ -1729,6 +2290,8 @@ index 0000000..4a3833f
 +
 +def stub(question, inline_domains=frozenset(), audience=None, channel=None):
 +    SEEN["audience"], SEEN["channel"] = audience, channel
++    if os.environ.get("TEST_MODE") == "paused":
++        return {"state": "budget_paused"}
 +    lawyer = audience == "lawyer"
 +    res = {"state": "single_match", "response_text": LAWYER_TEXT if lawyer else TEXT, "matches": [], "situation_detected": False}
 +    if os.environ.get("RESPONSE_STYLE") == "v3":
@@ -1736,6 +2299,8 @@ index 0000000..4a3833f
 +        if lawyer:
 +            res["authorities"] = {"library": [{"case": "Arnesh Kumar v. State of Bihar", "year": 2014, "citation": "(2014) 8 SCC 273", "paragraphs": ["11"], "tier": "Reviewed library",
 +                                               "status": "No adverse later judgment found by our automatic check (silence, not a finding).", "status_source": "card_quiet", "link": "https://l/a"}], "wider": [], "has_bench": False}
++    if os.environ.get("TEST_MODE") == "notes":
++        res["grounding_notes"] = ["The case \u201cRamesh Chandra v. State of Madhya Pradesh\u201d is named in this answer, but it is not among the sources we read for it. Please do not rely on it."]
 +    return res
 +
 +
@@ -1778,6 +2343,26 @@ index 0000000..4a3833f
 +check(any("Not checked by us" in v and "means neither our Overruled Register" in v for v in vals), "v3 lawyer: the one explanatory note is shown under the tables")
 +check(any("**1. A fixed period of delay does not by itself terminate a criminal trial under the BNSS**\n\n" in v for v in vals), "v3 lawyer: a long proposition heading (up to 90 characters) stays a heading, with a blank line after it")
 +check(not any("Judgments this answer relies on" in v for v in vals), "v3 lawyer: the plain link list is replaced by the table")
++
++# ---- the grounding notices and the daily limit ----
++os.environ["TEST_MODE"] = "notes"
++at = AppTest.from_file(APP, default_timeout=90).run()
++at.text_area(key="text").set_value("My trial has gone on 9 years").run()
++[b for b in at.button if "Check my situation" in b.label][0].click().run()
++vals = md_values(at)
++check(not at.exception and any("Checked by code against the sources we read" in v for v in vals) and any("Ramesh Chandra v. State of Madhya Pradesh" in v for v in vals), "the page shows the grounding notices under the answer, written by code")
++os.environ["TEST_MODE"] = "paused"
++at = AppTest.from_file(APP, default_timeout=90).run()
++at.text_area(key="text").set_value("My trial has gone on 9 years").run()
++[b for b in at.button if "Check my situation" in b.label][0].click().run()
++vals = md_values(at)
++check(not at.exception and any("Daily limit reached" in v for v in vals) and any("usage limit for today" in v for v in vals), "at the daily limit the page says so plainly and points to legal aid")
++os.environ.pop("TEST_MODE")
++import whatsapp_formatter as W
++wa = W.format_answer_for_whatsapp({"state": "budget_paused"})
++check(len(wa) == 2 and "usage limit for today" in wa[0] and "District Legal Services" in wa[1], "WhatsApp: the daily-limit message and the legal-aid line")
++wa = W.format_answer_for_whatsapp({"state": "single_match", "response_text": "An answer.", "grounding_notes": ["A note."]})
++check(any(m.startswith("*Checked by code against the sources we read:*") and "- A note." in m for m in wa), "WhatsApp: the grounding notices are sent as one message")
 +
 +os.environ.pop("RESPONSE_STYLE", None)
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
@@ -2037,6 +2622,334 @@ index 0000000..71985b4
 +cs = parse(lines, "COST_CALL")
 +check(body and [c["label"] for c in cs] == ["sci_search_second_embed", "sci_search_second_rerank"], "the tier logs the search service's usage under the label of the search (here the second search for a correcting case)")
 +C.finish()
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_cost_switches.py b/test_cost_switches.py
+new file mode 100644
+index 0000000..48aa90e
+--- /dev/null
++++ b/test_cost_switches.py
+@@ -0,0 +1,178 @@
++"""test_cost_switches.py -- ANSWER_EFFORT, SCOPE_MODEL, PROMPT_CACHE and DAILY_BUDGET_INR. Every one defaults to today's behaviour. Offline and free. Run: python -X utf8 test_cost_switches.py"""
++import contextlib
++import io
++import json
++import os
++import sys
++import tempfile
++import types
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++for k in ("ANSWER_EFFORT", "SCOPE_MODEL", "PROMPT_CACHE", "DAILY_BUDGET_INR", "DAILY_BUDGET_SOFT_PCT", "COST_STATE_FILE", "RESPONSE_STYLE", "GROUNDING_CHECKS", "USD_INR"):
++    os.environ.pop(k, None)
++import chat_assistant as CA
++import cost_log as C
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++KW = []
++BEHAVE = {"reject_effort": False, "scope_reply": "text", "scope_raises": False}
++
++
++class _Msgs:
++    def create(self, **kw):
++        KW.append(kw)
++        if kw.get("output_config", {}).get("effort") and BEHAVE["reject_effort"] and kw["model"] != CA.HAIKU_MODEL:
++            err = Exception("effort not supported"); err.status_code = 400
++            raise err
++        if kw["model"] != CA.HAIKU_MODEL and kw["max_tokens"] == 1500:       # a scope-check call on the configured model
++            if BEHAVE["scope_raises"]:
++                raise RuntimeError("model unavailable")
++            blocks = [types.SimpleNamespace(type="text", text='{"category":"in_scope"}')] if BEHAVE["scope_reply"] == "text" else [types.SimpleNamespace(type="thinking", thinking="...")]
++            return types.SimpleNamespace(content=blocks, stop_reason="end_turn", usage=types.SimpleNamespace(input_tokens=100, output_tokens=20))
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="An answer.")], stop_reason="end_turn",
++                                     usage=types.SimpleNamespace(input_tokens=1000, output_tokens=500, cache_creation_input_tokens=0, cache_read_input_tokens=0))
++
++
++CA.client = types.SimpleNamespace(messages=_Msgs())
++
++
++def quiet(fn):
++    with contextlib.redirect_stdout(io.StringIO()):
++        return fn()
++
++
++# ================= ANSWER_EFFORT =================
++CA._SWITCH_BROKEN["effort"] = False
++KW.clear(); quiet(lambda: CA._create_answer("claude-sonnet-5", "prompt"))
++check("output_config" not in KW[0] and KW[0]["messages"] == [{"role": "user", "content": "prompt"}] and KW[0]["max_tokens"] == 4000, "default: no effort setting, the prompt as one plain string, 4000 tokens (today's call)")
++for v, want in (("medium", "medium"), (' "LOW" ', "low"), ("xhigh", "xhigh"), ("banana", None), ("", None)):
++    os.environ["ANSWER_EFFORT"] = v
++    CA._SWITCH_BROKEN["effort"] = False
++    check(CA._answer_effort() == want, f"ANSWER_EFFORT={v!r} is read as {want}")
++os.environ["ANSWER_EFFORT"] = "medium"
++KW.clear(); quiet(lambda: CA._create_answer("claude-sonnet-5", "prompt"))
++check(KW[0].get("output_config") == {"effort": "medium"}, "ANSWER_EFFORT=medium reaches the answer call as output_config")
++BEHAVE["reject_effort"] = True
++KW.clear(); out = quiet(lambda: CA._create_answer("claude-sonnet-5", "prompt"))
++check(out == "An answer." and len(KW) == 2 and "output_config" not in KW[1] and CA._SWITCH_BROKEN["effort"], "if the API rejects the effort setting, the call is repeated without it and the setting is dropped for good")
++KW.clear(); quiet(lambda: CA._create_answer("claude-sonnet-5", "prompt"))
++check(len(KW) == 1 and "output_config" not in KW[0], "afterwards no further failed calls are made")
++BEHAVE["reject_effort"] = False
++CA._SWITCH_BROKEN["effort"] = False
++os.environ.pop("ANSWER_EFFORT")
++
++# ================= SCOPE_MODEL =================
++KW.clear(); resp, used = CA._scope_call("scope prompt")
++check(used == CA.HAIKU_MODEL and KW[0]["model"] == CA.HAIKU_MODEL and KW[0]["max_tokens"] == 1500 and "thinking" not in KW[0], "default: the Haiku 4.5 call exactly as before")
++os.environ["SCOPE_MODEL"] = "claude-haiku-5-5"
++KW.clear(); resp, used = CA._scope_call("scope prompt")
++check(used == "claude-haiku-5-5" and KW[0]["thinking"] == {"type": "disabled"} and KW[0]["output_config"] == {"effort": "low"} and len(KW) == 1, "SCOPE_MODEL=claude-haiku-5-5 is used, told not to think and to use low effort")
++os.environ["SCOPE_MODEL"] = "claude-sonnet-5"
++KW.clear(); resp, used = CA._scope_call("scope prompt")
++check(used == "claude-sonnet-5" and "thinking" not in KW[0], "another model is used as given, with no extra settings")
++BEHAVE["scope_raises"] = True
++KW.clear(); resp, used = CA._scope_call("scope prompt")
++check(used == CA.HAIKU_MODEL and [k["model"] for k in KW] == ["claude-sonnet-5", CA.HAIKU_MODEL], "if the configured model fails, Haiku 4.5 answers instead")
++BEHAVE["scope_raises"] = False
++BEHAVE["scope_reply"] = "thinking_only"
++KW.clear(); resp, used = CA._scope_call("scope prompt")
++check(used == CA.HAIKU_MODEL, "a reply with no text falls back to Haiku 4.5 too")
++BEHAVE["scope_reply"] = "text"
++os.environ.pop("SCOPE_MODEL")
++check(CA._scope_model() == CA.HAIKU_MODEL, "unset: Haiku 4.5")
++
++# ================= PROMPT_CACHE =================
++PREFIX = "RULES. " * 50
++PROMPT = PREFIX + "QUESTION: delay? MATERIAL: text"
++check(CA._messages_for(PROMPT, PREFIX) == [{"role": "user", "content": PROMPT}], "default: no cache, the whole prompt as one string")
++for v, want in (("on", "5m"), ("1h", "1h"), (' "true" ', "5m"), ("off", None), ("", None), ("banana", None)):
++    os.environ["PROMPT_CACHE"] = v
++    check(CA._prompt_cache_mode() == want, f"PROMPT_CACHE={v!r} is read as {want}")
++os.environ["PROMPT_CACHE"] = "on"
++m = CA._messages_for(PROMPT, PREFIX)
++blocks = m[0]["content"]
++check(len(blocks) == 2 and blocks[0]["cache_control"] == {"type": "ephemeral"} and "cache_control" not in blocks[1] and blocks[0]["text"] + blocks[1]["text"] == PROMPT, "on: two blocks, the fixed rules marked for caching, and the two together are exactly the prompt")
++os.environ["PROMPT_CACHE"] = "1h"
++check(CA._messages_for(PROMPT, PREFIX)[0]["content"][0]["cache_control"] == {"type": "ephemeral", "ttl": "1h"}, "1h: the one-hour cache")
++check(CA._messages_for("other prompt", PREFIX) == [{"role": "user", "content": "other prompt"}] and CA._messages_for(PREFIX, PREFIX) == [{"role": "user", "content": PREFIX}], "a prompt that does not start with the prefix (or has nothing after it) is sent plain")
++os.environ["PROMPT_CACHE"] = "on"
++KW.clear(); quiet(lambda: CA.generate_grounded_response("My trial has gone on nine years", "[BNSS Section 346]\ntext", matches=[]))
++c0 = KW[0]["messages"][0]["content"]
++tpl = CA._response_prompt_template()
++check(isinstance(c0, list) and c0[0]["text"] == tpl.split("{conflict_instruction}", 1)[0] and "Hard rules" in c0[0]["text"] and "My trial has gone on nine years" in c0[1]["text"], "generate_grounded_response caches the template's fixed part and keeps the question and material outside it")
++check(len(c0[0]["text"]) > 4000, "the cached part is large enough to be cacheable (well over 1,024 tokens)")
++os.environ.pop("PROMPT_CACHE")
++# cost with cache tokens
++C.begin("q")
++rec = None
++buf = io.StringIO()
++with contextlib.redirect_stdout(buf):
++    C.note_anthropic("answer", "claude-sonnet-5", types.SimpleNamespace(input_tokens=2000, output_tokens=1000, cache_creation_input_tokens=3000, cache_read_input_tokens=0))
++    os.environ["PROMPT_CACHE"] = "1h"
++    C.note_anthropic("answer", "claude-sonnet-5", types.SimpleNamespace(input_tokens=2000, output_tokens=1000, cache_creation_input_tokens=3000, cache_read_input_tokens=0))
++    os.environ.pop("PROMPT_CACHE")
++    C.note_anthropic("answer", "claude-sonnet-5", types.SimpleNamespace(input_tokens=2000, output_tokens=1000, cache_creation_input_tokens=0, cache_read_input_tokens=3000))
++    C.finish()
++calls = [json.loads(l[10:]) for l in buf.getvalue().splitlines() if l.startswith("COST_CALL ")]
++exp_write = (2000 * 2 + 3000 * 2 * 1.25 + 1000 * 10) / 1e6
++exp_write_1h = (2000 * 2 + 3000 * 2 * 2.0 + 1000 * 10) / 1e6
++exp_read = (2000 * 2 + 3000 * 2 * 0.1 + 1000 * 10) / 1e6
++check(abs(calls[0]["usd"] - exp_write) < 1e-8 and abs(calls[1]["usd"] - exp_write_1h) < 1e-8 and abs(calls[2]["usd"] - exp_read) < 1e-8, f"cost_log prices cache writes at 1.25x (2x for 1h) and reads at 0.1x ({[c['usd'] for c in calls]})")
++check(calls[0]["cache_write"] == 3000 and calls[2]["cache_read"] == 3000, "the cache token counts are in the log line")
++
++# ================= DAILY_BUDGET_INR =================
++C._reset_day_for_tests()
++check(C.budget_cap_inr() is None and C.budget_state() == "ok", "unset: no limit")
++os.environ["DAILY_BUDGET_INR"] = "100"
++C._reset_day_for_tests()
++check(C.budget_cap_inr() == 100.0 and C.budget_state() == "ok", "a limit of Rs 100 and nothing spent: ok")
++C.add_spend_inr(79.9)
++check(C.budget_state() == "ok", "Rs 79.9 of 100: still ok")
++C.add_spend_inr(0.2)
++check(C.budget_state() == "soft" and abs(C.spent_today_inr() - 80.1) < 1e-9, "from 80 per cent: soft")
++os.environ["DAILY_BUDGET_SOFT_PCT"] = "50"
++check(C.budget_state() == "soft", "DAILY_BUDGET_SOFT_PCT moves the soft line")
++os.environ.pop("DAILY_BUDGET_SOFT_PCT")
++os.environ["ANSWER_EFFORT"] = "high"
++CA._SWITCH_BROKEN["effort"] = False
++check(CA._answer_effort() == "low", "at the soft line the answer runs at low effort, whatever ANSWER_EFFORT says")
++os.environ.pop("ANSWER_EFFORT")
++C.add_spend_inr(25)
++check(C.budget_state() == "hard", "at the limit: hard")
++CA.client = types.SimpleNamespace(messages=types.SimpleNamespace(create=lambda **kw: (_ for _ in ()).throw(AssertionError("a model was called after the budget was spent"))))
++buf = io.StringIO()
++with contextlib.redirect_stdout(buf):
++    r = CA.answer_question("My trial has gone on nine years")
++check(r == {"state": "budget_paused"} and "BUDGET_PAUSED" in buf.getvalue(), "at the hard limit answer_question returns 'budget_paused' without calling any model")
++# the day rolls over
++C._DAY["date"] = "2000-01-01"
++check(C.budget_state() == "ok" and C.spent_today_inr() == 0.0, "a new (Indian) day starts again from zero")
++# persistence across a restart
++d = tempfile.mkdtemp()
++os.environ["COST_STATE_FILE"] = os.path.join(d, "cost_state.json")
++C._reset_day_for_tests()
++C.add_spend_inr(42.5)
++C._reset_day_for_tests()
++check(abs(C.spent_today_inr() - 42.5) < 1e-9, "COST_STATE_FILE keeps today's total across a restart")
++os.environ.pop("COST_STATE_FILE")
++os.environ["DAILY_BUDGET_INR"] = "banana"
++check(C.budget_cap_inr() is None and C.budget_state() == "ok", "a bad limit means no limit")
++os.environ.pop("DAILY_BUDGET_INR")
++# every spend logged by a call counts
++C._reset_day_for_tests()
++os.environ["USD_INR"] = "100"
++with contextlib.redirect_stdout(io.StringIO()):
++    C.note_anthropic("a", "claude-sonnet-5", types.SimpleNamespace(input_tokens=1_000_000, output_tokens=0))
++check(abs(C.spent_today_inr() - 200.0) < 1e-6, "a logged call adds its rupee cost to the day's total ($2 at Rs 100 = Rs 200)")
++os.environ.pop("USD_INR")
++
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_grounding_checks.py b/test_grounding_checks.py
+new file mode 100644
+index 0000000..2ffb31e
+--- /dev/null
++++ b/test_grounding_checks.py
+@@ -0,0 +1,138 @@
++"""test_grounding_checks.py -- the citation check and the quote check (grounding_checks.py) and their wiring in generate_grounded_response / answer_question. Offline and free. Run: python -X utf8 test_grounding_checks.py"""
++import contextlib
++import io
++import os
++import sys
++import types
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++os.environ.pop("GROUNDING_CHECKS", None)
++import grounding_checks as G
++import chat_assistant as CA
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++MATERIAL = ("My trial has gone on nine years. [BNSS Section 346] Adjournments only for recorded reasons. "
++            "P. Ramachandra Rao Vs. State of Karnataka [(2002) 4 SCC 578]: \"It is neither advisable, nor feasible, nor judicially permissible to draw or prescribe an outer limit for conclusion of all criminal proceedings.\" "
++            "The directions in Common Cause (I), Raj Deo Sharma (1) and Raj Deo Sharma (II) could not have been so prescribed. Arnesh Kumar v. State of Bihar: arrest guidelines. "
++            "The user wrote: Mohan Lal v. State of Punjab was cited by my lawyer.")
++
++# ---- settings ----
++check(G.mode() == "log", "the default mode is log: nothing the user sees changes")
++for v, want in (("warn", "warn"), (' "ENFORCE" ', "enforce"), ("off", "off"), ("banana", "log"), ("", "log")):
++    os.environ["GROUNDING_CHECKS"] = v
++    check(G.mode() == want, f"GROUNDING_CHECKS={v!r} is read as {want}")
++os.environ.pop("GROUNDING_CHECKS")
++
++# ---- citation check ----
++ans = ("In P. Ramachandra Rao v. State of Karnataka (2002) the Court spoke of an outer limit. Arnesh Kumar v. State of Bihar gave arrest guidelines. "
++       "In Ramesh Chandra v. State of Madhya Pradesh (2011) 4 SCC 112 the Court held that nine years ends any trial.")
++res = G.check_cases(ans, MATERIAL)
++check([c["name"] for c in res] == ["Ramesh Chandra v. State of Madhya Pradesh"], f"only the invented case is flagged; cases in the passages are not ({res})")
++check(res and res[0]["status"] == "not_found", "a case that is neither in the material nor in the site's Supreme Court list is 'not_found'")
++check(G.check_cases("Under Arnesh Kumar v. State of Bihar police must give notice.", "no passages at all")[0]["status"] == "real_not_supplied", "a real Supreme Court case that was not among the passages is 'real_not_supplied'")
++check(G.check_cases("In Mohan Lal v. State of Punjab (2018) the Court held X.", MATERIAL) == [], "a case the user named in the question counts as part of the material")
++check(G.check_cases("In Raj Deo Sharma v. The State of Bihar (1999) time limits were set.", MATERIAL) == [], "a case that a passage names (even in short form) is part of the material")
++check(G.check_cases("In P. Rama Chandra Rao v. State of Karnataka the Court held X.", MATERIAL) == [], "spacing differences in a party name do not matter ('Rama Chandra' and 'Ramachandra')")
++check(G.check_cases("State of Bihar v. Union of India was decided long ago.", "nothing") == [], "a name with no distinctive party (State v. Union) is never a basis for a notice")
++check(G.check_cases("In Zorro Unreal v. State of Nowhere the Court held X.", "nothing", exists_fn=lambda n: None)[0]["status"] == "unknown", "when the list cannot be searched the status is 'unknown', not 'not_found'")
++check(G.check_cases("In Zorro Unreal v. State of Nowhere the Court held X. In Zorro Unreal v. State of Nowhere again.", "nothing", exists_fn=lambda n: False).__len__() == 1, "the same case named twice is reported once")
++check(G.check_cases("", MATERIAL) == [] and G.check_cases(None, None) == [], "empty input does not fail")
++check(G.sc_list_has("Arnesh Kumar v. State of Bihar") is True and G.sc_list_has("Ramesh Chandra v. State of Madhya Pradesh") is False and G.sc_list_has("Zorro Unreal v. State of Nowhere") is False, "the Supreme Court list lookup wants the same first party: a longer lookalike title is not a match")
++check(G.sc_list_has("Raj Deo Sharma v. The State of Bihar") is True, "a case with 'The State of Bihar' matches the list title")
++
++# ---- quote check ----
++q_ok = 'The Court said it is "neither advisable, nor feasible, nor judicially permissible to draw or prescribe an outer limit" for criminal proceedings.'
++check(G.check_quotes(q_ok, MATERIAL) == [], "an exact quotation passes")
++check(G.check_quotes('It is “Neither advisable, nor feasible, nor judicially permissible to draw or prescribe an outer limit.”', MATERIAL) == [], "curly quotes, capital letters and the final full stop do not matter")
++check(G.check_quotes('The Court held "neither advisable ... judicially permissible to draw or prescribe an outer limit for conclusion of all criminal proceedings" there.', MATERIAL) == [], "an ellipsis splits a quotation and each piece is checked")
++check(G.check_quotes('The Court said "it is [in our view] neither advisable, nor feasible, nor judicially permissible to draw" a limit.', MATERIAL) == [], "a [bracketed] insertion splits a quotation too")
++bad = G.check_quotes('The Court held that "delay of five years ends any trial automatically in every case" and so on.', MATERIAL)
++check(bad == ["delay of five years ends any trial automatically in every case"], f"words that are in no passage are flagged ({bad})")
++check(G.check_quotes('The Court said it is "neither advisable, nor feasible, nor judicially forbidden to draw or prescribe an outer limit" for criminal proceedings.', MATERIAL) != [], "one changed word in a quotation is flagged")
++check(G.check_quotes('This is "not good law" and "a crime never dies".', MATERIAL) == [], "short phrases (under five words) are not checked")
++check(G.check_quotes('My lawyer cited "Mohan Lal v. State of Punjab was cited by my lawyer" in court.', MATERIAL) == [], "words the user wrote count as part of the material")
++check(G.check_quotes("", MATERIAL) == [] and G.check_quotes(None, None) == [], "empty input does not fail")
++
++# ---- wording ----
++ns = G.notices([{"name": "A v. B", "status": "not_found"}, {"name": "C v. D", "status": "real_not_supplied"}], ["some words quoted here that are not real"])
++check(len(ns) == 3 and "could not find it in our list" in ns[0] and "could not find it" not in ns[1] and "Treat them as unverified" in ns[2], "three notices: not found, real but not supplied, unverified words")
++check(all("good law" not in n for n in ns), "no notice says a case is good law")
++
++# ---- wiring in generate_grounded_response ----
++CALLS = []
++REPLIES = []
++
++
++class _Msgs:
++    def create(self, **kw):
++        c = kw["messages"][0]["content"]
++        CALLS.append(c if isinstance(c, str) else "".join(b["text"] for b in c))
++        text = REPLIES.pop(0) if REPLIES else "Plain answer."
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text=text)], stop_reason="end_turn", usage=types.SimpleNamespace(input_tokens=10, output_tokens=10))
++
++
++CA.client = types.SimpleNamespace(messages=_Msgs())
++RET = "[BNSS Section 346]\nAdjournments only for recorded reasons.\nP. Ramachandra Rao v. State of Karnataka held: \"neither advisable, nor feasible, nor judicially permissible to draw or prescribe an outer limit\"."
++BADANS = ("Under Section 346 of the BNSS adjournments need reasons. In Ramesh Chandra v. State of Madhya Pradesh (2011) 4 SCC 112 the Court held that "
++          "\"delay of five years ends any trial automatically in every case\".")
++GOODANS = "Under Section 346 of the BNSS adjournments need reasons. The Supreme Court in P. Ramachandra Rao v. State of Karnataka said an outer limit is not permissible."
++
++
++def run(mode_value, replies):
++    if mode_value is None:
++        os.environ.pop("GROUNDING_CHECKS", None)
++    else:
++        os.environ["GROUNDING_CHECKS"] = mode_value
++    CALLS.clear()
++    REPLIES[:] = replies
++    G.reset_notes()
++    buf = io.StringIO()
++    with contextlib.redirect_stdout(buf):
++        out = CA.generate_grounded_response("My trial has gone on nine years", RET, matches=[])
++    return out, buf.getvalue(), G.pop_notes()
++
++
++out, log, notes = run(None, [BADANS])
++check(out == BADANS and len(CALLS) == 1 and "GROUNDING_CHECK" in log and not notes, "log mode: the answer goes out unchanged, one model call, one GROUNDING_CHECK line, no notice")
++out, log, notes = run("off", [BADANS])
++check(out == BADANS and "GROUNDING_CHECK" not in log and not notes, "off: nothing is checked or printed")
++out, log, notes = run("warn", [BADANS])
++check(out == BADANS and len(CALLS) == 1 and len(notes) == 2, f"warn: the answer goes out unchanged with two notices (the case and the quotation) ({len(notes)})")
++out, log, notes = run("enforce", [BADANS, GOODANS])
++check(out == GOODANS and len(CALLS) == 2 and "Ramesh Chandra" in CALLS[1] and "CORRECTION NEEDED" in CALLS[1] and not notes, "enforce: the model is asked once more with the invented case and the quotation named, and the corrected answer is used")
++out, log, notes = run("enforce", [BADANS, BADANS])
++check(out is None and len(CALLS) == 2, "enforce: a case that cannot be found anywhere and is still there after the second try withholds the answer")
++SOFT = "Under Section 346 of the BNSS adjournments need reasons. The Court held that \"delay of five years ends any trial automatically in every case\"."
++out, log, notes = run("enforce", [SOFT, SOFT])
++check(out == SOFT and len(CALLS) == 2 and len(notes) == 1 and "quotation marks" in notes[0], "enforce: a quotation that is still unsupported after the second try is shown with a notice, not withheld")
++out, log, notes = run("enforce", [GOODANS])
++check(out == GOODANS and len(CALLS) == 1 and not notes and "GROUNDING_CHECK" not in log, "enforce: a clean answer costs one call and prints nothing")
++REAL = "Under Section 346 of the BNSS adjournments need reasons. In Arnesh Kumar v. State of Bihar the Court gave guidelines on arrest."
++out, log, notes = run("enforce", [REAL, REAL])
++check(out == REAL and len(CALLS) == 2 and len(notes) == 1 and "could not find it in our list" not in notes[0], "enforce: a real case that was not among the passages is retried, then shown with a notice, not withheld")
++os.environ.pop("GROUNDING_CHECKS", None)
++
++# ---- wiring in answer_question ----
++CA._answer_question_core = lambda q, inline_domains=frozenset(): {"state": "single_match", "response_text": CA.generate_grounded_response(q, RET, matches=[]) or "x"}
++os.environ["GROUNDING_CHECKS"] = "warn"
++REPLIES[:] = [BADANS]
++with contextlib.redirect_stdout(io.StringIO()):
++    r = CA.answer_question("My trial has gone on nine years")
++check(len(r.get("grounding_notes") or []) == 2, "answer_question puts the notices on the result (warn)")
++os.environ["GROUNDING_CHECKS"] = "log"
++REPLIES[:] = [BADANS]
++with contextlib.redirect_stdout(io.StringIO()):
++    r = CA.answer_question("My trial has gone on nine years")
++check("grounding_notes" not in r, "in log mode the result carries no notices")
++os.environ.pop("GROUNDING_CHECKS", None)
++
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_register_hooks.py b/test_register_hooks.py
@@ -2426,7 +3339,7 @@ index 47dbe27..3231a75 100644
      # ADDED 2026-09-28: keep a record of this answer (the person's own words, the answer, its sources and links) so the
      # PDF command can build a document from it later -- see answer_pdf.py. Fail-open: if this ever breaks the real
 diff --git a/whatsapp_formatter.py b/whatsapp_formatter.py
-index 95fdec3..b3bc8f5 100644
+index 95fdec3..98fb1fe 100644
 --- a/whatsapp_formatter.py
 +++ b/whatsapp_formatter.py
 @@ -17,6 +17,8 @@ recourse_app.py, which never lets a state fall through silently.
@@ -2492,7 +3405,17 @@ index 95fdec3..b3bc8f5 100644
      for l in links:
          lines.append(f"- {l['case_name']} ({l.get('source_label', 'source link')})\n  {l['url']}")
      return "\n".join(lines)
-@@ -127,6 +160,11 @@ def format_answer_for_whatsapp(result: dict) -> list:
+@@ -79,6 +112,9 @@ def format_answer_for_whatsapp(result: dict) -> list:
+     message, same discipline as the website's render_answer()."""
+     state = result.get("state")
+ 
++    if state == "budget_paused":
++        return ["Recourse has reached its usage limit for today, so I can't answer new questions until tomorrow.", _CONSULT_LINE]
++
+     if state == "classifier_unavailable":
+         return ["Sorry, I'm having a technical issue right now. Please try again in a moment."]
+ 
+@@ -127,6 +163,14 @@ def format_answer_for_whatsapp(result: dict) -> list:
              messages.append(
                  "Want a draft court petition based on this? Reply *DRAFT* and I'll prepare one you can download."
              )
@@ -2501,6 +3424,9 @@ index 95fdec3..b3bc8f5 100644
 +        not_checked = result.get("register_not_checked")
 +        if notes or not_checked:
 +            messages.append("\n".join(["*Currency notes* (checked by code, not by the model):"] + [f"- {n}" for n in (notes or [])] + ([not_checked] if not_checked else [])))
++        g_notes = result.get("grounding_notes")
++        if g_notes:
++            messages.append("\n".join(["*Checked by code against the sources we read:*"] + [f"- {n}" for n in g_notes]))
          cited = result.get("cited_judgment_links")
          if cited:
              messages.append(_format_cited_judgments(cited))
