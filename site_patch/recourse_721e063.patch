@@ -259,7 +259,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..bfeddbe 100644
+index 789f8e7..a4411f7 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,9 @@ import logging
@@ -414,7 +414,52 @@ index 789f8e7..bfeddbe 100644
  _CONFLICT_INSTRUCTION = """- IMPORTANT: the sections below genuinely DISAGREE with each other on a key point (e.g. some are arrestable without a warrant, others are not). Do NOT blend them into one narrative paragraph. Structure your answer as clearly separated scenarios, each labeled with its exact section number, e.g.:
    "**If [scenario 1, naming the exact section]:** [what applies]"
    "**If [scenario 2, naming the exact section]:** [what applies]"
-@@ -688,6 +800,27 @@ def _section_act_map(matches) -> dict:
+@@ -495,6 +607,31 @@ _CONFLICT_INSTRUCTION = """- IMPORTANT: the sections below genuinely DISAGREE wi
+ _PILOT_CONTEXT_MAX_CHARS_PER_CHUNK = 1200
+ 
+ 
++def _format_pilot_context_as_wider_search(pilot_matches, T) -> str:
++    """Feed mode (staging; owner's decision 2026-10-14): the site's pilot cases are judgments of the wider index too (all 25 were found there), so they are handed to the model like every other
++    wider-search passage: it may name one and describe ONLY what the passage says, attributed to the court, and code puts "(from a wider search, not independently verified)" after the name. A case on
++    the Overruled Register carries its REGISTER FACT line."""
++    blocks = []
++    for m in pilot_matches:
++        text = (m.get("text") or "")[:_PILOT_CONTEXT_MAX_CHARS_PER_CHUNK]
++        citation = f" ({m['citation']})" if m.get("citation") else ""
++        facts = ""
++        try:
++            from register_hooks import prompt_lines_for_match
++            yr = re.search(r"\b(19\d\d|20[0-3]\d)\b", m.get("citation") or "")
++            lines = prompt_lines_for_match({"case_name": m.get("case_name"), "year": yr.group(1) if yr else None, "citation": m.get("citation")})
++            if lines:
++                facts = "\n[Overruled Register -- not optional: if you mention this case at all, state this fact in the same sentence]\n" + "\n".join(lines)
++        except Exception:  # noqa: BLE001
++            facts = ""
++        blocks.append(f"[WIDER SEARCH -- NOT INDEPENDENTLY VERIFIED: {m['case_name']}{citation}]\n{text}{facts}")
++    return ("\n\n## More Supreme Court passages from the site's wider pool -- NOT independently verified\n"
++            "Nobody at Recourse has read and confirmed the passages below. You may name one of these cases when it clearly bears on the person's situation, and describe ONLY what its own passage "
++            "literally says, attributed to the court (\"the Supreme Court in X said ...\"). Never state more than the passage shows, do not call a passage the whole holding of the case, and do not "
++            "say that a case is good law. EVERY TIME you name one of these cases, put the words " + T.LABEL + " right after its name. If no passage clearly bears on the person's situation, "
++            "ignore them.\n\n" + "\n\n".join(blocks) + "\n")
++
++
+ def _format_pilot_context_for_prompt(pilot_matches) -> str:
+     """ADDED 2026-09-24, at the user's explicit request after reviewing the alternative (a pilot-
+     tier case shown only as a separate, un-integrated 'you might also want to check' link): lets
+@@ -518,6 +655,12 @@ def _format_pilot_context_for_prompt(pilot_matches) -> str:
+     so every existing call site that doesn't pass pilot_matches is completely unaffected."""
+     if not pilot_matches:
+         return ""
++    try:
++        import sci_search_tier as _T
++        if _T.mode() == "feed":
++            return _format_pilot_context_as_wider_search(pilot_matches, _T)
++    except Exception:  # noqa: BLE001
++        pass
+     blocks = []
+     for m in pilot_matches:
+         text = (m.get("text") or "")[:_PILOT_CONTEXT_MAX_CHARS_PER_CHUNK]
+@@ -688,6 +831,27 @@ def _section_act_map(matches) -> dict:
      return out
  
  
@@ -442,7 +487,7 @@ index 789f8e7..bfeddbe 100644
  def _find_sections_missing_act(response_text: str, section_act_map: dict) -> list:
      """CONFIRMED REAL BUG (2026-09-04), found via live user testing: a
      real 'Right now' answer named "Section 36", "Section 58", "Section
-@@ -899,6 +1032,20 @@ _PILOT_OVERREACH_PAT = re.compile(
+@@ -899,6 +1063,20 @@ _PILOT_OVERREACH_PAT = re.compile(
  )
  
  
@@ -463,7 +508,19 @@ index 789f8e7..bfeddbe 100644
  def _find_pilot_tier_overreach(response_text: str, pilot_matches) -> list:
      """ADDED 2026-09-24, at the user's explicit request to let generate_grounded_response describe
      a pilot-tier (wider, NOT independently reviewed) judgment in its prose instead of only listing
-@@ -935,9 +1082,16 @@ def _find_pilot_tier_overreach(response_text: str, pilot_matches) -> list:
+@@ -929,15 +1107,28 @@ def _find_pilot_tier_overreach(response_text: str, pilot_matches) -> list:
+     for a wrong cognizable/bailable claim or a wrong court, never a partially-trusted answer."""
+     if not response_text or not pilot_matches:
+         return []
++    try:                                           # OWNER'S DECISION 2026-10-14 (staging, SCI_SEARCH_MODE=feed): every pilot case is also a judgment in the wider index, and in feed mode the model may cite wider-search cases
++        import sci_search_tier as _T0              # (attributed to the court, only what the passage says, labelled "(from a wider search, not independently verified)" by code). This check is therefore switched
++        if _T0.mode() == "feed":                   # off for pilot cases in feed mode; with feed off (production today) it works exactly as before.
++            return []
++    except Exception:  # noqa: BLE001
++        pass
+     by_case = {}
+     for m in pilot_matches:
+         name = m.get("case_name")
          if name:
              by_case.setdefault(name, True)
  
@@ -480,7 +537,7 @@ index 789f8e7..bfeddbe 100644
          # Checks BOTH parties, not just the first (unlike the core-corpus check above): several
          # pilot cases are STATE-initiated appeals ("State of Uttar Pradesh v Ram Kishan"), where the
          # first party is the generic, rarely-said-aloud one and the SECOND party is the name a real
-@@ -1246,7 +1400,10 @@ def _looks_like_situation(response_text: str) -> bool:
+@@ -1246,7 +1437,10 @@ def _looks_like_situation(response_text: str) -> bool:
      for someone who's already living the situation, not a replacement."""
      if not response_text:
          return False
@@ -492,7 +549,7 @@ index 789f8e7..bfeddbe 100644
  
  
  def _format_mismatch(problem: dict) -> str:
-@@ -1365,6 +1522,132 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
+@@ -1365,6 +1559,132 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
      return problems
  
  
@@ -625,7 +682,7 @@ index 789f8e7..bfeddbe 100644
  def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
                                  pilot_matches=None):
      """Generates a plain-language answer using ONLY the given retrieved
-@@ -1498,26 +1781,36 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1498,26 +1818,36 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -677,7 +734,7 @@ index 789f8e7..bfeddbe 100644
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1531,9 +1824,45 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1531,9 +1861,45 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
          unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
          pilot_overreach = _find_pilot_tier_overreach(response_text, pilot_matches)
  
@@ -724,7 +781,7 @@ index 789f8e7..bfeddbe 100644
              if ungrounded:
                  retry_prompt += _UNGROUNDED_RETRY_INSTRUCTION.format(sections=", ".join(ungrounded))
              if mismatches:
-@@ -1568,12 +1897,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1568,12 +1934,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                  )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
@@ -742,7 +799,7 @@ index 789f8e7..bfeddbe 100644
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -1583,16 +1911,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1583,16 +1948,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
              # unverifiable claim -- a wrong court, or a phone number
              # nobody gave us, are exactly that: checkable facts, not a
              # nuance.
@@ -782,7 +839,7 @@ index 789f8e7..bfeddbe 100644
      except Exception:
          return None
  
-@@ -2262,6 +2605,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2642,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -797,7 +854,7 @@ index 789f8e7..bfeddbe 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2663,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2700,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -813,7 +870,7 @@ index 789f8e7..bfeddbe 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +3188,13 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3225,13 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -828,7 +885,7 @@ index 789f8e7..bfeddbe 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3222,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3259,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -838,7 +895,7 @@ index 789f8e7..bfeddbe 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3570,140 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3607,140 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -854,7 +911,7 @@ index 789f8e7..bfeddbe 100644
 +        srcs = [l.get("case_name") for l in (result.get("cited_judgment_links") or []) if isinstance(l, dict)]      # the site's own listed sources need no "not checked" line
 +        try:                                                  # nor do the wider-search cases (SCI_SEARCH_MODE=feed): they already carry the label "(from a wider search, not independently verified)"
 +            import sci_search_tier
-+            srcs = srcs + sci_search_tier.fed_names_in(result.get("response_text") or "")
++            srcs = srcs + sci_search_tier.fed_names_in(result.get("response_text") or "", extra=(result.get("unverified_related_judgments") if sci_search_tier.mode() == "feed" else None))      # in feed mode the site's pilot cases are cited like wider-search cases and carry the same label
 +        except Exception:  # noqa: BLE001
 +            pass
 +        try:                                                  # nor do the cases of the verbatim excerpts (ANCHORS=on): they carry "(verbatim excerpt, not yet confirmed by our reviewer)"
@@ -982,7 +1039,7 @@ index 789f8e7..bfeddbe 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3758,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3795,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -2341,10 +2398,10 @@ index 0000000..24da527
 +        return {"source": "not_checked", "note": None}
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..2e8fbe4
+index 0000000..5da2eff
 --- /dev/null
 +++ b/sci_search_tier.py
-@@ -0,0 +1,581 @@
+@@ -0,0 +1,583 @@
 +"""The wider-pool search tier on the website side: asks the private sci-search service (recourse-sci-pool, sci_search_service.py) for Supreme Court passages and either logs them (shadow) or hands them
 +to the page (show). Fail-open: any problem, a slow service, a missing setting -- the answer goes out exactly as it does without this module.
 +
@@ -2730,14 +2787,14 @@ index 0000000..2e8fbe4
 +        return []
 +
 +
-+def fed_names_in(text):
-+    """The wider-search cases of THIS question that a finished answer mentions: the name as the search service has it, the stretch of the answer that located it, and every 'X v. Y' the answer's
-+    case-name finder (the one behind the 'not checked' sentence) reads at that place. Used so that the sentence does not list them: they carry the wider-search label instead.
-+    [] outside feed mode and on any problem."""
++def fed_names_in(text, extra=None):
++    """The wider-search cases of THIS question that a finished answer mentions (plus `extra`: more case dicts, the site's pilot cases in feed mode): the name as the search service has it, the stretch of
++    the answer that located it, and every 'X v. Y' the answer's case-name finder (the one behind the 'not checked' sentence) reads at that place. Used so that the sentence does not list them: they
++    carry the wider-search label instead. [] outside feed mode and on any problem."""
 +    try:
 +        text = text or ""
 +        out, mentions = [], None
-+        for c in getattr(_LOCAL, "cases", None) or []:
++        for c in list(getattr(_LOCAL, "cases", None) or []) + [e for e in (extra or []) if isinstance(e, dict)]:
 +            if not c.get("case_name"):
 +                continue
 +            out.append(c["case_name"])
@@ -2900,10 +2957,12 @@ index 0000000..2e8fbe4
 +            return result
 +        if m == "feed":
 +            cases = getattr(_LOCAL, "cases", None) or []
++            pilot = [{"case_name": j["case_name"]} for j in (result.get("unverified_related_judgments") or []) if isinstance(j, dict) and j.get("case_name")]       # the site's pilot cases are cited like the rest
 +            if cases:
 +                result["sci_related_judgments"] = cases
 +                result["sci_fed"] = True
-+                result["response_text"] = label_fed_cases(result.get("response_text") or "", cases)      # every wider-search case named in the answer is tagged as unverified, whatever the model wrote
++            if cases or pilot:
++                result["response_text"] = label_fed_cases(result.get("response_text") or "", list(cases) + pilot)      # every wider-search or pilot case named in the answer is tagged as unverified, whatever the model wrote
 +            return result
 +        found = search(question)
 +        if not found:
@@ -4579,10 +4638,10 @@ index 0000000..32f373f
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_withheld_log.py b/test_withheld_log.py
 new file mode 100644
-index 0000000..e2a30b7
+index 0000000..e9a0b4e
 --- /dev/null
 +++ b/test_withheld_log.py
-@@ -0,0 +1,64 @@
+@@ -0,0 +1,84 @@
 +"""test_withheld_log.py -- when a hard check still fails after the second try the answer is withheld AND the log says which check and on what (RECHECK ... detail=, ANSWER_WITHHELD ...).
 +Offline and free. Run: python -X utf8 test_withheld_log.py"""
 +import contextlib
@@ -4644,6 +4703,26 @@ index 0000000..e2a30b7
 +T._LOCAL.cases = [{"case_name": "Gurbaksh Singh Sibbia etc v. State of Punjab"}]
 +check(CA._find_pilot_tier_overreach(ans, pilot) == [], "and not when the wider search supplied it (another spelling of the name)")
 +check(CA._find_pilot_tier_overreach("In Union of India v Mohanlal the Court held X.", pilot) == ["Union of India v Mohanlal"], "other pilot cases are still checked")
++T.reset()
++
++# 4. OWNER'S DECISION 2026-10-14: in feed mode the pilot cases (all 25 are judgments of the wider index) are cited like wider-search cases: no overreach check, same instruction, same label
++import os
++os.environ["SCI_SEARCH_MODE"] = "feed"
++check(CA._find_pilot_tier_overreach(ans, pilot) == [] and CA._find_pilot_tier_overreach("In Union of India v Mohanlal the Court held X.", pilot) == [], "feed mode: the pilot-overreach check does not withhold an answer for naming a pilot case with 'held'")
++pm = [{"case_name": "Mohan Lal v State of Punjab", "citation": "(2018) 17 SCC 627", "text": "The complainant may not investigate his own complaint."}, {"case_name": "Gurbaksh Singh Sibbia v State of Punjab", "citation": "(1980) 2 SCC 565", "text": "Conditions must be reasonable."}]
++blk = CA._format_pilot_context_for_prompt(pm)
++check("WIDER SEARCH -- NOT INDEPENDENTLY VERIFIED: Gurbaksh Singh Sibbia" in blk and "describe ONLY what its own passage literally says" in blk and T.LABEL in blk and 'NEVER say it' not in blk, "feed mode: the pilot passages are handed over like wider-search passages (no 'never say held')")
++check("REGISTER" in blk and "Mohan Lal" in blk, "and a pilot case on the Overruled Register carries its register line")
++os.environ["SCI_SEARCH_MODE"] = "off"
++blk0 = CA._format_pilot_context_for_prompt(pm)
++check('NEVER say it' in blk0 and CA._find_pilot_tier_overreach(ans, pilot) == ["Gurbaksh Singh Sibbia v State of Punjab"], "feed off (production today): the old instruction and the old check, exactly as before")
++os.environ["SCI_SEARCH_MODE"] = "feed"
++T.reset()
++res = T.attach("q", {"state": "single_match", "response_text": "In Gurbaksh Singh Sibbia v. State of Punjab (1980) the Court said conditions must be reasonable.", "unverified_related_judgments": pilot})
++check(res["response_text"].count(T.LABEL) == 1 and "(1980) " + T.LABEL in res["response_text"], f"feed mode: a pilot case named in the answer gets the wider-search label ({res['response_text']!r})")
++nc = CA._attach_register_notes({"state": "single_match", "response_text": "In Gurbaksh Singh Sibbia v. State of Punjab (1980) the Court said X. In Ram Prasad v. State of Bihar (2001) it said Y.", "unverified_related_judgments": pilot}).get("register_not_checked") or ""
++check("Ram Prasad" in nc and "Sibbia" not in nc, f"and it is not listed as 'not checked' ({nc!r})")
++os.environ["SCI_SEARCH_MODE"] = "off"
 +T.reset()
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
