@@ -259,7 +259,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..9254a35 100644
+index 789f8e7..dcd5fed 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,9 @@ import logging
@@ -611,7 +611,7 @@ index 789f8e7..9254a35 100644
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1531,9 +1782,40 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1531,9 +1782,43 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
          unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
          pilot_overreach = _find_pilot_tier_overreach(response_text, pilot_matches)
  
@@ -646,14 +646,17 @@ index 789f8e7..9254a35 100644
 +                _why = [n for n, v in (("ungrounded_sections", ungrounded), ("section_mismatch", mismatches), ("missing_act", missing_act), ("missing_companion", missing_companion),
 +                                       ("unsupported_case_generalisation", unsupported_cases), ("court_misattribution", court_misattributions), ("cognizable_bailable_omission", omissions),
 +                                       ("unverified_phone", unverified_contacts), ("pilot_overreach", pilot_overreach), ("grounding_enforce", g_enforce)) if v]
++                _detail = {n: (v if isinstance(v, (list, tuple)) else str(v))for n, v in (("ungrounded_sections", ungrounded), ("section_mismatch", mismatches), ("missing_act", missing_act),
++                           ("missing_companion", missing_companion), ("unsupported_case_generalisation", unsupported_cases), ("court_misattribution", court_misattributions),
++                           ("pilot_overreach", pilot_overreach), ("unverified_phone", unverified_contacts)) if v}
 +                logger.warning("RECHECK reasons=%s", ",".join(_why))
-+                print("RECHECK reasons=" + ",".join(_why), flush=True)
++                print("RECHECK reasons=" + ",".join(_why) + " detail=" + __import__("json").dumps(_detail, default=str)[:600], flush=True)
 +            except Exception:  # noqa: BLE001
 +                pass
              if ungrounded:
                  retry_prompt += _UNGROUNDED_RETRY_INSTRUCTION.format(sections=", ".join(ungrounded))
              if mismatches:
-@@ -1568,12 +1850,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1568,12 +1853,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                  )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
@@ -671,9 +674,28 @@ index 789f8e7..9254a35 100644
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -1590,9 +1871,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
-                     or _find_unverified_contact_numbers(retry_text, question, retrieved_text)
-                     or _find_pilot_tier_overreach(retry_text, pilot_matches)):
+@@ -1583,16 +1867,24 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+             # unverifiable claim -- a wrong court, or a phone number
+             # nobody gave us, are exactly that: checkable facts, not a
+             # nuance.
+-            if (_find_ungrounded_sections(retry_text, retrieved_text)
+-                    or _find_cognizable_bailable_mismatches(retry_text, variants)
+-                    or _find_sections_missing_act(retry_text, section_act_map)
+-                    or _find_court_misattributions(retry_text, matches)
+-                    or _find_unverified_contact_numbers(retry_text, question, retrieved_text)
+-                    or _find_pilot_tier_overreach(retry_text, pilot_matches)):
++            _still = {"ungrounded_sections": _find_ungrounded_sections(retry_text, retrieved_text),
++                      "section_mismatch": _find_cognizable_bailable_mismatches(retry_text, variants),
++                      "missing_act": _find_sections_missing_act(retry_text, section_act_map),
++                      "court_misattribution": _find_court_misattributions(retry_text, matches),
++                      "unverified_phone": _find_unverified_contact_numbers(retry_text, question, retrieved_text),
++                      "pilot_overreach": _find_pilot_tier_overreach(retry_text, pilot_matches)}
++            _still = {k: v for k, v in _still.items() if v}
++            if _still:
++                try:                                   # the answer is withheld: say which check, and on what, so that the cause can be read in the log (staging 2026-10-14: two of seven answers were withheld without a trace)
++                    print("ANSWER_WITHHELD after the second try: reasons=" + ",".join(_still) + " detail=" + __import__("json").dumps(_still, default=str)[:600], flush=True)
++                except Exception:  # noqa: BLE001
++                    pass
                  return None
 -            return retry_text
 +            if g_mode == "off":
@@ -685,7 +707,7 @@ index 789f8e7..9254a35 100644
      except Exception:
          return None
  
-@@ -2262,6 +2545,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2554,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -700,7 +722,7 @@ index 789f8e7..9254a35 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2603,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2612,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -716,7 +738,7 @@ index 789f8e7..9254a35 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +3128,13 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3137,13 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -731,7 +753,7 @@ index 789f8e7..9254a35 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3162,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3171,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -741,7 +763,7 @@ index 789f8e7..9254a35 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3510,140 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3519,140 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -885,7 +907,7 @@ index 789f8e7..9254a35 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3698,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3707,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -1267,10 +1289,10 @@ index 0000000..b0cda50
 +}
 diff --git a/excerpt_anchors.py b/excerpt_anchors.py
 new file mode 100644
-index 0000000..0f9901d
+index 0000000..243aea9
 --- /dev/null
 +++ b/excerpt_anchors.py
-@@ -0,0 +1,252 @@
+@@ -0,0 +1,253 @@
 +"""excerpt_anchors.py -- verbatim Supreme Court excerpts ("anchors") handed to the answer-writing model for a whole KIND of question.
 +
 +Why: a model can only rely on what it is given, and the library and the wider search do not always put the controlling authority in front of it. For a question about delay in a criminal trial the
@@ -1441,7 +1463,7 @@ index 0000000..0f9901d
 +                 + ("Their legal reading has NOT yet been confirmed by our reviewer. " if unconfirmed else "Our reviewer has confirmed them. ")
 +                 + "You may name these cases and describe ONLY what an excerpt literally says, attributed to the court (\"the Supreme Court in X said ...\"); you may quote an excerpt word for word. "
 +                 "Where two parts of an excerpt are joined by \"...\", words of the judgment are left out between them. Never state more than the excerpts show, and never say that a case is good law. "
-+                 "The guidelines of A.R. Antulay and the passage of Kartar Singh are known to us only as the seven-judge Bench quotes them: if you mention either, say so. "
++                 "The guidelines of A.R. Antulay and the passage of Kartar Singh are known to us only as the seven-judge Bench quotes them: if you mention either, say so. The four factors (length of delay, the justification for it, the accused's assertion of the right, and prejudice) are Kartar Singh's words as the Bench quotes them, not Antulay's; the duty of the prosecution to justify the delay is Antulay's guideline (10), not a provision of any statute. "
 +                 + (f"The first time you name one of these cases, put the words {LABEL_UNCONFIRMED} right after its name. " if unconfirmed else "")
 +                 + "If the person's facts do not fit these excerpts, say what is missing instead of stretching them.\n"]
 +        for a in anchors:
@@ -1499,6 +1521,7 @@ index 0000000..0f9901d
 +        pending = [{"case_name": a["case_name"]} for a in fed() if label_for(a)]
 +        if pending and result.get("response_text"):
 +            result["response_text"] = T.label_cases(result["response_text"], pending, LABEL_UNCONFIRMED, _LABEL_NOTE, _LABEL_SPAN)
++            result["response_text"] = T.only_at_first_mentions(result["response_text"], pending, LABEL_UNCONFIRMED, _LABEL_NOTE)       # one label per case, right after its first mention
 +        result["anchor_excerpts"] = cases()
 +    except Exception as exc:  # noqa: BLE001
 +        logger.warning("excerpt anchors attach failed: %s", type(exc).__name__)
@@ -2243,10 +2266,10 @@ index 0000000..24da527
 +        return {"source": "not_checked", "note": None}
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..308dcfc
+index 0000000..f653e6f
 --- /dev/null
 +++ b/sci_search_tier.py
-@@ -0,0 +1,542 @@
+@@ -0,0 +1,571 @@
 +"""The wider-pool search tier on the website side: asks the private sci-search service (recourse-sci-pool, sci_search_service.py) for Supreme Court passages and either logs them (shadow) or hands them
 +to the page (show). Fail-open: any problem, a slow service, a missing setting -- the answer goes out exactly as it does without this module.
 +
@@ -2549,6 +2572,45 @@ index 0000000..308dcfc
 +    return span
 +
 +
++def _name_end(out, end, note_re):
++    """Where a label belongs for a name that ends at `end`: after the italics mark, then after a short year or citation in brackets, or a report citation ', (2002) 4 SCC 578', that follows the name."""
++    m0 = re.match(r"[*_]{1,2}", out[end:])                        # the name is in italics (answer style v3): put the label after the closing mark, not inside it
++    if m0:
++        end += m0.end()
++    for _ in range(3):
++        if _labelled_here(out, end, note_re):
++            break
++        m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:]) or _REPORT_CITE.match(out[end:])
++        if not m2 or note_re.match(out[end:].lstrip()):
++            break
++        end += m2.end()
++    return end
++
++
++def only_at_first_mentions(text, cases, label, note_re):
++    """The text with `label` kept only where it follows the first mention of one of `cases` (the model sometimes also writes it after 'a seven-judge Bench' or a later mention): any other copy is removed."""
++    try:
++        out = text or ""
++        keep = set()
++        for c in cases or []:
++            span = _locate(out, c["case_name"])
++            if span is None:
++                continue
++            end = _name_end(out, span[1], note_re)
++            m = re.compile(r"\s*" + re.escape(label)).match(out[end:])
++            if m:
++                keep.add(end + m.end() - len(label))
++        for m in sorted(re.finditer(re.escape(label), out), key=lambda m: -m.start()):
++            if m.start() not in keep:
++                a = m.start()
++                while a > 0 and out[a - 1] == " ":
++                    a -= 1
++                out = out[:a] + out[m.end():]
++        return out
++    except Exception:  # noqa: BLE001
++        return text
++
++
 +_REPORT_CITE = re.compile(r"\s*,?\s*(?:\(?(?:19|20)\d\d\)?\s+(?:\d{1,2}\s+)?(?:SCC|S\.C\.C\.|SCR|S\.C\.R\.|INSC)\b(?:\s*\([A-Za-z0-9.\-]+\))?\s*\d+"
 +                          r"|(?:\d{1,2}\s+)?(?:SCC|S\.C\.C\.|SCR|S\.C\.R\.)\b(?:\s*\([A-Za-z0-9.\-]+\))?\s*\d+"
 +                          r"|AIR\s+(?:19|20)\d\d\s+(?:SC|[A-Za-z]{2,5})\s+\d+)")
@@ -2569,17 +2631,7 @@ index 0000000..308dcfc
 +            span = _locate(out, c["case_name"])
 +            if span is None:
 +                continue
-+            end = span[1]
-+            m0 = re.match(r"[*_]{1,2}", out[end:])                        # the name is in italics (answer style v3): put the label after the closing mark, not inside it
-+            if m0:
-+                end += m0.end()
-+            for _ in range(3):                                           # a short year or citation in brackets, or a report citation ', (2002) 4 SCC 578', right after the name
-+                if _labelled_here(out, end, note_re):
-+                    break
-+                m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:]) or _REPORT_CITE.match(out[end:])
-+                if not m2 or note_re.match(out[end:].lstrip()):
-+                    break
-+                end += m2.end()
++            end = _name_end(out, span[1], note_re)
 +            if _labelled_here(out, end, note_re) or _inside_label(out, end, span_re):
 +                continue
 +            out = out[:end] + " " + label + out[end:]
@@ -3595,10 +3647,10 @@ index 0000000..48aa90e
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_excerpt_anchors.py b/test_excerpt_anchors.py
 new file mode 100644
-index 0000000..faffa57
+index 0000000..aa30669
 --- /dev/null
 +++ b/test_excerpt_anchors.py
-@@ -0,0 +1,215 @@
+@@ -0,0 +1,222 @@
 +"""
 +test_excerpt_anchors.py -- verbatim Supreme Court excerpts for a kind of question (excerpt_anchors.py + its calls in chat_assistant.py, sci_search_tier.py, authorities_table.py).
 +Fully offline and free: no model, no network. Run: python -X utf8 test_excerpt_anchors.py
@@ -3735,6 +3787,13 @@ index 0000000..faffa57
 +check(_lab("A seven-judge bench in P. Ramachandra Rao v. State of Karnataka (2002) 4 SCC 578 said so.") == "A seven-judge bench in P. Ramachandra Rao v. State of Karnataka (2002) 4 SCC 578 " + L + " said so.", "a report citation after the year: label after the citation")
 +check(_lab("In P. Ramachandra Rao v. State of Karnataka, AIR 2002 SC 1856 the Court said so.") == "In P. Ramachandra Rao v. State of Karnataka, AIR 2002 SC 1856 " + L + " the Court said so.", "an AIR citation after a comma: label after it")
 +check(_lab("In P. Ramachandra Rao (2002) the Court said so, and in State of Karnataka v. Someone (2004) it did not.").count(L) == 1, "another case is not labelled")
++
++# --- the label only once per case, right after the case (staging 2026-10-14: it also appeared after "a seven-judge Bench")
++stray = ("The Supreme Court, in Hussainara Khatoon (I) v. Home Secretary, State of Bihar (1979) " + L + ", held X. But in P. Ramachandra Rao v. State of Karnataka (2002) " + L + ", a seven-judge Bench " + L + " held Y, as the Bench said later.")
++fixed = _lab(stray)
++check(fixed.count(L) == 2 and "a seven-judge Bench held Y" in fixed and "(1979) " + L in fixed and "(2002) " + L in fixed, f"a copy of the label that follows neither case's first mention is removed ({fixed.count(L)} left)")
++check(_lab(fixed) == fixed, "and doing it again changes nothing")
++check("The four factors" in E.block(Q_DELAY) and "Kartar Singh's words" in E.block(Q_DELAY), "the block says whose the four factors are")
 +
 +# --- the 'not checked' sentence leaves them out
 +E.block(Q_DELAY)
@@ -4428,6 +4487,47 @@ index 0000000..d7b14d1
 +check(T.fed_names_in(ans) == [], "fed_names_in is empty when nothing was fed")
 +SCEN["res"] = None
 +
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_withheld_log.py b/test_withheld_log.py
+new file mode 100644
+index 0000000..f0ee948
+--- /dev/null
++++ b/test_withheld_log.py
+@@ -0,0 +1,35 @@
++"""test_withheld_log.py -- when a hard check still fails after the second try the answer is withheld AND the log says which check and on what (RECHECK ... detail=, ANSWER_WITHHELD ...).
++Offline and free. Run: python -X utf8 test_withheld_log.py"""
++import contextlib
++import io
++import sys
++import types
++
++import chat_assistant as CA
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++class _Msgs:
++    def create(self, **kw):
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="Cheating is punished under Section 318(4) and arrest powers sit in Section 35.")], stop_reason="end_turn", usage=None)
++
++
++CA.client = types.SimpleNamespace(messages=_Msgs())
++matches = [{"type": "statute", "act": "BNS", "section_number": "318", "text": "318. Cheating ...", "case_name": None},
++           {"type": "statute", "act": "BNSS", "section_number": "35", "text": "35. When police may arrest without warrant ...", "case_name": None}]
++buf = io.StringIO()
++with contextlib.redirect_stdout(buf):
++    out = CA.generate_grounded_response("Can police arrest me for cheating?", "[BNS 318]\ncheating text\n[BNSS 35]\narrest text", matches=matches)
++log = buf.getvalue()
++check(out is None, "an answer that still names no Act after the second try is withheld (None)")
++check("RECHECK reasons=missing_act detail=" in log and "ANSWER_WITHHELD after the second try: reasons=missing_act detail=" in log, "the log carries both lines with the reason")
++check('"missing_act": ["318", "35"]' in log or '"missing_act": ["35", "318"]' in log, f"and the section numbers whose Act was never named ({log.strip()[:300]!r})")
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/whatsapp_bot.py b/whatsapp_bot.py
