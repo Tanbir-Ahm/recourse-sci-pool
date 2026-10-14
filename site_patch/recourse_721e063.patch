@@ -71,10 +71,10 @@ index 0000000..417485f
 +    return style() == "v1"
 diff --git a/authorities_table.py b/authorities_table.py
 new file mode 100644
-index 0000000..8d7bf7a
+index 0000000..e36de91
 --- /dev/null
 +++ b/authorities_table.py
-@@ -0,0 +1,102 @@
+@@ -0,0 +1,106 @@
 +"""authorities_table.py -- the lawyers' module's table of authorities, built by CODE from what the answer was given (never written by the model, so no citation in it can be invented).
 +
 +Two tiers, always shown apart:
@@ -85,6 +85,10 @@ index 0000000..8d7bf7a
 +"""
 +import re
 +
++# In the table a quiet card or a missing check gets a short line (the full sentences would repeat in every row); the register and warning-card sentences are kept whole.
++SHORT_STATUS = {"not_checked": "Not checked by us.", "card_quiet": "No adverse later judgment found by our automatic check (silence, not a finding)."}
++TABLE_NOTE = ("Where it stands on our lists: \"Not checked by us\" means neither our Overruled Register nor our automatic check covers the case. Neither list ever says that a decision is still good law. "
++              "Please ask a lawyer before relying on any case here.")
 +TIER_LIBRARY = "Reviewed library"
 +TIER_WIDER = "Wider search (not independently verified)"
 +
@@ -134,7 +138,7 @@ index 0000000..8d7bf7a
 +        st = status_fn(name, _year_of(ms[0]), cit if isinstance(cit, str) else None) or {}
 +        library.append({"case": name, "year": _year_of(ms[0]), "citation": cit if isinstance(cit, str) and cit.strip() else None, "paragraphs": _paras(ms),
 +                        "bench": next((m.get(bench_key) for m in ms if m.get(bench_key)), None), "tier": TIER_LIBRARY,
-+                        "status": st.get("note"), "status_source": st.get("source"),
++                        "status": SHORT_STATUS.get(st.get("source")) or st.get("note"), "status_source": st.get("source"),
 +                        "link": link_by_name.get(name) or next((m.get("source_url") for m in ms if isinstance(m.get("source_url"), str) and m["source_url"].startswith("http")), None)})
 +    wider, seen = [], set()
 +    for j in sci_cases or []:
@@ -142,7 +146,7 @@ index 0000000..8d7bf7a
 +            continue
 +        seen.add(j["case_name"])
 +        st = status_fn(j["case_name"], _year_of(j), _one(j.get("citation"))) or {}
-+        note = j.get("register_note") or st.get("note")
++        note = j.get("register_note") or SHORT_STATUS.get(st.get("source")) or st.get("note")
 +        wider.append({"case": j["case_name"], "year": _year_of(j), "citation": _one(j.get("citation")), "paragraphs": _paras([j]), "bench": j.get(bench_key), "tier": TIER_WIDER,
 +                      "status": note, "status_source": "register" if j.get("register_note") else st.get("source"), "link": j.get("link"),
 +                      "link_kind": j.get("link_kind")})
@@ -243,7 +247,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..c243104 100644
+index 789f8e7..e7223dc 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,8 @@ import logging
@@ -339,7 +343,7 @@ index 789f8e7..c243104 100644
 +
 +_V3_LAWYER_SHAPE = """## Voice and shape (the Research Note)
 +Write a research note for an advocate or a law student: formal, precise, firm about the framework and conditional about the outcome. Refer to "the client" or "on these facts"; never "you should". No emotional language. Write these parts in this order.
-+1. **Bottom line**: 2-3 lines giving the answer, the strongest authority the material provides, and the main risk. This is the ONLY summary in the note; do not summarise again at the end.
++1. **Bottom line**: the FIRST heading is exactly **Bottom line**, with no title or headline before it. Under it, 2-3 lines giving the answer, the strongest authority the material provides, and the main risk. This is the ONLY summary in the note; do not summarise again at the end.
 +2. **Facts assumed**: 1-2 lines. Say what the question does not state.
 +3. Numbered issues, one per heading. Write each heading as a proposition or a question, for example **1. Delay alone does not end a trial**. Under each heading give: the rule (the provision, with its Act and exact subsection); the authority (the case with court and year, and what the court held or said, attributed to the court, from the excerpt below); the reasoning in a sentence or two; and the qualification. State each point once.
 +4. **Application to the facts**: a two-column table headed For the client | Against the client. Each row ties a point to a provision or a case and is conditional where the facts decide.
@@ -352,7 +356,7 @@ index 789f8e7..c243104 100644
 +
 +Evidence: give a full report citation and a pinpoint paragraph only when the material below shows them; otherwise name the case with its year and say nothing more. A case that comes from the wider search may appear in an issue but never in the Bottom line, and is followed each time by the words in the wider-search instruction. Never say that a case "is good law".
 +
-+Length: about 500-900 words, each issue 80-150 words.
++Length: about 500-900 words, each issue 80-150 words. Write every part, ending with **Gaps and checks**, and never stop before it: keep the whole note within about 900 words so that it is finished.
 +"""
 +
 +
@@ -394,7 +398,45 @@ index 789f8e7..c243104 100644
  
  
  def _format_mismatch(problem: dict) -> str:
-@@ -1498,9 +1616,16 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1365,6 +1483,37 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
+     return problems
+ 
+ 
++_TRUNCATED_NOTE = "*This answer was cut short. Please ask again, or ask about one issue at a time.*"
++
++
++def _answer_max_tokens():
++    """Output budget for the answer call. It also pays for the model's own thinking, which is why 4000 (enough for a 300-word layman answer) was not enough for the longer lawyers' research note
++    (staging 2026-10-14: the note stopped in mid-sentence). The research note gets 12000; every other style keeps 4000."""
++    return 12000 if answer_style.template_key() == "v3-lawyer" else 4000
++
++
++def _close_truncated(text):
++    """A reply that was still cut off after a second try: back up to the end of the last complete sentence and say plainly that it was cut short, instead of showing half a sentence."""
++    text = (text or "").rstrip()
++    ends = list(re.finditer(r"[.?!][\"')\]*_]*(?=\s|$)", text))
++    cut = ends[-1].end() if ends and ends[-1].end() > len(text) * 0.4 else (text.rfind(" ") if " " in text else len(text))
++    return text[:cut].rstrip() + "\n\n" + _TRUNCATED_NOTE
++
++
++def _create_answer(model, prompt):
++    """One answer call. If the reply stopped because it ran out of tokens (stop_reason 'max_tokens'), ask once more with a bigger budget; if that is cut off too, close it honestly (see _close_truncated)."""
++    budget = _answer_max_tokens()
++    response = client.messages.create(model=model, max_tokens=budget, messages=[{"role": "user", "content": prompt}])
++    if getattr(response, "stop_reason", None) == "max_tokens":
++        logger.warning("answer was cut off at %s tokens; asking again with %s", budget, min(budget * 2, 16000))
++        response = client.messages.create(model=model, max_tokens=min(budget * 2, 16000), messages=[{"role": "user", "content": prompt}])
++    text = _extract_text_from_response(response).strip()
++    if getattr(response, "stop_reason", None) == "max_tokens":
++        logger.warning("answer was cut off again; closing it at the last complete sentence")
++        text = _close_truncated(text)
++    return text
++
++
+ def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
+                                 pilot_matches=None):
+     """Generates a plain-language answer using ONLY the given retrieved
+@@ -1498,26 +1647,29 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -412,7 +454,48 @@ index 789f8e7..c243104 100644
              question=question, retrieved_text=retrieved_text,
              conflict_instruction=conflict_instruction, pilot_context=pilot_context,
          )
-@@ -2262,6 +2387,14 @@ def format_retrieved_text_for_prompt(matches):
+-        response = client.messages.create(
+-            model=model,
+-            # The prompt targets 300-400 words, but claude-sonnet-5 spends
+-            # ~600-1200 tokens on an internal thinking block BEFORE any
+-            # answer text. At 2000 a large retrieved-text prompt (many
+-            # anchored judgments) sometimes exhausted the budget inside the
+-            # thinking block and returned NO text block at all -- which
+-            # _extract_text_from_response raised on and the caller turned
+-            # into a silent None (blank answer). 4000 leaves room for the
+-            # thinking pass plus the full answer. (CONFIRMED 2026-09-08.)
+-            max_tokens=4000,
+-            messages=[{"role": "user", "content": prompt}],
+-        )
+-        response_text = _extract_text_from_response(response).strip()
++        # The prompt targets 300-400 words, but claude-sonnet-5 spends
++        # ~600-1200 tokens on an internal thinking block BEFORE any
++        # answer text. At 2000 a large retrieved-text prompt (many
++        # anchored judgments) sometimes exhausted the budget inside the
++        # thinking block and returned NO text block at all -- which
++        # _extract_text_from_response raised on and the caller turned
++        # into a silent None (blank answer). 4000 leaves room for the
++        # thinking pass plus the full answer. (CONFIRMED 2026-09-08.)
++        # _create_answer keeps that budget (12000 for the lawyers' research note) and handles a reply that still runs out (2026-10-14).
++        response_text = _create_answer(model, prompt)
+ 
+         variants = _gather_offence_variants(matches, extra_text=question)
+         section_act_map = _section_act_map(matches)
+@@ -1568,12 +1720,7 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+                 )
+             if pilot_overreach:
+                 retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
+-            retry_response = client.messages.create(
+-                model=model,
+-                max_tokens=4000,  # same thinking-block headroom as the first call
+-                messages=[{"role": "user", "content": retry_prompt}],
+-            )
+-            retry_text = _extract_text_from_response(retry_response).strip()
++            retry_text = _create_answer(model, retry_prompt)      # same thinking-block headroom as the first call
+             # A still-missing companion section, still-unsupported case
+             # generalization, or still-incomplete cognizable/bailable pair
+             # is a completeness/nuance gap, not a correctness error like
+@@ -2262,6 +2409,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -427,7 +510,7 @@ index 789f8e7..c243104 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2445,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2467,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -443,7 +526,7 @@ index 789f8e7..c243104 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +2970,8 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +2992,8 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -453,7 +536,7 @@ index 789f8e7..c243104 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +2999,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3021,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -463,7 +546,7 @@ index 789f8e7..c243104 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3347,78 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3369,78 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -546,7 +629,7 @@ index 789f8e7..c243104 100644
          return result
  
 diff --git a/recourse_app.py b/recourse_app.py
-index 1845aeb..65b086b 100644
+index 1845aeb..667d9e3 100644
 --- a/recourse_app.py
 +++ b/recourse_app.py
 @@ -26,6 +26,8 @@ import logging
@@ -639,7 +722,7 @@ index 1845aeb..65b086b 100644
  
      with st.expander("How Recourse works — and why it won't invent a case"):
          st.markdown(
-@@ -796,12 +834,21 @@ def render_answer(result: dict):
+@@ -796,12 +834,23 @@ def render_answer(result: dict):
          with st.container(border=True):
              st.markdown('<span class="r-ansmark"></span>', unsafe_allow_html=True)
              if reply:
@@ -656,13 +739,15 @@ index 1845aeb..65b086b 100644
 +                for heading, md_table in authorities_table.render_markdown(result["authorities"]):
 +                    st.markdown(f'<div class="r-label">{esc(heading)}</div>', unsafe_allow_html=True)
 +                    st.markdown(md_table)
++                if result["authorities"].get("library") or result["authorities"].get("wider"):
++                    st.markdown(f'<p class="r-foot">{esc(authorities_table.TABLE_NOTE)}</p>', unsafe_allow_html=True)
 +            except Exception:
 +                logging.getLogger("recourse_app").exception("authorities table render failed")
 +
          reply_lc = (reply or "").lower()
          all_matches = result.get("matches") or []
  
-@@ -873,6 +920,8 @@ def render_answer(result: dict):
+@@ -873,6 +922,8 @@ def render_answer(result: dict):
          # (chat_assistant._attach_cited_judgment_links) -- these are the tool's own verified sources, unlike
          # the unverified expander below, so they are shown plainly, not hidden behind a caution.
          cited_links = result.get("cited_judgment_links")
@@ -671,7 +756,7 @@ index 1845aeb..65b086b 100644
          if cited_links:
              st.markdown('<div class="r-label">Judgments this answer relies on</div>', unsafe_allow_html=True)
              for cl in cited_links:
-@@ -880,6 +929,35 @@ def render_answer(result: dict):
+@@ -880,6 +931,35 @@ def render_answer(result: dict):
                              f'<span class="r-src">{esc(cl.get("source_label", "source link"))}</span>',
                              unsafe_allow_html=True)
  
@@ -707,7 +792,7 @@ index 1845aeb..65b086b 100644
          unverified = result.get("unverified_related_judgments")
          if unverified:
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
-@@ -1210,7 +1288,8 @@ if _busy:
+@@ -1210,7 +1290,8 @@ if _busy:
          # inline from the shared corpus rather than dead-ended with a
          # "covered elsewhere" redirect that points nowhere here.
          st.session_state.answer = _answer_question(
@@ -1208,10 +1293,10 @@ index 0000000..4c5c337
 +    return result
 diff --git a/test_answer_style_v3.py b/test_answer_style_v3.py
 new file mode 100644
-index 0000000..fc32dae
+index 0000000..a35c390
 --- /dev/null
 +++ b/test_answer_style_v3.py
-@@ -0,0 +1,217 @@
+@@ -0,0 +1,219 @@
 +"""test_answer_style_v3.py -- answer style v3: 'The Adviser' (laypeople) and 'The Research Note' (lawyers), the Layman/Lawyer switch, the table of authorities, the WhatsApp version.
 +Offline and free (no model, no network). Run: python -X utf8 test_answer_style_v3.py"""
 +import os
@@ -1280,7 +1365,7 @@ index 0000000..fc32dae
 +    check(must in V3, f"layman v3 carries: {must}")
 +# lawyer spec B1-B5
 +for must in ("**Bottom line**", "ONLY summary", "**Facts assumed**", "proposition or a question", "**Application to the facts**", "For the client | Against the client", "**Grounds that can be urged**",
-+             "**Gaps and checks**", "Do NOT write a table of authorities", "at most 90 characters", "35 words or fewer", "\"held\", \"observed\", \"directed\", \"reiterated\"", "\"decisive\"", "capitalised NOT",
++             "**Gaps and checks**", "exactly **Bottom line**, with no title or headline", "never stop before it", "Do NOT write a table of authorities", "at most 90 characters", "35 words or fewer", "\"held\", \"observed\", \"directed\", \"reiterated\"", "\"decisive\"", "capitalised NOT",
 +             "40 words", "never in the Bottom line", "about 500-900 words", "never \"you should\"", "up to 8 distinct section numbers", "Never say that a case \"is good law\""):
 +    check(must in V3L, f"lawyer note carries: {must}")
 +for name, t in (("v3", V3), ("v3-lawyer", V3L)):
@@ -1373,6 +1458,8 @@ index 0000000..fc32dae
 +check([r["case"] for r in tab["library"]] == ["Arnesh Kumar v. State of Bihar"] and tab["library"][0]["link"] == "https://l/a", "library rows: only named cases, link from the cited links")
 +check([r["case"] for r in tab["wider"]] == ["Hemendra Reddy v. State", "Overruled v. State"] and tab["wider"][0]["tier"] == AT.TIER_WIDER, "wider rows: one row per case, tier is the unverified one")
 +check(tab["wider"][1]["status"].endswith("(2002).") and tab["wider"][1]["status_source"] == "register", "a wider-search case keeps its register note")
++check(tab["library"][0]["status"] == AT.SHORT_STATUS["card_quiet"] and tab["wider"][0]["status"] == AT.SHORT_STATUS["not_checked"], "a quiet card and a missing check get the short table lines, not the long sentences")
++check("still good law" in AT.TABLE_NOTE and "ever says" in AT.TABLE_NOTE, "one note under the tables explains 'Not checked by us' and says neither list ever calls a case good law")
 +check(not tab["has_bench"], "no bench column when the data holds no bench")
 +md = AT.render_markdown(tab)
 +check([h for h, _ in md] == ["Authorities (reviewed library)", "Further reading from a wider search (not independently verified)"], "two tiers, two headings")
@@ -1431,10 +1518,10 @@ index 0000000..fc32dae
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_answer_style_v3_page.py b/test_answer_style_v3_page.py
 new file mode 100644
-index 0000000..ac60b2a
+index 0000000..4a3833f
 --- /dev/null
 +++ b/test_answer_style_v3_page.py
-@@ -0,0 +1,81 @@
+@@ -0,0 +1,82 @@
 +"""test_answer_style_v3_page.py -- the page side of answer style v3: the Layman / Lawyer switch (only under RESPONSE_STYLE=v3), the audience reaching answer_question, headings kept as headings,
 +the lawyers' authorities tables, and no change to a v1 answer. Offline and free (the model is replaced by a stub). Run: python -X utf8 test_answer_style_v3_page.py"""
 +import os
@@ -1470,7 +1557,7 @@ index 0000000..ac60b2a
 +        res["audience"] = "lawyer" if lawyer else "layman"
 +        if lawyer:
 +            res["authorities"] = {"library": [{"case": "Arnesh Kumar v. State of Bihar", "year": 2014, "citation": "(2014) 8 SCC 273", "paragraphs": ["11"], "tier": "Reviewed library",
-+                                               "status": "quiet note", "status_source": "card_quiet", "link": "https://l/a"}], "wider": [], "has_bench": False}
++                                               "status": "No adverse later judgment found by our automatic check (silence, not a finding).", "status_source": "card_quiet", "link": "https://l/a"}], "wider": [], "has_bench": False}
 +    return res
 +
 +
@@ -1510,9 +1597,83 @@ index 0000000..ac60b2a
 +vals = md_values(at)
 +check(any("Authorities (reviewed library)" in v for v in vals), "v3 lawyer: the 'Authorities (reviewed library)' heading is shown")
 +check(any("| Case | Citation | Paragraph | Where it stands on our lists | Link |" in v and "(2014) 8 SCC 273" in v for v in vals), "v3 lawyer: the table of authorities is shown with the held citation")
++check(any("Not checked by us" in v and "means neither our Overruled Register" in v for v in vals), "v3 lawyer: the one explanatory note is shown under the tables")
 +check(any("**1. A fixed period of delay does not by itself terminate a criminal trial under the BNSS**\n\n" in v for v in vals), "v3 lawyer: a long proposition heading (up to 90 characters) stays a heading, with a blank line after it")
 +check(not any("Judgments this answer relies on" in v for v in vals), "v3 lawyer: the plain link list is replaced by the table")
 +
++os.environ.pop("RESPONSE_STYLE", None)
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_answer_truncation.py b/test_answer_truncation.py
+new file mode 100644
+index 0000000..23dfb5b
+--- /dev/null
++++ b/test_answer_truncation.py
+@@ -0,0 +1,67 @@
++"""test_answer_truncation.py -- a model reply that runs out of tokens (staging 2026-10-14: the lawyers' note stopped in mid-sentence). Offline and free. Run: python -X utf8 test_answer_truncation.py
++Gates: the research note gets a bigger budget than every other style; a reply cut off at the limit is asked for again with a bigger budget; one that is cut off twice is closed at the last complete sentence with a plain note;
++a normal reply is untouched and costs one call."""
++import os
++import sys
++import types
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++import chat_assistant as CA
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++CALLS = []
++PLAN = []
++
++
++class _Msgs:
++    def create(self, **kw):
++        CALLS.append(kw["max_tokens"])
++        text, stop = PLAN.pop(0) if PLAN else ("An answer.", "end_turn")
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text=text)], stop_reason=stop)
++
++
++CA.client = types.SimpleNamespace(messages=_Msgs())
++
++
++def run(style, plan):
++    os.environ["RESPONSE_STYLE"] = style
++    CALLS.clear()
++    PLAN[:] = plan
++    return CA._create_answer("m", "prompt")
++
++
++check(run("v1", [("Fine.", "end_turn")]) == "Fine." and CALLS == [4000], "v1: a normal reply costs one call with the old 4000 budget")
++check(run("v2", [("Fine.", "end_turn")]) == "Fine." and CALLS == [4000], "v2 keeps 4000")
++check(run("v3", [("Fine.", "end_turn")]) == "Fine." and CALLS == [4000], "v3 (layman) keeps 4000")
++os.environ["RESPONSE_STYLE"] = "v3"
++import answer_style as AS
++AS.set_audience("lawyer")
++check(run("v3", [("Fine.", "end_turn")]) == "Fine." and CALLS == [12000], "v3 with the lawyer audience: the research note gets 12000")
++AS.set_audience(None)
++check(run("v3-lawyer", [("Fine.", "end_turn")]) == "Fine." and CALLS == [12000], "v3-lawyer: 12000")
++t = run("v1", [("Half a sent", "max_tokens"), ("A complete answer.", "end_turn")])
++check(t == "A complete answer." and CALLS == [4000, 8000], f"a reply cut off at the limit is asked for again with double the budget ({CALLS})")
++t = run("v3-lawyer", [("Half a sent", "max_tokens"), ("A complete note.", "end_turn")])
++check(t == "A complete note." and CALLS == [12000, 16000], f"the second budget is capped at 16000 ({CALLS})")
++t = run("v1", [("First part is whole. Second part is whole too. Third part is cut in the mi", "max_tokens"), ("First part is whole. Second part is whole too. Third part is cut in the mi", "max_tokens")])
++check(t.startswith("First part is whole. Second part is whole too.") and "cut in the mi" not in t and t.endswith(CA._TRUNCATED_NOTE) and CALLS == [4000, 8000], f"cut off twice: closed at the last complete sentence with a plain note ({t!r})")
++check(CA._close_truncated("one two three four").endswith(CA._TRUNCATED_NOTE) and CA._close_truncated("one two three four").startswith("one two three"), "text with no sentence end is cut at a word")
++check(CA._close_truncated("") .endswith(CA._TRUNCATED_NOTE), "empty text does not fail")
++
++# the whole generation path uses it
++CALLS.clear()
++PLAN[:] = [("Delay alone does not end a trial. Under Section 346 of the BNSS the c", "max_tokens"), ("Delay alone does not end a trial. Under Section 346 of the BNSS the court may adjourn only for recorded reasons.", "end_turn")]
++os.environ["RESPONSE_STYLE"] = "v3-lawyer"
++out = CA.generate_grounded_response("Q?", "[BNSS Section 346]\nTrial text.", matches=[])
++check(out and out.endswith("recorded reasons.") and CALLS == [12000, 16000], f"generate_grounded_response returns the complete second reply ({out!r}, {CALLS})")
 +os.environ.pop("RESPONSE_STYLE", None)
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
