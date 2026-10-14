@@ -71,10 +71,10 @@ index 0000000..417485f
 +    return style() == "v1"
 diff --git a/authorities_table.py b/authorities_table.py
 new file mode 100644
-index 0000000..e36de91
+index 0000000..83f581a
 --- /dev/null
 +++ b/authorities_table.py
-@@ -0,0 +1,106 @@
+@@ -0,0 +1,118 @@
 +"""authorities_table.py -- the lawyers' module's table of authorities, built by CODE from what the answer was given (never written by the model, so no citation in it can be invented).
 +
 +Two tiers, always shown apart:
@@ -91,6 +91,7 @@ index 0000000..e36de91
 +              "Please ask a lawyer before relying on any case here.")
 +TIER_LIBRARY = "Reviewed library"
 +TIER_WIDER = "Wider search (not independently verified)"
++TIER_ANCHOR = "Verbatim excerpts"
 +
 +
 +def _paras(ms):
@@ -117,7 +118,7 @@ index 0000000..e36de91
 +    return v[0] if isinstance(v, (list, tuple)) and v else (v if isinstance(v, str) else None)
 +
 +
-+def build(matches, named_cases, links, sci_cases, status_fn, bench_key="bench"):
++def build(matches, named_cases, links, sci_cases, status_fn, bench_key="bench", anchors=None):
 +    """matches: the answer's retrieved matches; named_cases: case names the answer actually names (the caller decides how names are matched); links: cited_judgment_links;
 +    sci_cases: result['sci_related_judgments']; status_fn(name, year, citation) -> {'source','note'}. Returns {'library': [rows], 'wider': [rows], 'has_bench': bool}."""
 +    link_by_name = {l.get("case_name"): l.get("url") for l in (links or []) if isinstance(l, dict)}
@@ -150,7 +151,16 @@ index 0000000..e36de91
 +        wider.append({"case": j["case_name"], "year": _year_of(j), "citation": _one(j.get("citation")), "paragraphs": _paras([j]), "bench": j.get(bench_key), "tier": TIER_WIDER,
 +                      "status": note, "status_source": "register" if j.get("register_note") else st.get("source"), "link": j.get("link"),
 +                      "link_kind": j.get("link_kind")})
-+    return {"library": library, "wider": wider, "has_bench": any(r.get("bench") for r in library + wider)}
++    ex_rows = []                                              # the verbatim excerpts (excerpt_anchors.py) the answer was given
++    for j in anchors or []:
++        if not isinstance(j, dict) or not j.get("case_name"):
++            continue
++        st = status_fn(j["case_name"], _year_of(j), _one(j.get("citation"))) or {}
++        unconfirmed = j.get("status") != "reviewer_confirmed"
++        ex_rows.append({"case": j["case_name"], "year": _year_of(j), "citation": _one(j.get("citation")), "paragraphs": [str(j["paragraph"])] if j.get("paragraph") else [], "bench": None,
++                        "tier": TIER_ANCHOR, "status": ("Excerpt not yet confirmed by our reviewer. " if unconfirmed else "Excerpt confirmed by our reviewer. ") + (SHORT_STATUS.get(st.get("source")) or st.get("note") or ""),
++                        "status_source": st.get("source"), "link": j.get("link")})
++    return {"library": library, "wider": wider, "anchors": ex_rows, "has_bench": any(r.get("bench") for r in library + wider)}
 +
 +
 +def _cell(text):
@@ -178,6 +188,8 @@ index 0000000..e36de91
 +    out = []
 +    if table.get("library"):
 +        out.append(("Authorities (reviewed library)", _table(table["library"], table.get("has_bench"))))
++    if table.get("anchors"):
++        out.append(("Verbatim excerpts the answer read (copied word for word from the judgment; checked by code against the Supreme Court's own PDF)", _table(table["anchors"], table.get("has_bench"))))
 +    if table.get("wider"):
 +        out.append(("Further reading from a wider search (not independently verified)", _table(table["wider"], table.get("has_bench"))))
 +    return out
@@ -247,7 +259,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..f285550 100644
+index 789f8e7..9254a35 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,9 @@ import logging
@@ -547,13 +559,18 @@ index 789f8e7..f285550 100644
  def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
                                  pilot_matches=None):
      """Generates a plain-language answer using ONLY the given retrieved
-@@ -1498,26 +1739,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1498,26 +1739,36 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
 +        try:                                       # SCI_SEARCH_MODE=feed (experiment, staging only): the wider-search passages join the prompt; "" in every other mode
 +            import sci_search_tier
 +            retrieved_text = retrieved_text + sci_search_tier.feed_block(question)
++        except Exception:  # pragma: no cover -- fail-open
++            pass
++        try:                                       # ANCHORS=on (staging first): verbatim Supreme Court excerpts for this kind of question (excerpt_anchors.py); "" otherwise
++            import excerpt_anchors
++            retrieved_text = retrieved_text + excerpt_anchors.block(question)
 +        except Exception:  # pragma: no cover -- fail-open
 +            pass
          conflict_instruction = _CONFLICT_INSTRUCTION if is_conflict else ""
@@ -594,7 +611,7 @@ index 789f8e7..f285550 100644
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1531,9 +1777,40 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1531,9 +1782,40 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
          unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
          pilot_overreach = _find_pilot_tier_overreach(response_text, pilot_matches)
  
@@ -636,7 +653,7 @@ index 789f8e7..f285550 100644
              if ungrounded:
                  retry_prompt += _UNGROUNDED_RETRY_INSTRUCTION.format(sections=", ".join(ungrounded))
              if mismatches:
-@@ -1568,12 +1845,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1568,12 +1850,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                  )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
@@ -654,7 +671,7 @@ index 789f8e7..f285550 100644
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -1590,9 +1866,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1590,9 +1871,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                      or _find_unverified_contact_numbers(retry_text, question, retrieved_text)
                      or _find_pilot_tier_overreach(retry_text, pilot_matches)):
                  return None
@@ -668,7 +685,7 @@ index 789f8e7..f285550 100644
      except Exception:
          return None
  
-@@ -2262,6 +2540,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2545,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -683,7 +700,7 @@ index 789f8e7..f285550 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2598,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2603,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -699,17 +716,22 @@ index 789f8e7..f285550 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +3123,8 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3128,13 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
 -    cached = get_cached(matches)
 +    use_cache = answer_style.uses_cache()      # the approved cache holds v1 wording written for laypeople: read and written only under v1 (v2, v3 and the lawyer note always generate fresh)
++    try:                                       # a question that gets verbatim excerpts (ANCHORS=on) is generated fresh too: a cached answer was written without them
++        import excerpt_anchors
++        use_cache = use_cache and not excerpt_anchors.applies(question)
++    except Exception:  # pragma: no cover
++        pass
 +    cached = get_cached(matches) if use_cache else None
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3152,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3162,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -719,7 +741,7 @@ index 789f8e7..f285550 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3500,120 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3510,140 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -733,6 +755,16 @@ index 789f8e7..f285550 100644
 +            return result
 +        from register_hooks import answer_notes
 +        srcs = [l.get("case_name") for l in (result.get("cited_judgment_links") or []) if isinstance(l, dict)]      # the site's own listed sources need no "not checked" line
++        try:                                                  # nor do the wider-search cases (SCI_SEARCH_MODE=feed): they already carry the label "(from a wider search, not independently verified)"
++            import sci_search_tier
++            srcs = srcs + sci_search_tier.fed_names_in(result.get("response_text") or "")
++        except Exception:  # noqa: BLE001
++            pass
++        try:                                                  # nor do the cases of the verbatim excerpts (ANCHORS=on): they carry "(verbatim excerpt, not yet confirmed by our reviewer)"
++            import excerpt_anchors
++            srcs = srcs + excerpt_anchors.names_in(result.get("response_text") or "")
++        except Exception:  # noqa: BLE001
++            pass
 +        res = answer_notes(result.get("response_text") or "", exclude_names=srcs)
 +        if res["notes"]:
 +            result["register_notes"] = res["notes"]
@@ -817,7 +849,7 @@ index 789f8e7..f285550 100644
 +        if isinstance(m, dict) and m.get("type") == "judgment" and m.get("case_name") and m["case_name"] not in named:
 +            if _name_in_text(_case_distinctive_name(m["case_name"]), text) or any(l.get("case_name") == m["case_name"] for l in (result.get("cited_judgment_links") or []) if isinstance(l, dict)):
 +                named.append(m["case_name"])
-+    return authorities_table.build(result.get("matches"), named, result.get("cited_judgment_links"), result.get("sci_related_judgments"), case_status)
++    return authorities_table.build(result.get("matches"), named, result.get("cited_judgment_links"), result.get("sci_related_judgments"), case_status, anchors=result.get("anchor_excerpts"))
 +
 +
 +def _answer_question_inner(question, inline_domains=frozenset()):
@@ -830,6 +862,11 @@ index 789f8e7..f285550 100644
 +        sci_search_tier.reset()
 +    except Exception:  # pragma: no cover
 +        pass
++    try:
++        import excerpt_anchors
++        excerpt_anchors.reset()
++    except Exception:  # pragma: no cover
++        pass
      result = _answer_question_core(question, inline_domains=inline_domains)
      try:
 -        return _attach_cited_judgment_links(result)
@@ -839,11 +876,16 @@ index 789f8e7..f285550 100644
 +            result = sci_search_tier.attach(question, result)     # off by default (SCI_SEARCH_MODE); fail-open
 +        except Exception:  # pragma: no cover
 +            pass
++        try:
++            import excerpt_anchors
++            result = excerpt_anchors.attach(question, result)     # off by default (ANCHORS); labels the anchor cases in the answer and lists the excerpts; fail-open
++        except Exception:  # pragma: no cover
++            pass
 +        return result
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3668,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3698,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -1065,6 +1107,422 @@ index 0000000..c054d77
 +def _reset_day_for_tests():
 +    with _DAY_LOCK:
 +        _DAY.update({"date": None, "inr": 0.0, "loaded": False})
+diff --git a/excerpt_anchors.json b/excerpt_anchors.json
+new file mode 100644
+index 0000000..b0cda50
+--- /dev/null
++++ b/excerpt_anchors.json
+@@ -0,0 +1,152 @@
++{
++ "schema": "recourse-anchors-1",
++ "exported_on": "2026-10-14",
++ "anchors": [
++  {
++   "id": "trial_delay_ramachandra_rao",
++   "topic": "trial_delay",
++   "case_name": "P. Ramachandra Rao v. State of Karnataka",
++   "year": 2002,
++   "date": "2002-04-16",
++   "court": "Supreme Court of India",
++   "bench_note": "a Bench of seven judges",
++   "citation": "(2002) 4 SCC 578",
++   "citation_source": "shown in Balbir Singh v. State of Delhi (2007) and in the Overruled Register's citation keys",
++   "paragraph": null,
++   "paragraph_source": null,
++   "link": "https://api.sci.gov.in/jonew/judis/18409.pdf",
++   "also_in": [
++    {
++     "doc": 29173,
++     "name": "Balbir Singh v. State of Delhi (2007)",
++     "must_contain": [
++      "P. Ramachandra Rao v. State of Karnataka (2002 (4) SCC 578)",
++      "In para 29 it was observed as follows"
++     ]
++    }
++   ],
++   "excerpts": [
++    {
++     "label": "The Bench",
++     "segments": [
++      "In its zeal to protect the right to speedy trial of an accused, can the Court devise and almost enact such bars of limitation though the Legislature and the Statutes have not chosen to do so — is a question of far-reaching implications which has led to the constitution of this Bench of seven-Judge strength."
++     ]
++    },
++    {
++     "label": "The Bench's concluding propositions",
++     "segments": [
++      "In conclusion we hold:- (1) The dictum in A.R. Antulay’s case is correct and still holds the field. (2) The propositions emerging from Article 21 of the Constitution and expounding the right to speedy trial laid down as guidelines in A.R. Antulay’s case, adequately take care of right to speedy trial. We uphold and re-affirm the said propositions. (3) The guidelines laid down in A.R. Antulay’s case are not exhaustive but only illustrative. They are not intended to operate as hard and fast rules or to be applied like a strait-jacket formula. Their applicability would depend on the fact-situation of each case.",
++      "(4) It is neither advisable, nor feasible, nor judicially permissible to draw or prescribe an outer limit for conclusion of all criminal proceedings. The time-limits or bars of limitation prescribed in the several directions made in Common Cause (I), Raj Deo Sharma (I) and Raj Deo Sharma (II) could not have been so prescribed or drawn and are not good law. The criminal courts are not obliged to terminate trial or criminal proceedings merely on account of lapse of time, as prescribed by the directions made in Common Cause Case (I), Raj Deo Sharma case (I) and (II).",
++      "decide whether the trial or proceedings have become so inordinately delayed as to be called oppressive and unwarranted.",
++      "(5) The Criminal Courts should exercise their available powers, such as those under Sections 309, 311 and 258 of Code of Criminal Procedure to effectuate the right to speedy trial. A watchful and diligent trial judge can prove to be better protector of such right than any guidelines. In appropriate cases jurisdiction of High Court under Section 482 of Cr.P.C. and Articles 226 and 227 of Constitution can be invoked seeking appropriate relief or suitable directions."
++     ],
++     "note": "The Bench says here that the time limits of Common Cause (I) and Raj Deo Sharma (I) and (II) are not good law; the Overruled Register records Raj Deo Sharma as overruled by this decision.",
++     "paragraph": "29",
++     "paragraph_source": "Balbir Singh v. State of Delhi (2007): \"In para 29 it was observed as follows\"; the archive PDF carries no paragraph numbers"
++    },
++    {
++     "label": "Guidelines (9), (10) and (11) of A.R. Antulay v. R.S. Nayak, (1992) 1 SCC 225 (a Constitution Bench), as extracted and re-affirmed by the seven-judge Bench",
++     "segments": [
++      "(9) Ordinarily speaking, where the court comes to the conclusion that right to speedy trial of an accused has been infringed the charges or the conviction, as the case may be, shall be quashed. But this is not the only course open. The nature of the offence and other circumstances in a given case may be such that quashing of proceedings may not be in the interest of justice. In such a case, it is open to the court to make such other appropriate order including an order to conclude the trial within a fixed time where the trial is not concluded or reducing the sentence where the trial has concluded as may be deemed just and equitable in the circumstances of the case.",
++      "In every case of complaint of denial of right to speedy trial, it is primarily for the prosecution to justify and explain the delay. At the same time, it is the duty of the court to weigh all the circumstances of a given case before pronouncing upon the complaint.",
++      "(11) An objection based on denial of right to speedy trial and for relief on that account, should first be addressed to the High Court. Even if the High Court entertains such a plea, ordinarily it should not stay the proceedings, except in a case of grave and exceptional nature. Such proceedings in High Court must, however, be disposed of on a priority basis."
++     ],
++     "note": "Antulay's own judgment is not in our collection; these are its words only as extracted in this judgment."
++    },
++    {
++     "label": "The test, and the factors quoted from Kartar Singh v. State of Punjab (a Constitution Bench, paragraph 92 of that judgment, as quoted)",
++     "segments": [
++      "The test is whether the proceedings or trial has remained pending for such a length of time that the inordinate delay can legitimately be called oppressive and unwarranted, as suggested in A.R. Antulay.",
++      "the court has to adopt a balancing approach by taking note of the possible prejudices and disadvantages to be suffered by the accused by avoidable delay and to determine whether the accused in a criminal proceeding has been deprived of his right of having speedy trial with unreasonable delay which could be identified by the factors (1) length of delay, (2) the justification for the delay, (3) the accused’s assertion of his right to speedy trial, and (4) prejudice caused to the accused by such delay."
++     ],
++     "note": "Kartar Singh's own judgment is not in our collection; the second passage is quoted in this judgment as the Constitution Bench's words."
++    }
++   ],
++   "status": "machine_checked",
++   "confirmed_by": null,
++   "confirmed_on": null,
++   "note_for_reviewer": "(a) Whether CrPC Sections 309, 311, 258 and 482 now read as BNSS Sections 346, 348, 281 and 528 is taken from the site's own concordance table, not from the judgment. (b) The judgment's text spells the Antulay respondent \"R.S. Nayan\"; we show the case as \"A.R. Antulay v. R.S. Nayak, (1992) 1 SCC 225\" (the citation is the judgment's own). Please confirm the name. (c) Antulay's and Kartar Singh's own judgments are not in our collection, so their words reach the site only as this Bench quotes them.",
++   "check": {
++    "checked_on": "2026-10-14",
++    "source": "Supreme Court archive PDF",
++    "url": "https://api.sci.gov.in/jonew/judis/18409.pdf",
++    "sha256": "d7dca40832c33e802d3b816e6977c86699ca14a0ea079040e34d61e72b9203fb",
++    "pages": 16,
++    "segments_checked": 10,
++    "all_found": true,
++    "method": "every segment, with quotation marks, dashes and other punctuation, capitals and line breaks ignored, was found word for word in the text of the Supreme Court's archive PDF (pdftotext); page headers removed",
++    "also_in": [
++     {
++      "doc": 29173,
++      "name": "Balbir Singh v. State of Delhi (2007)",
++      "found": true
++     }
++    ]
++   },
++   "statute_pointers": {
++    "CrPC": [
++     "309",
++     "311",
++     "258",
++     "482"
++    ]
++   },
++   "bench_source": "the judgment's first page: \"this Bench of seven-Judge strength\"; the archive header lists CJI, R.C. Lahoti, N. Santosh Hegde, Ruma Pal and Arijit Pasayat, among others"
++  },
++  {
++   "id": "trial_delay_hussainara_khatoon_i",
++   "topic": "trial_delay",
++   "case_name": "Hussainara Khatoon (I) v. Home Secretary, State of Bihar",
++   "year": 1979,
++   "date": "1979-02-12",
++   "court": "Supreme Court of India",
++   "bench_note": "a Bench of three judges: Bhagwati, Pathak and Koshal JJ.",
++   "citation": "(1980) 1 SCC 81",
++   "citation_source": "the archive PDF's header (1980 SCC (1) 81; AIR 1979 SC 1360) and the P. Ramachandra Rao judgment",
++   "paragraph": null,
++   "paragraph_source": null,
++   "link": "https://api.sci.gov.in/jonew/judis/4873.pdf",
++   "also_in": [
++    {
++     "doc": 18409,
++     "name": "P. Ramachandra Rao v. State of Karnataka (2002), which quotes the passage",
++     "must_contain": [
++      "There can, therefore, be no doubt that speedy trial, and by speedy trial we mean reasonably expeditious trial, is an integral and essential part of the fundamental right to life and liberty enshrined in Article 21."
++     ]
++    }
++   ],
++   "excerpts": [
++    {
++     "label": "Article 21 and the right to a speedy trial",
++     "segments": [
++      "Now obviously procedure prescribed by law for depriving a person of his liberty cannot be ’reasonable, fair or just’ unless that procedure ensures a speedy trial for determination of the guilt of such person.",
++      "There can, therefore, be no doubt that speedy trial and by speedy trial we mean reasonably expeditious trial, is an integral and essential part of the fundamental right to life and liberty enshrined in Article 21."
++     ],
++     "note": "One sentence between the two (\"No procedure which does not ensure a reasonable quick trial ...\") is left out: the archive copy reads \"reasonable quick\", the seven-judge Bench quotes it as \"reasonably quick\"."
++    }
++   ],
++   "status": "machine_checked",
++   "confirmed_by": null,
++   "confirmed_on": null,
++   "note_for_reviewer": null,
++   "check": {
++    "checked_on": "2026-10-14",
++    "source": "Supreme Court archive PDF",
++    "url": "https://api.sci.gov.in/jonew/judis/4873.pdf",
++    "sha256": "ddafc8c632af169df48be43282a90268602512035d034a6eefefe31ddc9f3578",
++    "pages": 13,
++    "segments_checked": 2,
++    "all_found": true,
++    "method": "every segment, with quotation marks, dashes and other punctuation, capitals and line breaks ignored, was found word for word in the text of the Supreme Court's archive PDF (pdftotext); page headers removed",
++    "also_in": [
++     {
++      "doc": 18409,
++      "name": "P. Ramachandra Rao v. State of Karnataka (2002), which quotes the passage",
++      "found": true
++     }
++    ]
++   },
++   "bench_source": "the archive PDF's header"
++  }
++ ]
++}
+diff --git a/excerpt_anchors.py b/excerpt_anchors.py
+new file mode 100644
+index 0000000..0f9901d
+--- /dev/null
++++ b/excerpt_anchors.py
+@@ -0,0 +1,252 @@
++"""excerpt_anchors.py -- verbatim Supreme Court excerpts ("anchors") handed to the answer-writing model for a whole KIND of question.
++
++Why: a model can only rely on what it is given, and the library and the wider search do not always put the controlling authority in front of it. For a question about delay in a criminal trial the
++answers left out Article 21 and the High Court route, although the seven-judge Bench in P. Ramachandra Rao (2002) states both. An anchor is a short passage of the judgment itself, chosen once by a
++person, checked by code against the Supreme Court's own archive PDF (recourse-sci-pool: sci_anchors.py), and then given to the model next to the library text. Nothing here is generated, summarised or
++guessed; nothing here says a case is good law.
++
++    ANCHORS   off (default) | on        switch (a hosting-dashboard value such as ' "on" ' is read as on)
++
++Status. Until a person confirms an anchor its status is "machine_checked": the words are the judgment's (checked by code) but the legal reading is not yet confirmed by our reviewer, and the answer says
++so, right after the case name (LABEL_UNCONFIRMED). After the reviewer confirms (sci_anchors.py confirm) the status is "reviewer_confirmed" and no label is needed.
++
++Data: excerpt_anchors.json, exported by sci_anchors.py in recourse-sci-pool (only anchors that passed the check are exported). Every function is fail-open: with the switch off, a missing file or any
++error the answer is built exactly as without this module.
++"""
++import json
++import logging
++import os
++import re
++import threading
++
++logger = logging.getLogger(__name__)
++_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "excerpt_anchors.json")
++_LOCAL = threading.local()
++_CACHE = {}
++LABEL_UNCONFIRMED = "(verbatim excerpt, not yet confirmed by our reviewer)"
++_LABEL_NOTE = re.compile(r"\(\s*[^()]{0,40}(?:verbatim excerpt|excerpt)[^()]{0,40}not yet confirmed by our reviewer", re.I)
++_LABEL_SPAN = re.compile(r"\([^()]{0,100}not yet confirmed by our reviewer[^()]{0,80}\)", re.I)
++
++
++def _env(name, default=""):
++    v = os.environ.get(name)
++    if v is None:
++        return default
++    v = v.strip().strip("\"'").strip()
++    return v if v else default
++
++
++def mode():
++    return "on" if _env("ANCHORS", "off").lower() in ("on", "1", "true", "yes") else "off"
++
++
++def reset():
++    """Forget what was handed to the model for the previous question (called at the start of every answer)."""
++    _LOCAL.fed = []
++
++
++def load(path=None):
++    """The exported anchors (a list of dicts); [] when the file is missing or unreadable."""
++    p = path or _PATH
++    if p in _CACHE:
++        return _CACHE[p]
++    try:
++        doc = json.load(open(p, encoding="utf-8"))
++        anchors = [a for a in doc.get("anchors", []) if a.get("excerpts") and (a.get("check") or {}).get("all_found") and a.get("status") in ("machine_checked", "reviewer_confirmed")]
++    except Exception as exc:  # noqa: BLE001
++        logger.warning("excerpt anchors not loaded: %s", type(exc).__name__)
++        anchors = []
++    _CACHE[p] = anchors
++    return anchors
++
++
++# ---- which questions each topic covers (plain patterns; a question that matches none gets nothing) -------------------------------------------------------------------------------------------
++
++_TRIAL = re.compile(r"\b(?:trial|trials|case|cases|proceedings?|prosecution|charge[- ]?sheet|hearings?)\b", re.I)
++_SPEEDY = re.compile(r"\bspeedy\s+(?:trial|justice|disposal)|right to (?:a )?speedy|outer\s+(?:time[- ])?limit|\b(?:time[- ]?limit|limitation|time[- ]?bar)\w*\s+(?:for|on|to)\s+(?:a\s+|the\s+)?(?:criminal\s+)?(?:trial|case|proceedings?)"
++                     r"|article\s*21\b.{0,80}\b(?:delay\w*|trial|speedy)\b|\b(?:delay\w*|trial|speedy)\b.{0,80}article\s*21\b", re.I | re.S)
++_DRAG = re.compile(r"\b(?:going on|dragging|dragged|drags|still (?:on|running)|not (?:yet )?(?:ended|concluded|over|finished)|no (?:hearing|progress|end)|adjourn\w*|postpone\w*|"
++                   r"(?:keeps?|kept) (?:asking|taking|seeking|getting)|asking for (?:more )?time|seeking (?:more )?time|taking (?:more )?time|delay\w*|too long|so long|years? (?:and|but) (?:no|still))\b", re.I)
++_LONG = re.compile(r"\b(?:[2-9]|[1-9]\d)\s*[- ]?(?:years?|yrs?)\b|\b(?:two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty)\s*[- ]?(?:years?|yrs?)\b|\bdecades?\b|\b(?:many|several|long) years\b", re.I)
++_OTHER_DELAY = re.compile(r"\bdelay(?:ed|s)?\s+(?:in|of|on|by)\s+(?:the\s+)?(?:filing|lodging|registering|registration|reporting|presenting|presentation|giving|sending|issuing|paying|payment|returning|serving|service|"
++                          r"submitting|appeal\w*|fir|complaint|notice|cheque|sanction|granting|grant|release|bail|refund|salary)\b", re.I)
++_NUM = r"(?:[2-9]|[1-9]\d|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty)"
++_PUNISHMENT_YEARS = re.compile(r"\b(?:sentenc\w+|imprisonment|punish\w*|rigorous|term|maximum|minimum|upto|up to|not less than|not exceeding|exceeding)\b[^.?!]{0,40}?\b" + _NUM + r"\s*[- ]?(?:years?|yrs?)\b", re.I)
++_TRIAL_YEARS = re.compile(r"\b(?:trial|trials|case|cases|proceedings?|prosecution|charge[- ]?sheet|hearings?)\b[^.?!]{0,60}?\b" + _NUM + r"\s*[- ]?(?:years?|yrs?)\b|\b" + _NUM + r"\s*[- ]?(?:years?|yrs?)\b[^.?!]{0,60}?\b(?:trial|trials|case|cases|proceedings?|prosecution|charge[- ]?sheet|hearings?)\b", re.I)
++
++
++def _trial_delay(question):
++    """A question about delay in a criminal trial: an explicit mention of the right to a speedy trial, a time limit for trials or Article 21 with delay; or a trial/case/proceeding that is 'going on',
++    'dragging' or being adjourned, with a number of years or a plain complaint of delay; or a number of years next to the trial itself. A delay in filing an FIR, a complaint or an appeal is not this,
++    and neither is a number of years of punishment."""
++    q = question or ""
++    if _SPEEDY.search(q):
++        return True
++    q = _PUNISHMENT_YEARS.sub(" ", _OTHER_DELAY.sub(" ", q))
++    if _TRIAL_YEARS.search(q):
++        return True
++    return bool(_TRIAL.search(q) and _DRAG.search(q) and (_LONG.search(q) or re.search(r"\b(?:adjourn\w*|postpone\w*|delay\w*|dragg\w*|asking for (?:more )?time|seeking (?:more )?time|taking (?:more )?time)\b", q, re.I)))
++
++
++TOPICS = {"trial_delay": _trial_delay}
++
++
++def selected(question):
++    """The anchors that apply to this question: [] with the switch off, for a question that matches no topic, or on any problem."""
++    try:
++        if mode() != "on" or not question:
++            return []
++        return [a for a in load() if a.get("topic") in TOPICS and TOPICS[a["topic"]](question)]
++    except Exception as exc:  # noqa: BLE001
++        logger.warning("excerpt anchors selection failed: %s", type(exc).__name__)
++        return []
++
++
++def applies(question):
++    return bool(selected(question))
++
++
++# ---- wording ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
++
++def label_for(a):
++    return "" if a.get("status") == "reviewer_confirmed" else LABEL_UNCONFIRMED
++
++
++def excerpt_text(ex):
++    return " ... ".join(s.strip() for s in ex["segments"])
++
++
++def _date_words(iso):
++    import datetime
++    try:
++        d = datetime.date.fromisoformat(iso)
++        return f"{d.day} {d.strftime('%B %Y')}"
++    except Exception:  # noqa: BLE001
++        return iso
++
++
++def _head(a):
++    bits = [f"{a['case_name']} ({a['year']})"]
++    if a.get("citation"):
++        bits.append(a["citation"])
++    if a.get("date"):
++        bits.append("decided " + _date_words(a["date"]))
++    if a.get("bench_note"):
++        bits.append(a["bench_note"])
++    return "[VERBATIM EXCERPTS -- " + ", ".join(bits) + "]"
++
++
++def _ex_title(i, ex):
++    return f"({i}) {ex['label']}" + (f" -- paragraph {ex['paragraph']} of the SCC report" if ex.get("paragraph") else "")
++
++
++def _statute_pointers(anchors):
++    """One sentence from the site's own table of old and new section numbers for the Code of Criminal Procedure sections that the excerpts name (a pointer to verify)."""
++    try:
++        import statute_concordance as SC
++        out = []
++        for a in anchors:
++            for sec in (a.get("statute_pointers") or {}).get("CrPC", []):
++                new = SC.to_new("CrPC", sec) or []
++                if new:
++                    out.append(f"CrPC Section {sec} corresponds to BNSS Section " + " and ".join(n["section"] for n in new))
++        return ("Statute pointers (from the site's own table of old and new section numbers; a pointer to verify, not part of the judgments): " + "; ".join(out) + ".") if out else ""
++    except Exception:  # noqa: BLE001
++        return ""
++
++
++def block(question):
++    """The prompt section for this question ('' when no anchor applies). Remembers which anchors it handed over so the finished answer can be labelled and the page can list them."""
++    try:
++        anchors = selected(question)
++        _LOCAL.fed = anchors
++        if not anchors:
++            return ""
++        unconfirmed = [a for a in anchors if label_for(a)]
++        lines = ["\n\n## Verbatim Supreme Court excerpts (copied word for word from the judgments; checked by code against the Supreme Court's own PDF)\n"
++                 "These excerpts bear on a question about delay in a criminal trial. "
++                 + ("Their legal reading has NOT yet been confirmed by our reviewer. " if unconfirmed else "Our reviewer has confirmed them. ")
++                 + "You may name these cases and describe ONLY what an excerpt literally says, attributed to the court (\"the Supreme Court in X said ...\"); you may quote an excerpt word for word. "
++                 "Where two parts of an excerpt are joined by \"...\", words of the judgment are left out between them. Never state more than the excerpts show, and never say that a case is good law. "
++                 "The guidelines of A.R. Antulay and the passage of Kartar Singh are known to us only as the seven-judge Bench quotes them: if you mention either, say so. "
++                 + (f"The first time you name one of these cases, put the words {LABEL_UNCONFIRMED} right after its name. " if unconfirmed else "")
++                 + "If the person's facts do not fit these excerpts, say what is missing instead of stretching them.\n"]
++        for a in anchors:
++            lines.append(_head(a))
++            for i, ex in enumerate(a["excerpts"], 1):
++                lines.append(_ex_title(i, ex) + ":\n" + excerpt_text(ex) + "\n")
++        pointers = _statute_pointers(anchors)
++        if pointers:
++            lines.append(pointers + "\n")
++        try:                                                    # the register's own lines for cases the excerpts name (Raj Deo Sharma, Common Cause), so the facts ride with the excerpt
++            from register_hooks import text_mentions
++            men = text_mentions(" ".join(excerpt_text(ex) for a in anchors for ex in a["excerpts"]))
++            if men["lines"]:
++                lines.append("[Overruled Register -- not optional: the excerpts name cases on our register; if you mention one of them at all, state this fact in the same sentence]\n" + "\n".join(men["lines"]) + "\n")
++        except Exception:  # noqa: BLE001
++            pass
++        print("ANCHORS handed over: %s" % "; ".join(a["id"] for a in anchors), flush=True)
++        return "\n".join(lines)
++    except Exception as exc:  # noqa: BLE001
++        logger.warning("excerpt anchors block failed: %s", type(exc).__name__)
++        _LOCAL.fed = []
++        return ""
++
++
++def fed():
++    return list(getattr(_LOCAL, "fed", None) or [])
++
++
++def case_names():
++    """Names of the cases of the anchors handed over for this question (for the wider-search tier to leave out, and for the 'not checked' sentence)."""
++    return [a["case_name"] for a in fed()]
++
++
++def cases():
++    """The anchors handed over, in the shape the page and the table of authorities read: result['anchor_excerpts']."""
++    out = []
++    for a in fed():
++        paras = []
++        for ex in a["excerpts"]:
++            if ex.get("paragraph") and str(ex["paragraph"]) not in paras:
++                paras.append(str(ex["paragraph"]))
++        out.append({"case_name": a["case_name"], "year": a.get("year"), "date": a.get("date"), "citation": a.get("citation"), "paragraph": ", ".join(paras) or a.get("paragraph"), "link": a.get("link"),
++                    "bench_note": a.get("bench_note"), "status": a.get("status"), "confirmed_by": a.get("confirmed_by"), "confirmed_on": a.get("confirmed_on"), "label": label_for(a),
++                    "excerpts": [{"label": ex["label"], "paragraph": ex.get("paragraph"), "text": excerpt_text(ex), "note": ex.get("note")} for ex in a["excerpts"]]})
++    return out
++
++
++def attach(question, result):
++    """Called at the end of chat_assistant.answer_question: labels the anchor cases in the finished answer (first mention, unless the answer already says so) and adds result['anchor_excerpts'].
++    Only when this question's prompt really carried anchors. Never raises; the answer is untouched otherwise."""
++    try:
++        if not isinstance(result, dict) or result.get("state") not in ("single_match", "conflicting_matches") or not fed():
++            return result
++        import sci_search_tier as T
++        pending = [{"case_name": a["case_name"]} for a in fed() if label_for(a)]
++        if pending and result.get("response_text"):
++            result["response_text"] = T.label_cases(result["response_text"], pending, LABEL_UNCONFIRMED, _LABEL_NOTE, _LABEL_SPAN)
++        result["anchor_excerpts"] = cases()
++    except Exception as exc:  # noqa: BLE001
++        logger.warning("excerpt anchors attach failed: %s", type(exc).__name__)
++    return result
++
++
++def names_in(text):
++    """Names of the anchor cases that a finished answer mentions, as written there plus the anchors' own names, for the 'not checked' sentence to skip (they carry their own label)."""
++    try:
++        import sci_search_tier as T
++        out = []
++        for a in fed():
++            out.append(a["case_name"])
++            span = T._locate(text or "", a["case_name"])
++            if span:
++                out.append((text or "")[span[0]:span[1]])
++                try:
++                    from overruled_register.overlay import case_mentions
++                    out.extend(m["name"] for m in case_mentions(text or "") if m["start"] < span[1] and m["end"] > span[0])
++                except Exception:  # noqa: BLE001
++                    pass
++        return out
++    except Exception:  # noqa: BLE001
++        return []
 diff --git a/grounding_checks.py b/grounding_checks.py
 new file mode 100644
 index 0000000..cbf4c7d
@@ -1352,7 +1810,7 @@ index 0000000..cbf4c7d
 +def log_line(question_hash, found_cases, found_quotes, note=""):
 +    print("GROUNDING_CHECK " + json.dumps({"q": question_hash, "mode": mode(), "cases": found_cases, "quotes": [q[:120] for q in found_quotes], "note": note}), flush=True)
 diff --git a/recourse_app.py b/recourse_app.py
-index 1845aeb..1e105b5 100644
+index 1845aeb..745ff2b 100644
 --- a/recourse_app.py
 +++ b/recourse_app.py
 @@ -26,6 +26,8 @@ import logging
@@ -1475,7 +1933,7 @@ index 1845aeb..1e105b5 100644
 +                for heading, md_table in authorities_table.render_markdown(result["authorities"]):
 +                    st.markdown(f'<div class="r-label">{esc(heading)}</div>', unsafe_allow_html=True)
 +                    st.markdown(md_table)
-+                if result["authorities"].get("library") or result["authorities"].get("wider"):
++                if result["authorities"].get("library") or result["authorities"].get("wider") or result["authorities"].get("anchors"):
 +                    st.markdown(f'<p class="r-foot">{esc(authorities_table.TABLE_NOTE)}</p>', unsafe_allow_html=True)
 +            except Exception:
 +                logging.getLogger("recourse_app").exception("authorities table render failed")
@@ -1492,7 +1950,7 @@ index 1845aeb..1e105b5 100644
          if cited_links:
              st.markdown('<div class="r-label">Judgments this answer relies on</div>', unsafe_allow_html=True)
              for cl in cited_links:
-@@ -880,6 +937,42 @@ def render_answer(result: dict):
+@@ -880,6 +937,62 @@ def render_answer(result: dict):
                              f'<span class="r-src">{esc(cl.get("source_label", "source link"))}</span>',
                              unsafe_allow_html=True)
  
@@ -1529,13 +1987,33 @@ index 1845aeb..1e105b5 100644
 +                    st.markdown(f'- {link}{when}{para}<span class="r-src">{src}</span>', unsafe_allow_html=True)
 +                    if j.get("register_note"):
 +                        st.markdown(f'<div class="r-concord">{esc(j["register_note"])}</div>', unsafe_allow_html=True)
++                    if j.get("names_register_note"):
++                        st.markdown(f'<div class="r-concord">This passage names a case on our register: {esc(j["names_register_note"])}</div>', unsafe_allow_html=True)
 +                    if j.get("excerpt"):
 +                        st.markdown(f'<div class="r-mono">{esc(j["excerpt"])}</div>', unsafe_allow_html=True)
++
++        # Verbatim Supreme Court excerpts the answer was given (excerpt_anchors.py, off unless ANCHORS=on): the judgment's own words, checked by code against the court's PDF.
++        anchor_ex = result.get("anchor_excerpts")
++        if anchor_ex:
++            unconfirmed = any(a.get("status") != "reviewer_confirmed" for a in anchor_ex)
++            with st.expander("Verbatim Supreme Court excerpts this answer read" + (" (not yet confirmed by our reviewer)" if unconfirmed else ""), expanded=False):
++                st.markdown('<p class="r-foot">These are the judgments\' own words, checked by a program against the Supreme Court\'s own PDF. '
++                            + ("A person at Recourse has not yet confirmed that they are the right authority or that the law has not moved on. " if unconfirmed else "")
++                            + 'Read the real judgment yourself, or with a lawyer, before relying on it.</p>', unsafe_allow_html=True)
++                for a in anchor_ex:
++                    cit = f", {esc(a['citation'])}" if a.get("citation") else ""
++                    name = f'[{esc(a["case_name"])}]({esc(a["link"])})' if a.get("link") else esc(a["case_name"])
++                    st.markdown(f'- {name} ({esc(str(a.get("year") or ""))}){cit}', unsafe_allow_html=True)
++                    for ex in a.get("excerpts") or []:
++                        st.markdown(f'<div class="r-label">{esc(ex["label"])}' + (f" &mdash; paragraph {esc(str(ex['paragraph']))}" if ex.get("paragraph") else "") + '</div>', unsafe_allow_html=True)
++                        st.markdown(f'<div class="r-mono">{esc(ex["text"])}</div>', unsafe_allow_html=True)
++                        if ex.get("note"):
++                            st.markdown(f'<p class="r-foot">{esc(ex["note"])}</p>', unsafe_allow_html=True)
 +
          unverified = result.get("unverified_related_judgments")
          if unverified:
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
-@@ -1210,7 +1303,8 @@ if _busy:
+@@ -1210,7 +1323,8 @@ if _busy:
          # inline from the shared corpus rather than dead-ended with a
          # "covered elsewhere" redirect that points nowhere here.
          st.session_state.answer = _answer_question(
@@ -1547,15 +2025,16 @@ index 1845aeb..1e105b5 100644
          st.session_state.answer = {"state": "retrieval_unavailable"}
 diff --git a/register_hooks.py b/register_hooks.py
 new file mode 100644
-index 0000000..b499c07
+index 0000000..24da527
 --- /dev/null
 +++ b/register_hooks.py
-@@ -0,0 +1,136 @@
+@@ -0,0 +1,212 @@
 +"""Fail-open hooks around the Overruled Register bundle (overruled_register/, exported by `python sci_goodlaw.py register-export-site`).
 +Order of lookup for a case: the register (person-confirmed rows firmly, candidates as "reported ... not yet confirmed"), then the cards overlay (the checker's reading, precomputed),
 +then the fixed "not checked by us" sentence. Nothing here ever says a case is good law. Every function returns its input unchanged (or empty notes) on any error, and REGISTER_HOOKS=off turns all of it off."""
 +import logging
 +import os
++import re
 +
 +logger = logging.getLogger(__name__)
 +_STATE = {}
@@ -1662,6 +2141,81 @@ index 0000000..b499c07
 +    return out
 +
 +
++_BACK_REF_SUFFIX = re.compile(r"\s*(?:\((?:I{1,3}|IV|[1-4])\)|[\u2019']s\s+cases?\b|\s+cases?\b|-(?:I{1,3}|IV)\b)", re.I)
++_FOOTNOTE = re.compile(r"(?<=[A-Za-z])(\d{1,3})(?=[\s).,;:])")
++
++
++def _loose_rows(reg, text):
++    """Register rows whose overruled case a passage refers back to by its first party's words alone: three or more distinctive words in a row, none of them a common word such as a state or an office,
++    followed by a back-reference mark: 'Raj Deo Sharma (II)', 'the Raj Deo Sharma case', 'Abdul Rehman Antulay's case'. A name without such a mark is not matched (the same first party often sits in a
++    different case), and a two-word name ('Mohan Lal') is never matched this way. Used only to decide what to hand the model, never to word an answer."""
++    from overruled_register import register as RR
++    toks = RR.tokenize(text)
++    found = {}                                                                 # first-party triple -> the rows it matched at this reading
++    for i, (t, _s, _e) in enumerate(toks):
++        for r in reg._by_first.get(t, ()):                                     # noqa: SLF001
++            for s1, _s2 in reg._variants[r["id"]]:                             # noqa: SLF001
++                if len(s1) < 3 or s1[0] != t or any(x in RR._GENERIC for x in s1[:3]):
++                    continue
++                j = reg._seq(toks, i, s1, 3)                                   # noqa: SLF001
++                if j is not None and _BACK_REF_SUFFIX.match(text[toks[j - 1][2]:toks[j - 1][2] + 30]):
++                    found.setdefault(tuple(s1[:3]), {})[r["id"]] = r
++                    break
++    out = {}
++    for rows in found.values():
++        decisions = {frozenset([rid] + [x["id"] for x in reg.same_decision_rows(r)]) for rid, r in rows.items()}
++        merged = []
++        for d in decisions:                                                    # rows of one decision count once; two different decisions with the same first party are ambiguous: skip
++            if not any(d & m for m in merged):
++                merged.append(set(d))
++            else:
++                for m in merged:
++                    if d & m:
++                        m |= d
++        if len(merged) == 1:
++            out.update(rows)
++    return list(out.values())
++
++
++def text_mentions(text):
++    """For the wider-pool feed (sci_search_tier.py): the register cases that a passage NAMES (other than the passage's own case).
++    {'lines': [REGISTER FACT / REGISTER NOTE lines for the prompt], 'clauses': [the register's own sentence for each, for the page], 'overruling': [(name, year), ...] of the case(s) that corrected them}.
++    A case is found by a reported citation, by both party names with a year, or by its first party's distinctive words alone (see _loose_rows); a row with no wording (unchecked) gives nothing. Never raises."""
++    empty = {"lines": [], "clauses": [], "overruling": []}
++    if _off() or not text:
++        return empty
++    try:
++        from overruled_register import register as RR
++        from overruled_register import register_guard as G
++        reg, _ = _load()
++        text = _FOOTNOTE.sub(r" \1", text)                               # extracted judgments glue footnote numbers to words ('State of Bihar30)')
++        rows = [h["row"] for h in reg.scan(text) if h["strength"] == "strong"] + _loose_rows(reg, text)
++        lines, clauses, overruling, seen = [], [], [], set()
++        for row in rows:
++            if row["id"] in seen:
++                continue
++            group = [row] + reg.same_decision_rows(row)
++            seen.update(x["id"] for x in group)
++            clause = reg.clause_group(group)
++            if not clause:
++                continue
++            o = row["overruled"]
++            line = (G.prompt_facts(reg, [o["name"] + (f" ({o['year']})" if o.get("year") else "")], limit=1) or [None])[0]
++            if not line:
++                continue
++            lines.append(line)
++            clauses.append(clause)
++            lead = sorted((x for x in group if reg.clause(x)), key=lambda x: (RR.TRUSTS.index(x["trust"]), x["id"]))[0]        # the firmest row: the case the REGISTER FACT line names as the corrector
++            b = lead.get("overruling") or {}
++            yr = (b.get("date") or "")[:4] or b.get("year")
++            if b.get("name") and (b["name"], yr) not in overruling:
++                overruling.append((b["name"], yr))
++        return {"lines": lines, "clauses": clauses, "overruling": overruling}
++    except Exception as exc:  # noqa: BLE001
++        logger.warning("register text mentions failed: %s", exc)
++        return empty
++
++
 +def case_status(name, year=None, citation=None):
 +    """For the lawyers' authorities table: one line saying where a case stands on our lists. {'source': 'register'|'card'|'card_quiet'|'not_checked'|'off', 'note': sentence}.
 +    The register first (firm or 'reported ... not yet confirmed'), then the cards overlay (warning, caution or quiet), else the fixed 'Not checked by us' sentence. Never says a case is good law. Never raises."""
@@ -1689,10 +2243,10 @@ index 0000000..b499c07
 +        return {"source": "not_checked", "note": None}
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..b58479c
+index 0000000..308dcfc
 --- /dev/null
 +++ b/sci_search_tier.py
-@@ -0,0 +1,403 @@
+@@ -0,0 +1,542 @@
 +"""The wider-pool search tier on the website side: asks the private sci-search service (recourse-sci-pool, sci_search_service.py) for Supreme Court passages and either logs them (shadow) or hands them
 +to the page (show). Fail-open: any problem, a slow service, a missing setting -- the answer goes out exactly as it does without this module.
 +
@@ -1826,6 +2380,7 @@ index 0000000..b58479c
 +    "EVERY TIME you name one of these cases, put the words " + LABEL + " right after its name. "
 +    "If a line starting REGISTER FACT is attached to a case, whenever you mention that case say how it was treated in the same sentence, and never present its holding as the current law; "
 +    "the case that corrected it is among the passages when it could be found, so name that case too. "
++    "A REGISTER FACT line placed under a passage that only NAMES another case is about that other case: if you rely on that passage, do not present the named case's rule as current law, and say how it was treated. "
 +    "Credit a principle to the case whose own words state it: if a passage quotes or restates an earlier decision, say it was an earlier decision's holding, never the named case's. "
 +    "Use a passage only for the question it actually decides: a passage about delay in starting a prosecution does not answer a question about delay in a trial that is already running, and a passage about one kind of bail condition says nothing about another. "
 +    "If no passage clearly bears on the person's situation, ignore them all. Do not say that a case is good law.\n"
@@ -1851,8 +2406,11 @@ index 0000000..b58479c
 +    return head.rstrip() + " ..."
 +
 +
++_NUMBER_MARK = re.compile(r"\s*\((?:I{1,3}|IV|V|[1-9])\)\s*$")
++
++
 +def _party_core(p):
-+    return _TRAIL_PARTY.sub("", (p or "").strip()).strip(" .,;")
++    return _NUMBER_MARK.sub("", _TRAIL_PARTY.sub("", (p or "").strip())).strip(" .,;")      # 'Hussainara Khatoon (I)' is written 'Hussainara Khatoon' as often as not
 +
 +
 +def _parties(name):
@@ -1868,11 +2426,30 @@ index 0000000..b58479c
 +        return (a or "").lower().strip(" .") == (b or "").lower().strip(" .")
 +
 +
++def _same_case_loose(a, b):
++    """The same case allowing a shortened or lengthened party name ('P. Ramachandra Rao, etc. Etc.Appellants v. State of Karnataka Respondent'): the first three words of the first party and the first
++    two of the second agree (the register's own rule for two spellings of one name)."""
++    try:
++        from overruled_register import register as R
++        return bool(R.Register._names_agree(a, b))                          # noqa: SLF001
++    except Exception:  # noqa: BLE001
++        return _same_case(a, b)
++
++
++def _anchor_case_names(question):
++    """Cases whose verbatim excerpts (excerpt_anchors.py, ANCHORS=on) go into the prompt for this question: the wider search does not hand the same case over a second time."""
++    try:
++        import excerpt_anchors
++        return [a["case_name"] for a in excerpt_anchors.selected(question)]
++    except Exception:  # noqa: BLE001
++        return []
++
++
 +_GENERIC_FIRST = re.compile(r"^(?:the\s+)?(?:state|union|commissioner|collector|central|govt|government)\b", re.I)
 +
 +
-+def _fuzzy_end(text, phrase, threshold=0.86):
-+    """End position of the stretch of `text` that looks like `phrase` (same number of words, allowing a typo), or None."""
++def _fuzzy_span(text, phrase, threshold=0.86):
++    """(start, end) of the stretch of `text` that looks like `phrase` (same number of words, allowing a typo), or None."""
 +    import difflib
 +    words = list(re.finditer(r"\S+", text))
 +    n = len(phrase.split())
@@ -1881,24 +2458,31 @@ index 0000000..b58479c
 +    for i in range(len(words) - n + 1):
 +        cand = text[words[i].start():words[i + n - 1].end()].strip(" ,.;:()")
 +        if difflib.SequenceMatcher(None, cand.lower(), phrase.lower()).ratio() >= threshold:
-+            return words[i + n - 1].end()
++            return words[i].start(), words[i + n - 1].end()
 +    return None
 +
 +
++def _fuzzy_end(text, phrase, threshold=0.86):
++    """End position of the stretch of `text` that looks like `phrase`, or None."""
++    sp = _fuzzy_span(text, phrase, threshold)
++    return sp[1] if sp else None
++
++
 +_V = r"\s+(?:v\.?|vs\.?|versus)\s+"
++_MARK = r"(?:\s*\((?:I{1,3}|IV|V|[1-9])\))?"                          # '(I)' after a first party: Hussainara Khatoon (I) v. Home Secretary
 +_EXTRA = r"(?:\s*(?:,|&|and)\s*(?:anr|ors|another|others|etc)\b\.?)?"
 +_LABEL_NOTE = re.compile(r"\(\s*(?:[\w ]{0,12}from a |[\w ]{0,12})?wider search,?\s*not independently verified|\([^()]{0,90}not independently verified", re.I)
 +_LABEL_SPAN = re.compile(r"\([^()]{0,160}not independently verified[^()]{0,200}(?:\([^()]{0,80}\)[^()]{0,40})?\)", re.I)
 +
 +
-+def _labelled_here(text, pos):
++def _labelled_here(text, pos, note_re=None):
 +    """True when a bracketed 'not independently verified' note comes right at `pos` (the model's own wording is tolerated, and a longer note such as '..., not independently verified; overruled by X' counts). Only the very next bracket counts: a label after a LATER case must not hide this one."""
-+    return bool(_LABEL_NOTE.match(text[pos:].lstrip(" \t")))
++    return bool((note_re or _LABEL_NOTE).match(text[pos:].lstrip(" \t")))
 +
 +
-+def _inside_label(text, pos):
++def _inside_label(text, pos, span_re=None):
 +    """True when `pos` falls inside a label that is already in the text (inserting there would nest one label in another)."""
-+    return any(m.start() < pos < m.end() for m in _LABEL_SPAN.finditer(text))
++    return any(m.start() < pos < m.end() for m in (span_re or _LABEL_SPAN).finditer(text))
 +
 +
 +def _words_re(p):
@@ -1910,7 +2494,7 @@ index 0000000..b58479c
 +
 +def _extend_second_party(text, end):
 +    """When only the first party was found: take the ' v. <second party>' that follows it, as a run of capitalised name words (stops at a bracket, a digit, a full stop or a lower-case word)."""
-+    m = re.match(_V + r"(?:the\s+)?", text[end:], re.I)
++    m = re.match(_MARK + _V + r"(?:the\s+)?", text[end:], re.I)
 +    if not m:
 +        return end
 +    pos, n = end + m.end(), 0
@@ -1935,9 +2519,45 @@ index 0000000..b58479c
 +    return text
 +
 +
-+def label_fed_cases(text, cases):
-+    """Puts LABEL right after the first mention of each wider-search case in a finished answer, unless the answer already says so there. The case is found by its full name, else by a distinctive
-+    party name, allowing a typo. The label goes after the whole name (including '& Another', italics marks and a year in brackets), never inside a name or inside another label. Returns the text unchanged on any problem."""
++def _locate(text, case_name):
++    """(start, end) of the first mention in `text` of a wider-search case: found by its full name, else by a distinctive party name (allowing a typo, and a dropped 'Dr.'), taking the ' v. second party'
++    and a trailing '& Another' with it. The end is the end of the name, before italics marks and brackets. None when the case is not mentioned."""
++    p1, p2 = _parties(case_name)
++    span = None
++    if p1 and p2:
++        m = re.search(r"\b(?:the\s+)?" + _words_re(p1) + _MARK + _V + r"(?:the\s+)?" + _words_re(p2) + _EXTRA, text, re.I)
++        span = (m.start(), m.end()) if m else None
++    if span is None:
++        p1 = re.sub(r"^(?:dr|mr|mrs|ms|shri|smt)\.?\s+", "", p1, flags=re.I)             # the answer may drop 'Dr.' from the name
++    if span is None and p1 and len(p1) >= 8 and not _GENERIC_FIRST.match(p1):
++        m = re.search(r"\b" + _words_re(p1) + r"\b", text, re.I)
++        sp = (m.start(), m.end()) if m else _fuzzy_span(text, p1)
++        if sp is not None:
++            end = sp[1]
++            tail_v = re.search(r"\s+(?:v\.?|vs\.?|versus)$", text[sp[0]:sp[1]], re.I)           # the fuzzy window may have taken the 'v.' too: back off before it
++            if tail_v:
++                end = sp[0] + tail_v.start()
++            if p2:
++                end = _extend_second_party(text, end)
++                m = re.match(_EXTRA, text[end:], re.I)
++                end += m.end() if m else 0
++            span = (sp[0], end)
++    if span is None and p2 and len(p2) >= 8:
++        span = _fuzzy_span(text, p2)
++    if span is None and p1 and p2:
++        span = _fuzzy_span(text, p1 + " v. " + p2, 0.9)
++    return span
++
++
++_REPORT_CITE = re.compile(r"\s*,?\s*(?:\(?(?:19|20)\d\d\)?\s+(?:\d{1,2}\s+)?(?:SCC|S\.C\.C\.|SCR|S\.C\.R\.|INSC)\b(?:\s*\([A-Za-z0-9.\-]+\))?\s*\d+"
++                          r"|(?:\d{1,2}\s+)?(?:SCC|S\.C\.C\.|SCR|S\.C\.R\.)\b(?:\s*\([A-Za-z0-9.\-]+\))?\s*\d+"
++                          r"|AIR\s+(?:19|20)\d\d\s+(?:SC|[A-Za-z]{2,5})\s+\d+)")
++
++
++def label_cases(text, cases, label, note_re, span_re, tidy=None):
++    """Puts `label` right after the first mention of each case in a finished answer, unless the answer already says so there (`note_re` recognises the model's own wording of the label, `span_re` a label
++    that is already in the text). The case is found by its full name, else by a distinctive party name, allowing a typo. The label goes after the whole name (including '& Another', italics marks and a
++    year in brackets), never inside a name or inside another label. Returns the text unchanged on any problem."""
 +    try:
 +        out = text or ""
 +        seen = set()
@@ -1946,41 +2566,58 @@ index 0000000..b58479c
 +            if not key or key in seen:
 +                continue
 +            seen.add(key)
-+            p1, p2 = _parties(c["case_name"])
-+            end = None
-+            if p1 and p2:
-+                m = re.search(r"\b(?:the\s+)?" + _words_re(p1) + _V + r"(?:the\s+)?" + _words_re(p2) + _EXTRA, out, re.I)
-+                end = m.end() if m else None
-+            p1 = re.sub(r"^(?:dr|mr|mrs|ms|shri|smt)\.?\s+", "", p1, flags=re.I) if end is None else p1   # the answer may drop 'Dr.' from the name
-+            if end is None and p1 and len(p1) >= 8 and not _GENERIC_FIRST.match(p1):
-+                m = re.search(r"\b" + _words_re(p1) + r"\b", out, re.I)
-+                end = m.end() if m else _fuzzy_end(out, p1)
-+                if end is not None and p2:
-+                    end = _extend_second_party(out, end)
-+                    m = re.match(_EXTRA, out[end:], re.I)
-+                    end += m.end() if m else 0
-+            if end is None and p2 and len(p2) >= 8:
-+                end = _fuzzy_end(out, p2)
-+            if end is None and p1 and p2:
-+                end = _fuzzy_end(out, p1 + " v. " + p2, 0.9)
-+            if end is None:
++            span = _locate(out, c["case_name"])
++            if span is None:
 +                continue
++            end = span[1]
 +            m0 = re.match(r"[*_]{1,2}", out[end:])                        # the name is in italics (answer style v3): put the label after the closing mark, not inside it
 +            if m0:
 +                end += m0.end()
-+            for _ in range(2):                                           # a short year or citation in brackets right after the name
-+                if _labelled_here(out, end):
++            for _ in range(3):                                           # a short year or citation in brackets, or a report citation ', (2002) 4 SCC 578', right after the name
++                if _labelled_here(out, end, note_re):
 +                    break
-+                m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:])
-+                if not m2 or _LABEL_NOTE.match(out[end:].lstrip()):
++                m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:]) or _REPORT_CITE.match(out[end:])
++                if not m2 or note_re.match(out[end:].lstrip()):
 +                    break
 +                end += m2.end()
-+            if _labelled_here(out, end) or _inside_label(out, end):
++            if _labelled_here(out, end, note_re) or _inside_label(out, end, span_re):
 +                continue
-+            out = out[:end] + " " + LABEL + out[end:]
-+        return _tidy_labels(out)
++            out = out[:end] + " " + label + out[end:]
++        return tidy(out) if tidy else out
 +    except Exception:  # noqa: BLE001
 +        return text
++
++
++def label_fed_cases(text, cases):
++    """The wider-search label (LABEL) after the first mention of each wider-search case in a finished answer."""
++    return label_cases(text, cases, LABEL, _LABEL_NOTE, _LABEL_SPAN, _tidy_labels)
++
++
++def fed_names_in(text):
++    """The wider-search cases of THIS question that a finished answer mentions: the name as the search service has it, the stretch of the answer that located it, and every 'X v. Y' the answer's
++    case-name finder (the one behind the 'not checked' sentence) reads at that place. Used so that the sentence does not list them: they carry the wider-search label instead.
++    [] outside feed mode and on any problem."""
++    try:
++        text = text or ""
++        out, mentions = [], None
++        for c in getattr(_LOCAL, "cases", None) or []:
++            if not c.get("case_name"):
++                continue
++            out.append(c["case_name"])
++            span = _locate(text, c["case_name"])
++            if not span:
++                continue
++            out.append(text[span[0]:span[1]])
++            if mentions is None:
++                try:
++                    from overruled_register.overlay import case_mentions
++                    mentions = case_mentions(text)
++                except Exception:  # noqa: BLE001
++                    mentions = []
++            out.extend(m["name"] for m in mentions if m["start"] < span[1] and m["end"] > span[0])
++        return out
++    except Exception:  # noqa: BLE001
++        return []
 +
 +
 +def _fetch_case(name, question):
@@ -1994,9 +2631,24 @@ index 0000000..b58479c
 +    return None
 +
 +
++MAX_NAMED_FETCHES = 2        # second searches per question for a controlling case that a passage points to (a flagged case's own corrector is fetched without this cap)
++NAMED_NOTE = "\n[Overruled Register -- not optional: this passage names a case on our register; if you mention that case at all, state this fact in the same sentence]\n"
++
++
++def _named_register(text):
++    """The register cases a fed passage names (register_hooks.text_mentions): {'lines', 'clauses', 'overruling'}; empty when none or on any problem."""
++    try:
++        from register_hooks import text_mentions
++        return text_mentions(text)
++    except Exception:  # noqa: BLE001
++        return {"lines": [], "clauses": [], "overruling": []}
++
++
 +def feed_block(question):
 +    """The prompt section for feed mode ('' in every other mode, and on any failure). One passage per case, up to FEED_MAX_CASES cases; a case the register flags goes last and the case that overruled it
-+    is added (taken from the results, or fetched by a second search), so the model can name the controlling case. The search runs once per question and is reused by the retry loop. Never raises."""
++    is added (taken from the results, or fetched by a second search), so the model can name the controlling case. The same is done for a case the register lists that a passage merely NAMES (a later
++    judgment that quotes or discusses it): the passage carries the REGISTER FACT line and the case that corrected it is added. The search runs once per question and is reused by the retry loop.
++    Never raises."""
 +    try:
 +        if mode() != "feed" or not question:
 +            return ""
@@ -2009,22 +2661,57 @@ index 0000000..b58479c
 +            return ""
 +        res = [r for r in found["results"] if r.get("case_name") and not r.get("name_to_review")]
 +        flags = _flags(res)
++        anchor_names = _anchor_case_names(question)
 +        by_doc = {}
 +        for r, f in zip(res, flags):
++            if any(_same_case_loose(r["case_name"], n) for n in anchor_names):
++                continue                                              # its verbatim excerpt is already in the prompt
 +            by_doc.setdefault(r["doc"], (r, f))                       # the best-ranked passage of each judgment
 +        pairs = list(by_doc.values())
 +        flagged = [p for p in pairs if p[1]["source"] == "register"]
 +        correcting = []
-+        for r, f in flagged:
-+            name = f.get("overruling")
-+            if not name:
-+                continue
++
++        def _known(name):
++            return (any(_same_case(c[0]["case_name"], name) for c in correcting) or any(_same_case(p[0]["case_name"], name) for p in pairs)
++                    or any(_same_case_loose(n, name) for n in anchor_names))
++
++        def _controlling(name):
++            """The passage of the case that corrected another one: already chosen, else among the results, else by a second search. Added to `correcting` once. A case whose verbatim excerpt is
++            in the prompt (an anchor) needs none."""
++            if any(_same_case_loose(n, name) for n in anchor_names):
++                return None
++            hit = next((c for c in correcting if _same_case(c[0]["case_name"], name)), None)
++            if hit:
++                return hit
 +            hit = next((p for p in pairs if _same_case(p[0]["case_name"], name)), None) or _fetch_case(name, question)
-+            if hit and all(hit[0]["doc"] != c[0]["doc"] for c in correcting):
++            if hit and all(hit[0]["doc"] != c[0]["doc"] for c in correcting) and all(hit[0]["doc"] != p[0]["doc"] for p in flagged):
 +                correcting.append(hit)
-+        special = {p[0]["doc"] for p in flagged} | {p[0]["doc"] for p in correcting}
-+        plain = [p for p in pairs if p[0]["doc"] not in special]
-+        room = max(FEED_MAX_CASES - len(flagged) - len(correcting), 2)
++            return hit
++
++        for r, f in flagged:
++            if f.get("overruling"):
++                _controlling(f["overruling"])
++
++        def _split():
++            special = {p[0]["doc"] for p in flagged} | {p[0]["doc"] for p in correcting}
++            return [p for p in pairs if p[0]["doc"] not in special], max(FEED_MAX_CASES - len(flagged) - len(correcting), 2)
++
++        plain, room = _split()
++        named, n_fetch, tried = {}, 0, set()                          # doc -> the register cases its passage names; names already looked up by a second search
++        for r, f in plain[:room]:
++            men = _named_register(_cut(r.get("text") or "", FEED_PASSAGE_CHARS))
++            if not men["lines"]:
++                continue
++            named[r["doc"]] = men
++            for name, _yr in men["overruling"]:
++                if not _known(name):                                  # a second search is needed: at most MAX_NAMED_FETCHES of them per question, and never twice for the same name
++                    key = re.sub(r"\W+", " ", name.lower()).strip()
++                    if n_fetch >= MAX_NAMED_FETCHES or key in tried:
++                        continue
++                    tried.add(key)
++                    n_fetch += 1
++                _controlling(name)
++        plain, room = _split()
 +        chosen = plain[:room] + correcting + flagged
 +        blocks, cases = [], []
 +        for r, f in chosen:
@@ -2041,13 +2728,19 @@ index 0000000..b58479c
 +                    facts = "\n[Overruled Register -- not optional: if you mention this case at all, state this fact in the same sentence]\n" + "\n".join(lines)
 +            except Exception:  # noqa: BLE001
 +                facts = ""
++            men = named.get(r["doc"]) if f["source"] != "register" else None
++            if men:                                                    # the passage names a case on the register: the fact rides with the passage
++                facts += NAMED_NOTE + "\n".join(men["lines"])
 +            blocks.append(head + "\n" + body + facts)
 +            cases.append({"case_name": r["case_name"], "date": r.get("date"), "paragraph": r.get("paragraph"), "link": r.get("link"), "link_kind": r.get("link_kind"),
-+                          "excerpt": _cut(r.get("text") or "", EXCERPT), "register_note": f["note"] if f["source"] in ("register", "card") else None})
++                          "excerpt": _cut(r.get("text") or "", EXCERPT), "register_note": f["note"] if f["source"] in ("register", "card") else None,
++                          "names_register_note": (" ".join(men["clauses"]) if men else None)})
 +        if not blocks:
 +            print("SCI_FEED no passages: nothing usable came back", flush=True)
 +            return ""
 +        print("SCI_FEED fed %d case(s): %s" % (len(cases), "; ".join(c["case_name"] for c in cases)), flush=True)
++        if named:
++            print("SCI_FEED passages naming register cases: %s" % "; ".join(c["case_name"] for c, (r, _f) in zip(cases, chosen) if r["doc"] in named), flush=True)
 +        _LOCAL.block = FEED_INSTRUCTION + "\n\n".join(blocks) + "\n"
 +        _LOCAL.cases = cases
 +        return _LOCAL.block
@@ -2900,6 +3593,227 @@ index 0000000..48aa90e
 +
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
+diff --git a/test_excerpt_anchors.py b/test_excerpt_anchors.py
+new file mode 100644
+index 0000000..faffa57
+--- /dev/null
++++ b/test_excerpt_anchors.py
+@@ -0,0 +1,215 @@
++"""
++test_excerpt_anchors.py -- verbatim Supreme Court excerpts for a kind of question (excerpt_anchors.py + its calls in chat_assistant.py, sci_search_tier.py, authorities_table.py).
++Fully offline and free: no model, no network. Run: python -X utf8 test_excerpt_anchors.py
++"""
++import json
++import os
++import sys
++import types
++
++import authorities_table as AT
++import chat_assistant as CA
++import excerpt_anchors as E
++import sci_search_tier as T
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++Q_DELAY = "My trial has been going on for 9 years and the prosecution keeps asking for time. Can the case be closed because of the delay?"
++os.environ.pop("ANCHORS", None)
++
++# --- the switch: off by default, nothing changes
++check(E.mode() == "off" and E.selected(Q_DELAY) == [] and E.block(Q_DELAY) == "" and E.fed() == [], "off is the default: no anchor is selected and the prompt gets nothing")
++for v in ('on', ' "on" ', "'ON'", "1", "true"):
++    os.environ["ANCHORS"] = v
++    check(E.mode() == "on", f"the value {v!r} switches it on")
++for v in ("off", "banana", ""):
++    os.environ["ANCHORS"] = v
++    check(E.mode() == "off", f"the value {v!r} leaves it off")
++os.environ["ANCHORS"] = "on"
++
++# --- the data
++anchors = E.load()
++check(len(anchors) == 2 and {a["id"] for a in anchors} == {"trial_delay_ramachandra_rao", "trial_delay_hussainara_khatoon_i"}, f"two anchors loaded ({[a['id'] for a in anchors]})")
++check(all((a.get("check") or {}).get("all_found") and a["status"] in ("machine_checked", "reviewer_confirmed") and a.get("link", "").startswith("https://api.sci.gov.in/") for a in anchors), "each has a passing check against the court's PDF, a status and the official link")
++check(all(ex["segments"] and all(s.strip() for s in ex["segments"]) for a in anchors for ex in a["excerpts"]), "no empty excerpt or segment")
++check(all(a["status"] == "machine_checked" and not a.get("confirmed_by") for a in anchors), "none is marked as confirmed by a person yet")
++check(E.load("/nonexistent/excerpt_anchors.json") == [], "a missing file gives no anchors and no error")
++
++# --- which questions
++POS = [Q_DELAY,
++       "My case has been pending for 10 years and I keep getting dates. What can I do?",
++       "Is there a time limit for a criminal trial to finish?",
++       "What is the right to speedy trial under Article 21?",
++       "The trial is dragging on, the prosecution seeks more time at every hearing.",
++       "Does Article 21 help if my trial has been delayed for seven years?",
++       "Can the High Court quash the case because the trial took 12 years?",
++       "I have been in jail for 4 years as an undertrial and my trial has not started. What can I do?",
++       "My son has been in custody for 5 years and the case is still at the evidence stage"]
++NEG = ["Can the police arrest me without a warrant for cheating?",
++       "The court sentenced my brother to 7 years in a cheating case. Can he appeal?",
++       "What is the maximum imprisonment of 3 years or fine case under this section?",
++       "My cheque bounced, what should I do?",
++       "There was a delay of three days in lodging the FIR. Does that matter?",
++       "The delay in filing the appeal was 90 days, can the court condone it?",
++       "What is the punishment for theft under the BNS?",
++       "I was arrested yesterday. When must I be produced before a Magistrate?",
++       "What bail conditions can a court impose?",
++       "Chargesheet was not filed in 90 days, can I get default bail?",
++       "How long does a trial usually take?",
++       ""]
++for q in POS:
++    check(bool(E.selected(q)), f"applies: {q[:70]!r}")
++for q in NEG:
++    check(E.selected(q) == [], f"does not apply: {q[:70]!r}")
++
++# --- the prompt block
++b = E.block(Q_DELAY)
++check(b.startswith("\n\n## Verbatim Supreme Court excerpts") and "P. Ramachandra Rao v. State of Karnataka (2002), (2002) 4 SCC 578, decided 16 April 2002, a Bench of seven judges" in b, "the block names the case, the citation, the date and the bench size")
++check("paragraph 29 of the SCC report" in b and b.count("paragraph 29") == 1, "the paragraph is shown for the one excerpt it belongs to")
++for a in anchors:
++    for ex in a["excerpts"]:
++        for seg in ex["segments"]:
++            check(seg.strip() in b, f"segment is in the block word for word: {seg[:60]!r}")
++check("Hussainara Khatoon (I) v. Home Secretary, State of Bihar (1979), (1980) 1 SCC 81" in b, "Hussainara is named with its year and citation")
++check("The first time you name one of these cases, put the words (verbatim excerpt, not yet confirmed by our reviewer) right after its name." in b and "NOT yet been confirmed by our reviewer" in b, "unconfirmed: the instruction says to label the case and that the reading is not confirmed")
++check("never say that a case is good law" in b, "the block forbids saying that a case is good law")
++check("CrPC Section 309 corresponds to BNSS Section 346" in b and "CrPC Section 482 corresponds to BNSS Section 528" in b and "a pointer to verify" in b, "statute pointers come from the site's own concordance table")
++check("REGISTER FACT: Raj Deo Sharma v. The State of Bihar (1999) was overruled by P. Ramachandra Rao" in b, "the register's fact about the cases the excerpt names rides with the excerpt")
++check(len(E.fed()) == 2 and E.case_names() == ["P. Ramachandra Rao v. State of Karnataka", "Hussainara Khatoon (I) v. Home Secretary, State of Bihar"], "block() remembers what it handed over")
++check(len(b) < 8000, f"the block stays small ({len(b)} characters)")
++check(E.block("Can the police arrest me for cheating?") == "" and E.fed() == [], "a question on another subject gets no block and the memory is cleared")
++
++# --- a confirmed anchor needs no label
++conf = json.load(open(E._PATH, encoding="utf-8"))
++for a in conf["anchors"]:
++    a["status"], a["confirmed_by"], a["confirmed_on"] = "reviewer_confirmed", "Mr. Advocate", "2026-10-20"
++import tempfile
++tmp = os.path.join(tempfile.mkdtemp(), "excerpt_anchors.json")
++json.dump(conf, open(tmp, "w", encoding="utf-8"))
++saved = E.load
++E.load = lambda path=None: saved(tmp)
++bc = E.block(Q_DELAY)
++check("Our reviewer has confirmed them." in bc and "put the words" not in bc and "NOT yet" not in bc, "confirmed: no label instruction and the block says the reviewer confirmed them")
++res_c = E.attach(Q_DELAY, {"state": "single_match", "response_text": "In P. Ramachandra Rao v. State of Karnataka (2002) the Court held X."})
++check(res_c["response_text"] == "In P. Ramachandra Rao v. State of Karnataka (2002) the Court held X." and res_c["anchor_excerpts"][0]["label"] == "" and res_c["anchor_excerpts"][0]["status"] == "reviewer_confirmed", "confirmed: the answer text is not labelled")
++E.load = saved
++
++# --- labelling the finished answer
++E.block(Q_DELAY)
++ans = ("A seven-judge Bench in P. Ramachandra Rao v. State of Karnataka (2002) said that no fixed outer time limit can be laid down. "
++       "Earlier, Hussainara Khatoon (I) v. Home Secretary, State of Bihar (1979) held that speedy trial is part of Article 21. In P. Ramachandra Rao v. State of Karnataka the Court said it again.")
++res = E.attach(Q_DELAY, {"state": "single_match", "response_text": ans})
++L = E.LABEL_UNCONFIRMED
++check(res["response_text"].count(L) == 2 and "(2002) " + L in res["response_text"] and "(1979) " + L in res["response_text"], f"each anchor case gets the label once, after its year ({res['response_text'].count(L)})")
++check(res["response_text"].endswith("the Court said it again."), "a later mention is left alone")
++again = E.attach(Q_DELAY, dict(res))
++check(again["response_text"] == res["response_text"], "labelling twice adds nothing")
++own = E.attach(Q_DELAY, {"state": "single_match", "response_text": "In P. Ramachandra Rao v. State of Karnataka (2002) (verbatim excerpt, not yet confirmed by our reviewer) the Court held X."})
++check(own["response_text"].count("not yet confirmed by our reviewer") == 1, "the model's own label is accepted")
++ae = res["anchor_excerpts"]
++check(len(ae) == 2 and ae[0]["case_name"].startswith("P. Ramachandra") and ae[0]["paragraph"] == "29" and ae[0]["citation"] == "(2002) 4 SCC 578" and ae[0]["link"].endswith("18409.pdf") and ae[0]["label"] == L and len(ae[0]["excerpts"]) == 4, "the result lists the anchors with citation, paragraph, link and every excerpt")
++E.reset()
++check(E.attach(Q_DELAY, {"state": "single_match", "response_text": ans}) == {"state": "single_match", "response_text": ans}, "an answer whose prompt carried no anchors is left exactly as it was")
++E.block(Q_DELAY)
++check("anchor_excerpts" not in E.attach(Q_DELAY, {"state": "no_match", "response_text": ans}), "a non-answer state gets nothing")
++check(E.attach(Q_DELAY, "not a dict") == "not a dict", "bad input does not raise")
++
++# --- where the label goes, for the ways a model writes these names
++def _lab(ans):
++    E.block(Q_DELAY)
++    return E.attach(Q_DELAY, {"state": "single_match", "response_text": ans})["response_text"]
++
++
++check(_lab("as held in Hussainara Khatoon v. Home Secretary, State of Bihar (1979).") == "as held in Hussainara Khatoon v. Home Secretary, State of Bihar (1979) " + L + ".", "'Hussainara Khatoon v. Home Secretary, State of Bihar (1979)' (no '(I)'): label after the year, not after 'v.'")
++check(_lab("Hussainara Khatoon (I) v. Home Secretary, State of Bihar (1979) said so.").count(L) == 1 and "(1979) " + L in _lab("Hussainara Khatoon (I) v. Home Secretary, State of Bihar (1979) said so."), "with the '(I)' in the answer: label after the year")
++check(_lab("In Hussainara Khatoon (1979) the Court said so.") == "In Hussainara Khatoon (1979) " + L + " the Court said so.", "the short name and a year")
++check(_lab("In *P. Ramachandra Rao v. State of Karnataka* (2002) the Court said so.") == "In *P. Ramachandra Rao v. State of Karnataka* (2002) " + L + " the Court said so.", "a name in italics: label after the closing mark and the year")
++check(_lab("A seven-judge bench in P. Ramachandra Rao v. State of Karnataka (2002) 4 SCC 578 said so.") == "A seven-judge bench in P. Ramachandra Rao v. State of Karnataka (2002) 4 SCC 578 " + L + " said so.", "a report citation after the year: label after the citation")
++check(_lab("In P. Ramachandra Rao v. State of Karnataka, AIR 2002 SC 1856 the Court said so.") == "In P. Ramachandra Rao v. State of Karnataka, AIR 2002 SC 1856 " + L + " the Court said so.", "an AIR citation after a comma: label after it")
++check(_lab("In P. Ramachandra Rao (2002) the Court said so, and in State of Karnataka v. Someone (2004) it did not.").count(L) == 1, "another case is not labelled")
++
++# --- the 'not checked' sentence leaves them out
++E.block(Q_DELAY)
++text = ("In P. Ramachandra Rao v. State of Karnataka (2002) the Court held X. In Hussainara Khatoon (I) v. Home Secretary, State of Bihar (1979) it held Y. "
++        "In Ram Prasad v. State of Bihar (2001) it held Z.")
++nc = CA._attach_register_notes({"state": "single_match", "response_text": text}).get("register_not_checked") or ""
++check("Ram Prasad" in nc and "Hussainara" not in nc and "Ramachandra" not in nc, f"the sentence names only the case that is neither an anchor nor a source ({nc!r})")
++E.reset()
++nc2 = CA._attach_register_notes({"state": "single_match", "response_text": text}).get("register_not_checked") or ""
++check("Hussainara" in nc2 and "Ram Prasad" in nc2, "with no anchors handed over the sentence is as before")
++
++# --- the table of authorities has a third tier
++E.block(Q_DELAY)
++table = AT.build([], [], [], [], lambda n, y, c: {"source": "not_checked", "note": "x"}, anchors=E.cases())
++check(len(table["anchors"]) == 2 and table["anchors"][0]["paragraphs"] == ["29"] and "not yet confirmed" in table["anchors"][0]["status"] and table["library"] == [] and table["wider"] == [], "the table has a 'Verbatim excerpts' tier")
++md = AT.render_markdown(table)
++check(len(md) == 1 and md[0][0].startswith("Verbatim excerpts the answer read") and "(2002) 4 SCC 578" in md[0][1] and "18409.pdf" in md[0][1], "and it is rendered with citation and link")
++check(AT.build([], [], [], [], lambda *a: {}) == {"library": [], "wider": [], "anchors": [], "has_bench": False}, "without anchors the table is as before")
++
++# --- the wider-search tier does not hand over the same case twice, and needs no second search for a case an anchor supplies
++os.environ.update(SCI_SEARCH_MODE="feed", SCI_SEARCH_URL="http://127.0.0.1:9", SCI_SEARCH_TOKEN="t")
++calls = []
++RDS = {"rank": 1, "doc": 1, "case_name": "Raj Deo Sharma v. The State of Bihar", "date": "1999-05-03", "paragraph": "5", "link": "https://x/1.pdf", "link_kind": "court_archive_pdf", "text": "Time limit held X.", "name_to_review": False, "citations": {}}
++PRR2 = {"rank": 2, "doc": 18404, "case_name": "P. Ramachandra Rao, etc. Etc.Appellants v. State of Karnataka Respondent", "date": "2002-04-16", "paragraph": "3", "link": "https://x/18404.pdf", "link_kind": "court_archive_pdf", "text": "RAJU, J. I feel compelled to express my reservation.", "name_to_review": False, "citations": {}}
++OTHER = {"rank": 3, "doc": 5, "case_name": "Arnesh Kumar v. State of Bihar", "date": "2014-07-02", "paragraph": "9", "link": "https://x/5.pdf", "link_kind": "open_bucket_pdf", "text": "Arrest guidelines.", "name_to_review": False, "citations": {}}
++
++
++def fake_search(q, timeout=None, k=10, label="x"):
++    calls.append(q)
++    return {"results": [RDS, PRR2, OTHER]}
++
++
++T.search = fake_search
++T.reset()
++E.block(Q_DELAY)
++fb = T.feed_block(Q_DELAY)
++check(len(calls) == 1 and "WIDER SEARCH -- NOT INDEPENDENTLY VERIFIED: P. Ramachandra" not in fb and "Arnesh Kumar" in fb and "Raj Deo Sharma" in fb, "anchors on: the anchor case (even in another spelling of its name) is not fed from the wider search and no second search is made for it")
++os.environ["ANCHORS"] = "off"
++calls.clear()
++T.reset()
++fb2 = T.feed_block(Q_DELAY)
++check("WIDER SEARCH -- NOT INDEPENDENTLY VERIFIED: P. Ramachandra" in fb2, "anchors off: the wider search feeds the case as before")
++os.environ["ANCHORS"] = "on"
++os.environ.pop("SCI_SEARCH_MODE")
++
++# --- the call in generate_grounded_response, and the answer cache
++sent = {}
++
++
++class _Msgs:
++    def create(self, **kw):
++        sent["prompt"] = kw["messages"][0]["content"] if isinstance(kw["messages"][0]["content"], str) else json.dumps(kw["messages"][0]["content"])
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="Short answer.")], stop_reason="end_turn", usage=None)
++
++
++CA.client = types.SimpleNamespace(messages=_Msgs())
++E.reset()
++txt = CA.generate_grounded_response(Q_DELAY, "[BNSS Section 346]\nTrial text.", matches=[])
++check(txt and "Verbatim Supreme Court excerpts" in sent["prompt"] and "[BNSS Section 346]" in sent["prompt"] and sent["prompt"].index("Trial text.") < sent["prompt"].index("Verbatim Supreme Court excerpts"), "the excerpts are put into the prompt after the library text")
++sent.clear()
++txt = CA.generate_grounded_response("Can police arrest me for cheating?", "[BNSS Section 35]\nArrest text.", matches=[])
++check(txt and "Verbatim Supreme Court excerpts" not in sent["prompt"], "a question on another subject: nothing added")
++os.environ["ANCHORS"] = "off"
++sent.clear()
++txt = CA.generate_grounded_response(Q_DELAY, "[BNSS Section 346]\nTrial text.", matches=[])
++check(txt and "Verbatim Supreme Court excerpts" not in sent["prompt"], "switch off: nothing added")
++os.environ["ANCHORS"] = "on"
++
++# the full path: labels and the list ride on the result
++CA._answer_question_core = lambda q, inline_domains=frozenset(): {"state": "single_match", "response_text": "The Supreme Court in P. Ramachandra Rao v. State of Karnataka (2002) said no fixed limit applies."}
++out = CA._answer_question_inner(Q_DELAY)
++check(out["response_text"].count(E.LABEL_UNCONFIRMED) == 0 and "anchor_excerpts" not in out, "an answer whose prompt carried no anchors (the core was stubbed) is untouched")
++E.block(Q_DELAY)                                   # what generate_grounded_response does inside the core
++CA._answer_question_core = lambda q, inline_domains=frozenset(): (E.block(q), {"state": "single_match", "response_text": "The Supreme Court in P. Ramachandra Rao v. State of Karnataka (2002) said no fixed limit applies."})[1]
++out = CA._answer_question_inner(Q_DELAY)
++check(E.LABEL_UNCONFIRMED in out["response_text"] and len(out.get("anchor_excerpts") or []) == 2, "through answer_question's inner path the answer is labelled and lists the excerpts")
++
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
 diff --git a/test_grounding_checks.py b/test_grounding_checks.py
 new file mode 100644
 index 0000000..458ff2e
@@ -3053,10 +3967,10 @@ index 0000000..458ff2e
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_register_hooks.py b/test_register_hooks.py
 new file mode 100644
-index 0000000..350ab38
+index 0000000..a57affc
 --- /dev/null
 +++ b/test_register_hooks.py
-@@ -0,0 +1,89 @@
+@@ -0,0 +1,104 @@
 +"""
 +test_register_hooks.py -- the Overruled Register hooks (register_hooks.py + the three call sites in chat_assistant.py / recourse_app.py).
 +Fully offline and free: no API calls, nothing written. Run: python -X utf8 test_register_hooks.py
@@ -3144,6 +4058,21 @@ index 0000000..350ab38
 +msgs = WF.format_answer_for_whatsapp({"state": "single_match", "response_text": "Some answer.", "register_notes": ["Mohan Lal v. State of Punjab (2018): reported to have been overruled."], "register_not_checked": "Cases named in this answer that we have not checked: X v. Y."})
 +check(any(m.startswith("*Currency notes*") and "Mohan Lal" in m and "not checked" in m for m in msgs), "WhatsApp carries the register notes and the 'not checked' sentence as one message")
 +check(WF.format_answer_for_whatsapp({"state": "single_match", "response_text": "Some answer."}) == ["Some answer."], "and an answer without notes is unchanged")
++
++# --- 2026-10-14 (owner's go): the register cases a passage NAMES (text_mentions), for the wider-search feed
++tm = RH.text_mentions("Reference was made to Raj Deo Sharma (II) v. State of Bihar, (1999) 7 SCC 604, where this Court laid down outer time limits.")
++check(len(tm["lines"]) == 1 and tm["lines"][0].startswith("REGISTER FACT: Raj Deo Sharma") and tm["overruling"][0][0].startswith("P. Ramachandra Rao") and "overruled by" in tm["clauses"][0], "a passage that names Raj Deo Sharma (citation) gives the REGISTER FACT line and the controlling case")
++tm2 = RH.text_mentions("In the Raj Deo Sharma case (I) the Court had directed that trials stand closed after two years.")
++check(len(tm2["lines"]) == 1 and tm2["overruling"], "'the Raj Deo Sharma case (I)' (no 'v.', no year) is found by its distinctive first party and the back-reference mark")
++tm3 = RH.text_mentions("The decision in Raj Deo Sharma v. State of Bihar30), (1999) was relied on.")
++check(len(tm3["lines"]) == 1, "a footnote number glued to a word ('Bihar30)') does not hide the name")
++check(RH.text_mentions("Mohan Lal and others were present at the hearing. The Mohan Lal case was cited.")["lines"] == [], "a two-word name ('Mohan Lal') is never matched by its first party alone")
++check(RH.text_mentions("Raj Deo Sharma was a petitioner who was charged under the Prevention of Corruption Act.")["lines"] == [], "the distinctive name without a back-reference mark or a citation is not matched")
++check(RH.text_mentions("")["lines"] == [] and RH.text_mentions(None)["overruling"] == [], "empty text gives nothing and does not fail")
++check(len(RH.text_mentions("Mohan Lal v. State of Punjab (2018) 17 SCC 627 held X")["lines"]) == 1 and RH.text_mentions("Mohan Lal v. State of Punjab (2018) 17 SCC 627 held X")["lines"][0].startswith("REGISTER NOTE (not yet confirmed)"), "a candidate row is worded as 'not yet confirmed'")
++os.environ["REGISTER_HOOKS"] = "off"
++check(RH.text_mentions("Raj Deo Sharma (II) v. State of Bihar, (1999) 7 SCC 604")["lines"] == [], "REGISTER_HOOKS=off turns it off")
++os.environ.pop("REGISTER_HOOKS", None)
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_response_style.py b/test_response_style.py
@@ -3208,10 +4137,10 @@ index 0000000..bfccb2a
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_sci_search_tier.py b/test_sci_search_tier.py
 new file mode 100644
-index 0000000..51d696e
+index 0000000..d7b14d1
 --- /dev/null
 +++ b/test_sci_search_tier.py
-@@ -0,0 +1,230 @@
+@@ -0,0 +1,289 @@
 +"""
 +test_sci_search_tier.py -- the wider-pool search tier on the website side (sci_search_tier.py + its call in chat_assistant.answer_question + the page box).
 +Fully offline and free: a local stand-in for the sci-search service, no model, no network beyond localhost. Run: python -X utf8 test_sci_search_tier.py
@@ -3245,6 +4174,7 @@ index 0000000..51d696e
 +RC = [{"rank": 1, "doc": 9, "case_name": "P. Ramachandra Rao v. State of Karnataka", "date": "2002-04-16", "paragraph": "29", "link": "https://x/9.pdf", "link_kind": "open_bucket_pdf",
 +       "text": "We hold that the criminal courts are not empowered to prescribe periods of limitation. The bar of limitation is not to be read into the Code. " * 12, "name_to_review": False, "citations": {}}]
 +WITH_RC = {"on": False}
++SCEN = {"res": None}          # when set, the service answers a question (other than the second search for a named case) with exactly these results
 +
 +
 +class H(BaseHTTPRequestHandler):
@@ -3257,7 +4187,7 @@ index 0000000..51d696e
 +        SEEN["body"] = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)))
 +        if MODE["kind"] == "slow":
 +            time.sleep(3)
-+        code, body = (503, {"ok": False}) if MODE["kind"] == "down" else (200, {"ok": True, "tier": "x", "index_commit": "abc", "as_of": "2026-07-13", "seconds": 1.0, "results": RC if SEEN["body"]["question"].startswith("P. Ramachandra") else (RES + RC[:1] if WITH_RC["on"] else RES)})
++        code, body = (503, {"ok": False}) if MODE["kind"] == "down" else (200, {"ok": True, "tier": "x", "index_commit": "abc", "as_of": "2026-07-13", "seconds": 1.0, "results": RC if SEEN["body"]["question"].startswith("P. Ramachandra") else (SCEN["res"] if SCEN["res"] is not None else (RES + RC[:1] if WITH_RC["on"] else RES))})
 +        data = json.dumps(body).encode()
 +        self.send_response(code)
 +        self.send_header("Content-Length", str(len(data)))
@@ -3439,6 +4369,64 @@ index 0000000..51d696e
 +check(o.count(LB) == 1, "the answer may drop 'Dr.' from the name; only the first mention is labelled")
 +check(T._tidy_labels("A (from (from a wider search, not independently verified) a wider search, not independently verified) B " + LB + ". " + LB) == "A " + LB + " B " + LB + ".", "nested and doubled labels collapse")
 +check("Credit a principle to the case whose own words state it" in T.FEED_INSTRUCTION and "already running" in T.FEED_INSTRUCTION, "the feed instruction says: credit the case whose words state it; use a passage only for the question it decides")
++
++
++# --- 2026-10-14 (owner's go): a passage that only NAMES a register case brings the controlling case; wider-search cases stay out of the "not checked" sentence
++WITH_RC["on"] = False
++os.environ["SCI_SEARCH_MODE"] = "feed"
++MODE["kind"] = "ok"
++BALBIR = {"rank": 1, "doc": 21, "case_name": "Balbir Singh v. State of Delhi", "date": "2007-02-05", "paragraph": "12", "link": "https://x/21.pdf", "link_kind": "open_bucket_pdf", "name_to_review": False, "citations": {},
++          "text": "Reference was made to Raj Deo Sharma (II) v. State of Bihar, (1999) 7 SCC 604, where this Court laid down outer time limits for completing criminal trials. We hold that no such limit can be read into the Code."}
++HEMENDHRA = {"rank": 2, "doc": 22, "case_name": "State Through Central Bureau Of Investigation v. Hemendhra Reddy And Another", "date": "2023-05-02", "paragraph": "30", "link": "https://x/22.pdf", "link_kind": "open_bucket_pdf",
++             "name_to_review": False, "citations": {}, "text": "Mere delay in approaching a Court of law would not by itself afford a ground for dismissing the case."}
++LOOSE = {"rank": 3, "doc": 23, "case_name": "Tarun Jit Tejpal v. State of Goa", "date": "2019-10-15", "paragraph": "40", "link": "https://x/23.pdf", "link_kind": "open_bucket_pdf", "name_to_review": False, "citations": {},
++         "text": "In the Raj Deo Sharma case (I) the Court had directed that trials stand closed after two years; that direction does not bind us."}
++SCEN["res"] = [BALBIR, HEMENDHRA, LOOSE]
++T.reset()
++calls = SEEN["calls"]
++fb = T.feed_block("My trial has been going on for nine years")
++check("P. Ramachandra Rao v. State of Karnataka" in fb and SEEN["calls"] == calls + 2, f"controlling case: a passage that names Raj Deo Sharma brings P. Ramachandra Rao in by ONE second search ({SEEN['calls'] - calls - 1} extra)")
++check(fb.count("this passage names a case on our register") == 2 and fb.count("REGISTER FACT: Raj Deo Sharma v. The State of Bihar (1999) was overruled by P. Ramachandra Rao") == 2, "the REGISTER FACT line rides with each passage that names it (by citation, and by 'the Raj Deo Sharma case (I)')")
++b_part = fb[fb.index("Balbir Singh v. State of Delhi"):fb.index("Hemendhra")]
++h_part = fb[fb.index("Hemendhra"):fb.index("Tarun Jit")]
++check("REGISTER FACT:" in b_part and "REGISTER FACT:" not in h_part, "a passage that names no register case gets no line")
++names = [c["case_name"] for c in T._LOCAL.cases]
++check(len(names) == 4 and any(n.startswith("P. Ramachandra") for n in names) and not any(c["register_note"] for c in T._LOCAL.cases), f"the page list holds the controlling case; no case is flagged as the passage's own ({names})")
++nb = next(c for c in T._LOCAL.cases if c["case_name"].startswith("Balbir"))
++check(nb["names_register_note"] and "overruled by P. Ramachandra Rao" in nb["names_register_note"] and next(c for c in T._LOCAL.cases if c["case_name"].startswith("State Through"))["names_register_note"] is None, "the page list says which passage names a register case")
++check("A REGISTER FACT line placed under a passage that only NAMES another case" in T.FEED_INSTRUCTION, "the feed instruction explains a line under a passage that only names a case")
++# the controlling case is already among the results: no second search
++SCEN["res"] = [BALBIR, HEMENDHRA, dict(RC[0])]
++T.reset()
++calls = SEEN["calls"]
++fb2 = T.feed_block("My trial has been going on for nine years")
++check(SEEN["calls"] == calls + 1 and fb2.count("P. Ramachandra Rao v. State of Karnataka") >= 1 and fb2.count("[WIDER SEARCH") == 3, "when the controlling case is already among the results no second search is made and it is not duplicated")
++# no register case named: nothing is added, nothing extra is fetched
++SCEN["res"] = [HEMENDHRA, dict(LOOSE, doc=24, text="The trial court shall proceed day to day.")]
++T.reset()
++calls = SEEN["calls"]
++fb3 = T.feed_block("My trial has been going on for nine years")
++check(SEEN["calls"] == calls + 1 and "REGISTER FACT:" not in fb3 and "Ramachandra" not in fb3, "no register case named in the passages: no line, no second search")
++# the cap on second searches
++SCEN["res"] = [BALBIR, dict(BALBIR, doc=25, case_name="Mohan Lal and Others v. State of Punjab Other", text="See Mohan Lal v. State of Punjab (2018) 17 SCC 627 and Siddharam Satlingappa Mhetre v. State of Maharashtra (2011) 1 SCC 694 and Raj Deo Sharma (II) v. State of Bihar (1999) 7 SCC 604.")]
++T.reset()
++calls = SEEN["calls"]
++T.feed_block("My trial has been going on for nine years")
++check(SEEN["calls"] - calls - 1 <= T.MAX_NAMED_FETCHES, f"at most {T.MAX_NAMED_FETCHES} second searches for controlling cases named in passages ({SEEN['calls'] - calls - 1} made)")
++
++# the 'not checked' sentence leaves the wider-search cases out
++SCEN["res"] = [BALBIR, HEMENDHRA]
++T.reset()
++T.feed_block("My trial has been going on for nine years")
++ans = ("The Supreme Court in State Through CBI v. Hemendhra Reddy & Another (2023) said that delay alone is no ground to dismiss a case. In Balbir Singh v. State of Delhi (2007) the Court refused to read a time limit into the Code. "
++       "In Ram Prasad v. State of Bihar (2001) the Court said something else.")
++nc = CA._attach_register_notes({"state": "single_match", "response_text": ans}).get("register_not_checked") or ""
++check("Ram Prasad" in nc and "Hemendhra" not in nc and "Balbir" not in nc, f"the 'not checked' sentence names only the case that is neither a source nor a wider-search case ({nc!r})")
++T.reset()
++nc2 = CA._attach_register_notes({"state": "single_match", "response_text": ans}).get("register_not_checked") or ""
++check("Hemendhra" in nc2 and "Balbir" in nc2 and "Ram Prasad" in nc2, "with no wider-search cases fed (any other mode) the sentence is exactly as before")
++check(T.fed_names_in(ans) == [], "fed_names_in is empty when nothing was fed")
++SCEN["res"] = None
 +
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)

@@ -96,6 +96,14 @@ with tempfile.TemporaryDirectory() as d:
     p3 = subprocess.run([sys.executable, os.path.join(HERE, "sci_goodlaw.py"), "register-export-site", "--out", os.path.join(d, "x"), "--no-overlay"], capture_output=True, text=True, cwd=HERE)
     check(p3.returncode == 0 and not os.path.exists(os.path.join(d, "x", "overlay.py")), "--no-overlay leaves the overlay out")
 
+# --- 2026-10-14: a capitalised word that ends the previous sentence is not the start of the next case name (the "not checked" sentence showed 'Code. In Ram Prasad v. State of Bihar')
+def _names(t):
+    return [m["name"] for m in OV.case_mentions(t)]
+check(_names("The Court refused to read a limit into the Code. In Ram Prasad v. State of Bihar (2001) the Court said X.") == ["Ram Prasad v. State of Bihar"], "'... the Code. In Ram Prasad v. State of Bihar' gives the name without 'Code. In'")
+check(_names("Section 5 of the Act. Balbir Singh v. State of Delhi (2007) held X.") == ["Balbir Singh v. State of Delhi"], "'... the Act. Balbir Singh v. State of Delhi' gives the name without 'Act.'")
+check(_names("He relied on Union of India v. K.A. Najeeb (2021). Then Mohan Lal v. State of Punjab (2018) was cited.") == ["Union of India v. K.A. Najeeb", "Mohan Lal v. State of Punjab"], "a sentence opener such as 'Then' is not part of the name")
+check(_names("See Dr. K. Mohan Rao v. State of Kerala (2010) and Mohd. Ahmed Khan v. State of Bihar (2011).") == ["Dr. K. Mohan Rao v. State of Kerala", "Mohd. Ahmed Khan v. State of Bihar"], "abbreviations inside a name (Dr. K., Mohd.) keep the name whole")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")
