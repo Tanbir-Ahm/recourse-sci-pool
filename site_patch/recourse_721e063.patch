@@ -1,3 +1,182 @@
+diff --git a/answer_style.py b/answer_style.py
+new file mode 100644
+index 0000000..417485f
+--- /dev/null
++++ b/answer_style.py
+@@ -0,0 +1,65 @@
++"""answer_style.py -- which answer style is switched on, and for which audience. Light on purpose (no heavy imports): chat_assistant, recourse_app and whatsapp_formatter all read it.
++
++    RESPONSE_STYLE   v1 (default, today's answers) | v2 | v3 (the Adviser for laypeople, the Research Note for lawyers) | v3-lawyer (v3, Research Note for everybody)
++    audience         'layman' or 'lawyer'; chosen on the page (a switch shown only when RESPONSE_STYLE=v3). It has an effect only under v3; under v1 and v2 everybody gets that style.
++
++Values typed with quotation marks or spaces in a hosting dashboard are tolerated. The audience travels in a thread-local set by chat_assistant.answer_question for the length of one call, so the three places that
++call the model need no new parameter.
++"""
++import os
++import threading
++
++STYLES = ("v1", "v2", "v3", "v3-lawyer")
++_LOCAL = threading.local()
++
++
++def style():
++    v = (os.environ.get("RESPONSE_STYLE") or "v1").strip().strip("\"'").strip().lower()
++    return v if v in STYLES else "v1"
++
++
++def is_v3():
++    return style() in ("v3", "v3-lawyer")
++
++
++def normalise_audience(a):
++    return "lawyer" if str(a or "").strip().lower() in ("lawyer", "lawyers", "advocate") else "layman"
++
++
++def set_audience(a):
++    _LOCAL.audience = normalise_audience(a) if a is not None else None
++
++
++def set_channel(c):
++    _LOCAL.channel = (str(c).strip().lower() if c else None)
++
++
++def get_channel():
++    return getattr(_LOCAL, "channel", None)
++
++
++def requested_audience():
++    return getattr(_LOCAL, "audience", None) or "layman"
++
++
++def effective_audience():
++    """'lawyer' only when v3 is on and either the whole site is v3-lawyer or this call asked for it; 'layman' otherwise."""
++    s = style()
++    if s == "v3-lawyer":
++        return "lawyer"
++    if s == "v3":
++        return requested_audience()
++    return "layman"
++
++
++def template_key():
++    """Which prompt template applies to this call: 'v1', 'v2', 'v3' (layman) or 'v3-lawyer'."""
++    s = style()
++    if s in ("v3", "v3-lawyer"):
++        return "v3-lawyer" if effective_audience() == "lawyer" else "v3"
++    return s
++
++
++def uses_cache():
++    """The human-approved answer cache holds v1 wording written for laypeople, so it is read and written only under v1."""
++    return style() == "v1"
+diff --git a/authorities_table.py b/authorities_table.py
+new file mode 100644
+index 0000000..8d7bf7a
+--- /dev/null
++++ b/authorities_table.py
+@@ -0,0 +1,102 @@
++"""authorities_table.py -- the lawyers' module's table of authorities, built by CODE from what the answer was given (never written by the model, so no citation in it can be invented).
++
++Two tiers, always shown apart:
++  1. 'Reviewed library': the judgments in the site's own library that the answer names, with the register / card line beside each.
++  2. 'Wider search (not independently verified)': Supreme Court passages from the sci-search tier that the answer read (feed mode) or lists (show mode).
++Columns: case, citation (or 'not held'), paragraph(s), where it stands on our lists, link. A bench column is added only when the data carries it; the site's data does not hold bench size today, so it is left out rather than guessed.
++Nothing here says a case is good law. Pure functions; the caller supplies the status function so the module needs no register to be tested.
++"""
++import re
++
++TIER_LIBRARY = "Reviewed library"
++TIER_WIDER = "Wider search (not independently verified)"
++
++
++def _paras(ms):
++    out = []
++    for m in ms:
++        head = str(m.get("paragraph_number") or m.get("paragraph") or "").split("_")[0].strip()
++        if head and head not in out:
++            out.append(head)
++    return out
++
++
++def _year_of(m):
++    y = m.get("year")
++    if y:
++        try:
++            return int(y)
++        except (TypeError, ValueError):
++            pass
++    d = str(m.get("date") or "")
++    return int(d[:4]) if d[:4].isdigit() else None
++
++
++def _one(v):
++    return v[0] if isinstance(v, (list, tuple)) and v else (v if isinstance(v, str) else None)
++
++
++def build(matches, named_cases, links, sci_cases, status_fn, bench_key="bench"):
++    """matches: the answer's retrieved matches; named_cases: case names the answer actually names (the caller decides how names are matched); links: cited_judgment_links;
++    sci_cases: result['sci_related_judgments']; status_fn(name, year, citation) -> {'source','note'}. Returns {'library': [rows], 'wider': [rows], 'has_bench': bool}."""
++    link_by_name = {l.get("case_name"): l.get("url") for l in (links or []) if isinstance(l, dict)}
++    named = set(named_cases or [])
++    grouped, order = {}, []
++    for m in matches or []:
++        if not isinstance(m, dict) or m.get("type") != "judgment" or not m.get("case_name") or m["case_name"] not in named:
++            continue
++        k = (m["case_name"], m.get("citation"))
++        if k not in grouped:
++            grouped[k] = []
++            order.append(k)
++        grouped[k].append(m)
++    library = []
++    for k in order:
++        ms = grouped[k]
++        name, cit = k
++        st = status_fn(name, _year_of(ms[0]), cit if isinstance(cit, str) else None) or {}
++        library.append({"case": name, "year": _year_of(ms[0]), "citation": cit if isinstance(cit, str) and cit.strip() else None, "paragraphs": _paras(ms),
++                        "bench": next((m.get(bench_key) for m in ms if m.get(bench_key)), None), "tier": TIER_LIBRARY,
++                        "status": st.get("note"), "status_source": st.get("source"),
++                        "link": link_by_name.get(name) or next((m.get("source_url") for m in ms if isinstance(m.get("source_url"), str) and m["source_url"].startswith("http")), None)})
++    wider, seen = [], set()
++    for j in sci_cases or []:
++        if not isinstance(j, dict) or not j.get("case_name") or j["case_name"] in seen:
++            continue
++        seen.add(j["case_name"])
++        st = status_fn(j["case_name"], _year_of(j), _one(j.get("citation"))) or {}
++        note = j.get("register_note") or st.get("note")
++        wider.append({"case": j["case_name"], "year": _year_of(j), "citation": _one(j.get("citation")), "paragraphs": _paras([j]), "bench": j.get(bench_key), "tier": TIER_WIDER,
++                      "status": note, "status_source": "register" if j.get("register_note") else st.get("source"), "link": j.get("link"),
++                      "link_kind": j.get("link_kind")})
++    return {"library": library, "wider": wider, "has_bench": any(r.get("bench") for r in library + wider)}
++
++
++def _cell(text):
++    return re.sub(r"\s+", " ", str(text or "")).replace("|", "\\|").strip()
++
++
++def _table(rows, has_bench):
++    head = ["Case", "Citation", "Paragraph"] + (["Bench"] if has_bench else []) + ["Where it stands on our lists", "Link"]
++    lines = ["| " + " | ".join(head) + " |", "|" + "|".join(["---"] * len(head)) + "|"]
++    for r in rows:
++        name = _cell(r["case"]) + (f" ({r['year']})" if r.get("year") else "")
++        link = f"[open]({r['link']})" if r.get("link") else "no link held"
++        if r.get("link_kind") == "open_bucket_pdf":
++            link += " (open bucket, CC-BY-4.0, Dattam Labs)"
++        cells = [name, _cell(r.get("citation")) or "not held", ", ".join(r.get("paragraphs") or []) or "-"]
++        if has_bench:
++            cells.append(_cell(r.get("bench")) or "not held")
++        cells += [_cell(r.get("status")) or "-", link]
++        lines.append("| " + " | ".join(cells) + " |")
++    return "\n".join(lines)
++
++
++def render_markdown(table):
++    """[(heading, markdown table)] for the page; empty list when there is nothing to show."""
++    out = []
++    if table.get("library"):
++        out.append(("Authorities (reviewed library)", _table(table["library"], table.get("has_bench"))))
++    if table.get("wider"):
++        out.append(("Further reading from a wider search (not independently verified)", _table(table["wider"], table.get("has_bench"))))
++    return out
 diff --git a/case_check.py b/case_check.py
 new file mode 100644
 index 0000000..4053b77
@@ -64,10 +243,19 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..b69e3f3 100644
+index 789f8e7..c243104 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
-@@ -462,6 +462,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
+@@ -3,6 +3,8 @@ import logging
+ import re
+ from anthropic import Anthropic
+ 
++import answer_style
++
+ logger = logging.getLogger("chat_assistant")
+ 
+ """
+@@ -462,6 +464,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
  - Cite AT MOST 4 distinct section numbers. If a retrieved section only tangentially relates, OMIT IT ENTIRELY -- do not describe it and do not explain why it doesn't apply.
  - Address the section(s) defining the OFFENCE the person asks about before general arrest-procedure sections -- the offence is usually the most direct answer.
  - If a provision or case below carries a note about its legal currency, fold it in as ONE short plain clause ("...though the exact scope of this is under review by a larger bench"). Never write a separate paragraph about verification status or "treat this with caution".
@@ -75,7 +263,7 @@ index 789f8e7..b69e3f3 100644
  
  ## Shape and length
  - If the question describes something that HAS ALREADY HAPPENED to the person or someone close to them (an arrest, a search, an FIR, a frozen account), open with a short **"Right now"** part: 2-3 concrete things they can do or ask for immediately. Then the relevant law. Then what key facts are still unclear. Then the closing line.
-@@ -480,6 +481,50 @@ The legal information relevant to it (statute text and court judgments) -- prese
+@@ -480,6 +483,118 @@ The legal information relevant to it (statute text and court judgments) -- prese
  Write the answer now, following the shape and length rules above."""
  
  
@@ -112,21 +300,101 @@ index 789f8e7..b69e3f3 100644
 +RESPONSE_GENERATION_PROMPT_V2 = _build_v2_template(RESPONSE_GENERATION_PROMPT)
 +
 +
++# ---------------------------------------------------------------------------
++# RESPONSE_STYLE=v3 (ADDED 2026-10-14, owner-approved after reading two style analyses): two voices over the SAME hard rules.
++#   v3        "The Adviser" -- for laypeople: answer first, the person's own facts, for/against, 2-4 steps.
++#   v3-lawyer "The Research Note" -- for advocates and students: bottom line, issues, application, grounds, gaps.
++# Both are built from v1 by replacing blocks; the Hard rules block is carried over word for word (a test asserts it), and so is the REGISTER wording. Default stays v1.
++# Formatting is fitted to the page: its CSS turns any paragraph whose only styled element is bold into an upper-case sub-head, so v3 uses bold ONLY for headings (a bold line on its own, then a
++# blank line) and italics for case names. The old "Right now" opening that situation detection relied on is replaced by the heading "What you can do right now" (see _looks_like_situation).
++# ---------------------------------------------------------------------------
++_V3_SHAPE = """## Voice and shape (the Adviser)
++You write like a calm, informed adviser talking to "you": plain English, a technical term only when it is needed and explained in the same sentence. Write the answer in this order.
++1. OPENING, with no heading. The first sentence answers the question itself and states the main condition, using the person's own facts (the number of years, the stage they are at, who is involved). The shape, not the words: "Not automatically, but nine years of delay is something courts take seriously." Never open with a heading, a definition or "The law provides". If the person is in a hard moment, add ONE short sentence using their facts to acknowledge it (never a stock phrase such as "I understand this is difficult", never invented sympathy).
++2. A heading, then what the law says. State the rule, give one sentence on WHY it works that way, and say what a court actually did or said (attributed to the court, from the excerpt below). One or two short paragraphs.
++3. The heading **How this cuts for and against you**, then two groups, each introduced by an italic line: *For you:* and *Against you:*, with 2-3 short bullet points each. These are factors a court weighs. They are never a verdict on this person's case and never a prediction of the outcome. Where the answer turns on facts, write it as "if ...; if ...". Then ONE line that starts "What I can't tell from here:" and names the facts that would change the answer.
++4. A heading, then 2-4 numbered steps. Use exactly **What you can do right now** when the question describes something that HAS ALREADY HAPPENED or is still happening to the person or someone close to them (an arrest, a search, an FIR, a frozen account, a trial that is running). Use exactly **What you can do now** for a general question. Each step starts with a verb (Ask, Raise, Bring, Keep, Write down, Check), says what the person can ask for, raise or bring (never "you must", never an order to do a legal act), and gives half a sentence of purpose. The first step is the most immediate one. Mention uploading a document only if the person has one. Put nothing after the steps: no closing line.
++
++Headings: a bold line on its own, at most 45 characters, followed by a blank line, written as what the person wants to know (for example **What does the law say about delay?**). Headings are the ONLY bold text in the answer. Write case names in italics with single asterisks, for example *Arnesh Kumar v. State of Bihar*. Do not use "#" headings, tables or emoji.
++
++Language: short sentences, one idea each, about 25 words or fewer; split any sentence that carries a rule, an exception and a case. Let contrast words (but, instead, if, unless) carry the reasoning. Use an idiom only if it is also accurate ("there is no fixed time limit"); never a vivid but inaccurate one. No reassurance ("don't worry", "you will win", "this is a strong case").
++
++Length and level: match the person's own wording. If they write in simple words or sound frightened: about 250 words, almost no section numbers, and make the first step something they can do today. If they describe things in ordinary terms: about 350 words. If they use legal terms (a section number, "SLP", "quash", "default bail"): about 400 words, lead with the provisions and cases, and skip the basics. Keep the same four parts at every level. Never go over 450 words. Never talk down to anyone.
++
++Cases: when you name a judgment, name it in the sentence where you use it, with the court and the year only if the material below gives the year: "In *Arnesh Kumar v. State of Bihar* (2014), the Supreme Court directed ...". Say what the court said in one sentence and why it matters to this person in the next. Never write a report citation (SCC, AIR), a paragraph number or the size of a bench unless the material below shows it. Do not list the cases again at the end: the page shows the sources. Never say that a case "is good law".
++"""
++
++_V3_LAWYER_INTRO = (
++    "You are a careful legal research assistant preparing a short research note on Indian criminal law and procedure (BNS / BNSS) for an advocate or a law student. "
++    "You do NOT give legal advice and you do not decide anyone's case -- you set out what the provisions and the courts say, the arguments the facts allow, and what could not be checked."
++)
++
++_V3_LAWYER_INCLUDE = """## What to include, what to leave out
++- The material below is roughly in order of relevance. Build the note around the provisions and the cases most on point. You may cite up to 8 distinct section numbers and up to 6 cases when the question genuinely needs them; omit anything that only tangentially relates, without comment.
++- Address the section(s) defining the OFFENCE or the remedy in question before general procedure sections.
++- If a provision or case below carries a note about its legal currency, state it in ONE short clause where you use it ("...though the scope of this is under review by a larger bench"). Never write a separate paragraph about verification status or "treat this with caution".
++- A line that starts REGISTER FACT is not optional: whenever you mention that case, say how it was treated in the same sentence. A line that starts REGISTER NOTE (not yet confirmed) means say it is reported to have been so treated; never present its holding as settled.
++
++"""
++
++_V3_LAWYER_SHAPE = """## Voice and shape (the Research Note)
++Write a research note for an advocate or a law student: formal, precise, firm about the framework and conditional about the outcome. Refer to "the client" or "on these facts"; never "you should". No emotional language. Write these parts in this order.
++1. **Bottom line**: 2-3 lines giving the answer, the strongest authority the material provides, and the main risk. This is the ONLY summary in the note; do not summarise again at the end.
++2. **Facts assumed**: 1-2 lines. Say what the question does not state.
++3. Numbered issues, one per heading. Write each heading as a proposition or a question, for example **1. Delay alone does not end a trial**. Under each heading give: the rule (the provision, with its Act and exact subsection); the authority (the case with court and year, and what the court held or said, attributed to the court, from the excerpt below); the reasoning in a sentence or two; and the qualification. State each point once.
++4. **Application to the facts**: a two-column table headed For the client | Against the client. Each row ties a point to a provision or a case and is conditional where the facts decide.
++5. **Grounds that can be urged**: the arguments the facts allow and the forum or relief they point to, written as "can be urged" or "may be raised". Never as advice and never as a prediction of the result.
++6. **Gaps and checks**: what could not be checked from the material; any later amendment or change to a provision that you were not shown; and each case that comes only from the wider search. Do NOT write a table of authorities: the page adds one, built from the sources.
++
++Headings: a bold line on its own, at most 90 characters, followed by a blank line. Headings are the ONLY bold text. Write case names in italics with single asterisks. Do not use "#" headings or emoji.
++
++Language: sentences of 35 words or fewer with at most one parenthetical each. Use exact verbs: "held", "observed", "directed", "reiterated". Do not write "decisive", "settled", "well-settled" or "clearly" unless the passage itself says so or a larger bench is shown. No "Important:" labels and no capitalised NOT. A quotation is at most 40 words, in quotation marks, only when the excerpt below contains those exact words, with the paragraph number if the material shows it.
++
++Evidence: give a full report citation and a pinpoint paragraph only when the material below shows them; otherwise name the case with its year and say nothing more. A case that comes from the wider search may appear in an issue but never in the Bottom line, and is followed each time by the words in the wider-search instruction. Never say that a case "is good law".
++
++Length: about 500-900 words, each issue 80-150 words.
++"""
++
++
++def _build_v3_templates(v1):
++    i_hard, i_inc, i_shape, i_conf = (v1.index(x) for x in ("## Hard rules (never break)", "## What to include, what to leave out", "## Shape and length", "{conflict_instruction}"))
++    head, hard, inc, tail = v1[:i_hard], v1[i_hard:i_inc], v1[i_inc:i_shape], v1[i_conf:]
++    layman = head + hard + inc + _V3_SHAPE + "\n" + tail
++    lawyer = _V3_LAWYER_INTRO + "\n\n" + hard + _V3_LAWYER_INCLUDE + _V3_LAWYER_SHAPE + "\n" + tail
++    return layman, lawyer
++
++
++RESPONSE_GENERATION_PROMPT_V3, RESPONSE_GENERATION_PROMPT_V3_LAWYER = _build_v3_templates(RESPONSE_GENERATION_PROMPT)
++
++_WHATSAPP_NOTE = ("- This answer will be read on a phone in WhatsApp: keep the whole answer under about 1,800 characters (roughly 280 words), keep every part, and use no table.")
++
++
 +def response_style():
-+    """'v1' (default) or 'v2'. Quotation marks and spaces typed around the value in a dashboard are ignored."""
-+    import os
-+    v = (os.environ.get("RESPONSE_STYLE") or "v1").strip().strip("\"'").strip().lower()
-+    return "v2" if v == "v2" else "v1"
++    """'v1' (default), 'v2', 'v3' or 'v3-lawyer' (see answer_style.py). Quotation marks and spaces typed around the value in a dashboard are ignored."""
++    return answer_style.style()
 +
 +
 +def _response_prompt_template():
-+    return RESPONSE_GENERATION_PROMPT_V2 if response_style() == "v2" else RESPONSE_GENERATION_PROMPT
++    key = answer_style.template_key()
++    return {"v2": RESPONSE_GENERATION_PROMPT_V2, "v3": RESPONSE_GENERATION_PROMPT_V3, "v3-lawyer": RESPONSE_GENERATION_PROMPT_V3_LAWYER}.get(key, RESPONSE_GENERATION_PROMPT)
 +
 +
  _CONFLICT_INSTRUCTION = """- IMPORTANT: the sections below genuinely DISAGREE with each other on a key point (e.g. some are arrestable without a warrant, others are not). Do NOT blend them into one narrative paragraph. Structure your answer as clearly separated scenarios, each labeled with its exact section number, e.g.:
    "**If [scenario 1, naming the exact section]:** [what applies]"
    "**If [scenario 2, naming the exact section]:** [what applies]"
-@@ -1498,9 +1543,14 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1246,7 +1361,10 @@ def _looks_like_situation(response_text: str) -> bool:
+     for someone who's already living the situation, not a replacement."""
+     if not response_text:
+         return False
+-    return "right now" in response_text.lstrip()[:50].lower()
++    if "right now" in response_text.lstrip()[:50].lower():
++        return True
++    # v2 puts a "Right now" part after its opening answer, and v3 headed its steps "What you can do right now" (2026-10-14): a heading line of that kind anywhere counts.
++    return bool(re.search(r"(?im)^[ \t#*]*(?:what you can do )?right now\b[^\n]{0,25}$", response_text))
+ 
+ 
+ def _format_mismatch(problem: dict) -> str:
+@@ -1498,9 +1616,16 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -136,13 +404,15 @@ index 789f8e7..b69e3f3 100644
 +        except Exception:  # pragma: no cover -- fail-open
 +            pass
          conflict_instruction = _CONFLICT_INSTRUCTION if is_conflict else ""
++        if answer_style.template_key() == "v3" and answer_style.get_channel() == "whatsapp":
++            conflict_instruction = (conflict_instruction + "\n" if conflict_instruction else "") + _WHATSAPP_NOTE
          pilot_context = _format_pilot_context_for_prompt(pilot_matches)
 -        prompt = RESPONSE_GENERATION_PROMPT.format(
 +        prompt = _response_prompt_template().format(
              question=question, retrieved_text=retrieved_text,
              conflict_instruction=conflict_instruction, pilot_context=pilot_context,
          )
-@@ -2262,6 +2312,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2387,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -157,7 +427,7 @@ index 789f8e7..b69e3f3 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2370,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2445,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -173,10 +443,32 @@ index 789f8e7..b69e3f3 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -3203,14 +3270,45 @@ def _attach_cited_judgment_links(result):
+@@ -2828,7 +2970,8 @@ def _answer_single_match(question, matches):
+     shape -- callers cannot tell the difference except via 'from_cache'."""
+     from answer_cache import get_cached, record_candidate
+ 
+-    cached = get_cached(matches)
++    use_cache = answer_style.uses_cache()      # the approved cache holds v1 wording written for laypeople: read and written only under v1 (v2, v3 and the lawyer note always generate fresh)
++    cached = get_cached(matches) if use_cache else None
+     if cached is not None:
+         return {
+             "state": "single_match",
+@@ -2856,7 +2999,8 @@ def _answer_single_match(question, matches):
+     )
+     response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
+     situation_detected = _looks_like_situation(response_text)
+-    record_candidate(matches, question, response_text, situation_detected)
++    if use_cache:
++        record_candidate(matches, question, response_text, situation_detected)
+     return {
+         "state": "single_match",
+         "matches": matches,
+@@ -3203,14 +3347,78 @@ def _attach_cited_judgment_links(result):
      return result
  
  
+-def answer_question(question, inline_domains=frozenset()):
+-    """Public entry point for the chat interface. Runs _answer_question_core (all the retrieval, generation and
 +def _attach_register_notes(result):
 +    """Adds result['register_notes'] (sentences for every Overruled Register or warning-card case the answer names without saying it was overruled)
 +    and result['register_not_checked'] (one fixed sentence naming cases on neither list). Answer states only; never raises; REGISTER_HOOKS=off skips it."""
@@ -197,8 +489,41 @@ index 789f8e7..b69e3f3 100644
 +    return result
 +
 +
- def answer_question(question, inline_domains=frozenset()):
-     """Public entry point for the chat interface. Runs _answer_question_core (all the retrieval, generation and
++def answer_question(question, inline_domains=frozenset(), audience=None, channel=None):
++    """Public entry point. audience ('layman' | 'lawyer') and channel ('whatsapp' | None) matter only under RESPONSE_STYLE=v3 (see answer_style.py); they are set for the length of this one call.
++    The result of an answer state carries 'audience' (the voice actually used) and, for the lawyers' note, 'authorities' (the table of authorities, built by code)."""
++    answer_style.set_audience(audience)
++    answer_style.set_channel(channel)
++    try:
++        result = _answer_question_inner(question, inline_domains=inline_domains)
++        try:
++            if isinstance(result, dict) and result.get("state") in _LINK_STATES and answer_style.is_v3():
++                result["audience"] = answer_style.effective_audience()
++                if result["audience"] == "lawyer":
++                    result["authorities"] = _build_authorities(result)
++        except Exception as exc:  # fail-open: the answer always goes out
++            logger.warning("authorities table failed: %s", exc)
++        return result
++    finally:
++        answer_style.set_audience(None)
++        answer_style.set_channel(None)
++
++
++def _build_authorities(result):
++    """The lawyers' table of authorities (authorities_table.py): the library judgments the answer names and the wider-search cases it read, each with where it stands on our lists."""
++    import authorities_table
++    from register_hooks import case_status
++    text = result.get("response_text") or ""
++    named = []
++    for m in result.get("matches") or []:
++        if isinstance(m, dict) and m.get("type") == "judgment" and m.get("case_name") and m["case_name"] not in named:
++            if _name_in_text(_case_distinctive_name(m["case_name"]), text) or any(l.get("case_name") == m["case_name"] for l in (result.get("cited_judgment_links") or []) if isinstance(l, dict)):
++                named.append(m["case_name"])
++    return authorities_table.build(result.get("matches"), named, result.get("cited_judgment_links"), result.get("sci_related_judgments"), case_status)
++
++
++def _answer_question_inner(question, inline_domains=frozenset()):
++    """Runs _answer_question_core (all the retrieval, generation and
      state logic; see its docstring for the possible states) and then attaches 'cited_judgment_links' -- a real,
      stored link for every judgment the answer relies on. If attaching the links ever fails, the answer is returned
      exactly as the core produced it."""
@@ -221,10 +546,69 @@ index 789f8e7..b69e3f3 100644
          return result
  
 diff --git a/recourse_app.py b/recourse_app.py
-index 1845aeb..03d7cc3 100644
+index 1845aeb..65b086b 100644
 --- a/recourse_app.py
 +++ b/recourse_app.py
-@@ -582,8 +582,30 @@ with st.form("situation_form", border=False, clear_on_submit=False):
+@@ -26,6 +26,8 @@ import logging
+ 
+ import streamlit as st
+ 
++import answer_style
++
+ # chat_assistant pulls in the Anthropic SDK + the 38 MB embeddings + main
+ # (~8-15s on a cold container). recourse_upload -> main is similarly heavy.
+ # Import both LAZILY -- inside the run block / upload block -- so the
+@@ -452,7 +454,9 @@ _WHOLE_LINE_BOLD = _re_lbl.compile(
+     r"(?m)^(\s{0,4}(?:\d{1,2}[.)]\s+|[-*]\s+)?)\*\*([^*\n]+?)\*\*")
+ 
+ 
+-def _tame_sentence_bold(md: str) -> str:
++def _tame_sentence_bold(md: str, v3_label_max: int = 0) -> str:
++    """v3_label_max > 0 (answer style v3 only): a bold run that is the WHOLE line, up to that many characters and not ending in a full stop or '!', is a heading and stays bold -- a question
++    mark is allowed, because v3 headings are written as what the person wants to know. Everything else behaves exactly as before."""
+     def repl(m):
+         prefix, inner = m.group(1), m.group(2)
+         if "**" in inner:
+@@ -460,6 +464,8 @@ def _tame_sentence_bold(md: str) -> str:
+         head, sep, tail = inner.partition(":")
+         if sep and len(head) <= 48 and tail.strip():
+             return f"{prefix}**{head.strip()}:** {tail.strip()}"
++        if v3_label_max and m.string[m.end():m.end() + 1] in ("", "\n") and len(inner) <= v3_label_max and not inner.rstrip().endswith((".", "!")):
++            return m.group(0)                     # a v3 heading
+         # A genuine label ("Right now", "What the law says") is a short
+         # PHRASE with no terminal punctuation. Anything ending in . / ! / ?
+         # is a full sentence even when short -- "But safeguards still apply
+@@ -475,10 +481,17 @@ def _tame_sentence_bold(md: str) -> str:
+     return _WHOLE_LINE_BOLD.sub(repl, md)
+ 
+ 
+-def _promote_answer_labels(md: str) -> str:
++_V3_HEADING_THEN_TEXT = _re_lbl.compile(r"(?m)^(\*\*[^*\n]{2,90}\*\*)[ \t]*\n(?!\n)")
++
++
++def _promote_answer_labels(md: str, audience: str = "") -> str:
++    """audience is '' for v1/v2 answers (unchanged behaviour); 'layman' or 'lawyer' for a v3 answer, whose headings may be longer (45 / 90 characters) and may be questions."""
+     if not md:
+         return md
+-    md = _tame_sentence_bold(md)
++    v3_max = {"layman": 48, "lawyer": 90}.get(audience, 0)
++    md = _tame_sentence_bold(md, v3_label_max=v3_max)
++    if v3_max:
++        md = _V3_HEADING_THEN_TEXT.sub(lambda m: m.group(1) + "\n\n", md)       # a heading must stand alone, or the page's CSS would turn the whole paragraph into a sub-head
+     return _LEAD_LABEL.sub(lambda m: f"{m.group(1)}{m.group(2)}{m.group(3)}\n\n", md)
+ 
+ 
+@@ -571,6 +584,9 @@ st.html('<div class="r-label">&hellip; or describe your own</div>')
+ # TOGETHER in one rerun -- without it, the first click after typing only
+ # commits the text and the previous answer keeps showing.
+ with st.form("situation_form", border=False, clear_on_submit=False):
++    if answer_style.style() == "v3":                 # the Layman / Lawyer switch exists only while RESPONSE_STYLE=v3 is being tried
++        st.radio("Who is asking?", ["Layman", "Lawyer"], key="audience_choice", horizontal=True, disabled=_busy,
++                 help="Layman: a plain-words answer with steps. Lawyer: a research note with issues, arguments and a table of authorities.")
+     msg = st.text_area("Describe your situation", key="text", height=120,
+                        label_visibility="collapsed", disabled=_busy,
+                        placeholder="e.g. My brother was arrested four days ago and still hasn't been produced in court…") or ""
+@@ -582,8 +598,30 @@ with st.form("situation_form", border=False, clear_on_submit=False):
  # --------------------------------------------------------------------------
  # footer: how it works + about + disclaimer  (shown on every view)
  # --------------------------------------------------------------------------
@@ -255,7 +639,39 @@ index 1845aeb..03d7cc3 100644
  
      with st.expander("How Recourse works — and why it won't invent a case"):
          st.markdown(
-@@ -880,6 +902,35 @@ def render_answer(result: dict):
+@@ -796,12 +834,21 @@ def render_answer(result: dict):
+         with st.container(border=True):
+             st.markdown('<span class="r-ansmark"></span>', unsafe_allow_html=True)
+             if reply:
+-                st.markdown(_promote_answer_labels(reply))
++                st.markdown(_promote_answer_labels(reply, result.get("audience") or ""))
+             else:
+                 m0 = (result.get("matches") or [{}])[0]
+                 st.markdown("Here is what the law says on this:\n\n> "
+                             + esc((m0.get("text") or "").strip()[:800]))
+ 
++        if result.get("audience") == "lawyer" and result.get("authorities"):
++            try:
++                import authorities_table
++                for heading, md_table in authorities_table.render_markdown(result["authorities"]):
++                    st.markdown(f'<div class="r-label">{esc(heading)}</div>', unsafe_allow_html=True)
++                    st.markdown(md_table)
++            except Exception:
++                logging.getLogger("recourse_app").exception("authorities table render failed")
++
+         reply_lc = (reply or "").lower()
+         all_matches = result.get("matches") or []
+ 
+@@ -873,6 +920,8 @@ def render_answer(result: dict):
+         # (chat_assistant._attach_cited_judgment_links) -- these are the tool's own verified sources, unlike
+         # the unverified expander below, so they are shown plainly, not hidden behind a caution.
+         cited_links = result.get("cited_judgment_links")
++        if result.get("audience") == "lawyer":
++            cited_links = None                      # the lawyers' table of authorities below carries these links
+         if cited_links:
+             st.markdown('<div class="r-label">Judgments this answer relies on</div>', unsafe_allow_html=True)
+             for cl in cited_links:
+@@ -880,6 +929,35 @@ def render_answer(result: dict):
                              f'<span class="r-src">{esc(cl.get("source_label", "source link"))}</span>',
                              unsafe_allow_html=True)
  
@@ -291,12 +707,22 @@ index 1845aeb..03d7cc3 100644
          unverified = result.get("unverified_related_judgments")
          if unverified:
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
+@@ -1210,7 +1288,8 @@ if _busy:
+         # inline from the shared corpus rather than dead-ended with a
+         # "covered elsewhere" redirect that points nowhere here.
+         st.session_state.answer = _answer_question(
+-            _q, inline_domains={"cheque_bounce", "freeze", "domestic_violence", "ndps"})
++            _q, inline_domains={"cheque_bounce", "freeze", "domestic_violence", "ndps"},
++            audience=("lawyer" if st.session_state.get("audience_choice") == "Lawyer" else "layman") if answer_style.style() == "v3" else None)
+     except Exception:
+         logging.getLogger("recourse_app").exception("answer_question failed")
+         st.session_state.answer = {"state": "retrieval_unavailable"}
 diff --git a/register_hooks.py b/register_hooks.py
 new file mode 100644
-index 0000000..0ec7908
+index 0000000..b499c07
 --- /dev/null
 +++ b/register_hooks.py
-@@ -0,0 +1,109 @@
+@@ -0,0 +1,136 @@
 +"""Fail-open hooks around the Overruled Register bundle (overruled_register/, exported by `python sci_goodlaw.py register-export-site`).
 +Order of lookup for a case: the register (person-confirmed rows firmly, candidates as "reported ... not yet confirmed"), then the cards overlay (the checker's reading, precomputed),
 +then the fixed "not checked by us" sentence. Nothing here ever says a case is good law. Every function returns its input unchanged (or empty notes) on any error, and REGISTER_HOOKS=off turns all of it off."""
@@ -406,12 +832,39 @@ index 0000000..0ec7908
 +    except Exception as exc:
 +        logger.warning("register result flags failed: %s", exc)
 +    return out
++
++
++def case_status(name, year=None, citation=None):
++    """For the lawyers' authorities table: one line saying where a case stands on our lists. {'source': 'register'|'card'|'card_quiet'|'not_checked'|'off', 'note': sentence}.
++    The register first (firm or 'reported ... not yet confirmed'), then the cards overlay (warning, caution or quiet), else the fixed 'Not checked by us' sentence. Never says a case is good law. Never raises."""
++    if _off():
++        return {"source": "off", "note": "Register checks are switched off on this site."}
++    try:
++        reg, ov = _load()
++        if not name:
++            return {"source": "not_checked", "note": None}
++        cit = citation if isinstance(citation, str) else None
++        yr = int(year) if year not in (None, "") else None
++        hits = [h for h in reg.lookup_case(name, yr, cit) if h["strength"] == "strong" and reg.clause(h["row"])]
++        if hits:
++            row = hits[0]["row"]
++            return {"source": "register", "note": reg.clause_group([row] + reg.same_decision_rows(row))}
++        e = ov.lookup(name, yr, cit) if ov else None
++        if e and e["kind"] in ("warning", "caution"):
++            return {"source": "card", "note": e["note"]}
++        if e and e["kind"] == "quiet":
++            return {"source": "card_quiet", "note": e["note"]}
++        from overruled_register import overlay as OV
++        return {"source": "not_checked", "note": OV.NOT_CHECKED}
++    except Exception as exc:  # fail-open
++        logger.warning("register case status failed: %s", exc)
++        return {"source": "not_checked", "note": None}
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..c7d44b5
+index 0000000..4c5c337
 --- /dev/null
 +++ b/sci_search_tier.py
-@@ -0,0 +1,333 @@
+@@ -0,0 +1,341 @@
 +"""The wider-pool search tier on the website side: asks the private sci-search service (recourse-sci-pool, sci_search_service.py) for Supreme Court passages and either logs them (shadow) or hands them
 +to the page (show). Fail-open: any problem, a slow service, a missing setting -- the answer goes out exactly as it does without this module.
 +
@@ -595,6 +1048,11 @@ index 0000000..c7d44b5
 +    return None
 +
 +
++def _labelled_here(text, pos):
++    """True when a bracketed 'not independently verified' note comes right at `pos` (the model's own wording is tolerated). Only the very next bracket counts: a label after a LATER case must not hide this one."""
++    return bool(re.match(r"\s*\([^)]{0,90}not independently verified[^)]{0,20}\)", text[pos:], re.I))
++
++
 +def label_fed_cases(text, cases):
 +    """Puts LABEL right after the first mention of each wider-search case in a finished answer, unless the answer already says so there. The case is found by its full name, else by a distinctive
 +    party name, allowing a typo. Returns the text unchanged on any problem."""
@@ -619,12 +1077,15 @@ index 0000000..c7d44b5
 +                m3 = re.match(r"\s+(?:v\.?|vs\.?|versus)\s+" + r"\S+\s*" * len(p2.split()), out[end:], re.I)
 +                if m3:
 +                    end += len(m3.group(0).rstrip())
-+            if "not independently verified" in out[end:end + 130].lower():
++            m0 = re.match(r"[*_]{1,2}", out[end:])                        # the name is in italics (answer style v3): put the label after the closing mark, not inside it
++            if m0:
++                end += m0.end()
++            if _labelled_here(out, end):
 +                continue
 +            m2 = re.match(r"\s*[\(\[][^)\]]{0,40}[\)\]]", out[end:])        # a short year or citation in brackets right after the name
 +            if m2:
 +                end += m2.end()
-+                if "not independently verified" in out[end:end + 130].lower():
++                if _labelled_here(out, end):
 +                    continue
 +            out = out[:end] + " " + LABEL + out[end:]
 +        return out
@@ -745,6 +1206,316 @@ index 0000000..c7d44b5
 +    except Exception as exc:  # noqa: BLE001 -- fail-open
 +        logger.warning("sci tier attach failed: %s", type(exc).__name__)
 +    return result
+diff --git a/test_answer_style_v3.py b/test_answer_style_v3.py
+new file mode 100644
+index 0000000..fc32dae
+--- /dev/null
++++ b/test_answer_style_v3.py
+@@ -0,0 +1,217 @@
++"""test_answer_style_v3.py -- answer style v3: 'The Adviser' (laypeople) and 'The Research Note' (lawyers), the Layman/Lawyer switch, the table of authorities, the WhatsApp version.
++Offline and free (no model, no network). Run: python -X utf8 test_answer_style_v3.py"""
++import os
++import sys
++import types
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++os.environ.pop("RESPONSE_STYLE", None)
++import answer_style as AS
++import authorities_table as AT
++import chat_assistant as CA
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++# ---- answer_style ----
++check(AS.style() == "v1" and not AS.is_v3() and AS.effective_audience() == "layman" and AS.uses_cache(), "default: v1, not v3, layman, the approved-answer cache is used")
++for val, want in (("v3", "v3"), ('"v3"', "v3"), (" 'V3-Lawyer' ", "v3-lawyer"), ("v4", "v1"), ("", "v1"), ("v2", "v2")):
++    os.environ["RESPONSE_STYLE"] = val
++    check(AS.style() == want, f"RESPONSE_STYLE={val!r} is read as {want}")
++os.environ["RESPONSE_STYLE"] = "v3"
++AS.set_audience("lawyer")
++check(AS.effective_audience() == "lawyer" and AS.template_key() == "v3-lawyer" and not AS.uses_cache(), "under v3 the page's audience 'lawyer' selects the research note, and the cache is bypassed")
++AS.set_audience("Advocate")
++check(AS.effective_audience() == "lawyer", "'advocate' is read as lawyer")
++AS.set_audience("banana")
++check(AS.effective_audience() == "layman" and AS.template_key() == "v3", "anything else is layman")
++AS.set_audience(None)
++os.environ["RESPONSE_STYLE"] = "v3-lawyer"
++check(AS.effective_audience() == "lawyer" and AS.template_key() == "v3-lawyer", "v3-lawyer gives the research note to everybody")
++os.environ["RESPONSE_STYLE"] = "v2"
++AS.set_audience("lawyer")
++check(AS.effective_audience() == "layman" and AS.template_key() == "v2", "under v1 and v2 the audience has no effect")
++AS.set_audience(None)
++os.environ["RESPONSE_STYLE"] = "v1"
++
++# ---- templates ----
++V1, V2, V3, V3L = CA.RESPONSE_GENERATION_PROMPT, CA.RESPONSE_GENERATION_PROMPT_V2, CA.RESPONSE_GENERATION_PROMPT_V3, CA.RESPONSE_GENERATION_PROMPT_V3_LAWYER
++
++
++def block(t, start, end):
++    return t[t.index(start):t.index(end)]
++
++
++hard = block(V1, "## Hard rules (never break)", "## What to include")
++check(all(hard in t for t in (V2, V3, V3L)), "the Hard rules block is word for word the same in v1, v2, v3 and the lawyer note")
++inc = block(V1, "## What to include", "## Shape and length")
++check(inc in V3 and inc in V2, "the layman 'what to include / leave out' section (cap of 4 sections, REGISTER lines) is identical in v3")
++for must in ("A line that starts REGISTER FACT is not optional", "REGISTER NOTE (not yet confirmed)", "ONE short plain clause"):
++    check(must in V3 and must in V3L or must.startswith("ONE short") and "ONE short clause" in V3L, f"register / currency wording kept in both v3 templates: {must[:40]}")
++check(V3.startswith(V1[:V1.index("## Hard rules")]), "the layman v3 keeps the v1 opening (warm guide for a layperson)")
++check(V3L.startswith("You are a careful legal research assistant") and "layperson" not in V3L.split("## Hard rules")[0], "the lawyer note has its own opening, no layperson")
++tail = V1[V1.index("{conflict_instruction}"):]
++check(V3.endswith(tail) and V3L.endswith(tail), "both v3 templates end with the same question / material / conflict slots as v1")
++check("Shape and length" not in V3 and "Shape and length" not in V3L and "Right now**" not in V3, "the v1 shape block (300 words, 'Right now' opening) is gone from v3")
++# layman spec A1-A6
++for must in ("The first sentence answers the question itself", "ONE short sentence using their facts", "**How this cuts for and against you**", "*For you:*", "*Against you:*", "What I can't tell from here:",
++             "**What you can do right now**", "**What you can do now**", "Put nothing after the steps", "at most 45 characters", "ONLY bold text", "italics", "about 250 words", "about 350 words", "about 400 words",
++             "Never go over 450 words", "Never talk down", "never \"you must\"", "No reassurance", "Never write a report citation", "Never say that a case \"is good law\""):
++    check(must in V3, f"layman v3 carries: {must}")
++# lawyer spec B1-B5
++for must in ("**Bottom line**", "ONLY summary", "**Facts assumed**", "proposition or a question", "**Application to the facts**", "For the client | Against the client", "**Grounds that can be urged**",
++             "**Gaps and checks**", "Do NOT write a table of authorities", "at most 90 characters", "35 words or fewer", "\"held\", \"observed\", \"directed\", \"reiterated\"", "\"decisive\"", "capitalised NOT",
++             "40 words", "never in the Bottom line", "about 500-900 words", "never \"you should\"", "up to 8 distinct section numbers", "Never say that a case \"is good law\""):
++    check(must in V3L, f"lawyer note carries: {must}")
++for name, t in (("v3", V3), ("v3-lawyer", V3L)):
++    out = t.format(question="Q?", retrieved_text="TEXT", conflict_instruction="", pilot_context="")
++    check("Q?" in out and "TEXT" in out and "{" not in out, f"{name} fills in cleanly")
++
++# ---- the template is chosen per call, and the audience does not leak between calls ----
++sent = {}
++class _Msgs:
++    def create(self, **kw):
++        sent["prompt"] = kw["messages"][0]["content"]
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="Not automatically.")])
++CA.client = types.SimpleNamespace(messages=_Msgs())
++os.environ["RESPONSE_STYLE"] = "v3"
++AS.set_audience("layman")
++CA.generate_grounded_response("Q about delay", "[BNSS Section 346]\nTrial text.", matches=[])
++check("## Voice and shape (the Adviser)" in sent["prompt"] and "WhatsApp" not in sent["prompt"], "generation uses the Adviser template for a layman (no WhatsApp note on the web)")
++AS.set_channel("whatsapp")
++CA.generate_grounded_response("Q about delay", "[BNSS Section 346]\nTrial text.", matches=[])
++check("1,800 characters" in sent["prompt"], "the WhatsApp note (about 1,800 characters, no table) is added for the layman style on WhatsApp")
++AS.set_channel(None)
++AS.set_audience("lawyer")
++CA.generate_grounded_response("Q about delay", "[BNSS Section 346]\nTrial text.", matches=[])
++check("## Voice and shape (the Research Note)" in sent["prompt"] and "1,800 characters" not in sent["prompt"], "generation uses the Research Note for a lawyer")
++AS.set_audience(None)
++os.environ["RESPONSE_STYLE"] = "v1"
++CA.generate_grounded_response("Q about delay", "[BNSS Section 346]\nTrial text.", matches=[])
++check("## Shape and length" in sent["prompt"], "and v1 when the style is not v3")
++
++# ---- answer_question: audience and authorities, and nothing left over ----
++MATCHES = [
++    {"type": "judgment", "case_name": "Arnesh Kumar v. State of Bihar", "citation": "(2014) 8 SCC 273", "paragraph_number": "11_2", "text": "x", "source_url": "https://example/arnesh.pdf", "year": 2014},
++    {"type": "judgment", "case_name": "Mohan Lal v. State of Punjab", "citation": "(2018) 17 SCC 627", "paragraph_number": "7", "text": "y", "year": 2018},
++    {"type": "judgment", "case_name": "Unmentioned v. State", "citation": "(2001) 1 SCC 1", "paragraph_number": "1", "text": "z"},
++    {"type": "statute", "act": "BNSS", "section_number": "346", "text": "s"},
++]
++TEXT = "Under Section 346 of the BNSS the court may adjourn only for recorded reasons. In *Arnesh Kumar v. State of Bihar* (2014) the Supreme Court directed X. In *Mohan Lal v. State of Punjab* (2018) it said Y."
++CA._answer_question_core = lambda q, inline_domains=frozenset(): {"state": "single_match", "response_text": TEXT, "matches": list(MATCHES)}
++os.environ["RESPONSE_STYLE"] = "v1"
++r = CA.answer_question("q")
++check("audience" not in r and "authorities" not in r, "under v1 the result carries no audience and no authorities table")
++os.environ["RESPONSE_STYLE"] = "v3"
++r = CA.answer_question("q", audience="layman")
++check(r.get("audience") == "layman" and "authorities" not in r, "v3 layman: result says layman, no authorities table")
++r = CA.answer_question("q", audience="lawyer")
++check(r.get("audience") == "lawyer" and r.get("authorities"), "v3 lawyer: result says lawyer and carries the authorities table")
++names = [x["case"] for x in r["authorities"]["library"]]
++check(names == ["Arnesh Kumar v. State of Bihar", "Mohan Lal v. State of Punjab"], f"the table lists only the library cases the answer names ({names})")
++mohan = [x for x in r["authorities"]["library"] if x["case"].startswith("Mohan")][0]
++arn = [x for x in r["authorities"]["library"] if x["case"].startswith("Arnesh")][0]
++check(mohan["status_source"] == "register" and "overruled" in (mohan["status"] or "").lower(), "Mohan Lal's row carries the register line")
++check(arn["citation"] == "(2014) 8 SCC 273" and arn["paragraphs"] == ["11"] and arn["link"] == "https://example/arnesh.pdf" and arn["tier"] == AT.TIER_LIBRARY, "Arnesh Kumar's row: citation, paragraph, link and tier come from the data")
++check(AS.requested_audience() == "layman" and AS.get_channel() is None, "the audience and channel are reset after the call")
++check(CA.answer_question("q").get("audience") == "layman", "a call with no audience under v3 is a layman call")
++os.environ["RESPONSE_STYLE"] = "v3-lawyer"
++check(CA.answer_question("q").get("audience") == "lawyer", "v3-lawyer: everybody gets the note")
++os.environ["RESPONSE_STYLE"] = "v1"
++
++# ---- the cache: read and written only under v1 ----
++import answer_cache
++calls = {"get": 0, "rec": 0}
++orig_get, orig_rec = answer_cache.get_cached, answer_cache.record_candidate
++answer_cache.get_cached = lambda m: (calls.__setitem__("get", calls["get"] + 1) or None)
++answer_cache.record_candidate = lambda *a, **k: calls.__setitem__("rec", calls["rec"] + 1)
++CA.generate_grounded_response = lambda *a, **k: "An answer."
++CA._inject_definitional_companions = lambda m: m
++CA.format_retrieved_text_for_prompt = lambda m: "text"
++CA._fetch_pilot_related_judgments = lambda *a, **k: []
++for style_name, expect in (("v1", (1, 1)), ("v2", (0, 0)), ("v3", (0, 0)), ("v3-lawyer", (0, 0))):
++    os.environ["RESPONSE_STYLE"] = style_name
++    calls.update(get=0, rec=0)
++    CA._answer_single_match("q", [dict(MATCHES[0])])
++    check((calls["get"], calls["rec"]) == expect, f"cache lookups / candidate records under {style_name}: {(calls['get'], calls['rec'])}")
++answer_cache.get_cached, answer_cache.record_candidate = orig_get, orig_rec
++os.environ["RESPONSE_STYLE"] = "v1"
++
++# ---- situation detection still works for v1, v2 and v3 ----
++L = CA._looks_like_situation
++check(L("**Right now**\n\n1. Ask for the FIR.") and L("Right now, ask for the FIR."), "v1: an answer that opens with 'Right now' is a situation")
++check(L("Not automatically, but nine years is long.\n\n**Right now**\n\n- Ask.") and L("Opening.\n\n**What you can do right now**\n\n1. Ask."), "v2 and v3 headings 'Right now' / 'What you can do right now' count")
++check(not L("Opening.\n\n**What you can do now**\n\n1. Ask.") and not L("Many courts have to decide questions like this one right now in busy districts.") and not L(""), "a general question's 'What you can do now', a mid-sentence 'right now' and an empty text do not")
++
++# ---- authorities_table ----
++def fake_status(name, year, cit):
++    return {"source": "card_quiet" if "Arnesh" in name else "not_checked", "note": "quiet note" if "Arnesh" in name else "Not checked by us."}
++tab = AT.build(MATCHES, ["Arnesh Kumar v. State of Bihar"], [{"case_name": "Arnesh Kumar v. State of Bihar", "url": "https://l/a"}],
++               [{"case_name": "Hemendra Reddy v. State", "date": "2023-04-28", "paragraph": "84", "link": "https://s3/x.pdf", "link_kind": "open_bucket_pdf", "register_note": None},
++                {"case_name": "Hemendra Reddy v. State", "date": "2023-04-28", "paragraph": "85", "link": "https://s3/x.pdf"},
++                {"case_name": "Overruled v. State", "date": "1999-05-03", "paragraph": "5", "register_note": "Overruled v. State (1999) was overruled by X (2002)."}], fake_status)
++check([r["case"] for r in tab["library"]] == ["Arnesh Kumar v. State of Bihar"] and tab["library"][0]["link"] == "https://l/a", "library rows: only named cases, link from the cited links")
++check([r["case"] for r in tab["wider"]] == ["Hemendra Reddy v. State", "Overruled v. State"] and tab["wider"][0]["tier"] == AT.TIER_WIDER, "wider rows: one row per case, tier is the unverified one")
++check(tab["wider"][1]["status"].endswith("(2002).") and tab["wider"][1]["status_source"] == "register", "a wider-search case keeps its register note")
++check(not tab["has_bench"], "no bench column when the data holds no bench")
++md = AT.render_markdown(tab)
++check([h for h, _ in md] == ["Authorities (reviewed library)", "Further reading from a wider search (not independently verified)"], "two tiers, two headings")
++check("| Case | Citation | Paragraph | Where it stands on our lists | Link |" in md[0][1] and "(2014)" in md[0][1] and "(2014) 8 SCC 273" in md[0][1] and "[open](https://l/a)" in md[0][1], "the table has the columns, the year, the held citation and a link")
++check("not held" in md[1][1] and "[open](https://s3/x.pdf)" in md[1][1], "a wider-search row with no citation says 'not held' and keeps its link")
++check("open bucket, CC-BY-4.0, Dattam Labs" in md[1][1], "an open-bucket copy is credited")
++tab2 = AT.build([{"type": "judgment", "case_name": "A | B v. C", "citation": "(1) 1 SCC 1", "paragraph_number": "3", "bench": "5 judges"}], ["A | B v. C"], [], [], fake_status)
++md2 = AT.render_markdown(tab2)
++check(tab2["has_bench"] and "| Bench |" in md2[0][1] and "A \\| B v. C" in md2[0][1], "a bench column appears only when the data has one, and a pipe in a name is escaped")
++check(AT.render_markdown({"library": [], "wider": [], "has_bench": False}) == [] and AT.build(None, None, None, None, fake_status)["library"] == [], "nothing to show gives nothing, and None inputs do not fail")
++
++# ---- register_hooks.case_status ----
++import register_hooks as RH
++s1, s2, s3 = RH.case_status("Mohan Lal v. State of Punjab", 2018, "(2018) 17 SCC 627"), RH.case_status("Arnesh Kumar v. State of Bihar", 2014, "(2014) 8 SCC 273"), RH.case_status("Ram Prasad v. State of Bihar", 2012, "(2012) 3 SCC 100")
++check(s1["source"] == "register" and s2["source"] in ("card_quiet", "card") and s3["source"] == "not_checked" and "Not checked by us" in (s3["note"] or ""), f"case_status: register / card / not checked ({s1['source']}, {s2['source']}, {s3['source']})")
++check("good law" not in (s2["note"] or "").replace("not a finding that it is still good law", ""), "a quiet card's line never says a case is good law")
++os.environ["REGISTER_HOOKS"] = "off"
++check(RH.case_status("Mohan Lal v. State of Punjab", 2018)["source"] == "off", "REGISTER_HOOKS=off is honoured")
++os.environ.pop("REGISTER_HOOKS")
++
++# ---- the WhatsApp version (A7) ----
++import whatsapp_formatter as W
++WA_TEXT = ("Not automatically, but nine years is a long time.\n\n**Can the case be closed because of delay?**\n\nSection 346 of the BNSS lets a court adjourn only for recorded reasons. "
++           "In *Arnesh Kumar v. State of Bihar* (2014), the Supreme Court directed X.\n\n## How this cuts for and against you\n\n*For you:*\n- the delay comes from the prosecution\n\n"
++           "**What you can do right now**\n\n1. Ask your lawyer to object.\n2. Bring the order sheets.")
++RES = {"state": "single_match", "response_text": WA_TEXT, "cited_judgment_links": [{"case_name": "Arnesh Kumar", "url": "https://x"}]}
++os.environ["RESPONSE_STYLE"] = "v3"
++msgs = W.format_answer_for_whatsapp(RES)
++check(len(msgs) == 5 and msgs[0] == "Not automatically, but nine years is a long time.", f"v3: the opening is its own message, then one message per headed part, then the sources ({len(msgs)} messages)")
++check(msgs[1].startswith("*Can the case be closed because of delay?*\n\nSection 346") and msgs[3].startswith("*What you can do right now*\n\n1. Ask"), "each heading travels with its paragraphs, as WhatsApp *bold*")
++check("_Arnesh Kumar v. State of Bihar_ (2014)" in msgs[1] and "_For you:_" in msgs[2], "italic case names become WhatsApp _italics_ (a bare *x* would show as bold)")
++check(msgs[2].startswith("*How this cuts for and against you*") and not any("##" in m or "**" in m for m in msgs), "a '#' heading is turned into a bold line and no markdown marker is left")
++check(msgs[4].startswith("*Sources*") and "https://x" in msgs[4], "the closing message is headed Sources and carries the link")
++os.environ["RESPONSE_STYLE"] = "v1"
++msgs1 = W.format_answer_for_whatsapp(RES)
++check(len(msgs1) > 5 and msgs1[0] == "Not automatically, but nine years is a long time." and any(m.startswith("*Judgments this answer relies on*") for m in msgs1), "v1: one message per paragraph and the old sources header, exactly as before")
++src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "whatsapp_bot.py"), encoding="utf-8").read()
++check('{"audience": "layman", "channel": "whatsapp"} if answer_style.is_v3() else {}' in src, "the WhatsApp bot asks for the layman voice and tells the engine it is on WhatsApp, under v3 only")
++import tempfile
++os.environ.setdefault("WHATSAPP_DB_PATH", os.path.join(tempfile.mkdtemp(), "wa.db"))
++import whatsapp_bot
++got = {}
++whatsapp_bot.chat_assistant.answer_question = lambda q, **kw: (got.update(kw) or {"state": "no_match", "response_text": "ok"})
++for st_, want in (("v1", {}), ("v3", {"audience": "layman", "channel": "whatsapp"})):
++    os.environ["RESPONSE_STYLE"] = st_
++    got.clear()
++    try:
++        whatsapp_bot.handle_incoming_message("whatsapp:+910000000001", "My trial has gone on nine years and nobody tells me anything")
++    except Exception:
++        pass
++    got.pop("inline_domains", None)
++    check(got == want, f"the bot's call to the engine under {st_}: {got}")
++os.environ["RESPONSE_STYLE"] = "v1"
++
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_answer_style_v3_page.py b/test_answer_style_v3_page.py
+new file mode 100644
+index 0000000..ac60b2a
+--- /dev/null
++++ b/test_answer_style_v3_page.py
+@@ -0,0 +1,81 @@
++"""test_answer_style_v3_page.py -- the page side of answer style v3: the Layman / Lawyer switch (only under RESPONSE_STYLE=v3), the audience reaching answer_question, headings kept as headings,
++the lawyers' authorities tables, and no change to a v1 answer. Offline and free (the model is replaced by a stub). Run: python -X utf8 test_answer_style_v3_page.py"""
++import os
++import sys
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++os.environ.setdefault("VOYAGE_API_KEY", "dummy")
++os.environ.pop("RESPONSE_STYLE", None)
++from streamlit.testing.v1 import AppTest
++import chat_assistant as CA
++
++FAILURES = []
++APP = os.path.join(os.path.dirname(os.path.abspath(__file__)), "recourse_app.py")
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++SEEN = {}
++TEXT = ("Not automatically, but nine years is a long time.\n\n**Can the case be closed because of delay?**\n\nIn *Arnesh Kumar v. State of Bihar* (2014) the Supreme Court directed X.\n\n"
++        "**How this cuts for and against you**\n*For you:*\n- the delay comes from the prosecution\n\n**What you can do right now**\n\n1. Ask your lawyer to object on record.")
++LAWYER_TEXT = ("**Bottom line**\n\nDelay alone does not end a trial.\n\n**1. A fixed period of delay does not by itself terminate a criminal trial under the BNSS**\nSection 346 of the BNSS ... *Arnesh Kumar v. State of Bihar* (2014).")
++
++
++def stub(question, inline_domains=frozenset(), audience=None, channel=None):
++    SEEN["audience"], SEEN["channel"] = audience, channel
++    lawyer = audience == "lawyer"
++    res = {"state": "single_match", "response_text": LAWYER_TEXT if lawyer else TEXT, "matches": [], "situation_detected": False}
++    if os.environ.get("RESPONSE_STYLE") == "v3":
++        res["audience"] = "lawyer" if lawyer else "layman"
++        if lawyer:
++            res["authorities"] = {"library": [{"case": "Arnesh Kumar v. State of Bihar", "year": 2014, "citation": "(2014) 8 SCC 273", "paragraphs": ["11"], "tier": "Reviewed library",
++                                               "status": "quiet note", "status_source": "card_quiet", "link": "https://l/a"}], "wider": [], "has_bench": False}
++    return res
++
++
++CA.answer_question = stub
++
++
++def md_values(at):
++    return [m.value for m in at.markdown]
++
++
++# ---- default (v1): no switch; the same text keeps v1 treatment ----
++at = AppTest.from_file(APP, default_timeout=90).run()
++check(not at.exception and not [r for r in at.radio if getattr(r, "key", "") == "audience_choice"], "v1: the page has no Layman / Lawyer switch")
++at.text_area(key="text").set_value("My trial has gone on 9 years").run()
++[b for b in at.button if "Check my situation" in b.label][0].click().run()
++check(not at.exception and SEEN.get("audience") is None, f"v1: answer_question is called without an audience ({SEEN.get('audience')!r}, exception={at.exception})")
++vals = md_values(at)
++check(any("Can the case be closed because of delay?" in v and "**Can the case" not in v for v in vals), "v1: a question-style bold line is NOT kept as a heading (today's behaviour is unchanged)")
++
++# ---- v3: the switch, the audience, headings ----
++os.environ["RESPONSE_STYLE"] = "v3"
++at = AppTest.from_file(APP, default_timeout=90).run()
++radios = [r for r in at.radio if getattr(r, "key", "") == "audience_choice"]
++check(not at.exception and len(radios) == 1 and list(radios[0].options) == ["Layman", "Lawyer"] and radios[0].value == "Layman", "v3: the page shows the Layman / Lawyer switch, Layman first")
++at.text_area(key="text").set_value("My trial has gone on 9 years").run()
++[b for b in at.button if "Check my situation" in b.label][0].click().run()
++check(not at.exception and SEEN.get("audience") == "layman", f"v3 layman: audience 'layman' reaches answer_question ({SEEN.get('audience')!r}, exception={at.exception})")
++vals = md_values(at)
++check(any("**Can the case be closed because of delay?**" in v for v in vals) and any("**How this cuts for and against you**\n\n" in v for v in vals), "v3 layman: headings stay bold, a heading followed by one newline gets a blank line")
++check(any("In *Arnesh Kumar v. State of Bihar* (2014)" in v for v in vals), "v3: case names stay in italics")
++check(not any("Authorities (reviewed library)" in v for v in vals), "v3 layman: no table of authorities")
++
++at.radio(key="audience_choice").set_value("Lawyer").run()
++at.text_area(key="text").set_value("My trial has gone on 9 years").run()
++[b for b in at.button if "Check my situation" in b.label][0].click().run()
++check(not at.exception and SEEN.get("audience") == "lawyer", f"v3 lawyer: audience 'lawyer' reaches answer_question ({SEEN.get('audience')!r}, exception={at.exception})")
++vals = md_values(at)
++check(any("Authorities (reviewed library)" in v for v in vals), "v3 lawyer: the 'Authorities (reviewed library)' heading is shown")
++check(any("| Case | Citation | Paragraph | Where it stands on our lists | Link |" in v and "(2014) 8 SCC 273" in v for v in vals), "v3 lawyer: the table of authorities is shown with the held citation")
++check(any("**1. A fixed period of delay does not by itself terminate a criminal trial under the BNSS**\n\n" in v for v in vals), "v3 lawyer: a long proposition heading (up to 90 characters) stays a heading, with a blank line after it")
++check(not any("Judgments this answer relies on" in v for v in vals), "v3 lawyer: the plain link list is replaced by the table")
++
++os.environ.pop("RESPONSE_STYLE", None)
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
 diff --git a/test_case_check.py b/test_case_check.py
 new file mode 100644
 index 0000000..2e8f52b
@@ -961,10 +1732,10 @@ index 0000000..bfccb2a
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_sci_search_tier.py b/test_sci_search_tier.py
 new file mode 100644
-index 0000000..cccaa95
+index 0000000..d3cde8c
 --- /dev/null
 +++ b/test_sci_search_tier.py
-@@ -0,0 +1,206 @@
+@@ -0,0 +1,208 @@
 +"""
 +test_sci_search_tier.py -- the wider-pool search tier on the website side (sci_search_tier.py + its call in chat_assistant.answer_question + the page box).
 +Fully offline and free: a local stand-in for the sci-search service, no model, no network beyond localhost. Run: python -X utf8 test_sci_search_tier.py
@@ -1162,6 +1933,8 @@ index 0000000..cccaa95
 +check(T.label_fed_cases("The Court did not name anyone.", cases3) == "The Court did not name anyone." and T.label_fed_cases(None, cases3) == "", "an answer that names none of them is left alone; None does not fail")
 +check(T.label_fed_cases("Under Raj Deo Sharma, time ran.", [{"case_name": "Raj Deo Sharma v. The State of Bihar"}]).count(T.LABEL) == 1, "a distinctive first party alone is enough")
 +check(T.label_fed_cases("The State v. Kumar held X.", [{"case_name": "State of Bihar v. Kumar"}]) == "The State v. Kumar held X.", "a generic first party alone is not enough (no wrong labels)")
++it = T.label_fed_cases("In *Raj Deo Sharma v. The State of Bihar* (1999) the Court said X, and *P. Ramachandra Rao v. State of Karnataka* later corrected it.", cases3)
++check("*Raj Deo Sharma v. The State of Bihar* (1999) " + T.LABEL in it and "*P. Ramachandra Rao v. State of Karnataka* " + T.LABEL in it and T.label_fed_cases(it, cases3) == it, "a case name in italics (answer style v3) gets the label after the closing mark and the year, once")
 +T.reset()
 +T.feed_block("a trial question")
 +res_l = T.attach("a trial question", {"state": "single_match", "response_text": "The Supreme Court in Raj Deo Sharma v. The State of Bihar (1999) fixed time limits; P. Ramachandra Rao v. State of Karnataka corrected it."})
@@ -1171,11 +1944,91 @@ index 0000000..cccaa95
 +check(T.feed_block("x") == "" and "sci_related_judgments" not in T.attach("x", {"state": "single_match"}), "with the mode off feed does nothing")
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
+diff --git a/whatsapp_bot.py b/whatsapp_bot.py
+index 47dbe27..3231a75 100644
+--- a/whatsapp_bot.py
++++ b/whatsapp_bot.py
+@@ -610,8 +610,11 @@ def handle_incoming_message(phone_number: str, message_text: str) -> list:
+     # with a 'covered elsewhere' redirect that points nowhere here")
+     # by always passing inline_domains -- WhatsApp needs the same fix,
+     # for the same reason: no separate UI to redirect to here either.
++    # Under answer style v3 (RESPONSE_STYLE=v3) the engine is told this is a layman reading on WhatsApp; under v1 and v2 the call is exactly what it always was.
++    import answer_style
++    _style_kw = {"audience": "layman", "channel": "whatsapp"} if answer_style.is_v3() else {}
+     result = chat_assistant.answer_question(
+-        question, inline_domains={"cheque_bounce", "freeze", "domestic_violence", "ndps"})
++        question, inline_domains={"cheque_bounce", "freeze", "domestic_violence", "ndps"}, **_style_kw)
+ 
+     # ADDED 2026-09-28: keep a record of this answer (the person's own words, the answer, its sources and links) so the
+     # PDF command can build a document from it later -- see answer_pdf.py. Fail-open: if this ever breaks the real
 diff --git a/whatsapp_formatter.py b/whatsapp_formatter.py
-index 95fdec3..74d0774 100644
+index 95fdec3..b3bc8f5 100644
 --- a/whatsapp_formatter.py
 +++ b/whatsapp_formatter.py
-@@ -127,6 +127,11 @@ def format_answer_for_whatsapp(result: dict) -> list:
+@@ -17,6 +17,8 @@ recourse_app.py, which never lets a state fall through silently.
+ """
+ import re as _re
+ 
++import answer_style
++
+ _BOLD_MD = _re.compile(r"\*\*(.+?)\*\*")
+ 
+ 
+@@ -25,6 +27,35 @@ def _md_to_whatsapp(text: str) -> str:
+     return _BOLD_MD.sub(r"*\1*", text)
+ 
+ 
++_ITALIC_MD = _re.compile(r"(?<![\w*])\*(?![\s*])([^*\n]+?)(?<![\s*])\*(?![\w*])")
++_HASH_HEADING = _re.compile(r"(?m)^#{1,6}[ \t]*(.+?)[ \t]*$")
++_WA_HEADING = _re.compile(r"\*[^*\n]{2,90}\*")
++
++
++def _md_to_whatsapp_v3(text: str) -> str:
++    """Answer style v3: '#' headings and **bold** become WhatsApp *bold*, and the single-asterisk italics the v3 prompt uses for case names become WhatsApp _italic_ (a bare *x* would show as bold there)."""
++    text = _HASH_HEADING.sub(lambda m: "**" + m.group(1).strip("* ") + "**", text)
++    stash = []
++    text = _BOLD_MD.sub(lambda m: (stash.append(m.group(1)) or "\x00%d\x00" % (len(stash) - 1)), text)
++    text = _ITALIC_MD.sub(r"_\1_", text)
++    return _re.sub("\x00(\\d+)\x00", lambda m: "*" + stash[int(m.group(1))] + "*", text)
++
++
++def _split_v3(response_text: str) -> list:
++    """Answer style v3 is a few headed parts, so it is sent as a few messages -- the opening, then one message per headed part (heading and its paragraphs together) -- instead of one message per
++    paragraph, which would leave every heading alone in its own message."""
++    blocks = [b.strip() for b in _re.split(r"\n\s*\n", _md_to_whatsapp_v3((response_text or "").strip())) if b.strip()]
++    groups, cur = [], []
++    for b in blocks:
++        if _WA_HEADING.fullmatch(b) and cur:
++            groups.append("\n\n".join(cur))
++            cur = []
++        cur.append(b)
++    if cur:
++        groups.append("\n\n".join(cur))
++    return groups
++
++
+ def _split_into_messages(response_text: str) -> list:
+     """Split the engine's answer into one WhatsApp message per
+     paragraph (blank-line-separated), the way a person would actually
+@@ -33,6 +64,8 @@ def _split_into_messages(response_text: str) -> list:
+     "Arrest procedure") as separate paragraphs, so this needs no
+     special-casing -- it just follows the paragraph breaks that are
+     already there."""
++    if answer_style.is_v3():
++        return _split_v3(response_text)
+     text = _md_to_whatsapp((response_text or "").strip())
+     paragraphs = [p.strip() for p in _re.split(r"\n\s*\n", text) if p.strip()]
+     return paragraphs or ([text] if text else [])
+@@ -67,7 +100,7 @@ def _format_cited_judgments(links: list) -> str:
+     """The judgments this answer actually relies on, each with the real link stored for it (ADDED 2026-09-28 -- see
+     chat_assistant._attach_cited_judgment_links). Unlike the hedged 'other cases' list below it, these are the
+     tool's own verified sources, so no 'not checked' caution -- but the person is still told to read them."""
+-    lines = ["*Judgments this answer relies on* -- you can read each one yourself:"]
++    lines = ["*Sources* -- you can read each one yourself:" if answer_style.is_v3() else "*Judgments this answer relies on* -- you can read each one yourself:"]
+     for l in links:
+         lines.append(f"- {l['case_name']} ({l.get('source_label', 'source link')})\n  {l['url']}")
+     return "\n".join(lines)
+@@ -127,6 +160,11 @@ def format_answer_for_whatsapp(result: dict) -> list:
              messages.append(
                  "Want a draft court petition based on this? Reply *DRAFT* and I'll prepare one you can download."
              )

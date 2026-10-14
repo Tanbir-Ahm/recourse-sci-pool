@@ -54,6 +54,29 @@ Redeploy. In shadow mode a real answer is produced as before and, afterwards in 
 
 Feed-mode rules (2026-10-13, after the first staging test): (1) when the register flags a case, the case that overruled it is always fed too (taken from the results, or fetched by a second search "<name> + the question"), so the model can name the controlling case; (2) one passage per case, up to 8 cases, the flagged case last, each excerpt cut at the end of a sentence; (3) every wider-search case named in the finished answer is tagged "(from a wider search, not independently verified)" by code, whatever the model wrote. The log line is `SCI_FEED fed N case(s): ...`. Re-test with the trial-delay question; the answer should name P. Ramachandra Rao, and each wider-search case should carry the tag.
 
+## Part 4c: answer style v3, "The Adviser" and "The Research Note" (added 2026-10-14, owner-approved)
+`RESPONSE_STYLE` picks the answer voice. It is read at every question, so changing it needs only a redeploy of the variable, not a code change.
+
+| `RESPONSE_STYLE` | What users get |
+|---|---|
+| `v1` (default, and what production runs) | today's answers |
+| `v2` | the first livelier prompt (tested 2026-10-14) |
+| `v3` | the page shows a **Layman / Lawyer** switch above the box. Layman: the Adviser (opening answer, what the law says, how this cuts for and against you, 2-4 steps). Lawyer: the Research Note (bottom line, facts assumed, numbered issues, application to the facts, grounds that can be urged, gaps and checks) plus a **table of authorities built by code** in two tiers (reviewed library; wider search, not independently verified). WhatsApp always gets the Adviser, in 4-5 short messages. |
+| `v3-lawyer` | the Research Note for everybody, no switch (for testing) |
+
+Safety valves: set `RESPONSE_STYLE` back to `v1` (or delete it) to return to today's answers; the hard rules, the register locks and the post-answer checks are the same in every style.
+Things that behave differently under v2/v3 (by design): the human-approved answer cache is not used (it holds v1 wording, written for laypeople); the "Right now" opening that situation detection relied on is replaced by the heading "What you can do right now" (and v2's later "Right now" heading), which the code now also recognises; bold is used only for headings and case names are in italics, because the page's style sheet turns any paragraph whose only styled part is bold into an upper-case sub-head.
+
+How to test on staging (change nothing else): add `RESPONSE_STYLE` = `v3` to `staging-site`, wait for the deploy, then ask these and compare with the earlier v1/v2 answers:
+1. "My trial has been going on for 9 years and the prosecution keeps asking for time. Can the case be closed because of the delay?" (Layman, then Lawyer)
+2. The Section 318 cheating question
+3. The cheque bounce question
+4. The Mohan Lal situation question (check the register note still appears)
+5. A frightened arrest question ("My brother was taken by the police last night and nobody tells us anything")
+6. A question that uses legal terms ("Can I seek default bail under Section 187 BNSS if the chargesheet was filed on day 91?")
+7. and 8. Two lawyer-style questions with the switch on Lawyer (one on delay, one on anticipatory bail conditions)
+Check: the first sentence answers the question and uses your facts; headings are plain and not shouted; steps start with a verb; case names are in italics; no SCC/AIR number appears unless the sources box has it; in Lawyer mode the "Authorities" tables appear under the note with the right tier; the register note and the "Not checked by us" line still appear; a wider-search case (feed mode) carries "(from a wider search, not independently verified)" after its name, outside the italics.
+
 ## Part 5: show mode (later, only after a lawyer has read shadow logs)
 `SCI_SEARCH_MODE=show` on staging puts a box "More Supreme Court judgments that may be relevant (a wider search; not independently verified)" under the answer, with names, dates, paragraph, the court/bucket link, and the register note beside any flagged case; judgments with no readable name are left out. Look at it yourself on staging first.
 
