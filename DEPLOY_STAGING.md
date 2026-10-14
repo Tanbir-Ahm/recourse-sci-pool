@@ -77,6 +77,11 @@ How to test on staging (change nothing else): add `RESPONSE_STYLE` = `v3` to `st
 7. and 8. Two lawyer-style questions with the switch on Lawyer (one on delay, one on anticipatory bail conditions)
 Check: the first sentence answers the question and uses your facts; headings are plain and not shouted; steps start with a verb; case names are in italics; no SCC/AIR number appears unless the sources box has it; in Lawyer mode the "Authorities" tables appear under the note with the right tier; the register note and the "Not checked by us" line still appear; a wider-search case (feed mode) carries "(from a wider search, not independently verified)" after its name, outside the italics.
 
+## Part 4d: what one question costs (added 2026-10-14)
+The site prints two kinds of line to the Deploy Logs: `COST_CALL {...}` for every model, embedding or re-rank call, and `COST_QUESTION {...}` once per question with every call, the total in dollars and rupees, the style and the audience. Search the logs for `COST_QUESTION`. The question appears only as a short hash. These are measured from the tokens each call really used, so they are the exact figures; the table in `FOLLOW_UPS.md` item 0g is only a forecast.
+Optional variables on the site service: `USD_INR` (rupees per dollar; default 96.5, set the real rate), `PRICES_JSON` (override a price, e.g. `{"claude-sonnet-5": [2, 10]}`; Voyage models take one number). A call to a model with no price is flagged `unpriced`, never guessed.
+The search service now also returns the tokens each search used (`usage`), so the Voyage part is exact too (a service restart of about 40 seconds follows each deploy).
+
 ## Part 5: show mode (later, only after a lawyer has read shadow logs)
 `SCI_SEARCH_MODE=show` on staging puts a box "More Supreme Court judgments that may be relevant (a wider search; not independently verified)" under the answer, with names, dates, paragraph, the court/bucket link, and the register note beside any flagged case; judgments with no readable name are left out. Look at it yourself on staging first.
 

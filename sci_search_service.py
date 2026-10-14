@@ -258,7 +258,9 @@ class SearchService:
             if self.rerank_today >= self.daily_cap:
                 raise Refused(429, "the daily re-rank allowance is spent; try again tomorrow")
             t0 = time.time()
+            e0, r0 = self.embed_today, self.rerank_today
             top = self.ranked(q, k)
+            usage = {"embed_model": EMBED_MODEL, "embed_tokens": self.embed_today - e0, "rerank_model": self.rerank_model, "rerank_tokens": self.rerank_today - r0}      # what this one search used (one search runs at a time, so the difference is exact)
             self.searches_today += 1
             results = []
             for rank, (rid, score) in enumerate(top, 1):
@@ -269,7 +271,7 @@ class SearchService:
                                 "link": (nm or {}).get("link"), "link_kind": (nm or {}).get("link_kind"), "name_to_review": bool(nm["review"]) if nm else None, "paragraph": m["pn"], "page": m.get("page"), "name_is_opening_lines": (m["doc"] in self.header_docs) if not nm else (nm["name"] is None), "passage_type": m["section"], "score": round(float(score), 4),
                                 "text": text[: self.max_text] + ("..." if len(text) > self.max_text else ""), "passage_id": m["h"]})
             return {"ok": True, "tier": TIER, "recipe": "B", "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "disclaimer": DISCLAIMER,
-                    "seconds": round(time.time() - t0, 2), "results": results}
+                    "seconds": round(time.time() - t0, 2), "usage": usage, "results": results}
 
     def health(self):
         self._new_day()

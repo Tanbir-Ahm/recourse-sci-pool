@@ -247,7 +247,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..e7223dc 100644
+index 789f8e7..ac940fe 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,8 @@ import logging
@@ -259,7 +259,15 @@ index 789f8e7..e7223dc 100644
  logger = logging.getLogger("chat_assistant")
  
  """
-@@ -462,6 +464,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
+@@ -343,6 +345,7 @@ def classify_scope(question):
+                 messages=[{"role": "user",
+                            "content": SCOPE_CLASSIFIER_PROMPT.format(question=question) + old_code_note + retry_correction}],
+             )
++            _note_cost("scope_check", HAIKU_MODEL, response)
+             raw = _extract_text_from_response(response).strip()
+             # Defensive: strip markdown code fences if the model adds them
+             # despite the "ONLY a JSON object" instruction.
+@@ -462,6 +465,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
  - Cite AT MOST 4 distinct section numbers. If a retrieved section only tangentially relates, OMIT IT ENTIRELY -- do not describe it and do not explain why it doesn't apply.
  - Address the section(s) defining the OFFENCE the person asks about before general arrest-procedure sections -- the offence is usually the most direct answer.
  - If a provision or case below carries a note about its legal currency, fold it in as ONE short plain clause ("...though the exact scope of this is under review by a larger bench"). Never write a separate paragraph about verification status or "treat this with caution".
@@ -267,7 +275,7 @@ index 789f8e7..e7223dc 100644
  
  ## Shape and length
  - If the question describes something that HAS ALREADY HAPPENED to the person or someone close to them (an arrest, a search, an FIR, a frozen account), open with a short **"Right now"** part: 2-3 concrete things they can do or ask for immediately. Then the relevant law. Then what key facts are still unclear. Then the closing line.
-@@ -480,6 +483,118 @@ The legal information relevant to it (statute text and court judgments) -- prese
+@@ -480,6 +484,118 @@ The legal information relevant to it (statute text and court judgments) -- prese
  Write the answer now, following the shape and length rules above."""
  
  
@@ -386,7 +394,7 @@ index 789f8e7..e7223dc 100644
  _CONFLICT_INSTRUCTION = """- IMPORTANT: the sections below genuinely DISAGREE with each other on a key point (e.g. some are arrestable without a warrant, others are not). Do NOT blend them into one narrative paragraph. Structure your answer as clearly separated scenarios, each labeled with its exact section number, e.g.:
    "**If [scenario 1, naming the exact section]:** [what applies]"
    "**If [scenario 2, naming the exact section]:** [what applies]"
-@@ -1246,7 +1361,10 @@ def _looks_like_situation(response_text: str) -> bool:
+@@ -1246,7 +1362,10 @@ def _looks_like_situation(response_text: str) -> bool:
      for someone who's already living the situation, not a replacement."""
      if not response_text:
          return False
@@ -398,7 +406,7 @@ index 789f8e7..e7223dc 100644
  
  
  def _format_mismatch(problem: dict) -> str:
-@@ -1365,6 +1483,37 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
+@@ -1365,6 +1484,48 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
      return problems
  
  
@@ -419,13 +427,24 @@ index 789f8e7..e7223dc 100644
 +    return text[:cut].rstrip() + "\n\n" + _TRUNCATED_NOTE
 +
 +
-+def _create_answer(model, prompt):
++def _note_cost(label, model, response):
++    """Hand a model response's token counts to cost_log (fail-open: never affects an answer)."""
++    try:
++        import cost_log
++        cost_log.note_anthropic(label, model, getattr(response, "usage", None))
++    except Exception:  # noqa: BLE001
++        pass
++
++
++def _create_answer(model, prompt, label="answer"):
 +    """One answer call. If the reply stopped because it ran out of tokens (stop_reason 'max_tokens'), ask once more with a bigger budget; if that is cut off too, close it honestly (see _close_truncated)."""
 +    budget = _answer_max_tokens()
 +    response = client.messages.create(model=model, max_tokens=budget, messages=[{"role": "user", "content": prompt}])
++    _note_cost(label, model, response)
 +    if getattr(response, "stop_reason", None) == "max_tokens":
 +        logger.warning("answer was cut off at %s tokens; asking again with %s", budget, min(budget * 2, 16000))
 +        response = client.messages.create(model=model, max_tokens=min(budget * 2, 16000), messages=[{"role": "user", "content": prompt}])
++        _note_cost(label + "_after_cutoff", model, response)
 +    text = _extract_text_from_response(response).strip()
 +    if getattr(response, "stop_reason", None) == "max_tokens":
 +        logger.warning("answer was cut off again; closing it at the last complete sentence")
@@ -436,7 +455,7 @@ index 789f8e7..e7223dc 100644
  def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
                                  pilot_matches=None):
      """Generates a plain-language answer using ONLY the given retrieved
-@@ -1498,26 +1647,29 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1498,26 +1659,29 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -481,7 +500,7 @@ index 789f8e7..e7223dc 100644
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1568,12 +1720,7 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1568,12 +1732,7 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
                  )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
@@ -491,11 +510,11 @@ index 789f8e7..e7223dc 100644
 -                messages=[{"role": "user", "content": retry_prompt}],
 -            )
 -            retry_text = _extract_text_from_response(retry_response).strip()
-+            retry_text = _create_answer(model, retry_prompt)      # same thinking-block headroom as the first call
++            retry_text = _create_answer(model, retry_prompt, label="answer_recheck")      # same thinking-block headroom as the first call
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -2262,6 +2409,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2421,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -510,7 +529,7 @@ index 789f8e7..e7223dc 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2467,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2479,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -526,7 +545,7 @@ index 789f8e7..e7223dc 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +2992,8 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3004,8 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -536,7 +555,7 @@ index 789f8e7..e7223dc 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3021,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3033,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -546,7 +565,7 @@ index 789f8e7..e7223dc 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3369,78 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3381,88 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -578,6 +597,11 @@ index 789f8e7..e7223dc 100644
 +    answer_style.set_audience(audience)
 +    answer_style.set_channel(channel)
 +    try:
++        import cost_log
++        cost_log.begin(question)
++    except Exception:  # noqa: BLE001
++        pass
++    try:
 +        result = _answer_question_inner(question, inline_domains=inline_domains)
 +        try:
 +            if isinstance(result, dict) and result.get("state") in _LINK_STATES and answer_style.is_v3():
@@ -588,6 +612,11 @@ index 789f8e7..e7223dc 100644
 +            logger.warning("authorities table failed: %s", exc)
 +        return result
 +    finally:
++        try:
++            import cost_log
++            cost_log.finish(style=answer_style.style(), audience=answer_style.effective_audience())
++        except Exception:  # noqa: BLE001
++            pass
 +        answer_style.set_audience(None)
 +        answer_style.set_channel(None)
 +
@@ -628,6 +657,129 @@ index 789f8e7..e7223dc 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
+@@ -3265,6 +3517,7 @@ def extract_arrest_situation(conversation_text):
+             messages=[{"role": "user", "content":
+                        ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
+         )
++        _note_cost("arrest_extraction", HAIKU_MODEL, response)
+         raw = _extract_text_from_response(response).strip()
+     except Exception:
+         return None, []
+diff --git a/cost_log.py b/cost_log.py
+new file mode 100644
+index 0000000..2b9fde1
+--- /dev/null
++++ b/cost_log.py
+@@ -0,0 +1,109 @@
++"""cost_log.py -- what one question costs, measured from the tokens each call really used (not guessed).
++
++Every model call the answer path makes reports its token counts; this module turns them into dollars and rupees and prints two kinds of line the hosting log search can find:
++    COST_CALL {...}      one per call (scope check, the answer, a retry, a wider search, the question embedding), printed as it happens
++    COST_QUESTION {...}  one per question, printed when the answer is finished: every call, the total in dollars and in rupees, the style and the audience
++Questions appear only as a short hash (never the text). Nothing here can break an answer: every function swallows its own errors.
++
++Prices are USD per million tokens, from Anthropic's price list of 2026-10-06 and (for Voyage) the figures recorded in this project; PRICES_JSON overrides them ('{"model": [in, out]}'; Voyage models take one number).
++The rupee rate is USD_INR (default 96.5, a mid-market figure read 2026-10-14: set the real rate in the hosting variables).
++"""
++import hashlib
++import json
++import os
++import threading
++
++_LOCAL = threading.local()
++ANTHROPIC = {                       # (input, output) dollars per million tokens
++    "claude-sonnet-5": (2.0, 10.0), "claude-sonnet-5-5": (2.0, 10.0),
++    "claude-haiku-4-5-20251001": (1.0, 5.0), "claude-haiku-4-5": (1.0, 5.0), "claude-haiku-5-5": (0.10, 0.50),
++    "claude-opus-5-5": (4.0, 20.0), "claude-opus-5": (5.0, 25.0),
++}
++VOYAGE = {"voyage-law-2": 0.12, "rerank-3-lite": 0.02, "rerank-2": 0.05}      # dollars per million tokens; the two re-ranker figures are third-party list prices, not checked with Voyage
++DEFAULT_USD_INR = 96.5
++
++
++def _prices():
++    a, v = dict(ANTHROPIC), dict(VOYAGE)
++    try:
++        extra = json.loads(os.environ.get("PRICES_JSON") or "{}")
++        for k, val in extra.items():
++            if isinstance(val, (list, tuple)) and len(val) == 2:
++                a[k] = (float(val[0]), float(val[1]))
++            else:
++                v[k] = float(val)
++    except Exception:  # noqa: BLE001
++        pass
++    return a, v
++
++
++def usd_inr():
++    try:
++        return float((os.environ.get("USD_INR") or "").strip().strip("\"'") or DEFAULT_USD_INR)
++    except ValueError:
++        return DEFAULT_USD_INR
++
++
++def _qhash(question):
++    return hashlib.sha256((question or "").encode("utf-8")).hexdigest()[:12]
++
++
++def begin(question):
++    _LOCAL.calls, _LOCAL.q = [], _qhash(question)
++
++
++def _record(rec):
++    try:
++        rec["inr"] = round(rec["usd"] * usd_inr(), 4)
++        rec["usd"] = round(rec["usd"], 8)
++        if getattr(_LOCAL, "calls", None) is not None:
++            _LOCAL.calls.append(rec)
++        print("COST_CALL " + json.dumps({**rec, "q": getattr(_LOCAL, "q", None)}), flush=True)
++    except Exception:  # noqa: BLE001
++        pass
++
++
++def note_anthropic(label, model, usage):
++    """usage is the SDK's response.usage (input_tokens, output_tokens; output includes the model's thinking)."""
++    try:
++        a, _ = _prices()
++        tin, tout = int(getattr(usage, "input_tokens", 0) or 0), int(getattr(usage, "output_tokens", 0) or 0)
++        pin, pout = a.get(model, a.get(str(model).split("-2025")[0], (0.0, 0.0)))
++        _record({"label": label, "model": model, "in": tin, "out": tout, "usd": (tin * pin + tout * pout) / 1e6, "priced": model in a or str(model).split("-2025")[0] in a})
++    except Exception:  # noqa: BLE001
++        pass
++
++
++def note_voyage(label, model, tokens):
++    try:
++        _, v = _prices()
++        tokens = int(tokens or 0)
++        _record({"label": label, "model": model, "tokens": tokens, "usd": tokens * v.get(model, 0.0) / 1e6, "priced": model in v})
++    except Exception:  # noqa: BLE001
++        pass
++
++
++def note_search_usage(label, usage):
++    """The sci-search service's per-search usage block: {'embed_model','embed_tokens','rerank_model','rerank_tokens'}."""
++    try:
++        if isinstance(usage, dict):
++            note_voyage(label + "_embed", usage.get("embed_model") or "voyage-law-2", usage.get("embed_tokens"))
++            note_voyage(label + "_rerank", usage.get("rerank_model") or "rerank-3-lite", usage.get("rerank_tokens"))
++    except Exception:  # noqa: BLE001
++        pass
++
++
++def finish(style="", audience=""):
++    """Print the COST_QUESTION line for the question begun in this thread and clear it. Returns the dict (or None)."""
++    try:
++        calls = getattr(_LOCAL, "calls", None)
++        if calls is None:
++            return None
++        usd = sum(c["usd"] for c in calls)
++        rec = {"q": getattr(_LOCAL, "q", None), "style": style, "audience": audience, "calls": calls, "usd": round(usd, 8), "usd_inr": usd_inr(), "inr": round(usd * usd_inr(), 4),
++               "unpriced": [c["model"] for c in calls if not c.get("priced")]}
++        print("COST_QUESTION " + json.dumps(rec), flush=True)
++        _LOCAL.calls = None
++        return rec
++    except Exception:  # noqa: BLE001
++        return None
 diff --git a/recourse_app.py b/recourse_app.py
 index 1845aeb..667d9e3 100644
 --- a/recourse_app.py
@@ -946,10 +1098,10 @@ index 0000000..b499c07
 +        return {"source": "not_checked", "note": None}
 diff --git a/sci_search_tier.py b/sci_search_tier.py
 new file mode 100644
-index 0000000..4c5c337
+index 0000000..4d9f29c
 --- /dev/null
 +++ b/sci_search_tier.py
-@@ -0,0 +1,341 @@
+@@ -0,0 +1,348 @@
 +"""The wider-pool search tier on the website side: asks the private sci-search service (recourse-sci-pool, sci_search_service.py) for Supreme Court passages and either logs them (shadow) or hands them
 +to the page (show). Fail-open: any problem, a slow service, a missing setting -- the answer goes out exactly as it does without this module.
 +
@@ -1004,8 +1156,8 @@ index 0000000..4c5c337
 +    return m
 +
 +
-+def search(question, timeout=None, k=10):
-+    """The service's answer dict, or None on any failure (never raises)."""
++def search(question, timeout=None, k=10, label="sci_search"):
++    """The service's answer dict, or None on any failure (never raises). The service's per-search token usage goes to the cost log under `label`."""
 +    base = _env("SCI_SEARCH_URL").rstrip("/")
 +    if not base or not question:
 +        return None
@@ -1017,7 +1169,14 @@ index 0000000..4c5c337
 +        req = urllib.request.Request(base + "/search", data=json.dumps({"question": question, "k": k}).encode("utf-8"), headers=headers, method="POST")
 +        with urllib.request.urlopen(req, timeout=timeout) as r:
 +            body = json.loads(r.read().decode("utf-8"))
-+        return body if isinstance(body, dict) and body.get("ok") and isinstance(body.get("results"), list) else None
++        if isinstance(body, dict) and body.get("ok") and isinstance(body.get("results"), list):
++            try:
++                import cost_log
++                cost_log.note_search_usage(label, body.get("usage"))
++            except Exception:  # noqa: BLE001
++                pass
++            return body
++        return None
 +    except urllib.error.HTTPError as exc:
 +        logger.warning("sci-search answered %s", exc.code)
 +    except Exception as exc:  # noqa: BLE001 -- fail-open
@@ -1050,7 +1209,7 @@ index 0000000..4c5c337
 +
 +def _write_shadow(question, answer_result):
 +    try:
-+        found = search(question, timeout=30)
++        found = search(question, timeout=30, label="sci_search_shadow")
 +        if not found:
 +            return
 +        rec = shadow_record(question, found, answer_result)
@@ -1180,7 +1339,7 @@ index 0000000..4c5c337
 +
 +def _fetch_case(name, question):
 +    """A passage of one named case (the case that corrected a flagged one), by a second search: its name plus the question. (result, flag) or None."""
-+    found = search((name + " " + question)[:400], timeout=15.0)
++    found = search((name + " " + question)[:400], timeout=15.0, label="sci_search_second")
 +    if not found:
 +        return None
 +    for r in found["results"]:
@@ -1291,6 +1450,25 @@ index 0000000..4c5c337
 +    except Exception as exc:  # noqa: BLE001 -- fail-open
 +        logger.warning("sci tier attach failed: %s", type(exc).__name__)
 +    return result
+diff --git a/semantic_retrieval.py b/semantic_retrieval.py
+index 4bc3ef1..1dfa62a 100644
+--- a/semantic_retrieval.py
++++ b/semantic_retrieval.py
+@@ -168,7 +168,13 @@ def semantic_search(query, top_k=TOP_MATCHES_TO_CONSIDER, _raise_errors=False):
+ 
+     client = voyageai.Client(api_key=_resolve_voyage_api_key())
+     try:
+-        query_embedding = client.embed([query], model=MODEL, input_type="query").embeddings[0]
++        _resp = client.embed([query], model=MODEL, input_type="query")
++        query_embedding = _resp.embeddings[0]
++        try:
++            import cost_log
++            cost_log.note_voyage("site_query_embed", MODEL, getattr(_resp, "total_tokens", 0))
++        except Exception:  # noqa: BLE001 -- cost logging never affects retrieval
++            pass
+     except Exception:
+         if _raise_errors:
+             raise
 diff --git a/test_answer_style_v3.py b/test_answer_style_v3.py
 new file mode 100644
 index 0000000..a35c390
@@ -1734,6 +1912,131 @@ index 0000000..2e8f52b
 +check(any("check whether one case has been overruled" in e.label for e in at.expander), "the box is there, labelled for lawyers")
 +at.text_input(key="case_check_q").set_value("Raj Deo Sharma v. State of Bihar (1999)").run()
 +check(any("was overruled by" in m.value for m in at.markdown), "typing a case in the box shows the register note")
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_cost_log.py b/test_cost_log.py
+new file mode 100644
+index 0000000..71985b4
+--- /dev/null
++++ b/test_cost_log.py
+@@ -0,0 +1,119 @@
++"""test_cost_log.py -- per-question cost from the tokens each call really used. Offline and free. Run: python -X utf8 test_cost_log.py"""
++import contextlib
++import io
++import json
++import os
++import sys
++import types
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++os.environ.pop("USD_INR", None)
++os.environ.pop("PRICES_JSON", None)
++import cost_log as C
++import chat_assistant as CA
++import answer_style as AS
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++def capture(fn):
++    buf = io.StringIO()
++    with contextlib.redirect_stdout(buf):
++        out = fn()
++    lines = [l for l in buf.getvalue().splitlines()]
++    return out, lines
++
++
++def parse(lines, tag):
++    return [json.loads(l[len(tag) + 1:]) for l in lines if l.startswith(tag + " ")]
++
++
++U = lambda i, o: types.SimpleNamespace(input_tokens=i, output_tokens=o)
++
++# ---- arithmetic ----
++C.begin("a question")
++_, lines = capture(lambda: C.note_anthropic("answer", "claude-sonnet-5", U(10000, 1500)))
++c = parse(lines, "COST_CALL")[0]
++check(abs(c["usd"] - 0.035) < 1e-9 and abs(c["inr"] - 0.035 * 96.5) < 1e-3 and c["in"] == 10000 and c["out"] == 1500, f"Sonnet 5: 10,000 in + 1,500 out = $0.035 ({c['usd']}), rupees at the default rate ({c['inr']})")
++_, lines = capture(lambda: C.note_anthropic("scope_check", "claude-haiku-4-5-20251001", U(4200, 150)))
++c = parse(lines, "COST_CALL")[0]
++check(abs(c["usd"] - (4200 * 1.0 + 150 * 5.0) / 1e6) < 1e-9 and c["priced"], "Haiku 4.5 is priced at $1 in / $5 out per million")
++_, lines = capture(lambda: C.note_search_usage("sci_search", {"embed_model": "voyage-law-2", "embed_tokens": 170, "rerank_model": "rerank-3-lite", "rerank_tokens": 21700}))
++cs = parse(lines, "COST_CALL")
++check(len(cs) == 2 and abs(cs[1]["usd"] - 21700 * 0.02 / 1e6) < 1e-9 and abs(cs[0]["usd"] - 170 * 0.12 / 1e6) < 1e-9, "a wider search: 21,700 re-rank tokens at $0.02/M and 170 embedding tokens at $0.12/M")
++_, lines = capture(lambda: C.note_anthropic("x", "some-new-model", U(1000, 1000)))
++check(parse(lines, "COST_CALL")[0]["priced"] is False and parse(lines, "COST_CALL")[0]["usd"] == 0, "a model with no price is flagged unpriced, never guessed")
++rec, lines = capture(lambda: C.finish(style="v3", audience="lawyer"))
++q = parse(lines, "COST_QUESTION")[0]
++check(len(q["calls"]) == 5 and abs(q["usd"] - sum(x["usd"] for x in q["calls"])) < 1e-5 and q["unpriced"] == ["some-new-model"] and q["style"] == "v3" and q["audience"] == "lawyer", "COST_QUESTION lists every call, the total, the style, the audience and the unpriced models")
++check("a question" not in "\n".join(lines) and len(q["q"]) == 12, "the question text is never logged, only a 12-character hash")
++rec2, lines2 = capture(lambda: C.finish())
++check(rec2 is None and not lines2, "finishing twice prints nothing")
++
++# ---- settings ----
++os.environ["USD_INR"] = ' "90" '
++check(C.usd_inr() == 90.0, "USD_INR tolerates quotation marks and spaces")
++os.environ["USD_INR"] = "banana"
++check(C.usd_inr() == 96.5, "a bad USD_INR falls back to the default")
++os.environ["USD_INR"] = "100"
++os.environ["PRICES_JSON"] = json.dumps({"claude-sonnet-5": [3, 15], "rerank-3-lite": 0.05})
++C.begin("q")
++_, lines = capture(lambda: (C.note_anthropic("a", "claude-sonnet-5", U(1_000_000, 1_000_000)), C.note_voyage("v", "rerank-3-lite", 1_000_000)))
++cs = parse(lines, "COST_CALL")
++check(abs(cs[0]["usd"] - 18.0) < 1e-6 and cs[0]["inr"] == 1800.0 and abs(cs[1]["usd"] - 0.05) < 1e-9, "PRICES_JSON and USD_INR override the built-in prices and rate")
++C.finish()
++os.environ.pop("PRICES_JSON"); os.environ.pop("USD_INR")
++check(C.note_anthropic("a", "claude-sonnet-5", None) is None and C.note_voyage("v", "voyage-law-2", None) is None, "missing usage does not raise")
++
++# ---- wired into the answer path ----
++CALLS = []
++class _Msgs:
++    def create(self, **kw):
++        CALLS.append(kw["max_tokens"])
++        stop = "max_tokens" if len(CALLS) == 1 else "end_turn"
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="An answer.")], stop_reason=stop, usage=U(6000, 2500))
++CA.client = types.SimpleNamespace(messages=_Msgs())
++os.environ["RESPONSE_STYLE"] = "v3"
++
++
++def core(q, inline_domains=frozenset()):
++    CA._create_answer("claude-sonnet-5", "prompt")
++    return {"state": "no_match"}
++
++
++CA._answer_question_core = core
++_, lines = capture(lambda: CA.answer_question("My trial has gone on nine years", audience="lawyer"))
++q = parse(lines, "COST_QUESTION")
++check(len(q) == 1 and [c["label"] for c in q[0]["calls"]] == ["answer", "answer_after_cutoff"] and q[0]["audience"] == "lawyer" and q[0]["style"] == "v3", "answer_question prints one COST_QUESTION: the answer call and the second call after a cut-off, style v3, audience lawyer")
++check(abs(q[0]["usd"] - 2 * (6000 * 2 + 2500 * 10) / 1e6) < 1e-9, f"the two calls cost 2 x $0.037 = ${q[0]['usd']}")
++os.environ["RESPONSE_STYLE"] = "v1"
++CALLS.clear()
++_, lines = capture(lambda: CA.answer_question("another"))
++check(len(parse(lines, "COST_QUESTION")) == 1 and parse(lines, "COST_QUESTION")[0]["audience"] == "layman", "under v1 the line is printed too (audience layman)")
++
++# ---- the wider search reports its usage ----
++import sci_search_tier as T
++import threading
++from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
++class H(BaseHTTPRequestHandler):
++    def log_message(self, *a): pass
++    def do_POST(self):
++        self.rfile.read(int(self.headers.get("Content-Length") or 0))
++        data = json.dumps({"ok": True, "results": [], "usage": {"embed_model": "voyage-law-2", "embed_tokens": 170, "rerank_model": "rerank-3-lite", "rerank_tokens": 21700}}).encode()
++        self.send_response(200); self.send_header("Content-Length", str(len(data))); self.end_headers(); self.wfile.write(data)
++srv = ThreadingHTTPServer(("127.0.0.1", 0), H)
++threading.Thread(target=srv.serve_forever, daemon=True).start()
++os.environ["SCI_SEARCH_URL"] = f"http://127.0.0.1:{srv.server_address[1]}"
++C.begin("q")
++body, lines = capture(lambda: T.search("question", label="sci_search_second"))
++cs = parse(lines, "COST_CALL")
++check(body and [c["label"] for c in cs] == ["sci_search_second_embed", "sci_search_second_rerank"], "the tier logs the search service's usage under the label of the search (here the second search for a correcting case)")
++C.finish()
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_register_hooks.py b/test_register_hooks.py

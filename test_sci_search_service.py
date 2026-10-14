@@ -72,6 +72,8 @@ res = s1.search(Q)
 check("the answer says what it is: tier, recipe, index commit, as-of date, disclaimer", res["tier"] == S.TIER and res["recipe"] == "B" and res["index_commit"] == "abc123" and res["as_of"] == "2026-07-13" and "does not say whether a decision is still good law" in res["disclaimer"])
 check("each result has rank, case name with date, paragraph, page, passage type, score, text", all(set(r) >= {"rank", "doc", "case_name", "paragraph", "page", "passage_type", "score", "text", "passage_id"} for r in res["results"]) and [r["rank"] for r in res["results"]] == list(range(1, 11)))
 check("the only mention of 'good law' is the disclaimer saying the search does not decide it", "good law" not in json.dumps(res["results"]) and res["disclaimer"].count("good law") == 1 and "does not say whether" in res["disclaimer"])
+us = res.get("usage") or {}
+check("each search reports what it used (query-embedding tokens and re-rank tokens, with the model names), so the website can log the cost of a question", us.get("rerank_tokens", 0) > 0 and us.get("embed_tokens", 0) > 0 and us.get("rerank_model") and us.get("embed_model"))
 s2 = svc(max_text=40)
 check("passage text is cut to SCI_MAX_TEXT", all(len(r["text"]) <= 43 for r in s2.search(Q)["results"]) and s2.search(Q)["results"][0]["text"].endswith("..."))
 check("k limits the list (1 to 20)", len(svc().search(Q, 3)["results"]) == 3 and len(svc().search(Q, 99)["results"]) == 20 and len(svc().search(Q, 0)["results"]) == 1)
