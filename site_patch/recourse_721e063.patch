@@ -64,7 +64,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..3d0fa36 100644
+index 789f8e7..b69e3f3 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -462,6 +462,7 @@ RESPONSE_GENERATION_PROMPT = """You are a warm, careful guide helping a layperso
@@ -75,7 +75,58 @@ index 789f8e7..3d0fa36 100644
  
  ## Shape and length
  - If the question describes something that HAS ALREADY HAPPENED to the person or someone close to them (an arrest, a search, an FIR, a frozen account), open with a short **"Right now"** part: 2-3 concrete things they can do or ask for immediately. Then the relevant law. Then what key facts are still unclear. Then the closing line.
-@@ -1498,6 +1499,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -480,6 +481,50 @@ The legal information relevant to it (statute text and court judgments) -- prese
+ Write the answer now, following the shape and length rules above."""
+ 
+ 
++# ---------------------------------------------------------------------------
++# RESPONSE_STYLE=v2 (ADDED 2026-10-14, owner's request: "the current response is too bland"). Staging answer to
++# "my trial has gone on 9 years ... can the case be closed?" was correct but read like a statute summary: no direct
++# answer in the first line, the person's own facts (nine years) never used, generic headings ("What the law
++# provides"), a stock closing line. v2 changes ONLY the voice and shape section; every hard rule, the "what to
++# include / leave out" section and the REGISTER lines are carried over word for word (the template is built from
++# v1 by replacing one block, and a test asserts the rest is identical). Default is v1: production is unchanged
++# until the owner sets RESPONSE_STYLE=v2 (try it on staging first). The 2026-09-01 finding still stands: longer
++# is not better (500-800 word answers buried the action), so the length stays near 250-400 words.
++# ---------------------------------------------------------------------------
++_V1_SHAPE_START = "## Shape and length"
++_V2_SHAPE = """## Voice and shape
++- Your FIRST sentence answers the question itself, in plain words, using the person's own facts (the number of years, the stage they are at, who is involved) so they can see you read their question. For example "Not automatically, but nine years of delay is something courts take seriously." Do not open with a heading, a definition or "The law provides".
++- If the person is in a hard moment, acknowledge it in ONE short, specific sentence that uses their facts (never a stock phrase such as "I understand this is difficult", and never invented sympathy). Then move on.
++- If the question describes something that HAS ALREADY HAPPENED or is still going on (an arrest, a search, an FIR, a frozen account, a long trial), next give a short **"Right now"** part: 2-3 concrete things they can do or ask for. Then the law behind it. Then what you cannot tell without more facts.
++- Write headings as what the person wants to know ("Can the case be closed?", "What you can do", "What I can't tell from here"), never as labels such as "What the law provides". Use two or three short parts, short paragraphs, at most one list.
++- Explain WHY the law works the way it does in one sentence, and say what a court actually did or said (attributed to the court, from the excerpt below) instead of only that a rule exists. Where the answer depends on facts, say exactly what it depends on ("If the delay is because the prosecution keeps asking for time, ...; if it is because of your own adjournments, ...").
++- Match the person. If they write in simple words or sound frightened, keep it short and plain. If they use legal terms (a section number, "SLP", "quash", "default bail"), answer at that level: lead with the provisions and cases and skip the explaining of basics. Never talk down to them.
++- Aim for roughly 250-400 words. Say what matters and stop; do not pad, and do not repeat the question back.
++- When you name a judgment, name it in the sentence where you use it, with the court and the year only if the material below gives the year: "In Arnesh Kumar v. State of Bihar (2014), the Supreme Court directed ...". Say what the court said in one sentence and why it matters to this person in the next. Never write a report citation (SCC, AIR), a paragraph number or the size of a bench unless the material below shows it. Do not list the cases again at the end: the page shows the sources.
++- End with exactly ONE next step that is specific to THIS situation (for example which paper to bring to a lawyer, or what to ask the court for), not a stock line. Mention uploading a document only if the person has one. Never repeat it.
++"""
++
++
++def _build_v2_template(v1):
++    i = v1.index(_V1_SHAPE_START)
++    j = v1.index("{conflict_instruction}")
++    return v1[:i] + _V2_SHAPE + v1[j:]
++
++
++RESPONSE_GENERATION_PROMPT_V2 = _build_v2_template(RESPONSE_GENERATION_PROMPT)
++
++
++def response_style():
++    """'v1' (default) or 'v2'. Quotation marks and spaces typed around the value in a dashboard are ignored."""
++    import os
++    v = (os.environ.get("RESPONSE_STYLE") or "v1").strip().strip("\"'").strip().lower()
++    return "v2" if v == "v2" else "v1"
++
++
++def _response_prompt_template():
++    return RESPONSE_GENERATION_PROMPT_V2 if response_style() == "v2" else RESPONSE_GENERATION_PROMPT
++
++
+ _CONFLICT_INSTRUCTION = """- IMPORTANT: the sections below genuinely DISAGREE with each other on a key point (e.g. some are arrestable without a warrant, others are not). Do NOT blend them into one narrative paragraph. Structure your answer as clearly separated scenarios, each labeled with its exact section number, e.g.:
+   "**If [scenario 1, naming the exact section]:** [what applies]"
+   "**If [scenario 2, naming the exact section]:** [what applies]"
+@@ -1498,9 +1543,14 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -86,8 +137,12 @@ index 789f8e7..3d0fa36 100644
 +            pass
          conflict_instruction = _CONFLICT_INSTRUCTION if is_conflict else ""
          pilot_context = _format_pilot_context_for_prompt(pilot_matches)
-         prompt = RESPONSE_GENERATION_PROMPT.format(
-@@ -2262,6 +2268,14 @@ def format_retrieved_text_for_prompt(matches):
+-        prompt = RESPONSE_GENERATION_PROMPT.format(
++        prompt = _response_prompt_template().format(
+             question=question, retrieved_text=retrieved_text,
+             conflict_instruction=conflict_instruction, pilot_context=pilot_context,
+         )
+@@ -2262,6 +2312,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -102,7 +157,7 @@ index 789f8e7..3d0fa36 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2326,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2370,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -118,7 +173,7 @@ index 789f8e7..3d0fa36 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -3203,14 +3226,45 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3270,45 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -842,6 +897,66 @@ index 0000000..350ab38
 +msgs = WF.format_answer_for_whatsapp({"state": "single_match", "response_text": "Some answer.", "register_notes": ["Mohan Lal v. State of Punjab (2018): reported to have been overruled."], "register_not_checked": "Cases named in this answer that we have not checked: X v. Y."})
 +check(any(m.startswith("*Currency notes*") and "Mohan Lal" in m and "not checked" in m for m in msgs), "WhatsApp carries the register notes and the 'not checked' sentence as one message")
 +check(WF.format_answer_for_whatsapp({"state": "single_match", "response_text": "Some answer."}) == ["Some answer."], "and an answer without notes is unchanged")
++print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
++sys.exit(1 if FAILURES else 0)
+diff --git a/test_response_style.py b/test_response_style.py
+new file mode 100644
+index 0000000..bfccb2a
+--- /dev/null
++++ b/test_response_style.py
+@@ -0,0 +1,54 @@
++"""test_response_style.py -- RESPONSE_STYLE=v2 (the livelier answer prompt). Offline and free. Run: python -X utf8 test_response_style.py
++Gates: the default is v1 (production unchanged); v2 keeps every hard rule and the whole 'what to include' section word for word; only the voice and shape block differs; both templates format cleanly;
++the generation call really uses the selected template."""
++import os
++import sys
++import types
++
++os.environ.setdefault("ANTHROPIC_API_KEY", "dummy")
++import chat_assistant as CA
++
++FAILURES = []
++
++
++def check(cond, msg):
++    print(f"[{'PASS' if cond else 'FAIL'}] {msg}")
++    if not cond:
++        FAILURES.append(msg)
++
++
++V1, V2 = CA.RESPONSE_GENERATION_PROMPT, CA.RESPONSE_GENERATION_PROMPT_V2
++os.environ.pop("RESPONSE_STYLE", None)
++check(CA.response_style() == "v1" and CA._response_prompt_template() is V1, "the default is v1: production is unchanged until RESPONSE_STYLE=v2 is set")
++for val, want in (("v2", "v2"), ('"v2"', "v2"), (" 'V2' ", "v2"), ("banana", "v1"), ("", "v1")):
++    os.environ["RESPONSE_STYLE"] = val
++    check(CA.response_style() == want, f"RESPONSE_STYLE={val!r} is read as {want}")
++os.environ["RESPONSE_STYLE"] = "v2"
++check(CA._response_prompt_template() is V2, "v2 selects the v2 template")
++
++head1, head2 = V1[:V1.index("## Shape and length")], V2[:V2.index("## Voice and shape")]
++tail1, tail2 = V1[V1.index("{conflict_instruction}"):], V2[V2.index("{conflict_instruction}"):]
++check(head1 == head2 and tail1 == tail2, "everything before the shape block (hard rules, what to include or leave out, REGISTER lines) and everything after it is identical in v1 and v2")
++check("## Hard rules (never break)" in V2 and "A line that starts REGISTER FACT is not optional" in V2 and "Cite AT MOST 4 distinct section numbers" in V2, "v2 still carries the hard rules, the REGISTER rule and the cap of four sections")
++check("Keep the whole answer under about 300 words" not in V2 and "250-400 words" in V2, "v2 replaces the 300-word cap with 250-400 words")
++check("FIRST sentence answers the question" in V2 and "Never write a report citation" in V2 and "ONE next step that is specific" in V2, "v2 asks for a direct first sentence, an in-sentence citation without invented report numbers, and one specific next step")
++for name, tpl in (("v1", V1), ("v2", V2)):
++    try:
++        out = tpl.format(question="Q?", retrieved_text="TEXT", conflict_instruction="", pilot_context="")
++        check("Q?" in out and "TEXT" in out, f"{name} fills in cleanly")
++    except Exception as exc:  # noqa: BLE001
++        check(False, f"{name} fills in cleanly ({exc})")
++
++sent = {}
++class _Msgs:
++    def create(self, **kw):
++        sent["prompt"] = kw["messages"][0]["content"]
++        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="Not automatically, but nine years is a long time.")])
++CA.client = types.SimpleNamespace(messages=_Msgs())
++CA.generate_grounded_response("My trial has gone on 9 years", "[BNSS Section 346]\nTrial text.", matches=[])
++check("## Voice and shape" in sent["prompt"], "generate_grounded_response sends the v2 prompt when RESPONSE_STYLE=v2")
++os.environ["RESPONSE_STYLE"] = "v1"
++CA.generate_grounded_response("My trial has gone on 9 years", "[BNSS Section 346]\nTrial text.", matches=[])
++check("## Shape and length" in sent["prompt"] and "## Voice and shape" not in sent["prompt"], "and the v1 prompt when it is not")
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_sci_search_tier.py b/test_sci_search_tier.py
