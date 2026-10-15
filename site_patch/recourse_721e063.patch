@@ -2179,7 +2179,7 @@ index 0000000..f200dbc
 +        rec["nearest"] = [nearest_wording(q, material) for q in found_quotes]
 +    print("GROUNDING_CHECK " + json.dumps(rec), flush=True)
 diff --git a/recourse_app.py b/recourse_app.py
-index 1845aeb..8d34230 100644
+index 1845aeb..cc619b7 100644
 --- a/recourse_app.py
 +++ b/recourse_app.py
 @@ -26,6 +26,8 @@ import logging
@@ -2238,7 +2238,7 @@ index 1845aeb..8d34230 100644
      msg = st.text_area("Describe your situation", key="text", height=120,
                         label_visibility="collapsed", disabled=_busy,
                         placeholder="e.g. My brother was arrested four days ago and still hasn't been produced in court…") or ""
-@@ -582,8 +598,30 @@ with st.form("situation_form", border=False, clear_on_submit=False):
+@@ -582,8 +598,35 @@ with st.form("situation_form", border=False, clear_on_submit=False):
  # --------------------------------------------------------------------------
  # footer: how it works + about + disclaimer  (shown on every view)
  # --------------------------------------------------------------------------
@@ -2265,11 +2265,16 @@ index 1845aeb..8d34230 100644
 +
  def _footer():
      st.html('<hr class="r-rule">')
-+    _case_check_box()
++    try:                                      # the lawyers' case check reads the Overruled Register, so it follows the same switch: REGISTER_HOOKS=off hides it (day one of the production switch-over changes nothing visible)
++        import register_hooks
++        if not register_hooks._off():
++            _case_check_box()
++    except Exception:
++        pass
  
      with st.expander("How Recourse works — and why it won't invent a case"):
          st.markdown(
-@@ -786,6 +824,12 @@ def render_answer(result: dict):
+@@ -786,6 +829,12 @@ def render_answer(result: dict):
      note, or a technical-trouble note -- never a silent guess."""
      state = result.get("state")
  
@@ -2282,7 +2287,7 @@ index 1845aeb..8d34230 100644
      if state in ("single_match", "conflicting_matches"):
          st.markdown('<div class="r-label">Your situation</div>', unsafe_allow_html=True)
          if state == "conflicting_matches":
-@@ -796,12 +840,23 @@ def render_answer(result: dict):
+@@ -796,12 +845,23 @@ def render_answer(result: dict):
          with st.container(border=True):
              st.markdown('<span class="r-ansmark"></span>', unsafe_allow_html=True)
              if reply:
@@ -2307,7 +2312,7 @@ index 1845aeb..8d34230 100644
          reply_lc = (reply or "").lower()
          all_matches = result.get("matches") or []
  
-@@ -873,6 +928,8 @@ def render_answer(result: dict):
+@@ -873,6 +933,8 @@ def render_answer(result: dict):
          # (chat_assistant._attach_cited_judgment_links) -- these are the tool's own verified sources, unlike
          # the unverified expander below, so they are shown plainly, not hidden behind a caution.
          cited_links = result.get("cited_judgment_links")
@@ -2316,7 +2321,7 @@ index 1845aeb..8d34230 100644
          if cited_links:
              st.markdown('<div class="r-label">Judgments this answer relies on</div>', unsafe_allow_html=True)
              for cl in cited_links:
-@@ -880,6 +937,62 @@ def render_answer(result: dict):
+@@ -880,6 +942,62 @@ def render_answer(result: dict):
                              f'<span class="r-src">{esc(cl.get("source_label", "source link"))}</span>',
                              unsafe_allow_html=True)
  
@@ -2379,7 +2384,7 @@ index 1845aeb..8d34230 100644
          unverified = result.get("unverified_related_judgments")
          if unverified:
              with st.expander("Other real court cases that might be relevant (not independently verified)"):
-@@ -1210,7 +1323,8 @@ if _busy:
+@@ -1210,7 +1328,8 @@ if _busy:
          # inline from the shared corpus rather than dead-ended with a
          # "covered elsewhere" redirect that points nowhere here.
          st.session_state.answer = _answer_question(
@@ -4572,10 +4577,10 @@ index 0000000..458ff2e
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_polish_fixes.py b/test_polish_fixes.py
 new file mode 100644
-index 0000000..789628f
+index 0000000..3d961eb
 --- /dev/null
 +++ b/test_polish_fixes.py
-@@ -0,0 +1,71 @@
+@@ -0,0 +1,78 @@
 +"""test_polish_fixes.py -- three small defects seen in the live Q7 answer (2026-10-14): a doubled wider-search label after an italic case name that ends in a bracket, a v3 lawyer heading with a colon
 +split into a heading plus a stray paragraph, and the quote-check log now saying what the closest wording in the sources was. Offline and free. Run: python -X utf8 test_polish_fixes.py"""
 +import re
@@ -4644,6 +4649,13 @@ index 0000000..789628f
 +import chat_assistant as CA
 +check("exactly, letter for letter" in T.FEED_INSTRUCTION and "WITHOUT quotation marks" in T.FEED_INSTRUCTION and "ends in \"...\" is cut off" in T.FEED_INSTRUCTION, "the wider-search instruction says: quotation marks only for exact copies, and do not complete a cut-off passage")
 +check("copied letter for letter" in CA._V3_LAWYER_SHAPE and "without quotation marks" in CA._V3_LAWYER_SHAPE, "the lawyers' template says the same")
++
++
++# 5. the lawyers' case-check box follows REGISTER_HOOKS (hidden when off)
++src = open("recourse_app.py", encoding="utf-8").read()
++i = src.index("def _footer():")
++seg = src[i:i + 600]
++check("register_hooks._off()" in seg and seg.index("_case_check_box()") > seg.index("register_hooks._off()"), "the footer shows the lawyers' case-check box only when REGISTER_HOOKS is not off")
 +
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)

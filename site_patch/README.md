@@ -37,3 +37,4 @@ Tested here without the model: `test_trap_exam_runner.py` (a stand-in assistant:
 - 2026-10-15 (Recourse `000efa9`): missing Act names are added by code on the first pass (no second paid call); the invented-phone-number check was removed at the owner's instruction (see FOLLOW_UPS 2l).
 - 2026-10-15 (Recourse `46d4800`): per-mention Act check (wrong BNS/BNSS corrected by code), old-law mentions ("of the former Code") ignored, numbers in both Acts never guessed (see FOLLOW_UPS 2m). Test `test_act_per_mention.py`.
 - 2026-10-15 (Recourse `ba54244`): exact-quote instruction added to the wider-search instruction and the lawyers' template (FOLLOW_UPS 2n).
+- 2026-10-15 (Recourse \`0327c48\`): the lawyers' case-check box in the footer now follows REGISTER_HOOKS (hidden when off). See PRODUCTION_SWITCHOVER.md and FOLLOW_UPS 2p.
