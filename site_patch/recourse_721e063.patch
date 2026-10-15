@@ -259,7 +259,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..a1e304d 100644
+index 789f8e7..cfd07db 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,9 @@ import logging
@@ -459,7 +459,18 @@ index 789f8e7..a1e304d 100644
      blocks = []
      for m in pilot_matches:
          text = (m.get("text") or "")[:_PILOT_CONTEXT_MAX_CHARS_PER_CHUNK]
-@@ -688,6 +831,27 @@ def _section_act_map(matches) -> dict:
+@@ -635,10 +778,6 @@ _COURT_MISATTRIBUTION_RETRY_INSTRUCTION = """
+ IMPORTANT CORRECTION: your previous answer named the WRONG COURT for one or more cases: {details} Write a new, complete answer from scratch, and state the correct court for each of these cases as given above, following all the same rules."""
+ 
+ 
+-_UNVERIFIED_CONTACT_RETRY_INSTRUCTION = """
+-IMPORTANT CORRECTION: your previous answer stated a phone number, helpline, or contact detail ({numbers}) that was never given by the user and does not appear anywhere in the information provided above. Never state a specific phone number, helpline, or contact detail unless it was explicitly given to you as part of the question or the retrieved material -- remove it rather than guess or recall one from general knowledge. Write a new, complete answer from scratch, following all the same rules."""
+-
+-
+ _OMITTED_CLASSIFICATION_RETRY_INSTRUCTION = """
+ One more thing to ADD, not fix: {details} Both facts were available to you -- state cognizable/non-cognizable AND bailable/non-bailable together wherever you mention a section's classification, not just one of the two. Write a new, complete answer from scratch, following all the same rules."""
+ 
+@@ -688,6 +827,27 @@ def _section_act_map(matches) -> dict:
      return out
  
  
@@ -487,7 +498,7 @@ index 789f8e7..a1e304d 100644
  def _find_sections_missing_act(response_text: str, section_act_map: dict) -> list:
      """CONFIRMED REAL BUG (2026-09-04), found via live user testing: a
      real 'Right now' answer named "Section 36", "Section 58", "Section
-@@ -899,6 +1063,20 @@ _PILOT_OVERREACH_PAT = re.compile(
+@@ -899,6 +1059,20 @@ _PILOT_OVERREACH_PAT = re.compile(
  )
  
  
@@ -508,7 +519,7 @@ index 789f8e7..a1e304d 100644
  def _find_pilot_tier_overreach(response_text: str, pilot_matches) -> list:
      """ADDED 2026-09-24, at the user's explicit request to let generate_grounded_response describe
      a pilot-tier (wider, NOT independently reviewed) judgment in its prose instead of only listing
-@@ -929,15 +1107,28 @@ def _find_pilot_tier_overreach(response_text: str, pilot_matches) -> list:
+@@ -929,15 +1103,28 @@ def _find_pilot_tier_overreach(response_text: str, pilot_matches) -> list:
      for a wrong cognizable/bailable claim or a wrong court, never a partially-trusted answer."""
      if not response_text or not pilot_matches:
          return []
@@ -537,7 +548,7 @@ index 789f8e7..a1e304d 100644
          # Checks BOTH parties, not just the first (unlike the core-corpus check above): several
          # pilot cases are STATE-initiated appeals ("State of Uttar Pradesh v Ram Kishan"), where the
          # first party is the generic, rarely-said-aloud one and the SECOND party is the name a real
-@@ -1246,7 +1437,10 @@ def _looks_like_situation(response_text: str) -> bool:
+@@ -1246,7 +1433,10 @@ def _looks_like_situation(response_text: str) -> bool:
      for someone who's already living the situation, not a replacement."""
      if not response_text:
          return False
@@ -549,13 +560,55 @@ index 789f8e7..a1e304d 100644
  
  
  def _format_mismatch(problem: dict) -> str:
-@@ -1365,6 +1559,132 @@ def _find_unverified_contact_numbers(response_text: str, question: str, retrieve
-     return problems
+@@ -1319,50 +1509,130 @@ def _format_omission(problem: dict) -> str:
+     return f"Section {problem['section']} is also {word} -- say so."
  
  
+-# A number, kept together as digits/spaces/hyphens, immediately preceded
+-# (within a short window) by a word that means "here's who to contact" --
+-# deliberately narrow, matching the confirmed real failure this guards
+-# against (see _find_unverified_contact_numbers' docstring), not a
+-# generic "flag every number" check, which would false-positive
+-# constantly against ordinary section numbers, years, and punishment
+-# ranges that are NOT contact information.
+-_CONTACT_NUMBER_PAT = re.compile(
+-    r"\b(?:helpline|toll-free|toll free|call|contact(?:ed|ing)?|dial|phone)\b[^.\n]{0,40}?(\d[\d\s-]{3,14}\d)",
+-    re.IGNORECASE,
+-)
 +_TRUNCATED_NOTE = "*This answer was cut short. Please ask again, or ask about one issue at a time.*"
-+
-+
+ 
+ 
+-def _find_unverified_contact_numbers(response_text: str, question: str, retrieved_text: str) -> list:
+-    """CONFIRMED REAL FAILURE -- not in this project's own output, but in
+-    a direct side-by-side comparison (2026-09-22) that is exactly why
+-    this project's answers are checked the way they are: asked a
+-    question that never named any location, ChatGPT confidently stated
+-    "the Assam State Legal Services Authority currently lists: NALSA
+-    helpline: 15100, ASLSA helpline: 6901281650" -- a specific, dialable
+-    phone number, invented from nothing, in a legal-advice context. That
+-    class of error is structurally impossible to catch by "does this
+-    sound plausible" review; it needs exactly the same discipline as
+-    every other checked fact here: a phone number a person might actually
+-    call is either something THEY gave us, something the retrieved law/
+-    judgment text actually contains (real, so it never does -- statute
+-    text and judgments do not contain contact numbers), or it is
+-    fabricated. There is no fourth option.
+-
+-    Returns the list of digit-only unverified numbers found (empty is the
+-    common, reassuring case). Deliberately keyword-gated (see
+-    _CONTACT_NUMBER_PAT) rather than flagging any digit sequence -- a
+-    bare "7 years" or "Section 302" must never trip this."""
+-    if not response_text:
+-        return []
+-    source_digits = re.sub(r"\D", "", (question or "") + (retrieved_text or ""))
+-    problems = []
+-    for m in _CONTACT_NUMBER_PAT.finditer(response_text):
+-        digits = re.sub(r"\D", "", m.group(1))
+-        if len(digits) < 4:
+-            continue
+-        if digits not in source_digits:
+-            problems.append(digits)
+-    return problems
 +def _answer_max_tokens():
 +    """Output budget for the answer call. It also pays for the model's own thinking, which is why 4000 (enough for a 300-word layman answer) was not enough for the longer lawyers' research note
 +    (staging 2026-10-14: the note stopped in mid-sentence). The research note gets 12000. The v3 layman answers get 8000: a cap costs nothing unless it is used, and a reply cut off at 4000
@@ -677,12 +730,29 @@ index 789f8e7..a1e304d 100644
 +            logger.warning("SCOPE_MODEL %s failed (%s); using %s", sm, type(exc).__name__, HAIKU_MODEL)
 +    response = client.messages.create(model=HAIKU_MODEL, max_tokens=1500, messages=[{"role": "user", "content": content}])
 +    return response, HAIKU_MODEL
-+
-+
+ 
+ 
  def generate_grounded_response(question, retrieved_text, is_conflict=False, model=SONNET_MODEL, matches=None,
-                                 pilot_matches=None):
-     """Generates a plain-language answer using ONLY the given retrieved
-@@ -1498,26 +1818,36 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1472,16 +1742,8 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+     and case-generalization checks: a retry is attempted, but a still-
+     incomplete answer after the retry is not discarded.
+ 
+-    UNVERIFIED CONTACT NUMBERS (added 2026-09-22, same batch): separately,
+-    checks that the answer never states a phone number/helpline next to
+-    contact-type language ("call", "helpline", "contact", "dial") unless
+-    that exact number appears in the question or the retrieved material
+-    -- via _find_unverified_contact_numbers(). See its docstring for the
+-    confirmed real failure this guards against: in a side-by-side test,
+-    ChatGPT (not this project) stated a specific, invented phone number
+-    for a state the user never named. This is hard, like the grounding
+-    and mismatch checks -- a fabricated contact number is a real, checked
+-    fact, not a nuance.
++    UNVERIFIED CONTACT NUMBERS (check added 2026-09-22, REMOVED 2026-10-15 at the owner's instruction): the code no longer checks an answer for a phone number or
++    helpline that is not in the question or the material. Nothing in code now stops a made-up contact number.
+ 
+     Any of the eight problems triggers ONE combined retry with an
+     explicit correction. If the retry still has an ungrounded section, a
+@@ -1498,42 +1760,93 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
      if client is None:
          return None
      try:
@@ -734,8 +804,20 @@ index 789f8e7..a1e304d 100644
  
          variants = _gather_offence_variants(matches, extra_text=question)
          section_act_map = _section_act_map(matches)
-@@ -1531,9 +1861,45 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
-         unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
+         ungrounded = _find_ungrounded_sections(response_text, retrieved_text)
+         mismatches = _find_cognizable_bailable_mismatches(response_text, variants)
+         missing_act = _find_sections_missing_act(response_text, section_act_map)
++        if missing_act:                            # FIRST PASS (owner's go 2026-10-15): a missing Act name is added by code from the retrieved sections, so it never costs a second paid call; a mention that names another Code is left alone
++            _fixed_first = _add_missing_acts(response_text, missing_act, section_act_map)
++            _left = _find_sections_missing_act(_fixed_first, section_act_map)
++            if len(_left) < len(missing_act):
++                print("ACT_NAME_ADDED_BY_CODE first_pass sections=" + ",".join(m for m in missing_act if m not in _left), flush=True)
++                response_text, missing_act = _fixed_first, _left
+         missing_companion = _find_missing_companion_sections(response_text, section_act_map)
+         unsupported_cases = _find_unsupported_case_generalizations(response_text, matches)
+         court_misattributions = _find_court_misattributions(response_text, matches)
+         omissions = _find_cognizable_bailable_omissions(response_text, variants)
+-        unverified_contacts = _find_unverified_contact_numbers(response_text, question, retrieved_text)
          pilot_overreach = _find_pilot_tier_overreach(response_text, pilot_matches)
  
 +        # Grounding checks (grounding_checks.py): every case named, and every phrase in quotation marks, must be in the material the model was given. GROUNDING_CHECKS = off | log (default) | warn | enforce.
@@ -763,15 +845,15 @@ index 789f8e7..a1e304d 100644
 +
          if (ungrounded or mismatches or missing_act or missing_companion or unsupported_cases
 -                or court_misattributions or omissions or unverified_contacts or pilot_overreach):
-+                or court_misattributions or omissions or unverified_contacts or pilot_overreach or g_enforce):
++                or court_misattributions or omissions or pilot_overreach or g_enforce):
              retry_prompt = prompt
 +            try:
 +                _why = [n for n, v in (("ungrounded_sections", ungrounded), ("section_mismatch", mismatches), ("missing_act", missing_act), ("missing_companion", missing_companion),
 +                                       ("unsupported_case_generalisation", unsupported_cases), ("court_misattribution", court_misattributions), ("cognizable_bailable_omission", omissions),
-+                                       ("unverified_phone", unverified_contacts), ("pilot_overreach", pilot_overreach), ("grounding_enforce", g_enforce)) if v]
++                                       ("pilot_overreach", pilot_overreach), ("grounding_enforce", g_enforce)) if v]
 +                _detail = {n: (v if isinstance(v, (list, tuple)) else str(v))for n, v in (("ungrounded_sections", ungrounded), ("section_mismatch", mismatches), ("missing_act", missing_act),
 +                           ("missing_companion", missing_companion), ("unsupported_case_generalisation", unsupported_cases), ("court_misattribution", court_misattributions),
-+                           ("pilot_overreach", pilot_overreach), ("unverified_phone", unverified_contacts)) if v}
++                           ("pilot_overreach", pilot_overreach)) if v}
 +                if pilot_overreach:
 +                    _detail["pilot_sentences"] = _pilot_snippets(response_text, pilot_overreach)
 +                logger.warning("RECHECK reasons=%s", ",".join(_why))
@@ -781,8 +863,14 @@ index 789f8e7..a1e304d 100644
              if ungrounded:
                  retry_prompt += _UNGROUNDED_RETRY_INSTRUCTION.format(sections=", ".join(ungrounded))
              if mismatches:
-@@ -1568,12 +1934,11 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+@@ -1562,37 +1875,45 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
+                 retry_prompt += _OMITTED_CLASSIFICATION_RETRY_INSTRUCTION.format(
+                     details=" ".join(_format_omission(p) for p in omissions)
                  )
+-            if unverified_contacts:
+-                retry_prompt += _UNVERIFIED_CONTACT_RETRY_INSTRUCTION.format(
+-                    numbers=", ".join(unverified_contacts)
+-                )
              if pilot_overreach:
                  retry_prompt += _PILOT_OVERREACH_RETRY_INSTRUCTION.format(cases=", ".join(pilot_overreach))
 -            retry_response = client.messages.create(
@@ -799,21 +887,24 @@ index 789f8e7..a1e304d 100644
              # A still-missing companion section, still-unsupported case
              # generalization, or still-incomplete cognizable/bailable pair
              # is a completeness/nuance gap, not a correctness error like
-@@ -1583,16 +1948,31 @@ def generate_grounded_response(question, retrieved_text, is_conflict=False, mode
-             # unverifiable claim -- a wrong court, or a phone number
-             # nobody gave us, are exactly that: checkable facts, not a
-             # nuance.
+             # the others -- none of the three justifies discarding an
+             # otherwise-correct answer outright. Give up (None) only for
+             # the checks that guard against showing an actively WRONG or
+-            # unverifiable claim -- a wrong court, or a phone number
+-            # nobody gave us, are exactly that: checkable facts, not a
+-            # nuance.
 -            if (_find_ungrounded_sections(retry_text, retrieved_text)
 -                    or _find_cognizable_bailable_mismatches(retry_text, variants)
 -                    or _find_sections_missing_act(retry_text, section_act_map)
 -                    or _find_court_misattributions(retry_text, matches)
 -                    or _find_unverified_contact_numbers(retry_text, question, retrieved_text)
 -                    or _find_pilot_tier_overreach(retry_text, pilot_matches)):
++            # unverifiable claim -- a wrong court is exactly that: a
++            # checkable fact, not a nuance.
 +            _still = {"ungrounded_sections": _find_ungrounded_sections(retry_text, retrieved_text),
 +                      "section_mismatch": _find_cognizable_bailable_mismatches(retry_text, variants),
 +                      "missing_act": _find_sections_missing_act(retry_text, section_act_map),
 +                      "court_misattribution": _find_court_misattributions(retry_text, matches),
-+                      "unverified_phone": _find_unverified_contact_numbers(retry_text, question, retrieved_text),
 +                      "pilot_overreach": _find_pilot_tier_overreach(retry_text, pilot_matches)}
 +            _still = {k: v for k, v in _still.items() if v}
 +            if _still.get("pilot_overreach"):
@@ -839,7 +930,7 @@ index 789f8e7..a1e304d 100644
      except Exception:
          return None
  
-@@ -2262,6 +2642,14 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2262,6 +2583,14 @@ def format_retrieved_text_for_prompt(matches):
      e.g. garbled beyond any recognizable condition) is now reserved for
      cases where NEITHER pattern extracts anything usable -- not the
      default whenever the specific rupee-regex happens not to match."""
@@ -854,7 +945,7 @@ index 789f8e7..a1e304d 100644
      # The embedding pipeline's internal act code (embed_corpus.py's
      # load_statute_chunks()) is echoed straight into the answer text via
      # `source` below. For BNS/BNSS/ITACT that's harmless -- those short
-@@ -2312,6 +2700,15 @@ def format_retrieved_text_for_prompt(matches):
+@@ -2312,6 +2641,15 @@ def format_retrieved_text_for_prompt(matches):
                      "in as ONE short plain clause; if the case is only a minor mention, you "
                      "may leave it out]\n" + "\n".join(dict.fromkeys(notes))
                  )
@@ -870,7 +961,7 @@ index 789f8e7..a1e304d 100644
  
          variants = m.get("all_variants") or {}
          if variants:
-@@ -2828,7 +3225,13 @@ def _answer_single_match(question, matches):
+@@ -2828,7 +3166,13 @@ def _answer_single_match(question, matches):
      shape -- callers cannot tell the difference except via 'from_cache'."""
      from answer_cache import get_cached, record_candidate
  
@@ -885,7 +976,7 @@ index 789f8e7..a1e304d 100644
      if cached is not None:
          return {
              "state": "single_match",
-@@ -2856,7 +3259,8 @@ def _answer_single_match(question, matches):
+@@ -2856,7 +3200,8 @@ def _answer_single_match(question, matches):
      )
      response_text = generate_grounded_response(question, retrieved_text, matches=matches, pilot_matches=pilot_matches)
      situation_detected = _looks_like_situation(response_text)
@@ -895,7 +986,7 @@ index 789f8e7..a1e304d 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3607,140 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3548,140 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -1039,7 +1130,7 @@ index 789f8e7..a1e304d 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3795,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3736,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -3504,6 +3595,67 @@ index 0000000..2e8f52b
 +check(any("was overruled by" in m.value for m in at.markdown), "typing a case in the box shows the register note")
 +print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 +sys.exit(1 if FAILURES else 0)
+diff --git a/test_chat_grounding.py b/test_chat_grounding.py
+index e3a395d..25ccd30 100644
+--- a/test_chat_grounding.py
++++ b/test_chat_grounding.py
+@@ -49,7 +49,6 @@ from chat_assistant import (
+     _format_mismatch,
+     _find_cognizable_bailable_omissions,
+     _format_omission,
+-    _find_unverified_contact_numbers,
+     _section_act_map,
+     _find_sections_missing_act,
+     _find_missing_companion_sections,
+@@ -792,47 +791,7 @@ check(
+ )
+ 
+ 
+-# ---------------------------------------------------------------------------
+-# CONFIRMED REAL FAILURE this guards against -- not in this project's own
+-# output, but in a direct side-by-side comparison (2026-09-22): ChatGPT
+-# stated a specific, invented phone number ("ASLSA helpline: 6901281650")
+-# for a state the user never named, for a question that gave no location at
+-# all. This project's own generator is checked against exactly that failure
+-# class before anything reaches a real user.
+-# ---------------------------------------------------------------------------
+-_q = "My father was arrested last night, what should we do?"
+-_retrieved = "[BNSS Section 41A] Notice of appearance before arrest..."
+-check(_find_unverified_contact_numbers(
+-    "You should call the ASLSA helpline at 6901281650 for free legal help.", _q, _retrieved
+-) == ["6901281650"],
+-      "REPRODUCES THE CONFIRMED FAILURE CLASS: a helpline number never given by the user or the "
+-      "retrieved material is flagged")
+-check(_find_unverified_contact_numbers(
+-    "You can dial the national emergency number, 100, right away.", _q, _retrieved
+-) == [],
+-      "a short (<4-digit) number like the emergency line '100' is below the flag floor -- common "
+-      "knowledge, not the kind of specific fabricated contact detail this guards against")
+-check(_find_unverified_contact_numbers(
+-    "You should consult a lawyer or your nearest District Legal Services Authority.", _q, _retrieved
+-) == [],
+-      "ordinary advice with no phone number at all is never flagged")
+-check(_find_unverified_contact_numbers(
+-    "Section 302 is punishable with life imprisonment or up to 10 years.", _q, _retrieved
+-) == [],
+-      "ordinary legal numbers (punishment years, section numbers) with no contact-type keyword nearby "
+-      "never trip this -- it is keyword-gated, not a generic 'flag every number' check")
+-check(_find_unverified_contact_numbers(
+-    "You can contact the helpline at 6901281650.",
+-    "My father was arrested, please call 6901281650 for help", _retrieved,
+-) == [],
+-      "a number the USER themselves already provided in the question is never flagged -- it wasn't invented")
+-check(_find_unverified_contact_numbers(
+-    "You can call the helpline mentioned: 1930.",
+-    _q, "[Cybercrime helpline] Report financial fraud by calling 1930 immediately.",
+-) == [],
+-      "a number that genuinely appears in the retrieved material is never flagged")
+-check(_find_unverified_contact_numbers("", _q, _retrieved) == [],
+-      "empty response text is a no-op, never crashes")
++# (the phone-number check and its tests were removed on 2026-10-15 at the owner's instruction)
+ 
+ 
+ with patch("chat_assistant.client") as mock_client:
 diff --git a/test_cost_log.py b/test_cost_log.py
 new file mode 100644
 index 0000000..71985b4
@@ -4733,10 +4885,10 @@ index 0000000..32f373f
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_withheld_log.py b/test_withheld_log.py
 new file mode 100644
-index 0000000..e9a0b4e
+index 0000000..c48cba4
 --- /dev/null
 +++ b/test_withheld_log.py
-@@ -0,0 +1,84 @@
+@@ -0,0 +1,98 @@
 +"""test_withheld_log.py -- when a hard check still fails after the second try the answer is withheld AND the log says which check and on what (RECHECK ... detail=, ANSWER_WITHHELD ...).
 +Offline and free. Run: python -X utf8 test_withheld_log.py"""
 +import contextlib
@@ -4758,8 +4910,12 @@ index 0000000..e9a0b4e
 +TEXT = {"t": "Cheating is punished under Section 318(4) and arrest powers sit in Section 35."}
 +
 +
++CALLS = {"n": 0}
++
++
 +class _Msgs:
 +    def create(self, **kw):
++        CALLS["n"] += 1
 +        return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text=TEXT["t"])], stop_reason="end_turn", usage=None)
 +
 +
@@ -4769,25 +4925,35 @@ index 0000000..e9a0b4e
 +
 +
 +def run():
++    CALLS["n"] = 0
 +    buf = io.StringIO()
 +    with contextlib.redirect_stdout(buf):
 +        out = CA.generate_grounded_response("Can police arrest me for cheating?", "[BNS 318]\ncheating text\n[BNSS 35]\narrest text", matches=matches)
 +    return out, buf.getvalue()
 +
 +
-+# 1. the Act name is never written: after the second try the code adds it from the retrieved sections instead of withholding the answer
++# 1. the Act name is never written: since 2026-10-15 the code adds it from the retrieved sections on the FIRST pass, so there is no second paid call
 +out, log = run()
 +check(out is not None and "Section 318(4) of the BNS" in out and "Section 35 of the BNSS" in out, f"missing Act names are added by code ({out!r})")
-+check("RECHECK reasons=missing_act detail=" in log and '"missing_act": ["35", "318"]' in log and "ACT_NAME_ADDED_BY_CODE sections=35,318" in log, "and the log says which sections, before and after")
++check(CALLS["n"] == 1 and "RECHECK" not in log, f"one model call only, no recheck (calls={CALLS['n']})")
++check("ACT_NAME_ADDED_BY_CODE first_pass sections=35,318" in log, "and the log says which sections were repaired on the first pass")
 +check(not CA._find_sections_missing_act(out, CA._section_act_map(matches)), "the repaired answer passes the same check")
 +
-+# 2. a mention that already names another Code is not 'repaired' into something wrong: the answer is still withheld, with the reason in the log
++# 2. a mention that already names another Code is not 'repaired' into something wrong: the other section is still missing, the paid second try runs, and if it is still missing the answer is withheld with the reason in the log
 +TEXT["t"] = "Cheating is punished under Section 318(4) and arrest powers sit in Section 35 of the CrPC."
 +out, log = run()
-+check(out is None and "ANSWER_WITHHELD after the second try: reasons=missing_act detail=" in log, "a section number that names another Code right after it is not touched: withheld, and the log says why")
++check(out is None and CALLS["n"] == 2 and "RECHECK reasons=missing_act detail=" in log and "ANSWER_WITHHELD after the second try: reasons=missing_act detail=" in log,
++      f"a section number that names another Code right after it is not touched: second try, then withheld, and the log says why (calls={CALLS['n']})")
 +TEXT["t"] = "Cheating is punished under Section 318(4) of the BNS and arrest powers sit in Section 35 of the BNSS."
 +out, log = run()
-+check(out is not None and "RECHECK" not in log, "an answer that names its Acts is untouched and not rechecked")
++check(out is not None and "RECHECK" not in log and "ACT_NAME_ADDED_BY_CODE" not in log and CALLS["n"] == 1, "an answer that names its Acts is untouched and not rechecked")
++
++# 2b. the phone-number check was removed (owner, 2026-10-15): an answer that states a helpline is not rechecked
++TEXT["t"] = "Cheating is punished under Section 318(4) of the BNS and arrest powers sit in Section 35 of the BNSS. For help call the helpline 1800 123 4567."
++out, log = run()
++check(out is not None and "1800 123 4567" in out and "RECHECK" not in log and CALLS["n"] == 1, "no phone-number check any more: no recheck, one call")
++check(not hasattr(CA, "_find_unverified_contact_numbers") and not hasattr(CA, "_UNVERIFIED_CONTACT_RETRY_INSTRUCTION"), "and the function and its retry text are gone")
++TEXT["t"] = "Cheating is punished under Section 318(4) and arrest powers sit in Section 35."
 +
 +# 3. a pilot case that this question's wider search also supplied is not 'pilot overreach'
 +import sci_search_tier as T
