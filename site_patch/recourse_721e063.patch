@@ -259,7 +259,7 @@ index 0000000..4053b77
 +        logger.warning("case check failed: %s", type(exc).__name__)
 +        return {"status": "unavailable", "notes": ["The case check is not available right now."], "case": None, "evidence": None, "limit": LIMIT}
 diff --git a/chat_assistant.py b/chat_assistant.py
-index 789f8e7..613664a 100644
+index 789f8e7..76820e3 100644
 --- a/chat_assistant.py
 +++ b/chat_assistant.py
 @@ -3,6 +3,9 @@ import logging
@@ -1079,7 +1079,7 @@ index 789f8e7..613664a 100644
      return {
          "state": "single_match",
          "matches": matches,
-@@ -3203,14 +3618,140 @@ def _attach_cited_judgment_links(result):
+@@ -3203,14 +3618,146 @@ def _attach_cited_judgment_links(result):
      return result
  
  
@@ -1126,6 +1126,12 @@ index 789f8e7..613664a 100644
 +    except Exception:  # noqa: BLE001
 +        pass
 +    grounding_checks.reset_notes()
++    _sw_start = {}
++    try:                                      # the switches AS THEY WERE WHEN THE QUESTION STARTED (the question's own cost can move the budget state while it runs; the log used to show the end state)
++        import cost_log
++        _sw_start = {"effort": _answer_effort(), "budget": cost_log.budget_state()}
++    except Exception:  # noqa: BLE001
++        pass
 +    try:
 +        try:
 +            import cost_log
@@ -1155,8 +1161,8 @@ index 789f8e7..613664a 100644
 +        try:
 +            import cost_log
 +            cost_log.finish(style=answer_style.style(), audience=answer_style.effective_audience(),
-+                            switches={"effort": _answer_effort(), "scope_model": _scope_model(), "prompt_cache": _prompt_cache_mode(), "grounding": grounding_checks.mode(),
-+                                      "budget": cost_log.budget_state()})
++                            switches={"effort": _sw_start.get("effort", _answer_effort()), "scope_model": _scope_model(), "prompt_cache": _prompt_cache_mode(), "grounding": grounding_checks.mode(),
++                                      "budget": _sw_start.get("budget", cost_log.budget_state()), "budget_after": cost_log.budget_state()})
 +        except Exception:  # noqa: BLE001
 +            pass
 +        answer_style.set_audience(None)
@@ -1223,7 +1229,7 @@ index 789f8e7..613664a 100644
      except Exception:  # pragma: no cover -- _attach already fails open; belt and braces
          return result
  
-@@ -3265,6 +3806,7 @@ def extract_arrest_situation(conversation_text):
+@@ -3265,6 +3812,7 @@ def extract_arrest_situation(conversation_text):
              messages=[{"role": "user", "content":
                         ARREST_SITUATION_EXTRACTION_PROMPT.format(conversation=conversation_text[:4000])}],
          )
@@ -3984,10 +3990,10 @@ index 0000000..71985b4
 +sys.exit(1 if FAILURES else 0)
 diff --git a/test_cost_switches.py b/test_cost_switches.py
 new file mode 100644
-index 0000000..48aa90e
+index 0000000..b24c433
 --- /dev/null
 +++ b/test_cost_switches.py
-@@ -0,0 +1,178 @@
+@@ -0,0 +1,197 @@
 +"""test_cost_switches.py -- ANSWER_EFFORT, SCOPE_MODEL, PROMPT_CACHE and DAILY_BUDGET_INR. Every one defaults to today's behaviour. Offline and free. Run: python -X utf8 test_cost_switches.py"""
 +import contextlib
 +import io
@@ -4142,6 +4148,25 @@ index 0000000..48aa90e
 +with contextlib.redirect_stdout(buf):
 +    r = CA.answer_question("My trial has gone on nine years")
 +check(r == {"state": "budget_paused"} and "BUDGET_PAUSED" in buf.getvalue(), "at the hard limit answer_question returns 'budget_paused' without calling any model")
++# the cost line shows the switches as they were when the question STARTED (2026-10-15): a question that itself pushes the day over the limit still reads 'ok', then 'budget_after: hard'
++C._reset_day_for_tests()
++os.environ["DAILY_BUDGET_INR"] = "8"
++os.environ["ANSWER_EFFORT"] = "medium"
++CA._SWITCH_BROKEN["effort"] = False
++_orig_inner = CA._answer_question_inner
++def _spends(question, inline_domains=frozenset()):
++    C.add_spend_inr(9.0)
++    return {"state": "out_of_scope"}
++CA._answer_question_inner = _spends
++buf = io.StringIO()
++with contextlib.redirect_stdout(buf):
++    CA.answer_question("a question")
++CA._answer_question_inner = _orig_inner
++cq = [json.loads(l[len("COST_QUESTION "):]) for l in buf.getvalue().splitlines() if l.startswith("COST_QUESTION ")]
++check(cq and cq[-1]["switches"]["budget"] == "ok" and cq[-1]["switches"]["effort"] == "medium" and cq[-1]["switches"]["budget_after"] == "hard", f"switches are the state at the start; the end state is budget_after ({cq[-1]['switches'] if cq else None})")
++os.environ.pop("ANSWER_EFFORT")
++os.environ.pop("DAILY_BUDGET_INR")
++C._reset_day_for_tests()
 +# the day rolls over
 +C._DAY["date"] = "2000-01-01"
 +check(C.budget_state() == "ok" and C.spent_today_inr() == 0.0, "a new (Indian) day starts again from zero")
