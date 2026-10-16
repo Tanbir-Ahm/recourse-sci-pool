@@ -71,6 +71,10 @@ Replay of the 24-question situation exam (answers already saved, no model call, 
 
 Limits that stay: the model can still state an overruled rule without naming the case (S16 "Probably still usable", S20 "magistrate has no power"); the register only knows Supreme Court decisions overruled by the Supreme Court and list 1 ends about 2015; refused questions get no notes; level 3 only reads the question, not the answer. Not "good law" anywhere.
 
+## Notes on refusals (built 2026-10-16, Recourse `9ea94bb`)
+
+A question the site cannot answer (the topic bar, `no_match`, a technical failure, a "covered elsewhere" redirect that found no inline answer) used to say nothing about a register case the person named. Since 2026-10-16 the question alone is read by the same four levels and the note is shown under the refusal (page: "Currency notes (checked by code, not by the model)"; WhatsApp: one message just before the closing "consult a lawyer" line). There is no "not checked" sentence (there is no answer), and none for `unrelated` (not a legal question) or `budget_paused`. Why: situation exam run 3, 5 of the 12 questions that named an overruled case were refused with no word about it (S03, Bilal Ahmed Kaloo, a verified list-1 row, is the plainest). Code: `chat_assistant._attach_question_register_notes`; test: `test_refusal_notes.py`. Not measured: how often it shows in real use. Note: once `SCOPE_GATE=open` is set (FOLLOW_UPS 2ab) the topic bar no longer produces refusals, so this mostly covers `no_match` and technical failures; it stays as the backstop and for the day the gate is closed again.
+
 ## The cards overlay and the "not checked by us" wording (`goodlaw/overlay.py`, built 2026-10-12)
 
 For a case that is NOT on the register the site looks up the checker's card, computed ahead of time (`overlay_slim.json`, 76 entries, 34 KB: 46 quiet, 28 not checkable or too little text, 2 warnings = Mohan Lal 2018 and Mhetre 2011). Order on the site: register, then overlay, then the fixed sentence `NOT_CHECKED` ("Not checked by us: we have not checked whether this decision is still good law. Please ask a lawyer before relying on it.").

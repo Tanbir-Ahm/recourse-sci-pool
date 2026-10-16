@@ -33,6 +33,7 @@ Everything else is behind a variable and **off by default**, EXCEPT one: **`REGI
 | `ANCHORS` | `off` | verbatim excerpts for trial-delay questions |
 | `DAILY_BUDGET_INR`, `COST_STATE_FILE` | unset | daily spending limit; the file needs a Railway volume |
 | `SCOPE_MODEL`, `PROMPT_CACHE` | unset | leave unset for now |
+| `SCOPE_GATE` (added 2026-10-16) | `on` = the topic bar stays as today | `open` lifts the bar: special-law and civil questions are answered instead of turned away. Test it on staging first (DEPLOY_STAGING Part 4g). Needs `SCI_SEARCH_MODE=feed` to be useful for a topic the library does not cover |
 
 ## Before you start (about 10 minutes)
 
@@ -86,7 +87,7 @@ Only after a lawyer has read shadow logs (runbook Part 5). Add the search servic
 
 ## Instant switches
 
-`REGISTER_HOOKS=off` · `RESPONSE_STYLE=v1` · `ANSWER_EFFORT` deleted · `GROUNDING_CHECKS=log` · `ANCHORS=off` · `SCI_SEARCH_MODE=off` (and on the search service `SCI_SEARCH_ENABLED=0`).
+`REGISTER_HOOKS=off` · `RESPONSE_STYLE=v1` · `ANSWER_EFFORT` deleted · `GROUNDING_CHECKS=log` · `ANCHORS=off` · `SCOPE_GATE=on` (or deleted) · `SCI_SEARCH_MODE=off` (and on the search service `SCI_SEARCH_ENABLED=0`).
 Each is a variable change; Railway redeploys in about a minute. They do not undo the "no switch" parts above; for those the way back is the older deployment.
 
 ## What is still not true

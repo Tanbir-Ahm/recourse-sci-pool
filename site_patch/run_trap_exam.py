@@ -9,9 +9,12 @@ Writes, in --out-dir:
     answers_on_model.jsonl    the model's answer with locks (a) and (b) on, WITHOUT the notes added afterwards
     answers_on_shown.jsonl    what the page would show with all three locks: that answer plus the register/card notes and the 'not checked' sentence
     raw.jsonl                 per question and arm: state, answer, notes, seconds
-    reading_sheet.md          20 answers for a lawyer (every one the guard had to correct, then others, fixed seed), with the key
+    reading_sheet.md          up to 20 answers for a lawyer (every one the guard had to correct, then others, fixed seed), with the key; questions with no answer text in either arm are not shown, only listed at the end
 Then score each of the three answer files:  python sci_goodlaw.py register-exam score --answers FILE
 Honest reading of a result: a question the assistant refuses or answers from its own library (state other than single_match) says nothing about the register; the run prints how many that is.
+
+Since 2026-10-16 the assistant is called exactly as the website and the WhatsApp bot call it, with the four inline domains (cheque bounce, bank freeze, domestic violence, NDPS). Runs before that did not pass them, so
+every NDPS question showed as 'covered_elsewhere_in_tool' (a refusal) although the real site answers it; use --no-inline-domains only to reproduce those old runs.
 """
 import argparse
 import json
@@ -23,6 +26,16 @@ import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
+
+# What recourse_app.py and whatsapp_bot.py pass to chat_assistant.answer_question (keep in step with them).
+SITE_INLINE_DOMAINS = frozenset({"cheque_bounce", "freeze", "domestic_violence", "ndps"})
+
+
+def site_answer_fn(answer_question, inline_domains=SITE_INLINE_DOMAINS):
+    """`answer_question` called the way the website calls it: question in, the inline domains passed. With no inline domains it is returned unchanged."""
+    if not inline_domains:
+        return answer_question
+    return lambda question: answer_question(question, inline_domains=set(inline_domains))
 
 
 def load_questions(path):
@@ -39,15 +52,16 @@ def shown_text(result):
     return "\n\n".join(p for p in parts if p)
 
 
-def run(recourse, questions, arms, out_dir, sleep=0.0, answer_fn=None, log=print):
-    """Runs every question through each arm (interleaved: off then on for the same question). answer_fn is for tests; by default chat_assistant.answer_question from the Recourse checkout."""
+def run(recourse, questions, arms, out_dir, sleep=0.0, answer_fn=None, log=print, inline_domains=SITE_INLINE_DOMAINS):
+    """Runs every question through each arm (interleaved: off then on for the same question). answer_fn is for tests; by default chat_assistant.answer_question from the Recourse checkout, called the way the
+    website calls it (see site_answer_fn; inline_domains=() reproduces the runs made before 2026-10-16)."""
     os.makedirs(out_dir, exist_ok=True)
     os.environ.setdefault("ANSWER_CACHE_DB_PATH", os.path.join(tempfile.mkdtemp(prefix="trap_exam_cache_"), "answer_cache.db"))
     if answer_fn is None:
         sys.path.insert(0, os.path.abspath(recourse))
         os.chdir(os.path.abspath(recourse))
         import chat_assistant
-        answer_fn = chat_assistant.answer_question
+        answer_fn = site_answer_fn(chat_assistant.answer_question, inline_domains)
     raw = []
     prev = os.environ.get("REGISTER_HOOKS")
     try:
@@ -97,9 +111,16 @@ def state_summary(raw):
 
 
 def reading_sheet(raw, key, results_off, results_on, out_path, n=20, seed=11):
-    """20 answers for a lawyer: every on-arm answer the guard had to correct or could not recognise first, then answers that name the case, then the rest (fixed seed)."""
+    """Up to 20 answers for a lawyer: every on-arm answer the guard had to correct or could not recognise first, then answers that name the case, then the rest (fixed seed).
+    A question with no answer text in either arm (the site refused it, or withheld the answer) is not shown (run 3 had 10 such entries among its 20): it is listed at the end with its state."""
     by = {(r["id"], r["arm"]): r for r in raw}
-    ids = sorted(key)
+
+    def has_text(i):
+        return bool((by.get((i, "off"), {}).get("answer") or "").strip() or (by.get((i, "on"), {}).get("shown") or "").strip())
+
+    ran = lambda i: (i, "off") in by or (i, "on") in by
+    ids = sorted(i for i in key if not (ran(i) and not has_text(i)))
+    no_text = sorted(i for i in key if ran(i) and not has_text(i))
     first = [i for i in ids if results_on.get(i) in ("guard_note", "unmatched", "named_no_warning") or results_off.get(i) in ("guard_note", "unmatched", "named_no_warning")]
     second = [i for i in ids if i not in first and "not_cited" not in (results_off.get(i), results_on.get(i)) and results_off.get(i) and (i, "on") in by]
     rest = [i for i in ids if i not in first and i not in second]
@@ -107,7 +128,7 @@ def reading_sheet(raw, key, results_off, results_on, out_path, n=20, seed=11):
     rnd.shuffle(second)
     rnd.shuffle(rest)
     pick = (first + second + rest)[:n]
-    lines = ["# Trap exam: 20 answers for the reading lawyer", "",
+    lines = [f"# Trap exam: {len(pick)} answers for the reading lawyer", "",
              "For each: was the old decision stated as current authority anywhere, and did the page (right column) say it was overruled? Mark OK / PROBLEM and note why.", ""]
     for i in pick:
         k = key[i]
@@ -116,6 +137,9 @@ def reading_sheet(raw, key, results_off, results_on, out_path, n=20, seed=11):
                   "### Without the locks", by.get((i, "off"), {}).get("answer", "(not run)") or "(no answer text)", "",
                   "### With the locks, as the page would show it", by.get((i, "on"), {}).get("shown", "(not run)") or "(no answer text)", "",
                   "Reader's mark: ____   Note: ____", ""]
+    if no_text:
+        lines += ["## Not shown: no answer text in either arm", "", "The site refused these or withheld the answer, so there is nothing to read: " + ", ".join(
+            f"{i} ({by.get((i, 'on'), by.get((i, 'off'), {})).get('state')})" for i in no_text) + ".", ""]
     open(out_path, "w", encoding="utf-8").write("\n".join(lines))
     return pick
 
@@ -131,6 +155,7 @@ def main(argv=None):
     ap.add_argument("--arms", default="off,on")
     ap.add_argument("--limit", type=int, default=0, help="only the first N questions (try 3 first)")
     ap.add_argument("--sleep", type=float, default=0.0)
+    ap.add_argument("--no-inline-domains", action="store_true", help="call the assistant without the four inline domains, as the runs before 2026-10-16 did (NDPS etc. then show as refusals)")
     a = ap.parse_args(argv)
     base = {"criminal": os.path.join(ROOT, "register_exam", "criminal"), "situation": os.path.join(ROOT, "register_exam", "situation")}.get(a.exam, os.path.join(ROOT, "register_exam"))
     a.questions = a.questions or os.path.join(base, "questions.jsonl")
@@ -141,7 +166,7 @@ def main(argv=None):
     arms = [x.strip() for x in a.arms.split(",") if x.strip()]
     out_dir = os.path.abspath(a.out_dir)
     key_path = os.path.abspath(a.key)
-    raw = run(a.recourse, qs, arms, out_dir, a.sleep)
+    raw = run(a.recourse, qs, arms, out_dir, a.sleep, inline_domains=() if a.no_inline_domains else SITE_INLINE_DOMAINS)
     qtext = {q["id"]: q["question"] for q in qs}
     for r in raw:
         r["question"] = qtext[r["id"]]
