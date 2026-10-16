@@ -114,7 +114,7 @@ Recourse branch `register-hooks-and-overlay`. Redeploy `staging-site` from the b
 **Test it on `staging-site` first (YOU):**
 1. Set `SCOPE_GATE` = `open` on `staging-site` (and keep `SCI_SEARCH_MODE=feed` there). Wait for the redeploy.
 2. Ask the TADA question and the corruption-trial-stay question (they are S03 and S23 in the situation exam). Look for: an answer instead of "Recourse can't help with this one"; the grey notice above the answer; the Deploy Logs line `SCOPE_OPEN` with `"state": "single_match"`; and, in feed mode, the box of wider-search passages under the answer.
-3. Optional, on your PC (about Rs 150): `$env:SCOPE_GATE="open"`, then the situation exam as before into `exam_run_4` (with search on, if you set `SCI_SEARCH_MODE=feed`, `SCI_SEARCH_URL` and `SCI_SEARCH_TOKEN` there). The runner now calls the assistant like the website does.
+3. Optional, on your PC (about Rs 150): `$env:SCOPE_GATE="open"`, then the situation exam as before into `exam_run_4`. The runner now calls the assistant like the website does. [Certain] On your PC the search is off (the search service's Railway address is internal and cannot be reached from outside), so most opened questions will end as "Not enough to go on yet" or as a thin library answer: that run tells you little about the live site. The staging site (search on) is the real test.
 4. Only if the answers look acceptable to you and, better, to Mr. Advocate: set `SCOPE_GATE=open` on the production website service. To undo: set it to `on` or delete it (about a minute).
 Watch the first day's cost: opened questions are about ten times dearer than the refusals they replace; the daily budget (`DAILY_BUDGET_INR`) still applies.
 
