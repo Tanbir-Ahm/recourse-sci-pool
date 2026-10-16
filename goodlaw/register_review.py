@@ -130,21 +130,34 @@ def build_queue(reg, flags_doc, proposals_doc, today, proposal_limit=20, match_l
         rv = r.get("review") or {}
         chain = reg.chain(r)
         base = {"item_id": r["id"], "case": f"{r['overruled']['name']} ({r['overruled'].get('year')})", "later_case": f"{r['overruling']['name']} ({r['overruling'].get('year')})"}
+        listing_due = r["source"] == "list1" and any(f in r["flags"] for f in ("list_mutual_pair", "list_no_overruling_decision", "year_order_check")) and not rv.get("listing_ok")
+
+        def _listing_item():
+            why = {"list_mutual_pair": "the list also records the reverse (each case overruled by the other)", "list_no_overruling_decision": "the list names no overruling decision",
+                   "year_order_check": "the overruling decision's years are earlier than the overruled decision's"}
+            ev = "; ".join(why[f] for f in r["flags"] if f in why)
+            if "year_order_check" in r["flags"]:                    # 2026-10-16: such a row is not worded on the site until a person confirms it (register.held); say so, and whether the reverse entry exists
+                mirror = [s["id"] for s in reg.rows if s is not r and reg._same_decision(r["overruling"], s["overruled"]) and reg._same_decision(r["overruled"], s["overruling"])]
+                ev += (". The site does not word this row until you confirm it. "
+                       + (f"The reverse entry (the later decision overruling the earlier) is already in the register as {', '.join(mirror)}." if mirror
+                          else "The reverse entry (the later decision overruling the earlier) is not in the register: if the list has the two the wrong way round, use 'change'."))
+            return {**base, "kind": "listing", "evidence": ev,
+                    "ask": "Is the entry right as listed? (confirm = yes, give new_treatment 'overruled' or 'reversed_on_appeal'; change = give the correct treatment or overruling case; keep)"}
+
         if r["trust"] == "candidate":
             extra = f" | the overruling decision was itself later: {'; '.join(reg.phrase(c) for c in chain)}" if chain else ""
             items.append({**base, "kind": "candidate", "evidence": f"{r['treatment']}: {r.get('court_words') or ''} | scope: {r.get('scope') or ''} | checked by Claude ({r['evidence'].get('basis')}){extra}",
                           "ask": "Confirm, change the treatment, reject, or keep (the answer says 'reported, not yet confirmed' until you confirm)."})
+        elif listing_due and R.held(r):                             # a held row: the real question (is the entry right?) comes before any chain question
+            items.append(_listing_item())
         elif chain and not rv.get("chain_ok"):
             nxt = "; ".join(f"{reg.phrase(c)} [{c['id']}]" for c in chain)
             items.append({**base, "kind": "chain", "evidence": f"The overruling decision was itself later: {nxt}",
                           "ask": "Does the recorded status of the earlier decision still stand? (confirm = it stands; change = give the new treatment; keep = decide next week)"})
         elif r["trust"] == "unchecked":
             items.append({**base, "kind": "unchecked", "evidence": "named by the outside list; the later judgment is not in our text", "ask": "Confirm from the judgment, reject, or keep."})
-        elif r["source"] == "list1" and any(f in r["flags"] for f in ("list_mutual_pair", "list_no_overruling_decision", "year_order_check")) and not rv.get("listing_ok"):
-            why = {"list_mutual_pair": "the list also records the reverse (each case overruled by the other)", "list_no_overruling_decision": "the list names no overruling decision",
-                   "year_order_check": "the overruling decision's years are earlier than the overruled decision's"}
-            items.append({**base, "kind": "listing", "evidence": "; ".join(why[f] for f in r["flags"] if f in why),
-                          "ask": "Is the entry right as listed? (confirm = yes, give new_treatment 'overruled' or 'reversed_on_appeal'; change = give the correct treatment or overruling case; keep)"})
+        elif listing_due:
+            items.append(_listing_item())
         elif "needs_citation_or_year" in r["flags"] and r["source"] == "list1":
             if n_match < match_limit:
                 n_match += 1
