@@ -33,7 +33,7 @@ Everything else is behind a variable and **off by default**, EXCEPT one: **`REGI
 | `ANCHORS` | `off` | verbatim excerpts for trial-delay questions |
 | `DAILY_BUDGET_INR`, `COST_STATE_FILE` | unset | daily spending limit; the file needs a Railway volume |
 | `SCOPE_MODEL`, `PROMPT_CACHE` | unset | leave unset for now |
-| `SCOPE_GATE` (added 2026-10-16) | `on` = the topic bar stays as today | `open` lifts the bar: special-law and civil questions are answered instead of turned away. Test it on staging first (DEPLOY_STAGING Part 4g). Needs `SCI_SEARCH_MODE=feed` to be useful for a topic the library does not cover |
+| `SCOPE_GATE` (added 2026-10-16) | `on` = the topic bar stays as today | `open` lifts the bar: special-law and civil questions are answered instead of turned away. Test it on staging first (DEPLOY_STAGING Part 4g). Needs `SCI_SEARCH_MODE=feed` to be useful for a topic the library does not cover. The code has been on Recourse `main` since the owner merged PR #2 (`74d13ce`, 2026-10-16); the variable is unset on production until the owner sets it |
 
 ## Before you start (about 10 minutes)
 
