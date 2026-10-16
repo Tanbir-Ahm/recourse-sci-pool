@@ -1,0 +1,14 @@
+Production check after the owner merged Recourse PR #2 into main (74d13ce), 2026-10-16.
+Site: recourse.co.in (production website service). SCOPE_GATE not set (the topic bar is closed). Output pasted by the owner into the session, verbatim.
+
+Question asked (Q2 of the staging test):
+My brother was convicted of sedition by a TADA Designated Court and given life imprisonment. His lawyer is relying on Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) for the appeal. How does that help him?
+
+Page text:
+Recourse can't help with this one
+This looks like a real legal question, but it is outside what Recourse checks — it covers police arrests, FIRs, criminal procedure and bail under the BNS and BNSS.
+TADA (Terrorist and Disruptive Activities Prevention Act) is a specialized counter-terrorism statute outside BNS/BNSS scope; sedition convictions and appeals in TADA courts are not covered by this chat feature's BNS/BNSS arrest and police procedure focus.
+For this kind of question, speak with a lawyer who handles that area of law.
+
+Currency notes (checked by code, not by the model)
+Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999).
