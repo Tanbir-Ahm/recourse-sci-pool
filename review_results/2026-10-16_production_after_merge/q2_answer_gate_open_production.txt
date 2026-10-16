@@ -1,0 +1,63 @@
+Production, after the owner set SCOPE_GATE=open (same day as the merge of Recourse PR #2, 74d13ce), 2026-10-16.
+Site: recourse.co.in; SCI_SEARCH_MODE=feed (owner's setting of 2026-10-16). Pasted by the owner into the session, verbatim.
+The owner wrote "sending the answer and the SCOPE_OPEN line now"; only the answer arrived (no SCOPE_OPEN line, no COST_QUESTION line, no view of the "Read the source" box contents).
+
+Question asked (Q2 of the staging test):
+My brother was convicted of sedition by a TADA Designated Court and given life imprisonment. His lawyer is relying on Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) for the appeal. How does that help him?
+
+Page text as pasted:
+
+our situation
+This question is about an area Recourse has not checked in depth (Recourse is built around police arrests, FIRs, criminal procedure and bail). What follows rests only on what we could find; please confirm it with a lawyer who handles this area before you rely on it.
+Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999), so the lawyer relying on it as the main plank for the appeal is working with a case that no longer states current law on the point it decided.
+What the case actually said, and its status
+In Bilal Ahmed Kaloo, the accused had been acquitted of the special terrorism-law offences but convicted of offences including the sedition-type offence, and the Court held, on an evidence point about confessions, that a confession could not be relied on for the other convictions once the accused was acquitted of the special-law offence. That reasoning was later rejected: in Nalini and Others (1999), the Supreme Court overruled this position, so it cannot be cited today as settled law on when such a confession is admissible.
+This matters directly for your brother's appeal because if his conviction rests partly on evidence admitted using the logic from Bilal Ahmed Kaloo, that logic is no longer good law. A court hearing the appeal would look instead at what Nalini and later cases say about admissibility, not at the overruled position.
+How this cuts for and against you
+For you:
+
+* If there is a genuinely separate, strong ground of appeal (insufficient evidence on the sedition charge itself, procedural defects, or a weak link between the accused and the offence), those grounds stand independent of this case.
+* Appellate courts do examine convictions by a Designated Court afresh on both facts and law.
+
+Against you:
+
+* If the appeal's central argument depends on the overruled reasoning in Bilal Ahmed Kaloo, that argument is weakened and may fail.
+* Relying on an overruled case can distract from stronger, separate grounds that might exist.
+
+What I can't tell from here: what the actual evidence against your brother was, whether a confession was used against him, and what other grounds the lawyer has raised.
+What you can do right now
+
+1. Ask the lawyer directly what the appeal's grounds are apart from Bilal Ahmed Kaloo, since that case is reported to have been overruled on the specific point it is being used for.
+2. Ask for a copy of the trial court's judgment under Section 404(2) of the BNSS, if not already obtained, to see exactly what evidence the conviction relies on.
+3. Raise with the lawyer whether an appeal lies to the Supreme Court given the life sentence, under Section 420 of the BNSS, and confirm the correct forum and timeline.
+4. Keep a written note of every ground discussed with the lawyer, so you can track whether the overruled case is still being used as the core argument.
+
+Read the source — the sections and judgments this rests on
+Currency notes (checked by code, not by the model)
+Cases named in this answer that we have not checked: SIT v. Nalini and Others. Please ask a lawyer before relying on any of them.
+Supreme Court passages from a wider search that this answer also read (not independently verified)
+These passages came from a search of a much wider judgment database. Nobody at Recourse has read and confirmed them, and this search does not say whether a decision is still good law. Read the real judgment yourself, or with a lawyer, before relying on it.
+
+* State of Tamil Nadu Through Superintendent of Police,Cbi/Sit v. Nalini and 25 Others (https://api.sci.gov.in/jonew/judis/16829.pdf) (1999-05-11)
+
+This passage names a case on our register: Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999).
+Natrajan said that evidence in the present case does not show if any offence under Section 3 or 4 of TADA has been made out and when there is no offence under TADA, provisions of Section 15 of TADA would not apply and all the confessions would become inadmissible in evidence as all these were made before a Police Officer. In support of his submissions, he referred to a decision of this Court in Bilal Ahmed Kaloo vs. State of Andhra Pradesh [(1997) 7 SCC 431]. ...
+
+* T. SUTHENTHIRARAJA,P. Ravichandran,Robert Payas & Others v. State by D.S.P., CBI, Sit, Chennai (https://api.sci.gov.in/jonew/judis/16830.pdf) (1999-05-11)
+
+This passage names a case on our register: Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999).
+(same passage text as the first entry)
+
+* S. Shanmugadivelu, S. Nalini & Others v. State by D.S.P., CBI, Sit, Chennai (https://api.sci.gov.in/jonew/judis/16831.pdf) (1999-05-11)
+
+This passage names a case on our register: Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999).
+(same passage text as the first entry)
+
+* Prakash Kumar @ Prakash Bhutto v. State of Gujarat (https://api.sci.gov.in/jonew/judis/26713.pdf) (2005-01-12)
+
+This passage names a case on our register: Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999).
+If there is any doubt or ambiguity in the statutes, the rule of purposive construction should be taken recourse to, to achieve the objectives. (See Swedish Match AB & Anr. vs. Securities & Exchange Board, India & Anr. (2004) 7 Scale 158 para 84 at p. 176) Before we proceed further, we may at this stage, notice a few decisions of this Court on the subject. In the case of Bilal Ahmed Kaloo Vs. State of A.P. (1997) 7 SCC 431 the two-Judge Bench of this Court held in paragraph 5 ( SCC p.434 ) as under:- "5. ...
+
+* Manjit Singh @ Mange v. CBI, through its S.P (https://api.sci.gov.in/jonew/judis/37399.pdf) (2011-01-25)
+
+Sub-section (2) thereof empowers the Designated Court to convict the accused, in such a trial, of any offence 'under any other law' if it is found by such Designated Court in such trial that the accused is found guilty of such offence. If the accused is acquitted of the offences under TADA in such a trial, but convicted of the offence under any other law, it does not mean that there was only a trial for such other offence under any other law. 81. ...
