@@ -19,7 +19,7 @@ It changes 29 files outside the register bundle (about +4,650 / -160 lines) and 
 5. **Cut-off answers**: a reply that runs out of tokens is asked for once more with a bigger budget, and if still cut it is closed at the last full sentence with a note (v1 keeps its 4,000-token budget).
 6. **Small code changes** in `semantic_retrieval.py` (cost logging of the embedding call), `whatsapp_bot.py` and `whatsapp_formatter.py` (a "Daily limit reached" message and the v3 hand-over; both inert unless the switches are on).
 
-Everything else is behind a variable and **off by default**, EXCEPT one: **`REGISTER_HOOKS` defaults to ON when unset** (`register_hooks.py`). That is why step 1 below comes first.
+Everything else is behind a variable and **off by default**, EXCEPT two: **`REGISTER_HOOKS` defaults to ON when unset** (`register_hooks.py`; that is why step 1 below comes first), and **`ACT_DIRECTORY` defaults to ON when unset** (added 2026-10-16, branch only until the owner merges): once that code is on `main`, a question that names one of its 30 Acts (or uses a listed phrase) gets one fixed notice saying Recourse does not hold that Act's text, and a short block in the prompt; no model call is added. Set `ACT_DIRECTORY=off` before the merge if you want no change on day one. **`ACT_SHELF` is OFF by default:** its code and about 6 MB of data are deployed and idle until the variable is `on`.
 
 ## The variables (names exactly as written)
 
@@ -34,6 +34,7 @@ Everything else is behind a variable and **off by default**, EXCEPT one: **`REGI
 | `DAILY_BUDGET_INR`, `COST_STATE_FILE` | unset | daily spending limit; the file needs a Railway volume |
 | `SCOPE_MODEL`, `PROMPT_CACHE` | unset | leave unset for now |
 | `SCOPE_GATE` (added 2026-10-16) | `on` = the topic bar stays as today | `open` lifts the bar: special-law and civil questions are answered instead of turned away. Test it on staging first (DEPLOY_STAGING Part 4g). Needs `SCI_SEARCH_MODE=feed` to be useful for a topic the library does not cover. The code has been on Recourse `main` since the owner merged PR #2 (`74d13ce`, 2026-10-16); the variable is unset on production until the owner sets it |
+| `ACT_SHELF` (added 2026-10-16, Recourse branch only until the owner merges; `act_shelf/` is about 6 MB and must be deployed with the code) | unset = `off`: nothing changes | `on`: when a question names one of five Acts (PC Act, POCSO, UAPA, PMLA, SC/ST Act) or uses a listed phrase, the answer model is given that Act's sections as loaded from India Code (checked by machine against India Code's PDF; no person has read them) and the notice says so. Needs `ACT_DIRECTORY` not `off`. Test on staging first (DEPLOY_STAGING Part 4i); put it on production only after a lawyer has read staging answers. Not tested with the answer model |
 | `ACT_DIRECTORY` (added 2026-10-16, branch only until the owner merges) | unset = on: one fixed notice when a question names, or clearly describes, an Act whose text Recourse does not hold | `off` = no notice, no prompt line; `names` = name matches only. Test on staging first (DEPLOY_STAGING Part 4h). Status and appeal lines stay hidden until Mr. Advocate confirms them |
 
 ## Before you start (about 10 minutes)
@@ -88,7 +89,7 @@ Only after a lawyer has read shadow logs (runbook Part 5). Add the search servic
 
 ## Instant switches
 
-`REGISTER_HOOKS=off` · `RESPONSE_STYLE=v1` · `ANSWER_EFFORT` deleted · `GROUNDING_CHECKS=log` · `ANCHORS=off` · `SCOPE_GATE=on` (or deleted) · `SCI_SEARCH_MODE=off` (and on the search service `SCI_SEARCH_ENABLED=0`).
+`REGISTER_HOOKS=off` · `RESPONSE_STYLE=v1` · `ANSWER_EFFORT` deleted · `GROUNDING_CHECKS=log` · `ANCHORS=off` · `SCOPE_GATE=on` (or deleted) · `ACT_SHELF` deleted (or `off`) · `ACT_DIRECTORY=off` (turns the Act notice and the shelf off together) · `SCI_SEARCH_MODE=off` (and on the search service `SCI_SEARCH_ENABLED=0`).
 Each is a variable change; Railway redeploys in about a minute. They do not undo the "no switch" parts above; for those the way back is the older deployment.
 
 ## What is still not true
