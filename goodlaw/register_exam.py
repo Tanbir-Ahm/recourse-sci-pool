@@ -12,7 +12,9 @@ Pass mark (agreed in the plan): zero answers that state an overruled decision as
     guard_note     the answer names the case without saying so and the guard's note would be added: the guard caught it
     unmatched      the answer names the case (its first party and 'v.') but the register cannot recognise the mention: a gap in the matching, to be read by a person
     not_cited      the answer does not name the case at all: nothing was stated as authority
-A run PASSES when `unmatched` is 0 and, for the run with the locks, `guard_note` answers were given their note.
+    refused        the answer text is empty (the site refused the question or a check withheld the answer): says nothing about the register
+    named_no_warning  the QUESTION named the case (situation exam, variant 'named') but the answer never names it and the page added nothing: the person's own case was not checked (fails the run)
+A run PASSES when `unmatched` and `named_no_warning` are 0 and, for the run with the locks, `guard_note` answers were given their note.
 """
 import json
 import os
@@ -156,13 +158,19 @@ def _names_case(reg, row, answer):
 
 
 def score(reg, answers, key):
-    """answers: {id: text}. Returns (table, per-answer results)."""
+    """answers: {id: text}. Returns (table, per-answer results).
+    2026-10-16: an empty answer (the site refused, or a check withheld the answer) is 'refused': it says nothing about the register and is no longer counted as 'not_cited'. A question that NAMES the
+    case (key variant 'named') and gets an answer that neither names it, says it was overruled nor carries a register note is 'named_no_warning' and fails the run: the user's own case was never
+    checked. (Judge this on the 'shown' file; the model-only files have no page notes by design.)"""
     res = {}
     for qid, k in key.items():
         row = reg.by_id[k["row_id"]]
         ans = answers.get(qid)
         if ans is None:
             res[qid] = "no_answer"
+            continue
+        if not str(ans).strip():
+            res[qid] = "refused"
             continue
         g = G.guard_answer(reg, ans)
         mine = [f for f in g["findings"] if f["row_id"] == row["id"] or row["id"] in [x["id"] for x in reg.same_decision_rows(row)] and f["row_id"] in [x["id"] for x in reg.same_decision_rows(row)]]
@@ -171,11 +179,11 @@ def score(reg, answers, key):
         elif _names_case(reg, row, ans):
             res[qid] = "unmatched"
         else:
-            res[qid] = "not_cited"
+            res[qid] = "named_no_warning" if k.get("variant") == "named" else "not_cited"
     table = {}
     for v in res.values():
         table[v] = table.get(v, 0) + 1
-    table["passes"] = table.get("unmatched", 0) == 0 and table.get("no_answer", 0) == 0
+    table["passes"] = table.get("unmatched", 0) == 0 and table.get("no_answer", 0) == 0 and table.get("named_no_warning", 0) == 0
     return table, res
 
 

@@ -34,7 +34,7 @@ Built 2026-10-07 on the owner's instruction. Code: `goodlaw/register.py` (facts,
 
 1. **A reported citation on the row** (SCC, SCR, AIR, JT, SCALE, INSC; High Court AIR). An SCR page without a volume ("1966 SCR 209") matches the same page; two different volumes' page 332 do not match each other.
 2. **Both party names, in the row's order, and a year within one of the row's years** (reporter year and decision year differ by one). Dotted initials ("A.D.M.", "K.L."), "U.P." / "Uttar Pradesh" and alternative spellings (stored on the row) are read the same.
-3. Both names without a year is a **weak** match: listed for a person, never worded as a fact. A first party alone ("Mohan Lal") is ignored. A name pair made only of common words ("Sekar v. State") is found by citation only.
+3. Both names without a year is a **weak** match: listed for a person, and (since 2026-10-16) worded as a hedged "Possible match" note, never as a fact. A first party alone ("Mohan Lal") is ignored in an answer; in a case-style mention in the QUESTION it brings a list (see "The four levels" below). A name pair made only of common words ("Sekar v. State") is found by citation only.
 
 Measured on the real register: 1,655 of 1,765 rows are recognised strongly (1,615 by name and year, 40 by citation only); 68 weakly and 42 not at all - those 110 carry the flag `needs_citation_or_year` and come up in the weekly review (the list gives them no citation or year). Scanning the title and year of every judgment in the collection (45,186) gives 477 strong hits on 459 rows and no collision (the nine low-similarity ones are the same cases under another spelling). The 76 library cases give 2 hits, **Mohan Lal and Mhetre**, the two the checker also flags; both are candidate rows. The 103 Vaquill judgments give 1 weak hit (Sunita Devi v. State of Bihar, 2024, against the 2005 Sunita Devi of list 2): a different case, and it was not worded.
 
@@ -51,6 +51,25 @@ When the overruling decision B is itself the overruled decision of another row, 
 | c | after it wrote | `guard_answer(reg, answer)` | scans the finished answer, including cases the model recalled from memory; for every register case that appears without a word of overruling next to it, returns a standard note and a badge flag; weak matches are listed for review. It needs no cooperation from the model |
 
 A word of overruling counts as the answer saying it only when it belongs to the mention: after it in the same sentence, at the start of a next sentence that refers back ("It was later overruled"), or directly before it ("In overruling X"). "X was overruled by Y" acknowledges X, not Y; a neighbouring case's overruling does not count. The Recourse site is read-only for this project, so nothing here is connected to it: the patch for its owner is `REGISTER_SITE_PATCH.md`, and `python sci_goodlaw.py register-export-site --out DIR` writes the dependency-free bundle (three modules and a 789 KB slim register).
+
+## The four levels (built 2026-10-16, Recourse `cbf7c8e` on branch `register-hooks-and-overlay`)
+
+Why: the situation exam of 2026-10-16 showed the register missed a case the user named when the answer then left out the year. Matching now has four levels, and the QUESTION is read as well as the answer (code: `goodlaw/register.py` `first_party_hits`, `possible_clause`, `list_clause`; `goodlaw/register_guard.py` `extra_notes`, `question_prompt_lines`; `goodlaw/overlay.py` `audit_answer(..., question=...)`; site side `register_hooks.answer_notes(..., question=)` and `question_block`).
+
+| Level | What the text gives | What the page shows |
+|---|---|---|
+| 1 | a citation, or full name plus a year (within one) | the firm note (verified or reviewer-confirmed row) or "reported ... not yet confirmed by our reviewer" (candidate row). Read from the question as well as the answer. |
+| 2 | both full party names, no year | "Possible match" note, hedged, never states the case is overruled. From the question or the answer. |
+| 3 | first party only, in a case-style mention ("Mohan Lal v. ...", "the Mohan Lal case") in the QUESTION | a list of the register's decisions that share that first party: overruled first, "reversed on appeal" last, 10 shown and "and N more" (cap kept because a few first parties are long lists). Needs at least two distinctive first-party words; a first party made only of common words gives nothing; skipped when the mention already matched a full name pair or when the word after "v." is another case name. |
+| 4 | a bare name or a common-word first party ("Sekar", "State") | nothing |
+
+The prompt gets a `REGISTER` block for the question (REGISTER FACT / NOTE for level 1, REGISTER POSSIBLE MATCH for a single weak decision) so the model states the treatment in its opening paragraph itself and names the overruling case only as the overruler. A note is not added when the answer already says it (`_answer_says`); notes are deduplicated by decision group. Only answer states get notes; refusals (out of scope) get none.
+
+Measured on the 10,386 non-register judgments in our collection (a judgment's own case name, run as if a user had typed it): level 2 would fire on 74 (0.71 per cent; for example "Raghbir Singh v. State of Haryana", "Joginder Singh v. State of Punjab"), level 3 would show a list on 272 (2.62 per cent; list sizes 1: 183, 2: 79, 3 to 5: 10; largest 5). These are false alarms in the sense that the user's case is a different case with the same first party; the wording says "possible" / "share the first party" and names the register's cases, it never says the user's case is overruled.
+
+Replay of the 24-question situation exam (answers already saved, no model call, restricted to the 6 questions that reached an answer and named a register case): before, 2 of 6 got a page note; after, 6 of 6. This does not include the effect of the new prompt block on the model; only a re-run shows that.
+
+Limits that stay: the model can still state an overruled rule without naming the case (S16 "Probably still usable", S20 "magistrate has no power"); the register only knows Supreme Court decisions overruled by the Supreme Court and list 1 ends about 2015; refused questions get no notes; level 3 only reads the question, not the answer. Not "good law" anywhere.
 
 ## The cards overlay and the "not checked by us" wording (`goodlaw/overlay.py`, built 2026-10-12)
 

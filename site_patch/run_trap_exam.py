@@ -33,6 +33,7 @@ def shown_text(result):
     """The answer plus what the page adds under it (the register notes and the 'not checked' sentence)."""
     parts = [result.get("response_text") or ""]
     parts += list(result.get("register_notes") or [])
+    parts += list(result.get("register_possible") or [])
     if result.get("register_not_checked"):
         parts.append(result["register_not_checked"])
     return "\n\n".join(p for p in parts if p)
@@ -60,7 +61,7 @@ def run(recourse, questions, arms, out_dir, sleep=0.0, answer_fn=None, log=print
                 except Exception as exc:  # one failed question must not lose the run
                     res, err = {"state": "error"}, f"{type(exc).__name__}: {exc}"
                 raw.append({"id": q["id"], "arm": arm, "state": res.get("state"), "error": err, "seconds": round(time.time() - t0, 1),
-                            "answer": res.get("response_text") or "", "register_notes": res.get("register_notes") or [], "register_not_checked": res.get("register_not_checked"),
+                            "answer": res.get("response_text") or "", "register_notes": res.get("register_notes") or [], "register_possible": res.get("register_possible") or [], "register_not_checked": res.get("register_not_checked"),
                             "shown": shown_text(res)})
                 log(f'{q["id"]} {arm}: {res.get("state")} ({raw[-1]["seconds"]}s){" ERROR " + err if err else ""}')
                 if sleep:
@@ -99,7 +100,7 @@ def reading_sheet(raw, key, results_off, results_on, out_path, n=20, seed=11):
     """20 answers for a lawyer: every on-arm answer the guard had to correct or could not recognise first, then answers that name the case, then the rest (fixed seed)."""
     by = {(r["id"], r["arm"]): r for r in raw}
     ids = sorted(key)
-    first = [i for i in ids if results_on.get(i) in ("guard_note", "unmatched") or results_off.get(i) in ("guard_note", "unmatched")]
+    first = [i for i in ids if results_on.get(i) in ("guard_note", "unmatched", "named_no_warning") or results_off.get(i) in ("guard_note", "unmatched", "named_no_warning")]
     second = [i for i in ids if i not in first and "not_cited" not in (results_off.get(i), results_on.get(i)) and results_off.get(i) and (i, "on") in by]
     rest = [i for i in ids if i not in first and i not in second]
     rnd = random.Random(seed)

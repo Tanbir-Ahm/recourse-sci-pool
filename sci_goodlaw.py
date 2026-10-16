@@ -308,7 +308,7 @@ def run_register(a):
         table, res = EX.score(reg, EX.read_answers(a.answers), key)
         print(json.dumps(table))
         for qid, v in sorted(res.items()):
-            if v in ("unmatched", "guard_note", "no_answer"):
+            if v in ("unmatched", "guard_note", "no_answer", "named_no_warning"):
                 print(f"  {qid} {v}: {key[qid]['case']}")
         return 0 if table["passes"] else 1
     if a.cmd == "register-export-site":
