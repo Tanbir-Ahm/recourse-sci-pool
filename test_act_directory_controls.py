@@ -1,8 +1,8 @@
 """
 test_act_directory_controls.py -- the Act Directory (site_patch/act_directory.py, a copy of Recourse's) run over every question this repository holds: the situation exam, the criminal and trap exams,
-the owner's 30 real questions, the question writer's N01-N30, the ruler questions and every pool run (193 distinct questions on 2026-10-17). Precision first: no match is better than a wrong one.
+the owner's 30 real questions, the question writer's N01-N30, the ruler questions and every pool run (193 distinct questions on 2026-10-16). Precision first: no match is better than a wrong one.
 
-What it asserts: every question that draws a notice is in GOLDEN below (each was read by Claude on 2026-10-17 and is right: the question names or clearly describes that Act), and every GOLDEN entry is still
+What it asserts: every question that draws a notice is in GOLDEN below (each was read by Claude on 2026-10-16 and is right: the question names or clearly describes that Act), and every GOLDEN entry is still
 found. A NEW question that draws a notice fails this test until someone reads it and adds it to GOLDEN, which is the point: a wrong notice is noise. It also prints the recall on the six situation questions
 that are about Acts the library does not hold (S01, S02, S23, S24 corruption; S03, S04 TADA). Run: python -X utf8 test_act_directory_controls.py
 """

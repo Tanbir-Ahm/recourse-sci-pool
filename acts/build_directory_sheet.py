@@ -52,6 +52,26 @@ def _cell(cell, text, size=8, bold=False):
     return p
 
 
+def _read_line(cell, evidence):
+    """A small grey italic 'Read: ...' paragraph under a draft: what the draft rests on."""
+    if not evidence:
+        return
+    p = cell.add_paragraph()
+    r = p.add_run("What was read: " + evidence)
+    r.font.size = Pt(7)
+    r.italic = True
+    r.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
+
+
+def _india_code_facts(a):
+    ic = a.get("indiacode") or {}
+    if not ic:
+        return ""
+    state = "repealed" + (f" by {ic['repealed_by']}" if ic.get("repealed_by") else "") if ic.get("repealed") else "not marked repealed"
+    when = f"; enforcement date {ic['enforced']}" if ic.get("enforced") else ""
+    return f"India Code's own record: \"{ic.get('title')}\"; {state}{when}."
+
+
 def build(src=DEFAULT_IN, out=DEFAULT_OUT):
     data = json.load(open(src, encoding="utf-8"))
     acts = sorted(data["acts"], key=lambda a: (a.get("priority", 9), a["name"]))
@@ -69,34 +89,44 @@ def build(src=DEFAULT_IN, out=DEFAULT_OUT):
     p = doc.add_paragraph()
     p.add_run("What this is. ").bold = True
     p.add_run("The Recourse site holds the full text of the BNS and BNSS only (plus a few sections of the NI Act and the IT Act). When a question names, or clearly describes, an Act whose text the site does not hold, "
-              "the site now says so in one fixed notice and points to the official text. The lines below are Claude's DRAFTS, written from general knowledge and from India Code search results; "
-              "Claude could not open India Code from its environment, so no link has been clicked. ")
+              "the site says so in one fixed notice and points to the official text on India Code. The lines below are Claude's DRAFTS. They were written or re-written on 2026-10-16 after reading India Code itself: "
+              "each Act's record, the footnotes to its sections and, for the appeal lines, the text of the sections (for the TADA, India Code's PDF of the Act as enacted). The line under each draft, \"What was read\", says exactly what. "
+              "Each link was checked by Claude's tooling against India Code's own record (title, Act number and year) and opened in a browser. ")
     p.add_run("Nothing in the draft columns is shown to a user until you confirm it.").bold = True
     p = doc.add_paragraph()
     p.add_run("What we ask. ").bold = True
-    p.add_run("For each row, please check against the Act itself (the link), not against the draft: (1) Status: is the line right? (2) Appeal route: is the line right? (3) Link: does it open the right, current Act? "
+    p.add_run("For each row, please check against the Act itself (the link), not against the draft: (1) Status: is the line right? (2) Appeal route, where there is one: is the line right? (3) Link: does it open the right, current Act? "
               "Write OK, or write the correction. A row you leave blank stays hidden. Rows are in the order the owner chose for loading the full text: the first five are the priority Acts.")
     p = doc.add_paragraph()
     p.add_run("Confidence column: ").bold = True
-    p.add_run("Claude's own confidence in the status line (the appeal line carries its own in brackets): certain (the point appeared in India Code search results, or is beyond doubt), likely (recollection of the law, please read with care), "
-              "guessing (please rewrite). No page was opened, so \"certain\" means \"I saw no reason to doubt it\", not \"checked against the Act\".")
+    p.add_run("Claude's own confidence in the status line (the appeal line carries its own in brackets). certain = every fact in the line was read on India Code on 2026-10-16; it is NOT a lawyer's confirmation. "
+              "likely = part of the line is Claude's recollection (the \"What was read\" line says which part). guessing = please rewrite.")
 
     table = doc.add_table(rows=1, cols=8)
     table.style = "Table Grid"
-    heads = ["No.", "Act", "Status (draft)", "Conf. (status)", "Where appeals go (draft)", "Link (click: right Act?)", "Your check: status / appeal / link", "Corrections"]
-    widths = [Cm(0.9), Cm(5.2), Cm(5.0), Cm(1.4), Cm(5.0), Cm(2.8), Cm(3.0), Cm(2.9)]
+    heads = ["No.", "Act", "Status (draft) and what was read", "Conf. (status)", "Where appeals go (draft) and what was read", "Link (click: right Act?)", "Your check: status / appeal / link", "Corrections"]
+    widths = [Cm(0.9), Cm(4.6), Cm(5.6), Cm(1.4), Cm(5.6), Cm(2.6), Cm(2.9), Cm(2.6)]
     for i, h in enumerate(heads):
         _cell(table.rows[0].cells[i], h, size=8, bold=True)
     for n, a in enumerate(acts, 1):
         row = table.add_row().cells
         _cell(row[0], str(n))
         _cell(row[1], f"{a['name']}\nAct {a['act_no']}" + ("\n(not detected by the site: the concordance already maps it)" if a.get("detect") is False else "") + ("\nPRIORITY: first five Acts for loading text" if a.get("priority") == 1 else ""))
+        facts = _india_code_facts(a)
+        if facts:
+            r_ = row[1].add_paragraph().add_run(facts)
+            r_.font.size = Pt(7)
+            r_.italic = True
+            r_.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
         _cell(row[2], a["status"]["text"])
+        _read_line(row[2], a["status"].get("evidence"))
         _cell(row[3], a["status"]["confidence"])
         ap = a.get("appeal") or {}
-        _cell(row[4], ap.get("text") or "(not drafted)" + (f" [{ap.get('confidence')}]" if ap.get("confidence") else ""))
+        _cell(row[4], ap.get("text") or "(no appeal-route line drafted for this Act)")
         if ap.get("text") and ap.get("confidence"):
             row[4].paragraphs[0].add_run(f" [{ap['confidence']}]").font.size = Pt(8)
+        if ap.get("text"):
+            _read_line(row[4], ap.get("evidence"))
         p = _cell(row[5], "")
         _hyperlink(p, a["url"], "open on India Code")
         if a.get("url_alt"):
