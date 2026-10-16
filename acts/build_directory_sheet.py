@@ -78,11 +78,12 @@ def build(src=DEFAULT_IN, out=DEFAULT_OUT):
               "Write OK, or write the correction. A row you leave blank stays hidden. Rows are in the order the owner chose for loading the full text: the first five are the priority Acts.")
     p = doc.add_paragraph()
     p.add_run("Confidence column: ").bold = True
-    p.add_run("Claude's own confidence in its draft: certain (read on India Code or beyond doubt), likely (recollection of the law, please read with care), guessing (please rewrite).")
+    p.add_run("Claude's own confidence in the status line (the appeal line carries its own in brackets): certain (the point appeared in India Code search results, or is beyond doubt), likely (recollection of the law, please read with care), "
+              "guessing (please rewrite). No page was opened, so \"certain\" means \"I saw no reason to doubt it\", not \"checked against the Act\".")
 
     table = doc.add_table(rows=1, cols=8)
     table.style = "Table Grid"
-    heads = ["No.", "Act", "Status (draft)", "Conf.", "Where appeals go (draft)", "Link (click: right Act?)", "Your check: status / appeal / link", "Corrections"]
+    heads = ["No.", "Act", "Status (draft)", "Conf. (status)", "Where appeals go (draft)", "Link (click: right Act?)", "Your check: status / appeal / link", "Corrections"]
     widths = [Cm(0.9), Cm(5.2), Cm(5.0), Cm(1.4), Cm(5.0), Cm(2.8), Cm(3.0), Cm(2.9)]
     for i, h in enumerate(heads):
         _cell(table.rows[0].cells[i], h, size=8, bold=True)
@@ -109,20 +110,23 @@ def build(src=DEFAULT_IN, out=DEFAULT_OUT):
         for i, w in enumerate(widths):
             row.cells[i].width = w
 
-    doc.add_heading("Phrases that make the site say “looks like it is about the … Act”", level=2)
-    doc.add_paragraph("Besides the Act's name or its usual short forms, a few phrases that mean nothing else in practice also trigger the notice (worded “looks like it is about”, never “names”). "
-                      "Please strike any phrase that could reasonably mean something else.")
-    t2 = doc.add_table(rows=1, cols=2)
+    doc.add_heading("What makes the site show the notice", level=2)
+    doc.add_paragraph("Two kinds of trigger. (1) A NAME: the question contains the Act's name or one of the short forms in the middle column (the notice then says “This question names the … Act”). "
+                      "Ambiguous short forms such as CPC, HMA, NIA or “IT Act” are deliberately not used. (2) A PHRASE: a few phrases that mean nothing else in practice (the notice then says “looks like it is about”, never “names”). "
+                      "Please strike any name or phrase that could reasonably mean something else.")
+    t2 = doc.add_table(rows=1, cols=3)
     t2.style = "Table Grid"
     _cell(t2.rows[0].cells[0], "Act", bold=True)
-    _cell(t2.rows[0].cells[1], "Phrases (strike any that mislead)", bold=True)
+    _cell(t2.rows[0].cells[1], "Names and short forms (strike any that mislead)", bold=True)
+    _cell(t2.rows[0].cells[2], "Phrases (strike any that mislead)", bold=True)
     for a in acts:
-        if a.get("phrases"):
-            r = t2.add_row().cells
-            _cell(r[0], a["short"])
-            _cell(r[1], "; ".join(a["phrases"]))
+        if a.get("detect") is False:
+            continue
+        r = t2.add_row().cells
+        _cell(r[0], a["short"])
+        _cell(r[1], "; ".join(a.get("aliases") or []) or "(none)")
+        _cell(r[2], "; ".join(a.get("phrases") or []) or "(none)")
     doc.add_paragraph()
-    doc.add_paragraph("Short names the site recognises for an Act (it never uses an ambiguous short form such as CPC, HMA, NIA or “IT Act”): see the aliases in acts_directory.json; the full list is in the drafts folder and can be read out on request.")
     doc.add_paragraph("Please send the sheet back (a photo of a marked printout is fine). Claude records only what you confirm; an unconfirmed row stays hidden.")
     doc.save(out)
     return out
