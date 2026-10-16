@@ -104,6 +104,21 @@ check(_names("Section 5 of the Act. Balbir Singh v. State of Delhi (2007) held X
 check(_names("He relied on Union of India v. K.A. Najeeb (2021). Then Mohan Lal v. State of Punjab (2018) was cited.") == ["Union of India v. K.A. Najeeb", "Mohan Lal v. State of Punjab"], "a sentence opener such as 'Then' is not part of the name")
 check(_names("See Dr. K. Mohan Rao v. State of Kerala (2010) and Mohd. Ahmed Khan v. State of Bihar (2011).") == ["Dr. K. Mohan Rao v. State of Kerala", "Mohd. Ahmed Khan v. State of Bihar"], "abbreviations inside a name (Dr. K., Mohd.) keep the name whole")
 
+# --- 2026-10-16, production, gate open: the answer named the overruling case in full ("State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999)"); the finder cuts a first party at a comma and
+# a slash, so the 'not checked' sentence said "SIT v. Nalini and Others" and called the controlling case unchecked
+tn = ("Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) was overruled by State through Superintendent of Police, CBI/SIT v. Nalini and Others (1999), so the appeal should not rest on it.")
+check(_names(tn)[1] == "SIT v. Nalini and Others", "the finder still reads the long name cut at its left end (documented behaviour, unchanged)")
+rn = OV.audit_answer(reg, ov, tn)
+check(rn["not_checked"] == [] and rn["not_checked_sentence"] is None, f"the overruling case, cut short by the finder, is not called 'not checked' ({rn['not_checked']})")
+check(OV._norm_name("State through Superintendent of Police, CBI/SIT v. Nalini and Others") == "state through superintendent of police cbi sit v nalini and others", "a name is compared as lower-case words")
+rn2 = OV.audit_answer(reg, ov, tn + " In Anil Kumar, CBI/SIT v. Someone Else (2001) the Court said X.")
+check(rn2["not_checked"] == ["SIT v. Someone Else"], f"a different case that merely looks the same is still reported ({rn2['not_checked']})")
+fake = R.Register([], {})
+rs = OV.audit_answer(fake, ov, "In Anil Kumar, CBI/SIT v. Nalini and Others (1999) the Court said X.", exclude_names=["State through Superintendent of Police, CBI/SIT v. Nalini and Others"])
+check(rs["not_checked"] == [], f"a judgment the site lists as a source is matched when the finder cut its name short ({rs['not_checked']})")
+rt = OV.audit_answer(fake, ov, "In Ram v. State (2001) the Court said X.", exclude_names=["Mohan Ram v. State of Bihar"])
+check(rt["not_checked"] == ["Ram v. State"], f"a short, common-word name never rides on a longer one ({rt['not_checked']})")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED")
