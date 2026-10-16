@@ -170,7 +170,7 @@ def build(recourse, out):
     doc.add_paragraph("When the Act is loaded but nothing from it reached the answer (nothing close enough was found):")
     q = doc.add_paragraph(notice_unused)
     q.paragraph_format.left_indent = Cm(1)
-    doc.add_paragraph("To the answer model, in addition to the rules it always has: use only the sections it is given for anything it says about the Act; do not state another section number, punishment, procedure or route of appeal from memory; "
+    doc.add_paragraph("To the answer model, in addition to the rules it always has: use only the sections it is given for anything it says about the Act; name each with the Act shown in its label, not as a BNS or BNSS section; do not state another section number, punishment, procedure or route of appeal from memory; "
                       "if the question needs a provision that is not among them, say so in one sentence and say that the full text is on India Code; a provision missing from the material does not mean the Act has none; where a section's words "
                       "and the person's facts do not clearly match, say so instead of stretching the section.")
     p = doc.add_paragraph()
