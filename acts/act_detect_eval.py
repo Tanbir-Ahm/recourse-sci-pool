@@ -5,6 +5,8 @@ Three question sets, all of them written BEFORE this code existed:
   * the 75 Act-shelf gold questions (Recourse `act_shelf/eval_questions.json`; five Acts, fifteen each; Claude's own, 2026-10-16) -- does the right Act come up?
   * 27 ordinary criminal-law questions that concern none of those Acts (below, Claude's own) -- does an Act come up that should not?
   * the project's own question sets (the 30 real questions, the 29 of Stage F, the three trap exams: 161 questions) -- what changes for questions that were written for other purposes?
+A fourth set, `acts/pair_questions.json` (64 questions for the Muslim Women (Protection of Rights on Marriage) Act, 2019 and the Prevention of Damage to Public Property Act, 1984: 34 that should reach
+the Act and 30 near-misses that should not), was frozen and committed BEFORE the patterns for those two Acts were written (2026-10-17), so the first run of the patterns on it is a fair first look.
 
   python acts/act_detect_eval.py                 the word pass only: free, no model, no network.
   python acts/act_detect_eval.py --ai            also the AI pass, on the questions the word pass leaves empty. REAL MONEY: one Haiku call each, about Rs 0.2 [Likely].
@@ -90,6 +92,11 @@ def sets():
     except Exception as exc:  # noqa: BLE001
         print(f"  (could not read real30: {exc})")
     out["project"] = [r for r in others if r["q"]]
+    try:
+        pair = json.load(open(os.path.join(HERE, "pair_questions.json"), encoding="utf-8"))["questions"]
+        out["pair"] = [{"id": r["id"], "q": r["q"], "want": r["want"], "kind": "layman"} for r in pair]
+    except Exception as exc:  # noqa: BLE001
+        print(f"  (could not read pair_questions.json: {exc})")
     return out
 
 
@@ -152,6 +159,26 @@ def main():
                 print(f"    {act:16s} {sum(x['want'] in set(x['named'])|set(x['word'])|set(x['ai']) for x in s)}/{len(s)}")
             miss = [x for x in sub if x["want"] not in set(x["named"]) | set(x["word"]) | set(x["ai"])]
             print(f"  still missed ({len(miss)}): " + ", ".join(x["id"] for x in miss))
+        elif name == "pair":
+            PAIR = ("muslim_women_act_2019", "pdpp_act_1984")
+            for label, keys in (("Directory only", ("named",)), ("+ word pass", ("named", "word"))):
+                got = [set().union(*[set(x[k]) for k in keys]) for x in sub]
+                line = []
+                for act in PAIR:
+                    pos = [(x, g) for x, g in zip(sub, got) if x["want"] == act]
+                    line.append(f"{act.split('_act')[0]} found {sum(act in g for x, g in pos)}/{len(pos)}")
+                neg = [(x, g) for x, g in zip(sub, got) if x["want"] is None]
+                cross = [(x, g) for x, g in zip(sub, got) if x["want"] in PAIR and (set(PAIR) - {x["want"]}) & g]
+                print(f"  {label:16s} " + "; ".join(line) + f"; false alarms on {sum(bool(set(PAIR) & g) for x, g in neg)}/{len(neg)} near-misses; the other Act of the pair raised by mistake on {len(cross)}")
+            got = [set(x["named"]) | set(x["word"]) | set(x["ai"]) for x in sub]
+            miss = [x for x, g in zip(sub, got) if x["want"] and x["want"] not in g]
+            alarm = [(x, g & set(PAIR)) for x, g in zip(sub, got) if x["want"] is None and g & set(PAIR)]
+            cross = [(x, g & set(PAIR)) for x, g in zip(sub, got) if x["want"] in PAIR and (set(PAIR) - {x["want"]}) & g]
+            print(f"  still missed ({len(miss)}): " + ", ".join(x["id"] for x in miss))
+            for x, g in alarm:
+                print(f"    FALSE ALARM [{x['id']}] {sorted(g)}: {x['q'][:100]}")
+            for x, g in cross:
+                print(f"    WRONG OF THE PAIR [{x['id']}] wanted {x['want']}, also {sorted(g - {x['want']})}: {x['q'][:90]}")
         else:
             fired = [x for x in sub if x["word"] or x["ai"]]
             if name == "ordinary":
