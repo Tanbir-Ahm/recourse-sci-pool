@@ -1,0 +1,3803 @@
+{
+ "run_on": "2026-10-17",
+ "ai": false,
+ "calls": 0,
+ "inr": 0.0,
+ "rows": [
+  {
+   "set": "gold75",
+   "id": "PC01",
+   "q": "A clerk in the municipal office is asking me for Rs 5,000 to pass my file. What is the punishment for him?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC02",
+   "q": "I paid money to a government officer to get my licence renewed because he refused to move the file. Have I also committed a crime?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC03",
+   "q": "Is sanction required to prosecute a retired public servant for an offence under section 13?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC04",
+   "q": "Does the police need prior approval before starting an enquiry against a public servant for a decision taken in the course of his official duty?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC05",
+   "q": "Our company gave gifts and money to officials to win a government tender. Is the company itself liable and who in the company can be punished?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC06",
+   "q": "What is the presumption against a public servant who accepts an undue advantage and when does it arise?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC07",
+   "q": "A government officer owns property far beyond his salary. Which provision deals with this?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC08",
+   "q": "Which police officers are competent to investigate offences under the Prevention of Corruption Act? Can a sub-inspector do it?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC09",
+   "q": "Can the court attach the property of a corrupt government officer?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC10",
+   "q": "To which court does an appeal lie from the judgment of a Special Judge under the Prevention of Corruption Act?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC11",
+   "q": "An agent collects the money on behalf of an officer who takes a bribe. Is the agent also punishable?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC12",
+   "q": "Can a Special Judge try an offence under the Prevention of Corruption Act summarily?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC13",
+   "q": "An officer was convicted once for taking a bribe and has been caught again. Is the punishment higher the second time?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC14",
+   "q": "What matters must the court consider when fixing the fine on a person convicted of an offence of acquiring property by corrupt means?",
+   "want": "pc_act_1988",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PC15",
+   "q": "I work in a nationalised bank. Am I a public servant for the purposes of the anti-corruption law?",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS01",
+   "q": "What is the punishment for penetrative sexual assault on a child?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pocso_act_2012"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS02",
+   "q": "Someone touched my 8-year-old daughter's private parts over her clothes. What offence is this and what is the punishment?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pocso_act_2012"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS03",
+   "q": "I know a neighbour is abusing a child but I do not want to get involved. Am I legally required to tell the police?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS04",
+   "q": "What is the punishment for a person who fails to report an offence against a child to the police?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS05",
+   "q": "Where should the statement of a child victim be recorded and by whom?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS06",
+   "q": "Is there a presumption of guilt against the accused in a prosecution under the POCSO Act?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [
+    "pocso_act_2012"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS07",
+   "q": "Within what time must the child's evidence be recorded and the trial completed in a POCSO case?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [
+    "pocso_act_2012"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS08",
+   "q": "Can the accused sit in the courtroom and look at the child while she gives evidence?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS09",
+   "q": "A 16-year-old boy is accused under the child sexual offences law. Will he be tried like an adult?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS10",
+   "q": "Which court tries offences under the POCSO Act?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [
+    "pocso_act_2012"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS11",
+   "q": "Is it an offence to make a false complaint of child sexual abuse against someone just to harass him?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [
+    "pocso_act_2012"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS12",
+   "q": "A doctor examined my son's private parts for a medical condition with our consent. Can that be treated as sexual assault?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pocso_act_2012"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS13",
+   "q": "If the same act is an offence under POCSO and also under the Indian Penal Code, which punishment applies?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [
+    "pocso_act_2012"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS14",
+   "q": "Someone showed pornographic videos to my 12-year-old daughter. What offence is that?",
+   "want": "pocso_act_2012",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pocso_act_2012"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PS15",
+   "q": "Can a child victim be medically examined before an FIR is registered?",
+   "want": "pocso_act_2012",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA01",
+   "q": "Can bail be granted to an accused under the UAPA and what is the test the court applies?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA02",
+   "q": "My relative was arrested under the anti-terror law. For how long can the police go on investigating before they file the chargesheet?",
+   "want": "uapa_1967",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA03",
+   "q": "What is the definition of a terrorist act under the Unlawful Activities (Prevention) Act?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA04",
+   "q": "What is the punishment for giving money to a terrorist organisation?",
+   "want": "uapa_1967",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA05",
+   "q": "Is previous sanction required for the court to take cognizance of an offence under Chapters IV and VI of the UAPA?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA06",
+   "q": "Can the Central Government declare an individual a terrorist and how can he apply to be removed from the list?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA07",
+   "q": "Can the government seize my property if I am accused of funding terrorism?",
+   "want": "uapa_1967",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA08",
+   "q": "To which court does an appeal lie against an order of forfeiture of proceeds of terrorism?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA09",
+   "q": "I attended one meeting of a banned organisation. Is that a crime?",
+   "want": "uapa_1967",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA10",
+   "q": "Is there a presumption of guilt if arms or explosives are recovered from the accused?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA11",
+   "q": "What is the punishment for being a member of a terrorist organisation under the UAPA?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA12",
+   "q": "Which police officers are allowed to investigate offences under the UAPA? Can a sub-inspector do it?",
+   "want": "uapa_1967",
+   "kind": "layman",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA13",
+   "q": "Is evidence collected by intercepting phone calls admissible under the UAPA?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA14",
+   "q": "Can the court take away my passport if I am charge-sheeted under the anti-terror law?",
+   "want": "uapa_1967",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "UA15",
+   "q": "Under which section is an association declared unlawful and what is the role of the Tribunal?",
+   "want": "uapa_1967",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "uapa_1967"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS01",
+   "q": "Someone abused me by my caste name in front of other people. Which section applies?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS02",
+   "q": "Is anticipatory bail available to an accused under the SC/ST Atrocities Act?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS03",
+   "q": "Does the police need a preliminary enquiry or approval before registering an FIR or arresting under the Atrocities Act?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS04",
+   "q": "Where does an appeal lie against an order of the Special Court under the SC/ST Act?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS05",
+   "q": "What help and relief is a victim of a caste atrocity entitled to, and can the victim be heard at the bail hearing?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS06",
+   "q": "Is a police officer who ignores a complaint by a Dalit person also punishable?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS07",
+   "q": "Is there a presumption against the accused in a prosecution under the Atrocities Act?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS08",
+   "q": "A person who is not from a Scheduled Caste forcibly took our land. Which law protects us and what is the punishment?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS09",
+   "q": "Can a person likely to commit an atrocity be removed from the area?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS10",
+   "q": "Which courts try offences under the SC/ST Act and are there exclusive special courts?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS11",
+   "q": "What is the punishment if someone commits a serious offence like murder against a Dalit person knowing his caste?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS12",
+   "q": "Does the Probation of Offenders Act apply to a person found guilty of an offence under the SC/ST Act?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS13",
+   "q": "What does the law mean by atrocity and who counts as a member of a Scheduled Caste or Scheduled Tribe for this law?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS14",
+   "q": "Can the property of a person convicted of a caste atrocity be forfeited?",
+   "want": "sc_st_act_1989",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "sc_st_act_1989"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "SS15",
+   "q": "Which provisions of the Indian Penal Code apply for the purposes of the SC/ST Act?",
+   "want": "sc_st_act_1989",
+   "kind": "lawyer",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM01",
+   "q": "What are the twin conditions for bail in a money-laundering case?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM02",
+   "q": "The ED has arrested my brother. On what basis can they arrest him and must they tell him the grounds?",
+   "want": "pmla_2002",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM03",
+   "q": "The ED has attached my flat. How long can the attachment stay and who confirms it?",
+   "want": "pmla_2002",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM04",
+   "q": "Where does an appeal lie against an order of the Adjudicating Authority?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM05",
+   "q": "Within how many days can an appeal be filed in the High Court against an order of the Appellate Tribunal?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM06",
+   "q": "Can the ED summon a person and compel him to give a statement? Is the proceeding a judicial proceeding?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM07",
+   "q": "What is the punishment for money laundering?",
+   "want": "pmla_2002",
+   "kind": "layman",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM08",
+   "q": "How is proceeds of crime defined under the money-laundering law?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM09",
+   "q": "On whom does the burden of proof lie in a money-laundering prosecution?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM10",
+   "q": "Can the ED search premises and seize records, and what must the officer record before doing so?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM11",
+   "q": "Which court tries money-laundering cases?",
+   "want": "pmla_2002",
+   "kind": "layman",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM12",
+   "q": "Does the Code of Criminal Procedure apply to proceedings before the Special Court under the money-laundering law, including bail provisions?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM13",
+   "q": "After the Adjudicating Authority confirms an attachment, what happens to the property and can it be restored to the claimant?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM14",
+   "q": "How are a company and its directors held liable for money laundering?",
+   "want": "pmla_2002",
+   "kind": "lawyer",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "gold75",
+   "id": "PM15",
+   "q": "Is an ED officer punishable for searching a place or arresting a person without recording reasons?",
+   "want": "pmla_2002",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pmla_2002"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD01",
+   "q": "My sister was arrested at night with no woman police officer there. Is that allowed?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD02",
+   "q": "My son has been in jail 65 days in a cheating case and no chargesheet has been filed. Can he get bail?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD03",
+   "q": "Someone snatched my gold chain on the road. Which section applies and is it bailable?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD04",
+   "q": "My neighbour hit me with a stick and I have a head injury. The police are not registering my FIR. What can I do?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD05",
+   "q": "A business partner took 8 lakhs from me for a shop and disappeared. Is it cheating or just a civil dispute?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD06",
+   "q": "Police entered my house at 2 am without a warrant and took my phone and laptop. Is that legal?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD07",
+   "q": "Can the police arrest me for a threat made on a phone call without a warrant?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD08",
+   "q": "My brother is accused of stealing from his employer. Employer says he took money from the till. Can the police arrest him?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD09",
+   "q": "My landlord took my security deposit and refuses to return it, and then called the police on me when I protested. What are my rights?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD10",
+   "q": "A shopkeeper took money from me for a mobile phone and gave a fake bill. What can I do?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD11",
+   "q": "My employer took Rs 20,000 from my salary as penalty. Can I complain to the police?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD12",
+   "q": "A teacher took money from parents for admission and never gave receipts. Is this a crime?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD13",
+   "q": "My friend was arrested for beating a man in a pub fight. How does bail work for hurt cases?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD14",
+   "q": "Can an arrested person insist on speaking to a lawyer before the police question him?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD15",
+   "q": "A man forged my signature on a property paper. Which offence is that and can I file an FIR?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD16",
+   "q": "My brother was arrested yesterday and not yet produced before the magistrate. What do I do?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD17",
+   "q": "The police have registered an FIR against my father for rash driving causing a death. Can he get anticipatory bail?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD18",
+   "q": "Our neighbour threatens to kill us over a boundary dispute. What can we do?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD19",
+   "q": "I want to quash an FIR filed against me out of a family dispute. When does the High Court do that?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD20",
+   "q": "A bank manager misused the funds of a customer. Can he be arrested for criminal breach of trust?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD21",
+   "q": "My son's friend gave him a lift and the bike had stolen parts. Is he liable for receiving stolen property?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD22",
+   "q": "What is the difference between cognizable and non-cognizable offences?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD23",
+   "q": "A government school teacher slapped my child in class. Can I file a police complaint?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD24",
+   "q": "My boss, a manager in a private company, asked me to pay a commission to get my pending bill cleared.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD25",
+   "q": "The police station officer asked me to pay Rs 2000 to register my complaint about the stolen bike.",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD26",
+   "q": "The tehsildar took Rs 10,000 from us to sign our land papers",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "ordinary",
+   "id": "ORD27",
+   "q": "A police constable demanded money to not file a case against me",
+   "want": "pc_act_1988",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pc_act_1988"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF01",
+   "q": "My brother is named in a 2025 cheating FIR over money from a travel business that failed. He was never arrested and went to the police station every time they called, giving all his papers. Now the IO says the chargesheet is ready and that under section 190 BNSS he has to be produced in custody with it, so the magistrate will send him to jail. Our neighbour says this is how it always happens. He is the only earning member at home and we are very scared. Does he have to be arrested just because the chargesheet is being filed?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF02",
+   "q": "My cousin was caught by the police with some pills in his bag near a bus stand, and they say they are still investigating what the pills are. It has been two full days and they have not taken him to any court. Can they keep him at the station this long without a court order?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF03",
+   "q": "Whether an accused who appears before the Sessions Court and surrenders to its jurisdiction, without having been arrested, is 'in custody' so as to maintain an application for bail under Section 439 CrPC.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF04",
+   "q": "Whether, in a case under the UAPA investigated by the State police, an order of a Magistrate extending the period of investigation beyond 90 days under Section 43D(2) defeats the accused's right to default bail under Section 167(2) CrPC.",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "uapa_1967"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF05",
+   "q": "My father was booked last year for cheating and breach of trust after his partnership business broke down, and the other partner says he owes 8 lakhs. He was arrested and has been in jail for three weeks. The Sessions Court has said it will give bail under section 483 BNSS only if he first deposits 4 lakhs for the complainant. We cannot arrange this money and my mother is trying to sell her jewellery. Can bail be made conditional on paying the disputed money?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF06",
+   "q": "After a fight over a drain, our neighbour has filed a case saying my father abused him by caste inside the neighbour's own house, with only his family there. Police say that in caste cases no court can give bail before arrest. Is that correct?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "sc_st_act_1989"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF07",
+   "q": "I took a 3 lakh loan from a friend and gave him a signed cheque as security. I couldn't repay on the agreed date, so he deposited it and it bounced. Can he file a 138 cheque bounce case when the cheque was only given as security?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF08",
+   "q": "A customer gave me a 2 lakh cheque that bounced. My lawyer sent the legal notice and the customer received it on 3 April. My lawyer's clerk filed the 138 complaint on 10 April, thinking the time was over, and the magistrate took cognizance in May. Two years later, the other side now says the whole complaint is invalid because it was filed too early. We have attended every date. Is a complaint filed before the notice period ends valid if cognizance was taken only after it ended?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF09",
+   "q": "Whether the statutory demand notice under Section 138 of the NI Act is deemed to be served when it is sent by registered post to the drawer's correct address but returned 'unclaimed'.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF10",
+   "q": "Whether, for deciding small or commercial quantity under the NDPS Act, the weight of the entire seized mixture is counted, or only the actual content of the narcotic drug found on chemical analysis.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF11",
+   "q": "Police ne hamari car roki aur back seat ke neeche ek bag mila jisme kuch tablets aur powder tha. Car mere dost ki thi, main bas peeche baitha tha, mujhe bag ka kuch pata nahi tha. Kya law mein car mein baithe sab log us bag ke liye zimmedar maane jaate hain?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF12",
+   "q": "I borrowed 3 lakhs from a friend for my shop and gave him a signed cheque as security. The shop ran into losses, I couldn't repay on the date we agreed, and the cheque bounced when he deposited it. Now he has also gone to the police and got an FIR registered against me under 420 IPC, saying I cheated him. I paid him interest for many months and I'm ready to repay slowly. Does a bounced cheque and failure to repay a loan, by itself, amount to cheating?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF13",
+   "q": "In 2023 my brother forwarded an obscene video in a WhatsApp group. The cyber law charge against him was dropped, but police are still pursuing the obscenity charge under the ordinary penal code for the same forward. Can they do that?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF14",
+   "q": "After my in-laws forced me out, I filed a domestic violence case, but the court says it will take at least a year to decide. I have no money for rent or food right now. Can the court give me maintenance before the case is fully decided?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF15",
+   "q": "Two years after our wedding, my husband's family started saying my father must give 5 lakhs so they can build a second floor on their house. My father had already given gold and a bike at the wedding. When we refused, they stopped talking to me, took away my phone and last month sent me back to my parents' home. My aunt says money asked for building a house is not dowry because it was asked after the marriage and for the house, not for the marriage. Is a demand like this treated as dowry in law?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [
+    "dowry_prohibition_act_1961"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF16",
+   "q": "Whether a complaint of cruelty under Section 85 BNS by a wife who was forced out of her in-laws' house can be investigated and tried at the town where she now lives with her parents, though no act of cruelty took place there.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF17",
+   "q": "My cousin is 20. He was in a relationship for a year with a girl from the next lane who was 17 at the time, and they were physically intimate. She says it was her own choice and she wants to marry him. Her parents found out, filed a complaint, and the police arrested him. Everyone in our family says it cannot be a crime if she agreed and they love each other. Does it matter in law that she agreed?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF18",
+   "q": "My son has been booked in a POCSO case. Police say his Aadhaar shows he was 18, but his school certificate says he was 16 at the time. Under the JJ Act, which document does the court go by to decide his age?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "jj_act_2015",
+    "pocso_act_2012"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF19",
+   "q": "Whether, in a prosecution for rape under Section 64 BNS, an adult woman's earlier romantic relationship with the accused, or her not physically resisting, amounts to consent under Section 63 BNS.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF20",
+   "q": "After a fight in which my cousin got hurt, police searched our joint family house and found an old pistol in a trunk in the store room. They have booked my 70-year-old father for keeping it, but he says he never knew it was there. Is it enough that it was found in his house?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [
+    "arms_act_1959"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF21",
+   "q": "In 2023, a drunk driver drove his SUV onto the footpath at night and killed my brother, who was waiting for a bus. The police test showed he was far over the alcohol limit. The FIR is only under 304A IPC, which our lawyer says carries at most two years. The driver's family is already offering money for a compromise. I keep reading that drunk-driving deaths are sometimes treated more seriously. When can such a death be prosecuted under Section 304 Part II IPC instead of only 304A?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "mv_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF22",
+   "q": "Whether a dying declaration recorded by a Magistrate under Section 32 of the Evidence Act becomes unreliable or inadmissible solely because no doctor certified that the declarant was mentally fit to make it.",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "evidence_act_1872"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF23",
+   "q": "Whether a Special Court under the PMLA must give the proposed accused an opportunity of being heard under Section 223 BNSS before taking cognizance of a prosecution complaint filed in 2025.",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "pmla_2002"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF24",
+   "q": "My uncle is a clerk in the revenue office and was caught in an anti-corruption trap in 2019 under the Prevention of Corruption Act. The man who complained that my uncle had asked him for 10,000 rupees died before the trial started. The trap witness only saw the money being handed over and did not hear any demand. My uncle says that without the complainant nobody can prove he asked for a bribe. The case is now at final arguments. Can the demand for a bribe be proved without the complainant's own evidence?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF25",
+   "q": "My uncle's murder trial was transferred from our state to a court in another state, which convicted him. He is now serving his life sentence in a jail in our home state. Under section 473 BNSS, which state's government decides his premature release?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF26",
+   "q": "Whether the victim of an offence needs the leave of the High Court to file an appeal against acquittal under the proviso to Section 372 CrPC.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF27",
+   "q": "My father died without a will, leaving a house in his name. Do my mother, my sister and I each get an equal share?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF28",
+   "q": "Whether the failure of the police to audio-video record a search and seizure, as now required by the new criminal procedure law, makes the recovered material inadmissible or doubtful.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "stageF29",
+   "q": "Is chain snatching now a separate crime under the new criminal law, and what is the maximum punishment?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal01",
+   "q": "Is Raj Deo Sharma v. The State of Bihar (1999) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal02",
+   "q": "Summarise the holding in Raj Deo Sharma v. The State of Bihar (1999) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal03",
+   "q": "Summarise the holding in Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal04",
+   "q": "My client's opponent relies on Bilal Ahmed Kaloo v. State of Andhra Pradesh (AIR 1997 SC 3483). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal05",
+   "q": "My client's opponent relies on Mohan Lal and Others v. State of Haryana ((2006) CriLJ 4749). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal06",
+   "q": "Is Mohan Lal and Others v. State of Haryana (2006) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal07",
+   "q": "Is Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal08",
+   "q": "Summarise the holding in Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal09",
+   "q": "Summarise the holding in Adri Dharan Das v. State of West Bengal (2005) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal10",
+   "q": "My client's opponent relies on Adri Dharan Das v. State of West Bengal ((2005) 4 SCC 303). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal11",
+   "q": "My client's opponent relies on Nirmal Jeet Kaur v. State of M.P. ((2004) 7 SCC 558). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal12",
+   "q": "Is Nirmal Jeet Kaur v. State of M.P. (2004) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal13",
+   "q": "Is Satpal Singh v. State of Punjab (2018) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal14",
+   "q": "Summarise the holding in Satpal Singh v. State of Punjab (2018) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal15",
+   "q": "Summarise the holding in Naresh Kumar Yadav v. Ravindra Kumar (2008) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal16",
+   "q": "My client's opponent relies on Naresh Kumar Yadav v. Ravindra Kumar ((2008) 1 SCC 632). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal17",
+   "q": "My client's opponent relies on Shafhi Mohammad v. State of Himachal Pradesh ((2018) 5 SCC 311). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal18",
+   "q": "Is Shafhi Mohammad v. State of Himachal Pradesh (2018) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal19",
+   "q": "Is New India Assurance Co. Ltd. v. Prabhu Lal (2008) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal20",
+   "q": "Summarise the holding in New India Assurance Co. Ltd. v. Prabhu Lal (2008) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal21",
+   "q": "Summarise the holding in State of Gujarat v. Choodamani Parmeshwaran Iyer (2023) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal22",
+   "q": "My client's opponent relies on State of Gujarat v. Choodamani Parmeshwaran Iyer ([2023] 8 SCR 1139). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal23",
+   "q": "My client's opponent relies on Bikash Ranjan Rout v. State (NCT of Delhi) ((2019) 5 SCC 542). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal24",
+   "q": "Is Bikash Ranjan Rout v. State (NCT of Delhi) (2019) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal25",
+   "q": "Is Randhir Singh Rana v. State (Delhi Administration) (1997) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal26",
+   "q": "Summarise the holding in Randhir Singh Rana v. State (Delhi Administration) (1997) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal27",
+   "q": "Summarise the holding in Asian Resurfacing of Road Agency Pvt. Ltd. v. CBI (2018) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_criminal28",
+   "q": "My client's opponent relies on Asian Resurfacing of Road Agency Pvt. Ltd. v. CBI ([2018] 2 S.C.R. 1045). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation01",
+   "q": "My corruption case has been in the trial court for 9 years since the charge sheet, and my lawyer says Raj Deo Sharma v. The State of Bihar (1999) means the proceedings must be dropped after a fixed period. Is that right?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation02",
+   "q": "My corruption case has been in the trial court for 9 years since the charge sheet. Is there a fixed time limit after which the trial must be dropped?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation03",
+   "q": "My brother was convicted of sedition by a TADA Designated Court and given life imprisonment. His lawyer is relying on Bilal Ahmed Kaloo v. State of Andhra Pradesh (1997) for the appeal. How does that help him?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "tada_1987"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation04",
+   "q": "My brother was convicted of sedition by a TADA Designated Court and given life imprisonment. What can he argue in his appeal?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "tada_1987"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation05",
+   "q": "The High Court gave my husband anticipatory bail only until the next hearing and then told him to apply for regular bail. His lawyer cites Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996) to say anticipatory bail should end after a short fixed time. Is that correct?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation06",
+   "q": "The High Court gave my husband anticipatory bail only until the next hearing and then told him to apply for regular bail. Does anticipatory bail protection end after a short fixed time, or can it continue till the trial?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation07",
+   "q": "I am accused of cheating and forgery in a complaint filed in court, and the High Court refused to extend my anticipatory bail protection. My lawyer cites Adri Dharan Das v. State of West Bengal (2005). What does it say about when anticipatory bail is given?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation08",
+   "q": "I am accused of cheating and forgery in a complaint filed in court, and the High Court refused to extend my anticipatory bail protection. When is anticipatory bail given?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation09",
+   "q": "My wife filed a dowry harassment case under Section 498A and I was granted anticipatory bail. She says Nirmal Jeet Kaur v. State of M.P. (2004) means the High Court should not have granted it so easily. Is she right?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation10",
+   "q": "My wife filed a dowry harassment case under Section 498A and I was granted anticipatory bail. Can she challenge the grant, and on what grounds?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation11",
+   "q": "I was refused anticipatory bail in an NDPS (drug) FIR. My lawyer cites Satpal Singh v. State of Punjab (2018) about the limits of anticipatory bail. Does it apply to me?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation12",
+   "q": "I was refused anticipatory bail in an NDPS (drug) FIR. Is anticipatory bail available in a drug case, and for how long does it last?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation13",
+   "q": "Anticipatory bail was granted to the accused in my family's case and the order gives no real reasons. Our lawyer cites Naresh Kumar Yadav v. Ravindra Kumar (2008) to ask that it be cancelled. Is that a good ground?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation14",
+   "q": "Anticipatory bail was granted to the accused in my family's case and the order gives no real reasons. Can it be cancelled?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation15",
+   "q": "The police recorded a video of the recovery on a phone but gave no Section 65B certificate. Our lawyer cites Shafhi Mohammad v. State of Himachal Pradesh (2018) to say the video is still admissible. Is that right?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation16",
+   "q": "The police recorded a video of the recovery on a phone but gave no Section 65B certificate. Is the video still admissible in court?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation17",
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant now asks the magistrate to order further investigation, and our lawyer cites Bikash Ranjan Rout v. State (NCT of Delhi) (2019) to say the magistrate cannot. Is that right?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation18",
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant now asks the magistrate to order further investigation. Can the magistrate do that?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation19",
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant now asks the magistrate to order further investigation, and the other side cites Randhir Singh Rana v. State (Delhi Administration) (1997) to say the magistrate cannot. Is that right?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation20",
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant asks the magistrate for a fresh investigation by the police. Is that allowed?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation21",
+   "q": "The police officer who seized drugs from my brother also investigated the case and was the complainant. Our lawyer cites Mohan Lal v. State of Punjab (2018) to say the whole trial is void. Is that right?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation22",
+   "q": "The police officer who seized drugs from my brother also investigated the case and was the complainant. Can the trial be challenged on that ground?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation23",
+   "q": "The High Court stayed my corruption trial more than six months ago and has not extended the stay. My lawyer cites Asian Resurfacing of Road Agency Pvt. Ltd. v. CBI (2018) to say the stay has ended automatically. Is that right?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_situation24",
+   "q": "The High Court stayed my corruption trial more than six months ago and has not extended the stay. Does a stay on a trial end automatically after six months?",
+   "want": "?",
+   "kind": "project",
+   "named": [
+    "pc_act_1988"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original01",
+   "q": "Is Dwarka Dass Bhatia v. The State of Jammu and Kashmir (1957) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original02",
+   "q": "My client's opponent relies on Smt. Shanno Devi v. Mangal Sain (AIR 1961 SC 58). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original03",
+   "q": "Summarise the holding in Sabhajit Tewary v. Union of India (UOI) and Others (1975) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original04",
+   "q": "Is Mahendra Kumar Shastri v. Union of India (UOI) and Another (1983) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original05",
+   "q": "My client's opponent relies on Common Cause, A Registered Society v. Union of India (UOI) and Others (AIR 1996 SC 3538). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original06",
+   "q": "Summarise the holding in Triveni Engineering and Industries Ltd. and Another v. Commissioner of Central Excise and Another (2000) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original07",
+   "q": "Is Society for Un-aided Private Schools of Rajasthan v. Union of India (UOI) and Another (2012) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original08",
+   "q": "My client's opponent relies on The State of Madras v. Srimathi Champakam Dorairajan (AIR 1951 SC 226). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original09",
+   "q": "Summarise the holding in Ram Kishore Sen and Others v. Union of India and Others (UOI) (1966) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original10",
+   "q": "Is National Tractors, Hubli v. Commissioner of Commercial Taxes, Bangalore (1971) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original11",
+   "q": "My client's opponent relies on Bhartu v. Randhir Singh and Others (AIR 1985 SC 413). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original12",
+   "q": "Summarise the holding in Desh Raj Gupta v. Industrial Tribunal IV, U.P., Lucknow and another (1990) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original13",
+   "q": "Is M/s. Rainbow Colour Lab and Another v. The State of Madhya Pradesh and Others (2000) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original14",
+   "q": "My client's opponent relies on Buckingham and Carnatic Co. Ltd. v. Workers of The Buckingham and Carnatic Co. Ltd. (AIR 1953 SC 47). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original15",
+   "q": "Summarise the holding in P.J. Irani v. The State of Madras (1961) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original16",
+   "q": "Is Joginder Singh and Another v. State of Punjab and Another (1979) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original17",
+   "q": "My client's opponent relies on Basavantappa v. Gangadhar Narayan Dharwadkar and Another (AIR 1987 SC 53). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original18",
+   "q": "Summarise the holding in M/s. Ballarpur Industries Ltd. v. Asstt. Collector of Customs and Central Excise and others (1995) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original19",
+   "q": "Is The Assistant Commissioner, Assessment-II, Bangalore and Others v. Velliappa Textiles Ltd. and Others (2004) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original20",
+   "q": "My client's opponent relies on Hanuman Jute Mills v. Amin Das and Another (AIR 1957 SC 194). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original21",
+   "q": "Summarise the holding in Rameshwar Lal Patwari v. State of Bihar (1968) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original22",
+   "q": "Is Jagdish Chander Chatterjee and Others v. Shri Kishan and Another (1972) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original23",
+   "q": "My client's opponent relies on Union of India and Others v. Filip Tiago De Gama of Vedem Vasco De Gama ((1989) 4 JT 529). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original24",
+   "q": "Summarise the holding in Karan Singh and others, etc., v. Bhagwan Singh (Dead) by LRs. and others, etc., (1996) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original25",
+   "q": "Is Konkan Railway Corporation Ltd. and Another v. Rani Construction Pvt. Ltd. (2002) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original26",
+   "q": "My client's opponent relies on Ram Saroop Dasji v. S.P. Sahi, Special Officer-in-charge of The Hindu Religious Trusts and Others (AIR 1959 SC 951). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original27",
+   "q": "Summarise the holding in Keshav Laxman Borkar v. Devrao Laxman Anande (1960) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original28",
+   "q": "Is Isha Valimohamed and Another v. Haji Gulam Mohamad and Haji Dada Trust (1974) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original29",
+   "q": "My client's opponent relies on Union of India (UOI) and Another v. K.R. Tahiliani (AIR 1980 SC 953). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original30",
+   "q": "Summarise the holding in Land Acquisition Officer, Eluru and Others v. Jasti Rohini (Smt) and Another (1994) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original31",
+   "q": "Is Dilip N. Shroff Karta of N.D. Shroff v. Joint Commissioner of Income Tax, Special Range Mumbai and Another (2007) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original32",
+   "q": "My client's opponent relies on Jogta Coal Co. Ltd. v. Commissioner of Income Tax, West Bengal (AIR 1959 SC 1232). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original33",
+   "q": "Summarise the holding in Lalji Haridas v. State of Maharashtra and Another (1964) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original34",
+   "q": "Is State Bank of Travancore v. Elias Elias and Others (1971) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original35",
+   "q": "My client's opponent relies on S.K. Verma v. Mahesh Chandra and Another (AIR 1984 SC 1462). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original36",
+   "q": "Summarise the holding in Rajinder Kumar Joshi v. Veena Rani (1991) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original37",
+   "q": "Is A.D.M. Jabalpur v. Shivkant Shukla (1976) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original38",
+   "q": "My client's opponent relies on Salauddin Abdulsamad Shaikh v. State of Maharashtra ((1996) 1 SCC 667). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original39",
+   "q": "Summarise the holding in Shafhi Mohammad v. State of Himachal Pradesh (2018) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original40",
+   "q": "Is Mohan Lal v. State of Punjab (2018) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original41",
+   "q": "My client's opponent relies on HDFC Bank Ltd. v. J.J. Mannan ((2010) 1 SCC 679). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original42",
+   "q": "Summarise the holding in M.P. Sharma v. Satish Chandra (1954) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original43",
+   "q": "Is Tomaso Bruno v. State of U.P. (2015) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original44",
+   "q": "My client's opponent relies on E.V. Chinnaiah v. State of Andhra Pradesh ([2004] Supp. 5 SCR 972). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original45",
+   "q": "Summarise the holding in Oriental Insurance Co. Ltd. v. Angad Kol (2009) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original46",
+   "q": "Is Reeta Nag v. State of West Bengal (2009) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original47",
+   "q": "My client's opponent relies on Paparambaka Rosamma and Others v. State of Andhra Pradesh (AIR 1999 SC 3455). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original48",
+   "q": "Summarise the holding in Periyar and Pareekanni Rubbers Ltd. v. State of Kerala (1990) and tell me whether I can cite it.",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original49",
+   "q": "Is Sri Sankari Prasad Singh Deo v. Union of India (UOI) and State of Bihar (1951) still good law? What did it hold?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "project",
+   "id": "trap_original50",
+   "q": "My client's opponent relies on Bhikaji Narain Dhakras and Others v. The State of Madhya Pradesh and Another (AIR 1955 SC 781). Can I rely on it too, and what rule does it lay down?",
+   "want": "?",
+   "kind": "project",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW01",
+   "q": "My husband said talaq three times on WhatsApp and then blocked my number. Is that divorce valid?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [
+    "muslim_women_act_2019"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW02",
+   "q": "Last night in front of his brothers he said talaq, talaq, talaq and threw me out of the house. What can I do?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW03",
+   "q": "My husband sent me a voice message with the word talaq repeated three times. Can I file an FIR against him?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW04",
+   "q": "Mere shohar ne phone par teen talaq bol diya. Kya main police mein complaint kar sakti hoon?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW05",
+   "q": "Can a man be sent to jail for giving instant talaq to his wife?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [
+    "muslim_women_act_2019"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW06",
+   "q": "My brother is in jail because his wife complained that he gave her talaq by SMS. How do we get him bail?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW07",
+   "q": "My husband works in Dubai and pronounced talaq over a video call, all in one go. Is that legal in India?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW08",
+   "q": "After talaq-e-biddat from my husband, am I entitled to maintenance for me and my kids, and to keep the children with me?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [
+    "muslim_women_act_2019"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW09",
+   "q": "He sent a talaqnama on stamp paper through his lawyer saying I am divorced with immediate effect. What are my rights?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW10",
+   "q": "Is it true that triple talaq is now a criminal offence with up to three years in jail?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [
+    "muslim_women_act_2019"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW11",
+   "q": "My neighbour is Muslim and her husband said 'I divorce you' three times during an argument and then threw her out. Is there any law that protects her?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW12",
+   "q": "Can the police arrest my son without a warrant if his wife complains that he pronounced talaq thrice? She says it was all at one sitting.",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW13",
+   "q": "I am a Muslim woman. My husband left me after sending an email that says he divorces me immediately. Can I claim a subsistence allowance?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW14",
+   "q": "What is the punishment under the Muslim Women Act for pronouncing talaq?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "muslim_women_act_2019"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW15",
+   "q": "My husband sent a letter by speed post saying talaq and says no waiting period is needed because it is final. Is that talaq-e-biddat?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [
+    "muslim_women_act_2019"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MW16",
+   "q": "At a family function my sister's husband announced talaq three times. The elders say it is valid. Is that right under the new law?",
+   "want": "muslim_women_act_2019",
+   "kind": "layman",
+   "named": [
+    "muslim_women_act_2019"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN01",
+   "q": "My husband sent me the first notice of talaq-e-hasan by registered post. Is the divorce complete after three months?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN02",
+   "q": "I want a khula from my Muslim husband because he beats me. How do I go to court?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN03",
+   "q": "My Muslim husband and I divorced last year by mutual agreement. He now refuses to pay my mehr. What can I do?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN04",
+   "q": "After divorce, can a Muslim woman claim maintenance under Section 125 of the CrPC?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN05",
+   "q": "My husband said talaq once during a fight and apologised the next day. Are we still married?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN06",
+   "q": "I am a Hindu and my husband is Muslim. We want a divorce by mutual consent under the Special Marriage Act. What is the process?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN07",
+   "q": "A builder sent me three legal notices by WhatsApp and email about the flat. Do I have to reply to each?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN08",
+   "q": "My Christian husband divorced me by text message and I do not know what to do.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN09",
+   "q": "Is a nikah performed by a maulvi without registration valid for getting a passport?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN10",
+   "q": "Can a Muslim man marry a second time while his first marriage continues?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN11",
+   "q": "What is the iddat period after talaq-e-ahsan and can I leave the house during it?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN12",
+   "q": "I am a Muslim man. My wife left home and I want a divorce. I have called her three times but she does not pick up the phone.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN13",
+   "q": "My husband is Muslim and has filed a case for restitution of conjugal rights against me. Can he do that?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "MN14",
+   "q": "My landlord told me three times by phone to vacate and sent a notice by speed post. How much time do I have?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD01",
+   "q": "My son is accused of damaging public property in the protest. Is bail possible?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [
+    "pdpp_act_1984"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD02",
+   "q": "A state transport bus was burnt during the bandh and the police picked up my brother from the village.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD03",
+   "q": "The FIR says my husband set a railway coach on fire at the rail roko protest. What charges can be added?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD04",
+   "q": "During the farmers' agitation some people broke the windows of a government bus, and my uncle is named in the FIR.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD05",
+   "q": "He is accused of throwing stones at a police station and a municipal office during the riot. Will he get bail?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD06",
+   "q": "Some boys vandalised the tehsil office after the verdict and the police have arrested my cousin. Which law applies?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD07",
+   "q": "Can a person get five years in jail for burning a bus during a protest?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD08",
+   "q": "What does the special bail rule for causing damage to public property mean?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [
+    "pdpp_act_1984"
+   ],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD09",
+   "q": "My neighbour was arrested for setting fire to a panchayat building at night.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD10",
+   "q": "The FIR against me says I damaged railway property during the strike by railway workers.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD11",
+   "q": "During our college strike a few students smashed the glass gate of a government hospital and the police booked all of us.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD12",
+   "q": "He is charged with arson of a government school during the clashes between two groups. Can he get anticipatory bail?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD13",
+   "q": "RTC buses were damaged by a crowd in the clash and an FIR is registered against youth from our village.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD14",
+   "q": "Police booked thirty people for burning buses after the bandh call by the party. My son was only watching.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD15",
+   "q": "Is damage to government property during a dharna a non-bailable offence?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD16",
+   "q": "My brother was arrested after a mob set fire to a government vehicle in our town. He says he was not there.",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD17",
+   "q": "My friend is accused of breaking the glass of a metro train during the protest. What can happen to him?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PD18",
+   "q": "Which law punishes people who destroy public buses and trains during agitations?",
+   "want": "pdpp_act_1984",
+   "kind": "layman",
+   "named": [],
+   "word": [
+    "pdpp_act_1984"
+   ],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN01",
+   "q": "A mob damaged my shop during the riot. Can I claim compensation from the government?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN02",
+   "q": "My bus was damaged in a road accident and the insurer is refusing the claim.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN03",
+   "q": "The municipal corporation demolished my house for road widening without notice.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN04",
+   "q": "My neighbour burnt my car because of a land dispute. Which sections apply?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN05",
+   "q": "He was arrested for mischief after breaking his neighbour's compound wall.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN06",
+   "q": "My son was arrested during the protest for blocking the road and shouting slogans.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN07",
+   "q": "My train was cancelled and the railway is not refunding my ticket.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN08",
+   "q": "A government bus hit my father's scooter and damaged it. Who will pay for the repair?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN09",
+   "q": "I was injured in stone pelting during the riot. Can I get compensation from the state?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN10",
+   "q": "Someone set my house on fire after a quarrel over money.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN11",
+   "q": "The roof of our government school building was damaged by heavy rain. Who is responsible for the repairs?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN12",
+   "q": "The police broke the lock of my shop during a search. Is that legal?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN13",
+   "q": "A fire broke out in the government hospital because of a short circuit and patients died. Who is liable?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN14",
+   "q": "A mob attacked my brother during the bandh and he was seriously injured. The accused are known. Which sections apply?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN15",
+   "q": "I damaged a file belonging to a government office by mistake while it was with me. Can they file a case?",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  },
+  {
+   "set": "pair",
+   "id": "PN16",
+   "q": "My landlord vandalised the door of my rented room and took away my belongings.",
+   "want": null,
+   "kind": "layman",
+   "named": [],
+   "word": [],
+   "ai": [],
+   "ai_quotes": [],
+   "inr": 0.0
+  }
+ ]
+}
