@@ -1,0 +1,332 @@
+{
+ "written": "2026-10-17",
+ "acts": {
+  "bns": {
+   "sections": 358,
+   "recourse_chunks": 359,
+   "readings": {
+    "rc_vs_db": {
+     "words": 60611,
+     "identical_words": 60217,
+     "differences": 165,
+     "classes": {
+      "label": 94,
+      "act_number": 19,
+      "apostrophe_or_spacing": 15,
+      "next_heading_on_chunk": 34,
+      "OTHER": 3
+     },
+     "OTHER_by_section": {
+      "59": 2,
+      "358": 1
+     },
+     "words_without_oversize_chunks": 60611,
+     "identical_without_oversize_chunks": 60217,
+     "sections_with_a_difference": 106
+    },
+    "rc_vs_pdf": {
+     "words": 63937,
+     "identical_words": null,
+     "differences": 132,
+     "classes": {
+      "label": 94,
+      "act_number": 18,
+      "OTHER": 19,
+      "next_heading_on_chunk": 1
+     },
+     "OTHER_by_section": {
+      "358": 6,
+      "113": 1,
+      "130": 1,
+      "302": 1,
+      "307": 1,
+      "317": 1,
+      "323": 1,
+      "328": 1,
+      "344": 1,
+      "355": 1,
+      "44": 1,
+      "60": 1,
+      "61": 1,
+      "62": 1
+     }
+    },
+    "db_vs_pdf": {
+     "words": 63873,
+     "identical_words": null,
+     "differences": 49,
+     "classes": {
+      "apostrophe_or_spacing": 15,
+      "OTHER": 34
+     },
+     "OTHER_by_section": {
+      "356": 2,
+      "59": 2,
+      "113": 1,
+      "125": 1,
+      "127": 1,
+      "130": 1,
+      "136": 1,
+      "302": 1,
+      "307": 1,
+      "308": 1,
+      "313": 1,
+      "316": 1,
+      "317": 1,
+      "319": 1,
+      "323": 1,
+      "328": 1,
+      "33": 1,
+      "344": 1,
+      "355": 1,
+      "358": 1,
+      "44": 1,
+      "49": 1,
+      "51": 1,
+      "60": 1,
+      "61": 1,
+      "62": 1,
+      "72": 1,
+      "73": 1,
+      "79": 1,
+      "87": 1,
+      "92": 1,
+      "99": 1
+     }
+    }
+   },
+   "not_reviewed": [],
+   "verdicts": {
+    "72": {
+     "who": "INDIA CODE (database only)",
+     "what": "the database lacks clauses (b) and (c) of section 72(2); its PDF and Recourse agree"
+    },
+    "130": {
+     "who": "INDIA CODE (PDF text layer)",
+     "what": "the PDF's text lacks the 'Z.' at the end of an illustration; the database and Recourse have it"
+    },
+    "59": {
+     "who": "INDIA CODE (database only)",
+     "what": "a stray '33' and 'coommitted' in the database"
+    },
+    "358": {
+     "who": "RECOURSE (harmless)",
+     "what": "the Gazette's signature block and printer's line are on the end of the last section"
+    },
+    "49": {
+     "who": "INDIA CODE (database only)",
+     "what": "'llustrations' for 'Illustrations' (a lost capital I)"
+    },
+    "51": {
+     "who": "INDIA CODE (database only)",
+     "what": "'llustrations' for 'Illustrations' (a lost capital I)"
+    },
+    "113": {
+     "who": "neither",
+     "what": "India Code adds the Act number '(37 of 1967)'; a sub-heading follows the section in the PDF"
+    },
+    "356": {
+     "who": "neither",
+     "what": "'Illustration' labels (India Code) and the next sub-heading on the end of the chunk"
+    }
+   },
+   "preamble_chunk_has_hindi_in_a_broken_font": true,
+   "chunks_over_40000_chars": []
+  },
+  "bnss": {
+   "sections": 531,
+   "recourse_chunks": 532,
+   "readings": {
+    "rc_vs_db": {
+     "words": 105178,
+     "identical_words": 92958,
+     "differences": 239,
+     "classes": {
+      "OTHER": 115,
+      "act_number": 64,
+      "next_heading_on_chunk": 54,
+      "label": 6
+     },
+     "OTHER_by_section": {
+      "359": 89,
+      "58": 9,
+      "300": 2,
+      "12": 1,
+      "145": 1,
+      "183": 1,
+      "189": 1,
+      "2": 1,
+      "215": 1,
+      "219": 1,
+      "253": 1,
+      "276": 1,
+      "33": 1,
+      "35": 1,
+      "401": 1,
+      "480": 1,
+      "53": 1,
+      "531": 1
+     },
+     "words_without_oversize_chunks": 93712,
+     "identical_without_oversize_chunks": 92669,
+     "sections_with_a_difference": 104
+    },
+    "rc_vs_pdf": {
+     "words": 108602,
+     "identical_words": null,
+     "differences": 187,
+     "classes": {
+      "act_number": 62,
+      "OTHER": 112,
+      "label": 6,
+      "next_heading_on_chunk": 7
+     },
+     "OTHER_by_section": {
+      "359": 90,
+      "104": 1,
+      "12": 1,
+      "145": 1,
+      "151": 1,
+      "183": 1,
+      "189": 1,
+      "215": 1,
+      "219": 1,
+      "233": 1,
+      "240": 1,
+      "33": 1,
+      "342": 1,
+      "401": 1,
+      "452": 1,
+      "456": 1,
+      "460": 1,
+      "480": 1,
+      "53": 1,
+      "531": 1,
+      "62": 1,
+      "71": 1,
+      "95": 1
+     }
+    },
+    "db_vs_pdf": {
+     "words": 97797,
+     "identical_words": null,
+     "differences": 38,
+     "classes": {
+      "OTHER": 38
+     },
+     "OTHER_by_section": {
+      "58": 7,
+      "359": 3,
+      "101": 1,
+      "104": 1,
+      "147": 1,
+      "151": 1,
+      "162": 1,
+      "163": 1,
+      "2": 1,
+      "233": 1,
+      "240": 1,
+      "253": 1,
+      "260": 1,
+      "266": 1,
+      "270": 1,
+      "276": 1,
+      "306": 1,
+      "318": 1,
+      "35": 1,
+      "452": 1,
+      "456": 1,
+      "460": 1,
+      "464": 1,
+      "471": 1,
+      "62": 1,
+      "71": 1,
+      "83": 1,
+      "89": 1,
+      "93": 1,
+      "95": 1
+     }
+    }
+   },
+   "not_reviewed": [],
+   "verdicts": {
+    "183": {
+     "who": "RECOURSE",
+     "what": "lost the last line of the confession certificate, '(Signed) A. B. Magistrate.'"
+    },
+    "401": {
+     "who": "RECOURSE",
+     "what": "lost the last sub-section (10) ('Nothing in this section shall affect the provisions of the Probation of Offenders Act, 1958 ...'); the section ends at (9)"
+    },
+    "480": {
+     "who": "RECOURSE",
+     "what": "'on the execution by him of a bond' reads 'o the execution' (a letter lost in the extraction; the key bail section)"
+    },
+    "359": {
+     "who": "RECOURSE",
+     "what": "the compounding table is flattened cell by cell and wrapped cells run together; India Code's version of the table is also messy"
+    },
+    "531": {
+     "who": "RECOURSE",
+     "what": "the chunk holds the section (1,841 characters) plus both Schedules and the printer's footer (98,051 in all); too long to embed, so section 531 is not searchable"
+    },
+    "33": {
+     "who": "INDIA CODE (database and PDF)",
+     "what": "both lack 'shall, in the absence of any reasonable excuse, the burden of proving which excuse shall lie' in section 33(2)"
+    },
+    "53": {
+     "who": "INDIA CODE (database and PDF)",
+     "what": "both end sub-section (3) with a stray fragment, 'not available, by a registered medical practitioner soon after the arrest is made:'"
+    },
+    "58": {
+     "who": "INDIA CODE (database only)",
+     "what": "the database record titled 'Person arrested not to be detained more than twenty-four hours' carries the body of the next section; its PDF and Recourse agree"
+    },
+    "215": {
+     "who": "INDIA CODE (database and PDF)",
+     "what": "both lack sub-sections (2) and (3) of section 215 (withdrawal of a complaint; the meaning of 'Court')"
+    },
+    "219": {
+     "who": "INDIA CODE (database and PDF)",
+     "what": "both lack sub-section (7)"
+    },
+    "12": {
+     "who": "INDIA CODE (PDF text layer)",
+     "what": "'udicial' for 'judicial'"
+    },
+    "189": {
+     "who": "INDIA CODE (PDF text layer)",
+     "what": "'round' for 'ground'"
+    },
+    "145": {
+     "who": "neither",
+     "what": "'wilfully' / 'willfully': a spelling variant"
+    },
+    "2": {
+     "who": "INDIA CODE (database only)",
+     "what": "the database splices the end of the explanation to clause (h) into the start of clause (i) ('officermeans of an electronic device ...'); its PDF and Recourse agree"
+    },
+    "35": {
+     "who": "INDIA CODE (database only)",
+     "what": "'pn erson' for 'person'"
+    },
+    "253": {
+     "who": "INDIA CODE (database only)",
+     "what": "a stray page number ('97') inside the sentence"
+    },
+    "276": {
+     "who": "INDIA CODE (database only)",
+     "what": "a stray page number ('102') inside the sentence"
+    },
+    "300": {
+     "who": "neither",
+     "what": "the next chapter's heading is on the end of Recourse's chunk; India Code adds '(2 of 2016)'"
+    }
+   },
+   "preamble_chunk_has_hindi_in_a_broken_font": true,
+   "chunks_over_40000_chars": [
+    "531"
+   ]
+  }
+ }
+}

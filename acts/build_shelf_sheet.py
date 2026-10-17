@@ -29,7 +29,7 @@ CHOICE = {
                     ("19", "previous sanction (evaluation question PC03)"), ("20", "presumption (evaluation question PC06)"), ("27", "appeal line: the High Court's appeal and revision")],
     "pocso_act_2012": [("3", "penetrative sexual assault (the main offence)"), ("4", "its punishment (evaluation question PS01)"), ("19", "reporting (evaluation question PS03)"), ("24", "recording a child's statement (evaluation question PS05)"),
                        ("28", "appeal line: Special Courts"), ("29", "presumption (evaluation question PS06)"), ("31", "appeal line: the Code applies to a Special Court"), ("35", "time for the child's evidence and the trial (PS07)"),
-                       ("42", "alternative punishment (PS13)")],
+                       ("42", "alternate punishment (PS13)")],
     "uapa_1967": [("2", "appeal line: the definition of 'court' (also the Act's other definitions)"), ("15", "terrorist act (evaluation question UA03)"), ("16", "its punishment"), ("17", "raising funds (UA04)"),
                   ("20", "membership of a terrorist gang (UA11)"), ("26", "appeal line: forfeiture ordered by the court"), ("28", "appeal line: appeal against forfeiture"), ("35", "designating an organisation or an individual (UA06)"),
                   ("43D", "bail and the 180-day extension (UA01, UA02)"), ("45", "previous sanction (UA05)")],
@@ -76,6 +76,7 @@ def build(recourse, out):
     manifest = json.load(open(os.path.join(shelf_dir, "manifest.json"), encoding="utf-8"))
     directory = json.load(open(os.path.join(recourse, "acts_directory.json"), encoding="utf-8"))
     sections = {k: {c["section_number"]: c for c in json.load(open(os.path.join(shelf_dir, f"{k}.json"), encoding="utf-8"))} for k in ORDER}
+    load_report = json.load(open(os.path.join(shelf_dir, "LOAD_REPORT.json"), encoding="utf-8"))["reports"]
     problems = _check_choice(None, directory, manifest, sections)
     if problems:
         raise SystemExit("the sheet's choice of sections is inconsistent with the data:\n  " + "\n  ".join(problems))
@@ -103,8 +104,12 @@ def build(recourse, out):
     p.add_run("What this is. ").bold = True
     p.add_run("Recourse can now keep the full text of an Act that is not in its BNS/BNSS library, and hand the sections that bear on a question to the answer model, when the question names that Act "
               "(for example \"section 45 of the PMLA\", \"POCSO\", \"SC/ST Act\"). Five Acts are loaded: the Prevention of Corruption Act, 1988; POCSO, 2012; the UAPA, 1967; the PMLA, 2002; the SC/ST (Prevention of Atrocities) Act, 1989. "
-              "The text comes from India Code's own database. A program then compared it with India Code's PDF of the same Act: the arrangement of sections is identical, and every word is in the PDF (the few slips that are not are listed, "
-              "each against what the PDF reads). A program cannot tell whether a provision has since been amended, struck down or read down, or whether the text is the one a court would apply. ")
+              "The text comes from India Code's own database. A program then compared it with India Code's PDF of the same Act: the arrangement of sections is identical, and every section was read against the PDF's own text word by word, in order, "
+              "in both directions (so a doubled word, a lost apostrophe or a whole lost proviso is found, not only an unknown word). It found, and the loader now corrects against the PDF, among others: a proviso of the PMLA's section 44 that the database had lost, "
+              "and the words \"is said to commit aggravated sexual assault\" that POCSO's section 9 had in the wrong place. The differences left (the PDF's stubs of omitted sections, two slips of the PDF's own text layer, one Act number the database adds) are listed against what the PDF reads. "
+              "Not on the shelf: the Schedules at the back of POCSO (the armed and security forces), the PMLA (the scheduled offences), the UAPA (the listed organisations and individuals) and the SC/ST Act (the IPC offences), and the State or Union Territory amendments that India Code prints inside three sections (PC Act 17A, POCSO 42, SC/ST 14): "
+              "they apply only in that State and each of the three sections ends with a one-line note saying they exist. Both two-way comparisons and the Schedules are explained in the last section of the sheet. "
+              "A program cannot tell whether a provision has since been amended, struck down or read down, or whether the text is the one a court would apply. ")
     p.add_run("That is why this sheet exists. Nothing on it is treated as checked by a person until you say so.").bold = True
     p = doc.add_paragraph()
     p.add_run("What we ask. ").bold = True
@@ -130,9 +135,11 @@ def build(recourse, out):
         p.add_run("   |   ")
         _hyperlink(p, sections[key][CHOICE[key][0][0]]["source_url"], "its section list")
         fixes = len(m.get("corrections", []))
+        oc = load_report[key]["ordered_check"]
         p2 = doc.add_paragraph()
-        r = p2.add_run(f"{m['sections_loaded']} sections loaded on {m['loaded_on']} (some are omitted or repealed and shown as such); compared with India Code's PDF \"as on {m['pdf_as_on']}\": arrangement of sections identical, every word present; "
-                       f"{fixes} slip(s) of India Code's database corrected against the PDF, {len(m.get('accepted', []))} spelling variant(s) accepted. India Code's database record is newer than the PDF. Status: {m['text_status']} (not read by a person).")
+        r = p2.add_run(f"{m['sections_loaded']} sections loaded on {m['loaded_on']} (some are omitted or repealed and shown as such); compared with India Code's PDF \"as on {m['pdf_as_on']}\": arrangement of sections identical; "
+                       f"{oc['sections_compared']} sections ({oc['words_compared']:,} words) read against the PDF word by word in both directions, {oc['differences']} difference(s) left, each explained; "
+                       f"{fixes} correction(s) of India Code's database against the PDF, {len(m.get('accepted', []))} spelling variant(s) accepted. India Code's database record is newer than the PDF. Status: {m['text_status']} (not read by a person).")
         r.font.size = Pt(8)
         r.italic = True
         r.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
@@ -177,10 +184,17 @@ def build(recourse, out):
     p.add_run("Is this fair? Anything to add or strike? ").bold = True
     p.add_run("____________________________________________________________________________")
 
+    doc.add_heading("How the text was checked, and what is not on the shelf", level=2)
+    doc.add_paragraph("The check is a comparison of two texts that India Code publishes: its database and its PDF of the same Act. It cannot find an error that both share, and it cannot tell whether either is the law today. "
+                      "Run on all five Acts it compared about 54,000 words and found nine places where the database was wrong (two doubled words, two lost apostrophes, a lost proviso, a misplaced phrase, three headings), which the loader now corrects against the PDF. "
+                      "Everything else it found is listed in the loader's manifest next to what the PDF reads.")
+    doc.add_paragraph("What is NOT loaded: the Schedules of POCSO (the list of armed forces and security forces that section 2(c) refers to), the PMLA (the list of scheduled offences, Parts A to C, on which \"scheduled offence\" in section 2 depends), the UAPA (the organisations and individuals listed) and the SC/ST Act (the offences section 3(2)(va) refers to); "
+                      "the State or Union Territory amendments inside PC Act 17A (Jammu and Kashmir and Ladakh), POCSO 42 (Arunachal Pradesh) and SC/ST 14 (Karnataka); the Rules made under any of the Acts.")
+
     doc.add_heading("Three questions only you can answer", level=2)
     qs = ["1. Everyday words that the statute never uses. Example already in: \"anticipatory bail\" means sections 18 and 18A of the SC/ST Act (they say only \"section 438 of the Code shall not apply\"). "
           "What others should we add, for any of the five Acts (up to ten)? Write the everyday phrase and the section(s) it means.",
-          "2. Provisions the text above does not show as they stand: an amendment not yet on India Code, a provision struck down or read down by a court, an ordinance. Which, if any, in these five Acts?",
+          "2. Provisions the text above does not show as they stand: an amendment not yet on India Code, a provision struck down or read down by a court, an ordinance. Which, if any, in these five Acts? And: should the Schedules (see above) be loaded, which of them first?",
           "3. The five questions people most often ask about each Act (in their own words). We will use them as the next test of the search."]
     for text in qs:
         doc.add_paragraph(text)
