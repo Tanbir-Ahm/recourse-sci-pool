@@ -10,7 +10,8 @@ Three question sets, all of them written BEFORE this code existed:
   python acts/act_detect_eval.py --ai            also the AI pass, on the questions the word pass leaves empty. REAL MONEY: one Haiku call each, about Rs 0.2 [Likely].
                                                  Needs ANTHROPIC_API_KEY in the environment (the build sandbox has none, so the AI pass has never been run).
   python acts/act_detect_eval.py --ai --limit 10 the first 10 of those, to see what it does before paying for the rest.
-Add RECOURSE=/path/to/recourse if the Recourse checkout is not at /home/user/recourse. --json FILE writes every row.
+Add --recourse /path/to/recourse (or set RECOURSE) if the Recourse checkout is not at /home/user/recourse. --json FILE writes every row, so it can be sent for reading.
+With --ai the only package needed besides Python itself is `pip install anthropic` (the model call is made here, not through the site).
 
 What this can and cannot show. The 75 questions are Claude's, not real users'; the word pass was written after reading the five Acts' own text and the owner's trigger workbook, and a few of its patterns were widened after seeing which of the 75 were missed, so its score here is an optimistic ceiling.
 The ordinary questions are a false-alarm check, not a measure of harm: a match only adds a line saying the question "looks like it is about" an Act, and (with ACT_SHELF on) hands that Act's text to the answer model.
@@ -23,6 +24,11 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REC = os.environ.get("RECOURSE", "/home/user/recourse")
+for _i, _a in enumerate(sys.argv):                 # --recourse PATH (the folder that holds act_detect.py), read before the imports below
+    if _a == "--recourse" and _i + 1 < len(sys.argv):
+        REC = sys.argv[_i + 1]
+    elif _a.startswith("--recourse="):
+        REC = _a.split("=", 1)[1]
 sys.path.insert(0, REC)
 import act_detect as AD          # noqa: E402
 import act_directory as D        # noqa: E402
@@ -87,8 +93,26 @@ def sets():
     return out
 
 
+def make_ai_call():
+    """The AI step's model call, made here with the `anthropic` package alone (pip install anthropic), so that this script does not need the whole site installed. Same model, same prompt, same limits as the
+    site (act_detect.AI_MODEL_MAX_TOKENS, AI_TIMEOUT_S). Returns call(prompt) -> (text, rupees); the price is cost_log's own table."""
+    import anthropic
+    import cost_log
+    model = "claude-haiku-4-5-20251001"
+    client = anthropic.Anthropic()                  # reads ANTHROPIC_API_KEY from the environment
+
+    def call(prompt):
+        r = client.messages.create(model=model, max_tokens=AD.AI_MODEL_MAX_TOKENS, timeout=AD.AI_TIMEOUT_S, messages=[{"role": "user", "content": prompt}])
+        text = next(b.text for b in r.content if hasattr(b, "text"))
+        pin, pout = cost_log.ANTHROPIC[model]
+        usd = (int(r.usage.input_tokens or 0) * pin + int(r.usage.output_tokens or 0) * pout) / 1e6
+        return text, usd * cost_log.usd_inr()
+    return call
+
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--recourse", default=None, help="folder of the Recourse checkout (the one with act_detect.py); default $RECOURSE or /home/user/recourse")
     ap.add_argument("--ai", action="store_true", help="also run the AI pass (real money, needs ANTHROPIC_API_KEY)")
     ap.add_argument("--limit", type=int, default=0, help="with --ai: stop after this many model calls")
     ap.add_argument("--json", dest="out", default="", help="write every row to this file")
@@ -98,6 +122,7 @@ def main():
     entries = [{"id": e["id"], "short": e["short"]} for e in D.load()["acts"] if e.get("detect") is not False]
     if args.ai and not os.environ.get("ANTHROPIC_API_KEY"):
         print("--ai needs ANTHROPIC_API_KEY in the environment. Stopping before spending anything."); return 2
+    ai_call = make_ai_call() if args.ai else None
     data, rows, calls, spent = sets(), [], 0, 0.0
 
     for name, qs in data.items():
@@ -107,9 +132,12 @@ def main():
             word = sorted({h["id"] for h in AD.wide(r["q"], ids)} - set(named))
             ai_hits, inr = [], 0.0
             if args.ai and not named and not word and (not args.limit or calls < args.limit):
-                hits, inr = AD.ai(r["q"], entries)
+                hits, inr = AD.ai(r["q"], entries, call=ai_call)
                 ai_hits, calls, spent = sorted({h["id"] for h in hits}), calls + 1, spent + inr
-            rows.append({"set": name, **r, "named": named, "word": word, "ai": ai_hits, "inr": round(inr, 4)})
+                ai_quotes = [h.get("quote") for h in hits]
+            else:
+                ai_quotes = []
+            rows.append({"set": name, **r, "named": named, "word": word, "ai": ai_hits, "ai_quotes": ai_quotes, "inr": round(inr, 4)})
         sub = [x for x in rows if x["set"] == name]
         if name == "gold75":
             for label, keys in (("Directory only", ("named",)), ("+ word pass", ("named", "word")), ("+ AI pass", ("named", "word", "ai"))):
