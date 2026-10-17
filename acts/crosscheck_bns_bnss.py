@@ -146,6 +146,7 @@ def main(argv=None):
                 e = sum(v[1] for n, v in r["per_section"].items() if n not in big)
                 out["readings"][name]["words_without_oversize_chunks"], out["readings"][name]["identical_without_oversize_chunks"] = w, e
                 out["readings"][name]["sections_with_a_difference"] = len({d["section"] for d in rest})
+                out["readings"][name]["chunks_ending_with_next_heading"] = len({d["section"] for d in rest if classify(d) == "next_heading_on_chunk"})      # chunks, not differences: one chunk can hold several runs
         out["not_reviewed"] = sorted({d["section"] for name in ("rc_vs_db", "rc_vs_pdf", "db_vs_pdf") for d in readings[name]["diffs"] if classify(d) == "OTHER"
                                       and (key, d["section"]) not in VERDICTS and not (d["tag"] == "insert" and re.fullmatch(r"[a-e] [a-z ]+|\d+ [a-e] [a-z ]+|of [a-z ]+|\d+ of \d{4}( \d+)?", d["pdf"]))})
         out["verdicts"] = {s: {"who": v[0], "what": v[1]} for (k, s), v in VERDICTS.items() if k == key}

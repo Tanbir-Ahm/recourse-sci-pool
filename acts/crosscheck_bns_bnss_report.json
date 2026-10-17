@@ -22,7 +22,8 @@
      },
      "words_without_oversize_chunks": 60611,
      "identical_without_oversize_chunks": 60217,
-     "sections_with_a_difference": 106
+     "sections_with_a_difference": 106,
+     "chunks_ending_with_next_heading": 34
     },
     "rc_vs_pdf": {
      "words": 63937,
@@ -169,7 +170,8 @@
      },
      "words_without_oversize_chunks": 93712,
      "identical_without_oversize_chunks": 92669,
-     "sections_with_a_difference": 104
+     "sections_with_a_difference": 104,
+     "chunks_ending_with_next_heading": 48
     },
     "rc_vs_pdf": {
      "words": 108602,
