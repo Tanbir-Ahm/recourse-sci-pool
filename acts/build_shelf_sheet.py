@@ -48,8 +48,20 @@ CHOICE = {
     "pdpp_act_1984": [("1", "extent and commencement; the footnote on Jammu and Kashmir goes to the answer model with it"), ("2", "definitions: 'mischief', 'public property' (PD04, PD05, PD07, PD10)"),
                       ("3", "mischief causing damage to public property (PD02, PD06, PD11)"), ("4", "by fire or explosive substance (PD01, PD08). Reads 'rigrous' as India Code's database has it: see the note under this table"),
                       ("5", "special provisions regarding bail (PD03, PD09)"), ("6", "saving (PD12). In the ordinary shelf path a 'saving' section is never found by meaning; here the whole Act is handed over"), ("7", "repeal of the Ordinance and saving")],
+    # The Dowry (1961) and Juvenile Justice (2015) Acts are searched by meaning (not handed over whole: 11,904 and 153,183 characters). These Acts have NO appeal section and NO pointers, so no "appeal line" / "pointer" reasons here.
+    # The ids are the frozen evaluation questions of act_shelf/eval_questions_jjdowry.json.
+    "dowry_prohibition_act_1961": [("2", "the definition of “dowry” (evaluation question D04)"), ("3", "the offence of giving or taking dowry, and its punishment (D02, D03)"), ("4", "the offence of demanding dowry (D01)"),
+                                   ("4A", "ban on advertising a dowry demand (D05)"), ("5", "an agreement to give or take dowry is void (D06)"), ("6", "dowry is for the benefit of the wife or her heirs (D07)"),
+                                   ("7", "cognizance of offences: which court, and the time limit (D08)"), ("8", "offences cognizable, bailable and non-compoundable (D09)"), ("8A", "burden of proof in a dowry prosecution (D10)"),
+                                   ("8B", "Dowry Prohibition Officers (D11)")],
+    "jj_act_2015": [("2", "definitions, including who is a “child” (J17). CORRECTED against the PDF: the definition of “Child Welfare Officer” was garbled in India Code's database — see the note under this table"),
+                    ("3", "the general principles to be followed in administering the Act (J16)"), ("8", "powers, functions and responsibilities of the Juvenile Justice Board (J04)"),
+                    ("12", "bail to a person who is apparently a child in conflict with law (J03)"), ("15", "preliminary assessment into a heinous offence: when a child of 16+ may be tried as an adult (J01, J02)"),
+                    ("27", "Child Welfare Committee: who decides on a child in need of care and protection (J09)"), ("57", "eligibility of prospective adoptive parents (J08)"), ("58", "procedure for adoption by Indian adoptive parents (J07)"),
+                    ("74", "prohibition on disclosing a child's identity (J11)"), ("75", "punishment for cruelty to a child (J06)"), ("82", "corporal punishment (J15)"), ("94", "presumption and determination of age (J18)"),
+                    ("101", "appeals against an order of the Board or the Committee (J14)")],
 }
-ORDER = ["pc_act_1988", "pocso_act_2012", "uapa_1967", "pmla_2002", "sc_st_act_1989", "muslim_women_act_2019", "pdpp_act_1984"]
+ORDER = ["pc_act_1988", "pocso_act_2012", "uapa_1967", "pmla_2002", "sc_st_act_1989", "muslim_women_act_2019", "pdpp_act_1984", "dowry_prohibition_act_1961", "jj_act_2015"]
 NO_PDF_DATE = "not printed on the PDF"      # what build_act_chunks.py records as 'pdf_as_on' for a PDF with no "[As on the ...]" line (the Public Property Act's)
 
 
@@ -125,7 +137,8 @@ def build(recourse, out):
     import act_directory as AD
     import act_shelf as S
     held = {k: {"state": "used", "loaded_on": next(a for a in manifest["acts"] if a["key"] == k)["loaded_on"]} for k in ORDER}
-    short_words = sum(load_report[k]["ordered_check"]["words_compared"] for k in ORDER[5:])          # the two short Acts, added on 2026-10-17
+    short_words = sum(load_report[k]["ordered_check"]["words_compared"] for k in ("muslim_women_act_2019", "pdpp_act_1984"))      # the two short Acts added 2026-10-17
+    latest_words = sum(load_report[k]["ordered_check"]["words_compared"] for k in ("dowry_prohibition_act_1961", "jj_act_2015"))  # the Dowry and JJ Acts added later that day
     pm = [{"id": "pmla_2002", "short": next(a for a in directory["acts"] if a["id"] == "pmla_2002")["short"], "how": "named"}]
     notice = AD.notice(pm, "answer", held={"pmla_2002": held["pmla_2002"]})["text"]
     notice_unused = AD.notice(pm, "answer", held={"pmla_2002": {"state": "unused", "loaded_on": held["pmla_2002"]["loaded_on"]}})["text"]
@@ -148,15 +161,16 @@ def build(recourse, out):
     p = doc.add_paragraph()
     p.add_run("What this is. ").bold = True
     p.add_run("Recourse can now keep the full text of an Act that is not in its BNS/BNSS library, and hand the sections that bear on a question to the answer model, when the question names that Act "
-              "(for example \"section 45 of the PMLA\", \"POCSO\", \"SC/ST Act\"). Seven Acts are loaded: the Prevention of Corruption Act, 1988; POCSO, 2012; the UAPA, 1967; the PMLA, 2002; the SC/ST (Prevention of Atrocities) Act, 1989; "
-              "the Muslim Women (Protection of Rights on Marriage) Act, 2019; and the Prevention of Damage to Public Property Act, 1984. The last two are short (eight and seven sections, about 3,300 and 3,800 characters), so when a question names one of them "
-              "Recourse hands the answer model the whole Act, not the sections closest to the question; this sheet therefore shows every section of those two. "
+              "(for example \"section 45 of the PMLA\", \"POCSO\", \"SC/ST Act\"). Nine Acts are loaded: the Prevention of Corruption Act, 1988; POCSO, 2012; the UAPA, 1967; the PMLA, 2002; the SC/ST (Prevention of Atrocities) Act, 1989; "
+              "the Muslim Women (Protection of Rights on Marriage) Act, 2019; the Prevention of Damage to Public Property Act, 1984; the Dowry Prohibition Act, 1961; and the Juvenile Justice (Care and Protection of Children) Act, 2015. "
+              "Two of them — the Muslim Women Act (8 sections) and the Public Property Act (7) — are short, so when a question names one of those Recourse hands the answer model the whole Act, not the sections closest to the question; this sheet shows every section of those two. "
+              "For the other seven (including the Dowry Act's 13 sections and the Juvenile Justice Act's 112), the answer model gets the sections closest to the question, and this sheet shows a selection with the reason each is here. "
               "The text comes from India Code's own database. A program then compared it with India Code's PDF of the same Act: the arrangement of sections is identical, and every section was read against the PDF's own text word by word, in order, "
               "in both directions (so a doubled word, a lost apostrophe or a whole lost proviso is found, not only an unknown word). It found, and the loader now corrects against the PDF, among others: a proviso of the PMLA's section 44 that the database had lost, "
-              "the words \"is said to commit aggravated sexual assault\" that POCSO's section 9 had in the wrong place, and, in section 7 of the Muslim Women Act, a piece of clause (a) copied into clauses (b) and (c) "
-              "(as the database has it, her relatives could compound the offence and be heard on bail; the PDF says only the woman). The differences left (the PDF's stubs of omitted sections, two slips of the PDF's own text layer, one Act number the database adds) are listed against what the PDF reads. "
-              "Not on the shelf: the Schedules at the back of POCSO (the armed and security forces), the PMLA (the scheduled offences), the UAPA (the listed organisations and individuals) and the SC/ST Act (the IPC offences), and the State or Union Territory amendments that India Code prints inside three sections (PC Act 17A, POCSO 42, SC/ST 14): "
-              "they apply only in that State and each of the three sections ends with a one-line note saying they exist. Both two-way comparisons and the Schedules are explained in the last section of the sheet. "
+              "the words \"is said to commit aggravated sexual assault\" that POCSO's section 9 had in the wrong place, in section 7 of the Muslim Women Act a piece of clause (a) copied into clauses (b) and (c) "
+              "(as the database has it, her relatives could compound the offence and be heard on bail; the PDF says only the woman), and in the Juvenile Justice Act's definitions the term \"child care institution\" overwritten by a stray fragment in the definition of \"Child Welfare Officer\". The differences left are listed against what the PDF reads. "
+              "Not on the shelf: the Schedules at the back of POCSO (the armed and security forces), the PMLA (the scheduled offences), the UAPA (the listed organisations and individuals) and the SC/ST Act (the IPC offences); the State or Union Territory amendments that India Code prints inside three sections (PC Act 17A, POCSO 42, SC/ST 14) and the Haryana amendments the PDF appends to the Dowry Act; and the Rules made under any of the Acts (the Juvenile Justice Model Rules among them). "
+              "Both two-way comparisons and the Schedules are explained in the last section of the sheet. "
               "A program cannot tell whether a provision has since been amended, struck down or read down, or whether the text is the one a court would apply. ")
     p.add_run("That is why this sheet exists. Nothing on it is treated as checked by a person until you say so.").bold = True
     p = doc.add_paragraph()
@@ -255,6 +269,7 @@ def build(recourse, out):
                       "Run on the first five Acts it compared about 54,000 words and found nine places where the database was wrong (two doubled words, two lost apostrophes, a lost proviso, a misplaced phrase, three headings), which the loader now corrects against the PDF. "
                       f"Run on the two short Acts added afterwards ({short_words:,} words) it found one more defect, in two clauses: the piece of clause (a) copied into clauses (b) and (c) of section 7 of the Muslim Women Act (see the note under that Act's table), also corrected against the PDF; "
                       "in the Public Property Act it found only the one spelling slip noted under its table. "
+                      f"Run on the Dowry Prohibition Act and the Juvenile Justice Act ({latest_words:,} words) it found: in the Juvenile Justice Act the \"Child Welfare Officer\" definition garbled (corrected, see the note under its table) and the possessive apostrophe dropped throughout (child's, children's, person's, parent's) with a few hyphens, 30 corrections against the PDF in all; the Dowry Act's section 8A is in the PDF body but missing from the PDF's printed list of sections (an amendment-inserted section the index was not updated for), which the loader is told to expect while still checking the section's text against the PDF. "
                       "Everything else it found is listed in the loader's manifest next to what the PDF reads.")
     doc.add_paragraph("What is NOT loaded: the Schedules of POCSO (the list of armed forces and security forces that section 2(c) refers to), the PMLA (the list of scheduled offences, Parts A to C, on which \"scheduled offence\" in section 2 depends), the UAPA (the organisations and individuals listed) and the SC/ST Act (the offences section 3(2)(va) refers to); "
                       "the State or Union Territory amendments inside PC Act 17A (Jammu and Kashmir and Ladakh), POCSO 42 (Arunachal Pradesh) and SC/ST 14 (Karnataka); the Rules made under any of the seven Acts. "
