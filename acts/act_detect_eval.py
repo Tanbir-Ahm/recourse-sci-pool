@@ -6,7 +6,7 @@ Three question sets, all of them written BEFORE this code existed:
   * 27 ordinary criminal-law questions that concern none of those Acts (below, Claude's own) -- does an Act come up that should not?
   * the project's own question sets (the 30 real questions, the 29 of Stage F, the three trap exams: 161 questions) -- what changes for questions that were written for other purposes?
 A fourth set, `acts/pair_questions.json` (64 questions for the Muslim Women (Protection of Rights on Marriage) Act, 2019 and the Prevention of Damage to Public Property Act, 1984: 34 that should reach
-the Act and 30 near-misses that should not), was frozen and committed BEFORE the patterns for those two Acts were written (2026-10-17), so the first run of the patterns on it is a fair first look.
+the Act and 30 near-misses that should not), was frozen and committed BEFORE the patterns for those two Acts were written (2026-10-17), so the first run of the patterns on it is a fair first look. A fifth, `acts/pair_stress_questions.json` (60 harder ones), was frozen after the first patterns scored perfectly on the fourth and was run once on them before they were tightened.
 
   python acts/act_detect_eval.py                 the word pass only: free, no model, no network.
   python acts/act_detect_eval.py --ai            also the AI pass, on the questions the word pass leaves empty. REAL MONEY: one Haiku call each, about Rs 0.2 [Likely].
@@ -92,11 +92,12 @@ def sets():
     except Exception as exc:  # noqa: BLE001
         print(f"  (could not read real30: {exc})")
     out["project"] = [r for r in others if r["q"]]
-    try:
-        pair = json.load(open(os.path.join(HERE, "pair_questions.json"), encoding="utf-8"))["questions"]
-        out["pair"] = [{"id": r["id"], "q": r["q"], "want": r["want"], "kind": "layman"} for r in pair]
-    except Exception as exc:  # noqa: BLE001
-        print(f"  (could not read pair_questions.json: {exc})")
+    for key, fname in (("pair", "pair_questions.json"), ("pair_stress", "pair_stress_questions.json")):
+        try:
+            pair = json.load(open(os.path.join(HERE, fname), encoding="utf-8"))["questions"]
+            out[key] = [{"id": r["id"], "q": r["q"], "want": r["want"], "kind": "layman"} for r in pair]
+        except Exception as exc:  # noqa: BLE001
+            print(f"  (could not read {fname}: {exc})")
     return out
 
 
@@ -159,7 +160,7 @@ def main():
                 print(f"    {act:16s} {sum(x['want'] in set(x['named'])|set(x['word'])|set(x['ai']) for x in s)}/{len(s)}")
             miss = [x for x in sub if x["want"] not in set(x["named"]) | set(x["word"]) | set(x["ai"])]
             print(f"  still missed ({len(miss)}): " + ", ".join(x["id"] for x in miss))
-        elif name == "pair":
+        elif name in ("pair", "pair_stress"):
             PAIR = ("muslim_women_act_2019", "pdpp_act_1984")
             for label, keys in (("Directory only", ("named",)), ("+ word pass", ("named", "word"))):
                 got = [set().union(*[set(x[k]) for k in keys]) for x in sub]
