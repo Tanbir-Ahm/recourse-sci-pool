@@ -13,6 +13,9 @@ HOW SECTIONS ARE CHOSEN (all by code; the numbers behind each choice are in act_
   2. pointers (act_shelf/manifest.json, per Act): everyday phrases that the statute never uses but means ("anticipatory bail" = "section 438 of the Code not to apply"), at most 2;
   3. the sections whose meaning is closest to the question: voyage-law-2 cosine, ranked within the Act, 5 sections for one Act (3 each for two), none scoring under FLOOR, and no more characters in all than
      MAX_CHARS (named and pointed sections always come; the very first section of an Act is exempt from the cap; a section is never cut).
+  A very short Act (the manifest says "whole_act": true, and the code checks that the Act is under WHOLE_ACT_MAX_CHARS characters: the Muslim Women (Protection of Rights on Marriage) Act, 2019 has 8 sections
+  and about 3,300 characters, the Prevention of Damage to Public Property Act, 1984 has 7 and about 3,800) is handed over WHOLE, in the Act's own order, whatever the question: for such an Act the question
+  "which section?" is not worth asking, and the sections a search by meaning dropped for a 24-question test (2026-10-17) were the ones that fix the Act's reach: the date it came into force and the saving clause.
   Nothing is handed over on a stale embedding (the sha256 of the section text is checked), a missing file, or an Act whose text did not pass its PDF check: that Act is then simply "not held".
 
 WHAT THE TEXT IS.  India Code's text of the Act, "machine_checked": its sections equal the PDF's arrangement of sections and every word occurs in the PDF; a person has not read it.  The page and the notice say so.
@@ -41,8 +44,10 @@ FLOOR = 0.22                       # cosine under which a section is not handed 
 MAX_CHARS = 14000                  # characters of statute text handed over for one question (shared by the Acts; named and pointed sections always come); the first section of an Act is exempt. 18,000 and 14,000 handed the marked section over equally often on the test questions (28 of 29), 12,000 did not (27)
 MAX_NAMED = 3
 MAX_POINTED = 2
+WHOLE_ACT_MAX_CHARS = 6000         # a manifest entry may say "whole_act": true only for an Act this short (sections that are not omitted, in all); a longer Act with that flag is NOT held, so a slip in the manifest cannot hand over a long Act in full
 MIN_MEANING = 2                    # a question that names sections still gets this many by meaning, when any clears the floor
-WINDOW = 45                        # characters either side of a section number in which the Act's name must stand
+WINDOW = 45                        # characters either side of a section number in which the Act's name must START (after the number) or END (before it): 'section 45 of the PMLA', 'PMLA section 45'
+NAME_ROOM = 110                    # how far past WINDOW a name may run: the longest name of an Act, the SC/ST Act's full title with its short name, is under 100 characters (until 2026-10-17 the whole name had to fit inside WINDOW, which no official title of a long-named Act does)
 GOOD_STATUS = ("machine_checked", "reviewed")
 # Housekeeping sections: they amend ANOTHER enactment or only repeal/save. Never ranked by meaning (staging 2026-10-17: PC Act s.29, "Amendment of the Ordinance 38 of 1944", ranked 2nd for a bribery question,
 # ahead of s.7, the offence), but still handed over when a question NAMES them by number. 'Amendment of Schedule' (UAPA s.35, a live power over the list of terrorist organisations) is NOT in this class.
@@ -127,7 +132,7 @@ def _load_act(entry, embeddings, base):
     key = entry["key"]
     st = {"key": key, "code": entry["code"], "name": entry.get("name"), "short": entry.get("short"), "display": entry.get("display") or entry.get("short") or entry.get("name"), "citation": entry.get("citation"),
           "loaded_on": entry.get("loaded_on"), "pdf_as_on": entry.get("pdf_as_on"), "text_status": entry.get("text_status"), "pointers": [], "ok": False, "problems": [],
-          "by_num": {}, "ranked": [], "matrix": None}
+          "by_num": {}, "ranked": [], "matrix": None, "whole": False}
     if entry.get("text_status") not in GOOD_STATUS:
         st["problems"].append(f"text_status is {entry.get('text_status')!r}: the Act's text did not pass its PDF check")
         return st
@@ -162,6 +167,12 @@ def _load_act(entry, embeddings, base):
     if not ranked:
         st["problems"].append("no section to search")
         return st
+    if entry.get("whole_act"):
+        total = sum(len(c["text"]) for c in ranked)
+        if total > WHOLE_ACT_MAX_CHARS:
+            st["problems"].append(f"the manifest says whole_act, but the Act is {total:,} characters long (the limit is {WHOLE_ACT_MAX_CHARS:,}): it is not held")
+            return st
+        st["whole"] = True
     for p in entry.get("pointers") or []:
         rxs = [r for r in (_flex(x) for x in p.get("phrases") or []) if r is not None]
         try:                                                  # 'patterns' (added 2026-10-17): regular expressions, for a cue that is not one fixed phrase ("took Rs 10,000 from us"); case-insensitive
@@ -305,8 +316,9 @@ def _names_between(text, lo, hi, alias_map, others):
 
 def _attributions(text, act_ids):
     """[(number, kind, act id)] for every section number in the text, with the name that stands next to it: kind 'act' (a shelf Act among act_ids; the third item is its id), 'other' (BNS, CrPC, another Act of the
-    Directory; the third item is None).  A number with no name next to it is left out.  A name stands next to a number when it follows it ('section 45 of the PMLA', within WINDOW characters and not past the next
-    section number) or, failing that, precedes it ('PMLA section 45'; a name an earlier number has already taken does not count)."""
+    Directory; the third item is None).  A number with no name next to it is left out.  A name stands next to a number when it follows it ('section 45 of the PMLA': it STARTS within WINDOW characters of the
+    number and lies before the next section number) or, failing that, precedes it ('PMLA section 45': it ENDS within WINDOW characters before the number; a name an earlier number has already taken does not
+    count).  A long official name ('section 5 of the Prevention of Damage to Public Property Act, 1984') therefore counts; it did not before 2026-10-17."""
     out = []
     text = (text or "").lower()
     alias_map = {}
@@ -322,8 +334,9 @@ def _attributions(text, act_ids):
     for i, m in enumerate(refs):
         prev_end = refs[i - 1].end() if i else 0
         next_start = refs[i + 1].start() if i + 1 < len(refs) else len(text)
-        after = sorted(_names_between(text, m.end(), min(m.end() + WINDOW, next_start), alias_map, others))
-        before = sorted((n for n in _names_between(text, max(m.start() - WINDOW, prev_end), m.start(), alias_map, others) if n[:2] not in taken), key=lambda n: -n[1])
+        after = sorted(n for n in _names_between(text, m.end(), min(m.end() + WINDOW + NAME_ROOM, next_start), alias_map, others) if n[0] - m.end() <= WINDOW)             # starts within WINDOW after the number
+        before = sorted((n for n in _names_between(text, max(m.start() - WINDOW - NAME_ROOM, prev_end), m.start(), alias_map, others) if m.start() - n[1] <= WINDOW and n[:2] not in taken),
+                        key=lambda n: -n[1])                                                                                                                                   # ends within WINDOW before it
         pick = after[0] if after else (before[0] if before else None)
         if pick is None:
             continue
@@ -399,11 +412,14 @@ def search(question, acts, current_message=None, embed_fn=None):
         named = named_sections(text, ids)
         lowered = text.lower()
         qvec = None
-        try:
-            qvec = np.array((embed_fn or _embed_query)(text), dtype=float)
-            info["embed"] = "ok"
-        except Exception as exc:  # noqa: BLE001 -- the named sections and pointers still go
-            info["embed"] = f"failed: {type(exc).__name__}"
+        if all(shelf[a].get("whole") for a in ids):
+            info["embed"] = "not needed"                              # every Act drawn is handed over whole: no question vector, no Voyage call
+        else:
+            try:
+                qvec = np.array((embed_fn or _embed_query)(text), dtype=float)
+                info["embed"] = "ok"
+            except Exception as exc:  # noqa: BLE001 -- the named sections and pointers still go
+                info["embed"] = f"failed: {type(exc).__name__}"
         k_meaning = TOP_K_ONE if len(ids) == 1 else TOP_K_TWO
         budget = MAX_CHARS // len(ids)
         matches = []
@@ -431,6 +447,16 @@ def search(question, acts, current_message=None, embed_fn=None):
                         mm["pointer_tag"] = tags[n]                    # e.g. 'payer': why this pointer fired (chat_assistant adds an instruction to the prompt for it)
                     mine.append(mm)
                     rec["pointed"].append(n)
+            if st.get("whole"):                                       # a very short Act: every section, in the Act's own order (named and pointed ones are already first)
+                rec["whole"] = True
+                for c in st["ranked"]:
+                    n = str(c["section_number"]).upper()
+                    if n not in seen:
+                        seen.add(n)
+                        mine.append(_match(st, c, "whole", None))
+                info["per_act"][aid] = rec
+                matches += mine
+                continue
             want = max(MIN_MEANING, k_meaning - len(mine))
             if qvec is not None:
                 scores = st["matrix"] @ qvec
@@ -474,7 +500,7 @@ def shelf_ids(matches):
 
 def held_state(matches, acts):
     """For the notice and the prompt: {act id: {'state': 'used'|'unused', 'loaded_on': iso date}} for every Act of `acts` that has a working shelf.  'used' = text of that Act reached the answer;
-    'unused' = the shelf holds the Act but nothing from it did (nothing close enough, or the question was not searched).  An Act with no working shelf is not in the result."""
+    'unused' = the shelf holds the Act but nothing from it did (nothing close enough, or the question was not searched).  'whole': True is added for an Act that is handed over in full.  An Act with no working shelf is not in the result."""
     out = {}
     try:
         if not enabled():
@@ -485,6 +511,8 @@ def held_state(matches, acts):
             st = _state(aid)
             if st:
                 out[aid] = {"state": "used" if aid in used else "unused", "loaded_on": st["loaded_on"]}
+                if st.get("whole"):
+                    out[aid]["whole"] = True                           # the Act is handed over in full (a very short Act): the notice and the prompt say so instead of "the sections our search found"
     except Exception:  # noqa: BLE001
         return {}
     return out
