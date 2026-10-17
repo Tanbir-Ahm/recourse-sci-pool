@@ -1,0 +1,57 @@
+== 1. The 75 gold questions (5 Acts x 15) ==
+Directory today                      right Act 29/75 = 39%  (layman 5/34, lawyer 24/41)  wrong-Act fires 0
+Spec v2 N1 (precise)                 right Act 27/75 = 36%  (layman 5/34, lawyer 22/41)  wrong-Act fires 0
+Spec v2 N2 (+ plain words)           right Act 48/75 = 64%  (layman 25/34, lawyer 23/41)  wrong-Act fires 0
+Directory + N2                       right Act 51/75 = 68%  (layman 25/34, lawyer 26/41)  wrong-Act fires 0
+Acts' own vocabulary only            right Act 30/75 = 40%  (layman 9/34, lawyer 21/41)  wrong-Act fires 0
+Directory + N2 + vocabulary          right Act 59/75 = 79%  (layman 26/34, lawyer 33/41)  wrong-Act fires 0
+   pc_act_1988      n=15  Directory  4  N2  7  all three  7
+   pmla_2002        n=15  Directory  7  N2 11  all three 14
+   pocso_act_2012   n=15  Directory  5  N2  9  all three  9
+   sc_st_act_1989   n=15  Directory  7  N2 11  all three 15
+   uapa_1967        n=15  Directory  6  N2 10  all three 14
+   still missed by all three:
+     PC01 [layman] A clerk in the municipal office is asking me for Rs 5,000 to pass my file. What is the punishment for him?
+     PC02 [layman] I paid money to a government officer to get my licence renewed because he refused to move the file. Have I also committed a crime?
+     PC03 [lawyer] Is sanction required to prosecute a retired public servant for an offence under section 13?
+     PC04 [lawyer] Does the police need prior approval before starting an enquiry against a public servant for a decision taken in the course of his official duty?
+     PC05 [layman] Our company gave gifts and money to officials to win a government tender. Is the company itself liable and who in the company can be punished?
+     PC07 [layman] A government officer owns property far beyond his salary. Which provision deals with this?
+     PC09 [layman] Can the court attach the property of a corrupt government officer?
+     PC14 [lawyer] What matters must the court consider when fixing the fine on a person convicted of an offence of acquiring property by corrupt means?
+     PS04 [lawyer] What is the punishment for a person who fails to report an offence against a child to the police?
+     PS05 [lawyer] Where should the statement of a child victim be recorded and by whom?
+     PS08 [layman] Can the accused sit in the courtroom and look at the child while she gives evidence?
+     PS09 [layman] A 16-year-old boy is accused under the child sexual offences law. Will he be tried like an adult?
+     PS14 [layman] Someone showed pornographic videos to my 12-year-old daughter. What offence is that?
+     PS15 [lawyer] Can a child victim be medically examined before an FIR is registered?
+     UA10 [lawyer] Is there a presumption of guilt if arms or explosives are recovered from the accused?
+     PM10 [lawyer] Can the ED search premises and seize records, and what must the officer record before doing so?
+
+== 2. The owner's own sentences (staging test 2026-10-17) and other plain-language bribery wording ==
+   Directory=[] N2=[] vocabulary=[]  <- My son works as a clerk in a government office. He was arrested yesterday for taking money
+   Directory=[] N2=['pc_act_1988'] vocabulary=[]  <- Is it bailable? (Read with the earlier messages, this asks: Is the offence of a government
+   Directory=[] N2=[] vocabulary=[]  <- My son was caught taking money from a contractor in a government office
+   Directory=[] N2=['pc_act_1988'] vocabulary=[]  <- An official took money from a contractor
+   Directory=[] N2=[] vocabulary=[]  <- The tehsildar took Rs 10,000 from us to sign our land papers
+   Directory=[] N2=[] vocabulary=[]  <- A police constable demanded money to not file a case against me
+   Directory=[] N2=[] vocabulary=[]  <- The officer is demanding a percentage to clear my bill
+   Directory=[] N2=['pc_act_1988'] vocabulary=[]  <- My father is a government employee and the vigilance department raided our house
+
+== 3. The 'Layperson Trigger Additions' sheet's own phrases used as matchers (5 shelf Acts) ==
+   phrase words present >= 100%; high-signal only    : right Act 2/75 = 3%, wrong-Act fires 0
+   phrase words present >= 100%; high-signal + broad: right Act 5/75 = 7%, wrong-Act fires 1
+   phrase words present >= 67%; high-signal only    : right Act 6/75 = 8%, wrong-Act fires 0
+   phrase words present >= 67%; high-signal + broad: right Act 9/75 = 12%, wrong-Act fires 1
+   phrase words present >= 50%; high-signal only    : right Act 26/75 = 35%, wrong-Act fires 5
+   phrase words present >= 50%; high-signal + broad: right Act 44/75 = 59%, wrong-Act fires 15
+   owner's sentence at 50% overlap fires: ['pc_act_1988', 'pmla_2002'] (PMLA fires on the word 'money')
+
+== 4. Act vocabulary derived from the Acts' own text (distinctive vs BNS/BNSS and the other four Acts); first terms per Act ==
+   uapa_1967: 53 terms; terrorist; terrorism; terrorist organisation; chapter iv; proceeds of terrorism; iv or chapter; notification issued; unlawful association; counterfeit indian; counterfeit indian currency; declared unlawful; has become; high quality; high quality counterfeit
+   pmla_2002: 107 terms; adjudicating; adjudicating authority; money-laundering; appellate tribunal; reporting; confiscation; entity; reporting entity; involved in money-laundering; offence of money-laundering; corresponding law; deputy director; forward copy; frozen
+   pc_act_1988: 31 terms; special judge; undue advantage; public duty; amendment; criminal law; criminal law amendment; law amendment; commercial; commercial organisation; improperly; performance of public; reward; amendment ordinance; another public
+   sc_st_act_1989: 13 terms; scheduled; exclusive special; exclusive special court; castes; scheduled castes; scheduled tribes; tribes; atrocities; charge sheet; first information; first information report; information report; victims
+   pocso_act_2012: 63 terms; sexual assault; assault whoever; sexual assault whoever; care and protection; pornographic; aggravated; penetrative; penetrative sexual; penetrative sexual assault; assault punishment; assault whoever commits; child has; child through; confidence
+
+Done. Caveats: the 75 questions are Claude's; the vocabulary pruning was done knowing some misses; no AI router tested (no Anthropic key in the sandbox).
