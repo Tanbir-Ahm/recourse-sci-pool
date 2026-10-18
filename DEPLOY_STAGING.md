@@ -96,6 +96,8 @@ Every variable below is optional and defaults to today's behaviour. Change ONE a
 Suggested order: (1) leave `GROUNDING_CHECKS` at `log`, ask 10 questions, search the logs for `GROUNDING_CHECK`: each line is a case or quotation the check would flag (a false alarm shows here before any user sees it); then try `warn`, then `enforce`. (2) `ANSWER_EFFORT=medium`. (3) `SCOPE_MODEL=claude-haiku-5-5`. (4) `PROMPT_CACHE=on` once there is steady traffic. (5) `DAILY_BUDGET_INR=50` plus `COST_STATE_FILE` as a safety net before the site is public.
 Not covered by these checks: what a wider-search case actually held (the model can still overstate it), the reasoning, and the "what you can do" steps.
 
+**Addendum 2026-10-18 (quote check, FOLLOW_UPS 2aw).** The quote check now also refuses a near-match quotation that differs from the material in a word that decides a meaning (not, may/shall, and/or, a number). No new variable and nothing to set. Staging redeploys when the branch moves. What to look for: in Deploy Logs a `GROUNDING_CHECK` line whose `quotes` is not empty and whose `nearest` field shows wording that differs from the quotation in one of those words is a REAL catch; a `nearest` that differs only in an ordinary word, a hyphen or an article is a FALSE alarm, and I need to know. With `GROUNDING_CHECKS=warn` the reader sees the notice "we could not find them in the sources we read".
+
 ## Part 4f: the controlling case, the "not checked" sentence and verbatim excerpts (added 2026-10-14, after the owner's "go")
 Recourse branch `register-hooks-and-overlay`. Redeploy `staging-site` from the branch (it does so on a push), then:
 
