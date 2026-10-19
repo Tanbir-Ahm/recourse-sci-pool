@@ -1,0 +1,21 @@
+SECTION_RULE = (unset: on)
+TURN 1: Can a disproportionate assets case under PC act be filed without section 17 approval?
+  Acts found: ['pc_act_1988']
+  sections handed over: [('17', 'named'), ('17A', 'meaning'), ('19', 'meaning'), ('20', 'meaning')]
+  BNS/BNSS section read from the bare number: before the drop [('BNS', '17')], after []
+  prompt clause 'The section the person asked about': YES
+TURN 2: I am asking about section 17, NOT section 17 A
+  Acts found: ['pc_act_1988']
+  sections handed over: [('17', 'implied'), ('17A', 'meaning'), ('22', 'meaning'), ('18', 'meaning'), ('18A', 'meaning')]
+  BNS/BNSS section read from the bare number: before the drop [('BNS', '17')], after []
+  prompt clause 'The section the person asked about': YES
+TURN 3: Does section 17 require authorisation of a police officer not below the rank of SP to register a case of disproportionate assets?
+  Acts found: ['pc_act_1988']
+  sections handed over: [('17', 'implied'), ('17A', 'meaning'), ('18', 'meaning'), ('19', 'meaning'), ('13', 'meaning')]
+  BNS/BNSS section read from the bare number: before the drop [('BNS', '17')], after []
+  prompt clause 'The section the person asked about': YES
+TURN 4: No section 17 order exists for this case of disproportionate assets
+  Acts found: ['pc_act_1988']
+  sections handed over: [('17', 'implied'), ('18', 'meaning'), ('18A', 'meaning'), ('17A', 'meaning'), ('16', 'meaning')]
+  BNS/BNSS section read from the bare number: before the drop [('BNS', '17')], after []
+  prompt clause 'The section the person asked about': YES
