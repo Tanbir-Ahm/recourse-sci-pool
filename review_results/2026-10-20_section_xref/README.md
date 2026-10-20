@@ -16,7 +16,7 @@ Owner's go: "build 1 and 2 together, with tests using section 17 pointing to sec
 
 ## Evidence and limits
 - `test_section_xref.py`: 90 checks; clean-checkout suite 89 of 89 (`run_tests.py`).
-- Across the nine Acts 396 sections: 104 cite one or two sections of their own Act, 13 are skipped as fan-out. A read of 45 accepted and 45 skipped references found the false ties that are now fixed (a "section 2 of the Persons with Disabilities ... Act, 1995" in JJ s.85, "sections 262 to 265 of the said Code", an Act named later in the same sentence); the sample is not exhaustive and the rule is a pattern, not a parser.
+- Across the nine Acts 396 sections: 85 cite one or two sections of their own Act (followed), 29 cite more than two (none followed). A read of 45 accepted and 45 skipped references found the false ties that are now fixed (a "section 2 of the Persons with Disabilities ... Act, 1995" in JJ s.85, "sections 262 to 265 of the said Code", an Act named later in the same sentence); the sample is not exhaustive and the rule is a pattern, not a parser.
 - It follows only citations written as "section N". "The offence of criminal misconduct" without a number is not followed.
 - Whether the model, given section 13, writes that the second proviso concerns disproportionate assets is NOT known (no model key in the sandbox): the staging test (`DEPLOY_STAGING.md` Part 4q, step 0) shows it. The grey box shows the words of section 13(1)(b) and Explanation 1 whatever the model writes.
 - Not wired to WhatsApp (the box); the cited sections do reach the WhatsApp prompt when the switch is on.
