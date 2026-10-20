@@ -37,20 +37,27 @@ Growth: consent-respecting analytics, onboarding, reviewed explainer pages for s
 - **Phase 6:** scale, polish, growth pages.
 Effort: [Guessing] weeks for Phase 1 and months for Phases 2 to 3 for one person with Claude; Claude cannot run the live model in the sandbox, so every phase leans on the owner's staging tests.
 
+## 5b. Revised order after decision 5 (new front end first; the current Streamlit site stays live until the new one is as good, then the domain is switched)
+- **A. Foundations (the engine service and the data):** FastAPI wrapping `chat_assistant.py` (streaming of the real steps, one `/ask` for the website and WhatsApp, quotas); Postgres (users, chats, messages, notes, usage, plans, subscriptions); Google sign-in done in the API; the entitlements table; privacy notice and consent; delete-my-data. Acceptance: the same questions give the same answers as the Streamlit site on the 3 production questions of 2026-10-20 plus the 50-question set when it exists; every existing test still passes.
+- **B. The new front end (Next.js):** home, chat with streaming and the steps panel, sources panel, official-text boxes, copy and export, history and notes, settings. Acceptance: the owner's staging test and a lawyer's sample.
+- **C. Billing:** Razorpay subscriptions, plans and quotas from the entitlements table, GST invoices, webhooks in the API.
+- **D. Drafting studio and documents; E. voice, Hindi, research page, lawyers' features; F. cut-over, WhatsApp onto the same API, scale and growth.**
+Each phase ends with the full test suite, the owner's staging test and a lawyer's sample; the old site is the way back until phase F.
+
 ## 6. Money
 Measured cost per answer from the production logs (2026-10-20): Rs 2.7 to 4.6 for a layman answer, Rs 8 to 13 for a lawyer note. A plan that allows 100 answers a month costs Rs 300 to 1,300 in model fees alone; quotas, a cheaper model for easy questions and the answer cache are the levers. Infrastructure at the start is small (Railway services, a managed Postgres, storage). Legal work (privacy policy, terms, compliance) is a real cost that has no code workaround.
 
 ## 7. What not to copy
 The steps panel must show the real steps, not theatre. A banner that covers the chat is poor design. "Legal Opportunities" and "Referral Invites" (a job-board and recruiting side) are a different business. No copying of another product's branding, wording or screens.
 
-## 8. Decisions the owner must make before any code (not answered yet)
-1. Who is the main user: the public, or lawyers? (The two-audience switch exists.)
-2. How will it earn, and at what price?
-3. Who builds it with Claude, and by when?
-4. Budget for infrastructure and for legal work?
-5. First push accounts and payments into the current Streamlit site (Phase 1), or go straight to the new front end?
-6. The brand: keep "Recourse"?
-Also: approve (or not) the support-and-fit plan's first step (the lawyer-marked question set), which gates any claim about accuracy.
+## 8. Decisions (owner's answers, 2026-10-20)
+1. Main user: BOTH the public and lawyers (lawyers need legal research and drafting). One product, two modes, as the Layman/Lawyer switch does today.
+2. Subscription model; the price is to be decided later. So plans, quotas and prices must be configuration, not code (an entitlements table from day one).
+3. The owner will build, "anytime I am ready": Claude builds with him when he says go; nothing starts before that.
+4. Budget: depends on the kind of build (rough bands in section 6 and in the 2026-10-20 reply: small monthly infrastructure, a one-off legal bill, model fees by usage; all [Guessing]).
+5. A NEW FRONT END first (not accounts inside Streamlit). Claude had recommended Streamlit first; the owner's decision stands. Consequence: Phase 1 (login and billing inside Streamlit) is skipped; accounts, database, billing and quotas are built once, in the new stack (section 5b).
+6. Brand: Claude advises keeping "Recourse" (meaningful, short, the tagline works, the domain and the WhatsApp app name already use it) after a trademark search by a lawyer (a common legal word is a weaker mark; classes for software and legal-information services) and securing nearby domains. Not decided by the owner yet.
+Still open: the first step of the support-and-fit plan (the lawyer-marked question set), which gates any claim about accuracy; where the new code lives (a new repository is cleaner than folders inside Recourse, whose `railway.json` and `main` already drive the live website).
 
 ## 9. Risks
 The interface is the easy part; trust is the hard part (no hallucination rate measured: never call the tool accurate or safe). The Indian legal-AI market has several established tools (a search found NyayAssist, Juristbot AI, Lexlegis.ai, CaseMine, Lawttorney.ai in listings, mostly promotional; none verified here). Data-protection law applies the day accounts exist. A full rebuild discards tested behaviour; the staged path avoids that.
