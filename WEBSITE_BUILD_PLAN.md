@@ -51,6 +51,8 @@ Effort: [Guessing] weeks for Phase 1 and months for Phases 2 to 3 for one person
 Gates that apply throughout: nothing that charges money before a lawyer has read a sample and an error rate exists (the support-and-fit plan's first step, parked); every phase ends with the full test suite, the owner's staging test and a lawyer's sample.
 Open design points for the design document: where the engine's code lives (inside the Recourse repository as an `api/` folder, which makes the engine trivial to import, or extracted as a package) and how a new Railway service built from the same repository avoids the website's `railway.json` and `Procfile` (the trap the WhatsApp bot showed: a dashboard start command on a service that does not use them); how Streamlit hands its signed-in identity to the service safely (a server-to-server secret or a token); where the new front end's repository lives.
 
+**The detailed design (2026-10-20, not approved): `WEBSITE_DESIGN.md`** settles these points as recommendations and adds tables, routes, screens, gates and the work breakdown.
+
 ## 6. Money
 Measured cost per answer from the production logs (2026-10-20): Rs 2.7 to 4.6 for a layman answer, Rs 8 to 13 for a lawyer note. A plan that allows 100 answers a month costs Rs 300 to 1,300 in model fees alone; quotas, a cheaper model for easy questions and the answer cache are the levers. Infrastructure at the start is small (Railway services, a managed Postgres, storage). Legal work (privacy policy, terms, compliance) is a real cost that has no code workaround.
 
