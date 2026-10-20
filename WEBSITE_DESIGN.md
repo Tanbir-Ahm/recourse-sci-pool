@@ -242,17 +242,17 @@ A5 is behind `USE_API` on the Streamlit service: off means today's direct engine
 | C | Payments (after the price) | G3 | 4 to 6 |
 | D to F | Drafting studio and documents; voice, Hindi, research page; domain switch, WhatsApp onto the API | each its own design first | later |
 
-## 15. Decisions the owner needs to make (with my recommendation)
+## 15. Decisions (owner's answers, 2026-10-20; the design's recommendations were taken as they stand except D4)
 
-- **D1 Engine location:** `api/` inside Recourse (1.1). Recommend yes.
-- **D2 Front end host:** Railway next to the API vs Vercel. Recommend Railway.
-- **D3 Chat retention default:** keep until the person deletes, or auto-delete after 12 months. Recommend until deleted, with a visible "delete" and the lawyer's view on the notice.
-- **D4 Anonymous trial:** none (sign-in required), or a few layman questions a day without sign-in (cost and abuse risk; every anonymous answer costs Rs 3 to 5 and a bot can ask). Recommend sign-in required for lawyer mode; anonymous trial only if you want the growth, capped hard by IP and the daily budget.
-- **D5 Sign-in methods:** Google only at first; email codes next; phone codes later (India needs registered SMS templates; cost and set-up time). Recommend Google only for A5.
-- **D6 Age gate:** 18+ declaration at sign-up as a proposal for the lawyer to confirm.
-- **D7 Free-tier numbers:** to set at A5 from real use (config). No number is proposed here.
-- **D8 When the lawyer-marked question set is done:** the plan keeps it before payments (G3); say if you want it sooner.
-- **D9 Brand:** keep "Recourse" after a lawyer's trademark search (open since 2026-10-20).
+- **D1 Engine location:** `api/` inside Recourse. YES.
+- **D2 Front end host:** Railway.
+- **D3 Chat retention:** kept until the person deletes, with a visible "delete" and the lawyer's view on the notice (the lawyer may change this default).
+- **D4 Anonymous trial: NOT DECIDED.** The owner's reply repeats the recommendation's own wording ("only if you want the growth, capped hard by IP and the daily budget"), which leaves the choice open. Working rule until he decides: sign-in is required for lawyer mode; no anonymous trial is built in A1 to A5; while `USE_API` is off the live site behaves exactly as today. Decide before A5 goes live.
+- **D5 Sign-in methods:** Google only at first.
+- **D6 Age gate:** 18+ declaration (the lawyer confirms what the law requires).
+- **D7 Free-tier numbers:** set at A5 from real use, as configuration.
+- **D8 Lawyer-marked question set:** "Keep it": it stays ahead of payments (gate G3).
+- **D9 Brand:** keep "Recourse" after a lawyer's trademark search.
 
 ## 16. What this document does not claim
 
