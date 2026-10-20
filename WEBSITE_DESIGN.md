@@ -247,11 +247,11 @@ A5 is behind `USE_API` on the Streamlit service: off means today's direct engine
 - **D1 Engine location:** `api/` inside Recourse. YES.
 - **D2 Front end host:** Railway.
 - **D3 Chat retention:** kept until the person deletes, with a visible "delete" and the lawyer's view on the notice (the lawyer may change this default).
-- **D4 Anonymous trial: NOT DECIDED.** The owner's reply repeats the recommendation's own wording ("only if you want the growth, capped hard by IP and the daily budget"), which leaves the choice open. Working rule until he decides: sign-in is required for lawyer mode; no anonymous trial is built in A1 to A5; while `USE_API` is off the live site behaves exactly as today. Decide before A5 goes live.
+- **D4 Anonymous trial: DECIDED (owner, 2026-10-20): 3 questions without signing in**, layman mode only; lawyer mode needs sign-in. Caps: per device (cookie) and per IP, plus its own anonymous daily budget so anonymous use cannot eat the signed-in users' budget. Known weakness: many Indian mobile users share one IP, and a cookie can be cleared, so the cap deters casual use, not a determined bot. **Sub-question still open: may the owner read the anonymous questions?** By design they are not stored (logs hold a hash only). If he wants them, they must be stored, and the notice and a visible line at the box must say so (questions can hold arrests, abuse, minors); proposal: stored with a random device id, no IP (a hash for rate-limiting only, short life), 90 days, readable only by owner and reviewer, used for quality review, never sold or shared; the lawyer confirms.
 - **D5 Sign-in methods:** Google only at first.
 - **D6 Age gate:** 18+ declaration (the lawyer confirms what the law requires).
 - **D7 Free-tier numbers:** set at A5 from real use, as configuration.
-- **D8 Lawyer-marked question set:** "Keep it": it stays ahead of payments (gate G3).
+- **D8 Lawyer-marked question set:** "Keep it": it stays ahead of payments (gate G3). It means: about 50 varied questions run through the full site, Mr. Advocate marks every cited case and quotation (right / wrong / does not support the point), giving the first measured error rate. Needed before charging money, not before free accounts.
 - **D9 Brand:** keep "Recourse" after a lawyer's trademark search.
 
 ## 16. What this document does not claim
