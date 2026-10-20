@@ -1,0 +1,104 @@
+2026-10-20T10:10:30.234594072Z [inf]  Mounting volume on: /var/lib/containers/railwayapp/bind-mounts/ed83bb75-cba5-4544-ba98-a20cac9b2bb4/vol_kzuxj0iel809qzsh
+2026-10-20T10:10:30.234727612Z [inf]  Starting Container
+2026-10-20T10:10:30.378415585Z [err]  2026-10-20 10:10:30.018 
+2026-10-20T10:10:30.378420115Z [err]  Warning: the config option 'server.enableCORS=false' is not compatible with
+2026-10-20T10:10:30.378426035Z [err]  'server.enableXsrfProtection=true'.
+2026-10-20T10:10:30.378431655Z [err]  As a result, 'server.enableCORS' is being overridden to 'true'.
+2026-10-20T10:10:30.378436885Z [err]  
+2026-10-20T10:10:30.378441275Z [err]  More information:
+2026-10-20T10:10:30.378445765Z [err]  In order to protect against CSRF attacks, we send a cookie with each request.
+2026-10-20T10:10:30.378449984Z [err]  To do so, we must specify allowable origins, which places a restriction on
+2026-10-20T10:10:30.378454194Z [err]  cross-origin resource sharing.
+2026-10-20T10:10:30.378459114Z [err]  
+2026-10-20T10:10:30.378464924Z [err]  If cross origin resource sharing is required, please disable server.enableXsrfProtection.
+2026-10-20T10:10:30.378470504Z [err]              
+2026-10-20T10:10:30.563854474Z [err]  2026-10-20 10:10:30.559 Uvicorn server started on 0.0.0.0:8080
+2026-10-20T10:10:30.656059880Z [inf]  
+2026-10-20T10:10:30.656066710Z [inf]    You can now view your Streamlit app in your browser.
+2026-10-20T10:10:30.656074270Z [inf]  
+2026-10-20T10:10:30.656079669Z [inf]    Local URL: http://localhost:8080
+2026-10-20T10:10:30.656085929Z [inf]    Network URL: http://10.186.8.60:8080
+2026-10-20T10:10:30.656091249Z [inf]    External URL: http://152.55.184.244:8080
+2026-10-20T10:10:30.656096319Z [inf]  
+2026-10-20T10:16:41.527244220Z [err]  2026-10-20 10:16:34.493 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:16:41.527249970Z [err]  
+2026-10-20T10:16:41.527253450Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:17:11.372465984Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:17:11.372471544Z [err]  2026-10-20 10:17:10.486 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:17:11.372475664Z [err]  
+2026-10-20T10:17:11.372481664Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:17:11.372498654Z [err]  2026-10-20 10:17:10.444 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:17:11.372969869Z [err]  
+2026-10-20T10:17:11.372983359Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:17:11.372991049Z [err]  2026-10-20 10:17:10.479 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:17:11.372995739Z [err]  
+2026-10-20T10:17:12.657384477Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4100, "out": 48, "usd": 0.00434, "priced": true, "inr": 0.4188, "q": "ecaa8be1a175"}
+2026-10-20T10:17:13.441675502Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 20, "usd": 2.4e-06, "priced": true, "inr": 0.0002, "q": "ecaa8be1a175"}
+2026-10-20T10:17:14.927510393Z [inf]  SCI_TIER mode=feed url_set=True token_set=True
+2026-10-20T10:17:17.231213520Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 20, "usd": 2.4e-06, "priced": true, "inr": 0.0002, "q": "ecaa8be1a175"}
+2026-10-20T10:17:17.231216260Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 13069, "usd": 0.00026138, "priced": true, "inr": 0.0252, "q": "ecaa8be1a175"}
+2026-10-20T10:17:17.231218940Z [inf]  SCI_FEED fed 3 case(s): Satender Kumar Antil v. Central Bureau of Investigation & Anr; Vihaan Kumar v. State of Haryana & Anr; Kasireddy Upender Reddy v. State of Andhra Pradesh and Ors
+2026-10-20T10:17:37.237861205Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 11262, "out": 977, "usd": 0.032294, "priced": true, "inr": 3.1164, "q": "ecaa8be1a175"}
+2026-10-20T10:17:37.237866355Z [inf]  COST_QUESTION {"q": "ecaa8be1a175", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4100, "out": 48, "usd": 0.00434, "priced": true, "inr": 0.4188}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 20, "usd": 2.4e-06, "priced": true, "inr": 0.0002}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 20, "usd": 2.4e-06, "priced": true, "inr": 0.0002}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 13069, "usd": 0.00026138, "priced": true, "inr": 0.0252}, {"label": "answer", "model": "claude-sonnet-5", "in": 11262, "out": 977, "usd": 0.032294, "priced": true, "inr": 3.1164}], "usd": 0.03690018, "usd_inr": 96.5, "inr": 3.5609, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 3.5608}
+2026-10-20T10:17:37.237870145Z [err]  2026-10-20 10:17:27.864 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:17:37.237873845Z [err]  
+2026-10-20T10:17:37.237877135Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:17:37.237880515Z [err]  2026-10-20 10:17:27.868 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:17:37.237884015Z [err]  
+2026-10-20T10:17:37.237887394Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:18:07.269052054Z [err]  2026-10-20 10:17:59.580 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:18:07.269055864Z [err]  
+2026-10-20T10:18:07.269058634Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:18:09.843941433Z [err]  2026-10-20 10:18:09.842 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:18:09.843946892Z [err]  
+2026-10-20T10:18:09.843950652Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:18:10.014563803Z [err]  2026-10-20 10:18:09.982 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:18:10.014568913Z [err]  
+2026-10-20T10:18:10.014572873Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:18:10.014576323Z [err]  2026-10-20 10:18:09.985 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:18:10.014579823Z [err]  
+2026-10-20T10:18:10.014582843Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:18:11.226270328Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4092, "out": 71, "usd": 0.004447, "priced": true, "inr": 0.4291, "q": "8558ae2949a5"}
+2026-10-20T10:18:11.970038347Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 12, "usd": 1.44e-06, "priced": true, "inr": 0.0001, "q": "8558ae2949a5"}
+2026-10-20T10:18:15.155437808Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 12, "usd": 1.44e-06, "priced": true, "inr": 0.0001, "q": "8558ae2949a5"}
+2026-10-20T10:18:15.155440718Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 16865, "usd": 0.0003373, "priced": true, "inr": 0.0325, "q": "8558ae2949a5"}
+2026-10-20T10:18:15.155443268Z [inf]  SCI_FEED fed 3 case(s): Rajkumari & Anr v. S.H.O. Noida & Ors; State of Bihar, etc v. Kapil Singh, etc; Subhashree Das @ Milli v. State of Orissa & Ors
+2026-10-20T10:18:35.154304275Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 17026, "out": 860, "usd": 0.042652, "priced": true, "inr": 4.1159, "q": "8558ae2949a5"}
+2026-10-20T10:18:35.154310765Z [inf]  COST_QUESTION {"q": "8558ae2949a5", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4092, "out": 71, "usd": 0.004447, "priced": true, "inr": 0.4291}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 12, "usd": 1.44e-06, "priced": true, "inr": 0.0001}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 12, "usd": 1.44e-06, "priced": true, "inr": 0.0001}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 16865, "usd": 0.0003373, "priced": true, "inr": 0.0325}, {"label": "answer", "model": "claude-sonnet-5", "in": 17026, "out": 860, "usd": 0.042652, "priced": true, "inr": 4.1159}], "usd": 0.04743918, "usd_inr": 96.5, "inr": 4.5779, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 8.1385}
+2026-10-20T10:18:35.154315315Z [err]  2026-10-20 10:18:26.343 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:18:35.154319205Z [err]  
+2026-10-20T10:18:35.154322865Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:18:35.154326545Z [err]  2026-10-20 10:18:26.348 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:18:35.154330095Z [err]  
+2026-10-20T10:18:35.154333675Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:19:05.170014302Z [err]  2026-10-20 10:19:01.932 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:19:05.170018282Z [err]  
+2026-10-20T10:19:05.170022652Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:19:55.240475909Z [err]  2026-10-20 10:19:51.245 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:19:55.240481769Z [err]  
+2026-10-20T10:19:55.240485099Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:19:55.240489109Z [err]  2026-10-20 10:19:51.383 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:19:55.240492689Z [err]  
+2026-10-20T10:19:55.240497249Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:19:55.240500219Z [err]  2026-10-20 10:19:51.385 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:19:55.240502779Z [err]  
+2026-10-20T10:19:55.240506579Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:19:55.240509519Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4102, "out": 96, "usd": 0.004582, "priced": true, "inr": 0.4422, "q": "93017a31d74b"}
+2026-10-20T10:19:55.240512129Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 25, "usd": 3e-06, "priced": true, "inr": 0.0003, "q": "93017a31d74b"}
+2026-10-20T10:19:56.159309630Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 25, "usd": 3e-06, "priced": true, "inr": 0.0003, "q": "93017a31d74b"}
+2026-10-20T10:19:56.159316180Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 17542, "usd": 0.00035084, "priced": true, "inr": 0.0339, "q": "93017a31d74b"}
+2026-10-20T10:19:58.293125038Z [inf]  COST_CALL {"label": "sci_search_second_embed", "model": "voyage-law-2", "tokens": 45, "usd": 5.4e-06, "priced": true, "inr": 0.0005, "q": "93017a31d74b"}
+2026-10-20T10:19:58.293136118Z [inf]  COST_CALL {"label": "sci_search_second_rerank", "model": "rerank-3-lite", "tokens": 19548, "usd": 0.00039096, "priced": true, "inr": 0.0377, "q": "93017a31d74b"}
+2026-10-20T10:19:58.297348351Z [inf]  SCI_FEED fed 8 case(s): State of Karnataka v. T.N. Sudhakar Reddy; Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr; Bureau of Investigation (CBI) and Anr v. Thommandru Hannah Vijayalakshmi @ T. H. Vijayalakshmi and Anr; The State of Chattisgarh & Anr v. Aman Kumar Singh & Ors. etc. etc; State of Madhya Pradesh & Ors v. Shri Ram Singh; Ms. Mayawati v. Union of India & Ors; Dr. Ram Lakhan Singh v. State Government of Uttar Pradesh Through Chief Secretary; K. Veeraswami v. Union of India and Others
+2026-10-20T10:20:08.076431630Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 7145, "out": 880, "usd": 0.02309, "priced": true, "inr": 2.2282, "q": "93017a31d74b"}
+2026-10-20T10:20:08.076436050Z [inf]  SCOPE_OPEN {"q": "93017a31d74b", "reasoning": "Disproportionate assets cases under the Prevention of Corruption Act involve specialized procedural rules and substantive law outside BNS/BNSS criminal procedur", "state": "single_match", "wider_only": false, "act": ["pc_act_1988"], "library": {"judgments": [], "sections": ["BNS 17"]}, "wider": ["State of Karnataka v. T.N. Sudhakar Reddy", "Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr", "Bureau of Investigation (CBI) and Anr v. Thommandru Hannah Vijayalakshmi @ T. H. Vijayalakshmi and A", "The State of Chattisgarh & Anr v. Aman Kumar Singh & Ors. etc. etc", "State of Madhya Pradesh & Ors v. Shri Ram Singh", "Ms. Mayawati v. Union of India & Ors", "Dr. Ram Lakhan Singh v. State Government of Uttar Pradesh Through Chief Secretary", "K. Veeraswami v. Union of India and Others"]}
+2026-10-20T10:20:08.797492449Z [inf]  COST_QUESTION {"q": "93017a31d74b", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4102, "out": 96, "usd": 0.004582, "priced": true, "inr": 0.4422}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 25, "usd": 3e-06, "priced": true, "inr": 0.0003}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 25, "usd": 3e-06, "priced": true, "inr": 0.0003}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 17542, "usd": 0.00035084, "priced": true, "inr": 0.0339}, {"label": "sci_search_second_embed", "model": "voyage-law-2", "tokens": 45, "usd": 5.4e-06, "priced": true, "inr": 0.0005}, {"label": "sci_search_second_rerank", "model": "rerank-3-lite", "tokens": 19548, "usd": 0.00039096, "priced": true, "inr": 0.0377}, {"label": "answer", "model": "claude-sonnet-5", "in": 7145, "out": 880, "usd": 0.02309, "priced": true, "inr": 2.2282}], "usd": 0.0284252, "usd_inr": 96.5, "inr": 2.743, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 10.8816}
+2026-10-20T10:20:08.942128392Z [err]  2026-10-20 10:20:08.937 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:20:08.942133582Z [err]  
+2026-10-20T10:20:08.942136952Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:20:08.942140062Z [err]  2026-10-20 10:20:08.940 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:20:08.942142862Z [err]  
+2026-10-20T10:20:08.942145392Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T10:20:58.988994198Z [err]  2026-10-20 10:20:58.450 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T10:20:58.988999698Z [err]  
+2026-10-20T10:20:58.989002797Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
