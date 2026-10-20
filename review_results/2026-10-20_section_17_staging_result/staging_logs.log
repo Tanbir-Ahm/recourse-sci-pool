@@ -1,0 +1,129 @@
+2026-10-20T07:43:37.268094564Z [inf]  Mounting volume on: /var/lib/containers/railwayapp/bind-mounts/1855b62b-a31e-43f1-872d-4323e9c26e73/vol_2jc8v6jot00y8d5c
+2026-10-20T07:43:37.268220953Z [inf]  Starting Container
+2026-10-20T07:43:37.337068849Z [err]  2026-10-20 07:43:37.017 
+2026-10-20T07:43:37.337073229Z [err]  Warning: the config option 'server.enableCORS=false' is not compatible with
+2026-10-20T07:43:37.337078539Z [err]  'server.enableXsrfProtection=true'.
+2026-10-20T07:43:37.337083689Z [err]  As a result, 'server.enableCORS' is being overridden to 'true'.
+2026-10-20T07:43:37.337089239Z [err]  
+2026-10-20T07:43:37.337094179Z [err]  More information:
+2026-10-20T07:43:37.337098899Z [err]  In order to protect against CSRF attacks, we send a cookie with each request.
+2026-10-20T07:43:37.337103918Z [err]  To do so, we must specify allowable origins, which places a restriction on
+2026-10-20T07:43:37.337109408Z [err]  cross-origin resource sharing.
+2026-10-20T07:43:37.337114868Z [err]  
+2026-10-20T07:43:37.337120568Z [err]  If cross origin resource sharing is required, please disable server.enableXsrfProtection.
+2026-10-20T07:43:37.337125538Z [err]              
+2026-10-20T07:43:37.584644949Z [err]  2026-10-20 07:43:37.579 Uvicorn server started on 0.0.0.0:8080
+2026-10-20T07:43:37.690723254Z [inf]  
+2026-10-20T07:43:37.690725734Z [inf]    You can now view your Streamlit app in your browser.
+2026-10-20T07:43:37.690728634Z [inf]  
+2026-10-20T07:43:37.690731764Z [inf]    Local URL: http://localhost:8080
+2026-10-20T07:43:37.690735914Z [inf]    Network URL: http://10.178.26.194:8080
+2026-10-20T07:43:37.690738924Z [inf]    External URL: http://152.55.185.84:8080
+2026-10-20T07:43:37.690741354Z [inf]  
+2026-10-20T07:44:17.718963915Z [err]  2026-10-20 07:44:12.742 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:44:17.718972475Z [err]  
+2026-10-20T07:44:17.718976255Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:44:23.820472993Z [err]  2026-10-20 07:44:23.788 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:44:23.820475973Z [err]  
+2026-10-20T07:44:23.820479013Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:44:23.831213493Z [err]  2026-10-20 07:44:23.826 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:44:23.831219993Z [err]  
+2026-10-20T07:44:23.831224293Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:44:23.836876797Z [err]  2026-10-20 07:44:23.834 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:44:23.836880117Z [err]  
+2026-10-20T07:44:23.836883497Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:44:26.586924495Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4101, "out": 94, "usd": 0.004571, "priced": true, "inr": 0.4342, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:27.272055170Z [inf]  COST_CALL {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 24, "usd": 2.88e-06, "priced": true, "inr": 0.0003, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:27.305387889Z [inf]  ACT_SHELF {"q": "b4dcc0ed86b6", "acts": ["pc_act_1988"], "embed": "ok", "per_act": {"pc_act_1988": {"named": ["17"], "pointed": [], "meaning": [{"s": "17A", "score": 0.327}, {"s": "19", "score": 0.283}, {"s": "20", "score": 0.224}], "below_floor": 29, "dropped_by_cap": []}}, "chars": 9007}
+2026-10-20T07:44:28.015015009Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 24, "usd": 2.88e-06, "priced": true, "inr": 0.0003, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:29.453931392Z [inf]  SCI_TIER mode=feed url_set=True token_set=True
+2026-10-20T07:44:32.569265911Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 24, "usd": 2.88e-06, "priced": true, "inr": 0.0003, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:32.569277721Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 17231, "usd": 0.00034462, "priced": true, "inr": 0.0327, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:32.569282610Z [inf]  SCI_FEED_FILTER {"dropped": [{"case": "Sri Radhy Shyam (Dead) Through L.Rs. and others v. State of U.P. and others", "para": "42", "why": "cites section 17 without naming Prevention of Corruption Act, 1988 and shares only 2 word(s) with it"}]}
+2026-10-20T07:44:34.827274461Z [inf]  COST_CALL {"label": "sci_search_second_embed", "model": "voyage-law-2", "tokens": 44, "usd": 5.28e-06, "priced": true, "inr": 0.0005, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:34.827317320Z [inf]  COST_CALL {"label": "sci_search_second_rerank", "model": "rerank-3-lite", "tokens": 18933, "usd": 0.00037866, "priced": true, "inr": 0.036, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:34.847268509Z [inf]  SCI_FEED fed 7 case(s): State of Karnataka v. T.N. Sudhakar Reddy; Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr; Bureau of Investigation (CBI) and Anr v. Thommandru Hannah Vijayalakshmi @ T. H. Vijayalakshmi and Anr; The State of Chattisgarh & Anr v. Aman Kumar Singh & Ors. etc. etc; State of Madhya Pradesh & Ors v. Shri Ram Singh; Ms. Mayawati v. Union of India & Ors; K. Veeraswami v. Union of India and Others
+2026-10-20T07:44:54.846013164Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 10244, "out": 1011, "usd": 0.030598, "priced": true, "inr": 2.9062, "q": "b4dcc0ed86b6"}
+2026-10-20T07:44:54.846019444Z [inf]  GROUNDING_CHECK {"q": "b4dcc0ed86b6", "mode": "warn", "cases": [], "quotes": ["approval to file the case"], "note": "", "nearest": ["0.85: the previous approval a in the case of a"]}
+2026-10-20T07:44:54.846022824Z [inf]  SCOPE_OPEN {"q": "b4dcc0ed86b6", "reasoning": "Disproportionate assets cases under the Prevention of Corruption Act are a specialized statutory offence outside BNS/BNSS and this chat feature's scope; the que", "state": "single_match", "wider_only": false, "act": ["pc_act_1988"], "library": {"judgments": [], "sections": ["PCACT 17", "PCACT 17A", "PCACT 19", "PCACT 20"]}, "wider": ["State of Karnataka v. T.N. Sudhakar Reddy", "Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr", "Bureau of Investigation (CBI) and Anr v. Thommandru Hannah Vijayalakshmi @ T. H. Vijayalakshmi and A", "The State of Chattisgarh & Anr v. Aman Kumar Singh & Ors. etc. etc", "State of Madhya Pradesh & Ors v. Shri Ram Singh", "Ms. Mayawati v. Union of India & Ors", "K. Veeraswami v. Union of India and Others"]}
+2026-10-20T07:44:54.846026433Z [inf]  SECTION_NOTE {"sections": ["Prevention of Corruption Act, 1988 s.17: official"]}
+2026-10-20T07:44:54.846029763Z [inf]  COST_QUESTION {"q": "b4dcc0ed86b6", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4101, "out": 94, "usd": 0.004571, "priced": true, "inr": 0.4342}, {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 24, "usd": 2.88e-06, "priced": true, "inr": 0.0003}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 24, "usd": 2.88e-06, "priced": true, "inr": 0.0003}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 24, "usd": 2.88e-06, "priced": true, "inr": 0.0003}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 17231, "usd": 0.00034462, "priced": true, "inr": 0.0327}, {"label": "sci_search_second_embed", "model": "voyage-law-2", "tokens": 44, "usd": 5.28e-06, "priced": true, "inr": 0.0005}, {"label": "sci_search_second_rerank", "model": "rerank-3-lite", "tokens": 18933, "usd": 0.00037866, "priced": true, "inr": 0.036}, {"label": "answer", "model": "claude-sonnet-5", "in": 10244, "out": 1011, "usd": 0.030598, "priced": true, "inr": 2.9062}], "usd": 0.0359062, "usd_inr": 94.98, "inr": 3.4104, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 3.4105}
+2026-10-20T07:44:54.846783029Z [inf]  CHAT_TURN {"q": "b4dcc0ed86b6", "mode": "on", "of": 8, "turn": 1, "rewrite": "first", "folded": 0, "rewrite_inr": 0.0}
+2026-10-20T07:44:54.846786119Z [err]  2026-10-20 07:44:47.860 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:44:54.846788499Z [err]  
+2026-10-20T07:44:54.846790659Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:47:55.279342991Z [err]  2026-10-20 07:47:48.589 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:47:55.279349451Z [err]  
+2026-10-20T07:47:55.279352931Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:47:55.279356701Z [err]  2026-10-20 07:47:48.735 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:47:55.279359811Z [err]  
+2026-10-20T07:47:55.279363811Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:47:55.279367141Z [err]  2026-10-20 07:47:48.741 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:47:55.279371200Z [err]  
+2026-10-20T07:47:55.279374870Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:47:55.279378390Z [inf]  COST_CALL {"label": "chat_rewrite", "model": "claude-haiku-4-5-20251001", "in": 641, "out": 71, "usd": 0.000996, "priced": true, "inr": 0.0946, "q": "4581df2aa4eb"}
+2026-10-20T07:47:55.279381480Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4229, "out": 111, "usd": 0.004784, "priced": true, "inr": 0.4544, "q": "56cd2d18c05e"}
+2026-10-20T07:47:55.279384610Z [inf]  COST_CALL {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 97, "usd": 1.164e-05, "priced": true, "inr": 0.0011, "q": "56cd2d18c05e"}
+2026-10-20T07:47:55.279387980Z [inf]  ACT_SHELF {"q": "56cd2d18c05e", "acts": ["pc_act_1988"], "embed": "ok", "per_act": {"pc_act_1988": {"named": [], "pointed": [], "meaning": [{"s": "17A", "score": 0.319}, {"s": "19", "score": 0.316}, {"s": "20", "score": 0.292}, {"s": "23", "score": 0.283}], "below_floor": 16, "dropped_by_cap": [], "implied": ["17"]}}, "chars": 9753}
+2026-10-20T07:47:55.279391060Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 97, "usd": 1.164e-05, "priced": true, "inr": 0.0011, "q": "56cd2d18c05e"}
+2026-10-20T07:47:55.977113998Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 151, "usd": 1.812e-05, "priced": true, "inr": 0.0017, "q": "56cd2d18c05e"}
+2026-10-20T07:47:55.977122408Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 24085, "usd": 0.0004817, "priced": true, "inr": 0.0458, "q": "56cd2d18c05e"}
+2026-10-20T07:47:55.977129698Z [inf]  SCI_FEED fed 6 case(s): State of Karnataka v. T.N. Sudhakar Reddy; State Through Deputy Superintendent of Police v. R. Soundirarasu etc; The State of Chattisgarh & Anr v. Aman Kumar Singh & Ors. etc. etc; Chittaranjan Das v. State of Orissa; Bureau of Investigation (CBI) and Anr v. Thommandru Hannah Vijayalakshmi @ T. H. Vijayalakshmi and Anr; Puneet Sabharwal v. CBI
+2026-10-20T07:48:15.965719872Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 12340, "out": 1018, "usd": 0.03486, "priced": true, "inr": 3.311, "q": "56cd2d18c05e"}
+2026-10-20T07:48:15.965725031Z [inf]  SCOPE_OPEN {"q": "56cd2d18c05e", "reasoning": "Disproportionate assets under the Prevention of Corruption Act, 1988 is a specialized anti-corruption offence outside BNS/BNSS scope; the question concerns proc", "state": "single_match", "wider_only": false, "act": ["pc_act_1988"], "library": {"judgments": [{"case": "Pankaj Bansal v Union of India", "score": 0.367, "via": "lexical"}, {"case": "Sri Manjunath M P v State of Karnataka", "score": 0.331, "via": "lexical"}], "sections": ["BNSS 117", "BNSS 177", "BNSS 122", "BNSS 121", "PCACT 17", "PCACT 17A", "PCACT 19", "PCACT 20"]}, "wider": ["State of Karnataka v. T.N. Sudhakar Reddy", "State Through Deputy Superintendent of Police v. R. Soundirarasu etc", "The State of Chattisgarh & Anr v. Aman Kumar Singh & Ors. etc. etc", "Chittaranjan Das v. State of Orissa", "Bureau of Investigation (CBI) and Anr v. Thommandru Hannah Vijayalakshmi @ T. H. Vijayalakshmi and A", "Puneet Sabharwal v. CBI"]}
+2026-10-20T07:48:15.965728171Z [inf]  SECTION_NOTE {"sections": ["Prevention of Corruption Act, 1988 s.17: official"]}
+2026-10-20T07:48:15.965731031Z [inf]  COST_QUESTION {"q": "56cd2d18c05e", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4229, "out": 111, "usd": 0.004784, "priced": true, "inr": 0.4544}, {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 97, "usd": 1.164e-05, "priced": true, "inr": 0.0011}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 97, "usd": 1.164e-05, "priced": true, "inr": 0.0011}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 151, "usd": 1.812e-05, "priced": true, "inr": 0.0017}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 24085, "usd": 0.0004817, "priced": true, "inr": 0.0458}, {"label": "answer", "model": "claude-sonnet-5", "in": 12340, "out": 1018, "usd": 0.03486, "priced": true, "inr": 3.311}], "usd": 0.0401671, "usd_inr": 94.98, "inr": 3.8151, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 7.3202}
+2026-10-20T07:48:15.966761582Z [inf]  CHAT_TURN {"q": "56cd2d18c05e", "mode": "on", "of": 8, "turn": 2, "rewrite": "used", "folded": 1, "rewrite_inr": 0.0946}
+2026-10-20T07:48:15.966767072Z [err]  2026-10-20 07:48:09.745 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:48:15.966771131Z [err]  
+2026-10-20T07:48:15.966775891Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:57:07.495454718Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:57:07.495465828Z [inf]  COST_CALL {"label": "chat_rewrite", "model": "claude-haiku-4-5-20251001", "in": 879, "out": 82, "usd": 0.001289, "priced": true, "inr": 0.1224, "q": "549c2eff7453"}
+2026-10-20T07:57:07.495470108Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4294, "out": 80, "usd": 0.004694, "priced": true, "inr": 0.4458, "q": "78856b776dcc"}
+2026-10-20T07:57:07.495475187Z [inf]  COST_CALL {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 117, "usd": 1.404e-05, "priced": true, "inr": 0.0013, "q": "78856b776dcc"}
+2026-10-20T07:57:07.495478397Z [err]  2026-10-20 07:56:58.846 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:57:07.495483967Z [inf]  ACT_SHELF {"q": "78856b776dcc", "acts": ["pc_act_1988"], "embed": "ok", "per_act": {"pc_act_1988": {"named": ["17"], "pointed": [], "meaning": [{"s": "17A", "score": 0.382}, {"s": "19", "score": 0.372}, {"s": "20", "score": 0.356}, {"s": "23", "score": 0.335}], "below_floor": 10, "dropped_by_cap": []}}, "chars": 9753}
+2026-10-20T07:57:07.495484717Z [err]  
+2026-10-20T07:57:07.495492267Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:57:07.495493617Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 117, "usd": 1.404e-05, "priced": true, "inr": 0.0013, "q": "78856b776dcc"}
+2026-10-20T07:57:07.495497387Z [err]  2026-10-20 07:56:58.997 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:57:07.495503827Z [err]  
+2026-10-20T07:57:07.495504357Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 215, "usd": 2.58e-05, "priced": true, "inr": 0.0025, "q": "78856b776dcc"}
+2026-10-20T07:57:07.495508077Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:57:07.495511337Z [err]  2026-10-20 07:56:59.007 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:57:07.495514777Z [err]  
+2026-10-20T07:57:07.496354891Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 29014, "usd": 0.00058028, "priced": true, "inr": 0.0551, "q": "78856b776dcc"}
+2026-10-20T07:57:07.496358501Z [inf]  SCI_FEED fed 5 case(s): Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr; State of Karnataka v. T.N. Sudhakar Reddy; State of Madhya Pradesh & Ors v. Shri Ram Singh; State Inspector of Police Visakhapatnam v. Surya Sankaram Karri; Ms. Mayawati v. Union of India & Ors
+2026-10-20T07:57:27.416507352Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 13109, "out": 925, "usd": 0.035468, "priced": true, "inr": 3.3688, "q": "78856b776dcc"}
+2026-10-20T07:57:27.416511912Z [inf]  SCOPE_OPEN {"q": "78856b776dcc", "reasoning": "This question concerns the Prevention of Corruption Act's procedural requirements (Section 17 approval) and the legal effect of a defective FIR, which is a spec", "state": "single_match", "wider_only": false, "act": ["pc_act_1988"], "library": {"judgments": [{"case": "Rakhi Mitra and Anr v State of West Bengal", "score": 0.443}, {"case": "Prabir Purkayastha v State (NCT of Delhi)", "score": 0.441}, {"case": "Pankaj Bansal v Union of India", "score": 0.378, "via": "lexical"}], "sections": ["BNSS 117", "BNSS 511", "BNSS 510", "BNSS 177", "BNSS 238", "PCACT 17", "PCACT 17A", "PCACT 19"]}, "wider": ["Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr", "State of Karnataka v. T.N. Sudhakar Reddy", "State of Madhya Pradesh & Ors v. Shri Ram Singh", "State Inspector of Police Visakhapatnam v. Surya Sankaram Karri", "Ms. Mayawati v. Union of India & Ors"]}
+2026-10-20T07:57:27.416515172Z [inf]  SECTION_NOTE {"sections": ["Prevention of Corruption Act, 1988 s.17: official"]}
+2026-10-20T07:57:27.416518142Z [inf]  COST_QUESTION {"q": "78856b776dcc", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4294, "out": 80, "usd": 0.004694, "priced": true, "inr": 0.4458}, {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 117, "usd": 1.404e-05, "priced": true, "inr": 0.0013}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 117, "usd": 1.404e-05, "priced": true, "inr": 0.0013}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 215, "usd": 2.58e-05, "priced": true, "inr": 0.0025}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 29014, "usd": 0.00058028, "priced": true, "inr": 0.0551}, {"label": "answer", "model": "claude-sonnet-5", "in": 13109, "out": 925, "usd": 0.035468, "priced": true, "inr": 3.3688}], "usd": 0.04079616, "usd_inr": 94.98, "inr": 3.8748, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 11.3174}
+2026-10-20T07:57:27.417041903Z [inf]  CHAT_TURN {"q": "78856b776dcc", "mode": "on", "of": 8, "turn": 3, "rewrite": "used", "folded": 2, "rewrite_inr": 0.1224}
+2026-10-20T07:57:27.417047413Z [err]  2026-10-20 07:57:18.717 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:57:27.417053533Z [err]  
+2026-10-20T07:57:27.417058413Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:58:57.456711496Z [err]  2026-10-20 07:58:50.402 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:58:57.456715256Z [err]  
+2026-10-20T07:58:57.456717996Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:58:57.456721286Z [err]  2026-10-20 07:58:50.556 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:58:57.456723736Z [err]  
+2026-10-20T07:58:57.456726095Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:58:57.456729195Z [err]  2026-10-20 07:58:50.567 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:58:57.456731945Z [err]  
+2026-10-20T07:58:57.456734925Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
+2026-10-20T07:58:57.456738385Z [inf]  COST_CALL {"label": "chat_rewrite", "model": "claude-haiku-4-5-20251001", "in": 892, "out": 51, "usd": 0.001147, "priced": true, "inr": 0.1089, "q": "97e0b19b31fd"}
+2026-10-20T07:58:57.456741375Z [inf]  COST_CALL {"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4287, "out": 100, "usd": 0.004787, "priced": true, "inr": 0.4547, "q": "fca9b0a9d909"}
+2026-10-20T07:58:57.456744295Z [inf]  COST_CALL {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 64, "usd": 7.68e-06, "priced": true, "inr": 0.0007, "q": "fca9b0a9d909"}
+2026-10-20T07:58:57.456746985Z [inf]  ACT_SHELF {"q": "fca9b0a9d909", "acts": ["pc_act_1988"], "embed": "ok", "per_act": {"pc_act_1988": {"named": ["17"], "pointed": [], "meaning": [{"s": "20", "score": 0.32}, {"s": "19", "score": 0.32}, {"s": "17A", "score": 0.319}, {"s": "18A", "score": 0.28}], "below_floor": 15, "dropped_by_cap": []}}, "chars": 9741}
+2026-10-20T07:58:57.456749675Z [inf]  COST_CALL {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 64, "usd": 7.68e-06, "priced": true, "inr": 0.0007, "q": "fca9b0a9d909"}
+2026-10-20T07:58:58.219751255Z [inf]  COST_CALL {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 209, "usd": 2.508e-05, "priced": true, "inr": 0.0024, "q": "fca9b0a9d909"}
+2026-10-20T07:58:58.219758825Z [inf]  COST_CALL {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 27893, "usd": 0.00055786, "priced": true, "inr": 0.053, "q": "fca9b0a9d909"}
+2026-10-20T07:58:58.219763465Z [inf]  SCI_FEED fed 5 case(s): State of Karnataka v. T.N. Sudhakar Reddy; Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr; Ms. Mayawati v. Union of India & Ors; State of Madhya Pradesh & Ors v. Shri Ram Singh; Central Bureau of Investigation v. Santosh Karnani & Anr
+2026-10-20T07:59:18.216678761Z [inf]  COST_CALL {"label": "answer", "model": "claude-sonnet-5", "in": 11431, "out": 1030, "usd": 0.033162, "priced": true, "inr": 3.1497, "q": "fca9b0a9d909"}
+2026-10-20T07:59:18.216683561Z [inf]  SCOPE_OPEN {"q": "fca9b0a9d909", "reasoning": "The Prevention of Corruption Act is a specialized anti-corruption law outside BNS/BNSS scope; while the question involves an FIR/chargesheet defect, the specifi", "state": "single_match", "wider_only": false, "act": ["pc_act_1988"], "library": {"judgments": [{"case": "Pankaj Bansal v Union of India", "score": 0.329, "via": "lexical"}], "sections": ["BNSS 122", "BNSS 117", "PCACT 17", "PCACT 20", "PCACT 19", "PCACT 17A", "PCACT 18A"]}, "wider": ["State of Karnataka v. T.N. Sudhakar Reddy", "Nara Chandrababu Naidu v. State of Andhra Pradesh & Anr", "Ms. Mayawati v. Union of India & Ors", "State of Madhya Pradesh & Ors v. Shri Ram Singh", "Central Bureau of Investigation v. Santosh Karnani & Anr"]}
+2026-10-20T07:59:18.216686631Z [inf]  SECTION_NOTE {"sections": ["Prevention of Corruption Act, 1988 s.17: official"]}
+2026-10-20T07:59:18.216689561Z [inf]  COST_QUESTION {"q": "fca9b0a9d909", "style": "v3", "audience": "layman", "calls": [{"label": "scope_check", "model": "claude-haiku-4-5-20251001", "in": 4287, "out": 100, "usd": 0.004787, "priced": true, "inr": 0.4547}, {"label": "act_shelf_query_embed", "model": "voyage-law-2", "tokens": 64, "usd": 7.68e-06, "priced": true, "inr": 0.0007}, {"label": "site_query_embed", "model": "voyage-law-2", "tokens": 64, "usd": 7.68e-06, "priced": true, "inr": 0.0007}, {"label": "sci_search_embed", "model": "voyage-law-2", "tokens": 209, "usd": 2.508e-05, "priced": true, "inr": 0.0024}, {"label": "sci_search_rerank", "model": "rerank-3-lite", "tokens": 27893, "usd": 0.00055786, "priced": true, "inr": 0.053}, {"label": "answer", "model": "claude-sonnet-5", "in": 11431, "out": 1030, "usd": 0.033162, "priced": true, "inr": 3.1497}], "usd": 0.0385473, "usd_inr": 94.98, "inr": 3.6612, "unpriced": [], "switches": {"effort": "medium", "scope_model": "claude-haiku-4-5-20251001", "prompt_cache": null, "grounding": "warn", "budget": "ok", "budget_after": "ok"}, "spent_today_inr": 15.0875}
+2026-10-20T07:59:18.217575424Z [inf]  CHAT_TURN {"q": "fca9b0a9d909", "mode": "on", "of": 8, "turn": 4, "rewrite": "used", "folded": 3, "rewrite_inr": 0.1089}
+2026-10-20T07:59:18.217577924Z [err]  2026-10-20 07:59:09.762 Please replace `st.components.v1.html` with `st.iframe`.
+2026-10-20T07:59:18.217580524Z [err]  
+2026-10-20T07:59:18.217583294Z [err]  `st.components.v1.html` will be removed after 2026-06-01.
