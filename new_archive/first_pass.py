@@ -17,6 +17,8 @@ def main(links_file, work, out, *extra_worklists):
     rows = list(csv.DictReader(gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "coverage", "bucket_match", "worklist.csv.gz"), "rt")))
     for xw in extra_worklists:  # e.g. the bucket refresh list that holds 2026
         rows += list(csv.DictReader(gzip.open(xw, "rt")))
+    from datetime import datetime
+    horizon = max(datetime.strptime(b["decision_date"], "%d-%m-%Y") for b in rows)  # the bucket's newest decision date
     links = list(dict.fromkeys(l.strip() for l in open(links_file) if l.strip()))
     res, sess = [], requests.Session()
     sess.headers["User-Agent"] = USER_AGENT
@@ -51,6 +53,8 @@ def main(links_file, work, out, *extra_worklists):
         head = d[0].get_text()[:700].upper()
         r["criminal"] = "yes" if re.search(r"CRIMINAL|CRL|CR\.", head) else "no"
         r["reportable"] = "NON-REPORTABLE" if re.search(r"NON[- ]?REPORTABLE", head) else ("REPORTABLE" if "REPORTABLE" in head else "")
+        if datetime.strptime(r["date"], "%d-%m-%Y") > horizon:  # newer than anything the bucket lists: not a gap yet
+            r["bucket_match"] = "beyond"; r["bucket_same_day"] = 0; res.append(r); continue
         # bucket: same decision date, then party words found in the first 3000 characters
         day = [b for b in rows if b["decision_date"] == r["date"]]
         r["bucket_same_day"] = len(day)
