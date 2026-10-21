@@ -6,6 +6,11 @@ import csv, gzip, io, json, os, re, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 import pymupdf, requests
 
+def excluded_type(case_number):
+    """Case types the owner does not want (2026-10-21): anticipatory bail (AB), regular bail (BA, BAIL APPLN.), miscellaneous cases (MC...) and interlocutory applications (IA, I.A....)."""
+    t = case_number.split("/")[0].strip().upper()
+    return t in ("AB", "BA") or t.startswith(("BAIL", "MC", "I.A", "IA"))
+
 def stop_score(s):
     low = s.lower(); n = max(1, len(s))
     return (low.count(" the ") + low.count(" of ") + low.count(" and ")) / n * 1000
@@ -54,8 +59,7 @@ def load_shard(path):
 
 def main(data, min_bytes, limit=None):
     cat = list(csv.DictReader(gzip.open(os.path.join(data, "catalogue", "ghc_to2017_catalogue.csv.gz"), "rt")))
-    skip_types = {"AB"}  # anticipatory bail matters: the owner does not want them (2026-10-21)
-    todo = [r for r in cat if r["pdf_bytes"] and float(r["pdf_bytes"]) >= float(min_bytes) and r["case_number"].split("/")[0].strip().upper() not in skip_types]
+    todo = [r for r in cat if r["pdf_bytes"] and float(r["pdf_bytes"]) >= float(min_bytes) and not excluded_type(r["case_number"])]
     os.makedirs(os.path.join(data, "shards"), exist_ok=True)
     have = set()
     for f in os.listdir(os.path.join(data, "shards")):
