@@ -2,10 +2,10 @@
 # then packs them into zip files of about 20 MB each. Read it before running it: it only downloads the files named below and saves them. It sends nothing from your computer.
 # Test first:  powershell -ExecutionPolicy Bypass -File download_missing_criminal.ps1 -Limit 30      (downloads 30 files and tells you the size)
 # Everything:  powershell -ExecutionPolicy Bypass -File download_missing_criminal.ps1 -Limit 0
-param([int] = 30)
- = Join-Path :USERPROFILE "Desktop\ghc_judgments"
-New-Item -ItemType Directory -Force  | Out-Null
- = @(
+param([int]$Limit = 30)
+$dest = Join-Path $env:USERPROFILE "Desktop\ghc_judgments"
+New-Item -ItemType Directory -Force $dest | Out-Null
+$urls = @(
   "https://ghconline.gov.in/Judgment/CRLAJ62005.pdf",
   "https://ghconline.gov.in/Judgment/CRLAJ1462005.pdf",
   "https://ghconline.gov.in/Judgment/CrlA2392006.pdf",
@@ -895,26 +895,26 @@ New-Item -ItemType Directory -Force  | Out-Null
   "https://ghconline.gov.in/Judgment/AB22432017.pdf",
   "https://ghconline.gov.in/Judgment/BailAppln13562017.pdf"
 )
- = 0
-foreach ( in ) {
-  if ( -gt 0 -and  -ge ) { break }
-   = Split-Path  -Leaf
-   = Join-Path  
-  if (-not (Test-Path )) {
+$n = 0
+foreach ($u in $urls) {
+  if ($Limit -gt 0 -and $n -ge $Limit) { break }
+  $name = Split-Path $u -Leaf
+  $out = Join-Path $dest $name
+  if (-not (Test-Path $out)) {
     try {
-      Invoke-WebRequest -Uri  -OutFile  -UserAgent "Recourse-research/1.0 (low-rate)" -TimeoutSec 90
-      Write-Host ("ok     " + )
-    } catch { Write-Host ("FAILED " +  + " : " + .Exception.Message) }
+      Invoke-WebRequest -Uri $u -OutFile $out -UserAgent "Recourse-research/1.0 (low-rate)" -TimeoutSec 90
+      Write-Host ("ok     " + $name)
+    } catch { Write-Host ("FAILED " + $name + " : " + $_.Exception.Message) }
     Start-Sleep -Seconds 3
   }
-  ++
+  $n++
 }
- = Get-ChildItem  -Filter *.pdf | Sort-Object Name
-Write-Host ("Downloaded files: " + .Count + ", total MB: " + [math]::Round(( | Measure-Object Length -Sum).Sum / 1MB, 1))
- = @();  = 0;  = 1
-foreach ( in ) {
-   += .FullName;  += .Length
-  if ( -gt 20MB) { Compress-Archive -Path  -DestinationPath (Join-Path  ("part{0:D2}.zip" -f )) -Force; ++;  = @();  = 0 }
+$files = Get-ChildItem $dest -Filter *.pdf | Sort-Object Name
+Write-Host ("Downloaded files: " + $files.Count + ", total MB: " + [math]::Round(($files | Measure-Object Length -Sum).Sum / 1MB, 1))
+$batch = @(); $size = 0; $part = 1
+foreach ($f in $files) {
+  $batch += $f.FullName; $size += $f.Length
+  if ($size -gt 20MB) { Compress-Archive -Path $batch -DestinationPath (Join-Path $dest ("part{0:D2}.zip" -f $part)) -Force; $part++; $batch = @(); $size = 0 }
 }
-if (.Count -gt 0) { Compress-Archive -Path  -DestinationPath (Join-Path  ("part{0:D2}.zip" -f )) -Force }
-Write-Host ("Zip files are in " + )
+if ($batch.Count -gt 0) { Compress-Archive -Path $batch -DestinationPath (Join-Path $dest ("part{0:D2}.zip" -f $part)) -Force }
+Write-Host ("Zip files are in " + $dest)
