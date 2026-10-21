@@ -1,6 +1,6 @@
 # A2 (the database layer) 2026-10-21: what was built and what the tests show (owner: "All these done. Now proceed to the next step")
 
-Recourse branch `register-hooks-and-overlay`, NOT on `main`; nothing deployed; the ask route does not use the database yet. Design: `WEBSITE_DESIGN.md` section 4.
+Recourse branch `register-hooks-and-overlay`, commit `0d13b8e`, NOT on `main`; **full free suite after the last change: 95 run, 95 passed, 0 failed (8 live-model files not run);** nothing deployed; the ask route does not use the database yet. Design: `WEBSITE_DESIGN.md` section 4.
 
 ## Built
 - `api/db/models.py`: 15 tables (users, identities, sessions, consents, chats, messages, notes, feedback, plans, entitlements, usage_events, audit_log, deletion_requests, anon_questions, anon_counters). Rules: everything a person owns is deleted WITH the person (one delete of the users row); usage_events, audit_log and deletion_requests keep no message text and are DE-IDENTIFIED (user_id set to NULL) so billing and audit survive; fixed lists are text columns with CHECK constraints (a new value is a one-line migration); emails stored lower-case (checked); a plan that users hold cannot be deleted. NOT built (Phase C): subscriptions, payments, webhook events.
