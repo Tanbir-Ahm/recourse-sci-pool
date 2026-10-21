@@ -1,6 +1,6 @@
 # A1 (the real API in front of the answer engine): what was built and what the tests show (2026-10-21; owner's go: "Lets start with keep building the website")
 
-Recourse branch `register-hooks-and-overlay`, NOT on `main`; nothing deployed; no live model was used (the sandbox has no Anthropic key), every test uses a stubbed model. Details of the design: `WEBSITE_DESIGN.md` sections 3, 5.1, 5.2.
+Recourse branch `register-hooks-and-overlay`, commit `78b760a`, NOT on `main`; **full free suite after the last change: 94 run, 94 passed, 0 failed (8 live-model files not run);** nothing deployed; no live model was used (the sandbox has no Anthropic key), every test uses a stubbed model. Details of the design: `WEBSITE_DESIGN.md` sections 3, 5.1, 5.2.
 
 ## Built
 - `progress.py` (live steps) and eleven one-line `_progress(...)` calls in `chat_assistant.py`: steps `scope`, `acts`, `sections` (only when a shelf section reached the material), `library`, `wider` (only when the wider search contributed), `write`, `register`, `checks`. With no listener set nothing runs and nothing changes (test: the result is byte for byte the same with and without a listener, and without a listener the Act lookup adds no work). Details are counts and Act names only; the module drops anything that is not a plain value, so no passage or question text can ride in a step (test uses a canary phrase).
