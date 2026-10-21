@@ -19,3 +19,14 @@ C. **Decide what to do about the small documents** (107,000 orders; some may be 
 D. **Repair the Arunachal text** (shift by 29, restore spaces, or OCR) after measuring how many documents it affects.
 E. **Cross-check with the court's own list** once the owner supplies the saved page and the monthly PDFs.
 F. **Index and checker**: criminal-law filter, no-spend plan first, embedding only with the owner's go-ahead.
+
+## 4. The court's monthly list, January 2017 (owner attached `JDMTJan17.pdf`, 2026-10-21) [Certain unless marked]
+`ghc/court_lists/JDMTJan17.pdf` is **not a judgment but the court's own list of the month's judgments**: "JUDGMENTS FOR THE MONTH OF JANUARY, 2017", 10 pages, a Word table saved as PDF (made in 2020), text layer, no images: serial, date, case number, parties, subject, judges. 114 judgments. `parse_court_list.py` reads it; `court_lists/JDMTJan17_parsed.csv` is the result (the judges column is approximate: a wrapped surname can land in the respondent column).
+
+Matched with the bucket's catalogue by decision day and case number:
+- **82 of the 114 (72%) are in the bucket** (80 on the same day; 2 more under another date); **32 (28%) are not.** The missing ones are almost all criminal or rare case types that the bucket barely holds at all (all years: Crl.A.(J) jail appeals 87, Crl.Pet. 70, Crl.Rev.P. 4, Review.Pet. 2, Revn.Pet. 1, I.A.(Crl.) 12): jail appeals 8 of 9 missing, criminal interlocutory 5 of 5, review petitions 4 of 4, criminal petitions 3 of 3, criminal revisions 3 of 3, revision petitions 3 of 3. The main types are covered (writ petitions 38 of 41, criminal appeals 16 of 16, second appeals, civil revisions, misc first appeals). [Likely] The bucket's Gauhati feed omits much of the court's criminal-side work.
+- **The 10 KB size cut is a poor selector.** The 80 listed judgments found in the bucket have a median size of 8.6 KB; only 28 of them (35%) are 10 KB or larger. Of the 65 documents of 10 KB or more (not AB, BA, MC, IA) decided in January 2017, only 28 (43%) are on the court's list.
+- Therefore: **use the court's monthly lists as the selector** (fetch exactly the listed judgments from the bucket), and treat the listed judgments missing from the bucket as a separate gap that needs the court's own PDFs.
+- The list also gives the subject (for example "Appeals against conviction for offences under IPC"), which separates criminal from civil without reading the text. [Likely, n = 1 month]
+
+Next: the owner finds how many monthly lists exist (earliest month) and downloads them; they are about 0.3 MB each.
