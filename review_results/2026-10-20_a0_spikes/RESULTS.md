@@ -22,3 +22,9 @@ Railway's documentation says the private network is IPv6; a service that receive
 
 ## What changes in the design
 WEBSITE_DESIGN 1.2 (done: the skeleton, the guard test, the Railpack caveat) and 1.3 (public address instead of private networking; the ID-token finding) are updated accordingly.
+
+## UPDATE 2026-10-21: the Railway test was run on `staging-api` (owner)
+1. **Config-file path: not possible.** The service's Settings page says Config as Code is deprecated: "Existing config files keep working until 2026-12-01. Starting 2026-08-28, services that have never used Config as Code cannot opt in." The owner entered `/api/railway.api.json` and the field stayed empty; the service started Streamlit (the website's `Procfile`/`railway.json`). So design layer 1 (own config file) is dead for new services.
+2. **What works:** Custom Start Command + Healthcheck Path in the dashboard and the variable `NIXPACKS_START_CMD=uvicorn api.main:app --host 0.0.0.0 --port $PORT`. Deploy log: `Uvicorn running on http://0.0.0.0:8080`, `GET /api/health ... 200 OK` (Railway's own health check). The build used Nixpacks v1.41.0 (Python 3.13).
+3. **A deadline for the live website:** its `railway.json` (start command and `/_stcore/health` health check) is a config file; Railway says existing config files work only until 2026-12-01. Before then the same settings should be entered in the website service's dashboard (the `Procfile` start should keep working [Likely]). Not done; owner action, steps to be written when he asks.
+
