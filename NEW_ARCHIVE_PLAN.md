@@ -107,3 +107,9 @@ Principle: shrink the list, then find the feed. Nothing here gets around the cou
 **E. Keep the bucket as the base.** It is refreshed about every two weeks (`BUCKET_RUNBOOK.md`); direct fetches then only cover what it never gets.
 
 Order of work: A (owner, 5 minutes) while I run the small pass on the seven links; then C4 and C5 (no spend); B only if A fails.
+
+## 10. Result of step A (owner sent the request behind the listing page, 2026-10-21)
+
+- The search is a POST to `https://www.sci.gov.in/wp-admin/admin-ajax.php` (WordPress), action `get_judgements_judgement_date`, fields `from_date`, `to_date` (DD-MM-YYYY), `language`, and a set of form-protection fields: a CAPTCHA answer (`siwp_captcha_value`; a simple sum in this case), a per-page nonce, a one-time token, a form time and a signature. The owner's one-day test was 18 to 19 Aug 2022. (The token, nonce and signature values the owner pasted are session values; they are deliberately **not** recorded here and were not used.)
+- Consequences [Certain]: the endpoint is on `www.sci.gov.in`, which refuses our client (section 8), and it is guarded by a CAPTCHA and a signed, time-stamped form. This is outcome 2 and 3 of section 9A. **No automated route exists for us, and none will be built**: solving the CAPTCHA by program or replaying the tokens would be getting around the court's guard (`RUNBOOK.md`, standing rule).
+- What remains is route B, with the CAPTCHA answered by a person: the owner runs a search in his own browser and hands me what the page returned. The effort is per search, not per link. Open questions for him to test: the longest date range the form accepts (one month? one year?), and whether the results are paginated.
