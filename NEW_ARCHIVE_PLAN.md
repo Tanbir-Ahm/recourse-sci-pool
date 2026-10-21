@@ -83,3 +83,27 @@ Rules that carry over unchanged: nothing here says a case is good law; text only
 After the owner allowed the host, two requests (the judgments-by-date page and `robots.txt`, 2 s apart, with the crawler's honest User-Agent) reached the court's server and both got **HTTP 403 "Access Denied"** from its content-delivery layer (Akamai, `AkamaiGHost`). [Certain] This is a block by the court's side, not by our sandbox. Following `RUNBOOK.md` ("never try to get around a block, CAPTCHA, login page or access denied"), nothing further was tried: no changed User-Agent, no retries, no other route to the same page. [Guessing] Such layers often refuse automated clients and cloud addresses; the cause here is not known.
 
 Consequence: the list of links cannot come from this environment. The plan stays "owner supplies links" (section 5), or a person copies the day's links from the page in a normal browser. `api.sci.gov.in` PDF links keep working from here.
+
+## 9. Strategy to avoid hand-collecting links for 2017 to 2026 (owner: "too much manual work", 2026-10-21)
+
+Principle: shrink the list, then find the feed. Nothing here gets around the court's block (section 8).
+
+**A. Find the data behind the listing page (owner, about 5 minutes, then automatic).** In a normal browser open the judgments-by-date page, press F12, open the Network tab, run one search for a one-week range, and send me the address and parameters of the request that returned the results (not cookies, tokens or the CAPTCHA answer). Three outcomes:
+1. The request goes to `api.sci.gov.in` (which answers us, section 1) and needs no CAPTCHA or token: I page through it politely (1.5 s pause, 2 workers, STOP file) and get every link for 2017 to 2026, with diary and extra numbers, automatically. [Guessing] that this is the case; the page was never seen.
+2. It needs a CAPTCHA or a browser token: stop. Go to B.
+3. It goes to `www.sci.gov.in` itself: blocked for us (section 8). Go to B.
+
+**B. Owner's browser as the hand, once per range, not per link.** If the page accepts a date range, the owner saves each results page (Ctrl+S, "Webpage, HTML only") into `inbox/` and I read the links out of the saved files offline. A month or a quarter per file, so 2018 to 2026 is a few dozen files, not thousands of links. A small console snippet that collects the links on the page is possible only after I have seen one saved page. The owner should check the court's terms first.
+
+**C. Fetch only what the checker needs (cuts the list by roughly 5 to 20 times).**
+1. Only judgments the bucket lacks: about 1,970 for 2018 to 2025 and about 770 for 2026 [Likely; from Indian Kanoon's yearly counts in `coverage/COVERAGE_NOTE.md`, which may count orders or duplicates].
+2. Criminal law first: the index keeps criminal judgments only, so a non-criminal judgment would be dropped anyway.
+3. The register's own demand is small: of the 59 post-2015 overruling entries, only 1 (row 43) has the later judgment missing from our text, and the correcting judgments missing in `review_results/2026-10-09_index_gap_sizing/` are mostly older ones. So for the Overruled Register the post-2017 gap hardly matters [Likely]. It matters for the lawyer research mode (recent authority), not for the "is this overruled" warning.
+4. Demand-driven list: post-2017 judgments that our corpus or cards cite but do not hold (neutral citations such as "2023 INSC 123", and case names). I can compute this from the corpus after the 15-minute rebuild (`IK_PLAN.md`); the owner then looks up a few dozen cases, not thousands.
+5. Hypothesis to test, not a finding: the bucket is mostly judgments printed in the law reports, so what is missing is mostly non-reportable. In the seven judgments sent so far the missing ones were 3 non-reportable and 1 reportable of 4; the three held were all reportable. [Guessing, n = 7]. Test: count "NON-REPORTABLE" on page 1 of bucket judgments for 2018 to 2025. If the bucket holds almost none, the missing set is the non-reportable half, which is less likely to overrule anything.
+
+**D. Not recommended without the owner's say-so.** A paid scraping service that returns diary numbers (it scrapes the court site, costs money and has its own terms; found by search, not checked), and third-party libraries that claim to read the court's feed (not inspected, not trusted).
+
+**E. Keep the bucket as the base.** It is refreshed about every two weeks (`BUCKET_RUNBOOK.md`); direct fetches then only cover what it never gets.
+
+Order of work: A (owner, 5 minutes) while I run the small pass on the seven links; then C4 and C5 (no spend); B only if A fails.
