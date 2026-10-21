@@ -35,3 +35,9 @@ Next: the owner finds how many monthly lists exist (earliest month) and download
 - The court's judgments page covers **2010 to 2017** (earliest year 2010): about 96 monthly lists.
 - The owner checked the Guwahati High Court's terms on downloading these files and **approved** it (his statement).
 - He is collecting the links to the monthly lists with a console snippet and will send them; then the lists, then the judgment files that the bucket lacks (criminal-subject ones first, if he agrees).
+
+## 6. Court copy against bucket copy, 20 judgments (owner downloaded `compare.zip`, 2026-10-21) [Certain]
+- All 20 court PDFs have a real text layer (4 to 70 pages, 4,659 to 114,417 characters), none is a scan. Average size about 128 KB.
+- The court's copy is the whole document: cause title with the parties, advocates, date of hearing and judgment, the heading (for example "JUDGMENT & ORDER (ORAL)"), then the body.
+- The bucket's copy of the same case is the body without the cause title and heading. Its length is a median 91% of the court's (range 57% to 96%); **3 of 20 are materially shorter** (WP(C) 4569/2010: 16 pages against the court's 70; WP(C) 1832/2009: 68%; WP(C) 4972/2006: 79%). Its text also has mid-word line breaks ("appoint-ment" split over two lines; 7.4% of its words are not words of the court's copy; single-letter fragments 36 per 1000 words against 20). Only 68% of 6-word runs are shared between the two copies, because of that.
+- Conclusion: the court's PDFs are the better source (complete, cleaner, with the heading that marks a judgment). The bucket is an acceptable fallback for the body text but is sometimes incomplete. Plan: court files first for what the bucket lacks (888 criminal-subject files, then the other 942), then the criminal ones the bucket holds, then the rest as the owner's laptop time allows.
