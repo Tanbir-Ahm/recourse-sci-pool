@@ -77,3 +77,9 @@ Rules that carry over unchanged: nothing here says a case is good law; text only
 [Likely] 3 of 5 are missing from the bucket (matched by decision date and party names by eye against `worklist.csv.gz`). With the Masal link, 4 of 7 judgments sent so far are missing from the bucket. That is a small sample and the links may have been picked because they were missing, so it is **not** a rate; it only confirms the gap is real and appears in recent years too, including 2023.
 
 **What changes in the plan:** nothing in steps A to G; the intake pattern is widened to the long form. The first small run can use these seven links as they stand: fetch, extract, clean, compare with the bucket, report. Not done yet; waiting for the owner to say go.
+
+## 8. Update: `www.sci.gov.in` allowed by the owner, then refused by the court's own server (2026-10-21)
+
+After the owner allowed the host, two requests (the judgments-by-date page and `robots.txt`, 2 s apart, with the crawler's honest User-Agent) reached the court's server and both got **HTTP 403 "Access Denied"** from its content-delivery layer (Akamai, `AkamaiGHost`). [Certain] This is a block by the court's side, not by our sandbox. Following `RUNBOOK.md` ("never try to get around a block, CAPTCHA, login page or access denied"), nothing further was tried: no changed User-Agent, no retries, no other route to the same page. [Guessing] Such layers often refuse automated clients and cloud addresses; the cause here is not known.
+
+Consequence: the list of links cannot come from this environment. The plan stays "owner supplies links" (section 5), or a person copies the day's links from the page in a normal browser. `api.sci.gov.in` PDF links keep working from here.
