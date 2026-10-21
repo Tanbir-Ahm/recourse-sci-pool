@@ -242,6 +242,8 @@ A5 is behind `USE_API` on the Streamlit service: off means today's direct engine
 | C | Payments (after the price) | G3 | 4 to 6 |
 | D to F | Drafting studio and documents; voice, Hindi, research page; domain switch, WhatsApp onto the API | each its own design first | later |
 
+**Status 2026-10-21:** A0 done; **A1 built on the Recourse branch** (`POST /api/ask` with the real steps, fail-closed key, one worker thread per question, `progress.py` hook, contract file `api/openapi.json`; see `review_results/2026-10-21_a1_api/RESULTS.md`). A2 (Postgres), A3 (sign-in, consent, quotas) and A5 (Streamlit as the first client) are not started. Two things found while building that change the text above: (a) the API must pass the same `inline_domains` the page passes (done); (b) the first ask route is protected by one shared key only and is not for public use.
+
 ## 15. Decisions (owner's answers, 2026-10-20; the design's recommendations were taken as they stand except D4)
 
 - **D1 Engine location:** `api/` inside Recourse. YES.
