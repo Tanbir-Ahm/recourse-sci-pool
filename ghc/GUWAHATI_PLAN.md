@@ -30,3 +30,8 @@ Matched with the bucket's catalogue by decision day and case number:
 - The list also gives the subject (for example "Appeals against conviction for offences under IPC"), which separates criminal from civil without reading the text. [Likely, n = 1 month]
 
 Next: the owner finds how many monthly lists exist (earliest month) and downloads them; they are about 0.3 MB each.
+
+## 5. Owner's decisions of 2026-10-21 (later)
+- The court's judgments page covers **2010 to 2017** (earliest year 2010): about 96 monthly lists.
+- The owner checked the Guwahati High Court's terms on downloading these files and **approved** it (his statement).
+- He is collecting the links to the monthly lists with a console snippet and will send them; then the lists, then the judgment files that the bucket lacks (criminal-subject ones first, if he agrees).
