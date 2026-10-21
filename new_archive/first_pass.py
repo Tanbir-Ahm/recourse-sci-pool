@@ -1,5 +1,5 @@
 """First pass on a list of links from the court's newer archive: classify, fetch English judgments once each, extract text, compare with the bucket by date and party words.
-Usage: python3 -I first_pass.py LINKS.txt WORKDIR OUT.csv   (PDFs stay in WORKDIR, outside the repo; text is not committed; a PDF already in WORKDIR is not fetched again)"""
+Usage: python3 -I first_pass.py LINKS.txt WORKDIR OUT.csv [EXTRA_WORKLIST.csv.gz ...]   (PDFs stay in WORKDIR, outside the repo; text is not committed; a PDF already in WORKDIR is not fetched again)"""
 import csv, gzip, hashlib, os, re, sys, time, random
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import requests, pymupdf
@@ -12,9 +12,11 @@ STOP = set("AND ANR ANOTHER OTHERS ORS STATE UNION INDIA THROUGH LTD PVT LIMITED
 def words(s):
     return {w for w in re.findall(r"[A-Z]{4,}", s.upper()) if w not in STOP}
 
-def main(links_file, work, out):
+def main(links_file, work, out, *extra_worklists):
     os.makedirs(work, exist_ok=True)
     rows = list(csv.DictReader(gzip.open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "coverage", "bucket_match", "worklist.csv.gz"), "rt")))
+    for xw in extra_worklists:  # e.g. the bucket refresh list that holds 2026
+        rows += list(csv.DictReader(gzip.open(xw, "rt")))
     links = list(dict.fromkeys(l.strip() for l in open(links_file) if l.strip()))
     res, sess = [], requests.Session()
     sess.headers["User-Agent"] = USER_AGENT
@@ -66,4 +68,4 @@ def main(links_file, work, out):
     print(len(res), "rows written to", out)
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4])
+    main(*sys.argv[1:])

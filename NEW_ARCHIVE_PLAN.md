@@ -125,3 +125,9 @@ Still open: the longest date range the form takes, whether results are paginated
 The form takes 30 days. 150 links: 115 English judgments (all fetched, typeset, no scans), 34 translations, 1 without a diary number. **32 of the 115 (28%) are not in the bucket: all 15 non-reportable ones, and 18 of 34 criminal ones.** The copied list also lacks 6 judgments the bucket holds, so the court page (or the snippet) under-lists. The bucket holds at most about 74% of the month's judgments.
 
 Cost of the manual route, as measured: the fetch takes about 4 seconds per judgment; the owner's work is one search and one snippet per month. Suggested order: newest first (2026, then 2025, 2024, ...), because the bucket is weakest there (2026: 22% of Indian Kanoon's count, 2025: 63%) and recent law is what the lawyer research mode needs. Rough size: about 10 searches for 2026, 12 for each earlier year.
+
+## 13. Result for January 2026 (`new_archive/2026-01/README.md`)
+
+107 English judgments, all fetched, all typeset. **64 of 107 (60%) are not in the bucket**, including all 24 non-reportable ones and 38 of 80 reportable ones. For this month the bucket holds at most about 40%. So for 2026 the direct route is not a gap-filler but the main source: the bucket's 2026 folder has only 214 judgments for the whole year to 12 August. One bucket judgment (State of U.P. v. Anurudh) is not in the owner's list, so the copied list is not complete for 2026 either (1 of 108).
+
+Run time: about 8 seconds per judgment this time (14 minutes for 107). Roughly 100 judgments a month means 15 to 20 minutes of fetching per month, so a year is about 3 to 4 hours of unattended fetching, in blocks.
