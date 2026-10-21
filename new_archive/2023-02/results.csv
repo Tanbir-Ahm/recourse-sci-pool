@@ -98,7 +98,7 @@ https://api.sci.gov.in/supremecourt/2010/20227/20227_2010_6_1501_42094_Judgement
 https://api.sci.gov.in/supremecourt_vernacular/2010/20227/20227_2010_6_1501_42094_Judgement_22-Feb-2023_TAM.pdf,vernacular TAM,20227/2010,22-02-2023,,,,,,,,,,
 https://api.sci.gov.in/supremecourt/2021/20603/20603_2021_7_8_42195_Judgement_22-Feb-2023.pdf,english judgment,20603/2021,22-02-2023,ok,6,8364,1,NON-REPORTABLE,yes,b07e1ac60ca49136f1f5b13757d7e5b3695bda260d96f693a12cdea0003fc141,no,,2
 https://api.sci.gov.in/supremecourt_vernacular/2021/20603/20603_2021_7_8_42195_Judgement_22-Feb-2023_HIN.pdf,vernacular HIN,20603/2021,22-02-2023,,,,,,,,,,
-https://api.sci.gov.in/supremecourt/2022/21240/21240_2022_15_1501_41756_Judgement_10-Feb-2023.pdf,english judgment,21240/2022,10-02-2023,error: ProxyError,,,,,,,,,
+https://api.sci.gov.in/supremecourt/2022/21240/21240_2022_15_1501_41756_Judgement_10-Feb-2023.pdf,english judgment,21240/2022,10-02-2023,ok,4,3763,0,NON-REPORTABLE,no,e614488fec4dbeb054a033300ee7f95e094047b4c15e011aae2c1b5cdc088800,no,,7
 https://api.sci.gov.in/supremecourt/2012/21429/21429_2012_8_1501_41863_Judgement_15-Feb-2023.pdf,english judgment,21429/2012,15-02-2023,ok,22,20674,0,REPORTABLE,yes,0358eab108d88131cf6771f8d8281ce816c859e4a65a51972b3886dbf60ef4f7,yes,AJAI ALIAS AJJU ETC. ETC versus THE STATE OF UTTAR PRADESH,2
 https://api.sci.gov.in/supremecourt_vernacular/2012/21429/21429_2012_8_1501_41863_Judgement_15-Feb-2023_HIN.pdf,vernacular HIN,21429/2012,15-02-2023,,,,,,,,,,
 https://api.sci.gov.in/supremecourt/2022/22472/22472_2022_6_1501_42075_Judgement_21-Feb-2023.pdf,english judgment,22472/2022,21-02-2023,ok,11,11986,0,REPORTABLE,yes,afb30c90c37232e5c564f63cd4e9d9605e0e1abc1f92f725140ec3dc06320ac5,yes,YOGESH UPADHYAY AND ANR. versus ATLANTA LIMITED,4
