@@ -292,3 +292,14 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 8. **Way back:** delete the `staging-api` service. Nothing else depends on it.
 **Limits to remember:** no live-model test was possible in the sandbox (the tests use a stubbed model), so this staging run is the first real one; the key is the only protection, so do not share the address or the key; one replica only (the daily-budget file has an in-process lock); steps are real but the answer arrives whole, after the engine's own checks have finished (a token stream would show text the checks later change).
 
+## Part 4t: a Postgres database on staging for the API (A2; added 2026-10-21; Recourse branch `register-hooks-and-overlay`; FOLLOW_UPS 2bu, `review_results/2026-10-21_a2_database/RESULTS.md`)
+**What it is:** the database the accounts, saved chats and limits will live in. In this step NOTHING uses it yet: you add it, the API builds its empty tables, and you look at them. No user data, no real person, no risk to the live site. **YOU** = needs your Railway account; staging project only.
+1. **YOU.** In `recourse-staging`: New, then Database, then Add PostgreSQL. Note the exact name Railway gives the new service (for example `Postgres`).
+2. **YOU.** Open `staging-api`, then Variables, then New Variable: name `DATABASE_URL`, value `${{Postgres.DATABASE_URL}}` (replace `Postgres` with the database's exact name; Railway's "Add Reference" button does the same and avoids typing mistakes). Use this one (the private address), not `DATABASE_PUBLIC_URL`.
+3. **YOU.** Add the variable `API_RUN_MIGRATIONS` = `on`.
+4. **YOU.** Make sure `staging-api` has deployed the latest commit of the branch (it redeploys by itself after variable changes and pushes). Wait for it to be Active.
+5. **YOU.** Check three things: (a) the Deploy Logs contain `api: database schema is up to date`; (b) `https://<your staging-api domain>/api/health` shows `"db":"ok"`; (c) in the database service, the Data tab lists 16 tables (15 plus `alembic_version`), `plans` has 2 rows (`anonymous`, `free`) and `entitlements` has 6.
+6. **YOU.** Send me the health reply and the one log line (no address, no password). If the service does not start and the log says `database migration FAILED`, send me the line; the service refuses to start on a broken database on purpose.
+**What the numbers in `entitlements` are:** provisional placeholders (anonymous 3 layman answers a day, no lawyer mode; free 10 layman and 3 lawyer a day); you set the real ones at step A5 from real use.
+**Undo:** remove `API_RUN_MIGRATIONS` and `DATABASE_URL` (the API then ignores the database again), or delete the database service. **Backups:** Railway's backup options depend on your plan; check them before any real person's data goes in (step A5), not now.
+
