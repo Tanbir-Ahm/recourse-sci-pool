@@ -137,3 +137,11 @@ Run time: about 8 seconds per judgment this time (14 minutes for 107). Roughly 1
 504 further links, all English judgments, all fetched (about 65 minutes unattended, no blocks). With January: **611 judgments for January to June 2026, 424 (69%) not in the bucket, including all 129 non-reportable ones.** The bucket holds at most about 31% of the six months and its share falls by month (40% in January, 22% in May). For 2026 the direct route is the main source. The owner's copied lists were almost complete (5 bucket judgments absent from 616).
 
 The catalogue (`catalogue.csv`) now has 733 rows. Names were improved this round (suo motu "In Re" matters, "and others" on its own line, many numbered parties); 1 row has no name and 5 have no second side (suo motu). Still not done: storing the extracted text, cleaning it, feeding the index, July to October 2026 and 2018 to 2025, de-duplication against anything but the bucket.
+
+## 15. Results for July to October 2026 (`new_archive/2026-07_to_10_SUMMARY.md`); 2026 to date is complete
+
+451 further links, all English judgments, all fetched (about 60 minutes, no blocks). **2026 to 16 October: 1,062 judgments.** Of the 801 decided on dates the bucket covers (to 12 August), **591 (74%) are not in the bucket**; the other 261 are newer than the bucket's last date. The bucket holds 12% of July and early August.
+
+New check: the court's neutral citations (2026 INSC 1 to 1,149) are a running count. The catalogue holds 1,055 of them, so the owner's lists are about 92% complete; 94 numbers are missing, 5 of them in the bucket. They are listed in `2026_missing_insc_numbers.csv` with the dates to look at. The catalogue has 1,184 rows.
+
+Decision for the owner: 2026 is now the main source and the direct route works. The next years (2025 down to 2018) are 12 searches a year each, with the bucket better there (about 77% overall, 63% for 2025). Neutral citations run from 2023 only in these PDFs, so the completeness check works for 2023 onwards.

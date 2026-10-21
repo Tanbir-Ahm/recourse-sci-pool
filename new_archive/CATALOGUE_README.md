@@ -1,6 +1,6 @@
 # The catalogue of judgments fetched from the court's newer archive (built 2026-10-21)
 
-`catalogue.csv` has **one row per English judgment** fetched so far (733: January 2019, January to June 2026, and 7 sample judgments of 2018 to 2024). `build_catalogue.py` builds it from `*/results.csv`, the link lists and the PDFs; run it again after each new month. The owner's purpose: later, when a user types a case name on the Recourse site, the site can show these judgments with a link to the court's own PDF.
+`catalogue.csv` has **one row per English judgment** fetched so far (1,184: January 2019, January to October 2026 (to 16 October), and 7 sample judgments of 2018 to 2024). `build_catalogue.py` builds it from `*/results.csv`, the link lists and the PDFs; run it again after each new month. The owner's purpose: later, when a user types a case name on the Recourse site, the site can show these judgments with a link to the court's own PDF.
 
 ## Columns
 | Column | Meaning |
@@ -16,11 +16,11 @@
 | `criminal_heading` | yes if page 1 carries a criminal heading (a rough test) |
 | `pdf_url` | the court's own PDF link (api.sci.gov.in) |
 | `translations` | the court's translation links for the same judgment, as `LANGUAGE=url` pairs (27 rows; the 2026 lists contained no translations) |
-| `in_bucket`, `bucket_title` | whether the open bucket holds the same judgment, and its title there |
+| `in_bucket`, `bucket_title` | `yes` or `no` for whether the open bucket holds the same judgment (and its title there), or `beyond` for a judgment decided after the bucket's newest date (12 August 2026), which the bucket cannot hold yet |
 | `pages`, `sha256`, `fetched_on`, `source` | page count, checksum of the PDF, date fetched, where it came from |
 
 ## Limits [Certain unless marked]
-- **Suo motu "In Re" matters** have one name and no second side (5 rows); 1 row has no name (a suo motu matter whose title the rules could not read).
+- **Suo motu "In Re" matters** have one name and no second side (10 rows); 2 rows have no name (suo motu matters whose title the rules could not read).
 - **One name per judgment.** A judgment that decides several appeals together shows only the first matter's parties (for example *Leena Vivek Masal*, three appeals). A user typing the second matter's name will not match. Fix when needed: read every "X versus Y" block on page 1 into `other_matters`.
 - Names are read by rules from the page; a 22-row sample read by eye looked right, and no row has a leftover role word. Rows where only the bucket's title could be used: 2; one name has unbalanced brackets. Case numbers are the first one printed, not checked.
 - Typed names will differ from printed ones (initials, "M/s", "State of U.P." against "State of Uttar Pradesh"). `name_key` removes punctuation only; real matching (aliases, initials, a fuzzy match) is for the site and needs a test set.
