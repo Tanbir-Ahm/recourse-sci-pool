@@ -54,7 +54,8 @@ def load_shard(path):
 
 def main(data, min_bytes, limit=None):
     cat = list(csv.DictReader(gzip.open(os.path.join(data, "catalogue", "ghc_to2017_catalogue.csv.gz"), "rt")))
-    todo = [r for r in cat if r["pdf_bytes"] and float(r["pdf_bytes"]) >= float(min_bytes)]
+    skip_types = {"AB"}  # anticipatory bail matters: the owner does not want them (2026-10-21)
+    todo = [r for r in cat if r["pdf_bytes"] and float(r["pdf_bytes"]) >= float(min_bytes) and r["case_number"].split("/")[0].strip().upper() not in skip_types]
     os.makedirs(os.path.join(data, "shards"), exist_ok=True)
     have = set()
     for f in os.listdir(os.path.join(data, "shards")):
