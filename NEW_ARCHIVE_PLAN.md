@@ -145,3 +145,9 @@ The catalogue (`catalogue.csv`) now has 733 rows. Names were improved this round
 New check: the court's neutral citations (2026 INSC 1 to 1,149) are a running count. The catalogue holds 1,055 of them, so the owner's lists are about 92% complete; 94 numbers are missing, 5 of them in the bucket. They are listed in `2026_missing_insc_numbers.csv` with the dates to look at. The catalogue has 1,184 rows.
 
 Decision for the owner: 2026 is now the main source and the direct route works. The next years (2025 down to 2018) are 12 searches a year each, with the bucket better there (about 77% overall, 63% for 2025). Neutral citations run from 2023 only in these PDFs, so the completeness check works for 2023 onwards.
+
+## 16. Decisions of 2026-10-21 (owner) and the text store
+
+- The owner checked the court's terms on automated fetching and approved fetching the rest (his statement). He is collecting 2018, 2019, 2020 and 2017 (from 5 May 2017) himself.
+- Fetching runs one year at a time, never in parallel: 2025, then 2024, 2023, 2022, 2021, each month's results pushed as it finishes.
+- **Text store (owner's say-so: "store the extracted text, compressed, as monthly files on a new data branch such as claude/sci-court-newer").** Branch `claude/sci-court-newer`: `shards/YYYY-MM.jsonl.gz` (raw text, one judgment per line, with the catalogue fields); `store_text.py` builds it and is idempotent; a watcher stores each month as its results appear. 1,184 judgments stored so far in 15 MB (about 13 KB a judgment, so roughly 150 MB for 11,000). Stored for every fetched judgment, bucket-held ones included, so the two texts can be compared. Nothing is cleaned yet and nothing from the branch has gone into the index, checker or register.
