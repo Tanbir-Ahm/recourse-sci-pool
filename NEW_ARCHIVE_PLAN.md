@@ -56,3 +56,24 @@ Rules that carry over unchanged: nothing here says a case is good law; text only
 
 - It does not say how many 2018+ judgments the court's archive holds that the bucket lacks. Only one is known (Masal), from one sampled date. Indian Kanoon's list suggests about 1,970 for 2018 to 2025 [Likely], but that figure includes things the court may not post.
 - It does not know whether the newer archive is complete, whether the file names ever change, or whether the court's terms allow automated fetching. The last of these should be checked by the owner before any bulk run.
+
+## 7. Update, second batch (owner's message, same day): source page named, five links from 2019 to 2024
+
+**The source page** is `https://www.sci.gov.in/judgements-judgement-date/` (judgments by date). [Certain] It cannot be read from this environment: the environment's network policy refuses the host (`CONNECT tunnel failed, response 403`). Whether the page can be read by a program, or sits behind a CAPTCHA, is **not known**; I have not seen it. If the owner adds `www.sci.gov.in` under Allowed domains (cloud environment menu, Network access, Edit), I can look at what the page returns. If it asks for a CAPTCHA or a login I stop there, as `RUNBOOK.md` requires, and the plan stays "owner supplies links".
+
+**A second URL form.** From 2019 on the file name carries three more numbers:
+`/supremecourt/<year>/<diary no>/<diary no>_<year>_<a>_<b>_<c>_Judgement_<DD-Mon-YYYY>.pdf`, for example `558_2019_9_1502_17589` and `3781_2014_13_1501_17658`. [Certain] Two probes with the 2018-style short form and with a wrong diary folder both came back as empty 200 answers, so every part of the name has to be right. [Likely] `b` is the item number (1501 or 1502 in four of the five links); [Guessing] `a` and `c` are a court or list number and a running record number: `c` rises with the date (17,589 in Oct 2019; 30,814 in Oct 2021; 47,540 in Oct 2023; 56,561 in Oct 2024), but it still cannot be used without the diary number. So the conclusion in section 2 holds even more firmly: **no enumeration, a list of links is needed.** The intake step must accept both forms (the short form for early 2018, the long form after) and treat the whole path as the key.
+
+**The five links** (all fetched once, 2 s apart): all five return 200, `application/pdf`, 75 KB to 594 KB, 11 to 43 pages, with a text layer. [Certain] Only n4 and n5 carry an embedded image each (likely a seal or signature [Guessing]); none is a scan.
+
+| Date | Case (from page 1) | In the bucket? |
+|---|---|---|
+| 18 Oct 2019 | State of Bihar v. M/s Riga Sugar Co. (Civil Appeals 7951 and others of 2019) | **No** (bucket has 3 other judgments that day) |
+| 21 Oct 2019 | Om Parkash v. Amar Singh (Civil Appeals 8175-8176 of 2019, with a contempt petition) | **No** (bucket has 2 other judgments that day) |
+| 22 Oct 2021 | Union of India v. Ms. A. Shainamol, IAS (Civil Appeals 11480-81 of 2018) | Yes |
+| 10 Oct 2023 | Vikrant Kapila v. Pankaja Panda (Civil Appeal 5355 of 2023) | **No** (bucket has 6 other judgments that day) |
+| 16 Oct 2024 | IDBI Bank v. Ramswaroop Daliya (SLP(C) 8159-8160 of 2023) | Yes |
+
+[Likely] 3 of 5 are missing from the bucket (matched by decision date and party names by eye against `worklist.csv.gz`). With the Masal link, 4 of 7 judgments sent so far are missing from the bucket. That is a small sample and the links may have been picked because they were missing, so it is **not** a rate; it only confirms the gap is real and appears in recent years too, including 2023.
+
+**What changes in the plan:** nothing in steps A to G; the intake pattern is widened to the long form. The first small run can use these seven links as they stand: fetch, extract, clean, compare with the bucket, report. Not done yet; waiting for the owner to say go.
