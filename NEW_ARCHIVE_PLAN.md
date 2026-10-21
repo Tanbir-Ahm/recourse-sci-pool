@@ -119,3 +119,9 @@ Order of work: A (owner, 5 minutes) while I run the small pass on the seven link
 The owner's manual route works: one search with a CAPTCHA he answered, one snippet, 53 links. 41 English judgments were fetched cleanly (typeset, not scans); 11 translations and 1 link without a diary number were skipped. **9 of the 41 (22%) are not in the bucket, 5 of them criminal; all 4 non-reportable judgments were among the missing.** The owner's list also lacks 2 judgments the bucket holds, so the page copy is not guaranteed complete.
 
 Still open: the longest date range the form takes, whether results are paginated (the two missing judgments may point to it), and the court's terms. Not done: storing the extracted text, de-duplication against anything but the bucket, cleaning, feeding the index.
+
+## 12. Result for a full month (January 2019; `new_archive/2019-01/README.md`)
+
+The form takes 30 days. 150 links: 115 English judgments (all fetched, typeset, no scans), 34 translations, 1 without a diary number. **32 of the 115 (28%) are not in the bucket: all 15 non-reportable ones, and 18 of 34 criminal ones.** The copied list also lacks 6 judgments the bucket holds, so the court page (or the snippet) under-lists. The bucket holds at most about 74% of the month's judgments.
+
+Cost of the manual route, as measured: the fetch takes about 4 seconds per judgment; the owner's work is one search and one snippet per month. Suggested order: newest first (2026, then 2025, 2024, ...), because the bucket is weakest there (2026: 22% of Indian Kanoon's count, 2025: 63%) and recent law is what the lawyer research mode needs. Rough size: about 10 searches for 2026, 12 for each earlier year.
