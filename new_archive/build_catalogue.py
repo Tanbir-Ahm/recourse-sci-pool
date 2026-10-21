@@ -6,11 +6,14 @@ import pymupdf
 
 ROLE = re.compile(r"(?i)^[\s.…,:;()\-]*(appellants?|petitioners?|respondents?|applicants?|defendants?|plaintiffs?|opposite|contemnors?|caveators?|intervenors?|complainants?|accused)\b.*$|^[\s.…\-_]+$")
 VS = re.compile(r"(?i)^\s*(versus|vs\.?|v\.?)\s*$")
-STOP = re.compile(r"(?i)^\s*(with|and|j\s*u\s*d\s*g\s*m\s*e\s*n\s*t|o\s*r\s*d\s*e\s*r|reportable|non-?reportable|in the supreme court|\[?arising|\(?arising|civil appeal|criminal appeal|special leave|s\.l\.p|slp|writ petition|civil appellate|criminal appellate|original jurisdiction|appellate jurisdiction|\d{4}\s+insc|page\s+\d|\d+\s*$)")
+STOP = re.compile(r"(?i)^\s*((with|and)\s*$|j\s*u\s*d\s*g\s*m\s*e\s*n\s*t|o\s*r\s*d\s*e\s*r|reportable|non-?reportable|in the supreme court|\[?arising|\(?arising|civil appeal|criminal appeal|special leave|s\.l\.p|slp|writ petition|civil appellate|criminal appellate|original jurisdiction|appellate jurisdiction|\d{4}\s+insc|page\s+\d|\d+\s*$)")
 YR = r"(?:\bof\s+|/)\s*(?:19|20)\d\d"
 CASE = re.compile(r"(?i)((?:civil|criminal)\s+appeal[^\n]{0,60}?" + YR + r"|writ\s+petition[^\n]{0,60}?" + YR + r"|(?:special\s+leave\s+petition|slp)[^\n]{0,60}?" + YR + r"|(?:transfer|contempt|review|arbitration|curative)\s+petition[^\n]{0,60}?" + YR + r"|(?:civil|criminal)\s+misc[^\n]{0,60}?" + YR + r"|(?:civil|criminal)\s+appeal[^\n]{0,40})")
 
 def clean(s):
+    if re.search(r"\bA\d+\s*:", s):  # many numbered parties (A1: ... A2: ...): keep the first
+        first = [x for x in re.split(r"\bA\d+\s*:", s) if x.strip()]
+        s = (first[0].strip() + " and others") if first else s
     s = re.sub(r"[…]+|\.{2,}", " ", s)
     s = re.sub(r"(?i)\b(appellants?|respondents?|petitioners?)\s*\(s\)", " ", s)
     s = re.sub(r"\s+", " ", s).strip(" ,;:-.")
@@ -21,8 +24,14 @@ def clean(s):
 
 def parties(lines):
     k = next((i for i, l in enumerate(lines) if VS.match(l)), None)
-    if k is None:
-        return "", ""
+    if k is None:  # suo motu and other "In Re" matters have no second side
+        j = next((i for i, l in enumerate(lines) if re.match(r"(?i)^[\u201c\"']?\s*in\s+re\b", l)), None)
+        if j is None: return "", ""
+        buf = []
+        for l in lines[j:j + 8]:
+            if STOP.match(l) or re.search(r"(?i)\bappeal\s+no|o\s*r\s*d\s*e\s*r", l): break
+            buf.append(l)
+        return clean(" ".join(buf).strip("\u201c\u201d\"' ")), "(suo motu / in re)"
     pet = []
     for l in reversed(lines[:k]):
         if STOP.match(l) or re.search(r"(?i)\bno\.?\s*\(?s?\)?\.?\s*[\d@]|\bof\s+\d{4}\b|arising", l): break
@@ -63,10 +72,10 @@ def main(pdfdir, out, *pairs):
             cn = CASE.search(re.sub(r"\s+", " ", t[:1500]))
             dd, mm, yy = r["date"].split("-")
             mon = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()[int(mm) - 1]
-            name = f"{pet} versus {res}" if pet and res else ""
+            name = (pet if res == "(suo motu / in re)" else f"{pet} versus {res}") if pet and res else ""
             bname = r["bucket_title"] if r["bucket_match"] == "yes" else ""
             rows.append({
-                "case_name": name or bname, "petitioner": pet, "respondent": res, "name_key": name_key(name or bname),
+                "case_name": name or bname, "petitioner": pet, "respondent": "" if res == "(suo motu / in re)" else res, "name_key": name_key(name or bname),
                 "case_number": re.sub(r"\s+", " ", cn.group(1)).strip() if cn else "", "diary_no": r["diary"],
                 "decision_date": f"{yy}-{mm}-{dd}", "neutral_citation": f"{ncite.group(1)} INSC {ncite.group(2)}" if ncite else "",
                 "reportable": r["reportable"] or "unmarked", "criminal_heading": r["criminal"], "pages": r["pages"],

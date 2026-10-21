@@ -131,3 +131,9 @@ Cost of the manual route, as measured: the fetch takes about 4 seconds per judgm
 107 English judgments, all fetched, all typeset. **64 of 107 (60%) are not in the bucket**, including all 24 non-reportable ones and 38 of 80 reportable ones. For this month the bucket holds at most about 40%. So for 2026 the direct route is not a gap-filler but the main source: the bucket's 2026 folder has only 214 judgments for the whole year to 12 August. One bucket judgment (State of U.P. v. Anurudh) is not in the owner's list, so the copied list is not complete for 2026 either (1 of 108).
 
 Run time: about 8 seconds per judgment this time (14 minutes for 107). Roughly 100 judgments a month means 15 to 20 minutes of fetching per month, so a year is about 3 to 4 hours of unattended fetching, in blocks.
+
+## 14. Results for February to June 2026 (`new_archive/2026-02_to_06_SUMMARY.md`)
+
+504 further links, all English judgments, all fetched (about 65 minutes unattended, no blocks). With January: **611 judgments for January to June 2026, 424 (69%) not in the bucket, including all 129 non-reportable ones.** The bucket holds at most about 31% of the six months and its share falls by month (40% in January, 22% in May). For 2026 the direct route is the main source. The owner's copied lists were almost complete (5 bucket judgments absent from 616).
+
+The catalogue (`catalogue.csv`) now has 733 rows. Names were improved this round (suo motu "In Re" matters, "and others" on its own line, many numbered parties); 1 row has no name and 5 have no second side (suo motu). Still not done: storing the extracted text, cleaning it, feeding the index, July to October 2026 and 2018 to 2025, de-duplication against anything but the bucket.
