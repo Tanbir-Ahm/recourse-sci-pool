@@ -38,6 +38,10 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 `goodlaw/chat_format.py` turns a retrieved passage plus what the Overruled Register and the currency cards say about its case into one plain-text chat message with the warning first ("Reported adverse", "Questioned", "Not checked by us", and so on). It words only what the register and the cards already say, never calls a case "good law", and never cuts a warning to fit; only the passage is shortened. Nothing is sent and nothing is connected. One decision is the owner's: how a quiet card is shown (`quiet_policy` has no default). `goodlaw/passage_input.py` turns a search hit (an index passage row) into the formatter's input, naming the judgment from the checker's corpus (the index itself carries no title for most crawl judgments). Details: `FOLLOW_UPS.md` items 1o and 1p. Tests: `python test_goodlaw_chat_format.py`, `python test_goodlaw_passage_input.py`.
 
+## Watchlist (offline slice, not connected)
+
+`goodlaw/watchlist.py` keeps a lawyer's saved cases, re-checks them against the register and the cards, and writes draft alerts for a person to approve: only for a new, confirmed, changed or withdrawn warning, never an "all clear". It schedules nothing and sends nothing. Details and limits: `FOLLOW_UPS.md` item 1q. Tests: `python test_goodlaw_watchlist.py`.
+
 ## Internal case-data layer (offline slice, not connected)
 
 `casedata/` is the "front desk" for a possible case-tracking brief: one standard case record, five calls (get the case, check listings, refresh, get an order, what changed), a saved copy, a daily spending cap, a ledger and a dry-run nightly plan, over a swappable adapter. Only a made-up adapter exists (`casedata/fake.py`); nothing makes a network call, needs a key or spends money, and no real court source is wired. Details and limits: `casedata/layer.py`, `FOLLOW_UPS.md` item 1n. Tests: `python test_casedata.py`.

@@ -33,7 +33,7 @@ import datetime
 from dataclasses import dataclass, field
 
 from . import cardreader as CR
-from .register import TRUST_FIRM
+from .register import NO_WORDING, TRUST_FIRM
 
 RED, AMBER, GREY, OUTLINE, INFO = "RED", "AMBER", "GREY", "OUTLINE", "INFO"
 QUIET_POLICIES = ("coverage_note", "silent")
@@ -69,6 +69,7 @@ class Line:
     as_of: str = ""                    # ISO date the evidence is as of
     rule: int = 0                      # which rule above produced it
     firm: bool = False                 # True only for a fact a person confirmed
+    key: str = ""                      # what the line is about, without its wording or dates: 'register:L2-001:candidate', 'card:ADVERSE_SIGNAL:checker', 'quiet', 'unchecked' (the watchlist compares these)
 
 
 @dataclass(frozen=True)
@@ -172,7 +173,9 @@ class Formatter:
             internal.append("register row(s) without wording (unchecked or rejected): " + ", ".join(r["id"] for r in rows))
         if clause:
             firm = any(r["trust"] in TRUST_FIRM for r in rows)
-            lines.append(Line(RED, "On the Overruled Register" if firm else "Reported on the Overruled Register", clause, reg.meta.get("built_on") or "", 1 if firm else 2, firm))
+            ids = ",".join(sorted(r["id"] for r in rows if r["trust"] not in NO_WORDING))
+            lines.append(Line(RED, "On the Overruled Register" if firm else "Reported on the Overruled Register", clause, reg.meta.get("built_on") or "", 1 if firm else 2, firm,
+                              f"register:{ids}:{'firm' if firm else 'candidate'}"))
 
         card = CR.find(self.cards, case_name=case_name, citation=citation)
         res = CR.for_answer(card, today=self.today)
@@ -187,19 +190,19 @@ class Formatter:
                 note += " Our reviewer is looking at this case."
             if res["level"] == "warning":
                 human = res["decided_by"] != "checker"
-                lines.append(Line(RED, "Adverse, confirmed by our reviewer" if human else "Reported adverse", note + stale, as_of, 3, human))
+                lines.append(Line(RED, "Adverse, confirmed by our reviewer" if human else "Reported adverse", note + stale, as_of, 3, human, f"card:{status}:{'human' if human else 'checker'}"))
             else:
-                lines.append(Line(AMBER, "Questioned", note + stale, as_of, 4))
+                lines.append(Line(AMBER, "Questioned", note + stale, as_of, 4, False, f"card:{status}:{'human' if res['decided_by'] != 'checker' else 'checker'}"))
         elif not lines:
             if status in QUIET_STATUSES:
                 if self.quiet_policy == "coverage_note":
-                    lines.append(Line(GREY, QUIET_HEAD, QUIET_BODY, as_of, 5))
+                    lines.append(Line(GREY, QUIET_HEAD, QUIET_BODY, as_of, 5, False, "quiet"))
                 else:
                     internal.append("quiet card: no line, by quiet_policy")
             else:
-                lines.append(Line(OUTLINE, NOT_CHECKED, NOT_CHECKED_BODY.get(status, NOT_CHECKED_BODY["default"]), "", 6))
+                lines.append(Line(OUTLINE, NOT_CHECKED, NOT_CHECKED_BODY.get(status, NOT_CHECKED_BODY["default"]), "", 6, False, "unchecked"))
         if res["statute_note"]:
-            lines.append(Line(INFO, "Section numbers", res["statute_note"], as_of, 7))
+            lines.append(Line(INFO, "Section numbers", res["statute_note"], as_of, 7, False, "statute"))
         return Currency(tuple(lines), tuple(internal))
 
     def format(self, passage, intro=False, max_chars=3500, with_watch=False):

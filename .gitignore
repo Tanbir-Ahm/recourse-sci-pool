@@ -8,3 +8,4 @@ IK_STOP
 goodlaw/data/*.lock
 casedata_store/
 CASEDATA_STOP
+watchlist_store/
