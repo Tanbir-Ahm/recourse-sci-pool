@@ -1,0 +1,5 @@
+url,kind,diary,date,status,pages,chars,images,reportable,criminal,sha256,bucket_match,bucket_title,bucket_same_day
+https://api.sci.gov.in/supremecourt/2018/15806/15806_2018_Judgement_01-Jun-2018.pdf,english judgment,15806/2018,01-06-2018,ok,13,18128,0,REPORTABLE,no,5ce82d7563bd4814c9b17e09c9fed912e128a30c16c89cbfc18c6cbba60214bb,yes,MEDICAL COUNCIL OF INDIA versus VEDANTAA INSTITUTE OF ACADEM,1
+https://api.sci.gov.in/supremecourt/2018/16646/16646_2018_Judgement_14-Jun-2018.pdf,english judgment,16646/2018,14-06-2018,ok,10,12320,0,REPORTABLE,no,fd07ff69b7cae2bf4f15b6524d0195b8c97348d12d68a7f5a797dd432c88459f,yes,"U.P.P.S.C., THROUGH ITS CHAIRMAN & ANR versus RAHUL SINGH & ",1
+https://api.sci.gov.in/supremecourt/2018/20152/20152_2018_Judgement_13-Jun-2018.pdf,english judgment,20152/2018,13-06-2018,ok,18,23786,0,REPORTABLE,no,b00c1c556f7b945949760b6c9d72a81baedfbdb389b6b8c20fa025bd9dbc35c3,yes,DISHA PANCHAL AND OTHERS versus UNION OF INDIA THE SECRETARY,1
+https://api.sci.gov.in/supremecourt/2010/41746/41746_2010_Judgement_01-Jun-2018.pdf,english judgment,41746/2010,01-06-2018,ok,12,15523,0,,yes,9d3ccd2e91c06c820e8721113fb331b7a80f536868e8fbb39fdc9a10525a3214,no,,1
