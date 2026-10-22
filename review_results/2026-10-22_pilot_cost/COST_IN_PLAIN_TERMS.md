@@ -24,7 +24,7 @@ The balance noted on 2026-10-10 was about $9.39 with a $5 reserve you set, so ab
 
 ## What is not in the number
 
-- **Hosting the index. [Certain, measured later the same day]** It needs about 1.8 GB of memory (peak 2.0 GB), not the 0.5 GB of vectors the notes implied: on Railway's listed memory price that is about $18 to $20 a month, which is more than 40 times the search bill for five lawyers. See `review_results/2026-10-22_index_memory/HOSTING_IN_PLAIN_TERMS.md`.
+- **Hosting the index. [Certain, measured later the same day]** It needs about 1.8 GB of memory (peak 2.0 GB; later that day the index grew and it became 2.05 GB, peak 2.25 GB), not the 0.5 GB of vectors the notes implied: on Railway's listed memory price that is about $18 to $20 a month, which is more than 40 times the search bill for five lawyers. See `review_results/2026-10-22_index_memory/HOSTING_IN_PLAIN_TERMS.md`.
 - **The chat service.** Telegram charges nothing for a bot [Likely]. WhatsApp charges per conversation or message, needs a business account, and Meta restricts general-purpose AI assistants on its business platform. Nothing is priced or chosen.
 - **An answer-writing model.** None: the bot shows passages word for word and does not write an answer. No cost, and it is deliberate.
 - **People.** Someone has to read the "Misleading" marks. Mr. Advocate has not been asked.

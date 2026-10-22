@@ -32,7 +32,9 @@ from . import cites as C
 from . import corpus as K
 
 BUCKET_BASE = 1_000_000_000          # sci_index.BUCKET_BASE: an index doc id at or above it is a bucket judgment, below it a crawl judgment
+EXTRA_BASE = 2_000_000_000           # sci_index.EXTRA_BASE: at or above it a judgment from an extra source (2026-10-22): the Gauhati High Court set below 2,000,250,000, the Supreme Court's newer archive from it
 MAX_CITES = 4                        # reported citations passed on from a corpus row
+RELIABLE_DATES = (*K.RELIABLE, "court")      # date sources that are read from the judgment or the court's own record; "court" is the newer archive's decision date
 
 KIND_LABELS = {
     "facts": "Appears to recite the facts, or what a lower court held",
@@ -56,6 +58,7 @@ class Identity:
     date_source: Optional[str] = None
     doc_key: Optional[str] = None
     notes: tuple = ()
+    court: Optional[str] = None      # "Supreme Court" or, for an extra source that is not one, the court named in the index record ("Gauhati High Court"); None where the source does not say
 
 
 # ---- small readers --------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -180,8 +183,17 @@ class IndexDocs:
         return self.by_doc.get(int(doc))
 
 
+def court_name(src):
+    """The court an extra source's index record names, in the words the chat message uses: 'Supreme Court of India' is written 'Supreme Court'; anything else is kept as recorded; None when absent."""
+    c = re.sub(r"\s+", " ", str((src or {}).get("court") or "")).strip()
+    if not c:
+        return None
+    return "Supreme Court" if c.lower().startswith("supreme court") else c
+
+
 class IndexRowIdentity:
-    """Identity from the index's own record: the bucket title (with its date and citations) or the old-layout petitioner and respondent. None where the record has neither."""
+    """Identity from the index's own record: the bucket title (with its date and citations) or the old-layout petitioner and respondent. None where the record has neither. A judgment from an
+    extra source (ids from EXTRA_BASE) is named from its recorded title in the same way, with the court its record names, so that a High Court passage is never labelled Supreme Court."""
 
     def __init__(self, docs):
         self.docs = docs
@@ -193,7 +205,11 @@ class IndexRowIdentity:
         src, case = row.get("src") or {}, row.get("case") or {}
         if src.get("title"):
             date, year = date_parts(src.get("date"))
-            return Identity(clean_name(src["title"]), year, citation_text((), (src.get("citation"), src.get("case_id"))), date, "index_bucket_title", "bucket" if date else None, None)
+            extra = int(doc) >= EXTRA_BASE
+            # a bucket record's `case_id` is the neutral citation; an extra record's is a diary or case number, which is not a citation, and a High Court's `citation` is its case number: neither is passed on
+            texts = ((src.get("citation") if src.get("scope") == "sci_newer" else None),) if extra else (src.get("citation"), src.get("case_id"))
+            return Identity(clean_name(src["title"]), year, citation_text((), texts), date, "index_extra_title" if extra else "index_bucket_title",
+                            ("court" if extra else "bucket") if date else None, None, (), court_name(src) if extra else None)
         if case.get("pet") and case.get("resp"):
             date, year = date_parts(case.get("date"))
             return Identity(clean_name(f"{case['pet']} v. {case['resp']}"), year, "", date, "index_case_header", "header" if date else None, None)
@@ -208,8 +224,13 @@ class CorpusIdentity:
 
     def __call__(self, doc):
         doc = int(doc)
-        if doc >= self.bucket_base:
-            path = (((self.docs.get(doc) if self.docs else None) or {}).get("src") or {}).get("path")
+        src = (((self.docs.get(doc) if self.docs else None) or {}).get("src") or {})
+        if doc >= EXTRA_BASE:
+            if src.get("scope") != "sci_newer" or not (src.get("case_id") and src.get("date")):       # the corpus holds Supreme Court judgments only: a High Court record is named by the index alone
+                return None
+            key = K.newer_key({"diary_no": src["case_id"], "decision_date": src["date"]})
+        elif doc >= self.bucket_base:
+            path = src.get("path")
             if not path:
                 return None
             key = "b" + path
@@ -218,13 +239,16 @@ class CorpusIdentity:
         d = self.corpus.get(key, with_text=False)
         if not d:
             return None
+        if d.get("dup_of"):                                    # a second copy of a judgment: the judgment is the copy it duplicates, so that its register row and card apply whichever copy a search found
+            d = self.corpus.get(d["dup_of"], with_text=False) or d
+            key = d.get("doc_key") or key
         name = d.get("title") or (f"{d['pet']} v. {d['resp']}" if d.get("pet") and d.get("resp") else None)
         if not name:
             return None
         notes = []
-        if not d.get("date") or d.get("date_source") not in K.RELIABLE:
+        if not d.get("date") or d.get("date_source") not in RELIABLE_DATES:
             notes.append(f"year taken from '{d.get('date_source') or 'unknown'}', not read from the judgment")
-        return Identity(clean_name(name), d.get("year"), citation_text(d.get("cites"), (d.get("scr_cite"), d.get("insc"))), d.get("date"), "corpus", d.get("date_source"), key, tuple(notes))
+        return Identity(clean_name(name), d.get("year"), citation_text(d.get("cites"), (d.get("scr_cite"), d.get("insc"))), d.get("date"), "corpus", d.get("date_source"), key, tuple(notes), "Supreme Court")
 
 
 class ChainIdentity:
@@ -257,7 +281,7 @@ def passage_from_hit(hit, identity=None, *, court="Supreme Court", link_for=None
             "name_source": ident.name_source if ident else None, "date_source": ident.date_source if ident else None, "doc_key": ident.doc_key if ident else None,
             "notes": list(ident.notes) if ident else ["judgment not identified"]}
     out = {"case_name": ident.name if ident else f"Judgment no. {doc} (title not available)", "year": ident.year if ident else None, "citation": (ident.citation or None) if ident else None,
-           "court": court, "para": para_label(hit.get("pn")), "page": page_label(hit.get("page")), "text": text, "kind_label": KIND_LABELS.get(hit.get("section")),
+           "court": (ident.court if ident and ident.court else court), "para": para_label(hit.get("pn")), "page": page_label(hit.get("page")), "text": text, "kind_label": KIND_LABELS.get(hit.get("section")),
            "identified": ident is not None, "source_info": info}
     url = link_for(doc, ident) if link_for else None
     if url:

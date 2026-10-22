@@ -2,6 +2,9 @@
 
 **The index needs about 1.8 GB of memory in practice, not the 0.5 GB the earlier notes implied.** That is about four times the figure that was in `FOLLOW_UPS.md`, and it is what decides the price and the choice of host. Confidence tags: **[Certain]** = measured here or read from a file; **[Likely]** = strong inference or from a source I could only read second-hand; **[Guessing]** = filling a gap.
 
+## Update, later the same day: the index grew, and so did the memory
+Another session added the Supreme Court newer archive and the Gauhati High Court to the index (45,269 passages, 19% more; `../2026-10-22_newer_index_check/`). Measured again the same way (`after_extra_sources/numbers.json`): **281,424 passages; 576 MB of vectors and 296 MB of text; 2.05 GB steady, 2.25 GB peak** (it was 1.76 and 1.96 GB); start-up about 42 s to load plus 18 s for the keyword index; the local part of a search still about 1 s. **[Certain]** for this machine. On Railway's listed memory price that is about **$21 to $23 a month** for memory (it was $18 to $20). Everything below describes the first measurement.
+
 ## What I measured (this machine, no network, no spend)
 
 `python review_tools/experiments/measure_index_memory_2026-10-22.py --index-dir <index> --out review_results/2026-10-22_index_memory`; numbers in `numbers.json` there. The query embedding was a fake random vector and the re-ranker was never called, so nothing was spent and no real search was run.

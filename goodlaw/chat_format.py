@@ -16,6 +16,7 @@ Which line a case gets (first match decides the main line; a card's warning or c
   6. anything else: no card, too few later judgments, a High Court case, a judgment we do not hold, a case the matcher could not place     OUTLINE  "Not checked by us"
   +  the card says a section it cites was renumbered under the 2023 codes         INFO     one more line
 A passage the connector could not attach to a judgment (`identified: False`, see passage_input.py) gets "Not checked by us" with its own body: nothing was looked up, so it must not say "no register entry".
+A passage whose `court` is not a Supreme Court (a High Court judgment in the index, from 2026-10-22) also gets "Not checked by us" with its own body, and the register and the cards are not consulted: both are about Supreme Court cases, and a name match across courts would be a guess. A batch that mixes courts says so in its header.
 An optional `kind_label` (for example "Appears to record counsel's arguments, not the Court's view") adds one "Passage: ..." line under the case line; it is our wording and goes through the wording guard.
 
 Rules this keeps (test_goodlaw_chat_format.py checks each):
@@ -45,6 +46,8 @@ NOT_CHECKED_BODY = {
     "NOT_CHECKABLE_HIGH_COURT": "No register entry. This is a High Court decision, and we do not check High Court cases for later treatment. Verify it before you cite it.",
     "INSUFFICIENT": "No register entry. Too few later judgments in our collection cite this case to check it. Verify it before you cite it.",
 }
+OTHER_COURT_BODY = ("This is not a Supreme Court judgment. We check only Supreme Court cases for later treatment, so we have not looked for any here, and the register and the cards were not consulted. "
+                    "Verify it before you cite it.")
 QUIET_HEAD = "No warning found in what we hold"
 QUIET_BODY = "This is not a finding that the case is good law."
 INTRO_FOOTER = "Results are not independently verified. Check any case before you cite it."
@@ -99,6 +102,12 @@ class Message:
 def fmt_date(iso):
     d = datetime.date.fromisoformat(str(iso)[:10])
     return f"{d.day} {_MONTHS[d.month - 1]} {d.year}"
+
+
+def is_supreme_court(court):
+    """True when the register and the cards can speak about the passage: its court is a Supreme Court or is not stated. Both are about Supreme Court cases only, and a name match across courts would be a guess."""
+    c = str(court or "").strip().lower()
+    return not c or c.startswith("supreme court")
 
 
 def wording_violations(text):
@@ -209,6 +218,8 @@ class Formatter:
     def format(self, passage, intro=False, max_chars=3500, with_watch=False):
         if passage.get("identified") is False:               # the connector could not tell which judgment this is: the register and the cards were never consulted, and the message says so
             cur = Currency((Line(OUTLINE, NOT_CHECKED, NOT_IDENTIFIED_BODY, "", 6),), ("judgment not identified: register and cards not consulted",))
+        elif not is_supreme_court(passage.get("court")):     # a High Court passage: the register and the cards are about Supreme Court cases, so they are not consulted and the message says so
+            cur = Currency((Line(OUTLINE, NOT_CHECKED, OTHER_COURT_BODY, "", 6, False, "unchecked"),), ("not a Supreme Court judgment: register and cards not consulted",))
         else:
             cur = self.currency(passage.get("case_name"), passage.get("year"), passage.get("citation"))
         return render(passage, cur, intro=intro, max_chars=max_chars, with_watch=with_watch)
@@ -216,6 +227,7 @@ class Formatter:
     def format_batch(self, passages, shown=None, max_chars=3500, with_watch=False):
         """A header message, then one message per passage. The header says how many were found and that nothing is independently verified."""
         shown = passages if shown is None else passages[:shown]
-        head = (f"Found {len(passages)} passage{'s' if len(passages) != 1 else ''} from Supreme Court judgments. Showing {len(shown)}. "
+        source = "Supreme Court judgments" if all(is_supreme_court(p.get("court")) for p in passages) else "judgments of the Supreme Court and other courts"
+        head = (f"Found {len(passages)} passage{'s' if len(passages) != 1 else ''} from {source}. Showing {len(shown)}. "
                 "What we know about a case's later treatment comes before its passage. " + INTRO_FOOTER)
         return [Message(head)] + [self.format(p, max_chars=max_chars, with_watch=with_watch) for p in shown]

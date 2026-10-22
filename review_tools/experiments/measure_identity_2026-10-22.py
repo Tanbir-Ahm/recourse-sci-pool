@@ -73,6 +73,8 @@ def main(argv=None):
     corpus = K.Corpus(a.corpus)
     rows = read_docs(a.index_docs)
     kept = [r for r in rows if "skip" not in r]
+    if any(r["doc"] >= PI.EXTRA_BASE for r in kept):
+        raise SystemExit("this script measures an index of crawl and bucket judgments (ids below 2,000,000,000); this index also holds extra-source judgments: see review_tools/experiments/newer_index_check_2026-10-22.py")
     docs = PI.IndexDocs(rows)
     who = PI.ChainIdentity(PI.CorpusIdentity(corpus, docs), PI.IndexRowIdentity(docs))
     corpus_only = PI.CorpusIdentity(corpus, docs)

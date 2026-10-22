@@ -30,7 +30,7 @@ I ran the 76 cards on the old store and on the new one, into scratch folders. **
 
 ## What is NOT done
 - **Cards: regenerated later the same day on the owner's instruction** (see `cards/README.md` and `FOLLOW_UPS.md` item 1w). The dry run above is what the regeneration did.
-- **The search index (`claude/sci-index`) does not hold the newer archive.** The pilot's search, and the figures about it, are unchanged. Adding it would mean embedding about 3,500 judgments, which spends Voyage credit; I have not done that and will not without your say-so.
+- **Correction, same day: the search index already holds the newer archive's criminal-law judgments.** I wrote here that it did not; that was true when I measured and false from 14:10 UTC, when another session finished embedding them (1,312 judgments, 30,028 passages, about $0.82). See `../2026-10-22_newer_index_check/RESULTS_IN_PLAIN_TERMS.md`.
 - **Six judgments are flagged uncertain** (`maybe_dup_of`): each has a bucket text of nearly the same date and title that shares only part of its words (for example *In re: Right to Privacy of Adolescents*, *Operation Asha v Shelly Batra*, *GMR Warora Energy v CERC*). They are counted as judgments; at most 6 of the 3,461 are copies. They are listed in `numbers.json`.
 - **This is a text store, not a promise that the texts are right.** The newer archive's text is raw: it still carries the court's "digitally signed" blocks and page lines, and nobody has compared it with the PDFs.
 - **Older years are still thin** (about 61 to 64% of Indian Kanoon's yearly counts for 1968 to 2004). Nothing here changes that.

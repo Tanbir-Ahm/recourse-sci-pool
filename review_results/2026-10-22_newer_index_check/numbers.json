@@ -1,0 +1,139 @@
+{
+ "by_source": {
+  "bucket": {
+   "blocks": 50,
+   "docs_recorded": 12168,
+   "passages": 82772,
+   "tokens": 20795452
+  },
+  "crawl": {
+   "blocks": 164,
+   "docs_recorded": 36928,
+   "passages": 153383,
+   "tokens": 46510527
+  },
+  "sci_newer": {
+   "blocks": 15,
+   "docs_recorded": 3747,
+   "passages": 30028,
+   "tokens": 6871758,
+   "dollars_at_listed_price": 0.82,
+   "judgments_kept": 1312,
+   "skipped": {
+    "duplicate": 4,
+    "not_criminal": 2318,
+    "short": 113
+   }
+  },
+  "ghc_court": {
+   "blocks": 4,
+   "docs_recorded": 776,
+   "passages": 15241,
+   "tokens": 3286035,
+   "dollars_at_listed_price": 0.39,
+   "judgments_kept": 759,
+   "skipped": {
+    "not_criminal": 17
+   }
+  }
+ },
+ "tokens_spent_ever": 77463772,
+ "shifts_on_2026_10_22": [
+  {
+   "started_at": "2026-10-22T13:09:15+00:00",
+   "ended_at": "2026-10-22T13:09:39+00:00",
+   "ceiling": 68805979,
+   "stop_reason": "reached the --max-blocks limit (1)",
+   "blocks_done": 1,
+   "docs_embedded": 25,
+   "passages": 652,
+   "tokens": 175394,
+   "wasted_tokens": 0
+  },
+  {
+   "started_at": "2026-10-22T13:10:00+00:00",
+   "ended_at": "2026-10-22T13:16:53+00:00",
+   "ceiling": 85000000,
+   "stop_reason": "completed all pending blocks",
+   "blocks_done": 3,
+   "docs_embedded": 734,
+   "passages": 14589,
+   "tokens": 3110641,
+   "wasted_tokens": 0
+  },
+  {
+   "started_at": "2026-10-22T13:33:00+00:00",
+   "ended_at": "2026-10-22T13:34:28+00:00",
+   "ceiling": 72092014,
+   "stop_reason": "reached the --max-blocks limit (1)",
+   "blocks_done": 1,
+   "docs_embedded": 91,
+   "passages": 3608,
+   "tokens": 805563,
+   "wasted_tokens": 0
+  },
+  {
+   "started_at": "2026-10-22T13:57:04+00:00",
+   "ended_at": "2026-10-22T14:10:54+00:00",
+   "ceiling": 85000000,
+   "stop_reason": "completed all pending blocks",
+   "blocks_done": 14,
+   "docs_embedded": 1221,
+   "passages": 26420,
+   "tokens": 6066195,
+   "wasted_tokens": 0
+  }
+ ],
+ "sci_newer_kept_by_the_stores_verdict": {
+  "judgment": 1184,
+  "judgment_uncertain": 1,
+  "copy_of_a_bucket_text": 126,
+  "second_copy_inside_the_archive": 1,
+  "not_in_the_store": 0
+ },
+ "sci_newer_kept_passages_in_store_copies": 3939,
+ "sci_newer_kept_passages_total": 30028,
+ "pilot_identity": {
+  "sci_newer": {
+   "kept": 1312,
+   "named": 1301,
+   "named_by_the_corpus": 1301,
+   "read_as_the_judgment_it_copies": 127,
+   "courts": {
+    "Supreme Court": 1301
+   },
+   "passages": 30028,
+   "passages_in_named": 29845
+  },
+  "ghc_court": {
+   "kept": 759,
+   "named": 759,
+   "named_by_the_corpus": 0,
+   "read_as_the_judgment_it_copies": 0,
+   "courts": {
+    "Gauhati High Court": 759
+   },
+   "passages": 15241,
+   "passages_in_named": 15241
+  }
+ },
+ "dedupe_plan": {
+  "file": "20261022T145256-plan.json",
+  "groups": 131,
+  "review_pairs": 121,
+  "rules": {
+   "min_overlap": 0.8,
+   "max_len_ratio": 1.3,
+   "min_party_sim": 0.6
+  },
+  "groups_that_keep_the_newer_archive_copy": 59,
+  "groups_that_keep_the_other_copy": 72
+ },
+ "comparison": {
+  "store_copies_among_kept": 127,
+  "also_in_the_plan": 119,
+  "store_only": 8,
+  "plan_only": 12,
+  "store_only_passages": 103
+ }
+}

@@ -112,6 +112,24 @@ none = make(lambda q: [])[1]
 accepted(none, "111")
 check(none.handle("111", text="Anything")[0].text == B.NO_PASSAGES, "no passages found is said plainly")
 
+# a search that returns a High Court passage beside a Supreme Court one (the index holds Gauhati High Court judgments since 2026-10-22)
+print("a passage from another court")
+HC_DOCS = PI.IndexDocs([
+    {"doc": 1000000001, "passages": 5, "src": {"title": "MOHAN LAL versus STATE OF PUNJAB", "date": "24-07-2018", "citation": "(2018) 17 SCC 627", "case_id": "2018 INSC 1", "path": "a"}},
+    {"doc": 2000000010, "passages": 7, "src": {"source": "ghc_court", "scope": "ghc_court", "path": "https://example.invalid/x.pdf", "title": "MOHAN LAL versus STATE OF PUNJAB", "date": "2018-07-24",
+                                               "citation": "Crl.A(J)/12/2018", "case_id": "Crl.A(J)/12/2018", "court": "Gauhati High Court"}}])
+HC_HITS = [HITS[0], {"doc": 2000000010, "i": 0, "pn": "5", "page": 3, "section": "reasoning", "h": "9999aaaa0000bbbb", "text": "5. A passage of a High Court judgment, word for word."}]
+hc_pilot = P.Pilot()
+hc_pilot.add_user("111", "Adv. A", "the owner", DAY)
+hc_core = B.BotCore(hc_pilot, FMT, lambda q: HC_HITS, PI.IndexRowIdentity(HC_DOCS), today=DAY)
+accepted(hc_core, "111")
+r = hc_core.handle("111", text="Can bail be refused on a conspiracy allegation?")
+check(len(r) == 3 and "from judgments of the Supreme Court and other courts" in r[0].text, "a reply that mixes courts says so in its header")
+check("REPORTED ON THE OVERRULED REGISTER" in r[1].text and "Supreme Court" in r[1].text, "the Supreme Court passage still gets its register warning")
+check("OVERRULED REGISTER" not in r[2].text.upper() and "Gauhati High Court" in r[2].text and "This is not a Supreme Court judgment" in r[2].text and "NOT CHECKED BY US" in r[2].text,
+      "the High Court passage of a case with the same name and year gets no register warning, names its court and says it was not checked")
+check([b[0] for b in r[2].buttons] == ["Relevant", "Not relevant", "Misleading"], "and it still carries the feedback buttons")
+
 # ---- the feedback buttons ---------------------------------------------------------------------------------------------------------------------------------------------------------
 print("feedback")
 tap = m1.buttons[2][2]

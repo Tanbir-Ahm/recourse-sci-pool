@@ -72,6 +72,20 @@ CRAWL_ROW = {"doc": 14750, "hash": "8c7f", "pages": 15, "v": "p2", "density": 40
 OLD_ROW = {"doc": 7, "hash": "x", "pages": 3, "passages": 4, "case": {"caseno": "Appeal (crl.) 3 of 1975", "pet": "Foo", "resp": "State of Bar", "date": "12/05/1975", "bench": "A, B"}}
 DOCS = PI.IndexDocs([BUCKET_ROW, SKIPPED_ROW, CRAWL_ROW, OLD_ROW])
 check(sorted(DOCS.by_doc) == [7, 1003962500], "only records that say who a judgment is are kept, and a judgment the index did not embed is left out")
+# judgments from the extra sources (ids from 2,000,000,000): the court's newer archive (a Supreme Court judgment) and the Gauhati High Court
+SCI_URL = "https://api.sci.gov.in/supremecourt/2015/480/480_2015_Judgement_20-Jul-2017.pdf"
+SCI_ROW = {"doc": 2000250160, "hash": "aa", "pages": 9, "v": "p2", "passages": 6, "noise": 0,
+           "src": {"source": "sci_newer", "scope": "sci_newer", "path": SCI_URL, "title": "STATE OF X versus Y", "date": "2017-07-20", "citation": "2017 INSC 640", "case_id": "480/2015", "url": SCI_URL,
+                   "court": "Supreme Court of India"}}
+SCI_COPY_ROW = {"doc": 2000250161, "hash": "ab", "pages": 9, "v": "p2", "passages": 9, "noise": 0,
+                "src": {"source": "sci_newer", "scope": "sci_newer", "path": "https://api.sci.gov.in/supremecourt/2010/1075/1075_2010_Judgement_16-Aug-2018.pdf", "title": "MOHAN LAL versus THE STATE OF PUNJAB",
+                        "date": "2018-08-16", "citation": None, "case_id": "1075/2010", "court": "Supreme Court of India"}}
+SCI_NOID_ROW = {"doc": 2000250162, "hash": "ac", "pages": 3, "v": "p2", "passages": 2, "noise": 0,
+                "src": {"source": "sci_newer", "scope": "sci_newer", "path": "https://api.sci.gov.in/supremecourt/x.pdf", "title": "NO ID versus NOBODY", "date": "2017-08-01", "citation": None, "case_id": None, "court": "Supreme Court of India"}}
+GHC_ROW = {"doc": 2000000010, "hash": "ad", "pages": 5, "v": "p2", "passages": 7, "noise": 0,
+           "src": {"source": "ghc_court", "scope": "ghc_court", "path": "https://example.invalid/ghc/x.pdf", "title": "STATE OF ASSAM versus RAM DAS", "date": "2019-03-04", "citation": "Crl.A(J)/12/2018",
+                   "case_id": "Crl.A(J)/12/2018", "court": "Gauhati High Court"}}
+DOCS_X = PI.IndexDocs([BUCKET_ROW, CRAWL_ROW, OLD_ROW, SCI_ROW, SCI_COPY_ROW, SCI_NOID_ROW, GHC_ROW])
 who = PI.IndexRowIdentity(DOCS)
 i = who(1003962500)
 check(i.name == "MOTILAL OSWAL FINANCIAL SERVICES LIMITED v. SANTOSH CORDEIRO AND ANOTHER" and i.year == 2026 and i.date == "2026-01-05" and i.citation == "[2026] 1 S.C.R. 1 ; 2026 INSC 5" and i.name_source == "index_bucket_title",
@@ -79,6 +93,13 @@ check(i.name == "MOTILAL OSWAL FINANCIAL SERVICES LIMITED v. SANTOSH CORDEIRO AN
 i = who(7)
 check(i.name == "Foo v. State of Bar" and i.year == 1975 and i.name_source == "index_case_header" and i.citation == "", "an old-layout judgment: petitioner and respondent from its header, no citation invented")
 check(who(14750) is None and who(999) is None, "a crawl judgment with no record of who it is, and an unknown one, are not identified")
+whox = PI.IndexRowIdentity(DOCS_X)
+i = whox(2000250160)
+check(i.name == "STATE OF X v. Y" and i.year == 2017 and i.date == "2017-07-20" and i.date_source == "court" and i.citation == "2017 INSC 640" and i.name_source == "index_extra_title" and i.court == "Supreme Court",
+      "a judgment from the court's newer archive is named from its recorded title, with its date, its neutral citation and the court written as 'Supreme Court'")
+i = whox(2000000010)
+check(i.name == "STATE OF ASSAM v. RAM DAS" and i.year == 2019 and i.court == "Gauhati High Court" and i.citation == "" and i.doc_key is None, "a High Court judgment is named from its title and keeps its court; a case number is not taken for a reported citation")
+check(whox(1003962500).court is None and whox(7).court is None, "a bucket or crawl judgment's record names no court (the Supreme Court is assumed)")
 with tempfile.TemporaryDirectory() as d:
     os.makedirs(os.path.join(d, "index"))
     with gzip.open(os.path.join(d, "index", "000000-000249.docs3.pass1.tok1.docs.jsonl.gz"), "wt", encoding="utf-8") as fh:
@@ -104,10 +125,17 @@ for n, (key, src, sid, title, pet, resp, date, dsrc, year, cites, scr, insc) in 
     con.execute("INSERT INTO docs(id,doc_key,source,src_id,title,pet,resp,date,date_source,year,cites,citator,insc,scr_cite) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
                 (n, key, src, sid, title, pet, resp, date, dsrc, year, json.dumps(cites), "[]", insc, scr))
     con.execute("INSERT INTO texts(id,text) VALUES (?,?)", (n, "text"))
+EXTRA_CORPUS = [("n480_2015_2017-07-20", "court", SCI_URL, "STATE OF X versus Y", "2017-07-20", "court", 2017, ["insc:2017:640"], "2017 INSC 640", None),
+                ("n1075_2010_2018-08-16", "court", "https://api.sci.gov.in/supremecourt/2010/1075/1075_2010_Judgement_16-Aug-2018.pdf", "MOHAN LAL versus THE STATE OF PUNJAB", "2018-08-16", "court", 2018, [], None, "c101"),
+                ("nCrl_A_J_12_2018_2019-03-04", "court", "https://example.invalid/trap.pdf", "A SUPREME COURT CASE versus WITH A COLLIDING KEY", "2019-03-04", "court", 2019, [], None, None)]   # what a High Court record would map to if it were looked up
+for n, (key, src, sid, title, date, dsrc, year, cites, insc, dup) in enumerate(EXTRA_CORPUS, len(ROWS) + 1):
+    con.execute("INSERT INTO docs(id,doc_key,source,src_id,title,date,date_source,year,cites,citator,insc,dup_of) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", (n, key, src, sid, title, date, dsrc, year, json.dumps(cites), "[]", insc, dup))
+    con.execute("INSERT INTO texts(id,text) VALUES (?,?)", (n, "text"))
 con.commit()
 con.close()
 CORPUS = K.Corpus(CORPUS_PATH)
 cid = PI.CorpusIdentity(CORPUS, DOCS)
+cidx = PI.CorpusIdentity(CORPUS, DOCS_X)
 i = cid(101)
 check(i.name == "Mohan Lal v. State of Punjab" and i.year == 2018 and i.date == "2018-07-24" and i.citation == "(2018) 17 SCC 627" and i.doc_key == "c101" and i.name_source == "corpus" and i.notes == (),
       "a crawl judgment is found by its id, with its date read from the header, and its reported citation written as text")
@@ -117,6 +145,15 @@ check(i.name == "Sample v. State" and i.year == 2005 and any("neighbours" in n f
 i = cid(1003962500)
 check(i.doc_key == "b2026_1_1_23" and i.name == "MOTILAL OSWAL FINANCIAL SERVICES LIMITED v. SANTOSH CORDEIRO AND ANOTHER" and i.citation == "[2026] 1 S.C.R. 1 ; 2026 INSC 5", "a bucket judgment is found through the path in the index's record, with both citations once each")
 check(PI.CorpusIdentity(CORPUS, None)(1003962500) is None and PI.CorpusIdentity(CORPUS, DOCS)(1003962999) is None, "a bucket judgment cannot be found without the index record that holds its path")
+i = cidx(2000250160)
+check(i.doc_key == "n480_2015_2017-07-20" and i.name == "STATE OF X v. Y" and i.court == "Supreme Court" and i.date == "2017-07-20" and i.notes == () and i.citation == "2017 INSC 640",
+      "a newer-archive judgment is found in the corpus by its diary number and decision date, and its court-record date counts as read from the court, not estimated")
+i = cidx(2000250161)
+check(i.doc_key == "c101" and i.name == "Mohan Lal v. State of Punjab" and i.year == 2018 and i.citation == "(2018) 17 SCC 627", "a second copy in the corpus is identified as the judgment it copies, so that its register row and card apply whichever copy a search found")
+check(cidx(2000250162) is None and cidx(2000000010) is None and PI.CorpusIdentity(CORPUS, None)(2000250160) is None, "a record with no diary number, a High Court record, and a record the corpus cannot be asked about are not identified by the corpus")
+chainx = PI.ChainIdentity(PI.CorpusIdentity(CORPUS, DOCS_X), whox)
+check(chainx(2000250160).name_source == "corpus" and chainx(2000000010).name_source == "index_extra_title" and chainx(2000000010).court == "Gauhati High Court" and chainx(2000250162).name == "NO ID v. NOBODY",
+      "the chain names a High Court judgment, or a newer record the corpus cannot place, from the index's own record")
 chain = PI.ChainIdentity(PI.CorpusIdentity(CORPUS, DOCS), who)
 check(chain(101).name_source == "corpus" and chain(7).name_source == "index_case_header" and chain(555) is None, "the chain asks the corpus first, then the index's record, then gives up")
 check(chain(1003962500).name_source == "corpus" and who(1003962500).name_source == "index_bucket_title", "when both know a judgment, the corpus answer is the one used")
@@ -135,6 +172,10 @@ p = PI.passage_from_hit(dict(HIT, doc=555), chain)
 check(p["identified"] is False and "title not available" in p["case_name"] and p["year"] is None and p["citation"] is None and p["source_info"]["notes"] == ["judgment not identified"], "a judgment nobody can name is marked unidentified, with an honest placeholder title")
 check(PI.passage_from_hit(HIT, None)["identified"] is False, "with no identity source nothing is identified")
 p = PI.passage_from_hit(dict(HIT, text="a\x0cb"), chain)
+pg = PI.passage_from_hit(dict(HIT, doc=2000000010), chainx)
+check(pg["court"] == "Gauhati High Court" and pg["case_name"] == "STATE OF ASSAM v. RAM DAS" and pg["identified"] is True, "a High Court hit is labelled with its own court, never 'Supreme Court'")
+check(PI.passage_from_hit(dict(HIT, doc=2000250160), chainx)["court"] == "Supreme Court" and PI.passage_from_hit(HIT, chain)["court"] == "Supreme Court" and PI.passage_from_hit(dict(HIT, doc=7), whox, court="Other Court")["court"] == "Other Court"
+      and PI.passage_from_hit(HIT, chain, court="Other Court")["court"] == "Supreme Court", "a Supreme Court hit says so; the caller's court is used only when the identity names none, and the corpus (Supreme Court only) is not overruled by a caller")
 check(p["text"] == "a b" and p["source_info"]["text_changed"] is True, "a control character in the text is replaced and the change is recorded")
 check(PI.passage_from_hit(dict(HIT, section="argument"), chain)["kind_label"] == PI.KIND_LABELS["argument"] and PI.passage_from_hit(dict(HIT, section="made_up"), chain)["kind_label"] is None, "an argument passage gets its caution label; an unknown or reasoning tag gets none")
 check(all(not CF.wording_violations(v) for v in PI.KIND_LABELS.values()) and "holding" not in " ".join(PI.KIND_LABELS.values()).lower(), "the labels pass the wording guard and never call a passage the Court's holding")

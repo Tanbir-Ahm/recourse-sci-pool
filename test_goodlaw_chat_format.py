@@ -196,6 +196,21 @@ check("Passage: Appears to record counsel's arguments, not the Court's view." in
 check("Passage:" not in F.format(passage("Alpha v Beta")).text and "Passage:" not in F.format(passage("Alpha v Beta", kind_label="  ")).text, "no label, no line")
 check(raises(CF.WordingError, F.format, passage("Alpha v Beta", kind_label="This is good law.")), "a label that claims good law is refused like any other wording of ours")
 
+print("a passage from another court")
+hc = passage("Mohan Lal v. State of Punjab", 2018, "(2018) 17 SCC 627", court="Gauhati High Court")
+m = F.format(hc)
+check(len(m.lines) == 1 and m.lines[0].level == CF.OUTLINE and m.lines[0].headline == CF.NOT_CHECKED and m.lines[0].rule == 6 and m.lines[0].body == CF.OTHER_COURT_BODY,
+      "a High Court passage gets 'Not checked by us' with its own body, even when its name matches a register row and a card")
+check("OVERRULED REGISTER" not in m.text.upper() and "ADVERSE" not in m.text.upper() and "Gauhati High Court" in m.text and "This is not a Supreme Court judgment" in m.text, "no register or card warning is put on it, and its court is named")
+check(any("register and cards not consulted" in n for n in m.internal), "the reviewer's note says the register and cards were not consulted")
+check(not CF.wording_violations(CF.OTHER_COURT_BODY) and "no register entry" not in CF.OTHER_COURT_BODY.lower() and "were not consulted" in CF.OTHER_COURT_BODY, "its wording passes the guard and does not claim a register was searched")
+check([x.rule for x in F.format(passage("Mohan Lal v. State of Punjab", 2018, "(2018) 17 SCC 627", court="Supreme Court")).lines][:1] == [2] and F.format(passage("Mohan Lal v. State of Punjab", 2018, "(2018) 17 SCC 627", court=None)).lines[0].rule == 2
+      and F.format(passage("Mohan Lal v. State of Punjab", 2018, "(2018) 17 SCC 627", court="Supreme Court of India")).lines[0].rule == 2, "the same case as a Supreme Court passage, or with no court stated, still gets its register line")
+check(CF.is_supreme_court("Supreme Court") and CF.is_supreme_court(None) and CF.is_supreme_court("  supreme court of india ") and not CF.is_supreme_court("Gauhati High Court") and not CF.is_supreme_court("High Court of Delhi"), "which courts the register and cards can speak about")
+mixed = F.format_batch([passage("Alpha v Beta"), hc], shown=2)
+check("Found 2 passages from judgments of the Supreme Court and other courts." in mixed[0].text and "from Supreme Court judgments" not in mixed[0].text and not CF.wording_violations(mixed[0].text), "a batch that mixes courts says so in its header")
+check("Found 1 passage from Supreme Court judgments." in F.format_batch([passage("Alpha v Beta")])[0].text, "and a batch of Supreme Court passages says what it always said")
+
 print("a batch")
 msgs = F.format_batch([passage("Alpha v Beta"), passage("Quiet v Case"), passage("Nobody v Nowhere")], shown=2)
 check(len(msgs) == 3 and "Found 3 passages" in msgs[0].text and "Showing 2" in msgs[0].text and CF.INTRO_FOOTER in msgs[0].text, "a header, then one message per passage shown")
