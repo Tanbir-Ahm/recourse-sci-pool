@@ -65,11 +65,12 @@ print("the settings")
 s = S.load()
 q = s["quiet_policy"]
 check(q["value"] == "coverage_note" and q["status"] == "decided" and q["decided_on"] == "2026-10-22" and "owner" in q["decided_by"] and "weak evidence" in q["reason"], "the quiet-card choice is recorded as decided, with who, when and why (this check pins the choice: changing it must be deliberate)")
-check({n: e["status"] for n, e in s.items()} == {"quiet_policy": "decided", "keep_question_text": "default", "daily_question_cap": "placeholder", "global_daily_cap": "placeholder", "passages_shown": "placeholder", "max_question_chars": "placeholder", "rules_version": "default"},
-      "every other setting says honestly that it is a default or a placeholder, not a decision")
-check(s["keep_question_text"]["value"] is False and s["daily_question_cap"]["value"] == 10 and s["global_daily_cap"]["value"] == 100 and s["passages_shown"]["value"] == 3 and s["max_question_chars"]["value"] == 1000 and s["rules_version"]["value"] == P.RULES_VERSION, "the values are the ones the bot core and the pilot already use")
+check({n: e["status"] for n, e in s.items()} == {"quiet_policy": "decided", "keep_question_text": "default", "daily_question_cap": "decided", "global_daily_cap": "decided", "passages_shown": "placeholder", "max_question_chars": "decided", "rerank_model": "decided", "rules_version": "default"},
+      "the statuses are as the owner left them: the figures and the re-ranker decided on 2026-10-22, passages shown still a placeholder, the rest honest defaults (this check pins them: changing one must be deliberate)")
+check(all(s[n]["decided_on"] == "2026-10-22" and "owner" in s[n]["decided_by"] and s[n]["reason"] for n in ("daily_question_cap", "global_daily_cap", "max_question_chars", "rerank_model")), "each decision says who, when and why")
+check(s["keep_question_text"]["value"] is False and s["daily_question_cap"]["value"] == 10 and s["global_daily_cap"]["value"] == 100 and s["passages_shown"]["value"] == 3 and s["max_question_chars"]["value"] == 1000 and s["rerank_model"]["value"] == "rerank-3-lite" and s["rules_version"]["value"] == P.RULES_VERSION, "the values are the ones the bot core and the pilot already use, and the re-ranker is rerank-3-lite")
 rep = S.report(s)
-check([r[0] for r in rep][:4] == ["daily_question_cap", "global_daily_cap", "max_question_chars", "passages_shown"] and [r[2] for r in rep][:4] == ["placeholder"] * 4 and rep[-1][0] == "rules_version", "the report puts the placeholders first, then the rest by name")
+check([r[0] for r in rep][0] == "passages_shown" and [r[2] for r in rep][0] == "placeholder" and [r[0] for r in rep][1:] == sorted(r[0] for r in rep[1:]), "the report puts the one placeholder first, then the rest by name")
 
 if True:
     check(raises(S.SettingsError, S.load, variant(lambda s_, doc: doc.update(schema="other"))), "a file with another schema is refused")
@@ -80,6 +81,7 @@ if True:
           and raises(S.SettingsError, S.load, variant(lambda s_, doc: s_["keep_question_text"].update(value="no"))), "a value of the wrong kind (zero, a boolean for a number, a word for a yes/no) is refused")
     check(raises(S.SettingsError, S.load, variant(lambda s_, doc: s_["quiet_policy"].pop("decided_by"))) and raises(S.SettingsError, S.load, variant(lambda s_, doc: s_["quiet_policy"].pop("decided_on"))), "a decided setting must say who decided it and when")
     check(raises(S.SettingsError, S.load, variant(lambda s_, doc: s_["quiet_policy"].update(value="loud"))), "the quiet policy must be one the formatter knows")
+    check(raises(S.SettingsError, S.load, variant(lambda s_, doc: s_["rerank_model"].update(value="rerank-9"))) and raises(S.SettingsError, S.load, variant(lambda s_, doc: s_["rerank_model"].update(value=2))), "a re-ranker the project does not know is refused")
     opened = S.load(variant(lambda s_, doc: s_["quiet_policy"].update(status="open", value=None)))
     check(opened["quiet_policy"]["status"] == "open" and S.report(opened)[0][0] == "quiet_policy", "an open setting loads, and heads the report")
 

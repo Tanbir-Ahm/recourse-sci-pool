@@ -24,7 +24,7 @@ The balance noted on 2026-10-10 was about $9.39 with a $5 reserve you set, so ab
 
 ## What is not in the number
 
-- **Hosting the index. [Likely]** `FOLLOW_UPS.md` puts the index at about 0.5 GB of vectors plus 257 MB of text, and notes it has never been run inside the site's container and that the pilot search loops over every passage in Python. Something has to keep that in memory all day, and nobody has measured the speed or the monthly price of that. A small always-on server may cost more per month than all the searches above.
+- **Hosting the index. [Certain, measured later the same day]** It needs about 1.8 GB of memory (peak 2.0 GB), not the 0.5 GB of vectors the notes implied: on Railway's listed memory price that is about $18 to $20 a month, which is more than 40 times the search bill for five lawyers. See `review_results/2026-10-22_index_memory/HOSTING_IN_PLAIN_TERMS.md`.
 - **The chat service.** Telegram charges nothing for a bot [Likely]. WhatsApp charges per conversation or message, needs a business account, and Meta restricts general-purpose AI assistants on its business platform. Nothing is priced or chosen.
 - **An answer-writing model.** None: the bot shows passages word for word and does not write an answer. No cost, and it is deliberate.
 - **People.** Someone has to read the "Misleading" marks. Mr. Advocate has not been asked.
@@ -34,10 +34,8 @@ The balance noted on 2026-10-10 was about $9.39 with a $5 reserve you set, so ab
 
 **[Certain]** The checker still covers 76 cards, and about 98% of the passages from the 29 test questions were from judgments with no card, so most messages will say "Not checked by us". Making the search cheaper does not make that better. Cards for the 183 judgments were declined, so that bottleneck stays.
 
-## What I need from you, if you want to go on
+## Decided later the same day
 
-Nothing in this folder spends money or starts anything. Before a real run, these are yours to decide: the daily limits (10 per person and 100 for the test are my placeholders), the question-length limit (1,000 characters, also a placeholder), which re-ranker the pilot uses, and where the index would be hosted.
-
-On the re-ranker I have not settled which one is current. Every re-rank token in stage F's spend record is `rerank-3-lite`, which is why the table leads with it; but `FOLLOW_UPS.md` (2026-10-10) records "rerank-2 stays" until a proper trial of `rerank-3-lite`, and I did not find a later entry that switches it. The two differ by 2.5 times in price, so the choice matters more than the daily limits do. This is a question for you, not something I assumed.
+The owner chose `rerank-3-lite` as the pilot's re-ranker and kept 10 searches per person per day, 100 for the whole test and 1,000 characters per question (recorded in `goodlaw/data/pilot_settings.json`). That settles the re-ranker question this note raised; the table above is the right one. Hosting: see the note named above.
 
 Reproduce: `python review_tools/experiments/pilot_cost_2026-10-22.py --out review_results/2026-10-22_pilot_cost` (reads `review_results/2026-10-12_fix_test_f/spend.json`; no network).

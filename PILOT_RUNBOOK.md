@@ -13,9 +13,10 @@ To get real lawyers' marks on the passages the search shows (Relevant, Not relev
 | Setting | State |
 |---|---|
 | How a quiet card is shown in chat (`quiet_policy`) | **decided 2026-10-22: a grey "No warning found in what we hold. This is not a finding that the case is good law."** (the owner told the assistant to go with its recommendation; reasons and the review trigger are in `goodlaw/data/pilot_settings.json`) |
-| Searches per user per day, and for the whole test | placeholders (10 and 100): replace with figures you are happy to pay for |
+| Searches per user per day, and for the whole test | **decided 2026-10-22: 10 and 100** |
 | Passages shown per question | placeholder (3) |
-| Longest question accepted | placeholder (1,000 characters; a longer one is refused before anything is searched) |
+| Longest question accepted | **decided 2026-10-22: 1,000 characters** (a longer one is refused before anything is searched) |
+| Re-ranker | **decided 2026-10-22: `rerank-3-lite`** |
 | Keep the text of questions | default off, undecided (turning it on needs an Indian counsel's view on consent) |
 | Who is on the list, who reads the marks | **open** |
 
@@ -30,7 +31,7 @@ To get real lawyers' marks on the passages the search shows (Relevant, Not relev
 1. **Choose the people** and tell each what the test is (the three rules the bot shows first: test questions only, no client names or facts; the chat is not end-to-end encrypted; nothing is independently verified).
 2. **Approve a sender** (not built). Telegram needs no business approval. WhatsApp needs a business account and approved templates, and Meta restricts general-purpose AI assistants on its business platform. A chat id is known only once a person writes to the bot.
 3. **Add each person:** `python -m goodlaw.pilot_admin add-user --store pilot_store --id <chat id> --label "Adv. A" --by "<your name>"`. Use a label that is not a real name. They cannot get an answer until they reply "I understand".
-4. **Approve the real search** (not wired; it costs an embedding and a re-rank per question: about $0.0004 to $0.001 for a short question, see `review_results/2026-10-22_pilot_cost/COST_IN_PLAIN_TERMS.md`, which also lists what that figure leaves out, hosting above all) and set the limits in `goodlaw/data/pilot_settings.json`. Decide which re-ranker it uses; the two candidates differ 2.5 times in price.
+4. **Approve the real search** (not wired; it costs an embedding and a re-rank per question: about $0.0004 to $0.001 for a short question, see `review_results/2026-10-22_pilot_cost/COST_IN_PLAIN_TERMS.md`, which also lists what that figure leaves out, hosting above all) and set the limits in `goodlaw/data/pilot_settings.json`. The re-ranker is decided (`rerank-3-lite`). Hosting is the larger cost: the index needs about 1.8 GB of memory, so a month on Railway is about $18 to $20 of memory, against under $1 of searches: `review_results/2026-10-22_index_memory/HOSTING_IN_PLAIN_TERMS.md`.
 5. **Each week:** `python -m goodlaw.pilot_admin summary --store pilot_store`, then `export-marks --out marks.csv`, and have someone you trust read the "Misleading" passages and what they say.
 6. **Pause at any time:** `python -m goodlaw.pilot_admin pause --store pilot_store` (everyone, even a stranger, gets "The test is paused"); `resume` undoes it. Switch one person off with `switch --off`.
 7. **At the end:** read the marks; decide whether `quiet_policy` stays, whether the passages are good enough to show anywhere else, and whether the case-tracking product is worth pursuing.

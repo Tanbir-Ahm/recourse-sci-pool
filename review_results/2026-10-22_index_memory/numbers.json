@@ -1,0 +1,31 @@
+{
+ "note": "measured on the machine named below; a different machine's numbers will differ, memory far less than time",
+ "machine": {
+  "cpus": 4,
+  "python": "3.13.16",
+  "numpy": "2.5.3"
+ },
+ "rss_mb_after_imports": 47.0,
+ "load_seconds": 15.6,
+ "passages": 236155,
+ "vector_dtype": "float16",
+ "vector_dim": 1024,
+ "matrix_mb": 483.6,
+ "text_mb": 258.0,
+ "rss_mb_after_load": 1176.4,
+ "fts_build_seconds": 15.6,
+ "rss_mb_after_fts": 1755.7,
+ "retrieve_seconds": {
+  "first": 1.55,
+  "median": 0.95,
+  "max": 1.55,
+  "questions": 10
+ },
+ "rss_mb_after_searches": 1763.4,
+ "peak_rss_mb": 1958.6,
+ "not_measured": [
+  "the re-rank call (network)",
+  "the serving framework, the chat library and several users at once",
+  "another machine's memory behaviour"
+ ]
+}

@@ -16,7 +16,8 @@ from . import pilot as P
 DEFAULT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "pilot_settings.json")
 SCHEMA = "goodlaw-pilot-settings-1"
 STATUSES = ("decided", "default", "placeholder", "open")
-KINDS = {"quiet_policy": str, "keep_question_text": bool, "daily_question_cap": int, "global_daily_cap": int, "passages_shown": int, "max_question_chars": int, "rules_version": str}
+KINDS = {"quiet_policy": str, "keep_question_text": bool, "daily_question_cap": int, "global_daily_cap": int, "passages_shown": int, "max_question_chars": int, "rerank_model": str, "rules_version": str}
+RERANKERS = ("rerank-3-lite", "rerank-2")
 
 
 class SettingsError(Exception):
@@ -47,6 +48,8 @@ def load(path=None):
             raise SettingsError(f"{name}: a decided setting must say who decided it and when")
     if s["quiet_policy"]["status"] != "open" and s["quiet_policy"]["value"] not in CF.QUIET_POLICIES:
         raise SettingsError(f"quiet_policy must be one of {CF.QUIET_POLICIES}")
+    if s["rerank_model"]["status"] != "open" and s["rerank_model"]["value"] not in RERANKERS:
+        raise SettingsError(f"rerank_model must be one of {RERANKERS}")
     return s
 
 

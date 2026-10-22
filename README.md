@@ -56,7 +56,7 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 ## Pilot settings and the owner's tools (offline, not connected)
 
-`goodlaw/data/pilot_settings.json` records each pilot setting and who decided it (the quiet-card choice was decided on 2026-10-22; the rest are defaults or placeholders). `python -m goodlaw.pilot_admin` adds users, switches them off, shows a summary, exports the marks and pauses the bot; the list is empty. How to run the pilot, when the owner decides to: `PILOT_RUNBOOK.md`. Details: `FOLLOW_UPS.md` item 1u. Tests: `python test_goodlaw_pilot_settings.py`. What one question costs (about $0.0004 to $0.001, hosting not included) and why questions over 1,000 characters are refused: `review_results/2026-10-22_pilot_cost/COST_IN_PLAIN_TERMS.md`, `FOLLOW_UPS.md` item 1v.
+`goodlaw/data/pilot_settings.json` records each pilot setting and who decided it (the quiet-card choice was decided on 2026-10-22; the rest are defaults or placeholders). `python -m goodlaw.pilot_admin` adds users, switches them off, shows a summary, exports the marks and pauses the bot; the list is empty. How to run the pilot, when the owner decides to: `PILOT_RUNBOOK.md`. Details: `FOLLOW_UPS.md` item 1u. Tests: `python test_goodlaw_pilot_settings.py`. What one question costs (about $0.0004 to $0.001, hosting not included) and why questions over 1,000 characters are refused: `review_results/2026-10-22_pilot_cost/COST_IN_PLAIN_TERMS.md`, `FOLLOW_UPS.md` item 1v. What the index needs in memory (about 1.8 GB) and where to host it: `review_results/2026-10-22_index_memory/HOSTING_IN_PLAIN_TERMS.md`.
 
 ## Internal case-data layer (offline slice, not connected)
 
