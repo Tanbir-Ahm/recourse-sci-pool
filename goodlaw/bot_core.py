@@ -45,6 +45,7 @@ NO_PASSAGES = "We found no passages for that question. Try asking it as a plain-
 SEARCH_DOWN = "The search is not available right now. Nothing was recorded for this question; please try again later."
 LIMIT_USER = "You have reached today's limit for the test. Please try again tomorrow."
 LIMIT_ALL = "The test has reached its limit for today. Please try again tomorrow."
+TOO_LONG = "That question is too long for the test (the limit is {n} characters). Please shorten it and ask again; nothing was searched."
 STALE_TAP = "That button is no longer valid."
 EMPTY_WATCHLIST = "Your watchlist is empty. Save a case with /watch Name v Name (2018)."
 NO_EXPORT = "Export is not available in this test."
@@ -70,10 +71,10 @@ def _says_understood(text):
 
 
 class BotCore:
-    def __init__(self, pilot, formatter, search_fn, identity, store_dir=None, export_dir=None, daily_question_cap=10, global_daily_cap=100, shown=3, today=None):
+    def __init__(self, pilot, formatter, search_fn, identity, store_dir=None, export_dir=None, daily_question_cap=10, global_daily_cap=100, shown=3, max_question_chars=1000, today=None):
         self.pilot, self.formatter, self.search_fn, self.identity = pilot, formatter, search_fn, identity
         self.store_dir, self.export_dir, self.shown, self.today = store_dir, export_dir, shown, today
-        self.daily_question_cap, self.global_daily_cap = daily_question_cap, global_daily_cap
+        self.daily_question_cap, self.global_daily_cap, self.max_question_chars = daily_question_cap, global_daily_cap, max_question_chars
         self._watch = {}
 
     def _day(self, on):
@@ -118,6 +119,8 @@ class BotCore:
 
     # ---- a question ------------------------------------------------------------------------------------------------------------------------------------------------------------
     def _question(self, uid, text, day):
+        if len(text) > self.max_question_chars:                      # the re-ranker bills the question once per candidate passage, so a long question costs several times a short one
+            return [Outbound(TOO_LONG.format(n=self.max_question_chars))]
         if self.pilot.questions_on(day, uid) >= self.daily_question_cap:
             return [Outbound(LIMIT_USER)]
         if self.pilot.questions_on(day) >= self.global_daily_cap:

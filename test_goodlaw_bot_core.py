@@ -134,6 +134,21 @@ core.handle("222", text="four")
 check(core.handle("222", text="five")[0].text == B.LIMIT_ALL and len(CALLS) == 3, "past the test's daily limit nothing is searched for anyone")
 check(core.handle("222", text="six", on="2026-11-06")[0].text != B.LIMIT_ALL and len(CALLS) == 4, "and the limits start again the next day")
 
+CALLS.clear()
+p, core = make(max_question_chars=40, daily_question_cap=1)
+accepted(core, "111")
+long_q = "x" * 41
+r = core.handle("111", text=long_q)
+check(r[0].text == B.TOO_LONG.format(n=40) and "40 characters" in r[0].text and CALLS == [] and p.state["questions"] == [], "a question over the length limit is refused before anything is searched or recorded")
+check(core.handle("111", text="y" * 40)[0].text != B.TOO_LONG and len(CALLS) == 1, "a question exactly at the limit is searched")
+core.search_fn = search
+CALLS.clear()
+p, core = make(max_question_chars=40, daily_question_cap=1)
+accepted(core, "111")
+core.handle("111", text=long_q)
+check(core.handle("111", text="a short one")[0].text != B.LIMIT_USER and len(CALLS) == 1, "a refused long question does not use up the user's daily limit")
+check(B.BotCore(p, FMT, search, WHO).max_question_chars == 1000, "the default limit is 1,000 characters")
+
 
 def down(q):
     raise B.SearchUnavailable()

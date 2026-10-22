@@ -65,11 +65,11 @@ print("the settings")
 s = S.load()
 q = s["quiet_policy"]
 check(q["value"] == "coverage_note" and q["status"] == "decided" and q["decided_on"] == "2026-10-22" and "owner" in q["decided_by"] and "weak evidence" in q["reason"], "the quiet-card choice is recorded as decided, with who, when and why (this check pins the choice: changing it must be deliberate)")
-check({n: e["status"] for n, e in s.items()} == {"quiet_policy": "decided", "keep_question_text": "default", "daily_question_cap": "placeholder", "global_daily_cap": "placeholder", "passages_shown": "placeholder", "rules_version": "default"},
+check({n: e["status"] for n, e in s.items()} == {"quiet_policy": "decided", "keep_question_text": "default", "daily_question_cap": "placeholder", "global_daily_cap": "placeholder", "passages_shown": "placeholder", "max_question_chars": "placeholder", "rules_version": "default"},
       "every other setting says honestly that it is a default or a placeholder, not a decision")
-check(s["keep_question_text"]["value"] is False and s["daily_question_cap"]["value"] == 10 and s["global_daily_cap"]["value"] == 100 and s["passages_shown"]["value"] == 3 and s["rules_version"]["value"] == P.RULES_VERSION, "the values are the ones the bot core and the pilot already use")
+check(s["keep_question_text"]["value"] is False and s["daily_question_cap"]["value"] == 10 and s["global_daily_cap"]["value"] == 100 and s["passages_shown"]["value"] == 3 and s["max_question_chars"]["value"] == 1000 and s["rules_version"]["value"] == P.RULES_VERSION, "the values are the ones the bot core and the pilot already use")
 rep = S.report(s)
-check([r[0] for r in rep][:3] == ["daily_question_cap", "global_daily_cap", "passages_shown"] and [r[2] for r in rep][:3] == ["placeholder"] * 3 and rep[-1][0] == "rules_version", "the report puts the placeholders first, then the rest by name")
+check([r[0] for r in rep][:4] == ["daily_question_cap", "global_daily_cap", "max_question_chars", "passages_shown"] and [r[2] for r in rep][:4] == ["placeholder"] * 4 and rep[-1][0] == "rules_version", "the report puts the placeholders first, then the rest by name")
 
 if True:
     check(raises(S.SettingsError, S.load, variant(lambda s_, doc: doc.update(schema="other"))), "a file with another schema is refused")
@@ -86,7 +86,7 @@ if True:
 print("building the bot from the settings")
 p = S.new_pilot(settings=s)
 core = S.build_core(p, REG, CARDS, lambda q: [], PI.IndexRowIdentity(PI.IndexDocs()), settings=s, today="2026-11-05")
-check(core.formatter.quiet_policy == "coverage_note" and core.daily_question_cap == 10 and core.global_daily_cap == 100 and core.shown == 3 and p.keep_question_text is False, "the formatter's quiet policy and the bot's limits come from the settings")
+check(core.formatter.quiet_policy == "coverage_note" and core.daily_question_cap == 10 and core.global_daily_cap == 100 and core.shown == 3 and core.max_question_chars == 1000 and p.keep_question_text is False, "the formatter's quiet policy and the bot's limits come from the settings")
 check(raises(S.SettingsError, S.build_core, p, REG, CARDS, lambda q: [], None, settings=S.load(variant(lambda s_, doc: s_["quiet_policy"].update(status="open", value=None)))), "while a setting is open, nothing is built")
 p2 = P.Pilot(rules_version="v9")
 check(raises(S.SettingsError, S.build_core, p2, REG, CARDS, lambda q: [], None, settings=s) and raises(S.SettingsError, S.build_core, P.Pilot(keep_question_text=True), REG, CARDS, lambda q: [], None, settings=s), "a pilot with other rules or other question-text keeping than the settings is refused")

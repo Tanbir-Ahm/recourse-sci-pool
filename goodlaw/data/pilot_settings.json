@@ -29,6 +29,11 @@
       "status": "placeholder",
       "note": "Passages shown per question. The earlier search review used the top 5 and top 10; three keeps a chat message list short."
     },
+    "max_question_chars": {
+      "value": 1000,
+      "status": "placeholder",
+      "note": "Longest question accepted, in characters. The re-ranker bills the question once for every candidate passage (60), so a 1,000-character question adds about 17,000 tokens to the usual 20,700: it roughly doubles the cost. A plain legal question is well under 500 characters. Longer ones are refused before anything is searched or recorded."
+    },
     "rules_version": {
       "value": "v1",
       "status": "default",

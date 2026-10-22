@@ -16,7 +16,7 @@ from . import pilot as P
 DEFAULT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "pilot_settings.json")
 SCHEMA = "goodlaw-pilot-settings-1"
 STATUSES = ("decided", "default", "placeholder", "open")
-KINDS = {"quiet_policy": str, "keep_question_text": bool, "daily_question_cap": int, "global_daily_cap": int, "passages_shown": int, "rules_version": str}
+KINDS = {"quiet_policy": str, "keep_question_text": bool, "daily_question_cap": int, "global_daily_cap": int, "passages_shown": int, "max_question_chars": int, "rules_version": str}
 
 
 class SettingsError(Exception):
@@ -68,7 +68,7 @@ def build_core(pilot, register, cards, search_fn, identity, settings=None, store
         raise SettingsError("the pilot's keep_question_text differs from the settings'")
     fmt = CF.Formatter(register, cards, quiet_policy=s["quiet_policy"]["value"], today=today)
     return B.BotCore(pilot, fmt, search_fn, identity, store_dir=store_dir, export_dir=export_dir, daily_question_cap=s["daily_question_cap"]["value"],
-                     global_daily_cap=s["global_daily_cap"]["value"], shown=s["passages_shown"]["value"], today=today)
+                     global_daily_cap=s["global_daily_cap"]["value"], shown=s["passages_shown"]["value"], max_question_chars=s["max_question_chars"]["value"], today=today)
 
 
 def new_pilot(path=None, settings=None):

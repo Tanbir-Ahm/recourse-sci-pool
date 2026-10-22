@@ -1,0 +1,39 @@
+{
+ "basis": "stage F run (29 questions, one embedding and one re-rank call each, rerank-3-lite)",
+ "per_question": {
+  "questions": 29,
+  "rerank_tokens_per_question": 20703,
+  "embed_tokens_per_question": 72.6,
+  "recorded_rerank_calls_equal_questions": true
+ },
+ "dollars_per_question": {
+  "rerank-3-lite": 0.000423,
+  "rerank-2": 0.001044
+ },
+ "balance_noted": 9.39,
+ "reserve": 5.0,
+ "spendable_above_reserve": 4.39,
+ "scenarios_28_days": {
+  "placeholder caps, every cap hit every day (100 questions a day)": {
+   "questions": 2800,
+   "dollars_rerank-3-lite": 1.18,
+   "dollars_rerank-2": 2.92
+  },
+  "5 lawyers, 5 questions each a day": {
+   "questions": 700,
+   "dollars_rerank-3-lite": 0.3,
+   "dollars_rerank-2": 0.73
+  },
+  "5 lawyers, 2 questions each a day": {
+   "questions": 280,
+   "dollars_rerank-3-lite": 0.12,
+   "dollars_rerank-2": 0.29
+  }
+ },
+ "prices_per_million": {
+  "voyage-law-2": 0.12,
+  "rerank-3-lite": 0.02,
+  "rerank-2": 0.05
+ },
+ "price_status": "listed prices from third-party price lists, not Voyage's pages; the dashboard is the check"
+}
