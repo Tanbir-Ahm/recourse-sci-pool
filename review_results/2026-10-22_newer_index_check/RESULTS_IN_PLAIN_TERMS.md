@@ -1,5 +1,7 @@
 # The court's newer archive in the search index, in plain terms (2026-10-22)
 
+> **Update, 15:50 UTC the same day:** a third session then embedded the Guwahati open-bucket text, so the index is now 305,935 passages (this note describes it as 281,424) and 2.21 GB of memory. The final numbers, and why not everything is embedded, are in `../2026-10-22_index_holdings/RESULTS_IN_PLAIN_TERMS.md`.
+
 **The Supreme Court's newer archive was already in the search index when you said "add it". Another session embedded it between 13:09 and 14:10 UTC today, so I did not embed anything and spent nothing.** What I could do was check it, compare it with the text store, and make the pilot's message code handle it. Tags: **[Certain]** = read from the index branch's own files; **[Likely]** = inference.
 
 ## What the index now holds [Certain]

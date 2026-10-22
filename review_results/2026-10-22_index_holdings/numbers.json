@@ -1,8 +1,8 @@
 {
- "index_branch_commit": "5d8837e3281621700c45c402078701858c6dfe60",
- "counted_at_utc": "2026-10-22 15:35:45",
- "blocks_in_ledger": 240,
- "tokens_spent_ever": 78185939,
+ "index_branch_commit": "bfbfd05307ef10b135510748e5a429c63a0de448",
+ "counted_at_utc": "2026-10-22 15:48:59",
+ "blocks_in_ledger": 267,
+ "tokens_spent_ever": 82871528,
  "sources": {
   "crawl": {
    "blocks": 164,
@@ -86,18 +86,18 @@
    "court": "Supreme Court"
   },
   "ghc_bucket": {
-   "blocks": 7,
-   "tokens": 722167,
-   "recorded": 1521,
-   "kept": 141,
-   "passages_in_document_records": 2985,
-   "noise_dropped": 67,
-   "ledger_passages": 2985,
+   "blocks": 34,
+   "tokens": 5407756,
+   "recorded": 8271,
+   "kept": 980,
+   "passages_in_document_records": 24511,
+   "noise_dropped": 346,
+   "ledger_passages": 24511,
    "not_embedded": {
-    "not_criminal": 1380
+    "not_criminal": 7291
    },
-   "vector_rows": 2985,
-   "passage_rows": 2985,
+   "vector_rows": 24511,
+   "passage_rows": 24511,
    "non_finite_vectors": 0,
    "blocks_where_rows_differ": [],
    "every_kept_passage_has_a_vector": true,
@@ -112,13 +112,13 @@
    "passages": 266183
   },
   "Gauhati High Court": {
-   "recorded": 2297,
-   "embedded_judgments": 900,
-   "passages": 18226
+   "recorded": 9047,
+   "embedded_judgments": 1739,
+   "passages": 39752
   }
  },
- "total_passages": 284409,
- "total_vector_rows": 284409,
+ "total_passages": 305935,
+ "total_vector_rows": 305935,
  "supreme_court_distinct_by_the_store": {
   "embedded_judgments_mapped_to_the_store": {
    "crawl": 8079,

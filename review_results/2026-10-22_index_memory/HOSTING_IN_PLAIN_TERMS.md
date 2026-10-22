@@ -5,6 +5,9 @@
 ## Update, later the same day: the index grew, and so did the memory
 Another session added the Supreme Court newer archive and the Gauhati High Court to the index (45,269 passages, 19% more; `../2026-10-22_newer_index_check/`). Measured again the same way (`after_extra_sources/numbers.json`): **281,424 passages; 576 MB of vectors and 296 MB of text; 2.05 GB steady, 2.25 GB peak** (it was 1.76 and 1.96 GB); start-up about 42 s to load plus 18 s for the keyword index; the local part of a search still about 1 s. **[Certain]** for this machine. On Railway's listed memory price that is about **$21 to $23 a month** for memory (it was $18 to $20). Everything below describes the first measurement.
 
+## Update 2, 15:50 UTC the same day: the Guwahati open-bucket text was added too
+Final index: **305,935 passages** (627 MB of vectors, 317 MB of text). Measured again the same way (`after_set_c/numbers.json`): **2.21 GB steady, 2.41 GB peak**, about 24 s to load plus 21 s for the keyword index, local search median about 1.15 s. **[Certain]** for this machine. Railway's listed memory price makes that about **$22 to $24 a month**. The figures in the first update and below are earlier measurements.
+
 ## What I measured (this machine, no network, no spend)
 
 `python review_tools/experiments/measure_index_memory_2026-10-22.py --index-dir <index> --out review_results/2026-10-22_index_memory`; numbers in `numbers.json` there. The query embedding was a fake random vector and the re-ranker was never called, so nothing was spent and no real search was run.

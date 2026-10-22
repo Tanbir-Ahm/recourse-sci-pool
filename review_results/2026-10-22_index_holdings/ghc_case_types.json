@@ -1,0 +1,47 @@
+{
+ "recorded": 9047,
+ "embedded": 1739,
+ "by_source": {
+  "court_files": {
+   "recorded": 776,
+   "embedded": 759,
+   "embedded_with_a_criminal_case_type": 759,
+   "embedded_with_another_case_type": 0,
+   "embedded_other_types": {},
+   "passages_embedded": 15241,
+   "passages_in_other_types": 0,
+   "not_embedded": 17,
+   "not_embedded_with_a_criminal_case_type": 15,
+   "other_type_embedded_density_min_median_max": null,
+   "other_type_embedded_admitted_by_the_header_not_the_density": 0
+  },
+  "open_bucket_text": {
+   "recorded": 8271,
+   "embedded": 980,
+   "embedded_with_a_criminal_case_type": 890,
+   "embedded_with_another_case_type": 90,
+   "embedded_other_types": {
+    "WP(C)": 74,
+    "WA": 9,
+    "CRP": 2,
+    "PIL": 2,
+    "RSA": 2,
+    "Mat.App.": 1
+   },
+   "passages_embedded": 24511,
+   "passages_in_other_types": 1564,
+   "not_embedded": 7291,
+   "not_embedded_with_a_criminal_case_type": 11,
+   "other_type_embedded_density_min_median_max": [
+    0.8,
+    14.8,
+    50.5
+   ],
+   "other_type_embedded_admitted_by_the_header_not_the_density": 3
+  }
+ },
+ "all_embedded_criminal_case_type": 1649,
+ "all_embedded_other_case_type": 90,
+ "criminal_case_types_not_embedded": 26,
+ "criminal_types_embedded_share_of_all_criminal_types_recorded": 0.9845
+}
