@@ -50,6 +50,10 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 `goodlaw/authority_export.py` writes a list of cases, or a saved watchlist, as a CSV: for each case a status, what we know, the date that evidence is as of, who checked it, and a note on every row ("pattern-rule reading, not lawyer-validated", or "not checked"). A quiet case is spelled out, never left blank. Details: `FOLLOW_UPS.md` item 1s. Tests: `python test_goodlaw_authority_export.py`.
 
+## Pilot bot core (offline slice, not connected)
+
+`goodlaw/bot_core.py` takes a message or a button tap and returns the replies: the three rules, a question answered with three passages (warning first, feedback buttons), `/watch`, `/watchlist`, `/export`. No chat service, no accounts, no real search; every search is capped per user and per day. A dry run written out as a conversation: `review_results/2026-10-22_bot_dry_run/TRANSCRIPT.md`. Details and what still needs the owner: `FOLLOW_UPS.md` item 1t. Tests: `python test_goodlaw_bot_core.py`.
+
 ## Internal case-data layer (offline slice, not connected)
 
 `casedata/` is the "front desk" for a possible case-tracking brief: one standard case record, five calls (get the case, check listings, refresh, get an order, what changed), a saved copy, a daily spending cap, a ledger and a dry-run nightly plan, over a swappable adapter. Only a made-up adapter exists (`casedata/fake.py`); nothing makes a network call, needs a key or spends money, and no real court source is wired. Details and limits: `casedata/layer.py`, `FOLLOW_UPS.md` item 1n. Tests: `python test_casedata.py`.

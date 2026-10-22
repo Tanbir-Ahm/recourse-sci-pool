@@ -157,6 +157,27 @@ class Pilot:
         self._save()
         return qid
 
+    def set_shown(self, question_id, items):
+        """Record which passages were shown for a question: [(passage hash, index doc)]. From then on only these can be marked, and a tap finds its doc here."""
+        q = next((q for q in self.state["questions"] if q["id"] == question_id), None)
+        if q is None:
+            raise PilotError("no such question")
+        q["shown"] = [[h, d] for h, d in items]
+        self._save()
+
+    def drop_question(self, question_id, user_id):
+        """Forget a question that was started but could not be answered (the search was unavailable), so it does not count towards a daily limit. Refused once anything was marked."""
+        q = next((q for q in self.state["questions"] if q["id"] == question_id), None)
+        if q is None or q["user"] != str(user_id):
+            raise PilotError("no such question for this user")
+        if any(m["question"] == question_id for m in self.state["marks"]):
+            raise PilotError("a question with marks cannot be dropped")
+        self.state["questions"].remove(q)
+        self._save()
+
+    def questions_on(self, day, user_id=None):
+        return sum(1 for q in self.state["questions"] if q["on"] == _today(day) and (user_id is None or q["user"] == str(user_id)))
+
     def mark(self, user_id, question_id, passage_hash, mark, doc=None, note=None, on=None):
         if mark not in MARKS:
             raise PilotError(f"unknown mark {mark!r}; use one of {MARKS}")
@@ -166,6 +187,11 @@ class Pilot:
         q = next((q for q in self.state["questions"] if q["id"] == question_id), None)
         if q is None or q["user"] != str(user_id):
             raise PilotError("a user can mark only a passage from a question they asked")
+        if q.get("shown") is not None:
+            shown = {h: d for h, d in q["shown"]}
+            if passage_hash not in shown:
+                raise PilotError("that passage was not shown for this question")
+            doc = shown[passage_hash] if doc is None else doc
         existing = next((m for m in self.state["marks"] if m["question"] == question_id and m["passage"] == passage_hash), None)
         if existing:
             existing.update(mark=mark, note=note, on=_today(on), revised=existing.get("revised", 0) + 1)
