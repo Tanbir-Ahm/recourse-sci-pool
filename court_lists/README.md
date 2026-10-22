@@ -5,3 +5,7 @@
 - `court_file_received`: `no` until the owner's download of that file has been read and stored (then `yes`);
 - `backup_in_bucket` / `backup_bucket_key`: whether the open bucket holds the same case (matched by decision date and case number), and its key: the backup copy.
 Policy (owner, 2026-10-22): the court's own file is the main text; the open bucket's copy is the backup, used only where the court's file has not been received.
+
+## Policy update, 2026-10-22 (owner: "Yes, bucket-first, use the zip route for the 888")
+
+The bucket's text is the main text wherever the bucket has the judgment. The court's own file is fetched (by the owner, via zips) only for the 888 criminal-subject judgments the bucket lacks. This replaces the earlier "court file is the main text" rule. Stored bucket text is hard-wrapped at 80 columns and needs a cleaning step before embedding.
