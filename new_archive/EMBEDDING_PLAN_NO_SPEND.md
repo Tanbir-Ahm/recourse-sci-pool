@@ -29,3 +29,12 @@ Not planned: the 6,662 Supreme Court judgments the bucket holds (its October run
 1. B (Guwahati court files, $0.40, fits the current ceiling) as the first real trial, after the wiring and a free trial.
 2. A (Supreme Court, $0.86) after the owner raises the ceiling.
 3. C last, only after the word-rejoin is built and measured.
+
+## Owner's decisions, 2026-10-22 (after this plan)
+1. Wiring and a free trial for B first: done (see below). 2. Ceiling raised to **85,000,000** for A and C ("voyage balance is still there to cover this"). 3. New blocks go to `claude/sci-index` (not a separate branch).
+
+## Wiring and free trial (done, nothing spent)
+- `sci_index.py`: `--extra-dir` (shift, status), `extra_blocks`, a reader for prepared records, ids from `EXTRA_BASE` = 2,000,000,000; 13 new checks in `test_sci_index.py`, ALL PASSED (also `test_index_dedupe.py`, `test_sci_bucket.py`, `test_build_supplement.py`). Ids at 2e9 and up are also "at or above BUCKET_BASE": scripts that mean "bucket" by that test (`index_dedupe.py` counts, `review_tools/build_supplement.py`, `pool_runner.py` pinning) see them as bucket judgments; check before using them on the new blocks.
+- Blocks built and committed: `claude/ghc-bucket:index_blocks/` (ghc_court, 4 blocks, 3.9 MB) and `claude/sci-court-newer:index_blocks/` (sci_newer, 15 blocks, 27 MB).
+- Free trial of B: a throwaway copy of the real index (`3c80a26`, local remote), a fake embedder that calls nothing: 4 blocks, 759 judgments, **15,241 passages (same as the plan)**, 3,164,363 estimated tokens before the 1.062 calibration (3.36M after), vectors 1,024 numbers each, finite, rows equal passage rows, every judgment records its source (court, link, case number). The real `claude/sci-index` stayed at `3c80a26`.
+- Cosmetic flaw to fix before the real run: a Guwahati title can end with a judge's name from the court list (for example "... Vs THE STATE OF ASSAM. MR MADAN B. LOKUR GOSWAMI"). It is metadata only, not embedded text.

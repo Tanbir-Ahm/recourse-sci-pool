@@ -666,6 +666,63 @@ check(rn3["blocks_done"] == 1, "with room, the run goes ahead")
 shutil.rmtree(base, ignore_errors=True)
 shutil.rmtree(btmp, ignore_errors=True)
 
+# ---------------------------------------------------------------- extra sources (court archive, High Court): prepared records under <dir>/index_blocks
+def write_extra_block(xdir, scope, n, records):
+    os.makedirs(os.path.join(xdir, "index_blocks"), exist_ok=True)
+    with gzip.open(os.path.join(xdir, "index_blocks", f"{scope}-{n:04d}.ok{len(records)}.miss0.err0.jsonl.gz"), "wt", encoding="utf-8") as fh:
+        for r in records:
+            fh.write(json.dumps(r) + "\n")
+
+
+def xrec(text, path, title="A versus B", date="2026-05-01"):
+    return {"status": "ok", "text": text, "pages": 3, "path": path, "title": title, "decision_date": date, "citation": "2026 INSC 1", "case_id": "1/2026",
+            "source_kind": "sci_newer", "url": path, "court": "Supreme Court of India"}
+
+
+xtmp = tempfile.mkdtemp(prefix="xtr_")
+xd1, xd2 = os.path.join(xtmp, "sci"), os.path.join(xtmp, "ghc")
+write_extra_block(xd1, "sci_newer", 0, [xrec(crim_text("Alpha"), "u/alpha.pdf"), xrec(civil_text("TaxMarker"), "u/civil.pdf"), xrec(crim_text("Alpha"), "u/alpha_copy.pdf"), xrec(crim_text("Beta"), "u/beta.pdf")])
+write_extra_block(xd2, "ghc_court", 0, [xrec(crim_text("Gamma"), "g/gamma.pdf", title="C versus State of Assam")])
+eb = si.extra_blocks(xd1)
+check(list(eb) == [si.EXTRA_BASE + 1000 * si.BLOCK_SIZE] and eb[si.EXTRA_BASE + 1000 * si.BLOCK_SIZE]["ok"] == 4, "a court-archive block sits at its own place in the id space")
+check(list(si.extra_blocks(xd2)) == [si.EXTRA_BASE] and si.EXTRA_BASE > si.BUCKET_BASE + (2000 + 600 * 50) * si.BLOCK_SIZE, "a High Court block has its own id range, above every bucket id")
+recs = si.read_block(eb[si.EXTRA_BASE + 1000 * si.BLOCK_SIZE])
+check([r["id"] for r in recs] == [si.EXTRA_BASE + 1000 * si.BLOCK_SIZE + i for i in range(4)] and recs[0]["src"]["source"] == "sci_newer" and recs[0]["src"]["path"] == "u/alpha.pdf" and recs[0]["src"]["title"] == "A versus B" and not recs[0]["in_crawl"], "records get ids by position and keep their source")
+check(recs[0]["text"] == recs[0]["raw_text"], "court text is used as it is (no headnote cut)")
+try:
+    write_extra_block(os.path.join(xtmp, "bad"), "sci_newer", 1000, [xrec("t", "p")])
+    si.extra_blocks(os.path.join(xtmp, "bad")); check(False, "a block number past the id space is refused")
+except ValueError:
+    check(True, "a block number past the id space is refused")
+base, remote, code, idx, pool = new_env("idxX_")
+si.init_index_branch(code, idx)
+write_pool_shard(pool, 20, [{"id": 21, "status": "ok", "pages": 3, "text": crim_text("Crawled")}])
+cx = FakeClient()
+rx = run_shift(code, idx, pool, cx, extra_dirs=[xd1, xd2])
+led = si.ledger(idx)
+check(rx["blocks_done"] == 3 and set(led) >= {si.EXTRA_BASE, si.EXTRA_BASE + 1000 * si.BLOCK_SIZE}, "crawl and extra blocks are all embedded")
+docs = {}
+for v in led.values():
+    for line in gzip.open(os.path.join(idx, "index", v["base"] + ".docs.jsonl.gz"), "rt", encoding="utf-8"):
+        r = json.loads(line); docs[r["doc"]] = r
+d_alpha, d_civil, d_copy, d_beta = (si.EXTRA_BASE + 1000 * si.BLOCK_SIZE + i for i in range(4))
+check(docs[d_alpha].get("passages", 0) > 0 and docs[d_civil].get("skip") == "not_criminal" and docs[d_copy].get("skip") == "duplicate" and docs[d_copy].get("of") == d_alpha and docs[d_beta].get("passages", 0) > 0,
+      "the criminal-law test and the duplicate test apply to extra blocks")
+check(docs[d_alpha]["src"]["source"] == "sci_newer" and docs[si.EXTRA_BASE]["src"]["court"] == "Supreme Court of India" and docs[si.EXTRA_BASE]["src"]["path"] == "g/gamma.pdf", "each indexed judgment records where it came from")
+st = si.status_summary(pool, idx, bucket_dir=None, extra_dirs=[xd1, xd2])
+check(st["blocks_done"] == 1 and st["extra"]["blocks_done"] == 2 and st["extra"]["blocks_pending"] == 0 and "bucket" not in st, "status counts extra blocks apart from the crawl and the bucket")
+cx2 = FakeClient()
+rx2 = run_shift(code, idx, pool, cx2, extra_dirs=[xd1, xd2])
+check(rx2["blocks_done"] == 0 and cx2.calls == 0 and "nothing left" in rx2["stop_reason"], "a second run does nothing")
+cx3 = FakeClient()
+rx3 = run_shift(code, idx, pool, cx3, ceiling=1)
+check(rx3["blocks_done"] == 0 and cx3.calls == 0, "without --extra-dir the extra blocks are not touched")
+write_extra_block(xd1, "sci_newer", 1, [xrec(crim_text("Delta"), "u/delta.pdf")])
+rx4 = run_shift(code, idx, pool, FakeClient(), extra_dirs=[xd1, xd2], max_blocks=1)
+check(rx4["blocks_done"] == 1, "a block added later is picked up on the next run")
+shutil.rmtree(base, ignore_errors=True)
+shutil.rmtree(xtmp, ignore_errors=True)
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED:")

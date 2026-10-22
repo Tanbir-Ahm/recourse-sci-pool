@@ -67,6 +67,14 @@ C is a ceiling on EVERYTHING ever spent on the index, so it must be higher than 
 8BF. `python sci_index.py status --pool-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --index-dir ../recourse-sci-index --ceiling <C>`
 9BF. Report in at most 8 lines: blocks, docs, passages and tokens for each shift, each stop reason, and the status line (the "bucket" part). Then say that a DEDUPE-PLAN should follow, because the same judgment can sit in the crawl and the bucket in two layouts.
 
+
+### EXTRA modes (2026-10-22): court-archive and High Court judgments, added to this same index branch (owner: "add to claude/sci-index"; ceiling raised to 85,000,000)
+Two data branches hold prepared judgments under `index_blocks/` (built once by `new_archive/build_index_blocks.py`, never rewritten): `claude/sci-court-newer` (scope `sci_newer`: 3,747 Supreme Court judgments of the newer archive that the open bucket does not hold, 15 blocks) and `claude/ghc-bucket` (scope `ghc_court`: 776 Gauhati High Court files from the court's own PDFs, 4 blocks). Attach each read-only: `git fetch origin <branch>` then `git worktree add --detach ../<name> origin/<branch>`. Ids start at 2,000,000,000 (ghc_court first, then sci_newer from block 1000 on). The same criminal-law and duplicate tests apply. Nothing is embedded unless the owner has said so for the named set.
+- EXTRA-PLAN (no key, no spending): `python new_archive/plan_embedding.py <code dir> <index dir> <sci-court-newer worktree> <ghc-bucket worktree> <out.json>`.
+- EXTRA-TRIAL (one block, real spend): `python sci_index.py shift --pool-dir ../recourse-sci-pool-data --index-dir ../recourse-sci-index --extra-dir ../ghc-bucket-data --minutes 20 --max-new-tokens 1500000 --ceiling 85000000 --max-blocks 1 --pause 2.0`
+- EXTRA-FULL <set> (real spend; the task names the set and its `--extra-dir`): the same command without `--max-blocks`, with `--minutes 50`, ceiling 85,000,000; repeat while the reason starts with "time budget used up". Check afterwards with `status --extra-dir ...`; a DEDUPE-PLAN should follow.
+A set the owner has not named is never run. Set C (Guwahati bucket text) has no blocks yet: its words are split at line ends and need a measured rejoin first.
+
 ## Kill switch
 If a file named `STOP` exists in the index folder (`ls ../recourse-sci-index/STOP`) the script stops before sending anything. Report it; that is intended. The DEDUPE steps that change or commit the index folder refuse too.
 

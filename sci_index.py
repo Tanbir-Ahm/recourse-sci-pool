@@ -340,6 +340,13 @@ def read_block(info, skip_paths=frozenset()):
     """The records of one block in the shape prepare_block reads: {id, status, text, pages, ...}. A crawl block is read as it is. A bucket block gets its ids from its position,
     the cleaned text, the raw text (to decide criminal or not, and for the header a duplicate check compares) and, for each judgment, where it came from."""
     recs = _read_pool_block(info["path"])
+    if info.get("kind") == "extra":
+        if len(recs) > BLOCK_SIZE:
+            raise ValueError(f"{info['path']} holds {len(recs)} records; a block has at most {BLOCK_SIZE}")
+        return [{"id": info["start"] + i, "status": "ok", "text": r["text"], "pages": r.get("pages"), "raw_text": r["text"], "in_crawl": False,
+                 "src": {"source": r.get("source_kind") or info["scope"], "scope": info["scope"], "path": r.get("path"), "title": r.get("title"), "date": r.get("decision_date"),
+                         "citation": r.get("citation"), "case_id": r.get("case_id"), "url": r.get("url"), "court": r.get("court")}}
+                for i, r in enumerate(recs) if r.get("status") == "ok" and r.get("text")]
     if info.get("kind") != "bucket":
         return recs
     if len(recs) > BLOCK_SIZE:
@@ -356,10 +363,37 @@ def read_block(info, skip_paths=frozenset()):
     return out
 
 
-def all_blocks(pool_dir=None, bucket_dir=None):
+# ---------------------------------------------------------------- extra sources (owner's decision 2026-10-22: add to this index)
+# Judgments the crawl and the open bucket do not hold: the Supreme Court's newer archive (5 May 2017 on) and the Gauhati High Court. A source keeps its prepared records in
+# `index_blocks/<scope>-<NNNN>.ok<n>.miss0.err0.jsonl.gz` on its own data branch (immutable once written, at most BLOCK_SIZE records per file, like a bucket shard), attached read-only
+# as an `--extra-dir`. A block's start is EXTRA_BASE + ordinal * BLOCK_SIZE and a judgment's id is its block's start plus its position in the file. No headnote or margin-letter
+# cutting (these are court PDFs, not law reports). Ids at EXTRA_BASE and up never clash with crawl or bucket ids.
+EXTRA_BASE = 2_000_000_000
+_EXTRA_RE = re.compile(r"^(sci_newer|ghc_court|ghc_bucket)-(\d{4})\.ok(\d+)\.miss(\d+)\.err(\d+)\.jsonl\.gz$")
+_EXTRA_OFFSET = {"ghc_court": 0, "sci_newer": 1000, "ghc_bucket": 2000}
+
+
+def extra_blocks(extra_dir):
+    """{block start: {end, ok, gap, err, path, kind, scope, start}} for every prepared-records file under <extra_dir>/index_blocks that holds at least one judgment."""
+    out = {}
+    for path in glob.glob(os.path.join(extra_dir, "index_blocks", "*.jsonl.gz")):
+        m = _EXTRA_RE.match(os.path.basename(path))
+        if not m:
+            continue
+        scope, n, ok, miss, err = m[1], int(m[2]), int(m[3]), int(m[4]), int(m[5])
+        if n >= 1000:
+            raise ValueError(f"{path}: block number {n} is outside the id space of its scope (at most 1,000 blocks)")
+        start = EXTRA_BASE + (_EXTRA_OFFSET[scope] + n) * BLOCK_SIZE
+        out[start] = {"start": start, "end": start + BLOCK_SIZE - 1, "ok": ok, "gap": miss, "err": err, "path": path, "kind": "extra", "scope": scope}
+    return out
+
+
+def all_blocks(pool_dir=None, bucket_dir=None, extra_dirs=None):
     blocks = pool_blocks(pool_dir) if pool_dir else {}
     if bucket_dir:
         blocks.update(bucket_blocks(bucket_dir))
+    for d in extra_dirs or ():
+        blocks.update(extra_blocks(d))
     return blocks
 
 
@@ -673,7 +707,7 @@ def active_check(code_repo, now=None, max_age=1500, ref=f"origin/{BRANCH}"):
 # ================================================================ the shift
 def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None, sleep=time.sleep, clock=time.monotonic,
           out=print, pause=2.0, block_size=BLOCK_SIZE, est_block_seconds=120, max_blocks=None, batch_items=500,
-          from_id=None, to_id=None, model=MODEL, bucket_dir=None, skip_paths=None, max_new_tokens=None):
+          from_id=None, to_id=None, model=MODEL, bucket_dir=None, skip_paths=None, max_new_tokens=None, extra_dirs=None):
     """One time-boxed run: embeds the blocks not yet in the ledger, newest first. With `bucket_dir` the bucket's shards are blocks too (ids from BUCKET_BASE up; `skip_paths` are the
     bucket judgments the crawl already holds, loaded from the default skip file when not given). `ceiling` is a limit on everything ever spent on the index; `max_new_tokens` also
     limits what THIS run may spend, whatever was spent before (the lower of the two applies)."""
@@ -703,7 +737,7 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
             spent = tokens_spent(index_dir)
             if max_new_tokens is not None:
                 ceiling = min(ceiling, spent + max_new_tokens)
-            blocks = all_blocks(pool_dir, bucket_dir)
+            blocks = all_blocks(pool_dir, bucket_dir, extra_dirs)
             todo = sorted((s for s in blocks if s not in done and blocks[s]["ok"] > 0 and (from_id is None or s <= from_id) and (to_id is None or s >= to_id)), reverse=True)
             if not todo:
                 reason = "nothing left to do (every crawled block is already indexed)"
@@ -779,7 +813,7 @@ def shift(pool_dir, index_dir, minutes=50, ceiling=DEFAULT_CEILING, client=None,
     return {**totals, "stop_reason": reason, "seconds": seconds, "pushed": pushed}
 
 
-def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING, bucket_dir=None):
+def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING, bucket_dir=None, extra_dirs=None):
     led = ledger(index_dir)
     blocks = pool_blocks(pool_dir)
     spent = tokens_spent(index_dir)
@@ -789,7 +823,8 @@ def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING, bucket_dir=None
         with open(logs[-1], encoding="utf-8") as fh:
             last = json.load(fh)
     crawl = {s_: v for s_, v in led.items() if s_ < BUCKET_BASE}
-    bucket = {s_: v for s_, v in led.items() if s_ >= BUCKET_BASE}
+    bucket = {s_: v for s_, v in led.items() if BUCKET_BASE <= s_ < EXTRA_BASE}
+    extra = {s_: v for s_, v in led.items() if s_ >= EXTRA_BASE}
     out = {"blocks_done": len(crawl), "docs_embedded": sum(v["docs"] for v in crawl.values()), "passages": sum(v["passages"] for v in crawl.values()),
            "tokens_spent": spent, "ceiling": ceiling, "ceiling_left": ceiling - spent,
            "blocks_pending": len([s_ for s_ in blocks if s_ not in led and blocks[s_]["ok"] > 0]), "lowest_id_done": min(crawl) if crawl else None,
@@ -798,6 +833,10 @@ def status_summary(pool_dir, index_dir, ceiling=DEFAULT_CEILING, bucket_dir=None
         bb = bucket_blocks(bucket_dir) if bucket_dir else {}
         out["bucket"] = {"blocks_done": len(bucket), "docs_embedded": sum(v["docs"] for v in bucket.values()), "passages": sum(v["passages"] for v in bucket.values()),
                          "tokens": sum(v["tokens"] for v in bucket.values()), "blocks_pending": (len([s_ for s_ in bb if s_ not in led and bb[s_]["ok"] > 0]) if bucket_dir else None)}
+    if extra or extra_dirs:                        # court archive and High Court blocks, counted apart again
+        eb = all_blocks(None, None, extra_dirs) if extra_dirs else {}
+        out["extra"] = {"blocks_done": len(extra), "docs_embedded": sum(v["docs"] for v in extra.values()), "passages": sum(v["passages"] for v in extra.values()),
+                        "tokens": sum(v["tokens"] for v in extra.values()), "blocks_pending": (len([s_ for s_ in eb if s_ not in led and eb[s_]["ok"] > 0]) if extra_dirs else None)}
     return out
 
 
@@ -972,10 +1011,12 @@ def main(argv=None):
     p.add_argument("--from-id", type=int, default=None)
     p.add_argument("--to-id", type=int, default=None)
     p.add_argument("--model", default=MODEL)
+    p.add_argument("--extra-dir", action="append", default=None, help="also index the prepared judgments under <dir>/index_blocks (a checkout of a data branch); may be given more than once")
     p = sub.add_parser("status")
     p.add_argument("--pool-dir", required=True)
     p.add_argument("--index-dir", required=True)
     p.add_argument("--bucket-dir", default=None)
+    p.add_argument("--extra-dir", action="append", default=None)
     p.add_argument("--ceiling", type=int, default=DEFAULT_CEILING)
     p = sub.add_parser("plan-bucket", help="what indexing the bucket would cost; prepares every pending block, calls nothing, spends nothing")
     p.add_argument("--bucket-dir", required=True)
@@ -994,13 +1035,13 @@ def main(argv=None):
     elif a.cmd == "active-check":
         print(active_check(os.getcwd()))
     elif a.cmd == "status":
-        print(json.dumps(status_summary(a.pool_dir, a.index_dir, a.ceiling, a.bucket_dir), indent=1))
+        print(json.dumps(status_summary(a.pool_dir, a.index_dir, a.ceiling, a.bucket_dir, a.extra_dir), indent=1))
     elif a.cmd == "plan-bucket":
         plan_bucket(a.bucket_dir, a.index_dir, load_skip_paths(a.skip_file), a.ceiling)
     elif a.cmd == "shift":
         skip = load_skip_paths(a.skip_file) if a.bucket_dir else None
         r = shift(a.pool_dir, a.index_dir, minutes=a.minutes, ceiling=a.ceiling, pause=a.pause, max_blocks=a.max_blocks, from_id=a.from_id, to_id=a.to_id, model=a.model,
-                  bucket_dir=a.bucket_dir, skip_paths=skip, max_new_tokens=a.max_new_tokens)
+                  bucket_dir=a.bucket_dir, skip_paths=skip, max_new_tokens=a.max_new_tokens, extra_dirs=a.extra_dir)
         print(f"Blocks done: {r['blocks_done']} | docs embedded: {r['docs_embedded']} | passages: {r['passages']} | tokens: {r['tokens']:,} | wasted: {r['wasted_tokens']:,}")
         print(f"Reason: {r['stop_reason']}")
     elif a.cmd == "eval":
