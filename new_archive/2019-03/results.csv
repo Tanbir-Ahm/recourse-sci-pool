@@ -49,7 +49,7 @@ https://api.sci.gov.in/supremecourt/2017/12928/12928_2017_Judgement_07-Mar-2019.
 https://api.sci.gov.in/supremecourt_vernacular/2017/12928/12928_2017_6_1503_12942_Judgement_07-Mar-2019_TAM.pdf,vernacular TAM,12928/2017,07-03-2019,,,,,,,,,,
 https://api.sci.gov.in/supremecourt/2008/13486/13486_2008_Judgement_12-Mar-2019.pdf,english judgment,13486/2008,12-03-2019,ok,9,7551,0,REPORTABLE,no,13de4c4146b82083a861d1d5b218fdba832fd0b2abad4533d7eb871de96c9cbd,yes,DILIP MANI DUBEY versus M/S SIEL LTD. & ANR.,9
 https://api.sci.gov.in/supremecourt_vernacular/2008/13486/13486_2008_6_1501_13125_Judgement_12-Mar-2019_HIN.pdf,vernacular HIN,13486/2008,12-03-2019,,,,,,,,,,
-https://api.sci.gov.in/supremecourt/2008/13695/13695_2008_Judgement_12-Mar-2019.pdf,english judgment,13695/2008,12-03-2019,error: ChunkedEncodingError,,,,,,,,,
+https://api.sci.gov.in/supremecourt/2008/13695/13695_2008_Judgement_12-Mar-2019.pdf,english judgment,13695/2008,12-03-2019,ok,7,5941,0,REPORTABLE,no,9a155fc1377965f164f8f0d8895fb111780484e752deb3880ebd28b28019fdb5,no,,9
 https://api.sci.gov.in/supremecourt_vernacular/2008/13695/13695_2008_6_1502_13125_Judgement_12-Mar-2019_HIN.pdf,vernacular HIN,13695/2008,12-03-2019,,,,,,,,,,
 https://api.sci.gov.in/supremecourt/2004/13882/13882_2004_Judgement_01-Mar-2019.pdf,english judgment,13882/2004,01-03-2019,ok,6,5994,0,REPORTABLE,no,4552adb2307337d7f5de60bb139dc929a50bfe22494aa2d55ac9d27af9e0b375,no,,8
 https://api.sci.gov.in/supremecourt/2017/14072/14072_2017_Judgement_05-Mar-2019.pdf,english judgment,14072/2017,05-03-2019,ok,13,12660,0,REPORTABLE,no,0794eff1b5ded39c8fa1e4095d26cba81dfd127edb16eaaeff46ee6e722ce473,yes,KAKADIA BUILDERS PVT. LTD. & ANR. versus INCOME TAX OFFICER ,12
