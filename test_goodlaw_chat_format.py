@@ -187,6 +187,15 @@ big = CF.Currency((CF.Line(CF.RED, "Reported adverse", "x " * 600, "2026-10-06",
 m = CF.render(passage("Alpha v Beta", text=LONG), big, max_chars=300)
 check(m.over_limit and all(CF._line_text(x) in m.text for x in m.lines) and len(m.text.split("“", 1)[1]) >= CF.MIN_PASSAGE, "if the warnings alone are longer than the limit, nothing is cut and the message says it is over the limit")
 
+print("a passage nobody could identify, and a passage-type line")
+m = F.format(passage("Judgment no. 555 (title not available)", identified=False))
+check(m.lines[0].rule == 6 and m.lines[0].level == CF.OUTLINE and "could not identify" in m.text and "No register entry" not in m.text and "NOT CHECKED BY US" in m.text, "an unidentified passage says it could not be identified, never 'no register entry'")
+check(any("not identified" in n for n in m.internal), "and the reviewer's note says the register and cards were not consulted")
+m = F.format(passage("Alpha v Beta", kind_label="Appears to record counsel's arguments, not the Court's view."))
+check("Passage: Appears to record counsel's arguments, not the Court's view." in m.text and m.text.index("Passage:") < m.text.index(PLACEHOLDER) and m.text.index("Alpha v Beta") < m.text.index("Passage:"), "a passage-type line sits under the case line, before the passage")
+check("Passage:" not in F.format(passage("Alpha v Beta")).text and "Passage:" not in F.format(passage("Alpha v Beta", kind_label="  ")).text, "no label, no line")
+check(raises(CF.WordingError, F.format, passage("Alpha v Beta", kind_label="This is good law.")), "a label that claims good law is refused like any other wording of ours")
+
 print("a batch")
 msgs = F.format_batch([passage("Alpha v Beta"), passage("Quiet v Case"), passage("Nobody v Nowhere")], shown=2)
 check(len(msgs) == 3 and "Found 3 passages" in msgs[0].text and "Showing 2" in msgs[0].text and CF.INTRO_FOOTER in msgs[0].text, "a header, then one message per passage shown")

@@ -36,7 +36,7 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 ## Offline message formatter (not connected)
 
-`goodlaw/chat_format.py` turns a retrieved passage plus what the Overruled Register and the currency cards say about its case into one plain-text chat message with the warning first ("Reported adverse", "Questioned", "Not checked by us", and so on). It words only what the register and the cards already say, never calls a case "good law", and never cuts a warning to fit; only the passage is shortened. Nothing is sent and nothing is connected. One decision is the owner's: how a quiet card is shown (`quiet_policy` has no default). Details: `FOLLOW_UPS.md` item 1o. Tests: `python test_goodlaw_chat_format.py`.
+`goodlaw/chat_format.py` turns a retrieved passage plus what the Overruled Register and the currency cards say about its case into one plain-text chat message with the warning first ("Reported adverse", "Questioned", "Not checked by us", and so on). It words only what the register and the cards already say, never calls a case "good law", and never cuts a warning to fit; only the passage is shortened. Nothing is sent and nothing is connected. One decision is the owner's: how a quiet card is shown (`quiet_policy` has no default). `goodlaw/passage_input.py` turns a search hit (an index passage row) into the formatter's input, naming the judgment from the checker's corpus (the index itself carries no title for most crawl judgments). Details: `FOLLOW_UPS.md` items 1o and 1p. Tests: `python test_goodlaw_chat_format.py`, `python test_goodlaw_passage_input.py`.
 
 ## Internal case-data layer (offline slice, not connected)
 

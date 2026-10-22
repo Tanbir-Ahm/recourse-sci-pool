@@ -15,6 +15,8 @@ Which line a case gets (first match decides the main line; a card's warning or c
   5. the card is quiet (nothing adverse in what we hold)                           GREY     a coverage note, or no line at all, by `quiet_policy`
   6. anything else: no card, too few later judgments, a High Court case, a judgment we do not hold, a case the matcher could not place     OUTLINE  "Not checked by us"
   +  the card says a section it cites was renumbered under the 2023 codes         INFO     one more line
+A passage the connector could not attach to a judgment (`identified: False`, see passage_input.py) gets "Not checked by us" with its own body: nothing was looked up, so it must not say "no register entry".
+An optional `kind_label` (for example "Appears to record counsel's arguments, not the Court's view") adds one "Passage: ..." line under the case line; it is our wording and goes through the wording guard.
 
 Rules this keeps (test_goodlaw_chat_format.py checks each):
   * a case with a warning never comes out without it, and shortening a long passage never cuts a warning: only the passage is shortened, at a word boundary, and the message says so
@@ -45,6 +47,8 @@ NOT_CHECKED_BODY = {
 QUIET_HEAD = "No warning found in what we hold"
 QUIET_BODY = "This is not a finding that the case is good law."
 INTRO_FOOTER = "Results are not independently verified. Check any case before you cite it."
+NOT_IDENTIFIED_BODY = ("We could not identify which judgment this passage comes from, so we have not checked it against the register or for later treatment. "
+                       "Verify it before you cite it.")
 ADVERSE_FALLBACK = "A later judgment may be adverse to this case. Check it before relying on it."
 STALE_SENTENCE = "This check was run on {date} and may be out of date."
 ALLOWED_FRAGMENTS = (QUIET_BODY, "held not to be good law in")        # the only places our own wording may contain "good law": a refusal to claim it, and a court's holding
@@ -123,15 +127,17 @@ def render(passage, currency, intro=False, max_chars=3500, with_watch=False):
     name, text = (passage.get("case_name") or "").strip(), (passage.get("text") or "").strip()
     if not name or not text:
         raise ValueError("a passage needs a case_name and its text")
+    kind = (passage.get("kind_label") or "").strip().rstrip(".")
     own = "\n\n".join(_line_text(l) for l in currency.lines)
     if intro:
         own = (own + "\n\n" if own else "") + INTRO_FOOTER
-    bad = wording_violations(own)
+    bad = wording_violations(own + " " + kind)
     if bad:
         raise WordingError(f"our wording contains {bad}: nothing was built")
     meta = " · ".join(str(x) for x in (passage.get("court"), passage.get("year"), f"para {passage['para']}" if passage.get("para") else None,
                                         f"page {passage['page']}" if passage.get("page") else None) if x)
-    head = "\n\n".join(p for p in ("\n\n".join(_line_text(l) for l in currency.lines), name + ("\n" + meta if meta else "")) if p)
+    title = name + ("\n" + meta if meta else "") + (f"\nPassage: {kind}." if kind else "")
+    head = "\n\n".join(p for p in ("\n\n".join(_line_text(l) for l in currency.lines), title) if p)
     tail = ("\n\n" + INTRO_FOOTER) if intro else ""
     budget = max_chars - len(head) - len(tail) - 6                    # 6: the blank line and the two quote marks
     quoted, truncated = _shorten(text, max(budget, MIN_PASSAGE))
@@ -197,7 +203,10 @@ class Formatter:
         return Currency(tuple(lines), tuple(internal))
 
     def format(self, passage, intro=False, max_chars=3500, with_watch=False):
-        cur = self.currency(passage.get("case_name"), passage.get("year"), passage.get("citation"))
+        if passage.get("identified") is False:               # the connector could not tell which judgment this is: the register and the cards were never consulted, and the message says so
+            cur = Currency((Line(OUTLINE, NOT_CHECKED, NOT_IDENTIFIED_BODY, "", 6),), ("judgment not identified: register and cards not consulted",))
+        else:
+            cur = self.currency(passage.get("case_name"), passage.get("year"), passage.get("citation"))
         return render(passage, cur, intro=intro, max_chars=max_chars, with_watch=with_watch)
 
     def format_batch(self, passages, shown=None, max_chars=3500, with_watch=False):
