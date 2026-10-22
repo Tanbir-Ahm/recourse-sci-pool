@@ -1,0 +1,3859 @@
+{
+ "previous_commit": "a824e6b215afcd5c9a5fec55ee2c1e143cf35d61",
+ "note": "",
+ "totals": {
+  "blocks_rewritten": 24,
+  "docs_removed": 147,
+  "passages_removed": 4978,
+  "tokens_unchanged": 82871528
+ },
+ "groups": [
+  {
+   "keep": 1000250391,
+   "remove": [
+    2000250160
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000250391,
+    2000250160
+   ]
+  },
+  {
+   "keep": 1000250682,
+   "remove": [
+    2000250266
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000250682,
+    2000250266
+   ]
+  },
+  {
+   "keep": 1000251396,
+   "remove": [
+    2000250644
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000251396,
+    2000250644
+   ]
+  },
+  {
+   "keep": 1000251913,
+   "remove": [
+    2000250797
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000251913,
+    2000250797
+   ]
+  },
+  {
+   "keep": 1000255466,
+   "remove": [
+    2000251841
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000255466,
+    2000251841
+   ]
+  },
+  {
+   "keep": 1000255609,
+   "remove": [
+    2000251873
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000255609,
+    2000251873
+   ]
+  },
+  {
+   "keep": 1000256191,
+   "remove": [
+    2000252076
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256191,
+    2000252076
+   ]
+  },
+  {
+   "keep": 1000256193,
+   "remove": [
+    2000252074
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256193,
+    2000252074
+   ]
+  },
+  {
+   "keep": 1000256204,
+   "remove": [
+    2000252089
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256204,
+    2000252089
+   ]
+  },
+  {
+   "keep": 1000256208,
+   "remove": [
+    2000252091
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256208,
+    2000252091
+   ]
+  },
+  {
+   "keep": 1000256212,
+   "remove": [
+    2000252081
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256212,
+    2000252081
+   ]
+  },
+  {
+   "keep": 1000256229,
+   "remove": [
+    2000252114
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256229,
+    2000252114
+   ]
+  },
+  {
+   "keep": 1000256230,
+   "remove": [
+    2000252117
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256230,
+    2000252117
+   ]
+  },
+  {
+   "keep": 1000256235,
+   "remove": [
+    2000252112
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256235,
+    2000252112
+   ]
+  },
+  {
+   "keep": 1000256237,
+   "remove": [
+    2000252118
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256237,
+    2000252118
+   ]
+  },
+  {
+   "keep": 1000256243,
+   "remove": [
+    2000252128
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256243,
+    2000252128
+   ]
+  },
+  {
+   "keep": 1000256253,
+   "remove": [
+    2000252135
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256253,
+    2000252135
+   ]
+  },
+  {
+   "keep": 1000256254,
+   "remove": [
+    2000252152
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256254,
+    2000252152
+   ]
+  },
+  {
+   "keep": 1000256258,
+   "remove": [
+    2000252160
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256258,
+    2000252160
+   ]
+  },
+  {
+   "keep": 1000256259,
+   "remove": [
+    2000252162
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256259,
+    2000252162
+   ]
+  },
+  {
+   "keep": 1000256260,
+   "remove": [
+    2000252161
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256260,
+    2000252161
+   ]
+  },
+  {
+   "keep": 1000256265,
+   "remove": [
+    2000252166
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256265,
+    2000252166
+   ]
+  },
+  {
+   "keep": 1000256279,
+   "remove": [
+    2000252174
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256279,
+    2000252174
+   ]
+  },
+  {
+   "keep": 1000256280,
+   "remove": [
+    2000252172
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256280,
+    2000252172
+   ]
+  },
+  {
+   "keep": 1000256298,
+   "remove": [
+    2000252181
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256298,
+    2000252181
+   ]
+  },
+  {
+   "keep": 1000256299,
+   "remove": [
+    2000252183
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256299,
+    2000252183
+   ]
+  },
+  {
+   "keep": 1000256306,
+   "remove": [
+    2000252186
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256306,
+    2000252186
+   ]
+  },
+  {
+   "keep": 1000256340,
+   "remove": [
+    2000252196
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256340,
+    2000252196
+   ]
+  },
+  {
+   "keep": 1000256346,
+   "remove": [
+    2000252202
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256346,
+    2000252202
+   ]
+  },
+  {
+   "keep": 1000256350,
+   "remove": [
+    2000252215
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256350,
+    2000252215
+   ]
+  },
+  {
+   "keep": 1000256351,
+   "remove": [
+    2000252210
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256351,
+    2000252210
+   ]
+  },
+  {
+   "keep": 1000256352,
+   "remove": [
+    2000252213
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256352,
+    2000252213
+   ]
+  },
+  {
+   "keep": 1000256356,
+   "remove": [
+    2000252206
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256356,
+    2000252206
+   ]
+  },
+  {
+   "keep": 1000256357,
+   "remove": [
+    2000252219
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256357,
+    2000252219
+   ]
+  },
+  {
+   "keep": 1000256358,
+   "remove": [
+    2000252218
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256358,
+    2000252218
+   ]
+  },
+  {
+   "keep": 1000256360,
+   "remove": [
+    2000252222
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256360,
+    2000252222
+   ]
+  },
+  {
+   "keep": 1000256363,
+   "remove": [
+    2000252230
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256363,
+    2000252230
+   ]
+  },
+  {
+   "keep": 1000256364,
+   "remove": [
+    2000252233
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256364,
+    2000252233
+   ]
+  },
+  {
+   "keep": 1000256371,
+   "remove": [
+    2000252244
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256371,
+    2000252244
+   ]
+  },
+  {
+   "keep": 1000256374,
+   "remove": [
+    2000252252
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256374,
+    2000252252
+   ]
+  },
+  {
+   "keep": 1000256380,
+   "remove": [
+    2000252260
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256380,
+    2000252260
+   ]
+  },
+  {
+   "keep": 1000256394,
+   "remove": [
+    2000252268
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256394,
+    2000252268
+   ]
+  },
+  {
+   "keep": 1000256409,
+   "remove": [
+    2000252277
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256409,
+    2000252277
+   ]
+  },
+  {
+   "keep": 1000256411,
+   "remove": [
+    2000252281
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256411,
+    2000252281
+   ]
+  },
+  {
+   "keep": 1000256438,
+   "remove": [
+    2000252294
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256438,
+    2000252294
+   ]
+  },
+  {
+   "keep": 1000256439,
+   "remove": [
+    2000252292
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256439,
+    2000252292
+   ]
+  },
+  {
+   "keep": 1000256441,
+   "remove": [
+    2000252297
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256441,
+    2000252297
+   ]
+  },
+  {
+   "keep": 1000256452,
+   "remove": [
+    2000252307
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256452,
+    2000252307
+   ]
+  },
+  {
+   "keep": 1000256457,
+   "remove": [
+    2000252314
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256457,
+    2000252314
+   ]
+  },
+  {
+   "keep": 1000256458,
+   "remove": [
+    2000252325
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256458,
+    2000252325
+   ]
+  },
+  {
+   "keep": 1000256459,
+   "remove": [
+    2000252320
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256459,
+    2000252320
+   ]
+  },
+  {
+   "keep": 1000256468,
+   "remove": [
+    2000252328
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256468,
+    2000252328
+   ]
+  },
+  {
+   "keep": 1000256485,
+   "remove": [
+    2000252340
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256485,
+    2000252340
+   ]
+  },
+  {
+   "keep": 1000256521,
+   "remove": [
+    2000252361
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256521,
+    2000252361
+   ]
+  },
+  {
+   "keep": 1000256527,
+   "remove": [
+    2000252364
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256527,
+    2000252364
+   ]
+  },
+  {
+   "keep": 1000256552,
+   "remove": [
+    2000252385
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256552,
+    2000252385
+   ]
+  },
+  {
+   "keep": 1000256569,
+   "remove": [
+    2000252402
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256569,
+    2000252402
+   ]
+  },
+  {
+   "keep": 1000256580,
+   "remove": [
+    2000252406
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256580,
+    2000252406
+   ]
+  },
+  {
+   "keep": 1000256587,
+   "remove": [
+    2000252421
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256587,
+    2000252421
+   ]
+  },
+  {
+   "keep": 1000256668,
+   "remove": [
+    2000252445
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256668,
+    2000252445
+   ]
+  },
+  {
+   "keep": 1000256672,
+   "remove": [
+    2000252450
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256672,
+    2000252450
+   ]
+  },
+  {
+   "keep": 1000256701,
+   "remove": [
+    2000252480
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256701,
+    2000252480
+   ]
+  },
+  {
+   "keep": 1000256710,
+   "remove": [
+    2000252490
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256710,
+    2000252490
+   ]
+  },
+  {
+   "keep": 1000256713,
+   "remove": [
+    2000252482
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256713,
+    2000252482
+   ]
+  },
+  {
+   "keep": 1000256732,
+   "remove": [
+    2000252506
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256732,
+    2000252506
+   ]
+  },
+  {
+   "keep": 1000256755,
+   "remove": [
+    2000252522
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256755,
+    2000252522
+   ]
+  },
+  {
+   "keep": 1000256770,
+   "remove": [
+    2000252543
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256770,
+    2000252543
+   ]
+  },
+  {
+   "keep": 1000256771,
+   "remove": [
+    2000252538
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256771,
+    2000252538
+   ]
+  },
+  {
+   "keep": 1000256887,
+   "remove": [
+    2000252572
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256887,
+    2000252572
+   ]
+  },
+  {
+   "keep": 1000256892,
+   "remove": [
+    2000252573
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256892,
+    2000252573
+   ]
+  },
+  {
+   "keep": 1000256896,
+   "remove": [
+    2000252583
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256896,
+    2000252583
+   ]
+  },
+  {
+   "keep": 1000256898,
+   "remove": [
+    2000252584
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256898,
+    2000252584
+   ]
+  },
+  {
+   "keep": 2000000022,
+   "remove": [
+    2000501048
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000022,
+    2000501048
+   ]
+  },
+  {
+   "keep": 2000000139,
+   "remove": [
+    2000501842
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000139,
+    2000501842
+   ]
+  },
+  {
+   "keep": 2000000171,
+   "remove": [
+    2000501955
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000171,
+    2000501955
+   ]
+  },
+  {
+   "keep": 2000000221,
+   "remove": [
+    2000502179
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000221,
+    2000502179
+   ]
+  },
+  {
+   "keep": 2000000253,
+   "remove": [
+    2000502514
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000253,
+    2000502514
+   ]
+  },
+  {
+   "keep": 2000000254,
+   "remove": [
+    2000502515
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000254,
+    2000502515
+   ]
+  },
+  {
+   "keep": 2000000255,
+   "remove": [
+    2000502543
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000255,
+    2000502543
+   ]
+  },
+  {
+   "keep": 2000000256,
+   "remove": [
+    2000502544
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000256,
+    2000502544
+   ]
+  },
+  {
+   "keep": 2000000257,
+   "remove": [
+    2000502541
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000257,
+    2000502541
+   ]
+  },
+  {
+   "keep": 2000000258,
+   "remove": [
+    2000502554
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000258,
+    2000502554
+   ]
+  },
+  {
+   "keep": 2000000259,
+   "remove": [
+    2000502553
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000259,
+    2000502553
+   ]
+  },
+  {
+   "keep": 2000000260,
+   "remove": [
+    2000502560
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000260,
+    2000502560
+   ]
+  },
+  {
+   "keep": 2000000315,
+   "remove": [
+    2000503030
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000315,
+    2000503030
+   ]
+  },
+  {
+   "keep": 2000000533,
+   "remove": [
+    2000500002
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000533,
+    2000500002
+   ]
+  },
+  {
+   "keep": 2000000771,
+   "remove": [
+    2000504409
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000771,
+    2000504409
+   ]
+  },
+  {
+   "keep": 2000250421,
+   "remove": [
+    1000250931
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000250931,
+    2000250421
+   ]
+  },
+  {
+   "keep": 2000251024,
+   "remove": [
+    1000252641
+   ],
+   "reason": "the bucket record headed Rana Nahid @ Reshma v. Sahidul Haq Chisti ([2020] 7 SCR 324) carries the body of Rhea Chakraborty v. State of Bihar (TP (Crl.) 225/2020); the newer-archive copy 2000251024 has the right header",
+   "members": [
+    2000251024,
+    1000252641
+   ]
+  },
+  {
+   "keep": 2000251434,
+   "remove": [
+    1000253991
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000253991,
+    2000251434
+   ]
+  },
+  {
+   "keep": 2000251969,
+   "remove": [
+    1000255899
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000255899,
+    2000251969
+   ]
+  },
+  {
+   "keep": 2000252008,
+   "remove": [
+    1000255991
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000255991,
+    2000252008
+   ]
+  },
+  {
+   "keep": 2000252020,
+   "remove": [
+    1000256039
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256039,
+    2000252020
+   ]
+  },
+  {
+   "keep": 2000252045,
+   "remove": [
+    1000256123
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256123,
+    2000252045
+   ]
+  },
+  {
+   "keep": 2000252088,
+   "remove": [
+    1000256209
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256209,
+    2000252088
+   ]
+  },
+  {
+   "keep": 2000252090,
+   "remove": [
+    1000256219
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256219,
+    2000252090
+   ]
+  },
+  {
+   "keep": 2000252093,
+   "remove": [
+    1000256215
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256215,
+    2000252093
+   ]
+  },
+  {
+   "keep": 2000252107,
+   "remove": [
+    1000256233
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256233,
+    2000252107
+   ]
+  },
+  {
+   "keep": 2000252113,
+   "remove": [
+    1000256231
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256231,
+    2000252113
+   ]
+  },
+  {
+   "keep": 2000252132,
+   "remove": [
+    1000256249
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256249,
+    2000252132
+   ]
+  },
+  {
+   "keep": 2000252134,
+   "remove": [
+    1000256248
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256248,
+    2000252134
+   ]
+  },
+  {
+   "keep": 2000252138,
+   "remove": [
+    1000256251
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256251,
+    2000252138
+   ]
+  },
+  {
+   "keep": 2000252170,
+   "remove": [
+    1000256274
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256274,
+    2000252170
+   ]
+  },
+  {
+   "keep": 2000252198,
+   "remove": [
+    1000256338
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256338,
+    2000252198
+   ]
+  },
+  {
+   "keep": 2000252203,
+   "remove": [
+    1000256353
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256353,
+    2000252203
+   ]
+  },
+  {
+   "keep": 2000252243,
+   "remove": [
+    1000256365
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256365,
+    2000252243
+   ]
+  },
+  {
+   "keep": 2000252250,
+   "remove": [
+    1000256376
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256376,
+    2000252250
+   ]
+  },
+  {
+   "keep": 2000252255,
+   "remove": [
+    1000256387
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256387,
+    2000252255
+   ]
+  },
+  {
+   "keep": 2000252262,
+   "remove": [
+    1000256389
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256389,
+    2000252262
+   ]
+  },
+  {
+   "keep": 2000252267,
+   "remove": [
+    1000256396
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256396,
+    2000252267
+   ]
+  },
+  {
+   "keep": 2000252270,
+   "remove": [
+    1000256392
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256392,
+    2000252270
+   ]
+  },
+  {
+   "keep": 2000252272,
+   "remove": [
+    1000256397
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256397,
+    2000252272
+   ]
+  },
+  {
+   "keep": 2000252276,
+   "remove": [
+    1000256405
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256405,
+    2000252276
+   ]
+  },
+  {
+   "keep": 2000252286,
+   "remove": [
+    1000256413
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256413,
+    2000252286
+   ]
+  },
+  {
+   "keep": 2000252296,
+   "remove": [
+    1000256440
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256440,
+    2000252296
+   ]
+  },
+  {
+   "keep": 2000252299,
+   "remove": [
+    1000256445
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256445,
+    2000252299
+   ]
+  },
+  {
+   "keep": 2000252302,
+   "remove": [
+    1000256449
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256449,
+    2000252302
+   ]
+  },
+  {
+   "keep": 2000252318,
+   "remove": [
+    1000256454
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256454,
+    2000252318
+   ]
+  },
+  {
+   "keep": 2000252329,
+   "remove": [
+    1000256470
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256470,
+    2000252329
+   ]
+  },
+  {
+   "keep": 2000252333,
+   "remove": [
+    1000256467
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256467,
+    2000252333
+   ]
+  },
+  {
+   "keep": 2000252335,
+   "remove": [
+    1000256475
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256475,
+    2000252335
+   ]
+  },
+  {
+   "keep": 2000252345,
+   "remove": [
+    1000256484
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256484,
+    2000252345
+   ]
+  },
+  {
+   "keep": 2000252363,
+   "remove": [
+    1000256522
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256522,
+    2000252363
+   ]
+  },
+  {
+   "keep": 2000252371,
+   "remove": [
+    1000256529
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256529,
+    2000252371
+   ]
+  },
+  {
+   "keep": 2000252372,
+   "remove": [
+    1000256528
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256528,
+    2000252372
+   ]
+  },
+  {
+   "keep": 2000252376,
+   "remove": [
+    1000256537
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256537,
+    2000252376
+   ]
+  },
+  {
+   "keep": 2000252397,
+   "remove": [
+    1000256557
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256557,
+    2000252397
+   ]
+  },
+  {
+   "keep": 2000252411,
+   "remove": [
+    1000256578
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256578,
+    2000252411
+   ]
+  },
+  {
+   "keep": 2000252446,
+   "remove": [
+    1000256675
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256675,
+    2000252446
+   ]
+  },
+  {
+   "keep": 2000252462,
+   "remove": [
+    1000256686
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256686,
+    2000252462
+   ]
+  },
+  {
+   "keep": 2000252463,
+   "remove": [
+    1000256683
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256683,
+    2000252463
+   ]
+  },
+  {
+   "keep": 2000252465,
+   "remove": [
+    1000256692
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256692,
+    2000252465
+   ]
+  },
+  {
+   "keep": 2000252479,
+   "remove": [
+    1000256703
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256703,
+    2000252479
+   ]
+  },
+  {
+   "keep": 2000252486,
+   "remove": [
+    1000256714
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256714,
+    2000252486
+   ]
+  },
+  {
+   "keep": 2000252493,
+   "remove": [
+    1000256711
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256711,
+    2000252493
+   ]
+  },
+  {
+   "keep": 2000252494,
+   "remove": [
+    1000256722
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256722,
+    2000252494
+   ]
+  },
+  {
+   "keep": 2000252510,
+   "remove": [
+    1000256730
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256730,
+    2000252510
+   ]
+  },
+  {
+   "keep": 2000252514,
+   "remove": [
+    1000256749
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256749,
+    2000252514
+   ]
+  },
+  {
+   "keep": 2000252516,
+   "remove": [
+    1000256751
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256751,
+    2000252516
+   ]
+  },
+  {
+   "keep": 2000252520,
+   "remove": [
+    1000256748
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256748,
+    2000252520
+   ]
+  },
+  {
+   "keep": 2000252542,
+   "remove": [
+    1000256773
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256773,
+    2000252542
+   ]
+  },
+  {
+   "keep": 2000252545,
+   "remove": [
+    1000256784
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256784,
+    2000252545
+   ]
+  },
+  {
+   "keep": 2000252547,
+   "remove": [
+    1000256789
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256789,
+    2000252547
+   ]
+  },
+  {
+   "keep": 2000252585,
+   "remove": [
+    1000256901
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256901,
+    2000252585
+   ]
+  },
+  {
+   "keep": 2000252603,
+   "remove": [
+    1000256878
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256878,
+    2000252603
+   ]
+  },
+  {
+   "keep": 2000252609,
+   "remove": [
+    1000256891
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    1000256891,
+    2000252609
+   ]
+  },
+  {
+   "keep": 2000502564,
+   "remove": [
+    2000000261
+   ],
+   "reason": "same case: matching parties, no conflicting case number",
+   "members": [
+    2000000261,
+    2000502564
+   ]
+  }
+ ],
+ "review": [
+  {
+   "pair": [
+    16829,
+    16830
+   ],
+   "overlap": 0.9998,
+   "why": "party names differ (similarity 0.18)"
+  },
+  {
+   "pair": [
+    16829,
+    16831
+   ],
+   "overlap": 0.9998,
+   "why": "party names differ (similarity 0.38)"
+  },
+  {
+   "pair": [
+    16830,
+    16831
+   ],
+   "overlap": 0.9999,
+   "why": "party names differ (similarity 0.33)"
+  },
+  {
+   "pair": [
+    26743,
+    27526
+   ],
+   "overlap": 0.838,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27232
+   ],
+   "overlap": 0.8053,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27233
+   ],
+   "overlap": 0.8296,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27234
+   ],
+   "overlap": 0.8926,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27235
+   ],
+   "overlap": 0.848,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27262
+   ],
+   "overlap": 0.9156,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27263
+   ],
+   "overlap": 0.8805,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27264
+   ],
+   "overlap": 0.8563,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27265
+   ],
+   "overlap": 0.8555,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27266
+   ],
+   "overlap": 0.8605,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27267
+   ],
+   "overlap": 0.848,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27268
+   ],
+   "overlap": 0.8129,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27269
+   ],
+   "overlap": 0.8939,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27224,
+    27281
+   ],
+   "overlap": 0.8538,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27233
+   ],
+   "overlap": 0.8947,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27234
+   ],
+   "overlap": 0.8218,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27235
+   ],
+   "overlap": 0.8574,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27262
+   ],
+   "overlap": 0.8149,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27263
+   ],
+   "overlap": 0.8156,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27264
+   ],
+   "overlap": 0.8512,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27265
+   ],
+   "overlap": 0.8521,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27266
+   ],
+   "overlap": 0.8345,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27267
+   ],
+   "overlap": 0.8799,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27268
+   ],
+   "overlap": 0.889,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27269
+   ],
+   "overlap": 0.8143,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27232,
+    27281
+   ],
+   "overlap": 0.8231,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27234
+   ],
+   "overlap": 0.8368,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27235
+   ],
+   "overlap": 0.8385,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27262
+   ],
+   "overlap": 0.8358,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27263
+   ],
+   "overlap": 0.8365,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27264
+   ],
+   "overlap": 0.84,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27265
+   ],
+   "overlap": 0.8368,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27266
+   ],
+   "overlap": 0.8421,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27267
+   ],
+   "overlap": 0.8525,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27268
+   ],
+   "overlap": 0.9105,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27269
+   ],
+   "overlap": 0.8367,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27233,
+    27281
+   ],
+   "overlap": 0.8206,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27235
+   ],
+   "overlap": 0.8576,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27262
+   ],
+   "overlap": 0.9026,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27263
+   ],
+   "overlap": 0.8676,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27264
+   ],
+   "overlap": 0.8526,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27265
+   ],
+   "overlap": 0.8501,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27266
+   ],
+   "overlap": 0.8643,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27267
+   ],
+   "overlap": 0.8551,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27268
+   ],
+   "overlap": 0.8376,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27269
+   ],
+   "overlap": 0.8964,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27234,
+    27281
+   ],
+   "overlap": 0.8501,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27262
+   ],
+   "overlap": 0.8685,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27263
+   ],
+   "overlap": 0.9028,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27264
+   ],
+   "overlap": 0.8871,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27265
+   ],
+   "overlap": 0.8846,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27266
+   ],
+   "overlap": 0.871,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27267
+   ],
+   "overlap": 0.8909,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27268
+   ],
+   "overlap": 0.8402,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27269
+   ],
+   "overlap": 0.8466,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27235,
+    27281
+   ],
+   "overlap": 0.86,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27263
+   ],
+   "overlap": 0.9288,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27264
+   ],
+   "overlap": 0.8652,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27265
+   ],
+   "overlap": 0.866,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27266
+   ],
+   "overlap": 0.8727,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27267
+   ],
+   "overlap": 0.861,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27268
+   ],
+   "overlap": 0.8283,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27269
+   ],
+   "overlap": 0.9022,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27262,
+    27281
+   ],
+   "overlap": 0.861,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27264
+   ],
+   "overlap": 0.8659,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27265
+   ],
+   "overlap": 0.8659,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27266
+   ],
+   "overlap": 0.8718,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27267
+   ],
+   "overlap": 0.8592,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27268
+   ],
+   "overlap": 0.8273,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27269
+   ],
+   "overlap": 0.8673,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27263,
+    27281
+   ],
+   "overlap": 0.86,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27265
+   ],
+   "overlap": 0.9427,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27266
+   ],
+   "overlap": 0.8964,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27267
+   ],
+   "overlap": 0.8956,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27268
+   ],
+   "overlap": 0.8417,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27269
+   ],
+   "overlap": 0.8466,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27264,
+    27281
+   ],
+   "overlap": 0.8935,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27266
+   ],
+   "overlap": 0.8947,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27267
+   ],
+   "overlap": 0.8872,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27268
+   ],
+   "overlap": 0.8385,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27269
+   ],
+   "overlap": 0.8449,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27265,
+    27281
+   ],
+   "overlap": 0.891,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27267
+   ],
+   "overlap": 0.8786,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27268
+   ],
+   "overlap": 0.8413,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27269
+   ],
+   "overlap": 0.8706,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27266,
+    27281
+   ],
+   "overlap": 0.8952,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27267,
+    27268
+   ],
+   "overlap": 0.8537,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27267,
+    27269
+   ],
+   "overlap": 0.8532,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27267,
+    27281
+   ],
+   "overlap": 0.8609,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27268,
+    27269
+   ],
+   "overlap": 0.8184,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27268,
+    27281
+   ],
+   "overlap": 0.8223,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27269,
+    27281
+   ],
+   "overlap": 0.8449,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27283
+   ],
+   "overlap": 0.8146,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27284
+   ],
+   "overlap": 0.825,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27292
+   ],
+   "overlap": 0.8373,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27293
+   ],
+   "overlap": 0.8222,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27282,
+    27294
+   ],
+   "overlap": 0.8374,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27283,
+    27284
+   ],
+   "overlap": 0.8517,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27283,
+    27294
+   ],
+   "overlap": 0.8496,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27283,
+    27295
+   ],
+   "overlap": 0.849,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27284,
+    27294
+   ],
+   "overlap": 0.8439,
+   "why": "party names differ (similarity 0.25)"
+  },
+  {
+   "pair": [
+    27284,
+    27295
+   ],
+   "overlap": 0.8333,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27292,
+    27293
+   ],
+   "overlap": 0.8294,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27292,
+    27294
+   ],
+   "overlap": 0.8008,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27292,
+    27295
+   ],
+   "overlap": 0.8167,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27293,
+    27294
+   ],
+   "overlap": 0.8027,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    27294,
+    27295
+   ],
+   "overlap": 0.8438,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    32073,
+    32075
+   ],
+   "overlap": 0.9112,
+   "why": "party names differ (similarity 0.50)"
+  },
+  {
+   "pair": [
+    32759,
+    32760
+   ],
+   "overlap": 0.9736,
+   "why": "party names differ (similarity 0.20)"
+  },
+  {
+   "pair": [
+    32759,
+    32761
+   ],
+   "overlap": 0.9736,
+   "why": "party names differ (similarity 0.20)"
+  },
+  {
+   "pair": [
+    32760,
+    32761
+   ],
+   "overlap": 0.9861,
+   "why": "party names differ (similarity 0.20)"
+  },
+  {
+   "pair": [
+    33526,
+    33527
+   ],
+   "overlap": 0.9549,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    33843,
+    33846
+   ],
+   "overlap": 0.9125,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    34330,
+    34331
+   ],
+   "overlap": 0.9216,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    39815,
+    39943
+   ],
+   "overlap": 0.9913,
+   "why": "same parties but different case numbers"
+  },
+  {
+   "pair": [
+    1000251169,
+    1000251170
+   ],
+   "overlap": 0.8098,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    1000252641,
+    2000251024
+   ],
+   "overlap": 0.9237,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000016,
+    2000500625
+   ],
+   "overlap": 0.934,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000047,
+    2000501222
+   ],
+   "overlap": 0.8981,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000047,
+    2000501224
+   ],
+   "overlap": 0.8981,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000266,
+    2000502787
+   ],
+   "overlap": 0.8604,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000368,
+    2000503698
+   ],
+   "overlap": 0.8502,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000368,
+    2000503702
+   ],
+   "overlap": 0.8502,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000377,
+    2000000378
+   ],
+   "overlap": 0.9478,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000390,
+    2000504570
+   ],
+   "overlap": 0.8766,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000390,
+    2000504571
+   ],
+   "overlap": 0.8766,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000475,
+    2000506327
+   ],
+   "overlap": 0.9164,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000485,
+    2000506332
+   ],
+   "overlap": 0.8788,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000507,
+    2000506389
+   ],
+   "overlap": 0.9204,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000626,
+    2000507204
+   ],
+   "overlap": 0.8922,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000626,
+    2000507206
+   ],
+   "overlap": 0.8922,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000626,
+    2000507207
+   ],
+   "overlap": 0.8922,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000626,
+    2000507208
+   ],
+   "overlap": 0.8922,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000626,
+    2000507212
+   ],
+   "overlap": 0.8922,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000650,
+    2000507545
+   ],
+   "overlap": 0.8708,
+   "why": "party names differ (similarity 0.04)"
+  },
+  {
+   "pair": [
+    2000000758,
+    2000508212
+   ],
+   "overlap": 0.9005,
+   "why": "party names differ (similarity 0.06)"
+  },
+  {
+   "pair": [
+    2000000767,
+    2000508250
+   ],
+   "overlap": 0.9409,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000771,
+    2000504408
+   ],
+   "overlap": 0.9025,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000771,
+    2000508258
+   ],
+   "overlap": 0.9025,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000771,
+    2000508259
+   ],
+   "overlap": 0.9025,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000000771,
+    2000508266
+   ],
+   "overlap": 0.9025,
+   "why": "party names differ (similarity 0.00)"
+  },
+  {
+   "pair": [
+    2000500583,
+    2000500585
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000500674,
+    2000500675
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000500674,
+    2000500676
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000500674,
+    2000500677
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000500675,
+    2000500676
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000500675,
+    2000500677
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000500676,
+    2000500677
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000501222,
+    2000501224
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000501235,
+    2000501238
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000501771,
+    2000501773
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000501780,
+    2000501781
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000501938,
+    2000501943
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502032,
+    2000502035
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502201,
+    2000502202
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502219,
+    2000502220
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502366,
+    2000502367
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502366,
+    2000502368
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502367,
+    2000502368
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502392,
+    2000502393
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502392,
+    2000502395
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502393,
+    2000502395
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502812,
+    2000502815
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502812,
+    2000502816
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502815,
+    2000502816
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502951,
+    2000502952
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000502996,
+    2000503002
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503135,
+    2000503136
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503162,
+    2000503174
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503162,
+    2000503176
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503164,
+    2000503166
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503164,
+    2000503170
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503166,
+    2000503170
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503174,
+    2000503176
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503234,
+    2000503238
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503243,
+    2000503245
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503243,
+    2000503246
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503245,
+    2000503246
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503403,
+    2000503407
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503470,
+    2000503471
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503470,
+    2000503472
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503471,
+    2000503472
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503559,
+    2000503560
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503698,
+    2000503702
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503743,
+    2000503746
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503781,
+    2000503782
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000503849,
+    2000503851
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504012,
+    2000504016
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504088,
+    2000504089
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504386,
+    2000504387
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504408,
+    2000504409
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504408,
+    2000508258
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504408,
+    2000508259
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504408,
+    2000508266
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504409,
+    2000508258
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504409,
+    2000508259
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504409,
+    2000508266
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504470,
+    2000504473
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504470,
+    2000504478
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504473,
+    2000504478
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504570,
+    2000504571
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504584,
+    2000504585
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504658,
+    2000504673
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504849,
+    2000504853
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000504855,
+    2000504857
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505283,
+    2000505284
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505587,
+    2000505588
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505616,
+    2000505619
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505616,
+    2000505620
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505616,
+    2000505621
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505619,
+    2000505620
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505619,
+    2000505621
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505620,
+    2000505621
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000505922,
+    2000505923
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506083,
+    2000506084
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506168,
+    2000506169
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506173,
+    2000506175
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506173,
+    2000506176
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506173,
+    2000506177
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506173,
+    2000506180
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506175,
+    2000506176
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506175,
+    2000506177
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506175,
+    2000506180
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506176,
+    2000506177
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506176,
+    2000506180
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506177,
+    2000506180
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506407
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506410
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506411
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506412
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506413
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506415
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506405,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506407,
+    2000506410
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506407,
+    2000506411
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506407,
+    2000506412
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506407,
+    2000506413
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506407,
+    2000506415
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506407,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506410,
+    2000506411
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506410,
+    2000506412
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506410,
+    2000506413
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506410,
+    2000506415
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506410,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506411,
+    2000506412
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506411,
+    2000506413
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506411,
+    2000506415
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506411,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506412,
+    2000506413
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506412,
+    2000506415
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506412,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506413,
+    2000506415
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506413,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506415,
+    2000506416
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506437,
+    2000506439
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506618,
+    2000506619
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506625,
+    2000506626
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506816,
+    2000507474
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506842,
+    2000506844
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000506899,
+    2000506900
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507123,
+    2000507128
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507204,
+    2000507206
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507204,
+    2000507207
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507204,
+    2000507208
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507204,
+    2000507212
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507206,
+    2000507207
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507206,
+    2000507208
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507206,
+    2000507212
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507207,
+    2000507208
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507207,
+    2000507212
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507208,
+    2000507212
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507346,
+    2000507348
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507728,
+    2000507733
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507913,
+    2000507915
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507913,
+    2000507917
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000507915,
+    2000507917
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508020,
+    2000508022
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508020,
+    2000508023
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508022,
+    2000508023
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508093,
+    2000508096
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508093,
+    2000508097
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508093,
+    2000508098
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508093,
+    2000508100
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508096,
+    2000508097
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508096,
+    2000508098
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508096,
+    2000508100
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508097,
+    2000508098
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508097,
+    2000508100
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508098,
+    2000508100
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508219,
+    2000508220
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508245,
+    2000508248
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508258,
+    2000508259
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508258,
+    2000508266
+   ],
+   "why": "kept apart by decision"
+  },
+  {
+   "pair": [
+    2000508259,
+    2000508266
+   ],
+   "why": "kept apart by decision"
+  }
+ ],
+ "rules": {
+  "min_overlap": 0.8,
+  "max_len_ratio": 1.3,
+  "min_party_sim": 0.6
+ }
+}
