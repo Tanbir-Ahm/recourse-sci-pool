@@ -1,6 +1,6 @@
 """Still-good-law checker for Supreme Court of India judgments.
 
-    python sci_goodlaw.py build  --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --corpus corpus.sqlite
+    python sci_goodlaw.py build  --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --newer-dir ../recourse-sci-newer-data --corpus corpus.sqlite
     python sci_goodlaw.py find   --corpus corpus.sqlite "rangappa"
     python sci_goodlaw.py check  --corpus corpus.sqlite "Rangappa v. Sri Mohan" --year 2010 --out reports/
     python sci_goodlaw.py check  --corpus corpus.sqlite --doc-key c36322 --out reports/
@@ -378,6 +378,7 @@ def main(argv=None):
     b = sub.add_parser("build")
     b.add_argument("--crawl-dir", default="../recourse-sci-pool-data")
     b.add_argument("--bucket-dir", default="../recourse-sci-bucket-data")
+    b.add_argument("--newer-dir", default=None, help="the court's newer archive (branch claude/sci-court-newer); default ../recourse-sci-newer-data if it exists")
     b.add_argument("--corpus", default="corpus.sqlite")
     b.add_argument("--workers", type=int, default=4)
     f = sub.add_parser("find")
@@ -498,8 +499,11 @@ def main(argv=None):
         return 2
     if a.cmd == "build":
         here = os.path.dirname(os.path.abspath(__file__))
+        newer = a.newer_dir or (K.DEFAULT_NEWER if os.path.isdir(K.DEFAULT_NEWER) else None)
+        if newer is None:
+            print(f"note: no newer archive at {K.DEFAULT_NEWER}; building from the crawl and the bucket only")
         K.build(a.crawl_dir, a.bucket_dir, os.path.join(here, "coverage", "bucket_match", "registry.csv.gz"),
-                os.path.join(here, "coverage", "bucket_match", "none_resolution.csv.gz"), a.corpus, a.workers)
+                os.path.join(here, "coverage", "bucket_match", "none_resolution.csv.gz"), a.corpus, a.workers, newer_dir=newer)
         K.index_cites(a.corpus, a.workers)
         return 0
     if a.cmd == "library":

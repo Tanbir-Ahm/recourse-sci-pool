@@ -59,6 +59,15 @@ def write_gz(path, text):
         fh.write(text)
 
 
+def raises_(fn, *a):
+    """None if fn(*a) returns, else the name of the exception it raised."""
+    try:
+        fn(*a)
+    except Exception as e:                       # noqa: BLE001
+        return type(e).__name__
+    return None
+
+
 def csv_text(rows, cols):
     buf = io.StringIO()
     w = csv.DictWriter(buf, fieldnames=cols)
@@ -151,6 +160,141 @@ check(cp.docs_citing(["scc:1999:9:9"]) == [], "a citation nobody has gives nothi
 check(cp.docs_citing(["scr:2019:5:570"]) == [] and [d["doc_key"] for d in cp.docs_citing(["scr:2018:3:11"])] == ["b2019_5_569_578"] and [d["doc_key"] for d in cp.docs_citing(["scc:2010:11:441"])] == ["b2019_5_569_578"],
       "a bucket text's own running page headers are not counted as citations, but the cases it cites are")
 check(cp.doc_frequency("habeas") == 1 and cp.doc_frequency("nonexistentwordzz") == 0, "document frequency of a word comes from the full-text index")
+
+# ---- the court's newer archive ------------------------------------------------------------------------------------------------------------------------------------------------------------
+print("the newer archive")
+first_ids = {k: cp.get(k, False)["id"] for k in ("c1", "c2", "c3", "c7", "b2019_5_569_578", "b1994_1_1_9", "b1995_1_1_9")}
+n_before = cp.stats()["docs"]
+cp.con.close()
+REG, NONE = os.path.join(base, "registry.csv.gz"), os.path.join(base, "none_resolution.csv.gz")
+ALPHA = " ".join(f"alpha{i}" for i in range(400))
+BETA = " ".join(f"beta{i}" for i in range(400))
+GAMMA = " ".join(f"gamma{i}" for i in range(400))
+SOLO = " ".join(f"solo{i}" for i in range(400))
+
+
+def newer(diary, date, pet, resp, text, in_bucket="no", bucket_title="", nc="", sha=None):
+    return dict(pdf_url=f"https://court.example/supremecourt/{diary}_{date}.pdf", diary_no=diary, decision_date=date, case_name=f"{pet} versus {resp}", petitioner=pet, respondent=resp,
+                case_number="CA 1 of 2018", neutral_citation=nc, reportable="REPORTABLE", pages=3, sha256=sha or f"sha-{diary}", in_bucket=in_bucket, bucket_title=bucket_title,
+                source="Supreme Court of India (newer archive)", fetched_on="2026-10-21", text=text)
+
+
+N1 = newer("100/2018", "2019-03-04", "NEW CASE", "STATE OF GOA", "[A, B AND C, JJ.]\nJ U D G M E N T\nzebraquartz was held. " + ALPHA + " as one of us (Aftab Alam, J.) held.\n........................J.\n(R.V. RAVEENDRAN)\n........................J.\n(P. SATHASIVAM)\nNew Delhi;",
+         nc="2019 INSC 77", sha="same-file")
+N2 = newer("200/2018", "2019-04-10", "STATE OF RAJASTHAN", "KANHAIYA LAL", "The court's own copy. " + BETA, in_bucket="yes", bucket_title="STATE OF RAJASTHAN v")
+N3 = newer("101/2018", "2019-03-04", "NEW CASE", "STATE OF GOA", N1["text"], sha="same-file")
+N4 = newer("300/2018", "2019-05-06", "SAME PARTY", "OTHER SIDE", "Appeal allowed. " + GAMMA)
+N5 = newer("301/2018", "2019-05-06", "SAME PARTY", "OTHER SIDE", "Appeal allowed. " + GAMMA + " one more closing sentence added by the reporter.")
+N6 = newer("302/2018", "2019-09-09", "SAME PARTY", "OTHER SIDE", "Appeal allowed. " + GAMMA + " one more closing sentence added by the reporter.")
+N7 = newer("400/2018", "2019-04-10", "STATE OF RAJASTHAN", "KANHAIYA LAL", "A different judgment the same day between the same parties. " + SOLO)
+N9 = newer("600/2018", "2019-12-12", "NOWHERE", "STATE", "The archive says the bucket holds it but none fits. " + ALPHA + " nowhere", in_bucket="yes", bucket_title="NOWHERE")
+newer_dir = os.path.join(base, "newer")
+
+
+def write_newer(recs):
+    shutil.rmtree(newer_dir, ignore_errors=True)
+    by_month = {}
+    for r in recs:
+        by_month.setdefault(r["decision_date"][:7], []).append(r)
+    for month, rs in by_month.items():
+        write_gz(os.path.join(newer_dir, "shards", f"{month}.jsonl.gz"), "".join(json.dumps(r) + "\n" for r in rs))
+
+
+def build_with(recs, name, nd=None):
+    if recs is not None:
+        write_newer(recs)
+    return K.build(crawl_dir, bucket_dir, REG, NONE, os.path.join(base, name), workers=1, log=lambda *_: None, newer_dir=nd or newer_dir)
+
+
+st2 = build_with([N1, N2, N3, N4, N5, N6, N7, N9], "corpus2.sqlite")
+c2 = K.Corpus(os.path.join(base, "corpus2.sqlite"))
+check(all(c2.get(k, False)["id"] == i for k, i in first_ids.items()) and st2["docs"] == n_before + 8, "the 8 newer texts are added after every other row: no row that was already there changed its id")
+check(st2["court"] == 8 and st2["court_copies_of_bucket"] == 1 and st2["court_second_copies_inside"] == 2 and st2["court_judgments"] == 5 and st2["court_uncertain"] == 1,
+      "all 8 are stored: 1 is a copy of a bucket text, 2 are second copies inside the archive, 5 are judgments, 1 of those uncertain")
+n1 = c2.get("n100_2018_2019-03-04")
+check(n1["source"] == "court" and n1["layout"] == "court" and n1["date"] == "2019-03-04" and n1["date_source"] == "court" and n1["year"] == 2019 and n1["dup_of"] is None and n1["maybe_dup_of"] is None,
+      "a text the bucket lacks is stored as a judgment of its own, dated from the archive")
+check(n1["title"] == "NEW CASE versus STATE OF GOA" and n1["pet"] == "NEW CASE" and n1["resp"] == "STATE OF GOA" and n1["insc"] == "2019 INSC 77" and n1["cites"] == ["insc:2019:77"] and n1["src_id"].endswith("100/2018_2019-03-04.pdf"),
+      "its title, parties, neutral citation (as a citation key) and the court's link are kept")
+check(n1["text_len"] == len(N1["text"]) and n1["text"] == N1["text"], "its text is stored whole")
+check(n1["bench_size"] == 2 and n1["bench_source"] == "signatures", "its bench is the signature lines' count, a lower bound: a bracketed judge list or 'one of us (Name' in the body is not read as a complete bench")
+check(c2.get("n600_2018_2019-12-12", False)["bench_size"] is None and c2.get("n600_2018_2019-12-12", False)["bench_source"] is None, "a text with no signature lines has no bench size")
+n2 = c2.get("n200_2018_2019-04-10", False)
+check(n2["dup_of"] == "b2019_5_569_578" and n2["bucket_path"] == "2019_5_569_578" and n2["maybe_dup_of"] is None, "a text the archive marks as in the bucket is a second copy of the bucket text it names (found by date and the cut-off title)")
+check(c2.get("n101_2018_2019-03-04", False)["dup_of"] == "n100_2018_2019-03-04", "the same file under another diary number is a second copy of the first")
+n4, n5, n6 = (c2.get(k, False) for k in ("n300_2018_2019-05-06", "n301_2018_2019-05-06", "n302_2018_2019-09-09"))
+check(n5["dup_of"] is None and n4["dup_of"] == n5["doc_key"], "two texts with the same parties, the same decision date and nearly the same body are copies; the longer is read")
+check(n6["dup_of"] is None, "the same parties and body on a different decision date are not copies")
+n7 = c2.get("n400_2018_2019-04-10", False)
+check(n7["dup_of"] is None and n7["maybe_dup_of"] == "b2019_5_569_578", "a text marked 'no' that has a bucket text of the same date and parties stays a judgment but is flagged")
+n9 = c2.get("n600_2018_2019-12-12", False)
+check(n9["dup_of"] is None and n9["maybe_dup_of"] is None, "a 'yes' that fits no bucket text is stored plainly")
+check([d["doc_key"] for d in c2.search("zebraquartz")] == ["n100_2018_2019-03-04"] and sorted(d["doc_key"] for d in c2.search("zebraquartz", canonical_only=False)) == ["n100_2018_2019-03-04", "n101_2018_2019-03-04"],
+      "full-text search finds a newer-archive text, and the archive's second copies only when asked")
+check([d["doc_key"] for d in c2.by_cite("insc:2019:77")] == ["n100_2018_2019-03-04"] and [d["doc_key"] for d in c2.find_title("new case goa")] == ["n100_2018_2019-03-04"], "a newer text is found by its neutral citation and by its title")
+check(len(list(c2.iter_docs("source='court' AND dup_of IS NULL"))) == 5 and len(list(c2.iter_docs())) == 9 + 5, "five newer-archive judgments are counted, on top of the nine already there")
+c2.con.close()
+
+# two more cases that need more fixtures: a bucket day with two titles that share a start, and a crawl text dated inside the days both archives cover
+write_gz(os.path.join(crawl_dir, "shards", "000250-000499.ok1.gap0.err0.jsonl.gz"),
+         json.dumps({"id": 300, "status": "ok", "pages": 2, "text": judis("OVERLAP PET", "OVERLAP RESP", "03/05/2017", ["A, J."], "2017 AIR 9", "2017 SCR 9", "A body. " + LONG)}) + "\n")
+extra = [dict(path="2019_9_1_9", title="TWIN ALPHA versus STATE", petitioner="TWIN ALPHA", respondent="STATE", decision_date="11-11-2019", citation="[2019] 9 S.C.R. 1", case_id="2019 INSC 901",
+              nc_display="", judge="", scope="after", text="[A AND B, JJ.]\nTwin alpha text. " + LONG),
+         dict(path="2019_9_10_19", title="TWIN BETA versus STATE", petitioner="TWIN BETA", respondent="STATE", decision_date="11-11-2019", citation="[2019] 9 S.C.R. 10", case_id="2019 INSC 902",
+              nc_display="", judge="", scope="after", text="[A AND B, JJ.]\nTwin beta text. " + LONG2)]
+write_gz(os.path.join(bucket_dir, "shards", "after-0001.ok2.miss0.err0.jsonl.gz"), "".join(json.dumps(dict(r, status="ok", key="k", bytes=1, sha256="x", pages=2, scan_pages=0)) + "\n" for r in extra))
+N8 = newer("500/2018", "2019-11-11", "TWIN GAMMA", "STATE", "The archive says the bucket holds it but two bucket texts fit. " + SOLO + " twin", in_bucket="yes", bucket_title="TWIN")
+N10 = newer("500/2017", "2017-05-03", "OVERLAP PET", "OVERLAP RESP", "A text of the days both archives cover. " + BETA + " overlap")
+N11 = newer("700/1978", "1978-01-25", "MANEKA GANDHI", "UNION OF INDIA", "The archive says the bucket holds it, but the store keeps the crawl's text. " + GAMMA + " maneka", in_bucket="yes", bucket_title="MANEKA GANDHI")
+SAME_BYTES = "One file the court served under two diary numbers, and with two different dates. " + SOLO + " bytes"
+N12 = newer("800/2018", "2019-06-01", "FILE ONE", "STATE", SAME_BYTES, sha="same-bytes")
+N13 = newer("801/2018", "2019-06-02", "FILE TWO", "STATE", SAME_BYTES, sha="same-bytes")
+N14 = newer("200/2019", "2019-04-10", "STATE OF RAJASTHAN", "KANHAIYA LAL", "The court's copy of a bucket judgment. " + BETA + " b", in_bucket="yes", bucket_title="STATE OF RAJASTHAN v", sha="bytes-b")
+N15 = newer("100/2019", "2019-04-11", "OTHER NAME", "OTHER", "The court's copy of a bucket judgment. " + BETA + " b", sha="bytes-b")
+st3 = build_with([N8, N10, N11, N12, N13, N14, N15], "corpus3.sqlite")
+c3 = K.Corpus(os.path.join(base, "corpus3.sqlite"))
+n8, n10 = c3.get("n500_2018_2019-11-11", False), c3.get("n500_2017_2017-05-03", False)
+check(n8["dup_of"] is None and n8["maybe_dup_of"] == "b2019_9_10_19" and n8["bucket_path"] is None, "a 'yes' that fits two bucket texts is flagged against the first by path and not claimed as a copy")
+check(n10["dup_of"] is None and n10["maybe_dup_of"] == "c300", "a text dated inside the days the crawl also covers is flagged against the crawl text with the same date and parties")
+n11 = c3.get("n700_1978_1978-01-25", False)
+check(n11["dup_of"] is None and n11["bucket_path"] is None and n11["maybe_dup_of"] == "c2", "a link to a bucket text the store does not hold is not made; the crawl text with the same date and parties is flagged instead")
+c12, c13, c14, c15 = (c3.get(k, False) for k in ("n800_2018_2019-06-01", "n801_2018_2019-06-02", "n200_2019_2019-04-10", "n100_2019_2019-04-11"))
+check(c12["dup_of"] is None and c13["dup_of"] == c12["doc_key"], "a file served under two diary numbers is one judgment even when the parties and dates differ")
+check(c14["dup_of"] == "b2019_5_569_578" and c15["dup_of"] == "b2019_5_569_578", "and when one of them is a copy of a bucket text, the other is a copy of that bucket text too")
+check(st3["court"] == 7 and st3["court_copies_of_bucket"] == 2 and st3["court_second_copies_inside"] == 1 and st3["court_judgments"] == 4 and st3["court_uncertain"] == 3 and st3["crawl"] == 8 and st3["bucket"] == 5, "the counts for this build say so")
+c3.con.close()
+
+# copies the archive's own marker missed: a day's difference, another spelling, a text that shares only part of its words
+WORDS = lambda lo, hi: " ".join(f"word{i}" for i in range(lo, hi))        # the words LONG is made of (the bucket text of 2019_5_569_578 contains them all)
+C1 = newer("900/2019", "2019-04-11", "STATE OF RAJASTHAN", "KANHAIYALAL", "NAGESWARA RAO, J. Leave granted. " + LONG)
+C2 = newer("901/2019", "2019-04-12", "UNRELATED NAME", "OTHER SIDE", "Completely other heading. " + LONG)
+C3 = newer("902/2019", "2019-04-11", "STATE OF RAJASTHAN", "KANHAIYA LAL", "Another heading. " + WORDS(0, 170) + " " + SOLO)
+C4 = newer("903/2019", "2019-04-11", "STATE OF RAJASTHAN", "KANHAIYA LAL", "Another heading. " + WORDS(0, 120) + " " + SOLO.replace("solo", "sola"))
+C5 = newer("904/2019", "2019-04-14", "STATE OF RAJASTHAN", "KANHAIYA LAL", "A heading. " + LONG)
+C6 = newer("905/2019", "2019-04-11", "STATE OF RAJASTHAN", "KANHAIYA LAL", "A heading. " + SOLO.replace("solo", "solu"))
+C7 = newer("906/2019", "2019-04-11", "UNRELATED NAME", "OTHER SIDE", "Another heading. " + WORDS(0, 120) + " " + SOLO.replace("solo", "solb"))
+C8 = newer("907/2019", "2019-04-10", "STATE OF RAJASTHAN", "KANHAIYA LAL", "NAGESWARA RAO, J. Leave granted. " + LONG)
+st4 = build_with([C1, C2, C3, C4, C5, C6, C7, C8], "corpus4.sqlite")
+c4 = K.Corpus(os.path.join(base, "corpus4.sqlite"))
+t1, t2, t3, t4, t5, t6 = (c4.get(k, False) for k in ("n900_2019_2019-04-11", "n901_2019_2019-04-12", "n902_2019_2019-04-11", "n903_2019_2019-04-11", "n904_2019_2019-04-14", "n905_2019_2019-04-11"))
+check(t1["dup_of"] == "b2019_5_569_578" and t1["bucket_path"] == "2019_5_569_578", "a text the archive calls new, with another spelling of the names and a bucket date a day earlier, is a copy when it shares its words with the bucket text")
+check(t2["dup_of"] == "b2019_5_569_578", "the names do not matter when the text shares at least half its 8-word runs")
+check(t3["dup_of"] == "b2019_5_569_578", "a text that shares a third of its runs is a copy when the title agrees")
+check(t4["dup_of"] is None and t4["maybe_dup_of"] == "b2019_5_569_578", "a text that shares a quarter of its runs and has an agreeing title is flagged and stays a judgment")
+check(t5["dup_of"] is None and t5["maybe_dup_of"] is None, "the same words four days away are not matched")
+check(t6["dup_of"] is None and t6["maybe_dup_of"] is None, "the same parties a day away with different words are not matched")
+t7, t8 = c4.get("n906_2019_2019-04-11", False), c4.get("n907_2019_2019-04-10", False)
+check(t7["dup_of"] is None and t7["maybe_dup_of"] is None, "a quarter of the runs with a title that does not agree is not enough to flag")
+check(t8["dup_of"] == "b2019_5_569_578" and t8["maybe_dup_of"] is None, "a text first flagged by its names and then found to be a copy by its words is a copy, with the flag cleared")
+check(st4["court"] == 8 and st4["court_copies_found_by_text"] == 4 and st4["court_copies_of_bucket"] == 4 and st4["court_judgments"] == 4 and st4["court_uncertain"] == 1, "the counts for this build say so")
+c4.con.close()
+
+# refusals
+check(raises_(build_with, None, "x.sqlite", os.path.join(base, "no_such_dir")) == "FileNotFoundError", "a newer-archive folder that does not exist is refused")
+write_newer([dict(N1, in_bucket="maybe")])
+check(raises_(K.read_newer, newer_dir) == "ValueError", "an in_bucket value the archive does not define is refused")
+write_newer([N1, dict(N1, pdf_url="https://court.example/other.pdf", sha256="other", text="x " + ALPHA)])
+check(raises_(build_with, None, "y.sqlite") == "ValueError", "two records with one diary number and decision date are refused")
 
 cp.con.close()
 shutil.rmtree(base, ignore_errors=True)

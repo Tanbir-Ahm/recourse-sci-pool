@@ -1,0 +1,112 @@
+{
+ "stats": {
+  "docs": 56421,
+  "crawl": 36928,
+  "bucket": 9084,
+  "crawl_second_copies": 826,
+  "crawl_with_bucket_link": 27588,
+  "bucket_skipped_because_crawl_holds_them": 3084,
+  "court": 10409,
+  "court_copies_of_bucket": 6944,
+  "court_copies_found_by_text": 289,
+  "court_second_copies_inside": 4,
+  "court_judgments": 3461,
+  "court_uncertain": 6
+ },
+ "old_rows": 46012,
+ "old_rows_that_differ": 0,
+ "old_text_lengths_that_differ": 0,
+ "distinct_by_source": {
+  "bucket": 9084,
+  "court": 3461,
+  "crawl": 36102
+ },
+ "distinct_total": 48647,
+ "court_rows_by_outcome": {
+  "copy of a bucket text": 6944,
+  "judgment": 3455,
+  "judgment, uncertain": 6,
+  "second copy inside the archive": 4
+ },
+ "court_judgments_by_year": {
+  "2017": 204,
+  "2018": 369,
+  "2019": 323,
+  "2020": 148,
+  "2021": 211,
+  "2022": 301,
+  "2023": 226,
+  "2024": 260,
+  "2025": 567,
+  "2026": 852
+ },
+ "court_judgments_with_neutral_citation": 1735,
+ "court_bench_source": {
+  "none": 47,
+  "signatures": 3414
+ },
+ "second_copies_inside_the_archive": [
+  {
+   "doc_key": "n27721_2013_2018-09-20",
+   "dup_of": "n18856_2016_2018-09-20",
+   "date": "2018-09-20",
+   "title": "Harish Chand versus Smt. Urmila"
+  },
+  {
+   "doc_key": "n36241_2016_2019-07-18",
+   "dup_of": "n11953_2008_2019-07-18",
+   "date": "2019-07-18",
+   "title": "RADHEY SHYAM PANDEY versus KANPUR DEVELOPMENT AUTHORITY"
+  },
+  {
+   "doc_key": "n37346_2009_2017-08-23",
+   "dup_of": "n3074_2017_2017-08-23",
+   "date": "2017-08-23",
+   "title": "M/s. National Building Construction versus State of Maharashtra & Ors"
+  },
+  {
+   "doc_key": "n38208_2016_2017-08-23",
+   "dup_of": "n3074_2017_2017-08-23",
+   "date": "2017-08-23",
+   "title": "M/s. National Building Construction versus State of Maharashtra & Ors"
+  }
+ ],
+ "uncertain_judgments": [
+  {
+   "doc_key": "n13548_2017_2025-01-15",
+   "maybe_dup_of": "b2025_2_123_186",
+   "date": "2025-01-15",
+   "title": "CORPORATION LTD versus M/S CHEMPLAST CUDDALORE"
+  },
+  {
+   "doc_key": "n22633_2008_2024-12-20",
+   "maybe_dup_of": "b2024_12_1482_1516",
+   "date": "2024-12-20",
+   "title": "HONGKONG AND SHANGHAI BANKING CORP. LTD versus AWAZ & ORS"
+  },
+  {
+   "doc_key": "n38664_2025_2025-08-07",
+   "maybe_dup_of": "b2025_8_1941_1996",
+   "date": "2025-08-07",
+   "title": "XXX versus THE UNION OF INDIA & OTHERS"
+  },
+  {
+   "doc_key": "n39690_2018_2023-04-20",
+   "maybe_dup_of": "b2023_5_668_681",
+   "date": "2023-04-20",
+   "title": "GMR WARORA ENERGY LIMITED versus CENTRAL ELECTRICITY REGULATORY COMMISSION (CERC) & ORS"
+  },
+  {
+   "doc_key": "n47882_2024_2025-08-05",
+   "maybe_dup_of": "b2025_8_411_567",
+   "date": "2025-08-05",
+   "title": "OPERATION ASHA versus SHELLY BATRA & ORS"
+  },
+  {
+   "doc_key": "n51208_2023_2024-08-20",
+   "maybe_dup_of": "b2024_8_575_614",
+   "date": "2024-08-20",
+   "title": "IN RE: RIGHT TO PRIVACY OF ADOLESCENTS"
+  }
+ ]
+}

@@ -1,18 +1,26 @@
-"""One searchable store (SQLite with full-text search) over every Supreme Court judgment we hold: the crawl (to 4 May 2017) and the open bucket
-(after that date, plus older judgments the crawl lacks). Built from the two data branches; rebuild it whenever either changes.
+"""One searchable store (SQLite with full-text search) over every Supreme Court judgment we hold: the crawl (to 4 May 2017), the open bucket
+(after that date, plus older judgments the crawl lacks) and the court's newer archive (from 1 May 2017). Built from the three data branches; rebuild it whenever any changes.
 
-    python -m goodlaw.corpus build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --out corpus.sqlite
+    python -m goodlaw.corpus build --crawl-dir ../recourse-sci-pool-data --bucket-dir ../recourse-sci-bucket-data --newer-dir ../recourse-sci-newer-data --out corpus.sqlite
 
-One row per distinct judgment where it can tell. A judgment present in both sources is stored once, from the crawl (the court's own file), and
+One row per distinct judgment where it can tell. A judgment present in both the crawl and the bucket is stored once, from the crawl (the court's own file), and
 takes the bucket's exact decision date, neutral citation and law-report citation. Judgments only the bucket holds are stored from the bucket.
 Second copies inside the crawl are kept but marked `dup_of` the copy that is read; later steps count only rows with no `dup_of`.
 
-doc_key: `c<id>` for a crawl text (c37060), `b<path>` for a bucket text (b2019_5_569_578).
+The court's newer archive (branch `claude/sci-court-newer`; the court's own typeset PDFs, read as raw text) is added after the other rows, so no existing row id moves. All of
+it is stored. A text its own `in_bucket` field says the bucket holds is stored as a second copy (`dup_of` the bucket row, found by decision date and the title the archive
+recorded, which is cut at 60 characters), so the bucket's text stays the one that is read and counts do not change; the court's copy stays available for comparison. A text the bucket
+lacks is stored as a judgment of its own. Several diary numbers can carry one judgment (consolidated matters): identical files, and texts with the same parties, the same decision
+date and the same body, are marked `dup_of` the first. A text the archive says the bucket lacks is also compared by its words with the bucket texts dated within 3 days (the archive's marker misses a copy the bucket dates a day earlier or spells differently):
+sharing at least half of the shorter text's 8-word runs makes it a second copy of that bucket text; sharing 30% with an agreeing title does too. A text that may duplicate another but is not certain gets `maybe_dup_of` and stays a judgment.
+
+doc_key: `c<id>` for a crawl text (c37060), `b<path>` for a bucket text (b2019_5_569_578), `n<diary no>_<year>_<date>` for a newer-archive text (n39999_2014_2018-05-14).
 """
 import argparse
 import bisect
 import collections
 import csv
+import datetime
 import glob
 import gzip
 import json
@@ -29,6 +37,14 @@ from . import headers as H
 _STOP = set("""versus vs v and ors anr anrs others another the of in for to by through lrs lr dead legal representatives representative thr his her
 their its etc ltd limited pvt private co company shri sri smt dr mr mrs ms m s no nos""".split())
 RELIABLE = ("header", "tail_place", "bucket")
+CRAWL_LAST_DATE = "2017-05-04"      # the crawl ends here (coverage/COVERAGE_NOTE.md); the newer archive starts on 1 May 2017, so a few days can be in both
+DEFAULT_NEWER = "../recourse-sci-newer-data"
+# The archive's own `in_bucket` marker compares exact dates and titles, and misses copies the bucket dates a day earlier or spells differently ("MOHANLAL", "KERELA"); measured on the real
+# archive (2026-10-22), 266 of its 3,747 "not in the bucket" texts had a bucket text within 3 days sharing at least half their 8-word runs. The bucket's typeset text has glued words and
+# misread letters, so the same judgment can share well under half (0.2 to 0.5) when the title also agrees.
+TEXT_DAYS = 3
+TEXT_SAME, TEXT_SAME_TITLE, TEXT_MAYBE_TITLE = 0.5, 0.3, 0.2
+IN_BUCKET = ("yes", "no", "beyond")  # the newer archive's own marker: the bucket holds the judgment / does not / it is newer than the bucket's last date
 
 SCHEMA = """
 CREATE TABLE docs (
@@ -117,6 +133,60 @@ def bucket_cites(rec):
             if k not in keys:
                 keys.append(k)
     return keys
+
+
+def read_newer(newer_dir):
+    """The newer archive's records (one per judgment PDF), in file order. A record with no text, link or date is left out."""
+    shards = os.path.join(newer_dir, "shards")
+    if not os.path.isdir(shards):
+        raise FileNotFoundError(f"no shards folder in {newer_dir}")
+    recs = []
+    for f in sorted(glob.glob(os.path.join(shards, "*.jsonl.gz"))):
+        for line in gzip.open(f, "rt", encoding="utf-8"):
+            r = json.loads(line)
+            if not (r.get("text") and r.get("pdf_url") and r.get("decision_date")):
+                continue
+            if r.get("in_bucket") not in IN_BUCKET:
+                raise ValueError(f"{r['pdf_url']}: in_bucket is {r.get('in_bucket')!r}, expected one of {IN_BUCKET}")
+            recs.append(r)
+    return recs
+
+
+def newer_key(r):
+    return "n" + re.sub(r"[^A-Za-z0-9]+", "_", r["diary_no"]).strip("_") + "_" + r["decision_date"]
+
+
+def _squash(s):
+    return re.sub(r"\s+", " ", s or "").strip().lower()
+
+
+def link_newer(newer, bucket_recs):
+    """{newer key: (kind, bucket path)}, kind 'dup' (a certain copy of that bucket text) or 'maybe'. A record the archive marks `yes` is a copy when exactly one bucket text of
+    that decision date starts with the title the archive recorded (cut at 60 characters); with several it is 'maybe' (the first by path); with none it is left alone. A record
+    marked `no` or `beyond` is 'maybe' only when a bucket text of the same date has the same two party names (the archive's marker may be wrong)."""
+    by_date, by_names = collections.defaultdict(list), collections.defaultdict(list)
+    for b in bucket_recs:
+        d = _iso(b.get("decision_date"))
+        by_date[d].append(b)
+        kp, kr = name_key(b.get("petitioner")), name_key(b.get("respondent"))
+        if kp and kr:
+            by_names[(d, kp, kr)].append(b["path"])
+    out = {}
+    for r in newer:
+        key = newer_key(r)
+        if r["in_bucket"] == "yes":
+            title = _squash(r.get("bucket_title"))
+            paths = sorted({b["path"] for b in by_date.get(r["decision_date"], []) if title and _squash(b.get("title")).startswith(title)})
+            if len(paths) == 1:
+                out[key] = ("dup", paths[0])
+            elif paths:
+                out[key] = ("maybe", paths[0])
+        else:
+            kp, kr = name_key(r.get("petitioner")), name_key(r.get("respondent"))
+            paths = sorted(set(by_names.get((r["decision_date"], kp, kr), []))) if kp and kr else []
+            if paths:
+                out[key] = ("maybe", paths[0])
+    return out
 
 
 # ---------------------------------------------------------------- linking crawl and bucket
@@ -220,8 +290,129 @@ def find_duplicates(rows, threshold=0.5):
     return dup
 
 
+def _runs(text, n=8, limit=20000):
+    """The set of 8-word runs (hashed) of the first `limit` characters of a text."""
+    w = norm_text(text[:limit])
+    return {hash(" ".join(w[i:i + n])) for i in range(max(len(w) - n + 1, 0))}
+
+
+def _title_words(title):
+    return {w for w in name_key(title).split() if len(w) > 1}
+
+
+def _titles_agree(a, b):
+    wa, wb = _title_words(a), _title_words(b)
+    return bool(wa and wb) and len(wa & wb) / len(wa | wb) >= 0.6
+
+
+def match_by_text(added, bucket_recs, keys):
+    """For each newer-archive judgment not yet known to be a copy: the bucket texts within TEXT_DAYS days of its date whose text shares enough 8-word runs (the share of the SHORTER text's runs).
+    A share of TEXT_SAME, or of TEXT_SAME_TITLE with an agreeing title, makes it a copy (`dup_of`, `bucket_path`); TEXT_MAYBE_TITLE with an agreeing title makes it a `maybe_dup_of`. The best
+    candidate by (kind, share) is used. Returns how many became copies and how many became maybes."""
+    by_date = collections.defaultdict(list)
+    for b in bucket_recs:
+        if f"b{b['path']}" in keys:
+            by_date[_iso(b.get("decision_date"))].append(b)
+    cache = {}
+    copies = maybes = 0
+    for a in added:
+        if a["dup_of"] is not None or not a["date"]:
+            continue
+        ra = _runs(a["text"])
+        if not ra:
+            continue
+        day, best = datetime.date.fromisoformat(a["date"]), None
+        for g in range(-TEXT_DAYS, TEXT_DAYS + 1):
+            for b in by_date.get((day + datetime.timedelta(days=g)).isoformat(), []):
+                if b["path"] not in cache:
+                    cache[b["path"]] = _runs(b["text"])
+                rb = cache[b["path"]]
+                if not rb:
+                    continue
+                share = len(ra & rb) / min(len(ra), len(rb))
+                agree = _titles_agree(a["title"], b.get("title"))
+                kind = 2 if (share >= TEXT_SAME or (share >= TEXT_SAME_TITLE and agree)) else (1 if share >= TEXT_MAYBE_TITLE and agree else 0)
+                if kind and (best is None or (kind, share) > best[:2]):
+                    best = (kind, share, b["path"])
+        if best and best[0] == 2:
+            a["dup_of"], a["bucket_path"], a["maybe_dup_of"] = f"b{best[2]}", best[2], None
+            copies += 1
+        elif best:
+            a["maybe_dup_of"] = a["maybe_dup_of"] or f"b{best[2]}"
+            maybes += 1
+    return copies, maybes
+
+
+def court_bench(text):
+    """(size, source) for a newer-archive text: the signature lines' count, always a lower bound ('signatures'), or (None, None). The court's own PDF has no law-report line, and the
+    pattern that reads one (`H.bench_size`) mistakes phrases such as "one of us (Aftab Alam" for a judge list and would call that a complete bench, so it is not used here."""
+    n = H.bench_from_signatures(text)
+    return (n, "signatures") if n and n <= H.MAX_BENCH else (None, None)
+
+
+def add_newer(rows, newer_dir, bucket_recs, log=print):
+    """Appends the newer archive's texts to `rows` (after every existing row, so no id moves), sets their dup_of / maybe_dup_of, and returns the counts for the stats."""
+    newer = read_newer(newer_dir)
+    log(f"  {len(newer)} newer-archive texts")
+    existing = {r["key"] for r in rows}
+    links = link_newer(newer, bucket_recs)
+    added = []
+    for r in newer:
+        key = newer_key(r)
+        if key in existing:
+            raise ValueError(f"two newer-archive records share the key {key}")
+        existing.add(key)
+        text = r["text"]
+        size, bsrc = court_bench(text)
+        kind, bpath = links.get(key, (None, None))
+        bkey = f"b{bpath}" if bpath else None
+        added.append(dict(key=key, source="court", src_id=r["pdf_url"], title=r.get("case_name") or None, pet=r.get("petitioner") or None, resp=r.get("respondent") or None,
+                          date=r["decision_date"], date_source="court", year=int(r["decision_date"][:4]), bench_size=size, bench_source=bsrc, layout="court",
+                          cites=C.cite_keys(r.get("neutral_citation") or ""), citator=[], bucket_path=bpath if kind == "dup" else None, insc=r.get("neutral_citation") or None,
+                          scr_cite=None, dup_of=bkey if kind == "dup" else None, maybe_dup_of=bkey if kind == "maybe" else None, body_start=None, text_len=len(text),
+                          scan_pages=None, text=text, _sha=r.get("sha256"), _in_bucket=r["in_bucket"]))
+    keys = {x["key"] for x in rows}
+    for a in added:                                  # a link to a bucket text that is not in the store (the crawl holds it) cannot be a dup_of
+        for field in ("dup_of", "maybe_dup_of"):
+            if a[field] and a[field] not in keys:
+                if field == "dup_of":
+                    a["bucket_path"] = None
+                a[field] = None
+    text_copies, text_maybes = match_by_text(added, bucket_recs, keys)     # copies the archive's own marker missed (a day's difference, a different spelling)
+    by_sha = collections.defaultdict(list)           # one file served under several diary numbers
+    for a in added:
+        if a["_sha"]:
+            by_sha[a["_sha"]].append(a)
+    for group in by_sha.values():
+        if len(group) > 1:
+            group.sort(key=lambda a: (a["dup_of"] is None, a["key"]))
+            first = group[0]
+            for a in group[1:]:
+                if a["dup_of"] is None:
+                    a["dup_of"] = first["dup_of"] or first["key"]
+    own = [dict(key=a["key"], pet=a["pet"], resp=a["resp"], year=a["date"], text=a["text"], text_len=a["text_len"], body_start=0) for a in added if a["dup_of"] is None]
+    by_key = {a["key"]: a for a in added}
+    for k, v in find_duplicates(own).items():       # the same parties, the same decision date and the same body
+        by_key[k]["dup_of"] = v
+    crawl_by = collections.defaultdict(list)         # the few days both the crawl and the newer archive cover
+    for x in rows:
+        if x["source"] == "crawl" and x["date"] and x["date"] <= CRAWL_LAST_DATE and x["pet"] and x["resp"] and not x["dup_of"]:
+            crawl_by[(x["date"], name_key(x["pet"]), name_key(x["resp"]))].append(x["key"])
+    for a in added:
+        if a["dup_of"] is None and a["maybe_dup_of"] is None and a["date"] <= CRAWL_LAST_DATE and a["pet"] and a["resp"]:
+            hit = crawl_by.get((a["date"], name_key(a["pet"]), name_key(a["resp"])))
+            if hit:
+                a["maybe_dup_of"] = sorted(hit)[0]
+    rows.extend(added)
+    stats = {"court": len(added), "court_copies_of_bucket": sum(1 for a in added if (a["dup_of"] or "").startswith("b")), "court_copies_found_by_text": text_copies,
+             "court_second_copies_inside": sum(1 for a in added if (a["dup_of"] or "").startswith("n")),
+             "court_judgments": sum(1 for a in added if a["dup_of"] is None), "court_uncertain": sum(1 for a in added if a["dup_of"] is None and a["maybe_dup_of"])}
+    log(f"  newer archive: {stats}")
+    return stats
+
+
 # ---------------------------------------------------------------- the build
-def build(crawl_dir, bucket_dir, registry_path, none_resolution_path, out_path, workers=4, log=print):
+def build(crawl_dir, bucket_dir, registry_path, none_resolution_path, out_path, workers=4, log=print, newer_dir=None):
     if os.path.exists(out_path):
         os.remove(out_path)
     log("reading the crawl...")
@@ -265,6 +456,7 @@ def build(crawl_dir, bucket_dir, registry_path, none_resolution_path, out_path, 
     for r in rows:
         r["dup_of"] = dups.get(r["key"])
     log(f"  {len(dups)} crawl texts are second copies of another")
+    newer_stats = add_newer(rows, newer_dir, bucket, log) if newer_dir else {}
 
     con = sqlite3.connect(out_path)
     con.executescript(SCHEMA)
@@ -279,7 +471,7 @@ def build(crawl_dir, bucket_dir, registry_path, none_resolution_path, out_path, 
             log(f"  stored {n}")
     stats = {"docs": len(rows), "crawl": sum(r["source"] == "crawl" for r in rows), "bucket": sum(r["source"] == "bucket" for r in rows),
              "crawl_second_copies": len(dups), "crawl_with_bucket_link": sum(1 for r in rows if r["source"] == "crawl" and r["bucket_path"]),
-             "bucket_skipped_because_crawl_holds_them": len(skip)}
+             "bucket_skipped_because_crawl_holds_them": len(skip), **newer_stats}
     con.execute("INSERT INTO meta VALUES ('stats', ?)", (json.dumps(stats),))
     con.commit()
     con.close()
@@ -457,6 +649,7 @@ def main(argv=None):
     here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     b.add_argument("--registry", default=os.path.join(here, "coverage", "bucket_match", "registry.csv.gz"))
     b.add_argument("--none-resolution", default=os.path.join(here, "coverage", "bucket_match", "none_resolution.csv.gz"))
+    b.add_argument("--newer-dir", default=None, help=f"the newer archive's data branch (default {DEFAULT_NEWER} if it exists; none otherwise)")
     b.add_argument("--out", default="corpus.sqlite")
     b.add_argument("--workers", type=int, default=4)
     i = sub.add_parser("index-cites", help="add the table of reported citations found in each text")
@@ -466,7 +659,10 @@ def main(argv=None):
     if a.cmd == "index-cites":
         index_cites(a.db, a.workers)
         return 0
-    build(a.crawl_dir, a.bucket_dir, a.registry, a.none_resolution, a.out, a.workers)
+    newer = a.newer_dir or (DEFAULT_NEWER if os.path.isdir(DEFAULT_NEWER) else None)
+    if newer is None:
+        print(f"note: no newer archive at {DEFAULT_NEWER}; building from the crawl and the bucket only")
+    build(a.crawl_dir, a.bucket_dir, a.registry, a.none_resolution, a.out, a.workers, newer_dir=newer)
     return 0
 
 
