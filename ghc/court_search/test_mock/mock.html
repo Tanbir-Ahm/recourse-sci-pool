@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><title>mock</title>
+<script src="node_modules/jquery/dist/jquery.min.js"></script>
+<script src="node_modules/datatables.net/js/jquery.dataTables.min.js"></script></head><body>
+<h2>Judgements / Orders</h2><button class="btn">Multiple Parameter Search</button> OR <button class="btn">Neutral Citation Search</button>
+<div id="form">
+ <div>From:</div><input type="date" id="f1" value="2018-01-01">
+ <div>To:</div><input type="date" id="f2" value="2018-01-31">
+ <div>Category:</div><select id="cat"><option>All</option><option>Civil</option><option>Criminal</option></select>
+ <div id="ct" style="display:none"><div>Case Type:</div><select><option>All</option><option>AB</option></select></div>
+ <div>Advocate Name:</div><input type="text">
+ <div>Party Name:</div><input type="text">
+ <div>Pet/Res :</div><select><option>All</option></select>
+ <div>Judgement / Order:</div><select id="jo"><option>All</option><option>Judgement</option><option>Order</option></select>
+ <div>Reportable Judgement:</div><select><option>All</option><option>Yes</option><option>No</option></select>
+ <button id="go">Search</button> <button>Reset</button>
+</div>
+<div id="res" style="display:none"><div style="background:#07f;color:#fff">Details <button id="back">Back</button></div>
+ <p>The presented information reflects solely the first 1000 records, even though the total number of records may exceed 1000.</p>
+ <div class="dataTables_info_holder"></div><table id="t"><thead><tr><th>Slno</th><th>Case Details</th></tr></thead><tbody></tbody></table></div>
+<script>
+document.getElementById('cat').addEventListener('change',()=>{document.getElementById('ct').style.display='block'});
+let dt=null;
+document.getElementById('go').addEventListener('click',()=>{
+  const a=new Date(document.getElementById('f1').value),b=new Date(document.getElementById('f2').value);
+  const days=Math.round((b-a)/86400000)+1; let n=(document.getElementById('f1').value==='2018-01-01'&&document.getElementById('f2').value==='2018-01-31')?474:days*15;
+  if(document.getElementById('jo').value!=='Judgement') n=n*3; if(document.getElementById('cat').value!=='All') n=Math.round(n*0.9);
+  window.__lastQuery=[document.getElementById('f1').value,document.getElementById('f2').value,document.getElementById('cat').value,document.getElementById('jo').value];
+  n=Math.min(n,1000);
+  const tb=document.querySelector('#t tbody'); if(dt){dt.destroy();} tb.innerHTML='';
+  for(let i=1;i<=n;i++){const tr=document.createElement('tr');tr.innerHTML=`<td>${i}</td><td><a href="https://x.example/pdfWatermark.php?file=${i}.pdf">PARTY ${i} vs STATE</a> | Neutral Citation [ 2018:GAU-AS:${i} ] Judge name(s): Decision Date : ${document.getElementById('f1').value} | Case No :Crl.Pet. / ${i} / 2017</td>`;tb.appendChild(tr);}
+  setTimeout(()=>{document.getElementById('form').style.display='none';document.getElementById('res').style.display='block';dt=$('#t').DataTable();},700);
+});
+document.getElementById('back').addEventListener('click',()=>{document.getElementById('res').style.display='none';document.getElementById('form').style.display='block';});
+</script></body></html>
