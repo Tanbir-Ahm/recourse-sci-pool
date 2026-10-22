@@ -1,0 +1,227 @@
+{
+ "spent_tokens": 67305979,
+ "ceiling": 72000000,
+ "price_per_million": 0.12,
+ "sets": {
+  "A_supreme_court_not_in_bucket": {
+   "kept": 1312,
+   "passages": 30028,
+   "not_criminal": 2318,
+   "duplicate": 4,
+   "short": 113,
+   "in_crawl": 0,
+   "input": 3747,
+   "est_tokens": 7128905,
+   "est_dollars": 0.86,
+   "per_year": {
+    "2017": {
+     "not_criminal": 150,
+     "kept": 38,
+     "passages": 329,
+     "short": 19,
+     "duplicate": 2
+    },
+    "2018": {
+     "kept": 116,
+     "passages": 1147,
+     "not_criminal": 239,
+     "short": 20,
+     "duplicate": 1
+    },
+    "2019": {
+     "kept": 133,
+     "passages": 1649,
+     "not_criminal": 197,
+     "duplicate": 1,
+     "short": 1
+    },
+    "2020": {
+     "kept": 44,
+     "passages": 803,
+     "not_criminal": 106
+    },
+    "2021": {
+     "not_criminal": 134,
+     "kept": 44,
+     "passages": 613,
+     "short": 34
+    },
+    "2022": {
+     "not_criminal": 186,
+     "kept": 83,
+     "passages": 1022,
+     "short": 39
+    },
+    "2023": {
+     "kept": 112,
+     "passages": 1461,
+     "not_criminal": 114
+    },
+    "2024": {
+     "not_criminal": 156,
+     "kept": 129,
+     "passages": 2665
+    },
+    "2025": {
+     "kept": 317,
+     "passages": 8826,
+     "not_criminal": 480
+    },
+    "2026": {
+     "kept": 296,
+     "passages": 11513,
+     "not_criminal": 556
+    }
+   },
+   "held_by_bucket_not_planned": 6662
+  },
+  "B_guwahati_court_files": {
+   "kept": 759,
+   "passages": 15241,
+   "not_criminal": 17,
+   "duplicate": 0,
+   "short": 0,
+   "in_crawl": 0,
+   "input": 776,
+   "est_tokens": 3360585,
+   "est_dollars": 0.4,
+   "per_year": {
+    "2011": {
+     "kept": 58,
+     "passages": 1200,
+     "not_criminal": 3
+    },
+    "2012": {
+     "kept": 180,
+     "passages": 4260,
+     "not_criminal": 2
+    },
+    "2013": {
+     "kept": 98,
+     "passages": 2218,
+     "not_criminal": 3
+    },
+    "2014": {
+     "kept": 43,
+     "passages": 671,
+     "not_criminal": 1
+    },
+    "2015": {
+     "kept": 57,
+     "passages": 1865
+    },
+    "2016": {
+     "kept": 144,
+     "passages": 1954,
+     "not_criminal": 3
+    },
+    "2017": {
+     "kept": 179,
+     "passages": 3073,
+     "not_criminal": 5
+    }
+   }
+  },
+  "C_guwahati_bucket_text_joined": {
+   "kept": 974,
+   "passages": 25489,
+   "not_criminal": 7297,
+   "duplicate": 0,
+   "short": 0,
+   "in_crawl": 0,
+   "input": 8271,
+   "est_tokens": 5560370,
+   "est_dollars": 0.67,
+   "per_year": {
+    "2000": {
+     "not_criminal": 4,
+     "kept": 1,
+     "passages": 18
+    },
+    "2001": {
+     "not_criminal": 9
+    },
+    "2002": {
+     "not_criminal": 13
+    },
+    "2003": {
+     "not_criminal": 5
+    },
+    "2004": {
+     "not_criminal": 3
+    },
+    "2005": {
+     "not_criminal": 11
+    },
+    "2006": {
+     "not_criminal": 8,
+     "kept": 1,
+     "passages": 15
+    },
+    "2007": {
+     "not_criminal": 223,
+     "kept": 3,
+     "passages": 56
+    },
+    "2008": {
+     "not_criminal": 146,
+     "kept": 8,
+     "passages": 204
+    },
+    "2009": {
+     "kept": 9,
+     "passages": 190,
+     "not_criminal": 161
+    },
+    "2010": {
+     "not_criminal": 314,
+     "kept": 40,
+     "passages": 970
+    },
+    "2011": {
+     "not_criminal": 396,
+     "kept": 50,
+     "passages": 1192
+    },
+    "2012": {
+     "not_criminal": 865,
+     "kept": 179,
+     "passages": 5022
+    },
+    "2013": {
+     "not_criminal": 741,
+     "kept": 179,
+     "passages": 4835
+    },
+    "2014": {
+     "not_criminal": 958,
+     "kept": 83,
+     "passages": 2408
+    },
+    "2015": {
+     "kept": 165,
+     "passages": 4640,
+     "not_criminal": 1214
+    },
+    "2016": {
+     "not_criminal": 890,
+     "kept": 126,
+     "passages": 2977
+    },
+    "2017": {
+     "not_criminal": 1336,
+     "kept": 130,
+     "passages": 2962
+    }
+   },
+   "not_reasoned_or_excluded_left_out": 3081
+  }
+ },
+ "total": {
+  "kept": 3045,
+  "est_tokens": 16049860,
+  "est_dollars": 1.93,
+  "spent_plus_plan": 83355839,
+  "fits_under_ceiling": false
+ }
+}
