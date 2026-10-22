@@ -1,0 +1,151 @@
+{
+ "index_snapshot": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+ "corpus": {
+  "docs": 46012,
+  "crawl": 36928,
+  "bucket": 9084,
+  "crawl_second_copies": 826,
+  "crawl_with_bucket_link": 27588,
+  "bucket_skipped_because_crawl_holds_them": 3084
+ },
+ "questions": 29,
+ "every_kept_judgment_in_the_index": {
+  "crawl": {
+   "docs": 8101,
+   "identified": 8083,
+   "share_identified": 0.9978,
+   "passages": 153383,
+   "passages_in_identified_docs": 153153,
+   "share_of_passages_identified": 0.9985,
+   "year_known": 8083,
+   "year_read_from_judgment": 7458,
+   "has_citation": 5505
+  },
+  "bucket": {
+   "docs": 2404,
+   "identified": 2404,
+   "share_identified": 1.0,
+   "passages": 82772,
+   "passages_in_identified_docs": 82772,
+   "share_of_passages_identified": 1.0,
+   "year_known": 2404,
+   "year_read_from_judgment": 2404,
+   "has_citation": 2404
+  },
+  "name_sources": {
+   "crawl/corpus": 8083,
+   "bucket/corpus": 2404
+  },
+  "corpus_alone_identified": 10487,
+  "unidentified_reasons": {
+   "crawl: in the corpus but with no title, petitioner or respondent": 18
+  }
+ },
+ "all_pooled_hits": {
+  "hits": 289,
+  "by_policy": {
+   "coverage_note": {
+    "first_line": {
+     "not checked (no card or too few)": 283,
+     "quiet card": 5,
+     "register, candidate": 1
+    },
+    "with_a_warning_or_caution": 1
+   },
+   "silent": {
+    "first_line": {
+     "not checked (no card or too few)": 283,
+     "statute note only": 5,
+     "register, candidate": 1
+    },
+    "with_a_warning_or_caution": 1
+   }
+  },
+  "identified": 289,
+  "share_identified": 1.0,
+  "year_estimated_not_read": 6,
+  "with_citation": 258,
+  "name_check_against_pool_title": {
+   "agree": 278,
+   "disagree": 2,
+   "no_pool_title": 9
+  }
+ },
+ "recipe_top5": {
+  "hits": 145,
+  "by_policy": {
+   "coverage_note": {
+    "first_line": {
+     "not checked (no card or too few)": 142,
+     "quiet card": 3
+    },
+    "with_a_warning_or_caution": 0
+   },
+   "silent": {
+    "first_line": {
+     "not checked (no card or too few)": 142,
+     "statute note only": 3
+    },
+    "with_a_warning_or_caution": 0
+   }
+  },
+  "identified": 145,
+  "share_identified": 1.0,
+  "year_estimated_not_read": 5,
+  "with_citation": 128,
+  "name_check_against_pool_title": {
+   "agree": 137,
+   "disagree": 2,
+   "no_pool_title": 6
+  }
+ },
+ "recipe_top10": {
+  "hits": 290,
+  "by_policy": {
+   "coverage_note": {
+    "first_line": {
+     "not checked (no card or too few)": 284,
+     "quiet card": 5,
+     "register, candidate": 1
+    },
+    "with_a_warning_or_caution": 1
+   },
+   "silent": {
+    "first_line": {
+     "not checked (no card or too few)": 284,
+     "statute note only": 5,
+     "register, candidate": 1
+    },
+    "with_a_warning_or_caution": 1
+   }
+  },
+  "identified": 290,
+  "share_identified": 1.0,
+  "year_estimated_not_read": 6,
+  "with_citation": 258,
+  "name_check_against_pool_title": {
+   "agree": 279,
+   "disagree": 2,
+   "no_pool_title": 9
+  }
+ },
+ "pool_title_disagreements": [
+  {
+   "doc": 41301,
+   "corpus_name": "Sushil Ansal v. State Through CBI",
+   "pool_title": "J U D G M E N T T.S. THAKUR, J. Enforcement of laws is as important as their enactment, es"
+  },
+  {
+   "doc": 41301,
+   "corpus_name": "Sushil Ansal v. State Through CBI",
+   "pool_title": "J U D G M E N T T.S. THAKUR, J. Enforcement of laws is as important as their enactment, es"
+  }
+ ],
+ "card_coverage": {
+  "cards_in_the_file": 76,
+  "kept_judgments_in_the_index": 10505,
+  "share_of_index_with_a_card": 0.0072,
+  "distinct_judgments_in_the_recipe_top10_hits": 183,
+  "of_which_have_a_card": 5
+ }
+}
