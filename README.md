@@ -42,6 +42,10 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 `goodlaw/watchlist.py` keeps a lawyer's saved cases, re-checks them against the register and the cards, and writes draft alerts for a person to approve: only for a new, confirmed, changed or withdrawn warning, never an "all clear". It schedules nothing and sends nothing. Details and limits: `FOLLOW_UPS.md` item 1q. Tests: `python test_goodlaw_watchlist.py`.
 
+## Pilot bookkeeping (offline slice, not connected)
+
+`goodlaw/pilot.py` holds the private pilot's allow-list, the three rules a user must accept, and the lawyers' marks (Relevant, Not relevant, Misleading) on the passages shown, with feedback buttons for a formatted message and a summary and CSV sheet for the owner. No sender, no accounts, nobody on any list. Details and gates: `FOLLOW_UPS.md` item 1r. Tests: `python test_goodlaw_pilot.py`.
+
 ## Internal case-data layer (offline slice, not connected)
 
 `casedata/` is the "front desk" for a possible case-tracking brief: one standard case record, five calls (get the case, check listings, refresh, get an order, what changed), a saved copy, a daily spending cap, a ledger and a dry-run nightly plan, over a swappable adapter. Only a made-up adapter exists (`casedata/fake.py`); nothing makes a network call, needs a key or spends money, and no real court source is wired. Details and limits: `casedata/layer.py`, `FOLLOW_UPS.md` item 1n. Tests: `python test_casedata.py`.
