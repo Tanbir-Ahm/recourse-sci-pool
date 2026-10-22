@@ -6,3 +6,5 @@ corpus.sqlite*
 .env
 IK_STOP
 goodlaw/data/*.lock
+casedata_store/
+CASEDATA_STOP
