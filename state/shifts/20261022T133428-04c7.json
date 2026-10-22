@@ -1,0 +1,13 @@
+{
+ "started_at": "2026-10-22T13:33:00+00:00",
+ "ended_at": "2026-10-22T13:34:28+00:00",
+ "minutes": 20.0,
+ "ceiling": 72092014,
+ "stop_reason": "reached the --max-blocks limit (1)",
+ "seconds": 88.7,
+ "blocks_done": 1,
+ "docs_embedded": 91,
+ "passages": 3608,
+ "tokens": 805563,
+ "wasted_tokens": 0
+}
