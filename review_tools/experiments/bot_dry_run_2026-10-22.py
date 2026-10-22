@@ -19,6 +19,7 @@ from goodlaw import cardreader as CR  # noqa: E402
 from goodlaw import chat_format as CF  # noqa: E402
 from goodlaw import passage_input as PI  # noqa: E402
 from goodlaw import pilot as P  # noqa: E402
+from goodlaw import pilot_settings as S  # noqa: E402
 from goodlaw import register as R  # noqa: E402
 from goodlaw import watchlist as W  # noqa: E402
 
@@ -40,14 +41,15 @@ def main(argv=None):
     a = ap.parse_args(argv)
     os.makedirs(a.out, exist_ok=True)
     reg, cards = R.Register.load(), CR.load(os.path.join(ROOT, "cards", "currency_cards.json"))
-    fmt = CF.Formatter(reg, cards, quiet_policy="coverage_note", today=DAY)
-    pilot = P.Pilot()
+    settings = S.load()
+    pilot = S.new_pilot(settings=settings)
     pilot.add_user("900001", "Adv. A", "the owner", DAY)
     work = tempfile.mkdtemp()
-    core = B.BotCore(pilot, fmt, lambda q: HITS, PI.IndexRowIdentity(DOCS), store_dir=os.path.join(work, "store"), export_dir=os.path.join(work, "exports"), today=DAY)
+    core = S.build_core(pilot, reg, cards, lambda q: HITS, PI.IndexRowIdentity(DOCS), settings=settings, store_dir=os.path.join(work, "store"), export_dir=os.path.join(work, "exports"), today=DAY)
+    fmt = core.formatter
     out = ["# A dry run of the pilot bot's core, 2026-10-22", "",
            "Offline: no chat service, no network, no spend. **Real:** the Overruled Register, the currency cards, the rules and the wording. **Invented:** the users, the judgments' names, the passages and the search (a stub that returns four fixed hits). "
-           "Read it as a picture of what a lawyer would see, not as evidence about the search. `quiet_policy` is set to `coverage_note` here only for the picture; it is the owner's open decision.", ""]
+           "Read it as a picture of what a lawyer would see, not as evidence about the search. The bot is built from the recorded settings (`goodlaw/data/pilot_settings.json`), so the quiet-card choice shown is the one decided on 2026-10-22.", ""]
 
     def say(who, text=None, tap=None):
         shown = f"tap: {tap}" if tap else text

@@ -1,0 +1,38 @@
+{
+  "schema": "goodlaw-pilot-settings-1",
+  "note": "Every setting says who decided it. 'decided' = the owner chose it. 'default' = the safe choice used until the owner decides. 'placeholder' = a number the assistant picked so that something runs; replace it with the owner's figure. 'open' = no value; goodlaw/pilot_settings.build_core refuses to run while any setting is open.",
+  "settings": {
+    "quiet_policy": {
+      "value": "coverage_note",
+      "status": "decided",
+      "decided_on": "2026-10-22",
+      "decided_by": "the owner, by telling the assistant to go with its recommendation",
+      "reason": "A case the checker found nothing against gets a grey line, 'No warning found in what we hold. This is not a finding that the case is good law.' Reasons: (1) the checker caught only about 3 in 10 verified overrulings, so a quiet card is weak evidence and the message should say so; (2) with no line, a quiet case looks the same as a message the formatter forgot to finish, and next to 'Not checked by us' it reads as 'checked, fine'; (3) the file export already spells a quiet case out, so chat and file agree; (4) on the 29 questions' hits only 2% were quiet cards (98% were not checked), so the line adds little to read. The risk is that some readers take the line as reassurance despite its words. Revisit after the first lawyers' marks: if passages under this line are often marked misleading, or lawyers say they read it as comfort, switch to 'silent' (a one-word change here)."
+    },
+    "keep_question_text": {
+      "value": false,
+      "status": "default",
+      "note": "Off, so a client's name typed into a test question by mistake is not kept. Turning it on lets the marks sheet show the question beside each mark, which a reviewer would find easier; it needs the owner's decision and an Indian counsel's view on consent."
+    },
+    "daily_question_cap": {
+      "value": 10,
+      "status": "placeholder",
+      "note": "Searches per user per day. Each real search costs an embedding and a re-rank on the Voyage credit shared with the live site (the owner's reserve is $5). Replace with a figure the owner is happy to pay for."
+    },
+    "global_daily_cap": {
+      "value": 100,
+      "status": "placeholder",
+      "note": "Searches for the whole test per day. Same note."
+    },
+    "passages_shown": {
+      "value": 3,
+      "status": "placeholder",
+      "note": "Passages shown per question. The earlier search review used the top 5 and top 10; three keeps a chat message list short."
+    },
+    "rules_version": {
+      "value": "v1",
+      "status": "default",
+      "note": "The version of the three rules a user must accept. Change it when the rules change; everyone then accepts again."
+    }
+  }
+}

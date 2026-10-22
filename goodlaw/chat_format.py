@@ -26,7 +26,8 @@ Rules this keeps (test_goodlaw_chat_format.py checks each):
   * firm wording only for a row a person confirmed; every other reading says "reported" or "appears" (the register's and the cards' own sentences are used as they are)
   * a missing register or card index is refused, because "no register entry" must not be said about a register that was never loaded
 
-`quiet_policy` has no default on purpose: whether a quiet card gets a grey "no warning found in what we hold" line or no line at all is the owner's open decision (see FOLLOW_UPS.md).
+`quiet_policy` has no default on purpose, so that nobody inherits a choice by accident: whether a quiet card gets a grey "no warning found in what we hold" line or no line at all. The owner's choice is recorded,
+with who decided it and why, in goodlaw/data/pilot_settings.json (decided 2026-10-22: "coverage_note"), and goodlaw/pilot_settings.build_core is what hands it to the formatter.
 Plain text only: no markup, so the same text goes to WhatsApp or Telegram, and a channel can add its own formatting later.
 """
 import datetime

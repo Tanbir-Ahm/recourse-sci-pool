@@ -8,7 +8,7 @@ Offline: it reads the register and the cards through goodlaw/chat_format.py (so 
 
 Columns: case, year, citation, status, what_we_know, evidence_as_of, checked_by, also, section_numbers, exported_on, note. Every row has a status and a note, so a spreadsheet row is never silent:
 a case with nothing adverse says "No warning found in what we hold" and that this is not a finding, and an unchecked case says "Not checked by us". The file does not follow the formatter's `quiet_policy`
-(whether a quiet card gets a line in a chat message is the owner's open decision): a blank status cell would read as "fine", so the file always spells it out.
+(whether a quiet card gets a line in a chat message was decided on 2026-10-22 as "coverage_note", see goodlaw/data/pilot_settings.json; the file would spell it out whatever the chat setting): a blank status cell would read as "fine".
 
 The note says what kind of reading the row is: a register row a person confirmed, a register row not yet confirmed, the checker's pattern-rule reading (not lawyer-validated), or not checked. Rows are
 ordered most pressing first (confirmed register rows, then other warnings, then cautions, then not checked, then no warning found); within a group the input order is kept, or pass `order="input"`.

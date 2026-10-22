@@ -36,7 +36,7 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 
 ## Offline message formatter (not connected)
 
-`goodlaw/chat_format.py` turns a retrieved passage plus what the Overruled Register and the currency cards say about its case into one plain-text chat message with the warning first ("Reported adverse", "Questioned", "Not checked by us", and so on). It words only what the register and the cards already say, never calls a case "good law", and never cuts a warning to fit; only the passage is shortened. Nothing is sent and nothing is connected. One decision is the owner's: how a quiet card is shown (`quiet_policy` has no default). `goodlaw/passage_input.py` turns a search hit (an index passage row) into the formatter's input, naming the judgment from the checker's corpus (the index itself carries no title for most crawl judgments). Details: `FOLLOW_UPS.md` items 1o and 1p. Tests: `python test_goodlaw_chat_format.py`, `python test_goodlaw_passage_input.py`.
+`goodlaw/chat_format.py` turns a retrieved passage plus what the Overruled Register and the currency cards say about its case into one plain-text chat message with the warning first ("Reported adverse", "Questioned", "Not checked by us", and so on). It words only what the register and the cards already say, never calls a case "good law", and never cuts a warning to fit; only the passage is shortened. Nothing is sent and nothing is connected. How a quiet card is shown (`quiet_policy`, no default in the code) was decided on 2026-10-22 and is recorded in `goodlaw/data/pilot_settings.json`. `goodlaw/passage_input.py` turns a search hit (an index passage row) into the formatter's input, naming the judgment from the checker's corpus (the index itself carries no title for most crawl judgments). Details: `FOLLOW_UPS.md` items 1o and 1p. Tests: `python test_goodlaw_chat_format.py`, `python test_goodlaw_passage_input.py`.
 
 ## Watchlist (offline slice, not connected)
 
@@ -53,6 +53,10 @@ Source acknowledgement: all judgments are from the Supreme Court of India websit
 ## Pilot bot core (offline slice, not connected)
 
 `goodlaw/bot_core.py` takes a message or a button tap and returns the replies: the three rules, a question answered with three passages (warning first, feedback buttons), `/watch`, `/watchlist`, `/export`. No chat service, no accounts, no real search; every search is capped per user and per day. A dry run written out as a conversation: `review_results/2026-10-22_bot_dry_run/TRANSCRIPT.md`. Details and what still needs the owner: `FOLLOW_UPS.md` item 1t. Tests: `python test_goodlaw_bot_core.py`.
+
+## Pilot settings and the owner's tools (offline, not connected)
+
+`goodlaw/data/pilot_settings.json` records each pilot setting and who decided it (the quiet-card choice was decided on 2026-10-22; the rest are defaults or placeholders). `python -m goodlaw.pilot_admin` adds users, switches them off, shows a summary, exports the marks and pauses the bot; the list is empty. How to run the pilot, when the owner decides to: `PILOT_RUNBOOK.md`. Details: `FOLLOW_UPS.md` item 1u. Tests: `python test_goodlaw_pilot_settings.py`.
 
 ## Internal case-data layer (offline slice, not connected)
 

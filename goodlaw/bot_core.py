@@ -14,7 +14,7 @@ It joins the pieces built so far and adds nothing of its own to what is said abo
 A sender (WhatsApp, Telegram) would pass each incoming message in, send each Outbound out, and attach `attachment` as a file. None exists; nothing here touches a network.
 
 What a user can do: reply "I understand" to the three rules; ask a test question; /watch Name v Name (2018) ; (2018) 17 SCC 627 ; /watchlist ; /export ; /help.
-What it will not do (test_goodlaw_bot_core.py checks each): answer anyone who is not on the list, switched on and has accepted the current rules (a stranger gets one neutral line and nothing is recorded);
+What it will not do (test_goodlaw_bot_core.py checks each): answer anyone while a file named PILOT_STOP is in the store folder, and answer anyone who is not on the list, switched on and has accepted the current rules (a stranger gets one neutral line and nothing is recorded);
 run a search past a daily limit per user or in all (every search costs money); count a question whose search was unavailable; show a passage's feedback buttons for a passage that was not shown;
 put a chat id in anything it sends; say a case is good law in any wording of its own; promise an alert (nothing sends alerts yet).
 `search_fn(question)` returns index passage rows ({doc, i, pn, page, section, h, text}); it may raise `SearchUnavailable`, which is answered politely, and any other exception is a bug and is raised.
@@ -49,6 +49,8 @@ STALE_TAP = "That button is no longer valid."
 EMPTY_WATCHLIST = "Your watchlist is empty. Save a case with /watch Name v Name (2018)."
 NO_EXPORT = "Export is not available in this test."
 SAVED = "Saved to your watchlist. This is what we know today:"
+PAUSED = "The test is paused for now. Please try again later."
+PILOT_STOP = "PILOT_STOP"                  # a file of this name in the store folder pauses the bot for everyone (the owner's kill switch, like STOP and IK_STOP elsewhere)
 _WATCH = re.compile(r"^/watch(?:@\w+)?\s+(?P<name>.+?)(?:\s*\((?P<year>(?:18|19|20)\d\d)\))?(?:\s*;\s*(?P<cite>.+))?\s*$", re.S)
 
 
@@ -90,6 +92,8 @@ class BotCore:
     # ---- one incoming event ----------------------------------------------------------------------------------------------------------------------------------------------
     def handle(self, user_id, text=None, tap=None, on=None):
         uid, day = str(user_id), self._day(on)
+        if self.store_dir and os.path.exists(os.path.join(self.store_dir, PILOT_STOP)):
+            return [Outbound(PAUSED)]
         ok, reason, gate_text = self.pilot.gate(uid)
         if not ok:
             if reason == "rules_not_accepted" and tap is None and _says_understood(text):

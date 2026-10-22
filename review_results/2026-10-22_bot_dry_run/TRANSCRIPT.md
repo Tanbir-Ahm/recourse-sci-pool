@@ -1,6 +1,6 @@
 # A dry run of the pilot bot's core, 2026-10-22
 
-Offline: no chat service, no network, no spend. **Real:** the Overruled Register, the currency cards, the rules and the wording. **Invented:** the users, the judgments' names, the passages and the search (a stub that returns four fixed hits). Read it as a picture of what a lawyer would see, not as evidence about the search. `quiet_policy` is set to `coverage_note` here only for the picture; it is the owner's open decision.
+Offline: no chat service, no network, no spend. **Real:** the Overruled Register, the currency cards, the rules and the wording. **Invented:** the users, the judgments' names, the passages and the search (a stub that returns four fixed hits). Read it as a picture of what a lawyer would see, not as evidence about the search. The bot is built from the recorded settings (`goodlaw/data/pilot_settings.json`), so the quiet-card choice shown is the one decided on 2026-10-22.
 
 ### A stranger writes
 
