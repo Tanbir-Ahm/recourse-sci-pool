@@ -154,6 +154,14 @@ cv = a["coverage"]
 check(cv["collection_runs_to"] and isinstance(cv["later_years"], list) and "note" in cv, "the coverage block says where the collection ends and how much of the later years it holds")
 check(all(x for x in a["limits"]) and a["generated"] == "2026-10-05", "limits are stated and the date is recorded")
 
+# where the collection ends counts the court's newer archive too (its rows are dated from the archive, date_source 'court')
+import sqlite3
+mem = sqlite3.connect(":memory:")
+mem.execute("CREATE TABLE docs (year INTEGER, dup_of TEXT, date TEXT, date_source TEXT)")
+mem.executemany("INSERT INTO docs VALUES (?,?,?,?)", [(2025, None, "2025-12-01", "bucket"), (2026, None, "2026-10-16", "court"), (2027, None, "2027-01-01", "neighbours"), (2020, "x", "2020-01-01", "court")])
+cv2 = R.coverage(type("C", (), {"con": mem})(), 2010, year_counts_path="/no/such/file.csv")
+check(cv2["collection_runs_to"] == "2026-10-16" and "newer archive" in cv2["note"], "the collection's end date counts the court's newer archive and the note names it (an estimated date does not count)")
+
 rows = [{"doc_key": "b1", "label": "DISAGREES", "cue": "not been followed"} for _ in range(4)] + [{"doc_key": "b2", "label": "DISAGREES", "cue": "not been followed"}, {"doc_key": "b1", "label": "OVERRULES", "cue": "overruled"}]
 col = R._collapse(rows)
 check(len(col) == 3 and col[0].get("repeats") == 3 and "repeats" not in col[1], "the same wording repeated in one judgment is shown once with a count of the repeats; other judgments and other cues are kept")

@@ -4,18 +4,18 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **4**; latest in 2025; 4 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 2
-- By decade: 2020s 4
-- Found by: pair 1, cite 4; citations learned from the texts: scc:2022:7:124
+- Later judgments citing it (high or medium confidence): **6**; latest in 2025; 6 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 4
+- By decade: 2020s 6
+- Found by: pair 4, cite 4; citations learned from the texts: scc:2022:7:124
 
 ## What the law reporter's case-law table says (judgments of 2017 to 2023 only)
 
-- The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 1 later judgments have a row for this case; relied on 1. This is the reporter's annotation, not the court's own words.
+- The Supreme Court Reports print, in the headnote of each judgment, a table of the cases it cites and what it did with each. 2 later judgments have a row for this case; relied on 1; referred to 1. This is the reporter's annotation, not the court's own words.
   - M N G BHARATEESH REDDY versus RAMESH RANGANATHAN AND ANOTHER (2022-08-18): marked "relied on", Para 22. Quote verified: True
 
 ## Statute dimension (what became of the sections the judgment cites)
@@ -29,10 +29,10 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 61%.
-  - 2023-2026: we hold 2747 of 4475 (61%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 104%.
+  - 2023-2026: we hold 4652 of 4475 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

@@ -2,23 +2,25 @@
 
 **Triage: NO_ADVERSE_FOUND**  |  **STATUTE_CHANGED**
 
-No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block. 1 weak or ambiguous readings were set aside; they are listed below so you can check them.
+No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block. 2 weak or ambiguous readings were set aside; they are listed below so you can check them.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **59**; latest in 2025; 55 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 36, follows 16, limits 2, distinguishes 2, disagrees 1
-- By decade: 2010s 19, 2020s 40
-- Found by: short 482, pair 7, cite 207; citations learned from the texts: scccri:2014:1:524, air:2014:187
+- Later judgments citing it (high or medium confidence): **70**; latest in 2026; 66 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 43, follows 14, limits 3, distinguishes 2, disagrees 1
+- By decade: 2010s 20, 2020s 50
+- Found by: pair 9, cite 219, short 166; citations learned from the texts: scccri:2014:1:524, air:2014:187
 
 ## Disagree, doubt, limit, or an overruling with a caveat (weak readings are marked in their reasons)
 
-- **YASHWANT SINHA & ORS. versus CENTRAL BUREAU OF INVESTIGATION THROUGH ITS DIRECTOR & ANR.** (2019-11-14; bench 3; bench compared with the target's: smaller; disagrees; cue: "not following"; speaker: headnote; confidence medium; quote verified: True)
-  > To test the hypothesis that on the facts this Court was wrong and manifestly so in declining in not following the dicta of the Constitution Bench in Lalita Kumari, a reverse process of reasoning can be employed to appreciate the matter further.
-  (the same wording appears 1 more time in this judgment)
-  Why not a clean overruling: worded as an argument, a condition or a possibility; a smaller bench's disagreement does not bind or weaken a larger bench's ruling; in the law report's headnote, not the judgment.
+- **YASHWANT SINHA & ORS. versus CENTRAL BUREAU OF INVESTIGATION THROUGH ITS DIRECTOR & ANR.** (2019-11-14; bench 3; bench compared with the target's: smaller; disagrees; cue: "not being followed"; speaker: court; confidence medium; quote verified: True)
+  > As far as mandate of Lalita Kumari (supra), not being followed, it is stated that disclosing prima facie that a cognizable offence is committed is mandatory, which is lacking in the present case especially once this Court has concluded that on decision-making process, pricing and Indian Offset Partners, there was no reason to intervene.
+  Why not a clean overruling: a smaller bench's disagreement does not bind or weaken a larger bench's ruling.
+- **YASHWANT SINHA & ORS. versus CENTRAL BUREAU OF INVESTIGATION THROUGH ITS DIRECTOR & ANR.** (2019-11-14; bench 3; bench compared with the target's: smaller; disagrees; cue: "not following"; speaker: court; confidence medium; quote verified: True)
+  > To test the hypothesis that on the facts this Court was wrong and manifestly so in declining in not following the dicta of the Constitution Bench in Lalita Kumari (supra), a reverse process of reasoning can be employed to appreciate the matter further.
+  Why not a clean overruling: worded as an argument, a condition or a possibility; a smaller bench's disagreement does not bind or weaken a larger bench's ruling.
 
 ## What the law reporter's case-law table says (judgments of 2017 to 2023 only)
 
@@ -31,8 +33,8 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
-- **VINOD KUMAR PANDEY & ANR. versus SEESH RAM SAINI & ORS.** (2025-09-10; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
-  > Secondly, in view of the law laid down in Lalita Kumari vs. Government of Uttar Pradesh and Ors.11, and reiterated thereafter to the effect that registration of FIR is mandatory under Section 154 Cr.P.C. if the information discloses commission of a cognizable offence and no preliminary inquiry before FIR is permissible in such a situation; however, if the information received does not disclose a cognizable offence but indicates necessity of an inquiry being conducted, a preliminary inquiry may be conducted only to ascertain facts disclosing cognizable offence, if any.
+- **ASHWINI KUMAR UPADHYAY versus UNION OF INDIA & ORS** (2026-04-29; bench 2; bench compared with the target's: unknown; follows; cue: "settled by"; speaker: court; confidence medium; quote verified: True)
+  > The scheme of CrPC in relation to registration of an FIR upon receipt of information disclosing a cognizable offence, stands authoritatively settled by the Constitution Bench of this Court in Lalita Kumari (supra).
 - **KHURSHEED AHMAD CHOHAN versus UNION OF TERRITORY OF JAMMU AND KASHMIR AND ORS. ETC.** (2025-07-21; bench 2; bench compared with the target's: smaller; follows; cue: "principles laid down"; speaker: court; confidence medium; quote verified: True)
   > The High Court committed a grave error in law by failing to exercise the writ jurisdiction and in refusing to apply the mandatory principles laid down by the Constitution Bench in Lalita Kumari (supra).
 - **STATE OF KARNATAKA versus SRI CHANNAKESHAVA.H.D. & ANR.** (2025-04-07; bench 2; bench compared with the target's: smaller; follows; cue: "Following"; speaker: court; confidence medium; quote verified: True)
@@ -53,11 +55,11 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 85%.
-  - 2014-2019: we hold 5815 of 5528 (105%)
-  - 2020-2026: we hold 5043 of 7320 (69%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 111%.
+  - 2014-2019: we hold 6711 of 5528 (121%)
+  - 2020-2026: we hold 7608 of 7320 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

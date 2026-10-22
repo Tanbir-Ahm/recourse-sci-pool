@@ -4,7 +4,7 @@
 
 Too few later judgments in our collection cite this case to say anything.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
@@ -25,16 +25,16 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 75%.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 82%.
   - 1968-1969: we hold 696 of 948 (73%)
   - 1970-1979: we hold 2948 of 4971 (59%)
   - 1980-1989: we hold 2721 of 4473 (61%)
   - 1990-1999: we hold 7693 of 11983 (64%)
   - 2000-2009: we hold 12270 of 15531 (79%)
-  - 2010-2019: we hold 10283 of 10106 (102%)
-  - 2020-2026: we hold 5043 of 7320 (69%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+  - 2010-2019: we hold 11179 of 10106 (111%)
+  - 2020-2026: we hold 7608 of 7320 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

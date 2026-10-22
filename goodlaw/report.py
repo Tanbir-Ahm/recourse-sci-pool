@@ -114,10 +114,10 @@ def coverage(corpus, target_year, year_counts_path=YEAR_COUNTS):
         i = sum(ik.get(y, 0) for y in range(lo, hi + 1))
         tot_o, tot_i = tot_o + o, tot_i + i
         rows.append({"years": f"{lo}-{hi}", "our_judgments": o, "indiankanoon_lists": i, "share": round(o / i, 2) if i else None})
-    last = corpus.con.execute("SELECT MAX(date) FROM docs WHERE date IS NOT NULL AND date_source IN ('header','tail_place','bucket')").fetchone()[0]
+    last = corpus.con.execute("SELECT MAX(date) FROM docs WHERE date IS NOT NULL AND date_source IN ('header','tail_place','bucket','court')").fetchone()[0]
     return {"collection_runs_to": last, "later_years": rows, "share_of_later_judgments_we_hold": round(tot_o / tot_i, 2) if tot_i else None,
             "note": "Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. "
-                    "The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year."}
+                    "The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year."}
 
 
 def citator_block(corpus, doc):

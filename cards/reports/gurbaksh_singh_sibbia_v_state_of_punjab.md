@@ -4,14 +4,14 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block. 1 weak or ambiguous readings were set aside; they are listed below so you can check them.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **61**; latest in 2026; 34 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 40, follows 10, limits 7
-- By decade: 1990s 4, 2000s 12, 2010s 21, 2020s 24
-- Found by: short 336, cite 153, pair 12; citations learned from the texts: scccri:1980::465
+- Later judgments citing it (high or medium confidence): **71**; latest in 2026; 41 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 47, follows 12, limits 7
+- By decade: 1980s 3, 1990s 4, 2000s 12, 2010s 21, 2020s 31
+- Found by: short 290, pair 36, cite 161; citations learned from the texts: scccri:1980::465
 
 ## Disagree, doubt, limit, or an overruling with a caveat (weak readings are marked in their reasons)
 
@@ -40,6 +40,8 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## Recent judgments citing it with approval
 
+- **PAWAN KHERA versus STATE OF ASSAM** (2026-04-30; bench 2; bench compared with the target's: unknown; follows; cue: "principles enunciated"; speaker: court; confidence medium; quote verified: True)
+  > 25) Having regard to the aforesaid considerations, we are of the opinion that while adjudicating an application for anticipatory bail, a careful balance must be struck between the State’s interest in 20 ensuring a fair investigation and the individual’s fundamental right to personal liberty under Article 21 of the Constitution of India, in light of the principles enunciated in Gurbaksh Singh Sibbia (supra).
 - **DHANRAJ ASWANI versus AMAR S. MULCHANDANI & ANR.** (2024-09-09; bench 3; bench compared with the target's: smaller; follows; cue: "curtailing the scope of"; speaker: court; confidence medium; quote verified: True)
   > A two-Judge Bench in Siddharam Satlingappa Mhetre (supra) held that the intervening decisions between 1980 and 2011 curtailing the scope of Gurbaksh Singh Sibbia (supra) were per incuriam.
 - **JAVED GULAM NABI SHAIKH versus STATE OF MAHARASHTRA AND ANOTHER** (2024-07-03; bench 2; bench compared with the target's: smaller; follows; cue: "reiterated"; speaker: court; confidence medium; quote verified: True)
@@ -48,8 +50,6 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
   > In this context, this Court, in the Constitution Bench decision of this Court in Gurbaksh Singh Sibbia v. State of Punjab, (1980) 2 SCC 565, which was recently upheld and followed by this Court in Sushila Aggarwal (supra), held as follows: SUPREME COURT REPORTS [2021] 6 S.C.R. “26.
 - **P. CHIDAMBARAM versus DIRECTORATE OF ENFORCEMENT** (2019-12-04; bench 3; bench compared with the target's: smaller; follows; cue: "followed"; speaker: court; confidence high; quote verified: True)
   > [Paras 21, 22][468-E-H; 469-A-D] Shri Gurbaksh Singh Sibbia vs. State of Punjab, (1980) 2 SCC 565 : [1980] 3 SCR 383 – followed.
-- **SEEMA SINGH versus CENTRAL BUREAU OF INVESTIGATION & ANR.** (2018-04-18; bench 2; bench compared with the target's: smaller; follows; cue: "law laid down"; speaker: court; confidence medium; quote verified: True)
-  > In view of the clear declaration of law laid down by the Constitution Bench in Sibbia case [(1980) 2 SCC 565 : 1980 SCC (Cri) 465] , it would not be proper to limit the life of anticipatory bail.
 
 ## Statute dimension (what became of the sections the judgment cites)
 
@@ -62,14 +62,14 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 77%.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 84%.
   - 1981-1989: we hold 2481 of 4004 (62%)
   - 1990-1999: we hold 7693 of 11983 (64%)
   - 2000-2009: we hold 12270 of 15531 (79%)
-  - 2010-2019: we hold 10283 of 10106 (102%)
-  - 2020-2026: we hold 5043 of 7320 (69%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+  - 2010-2019: we hold 11179 of 10106 (111%)
+  - 2020-2026: we hold 7608 of 7320 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

@@ -4,14 +4,14 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **83**; latest in 2025; 22 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 58, follows 14, distinguishes 4, limits 2
-- By decade: 1990s 2, 2000s 44, 2010s 23, 2020s 14
-- Found by: pair 53, short 148, cite 122; citations learned from the texts: jt:1999:4:595, scccri:1999::1080, air:1999:2378, scc:1999:3:977
+- Later judgments citing it (high or medium confidence): **86**; latest in 2026; 25 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 60, follows 14, distinguishes 4, limits 3
+- By decade: 1990s 2, 2000s 44, 2010s 23, 2020s 17
+- Found by: pair 55, short 155, cite 125; citations learned from the texts: jt:1999:4:595, scccri:1999::1080, air:1999:2378, scc:1999:3:977
 
 ## What the law reporter's case-law table says (judgments of 2017 to 2023 only)
 
@@ -42,12 +42,12 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 84%.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 94%.
   - 2000-2009: we hold 12270 of 15531 (79%)
-  - 2010-2019: we hold 10283 of 10106 (102%)
-  - 2020-2026: we hold 5043 of 7320 (69%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+  - 2010-2019: we hold 11179 of 10106 (111%)
+  - 2020-2026: we hold 7608 of 7320 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

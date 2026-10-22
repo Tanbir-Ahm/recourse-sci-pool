@@ -1,10 +1,10 @@
-# Currency report: Satender Kumar Antil v Central Bureau of Investigation (2026) (2026)
+# Currency report: SATENDER KUMAR ANTIL versus CENTRAL BUREAU OF INVESTIGATION AND ANR (2026)
 
-**Triage: INSUFFICIENT**
+**Triage: INSUFFICIENT**  |  **STATUTE_CHANGED**
 
 Too few later judgments in our collection cite this case to say anything.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
@@ -13,15 +13,20 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 - By decade: none
 - Found by: short 2
 
+## Statute dimension (what became of the sections the judgment cites)
+
+- CrPC s.41 (cited 7x): renumbered; the table marks no substantive change -> BNSS 35
+- Constitution s.21 (cited 2x): not part of the 2023 recodification
+- CrPC s.6 (cited 1x): renumbered; the table marks no substantive change -> BNSS 6
+
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
+- Collection runs to 2026-10-16.
 - Of the judgments Indian Kanoon lists after this case, we hold about 0%.
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 
-- This judgment is not in our collection (the case is checked as an external target, by name and citation, in the later judgments we hold). The reporter's citator codes on its own entry and its own text are not used; only what later judgments we hold say about it.
 - Triage is a reading aid made by pattern rules over the sentences that name the case; it is not legal advice and not a verdict.
 - Only Supreme Court judgments we hold are searched; High Court treatment and judgments we lack are invisible.
 - Each quoted sentence was checked word for word against the judgment's text; the reading of it is a rule's, so a person must confirm.

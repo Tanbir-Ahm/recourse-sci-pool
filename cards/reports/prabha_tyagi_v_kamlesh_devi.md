@@ -4,14 +4,19 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **3**; latest in 2025; 3 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 3
-- By decade: 2020s 3
-- Found by: short 230, cite 2, pair 3; citations learned from the texts: scc:2022:8:90
+- Later judgments citing it (high or medium confidence): **4**; latest in 2026; 4 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 3, follows 1
+- By decade: 2020s 4
+- Found by: cite 2, pair 4; citations learned from the texts: scc:2022:8:90
+
+## Recent judgments citing it with approval
+
+- **DR. LOKESH B.H. & ORS versus STATE OF KARNATAKA & ANR** (2026-08-03; bench 2; bench compared with the target's: unknown; follows; cue: "reiterated"; speaker: court; confidence high; quote verified: True)
+  > (emphasis supplied) 13.4 This proposition of the DV Act being a piece of civil legislation was reiterated in Prabha Tyagi vs. Kamlesh Devi55 “50.
 
 ## Statute dimension (what became of the sections the judgment cites)
 
@@ -20,10 +25,10 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 61%.
-  - 2023-2026: we hold 2747 of 4475 (61%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 104%.
+  - 2023-2026: we hold 4652 of 4475 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

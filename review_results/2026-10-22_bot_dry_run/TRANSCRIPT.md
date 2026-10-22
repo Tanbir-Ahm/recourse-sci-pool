@@ -64,7 +64,7 @@ REPORTED ON THE OVERRULED REGISTER
 Mohan Lal v. State of Punjab (2018) is reported as overruled by Mukesh Singh v. State (Narcotic Branch of Delhi) (2020) (not yet confirmed by our reviewer). As of 7 Oct 2026.
 
 REPORTED ADVERSE
-A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case. As of 6 Oct 2026.
+A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case. As of 22 Oct 2026.
 
 MOHAN LAL v. STATE OF PUNJAB
 Supreme Court · 2018 · para 14 · page 9
@@ -138,7 +138,7 @@ REPORTED ON THE OVERRULED REGISTER
 Mohan Lal v. State of Punjab (2018) is reported as overruled by Mukesh Singh v. State (Narcotic Branch of Delhi) (2020) (not yet confirmed by our reviewer). As of 7 Oct 2026.
 
 REPORTED ADVERSE
-A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case. As of 6 Oct 2026.
+A later five-judge bench of the Supreme Court (2020) appears to overrule or reject this case, in whole or in part, so check it before relying on this case. As of 22 Oct 2026.
 
 Silence is not an all-clear.
 ```

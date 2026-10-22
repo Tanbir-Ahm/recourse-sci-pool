@@ -112,6 +112,16 @@ Then read `CHANGES.md`: any case whose status moved towards a warning, or that g
 - Before the final run, eight cases were flagged. I read every flagged card: two were real (above), six were false alarms caused by rule errors, which I fixed generically (see `goodlaw/EVALUATION.md`): "undoubtedly" read as "undo", "its overruling in T" read as T overruled, a case that re-examined others read as re-examined, a refusal to refer read as a doubt, counsel's argument read as the Court's, and a later judgment's page header read as a mention. A seventh rule came from the Sushila Aggarwal card: a smaller bench's disagreement with a larger bench's ruling is now a weak signal.
 - 5 cases were matched to a judgment on the names and year alone, within a year of the citation's (D. Velusamy, D.K. Basu, Lalita Kumari, M. Ravindran, Tofan Singh); I checked that the names and dates agree, but not the content, and `MATCH_CHECK.csv` lists them first for a glance.
 
+## What the 2026-10-22 run changed (the court's newer archive was added to the text store)
+
+Same 76 cases, rebuilt from the store that now also holds the court's newer archive (`FOLLOW_UPS.md` item 1w): 47 `NO_ADVERSE_FOUND`, 17 `INSUFFICIENT`, 10 High Court decisions, 2 `ADVERSE_SIGNAL` (Mohan Lal and Mhetre, unchanged). The other 71 cards changed at most in their evidence, counts and date stamp (more later judgments, the latest now 2026); `CHANGES.md` lists the five that moved otherwise:
+
+- Lokesh B.H. (2026), Prakash Chimanlal Sheth (2025), Satender Kumar Antil (2026) and Usha Chakraborty (2023) are no longer "not in the collection": each now matches a judgment from the newer archive. Their statuses are unchanged (the first three `INSUFFICIENT`: no later judgment we hold cites them; Usha Chakraborty `NO_ADVERSE_FOUND`). The Limits paragraph below describes the earlier state for those four; Youth Bar Association (2016) is still checked from the outside.
+- S. Vanitha v Deputy Commissioner: `INSUFFICIENT` to `NO_ADVERSE_FOUND` (five later judgments we hold now cite it). A quiet status, "no warning found in what we hold", not a finding about the law.
+- The coverage block now ends on 2026-10-16 (it counts the newer archive) and names it as a source.
+- 47 passages are waiting for the second reader (`reader_batch.jsonl`); their verdicts are not on the cards yet.
+- Before the store was de-duplicated against the bucket's differently dated or spelled copies, Mohan Lal and Vihaan Kumar had become `AMBIGUOUS_MATCH`, which would have dropped the Mohan Lal warning; the final run has neither problem.
+
 ## Limits (read before relying on any card)
 
 - **Five cases are checked from the outside (2026-10-06).** Lokesh B.H. (2026), Prakash Chimanlal Sheth (2025) and Satender Kumar Antil (2026): no later judgment we hold cites them (they are too recent), so `INSUFFICIENT` means nothing has been looked at. Youth Bar Association (2016): 2 later judgments held, `INSUFFICIENT`. Usha Chakraborty (2023): 3 held, `NO_ADVERSE_FOUND`; both of those are very likely cited by many judgments we do not hold (Indian Kanoon's "cited by" list would show them; it could not be reached, see `FOLLOW_UPS.md` item 1f).

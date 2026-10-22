@@ -4,14 +4,14 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **3**; latest in 2022; 2 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 2
-- By decade: 2010s 1, 2020s 2
-- Found by: short 6, cite 5; citations learned from the texts: scc:2010:10:469
+- Later judgments citing it (high or medium confidence): **5**; latest in 2026; 4 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 4
+- By decade: 2010s 1, 2020s 4
+- Found by: short 6, cite 9; citations learned from the texts: scc:2010:10:469
 
 ## What the law reporter's case-law table says (judgments of 2017 to 2023 only)
 
@@ -23,11 +23,11 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 88%.
-  - 2011-2019: we hold 9045 of 8725 (104%)
-  - 2020-2026: we hold 5043 of 7320 (69%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 109%.
+  - 2011-2019: we hold 9941 of 8725 (113%)
+  - 2020-2026: we hold 7608 of 7320 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

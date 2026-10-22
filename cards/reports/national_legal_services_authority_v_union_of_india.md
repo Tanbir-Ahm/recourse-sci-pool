@@ -4,14 +4,14 @@
 
 No overruling or doubt was found in the later judgments we hold that cite this case. That is silence in what we hold, not a finding that it is good law: see the coverage block.
 
-Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
+Generated 2026-10-22. Source label: pattern-rule reading of Supreme Court texts; not lawyer-validated.
 
 ## Who cites it
 
-- Later judgments citing it (high or medium confidence): **24**; latest in 2025; 22 in the last 10 years.
-- How its own text treats it, by the strongest sentence in each citing judgment: neutral 22, follows 1, limits 1
-- By decade: 2010s 9, 2020s 15
-- Found by: pair 52, short 7, cite 2; citations learned from the texts: scc:2014:5:438, scr:2014:5:119
+- Later judgments citing it (high or medium confidence): **27**; latest in 2026; 25 in the last 10 years.
+- How its own text treats it, by the strongest sentence in each citing judgment: neutral 25, follows 1, limits 1
+- By decade: 2010s 9, 2020s 18
+- Found by: pair 62, short 8, cite 4; citations learned from the texts: scc:2014:5:438, scr:2014:5:119
 
 ## What the law reporter's case-law table says (judgments of 2017 to 2023 only)
 
@@ -37,11 +37,11 @@ Generated 2026-10-06. Source label: pattern-rule reading of Supreme Court texts;
 
 ## What this collection can and cannot see
 
-- Collection runs to 2026-08-12.
-- Of the judgments Indian Kanoon lists after this case, we hold about 83%.
-  - 2015-2019: we hold 4889 of 4646 (105%)
-  - 2020-2026: we hold 5043 of 7320 (69%)
-- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds only part of each year.
+- Collection runs to 2026-10-16.
+- Of the judgments Indian Kanoon lists after this case, we hold about 112%.
+  - 2015-2019: we hold 5785 of 4646 (125%)
+  - 2020-2026: we hold 7608 of 7320 (104%)
+- Indian Kanoon's counts are typed from a screenshot of its yearly list (2026-10-05) and may include orders or duplicates; the share is a rough guide. The collection is the Supreme Court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive; together they hold only part of each year.
 
 ## Limits
 

@@ -56,7 +56,7 @@ The checker only warns. What a person has confirmed, or an outside list says, ab
 
 ## What it cannot do
 
-- It sees only Supreme Court judgments we hold: the court's own site to 4 May 2017 and the open Dattam Labs bucket after that, which holds part of each year. Our crawl and the bucket together miss roughly 40% of what Indian Kanoon lists for 1968 to 1999, and about a quarter of 2018 to 2025. A judgment we lack cannot overrule anything we can see.
+- It sees only Supreme Court judgments we hold: the court's own site to 4 May 2017, then the open Dattam Labs bucket and the court's newer archive (from 1 May 2017), which together hold part of each year. Our crawl and the bucket together miss roughly 40% of what Indian Kanoon lists for 1968 to 1999, and about a quarter of 2018 to 2025. A judgment we lack cannot overrule anything we can see.
 - High Court treatment is invisible.
 - The second reader sees only the passages around a mention, so it can take a recited earlier order or a reported view for the Court's own stance.
 - Rules read sentences; they miss overrulings stated without the usual words, and they can mistake a sentence about another case for one about the target (the report flags the weak ones).
