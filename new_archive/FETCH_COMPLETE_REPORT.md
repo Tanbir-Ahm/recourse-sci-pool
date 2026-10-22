@@ -44,6 +44,6 @@ The open bucket's coverage falls from about 70% to 75% in 2017 to 2024 to under 
 Missing in 2024 to 2026: 12, 24 and 7 rows. Not checked one by one; likely older-style headers or a layout where the number is not on page 1 [Likely].
 
 ## Caveats
-- The 74 links with no diary number are a defect on the court's page (`supremecourt//2018/2018__Judgement_...`). They are not in the catalogue. See FOLLOW_UPS item 1o.
+- The 74 links with no diary number are a defect on the court's page (`supremecourt//2018/2018__Judgement_...`). They are not in the catalogue. Skipped by the owner's decision of 2026-10-22; listed in `not_fetchable_links.csv`. See FOLLOW_UPS item 1o.
 - Case names come from page 1 of each judgment; names with many parties are shortened ("... and others").
 - Files: `new_archive/<YYYY-MM>/results.csv` is the audit record per month; `new_archive/audit_fetch.py` re-checks everything.

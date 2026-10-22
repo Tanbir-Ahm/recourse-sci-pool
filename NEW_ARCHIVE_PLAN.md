@@ -160,3 +160,6 @@ Order of work (owner: "complete the fetching till 2017 cleanly and completely as
 
 ## 18. Fetch complete (2026-10-22)
 All months from May 2017 to October 2026 are fetched: 10,409 English judgments stored on `claude/sci-court-newer`, audit 0 problems. `new_archive/catalogue.csv` rebuilt (10,409 rows). Results and bucket comparison: `new_archive/FETCH_COMPLETE_REPORT.md`. Reminder owed to the owner: FOLLOW_UPS item 1o (74 links with no diary number, two fixes). No embedding, spending or merging done.
+
+## 19. The 74 links with no usable address: skipped (owner, 2026-10-22)
+Offered fix 1 (snippet on one day, 19 June 2017), the owner chose to skip them. Listed in `new_archive/not_fetchable_links.csv` with the wording "on the court's page, not fetchable by us". The catalogue (10,409 rows) does not contain them.
