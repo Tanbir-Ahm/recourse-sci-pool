@@ -1,0 +1,135 @@
+{
+ "index_branch_commit": "5d8837e3281621700c45c402078701858c6dfe60",
+ "counted_at_utc": "2026-10-22 15:35:45",
+ "blocks_in_ledger": 240,
+ "tokens_spent_ever": 78185939,
+ "sources": {
+  "crawl": {
+   "blocks": 164,
+   "tokens": 46510527,
+   "recorded": 36928,
+   "kept": 8101,
+   "passages_in_document_records": 153383,
+   "noise_dropped": 4089,
+   "ledger_passages": 153383,
+   "not_embedded": {
+    "not_criminal": 26760,
+    "duplicate": 656,
+    "short": 1275,
+    "near_duplicate": 136
+   },
+   "vector_rows": 153383,
+   "passage_rows": 153383,
+   "non_finite_vectors": 0,
+   "blocks_where_rows_differ": [],
+   "every_kept_passage_has_a_vector": true,
+   "court": "Supreme Court"
+  },
+  "bucket": {
+   "blocks": 50,
+   "tokens": 20795452,
+   "recorded": 12168,
+   "kept": 2404,
+   "passages_in_document_records": 82772,
+   "noise_dropped": 2338,
+   "ledger_passages": 82772,
+   "not_embedded": {
+    "in_crawl": 3084,
+    "not_criminal": 6635,
+    "short": 38,
+    "near_duplicate": 3,
+    "duplicate": 4
+   },
+   "vector_rows": 82772,
+   "passage_rows": 82772,
+   "non_finite_vectors": 0,
+   "blocks_where_rows_differ": [],
+   "every_kept_passage_has_a_vector": true,
+   "court": "Supreme Court"
+  },
+  "ghc_court": {
+   "blocks": 4,
+   "tokens": 3286035,
+   "recorded": 776,
+   "kept": 759,
+   "passages_in_document_records": 15241,
+   "noise_dropped": 253,
+   "ledger_passages": 15241,
+   "not_embedded": {
+    "not_criminal": 17
+   },
+   "vector_rows": 15241,
+   "passage_rows": 15241,
+   "non_finite_vectors": 0,
+   "blocks_where_rows_differ": [],
+   "every_kept_passage_has_a_vector": true,
+   "court": "Gauhati High Court"
+  },
+  "sci_newer": {
+   "blocks": 15,
+   "tokens": 6871758,
+   "recorded": 3747,
+   "kept": 1312,
+   "passages_in_document_records": 30028,
+   "noise_dropped": 1553,
+   "ledger_passages": 30028,
+   "not_embedded": {
+    "not_criminal": 2318,
+    "short": 113,
+    "duplicate": 4
+   },
+   "vector_rows": 30028,
+   "passage_rows": 30028,
+   "non_finite_vectors": 0,
+   "blocks_where_rows_differ": [],
+   "every_kept_passage_has_a_vector": true,
+   "court": "Supreme Court"
+  },
+  "ghc_bucket": {
+   "blocks": 7,
+   "tokens": 722167,
+   "recorded": 1521,
+   "kept": 141,
+   "passages_in_document_records": 2985,
+   "noise_dropped": 67,
+   "ledger_passages": 2985,
+   "not_embedded": {
+    "not_criminal": 1380
+   },
+   "vector_rows": 2985,
+   "passage_rows": 2985,
+   "non_finite_vectors": 0,
+   "blocks_where_rows_differ": [],
+   "every_kept_passage_has_a_vector": true,
+   "court": "Gauhati High Court"
+  }
+ },
+ "vectors_check": {},
+ "by_court": {
+  "Supreme Court": {
+   "recorded": 52843,
+   "embedded_judgments": 11817,
+   "passages": 266183
+  },
+  "Gauhati High Court": {
+   "recorded": 2297,
+   "embedded_judgments": 900,
+   "passages": 18226
+  }
+ },
+ "total_passages": 284409,
+ "total_vector_rows": 284409,
+ "supreme_court_distinct_by_the_store": {
+  "embedded_judgments_mapped_to_the_store": {
+   "crawl": 8079,
+   "bucket": 2404,
+   "sci_newer": 1301
+  },
+  "distinct_judgments_over_all_sources": 11659,
+  "embedded_judgments_the_store_cannot_place": {
+   "crawl": 18,
+   "sci_newer": 11
+  }
+ },
+ "supreme_court_embedded_judgments_raw": 11817
+}
