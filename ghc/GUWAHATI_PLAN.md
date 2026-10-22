@@ -49,3 +49,6 @@ Next: the owner finds how many monthly lists exist (earliest month) and download
 - **The other 4,738 per-year files (`download_YYYY.ps1`) are not requested.** They would only replace bucket text that already exists; ask the owner again only if a quality problem needs it.
 - **Bucket text check (2026-10-22, 400-judgment sample of reasoned ones + all 11,317):** readable; about 88% of words recognisable; no scans, no empty documents; the 2,280 letter-shift repairs are clean. One defect: the stored text is hard-wrapped at 80 columns, which splits some words ("Ke / bang"). A reversible cleaning step (join full-width lines) is needed before any embedding; it lifted recognisable words to about 91% and still leaves some splits (lines of 78 characters), so the real cleaning must be built and tested.
 - When the zips arrive: read the PDFs, store text tagged "court" on `claude/ghc-bucket`, set `court_file_received=yes` in `court_lists/by_month`, report counts and flag any scans (no OCR tool).
+
+## 8. The 888 criminal files arrived (2026-10-22)
+811 stored from 868 PDFs (57 skipped as AB/BA/bail/IA, 2 scans without text, 20 downloads failed and await the retry script). Details: `ghc/court_judgments/READ_REPORT.md`. Text is on `claude/ghc-bucket` with `text_source: "court"`.
