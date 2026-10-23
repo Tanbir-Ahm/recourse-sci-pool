@@ -1,0 +1,214 @@
+{
+ "spent_tokens": 82871528,
+ "ceiling": 85000000,
+ "price_per_million": 0.12,
+ "documents_stored": 15353,
+ "sets": {
+  "P1_documents_with_a_judgment_signal": {
+   "kept": 5834,
+   "passages": 117329,
+   "not_criminal": 525,
+   "duplicate": 452,
+   "short": 307,
+   "in_crawl": 0,
+   "input": 7118,
+   "est_tokens": 26218695,
+   "est_dollars": 3.15,
+   "per_year": {
+    "2018": {
+     "kept": 658,
+     "short": 71,
+     "not_criminal": 56,
+     "duplicate": 34
+    },
+    "2019": {
+     "kept": 546,
+     "short": 57,
+     "not_criminal": 31,
+     "duplicate": 42
+    },
+    "2020": {
+     "kept": 437,
+     "duplicate": 39,
+     "short": 16,
+     "not_criminal": 18
+    },
+    "2021": {
+     "kept": 355,
+     "duplicate": 56,
+     "not_criminal": 51,
+     "short": 10
+    },
+    "2022": {
+     "kept": 552,
+     "duplicate": 51,
+     "not_criminal": 66,
+     "short": 37
+    },
+    "2023": {
+     "kept": 713,
+     "not_criminal": 55,
+     "duplicate": 52,
+     "short": 35
+    },
+    "2024": {
+     "kept": 809,
+     "duplicate": 50,
+     "short": 29,
+     "not_criminal": 74
+    },
+    "2025": {
+     "kept": 983,
+     "not_criminal": 85,
+     "duplicate": 75,
+     "short": 21
+    },
+    "2026": {
+     "kept": 781,
+     "duplicate": 53,
+     "short": 31,
+     "not_criminal": 89
+    }
+   }
+  },
+  "P2_court_listed_only": {
+   "kept": 2583,
+   "passages": 68577,
+   "not_criminal": 152,
+   "duplicate": 271,
+   "short": 24,
+   "in_crawl": 0,
+   "input": 3030,
+   "est_tokens": 15623262,
+   "est_dollars": 1.87,
+   "per_year": {
+    "2018": {
+     "kept": 404,
+     "duplicate": 30,
+     "not_criminal": 35,
+     "short": 5
+    },
+    "2019": {
+     "kept": 357,
+     "duplicate": 33,
+     "not_criminal": 11,
+     "short": 3
+    },
+    "2020": {
+     "kept": 194,
+     "not_criminal": 4,
+     "duplicate": 15
+    },
+    "2021": {
+     "kept": 156,
+     "duplicate": 29,
+     "not_criminal": 9
+    },
+    "2022": {
+     "kept": 194,
+     "not_criminal": 21,
+     "duplicate": 30,
+     "short": 1
+    },
+    "2023": {
+     "kept": 334,
+     "not_criminal": 17,
+     "duplicate": 34,
+     "short": 4
+    },
+    "2024": {
+     "kept": 301,
+     "not_criminal": 11,
+     "duplicate": 28,
+     "short": 5
+    },
+    "2025": {
+     "kept": 376,
+     "not_criminal": 24,
+     "duplicate": 38,
+     "short": 2
+    },
+    "2026": {
+     "kept": 267,
+     "duplicate": 34,
+     "not_criminal": 20,
+     "short": 4
+    }
+   }
+  },
+  "P3_no_signal_documents_for_information": {
+   "kept": 3340,
+   "passages": 12249,
+   "not_criminal": 1554,
+   "duplicate": 172,
+   "short": 3169,
+   "in_crawl": 0,
+   "input": 8235,
+   "est_tokens": 2449193,
+   "est_dollars": 0.29,
+   "per_year": {
+    "2018": {
+     "short": 304,
+     "kept": 602,
+     "not_criminal": 102,
+     "duplicate": 7
+    },
+    "2019": {
+     "kept": 536,
+     "short": 355,
+     "not_criminal": 224,
+     "duplicate": 18
+    },
+    "2020": {
+     "not_criminal": 79,
+     "kept": 229,
+     "short": 183,
+     "duplicate": 19
+    },
+    "2021": {
+     "kept": 319,
+     "short": 238,
+     "not_criminal": 91,
+     "duplicate": 22
+    },
+    "2022": {
+     "kept": 355,
+     "not_criminal": 145,
+     "short": 347,
+     "duplicate": 36
+    },
+    "2023": {
+     "short": 457,
+     "kept": 359,
+     "duplicate": 22,
+     "not_criminal": 179
+    },
+    "2024": {
+     "kept": 356,
+     "short": 400,
+     "not_criminal": 168,
+     "duplicate": 23
+    },
+    "2025": {
+     "kept": 308,
+     "short": 490,
+     "not_criminal": 276,
+     "duplicate": 17
+    },
+    "2026": {
+     "short": 395,
+     "kept": 276,
+     "not_criminal": 290,
+     "duplicate": 8
+    }
+   }
+  }
+ },
+ "total_if_P1": {
+  "est_tokens": 26218695,
+  "est_dollars": 3.15,
+  "spent_plus_plan": 109090223,
+  "fits_under_ceiling": false,
+  "needed_ceiling_with_6pct_margin": 110663344
+ }
+}
