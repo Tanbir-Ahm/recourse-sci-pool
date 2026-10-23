@@ -1,0 +1,3090 @@
+{
+ "words": {
+  "hit_at_5": 32,
+  "hit_at_10": 34,
+  "n": 48,
+  "rows": [
+   {
+    "id": 1,
+    "q": "anticipatory bail",
+    "expect": [
+     [
+      "BNSS",
+      "482"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [],
+    "n_provisions": 0
+   },
+   {
+    "id": 2,
+    "q": "bail in a non-bailable offence",
+    "expect": [
+     [
+      "BNSS",
+      "480"
+     ]
+    ],
+    "rank": 5,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "47"
+     ],
+     [
+      "PMLA",
+      "45"
+     ],
+     [
+      "BNSS",
+      "83"
+     ],
+     [
+      "DOWRY",
+      "8"
+     ],
+     [
+      "BNSS",
+      "480"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 3,
+    "q": "bail as of right in a bailable offence",
+    "expect": [
+     [
+      "BNSS",
+      "478"
+     ]
+    ],
+    "rank": 10,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "83"
+     ],
+     [
+      "PMLA",
+      "45"
+     ],
+     [
+      "BNSS",
+      "47"
+     ],
+     [
+      "JJACT",
+      "86"
+     ],
+     [
+      "BNSS",
+      "480"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 4,
+    "q": "arrest by the police without a warrant",
+    "expect": [
+     [
+      "BNSS",
+      "35"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "47"
+     ],
+     [
+      "UAPA",
+      "43B"
+     ],
+     [
+      "BNSS",
+      "45"
+     ],
+     [
+      "PCACT",
+      "17"
+     ],
+     [
+      "BNSS",
+      "55"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 5,
+    "q": "notice of appearance instead of arrest",
+    "expect": [
+     [
+      "BNSS",
+      "35"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "478"
+     ]
+    ],
+    "n_provisions": 1
+   },
+   {
+    "id": 6,
+    "q": "grounds of arrest must be told to the arrested person",
+    "expect": [
+     [
+      "BNSS",
+      "47"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "47"
+     ],
+     [
+      "UAPA",
+      "43B"
+     ],
+     [
+      "BNSS",
+      "399"
+     ],
+     [
+      "PMLA",
+      "19"
+     ],
+     [
+      "BNSS",
+      "478"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 7,
+    "q": "arrested person to be produced before a magistrate within twenty-four hours",
+    "expect": [
+     [
+      "BNSS",
+      "58"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "78"
+     ],
+     [
+      "PMLA",
+      "19"
+     ],
+     [
+      "BNSS",
+      "58"
+     ],
+     [
+      "PMLA",
+      "18"
+     ],
+     [
+      "BNSS",
+      "172"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 8,
+    "q": "default bail when the charge sheet is not filed in sixty or ninety days",
+    "expect": [
+     [
+      "BNSS",
+      "187"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "187"
+     ],
+     [
+      "SCSTACT",
+      "4"
+     ],
+     [
+      "UAPA",
+      "43D"
+     ],
+     [
+      "SCSTACT",
+      "15A"
+     ]
+    ],
+    "n_provisions": 4
+   },
+   {
+    "id": 9,
+    "q": "police must register an FIR for a cognizable offence",
+    "expect": [
+     [
+      "BNSS",
+      "173"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [],
+    "n_provisions": 0
+   },
+   {
+    "id": 10,
+    "q": "maintenance for a wife who cannot maintain herself",
+    "expect": [
+     [
+      "BNSS",
+      "144"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "144"
+     ]
+    ],
+    "n_provisions": 1
+   },
+   {
+    "id": 11,
+    "q": "compounding of offences",
+    "expect": [
+     [
+      "BNSS",
+      "359"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "359"
+     ],
+     [
+      "BNSS",
+      "272"
+     ],
+     [
+      "BNS",
+      "251"
+     ]
+    ],
+    "n_provisions": 3
+   },
+   {
+    "id": 12,
+    "q": "inherent powers of the High Court to quash proceedings",
+    "expect": [
+     [
+      "BNSS",
+      "528"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "528"
+     ],
+     [
+      "UAPA",
+      "5"
+     ],
+     [
+      "BNSS",
+      "438"
+     ],
+     [
+      "PMLA",
+      "72"
+     ],
+     [
+      "BNSS",
+      "440"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 13,
+    "q": "compensation to the victim of a crime",
+    "expect": [
+     [
+      "BNSS",
+      "395"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "396"
+     ],
+     [
+      "JJACT",
+      "74"
+     ],
+     [
+      "BNSS",
+      "413"
+     ],
+     [
+      "SCSTACT",
+      "2"
+     ],
+     [
+      "BNSS",
+      "293"
+     ]
+    ],
+    "n_provisions": 7
+   },
+   {
+    "id": 14,
+    "q": "punishment for murder",
+    "expect": [
+     [
+      "BNS",
+      "103"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "46"
+     ],
+     [
+      "BNS",
+      "55"
+     ],
+     [
+      "BNS",
+      "49"
+     ],
+     [
+      "BNSS",
+      "236"
+     ],
+     [
+      "BNS",
+      "109"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 15,
+    "q": "culpable homicide not amounting to murder",
+    "expect": [
+     [
+      "BNS",
+      "105"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "110"
+     ],
+     [
+      "BNS",
+      "105"
+     ],
+     [
+      "BNS",
+      "101"
+     ],
+     [
+      "BNS",
+      "106"
+     ],
+     [
+      "BNS",
+      "92"
+     ]
+    ],
+    "n_provisions": 9
+   },
+   {
+    "id": 16,
+    "q": "death caused by a negligent act",
+    "expect": [
+     [
+      "BNS",
+      "106"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "100"
+     ],
+     [
+      "UAPA",
+      "10"
+     ],
+     [
+      "BNS",
+      "53"
+     ],
+     [
+      "UAPA",
+      "15"
+     ],
+     [
+      "BNS",
+      "101"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 17,
+    "q": "dowry death of a married woman",
+    "expect": [
+     [
+      "BNS",
+      "80"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "80"
+     ],
+     [
+      "BNS",
+      "63"
+     ]
+    ],
+    "n_provisions": 2
+   },
+   {
+    "id": 18,
+    "q": "cruelty by the husband or his relatives to a married woman",
+    "expect": [
+     [
+      "BNS",
+      "85"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "85"
+     ],
+     [
+      "BNS",
+      "80"
+     ],
+     [
+      "BNSS",
+      "144"
+     ],
+     [
+      "BNS",
+      "63"
+     ],
+     [
+      "BNSS",
+      "359"
+     ]
+    ],
+    "n_provisions": 5
+   },
+   {
+    "id": 19,
+    "q": "cheating and dishonestly inducing delivery of property",
+    "expect": [
+     [
+      "BNS",
+      "318"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "318"
+     ],
+     [
+      "BNSS",
+      "202"
+     ],
+     [
+      "BNSS",
+      "359"
+     ],
+     [
+      "BNS",
+      "317"
+     ],
+     [
+      "BNS",
+      "308"
+     ]
+    ],
+    "n_provisions": 9
+   },
+   {
+    "id": 20,
+    "q": "criminal breach of trust",
+    "expect": [
+     [
+      "BNS",
+      "316"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "244"
+     ],
+     [
+      "POCSO",
+      "37"
+     ],
+     [
+      "BNS",
+      "316"
+     ],
+     [
+      "POCSO",
+      "27"
+     ],
+     [
+      "BNSS",
+      "245"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 21,
+    "q": "punishment for theft",
+    "expect": [
+     [
+      "BNS",
+      "303"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "ITACT",
+      "66C"
+     ],
+     [
+      "BNS",
+      "46"
+     ],
+     [
+      "BNS",
+      "51"
+     ],
+     [
+      "BNSS",
+      "236"
+     ],
+     [
+      "BNSS",
+      "234"
+     ]
+    ],
+    "n_provisions": 8
+   },
+   {
+    "id": 22,
+    "q": "extortion by putting a person in fear of injury",
+    "expect": [
+     [
+      "BNS",
+      "308"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "308"
+     ],
+     [
+      "SCSTACT",
+      "3"
+     ],
+     [
+      "BNS",
+      "309"
+     ],
+     [
+      "BNS",
+      "333"
+     ],
+     [
+      "BNS",
+      "28"
+     ]
+    ],
+    "n_provisions": 8
+   },
+   {
+    "id": 23,
+    "q": "punishment for rape",
+    "expect": [
+     [
+      "BNS",
+      "64"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [],
+    "n_provisions": 0
+   },
+   {
+    "id": 24,
+    "q": "sexual harassment of a woman",
+    "expect": [
+     [
+      "BNS",
+      "75"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "75"
+     ],
+     [
+      "POCSO",
+      "12"
+     ],
+     [
+      "BNS",
+      "86"
+     ],
+     [
+      "POCSO",
+      "11"
+     ],
+     [
+      "BNS",
+      "63"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 25,
+    "q": "stalking a woman",
+    "expect": [
+     [
+      "BNS",
+      "78"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "78"
+     ]
+    ],
+    "n_provisions": 1
+   },
+   {
+    "id": 26,
+    "q": "defamation",
+    "expect": [
+     [
+      "BNS",
+      "356"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "356"
+     ],
+     [
+      "BNS",
+      "350"
+     ],
+     [
+      "BNSS",
+      "127"
+     ],
+     [
+      "BNSS",
+      "359"
+     ]
+    ],
+    "n_provisions": 4
+   },
+   {
+    "id": 27,
+    "q": "criminal intimidation",
+    "expect": [
+     [
+      "BNS",
+      "351"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "351"
+     ],
+     [
+      "SCSTACT",
+      "15A"
+     ],
+     [
+      "BNSS",
+      "502"
+     ],
+     [
+      "BNS",
+      "87"
+     ],
+     [
+      "BNS",
+      "350"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 28,
+    "q": "abetment of suicide",
+    "expect": [
+     [
+      "BNS",
+      "108"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [],
+    "n_provisions": 0
+   },
+   {
+    "id": 29,
+    "q": "attempt to commit murder",
+    "expect": [
+     [
+      "BNS",
+      "109"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "310"
+     ],
+     [
+      "POCSO",
+      "29"
+     ],
+     [
+      "BNS",
+      "46"
+     ],
+     [
+      "POCSO",
+      "18"
+     ],
+     [
+      "BNS",
+      "308"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 30,
+    "q": "voluntarily causing hurt",
+    "expect": [
+     [
+      "BNS",
+      "115"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "117"
+     ],
+     [
+      "UAPA",
+      "10"
+     ],
+     [
+      "BNS",
+      "115"
+     ],
+     [
+      "POCSO",
+      "16"
+     ],
+     [
+      "BNS",
+      "53"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 31,
+    "q": "forgery",
+    "expect": [
+     [
+      "BNS",
+      "336"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "336"
+     ],
+     [
+      "BNS",
+      "335"
+     ],
+     [
+      "BNS",
+      "340"
+     ],
+     [
+      "BNS",
+      "341"
+     ],
+     [
+      "BNSS",
+      "243"
+     ]
+    ],
+    "n_provisions": 6
+   },
+   {
+    "id": 32,
+    "q": "right of private defence of the body",
+    "expect": [
+     [
+      "BNS",
+      "35"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "40"
+     ],
+     [
+      "BNS",
+      "39"
+     ],
+     [
+      "BNS",
+      "44"
+     ],
+     [
+      "BNS",
+      "34"
+     ],
+     [
+      "BNS",
+      "36"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 33,
+    "q": "criminal conspiracy",
+    "expect": [
+     [
+      "BNS",
+      "61"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "61"
+     ],
+     [
+      "PCACT",
+      "3"
+     ],
+     [
+      "BNSS",
+      "217"
+     ],
+     [
+      "BNS",
+      "148"
+     ],
+     [
+      "BNS",
+      "228"
+     ]
+    ],
+    "n_provisions": 8
+   },
+   {
+    "id": 34,
+    "q": "cheque dishonoured for insufficiency of funds",
+    "expect": [
+     [
+      "NIACT",
+      "138"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "NIACT",
+      "138"
+     ]
+    ],
+    "n_provisions": 1
+   },
+   {
+    "id": 35,
+    "q": "offences by companies under the cheque law",
+    "expect": [
+     [
+      "NIACT",
+      "141"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "NIACT",
+      "141"
+     ],
+     [
+      "UAPA",
+      "22C"
+     ],
+     [
+      "NIACT",
+      "142"
+     ],
+     [
+      "UAPA",
+      "22A"
+     ],
+     [
+      "NIACT",
+      "140"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 36,
+    "q": "identity theft using electronic signature or password",
+    "expect": [
+     [
+      "ITACT",
+      "66C"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "ITACT",
+      "66C"
+     ]
+    ],
+    "n_provisions": 1
+   },
+   {
+    "id": 37,
+    "q": "cheating by personation using a computer resource",
+    "expect": [
+     [
+      "ITACT",
+      "66D"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "ITACT",
+      "66D"
+     ],
+     [
+      "NIACT",
+      "6"
+     ],
+     [
+      "BNSS",
+      "359"
+     ]
+    ],
+    "n_provisions": 3
+   },
+   {
+    "id": 38,
+    "q": "publishing obscene material in electronic form",
+    "expect": [
+     [
+      "ITACT",
+      "67"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "ITACT",
+      "67"
+     ],
+     [
+      "POCSO",
+      "13"
+     ],
+     [
+      "ITACT",
+      "67A"
+     ],
+     [
+      "UAPA",
+      "2"
+     ],
+     [
+      "ITACT",
+      "67B"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 39,
+    "q": "violation of privacy by capturing private images",
+    "expect": [
+     [
+      "ITACT",
+      "66E"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "ITACT",
+      "66E"
+     ],
+     [
+      "BNS",
+      "77"
+     ]
+    ],
+    "n_provisions": 2
+   },
+   {
+    "id": 40,
+    "q": "public servant taking a bribe",
+    "expect": [
+     [
+      "PCACT",
+      "7"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "218"
+     ],
+     [
+      "PCACT",
+      "7"
+     ],
+     [
+      "BNSS",
+      "223"
+     ],
+     [
+      "PCACT",
+      "8"
+     ],
+     [
+      "BNS",
+      "198"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 41,
+    "q": "disproportionate assets criminal misconduct by a public servant",
+    "expect": [
+     [
+      "PCACT",
+      "13"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "127"
+     ],
+     [
+      "PCACT",
+      "13"
+     ]
+    ],
+    "n_provisions": 2
+   },
+   {
+    "id": 42,
+    "q": "punishment for money laundering",
+    "expect": [
+     [
+      "PMLA",
+      "4"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "PMLA",
+      "4"
+     ],
+     [
+      "PMLA",
+      "24"
+     ],
+     [
+      "PMLA",
+      "23"
+     ],
+     [
+      "PMLA",
+      "3"
+     ],
+     [
+      "PMLA",
+      "58A"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 43,
+    "q": "sexual assault on a child",
+    "expect": [
+     [
+      "POCSO",
+      "7"
+     ],
+     [
+      "POCSO",
+      "8"
+     ]
+    ],
+    "rank": 6,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "144"
+     ],
+     [
+      "POCSO",
+      "5"
+     ],
+     [
+      "BNS",
+      "95"
+     ],
+     [
+      "POCSO",
+      "9"
+     ],
+     [
+      "BNS",
+      "98"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 44,
+    "q": "duty to report a sexual offence against a child",
+    "expect": [
+     [
+      "POCSO",
+      "19"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNSS",
+      "289"
+     ],
+     [
+      "POCSO",
+      "19"
+     ],
+     [
+      "BNSS",
+      "223"
+     ],
+     [
+      "POCSO",
+      "5"
+     ],
+     [
+      "BNSS",
+      "243"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 45,
+    "q": "conditions for bail under the unlawful activities law",
+    "expect": [
+     [
+      "UAPA",
+      "43D"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [
+     [
+      "JJACT",
+      "110"
+     ]
+    ],
+    "n_provisions": 1
+   },
+   {
+    "id": 46,
+    "q": "atrocities against members of scheduled castes and scheduled tribes",
+    "expect": [
+     [
+      "SCSTACT",
+      "3"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": false,
+    "top5": [
+     [
+      "SCSTACT",
+      "3"
+     ],
+     [
+      "SCSTACT",
+      "17"
+     ],
+     [
+      "SCSTACT",
+      "1"
+     ],
+     [
+      "SCSTACT",
+      "21"
+     ],
+     [
+      "SCSTACT",
+      "2"
+     ]
+    ],
+    "n_provisions": 6
+   },
+   {
+    "id": 47,
+    "q": "demanding dowry",
+    "expect": [
+     [
+      "DOWRY",
+      "3"
+     ],
+     [
+      "DOWRY",
+      "4"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": false,
+    "top5": [
+     [
+      "BNS",
+      "80"
+     ],
+     [
+      "DOWRY",
+      "4"
+     ],
+     [
+      "DOWRY",
+      "8A"
+     ],
+     [
+      "DOWRY",
+      "3"
+     ],
+     [
+      "DOWRY",
+      "8B"
+     ]
+    ],
+    "n_provisions": 5
+   },
+   {
+    "id": 48,
+    "q": "instant triple talaq",
+    "expect": [
+     [
+      "MWACT",
+      "3"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": false,
+    "top5": [],
+    "n_provisions": 0
+   }
+  ]
+ },
+ "words+meaning": {
+  "hit_at_5": 38,
+  "hit_at_10": 43,
+  "n": 48,
+  "rows": [
+   {
+    "id": 1,
+    "q": "anticipatory bail",
+    "expect": [
+     [
+      "BNSS",
+      "482"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "139"
+     ],
+     [
+      "BNSS",
+      "482"
+     ],
+     [
+      "BNSS",
+      "480"
+     ],
+     [
+      "BNSS",
+      "60"
+     ],
+     [
+      "BNSS",
+      "485"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 2,
+    "q": "bail in a non-bailable offence",
+    "expect": [
+     [
+      "BNSS",
+      "480"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "480"
+     ],
+     [
+      "PMLA",
+      "45"
+     ],
+     [
+      "BNSS",
+      "482"
+     ],
+     [
+      "DOWRY",
+      "8"
+     ],
+     [
+      "BNSS",
+      "478"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 3,
+    "q": "bail as of right in a bailable offence",
+    "expect": [
+     [
+      "BNSS",
+      "478"
+     ]
+    ],
+    "rank": 7,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "480"
+     ],
+     [
+      "PMLA",
+      "45"
+     ],
+     [
+      "BNSS",
+      "482"
+     ],
+     [
+      "JJACT",
+      "86"
+     ],
+     [
+      "BNSS",
+      "47"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 4,
+    "q": "arrest by the police without a warrant",
+    "expect": [
+     [
+      "BNSS",
+      "35"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "45"
+     ],
+     [
+      "UAPA",
+      "43B"
+     ],
+     [
+      "BNSS",
+      "47"
+     ],
+     [
+      "PCACT",
+      "17"
+     ],
+     [
+      "BNSS",
+      "55"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 5,
+    "q": "notice of appearance instead of arrest",
+    "expect": [
+     [
+      "BNSS",
+      "35"
+     ]
+    ],
+    "rank": 9,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "478"
+     ],
+     [
+      "BNSS",
+      "90"
+     ],
+     [
+      "BNSS",
+      "62"
+     ],
+     [
+      "BNSS",
+      "91"
+     ],
+     [
+      "BNSS",
+      "92"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 6,
+    "q": "grounds of arrest must be told to the arrested person",
+    "expect": [
+     [
+      "BNSS",
+      "47"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "47"
+     ],
+     [
+      "UAPA",
+      "43B"
+     ],
+     [
+      "BNSS",
+      "77"
+     ],
+     [
+      "PMLA",
+      "19"
+     ],
+     [
+      "BNSS",
+      "399"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 7,
+    "q": "arrested person to be produced before a magistrate within twenty-four hours",
+    "expect": [
+     [
+      "BNSS",
+      "58"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "78"
+     ],
+     [
+      "PMLA",
+      "19"
+     ],
+     [
+      "BNSS",
+      "58"
+     ],
+     [
+      "PMLA",
+      "18"
+     ],
+     [
+      "BNSS",
+      "39"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 8,
+    "q": "default bail when the charge sheet is not filed in sixty or ninety days",
+    "expect": [
+     [
+      "BNSS",
+      "187"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "187"
+     ],
+     [
+      "SCSTACT",
+      "4"
+     ],
+     [
+      "BNSS",
+      "263"
+     ],
+     [
+      "UAPA",
+      "43D"
+     ],
+     [
+      "BNSS",
+      "60"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 9,
+    "q": "police must register an FIR for a cognizable offence",
+    "expect": [
+     [
+      "BNSS",
+      "173"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "174"
+     ],
+     [
+      "BNSS",
+      "173"
+     ],
+     [
+      "BNSS",
+      "176"
+     ],
+     [
+      "BNSS",
+      "175"
+     ],
+     [
+      "BNSS",
+      "35"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 10,
+    "q": "maintenance for a wife who cannot maintain herself",
+    "expect": [
+     [
+      "BNSS",
+      "144"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "144"
+     ],
+     [
+      "BNS",
+      "86"
+     ]
+    ],
+    "n_provisions": 2
+   },
+   {
+    "id": 11,
+    "q": "compounding of offences",
+    "expect": [
+     [
+      "BNSS",
+      "359"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "359"
+     ],
+     [
+      "BNSS",
+      "272"
+     ],
+     [
+      "BNS",
+      "251"
+     ],
+     [
+      "NIACT",
+      "147"
+     ],
+     [
+      "BNS",
+      "9"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 12,
+    "q": "inherent powers of the High Court to quash proceedings",
+    "expect": [
+     [
+      "BNSS",
+      "528"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "528"
+     ],
+     [
+      "UAPA",
+      "5"
+     ],
+     [
+      "BNSS",
+      "442"
+     ],
+     [
+      "PMLA",
+      "72"
+     ],
+     [
+      "BNSS",
+      "438"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 13,
+    "q": "compensation to the victim of a crime",
+    "expect": [
+     [
+      "BNSS",
+      "395"
+     ]
+    ],
+    "rank": 6,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "396"
+     ],
+     [
+      "JJACT",
+      "74"
+     ],
+     [
+      "BNSS",
+      "413"
+     ],
+     [
+      "SCSTACT",
+      "2"
+     ],
+     [
+      "BNSS",
+      "293"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 14,
+    "q": "punishment for murder",
+    "expect": [
+     [
+      "BNS",
+      "103"
+     ]
+    ],
+    "rank": 9,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "55"
+     ],
+     [
+      "BNS",
+      "109"
+     ],
+     [
+      "BNS",
+      "3"
+     ],
+     [
+      "BNS",
+      "49"
+     ],
+     [
+      "BNS",
+      "53"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 15,
+    "q": "culpable homicide not amounting to murder",
+    "expect": [
+     [
+      "BNS",
+      "105"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "105"
+     ],
+     [
+      "BNS",
+      "101"
+     ],
+     [
+      "BNS",
+      "110"
+     ],
+     [
+      "BNS",
+      "100"
+     ],
+     [
+      "BNS",
+      "92"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 16,
+    "q": "death caused by a negligent act",
+    "expect": [
+     [
+      "BNS",
+      "106"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "100"
+     ],
+     [
+      "UAPA",
+      "10"
+     ],
+     [
+      "BNS",
+      "106"
+     ],
+     [
+      "UAPA",
+      "15"
+     ],
+     [
+      "BNS",
+      "53"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 17,
+    "q": "dowry death of a married woman",
+    "expect": [
+     [
+      "BNS",
+      "80"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "80"
+     ],
+     [
+      "BNS",
+      "63"
+     ],
+     [
+      "BNSS",
+      "194"
+     ],
+     [
+      "BNSS",
+      "456"
+     ],
+     [
+      "BNS",
+      "90"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 18,
+    "q": "cruelty by the husband or his relatives to a married woman",
+    "expect": [
+     [
+      "BNS",
+      "85"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "85"
+     ],
+     [
+      "BNS",
+      "80"
+     ],
+     [
+      "BNSS",
+      "144"
+     ],
+     [
+      "BNS",
+      "86"
+     ],
+     [
+      "BNS",
+      "63"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 19,
+    "q": "cheating and dishonestly inducing delivery of property",
+    "expect": [
+     [
+      "BNS",
+      "318"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "318"
+     ],
+     [
+      "BNSS",
+      "202"
+     ],
+     [
+      "BNS",
+      "317"
+     ],
+     [
+      "BNS",
+      "308"
+     ],
+     [
+      "BNS",
+      "335"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 20,
+    "q": "criminal breach of trust",
+    "expect": [
+     [
+      "BNS",
+      "316"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "316"
+     ],
+     [
+      "POCSO",
+      "37"
+     ],
+     [
+      "BNS",
+      "315"
+     ],
+     [
+      "POCSO",
+      "27"
+     ],
+     [
+      "BNSS",
+      "245"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 21,
+    "q": "punishment for theft",
+    "expect": [
+     [
+      "BNS",
+      "303"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "62"
+     ],
+     [
+      "ITACT",
+      "66C"
+     ],
+     [
+      "BNS",
+      "303"
+     ],
+     [
+      "BNS",
+      "46"
+     ],
+     [
+      "BNS",
+      "306"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 22,
+    "q": "extortion by putting a person in fear of injury",
+    "expect": [
+     [
+      "BNS",
+      "308"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "308"
+     ],
+     [
+      "SCSTACT",
+      "3"
+     ],
+     [
+      "BNS",
+      "309"
+     ],
+     [
+      "BNS",
+      "333"
+     ],
+     [
+      "BNS",
+      "129"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 23,
+    "q": "punishment for rape",
+    "expect": [
+     [
+      "BNS",
+      "64"
+     ]
+    ],
+    "rank": 3,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "70"
+     ],
+     [
+      "BNS",
+      "65"
+     ],
+     [
+      "BNS",
+      "64"
+     ],
+     [
+      "BNS",
+      "76"
+     ],
+     [
+      "BNS",
+      "74"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 24,
+    "q": "sexual harassment of a woman",
+    "expect": [
+     [
+      "BNS",
+      "75"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "75"
+     ],
+     [
+      "POCSO",
+      "12"
+     ],
+     [
+      "BNS",
+      "86"
+     ],
+     [
+      "POCSO",
+      "11"
+     ],
+     [
+      "BNS",
+      "79"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 25,
+    "q": "stalking a woman",
+    "expect": [
+     [
+      "BNS",
+      "78"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "78"
+     ],
+     [
+      "BNS",
+      "79"
+     ],
+     [
+      "BNS",
+      "84"
+     ],
+     [
+      "BNS",
+      "87"
+     ],
+     [
+      "BNS",
+      "77"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 26,
+    "q": "defamation",
+    "expect": [
+     [
+      "BNS",
+      "356"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "356"
+     ],
+     [
+      "BNS",
+      "350"
+     ],
+     [
+      "BNS",
+      "114"
+     ],
+     [
+      "BNSS",
+      "127"
+     ],
+     [
+      "BNS",
+      "33"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 27,
+    "q": "criminal intimidation",
+    "expect": [
+     [
+      "BNS",
+      "351"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "351"
+     ],
+     [
+      "SCSTACT",
+      "15A"
+     ],
+     [
+      "BNS",
+      "87"
+     ],
+     [
+      "BNSS",
+      "502"
+     ],
+     [
+      "BNS",
+      "224"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 28,
+    "q": "abetment of suicide",
+    "expect": [
+     [
+      "BNS",
+      "108"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "108"
+     ],
+     [
+      "BNS",
+      "107"
+     ],
+     [
+      "BNS",
+      "46"
+     ],
+     [
+      "BNS",
+      "55"
+     ],
+     [
+      "BNS",
+      "49"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 29,
+    "q": "attempt to commit murder",
+    "expect": [
+     [
+      "BNS",
+      "109"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "62"
+     ],
+     [
+      "POCSO",
+      "29"
+     ],
+     [
+      "BNS",
+      "103"
+     ],
+     [
+      "POCSO",
+      "18"
+     ],
+     [
+      "BNS",
+      "101"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 30,
+    "q": "voluntarily causing hurt",
+    "expect": [
+     [
+      "BNS",
+      "115"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "115"
+     ],
+     [
+      "UAPA",
+      "10"
+     ],
+     [
+      "BNS",
+      "117"
+     ],
+     [
+      "POCSO",
+      "16"
+     ],
+     [
+      "BNS",
+      "25"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 31,
+    "q": "forgery",
+    "expect": [
+     [
+      "BNS",
+      "336"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "336"
+     ],
+     [
+      "BNS",
+      "335"
+     ],
+     [
+      "BNS",
+      "340"
+     ],
+     [
+      "BNS",
+      "341"
+     ],
+     [
+      "BNS",
+      "338"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 32,
+    "q": "right of private defence of the body",
+    "expect": [
+     [
+      "BNS",
+      "35"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "40"
+     ],
+     [
+      "BNS",
+      "34"
+     ],
+     [
+      "BNS",
+      "39"
+     ],
+     [
+      "BNS",
+      "44"
+     ],
+     [
+      "BNS",
+      "37"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 33,
+    "q": "criminal conspiracy",
+    "expect": [
+     [
+      "BNS",
+      "61"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "61"
+     ],
+     [
+      "PCACT",
+      "3"
+     ],
+     [
+      "BNS",
+      "148"
+     ],
+     [
+      "BNSS",
+      "217"
+     ],
+     [
+      "BNS",
+      "228"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 34,
+    "q": "cheque dishonoured for insufficiency of funds",
+    "expect": [
+     [
+      "NIACT",
+      "138"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "NIACT",
+      "138"
+     ],
+     [
+      "NIACT",
+      "31"
+     ],
+     [
+      "NIACT",
+      "146"
+     ],
+     [
+      "NIACT",
+      "30"
+     ],
+     [
+      "NIACT",
+      "139"
+     ]
+    ],
+    "n_provisions": 7
+   },
+   {
+    "id": 35,
+    "q": "offences by companies under the cheque law",
+    "expect": [
+     [
+      "NIACT",
+      "141"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "NIACT",
+      "141"
+     ],
+     [
+      "UAPA",
+      "22C"
+     ],
+     [
+      "NIACT",
+      "142"
+     ],
+     [
+      "UAPA",
+      "22A"
+     ],
+     [
+      "NIACT",
+      "140"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 36,
+    "q": "identity theft using electronic signature or password",
+    "expect": [
+     [
+      "ITACT",
+      "66C"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "ITACT",
+      "66C"
+     ],
+     [
+      "BNS",
+      "336"
+     ],
+     [
+      "BNS",
+      "340"
+     ],
+     [
+      "BNS",
+      "335"
+     ],
+     [
+      "ITACT",
+      "66D"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 37,
+    "q": "cheating by personation using a computer resource",
+    "expect": [
+     [
+      "ITACT",
+      "66D"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "ITACT",
+      "66D"
+     ],
+     [
+      "NIACT",
+      "6"
+     ],
+     [
+      "BNS",
+      "319"
+     ],
+     [
+      "BNSS",
+      "359"
+     ],
+     [
+      "BNS",
+      "242"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 38,
+    "q": "publishing obscene material in electronic form",
+    "expect": [
+     [
+      "ITACT",
+      "67"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "ITACT",
+      "67"
+     ],
+     [
+      "POCSO",
+      "13"
+     ],
+     [
+      "ITACT",
+      "67A"
+     ],
+     [
+      "UAPA",
+      "2"
+     ],
+     [
+      "ITACT",
+      "67B"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 39,
+    "q": "violation of privacy by capturing private images",
+    "expect": [
+     [
+      "ITACT",
+      "66E"
+     ]
+    ],
+    "rank": 1,
+    "meaning_used": true,
+    "top5": [
+     [
+      "ITACT",
+      "66E"
+     ],
+     [
+      "BNS",
+      "77"
+     ],
+     [
+      "BNS",
+      "79"
+     ]
+    ],
+    "n_provisions": 3
+   },
+   {
+    "id": 40,
+    "q": "public servant taking a bribe",
+    "expect": [
+     [
+      "PCACT",
+      "7"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "218"
+     ],
+     [
+      "PCACT",
+      "7"
+     ],
+     [
+      "BNS",
+      "198"
+     ],
+     [
+      "PCACT",
+      "8"
+     ],
+     [
+      "BNSS",
+      "218"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 41,
+    "q": "disproportionate assets criminal misconduct by a public servant",
+    "expect": [
+     [
+      "PCACT",
+      "13"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "127"
+     ],
+     [
+      "PCACT",
+      "13"
+     ],
+     [
+      "BNS",
+      "203"
+     ],
+     [
+      "BNS",
+      "202"
+     ],
+     [
+      "BNS",
+      "315"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 42,
+    "q": "punishment for money laundering",
+    "expect": [
+     [
+      "PMLA",
+      "4"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "10"
+     ],
+     [
+      "PMLA",
+      "4"
+     ],
+     [
+      "BNS",
+      "4"
+     ],
+     [
+      "PMLA",
+      "24"
+     ],
+     [
+      "BNS",
+      "111"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 43,
+    "q": "sexual assault on a child",
+    "expect": [
+     [
+      "POCSO",
+      "7"
+     ],
+     [
+      "POCSO",
+      "8"
+     ]
+    ],
+    "rank": 6,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "144"
+     ],
+     [
+      "POCSO",
+      "5"
+     ],
+     [
+      "BNS",
+      "95"
+     ],
+     [
+      "POCSO",
+      "9"
+     ],
+     [
+      "BNS",
+      "98"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 44,
+    "q": "duty to report a sexual offence against a child",
+    "expect": [
+     [
+      "POCSO",
+      "19"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "289"
+     ],
+     [
+      "POCSO",
+      "19"
+     ],
+     [
+      "BNSS",
+      "397"
+     ],
+     [
+      "POCSO",
+      "5"
+     ],
+     [
+      "BNSS",
+      "223"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 45,
+    "q": "conditions for bail under the unlawful activities law",
+    "expect": [
+     [
+      "UAPA",
+      "43D"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNSS",
+      "139"
+     ],
+     [
+      "JJACT",
+      "110"
+     ],
+     [
+      "BNSS",
+      "480"
+     ],
+     [
+      "BNSS",
+      "485"
+     ],
+     [
+      "BNSS",
+      "482"
+     ]
+    ],
+    "n_provisions": 5
+   },
+   {
+    "id": 46,
+    "q": "atrocities against members of scheduled castes and scheduled tribes",
+    "expect": [
+     [
+      "SCSTACT",
+      "3"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "196"
+     ],
+     [
+      "SCSTACT",
+      "3"
+     ],
+     [
+      "BNS",
+      "197"
+     ],
+     [
+      "SCSTACT",
+      "17"
+     ],
+     [
+      "BNS",
+      "103"
+     ]
+    ],
+    "n_provisions": 10
+   },
+   {
+    "id": 47,
+    "q": "demanding dowry",
+    "expect": [
+     [
+      "DOWRY",
+      "3"
+     ],
+     [
+      "DOWRY",
+      "4"
+     ]
+    ],
+    "rank": 2,
+    "meaning_used": true,
+    "top5": [
+     [
+      "BNS",
+      "80"
+     ],
+     [
+      "DOWRY",
+      "4"
+     ],
+     [
+      "BNS",
+      "87"
+     ],
+     [
+      "DOWRY",
+      "8A"
+     ],
+     [
+      "BNS",
+      "69"
+     ]
+    ],
+    "n_provisions": 8
+   },
+   {
+    "id": 48,
+    "q": "instant triple talaq",
+    "expect": [
+     [
+      "MWACT",
+      "3"
+     ]
+    ],
+    "rank": null,
+    "meaning_used": true,
+    "top5": [],
+    "n_provisions": 0
+   }
+  ]
+ }
+}

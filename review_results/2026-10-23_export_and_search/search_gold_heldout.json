@@ -1,0 +1,401 @@
+{
+ "what": "HELD-OUT question list for the search page's section search. Written and committed BEFORE the search engine's second round of changes (a stemmed word index with a 'lead' list, meaning search across the shelf Acts); to be run ONCE after those changes. The first 48 questions (search_gold_questions.json) were run before the changes, their misses were read, and so they are the TUNING set.",
+ "written_by": "Claude (2026-10-23), from its own knowledge of the Indian statutes: not lawyer-made, not independently checked. A wrong expected section counts as a miss against the search.",
+ "rule": "Hit at 5 / at 10: at least one of the expected (Act code, section) is among the first 5 / 10 PROVISIONS of the result. ACT_SHELF=on.",
+ "questions": [
+  {
+   "id": 101,
+   "q": "what is the punishment for kidnapping",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "137"
+    },
+    {
+     "act": "BNS",
+     "section": "140"
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "q": "grievous hurt",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "116"
+    },
+    {
+     "act": "BNS",
+     "section": "117"
+    }
+   ]
+  },
+  {
+   "id": 103,
+   "q": "punishment for an acid attack",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "124"
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "q": "assault or criminal force to a woman with intent to outrage her modesty",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "74"
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "q": "voyeurism",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "77"
+    }
+   ]
+  },
+  {
+   "id": 106,
+   "q": "punishment for robbery",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "309"
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "q": "dacoity",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "310"
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "q": "dishonestly receiving stolen property",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "317"
+    }
+   ]
+  },
+  {
+   "id": 109,
+   "q": "mischief causing damage to property",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "324"
+    }
+   ]
+  },
+  {
+   "id": 110,
+   "q": "house trespass",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "329"
+    }
+   ]
+  },
+  {
+   "id": 111,
+   "q": "marrying again during the lifetime of the husband or wife",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "82"
+    }
+   ]
+  },
+  {
+   "id": 112,
+   "q": "promoting enmity between groups on grounds of religion",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "196"
+    }
+   ]
+  },
+  {
+   "id": 113,
+   "q": "acts endangering the sovereignty, unity and integrity of India",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "152"
+    }
+   ]
+  },
+  {
+   "id": 114,
+   "q": "giving false evidence",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "227"
+    },
+    {
+     "act": "BNS",
+     "section": "229"
+    }
+   ]
+  },
+  {
+   "id": 115,
+   "q": "special powers of the High Court or Court of Session regarding bail",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "483"
+    }
+   ]
+  },
+  {
+   "id": 116,
+   "q": "amount of the bond and reduction of bail",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "484"
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "q": "search of a place by a police officer without a warrant",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "185"
+    }
+   ]
+  },
+  {
+   "id": 118,
+   "q": "recording of confessions and statements by a magistrate",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "183"
+    }
+   ]
+  },
+  {
+   "id": 119,
+   "q": "medical examination of an arrested person",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "51"
+    },
+    {
+     "act": "BNSS",
+     "section": "53"
+    }
+   ]
+  },
+  {
+   "id": 120,
+   "q": "security for keeping the peace",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "125"
+    },
+    {
+     "act": "BNSS",
+     "section": "126"
+    }
+   ]
+  },
+  {
+   "id": 121,
+   "q": "arrest by a private person",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "40"
+    }
+   ]
+  },
+  {
+   "id": 122,
+   "q": "appeal against a conviction",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "415"
+    }
+   ]
+  },
+  {
+   "id": 123,
+   "q": "confirmation of a death sentence by the High Court",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "407"
+    }
+   ]
+  },
+  {
+   "id": 124,
+   "q": "summons to appear in court",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "63"
+    },
+    {
+     "act": "BNSS",
+     "section": "64"
+    }
+   ]
+  },
+  {
+   "id": 125,
+   "q": "warrant of arrest",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "72"
+    },
+    {
+     "act": "BNSS",
+     "section": "73"
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "q": "proclamation for a person who is absconding",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "84"
+    }
+   ]
+  },
+  {
+   "id": 127,
+   "q": "attachment of the property of an absconder",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "85"
+    }
+   ]
+  },
+  {
+   "id": 128,
+   "q": "bribing a public servant by a commercial organisation",
+   "expect": [
+    {
+     "act": "PCACT",
+     "section": "9"
+    }
+   ]
+  },
+  {
+   "id": 129,
+   "q": "attachment of property involved in money laundering",
+   "expect": [
+    {
+     "act": "PMLA",
+     "section": "5"
+    }
+   ]
+  },
+  {
+   "id": 130,
+   "q": "aggravated penetrative sexual assault on a child",
+   "expect": [
+    {
+     "act": "POCSO",
+     "section": "5"
+    },
+    {
+     "act": "POCSO",
+     "section": "6"
+    }
+   ]
+  },
+  {
+   "id": 131,
+   "q": "punishment for a terrorist act",
+   "expect": [
+    {
+     "act": "UAPA",
+     "section": "16"
+    }
+   ]
+  },
+  {
+   "id": 132,
+   "q": "declaring an association unlawful",
+   "expect": [
+    {
+     "act": "UAPA",
+     "section": "3"
+    },
+    {
+     "act": "UAPA",
+     "section": "10"
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "q": "use of a child for pornographic purposes",
+   "expect": [
+    {
+     "act": "POCSO",
+     "section": "14"
+    },
+    {
+     "act": "POCSO",
+     "section": "15"
+    }
+   ]
+  },
+  {
+   "id": 134,
+   "q": "sexual harassment of a child",
+   "expect": [
+    {
+     "act": "POCSO",
+     "section": "11"
+    },
+    {
+     "act": "POCSO",
+     "section": "12"
+    }
+   ]
+  },
+  {
+   "id": 135,
+   "q": "penalty for giving or taking dowry",
+   "expect": [
+    {
+     "act": "DOWRY",
+     "section": "3"
+    }
+   ]
+  }
+ ]
+}
