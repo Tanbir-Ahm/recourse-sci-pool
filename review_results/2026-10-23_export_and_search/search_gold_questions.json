@@ -1,0 +1,495 @@
+{
+ "what": "Frozen question list for the search page's section search (words, and words plus meaning). Written BEFORE any retrieval was run on it; committed before it was run (the commit time is the freeze).",
+ "written_by": "Claude (2026-10-23), from its own knowledge of the Indian statutes: NOT lawyer-made, not independently checked. A wrong expected section would count as a miss against the search, so read the misses before trusting them.",
+ "rule": "Hit at 5 / at 10: at least one of the expected (Act code, section) is among the first 5 / 10 PROVISIONS of the result. Shelf Acts are on (ACT_SHELF=on). Only the section search is measured: not cases, not passages.",
+ "questions": [
+  {
+   "id": 1,
+   "q": "anticipatory bail",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "482"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "q": "bail in a non-bailable offence",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "480"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "q": "bail as of right in a bailable offence",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "478"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "q": "arrest by the police without a warrant",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "35"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "q": "notice of appearance instead of arrest",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "35"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "q": "grounds of arrest must be told to the arrested person",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "47"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "q": "arrested person to be produced before a magistrate within twenty-four hours",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "58"
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "q": "default bail when the charge sheet is not filed in sixty or ninety days",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "187"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "q": "police must register an FIR for a cognizable offence",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "173"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "q": "maintenance for a wife who cannot maintain herself",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "144"
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "q": "compounding of offences",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "359"
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "q": "inherent powers of the High Court to quash proceedings",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "528"
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "q": "compensation to the victim of a crime",
+   "expect": [
+    {
+     "act": "BNSS",
+     "section": "395"
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "q": "punishment for murder",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "103"
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "q": "culpable homicide not amounting to murder",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "105"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "q": "death caused by a negligent act",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "106"
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "q": "dowry death of a married woman",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "80"
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "q": "cruelty by the husband or his relatives to a married woman",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "85"
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "q": "cheating and dishonestly inducing delivery of property",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "318"
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "q": "criminal breach of trust",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "316"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "q": "punishment for theft",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "303"
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "q": "extortion by putting a person in fear of injury",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "308"
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "q": "punishment for rape",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "64"
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "q": "sexual harassment of a woman",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "75"
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "q": "stalking a woman",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "78"
+    }
+   ]
+  },
+  {
+   "id": 26,
+   "q": "defamation",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "356"
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "q": "criminal intimidation",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "351"
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "q": "abetment of suicide",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "108"
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "q": "attempt to commit murder",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "109"
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "q": "voluntarily causing hurt",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "115"
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "q": "forgery",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "336"
+    }
+   ]
+  },
+  {
+   "id": 32,
+   "q": "right of private defence of the body",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "35"
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "q": "criminal conspiracy",
+   "expect": [
+    {
+     "act": "BNS",
+     "section": "61"
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "q": "cheque dishonoured for insufficiency of funds",
+   "expect": [
+    {
+     "act": "NIACT",
+     "section": "138"
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "q": "offences by companies under the cheque law",
+   "expect": [
+    {
+     "act": "NIACT",
+     "section": "141"
+    }
+   ]
+  },
+  {
+   "id": 36,
+   "q": "identity theft using electronic signature or password",
+   "expect": [
+    {
+     "act": "ITACT",
+     "section": "66C"
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "q": "cheating by personation using a computer resource",
+   "expect": [
+    {
+     "act": "ITACT",
+     "section": "66D"
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "q": "publishing obscene material in electronic form",
+   "expect": [
+    {
+     "act": "ITACT",
+     "section": "67"
+    }
+   ]
+  },
+  {
+   "id": 39,
+   "q": "violation of privacy by capturing private images",
+   "expect": [
+    {
+     "act": "ITACT",
+     "section": "66E"
+    }
+   ]
+  },
+  {
+   "id": 40,
+   "q": "public servant taking a bribe",
+   "expect": [
+    {
+     "act": "PCACT",
+     "section": "7"
+    }
+   ]
+  },
+  {
+   "id": 41,
+   "q": "disproportionate assets criminal misconduct by a public servant",
+   "expect": [
+    {
+     "act": "PCACT",
+     "section": "13"
+    }
+   ]
+  },
+  {
+   "id": 42,
+   "q": "punishment for money laundering",
+   "expect": [
+    {
+     "act": "PMLA",
+     "section": "4"
+    }
+   ]
+  },
+  {
+   "id": 43,
+   "q": "sexual assault on a child",
+   "expect": [
+    {
+     "act": "POCSO",
+     "section": "7"
+    },
+    {
+     "act": "POCSO",
+     "section": "8"
+    }
+   ]
+  },
+  {
+   "id": 44,
+   "q": "duty to report a sexual offence against a child",
+   "expect": [
+    {
+     "act": "POCSO",
+     "section": "19"
+    }
+   ]
+  },
+  {
+   "id": 45,
+   "q": "conditions for bail under the unlawful activities law",
+   "expect": [
+    {
+     "act": "UAPA",
+     "section": "43D"
+    }
+   ]
+  },
+  {
+   "id": 46,
+   "q": "atrocities against members of scheduled castes and scheduled tribes",
+   "expect": [
+    {
+     "act": "SCSTACT",
+     "section": "3"
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "q": "demanding dowry",
+   "expect": [
+    {
+     "act": "DOWRY",
+     "section": "4"
+    },
+    {
+     "act": "DOWRY",
+     "section": "3"
+    }
+   ]
+  },
+  {
+   "id": 48,
+   "q": "instant triple talaq",
+   "expect": [
+    {
+     "act": "MWACT",
+     "section": "3"
+    }
+   ]
+  }
+ ]
+}
