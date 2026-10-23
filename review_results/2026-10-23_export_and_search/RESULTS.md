@@ -37,7 +37,7 @@ A fourth idea was tried and **removed**: a second word list over only the openin
 Two sets of questions, both written by Claude, each with the sections expected for each question:
 
 * **Tuning set**: 48 questions (`search_gold_questions.json`, frozen at commit `601b31d` before any retrieval was run on them). It WAS looked at while designing round 2 (the misses of round 1 shaped the design; the lead list and the floors were decided on it).
-* **Held-out set**: 35 different questions (`search_gold_heldout.json`, frozen at commit `549a377` before round 2 was written). Round 2 was run on it **once**, after the engine was final (`search_gold_results_heldout.json`; the runner refuses to overwrite that file, and every result file records the engine's commit and the SHA-256 of `search_service.py` and `search_stem.py`). Round 1 was then run on the same questions for the comparison only (`..._BEFORE_round2.json`); nothing was changed after seeing the held-out result.
+* **Held-out set**: 35 different questions (`search_gold_heldout.json`, frozen at commit `549a377` before round 2 was written). Round 2 was run on it **once**, after the engine was final (`search_gold_results_heldout.json`; the runner refuses to overwrite that file, and every result file records the engine's commit and the SHA-256 of `search_service.py` and `search_stem.py`; the held-out result is stamped `29cba26`. One later commit, `a2bf305`, changed only the time the query-embedding call may take, 15 seconds to 8, and nothing in the ranking). Round 1 was then run on the same questions for the comparison only (`..._BEFORE_round2.json`); nothing was changed after seeing the held-out result.
 
 "hit@5" = an expected section is among the first five sections returned. "Words" = meaning search off; "with meaning" = the real voyage-law-2 query vector (about Rs 0.0001 per search).
 
@@ -83,7 +83,7 @@ Sensitivity (tuning set; one setting changed at a time, the rest as built): the 
 | Check | Result |
 |---|---|
 | `test_search_stem.py` | 61 checks pass |
-| `test_search_service.py` | 334 checks pass (offline; no Voyage call; the commit message of `29cba26` says 335, which is one too many) |
+| `test_search_service.py` | 336 checks pass (offline; no Voyage call; the commit message of `29cba26` says 335 for the file as it was then, which had 334) |
 | `test_api_search.py` | 56 checks pass |
 | Full free suite of Recourse (`run_tests.py`, run on commit `29cba26`, the engine's last change) | 110 files run, 110 passed, 0 failed (includes `test_answer_export`, `test_api_export` and the other API tests) |
 | `recourse-web`: `tsc --noEmit`, 73 vitest tests | clean, pass |
