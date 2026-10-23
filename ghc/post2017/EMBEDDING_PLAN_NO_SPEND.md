@@ -1,6 +1,6 @@
 # No-spend embedding plan: Guwahati post-2017 criminal-type documents (2026-10-23). Nothing embedded, nothing sent, no key read.
 
-Made with  (the indexer's own preparation code). The text is cut at the 'BEFORE ... HON'BLE' line (the cause-title block is dropped), 'Page No.#' markers and the closing 'Comparing Assistant' line removed. Model voyage-law-2, price $0.12 per million tokens (the owner's notes, not read from the service); estimates have run about 5 to 6% low.
+Made with ghc/post2017/plan_embedding_post2017.py (the indexer's own preparation code). The text is cut at the 'BEFORE ... HON'BLE' line (the cause-title block is dropped), 'Page No.#' markers and the closing 'Comparing Assistant' line removed. Model voyage-law-2, price $0.12 per million tokens (the owner's notes, not read from the service); estimates have run about 5 to 6% low.
 
 | Set | Looked at | Kept (criminal law) | Passages | Est. tokens | Est. dollars |
 |---|---|---|---|---|---|
