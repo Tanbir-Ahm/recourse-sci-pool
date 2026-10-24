@@ -1,0 +1,13 @@
+{
+ "started_at": "2026-10-24T16:22:08+00:00",
+ "ended_at": "2026-10-24T17:03:12+00:00",
+ "minutes": 50.0,
+ "ceiling": 110700000,
+ "stop_reason": "completed all pending blocks",
+ "seconds": 2464.0,
+ "blocks_done": 28,
+ "docs_embedded": 5742,
+ "passages": 115670,
+ "tokens": 25065341,
+ "wasted_tokens": 0
+}
