@@ -1,0 +1,1740 @@
+{
+ "official": {
+  "tested": 12,
+  "not_embedded_yet": 0,
+  "case_top5": 1,
+  "pinned_top3": 3,
+  "full_success": 1,
+  "meaning_only_full_success": 0,
+  "passages_searched": 418286
+ },
+ "whole_index": [
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "lay",
+   "doc_rank": 7,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000253434,
+     "SC newer"
+    ],
+    [
+     1000250634,
+     "SC bucket"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     1000255144,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     2000253434,
+     "SC newer"
+    ],
+    [
+     1000250634,
+     "SC bucket"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     1000255144,
+     "SC bucket"
+    ],
+    [
+     2000253659,
+     "SC newer"
+    ],
+    [
+     41736,
+     "SC crawl"
+    ],
+    [
+     1000254065,
+     "SC bucket"
+    ],
+    [
+     1000250111,
+     "SC bucket"
+    ],
+    [
+     2000753784,
+     "GHC"
+    ]
+   ]
+  },
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "legal",
+   "doc_rank": 6,
+   "pinned_in_top3": true,
+   "success": false,
+   "top5": [
+    [
+     43679,
+     "SC crawl"
+    ],
+    [
+     1000255971,
+     "SC bucket"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     2000752513,
+     "GHC"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ]
+   ],
+   "top10": [
+    [
+     43679,
+     "SC crawl"
+    ],
+    [
+     1000255971,
+     "SC bucket"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     2000752513,
+     "GHC"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     41736,
+     "SC crawl"
+    ],
+    [
+     1000254065,
+     "SC bucket"
+    ],
+    [
+     1000252784,
+     "SC bucket"
+    ],
+    [
+     1000255914,
+     "SC bucket"
+    ],
+    [
+     2000756066,
+     "GHC"
+    ]
+   ]
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "lay",
+   "doc_rank": null,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000253186,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     2000756961,
+     "GHC"
+    ],
+    [
+     2000756680,
+     "GHC"
+    ],
+    [
+     20481,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     2000253186,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     2000756961,
+     "GHC"
+    ],
+    [
+     2000756680,
+     "GHC"
+    ],
+    [
+     20481,
+     "SC crawl"
+    ],
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000252812,
+     "SC newer"
+    ],
+    [
+     2000253225,
+     "SC newer"
+    ],
+    [
+     1000257046,
+     "SC bucket"
+    ],
+    [
+     2000253384,
+     "SC newer"
+    ]
+   ]
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "legal",
+   "doc_rank": null,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000754840,
+     "GHC"
+    ],
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000251675,
+     "SC newer"
+    ],
+    [
+     2000755125,
+     "GHC"
+    ],
+    [
+     2000757008,
+     "GHC"
+    ]
+   ],
+   "top10": [
+    [
+     2000754840,
+     "GHC"
+    ],
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000251675,
+     "SC newer"
+    ],
+    [
+     2000755125,
+     "GHC"
+    ],
+    [
+     2000757008,
+     "GHC"
+    ],
+    [
+     2000252812,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     2000253225,
+     "SC newer"
+    ],
+    [
+     2000754364,
+     "GHC"
+    ],
+    [
+     2000756961,
+     "GHC"
+    ]
+   ]
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "lay",
+   "doc_rank": 33,
+   "pinned_in_top3": true,
+   "success": false,
+   "top5": [
+    [
+     1000252868,
+     "SC bucket"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     1000252929,
+     "SC bucket"
+    ],
+    [
+     2000757048,
+     "GHC"
+    ],
+    [
+     41778,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     1000252868,
+     "SC bucket"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     1000252929,
+     "SC bucket"
+    ],
+    [
+     2000757048,
+     "GHC"
+    ],
+    [
+     41778,
+     "SC crawl"
+    ],
+    [
+     1000255935,
+     "SC bucket"
+    ],
+    [
+     29890,
+     "SC crawl"
+    ],
+    [
+     2000753067,
+     "GHC"
+    ],
+    [
+     2000251152,
+     "SC newer"
+    ],
+    [
+     2000752997,
+     "GHC"
+    ]
+   ]
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "legal",
+   "doc_rank": 14,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     41778,
+     "SC crawl"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     29890,
+     "SC crawl"
+    ],
+    [
+     38847,
+     "SC crawl"
+    ],
+    [
+     29599,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     41778,
+     "SC crawl"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     29890,
+     "SC crawl"
+    ],
+    [
+     38847,
+     "SC crawl"
+    ],
+    [
+     29599,
+     "SC crawl"
+    ],
+    [
+     39579,
+     "SC crawl"
+    ],
+    [
+     2000251152,
+     "SC newer"
+    ],
+    [
+     1000252929,
+     "SC bucket"
+    ],
+    [
+     41024,
+     "SC crawl"
+    ],
+    [
+     1000255935,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "kind": "lay",
+   "doc_rank": null,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     1000252087,
+     "SC bucket"
+    ],
+    [
+     1000256005,
+     "SC bucket"
+    ],
+    [
+     1000255297,
+     "SC bucket"
+    ],
+    [
+     2000753760,
+     "GHC"
+    ],
+    [
+     42638,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     1000252087,
+     "SC bucket"
+    ],
+    [
+     1000256005,
+     "SC bucket"
+    ],
+    [
+     1000255297,
+     "SC bucket"
+    ],
+    [
+     2000753760,
+     "GHC"
+    ],
+    [
+     42638,
+     "SC crawl"
+    ],
+    [
+     2000753962,
+     "GHC"
+    ],
+    [
+     2000755892,
+     "GHC"
+    ],
+    [
+     2000756203,
+     "GHC"
+    ],
+    [
+     2000756202,
+     "GHC"
+    ],
+    [
+     2000755188,
+     "GHC"
+    ]
+   ]
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "kind": "legal",
+   "doc_rank": 1,
+   "pinned_in_top3": true,
+   "success": true,
+   "top5": [
+    [
+     36322,
+     "SC crawl"
+    ],
+    [
+     1000252438,
+     "SC bucket"
+    ],
+    [
+     1003962620,
+     "SC bucket"
+    ],
+    [
+     2000753193,
+     "GHC"
+    ],
+    [
+     1000251929,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     36322,
+     "SC crawl"
+    ],
+    [
+     1000252438,
+     "SC bucket"
+    ],
+    [
+     1003962620,
+     "SC bucket"
+    ],
+    [
+     2000753193,
+     "GHC"
+    ],
+    [
+     1000251929,
+     "SC bucket"
+    ],
+    [
+     2000752120,
+     "GHC"
+    ],
+    [
+     1000256005,
+     "SC bucket"
+    ],
+    [
+     1000255297,
+     "SC bucket"
+    ],
+    [
+     2000000377,
+     "GHC"
+    ],
+    [
+     2000000378,
+     "GHC"
+    ]
+   ]
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "lay",
+   "doc_rank": 18,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     2000751942,
+     "GHC"
+    ],
+    [
+     26940,
+     "SC crawl"
+    ],
+    [
+     43732,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     2000751942,
+     "GHC"
+    ],
+    [
+     26940,
+     "SC crawl"
+    ],
+    [
+     43732,
+     "SC crawl"
+    ],
+    [
+     1000002185,
+     "SC bucket"
+    ],
+    [
+     2000756821,
+     "GHC"
+    ],
+    [
+     17272,
+     "SC crawl"
+    ],
+    [
+     38214,
+     "SC crawl"
+    ],
+    [
+     1000250973,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "legal",
+   "doc_rank": 6,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     39742,
+     "SC crawl"
+    ],
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     30317,
+     "SC crawl"
+    ],
+    [
+     2000000641,
+     "GHC"
+    ],
+    [
+     2000751942,
+     "GHC"
+    ]
+   ],
+   "top10": [
+    [
+     39742,
+     "SC crawl"
+    ],
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     30317,
+     "SC crawl"
+    ],
+    [
+     2000000641,
+     "GHC"
+    ],
+    [
+     2000751942,
+     "GHC"
+    ],
+    [
+     37060,
+     "SC crawl"
+    ],
+    [
+     1000250768,
+     "SC bucket"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     39195,
+     "SC crawl"
+    ],
+    [
+     33475,
+     "SC crawl"
+    ]
+   ]
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "kind": "lay",
+   "doc_rank": 27,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000755251,
+     "GHC"
+    ],
+    [
+     1000001879,
+     "SC bucket"
+    ],
+    [
+     1000004397,
+     "SC bucket"
+    ],
+    [
+     279,
+     "SC crawl"
+    ],
+    [
+     1000256277,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     2000755251,
+     "GHC"
+    ],
+    [
+     1000001879,
+     "SC bucket"
+    ],
+    [
+     1000004397,
+     "SC bucket"
+    ],
+    [
+     279,
+     "SC crawl"
+    ],
+    [
+     1000256277,
+     "SC bucket"
+    ],
+    [
+     2000754338,
+     "GHC"
+    ],
+    [
+     2000756740,
+     "GHC"
+    ],
+    [
+     2000000287,
+     "GHC"
+    ],
+    [
+     2000753203,
+     "GHC"
+    ],
+    [
+     1000255285,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "kind": "legal",
+   "doc_rank": null,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000752172,
+     "GHC"
+    ],
+    [
+     2000756618,
+     "GHC"
+    ],
+    [
+     2000250421,
+     "SC newer"
+    ],
+    [
+     1000251856,
+     "SC bucket"
+    ],
+    [
+     2000752461,
+     "GHC"
+    ]
+   ],
+   "top10": [
+    [
+     2000752172,
+     "GHC"
+    ],
+    [
+     2000756618,
+     "GHC"
+    ],
+    [
+     2000250421,
+     "SC newer"
+    ],
+    [
+     1000251856,
+     "SC bucket"
+    ],
+    [
+     2000752461,
+     "GHC"
+    ],
+    [
+     2000753998,
+     "GHC"
+    ],
+    [
+     42608,
+     "SC crawl"
+    ],
+    [
+     2000753947,
+     "GHC"
+    ],
+    [
+     2000754837,
+     "GHC"
+    ],
+    [
+     2000755259,
+     "GHC"
+    ]
+   ]
+  }
+ ],
+ "supreme_court_only": [
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "lay",
+   "doc_rank": 4,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000253434,
+     "SC newer"
+    ],
+    [
+     1000250634,
+     "SC bucket"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     41736,
+     "SC crawl"
+    ],
+    [
+     2000253659,
+     "SC newer"
+    ]
+   ],
+   "top10": [
+    [
+     2000253434,
+     "SC newer"
+    ],
+    [
+     1000250634,
+     "SC bucket"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     41736,
+     "SC crawl"
+    ],
+    [
+     2000253659,
+     "SC newer"
+    ],
+    [
+     1000255144,
+     "SC bucket"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     1000254065,
+     "SC bucket"
+    ],
+    [
+     1000250111,
+     "SC bucket"
+    ],
+    [
+     40960,
+     "SC crawl"
+    ]
+   ]
+  },
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "legal",
+   "doc_rank": 5,
+   "pinned_in_top3": true,
+   "success": true,
+   "top5": [
+    [
+     43679,
+     "SC crawl"
+    ],
+    [
+     1000255971,
+     "SC bucket"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     41736,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     43679,
+     "SC crawl"
+    ],
+    [
+     1000255971,
+     "SC bucket"
+    ],
+    [
+     1000250996,
+     "SC bucket"
+    ],
+    [
+     2000252914,
+     "SC newer"
+    ],
+    [
+     41736,
+     "SC crawl"
+    ],
+    [
+     1000252784,
+     "SC bucket"
+    ],
+    [
+     1000254065,
+     "SC bucket"
+    ],
+    [
+     1000255914,
+     "SC bucket"
+    ],
+    [
+     2000253434,
+     "SC newer"
+    ],
+    [
+     1000254129,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "lay",
+   "doc_rank": null,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000253186,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     20481,
+     "SC crawl"
+    ],
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000252812,
+     "SC newer"
+    ]
+   ],
+   "top10": [
+    [
+     2000253186,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     20481,
+     "SC crawl"
+    ],
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000252812,
+     "SC newer"
+    ],
+    [
+     1000255028,
+     "SC bucket"
+    ],
+    [
+     29628,
+     "SC crawl"
+    ],
+    [
+     2000253225,
+     "SC newer"
+    ],
+    [
+     1000257046,
+     "SC bucket"
+    ],
+    [
+     2000253384,
+     "SC newer"
+    ]
+   ]
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "legal",
+   "doc_rank": 25,
+   "pinned_in_top3": true,
+   "success": false,
+   "top5": [
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000251675,
+     "SC newer"
+    ],
+    [
+     2000252812,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     2000253225,
+     "SC newer"
+    ]
+   ],
+   "top10": [
+    [
+     38171,
+     "SC crawl"
+    ],
+    [
+     2000251675,
+     "SC newer"
+    ],
+    [
+     2000252812,
+     "SC newer"
+    ],
+    [
+     1003962525,
+     "SC bucket"
+    ],
+    [
+     2000253225,
+     "SC newer"
+    ],
+    [
+     39838,
+     "SC crawl"
+    ],
+    [
+     20481,
+     "SC crawl"
+    ],
+    [
+     2000250986,
+     "SC newer"
+    ],
+    [
+     44679,
+     "SC crawl"
+    ],
+    [
+     1000255028,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "lay",
+   "doc_rank": 28,
+   "pinned_in_top3": true,
+   "success": false,
+   "top5": [
+    [
+     1000252868,
+     "SC bucket"
+    ],
+    [
+     41903,
+     "SC crawl"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     1000252929,
+     "SC bucket"
+    ],
+    [
+     17023,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     1000252868,
+     "SC bucket"
+    ],
+    [
+     41903,
+     "SC crawl"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     1000252929,
+     "SC bucket"
+    ],
+    [
+     17023,
+     "SC crawl"
+    ],
+    [
+     41778,
+     "SC crawl"
+    ],
+    [
+     1000255935,
+     "SC bucket"
+    ],
+    [
+     29890,
+     "SC crawl"
+    ],
+    [
+     2000252139,
+     "SC newer"
+    ],
+    [
+     2000251152,
+     "SC newer"
+    ]
+   ]
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "legal",
+   "doc_rank": 13,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     41778,
+     "SC crawl"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     29890,
+     "SC crawl"
+    ],
+    [
+     38847,
+     "SC crawl"
+    ],
+    [
+     29599,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     41778,
+     "SC crawl"
+    ],
+    [
+     32693,
+     "SC crawl"
+    ],
+    [
+     29890,
+     "SC crawl"
+    ],
+    [
+     38847,
+     "SC crawl"
+    ],
+    [
+     29599,
+     "SC crawl"
+    ],
+    [
+     2000251152,
+     "SC newer"
+    ],
+    [
+     39579,
+     "SC crawl"
+    ],
+    [
+     1000252929,
+     "SC bucket"
+    ],
+    [
+     41024,
+     "SC crawl"
+    ],
+    [
+     1000255935,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "kind": "lay",
+   "doc_rank": 13,
+   "pinned_in_top3": true,
+   "success": false,
+   "top5": [
+    [
+     1000252087,
+     "SC bucket"
+    ],
+    [
+     1000255297,
+     "SC bucket"
+    ],
+    [
+     1000256005,
+     "SC bucket"
+    ],
+    [
+     42638,
+     "SC crawl"
+    ],
+    [
+     1003962620,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     1000252087,
+     "SC bucket"
+    ],
+    [
+     1000255297,
+     "SC bucket"
+    ],
+    [
+     1000256005,
+     "SC bucket"
+    ],
+    [
+     42638,
+     "SC crawl"
+    ],
+    [
+     1003962620,
+     "SC bucket"
+    ],
+    [
+     28663,
+     "SC crawl"
+    ],
+    [
+     1000252438,
+     "SC bucket"
+    ],
+    [
+     18068,
+     "SC crawl"
+    ],
+    [
+     1000253352,
+     "SC bucket"
+    ],
+    [
+     1000255876,
+     "SC bucket"
+    ]
+   ]
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "kind": "legal",
+   "doc_rank": 1,
+   "pinned_in_top3": true,
+   "success": true,
+   "top5": [
+    [
+     36322,
+     "SC crawl"
+    ],
+    [
+     1000252438,
+     "SC bucket"
+    ],
+    [
+     1003962620,
+     "SC bucket"
+    ],
+    [
+     1000251590,
+     "SC bucket"
+    ],
+    [
+     1000251929,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     36322,
+     "SC crawl"
+    ],
+    [
+     1000252438,
+     "SC bucket"
+    ],
+    [
+     1003962620,
+     "SC bucket"
+    ],
+    [
+     1000251590,
+     "SC bucket"
+    ],
+    [
+     1000251929,
+     "SC bucket"
+    ],
+    [
+     1000251291,
+     "SC bucket"
+    ],
+    [
+     1000256005,
+     "SC bucket"
+    ],
+    [
+     1000255297,
+     "SC bucket"
+    ],
+    [
+     1000250895,
+     "SC bucket"
+    ],
+    [
+     34509,
+     "SC crawl"
+    ]
+   ]
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "lay",
+   "doc_rank": 16,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     26940,
+     "SC crawl"
+    ],
+    [
+     43732,
+     "SC crawl"
+    ],
+    [
+     1000002185,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     26940,
+     "SC crawl"
+    ],
+    [
+     43732,
+     "SC crawl"
+    ],
+    [
+     1000002185,
+     "SC bucket"
+    ],
+    [
+     38214,
+     "SC crawl"
+    ],
+    [
+     17272,
+     "SC crawl"
+    ],
+    [
+     1000250973,
+     "SC bucket"
+    ],
+    [
+     30317,
+     "SC crawl"
+    ],
+    [
+     25607,
+     "SC crawl"
+    ]
+   ]
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "legal",
+   "doc_rank": 5,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     39742,
+     "SC crawl"
+    ],
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     30317,
+     "SC crawl"
+    ],
+    [
+     37060,
+     "SC crawl"
+    ]
+   ],
+   "top10": [
+    [
+     39742,
+     "SC crawl"
+    ],
+    [
+     39909,
+     "SC crawl"
+    ],
+    [
+     1000255290,
+     "SC bucket"
+    ],
+    [
+     30317,
+     "SC crawl"
+    ],
+    [
+     37060,
+     "SC crawl"
+    ],
+    [
+     1000250768,
+     "SC bucket"
+    ],
+    [
+     39195,
+     "SC crawl"
+    ],
+    [
+     33475,
+     "SC crawl"
+    ],
+    [
+     10812,
+     "SC crawl"
+    ],
+    [
+     17272,
+     "SC crawl"
+    ]
+   ]
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "kind": "lay",
+   "doc_rank": 27,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     1000001879,
+     "SC bucket"
+    ],
+    [
+     1000004397,
+     "SC bucket"
+    ],
+    [
+     279,
+     "SC crawl"
+    ],
+    [
+     1000256277,
+     "SC bucket"
+    ],
+    [
+     1000253449,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     1000001879,
+     "SC bucket"
+    ],
+    [
+     1000004397,
+     "SC bucket"
+    ],
+    [
+     279,
+     "SC crawl"
+    ],
+    [
+     1000256277,
+     "SC bucket"
+    ],
+    [
+     1000253449,
+     "SC bucket"
+    ],
+    [
+     2000253628,
+     "SC newer"
+    ],
+    [
+     1000255285,
+     "SC bucket"
+    ],
+    [
+     42248,
+     "SC crawl"
+    ],
+    [
+     1000250085,
+     "SC bucket"
+    ],
+    [
+     40376,
+     "SC crawl"
+    ]
+   ]
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "kind": "legal",
+   "doc_rank": 17,
+   "pinned_in_top3": false,
+   "success": false,
+   "top5": [
+    [
+     2000250421,
+     "SC newer"
+    ],
+    [
+     1000251856,
+     "SC bucket"
+    ],
+    [
+     42608,
+     "SC crawl"
+    ],
+    [
+     1000253705,
+     "SC bucket"
+    ],
+    [
+     1000252784,
+     "SC bucket"
+    ]
+   ],
+   "top10": [
+    [
+     2000250421,
+     "SC newer"
+    ],
+    [
+     1000251856,
+     "SC bucket"
+    ],
+    [
+     42608,
+     "SC crawl"
+    ],
+    [
+     1000253705,
+     "SC bucket"
+    ],
+    [
+     1000252784,
+     "SC bucket"
+    ],
+    [
+     1000255983,
+     "SC bucket"
+    ],
+    [
+     1000254950,
+     "SC bucket"
+    ],
+    [
+     1000252675,
+     "SC bucket"
+    ],
+    [
+     1000250108,
+     "SC bucket"
+    ],
+    [
+     1000255268,
+     "SC bucket"
+    ]
+   ]
+  }
+ ],
+ "summary_whole": {
+  "case_top5": 1,
+  "pinned_top3": 3,
+  "full_success": 1
+ },
+ "summary_sc_only": {
+  "case_top5": 4,
+  "pinned_top3": 5,
+  "full_success": 2
+ },
+ "top5_slots_by_source": {
+  "SC newer": 6,
+  "SC bucket": 19,
+  "SC crawl": 19,
+  "GHC": 16
+ },
+ "billed": {
+  "embed": 389,
+  "rerank": 388847
+ },
+ "dollars": 0.0195
+}
