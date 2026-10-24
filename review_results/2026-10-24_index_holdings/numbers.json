@@ -1,0 +1,37 @@
+{
+ "index_head": "38d1d3f",
+ "embedded_judgments": 19236,
+ "passages": 418286,
+ "supreme_court": {
+  "embedded": 11683,
+  "up_to_2017": 8506,
+  "2018_2026": 3177,
+  "passages": 261572,
+  "crawl": 8100,
+  "bucket": 2344,
+  "newer_archive": 1239
+ },
+ "gauhati": {
+  "embedded": 7553,
+  "up_to_2017": 1723,
+  "2018_2026": 5830,
+  "passages": 156714,
+  "court_files": 758,
+  "bucket_text_to_2017": 965,
+  "bucket_text_2018_2026": 5830,
+  "criminal_case_number": 7463
+ },
+ "section_phrase_coverage": {
+  "sc_passages_pct": 39.0,
+  "ghc_passages_pct": 37.3,
+  "judgments_with_one_pct": 96
+ },
+ "memory_measured": {
+  "vectors_mb": 856.6,
+  "text_mb": 408.0,
+  "steady_mb": 2856,
+  "peak_mb": 3062.5,
+  "fts_build_s": 16.8,
+  "search_median_s": 0.89
+ }
+}
