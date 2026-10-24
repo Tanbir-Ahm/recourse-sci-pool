@@ -5,7 +5,7 @@ The index's own known-answer test: 6 verified Supreme Court landmarks, 12 questi
 ## The result [Certain]
 | When | Passages searched | Passes (of 12) | Landmark among the top 5 cases | Verified paragraph in its top 3 |
 |---|---|---|---|---|
-| 2 Oct, the old crawl (and a few bucket passages) | 156,235 | **4** | 6 | 8 |
+| 2 Oct, the old crawl only (before the open bucket, the newer archive and Guwahati) | 156,235 | **4** | 6 | 8 |
 | 22 Oct 17:27, after the newer archive, Guwahati to 2017 and the duplicate removal | 300,957 | **2** | 2 | 4 |
 | **Today, the whole index** | **418,286** | **1** | **1** | **3** |
 | Today, the same index with every Guwahati judgment taken out | 261,572 | **2** | 4 | 5 |
@@ -13,7 +13,7 @@ The index's own known-answer test: 6 verified Supreme Court landmarks, 12 questi
 Today, whole index: where the landmark came, question by question: 1st (Rangappa, legal question: the only pass), 6th and 7th (Arnesh Kumar), 6th (Jadeja, legal), 14th, 18th, 27th, 33rd, and **4 questions where it was not among the 60 candidates at all** (Md Ibrahim both questions, Rangappa plain question, Noor Aga legal question). By meaning alone (before the re-ranker): 0 of 12 (it was 3 of 12 on 2 October).
 
 ## Who takes the top five places [Certain]
-12 questions x 5 places = 60: Supreme Court old crawl 19, open bucket 19, newer archive 6, **Guwahati 16 (27%)**; Guwahati judgments are 37% of the passages. In 7 of the 12 questions at least one Guwahati judgment is in the top five. Examples: for the Md Ibrahim legal question three of the top five are Guwahati judgments; for the Noor Aga legal question three of the five are Guwahati and the landmark is absent.
+12 questions x 5 places = 60: Supreme Court old crawl 19, open bucket 19, newer archive 6, **Guwahati 16 (27%)**; Guwahati judgments are 37% of the passages. In **10 of the 12 questions** at least one Guwahati judgment is in the top five. Examples: for the Md Ibrahim legal question three of the top five are Guwahati judgments; for the Noor Aga legal question three of the five are Guwahati and the landmark is absent.
 
 ## What it means
 - **Nothing is broken [Certain]:** every vector and passage is where it should be; the search finds judgments on the right subject. The test is strict: it wants the landmark itself in the top five, while later judgments that quote and apply the landmark (for example Satender Kumar Antil 2022 and Social Action Forum 2018 above Arnesh Kumar) crowd it out. Such later judgments can be useful to a lawyer, but a lawyer asking for the leading case would not want the leading case at 7th place.
