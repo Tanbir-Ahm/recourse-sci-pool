@@ -720,6 +720,14 @@ check(rx3["blocks_done"] == 0 and cx3.calls == 0, "without --extra-dir the extra
 write_extra_block(xd1, "sci_newer", 1, [xrec(crim_text("Delta"), "u/delta.pdf")])
 rx4 = run_shift(code, idx, pool, FakeClient(), extra_dirs=[xd1, xd2], max_blocks=1)
 check(rx4["blocks_done"] == 1, "a block added later is picked up on the next run")
+# the post-2017 Guwahati scope: its own id range (offset 3000), and the extra source fields are carried through
+write_extra_block(xd2, "ghc_post2017", 0, [dict(xrec(crim_text("Epsilon"), "p/eps.pdf", title="E versus State of Assam"), neutral_citation="2024:GAU-AS:1", court_listed=True, bucket_url="https://b.example/e.pdf", signals=["court_listed"])])
+pb = si.extra_blocks(xd2)
+check(si.EXTRA_BASE + 3000 * si.BLOCK_SIZE in pb and pb[si.EXTRA_BASE + 3000 * si.BLOCK_SIZE]["scope"] == "ghc_post2017", "a post-2017 Guwahati block sits at its own place in the id space (after the bucket text blocks)")
+check(si.EXTRA_BASE + (2000 + 999) * si.BLOCK_SIZE < si.EXTRA_BASE + 3000 * si.BLOCK_SIZE, "the ranges of the Guwahati scopes cannot overlap")
+pr = si.read_block(pb[si.EXTRA_BASE + 3000 * si.BLOCK_SIZE])
+check(pr[0]["src"]["neutral_citation"] == "2024:GAU-AS:1" and pr[0]["src"]["court_listed"] is True and pr[0]["src"]["bucket_url"] == "https://b.example/e.pdf" and pr[0]["src"]["signals"] == ["court_listed"], "neutral citation, court-listed flag, bucket link and signals are carried into the index record")
+check("neutral_citation" not in recs[0]["src"], "records without those fields get none")
 shutil.rmtree(base, ignore_errors=True)
 shutil.rmtree(xtmp, ignore_errors=True)
 

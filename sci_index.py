@@ -345,7 +345,8 @@ def read_block(info, skip_paths=frozenset()):
             raise ValueError(f"{info['path']} holds {len(recs)} records; a block has at most {BLOCK_SIZE}")
         return [{"id": info["start"] + i, "status": "ok", "text": r["text"], "pages": r.get("pages"), "raw_text": r["text"], "in_crawl": False,
                  "src": {"source": r.get("source_kind") or info["scope"], "scope": info["scope"], "path": r.get("path"), "title": r.get("title"), "date": r.get("decision_date"),
-                         "citation": r.get("citation"), "case_id": r.get("case_id"), "url": r.get("url"), "court": r.get("court")}}
+                         "citation": r.get("citation"), "case_id": r.get("case_id"), "url": r.get("url"), "court": r.get("court"),
+                         **{k: r[k] for k in ("neutral_citation", "court_listed", "bucket_url", "signals") if k in r}}}
                 for i, r in enumerate(recs) if r.get("status") == "ok" and r.get("text")]
     if info.get("kind") != "bucket":
         return recs
@@ -369,8 +370,8 @@ def read_block(info, skip_paths=frozenset()):
 # as an `--extra-dir`. A block's start is EXTRA_BASE + ordinal * BLOCK_SIZE and a judgment's id is its block's start plus its position in the file. No headnote or margin-letter
 # cutting (these are court PDFs, not law reports). Ids at EXTRA_BASE and up never clash with crawl or bucket ids.
 EXTRA_BASE = 2_000_000_000
-_EXTRA_RE = re.compile(r"^(sci_newer|ghc_court|ghc_bucket)-(\d{4})\.ok(\d+)\.miss(\d+)\.err(\d+)\.jsonl\.gz$")
-_EXTRA_OFFSET = {"ghc_court": 0, "sci_newer": 1000, "ghc_bucket": 2000}
+_EXTRA_RE = re.compile(r"^(sci_newer|ghc_court|ghc_bucket|ghc_post2017)-(\d{4})\.ok(\d+)\.miss(\d+)\.err(\d+)\.jsonl\.gz$")
+_EXTRA_OFFSET = {"ghc_court": 0, "sci_newer": 1000, "ghc_bucket": 2000, "ghc_post2017": 3000}
 
 
 def extra_blocks(extra_dir):
