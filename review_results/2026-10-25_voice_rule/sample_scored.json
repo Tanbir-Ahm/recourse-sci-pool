@@ -1,0 +1,1402 @@
+[
+ {
+  "id": 121,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 122,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 123,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 124,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 125,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 126,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 127,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 128,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 129,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 130,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 131,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "trial",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 132,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 133,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 134,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 135,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 136,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 137,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 138,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 139,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 140,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 1,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 2,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 3,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 4,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 5,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 6,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 7,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 8,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 9,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 10,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 11,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 12,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 13,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 14,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 15,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 16,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 17,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 18,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 19,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 20,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 21,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 22,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 23,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 24,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 25,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "trial",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 26,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 27,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 28,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 29,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 30,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 31,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 32,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 33,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 34,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 35,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 36,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 37,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 38,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 39,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 40,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 41,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 42,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 43,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 44,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 45,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 46,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 47,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 48,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 49,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 50,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 51,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 52,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 53,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 54,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 55,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 56,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 57,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 58,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "trial",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 59,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 60,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 61,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 62,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 63,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 64,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 65,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 66,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 67,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 68,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 69,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 70,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 71,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 72,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 73,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 74,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 75,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 76,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 77,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 78,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 79,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 80,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 81,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 82,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 83,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 84,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 85,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 86,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 87,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 88,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 89,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 90,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 91,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 92,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 93,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 94,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 95,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 96,
+  "from": "random",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 97,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "HC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 98,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 99,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 100,
+  "from": "random",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 101,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 102,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 103,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 104,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 105,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "trial",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 106,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 107,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 108,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 109,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 110,
+  "from": "blocked pool",
+  "mine_block": true,
+  "mine_tier": "none",
+  "rule_block": true,
+  "rule_tier": "none",
+  "states_law": false,
+  "reason": "every word of it is a lawyer's or a party's"
+ },
+ {
+  "id": 111,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 112,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 113,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 114,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 115,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 116,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": false,
+  "reason": null
+ },
+ {
+  "id": 117,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "trial",
+  "rule_block": false,
+  "rule_tier": "trial",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 118,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "none",
+  "rule_block": false,
+  "rule_tier": "HC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 119,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": true,
+  "reason": null
+ },
+ {
+  "id": 120,
+  "from": "blocked pool",
+  "mine_block": false,
+  "mine_tier": "SC",
+  "rule_block": false,
+  "rule_tier": "SC",
+  "states_law": false,
+  "reason": null
+ }
+]

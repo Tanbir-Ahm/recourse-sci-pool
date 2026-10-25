@@ -1,0 +1,1822 @@
+[
+ {
+  "id": 1,
+  "doc": 2000751736,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 2,
+  "doc": 2000753092,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 3,
+  "doc": 2000252600,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 4,
+  "doc": 2000756480,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 5,
+  "doc": 15927,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 6,
+  "doc": 8264,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 7,
+  "doc": 2000502210,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 8,
+  "doc": 2000756925,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 9,
+  "doc": 2000755595,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 10,
+  "doc": 34651,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 11,
+  "doc": 2000251971,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 12,
+  "doc": 2000756354,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 13,
+  "doc": 38371,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 14,
+  "doc": 1000255996,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 15,
+  "doc": 2000752986,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 16,
+  "doc": 2000505031,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 17,
+  "doc": 38903,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 18,
+  "doc": 3295,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 19,
+  "doc": 35722,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 20,
+  "doc": 2000508111,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 21,
+  "doc": 1000255134,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 22,
+  "doc": 1000255800,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 23,
+  "doc": 2000751684,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 24,
+  "doc": 2000751569,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 25,
+  "doc": 2000751554,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 3,
+   "voice": "lower_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 26,
+  "doc": 5000,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "statute",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 27,
+  "doc": 6830,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 28,
+  "doc": 39617,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 29,
+  "doc": 1000255153,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 30,
+  "doc": 2000000477,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 31,
+  "doc": 10107,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 32,
+  "doc": 38418,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 33,
+  "doc": 2000000234,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 34,
+  "doc": 2000750013,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 35,
+  "doc": 2000752553,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 36,
+  "doc": 36050,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 37,
+  "doc": 2000506328,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 38,
+  "doc": 2000000775,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 39,
+  "doc": 44698,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 40,
+  "doc": 1000250634,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 41,
+  "doc": 1000003125,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 42,
+  "doc": 32574,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 43,
+  "doc": 1000253567,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 44,
+  "doc": 2000756528,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 45,
+  "doc": 33292,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 46,
+  "doc": 40567,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 47,
+  "doc": 1000254809,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 48,
+  "doc": 1000257044,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 49,
+  "doc": 2000505031,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 50,
+  "doc": 2000753247,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 51,
+  "doc": 2000753949,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 52,
+  "doc": 2000253497,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 53,
+  "doc": 2000250871,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 54,
+  "doc": 20275,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 55,
+  "doc": 2000752813,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 56,
+  "doc": 2000500676,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 57,
+  "doc": 6006,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 58,
+  "doc": 2000751067,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 3,
+   "voice": "lower_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 59,
+  "doc": 2000753887,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 60,
+  "doc": 2000754263,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "higher_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 61,
+  "doc": 2000750395,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 62,
+  "doc": 1000252485,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 63,
+  "doc": 2000757046,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 64,
+  "doc": 2000754090,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 65,
+  "doc": 1000256892,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "lower_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 66,
+  "doc": 40219,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 67,
+  "doc": 2000252917,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 68,
+  "doc": 2000752543,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 69,
+  "doc": 2000755865,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 70,
+  "doc": 1000252910,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 71,
+  "doc": 2000750654,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 72,
+  "doc": 1000256783,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 73,
+  "doc": 2000756160,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 74,
+  "doc": 37340,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 75,
+  "doc": 4553,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 76,
+  "doc": 39559,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 77,
+  "doc": 2000252170,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 78,
+  "doc": 1000251075,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 79,
+  "doc": 2000754372,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 80,
+  "doc": 2000502215,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 81,
+  "doc": 1000252791,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 82,
+  "doc": 2000755688,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 83,
+  "doc": 2000756211,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 84,
+  "doc": 2000751775,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 85,
+  "doc": 2000754349,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 86,
+  "doc": 2000755280,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 87,
+  "doc": 27055,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 88,
+  "doc": 34610,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 89,
+  "doc": 7297,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 90,
+  "doc": 2000752539,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 91,
+  "doc": 41403,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 92,
+  "doc": 2000000606,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 93,
+  "doc": 26367,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 94,
+  "doc": 2000753733,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 95,
+  "doc": 2000753746,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 96,
+  "doc": 36545,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 97,
+  "doc": 2000753379,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 98,
+  "doc": 30254,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 99,
+  "doc": 2000750849,
+  "side": "HC",
+  "from": "random",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 100,
+  "doc": 29244,
+  "side": "SC",
+  "from": "random",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 101,
+  "doc": 2000000665,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 102,
+  "doc": 2000754095,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 103,
+  "doc": 2000751929,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 104,
+  "doc": 2000753367,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 105,
+  "doc": 2000755296,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 106,
+  "doc": 14535,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 107,
+  "doc": 44338,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 108,
+  "doc": 2000756178,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 109,
+  "doc": 1000256352,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 110,
+  "doc": 39681,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 111,
+  "doc": 2000251093,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "lower_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 112,
+  "doc": 36764,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 113,
+  "doc": 2000755458,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 114,
+  "doc": 2000251834,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 115,
+  "doc": 1000254489,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 116,
+  "doc": 2000752647,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 117,
+  "doc": 2000755883,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 3,
+   "voice": "lower_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 118,
+  "doc": 2000753227,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 119,
+  "doc": 1000250656,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 120,
+  "doc": 1000250780,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 121,
+  "doc": 2000505207,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 122,
+  "doc": 2000755142,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 123,
+  "doc": 2000750878,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 124,
+  "doc": 2000753956,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 125,
+  "doc": 2000755237,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 126,
+  "doc": 2000752886,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 127,
+  "doc": 2000752925,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 128,
+  "doc": 2000756337,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "higher_court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 129,
+  "doc": 2000754258,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 130,
+  "doc": 39101,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 131,
+  "doc": 44797,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 132,
+  "doc": 2000751902,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 133,
+  "doc": 2000754245,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 134,
+  "doc": 2000755433,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 135,
+  "doc": 2000753248,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 136,
+  "doc": 2000751648,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": true
+  }
+ },
+ {
+  "id": 137,
+  "doc": 2000753273,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": null,
+   "voice": null,
+   "blocked": true,
+   "reason": "every word of it is a lawyer's or a party's",
+   "states_law": false
+  }
+ },
+ {
+  "id": 138,
+  "doc": 1000251646,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 139,
+  "doc": 2000000465,
+  "side": "HC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 2,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ },
+ {
+  "id": 140,
+  "doc": 39112,
+  "side": "SC",
+  "from": "blocked pool",
+  "rule": {
+   "tier": 1,
+   "voice": "court",
+   "blocked": false,
+   "reason": null,
+   "states_law": false
+  }
+ }
+]
