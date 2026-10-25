@@ -23,24 +23,27 @@ def same_passage(a, b, threshold=SAME):
     return bool(inter) and inter / len(a) >= threshold and inter / len(b) >= threshold
 
 
-def verify(kept, ordered=True, promote=True, own_tier=None):
+def verify(kept, ordered=True, promote=False, own_tier=None):
     """Raises AssertionError if a list breaks either rule: nothing blocked may be in it (always), and the tiers must not go up again, which would put a lower
     court above a higher one (only when the list was ordered here; `pick(by_authority=False)` keeps the caller's order on purpose, to measure what the order
     changes). Called at the end of `pick`; cheap, and if it ever trips it is a fault in this code, not in the data."""
     for r in kept:
         assert not r["authority"]["blocked"], f"a blocked passage reached the list: {r.get('doc')} ({r['authority']['reason']})"
+        assert r.get("voice_line"), f"a result without its line saying whose words it shows: {r.get('doc')}"
     if ordered:
         tiers = [A.sort_key(r["authority"], 0, own_tier, promote)[:2] for r in kept]
         assert tiers == sorted(tiers), f"the list is out of the owner's order: {[r['authority']['tier'] for r in kept]}"
     return kept
 
 
-def pick(rows, bar=BAR, max_results=MAX_RESULTS, threshold=SAME, by_authority=True, promote=True, own_tier=None):
+def pick(rows, bar=BAR, max_results=MAX_RESULTS, threshold=SAME, by_authority=True, promote=False, own_tier=None):
     """rows: candidates, each {"doc", "cos", "text", ...} and optionally "src" (the stored fields of its judgment) and "final" (the search score). Returns the
     rows to show: cosine at or over the bar, nobody's argument, the owner's order, one passage per judgment, and no two passages that read the same. Each kept
-    row carries "authority" (the verdict, including `voice`, `tier` and the `quote` a page should show) and "also_in" (the judgments whose passage reads the same).
-    `by_authority=False` keeps the caller's own order and only drops blocked passages, for measuring what the order itself changes; `promote=False` with
-    `own_tier` never lifts a passage above the court that wrote the judgment (see `authority.effective_tier`)."""
+    row carries "authority" (the verdict, including `voice`, `tier` and the `quote` a page should show), "voice_line" (the line a page MUST print above the
+    quote, saying whose words it is) and "also_in" (the judgments whose passage reads the same). Order, owner's decisions of 2026-10-25: the strict tier order,
+    and a passage never ranks above the court that wrote its judgment (a High Court quoting the Supreme Court stays at High Court rank).
+    `by_authority=False` keeps the caller's own order and only drops blocked passages, for measuring what the order itself changes; `promote=True` is the plain
+    reading of the order, in which a quoted Supreme Court outranks the High Court quoting it (measured, not chosen; see `authority.effective_tier`)."""
     scored = []
     for r in rows:
         if r["cos"] < bar:
@@ -48,7 +51,7 @@ def pick(rows, bar=BAR, max_results=MAX_RESULTS, threshold=SAME, by_authority=Tr
         v = A.safe_classify(r["text"], src=r.get("src"), doc=r.get("doc"))
         if v["blocked"]:
             continue
-        scored.append({**r, "authority": v})
+        scored.append({**r, "authority": v, "voice_line": A.voice_line(v)})
     if by_authority:
         scored.sort(key=lambda r: A.sort_key(r["authority"], r.get("final", r["cos"]), own_tier, promote))
     kept, seen = [], set()

@@ -73,3 +73,12 @@ All 418,286 passages, 513 seconds (`index_counts_20261025.json`, `authority_audi
 ## Files
 
 `PLAN_AND_RULES.md` (written first) · `draw_sample.py`, `sample_to_label.json` (the blind sample) · `my_labels.json` (my labels) · `score_sample.py`, `sample_rule_verdicts.json`, `sample_scored.json` (the scoring) · `voice_rule_test.py`, `26_questions.json`, `26_questions_shown.json` (the re-run) · `index_counts_20261025.json` (the baseline). Code: `authority.py`, `tier_select.py`, `authority_audit.py`, `export_voice_bundle.py`, `VOICE_SITE_PATCH.md`; tests `test_authority.py` (49 checks), `test_tier_select.py`.
+
+
+## The owner's three decisions, 2026-10-25 (after this note was first written), and what was done
+
+1. **Supreme Court list: the strict order is taken**, at the measured cost (one question out of the top 5, two out of the top 10 of the 14).
+2. **A High Court judgment quoting the Supreme Court stays at High Court rank.** Done: `authority.effective_tier` no longer promotes (`promote=False` is the default), the verdict carries the tier of the court that wrote the judgment (`own_tier`), and `sort_key` uses it, so no caller can forget. In a Supreme Court judgment this is the strict order. On the 26 questions this is the "demote only" arm already measured: 64 results, 17 of 26 lists differ from the plain reading.
+3. **The page prints whose words each result shows.** Done: `authority.voice_line` makes the line, `tier_select.pick` attaches it to every result as `voice_line`, and `tier_select.verify` raises if a result has none, so it cannot be left out by accident. Rendered on all 64 results of the 26-question run without a gap (28 "Gauhati High Court's own words", 28 "the Supreme Court, as quoted by Gauhati High Court", and 8 of those marked as background because the saved text was cut at 600 characters). `VOICE_SITE_PATCH.md` point 2(c) now makes it mandatory for the site.
+
+No new spending: both orderings had already been measured in the run above. Tests: `test_authority.py` and `test_tier_select.py` extended (the old expectation that a quoted Supreme Court passage jumps the queue is replaced by its opposite).

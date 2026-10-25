@@ -28,10 +28,10 @@ THIRD = ("18. The presumption under Section 139 of the Negotiable Instruments Ac
 
 r = ts.pick([row(1, 0.61, TWIN), row(2, 0.61, TWIN), row(3, 0.58, OTHER), row(4, 0.55, THIRD)])
 check(sorted(x["doc"] for x in r) == [1, 3, 4], "two petitions with the same text show once, and the next candidate takes the freed place")
-check([x["doc"] for x in r] == [4, 1, 3], "THIRD comes first although it scored lowest: it carries the Supreme Court's words (the other two are the High Court's own)")
+check([x["doc"] for x in r] == [1, 3, 4], "THIRD does not jump the queue: it carries the Supreme Court's words, but a High Court judgment quoting the Supreme Court stays at High Court rank (owner's decision)")
 by_doc = {x["doc"]: x for x in r}
 check(by_doc[1]["also_in"] == [2] and by_doc[3]["also_in"] == [] and by_doc[4]["also_in"] == [], "the kept result names the judgment it stands for")
-check("_sh" not in r[0] and set(r[0]) == {"doc", "cos", "text", "src", "also_in", "authority"}, "no working data leaks into the result, and the verdict comes back with it")
+check("_sh" not in r[0] and set(r[0]) == {"doc", "cos", "text", "src", "also_in", "authority", "voice_line"}, "no working data leaks into the result, and the verdict comes back with it")
 
 rows = [row(1, 0.61, TWIN), row(2, 0.61, TWIN)]
 before = [dict(x) for x in rows]
@@ -55,16 +55,29 @@ SC_QUOTE = "In Vijaysinh the Supreme Court has held that the requirements of Sec
 TRIAL_QUOTE = "The learned Chief Judicial Magistrate held that the offence under Section 389 of the Indian Penal Code is a non-compoundable offence and rejected the prayer."
 ARGUMENT = "Mr. M.K. Borah, learned counsel for the petitioner submits that the allegations levelled in the FIR are fabricated and frivolous."
 r = ts.pick([row(1, 0.99, ARGUMENT), row(2, 0.90, TRIAL_QUOTE), row(3, 0.55, SC_QUOTE)])
-check([x["doc"] for x in r] == [3, 2], "the Supreme Court's words come first and the trial court's last, although the trial court scored higher")
+check([x["doc"] for x in r] == [3, 2], "the High Court's own-rank words come before the trial court's, although the trial court scored higher")
+r_sc = ts.pick([row(2, 0.90, "The High Court held that the complaint is not maintainable and the petition must fail.", "Supreme Court of India"),
+                row(3, 0.55, "We are unable to agree with that view and we hold that the complaint is maintainable.", "Supreme Court of India")])
+check([x["doc"] for x in r_sc] == [3, 2], "in a Supreme Court judgment the strict order puts the Court's own words above its recital of the High Court's view, whatever the scores")
+r_hc = ts.pick([row(5, 0.95, SC_QUOTE), row(6, 0.60, TWIN)])
+check([x["authority"]["tier"] for x in r_hc] == [1, 2] and [x["doc"] for x in r_hc] == [5, 6] and r_hc[0]["voice_line"].startswith("the Supreme Court, as quoted by Gauhati High Court"),
+      "a High Court judgment quoting the Supreme Court keeps High Court rank (score decides against the court's own words) and says whose words it shows")
+r_p = ts.pick([row(5, 0.55, SC_QUOTE), row(6, 0.60, TWIN)], promote=True)
+check([x["doc"] for x in r_p] == [5, 6], "promote=True, the plain reading, would lift the quoted Supreme Court above the court's own words: measured, not chosen")
 check(all(x["doc"] != 1 for x in r), "the lawyer's argument is not shown at all, although it scored highest")
 check(r[0]["authority"]["tier"] == 1 and r[1]["authority"]["tier"] == 3, "each result says whose words it carries")
 r2 = ts.pick([row(1, 0.99, ARGUMENT), row(2, 0.90, TRIAL_QUOTE), row(3, 0.55, SC_QUOTE)], by_authority=False)
 check([x["doc"] for x in r2] == [2, 3], "with the order switched off the argument is still dropped, but the trial court stays on top (which is what the order fixes)")
 try:
-    ts.verify([{"authority": {"tier": 3, "states_law": True, "blocked": False}}, {"authority": {"tier": 1, "states_law": True, "blocked": False}}])
+    ts.verify([{"voice_line": "x", "authority": {"tier": 3, "states_law": True, "blocked": False}}, {"voice_line": "x", "authority": {"tier": 1, "states_law": True, "blocked": False}}])
     check(False, "verify refuses a list that puts a lower court above a higher one")
 except AssertionError:
     check(True, "verify refuses a list that puts a lower court above a higher one")
+try:
+    ts.verify([{"doc": 1, "authority": {"tier": 2, "states_law": True, "blocked": False}}])
+    check(False, "verify refuses a result that has no line saying whose words it shows")
+except AssertionError:
+    check(True, "verify refuses a result that has no line saying whose words it shows")
 try:
     ts.verify([{"authority": {"tier": None, "states_law": False, "blocked": True, "reason": "x"}}])
     check(False, "verify refuses a list with a blocked passage in it")

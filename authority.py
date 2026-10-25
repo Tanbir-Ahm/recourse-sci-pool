@@ -264,11 +264,11 @@ def classify(text, src=None, doc=None, own_tier=None):
     if not court_voice:                                       # no court speaks in it at all: if a lawyer or a party does, every word of it is theirs
         if any(d["voice"] in BLOCK_VOICES for d in labelled):
             return {"tier": None, "voice": None, "cue": None, "blocked": True, "reason": "every word of it is a lawyer's or a party's", "states_law": False, "lead": None, "quote": "",
-                    "sentences": [(d["voice"], d["substantive"], d["text"]) for d in labelled], "court": court_name}
+                    "sentences": [(d["voice"], d["substantive"], d["text"]) for d in labelled], "court": court_name, "own_tier": own_tier}
     own_words = [(i, d) for i, d in court_voice if len(d["text"].split()) >= MIN_WORDS] or court_voice
     if not own_words:
         return {"tier": None, "voice": None, "cue": None, "blocked": True, "reason": "there is nothing in it", "states_law": False, "lead": None, "quote": "",
-                "sentences": [(d["voice"], d["substantive"], d["text"]) for d in labelled], "court": court_name}
+                "sentences": [(d["voice"], d["substantive"], d["text"]) for d in labelled], "court": court_name, "own_tier": own_tier}
     carriers = [(i, d) for i, d in own_words if d["substantive"]]
     ranked = [((_tier_of(d, own_tier) or 9), i, d) for i, d in (carriers or own_words)]
     tier, lead, best = min(ranked, key=lambda x: (x[0], x[1]))
@@ -278,7 +278,7 @@ def classify(text, src=None, doc=None, own_tier=None):
     while hi + 1 < len(labelled) and labelled[hi + 1]["voice"] not in BLOCK_VOICES:
         hi += 1
     return {"tier": None if tier == 9 else tier, "voice": best["voice"], "cue": best["cue"], "blocked": False, "reason": None, "states_law": bool(carriers), "lead": lead,
-            "quote": " ".join(d["text"] for d in labelled[lo:hi + 1]), "sentences": [(d["voice"], d["substantive"], d["text"]) for d in labelled], "court": court_name}
+            "quote": " ".join(d["text"] for d in labelled[lo:hi + 1]), "sentences": [(d["voice"], d["substantive"], d["text"]) for d in labelled], "court": court_name, "own_tier": own_tier}
 
 
 def safe_classify(text, src=None, doc=None, own_tier=None):
@@ -290,17 +290,19 @@ def safe_classify(text, src=None, doc=None, own_tier=None):
         return {"tier": None, "voice": None, "cue": None, "blocked": True, "reason": f"could not be read ({type(exc).__name__})", "lead": None, "quote": "", "sentences": [], "court": None}
 
 
-def effective_tier(verdict, own_tier=None, promote=True):
-    """The tier a list orders by. `promote=True` is the plain reading of the owner's order: a High Court judgment's quotation of the Supreme Court ranks as the
-    Supreme Court. `promote=False` ("demote only") never lifts a passage above the court that wrote the judgment, and only pushes down the words of a court below
-    it; the measured difference between the two is in review_results/2026-10-25_voice_rule/."""
+def effective_tier(verdict, own_tier=None, promote=False):
+    """The tier a list orders by. Owner's decision, 2026-10-25: a passage never ranks above the court that wrote the judgment it stands in. So a High Court
+    judgment quoting the Supreme Court stays at High Court rank (`promote=False`, the default), the words of a court below that court are pushed down to their own
+    tier, and in a Supreme Court judgment, where the writer is already first, this is the strict order. `promote=True` is the plain reading, in which the quoted
+    Supreme Court outranks the High Court that quotes it; it was measured (review_results/2026-10-25_voice_rule/) and not chosen."""
     t = verdict.get("tier")
-    if promote or t is None or own_tier is None:
+    own = own_tier if own_tier is not None else verdict.get("own_tier")
+    if promote or t is None or own is None:
         return t
-    return max(t, own_tier)
+    return max(t, own)
 
 
-def sort_key(verdict, score, own_tier=None, promote=True):
+def sort_key(verdict, score, own_tier=None, promote=False):
     """Order for a list of results: the court's tier decides first (an unknown tier sorts last), then whether the passage states law at all, and the search
     score only separates results that are equal on both. So no similarity score, however high, can put a trial court's view above an observation of a higher
     court, nor a passage of pure narrative above one that states the law."""
@@ -310,3 +312,30 @@ def sort_key(verdict, score, own_tier=None, promote=True):
 def order(results, score_of=lambda r: r.get("score", 0.0), verdict_of=lambda r: r["authority"]):
     """Blocked results removed, the rest ordered by tier then score."""
     return sorted((r for r in results if not verdict_of(r).get("blocked")), key=lambda r: sort_key(verdict_of(r), score_of(r)))
+
+
+TIER_NAME = {SC: "the Supreme Court", HC: "a High Court", TRIAL: "the trial court"}
+
+
+def voice_line(verdict):
+    """The line a page must print above a result, saying whose words it is quoting. Owner's decision, 2026-10-25: the rule reads word patterns and is wrong
+    sometimes (1 of 140 hand-labelled passages gave a trial court's words a High Court's rank), so the reader is told whose words they are and can catch what
+    the rule cannot. Never says a case is good law, and never says the words are right. A result without a line is not allowed out (`tier_select.verify`)."""
+    court = verdict.get("court") or "this court"
+    v, t = verdict.get("voice"), verdict.get("tier")
+    if verdict.get("blocked"):
+        return None
+    if t is None:
+        line = "Quoted words: this passage does not show whose they are"
+    elif v == COURT:
+        line = f"{court}'s own words"
+    elif v == HIGHER_COURT:
+        line = f"{TIER_NAME.get(t, 'a higher court')}, as quoted by {court}"
+    elif v == LOWER_COURT:
+        line = (f"The trial court's view, as recorded by {court}, not this court's own holding" if t == TRIAL
+                else f"The court below's view, as recorded by {court}, not this court's own holding")
+    elif v == STATUTE:
+        line = f"The words of a section, as set out by {court}"
+    else:
+        line = f"{court}'s own words"
+    return line if verdict.get("states_law", True) else line + " (background to the case; it states no rule)"

@@ -14,7 +14,7 @@ This is a filter in code, not a line in a prompt. `authority.py` reads the passa
 python3 -I export_voice_bundle.py <recourse checkout>/passage_authority
 ```
 
-writes three files (`authority.py`, `textutil.py`, `__init__.py`), about 30 KB, pure Python with no dependency, no data file, no network and nothing to spend. It was imported and used from an otherwise empty directory as a check. Re-export it after any change here, and run `python test_authority.py` in this repository first (49 checks).
+writes three files (`authority.py`, `textutil.py`, `__init__.py`), about 30 KB, pure Python with no dependency, no data file, no network and nothing to spend. It was imported and used from an otherwise empty directory as a check. Re-export it after any change here, and run `python test_authority.py` in this repository first (see the test files).
 
 ## 2. Where it goes
 
@@ -36,11 +36,18 @@ scored.sort(key=lambda sc: PA.sort_key(sc[1]["authority"], sc[0]))      # tier, 
 
 **(b) The passages this repository serves, `sci_search_tier`.** The gate belongs on the service side, in this repository, so that the site cannot be served an argument in the first place; `tier_select.pick` already applies it and `tier_select.verify` raises if a blocked passage or an out-of-order list ever reaches a caller. When the service named in `sci_search_tier.py` ("recourse-sci-pool, sci_search_service.py") is built, it must return passages through `tier_select.pick`. Nothing is needed on the site for this.
 
-**(c) What the page shows.** Each kept result carries the verdict. Use it:
+**(c) What the page shows: the line saying whose words, which is now mandatory.** Owner's decision, 2026-10-25: the rule reads word patterns and is wrong sometimes, so the reader is told whose words each result shows. Every kept result carries `voice_line` and `tier_select.verify` raises if one is missing, so it cannot be left out by accident. Print it directly above the quote, in the same type size, not as a tooltip or a footnote:
 
-* `v["quote"]` instead of the raw passage: it is the run of neighbouring sentences around the best one that holds **no** lawyer's or party's words, so what is on the page is both a true quotation and nobody's argument.
-* `v["voice"]` and `v["cue"]` for the line above the quote, so the reader is told whose words these are rather than having to trust the order: "the Supreme Court, as quoted in this judgment" (`higher_court`), "this court's own words" (`court`), **"the trial court's view, as recorded in this judgment" (`lower_court`)**, "the words of the section" (`statute`). A `lower_court` result must carry that line.
-* `v["tier"]` is 1, 2 or 3, or `None` when the passage was cut out of the middle of somebody's quotation so that it does not show whose words it is; `None` sorts last and is never promoted.
+```python
+for r in tier_select.pick(candidates):          # or, on the site, the same two calls on its own chunks
+    show(r["voice_line"])                       # e.g. "the Supreme Court, as quoted by Gauhati High Court"
+    show(r["authority"]["quote"])               # the run of sentences with no lawyer's or party's words in it
+```
+
+The lines it produces: "*{court}'s own words*"; "*the Supreme Court, as quoted by {court}*" (or "a High Court, as quoted by ..."); "*The trial court's view, as recorded by {court}, not this court's own holding*" (or "The court below's view ..." for a High Court's view inside a Supreme Court judgment); "*The words of a section, as set out by {court}*"; "*Quoted words: this passage does not show whose they are*" (a passage cut out of the middle of a quotation; tier unknown, ranked last); and " *(background to the case; it states no rule)*" added to any of them when the passage tells the story of the case. None says a case is good law or that the words are right.
+
+* `v["tier"]` is 1, 2 or 3, or `None`; `None` sorts last and is never promoted.
+* **Order, owner's decisions of 2026-10-25:** the strict order (Supreme Court, High Court, trial court, then states-law, then score), and a passage never ranks above the court that wrote its judgment: a High Court judgment quoting the Supreme Court stays at High Court rank, and in a Supreme Court judgment the Court's own words come before its recital of the High Court's view. The verdict carries `own_tier`, so `sort_key` applies this without the caller passing anything.
 
 ## 3. Fail closed, not open
 

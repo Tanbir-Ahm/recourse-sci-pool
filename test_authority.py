@@ -111,6 +111,23 @@ check(A.order([TRIAL_LAW])[0] is TRIAL_LAW, "a trial court's view is still shown
 check(A.sort_key({"tier": A.TRIAL, "states_law": True}, 0.99) > A.sort_key({"tier": A.HC, "states_law": False}, 0.01),
       "no similarity score, however high, can lift a trial court above a High Court")
 
+# ---------------------------------------------------------------- owner's decisions of 2026-10-25: strict order, no promotion, and the page says whose words
+v_hc_sc = {"tier": A.SC, "states_law": True, "own_tier": A.HC}
+v_hc_own = {"tier": A.HC, "states_law": True, "own_tier": A.HC}
+check(A.sort_key(v_hc_sc, 0.1) == A.sort_key(v_hc_own, 0.1), "a High Court judgment quoting the Supreme Court ranks as the High Court (no promotion)")
+check(A.sort_key({"tier": A.TRIAL, "states_law": True, "own_tier": A.HC}, 0.99) > A.sort_key(v_hc_own, 0.01), "a trial court's recital in a High Court judgment still ranks below the High Court's own words")
+check(A.sort_key({"tier": A.HC, "states_law": True, "own_tier": A.SC}, 0.99) > A.sort_key({"tier": A.SC, "states_law": True, "own_tier": A.SC}, 0.01),
+      "in a Supreme Court judgment the strict order: the Court's own words above its recital of the High Court's view")
+check(A.sort_key(v_hc_sc, 0.1, promote=True)[0] == A.SC, "promote=True still gives the plain reading, for measuring")
+vl = lambda **k: A.voice_line({"court": "Gauhati High Court", "blocked": False, "states_law": True, **k})
+check(vl(voice=A.COURT, tier=A.HC) == "Gauhati High Court's own words", "the line for a court's own words")
+check(vl(voice=A.HIGHER_COURT, tier=A.SC) == "the Supreme Court, as quoted by Gauhati High Court", "the line for a quoted Supreme Court")
+check("not this court's own holding" in vl(voice=A.LOWER_COURT, tier=A.TRIAL) and vl(voice=A.LOWER_COURT, tier=A.TRIAL).startswith("The trial court's view"), "a trial court's recital must say it is not this court's holding")
+check(vl(voice=A.COURT, tier=None).startswith("Quoted words: this passage does not show whose they are"), "a quotation cut loose from its speaker says so")
+check(vl(voice=A.COURT, tier=A.HC, states_law=False).endswith("(background to the case; it states no rule)"), "background is labelled as background")
+check(A.voice_line({"blocked": True}) is None, "a blocked passage has no line because it is never shown")
+check("good law" not in " ".join(str(vl(voice=v_, tier=t_)) for v_ in (A.COURT, A.HIGHER_COURT, A.LOWER_COURT, A.STATUTE) for t_ in (1, 2, 3, None)).lower(), "no line ever says a case is good law")
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED:")
