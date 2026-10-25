@@ -33,8 +33,8 @@ Can a computer tool read scanned or photographed pages in Assamese or Kannada, i
 
 Each page goes through every candidate and the outputs are kept separate. The names below are the plan, subject to checking availability and price before we start.
 
-- **Reading (page image to text in the original script):** a general vision AI model; an Indian-language document reader such as Sarvam Vision; a Google document OCR service; and free OCR (Tesseract) as the baseline.
-- **Translation (to English):** an AI model; IndicTrans2 (free, open-source); Google Translate.
+- **Reading (page image to text in the original script):** a general vision AI model; Google's Gemini vision model; an Indian-language document reader such as Sarvam Vision; a Google document OCR service; and free OCR (Tesseract) as the baseline.
+- **Translation (to English):** an AI model; Google's Gemini; IndicTrans2 (free, open-source); Google Translate.
 - **Two-reader check:** where two different readers disagree on a line, the line is marked for a human. Part of the test is whether those marks catch the real mistakes.
 
 Every output must show the page image, the original-script text and the English side by side, with unreadable words marked `[unclear]` instead of guessed.
