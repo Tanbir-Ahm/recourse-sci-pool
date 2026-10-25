@@ -33,7 +33,7 @@ Can a computer tool read scanned or photographed pages in Assamese or Kannada, i
 
 Each page goes through every candidate and the outputs are kept separate. The names below are the plan, subject to checking availability and price before we start.
 
-- **Reading (page image to text in the original script):** a general vision AI model; Google's Gemini vision model; an Indian-language document reader such as Sarvam Vision; a Google document OCR service; and free OCR (Tesseract) as the baseline.
+- **Reading (page image to text in the original script):** a general vision AI model; Google's Gemini vision model; an Indian-language document reader such as Sarvam Vision; Google Cloud Vision (its document text detection); and free OCR (Tesseract) as the baseline. We will also run the open-source `legal-ocr-service` (Tesseract in a container with a Google Vision option, built for Gujarati documents) as a named baseline. It is run twice: as published, and with its PDF page rendering fixed to 300 dpi (as published it renders PDF pages at a low default resolution), so we can tell the weakness of the engine from the weakness of that setup. It also needs its language setting changed for Assamese or Kannada.
 - **Translation (to English):** an AI model; Google's Gemini; IndicTrans2 (free, open-source); Google Translate.
 - **Two-reader check:** where two different readers disagree on a line, the line is marked for a human. Part of the test is whether those marks catch the real mistakes.
 
