@@ -1,0 +1,132 @@
+{
+ "mode": "validate",
+ "index_passages": 236155,
+ "rows": [
+  {
+   "qid": "R01",
+   "first_rank_now": 1,
+   "first_rank_recorded": 1,
+   "hit1": true,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R02",
+   "first_rank_now": 1,
+   "first_rank_recorded": 1,
+   "hit1": true,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R04",
+   "first_rank_now": 2,
+   "first_rank_recorded": 2,
+   "hit1": false,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R08",
+   "first_rank_now": 2,
+   "first_rank_recorded": 2,
+   "hit1": false,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R09",
+   "first_rank_now": null,
+   "first_rank_recorded": null,
+   "hit1": false,
+   "hit5": false,
+   "hit10": false
+  },
+  {
+   "qid": "R11",
+   "first_rank_now": 3,
+   "first_rank_recorded": 3,
+   "hit1": false,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R12",
+   "first_rank_now": 6,
+   "first_rank_recorded": 5,
+   "hit1": false,
+   "hit5": false,
+   "hit10": true
+  },
+  {
+   "qid": "R14",
+   "first_rank_now": null,
+   "first_rank_recorded": null,
+   "hit1": false,
+   "hit5": false,
+   "hit10": false
+  },
+  {
+   "qid": "R17",
+   "first_rank_now": 1,
+   "first_rank_recorded": 1,
+   "hit1": true,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R19",
+   "first_rank_now": 1,
+   "first_rank_recorded": 1,
+   "hit1": true,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R20",
+   "first_rank_now": null,
+   "first_rank_recorded": null,
+   "hit1": false,
+   "hit5": false,
+   "hit10": false
+  },
+  {
+   "qid": "R22",
+   "first_rank_now": null,
+   "first_rank_recorded": null,
+   "hit1": false,
+   "hit5": false,
+   "hit10": false
+  },
+  {
+   "qid": "R24",
+   "first_rank_now": 1,
+   "first_rank_recorded": 1,
+   "hit1": true,
+   "hit5": true,
+   "hit10": true
+  },
+  {
+   "qid": "R26",
+   "first_rank_now": 4,
+   "first_rank_recorded": 4,
+   "hit1": false,
+   "hit5": true,
+   "hit10": true
+  }
+ ],
+ "agg": {
+  "hit1": 5,
+  "hit5": 9,
+  "hit10": 10
+ },
+ "identical": 13,
+ "billed": {
+  "embed_calls": 14,
+  "embed_tokens": 878,
+  "rerank_calls": 14,
+  "rerank_tokens": 273621,
+  "dollars": 0.0138,
+  "seconds": 43
+ }
+}

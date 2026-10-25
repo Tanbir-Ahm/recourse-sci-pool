@@ -1,0 +1,785 @@
+{
+ "mode": "full",
+ "index_passages": 418286,
+ "landmarks": [
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "lay",
+   "M": {
+    "rank": 4,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 4,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 7,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": 4,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 0
+  },
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "kind": "legal",
+   "M": {
+    "rank": 6,
+    "pinned": true,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 5,
+    "pinned": true,
+    "pass": true
+   },
+   "T2_SC": {
+    "rank": 5,
+    "pinned": true,
+    "pass": true
+   },
+   "courtweight_0.8": {
+    "rank": 5,
+    "pinned": true,
+    "pass": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "lay",
+   "M": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 2
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "kind": "legal",
+   "M": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 25,
+    "pinned": true,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 3
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "lay",
+   "M": {
+    "rank": 33,
+    "pinned": true,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 18,
+    "pinned": true,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 29,
+    "pinned": true,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": 29,
+    "pinned": true,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "kind": "legal",
+   "M": {
+    "rank": 14,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 14,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 13,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": 14,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 0
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "kind": "lay",
+   "M": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 13,
+    "pinned": true,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "kind": "legal",
+   "M": {
+    "rank": 1,
+    "pinned": true,
+    "pass": true
+   },
+   "T1_SC": {
+    "rank": 1,
+    "pinned": true,
+    "pass": true
+   },
+   "T2_SC": {
+    "rank": 1,
+    "pinned": true,
+    "pass": true
+   },
+   "courtweight_0.8": {
+    "rank": 1,
+    "pinned": true,
+    "pass": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "lay",
+   "M": {
+    "rank": 18,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 15,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 15,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": 16,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 0,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "kind": "legal",
+   "M": {
+    "rank": 6,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 4,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 5,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": 4,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 2
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "kind": "lay",
+   "M": {
+    "rank": 27,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": 16,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 27,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": 19,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 2,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "kind": "legal",
+   "M": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T1_SC": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "T2_SC": {
+    "rank": 17,
+    "pinned": false,
+    "pass": false
+   },
+   "courtweight_0.8": {
+    "rank": null,
+    "pinned": false,
+    "pass": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 3
+  }
+ ],
+ "tuning": [
+  {
+   "qid": "R01",
+   "M": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 0,
+   "hc_in_mixed_top5": 0
+  },
+  {
+   "qid": "R02",
+   "M": {
+    "first_rank": 4,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 2,
+   "hc_in_mixed_top5": 3
+  },
+  {
+   "qid": "R04",
+   "M": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 0
+  },
+  {
+   "qid": "R08",
+   "M": {
+    "first_rank": 8,
+    "hit1": false,
+    "hit5": false,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 3,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 3,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 4
+  },
+  {
+   "qid": "R09",
+   "M": {
+    "first_rank": 52,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T1_SC": {
+    "first_rank": 36,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T2_SC": {
+    "first_rank": 47,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "courtweight_0.8": {
+    "first_rank": 44,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 0
+  },
+  {
+   "qid": "R11",
+   "M": {
+    "first_rank": 6,
+    "hit1": false,
+    "hit5": false,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 3,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 3,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 3,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 1,
+   "hc_in_mixed_top5": 3
+  },
+  {
+   "qid": "R12",
+   "M": {
+    "first_rank": 24,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T1_SC": {
+    "first_rank": 12,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T2_SC": {
+    "first_rank": 28,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "courtweight_0.8": {
+    "first_rank": 21,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 4
+  },
+  {
+   "qid": "R14",
+   "M": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T1_SC": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T2_SC": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "courtweight_0.8": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 5
+  },
+  {
+   "qid": "R17",
+   "M": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 1
+  },
+  {
+   "qid": "R19",
+   "M": {
+    "first_rank": 2,
+    "hit1": false,
+    "hit5": true,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 3
+  },
+  {
+   "qid": "R20",
+   "M": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T1_SC": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T2_SC": {
+    "first_rank": 13,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "courtweight_0.8": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 4
+  },
+  {
+   "qid": "R22",
+   "M": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T1_SC": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "T2_SC": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "courtweight_0.8": {
+    "first_rank": null,
+    "hit1": false,
+    "hit5": false,
+    "hit10": false
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 0
+  },
+  {
+   "qid": "R24",
+   "M": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 1,
+    "hit1": true,
+    "hit5": true,
+    "hit10": true
+   },
+   "hc_tier_n": 3,
+   "hc_in_mixed_top5": 2
+  },
+  {
+   "qid": "R26",
+   "M": {
+    "first_rank": 6,
+    "hit1": false,
+    "hit5": false,
+    "hit10": true
+   },
+   "T1_SC": {
+    "first_rank": 6,
+    "hit1": false,
+    "hit5": false,
+    "hit10": true
+   },
+   "T2_SC": {
+    "first_rank": 7,
+    "hit1": false,
+    "hit5": false,
+    "hit10": true
+   },
+   "courtweight_0.8": {
+    "first_rank": 6,
+    "hit1": false,
+    "hit5": false,
+    "hit10": true
+   },
+   "hc_tier_n": 0,
+   "hc_in_mixed_top5": 0
+  }
+ ],
+ "agg_landmarks": {
+  "M": {
+   "pass": 1,
+   "case_top5": 2,
+   "case_top10": 4,
+   "not_found": 4
+  },
+  "T1_SC": {
+   "pass": 2,
+   "case_top5": 4,
+   "case_top10": 4,
+   "not_found": 4
+  },
+  "T2_SC": {
+   "pass": 2,
+   "case_top5": 3,
+   "case_top10": 4,
+   "not_found": 1
+  },
+  "courtweight_0.8": {
+   "pass": 2,
+   "case_top5": 4,
+   "case_top10": 4,
+   "not_found": 4
+  }
+ },
+ "agg_tuning": {
+  "M": {
+   "hit1": 2,
+   "hit5": 6,
+   "hit10": 9
+  },
+  "T1_SC": {
+   "hit1": 5,
+   "hit5": 8,
+   "hit10": 9
+  },
+  "T2_SC": {
+   "hit1": 5,
+   "hit5": 8,
+   "hit10": 9
+  },
+  "courtweight_0.8": {
+   "hit1": 5,
+   "hit5": 8,
+   "hit10": 9
+  }
+ },
+ "hc_tier_questions_with_a_result": 23,
+ "questions": 26,
+ "hc_tier_judgments_shown": 65,
+ "billed": {
+  "embed_calls": 26,
+  "embed_tokens": 1267,
+  "rerank_calls": 78,
+  "rerank_tokens": 1330484,
+  "dollars": 0.0667,
+  "seconds": 189
+ }
+}
