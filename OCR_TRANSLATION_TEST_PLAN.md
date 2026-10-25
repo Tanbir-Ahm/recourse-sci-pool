@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. Nothing has been built or run yet. This plan decides what we test, on what, and what result counts as a pass, before any result exists.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Section 10 records the first results (one real document, scores only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -94,3 +94,34 @@ Page summary (one row per page and tool): gist correct (yes / no); number of Cri
 3. What may you share, and how (secure upload, not email, if possible)?
 4. Who will be the reviewer, and who is the translator for the timing test?
 5. Does your High Court accept a translator-corrected machine draft for filing? If you don't know, who would?
+
+## 10. Results so far (recorded 2026-10-25; scores only, no case text, one document)
+
+**What was tested.** One real 14-page trial-court bundle: mostly handwritten English on printed forms (11 pages) and handwritten Assamese (about 3 distinct pages, one of them scanned twice). It is a phone scan with no text layer. There is no reference translation and no Assamese-reading reviewer yet, so every score below is against reference terms I read by eye from the page images. That reading is not independent, and the matching is lenient (punctuation and spaces ignored, partial matches count), so true accuracy is at or below these numbers. One document is a first look, not an accuracy figure.
+
+| Candidate | English pages, all (11) | Handwritten English pages only (3 to 10) | Handwritten Assamese pages |
+|---|---|---|---|
+| Free OCR (Tesseract) through the `legal-ocr-service` code, as published | 11% | 11% | nonsense; the phone number on the page was not recovered in any setting |
+| Same code with its page rendering fixed to 300 dpi | 18% | 10% | nonsense |
+| **Sarvam Vision**, language set per page | **79%** | **85%** | readable in places, many wrong letters, see below |
+| **Sarvam Vision**, language left unset | **83%** | **90%** | same |
+
+**Sarvam Vision, English handwriting: strong at full resolution.** The handwritten cause-of-death opinion, which free OCR lost completely, came out essentially word for word. Case and section numbers, dates and times on the forms were mostly right.
+
+**Sarvam Vision, problems found (all silent: the output has no confidence field and an empty warnings list, even on wrong text):**
+- **Invented text.** Caption-style descriptions of stamps were inserted into the output on at least 3 of 14 pages ("The image displays an official seal..."). On one page the Assamese caption named the wrong city for the court and described the national emblem as a person.
+- **Inconsistent numbers.** On the FIR form the output gave the FIR number twice, once correct and once with a digit dropped.
+- **Names garbled,** including the accused's name, which was read differently on each page it appears. Names are where the readings disagree most.
+- **Rotated page missed.** On a page scanned sideways, the table was read but the whole handwritten Assamese column was omitted (0 Assamese characters).
+- **Setting-dependent.** On one printed form with handwritten entries, the page-specific language setting recovered 0 of 9 reference terms and leaving it unset recovered 8 of 9.
+- **Unstable on Assamese.** The same handwritten page, scanned twice, was read with only 13% agreement between the two outputs. Assamese was also mixed with Bengali letter forms. Earlier trials on small crops (about 1,200 px wide) were much worse than the full-resolution page, so resolution matters.
+- **The date of the incident** is read as different dates by different readers (Sarvam and two separate Claude readings, one of the English form and one of the Assamese complaint). No tool flagged the disagreement, and no one has verified the true date yet.
+
+**Sarvam Translate on clean sentences (8 invented Assamese and Kannada witness-statement lines with known English).** All 8 were broadly right, including dates, times and numbers. Two points a person must catch: "accused" came out as "defendant" in one line, and "got my statement signed" came out as "took my statement and signed it", which shifts who signed. A translator should review legal terms and who did what.
+
+**What this changes in the plan**
+1. **Handwritten English pages:** a strong reading tool exists, so these can be a reading aid for the lawyer, provided the numbers, dates and names are checked against the original. Formal marking is still needed.
+2. **Handwritten Assamese pages:** not usable without a person who reads Assamese. A machine draft may still help the translator, but that is unproven, and the reading and translating steps should stay separate.
+3. **Design rule confirmed:** the tool must show the page image beside the text, strip invented captions, and flag lines where two readers disagree or where numbers repeat inconsistently. Sideways pages need rotating first. Each page should be read both with and without the language setting, and the two readings compared.
+
+**Still to run:** Gemini and Google Cloud Vision at full resolution (no key available yet), the line-by-line strip method with two readers, Jurisphere and Niyam (upload the same pages), and a person marking the Assamese pages against a reference translation.

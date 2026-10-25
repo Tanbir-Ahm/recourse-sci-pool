@@ -10,7 +10,7 @@ passed on the command line and stay outside version control.
 
 refs.json: {"3": ["term", "term"], "7": [...]}  (page number -> terms read by eye from the page image;
 matching is lenient: lower-case, non-alphanumerics removed, substring).
-One language per job and at most 10 pages per PDF are the API's limits (docs.sarvam.ai), so each page is sent
+One language per job and at most 10 pages per PDF and at most 10 documents per job are the API's limits (docs.sarvam.ai), so each page is sent
 as its own one-page PDF, and the pages are split into an English job and an Assamese job. A third job sends
 every page with no language set, to see how the default behaves.
 """
@@ -40,7 +40,11 @@ def page_pdf(doc, n):
     return data
 
 
-def run_job(client, doc, pages, language, label, out):
+def run_job(client, doc, pages, language, label, out, reuse=False):
+    saved = os.path.join(out, f"{label}.json")
+    if reuse and os.path.exists(saved):
+        print(f"[{label}] reusing saved results (no call made)")
+        return texts_from(json.load(open(saved))["results"])
     files = [(f"p{n}.pdf", page_pdf(doc, n), "application/pdf") for n in pages]
     kw = {"file": files}
     if language:
@@ -56,21 +60,27 @@ def run_job(client, doc, pages, language, label, out):
             raise TimeoutError(f"{label}: still {st.status} after 15 minutes")
         time.sleep(POLL_SECONDS)
     print(f"[{label}] {st.status}; usage={st.usage}", flush=True)
-    res_md = call(client.doc_ai.get_results, job.job_id, format="md")
-    res_json = None
-    try:
-        res_json = call(client.doc_ai.get_results, job.job_id, format="json")   # kept raw: check it for any per-block confidence field
-    except Exception as exc:  # noqa: BLE001
-        print(f"[{label}] json results not fetched: {exc}")
-    dump = lambda r: r.model_dump() if hasattr(r, "model_dump") else str(r)
+    # The default output is HTML and "md" is refused for such a job, so read the structured JSON:
+    # documents[].pages[].blocks[] each with text, layout_tag and reading_order (no confidence field has been seen).
+    res = call(client.doc_ai.get_results, job.job_id, format="json")
+    data = res.model_dump() if hasattr(res, "model_dump") else res
     with open(os.path.join(out, f"{label}.json"), "w") as f:
-        json.dump({"status": st.status, "usage": dump(st.usage), "md": dump(res_md),
-                   "json": dump(res_json) if res_json is not None else None}, f, ensure_ascii=False, indent=1, default=str)
+        json.dump({"status": st.status, "usage": str(st.usage), "results": data}, f, ensure_ascii=False, indent=1, default=str)
+    return texts_from(data)
+
+
+def texts_from(data):
     texts = {}
-    for d in res_md.documents or []:
-        m = re.search(r"p(\d+)", d.file_name or "")
-        if m:
-            texts[int(m.group(1))] = "\n".join((p.content or "") for p in (d.pages or []))
+    for d in data.get("documents") or []:
+        name = d.get("filename") or d.get("file_name") or ""
+        m = re.search(r"p(\d+)", name)
+        if not m:
+            continue
+        blocks = []
+        for pg in d.get("pages") or []:
+            blocks += pg.get("blocks") or ([{"text": pg.get("content") or "", "reading_order": 0}] if pg.get("content") else [])
+        blocks.sort(key=lambda b: b.get("reading_order") or 0)
+        texts[int(m.group(1))] = "\n".join(b.get("text") or "" for b in blocks)
     return texts
 
 
@@ -100,7 +110,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pdf"); ap.add_argument("--ref"); ap.add_argument("--out", default="sarvam_out")
     ap.add_argument("--english-pages", default=""); ap.add_argument("--assamese-pages", default="")
-    ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--selftest", action="store_true"); ap.add_argument("--reuse", action="store_true", help="reuse saved job results in --out instead of paying again")
     a = ap.parse_args()
     if a.selftest:
         return selftest()
@@ -115,9 +125,12 @@ def main():
     en_pages = [int(x) for x in a.english_pages.split(",")]
     as_pages = [int(x) for x in a.assamese_pages.split(",")]
     refs = {int(k): v for k, v in json.load(open(a.ref)).items()}
-    en = run_job(client, doc, en_pages, "en-IN", "english_pages_en-IN", a.out)
-    asm = run_job(client, doc, as_pages, "as-IN", "assamese_pages_as-IN", a.out)
-    dflt = run_job(client, doc, list(range(1, len(doc) + 1)), None, "all_pages_default", a.out)
+    en = run_job(client, doc, en_pages, "en-IN", "english_pages_en-IN", a.out, a.reuse)
+    asm = run_job(client, doc, as_pages, "as-IN", "assamese_pages_as-IN", a.out, a.reuse)
+    dflt = {}
+    allp = list(range(1, len(doc) + 1))
+    for i in range(0, len(allp), 10):                      # API limit: at most 10 documents per job
+        dflt.update(run_job(client, doc, allp[i:i + 10], None, f"all_pages_default_{i // 10 + 1}", a.out, a.reuse))
     matched = {**en, **asm}
     json.dump({"matched": matched, "default": dflt}, open(os.path.join(a.out, "texts.json"), "w"), ensure_ascii=False)
     report("sarvam_matched_lang", matched, refs)
@@ -134,7 +147,8 @@ def selftest():
         def digitise(s, file, language=None): jid = f"j{len(s.jobs)}"; s.jobs[jid] = file; return R(job_id=jid, status="queued")
         def get_status(s, jid): return R(status="completed", usage="fake")
         def get_results(s, jid, format="json"):
-            return R(documents=[R(file_name=n, pages=[R(content="alpha beta 302")]) for (n, _b, _t) in s.jobs[jid]])
+            return R(documents=[R(file_name=n, pages=[R(content="alpha beta 302")]) for (n, _b, _t) in s.jobs[jid]],
+                     model_dump=lambda: {"documents": [{"filename": n, "pages": [{"blocks": [{"text": "alpha beta 302", "reading_order": 1}]}]} for (n, _b, _t) in s.jobs[jid]]})
     one = pymupdf.open(); one.new_page(); one.new_page(); one.new_page()
     os.makedirs("selftest_out", exist_ok=True)
     t = run_job(Fake(), one, [1, 2], "en-IN", "selftest", "selftest_out")

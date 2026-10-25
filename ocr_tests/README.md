@@ -17,3 +17,9 @@ no per-block confidence is documented for digitise (only for extract), so check 
 `sarvam_translate_check.py` tests translation alone on invented clean Assamese and Kannada sentences with known English
 (`sarvam-translate:v1`, source and target `as-IN`/`kn-IN` to `en-IN` are listed as allowed; 2,000 characters per request).
 The Sarvam Vision model page makes no claim about handwriting; test it before assuming it.
+
+## What the first Sarvam runs taught the script (2026-10-25)
+The default output is HTML and the API refuses `md` for such a job, so the script reads the JSON results
+(documents -> pages -> blocks with text, layout_tag, reading_order; no confidence field). A job takes at most
+10 documents, so the all-pages pass is sent in chunks of 10. `--reuse` re-reads saved job results instead of paying again.
+Summary of the first results is in section 10 of `OCR_TRANSLATION_TEST_PLAN.md`.
