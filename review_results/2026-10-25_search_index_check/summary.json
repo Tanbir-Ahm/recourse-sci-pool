@@ -1,0 +1,70 @@
+{
+ "checked_on": "2026-10-25",
+ "frozen_index_3c80a26": {
+  "files_looked_at": 49096,
+  "set_aside": {
+   "not_criminal": 33395,
+   "duplicate": 660,
+   "short": 1313,
+   "near_duplicate": 139,
+   "in_crawl": 3084
+  },
+  "searchable_main": 10503,
+  "side_documents": 19,
+  "searchable_total_as_the_service_reports_it": 10522,
+  "passages_total": 238762,
+  "passages_main": 236155,
+  "passages_side": 2607,
+  "as_of": "2026-07-13"
+ },
+ "newer_index_d8811a9": {
+  "files_looked_at": 69008,
+  "set_aside": {
+   "not_criminal": 43546,
+   "duplicate": 1116,
+   "short": 1733,
+   "near_duplicate": 286,
+   "in_crawl": 3084
+  },
+  "searchable": 19236,
+  "passages": 418286,
+  "as_of": "2026-07-13",
+  "in_both_indexes": 10444,
+  "only_in_frozen": 59,
+  "only_in_newer": 8792
+ },
+ "title_list_case_lookup_index_db": {
+  "rows": 38026,
+  "earliest": "1950-03-14",
+  "latest": "2025-12-12",
+  "rows_2026": 0,
+  "same_file_on_recourse_main_0d880bf": true
+ },
+ "library": {
+  "judgments_listed": 68,
+  "with_paragraph_text_in_the_site_corpus": 46,
+  "paragraphs": 747
+ },
+ "frozen_index_dates_from_names_table": {
+  "dated": 9795,
+  "undated": 727,
+  "by_decade": {
+   "1950s": 167,
+   "1960s": 329,
+   "1970s": 436,
+   "1980s": 313,
+   "1990s": 1139,
+   "2000s": 3471,
+   "2010s": 2367,
+   "2020s": 1573
+  },
+  "y2025": 362,
+  "y2026": 69
+ },
+ "overlap_frozen_vs_title_list_approx": {
+  "found_in_title_list": 8396,
+  "from_2026_not_in_title_list": 69,
+  "dated_before_2026_not_found": 1771,
+  "undated_not_found": 286
+ }
+}

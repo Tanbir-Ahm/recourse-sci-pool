@@ -1,0 +1,39 @@
+{
+ "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+ "passages": 238762,
+ "passages_main": 236155,
+ "documents": 10522,
+ "side_indexes": [
+  {
+   "dir": "2026-10-09_correcting_judgments",
+   "manifest_sha256": "28255c5d844bf2a3b85c97a623446caa47afb4615c7f44c4b6abc0c71549c20d",
+   "documents": 17,
+   "passages": 2572
+  },
+  {
+   "dir": "2026-10-09_fetched_documents",
+   "manifest_sha256": "4e407a307be9260aaf5176d7d48b2d5ffde1b6bbc85e2a95dec9bd7fd470d4e7",
+   "documents": 1,
+   "passages": 12
+  },
+  {
+   "dir": "2026-10-09_fetched_shivangi_bansal",
+   "manifest_sha256": "2839f1829a211eda61e1c2fdb474cb37fcf25564dd9807e0f6e5e91511e13cf7",
+   "documents": 1,
+   "passages": 23
+  }
+ ],
+ "as_of": "2026-07-13",
+ "embed_model": "voyage-law-2",
+ "documents_without_title": 324,
+ "vector_dtype": "float16",
+ "vector_dim": 1024,
+ "load_seconds": 50.9,
+ "names_table": {
+  "rows": 10522,
+  "named": 10454,
+  "built": "2026-10-13T04:56:04Z",
+  "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355"
+ },
+ "documents_named_from_opening_lines": 5678
+}
