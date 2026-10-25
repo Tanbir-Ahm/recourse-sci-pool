@@ -52,3 +52,6 @@ Next: the owner finds how many monthly lists exist (earliest month) and download
 
 ## 8. The 888 criminal files arrived (2026-10-22)
 811 stored from 868 PDFs (57 skipped as AB/BA/bail/IA, 2 scans without text, 20 downloads failed and await the retry script). Details: `ghc/court_judgments/READ_REPORT.md`. Text is on `claude/ghc-bucket` with `text_source: "court"`.
+
+## 9. The court files' titles and case numbers were read wrongly; mended 2026-10-25
+The monthly lists were first read by `parse_court_lists.py` (2026-10-21), which told the columns apart by how a line looked. A judge's surname wrapped onto a line of its own was taken for part of the respondent (3,673 of the 7,412 listed rows), and a case number with a bench in brackets (`77(AT)/2010`) was not found, so the parties were swallowed into it (202 rows). The index took its titles from that reading: **403 of the 758 court files in the index (53%) carry a wrong title or case number** (the stored words are not rewritten). `reparse_court_lists.py` reads the lists by position, `compare_court_list_parsers.py` checks it against the old reading, `build_court_file_labels.py` builds `court_lists/court_file_labels.csv`, and `hc_labels.py` (repository root) is what a page calls for a clean label and the bench. Details and numbers: `review_results/2026-10-25_tier_fixes/RESULTS_IN_PLAIN_TERMS.md`.
