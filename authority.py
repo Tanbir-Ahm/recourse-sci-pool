@@ -290,11 +290,21 @@ def safe_classify(text, src=None, doc=None, own_tier=None):
         return {"tier": None, "voice": None, "cue": None, "blocked": True, "reason": f"could not be read ({type(exc).__name__})", "lead": None, "quote": "", "sentences": [], "court": None}
 
 
-def sort_key(verdict, score):
+def effective_tier(verdict, own_tier=None, promote=True):
+    """The tier a list orders by. `promote=True` is the plain reading of the owner's order: a High Court judgment's quotation of the Supreme Court ranks as the
+    Supreme Court. `promote=False` ("demote only") never lifts a passage above the court that wrote the judgment, and only pushes down the words of a court below
+    it; the measured difference between the two is in review_results/2026-10-25_voice_rule/."""
+    t = verdict.get("tier")
+    if promote or t is None or own_tier is None:
+        return t
+    return max(t, own_tier)
+
+
+def sort_key(verdict, score, own_tier=None, promote=True):
     """Order for a list of results: the court's tier decides first (an unknown tier sorts last), then whether the passage states law at all, and the search
     score only separates results that are equal on both. So no similarity score, however high, can put a trial court's view above an observation of a higher
     court, nor a passage of pure narrative above one that states the law."""
-    return (verdict.get("tier") or 9, not verdict.get("states_law"), -float(score))
+    return (effective_tier(verdict, own_tier, promote) or 9, not verdict.get("states_law"), -float(score))
 
 
 def order(results, score_of=lambda r: r.get("score", 0.0), verdict_of=lambda r: r["authority"]):

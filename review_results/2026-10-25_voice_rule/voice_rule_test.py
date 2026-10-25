@@ -100,10 +100,12 @@ for label, q in questions:
     old = old_rule(rows)
     new = ts.pick(rows)                                  # the gate and the owner's order
     gate_only = ts.pick(rows, by_authority=False)        # the gate alone, to separate the two effects
+    demote = ts.pick(rows, promote=False, own_tier=A.HC)  # the order that never lifts a quoted higher court above the court's own words
     kept_docs = {r["doc"] for r in new}
     hc_results.append({"question": label, "old": [{"doc": r["doc"], "cos": r["cos"]} for r in old],
                        "new": [{"doc": r["doc"], "cos": r["cos"], "tier": r["authority"]["tier"], "voice": r["authority"]["voice"], "states_law": r["authority"]["states_law"], "also_in": r["also_in"]} for r in new],
                        "gate_only": [r["doc"] for r in gate_only],
+                       "demote_only": [{"doc": r["doc"], "tier": r["authority"]["tier"]} for r in demote],
                        "dropped_from_old": [{"doc": r["doc"], "reason": A.safe_classify(r["text"], src=r.get("src"), doc=r["doc"])["reason"], "tier": A.safe_classify(r["text"], src=r.get("src"), doc=r["doc"])["tier"]} for r in old if r["doc"] not in kept_docs],
                        "new_in_new": [r["doc"] for r in new if r["doc"] not in {o["doc"] for o in old}]})
     rowsdump.append({"question": label, "shown": [{"doc": r["doc"], "cos": r["cos"], "tier": r["authority"]["tier"], "voice": r["authority"]["voice"], "cue": r["authority"]["cue"], "quote": r["authority"]["quote"][:600], "text": r["text"][:600]} for r in new]})
@@ -115,22 +117,25 @@ for qid in TUNING:
     plain = [{"doc": r["doc"], "text": r["text"], "h": si_h(r)} for r in rows]
     gated = [r for r in rows if not A.safe_classify(r["text"], src=r.get("src"), doc=r["doc"])["blocked"]]
     ordered = sorted(gated, key=lambda r: A.sort_key(A.safe_classify(r["text"], src=r.get("src"), doc=r["doc"]), r["final"]))
-    f_plain, f_gated, f_ord = (first_rank(plain, want), first_rank(gated, want), first_rank(ordered, want))
-    sc_cost.append({"qid": qid, "plain": f_plain, "gated": f_gated, "ordered": f_ord,
+    demoted = sorted(gated, key=lambda r: A.sort_key(A.safe_classify(r["text"], src=r.get("src"), doc=r["doc"]), r["final"], A.SC, False))
+    f_plain, f_gated, f_ord, f_dem = (first_rank(plain, want), first_rank(gated, want), first_rank(ordered, want), first_rank(demoted, want))
+    sc_cost.append({"qid": qid, "plain": f_plain, "gated": f_gated, "ordered": f_ord, "demote_only": f_dem,
                     "key_blocked": bool(f_plain and not f_gated)})
-    print("SC", qid, "key at", f_plain, "-> gate", f_gated, "-> ordered", f_ord, flush=True)
+    print("SC", qid, "key at", f_plain, "-> gate", f_gated, "-> ordered", f_ord, "-> demote-only", f_dem, flush=True)
 
 
 def hits(rs, k): return sum(1 for r in rs if r and r <= k)
 
 
-agg = {a: {f"hit{k}": hits([r[a] for r in sc_cost], k) for k in (1, 5, 10)} for a in ("plain", "gated", "ordered")}
+agg = {a: {f"hit{k}": hits([r[a] for r in sc_cost], k) for k in (1, 5, 10)} for a in ("plain", "gated", "ordered", "demote_only")}
 cost = client.billed["rerank"] / 1e6 * 0.05 + client.billed["embed"] / 1e6 * 0.12
 res = {"questions": len(questions), "hc": hc_results, "sc_key_authority": sc_cost, "sc_agg": agg,
        "hc_counts": {"old": sum(len(r["old"]) for r in hc_results), "new": sum(len(r["new"]) for r in hc_results),
                      "dropped": sum(len(r["dropped_from_old"]) for r in hc_results), "refilled": sum(len(r["new_in_new"]) for r in hc_results),
                      "questions_with_nothing": sum(1 for r in hc_results if not r["new"]),
-                     "tiers": dict(collections.Counter(s["tier"] for r in hc_results for s in r["new"]))},
+                     "tiers": dict(collections.Counter(s["tier"] for r in hc_results for s in r["new"])),
+                     "demote_only_shown": sum(len(r["demote_only"]) for r in hc_results),
+                     "same_as_new": sum(1 for r in hc_results if [x["doc"] for x in r["demote_only"]] == [x["doc"] for x in r["new"]])},
        "billed": {"embed_calls": client.calls["embed"], "embed_tokens": client.billed["embed"], "rerank_calls": client.calls["rerank"], "rerank_tokens": client.billed["rerank"], "dollars": round(cost, 4), "seconds": round(time.time() - t0)}}
 print("\nHC:", res["hc_counts"]); print("SC key authority (hit at 1/5/10):", agg); print("billed:", res["billed"])
 json.dump(res, open(out_path, "w"), indent=1)

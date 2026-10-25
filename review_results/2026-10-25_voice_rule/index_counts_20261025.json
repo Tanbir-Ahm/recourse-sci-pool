@@ -1,0 +1,19 @@
+{
+ "passages": 418286,
+ "court:SC": 261572,
+ "tier:1": 233502,
+ "voice:court": 342829,
+ "states_no_law": 141280,
+ "voice:statute": 9147,
+ "tier:2": 130193,
+ "voice:lower_court": 28909,
+ "tier:None": 7493,
+ "tier:3": 18845,
+ "voice:higher_court": 9148,
+ "blocked": 28253,
+ "voice:None": 28253,
+ "blocked:SC": 12802,
+ "court:HC": 156714,
+ "blocked:HC": 15451,
+ "seconds": 513
+}

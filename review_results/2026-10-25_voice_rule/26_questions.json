@@ -1,0 +1,1819 @@
+{
+ "questions": 26,
+ "hc": [
+  {
+   "question": "Arnesh Kumar (arrest must be necessary) / lay",
+   "old": [
+    {
+     "doc": 2000753784,
+     "cos": 0.531
+    },
+    {
+     "doc": 2000000689,
+     "cos": 0.511
+    },
+    {
+     "doc": 2000752668,
+     "cos": 0.501
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000753784,
+     "cos": 0.531,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753756,
+     "cos": 0.502,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753265,
+     "cos": 0.511,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000753784,
+    2000000689,
+    2000752668
+   ],
+   "demote_only": [
+    {
+     "doc": 2000753784,
+     "tier": 1
+    },
+    {
+     "doc": 2000753756,
+     "tier": 2
+    },
+    {
+     "doc": 2000753265,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000000689,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000752668,
+     "reason": null,
+     "tier": 3
+    }
+   ],
+   "new_in_new": [
+    2000753756,
+    2000753265
+   ]
+  },
+  {
+   "question": "Arnesh Kumar (arrest must be necessary) / legal",
+   "old": [
+    {
+     "doc": 2000752513,
+     "cos": 0.596
+    },
+    {
+     "doc": 2000756066,
+     "cos": 0.607
+    },
+    {
+     "doc": 2000752528,
+     "cos": 0.507
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000756066,
+     "cos": 0.525,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000752513,
+     "cos": 0.596,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000752513,
+    2000756066
+   ],
+   "demote_only": [
+    {
+     "doc": 2000752513,
+     "tier": 2
+    },
+    {
+     "doc": 2000756066,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000752528,
+     "reason": "every word of it is a lawyer's or a party's",
+     "tier": null
+    }
+   ],
+   "new_in_new": []
+  },
+  {
+   "question": "Md Ibrahim (civil dispute dressed as crime) / lay",
+   "old": [
+    {
+     "doc": 2000756961,
+     "cos": 0.569
+    },
+    {
+     "doc": 2000756680,
+     "cos": 0.532
+    },
+    {
+     "doc": 2000000037,
+     "cos": 0.505
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000000037,
+     "cos": 0.505,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753229,
+     "cos": 0.508,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000752178,
+     "cos": 0.512,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756961,
+    2000756680,
+    2000000037
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756961,
+     "tier": 2
+    },
+    {
+     "doc": 2000756680,
+     "tier": 2
+    },
+    {
+     "doc": 2000000037,
+     "tier": 1
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756961,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000756680,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000753229,
+    2000752178
+   ]
+  },
+  {
+   "question": "Md Ibrahim (civil dispute dressed as crime) / legal",
+   "old": [
+    {
+     "doc": 2000754840,
+     "cos": 0.506
+    },
+    {
+     "doc": 2000755125,
+     "cos": 0.585
+    },
+    {
+     "doc": 2000751010,
+     "cos": 0.514
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000753792,
+     "cos": 0.524,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755742,
+     "cos": 0.506,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000754840,
+     "cos": 0.506,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000754840,
+    2000755125,
+    2000751010
+   ],
+   "demote_only": [
+    {
+     "doc": 2000754840,
+     "tier": 2
+    },
+    {
+     "doc": 2000755125,
+     "tier": 2
+    },
+    {
+     "doc": 2000751010,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000755125,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000751010,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000753792,
+    2000755742
+   ]
+  },
+  {
+   "question": "Nanda Gopalan (compromise, grievous hurt) / lay",
+   "old": [
+    {
+     "doc": 2000753635,
+     "cos": 0.549
+    },
+    {
+     "doc": 2000757048,
+     "cos": 0.581
+    },
+    {
+     "doc": 2000754381,
+     "cos": 0.574
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000754046,
+     "cos": 0.592,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000752763,
+     "cos": 0.637,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000000680,
+     "cos": 0.561,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000753635,
+    2000757048,
+    2000754381
+   ],
+   "demote_only": [
+    {
+     "doc": 2000757048,
+     "tier": 2
+    },
+    {
+     "doc": 2000754381,
+     "tier": 2
+    },
+    {
+     "doc": 2000753067,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000753635,
+     "reason": null,
+     "tier": 3
+    },
+    {
+     "doc": 2000757048,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000754381,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000754046,
+    2000752763,
+    2000000680
+   ]
+  },
+  {
+   "question": "Nanda Gopalan (compromise, grievous hurt) / legal",
+   "old": [
+    {
+     "doc": 2000756554,
+     "cos": 0.596
+    },
+    {
+     "doc": 2000753204,
+     "cos": 0.576
+    },
+    {
+     "doc": 2000752997,
+     "cos": 0.591
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000754046,
+     "cos": 0.538,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000752763,
+     "cos": 0.579,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000756554,
+     "cos": 0.596,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756554,
+    2000753204,
+    2000752997
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756554,
+     "tier": 2
+    },
+    {
+     "doc": 2000753204,
+     "tier": 2
+    },
+    {
+     "doc": 2000752997,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000753204,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000752997,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000754046,
+    2000752763
+   ]
+  },
+  {
+   "question": "Rangappa (s.139 presumption) / lay",
+   "old": [
+    {
+     "doc": 2000756084,
+     "cos": 0.611
+    },
+    {
+     "doc": 2000753760,
+     "cos": 0.667
+    },
+    {
+     "doc": 2000755892,
+     "cos": 0.598
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000752120,
+     "cos": 0.607,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": [
+      2000752105
+     ]
+    },
+    {
+     "doc": 2000752162,
+     "cos": 0.616,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000506185,
+     "cos": 0.505,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756084,
+    2000753760,
+    2000755892
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756084,
+     "tier": 2
+    },
+    {
+     "doc": 2000753760,
+     "tier": 2
+    },
+    {
+     "doc": 2000753962,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756084,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000753760,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000755892,
+     "reason": null,
+     "tier": 3
+    }
+   ],
+   "new_in_new": [
+    2000752120,
+    2000752162,
+    2000506185
+   ]
+  },
+  {
+   "question": "Rangappa (s.139 presumption) / legal",
+   "old": [
+    {
+     "doc": 2000756084,
+     "cos": 0.589
+    },
+    {
+     "doc": 2000000027,
+     "cos": 0.59
+    },
+    {
+     "doc": 2000751375,
+     "cos": 0.629
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000756588,
+     "cos": 0.602,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000754370,
+     "cos": 0.669,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753915,
+     "cos": 0.586,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756084,
+    2000751375,
+    2000753193
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756084,
+     "tier": 2
+    },
+    {
+     "doc": 2000751375,
+     "tier": 2
+    },
+    {
+     "doc": 2000753193,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756084,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000000027,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000751375,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000756588,
+    2000754370,
+    2000753915
+   ]
+  },
+  {
+   "question": "Jadeja (s.50 NDPS genuine compliance) / lay",
+   "old": [],
+   "new": [],
+   "gate_only": [],
+   "demote_only": [],
+   "dropped_from_old": [],
+   "new_in_new": []
+  },
+  {
+   "question": "Jadeja (s.50 NDPS genuine compliance) / legal",
+   "old": [
+    {
+     "doc": 2000000641,
+     "cos": 0.698
+    },
+    {
+     "doc": 2000751942,
+     "cos": 0.711
+    },
+    {
+     "doc": 2000750077,
+     "cos": 0.717
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000751942,
+     "cos": 0.711,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000750077,
+     "cos": 0.75,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755519,
+     "cos": 0.608,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000000641,
+    2000751942,
+    2000750077
+   ],
+   "demote_only": [
+    {
+     "doc": 2000000641,
+     "tier": 2
+    },
+    {
+     "doc": 2000751942,
+     "tier": 1
+    },
+    {
+     "doc": 2000750077,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000000641,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000755519
+   ]
+  },
+  {
+   "question": "Noor Aga (NDPS reverse burden) / lay",
+   "old": [
+    {
+     "doc": 2000753203,
+     "cos": 0.52
+    },
+    {
+     "doc": 2000753228,
+     "cos": 0.508
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000753203,
+     "cos": 0.52,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753228,
+     "cos": 0.508,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000753203,
+    2000753228
+   ],
+   "demote_only": [
+    {
+     "doc": 2000753203,
+     "tier": 2
+    },
+    {
+     "doc": 2000753228,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [],
+   "new_in_new": []
+  },
+  {
+   "question": "Noor Aga (NDPS reverse burden) / legal",
+   "old": [
+    {
+     "doc": 2000752172,
+     "cos": 0.777
+    },
+    {
+     "doc": 2000756618,
+     "cos": 0.752
+    },
+    {
+     "doc": 2000752461,
+     "cos": 0.7
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000752172,
+     "cos": 0.777,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000756618,
+     "cos": 0.752,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000752461,
+     "cos": 0.7,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000752172,
+    2000756618,
+    2000752461
+   ],
+   "demote_only": [
+    {
+     "doc": 2000752172,
+     "tier": 1
+    },
+    {
+     "doc": 2000756618,
+     "tier": 1
+    },
+    {
+     "doc": 2000752461,
+     "tier": 1
+    }
+   ],
+   "dropped_from_old": [],
+   "new_in_new": []
+  },
+  {
+   "question": "R01",
+   "old": [],
+   "new": [],
+   "gate_only": [],
+   "demote_only": [],
+   "dropped_from_old": [],
+   "new_in_new": []
+  },
+  {
+   "question": "R02",
+   "old": [
+    {
+     "doc": 2000755688,
+     "cos": 0.54
+    },
+    {
+     "doc": 2000756380,
+     "cos": 0.583
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000756380,
+     "cos": 0.583,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755688,
+     "cos": 0.52,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000755688,
+    2000756380
+   ],
+   "demote_only": [
+    {
+     "doc": 2000755688,
+     "tier": 2
+    },
+    {
+     "doc": 2000756380,
+     "tier": 1
+    }
+   ],
+   "dropped_from_old": [],
+   "new_in_new": []
+  },
+  {
+   "question": "R04",
+   "old": [
+    {
+     "doc": 2000754502,
+     "cos": 0.578
+    },
+    {
+     "doc": 2000753986,
+     "cos": 0.559
+    },
+    {
+     "doc": 2000753286,
+     "cos": 0.522
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000752002,
+     "cos": 0.542,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000754502,
+     "cos": 0.578,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753986,
+     "cos": 0.559,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000754502,
+    2000753986,
+    2000753286
+   ],
+   "demote_only": [
+    {
+     "doc": 2000754502,
+     "tier": 2
+    },
+    {
+     "doc": 2000753986,
+     "tier": 2
+    },
+    {
+     "doc": 2000753286,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000753286,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000752002
+   ]
+  },
+  {
+   "question": "R08",
+   "old": [
+    {
+     "doc": 2000756341,
+     "cos": 0.583
+    },
+    {
+     "doc": 2000756340,
+     "cos": 0.583
+    },
+    {
+     "doc": 2000754356,
+     "cos": 0.525
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000754356,
+     "cos": 0.508,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000757042,
+     "cos": 0.509,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000756203,
+     "cos": 0.552,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756341,
+    2000754356,
+    2000756203
+   ],
+   "demote_only": [
+    {
+     "doc": 2000754356,
+     "tier": 2
+    },
+    {
+     "doc": 2000756203,
+     "tier": 2
+    },
+    {
+     "doc": 2000756202,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756341,
+     "reason": null,
+     "tier": 3
+    },
+    {
+     "doc": 2000756340,
+     "reason": null,
+     "tier": 3
+    }
+   ],
+   "new_in_new": [
+    2000757042,
+    2000756203
+   ]
+  },
+  {
+   "question": "R09",
+   "old": [
+    {
+     "doc": 2000756208,
+     "cos": 0.61
+    },
+    {
+     "doc": 2000756209,
+     "cos": 0.61
+    },
+    {
+     "doc": 2000755647,
+     "cos": 0.707
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000752841,
+     "cos": 0.587,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": [
+      2000752839
+     ]
+    },
+    {
+     "doc": 2000752840,
+     "cos": 0.614,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000507478,
+     "cos": 0.586,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756208,
+    2000755647,
+    2000752839
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756208,
+     "tier": 2
+    },
+    {
+     "doc": 2000755647,
+     "tier": 2
+    },
+    {
+     "doc": 2000753305,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756208,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000756209,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000755647,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000752841,
+    2000752840,
+    2000507478
+   ]
+  },
+  {
+   "question": "R11",
+   "old": [
+    {
+     "doc": 2000751678,
+     "cos": 0.505
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000751678,
+     "cos": 0.505,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000751678
+   ],
+   "demote_only": [
+    {
+     "doc": 2000751678,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [],
+   "new_in_new": []
+  },
+  {
+   "question": "R12",
+   "old": [
+    {
+     "doc": 2000752178,
+     "cos": 0.541
+    },
+    {
+     "doc": 2000756519,
+     "cos": 0.544
+    },
+    {
+     "doc": 2000756532,
+     "cos": 0.537
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000756519,
+     "cos": 0.544,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000750195,
+     "cos": 0.535,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000756714,
+     "cos": 0.517,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000752178,
+    2000756519,
+    2000756532
+   ],
+   "demote_only": [
+    {
+     "doc": 2000752178,
+     "tier": 2
+    },
+    {
+     "doc": 2000756519,
+     "tier": 1
+    },
+    {
+     "doc": 2000756532,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000752178,
+     "reason": null,
+     "tier": 2
+    },
+    {
+     "doc": 2000756532,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000750195,
+    2000756714
+   ]
+  },
+  {
+   "question": "R14",
+   "old": [
+    {
+     "doc": 2000753975,
+     "cos": 0.562
+    },
+    {
+     "doc": 2000754079,
+     "cos": 0.508
+    },
+    {
+     "doc": 2000756790,
+     "cos": 0.559
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000753975,
+     "cos": 0.562,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000754079,
+     "cos": 0.508,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000000726,
+     "cos": 0.525,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000753975,
+    2000754079,
+    2000000726
+   ],
+   "demote_only": [
+    {
+     "doc": 2000753975,
+     "tier": 2
+    },
+    {
+     "doc": 2000754079,
+     "tier": 2
+    },
+    {
+     "doc": 2000000726,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756790,
+     "reason": "every word of it is a lawyer's or a party's",
+     "tier": null
+    }
+   ],
+   "new_in_new": [
+    2000000726
+   ]
+  },
+  {
+   "question": "R17",
+   "old": [
+    {
+     "doc": 2000756782,
+     "cos": 0.627
+    },
+    {
+     "doc": 2000750067,
+     "cos": 0.578
+    },
+    {
+     "doc": 2000753715,
+     "cos": 0.602
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000756782,
+     "cos": 0.631,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000750067,
+     "cos": 0.578,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000754479,
+     "cos": 0.561,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756782,
+    2000750067,
+    2000753715
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756782,
+     "tier": 2
+    },
+    {
+     "doc": 2000750067,
+     "tier": 1
+    },
+    {
+     "doc": 2000753715,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000753715,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000754479
+   ]
+  },
+  {
+   "question": "R19",
+   "old": [
+    {
+     "doc": 2000757102,
+     "cos": 0.56
+    },
+    {
+     "doc": 2000753872,
+     "cos": 0.518
+    },
+    {
+     "doc": 2000752534,
+     "cos": 0.532
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000757102,
+     "cos": 0.524,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755776,
+     "cos": 0.53,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753872,
+     "cos": 0.518,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000757102,
+    2000753872,
+    2000752534
+   ],
+   "demote_only": [
+    {
+     "doc": 2000757102,
+     "tier": 2
+    },
+    {
+     "doc": 2000753872,
+     "tier": 2
+    },
+    {
+     "doc": 2000752534,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000752534,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000755776
+   ]
+  },
+  {
+   "question": "R20",
+   "old": [
+    {
+     "doc": 2000756457,
+     "cos": 0.554
+    },
+    {
+     "doc": 2000757039,
+     "cos": 0.587
+    },
+    {
+     "doc": 2000753220,
+     "cos": 0.563
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000757039,
+     "cos": 0.587,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000753220,
+     "cos": 0.563,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755906,
+     "cos": 0.562,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756457,
+    2000757039,
+    2000753220
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756457,
+     "tier": 2
+    },
+    {
+     "doc": 2000757039,
+     "tier": 1
+    },
+    {
+     "doc": 2000753220,
+     "tier": 1
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000756457,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000755906
+   ]
+  },
+  {
+   "question": "R22",
+   "old": [
+    {
+     "doc": 2000755595,
+     "cos": 0.517
+    },
+    {
+     "doc": 2000752503,
+     "cos": 0.513
+    },
+    {
+     "doc": 2000753141,
+     "cos": 0.515
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000752997,
+     "cos": 0.51,
+     "tier": 1,
+     "voice": "higher_court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755595,
+     "cos": 0.517,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000752503,
+     "cos": 0.513,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000755595,
+    2000752503,
+    2000753141
+   ],
+   "demote_only": [
+    {
+     "doc": 2000755595,
+     "tier": 2
+    },
+    {
+     "doc": 2000752503,
+     "tier": 2
+    },
+    {
+     "doc": 2000753141,
+     "tier": 2
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000753141,
+     "reason": null,
+     "tier": 2
+    }
+   ],
+   "new_in_new": [
+    2000752997
+   ]
+  },
+  {
+   "question": "R24",
+   "old": [
+    {
+     "doc": 2000756182,
+     "cos": 0.512
+    },
+    {
+     "doc": 2000753825,
+     "cos": 0.522
+    },
+    {
+     "doc": 2000755583,
+     "cos": 0.515
+    }
+   ],
+   "new": [
+    {
+     "doc": 2000756182,
+     "cos": 0.512,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000757105,
+     "cos": 0.501,
+     "tier": 2,
+     "voice": "court",
+     "states_law": true,
+     "also_in": []
+    },
+    {
+     "doc": 2000755583,
+     "cos": 0.515,
+     "tier": 3,
+     "voice": "lower_court",
+     "states_law": true,
+     "also_in": []
+    }
+   ],
+   "gate_only": [
+    2000756182,
+    2000755583,
+    2000757105
+   ],
+   "demote_only": [
+    {
+     "doc": 2000756182,
+     "tier": 2
+    },
+    {
+     "doc": 2000757105,
+     "tier": 2
+    },
+    {
+     "doc": 2000755583,
+     "tier": 3
+    }
+   ],
+   "dropped_from_old": [
+    {
+     "doc": 2000753825,
+     "reason": "every word of it is a lawyer's or a party's",
+     "tier": null
+    }
+   ],
+   "new_in_new": [
+    2000757105
+   ]
+  },
+  {
+   "question": "R26",
+   "old": [],
+   "new": [],
+   "gate_only": [],
+   "demote_only": [],
+   "dropped_from_old": [],
+   "new_in_new": []
+  }
+ ],
+ "sc_key_authority": [
+  {
+   "qid": "R01",
+   "plain": 1,
+   "gated": 1,
+   "ordered": 1,
+   "demote_only": 1,
+   "key_blocked": false
+  },
+  {
+   "qid": "R02",
+   "plain": 1,
+   "gated": 1,
+   "ordered": 1,
+   "demote_only": 1,
+   "key_blocked": false
+  },
+  {
+   "qid": "R04",
+   "plain": 2,
+   "gated": 2,
+   "ordered": 2,
+   "demote_only": 2,
+   "key_blocked": false
+  },
+  {
+   "qid": "R08",
+   "plain": 2,
+   "gated": 2,
+   "ordered": 2,
+   "demote_only": 2,
+   "key_blocked": false
+  },
+  {
+   "qid": "R09",
+   "plain": 47,
+   "gated": 44,
+   "ordered": 47,
+   "demote_only": 47,
+   "key_blocked": false
+  },
+  {
+   "qid": "R11",
+   "plain": 3,
+   "gated": 3,
+   "ordered": 22,
+   "demote_only": 22,
+   "key_blocked": false
+  },
+  {
+   "qid": "R12",
+   "plain": 28,
+   "gated": 27,
+   "ordered": 38,
+   "demote_only": 38,
+   "key_blocked": false
+  },
+  {
+   "qid": "R14",
+   "plain": null,
+   "gated": null,
+   "ordered": null,
+   "demote_only": null,
+   "key_blocked": false
+  },
+  {
+   "qid": "R17",
+   "plain": 1,
+   "gated": 1,
+   "ordered": 1,
+   "demote_only": 1,
+   "key_blocked": false
+  },
+  {
+   "qid": "R19",
+   "plain": 1,
+   "gated": 1,
+   "ordered": 1,
+   "demote_only": 1,
+   "key_blocked": false
+  },
+  {
+   "qid": "R20",
+   "plain": 13,
+   "gated": 13,
+   "ordered": 13,
+   "demote_only": 13,
+   "key_blocked": false
+  },
+  {
+   "qid": "R22",
+   "plain": null,
+   "gated": null,
+   "ordered": null,
+   "demote_only": null,
+   "key_blocked": false
+  },
+  {
+   "qid": "R24",
+   "plain": 1,
+   "gated": 1,
+   "ordered": 1,
+   "demote_only": 1,
+   "key_blocked": false
+  },
+  {
+   "qid": "R26",
+   "plain": 7,
+   "gated": 7,
+   "ordered": 12,
+   "demote_only": 12,
+   "key_blocked": false
+  }
+ ],
+ "sc_agg": {
+  "plain": {
+   "hit1": 5,
+   "hit5": 8,
+   "hit10": 9
+  },
+  "gated": {
+   "hit1": 5,
+   "hit5": 8,
+   "hit10": 9
+  },
+  "ordered": {
+   "hit1": 5,
+   "hit5": 7,
+   "hit10": 7
+  },
+  "demote_only": {
+   "hit1": 5,
+   "hit5": 7,
+   "hit10": 7
+  }
+ },
+ "hc_counts": {
+  "old": 65,
+  "new": 64,
+  "dropped": 33,
+  "refilled": 32,
+  "questions_with_nothing": 3,
+  "tiers": {
+   "1": 44,
+   "2": 19,
+   "3": 1
+  },
+  "demote_only_shown": 64,
+  "same_as_new": 9
+ },
+ "billed": {
+  "embed_calls": 26,
+  "embed_tokens": 1267,
+  "rerank_calls": 40,
+  "rerank_tokens": 677611,
+  "dollars": 0.034,
+  "seconds": 80
+ }
+}

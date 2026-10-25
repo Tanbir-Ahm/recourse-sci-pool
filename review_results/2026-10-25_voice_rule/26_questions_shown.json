@@ -1,0 +1,705 @@
+[
+ {
+  "question": "Arnesh Kumar (arrest must be necessary) / lay",
+  "shown": [
+   {
+    "doc": 2000753784,
+    "cos": 0.531,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Apex Court in the case of Arnesh Kumar \u2013Vs- State of Bihar",
+    "quote": "11. Taking a similar view of abuse of provision of Section 498A of IPC, the Hon\u2019ble Apex Court in the case of Arnesh Kumar \u2013Vs- State of Bihar reported in 2014 8 SCC 273, issued certain guidelines in respect of arrest etc., under Section 498 A of IPC. Subsequently, in the case of Social Action Forum for Manab Adhikar \u2013Vs- Union of India reported in 2018 SCC Online SC 1501, the Hon\u2019ble Apex Court issued further directions, however, clarified that such direction will not apply in case of tangible physical injury or death.",
+    "text": "11. Taking a similar view of abuse of provision of Section 498A of IPC, the Hon\u2019ble Apex Court in the case of Arnesh Kumar \u2013Vs- State of Bihar reported in 2014 8 SCC 273, issued certain guidelines in respect of arrest etc., under Section 498 A of IPC. Subsequently, in the case of Social Action Forum for Manab Adhikar \u2013Vs- Union of India reported in 2018 SCC Online SC 1501, the Hon\u2019ble Apex Court issued further directions, however, clarified that such direction will not apply in case of tangible physical injury or death."
+   },
+   {
+    "doc": 2000753756,
+    "cos": 0.502,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "6. It is also by now well settled that in a case of 498A IPC mere omnibus statement shall not suffice to make out a case under 498 A inasmuch as the court is also look into where a case filed under Section 498 A is actually being abused of the process of the Court.",
+    "text": "6. It is also by now well settled that in a case of 498A IPC mere omnibus statement shall not suffice to make out a case under 498 A inasmuch as the court is also look into where a case filed under Section 498 A is actually being abused of the process of the Court."
+   },
+   {
+    "doc": 2000753265,
+    "cos": 0.511,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "Goyal relies upon the judgment of Hon\u2019ble Apex Court in S.M Dutta vs State of Gujarat and another reported in (2001) 7 SCC 659. 7. The determination: This court has given anxious consideration to the argument advanced by the learned counsel for the parties. Also perused the FIR and the annexures annexed to the petitions and the following are the findings of this Court:- I. The Ho\u2019ble Apex Court after considering numerous cases in Sushil Kr. Sarma Vs. Union of India reported in 2005 6SCC 281 held that many instances have come to light where complaints u/s 498 A are not bonafide and have been fi",
+    "text": "Goyal relies upon the judgment of Hon\u2019ble Apex Court in S.M Dutta vs State of Gujarat and another reported in (2001) 7 SCC 659. 7. The determination: This court has given anxious consideration to the argument advanced by the learned counsel for the parties. Also perused the FIR and the annexures annexed to the petitions and the following are the findings of this Court:- I. The Ho\u2019ble Apex Court after considering numerous cases in Sushil Kr. Sarma Vs. Union of India reported in 2005 6SCC 281 held that many instances have come to light where complaints u/s 498 A are not bonafide and have been fi"
+   }
+  ]
+ },
+ {
+  "question": "Arnesh Kumar (arrest must be necessary) / legal",
+  "shown": [
+   {
+    "doc": 2000756066,
+    "cos": 0.525,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "(inside the quoted \"higher_court\" passage)",
+    "quote": "Section 41-A as inserted by Section 6 of the Code of Criminal Procedure (Amendment) Act, 2008 (5 of 2009), which is relevant in the context reads as follows: \u201c41-A. Notice of appearance before police officer.-(1) The police officer shall, in all cases where the arrest of a person is not required under the provisions of sub-section (1) of Section 41, issue a notice directing the person against whom a reasonable complaint has been made, or credible information has been received, or a reasonable suspicion exists that he has committed a cognizable offence, to appear before him or at such other pla",
+    "text": "10. In support of his submissions, learned counsel for the petitioner has relied upon the decision of the Hon\u2019ble Supreme Court in Arnesh Kumar V. State of Bihar reported in 2014 8 SCC 273 wherein it has been held as follows : \u201cAnother provision i.e. Section 41-A CrPC aimed to avoid unnecessary arrest or threat of arrest looming large on the accused requires to be vitalised. Section 41-A as inserted by Section 6 of the Code of Criminal Procedure (Amendment) Act, 2008 (5 of 2009), which is relevant in the context reads as follows: \u201c41-A. Notice of appearance before police officer.-(1) The polic"
+   },
+   {
+    "doc": 2000752513,
+    "cos": 0.596,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "If the arrest effected by the police officer does not satisfy the requirements of Section 41 of the Code, Magistrate is duty bound not to authorise his further detention and release the accused. In other words, when an accused is produced before the Magistrate, the police officer effecting the arrest is required to furnish to the Magistrate, the facts, reasons and its conclusions for arrest and the Magistrate in turn is to be satisfied that condition precedent for arrest under Section 41 Cr.PC has been satisfied and it is only thereafter that he will authorise the detention of an accused. 8.3.",
+    "text": "If the arrest effected by the police officer does not satisfy the requirements of Section 41 of the Code, Magistrate is duty bound not to authorise his further detention and release the accused. In other words, when an accused is produced before the Magistrate, the police officer effecting the arrest is required to furnish to the Magistrate, the facts, reasons and its conclusions for arrest and the Magistrate in turn is to be satisfied that condition precedent for arrest under Section 41 Cr.PC has been satisfied and it is only thereafter that he will authorise the detention of an accused. 8.3."
+   }
+  ]
+ },
+ {
+  "question": "Md Ibrahim (civil dispute dressed as crime) / lay",
+  "shown": [
+   {
+    "doc": 2000000037,
+    "cos": 0.505,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "their Lordships also observed",
+    "quote": "13. There is no dispute to the legal position that even if civil remedy is available , a criminal proceeding is maintainable. However, in this situation, the onus is upon the complainant to produce unimpeachable and evidence of sterling quality that the accused had a clear intention to cheat from very beginning. Even otherwise in the case of IOC (Supra), their Lordships also observed as below:- \u201c13. Any effort to settle civil dispute and claims, which do not involve any criminal offence by applying pressure through criminal prosecution should be deprecated and discouraged\u201d.",
+    "text": "13. There is no dispute to the legal position that even if civil remedy is available , a criminal proceeding is maintainable. However, in this situation, the onus is upon the complainant to produce unimpeachable and evidence of sterling quality that the accused had a clear intention to cheat from very beginning. Even otherwise in the case of IOC (Supra), their Lordships also observed as below:- \u201c13. Any effort to settle civil dispute and claims, which do not involve any criminal offence by applying pressure through criminal prosecution should be deprecated and discouraged\u201d."
+   },
+   {
+    "doc": 2000753229,
+    "cos": 0.508,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court has held",
+    "quote": "10. Again in the case of M. Krishnan vs. Vijay Singh and Anr.(Appeal Crl.) No. 1028 of 2001, Hon\u2019ble Supreme Court has held as under :- Accepting such a general proposition would be against the provisions of law inasmuch as in all cases of cheating and fraud, in the whole transaction, there is generally some element of civil nature. However, in this case, the allegations were regarding the forging of the documents and acquiring gains on the basis of such forged documents. The proceedings could not be quashed only because the respondents had filed a civil suit with respect to the aforesaid docu",
+    "text": "10. Again in the case of M. Krishnan vs. Vijay Singh and Anr.(Appeal Crl.) No. 1028 of 2001, Hon\u2019ble Supreme Court has held as under :- Accepting such a general proposition would be against the provisions of law inasmuch as in all cases of cheating and fraud, in the whole transaction, there is generally some element of civil nature. However, in this case, the allegations were regarding the forging of the documents and acquiring gains on the basis of such forged documents. The proceedings could not be quashed only because the respondents had filed a civil suit with respect to the aforesaid docu"
+   },
+   {
+    "doc": 2000752178,
+    "cos": 0.512,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Supreme Court has held",
+    "quote": "The respondent, thereafter, filed an F.I.R. before the Police. Under the aforesaid circumstances, the Supreme Court has held that the complainant failed to make out a case for taking cognizance of the offence under Section 420 of the Indian Penal Code. The Supreme Court has held that it is a civil dispute and the allegation brought against the respondents is nothing but an abuse of a process of law. 7.",
+    "text": "The respondent, thereafter, filed an F.I.R. before the Police. Under the aforesaid circumstances, the Supreme Court has held that the complainant failed to make out a case for taking cognizance of the offence under Section 420 of the Indian Penal Code. The Supreme Court has held that it is a civil dispute and the allegation brought against the respondents is nothing but an abuse of a process of law. 7. Per contra, Mr. Tsering, the learned Public Prosecutor, has relied upon a decision of the Supreme Court that was rendered in K. Jagadish Vs. Udaya Kumar G.S. & Anr., reported in AIR 2020 SC 936."
+   }
+  ]
+ },
+ {
+  "question": "Md Ibrahim (civil dispute dressed as crime) / legal",
+  "shown": [
+   {
+    "doc": 2000753792,
+    "cos": 0.524,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "it was held by the Supreme Court",
+    "quote": "25. In Kamaladevi Agarwal v. State of West Bengal and Ors. reported in (2002) 1 SCC 555, it was held by the Supreme Court that the quashing of criminal proceeding at initial stage merely on the ground that the very foundation of the criminal case, namely, forgery of document is under scrutiny by Supreme Court in a civil proceeding instituted by same person i.e. the complainant in the criminal case is not proper. The Supreme Court observed that pendency of civil action in different Court even though higher in status and authority cannot be made basis for quashing of the proceeding. Almost simil",
+    "text": "25. In Kamaladevi Agarwal v. State of West Bengal and Ors. reported in (2002) 1 SCC 555, it was held by the Supreme Court that the quashing of criminal proceeding at initial stage merely on the ground that the very foundation of the criminal case, namely, forgery of document is under scrutiny by Supreme Court in a civil proceeding instituted by same person i.e. the complainant in the criminal case is not proper. The Supreme Court observed that pendency of civil action in different Court even though higher in status and authority cannot be made basis for quashing of the proceeding. Almost simil"
+   },
+   {
+    "doc": 2000755742,
+    "cos": 0.506,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Apex Court has observed",
+    "quote": "32. In another case, namely, Ram Narayan Popli Vs. Central Bureau of Investigation, reported in (2003) 3 SCC 641, while dealing with forgery, the Hon\u2019ble Apex Court has observed as follows in the paragraphs reproduced herein below:- \u201c371. In order to constitute forgery, the first essential is that the accused should have made a false document. The false document must be made with an intent to cause damage or injury to the public or to any class of public or to any community.",
+    "text": "32. In another case, namely, Ram Narayan Popli Vs. Central Bureau of Investigation, reported in (2003) 3 SCC 641, while dealing with forgery, the Hon\u2019ble Apex Court has observed as follows in the paragraphs reproduced herein below:- \u201c371. In order to constitute forgery, the first essential is that the accused should have made a false document. The false document must be made with an intent to cause damage or injury to the public or to any class of public or to any community."
+   },
+   {
+    "doc": 2000754840,
+    "cos": 0.506,
+    "tier": 2,
+    "voice": "court",
+    "cue": "In the considered opinion of this court",
+    "quote": "14. In the considered opinion of this court, for the reasons recorded hereinabove, the dispute is purely a civil dispute and there are no ingredients of criminal offence and a criminal colour is given to a civil dispute.",
+    "text": "14. In the considered opinion of this court, for the reasons recorded hereinabove, the dispute is purely a civil dispute and there are no ingredients of criminal offence and a criminal colour is given to a civil dispute."
+   }
+  ]
+ },
+ {
+  "question": "Nanda Gopalan (compromise, grievous hurt) / lay",
+  "shown": [
+   {
+    "doc": 2000754046,
+    "cos": 0.592,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court has laid down",
+    "quote": "8. It is well settled that High Court in exercising its powers under Section 482 CrPC can compound the offence which are not compoundable under the Code on the ground that there is a compromise between the accused and complainant. However, Hon\u2019ble Supreme Court has laid down parameters and guidelines for the High Court while accepting settlement and quashing the proceedings.",
+    "text": "8. It is well settled that High Court in exercising its powers under Section 482 CrPC can compound the offence which are not compoundable under the Code on the ground that there is a compromise between the accused and complainant. However, Hon\u2019ble Supreme Court has laid down parameters and guidelines for the High Court while accepting settlement and quashing the proceedings."
+   },
+   {
+    "doc": 2000752763,
+    "cos": 0.637,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Supreme Court in exercise of its power under Article 142 of the Co",
+    "quote": "17. This Court has also considered the submission of the learned counsel for the accused/petitioner that even after the conviction by the Court the parties can be allowed to compromise non-compoundable offences on the basis of settlement arrived at between the rival parties. In the case of Unnikrishnan @ Unnikuttan (supra) cited by the petitioner, the Supreme Court in view of the compromise arrived at between the parties, reduce the sentence imposed while maintaining the conviction. So also in the case of Guhan (supra)in view of the marriage within the family of the injured and the accused, th",
+    "text": "17. This Court has also considered the submission of the learned counsel for the accused/petitioner that even after the conviction by the Court the parties can be allowed to compromise non-compoundable offences on the basis of settlement arrived at between the rival parties. In the case of Unnikrishnan @ Unnikuttan (supra) cited by the petitioner, the Supreme Court in view of the compromise arrived at between the parties, reduce the sentence imposed while maintaining the conviction. So also in the case of Guhan (supra)in view of the marriage within the family of the injured and the accused, th"
+   },
+   {
+    "doc": 2000000680,
+    "cos": 0.561,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Apex Court, in Narinder Singh and Others (supra) laid down",
+    "quote": "[5] The Apex Court, in Narinder Singh and Others (supra) laid down the following principles as guidelines for giving adequate treatment to the settment between the parties in non compoundable case by exercising inherent power under section 482 Cr.P.C. 29.1. Power conferred under Section 482 of the Code is to be distinguished from the power which lies in the Court to compound the offences under Section 320 of the Code.",
+    "text": "Hence this revision petition. [5] Learned senior counsel Mr. TJ Mahanta has not contested the impugned judgment of conviction on merit. However, relying on the decision of the Apex Court in Narinder Singh and Others Vs. State of Punjab and Another reported in (2014) 6 SCC 4665, Mr. Mahanta submits that the injured and the revision petitioner had compromised the matter as both the parties are close neighbours and also relations and therefore, prayed for quashing the proceeding on the basis of the compromise arrived at between the parties. The learned counsel, further, submits that both the part"
+   }
+  ]
+ },
+ {
+  "question": "Nanda Gopalan (compromise, grievous hurt) / legal",
+  "shown": [
+   {
+    "doc": 2000754046,
+    "cos": 0.538,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court has laid down",
+    "quote": "8. It is well settled that High Court in exercising its powers under Section 482 CrPC can compound the offence which are not compoundable under the Code on the ground that there is a compromise between the accused and complainant. However, Hon\u2019ble Supreme Court has laid down parameters and guidelines for the High Court while accepting settlement and quashing the proceedings.",
+    "text": "8. It is well settled that High Court in exercising its powers under Section 482 CrPC can compound the offence which are not compoundable under the Code on the ground that there is a compromise between the accused and complainant. However, Hon\u2019ble Supreme Court has laid down parameters and guidelines for the High Court while accepting settlement and quashing the proceedings."
+   },
+   {
+    "doc": 2000752763,
+    "cos": 0.579,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Supreme Court in exercise of its power under Article 142 of the Co",
+    "quote": "17. This Court has also considered the submission of the learned counsel for the accused/petitioner that even after the conviction by the Court the parties can be allowed to compromise non-compoundable offences on the basis of settlement arrived at between the rival parties. In the case of Unnikrishnan @ Unnikuttan (supra) cited by the petitioner, the Supreme Court in view of the compromise arrived at between the parties, reduce the sentence imposed while maintaining the conviction. So also in the case of Guhan (supra)in view of the marriage within the family of the injured and the accused, th",
+    "text": "17. This Court has also considered the submission of the learned counsel for the accused/petitioner that even after the conviction by the Court the parties can be allowed to compromise non-compoundable offences on the basis of settlement arrived at between the rival parties. In the case of Unnikrishnan @ Unnikuttan (supra) cited by the petitioner, the Supreme Court in view of the compromise arrived at between the parties, reduce the sentence imposed while maintaining the conviction. So also in the case of Guhan (supra)in view of the marriage within the family of the injured and the accused, th"
+   },
+   {
+    "doc": 2000756554,
+    "cos": 0.596,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "10. Although the offence under Section 325 IPC is non-compoundable, the Hon\u2019ble Supreme Court in a catena of decisions, including Gian Singh v. State of Punjab, reported in (2012) 10 SCC 303, has held that the High Court, in exercise of its inherent powers under Section 528 of BNSS, 2023 (corresponding to 482 Cr.P.C.), may quash criminal proceedings even in respect of non-compoundable offences, where the dispute is predominantly personal in nature and the parties have amicably settled the matter, in order to secure the ends of justice and to prevent abuse of the process of the Court.",
+    "text": "10. Although the offence under Section 325 IPC is non-compoundable, the Hon\u2019ble Supreme Court in a catena of decisions, including Gian Singh v. State of Punjab, reported in (2012) 10 SCC 303, has held that the High Court, in exercise of its inherent powers under Section 528 of BNSS, 2023 (corresponding to 482 Cr.P.C.), may quash criminal proceedings even in respect of non-compoundable offences, where the dispute is predominantly personal in nature and the parties have amicably settled the matter, in order to secure the ends of justice and to prevent abuse of the process of the Court."
+   }
+  ]
+ },
+ {
+  "question": "Rangappa (s.139 presumption) / lay",
+  "shown": [
+   {
+    "doc": 2000752120,
+    "cos": 0.607,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Hon\u2019ble Apex Court in Hiten P Dalal \u2013Vs- Batindra Nath Banerjee; (",
+    "quote": "12. The Hon\u2019ble Apex Court in Hiten P Dalal \u2013Vs- Batindra Nath Banerjee; (2001) 6 SCC 16, it has been held that mere plausible explanation given by an accused is not enough to rebut the presumption and accused has to disprove the prosecution case by giving cogent evidence that he has no debt or liability to issue the cheque. Further, we may profitably refer to the decision of Basalingappa \u2013Vs- Mudibasappa; (2019) 5 SCC 418, wherein it has been held that a bare denial of passing of consideration and existing debt apparently would not serve the purpose of the accused, something which is probable",
+    "text": "12. The Hon\u2019ble Apex Court in Hiten P Dalal \u2013Vs- Batindra Nath Banerjee; (2001) 6 SCC 16, it has been held that mere plausible explanation given by an accused is not enough to rebut the presumption and accused has to disprove the prosecution case by giving cogent evidence that he has no debt or liability to issue the cheque. Further, we may profitably refer to the decision of Basalingappa \u2013Vs- Mudibasappa; (2019) 5 SCC 418, wherein it has been held that a bare denial of passing of consideration and existing debt apparently would not serve the purpose of the accused, something which is probable"
+   },
+   {
+    "doc": 2000752162,
+    "cos": 0.616,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Hon\u2019ble Apex Court in Hiten P Dalal \u2013Vs- Batindra Nath Banerjee; (",
+    "quote": "11. The Hon\u2019ble Apex Court in Hiten P Dalal \u2013Vs- Batindra Nath Banerjee; (2001) 6 SCC 16, it has been held that mere plausible explanation given by an accused is not enough to rebut the presumption and accused has to disprove the prosecution case by giving cogent evidence that he has no debt or liability to issue the cheque.",
+    "text": "11. The Hon\u2019ble Apex Court in Hiten P Dalal \u2013Vs- Batindra Nath Banerjee; (2001) 6 SCC 16, it has been held that mere plausible explanation given by an accused is not enough to rebut the presumption and accused has to disprove the prosecution case by giving cogent evidence that he has no debt or liability to issue the cheque."
+   },
+   {
+    "doc": 2000506185,
+    "cos": 0.505,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Apex Court had laid down",
+    "quote": "(b) the payee or the holder in due course of the cheque, as the case may be, makes a demand for the payment of the said amount of money by giving a notice in writing, to the drawer of the cheque, within thirty days of the receipt of information by him from the bank regarding the return of the cheque as unpaid; and (c) the drawer of such cheque fails to make the payment of the said amount of money to the payee or, as the case may be, to the holder in due course of the cheque, within fifteen days of the receipt of the said notice. 139. Presumption in favour of holder. - It shall be presumed, unl",
+    "text": "(b) the payee or the holder in due course of the cheque, as the case may be, makes a demand for the payment of the said amount of money by giving a notice in writing, to the drawer of the cheque, within thirty days of the receipt of information by him from the bank regarding the return of the cheque as unpaid; and (c) the drawer of such cheque fails to make the payment of the said amount of money to the payee or, as the case may be, to the holder in due course of the cheque, within fifteen days of the receipt of the said notice. 139. Presumption in favour of holder. - It shall be presumed, unl"
+   }
+  ]
+ },
+ {
+  "question": "Rangappa (s.139 presumption) / legal",
+  "shown": [
+   {
+    "doc": 2000756588,
+    "cos": 0.602,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Apex Court has held",
+    "quote": "30. On perusal of the judgment of the trial court, it appears that the trial court has decided the point for determination formulated by it in the said judgment which relates to the question as to whether the accused had issued the cheque in discharge of a legally enforceable debt or other liability in affirmative mainly on the basis of the presumption drawn by it under Section 139 of the Negotiable Instrument Act, 1881 with the aid of the clarification given by the Apex Court in the case of \u201cRangappa Vs. Sri Mohan\u201d (supra). In the said case, a Full Bench of the Apex Court has held that the pr",
+    "text": "30. On perusal of the judgment of the trial court, it appears that the trial court has decided the point for determination formulated by it in the said judgment which relates to the question as to whether the accused had issued the cheque in discharge of a legally enforceable debt or other liability in affirmative mainly on the basis of the presumption drawn by it under Section 139 of the Negotiable Instrument Act, 1881 with the aid of the clarification given by the Apex Court in the case of \u201cRangappa Vs. Sri Mohan\u201d (supra). In the said case, a Full Bench of the Apex Court has held that the pr"
+   },
+   {
+    "doc": 2000754370,
+    "cos": 0.669,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u201fble Supreme Court, in the said case has held",
+    "quote": "18. Though, referring to a decision of Hon\u201fble Supreme Court in Krishna Janardhan Bhat vs. Dattatraya G. Hegde, reported in (2008) 4 SCC 54, Mr. Das, learned counsel for the petitioner submits that existence of a legally enforceable debt is not a matter of presumption under Section 139 of the N.I. Act, but, the learned trial court had presumed existence of a legally recoverable debt, yet having examined the finding of the learned trial court in the light of the facts and circumstances on the record, I find that no contrary view has been taken by the learned court below. It is to be noted here ",
+    "text": "18. Though, referring to a decision of Hon\u201fble Supreme Court in Krishna Janardhan Bhat vs. Dattatraya G. Hegde, reported in (2008) 4 SCC 54, Mr. Das, learned counsel for the petitioner submits that existence of a legally enforceable debt is not a matter of presumption under Section 139 of the N.I. Act, but, the learned trial court had presumed existence of a legally recoverable debt, yet having examined the finding of the learned trial court in the light of the facts and circumstances on the record, I find that no contrary view has been taken by the learned court below. It is to be noted here "
+   },
+   {
+    "doc": 2000753915,
+    "cos": 0.586,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u201fble Supreme Court had held",
+    "quote": "10. Since the respondent has not denied issuance of cheque and also not denied his signature in the cheque in question, the statutory presumption under section 139 of the N.I. Act, is very much available here in this case. In the case of Rangappa v. Sri Mohan reported in (2010) 11 SCC 441, a three-Judge Bench of Hon\u201fble Supreme Court had held that Section 139 of the Act mandates that it shall be presumed, unless the contrary is proved, that the holder of a cheque received it, in discharge, in whole or in part, of a debt, or liability. The expression \u201cunless the contrary is proved\u201d indicates th",
+    "text": "10. Since the respondent has not denied issuance of cheque and also not denied his signature in the cheque in question, the statutory presumption under section 139 of the N.I. Act, is very much available here in this case. In the case of Rangappa v. Sri Mohan reported in (2010) 11 SCC 441, a three-Judge Bench of Hon\u201fble Supreme Court had held that Section 139 of the Act mandates that it shall be presumed, unless the contrary is proved, that the holder of a cheque received it, in discharge, in whole or in part, of a debt, or liability. The expression \u201cunless the contrary is proved\u201d indicates th"
+   }
+  ]
+ },
+ {
+  "question": "Jadeja (s.50 NDPS genuine compliance) / lay",
+  "shown": []
+ },
+ {
+  "question": "Jadeja (s.50 NDPS genuine compliance) / legal",
+  "shown": [
+   {
+    "doc": 2000751942,
+    "cos": 0.711,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Supreme Court has held",
+    "quote": "23. In Vijaysinh (supra) the Supreme Court has held that the requirements of Section 50 of the NDPS Act are mandatory and therefore the provisions of Section 50 must be strictly complied with. It is further held that it is imperative on the part of the police officer to apprise the person intended to be searched of his right under Section 50 to be searched before a Gazetted Officer or a Magistrate. In Vijaysinh (supra) the Supreme Court has held that it is equally mandatory on the part of the authorised officer to make the suspect aware of the existence of his right to be searched before a Gaz",
+    "text": "23. In Vijaysinh (supra) the Supreme Court has held that the requirements of Section 50 of the NDPS Act are mandatory and therefore the provisions of Section 50 must be strictly complied with. It is further held that it is imperative on the part of the police officer to apprise the person intended to be searched of his right under Section 50 to be searched before a Gazetted Officer or a Magistrate. In Vijaysinh (supra) the Supreme Court has held that it is equally mandatory on the part of the authorised officer to make the suspect aware of the existence of his right to be searched before a Gaz"
+   },
+   {
+    "doc": 2000750077,
+    "cos": 0.75,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Apex Court in State of Punjab -Vs- Baldev Singh (supra), laid down",
+    "quote": "The Apex Court in State of Punjab -Vs- Baldev Singh (supra), laid down the object and purpose of section 50 of the NDPS Act. The Apex Court held that the provision of Section 50 are intended to serve dual purpose --- (i) to protect the person against false accusations and frivolous charges and (ii) to lend credibility to the search and seizure conducted by the empowered officer.",
+    "text": "The Apex Court in State of Punjab -Vs- Baldev Singh (supra), laid down the object and purpose of section 50 of the NDPS Act. The Apex Court held that the provision of Section 50 are intended to serve dual purpose --- (i) to protect the person against false accusations and frivolous charges and (ii) to lend credibility to the search and seizure conducted by the empowered officer. What the Apex Court in the decisions cited by the learned counsel emphasized is that informing the accused about his right to be searched before a Gazzetted Officer or a Magistrate is a right of the accused and failure"
+   },
+   {
+    "doc": 2000755519,
+    "cos": 0.608,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Apex Court in the case of State Of Punjab Vs Baldev Singh (Supra)",
+    "quote": "Failure to comply with the provision would render the recovery of the illicit article suspect and vitiate the conviction if the same is recorded only on the basis of the recovery of the illicit article from the person of the accused during such search. Thereafter, the suspect may or may not choose to exercise the right provided to him under the said provision. 32. We also feel that though Section 50 gives an option to the empowered officer to take such person (suspect) either before the nearest gazetted officer or the Magistrate but in order to impart authenticity, transparency and creditworth",
+    "text": "Failure to comply with the provision would render the recovery of the illicit article suspect and vitiate the conviction if the same is recorded only on the basis of the recovery of the illicit article from the person of the accused during such search. Thereafter, the suspect may or may not choose to exercise the right provided to him under the said provision. 32. We also feel that though Section 50 gives an option to the empowered officer to take such person (suspect) either before the nearest gazetted officer or the Magistrate but in order to impart authenticity, transparency and creditworth"
+   }
+  ]
+ },
+ {
+  "question": "Noor Aga (NDPS reverse burden) / lay",
+  "shown": [
+   {
+    "doc": 2000753203,
+    "cos": 0.52,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "33. It is true that presumption under Section 35 of the Act operates against the accused as soon as contraband substances are found in his possession, but prosecution is obligated to prove its case beyond reasonable doubt and then the burden shifts to the accused.",
+    "text": "33. It is true that presumption under Section 35 of the Act operates against the accused as soon as contraband substances are found in his possession, but prosecution is obligated to prove its case beyond reasonable doubt and then the burden shifts to the accused."
+   },
+   {
+    "doc": 2000753228,
+    "cos": 0.508,
+    "tier": 2,
+    "voice": "court",
+    "cue": "we would",
+    "quote": "43. Before parting with this record we would like to add that it is true that presumption under Section 35 of the Act operates against the accused as soon contraband substances are found in their possession, but prosecution is obligated to prove its case beyond reasonable doubt. The burden shifts to the accused only when a strong prima facie case is established by the prosecution and not otherwise.",
+    "text": "43. Before parting with this record we would like to add that it is true that presumption under Section 35 of the Act operates against the accused as soon contraband substances are found in their possession, but prosecution is obligated to prove its case beyond reasonable doubt. The burden shifts to the accused only when a strong prima facie case is established by the prosecution and not otherwise."
+   }
+  ]
+ },
+ {
+  "question": "Noor Aga (NDPS reverse burden) / legal",
+  "shown": [
+   {
+    "doc": 2000752172,
+    "cos": 0.777,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Apex Court has, however, reiterated",
+    "quote": "43. While upholding the constitutional validity of sections 35 and 54 of the NDPS Act, the Apex Court has, however, reiterated that more serious the offence, the stricter would be the degree of proof to convict the accused. It was also observed that an initial burden would lie upon the prosecution and only when it stands satisfied, the legal burden would shift upon the accused. What follows from the above decision is that notwithstanding the concept of reverse burden envisaged by section 35 and 54 of the NDPS Act, the burden upon the prosecution to prove the foundational fact would still exist",
+    "text": "43. While upholding the constitutional validity of sections 35 and 54 of the NDPS Act, the Apex Court has, however, reiterated that more serious the offence, the stricter would be the degree of proof to convict the accused. It was also observed that an initial burden would lie upon the prosecution and only when it stands satisfied, the legal burden would shift upon the accused. What follows from the above decision is that notwithstanding the concept of reverse burden envisaged by section 35 and 54 of the NDPS Act, the burden upon the prosecution to prove the foundational fact would still exist"
+   },
+   {
+    "doc": 2000756618,
+    "cos": 0.752,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Apex Court has consistently held",
+    "quote": "93. Before invoking statutory presumptions under the NDPS Act, the prosecution must first establish foundational facts demonstrating possession. The Apex Court has consistently held that the reverse burden under Sections 35 and 54 does not dispense with the prosecution\u2019s initial obligation to establish possession through reliable evidence.",
+    "text": "93. Before invoking statutory presumptions under the NDPS Act, the prosecution must first establish foundational facts demonstrating possession. The Apex Court has consistently held that the reverse burden under Sections 35 and 54 does not dispense with the prosecution\u2019s initial obligation to establish possession through reliable evidence."
+   },
+   {
+    "doc": 2000752461,
+    "cos": 0.7,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Apex Court has observed",
+    "quote": "21. While dealing with challenge made to the validity of section 35 and 54 of the NDPS, in so far as it imposes reverse burden upon the accused, the Apex Court has observed in the case of Noor Aga Vs State of Punjab reported in (2008) 16 SCC 417, as follows :- \"58. Sections 35 and 54 of the Act, no doubt, raise presumptions with regard to the culpable mental state on the part of the accused as also place burden of proof in this behalf on the accused; but a bare perusal the said provision would clearly show that presumption would operate in the trial of the accused only in the event the circums",
+    "text": "21. While dealing with challenge made to the validity of section 35 and 54 of the NDPS, in so far as it imposes reverse burden upon the accused, the Apex Court has observed in the case of Noor Aga Vs State of Punjab reported in (2008) 16 SCC 417, as follows :- \"58. Sections 35 and 54 of the Act, no doubt, raise presumptions with regard to the culpable mental state on the part of the accused as also place burden of proof in this behalf on the accused; but a bare perusal the said provision would clearly show that presumption would operate in the trial of the accused only in the event the circums"
+   }
+  ]
+ },
+ {
+  "question": "R01",
+  "shown": []
+ },
+ {
+  "question": "R02",
+  "shown": [
+   {
+    "doc": 2000756380,
+    "cos": 0.583,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Hon\u2019ble Supreme Court observed",
+    "quote": "13. In the case of Satender Kumar Antil (supra), the Hon\u2019ble Supreme Court has specifically stated that a notice under Section 35, the Investigating Agency is mandated to issue a written notice directing the person to appear before him or as may be specified in the notice. It is also seen that the Hon\u2019ble Supreme Court has negated an argument that since summon under Section 71 of BNSS, 2023 is allowed to be served by electronic mode of service, a notice under Section 35 of the BNSS should also be permitted to be transmitted electronically. The Hon\u2019ble Supreme Court observed that a summon under",
+    "text": "13. In the case of Satender Kumar Antil (supra), the Hon\u2019ble Supreme Court has specifically stated that a notice under Section 35, the Investigating Agency is mandated to issue a written notice directing the person to appear before him or as may be specified in the notice. It is also seen that the Hon\u2019ble Supreme Court has negated an argument that since summon under Section 71 of BNSS, 2023 is allowed to be served by electronic mode of service, a notice under Section 35 of the BNSS should also be permitted to be transmitted electronically. The Hon\u2019ble Supreme Court observed that a summon under"
+   },
+   {
+    "doc": 2000755688,
+    "cos": 0.52,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Hon\u2019ble Supreme Court after examining the consequences has observe",
+    "quote": "24. Subsequently, in another interlocutory application, I.A. No. 63691/2025 [Satender Kumar Antil vs. Central Bureau of Investigation & another]\u2019, arising out of M.A. no. 2034 of 2022, clarifications were sought with regard to the above directions. While answering, the provisions of Section 35 of the BNSS has been adverted to. It has been observed that Section 35 of the BNSS has provided for arrest of persons by the Investigating Agency, ensuring that the concerned persons appears before the Investigating Agency and cooperates with the investigation. The Hon\u2019ble Supreme Court after examining t",
+    "text": "24. Subsequently, in another interlocutory application, I.A. No. 63691/2025 [Satender Kumar Antil vs. Central Bureau of Investigation & another]\u2019, arising out of M.A. no. 2034 of 2022, clarifications were sought with regard to the above directions. While answering, the provisions of Section 35 of the BNSS has been adverted to. It has been observed that Section 35 of the BNSS has provided for arrest of persons by the Investigating Agency, ensuring that the concerned persons appears before the Investigating Agency and cooperates with the investigation. The Hon\u2019ble Supreme Court after examining t"
+   }
+  ]
+ },
+ {
+  "question": "R04",
+  "shown": [
+   {
+    "doc": 2000752002,
+    "cos": 0.542,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Apex Court, while dealing with the factors for consideration of an",
+    "quote": "Choudhury placed reliance on the following decision :- (i) Dolat Ram and Others Vs. State of Haryana (1995) 1 SCC 349. (ii) Sami Ullah Vs. Superintendent, Narcotic Control Bureau (2008) 16 SCC 471. (iii) Ramcharan Vs. State of M.P. (2004) 13 SCC 917. 11. In Siddharam Satlingappa Mhetre Vs. State of Maharashtra & Others (supra), the Apex Court, while dealing with the factors for consideration of anticipatory bail u/s 438 CrPC, has laid down the following factors and parameters for considering an application for anticipatory bail :- \u201ci. The nature and gravity of the accusation and the exact role",
+    "text": "Choudhury placed reliance on the following decision :- (i) Dolat Ram and Others Vs. State of Haryana (1995) 1 SCC 349. (ii) Sami Ullah Vs. Superintendent, Narcotic Control Bureau (2008) 16 SCC 471. (iii) Ramcharan Vs. State of M.P. (2004) 13 SCC 917. 11. In Siddharam Satlingappa Mhetre Vs. State of Maharashtra & Others (supra), the Apex Court, while dealing with the factors for consideration of anticipatory bail u/s 438 CrPC, has laid down the following factors and parameters for considering an application for anticipatory bail :- \u201ci. The nature and gravity of the accusation and the exact role"
+   },
+   {
+    "doc": 2000754502,
+    "cos": 0.578,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "10. Thereafter, the accused, i.e., petitioner herein filed an anticipatory bail application under Section 438 CrPC before the learned Sessions Judge, Karimganj being Bail 438 Case No. 95/2022 seeking anticipatory bail in said Karimganj PS Case No. 127/2022. On perusal of the Case Diary as well as the materials in it and finding sufficient incriminating materials against him, learned Sessions Judge, Karimganj by order dated 15.03.2022 rejected said anticipatory Bail 438 Case No. 95/2022 of the petitioner.",
+    "text": "10. Thereafter, the accused, i.e., petitioner herein filed an anticipatory bail application under Section 438 CrPC before the learned Sessions Judge, Karimganj being Bail 438 Case No. 95/2022 seeking anticipatory bail in said Karimganj PS Case No. 127/2022. On perusal of the Case Diary as well as the materials in it and finding sufficient incriminating materials against him, learned Sessions Judge, Karimganj by order dated 15.03.2022 rejected said anticipatory Bail 438 Case No. 95/2022 of the petitioner."
+   },
+   {
+    "doc": 2000753986,
+    "cos": 0.559,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "11. Determination: A. This Court has given anxious considerations to the arguments advanced by the learned Senior counsels and also the Learned Public Prosecutor. Also perused the materials available on record. B. Under section 438 of the Cr.P.C, the Court of Sessions and High Court are empowered to allow a person to seek pre arrest bail in anticipation of being arrested for a non bailable offense. The purpose of such provision is to safeguard individuals from the possibility of being arrested with malicious intent. Therefore, anticipatory bail must be sought before an arrest is made. Once a p",
+    "text": "11. Determination: A. This Court has given anxious considerations to the arguments advanced by the learned Senior counsels and also the Learned Public Prosecutor. Also perused the materials available on record. B. Under section 438 of the Cr.P.C, the Court of Sessions and High Court are empowered to allow a person to seek pre arrest bail in anticipation of being arrested for a non bailable offense. The purpose of such provision is to safeguard individuals from the possibility of being arrested with malicious intent. Therefore, anticipatory bail must be sought before an arrest is made. Once a p"
+   }
+  ]
+ },
+ {
+  "question": "R08",
+  "shown": [
+   {
+    "doc": 2000754356,
+    "cos": 0.508,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "(inside the quoted \"higher_court\" passage)",
+    "quote": "From perusal of the amended provision of Section 143A of the Act, 1881, it is clear that the word 'may' used is beneficial for the complainant because the complainant has already suffered for mass deed committed by the accused by not paying the amount, therefore, it is in the interest of the complainant as well the accused if the 20% of the cheque amount is to be paid by the accused, he may be able to utilize the same for his own purpose, whereas the accused will be in safer side as the amount is already deposited in pursuance of the order passed under Section 143A of the Act, 1881. When the f",
+    "text": "11. In the aforesaid judgment, the Hon\u2019ble Apex Court also discussed about the recovery of the amount of interim compensation, as per provision of Section 421 of Cr.P.C. In addition to his submission, the learned counsel for the petitioner also cited the decisions of Hon\u2019ble Chhattisgarh High Court which is reported in 2021 3 Crimes (HC) 113 [Rajesh Soni vs. Mukesh Verma] and emphasized on paragraph Nos. 12 and 14 of the said judgment which reads as under; \u201c12. From perusal of the amended provision of Section 143A of the Act, 1881, it is clear that the word 'may' used is beneficial for the com"
+   },
+   {
+    "doc": 2000757042,
+    "cos": 0.509,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Apex Court laid down",
+    "quote": "7. However, in the case of Damodar S. Prabhu vs. Sayed Babalal reported in (2010) 5 SCC 663, the Hon\u2019ble Apex Court laid down some guidelines regarding terms of settlement of cheque bouncing cases. One of the stipulations is that if compounding is at the stage of Sessions Court or High Court, the accused has to pay an amount of 15% of the cheque amount before the jurisdictional Legal Services Authority or such authority as the Court may deem fit. The relevant para 21 may be reproduced herein below: \u201c21. With regard to the progression of litigation in cheque bouncing cases, the learned Attorney",
+    "text": "7. However, in the case of Damodar S. Prabhu vs. Sayed Babalal reported in (2010) 5 SCC 663, the Hon\u2019ble Apex Court laid down some guidelines regarding terms of settlement of cheque bouncing cases. One of the stipulations is that if compounding is at the stage of Sessions Court or High Court, the accused has to pay an amount of 15% of the cheque amount before the jurisdictional Legal Services Authority or such authority as the Court may deem fit. The relevant para 21 may be reproduced herein below: \u201c21. With regard to the progression of litigation in cheque bouncing cases, the learned Attorney"
+   },
+   {
+    "doc": 2000756203,
+    "cos": 0.552,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "26. Consequently, the impugned order dated 26.09.2023 passed by the learned Additional CJM, Nalbari in NI Case No. 58/2021 \u2013 directing interim compensation of 20% of the cheque amount- is hereby set aside and quashed.",
+    "text": "26. Consequently, the impugned order dated 26.09.2023 passed by the learned Additional CJM, Nalbari in NI Case No. 58/2021 \u2013 directing interim compensation of 20% of the cheque amount- is hereby set aside and quashed."
+   }
+  ]
+ },
+ {
+  "question": "R09",
+  "shown": [
+   {
+    "doc": 2000752841,
+    "cos": 0.587,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court also, while dealing with similar issue, held",
+    "quote": "And as such no classification of cheque can be made for the purpose of jurisdiction, being not provided in the Act. Moreover, from the word \u2018any cheque\u2019, used in section 138, it can be well inferred that it may be an account payee cheque or a bearer cheque, dishonor of which on account of insufficiency of fund or exceed the amount would amount to an offence and would attract the penalty. From the Annexure-1 and Annexure-2, of the petition, it appears that the petitioner has account, maintained in the State Bank of India, Hojai Branch. Being the holder of the cheque, and having his account main",
+    "text": "And as such no classification of cheque can be made for the purpose of jurisdiction, being not provided in the Act. Moreover, from the word \u2018any cheque\u2019, used in section 138, it can be well inferred that it may be an account payee cheque or a bearer cheque, dishonor of which on account of insufficiency of fund or exceed the amount would amount to an offence and would attract the penalty. From the Annexure-1 and Annexure-2, of the petition, it appears that the petitioner has account, maintained in the State Bank of India, Hojai Branch. Being the holder of the cheque, and having his account main"
+   },
+   {
+    "doc": 2000752840,
+    "cos": 0.614,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court also, while dealing with similar issue, held",
+    "quote": "He received the intimation about dishonor of the cheque in question through the State Bank of India, Hojai Branch. Thus, in view of the provision of section 142(2)(a) of the N.I. Act, the Court at Hojai which has jurisdiction to try the same. There is no quarrel at the Bar in this regard, that in view of section 142(2) (a) of the said Act, the learned court below has the jurisdiction to try the offence. Of course, the position would have been quite different if the petitioner had no account at Hojai. In the case of M/S Bridgestone India Pvt. Ltd. vs. Inderpal Singh, Criminal Appeal No.1557 of ",
+    "text": "He received the intimation about dishonor of the cheque in question through the State Bank of India, Hojai Branch. Thus, in view of the provision of section 142(2)(a) of the N.I. Act, the Court at Hojai which has jurisdiction to try the same. There is no quarrel at the Bar in this regard, that in view of section 142(2) (a) of the said Act, the learned court below has the jurisdiction to try the offence. Of course, the position would have been quite different if the petitioner had no account at Hojai. In the case of M/S Bridgestone India Pvt. Ltd. vs. Inderpal Singh, Criminal Appeal No.1557 of "
+   },
+   {
+    "doc": 2000507478,
+    "cos": 0.586,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Hon\u2019ble Supreme court opined",
+    "quote": "It is also possible that some times offence may consist of several acts done in different areas In all the above situations, the court having jurisdiction over any of such local areas may try the offence. The judgment of Supreme Court in K Bhaskaran V SankaranVaidyaa Balan and Anr. (1999) 7 SCC 510 dealt with this issue elaborately. The Hon\u2019ble Supreme court opined that offence can be completed only with concatenation of a number of acts, namely, drawing of cheque, presentation of cheque, returning of the cheque by the bank, notice by payee and failure of drawer of cheque within 15 days of rec",
+    "text": "It is also possible that some times offence may consist of several acts done in different areas In all the above situations, the court having jurisdiction over any of such local areas may try the offence. The judgment of Supreme Court in K Bhaskaran V SankaranVaidyaa Balan and Anr. (1999) 7 SCC 510 dealt with this issue elaborately. The Hon\u2019ble Supreme court opined that offence can be completed only with concatenation of a number of acts, namely, drawing of cheque, presentation of cheque, returning of the cheque by the bank, notice by payee and failure of drawer of cheque within 15 days of rec"
+   }
+  ]
+ },
+ {
+  "question": "R11",
+  "shown": [
+   {
+    "doc": 2000751678,
+    "cos": 0.505,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "16. Although, the above proposition, that the statement recorded under Section 67 of the NDPS Act can be construed as a confessional statement even if the officer, who recorded such statement was not to be treated as police officer has been doubted in Surinder Kumar Khanna (supra) and the issue has been referred to a larger bench, unless a decision is rendered by the larger bench, the existing legal position as laid down in Kanhaiyalal (supra) shall hold the field. Be that as it may, since this is not a case of confession of a coaccused nor a case solely based on confessional statement, the on",
+    "text": "16. Although, the above proposition, that the statement recorded under Section 67 of the NDPS Act can be construed as a confessional statement even if the officer, who recorded such statement was not to be treated as police officer has been doubted in Surinder Kumar Khanna (supra) and the issue has been referred to a larger bench, unless a decision is rendered by the larger bench, the existing legal position as laid down in Kanhaiyalal (supra) shall hold the field. Be that as it may, since this is not a case of confession of a coaccused nor a case solely based on confessional statement, the on"
+   }
+  ]
+ },
+ {
+  "question": "R12",
+  "shown": [
+   {
+    "doc": 2000756519,
+    "cos": 0.544,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Apex Court had observed",
+    "quote": "15. In the case of Vinod Natesan (Supra), in para 10 and 11 the Hon\u2019ble Apex Court had observed that: \u201c10. \u2026\u2026\u2026\u2026\u2026\u2026.. Even considering the allegations and averments made in the FIR and the case on behalf of the appellant, it cannot be said that the ingredients of Sections 406 and 420 are at all satisfied. The dispute between the parties at the most can be said to be the civil dispute and it is tried to be converted into a criminal dispute. Therefore, we are also of the opinion that continuing the criminal proceedings against the accused will be an abuse of process of law and, therefore, the High",
+    "text": "15. In the case of Vinod Natesan (Supra), in para 10 and 11 the Hon\u2019ble Apex Court had observed that: \u201c10. \u2026\u2026\u2026\u2026\u2026\u2026.. Even considering the allegations and averments made in the FIR and the case on behalf of the appellant, it cannot be said that the ingredients of Sections 406 and 420 are at all satisfied. The dispute between the parties at the most can be said to be the civil dispute and it is tried to be converted into a criminal dispute. Therefore, we are also of the opinion that continuing the criminal proceedings against the accused will be an abuse of process of law and, therefore, the High"
+   },
+   {
+    "doc": 2000750195,
+    "cos": 0.535,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Apex Court in Bhajanlal\u2019s (supra) case, also cautioned",
+    "quote": "13. On the basis of the above allegations, learned Judicial Magistrate took cognizance under Section 420/406/506/34 IPC. What is evident from the allegations made in the complaint is that two sets of allegations were made. One part is with regard to taking money and not handing over the possession and also taking away the deed of agreement on false pretext. The other part of the allegations made in the complaint was that the petitioners criminally intimidated the respondent No. 2. Going by the allegation as a whole in the complaint, it is difficult to hold that no offence at all has been made ",
+    "text": "13. On the basis of the above allegations, learned Judicial Magistrate took cognizance under Section 420/406/506/34 IPC. What is evident from the allegations made in the complaint is that two sets of allegations were made. One part is with regard to taking money and not handing over the possession and also taking away the deed of agreement on false pretext. The other part of the allegations made in the complaint was that the petitioners criminally intimidated the respondent No. 2. Going by the allegation as a whole in the complaint, it is difficult to hold that no offence at all has been made "
+   },
+   {
+    "doc": 2000756714,
+    "cos": 0.517,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Supreme Court held",
+    "quote": "13. A breach of contract does not give rise to criminal prosecution for cheating unless fraudulent or dishonest intention is shown right at the beginning of the transaction. Merely on the allegation of failure to keep up promise will not be enough to initiate criminal proceedings. From the facts available on record, it is evident that the respondent No.2 had improved his case ever since the first complaint was filed in which there were no allegations against the appellant rather it was only against the property dealers which was in subsequent complaints that the name of the appellant was menti",
+    "text": "13. A breach of contract does not give rise to criminal prosecution for cheating unless fraudulent or dishonest intention is shown right at the beginning of the transaction. Merely on the allegation of failure to keep up promise will not be enough to initiate criminal proceedings. From the facts available on record, it is evident that the respondent No.2 had improved his case ever since the first complaint was filed in which there were no allegations against the appellant rather it was only against the property dealers which was in subsequent complaints that the name of the appellant was menti"
+   }
+  ]
+ },
+ {
+  "question": "R14",
+  "shown": [
+   {
+    "doc": 2000753975,
+    "cos": 0.562,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "13. Therefore, no offence under Section 406 IPC can be also said to be made out in the FIR. In fact, bare perusal of the FIR indicates that Business transaction continued between the parties and these transactions cannot by any stretch of any imagination be construed as dishonest inducement. It was purely bussiness transaction of a contractual nature. In fact, the informant has prayed in the said FIR for the Investigating Officer to do the needful to recover the said money and hence this is nothing but a fivolous complaint used as a pressure tactic to recover the said money. As such, this Cour",
+    "text": "13. Therefore, no offence under Section 406 IPC can be also said to be made out in the FIR. In fact, bare perusal of the FIR indicates that Business transaction continued between the parties and these transactions cannot by any stretch of any imagination be construed as dishonest inducement. It was purely bussiness transaction of a contractual nature. In fact, the informant has prayed in the said FIR for the Investigating Officer to do the needful to recover the said money and hence this is nothing but a fivolous complaint used as a pressure tactic to recover the said money. As such, this Cour"
+   },
+   {
+    "doc": 2000754079,
+    "cos": 0.508,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "I have heard the submissions made at the bar and perused the materials available on record. The jurisdiction of this Court under Section 482 for quashing the FIR is well settled. In order to exercise the said jurisdiction, this Court is required to test the allegations made in the FIR, at their face value and accepted in their entirety, and to see whether the same prima facie constitutes any offence or make out a criminal case against the accused.",
+    "text": "1056/2022 under Sections 120(B)/342/387 of the Indian Penal Code. Mr. M.K. Borah, learned counsel for the petitioner submits that allegations leveled in the FIR are not based on true facts and that the same is a fabricated and frivolous one. He further submits that the petitioner is a businessman of the locality and for the business purpose, the petitioner has to invest his hard earned money in different sources to accure some profits out of that. He further submits that the petitioner has asked for the money to be refunded to him by the father of the respondent No. 2, but instead of returning"
+   },
+   {
+    "doc": 2000000726,
+    "cos": 0.525,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "24. As held in Binod Kumar (supra), criminal proceedings are not a shortcut for other remedies. Since no case of cheating is made out the FIR in Lakhipur P.S Case No. 413/2016 is liable to be quashed.",
+    "text": "24. As held in Binod Kumar (supra), criminal proceedings are not a shortcut for other remedies. Since no case of cheating is made out the FIR in Lakhipur P.S Case No. 413/2016 is liable to be quashed."
+   }
+  ]
+ },
+ {
+  "question": "R17",
+  "shown": [
+   {
+    "doc": 2000756782,
+    "cos": 0.631,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "The Supreme Court has consistently held",
+    "quote": "17. The Supreme Court has consistently held in a catena of decisions that mere allegation of harassment or an extra-marital relationship, in the absence of any positive act of instigation, conspiracy or intentional aid, are insufficient to constitute an offence of abetment under section 306 IPC.",
+    "text": "17. The Supreme Court has consistently held in a catena of decisions that mere allegation of harassment or an extra-marital relationship, in the absence of any positive act of instigation, conspiracy or intentional aid, are insufficient to constitute an offence of abetment under section 306 IPC."
+   },
+   {
+    "doc": 2000750067,
+    "cos": 0.578,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Apex Court gave a clear exposition of Section 107 IPC when it",
+    "quote": "It is also to be borne in mind that in cases of alleged abetment of suicide there must be proof of direct or indirect acts of incitement to the commission of suicide. Merely on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable. In order to bring a case within the purview of Section 306 IPC there must be a case of suicide and in the commission of the said offence, the person who is said to have abetted th",
+    "text": "It is also to be borne in mind that in cases of alleged abetment of suicide there must be proof of direct or indirect acts of incitement to the commission of suicide. Merely on the allegation of harassment without there being any positive action proximate to the time of occurrence on the part of the accused which led or compelled the person to commit suicide, conviction in terms of Section 306 IPC is not sustainable. In order to bring a case within the purview of Section 306 IPC there must be a case of suicide and in the commission of the said offence, the person who is said to have abetted th"
+   },
+   {
+    "doc": 2000754479,
+    "cos": 0.561,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court has considered",
+    "quote": "29. In the case of Ramesh Kumar v. State of Chhattisgarh, reported in (2001) 9 SCC 618 Hon\u2019ble Supreme Court has considered the scope of Section 306 and the ingredients which are essential for abetment as set out in Section 107 IPC. While interpreting the word \u201cinstigation\u201d, it is held in para 20 as under: \u201c20. Instigation is to goad, urge forward, provoke, incite or encourage to do \u201can act\u201d. To satisfy the requirement of instigation though it is not necessary that actual words must be used to that effect or what constitutes instigation must necessarily and specifically be suggestive of the co",
+    "text": "29. In the case of Ramesh Kumar v. State of Chhattisgarh, reported in (2001) 9 SCC 618 Hon\u2019ble Supreme Court has considered the scope of Section 306 and the ingredients which are essential for abetment as set out in Section 107 IPC. While interpreting the word \u201cinstigation\u201d, it is held in para 20 as under: \u201c20. Instigation is to goad, urge forward, provoke, incite or encourage to do \u201can act\u201d. To satisfy the requirement of instigation though it is not necessary that actual words must be used to that effect or what constitutes instigation must necessarily and specifically be suggestive of the co"
+   }
+  ]
+ },
+ {
+  "question": "R19",
+  "shown": [
+   {
+    "doc": 2000757102,
+    "cos": 0.524,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court has held",
+    "quote": "8. Moving forward to the second ground, this Court finds that the FIR was lodged by the victim herself and as such, her mother cannot settle the matter with the petitioner amicably. 9. It is to be noted here that in the case of Ramji Lal Bairwa (supra), especially in paragraph Nos. 36, 40, 41, 42, 43 and 45, Hon\u2019ble Supreme Court has held as under:- \u201c36. Thus, in unambiguous terms this Court held that before exercising the power under Section 482 CrPC the High Court must have due regard to the nature and gravity of the crime besides observing and holding that heinous and serious offences could",
+    "text": "8. Moving forward to the second ground, this Court finds that the FIR was lodged by the victim herself and as such, her mother cannot settle the matter with the petitioner amicably. 9. It is to be noted here that in the case of Ramji Lal Bairwa (supra), especially in paragraph Nos. 36, 40, 41, 42, 43 and 45, Hon\u2019ble Supreme Court has held as under:- \u201c36. Thus, in unambiguous terms this Court held that before exercising the power under Section 482 CrPC the High Court must have due regard to the nature and gravity of the crime besides observing and holding that heinous and serious offences could"
+   },
+   {
+    "doc": 2000755776,
+    "cos": 0.53,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "(carried from the \"higher_court\" sentence above)",
+    "quote": "Even though the nature of injuries can still be established by producing the doctor as witness who conducted the medical examination, it may become difficult to prove as to who caused these injuries. The chances of conviction, therefore, appear to be remote\u201d. The Hon\u2019ble Supreme Court after taking these factors into consideration was of the view that the compromise between the parties be accepted and the criminal proceedings be quashed.",
+    "text": "8. The learned counsel has relied on the case of Narinder Singh vs State of Punjab reported in (2014) 6 SCC 466 wherein the Supreme Court has held that, \u201c\u2026..In view of the compromise between the parties there is minimal chance of the witnesses coming forward in support of the prosecution case. Even though the nature of injuries can still be established by producing the doctor as witness who conducted the medical examination, it may become difficult to prove as to who caused these injuries. The chances of conviction, therefore, appear to be remote\u201d. The Hon\u2019ble Supreme Court after taking these "
+   },
+   {
+    "doc": 2000753872,
+    "cos": 0.518,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "10. It is to be noted here that while dealing with the issue of quashing of FIR on the basis of the compromise between the parties, a three Judge Bench of Hon\u2019ble Supreme Court in the case of Gian Singh vs. The State of Punjab, reported in [2012] 10 SCC 303, has held as under :- \u201c61. The position that emerges from the above discussion can be summarised thus: the power of the High Court in quashing a criminal proceeding or FIR or complaint in exercise of its inherent jurisdiction is distinct and different from the power given to a criminal court for compounding the offences under Section 320 of",
+    "text": "10. It is to be noted here that while dealing with the issue of quashing of FIR on the basis of the compromise between the parties, a three Judge Bench of Hon\u2019ble Supreme Court in the case of Gian Singh vs. The State of Punjab, reported in [2012] 10 SCC 303, has held as under :- \u201c61. The position that emerges from the above discussion can be summarised thus: the power of the High Court in quashing a criminal proceeding or FIR or complaint in exercise of its inherent jurisdiction is distinct and different from the power given to a criminal court for compounding the offences under Section 320 of"
+   }
+  ]
+ },
+ {
+  "question": "R20",
+  "shown": [
+   {
+    "doc": 2000757039,
+    "cos": 0.587,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Supreme Court has considered",
+    "quote": "22. As far as the case of Pradnya Pranjal Kulkarni (supra), is concerned, the issue was different and therefore, the same is not relevant for the purpose of the instant case. 23. In the case of Kunal Rameshbhai Kalyani (supra), the Hon\u2019ble Supreme Court has considered a similar issue involving Section 69 of BNSS, i.e., sexual intercourse by employing deceitful means, etc., wherein the Hon\u2019ble Supreme Court has observed as follows: - \u201c4. Under the IPC, the false promise of marriage was prosecuted under Section 375 read with Section 90. Therein the requirement was to find that the consent, if at",
+    "text": "22. As far as the case of Pradnya Pranjal Kulkarni (supra), is concerned, the issue was different and therefore, the same is not relevant for the purpose of the instant case. 23. In the case of Kunal Rameshbhai Kalyani (supra), the Hon\u2019ble Supreme Court has considered a similar issue involving Section 69 of BNSS, i.e., sexual intercourse by employing deceitful means, etc., wherein the Hon\u2019ble Supreme Court has observed as follows: - \u201c4. Under the IPC, the false promise of marriage was prosecuted under Section 375 read with Section 90. Therein the requirement was to find that the consent, if at"
+   },
+   {
+    "doc": 2000753220,
+    "cos": 0.563,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "the Hon\u2019ble Supreme Court has held",
+    "quote": "23. Recently, the Hon\u2019ble Supreme Court has held that it is not rape if consensual physical relationship was based on genuine promise of marriage which could not be fulfilled. The Court quashed an FIR registered in 2016. A woman had accused the appellant of rape and cheating. They were in a consensual relationship on the basis of an assurance of marriage given by the man. However, the duo fell apart. Three years later, the woman filed the complaint against him just like the present case.",
+    "text": "23. Recently, the Hon\u2019ble Supreme Court has held that it is not rape if consensual physical relationship was based on genuine promise of marriage which could not be fulfilled. The Court quashed an FIR registered in 2016. A woman had accused the appellant of rape and cheating. They were in a consensual relationship on the basis of an assurance of marriage given by the man. However, the duo fell apart. Three years later, the woman filed the complaint against him just like the present case."
+   },
+   {
+    "doc": 2000755906,
+    "cos": 0.562,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court has held",
+    "quote": "34. As noted above, Hon\u2019ble Supreme Court has held that the mere fact that physical relations were established pursuant to a promise to marry will not amount to a rape in every case. In order for the offence of rape to be made out, two conditions need to be satisfied i.e. that the promise of marriage was made by the accused solely with a view to obtain consent for sexual relations without having any intention of fulfilling said promise from the very beginning, and that the false promise of marriage had a direct bearing on the prosecutrix giving her consent for sexual relations. Thus, in my con",
+    "text": "34. As noted above, Hon\u2019ble Supreme Court has held that the mere fact that physical relations were established pursuant to a promise to marry will not amount to a rape in every case. In order for the offence of rape to be made out, two conditions need to be satisfied i.e. that the promise of marriage was made by the accused solely with a view to obtain consent for sexual relations without having any intention of fulfilling said promise from the very beginning, and that the false promise of marriage had a direct bearing on the prosecutrix giving her consent for sexual relations. Thus, in my con"
+   }
+  ]
+ },
+ {
+  "question": "R22",
+  "shown": [
+   {
+    "doc": 2000752997,
+    "cos": 0.51,
+    "tier": 1,
+    "voice": "higher_court",
+    "cue": "Hon\u2019ble Supreme Court also held",
+    "quote": "27. In the said case Hon\u2019ble Supreme Court also held that:- \u201cSince the incident took place before more than fifteen years; the parties are residing in one and the same village and they are also relatives. The appellant was about 20 years of age at the time of commission of crime. It was his first offence. After conviction, the petitioner was taken into custody. During the pendency of appeal before the High Court, he was enlarged on bail but, after the decision of the High Court, he again surrendered and is in jail at present. Though he had applied for bail, the prayer was not granted and he is",
+    "text": "27. In the said case Hon\u2019ble Supreme Court also held that:- \u201cSince the incident took place before more than fifteen years; the parties are residing in one and the same village and they are also relatives. The appellant was about 20 years of age at the time of commission of crime. It was his first offence. After conviction, the petitioner was taken into custody. During the pendency of appeal before the High Court, he was enlarged on bail but, after the decision of the High Court, he again surrendered and is in jail at present. Though he had applied for bail, the prayer was not granted and he is"
+   },
+   {
+    "doc": 2000755595,
+    "cos": 0.517,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "49. In Irappa Siddappa Murgannavar v. State of Karnataka, (2022) 2 SCC 801, this Court affirmed conviction of the accused, inter alia, under S. 302 and 376 but modified the sentence from death to life imprisonment for minimum 30 (thirty years). This Court stated that mitigating factors such as young age of the accused, no criminal antecedents, act not being pre-planned, socioeconomic background of the accused and the fact that conduct of the accused inside jail was \u2018satisfactory\u2019 concluded that sufficient mitigating circumstances exists to commute the death sentence.",
+    "text": "49. In Irappa Siddappa Murgannavar v. State of Karnataka, (2022) 2 SCC 801, this Court affirmed conviction of the accused, inter alia, under S. 302 and 376 but modified the sentence from death to life imprisonment for minimum 30 (thirty years). This Court stated that mitigating factors such as young age of the accused, no criminal antecedents, act not being pre-planned, socioeconomic background of the accused and the fact that conduct of the accused inside jail was \u2018satisfactory\u2019 concluded that sufficient mitigating circumstances exists to commute the death sentence."
+   },
+   {
+    "doc": 2000752503,
+    "cos": 0.513,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "In a case of life or death as stated earlier, the presiding officer must show a high degree of concern for the statutory right of the accused and should not treat it as a mere formality to be crossed before making the choice of sentence. If the choice is made, as in this case, without giving the accused an effective and real opportunity to place his antecedents, social and economic background, mitigating and extenuating circumstances, etc., before the court, the court's decision on the sentence would be vulnerable. We need hardly mention that in many cases a sentencing decision has far more se",
+    "text": "In a case of life or death as stated earlier, the presiding officer must show a high degree of concern for the statutory right of the accused and should not treat it as a mere formality to be crossed before making the choice of sentence. If the choice is made, as in this case, without giving the accused an effective and real opportunity to place his antecedents, social and economic background, mitigating and extenuating circumstances, etc., before the court, the court's decision on the sentence would be vulnerable. We need hardly mention that in many cases a sentencing decision has far more se"
+   }
+  ]
+ },
+ {
+  "question": "R24",
+  "shown": [
+   {
+    "doc": 2000756182,
+    "cos": 0.512,
+    "tier": 2,
+    "voice": "court",
+    "cue": "This Court is",
+    "quote": "9. This Court is of the considered view that the warrants of arrest [NBWA] issued against the petitioner on and from 25.02.2022 can be kept in abeyance till 17.01.2026 in order to enable the petitioner to appear before the Special Court without the apprehension of being taken into custody on the strength of the warrants of arrest [NBWA] issued against him. It is accordingly ordered. It is observed that in the event the petitioner appears before the Special Court on 17.01.2026 and files an application seeking his release on bail, the Special Court shall consider the same on its own merits and i",
+    "text": "9. This Court is of the considered view that the warrants of arrest [NBWA] issued against the petitioner on and from 25.02.2022 can be kept in abeyance till 17.01.2026 in order to enable the petitioner to appear before the Special Court without the apprehension of being taken into custody on the strength of the warrants of arrest [NBWA] issued against him. It is accordingly ordered. It is observed that in the event the petitioner appears before the Special Court on 17.01.2026 and files an application seeking his release on bail, the Special Court shall consider the same on its own merits and i"
+   },
+   {
+    "doc": 2000757105,
+    "cos": 0.501,
+    "tier": 2,
+    "voice": "court",
+    "cue": null,
+    "quote": "I have heard the submissions made by the learned counsels for the rival parties and I have perused the materials available on record. At the outset, it may be stated herein that this Court had the occasion to deal with a similar issue in Criminal Petition No.271/2026 and it would be gainful to abstract paragraph Nos.14 to 18 of the order passed in that case on 09.10.2026: \u201c[14.] Section 90 of the BNSS may be abstracted hereunder for ready perusal: - \u201c90. Issue of warrant in lieu of, or in addition to, summons.-A Court may, in any case in which it is empowered by this Sanhita to issue a summons",
+    "text": "He submits that under the circumstance, the Court may consider and pass appropriate orders as it deems fit and proper. [7.] I have heard the submissions made by the learned counsels for the rival parties and I have perused the materials available on record. At the outset, it may be stated herein that this Court had the occasion to deal with a similar issue in Criminal Petition No.271/2026 and it would be gainful to abstract paragraph Nos.14 to 18 of the order passed in that case on 09.10.2026: \u201c[14.] Section 90 of the BNSS may be abstracted hereunder for ready perusal: - \u201c90. Issue of warrant "
+   },
+   {
+    "doc": 2000755583,
+    "cos": 0.515,
+    "tier": 3,
+    "voice": "lower_court",
+    "cue": "(carried from the \"lower_court\" sentence above)",
+    "quote": "4. To secure the appearance of the two charge-sheeted accused persons, the learned Chief Judicial Magistrate, Nagaon continued to issue processes (summons) up-to 27.10.2021 and during that period, the accused persons did not appear due to non-service of summon. On and from 21.02.2022, the accused persons were absent with steps before the said Court by filing petitions. When on 01.09.2022 the accused persons were found absent without taking any steps, the learned Court issued Non-Bailable Warrant of Arrest (NBWA) against both of them. The father of the petitioner was arrested on 15.02.2024 in e",
+    "text": "4. To secure the appearance of the two charge-sheeted accused persons, the learned Chief Judicial Magistrate, Nagaon continued to issue processes (summons) up-to 27.10.2021 and during that period, the accused persons did not appear due to non-service of summon. On and from 21.02.2022, the accused persons were absent with steps before the said Court by filing petitions. When on 01.09.2022 the accused persons were found absent without taking any steps, the learned Court issued Non-Bailable Warrant of Arrest (NBWA) against both of them. The father of the petitioner was arrested on 15.02.2024 in e"
+   }
+  ]
+ },
+ {
+  "question": "R26",
+  "shown": []
+ }
+]
