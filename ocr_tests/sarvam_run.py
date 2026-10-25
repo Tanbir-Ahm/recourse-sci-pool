@@ -18,6 +18,18 @@ import argparse, json, os, re, sys, time
 import pymupdf
 
 TERMINAL = {"completed", "partially_completed", "failed", "rejected"}
+POLL_SECONDS = 10     # docs.sarvam.ai: Document AI is limited to 10 requests per minute on every plan
+
+
+def call(fn, *args, **kwargs):
+    """Retry on HTTP 429 (rate limit); anything else is raised."""
+    for attempt in range(8):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as exc:  # noqa: BLE001
+            if getattr(exc, "status_code", None) != 429 or attempt == 7:
+                raise
+            time.sleep(15)
 
 
 def page_pdf(doc, n):
@@ -33,21 +45,21 @@ def run_job(client, doc, pages, language, label, out):
     kw = {"file": files}
     if language:
         kw["language"] = language
-    job = client.doc_ai.digitise(**kw)
+    job = call(client.doc_ai.digitise, **kw)
     print(f"[{label}] job {job.job_id} started ({len(pages)} pages, language={language or 'default'})", flush=True)
     t0 = time.time()
     while True:
-        st = client.doc_ai.get_status(job.job_id)
+        st = call(client.doc_ai.get_status, job.job_id)
         if st.status in TERMINAL:
             break
         if time.time() - t0 > 900:
             raise TimeoutError(f"{label}: still {st.status} after 15 minutes")
-        time.sleep(4)
+        time.sleep(POLL_SECONDS)
     print(f"[{label}] {st.status}; usage={st.usage}", flush=True)
-    res_md = client.doc_ai.get_results(job.job_id, format="md")
+    res_md = call(client.doc_ai.get_results, job.job_id, format="md")
     res_json = None
     try:
-        res_json = client.doc_ai.get_results(job.job_id, format="json")   # kept raw: check it for any per-block confidence field
+        res_json = call(client.doc_ai.get_results, job.job_id, format="json")   # kept raw: check it for any per-block confidence field
     except Exception as exc:  # noqa: BLE001
         print(f"[{label}] json results not fetched: {exc}")
     dump = lambda r: r.model_dump() if hasattr(r, "model_dump") else str(r)
