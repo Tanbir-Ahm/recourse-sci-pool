@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10g record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10h record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -363,3 +363,49 @@ Costs are at about Rs 96 per US dollar with the unverified third-party prices of
 - **Do not use the lite models to read** records like these pages, whatever they cost; they may serve for a first triage only.
 - **10f's ranking is not redone here.** Its top row is unchanged by this page; its cost column is understated for the thinking models, and a three-page re-ranking with per-page cost shown would be the next step.
 - **Still to run:** an independent human translation or line-by-line marking by a person who reads Assamese for this page and the first notes page; more messy handwritten pages with such a reference; Google Cloud Vision, IndicTrans2 and Google Translate; Jurisphere and Niyam.
+
+### 10h. A printed land-revenue record: numbers, a land unit and one name (recorded 2026-10-26; counts only, no names, no record numbers)
+
+**What was tested.** One photographed page of a printed Assam land-revenue record (a jamabandi): a table in Assamese and English with five holders, two plot numbers, areas in two units, revenue and local-tax columns, and a remarks cell carrying two circle-officer orders (with dates, order numbers and land quantities) and two officers' names in Latin script (1,455 x 875 px). It is a real record about real people. Nothing that identifies it (names, plot, order or patta numbers, the village) is written in this repository. Every model transcribed and translated in one call with a prompt adapted for a printed table (digits copied exactly as printed, no tidying, `[unclear]` for doubtful characters); Sarvam read with Vision (which returns an HTML table, flattened to text) and translated with Sarvam Translate in chunks under its 2,000-character limit. Three runs per reader where they answered; timed streaming calls; temperature 0; output limit 32,768 tokens.
+
+**How it was scored, and the owner's corrections.** There is no reference translation. Three layers:
+1. **18 plainly readable items** on the transcription (two dates and two order numbers, two land quantities, the plot number appearing three times, two officers' names, the lot number, the printed header fields, the heading, five holders, the transfer remark). Every reader scored 15 to 18; this layer does not separate them.
+2. **The owner's check.** The owner reported that the first holder's name, the person the land was transferred from, was misread by `gemini-4-argon`, and that **everything else in the `gemini-4-argon` reading and translation was right**, including the circle officer's remarks ("mutated by way of inheritance"). It was one name only: the other four holders' names and the fathers' names were right, and across its three runs `gemini-4-argon` gave the same other names each time. This is the owner's judgment, recorded as such.
+3. **On the owner's statement, two further scores.** *English details*: 10 pattern checks on the English of the remarks and header (inheritance; transferred to whom and from whom; the order's date and officer; both mutation numbers; both land quantities; both officers' names; no invented relationship; the header fields in English; no repetition loop). *Numbers against `gemini-4-argon`*: 10 number cells compared with the values `gemini-4-argon` gave (patta number, second plot number, two areas in bigha-katha-lessa, two areas in hectare-are-square-metre, two revenue figures, two local-tax figures). **The number score of `gemini-4-argon` is true by construction**, and its patta number read differently in one of its three runs, so that cell is uncertain.
+
+| Reader | Readings | Name of the one misread holder, in the reading | English details (of 10) | Numbers vs `gemini-4-argon` (of 10) | Response time (median) | Cost per page |
+|---|---|---|---|---|---|---|
+| `gemini-4-argon` | 3 | wrong in all mentions (2 spellings, none right) | **10** | 9.7 | 16.9 s | Rs 1.71 |
+| `gemini-3.1-flash-lite` | 3 | right in all | 10 | 7.0 | 4.3 s | Rs 0.19 |
+| `gemini-3.7-flash` | 1 of 3 | near (one extra letter) | 10 | 9.0 | 50 s | Rs 1.25 |
+| `gemini-3-flash-preview` | 3 | right in all | 9.0 | 7.3 | 42.4 s | Rs 3.25 |
+| `gemini-3.1-pro-preview` | 2 of 3 | wrong | 10 | 8.0 | 73 s | Rs 11.5 |
+| `gemini-3.8-flash` | 2 of 3 | near or wrong | 10 | 7.5 | 108 s (33 to 184) | Rs 1.34 |
+| `gemini-flash-lite-latest` | 3 | right 4, near 2 | 9.3 | 6.3 | 4.0 s | price unknown |
+| `gemini-3.5-flash-lite` | 3 | right 2, near 2, wrong 2 | 9.3 | 6.7 | 4.4 s | Rs 0.31 |
+| `gemini-3.6-flash` | 3 | near 2, wrong 4 | 9.3 | 7.3 | 42.3 s | Rs 1.82 |
+| `gemini-pro-latest` | 1 of 3 | wrong | 10 | 7.0 | 58 s | price unknown |
+| `gemini-3.5-flash` | 3 | wrong in all | 8.3 | 7.0 | 28.6 s | Rs 4.94 |
+| `sarvam-vision` + Translate | 3 | near 3, wrong 3 | **4** | 8.0 | about 15 s + 3 to 12 s | about Rs 2.7 |
+| `gemma-4-26b-a4b-it` | 3 | no output (three empty answers) | none | none | none | unknown |
+
+Costs at about Rs 96 per US dollar with the unverified third-party prices of 10e. The thinking models cost far more on this dense table (`gemini-3-flash-preview` once spent about 31,000 thinking tokens), while `gemini-4-argon` uses none.
+
+**Findings**
+1. **The Latin-script and printed items are not where readers differ.** All of them copied the dates, order numbers, quantities and officers' names. The differences are in the Assamese-digit cells, one land unit and one proper name.
+2. **Assamese-digit cells split between readers.** Two areas and the first revenue figure were identical in all 30 readings. The second revenue figure read two ways in 15 and 14 readings (and a third in 1); the first local-tax figure read two ways (24 and 6); the second (25 and 5); the second plot number three ways (26, 2, 2). In Assamese the digit 4 looks like a Latin 8, which may be a cause. None of the splits carried a warning mark.
+3. **Only `gemini-4-argon` read the two long area numbers (16 to 17 digits each) identically in all three runs**, and the owner found its reading right. No other model matched them in more than one reading, and the models that read the misread holder's name correctly most reliably (`gemini-3.1-flash-lite`, `gemini-3-flash-preview`, `gemini-flash-lite-latest`) read both long areas wrong in every reading.
+4. **A land unit was misread in 7 of 30 readings** (the word for katha came out as other words, one of which means "speech" and one "which one"), by `gemini-3-flash-preview` in all 3 readings, `gemini-3.5-flash` in all 3 and `gemini-3.6-flash` in 1. Without a person this changes what a land quantity means, with no warning.
+5. **Sarvam's English of the remarks was the furthest from the page.** It lost the inheritance, the order, both quantities and both officers' names, wrote the holders' fathers wrongly, and one of its three runs fell into a repetition loop. Its reading of the dates and order numbers was right. This matches 10d and 10g: Sarvam reads digits and dates well, and translates unfaithfully.
+6. **Two lite models invented or hedged details**: one wrote the new holder as a "son-in-law" of the old holder, another wrote "inheritance/gift" in 2 of 3 readings.
+7. **One wrong name, with no warning.** For `gemini-4-argon` it was one holder's name, spelled two different ways across its three runs (one in the first run, another in the second and third); a person reading the page against the output would catch it, and the disagreement between runs, and between `gemini-4-argon` and the lite models, would flag it. Consistency across runs is not a reliable flag: `gemini-3.5-flash` was consistently wrong.
+8. **No warning marks on any number cell or the name.** only 2 of 30 readings carried any mark at all, and neither was on a number cell or the name.
+
+**Limits.** One record, 3 runs of a temperature-0 model, not independent. The number cells are scored against the output of the model under test, on the owner's confirmation; the two long numbers should be confirmed digit by digit by a person. The four models `gemini-3.1-pro-preview`, `gemini-3.7-flash`, `gemini-3.8-flash` and `gemini-pro-latest` have 1 to 2 readings each because of overload. Prices are unverified. The "details" checks are patterns and can miss wording errors.
+
+**What this changes in the plan**
+- **`gemini-4-argon` stays the lead reader and translator for dense printed and handwritten records**, on the owner's finding that it was right except for one name.
+- **A person must check every proper name against the original, every land unit, and every number written in Assamese digits**, whatever the reader says. These are the errors found so far, and none came with a warning.
+- **Use two readers and compare, plus a re-run.** Differences between `gemini-4-argon` and a second reader, and between two runs of the same reader, flag the name and many of the number cells.
+- **Do not use Sarvam Translate for the remarks of a record** without a person checking the English; it may still be useful as a second reader of dates and digits.
+- **Still to run:** a human translator's version and line-by-line marking for this record and the notes pages; a decision on which tier of Gemini key may be used for client documents (the data-use terms of the key's tier were not checked); the rest of the plan's 30-page set.
