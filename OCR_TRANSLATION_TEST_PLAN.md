@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10d record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10e record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -232,3 +232,58 @@ Not completed on key B: `gemini-3.8-flash` and `gemini-flash-latest` (overloaded
 - **Reading and translating stay separate.** A reader that changes one word (Sarvam) changes what the English will say, with nothing to warn the translator.
 - **The English reference now exists, so a translation test is possible** (reading, then English, scored against the reference). That has not been run.
 - **Still to run:** Google Cloud Vision, Jurisphere and Niyam, the translation step against this reference, more handwritten pages (including messy ones), and a person who reads Assamese marking the readings line by line.
+
+### 10e. Cost and speed per model, the messy page again with cheaper models, and a correction (recorded 2026-10-26; counts only, no case text)
+
+**Correction first.** The English text supplied as "the closest translation" of a handwritten notes page (a page of Assamese-language notes, no case data) is **word-for-word identical to the `gemini-4-argon` run 1 output**, down to a bracketed "[through]" and the British spelling "favourable". It is a model output, not an independent translation, so scoring against it would give `gemini-4-argon` 100% by construction. **No reader was scored against it, and no ranking on the notes page is valid.** An independent human English version of that page is still needed.
+
+**Notes page: what can be counted without a reference.** 12 readers, 34 readings (each model transcribed and translated in one call, 3 runs; Sarvam read with Vision and translated with Sarvam Translate). The prompt told every model to ignore writing showing through from the back and to stop where the text stops. The page breaks off mid-sentence.
+
+| Reader | Readings | Rendered the word for letter-based / articulate sounds as "descriptive" | Finished the broken-off sentence | Reads as English (my judgment) |
+|---|---|---|---|---|
+| `gemini-4-argon` | 3 | 0 | 0 | fluent |
+| `gemini-3.8-flash` | 1 | 0 | 0 | fluent |
+| `gemini-3.5-flash` | 3 | 0 | 0 | fluent |
+| `gemini-3.6-flash` | 3 | 0 | 0 | fluent; stray repeated word in 2 |
+| `gemini-3.5-flash-lite` | 3 | 3 | 0 | fluent to stilted |
+| `gemini-flash-lite-latest` | 3 | 2 | 0 | stilted, 1 broken |
+| `gemini-3.1-flash-lite` | 3 | 3 | 0 | stilted |
+| `gemini-3-flash-preview` | 3 | 1 | 0 | stilted, 1 broken |
+| `gemini-3.1-pro-preview` | 3 | 3 | 0 | stilted, 1 broken |
+| `gemini-pro-latest` | 3 | 3 | 0 | stilted (Assamese word order carried over) |
+| `sarvam-vision` + Translate | 3 | 3 | **3** (invented an ending) | fluent, not faithful |
+| `gemma-4-26b-a4b-it` | 3 | 0 | 0 | broken (14 unclear marks per reading) |
+
+"Descriptive" is my judgment of a mistranslation and needs a person who reads Assamese. The two pro-tier models used it in every reading, where `gemini-4-argon` and the 3.5, 3.6 and 3.8 flash models wrote "phonetic" or "articulate". Readers also split on two contested words (22 readings say "place of expression", 11 say "result of expression"; all 31 Gemini and Gemma readings say "through / for the purpose of this discussion", all 3 Sarvam readings say "at the beginning of"); these are not ruled on. The reading and translation come from one call, so a reading error and a translation error cannot be told apart.
+
+**Cost and speed.** One streaming call per run, 3 runs per model, the notes-page photograph (1,108 x 715 px), the same prompt as above, temperature 0, output limit 32,768 tokens. Latency is the time to the first answer token; response time is the time until the answer is complete. Cost per page is computed from the exact token counts the API returned (input tokens, plus output tokens and hidden "thinking" tokens, which are billed as output) at the prices below. **Rupees at about Rs 96 per US dollar**: the last RBI reference rate found was 96.29 on 18 May 2026, and a third-party quote of about 95.95 in mid-September agrees; no late-October rate was found, so treat the rupee figures as approximate and re-check at the time of payment.
+
+| Model | Latency (s) | Response time (s) | Tokens in / out / thinking | Cost per page | Cost per 1,000 pages |
+|---|---|---|---|---|---|
+| `gemini-3.1-flash-lite` | 1.5 | 2.5 | 1,239 / 373 / 0 | Rs 0.08 | Rs 83 |
+| `gemini-3.5-flash-lite` | 1.9 | 2.6 | 1,239 / 372 / 0 | Rs 0.13 | Rs 125 |
+| `gemini-flash-lite-latest` | 1.3 | 2.1 | 1,239 / 376 / 0 | unknown | unknown |
+| `gemini-4-argon` | 4.6 | 7.3 | 1,274 / 389 / 0 | Rs 0.62 (promo) / Rs 1.24 (after) | Rs 618 / Rs 1,236 |
+| `gemini-3-flash-preview` | 9.0 | 10.0 | 1,239 / 389 / 2,156 | Rs 0.79 | Rs 792 |
+| `gemini-3.5-flash` | 10.6 | 12.1 | 1,239 / 376 / 2,000 | Rs 2.23 | Rs 2,231 |
+| `gemini-3.6-flash` | 12.6 | 14.1 | 1,239 / 390 / 1,717 | Rs 0.85 (promo) / Rs 1.70 (after) | Rs 848 / Rs 1,695 |
+| `gemini-3.7-flash` (2 runs) | 175 | 178 | 1,239 / 376 / 648 | Rs 0.46 (promo) | Rs 458 |
+| `gemini-3.8-flash` (1 run) | 92 | 95 | 1,239 / 379 / 629 | Rs 0.45 (promo) | Rs 452 |
+| `gemma-4-26b-a4b-it` | 12.3 (8 to 34) | 20.3 (16 to 42) | 431 / 392 / 0 | unknown | unknown |
+| `gemini-3.1-pro-preview` | not measured | not measured | about 4,350 total in earlier runs | about Rs 3.8 (estimate) | about Rs 3,800 |
+| `gemini-pro-latest` | not measured | not measured | about 4,350 total in earlier runs | unknown | unknown |
+| Sarvam Vision + Translate | about 14 (Vision) + 1.5 (Translate) | about 15 | 468 characters read | Rs 1.44 (Rs 0.50 per page + Rs 2 per 1,000 characters of translation) | Rs 1,440 |
+
+Medians of 3 runs unless stated. `gemini-3.1-pro-preview` and `gemini-pro-latest` returned HTTP 503 (overloaded) on all 9 timing attempts, so they have no timing; they completed in earlier untimed runs. The 175 s and 95 s of `gemini-3.7-flash` and `gemini-3.8-flash` look like queueing under overload, not normal speed. Sarvam's Vision time is only to about 10 s, because the script polls every 10 s. The models on the second key (`GEMINI_FREE_OCR_KEY`) may cost nothing if that key is on a free tier; this could not be confirmed, so their costs above are at the paid rates.
+
+**The prices are not verified.** They come from third-party price trackers and a web search; Google's own pricing page could not be opened from this environment. Per million input / output tokens: `gemini-4-argon` $2 / $10 as a promotional rate, then $4 / $20 (sources disagree on whether the model is publicly available); `gemini-3.1-pro-preview` $2 / $12; `gemini-3.5-flash` $1.50 / $9; `gemini-3.5-flash-lite` $0.30 / $2.50 (one source); `gemini-3.1-flash-lite` $0.25 / $1.50; `gemini-3-flash-preview` $0.50 / $3; `gemini-3.6-flash`, `3.7-flash` and `3.8-flash` $0.75 / $3.75 as a Vertex introductory rate to 31 December 2026, then $1.50 / $7.50 (the Developer API rate may differ). No price was found for `gemma-4-26b-a4b-it`, and the API does not say which model the two `-latest` aliases point to. Sarvam's rupee prices are from its docs page as recorded in `ocr_tests/README.md` on 2026-10-25.
+
+**The first messy page again, with four cheaper models.** The page of 10 to 10c (handwritten complaint; 3 runs each, 9 private facts, critical numbers: incident date 29, husband's age 40, and a date found, which is my reading of 30). `gemini-4-argon` (10c) read all three critical numbers in every run. Of the new readers: `gemini-3.6-flash` read the incident date as 26 and the age as 50 in all 3 runs (with 3 to 6 warning marks per reading); `gemini-3.1-flash-lite` the same (26 and 50, no warning marks); `gemini-3.5-flash-lite` read 26 and 27 for the two dates in all 3 runs and the age as 40 in 1 of 3; `gemini-3-flash-preview` read both dates right and the age as 50 in all 3 runs, with no warning marks. Only `gemini-4-argon` read the age as 40 in every run.
+
+**What this changes in the plan**
+- **Best reader so far for messy handwriting: `gemini-4-argon`, as a lead and not a verdict.** It is the only reader with all three critical numbers on the messy page in every run, takes about 7 s and costs about Rs 0.6 to 1.2 per page at the listed prices. On the clean letter of 10d it wrote the incident month wrong in 5 of 6 runs, and `gemini-3.5-flash` and `gemini-3.6-flash` were right in every run (6 of 6 each). No model is best on every page.
+- **Use two readers and a person.** `gemini-4-argon` plus `gemini-3.6-flash` costs about Rs 1.5 to 3 per page and takes about 14 s if the two calls run in parallel (about 21 s one after the other). On the two digit-heavy pages, every critical digit error `gemini-4-argon` made was met by a disagreement from `gemini-3.6-flash`, which would flag the line. This is a small sample, and agreement between readers is not correctness (10b). Every date, age and amount still goes to a person.
+- **The pro-tier models are not worth their cost here.** About Rs 3.8 per page, often overloaded, and on the messy page they read the age wrong in all 3 runs with no warning (10c).
+- **The cheapest models are not for reading.** At Rs 0.1 per page and 2.5 s they are fast, but they failed the messy page. They may suit first-pass triage.
+- **Reading and translating stay separate steps.** A fixed translator applied to every reading would separate reading errors from translation errors; this has not been run.
+- **Still to run:** an independent human English version of the notes page; a human-marked reference for more messy handwritten pages; Google Cloud Vision, IndicTrans2 and Google Translate; Jurisphere and Niyam; and the same cost and speed test on a bigger batch of pages, when the overloaded models are available.
