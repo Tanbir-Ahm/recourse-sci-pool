@@ -1,0 +1,414 @@
+{
+ "drawn": "random.Random(2026), one passage per block, final sci_quotes (version q1 with the cue and slot rules)",
+ "index": "d8811a9 (19,236 judgments, 418,286 passages)",
+ "reader": "Claude, not a lawyer",
+ "items": [
+  {
+   "n": 1,
+   "doc": 2000756757,
+   "i": 3,
+   "pn": "1",
+   "within": "3",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "B",
+   "why": "an enumeration of grounds '(vii) (viii)' under number 1"
+  },
+  {
+   "n": 2,
+   "doc": 2000251913,
+   "i": 13,
+   "pn": "20",
+   "within": "10",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 3,
+   "doc": 2000000215,
+   "i": 7,
+   "pn": "1-2",
+   "within": "7",
+   "block": 3,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 4,
+   "doc": 1000254150,
+   "i": 503,
+   "pn": "47",
+   "within": "160",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 5,
+   "doc": 1000255502,
+   "i": 16,
+   "pn": "30",
+   "within": "16",
+   "block": 3,
+   "kind": "off_sequence",
+   "reading": "A"
+  },
+  {
+   "n": 6,
+   "doc": 2000756543,
+   "i": 11,
+   "pn": "105",
+   "within": "8",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 7,
+   "doc": 2000755731,
+   "i": 13,
+   "pn": "181",
+   "within": "15",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 8,
+   "doc": 43744,
+   "i": 12,
+   "pn": "14-12",
+   "within": "11",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 9,
+   "doc": 2000753546,
+   "i": 33,
+   "pn": "27",
+   "within": "36",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 10,
+   "doc": 29267,
+   "i": 8,
+   "pn": "15",
+   "within": "9",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "A"
+  },
+  {
+   "n": 11,
+   "doc": 39366,
+   "i": 44,
+   "pn": "9",
+   "within": "46",
+   "block": 3,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 12,
+   "doc": 37120,
+   "i": 16,
+   "pn": "19",
+   "within": "22",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 13,
+   "doc": 39883,
+   "i": 61,
+   "pn": "1",
+   "within": "67",
+   "block": 4,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 14,
+   "doc": 1000256644,
+   "i": 45,
+   "pn": "7",
+   "within": "39",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 15,
+   "doc": 1003962640,
+   "i": 34,
+   "pn": "8",
+   "within": "26",
+   "block": 3,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 16,
+   "doc": 2000755908,
+   "i": 8,
+   "pn": "3",
+   "within": "7",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 17,
+   "doc": 1000256204,
+   "i": 16,
+   "pn": "18-21",
+   "within": "16",
+   "block": 4,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 18,
+   "doc": 2000751631,
+   "i": 2,
+   "pn": "6-8",
+   "within": "4",
+   "block": 2,
+   "kind": "off_sequence",
+   "reading": "A"
+  },
+  {
+   "n": 19,
+   "doc": 40396,
+   "i": 30,
+   "pn": "19",
+   "within": "16",
+   "block": 3,
+   "kind": "off_sequence",
+   "reading": "D",
+   "why": "two passages numbered 19 in a judgment whose numbers repeat; text reads as the court's own narration"
+  },
+  {
+   "n": 20,
+   "doc": 2000506411,
+   "i": 33,
+   "pn": "9",
+   "within": "35",
+   "block": 2,
+   "kind": "off_sequence",
+   "reading": "A"
+  },
+  {
+   "n": 21,
+   "doc": 44468,
+   "i": 7,
+   "pn": "30",
+   "within": "7",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 22,
+   "doc": 2000756247,
+   "i": 14,
+   "pn": "4",
+   "within": "14",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "B",
+   "why": "testimony summarised under number 4 inside paragraph 14"
+  },
+  {
+   "n": 23,
+   "doc": 2000755063,
+   "i": 92,
+   "pn": "26",
+   "within": "50",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 24,
+   "doc": 1000256277,
+   "i": 5,
+   "pn": "13",
+   "within": "2",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "A"
+  },
+  {
+   "n": 25,
+   "doc": 41502,
+   "i": 138,
+   "pn": "6",
+   "within": "64",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 26,
+   "doc": 43837,
+   "i": 7,
+   "pn": "18",
+   "within": "8",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "A"
+  },
+  {
+   "n": 27,
+   "doc": 44354,
+   "i": 24,
+   "pn": "17",
+   "within": "18",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "C",
+   "why": "text reads as the court's own and looks like own paragraph 17 out of file order (17 after 18)"
+  },
+  {
+   "n": 28,
+   "doc": 1000253164,
+   "i": 19,
+   "pn": "17",
+   "within": "16",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 29,
+   "doc": 2000751951,
+   "i": 16,
+   "pn": "2",
+   "within": "18",
+   "block": 9,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 30,
+   "doc": 2000754084,
+   "i": 50,
+   "pn": "32",
+   "within": "40",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 31,
+   "doc": 42608,
+   "i": 42,
+   "pn": "22",
+   "within": "28",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 32,
+   "doc": 2000000127,
+   "i": 9,
+   "pn": "98",
+   "within": "3",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "B",
+   "why": "'98. (b)' is a page-like number in front of a list item"
+  },
+  {
+   "n": 33,
+   "doc": 2000253184,
+   "i": 65,
+   "pn": "2",
+   "within": "43",
+   "block": 5,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 34,
+   "doc": 39501,
+   "i": 69,
+   "pn": "1",
+   "within": "46",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 35,
+   "doc": 39420,
+   "i": 12,
+   "pn": "304",
+   "within": "12",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "B",
+   "why": "'Section 304.' wrapped onto a new line"
+  },
+  {
+   "n": 36,
+   "doc": 1000251271,
+   "i": 17,
+   "pn": "116",
+   "within": "14",
+   "block": 1,
+   "kind": "off_sequence",
+   "reading": "B",
+   "why": "'1984(4) SCC 116.' wrapped: 116 is the report page"
+  },
+  {
+   "n": 37,
+   "doc": 1000256078,
+   "i": 8,
+   "pn": "442",
+   "within": "8",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 38,
+   "doc": 1000255170,
+   "i": 60,
+   "pn": "9",
+   "within": "27",
+   "block": 2,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 39,
+   "doc": 2000253079,
+   "i": 87,
+   "pn": "33",
+   "within": "58",
+   "block": 3,
+   "kind": "introduced",
+   "reading": "A"
+  },
+  {
+   "n": 40,
+   "doc": 2000752868,
+   "i": 7,
+   "pn": "30",
+   "within": "6",
+   "block": 1,
+   "kind": "introduced",
+   "reading": "A"
+  }
+ ]
+}

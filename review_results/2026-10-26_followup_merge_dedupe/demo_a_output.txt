@@ -1,0 +1,28 @@
+=== rewrite: Is bail possible for a person arrested by the army under the Armed Forces Special Powers Act, where the trial is delayed?
+BEFORE (combined only): single_match
+   statutes : [('BNSS', '521', 0.506), ('BNSS', '42', 0.452)]
+   judgments: [('Vihaan Kumar v State of Haryana', '9', 0.404), ('Pankaj Bansal v Union of India', '29', 0.402)]
+CHAT_MERGE {"combined": "single_match", "own": "single_match", "merged": true, "statutes": [2, 4, 6], "judgments": [2, 0, 2]}
+AFTER  (merged): single_match
+   statutes : [('BNSS', '139', 0.363), ('BNSS', '521', 0.506), ('BNSS', '480', 0.359), ('BNSS', '42', 0.452), ('BNSS', '488', 0.352), ('BNSS', '482', 0.344)]
+   judgments: [('Vihaan Kumar v State of Haryana', '9', 0.404), ('Pankaj Bansal v Union of India', '29', 0.402)]
+=== rewrite: Can a person arrested under a special law in a disturbed area be granted bail when the trial has been delayed for years?
+BEFORE (combined only): single_match
+   statutes : [('BNSS', '60', 0.462), ('BNSS', '479', 0.443), ('BNSS', '480', 0.432), ('BNSS', '521', 0.418), ('BNSS', '139', 0.405)]
+   judgments: [('M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence', '11_1_default_bail_intrinsically_linked_to_article_21', 0.405), ('M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence', '18_2_right_survives_later_chargesheet_or_extension_report', 0.403)]
+CHAT_MERGE {"combined": "single_match", "own": "single_match", "merged": true, "statutes": [5, 4, 7], "judgments": [2, 0, 2]}
+AFTER  (merged): single_match
+   statutes : [('BNSS', '139', 0.363), ('BNSS', '60', 0.462), ('BNSS', '480', 0.359), ('BNSS', '479', 0.443), ('BNSS', '488', 0.352), ('BNSS', '482', 0.344), ('BNSS', '521', 0.418)]
+   judgments: [('M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence', '11_1_default_bail_intrinsically_linked_to_article_21', 0.405), ('M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence', '18_2_right_survives_later_chargesheet_or_extension_report', 0.403)]
+=== rewrite: Is bail possible for a person who was arrested by armed forces personnel and kept in custody for a long time without trial?
+BEFORE (combined only): single_match
+   statutes : [('BNSS', '521', 0.5), ('BNSS', '42', 0.443), ('BNSS', '478', 0.427), ('BNSS', '480', 0.427)]
+   judgments: [('Vihaan Kumar v State of Haryana', '9', 0.455), ('M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence', '11_1_default_bail_intrinsically_linked_to_article_21', 0.409)]
+CHAT_MERGE {"combined": "single_match", "own": "single_match", "merged": true, "statutes": [4, 4, 7], "judgments": [2, 0, 2]}
+AFTER  (merged): single_match
+   statutes : [('BNSS', '139', 0.363), ('BNSS', '521', 0.5), ('BNSS', '480', 0.359), ('BNSS', '42', 0.443), ('BNSS', '488', 0.352), ('BNSS', '478', 0.427), ('BNSS', '482', 0.344)]
+   judgments: [('Vihaan Kumar v State of Haryana', '9', 0.455), ('M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence', '11_1_default_bail_intrinsically_linked_to_article_21', 0.409)]
+=== own words alone
+OWN: single_match
+   statutes : [('BNSS', '139', 0.363), ('BNSS', '480', 0.359), ('BNSS', '488', 0.352), ('BNSS', '482', 0.344)]
+   judgments: []

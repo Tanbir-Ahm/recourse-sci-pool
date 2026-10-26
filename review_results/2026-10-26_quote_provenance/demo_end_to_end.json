@@ -1,0 +1,272 @@
+{
+ "question": "Armed Forces Special Powers Act and the arrest of a civilian",
+ "results": [
+  {
+   "rank": 1,
+   "doc": 38684,
+   "court": "Supreme Court of India",
+   "case_name": "Sadhwi Pragyna Singh Thakur v. State of Maharashtra",
+   "date": "2011-09-23",
+   "citations": {},
+   "link": "https://api.sci.gov.in/jonew/judis/38684.pdf",
+   "link_kind": "court_archive_pdf",
+   "name_to_review": false,
+   "paragraph": "8",
+   "page": 46,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.6999,
+   "passage_id": "a8d4345b78e5d4d3",
+   "quote": {
+    "within": "25",
+    "kind": "introduced",
+    "block": 4,
+    "intro": "In Saptawna vs. The State of Assam AIR (1971) SC 813, this Court has observed as under in paras 2 and 3 of the reported decision :"
+   }
+  },
+  {
+   "rank": 2,
+   "doc": 4489,
+   "court": "Supreme Court of India",
+   "case_name": "Balkishan A. Devidayal etc v. State of Maharashtra etc",
+   "date": "1980-07-31",
+   "citations": {
+    "air": [
+     "1981 AIR 379"
+    ],
+    "scr": [
+     "1981 SCR (1) 175"
+    ],
+    "scc": [
+     "1980 SCC (4) 600"
+    ]
+   },
+   "link": "https://api.sci.gov.in/jonew/judis/4489.pdf",
+   "link_kind": "court_archive_pdf",
+   "name_to_review": false,
+   "paragraph": null,
+   "page": 11,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.6996,
+   "passage_id": "2ed764101b4c6689"
+  },
+  {
+   "rank": 3,
+   "doc": 4489,
+   "court": "Supreme Court of India",
+   "case_name": "Balkishan A. Devidayal etc v. State of Maharashtra etc",
+   "date": "1980-07-31",
+   "citations": {
+    "air": [
+     "1981 AIR 379"
+    ],
+    "scr": [
+     "1981 SCR (1) 175"
+    ],
+    "scc": [
+     "1980 SCC (4) 600"
+    ]
+   },
+   "link": "https://api.sci.gov.in/jonew/judis/4489.pdf",
+   "link_kind": "court_archive_pdf",
+   "name_to_review": false,
+   "paragraph": null,
+   "page": 12,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.6657,
+   "passage_id": "3d8601936d1b28dc"
+  },
+  {
+   "rank": 4,
+   "doc": 1000252784,
+   "court": "Supreme Court of India",
+   "case_name": "Tofan Singh v. State of Tamil Nadu",
+   "date": "2020-10-29",
+   "citations": {
+    "scr": "[2020] 12 S.C.R. 583",
+    "insc": "2020 INSC 620",
+    "cnr": "ESCR010000772020"
+   },
+   "link": "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2020/english/2020_12_583_874_EN.pdf",
+   "link_kind": "open_bucket_pdf",
+   "name_to_review": false,
+   "paragraph": null,
+   "page": 274,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.6589,
+   "passage_id": "7113d1a3bdf7afb2"
+  },
+  {
+   "rank": 5,
+   "doc": 2000754669,
+   "court": "Gauhati High Court",
+   "case_name": "Inspector General of Assam Rifles v. The State of Nagaland",
+   "date": "2024-09-11",
+   "citations": {
+    "case_no": "CRL.REVN/7/2022",
+    "neutral": "2024:GAU-NL:488"
+   },
+   "link": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2024/court=18_6/bench=nlghccis/GAHC020005922022_1_2024-09-12.pdf",
+   "link_kind": "high_court_bucket_pdf",
+   "name_to_review": false,
+   "paragraph": "6",
+   "page": 4,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.5767,
+   "passage_id": "104199f56c812717"
+  },
+  {
+   "rank": 6,
+   "doc": 43775,
+   "court": "Supreme Court of India",
+   "case_name": "Extra Judicial Execution Victim Families Association (EEVFAM) & Anr v. Union of India & Anr",
+   "date": "2016-07-08",
+   "citations": {},
+   "link": "https://api.sci.gov.in/jonew/judis/43775.pdf",
+   "link_kind": "court_archive_pdf",
+   "name_to_review": false,
+   "paragraph": "95",
+   "page": 37,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.5729,
+   "passage_id": "c3f393869017f241"
+  },
+  {
+   "rank": 7,
+   "doc": 2000754551,
+   "court": "Gauhati High Court",
+   "case_name": "ARMY NO. 15715017K NAGIREDLA SRINU AN ANR. Vs THE STATE OF ASSAM AND 2 ORS. (2024-08-06)",
+   "date": "2024-08-06",
+   "citations": {
+    "case_no": "Crl.Pet./124/2024",
+    "neutral": "2024:GAU-AS:7657"
+   },
+   "link": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2024/court=18_6/bench=asghccis/GAHC010023952024_1_2024-08-07.pdf",
+   "link_kind": "high_court_bucket_pdf",
+   "name_to_review": true,
+   "paragraph": "14",
+   "page": 4,
+   "name_is_opening_lines": true,
+   "passage_type": "reasoning",
+   "score": 0.5661,
+   "passage_id": "928680f4cec78550"
+  },
+  {
+   "rank": 8,
+   "doc": 39284,
+   "court": "Supreme Court of India",
+   "case_name": "General Officer Commanding v. CBI & Anr",
+   "date": "2012-05-01",
+   "citations": {},
+   "link": "https://api.sci.gov.in/jonew/judis/39284.pdf",
+   "link_kind": "court_archive_pdf",
+   "name_to_review": false,
+   "paragraph": "8-9",
+   "page": 12,
+   "name_is_opening_lines": false,
+   "passage_type": "argument",
+   "score": 0.565,
+   "passage_id": "675279925a9f2eef"
+  },
+  {
+   "rank": 9,
+   "doc": 43775,
+   "court": "Supreme Court of India",
+   "case_name": "Extra Judicial Execution Victim Families Association (EEVFAM) & Anr v. Union of India & Anr",
+   "date": "2016-07-08",
+   "citations": {},
+   "link": "https://api.sci.gov.in/jonew/judis/43775.pdf",
+   "link_kind": "court_archive_pdf",
+   "name_to_review": false,
+   "paragraph": "94",
+   "page": 37,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.554,
+   "passage_id": "40c3eb97a995f77a"
+  },
+  {
+   "rank": 10,
+   "doc": 2000000151,
+   "court": "Gauhati High Court",
+   "case_name": "I C 62912 F, Major Sowmithri S v. The State of Assam and Ors",
+   "date": "2012-06-05",
+   "citations": {
+    "case_no": "Crl.Pet. 43/2010"
+   },
+   "link": "https://ghconline.gov.in/Judgment/CRLPET432010.pdf",
+   "link_kind": "high_court_site_pdf",
+   "name_to_review": false,
+   "paragraph": null,
+   "page": 8,
+   "name_is_opening_lines": false,
+   "passage_type": "reasoning",
+   "score": 0.5424,
+   "passage_id": "33673e00f9d4fc1b"
+  }
+ ],
+ "cases": [
+  {
+   "case_name": "Sadhwi Pragyna Singh Thakur v. State of Maharashtra",
+   "paragraph": "25",
+   "passage_note": "This passage is set out inside paragraph 25 of the judgment; the number it starts with is not a paragraph of that judgment. The judgment introduces it with these words: “In Saptawna vs. The State of Assam AIR (1971) SC 813, this Court has observed as under in paras 2 and 3 of the reported decision :” It may be a quotation from another decision or document, which is not this court's own holding.",
+   "passage_kinds": [
+    "quoted"
+   ]
+  },
+  {
+   "case_name": "Balkishan A. Devidayal etc v. State of Maharashtra etc",
+   "paragraph": null,
+   "passage_note": null,
+   "passage_kinds": []
+  },
+  {
+   "case_name": "Tofan Singh v. State of Tamil Nadu",
+   "paragraph": null,
+   "passage_note": null,
+   "passage_kinds": []
+  },
+  {
+   "case_name": "Inspector General of Assam Rifles v. The State of Nagaland",
+   "paragraph": "6",
+   "passage_note": null,
+   "passage_kinds": []
+  },
+  {
+   "case_name": "Extra Judicial Execution Victim Families Association (EEVFAM) & Anr v. Union of India & Anr",
+   "paragraph": "95",
+   "passage_note": null,
+   "passage_kinds": []
+  },
+  {
+   "case_name": "General Officer Commanding v. CBI & Anr",
+   "paragraph": "8-9",
+   "passage_note": null,
+   "passage_kinds": []
+  },
+  {
+   "case_name": "I C 62912 F, Major Sowmithri S v. The State of Assam and Ors",
+   "paragraph": null,
+   "passage_note": null,
+   "passage_kinds": []
+  }
+ ],
+ "quotes_stats": {
+  "version": "q1",
+  "documents": 19255,
+  "passages": 420893,
+  "documents_read": 12659,
+  "documents_with_flagged": 4550,
+  "flagged": 21524,
+  "introduced": 14784,
+  "off_sequence": 6740,
+  "joined_with_own": 1140,
+  "blocks": 8792,
+  "split_documents": 0
+ }
+}

@@ -14,7 +14,7 @@ Safety: SCI_SEARCH_ENABLED=0 turns /search off at once (503); a daily cap on re-
 at a time (a lock); questions over 2,000 characters are refused; the caller is expected to fail open (answer as it does today) on anything but 200.
 Names and links: names_table/names_table.json.gz (built by names_table/build_names_table.py for the same index commit; the service refuses to start on a table built for another commit) gives each result a readable case_name, date, citations and a link to the judgment's PDF.
 Environment: SCI_NAMES_TABLE (default names_table/names_table.json.gz), SCI_INDEX_DIR (default ../recourse-sci-index), SCI_SIDE_INDEXES (comma-separated folders; default the three in review_data/side_index), SCI_INDEX_COMMIT (when the index folder is not a git checkout),
-SCI_RERANK_MODEL (default rerank-3-lite), SCI_MAX_TEXT (characters of passage text returned, default 1500), VOYAGE_API_KEY, SCI_SEARCH_TOKEN, PORT.
+SCI_QUOTES (on|off, default off: passages numbered outside their judgment's own paragraph sequence get a "quote" field; sci_quotes.py), SCI_RERANK_MODEL (default rerank-3-lite), SCI_MAX_TEXT (characters of passage text returned, default 1500), VOYAGE_API_KEY, SCI_SEARCH_TOKEN, PORT.
 """
 import collections
 import datetime
@@ -149,6 +149,11 @@ def _latest_date(title_strings):
     return best.isoformat() if best else None
 
 
+def quotes_on():
+    """SCI_QUOTES=on|off, default off: whether passages numbered outside their judgment's own paragraph sequence are marked (sci_quotes.py)."""
+    return (os.environ.get("SCI_QUOTES") or "off").strip().strip("\"'").strip().lower() in ("on", "1", "true", "yes")
+
+
 def court_of(doc, names, src_courts):
     """The court of one document: the names table's court column, else the court the document's own source record names, else (a names table that has no court column, or none at all) the Supreme Court,
     which is what every document of the first index was. A document that a loaded table does not know has an unknown court."""
@@ -192,6 +197,7 @@ class SearchService:
         self.header_docs = set()
         self.src_courts = {}
         self.names = {}
+        self.quotes = {}                                 # "<doc>:<i>" -> sci_quotes record, when SCI_QUOTES=on
         self.lock = threading.Lock()
         self.day, self.rerank_today, self.embed_today, self.searches_today = None, 0, 0, 0
         self.started = clock()
@@ -240,6 +246,10 @@ class SearchService:
             info["as_of"] = newest                     # the latest decision date among all the judgments (the title-based date above only reads dd-mm-yyyy titles, which the newer documents do not have)
         svc.header_docs = {d for d in docs if not ((case_meta.get(d) or {}).get("pet") or (case_meta.get(d) or {}).get("resp")) and d not in src_title and d not in extra}
         info["documents_named_from_opening_lines"] = len(svc.header_docs) - info["documents_without_title"]
+        if quotes_on():                                # SCI_QUOTES=on (default off): passages numbered outside their judgment's own sequence get a "quote" field (sci_quotes.py)
+            import sci_quotes
+            svc.quotes, qstats = sci_quotes.build(metas)
+            info["quotes"] = qstats
         return svc
 
     # ------------------------------------------------------------ the recipe
@@ -318,6 +328,9 @@ class SearchService:
                 results.append({"rank": rank, "doc": m["doc"], "court": court_of(m["doc"], self.names, self.src_courts), "case_name": (nm or {}).get("name") or self.title(m["doc"]), "date": (nm or {}).get("date"), "citations": (nm or {}).get("citations") or {},
                                 "link": (nm or {}).get("link"), "link_kind": (nm or {}).get("link_kind"), "name_to_review": bool(nm["review"]) if nm else None, "paragraph": m["pn"], "page": m.get("page"), "name_is_opening_lines": (m["doc"] in self.header_docs) if not nm else (nm["name"] is None), "passage_type": m["section"], "score": round(float(score), 4),
                                 "text": text[: self.max_text] + ("..." if len(text) > self.max_text else ""), "passage_id": m["h"]})
+                q = self.quotes.get(f"{m['doc']}:{m['i']}") if self.quotes else None
+                if q:
+                    results[-1]["quote"] = dict(q)       # the number in "paragraph" is NOT the judgment's own: the passage sits inside paragraph q["within"]
             return {"ok": True, "tier": TIER, "recipe": "B", "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "as_of_by_court": self.info.get("as_of_by_court") or {}, "disclaimer": DISCLAIMER,
                     "seconds": round(time.time() - t0, 2), "usage": usage, "results": results}
 
@@ -541,10 +554,17 @@ def make_server(service, host, port, token):
     return ThreadingHTTPServer((host, port), handler)
 
 
+def startup_line(service, host, port):
+    info = service.info
+    q = info.get("quotes")
+    return (f"sci-search listening on {host}:{port}; index {info.get('index_commit', '?')[:10] if info.get('index_commit') else '?'}, {info.get('passages'):,} passages; "
+            f"{info.get('documents'):,} judgments ({', '.join(f'{k} {v:,}' for k, v in (info.get('courts') or {}).items())}); ends {info.get('as_of')}"
+            + (f"; SCI_QUOTES on: {q['flagged']:,} passages marked in {q['documents_with_flagged']:,} judgments (numbered outside their judgment's own sequence)" if q else ""))
+
+
 def serve(service, host, port, token):
     srv = make_server(service, host, port, token)
-    print(f"sci-search listening on {host}:{port}; index {service.info.get('index_commit', '?')[:10] if service.info.get('index_commit') else '?'}, {service.info.get('passages'):,} passages; "
-          f"{service.info.get('documents'):,} judgments ({', '.join(f'{k} {v:,}' for k, v in (service.info.get('courts') or {}).items())}); ends {service.info.get('as_of')}", flush=True)
+    print(startup_line(service, host, port), flush=True)
     srv.serve_forever()
 
 

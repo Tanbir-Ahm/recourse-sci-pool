@@ -1,0 +1,209 @@
+{
+ "index_commit": "d8811a910c73b0159bea7bcf3183ea258120db5b",
+ "stats": {
+  "version": "q1",
+  "documents": 19236,
+  "passages": 418286,
+  "documents_read": 12652,
+  "documents_with_flagged": 4545,
+  "flagged": 21373,
+  "introduced": 14692,
+  "off_sequence": 6681,
+  "joined_with_own": 1137,
+  "blocks": 8739,
+  "split_documents": 0
+ },
+ "groups": {
+  "landmark questions": {
+   "rows": 120,
+   "numbered": 88,
+   "flagged_strict": 4,
+   "flagged_loose": 12,
+   "hits": [
+    {
+     "doc": 2000252914,
+     "case": "Satender Kumar Antil v. Central Bureau of Investigation and Anr",
+     "para": "11",
+     "same_label_passages": 2,
+     "flagged": 1
+    },
+    {
+     "doc": 1000251241,
+     "case": "V. Ravi Kumar v. State, Rep. by Inspector of Police, District Crime Branch, Salem, Tamil Nadu & Ors",
+     "para": "13",
+     "same_label_passages": 2,
+     "flagged": 1
+    },
+    {
+     "doc": 2000253097,
+     "case": "Accamma Sam Jacob v. The State of Karnataka & Anr. etc",
+     "para": "3",
+     "same_label_passages": 2,
+     "flagged": 2
+    },
+    {
+     "doc": 2000253097,
+     "case": "Accamma Sam Jacob v. The State of Karnataka & Anr. etc",
+     "para": "4",
+     "same_label_passages": 3,
+     "flagged": 2
+    },
+    {
+     "doc": 41778,
+     "case": "Yogendra Yadav & Ors v. The State of Jharkhand & Anr",
+     "para": "7",
+     "same_label_passages": 3,
+     "flagged": 1
+    },
+    {
+     "doc": 41778,
+     "case": "Yogendra Yadav & Ors v. The State of Jharkhand & Anr",
+     "para": "6",
+     "same_label_passages": 3,
+     "flagged": 1
+    },
+    {
+     "doc": 1000252087,
+     "case": "Uttam Ram v. Devinder Singh Hudan & Anr",
+     "para": "20",
+     "same_label_passages": 2,
+     "flagged": 1
+    },
+    {
+     "doc": 2000753193,
+     "case": "Prabhat Gogoi v. The State of Assam and Anr",
+     "para": "9",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000753193,
+     "case": "Prabhat Gogoi v. The State of Assam and Anr",
+     "para": "9",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000756740,
+     "case": "Smt. Lalengzauvi v. The State of Mizoram",
+     "para": "22",
+     "same_label_passages": 2,
+     "flagged": 1
+    },
+    {
+     "doc": 42608,
+     "case": "Mohan Lal v. State of Rajasthan",
+     "para": "13",
+     "same_label_passages": 2,
+     "flagged": 1
+    },
+    {
+     "doc": 2000752283,
+     "case": "Purna Nahar Deka v. The State of Assam",
+     "para": "42",
+     "same_label_passages": 1,
+     "flagged": 1
+    }
+   ]
+  },
+  "spot questions": {
+   "rows": 90,
+   "numbered": 81,
+   "flagged_strict": 10,
+   "flagged_loose": 13,
+   "hits": [
+    {
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "para": "43",
+     "same_label_passages": 3,
+     "flagged": 2
+    },
+    {
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "para": "43",
+     "same_label_passages": 3,
+     "flagged": 2
+    },
+    {
+     "doc": 2000753953,
+     "case": "Teshi Peter and Anr v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000754163,
+     "case": "Tamchi Mongku and 3 Ors v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000756832,
+     "case": "Tatar Mosi and 2 Ors v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000756833,
+     "case": "Nyijum Rakshap and 2 Ors v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000754471,
+     "case": "Ngurang Rana and 2 Ors v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000754120,
+     "case": "Jilpa Nima Dulom and Anr v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000754145,
+     "case": "Pate Ruja and 2 Ors v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000754381,
+     "case": "Yane Raji and Anr v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 2000754903,
+     "case": "Nabam Rama and Anr v. The State of AP",
+     "para": "61",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 41743,
+     "case": "Umakant & Anr v. State of Chhatisgarh",
+     "para": "1-2",
+     "same_label_passages": 1,
+     "flagged": 1
+    },
+    {
+     "doc": 38684,
+     "case": "Sadhwi Pragyna Singh Thakur v. State of Maharashtra",
+     "para": "8",
+     "same_label_passages": 2,
+     "flagged": 1
+    }
+   ]
+  }
+ }
+}

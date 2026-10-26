@@ -1,0 +1,24 @@
+loaded in 61.0 s; quotes: {'version': 'q1', 'documents': 19255, 'passages': 420893, 'documents_read': 12659, 'documents_with_flagged': 4550, 'flagged': 21524, 'introduced': 14784, 'off_sequence': 6740, 'joined_with_own': 1140, 'blocks': 8792, 'split_documents': 0}
+results for: Armed Forces Special Powers Act and the arrest of a civilian
+ 1. Sadhwi Pragyna Singh Thakur v. State of Maharashtra          para       8  quote={'within': '25', 'kind': 'introduced', 'block': 4, 'intro': 'In Saptawna vs. The State of Assam AIR (1971) SC 813, this Court has o...'}
+ 2. Balkishan A. Devidayal etc v. State of Maharashtra etc       para    None  quote=None
+ 3. Balkishan A. Devidayal etc v. State of Maharashtra etc       para    None  quote=None
+ 4. Tofan Singh v. State of Tamil Nadu                           para    None  quote=None
+ 5. Inspector General of Assam Rifles v. The State of Nagaland   para       6  quote=None
+ 6. Extra Judicial Execution Victim Families Association (EEVFAM para      95  quote=None
+ 7. ARMY NO. 15715017K NAGIREDLA SRINU AN ANR. Vs THE STATE OF A para      14  quote=None
+ 8. General Officer Commanding v. CBI & Anr                      para     8-9  quote=None
+ 9. Extra Judicial Execution Victim Families Association (EEVFAM para      94  quote=None
+10. I C 62912 F, Major Sowmithri S v. The State of Assam and Ors para    None  quote=None
+PROMPT BLOCK (Sadhwi part):
+[WIDER SEARCH -- NOT INDEPENDENTLY VERIFIED: Sadhwi Pragyna Singh Thakur v. State of Maharashtra (2011-09-23), Supreme Court of India, inside paragraph 25]
+8. From the order-sheets produced before us it is clear that the petitioner was first produced before the Magistrate on March 3, 1968. That was roughly two months after his arrest by the Armed Forces. Under Section 5 of the Armed Forces (Assam and Manipur) Special Powers Act, he had to be made over to the officer in-charge of the nearest police station with the least possible delay, together with a report of the circumstances occasioning the arrest. What is the least possible delay in a case depends upon the facts, that is to say, how, where and in what circumstances the arrest was effected. From the affidavit of Mr. Poon, it prima facie appears that the petitioner is connected with the Mizo hostiles who are waging war against India. It was, therefore, necessary to question him about his associates, his stores of arms and like matters. ...
+[Note by code -- read before using this passage: the number (it starts with "8.") is NOT a paragraph number of this judgment. The passage sits inside paragraph 25 of the judgment. The judgment's own words just before the passage are: "In Saptawna vs. The State of Assam AIR (1971) SC 813, this Court has observed as under in paras 2 and 3 of the reported decision :" If those words introduce a quotation, the passage is the text of the quoted decision or document, NOT this court's own words: do not say that the listed court held, decided, recorded or observed it, and build no ground and no For/Against point on it as this court's holding. If they introduce a list, the list belongs to what that paragraph describes. Refer to it only as "inside paragraph 25" and never give the number it starts with as a paragraph.]
+CASES THE PAGE LISTS:
+{'case_name': 'Sadhwi Pragyna Singh Thakur v. State of Maharashtra', 'paragraph': '25', 'passage_kinds': "['quoted']", 'passage_note': 'This passage is set out inside paragraph 25 of the judgment; the number it starts with is not a paragraph of t'}
+{'case_name': 'Balkishan A. Devidayal etc v. State of Maharashtra etc', 'paragraph': None, 'passage_kinds': [], 'passage_note': None}
+{'case_name': 'Tofan Singh v. State of Tamil Nadu', 'paragraph': None, 'passage_kinds': [], 'passage_note': None}
+{'case_name': 'Inspector General of Assam Rifles v. The State of Nagaland', 'paragraph': '6', 'passage_kinds': [], 'passage_note': None}
+{'case_name': 'Extra Judicial Execution Victim Families Association (EEVFAM) & Anr v. Union of India & Anr', 'paragraph': '95', 'passage_kinds': [], 'passage_note': None}
+{'case_name': 'General Officer Commanding v. CBI & Anr', 'paragraph': '8-9', 'passage_kinds': [], 'passage_note': None}
+{'case_name': 'I C 62912 F, Major Sowmithri S v. The State of Assam and Ors', 'paragraph': None, 'passage_kinds': [], 'passage_note': None}
