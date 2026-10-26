@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10f record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10g record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -322,3 +322,44 @@ Messy-page accuracy is out of 9 critical values (3 runs of 3) for the seven mode
 **Limits.** The messy-page accuracy rests on **one page** and 3 temperature-0 runs per model, which are not independent samples; one page is the reason only one model passes the gate, and a second messy page could change the order. Other weights for the two pages would move the lower rows but not the top row. The cost of a person checking a page is not in these figures and is probably far larger than any model cost, which is why accuracy comes before price. Models on the second key may cost nothing if that key is on a free tier, which could not be confirmed.
 
 **What this changes in the plan.** Run a second and third messy handwritten page before relying on the lead of `gemini-4-argon`, ideally with a human-marked reference for each; re-price once Google's own pricing page can be read; and keep a person checking every date, age and amount whatever the model.
+
+### 10g. A second notes page, 14 readers; the owner found the `gemini-4-argon` reading closest (recorded 2026-10-26; counts only, no case text)
+
+**What was tested.** A photographed page of handwritten Assamese notes (718 x 682 px, no case data) on how Old Indo-Aryan changed into Prakrit and then Assamese, with red underlining and writing showing through from the back of the paper. The page is cut off at the bottom in the middle of a point on the dual number. Every model transcribed and translated in one call (the same prompt as the first notes page of 10d and 10e: ignore writing from the back, stop where the text stops, mark doubtful words); Sarvam read with Vision and translated with Sarvam Translate. Three runs per reader where they answered, timed with one streaming call each; temperature 0; output limit 32,768 tokens.
+
+**There is no reference translation for this page.** I scored 9 content items per reading against my own reading of the page, cross-checked with standard facts about the Prakrit sound changes: the line listing the sounds that were lost, "e and o replace ai and au", three word-change examples (oil, medicine, jackal), retroflex sounds increased, "simplified", "words became vowel-ending", and the dual number. That is not independent, and my reading was wrong on earlier pages (10d). Five models gave a lost-sounds line with all five lost sounds in every reading (`gemini-4-argon`, `gemini-3.1-pro-preview`, `gemini-3.6-flash`, `gemini-3.7-flash`, `gemini-3.8-flash`), and two more did in 2 of 3 (`gemini-pro-latest`, `gemini-3.5-flash`), which supports it but is agreement, not proof.
+
+**The owner's check.** The owner compared the readings with the page and reported that **the `gemini-4-argon` reading came out the closest**. This is the owner's judgment and is recorded as such; it was not an independent line-by-line marking by a person who reads Assamese.
+
+| Reader | Readings | Items right per reading (of 9) | Response time (median) | Cost per page | Main errors |
+|---|---|---|---|---|---|
+| **`gemini-4-argon`** | 3 | **9, 9, 9** | 11.8 s (range 7.0 to 103 s) | Rs 0.81 | none found |
+| `gemini-3.1-pro-preview` | 2 of 3 | 9, 9 | 36 s | about Rs 5.9 | third run overloaded (503) |
+| `gemini-3.7-flash` | 2 of 3 | 9, 9 | 217 s | Rs 1.59 | very slow under load |
+| `gemini-3.8-flash` | 1 of 3 | 9 | 47 s | Rs 1.40 | other runs overloaded |
+| `gemini-3.6-flash` | 3 | 9, 8, 9 | 29.5 s | Rs 2.36 | one wrong example; one extra sound listed |
+| `gemini-pro-latest` | 3 | 9, 8, 9 | 33.5 s | price unknown | one wrong example |
+| `gemini-3.5-flash` | 3 | 9, 8, 7 | 18.8 s | Rs 3.30 | wrong sound list in 1 run |
+| `gemini-3-flash-preview` | 3 | 8, 8, 8 | 12.3 s | Rs 0.94 | sound list wrong in all 3 runs |
+| `gemini-3.1-flash-lite` | 3 | 5, 5, 5 | 2.8 s | Rs 0.10 | invented the sound list; "oil > oil > oil"; jackal example wrong |
+| `gemini-3.5-flash-lite` | 3 | 5, 5, 4 | 3.1 s | Rs 0.15 | invented the sound list and 2 of the 3 examples |
+| `gemini-flash-lite-latest` | 3 | 4, 4, 4 | 2.6 s | price unknown | invented the sound list; nonsense words in one reading |
+| `sarvam-vision` + Translate | 3 (language set twice, unset once) | 3, 3, 3 | about 15 s (not re-timed here) | about Rs 1.5 | see below |
+| `gemma-4-26b-a4b-it` | 1 | 0 | 503 s, empty | unknown | no output |
+| `gemma-4-31b-it` | 1 | 0 | 1,029 s, empty | unknown | no output |
+
+Costs are at about Rs 96 per US dollar with the unverified third-party prices of 10e; Sarvam's is Rs 0.50 per page plus Rs 2 per 1,000 characters translated.
+
+**Findings**
+1. **`gemini-4-argon` read all 9 items in all 3 runs, and the owner found its reading closest.** It uses no hidden thinking tokens, so its cost per page moved little between pages (Rs 0.62 on the first notes page, Rs 0.81 here). One of its three runs took 103 s to answer, which looks like an overload spike.
+2. **The lite models invented content on a dense page.** In all 9 lite readings the line listing the lost sounds was wrong, and in all 3 lite models the word-change examples were wrong, missing or invented in every reading ("oil > oil > oil"; one reading contained a foreign place name in place of the word for "common people"). `gemini-3.1-flash-lite` gave no warning marks at all. This is more serious than their messy-page result of 10c to 10e, where they only missed digits.
+3. **Sarvam changed meanings silently, again.** It read "simplified" as "strong" (so the English says "strengthened"), "words became vowel-ending" as "words became distinct", got the lost sounds and the jackal word wrong, and dropped "o" from "e and o". It was fluent, with no warning marks. This matches 10d.
+4. **No reader finished the sentence that breaks off.** All 34 readings, Sarvam's included, stop at the dual number.
+5. **Thinking models cost 2 to 3 times more on a dense page.** `gemini-3.6-flash` went from Rs 0.85 on the first notes page to Rs 2.36 here (3,600 to 6,700 thinking tokens against about 1,700), `gemini-3.5-flash` from Rs 2.23 to Rs 3.30, and `gemini-3.1-pro-preview` from about Rs 3.8 to about Rs 5.9. **The cost per page in 10e and 10f is therefore a lower bound for these models**, and their cost against efficiency order in 10f is more favourable to them than a denser page would show.
+6. **The overloaded models** (`gemini-3.1-pro-preview`, `gemini-3.7-flash`, `gemini-3.8-flash`) completed only 1 to 2 of 3 runs, and the two Gemma models returned empty output after 8 and 17 minutes.
+
+**What this changes in the plan**
+- **`gemini-4-argon` stays the lead reader.** It is now first on the messy handwritten page (10c, 10e) and first on this page, with the owner's own check agreeing, but it was weak on the clean letter's incident month (10d). It still needs a second reader and a person for every date, age and amount.
+- **Do not use the lite models to read** records like these pages, whatever they cost; they may serve for a first triage only.
+- **10f's ranking is not redone here.** Its top row is unchanged by this page; its cost column is understated for the thinking models, and a three-page re-ranking with per-page cost shown would be the next step.
+- **Still to run:** an independent human translation or line-by-line marking by a person who reads Assamese for this page and the first notes page; more messy handwritten pages with such a reference; Google Cloud Vision, IndicTrans2 and Google Translate; Jurisphere and Niyam.
