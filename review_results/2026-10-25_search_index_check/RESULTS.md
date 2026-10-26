@@ -2,6 +2,8 @@
 
 Question (owner, 2026-10-25): "staging-web is connected to which search index, and how many judgments, as of today, can be searched through that index ... to find out which index has to be connected to the main site ultimately."
 
+> **CORRECTION, 2026-10-26.** Three statements below about the NEWER index (section 3.2 and the Warning sign) were wrong and are corrected in place: (1) the newer index is **not "Supreme Court only"**: it holds 11,683 Supreme Court judgments and **7,553 Gauhati High Court judgments** (the High Court ones come from three sources of the crawl: ghc_post2017 5,830, ghc_bucket 965, ghc_court 758); (2) it does **not** "end 13 July 2026": its newest decisions are 16 Oct 2026 (Supreme Court) and 14 Oct 2026 (Gauhati High Court); (3) the "at least 1,144 from 2026" counts mix both courts (781 of them are High Court). The pinned index checked in this file (`3c80a26`, 10,522 judgments) is unchanged and is Supreme Court only. Details and the loader test of the newer index: `review_results/2026-10-26_newer_index_staging/RESULTS.md`.
+
 **What could NOT be checked:** the sandbox cannot open Railway addresses (the proxy answers 403 for `*.up.railway.app`), and Railway's variables and logs are not visible to Claude. Everything below is read from the code that the staging services deploy and from the data files at the exact commits; what only the owner can confirm is listed in section 5.
 
 ## 1. How a search on staging-web reaches an index
@@ -29,11 +31,11 @@ Question (owner, 2026-10-25): "staging-web is connected to which search index, a
 * 10,454 have a readable case name; 68 are flagged for review.
 
 ### 3.2 The newer index (branch tip `d8811a9`, built in shifts up to 2026-10-24) - NOT what the service loads
-* **19,236** judgments with passages; **418,286** passages; as_of still 2026-07-13. Of **69,008 files looked at**, 49,765 set aside (43,546 not criminal, 3,084 already in the crawl, 1,733 short, 1,116 duplicates, 286 near-duplicates).
+* **19,236** judgments with passages (**11,683 Supreme Court + 7,553 Gauhati High Court**); **418,286** passages; newest decision 2026-10-16 (Supreme Court) and 2026-10-14 (Gauhati High Court) [corrected 2026-10-26; this line said "as_of still 2026-07-13"]. Of **69,008 files looked at**, 49,765 set aside (43,546 not criminal, 3,084 already in the crawl, 1,733 short, 1,116 duplicates, 286 near-duplicates).
 * 10,444 of the pinned index's judgments are in it; 8,792 are new; 59 of the old ones were taken out in the duplicate clean-up of 2026-10-22 (all 59 are named in `state/fixes/20261022T172525-duplicates.json`).
-* Recent years (counted only from judgments whose title carries a date, so these are minimums): 2025 at least 1,547 (pinned index 362), 2026 at least 1,144 (pinned index 69).
+* Recent years (counted only from judgments whose title carries a date, so these are minimums; **both courts together**, 781 of the 2026 ones are Gauhati High Court judgments): 2025 at least 1,547 (pinned index 362), 2026 at least 1,144 (pinned index 69).
 * The last build shift (2026-10-24, 50 minutes) ended with `stop_reason: "completed all pending blocks"`.
-* **The service cannot load it as it stands** (section 2): the names table and the side indexes would have to be rebuilt for it.
+* **The service could not load it as it stood on 2026-10-25** (section 2): the names table and the side indexes had to be rebuilt for it. Done on 2026-10-26 (additive; the pinned index still loads exactly as before): `review_results/2026-10-26_newer_index_staging/RESULTS.md`.
 * **Warning sign:** the branch's own known-answer test (`eval/landmark-*.json`: 6 landmark cases, each asked in a layman's and a lawyer's words = 12 questions; success = the case in the top 5 AND the verified paragraph in the top 3; it tests the raw index, not the service's full recipe) scored 4/12 at 156,235 passages (2 Oct), 3/12 at 153,981, 2/12 at 300,957 (22 Oct) and **1/12 at 418,286 (24 Oct)**. Twelve questions prove nothing, but the direction is steady: more judgments made the known cases harder to find. No run was recorded at 236,155 passages (the pinned index), so its score is unknown.
 
 ### 3.3 The title list (B)

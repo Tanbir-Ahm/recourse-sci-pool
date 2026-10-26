@@ -1,0 +1,2140 @@
+{
+ "label": "newer_d8811a9_rows",
+ "index_commit": "d8811a910c73b0159bea7bcf3183ea258120db5b",
+ "info": {
+  "index_commit": "d8811a910c73b0159bea7bcf3183ea258120db5b",
+  "passages": 420893,
+  "documents": 19255,
+  "as_of": "2026-10-16",
+  "courts": {
+   "Supreme Court of India": 11702,
+   "Gauhati High Court": 7553
+  },
+  "as_of_by_court": {
+   "Supreme Court of India": "2026-10-16",
+   "Gauhati High Court": "2026-10-14"
+  }
+ },
+ "load_seconds": 64.0,
+ "landmarks": [
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "doc": 41736,
+   "kind": "lay",
+   "doc_rank_in_top10": 4,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 0,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 2000253434,
+     "case": "Dr. Lokesh B.H. & Ors v. State of Karnataka & Anr",
+     "date": "2026-08-03",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000253434,
+     "case": "Dr. Lokesh B.H. & Ors v. State of Karnataka & Anr",
+     "date": "2026-08-03",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000252914,
+     "case": "Satender Kumar Antil v. Central Bureau of Investigation and Anr",
+     "date": "2026-01-15",
+     "court": "Supreme Court of India",
+     "para": "11",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 41736,
+     "case": "Arnesh Kumar v. State of Bihar & Anr",
+     "date": "2014-07-02",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000253659,
+     "case": "\u2018R\u2019 v. \u2018E\u2019 & Anr",
+     "date": "2026-09-24",
+     "court": "Supreme Court of India",
+     "para": "11/1",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 41736,
+     "case": "Arnesh Kumar v. State of Bihar & Anr",
+     "date": "2014-07-02",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 1000255144,
+     "case": "Md. Asfak Alam v. The State of Jharkhand & Anr",
+     "date": "2023-07-31",
+     "court": "Supreme Court of India",
+     "para": "12/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 1000250996,
+     "case": "Social Action Forum for Manav Adhikar and Another v. Union of India Ministry of Law and Justice and Others",
+     "date": "2018-09-14",
+     "court": "Supreme Court of India",
+     "para": "25/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 1000250634,
+     "case": "Dr. Subhash Kashinath Mahajan v. The State of Maharashtra and Anr",
+     "date": "2018-03-20",
+     "court": "Supreme Court of India",
+     "para": "36/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000254065,
+     "case": "Satender Kumar Antil v. Central Bureau of Investigation & Anr",
+     "date": "2022-07-11",
+     "court": "Supreme Court of India",
+     "para": "preamble/31",
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Arnesh Kumar (arrest must be necessary)",
+   "doc": 41736,
+   "kind": "legal",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 3,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 1000250996,
+     "case": "Social Action Forum for Manav Adhikar and Another v. Union of India Ministry of Law and Justice and Others",
+     "date": "2018-09-14",
+     "court": "Supreme Court of India",
+     "para": "24",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 43679,
+     "case": "Dr. Rini Johar & Anr v. State of M.P. & Ors",
+     "date": "2016-06-03",
+     "court": "Supreme Court of India",
+     "para": "20",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000255971,
+     "case": "Arvind Kejriwal v. Central Bureau of Investigation",
+     "date": "2024-09-13",
+     "court": "Supreme Court of India",
+     "para": "32",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000752513,
+     "case": "Kowstova Buragohain v. The State of Assam and 2 Ors",
+     "date": "2022-02-10",
+     "court": "Gauhati High Court",
+     "para": "26",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000252914,
+     "case": "Satender Kumar Antil v. Central Bureau of Investigation and Anr",
+     "date": "2026-01-15",
+     "court": "Supreme Court of India",
+     "para": "12",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000756066,
+     "case": "Aditya Haralalka v. The State of Assam and Anr",
+     "date": "2025-11-24",
+     "court": "Gauhati High Court",
+     "para": "21",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000752513,
+     "case": "Kowstova Buragohain v. The State of Assam and 2 Ors",
+     "date": "2022-02-10",
+     "court": "Gauhati High Court",
+     "para": "37/2",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 1000254065,
+     "case": "Satender Kumar Antil v. Central Bureau of Investigation & Anr",
+     "date": "2022-07-11",
+     "court": "Supreme Court of India",
+     "para": "preamble/26",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 1000255914,
+     "case": "Shajan Skaria v. The State of Kerala & Anr",
+     "date": "2024-08-23",
+     "court": "Supreme Court of India",
+     "para": "42",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000252702,
+     "case": "Union of India v. Ashok Kumar Sharma and Others",
+     "date": "2020-08-28",
+     "court": "Supreme Court of India",
+     "para": "82/1",
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "doc": 35436,
+   "kind": "lay",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 3,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 2000253186,
+     "case": "Sunisha Anand v. State of Haryana & Anr",
+     "date": "2026-05-11",
+     "court": "Supreme Court of India",
+     "para": "5",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 1003962525,
+     "case": "C.S. Prasad v. C. Satyakumar and Others",
+     "date": "2026-01-08",
+     "court": "Supreme Court of India",
+     "para": "28",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 20481,
+     "case": "Kamaladeviagarwal v. State of West Bengal and Ors",
+     "date": "2001-10-17",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 1000251241,
+     "case": "V. Ravi Kumar v. State, Rep. by Inspector of Police, District Crime Branch, Salem, Tamil Nadu & Ors",
+     "date": "2018-12-14",
+     "court": "Supreme Court of India",
+     "para": "13",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 38171,
+     "case": "Joseph Salvaraj A v. State of Gujarat & Ors",
+     "date": "2011-07-04",
+     "court": "Supreme Court of India",
+     "para": "25",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000253384,
+     "case": "Anita Maurya and Others v. State of Uttar Pradesh and Another",
+     "date": "2026-07-23",
+     "court": "Supreme Court of India",
+     "para": "18",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000755125,
+     "case": "Arupam H. Jwahir and 6 Ors v. State of Assam and Anr",
+     "date": "2025-02-24",
+     "court": "Gauhati High Court",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000252812,
+     "case": "Rocky v. State of Telangana & Anr",
+     "date": "2025-12-04",
+     "court": "Supreme Court of India",
+     "para": "24",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000756961,
+     "case": "Moimun Nessa and 6 Ors v. State of Assam and Anr",
+     "date": "2026-09-09",
+     "court": "Gauhati High Court",
+     "para": "19",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000754291,
+     "case": "Jakir Hussain and Anr v. The State of Assam and Anr",
+     "date": "2024-04-28",
+     "court": "Gauhati High Court",
+     "para": "12",
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Md Ibrahim (civil dispute dressed as crime)",
+   "doc": 35436,
+   "kind": "legal",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 4,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 2000755125,
+     "case": "Arupam H. Jwahir and 6 Ors v. State of Assam and Anr",
+     "date": "2025-02-24",
+     "court": "Gauhati High Court",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000253225,
+     "case": "Bhikhubhai Govindbhai Patel & Anr v. The State of Gujarat & Anr",
+     "date": "2026-05-22",
+     "court": "Supreme Court of India",
+     "para": "43-44",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 44679,
+     "case": "K. Sitaram & Anr v. CFL Capital Financial Service Ltd. & Anr",
+     "date": "2006-03-29",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000754364,
+     "case": "Jahanara Rahman @ Jahanara Rohman v. The State of Assam and Anr",
+     "date": "2024-05-21",
+     "court": "Gauhati High Court",
+     "para": "17-18",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1003962525,
+     "case": "C.S. Prasad v. C. Satyakumar and Others",
+     "date": "2026-01-08",
+     "court": "Supreme Court of India",
+     "para": "28",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000755125,
+     "case": "Arupam H. Jwahir and 6 Ors v. State of Assam and Anr",
+     "date": "2025-02-24",
+     "court": "Gauhati High Court",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000253097,
+     "case": "Accamma Sam Jacob v. The State of Karnataka & Anr. etc",
+     "date": "2026-04-13",
+     "court": "Supreme Court of India",
+     "para": "3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000253097,
+     "case": "Accamma Sam Jacob v. The State of Karnataka & Anr. etc",
+     "date": "2026-04-13",
+     "court": "Supreme Court of India",
+     "para": "4",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000753709,
+     "case": "Kemmar Kamsi v. The State of AP and Anr",
+     "date": "2023-08-11",
+     "court": "Gauhati High Court",
+     "para": "6",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000252812,
+     "case": "Rocky v. State of Telangana & Anr",
+     "date": "2025-12-04",
+     "court": "Supreme Court of India",
+     "para": "24",
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "doc": 42630,
+   "kind": "lay",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 1,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 1000252868,
+     "case": "Murali v. State Rep. by the Inspector of Police",
+     "date": "2021-01-05",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000251152,
+     "case": "Sy. Azhar Sy. Kalandar v. State of Maharashtra & Anr",
+     "date": "2021-09-13",
+     "court": "Supreme Court of India",
+     "para": "10-11",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 29890,
+     "case": "Hasi Mohan Barman & Anr v. State of Assam & Anr",
+     "date": "2007-11-13",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 1000255935,
+     "case": "Suraj Singh Gujar & Anr v. The State of Madhya Pradesh & Ors",
+     "date": "2024-08-30",
+     "court": "Supreme Court of India",
+     "para": "6",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 41778,
+     "case": "Yogendra Yadav & Ors v. The State of Jharkhand & Anr",
+     "date": "2014-07-21",
+     "court": "Supreme Court of India",
+     "para": "7",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 39579,
+     "case": "Gian Singh v. State of Punjab & Another",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 38847,
+     "case": "Shiji @ Pappu and Ors v. Radhika and Anr",
+     "date": "2011-11-14",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 1000252868,
+     "case": "Murali v. State Rep. by the Inspector of Police",
+     "date": "2021-01-05",
+     "court": "Supreme Court of India",
+     "para": "12",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000753067,
+     "case": "Riaz Uddin @ Riaz Uddin Ahmed v. The State of Assam and Anr",
+     "date": "2022-11-11",
+     "court": "Gauhati High Court",
+     "para": "19",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 39579,
+     "case": "Gian Singh v. State of Punjab & Another",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Nanda Gopalan (compromise, grievous hurt)",
+   "doc": 42630,
+   "kind": "legal",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 0,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 38847,
+     "case": "Shiji @ Pappu and Ors v. Radhika and Anr",
+     "date": "2011-11-14",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 29890,
+     "case": "Hasi Mohan Barman & Anr v. State of Assam & Anr",
+     "date": "2007-11-13",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 41778,
+     "case": "Yogendra Yadav & Ors v. The State of Jharkhand & Anr",
+     "date": "2014-07-21",
+     "court": "Supreme Court of India",
+     "para": "6",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000251152,
+     "case": "Sy. Azhar Sy. Kalandar v. State of Maharashtra & Anr",
+     "date": "2021-09-13",
+     "court": "Supreme Court of India",
+     "para": "10-11",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000255935,
+     "case": "Suraj Singh Gujar & Anr v. The State of Madhya Pradesh & Ors",
+     "date": "2024-08-30",
+     "court": "Supreme Court of India",
+     "para": "6",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 39579,
+     "case": "Gian Singh v. State of Punjab & Another",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 1000252929,
+     "case": "Pravat Chandra Mohanty v. The State of Odisha & Anr",
+     "date": "2021-02-11",
+     "court": "Supreme Court of India",
+     "para": "42",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 32693,
+     "case": "Ishwar Singh v. State of Madhya Pradesh",
+     "date": "2008-10-17",
+     "court": "Supreme Court of India",
+     "para": "13",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000250768,
+     "case": "Manjit Singh v. The State of Punjab & Anr",
+     "date": "2019-07-22",
+     "court": "Supreme Court of India",
+     "para": "3/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 26624,
+     "case": "Bankat and Anr v. State of Maharashtra",
+     "date": "2004-11-25",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "doc": 36322,
+   "kind": "lay",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 5,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 1000252087,
+     "case": "Uttam Ram v. Devinder Singh Hudan & Anr",
+     "date": "2019-10-17",
+     "court": "Supreme Court of India",
+     "para": "20",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 1000256005,
+     "case": "M/s S.S. Production and Anr. P1: M/s S. S. Production P2: Tr. S. Subbiah v. Tr. Pavithran Prasanth",
+     "date": "2024-10-01",
+     "court": "Supreme Court of India",
+     "para": "41",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000255297,
+     "case": "Rajesh Jain v. Ajay Singh",
+     "date": "2023-10-09",
+     "court": "Supreme Court of India",
+     "para": "42",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000753193,
+     "case": "Prabhat Gogoi v. The State of Assam and Anr",
+     "date": "2023-01-05",
+     "court": "Gauhati High Court",
+     "para": "9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000755892,
+     "case": "Jiten Kalita v. Bhagirath Balmiki",
+     "date": "2025-10-15",
+     "court": "Gauhati High Court",
+     "para": "6",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 42638,
+     "case": "T. Vasanthakumar v. Vijayakumari",
+     "date": "2015-04-28",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000756203,
+     "case": "Sri Madhu Ram Deka v. The State of Assam and Anr",
+     "date": "2026-01-21",
+     "court": "Gauhati High Court",
+     "para": "22",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000756202,
+     "case": "Sri Madhu Ram Deka v. The State of Assam and Anr",
+     "date": "2026-01-21",
+     "court": "Gauhati High Court",
+     "para": "22",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000753962,
+     "case": "Narayan Barman v. The State of Assam and Anr",
+     "date": "2023-11-29",
+     "court": "Gauhati High Court",
+     "para": "12",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 28663,
+     "case": "Kamala S v. Vidyadharan M.J. & Anr",
+     "date": "2007-02-20",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Rangappa (s.139 presumption)",
+   "doc": 36322,
+   "kind": "legal",
+   "doc_rank_in_top10": 2,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 3,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 1003962620,
+     "case": "Renuka v. The State of Maharashtra and Another",
+     "date": "2026-04-07",
+     "court": "Supreme Court of India",
+     "para": "9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 36322,
+     "case": "Rangappa v. Sri Mohan",
+     "date": "2005-10-26",
+     "court": "Supreme Court of India",
+     "para": "14",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000752120,
+     "case": "Debdas Banik v. On the Death of Debabrata Das, His Legal Heir, Shibani Das and 3 Ors",
+     "date": "2021-03-15",
+     "court": "Gauhati High Court",
+     "para": "8",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000753193,
+     "case": "Prabhat Gogoi v. The State of Assam and Anr",
+     "date": "2023-01-05",
+     "court": "Gauhati High Court",
+     "para": "9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000252438,
+     "case": "Aps Forex Services PVT. LTD v. Shakti International Fashion Linkers & Ors",
+     "date": "2020-02-14",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 1000252438,
+     "case": "Aps Forex Services PVT. LTD v. Shakti International Fashion Linkers & Ors",
+     "date": "2020-02-14",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 1000256005,
+     "case": "M/s S.S. Production and Anr. P1: M/s S. S. Production P2: Tr. S. Subbiah v. Tr. Pavithran Prasanth",
+     "date": "2024-10-01",
+     "court": "Supreme Court of India",
+     "para": "40",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 1000252438,
+     "case": "Aps Forex Services PVT. LTD v. Shakti International Fashion Linkers & Ors",
+     "date": "2020-02-14",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 1000255297,
+     "case": "Rajesh Jain v. Ajay Singh",
+     "date": "2023-10-09",
+     "court": "Supreme Court of India",
+     "para": "41",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000000027,
+     "case": "M/S KOJANI\u2019S DHANKHETI THE HON\u2019BLE MR JUSTICE T VAIPHEI Vs  (2011-04-27)",
+     "date": "2011-04-27",
+     "court": "Gauhati High Court",
+     "para": "6/2",
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "doc": 37060,
+   "kind": "lay",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 1,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 1000002185,
+     "case": "State of Himachal Pradesh v. Shri Pirthi Chand and Anr",
+     "date": "1995-11-30",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 30317,
+     "case": "State of Punjab v. Baldev Singh",
+     "date": "1999-07-21",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000751942,
+     "case": "Chotan Roy @ Chotan Ray and Anr v. The State of Assam and Anr",
+     "date": "2020-08-20",
+     "court": "Gauhati High Court",
+     "para": "22",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 39909,
+     "case": "Ashok Kumar Sharma v. State of Rajasthan",
+     "date": "2013-01-09",
+     "court": "Supreme Court of India",
+     "para": "8",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000255290,
+     "case": "Ranjan Kumar Chadha v. State of Himachal Pradesh",
+     "date": "2023-10-06",
+     "court": "Supreme Court of India",
+     "para": "64/1",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 1000002185,
+     "case": "State of Himachal Pradesh v. Shri Pirthi Chand and Anr",
+     "date": "1995-11-30",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 30317,
+     "case": "State of Punjab v. Baldev Singh",
+     "date": "1999-07-21",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 26940,
+     "case": "State of Rajasthan v. Ram Chandra",
+     "date": "2005-04-12",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 30317,
+     "case": "State of Punjab v. Baldev Singh",
+     "date": "1999-07-21",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000255290,
+     "case": "Ranjan Kumar Chadha v. State of Himachal Pradesh",
+     "date": "2023-10-06",
+     "court": "Supreme Court of India",
+     "para": "56",
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Jadeja (s.50 NDPS genuine compliance)",
+   "doc": 37060,
+   "kind": "legal",
+   "doc_rank_in_top10": 2,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 1,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 39742,
+     "case": "Suresh & Ors v. State of Madhya Pradesh",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": "preamble/12",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 37060,
+     "case": "Vijaysinh Chandubha Jadeja \u2014 v. State of Gujarat \u2014",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": "9/14",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 37060,
+     "case": "Vijaysinh Chandubha Jadeja \u2014 v. State of Gujarat \u2014",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": "2/2",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 39195,
+     "case": "Myla Venkateswarlu v. The State of Andhra Pradesh",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": "7",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 39742,
+     "case": "Suresh & Ors v. State of Madhya Pradesh",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": "preamble/10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 1000250768,
+     "case": "Arif Khan @ Agha Khan v. State of Uttarakhand",
+     "date": "2018-04-27",
+     "court": "Supreme Court of India",
+     "para": "23",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 39909,
+     "case": "Ashok Kumar Sharma v. State of Rajasthan",
+     "date": "2013-01-09",
+     "court": "Supreme Court of India",
+     "para": "8",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 30317,
+     "case": "State of Punjab v. Baldev Singh",
+     "date": "1999-07-21",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000751942,
+     "case": "Chotan Roy @ Chotan Ray and Anr v. The State of Assam and Anr",
+     "date": "2020-08-20",
+     "court": "Gauhati High Court",
+     "para": "23",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 30317,
+     "case": "State of Punjab v. Baldev Singh",
+     "date": "1999-07-21",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "doc": 31821,
+   "kind": "lay",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 6,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 2000756740,
+     "case": "Smt. Lalengzauvi v. The State of Mizoram",
+     "date": "2026-07-01",
+     "court": "Gauhati High Court",
+     "para": "22",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 1000256277,
+     "case": "Rakesh Kumar Raghuvanshi v. The State of Madhya Pradesh",
+     "date": "2025-01-16",
+     "court": "Supreme Court of India",
+     "para": "22",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000001879,
+     "case": "P.N. Krishna Lal and Ors. etc. etc v. Govt. of Kerala and Anr. etc. etc",
+     "date": "1994-11-17",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000755251,
+     "case": "Lalfakawma v. State of Mizoram",
+     "date": "2025-03-25",
+     "court": "Gauhati High Court",
+     "para": "27",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000753203,
+     "case": "Kapil Dev Goswami v. The State of Assam",
+     "date": "2023-01-10",
+     "court": "Gauhati High Court",
+     "para": "33",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000753228,
+     "case": "Munna Mochahari @ Munna Mochahary v. The State of Assam and Anr",
+     "date": "2023-01-27",
+     "court": "Gauhati High Court",
+     "para": "43",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000754338,
+     "case": "Sh. Paulamchin R/b His wife Zonunpari v. State of Mizoram and Anr",
+     "date": "2024-05-13",
+     "court": "Gauhati High Court",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000756512,
+     "case": "Bipin Kumar and Anr v. The State of Assam",
+     "date": "2026-04-27",
+     "court": "Gauhati High Court",
+     "para": "34",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 1000001879,
+     "case": "P.N. Krishna Lal and Ors. etc. etc v. Govt. of Kerala and Anr. etc. etc",
+     "date": "1994-11-17",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000001879,
+     "case": "P.N. Krishna Lal and Ors. etc. etc v. Govt. of Kerala and Anr. etc. etc",
+     "date": "1994-11-17",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    }
+   ]
+  },
+  {
+   "landmark": "Noor Aga (NDPS reverse burden)",
+   "doc": 31821,
+   "kind": "legal",
+   "doc_rank_in_top10": null,
+   "n_results": 10,
+   "courts_in_top10": [
+    "Gauhati High Court",
+    "Supreme Court of India"
+   ],
+   "n_other_court_in_top10": 7,
+   "rows": [
+    {
+     "rank": 1,
+     "doc": 2000752461,
+     "case": "Sri Biswanath Pratap Singh and Anr v. The State of Assam and Anr",
+     "date": "2021-12-13",
+     "court": "Gauhati High Court",
+     "para": "21",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000752172,
+     "case": "Manirul Islam @ Manirul Zaman v. The State of Assam and Anr",
+     "date": "2021-04-09",
+     "court": "Gauhati High Court",
+     "para": "43",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000250421,
+     "case": "Mohan Lal v. The State of Punjab",
+     "date": "2018-08-16",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000756618,
+     "case": "Sh. P.C Ramnunmawia v. The State of Mizoram r/b Secretary to Govt. of Mizoram, Home Dept",
+     "date": "2026-05-24",
+     "court": "Gauhati High Court",
+     "para": "93",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000752558,
+     "case": "Wetso-U Ritse v. The State of Nagaland",
+     "date": "2022-03-16",
+     "court": "Gauhati High Court",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 42608,
+     "case": "Mohan Lal v. State of Rajasthan",
+     "date": "2015-04-17",
+     "court": "Supreme Court of India",
+     "para": "13",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 1000251856,
+     "case": "Vijay Pandey v. State of Uttar Pradesh",
+     "date": "2019-07-30",
+     "court": "Supreme Court of India",
+     "para": "7",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000752283,
+     "case": "Purna Nahar Deka v. The State of Assam",
+     "date": "2021-09-10",
+     "court": "Gauhati High Court",
+     "para": "42",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000752172,
+     "case": "Manirul Islam @ Manirul Zaman v. The State of Assam and Anr",
+     "date": "2021-04-09",
+     "court": "Gauhati High Court",
+     "para": "42",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000753998,
+     "case": "Shri Wilson Domeh v. The State of Nagaland",
+     "date": "2023-12-11",
+     "court": "Gauhati High Court",
+     "para": "33",
+     "type": "reasoning"
+    }
+   ]
+  }
+ ],
+ "spot": [
+  {
+   "q": "bail in a case under the NDPS Act where the quantity is commercial: what are the twin conditions",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 2000251638,
+     "case": "Union of India v. Ajay Kumar Singh @ Pappu",
+     "date": "2023-03-28",
+     "court": "Supreme Court of India",
+     "para": "14",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000253147,
+     "case": "State of Punjab v. Sukhwinder Singh @ Gora",
+     "date": "2026-04-24",
+     "court": "Supreme Court of India",
+     "para": "8-9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000253147,
+     "case": "State of Punjab v. Sukhwinder Singh @ Gora",
+     "date": "2026-04-24",
+     "court": "Supreme Court of India",
+     "para": "8-9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 1003962677,
+     "case": "State of Punjab v. Balraj Singh @ Billa",
+     "date": "2026-06-02",
+     "court": "Supreme Court of India",
+     "para": "14",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000250373,
+     "case": "Nikesh Tarachand Shah v. Union of India & Anr",
+     "date": "2017-11-23",
+     "court": "Supreme Court of India",
+     "para": "32",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 1000255833,
+     "case": "The State of Meghalaya v. Lalrintluanga Sailo & Anr",
+     "date": "2024-07-16",
+     "court": "Supreme Court of India",
+     "para": "5",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000755845,
+     "case": "Shri Thangtinlen Changsan v. State of Nagaland and 3 Ors",
+     "date": "2025-09-24",
+     "court": "Gauhati High Court",
+     "para": "39",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000755844,
+     "case": "Mr. H. Absalom v. State of Nagaland and 3 Ors",
+     "date": "2025-09-24",
+     "court": "Gauhati High Court",
+     "para": "43",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 1000250373,
+     "case": "Nikesh Tarachand Shah v. Union of India & Anr",
+     "date": "2017-11-23",
+     "court": "Supreme Court of India",
+     "para": "33",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000255833,
+     "case": "The State of Meghalaya v. Lalrintluanga Sailo & Anr",
+     "date": "2024-07-16",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 2
+  },
+  {
+   "q": "can anticipatory bail be granted with conditions and for how long does it last",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "date": "2020-01-29",
+     "court": "Supreme Court of India",
+     "para": "1/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 1000255144,
+     "case": "Md. Asfak Alam v. The State of Jharkhand & Anr",
+     "date": "2023-07-31",
+     "court": "Supreme Court of India",
+     "para": "10/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "date": "2020-01-29",
+     "court": "Supreme Court of India",
+     "para": "78/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "date": "2020-01-29",
+     "court": "Supreme Court of India",
+     "para": "43",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "date": "2020-01-29",
+     "court": "Supreme Court of India",
+     "para": "77",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 4562,
+     "case": "Gurbaksh Singh Sibbia etc v. State of Punjab",
+     "date": "1980-04-09",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 1000252377,
+     "case": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+     "date": "2020-01-29",
+     "court": "Supreme Court of India",
+     "para": "43",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 1000253107,
+     "case": "Nathu Singh v. State of Uttar Pradesh & Ors",
+     "date": "2021-05-28",
+     "court": "Supreme Court of India",
+     "para": "14",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 42903,
+     "case": "Bhadresh Bipinbhai Sheth v. State of Gujarat & Another",
+     "date": "2013-05-18",
+     "court": "Supreme Court of India",
+     "para": "23/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000255956,
+     "case": "Dhanraj Aswani v. Amar S. Mulchandani & Anr",
+     "date": "2024-09-09",
+     "court": "Supreme Court of India",
+     "para": "34",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 0
+  },
+  {
+   "q": "quashing of an FIR when the parties have settled, the power of the High Court",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 2000753872,
+     "case": "Sukinath Bhowmik and Anr v. The State of Assam",
+     "date": "2023-10-09",
+     "court": "Gauhati High Court",
+     "para": "10/1",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000753953,
+     "case": "Teshi Peter and Anr v. The State of AP",
+     "date": "2023-11-23",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000754163,
+     "case": "Tamchi Mongku and 3 Ors v. The State of AP",
+     "date": "2024-03-05",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000756832,
+     "case": "Tatar Mosi and 2 Ors v. The State of AP",
+     "date": "2026-08-10",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000756833,
+     "case": "Nyijum Rakshap and 2 Ors v. The State of AP",
+     "date": "2026-08-11",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000754471,
+     "case": "Ngurang Rana and 2 Ors v. The State of AP",
+     "date": "2024-07-14",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000754120,
+     "case": "Jilpa Nima Dulom and Anr v. The State of AP",
+     "date": "2024-02-22",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000754145,
+     "case": "Pate Ruja and 2 Ors v. The State of AP",
+     "date": "2024-02-28",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000754381,
+     "case": "Yane Raji and Anr v. The State of AP",
+     "date": "2024-05-29",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000754903,
+     "case": "Nabam Rama and Anr v. The State of AP",
+     "date": "2024-12-01",
+     "court": "Gauhati High Court",
+     "para": "61",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 10
+  },
+  {
+   "q": "delay in lodging the FIR and its effect on the prosecution case",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 2000753787,
+     "case": "Sri Sirish Das v. The State of Assam and Anr",
+     "date": "2023-08-30",
+     "court": "Gauhati High Court",
+     "para": "55",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000756623,
+     "case": "Sanjib Mazumdar @ Bul v. The State of Assam and Anr",
+     "date": "2026-05-25",
+     "court": "Gauhati High Court",
+     "para": "39",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 31425,
+     "case": "Ashok Kumar Chaudhary & Ors v. State of Bihar",
+     "date": "2008-05-05",
+     "court": "Supreme Court of India",
+     "para": "15",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000753472,
+     "case": "Nakul Boro v. The State of Assam",
+     "date": "2023-05-30",
+     "court": "Gauhati High Court",
+     "para": "38",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 40109,
+     "case": "Jeewan & Ors v. State of Uttarakhand",
+     "date": "2012-12-13",
+     "court": "Supreme Court of India",
+     "para": "29",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 39321,
+     "case": "Jitender Kumar v. State of Haryana",
+     "date": "2012-05-08",
+     "court": "Supreme Court of India",
+     "para": "30",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000756355,
+     "case": "Sh. P. Lalhmachhuana v. The State of Mizoram and Anr",
+     "date": "2026-03-01",
+     "court": "Gauhati High Court",
+     "para": "35/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000253138,
+     "case": "Adalat Yadav etc v. The State of Bihar",
+     "date": "2026-04-22",
+     "court": "Supreme Court of India",
+     "para": "9/1",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 2000752172,
+     "case": "Manirul Islam @ Manirul Zaman v. The State of Assam and Anr",
+     "date": "2021-04-09",
+     "court": "Gauhati High Court",
+     "para": "34",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 1000251032,
+     "case": "State of Madhya Pradesh v. Chhaakki Lal and Another",
+     "date": "2018-09-26",
+     "court": "Supreme Court of India",
+     "para": "25",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 5
+  },
+  {
+   "q": "when can a dying declaration alone be the basis of a conviction",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 39842,
+     "case": "Krishan v. State of Haryana",
+     "date": "2012-12-13",
+     "court": "Supreme Court of India",
+     "para": "15",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 34045,
+     "case": "Mohd. Asif v. State of Uttaranchal",
+     "date": null,
+     "court": "Supreme Court of India",
+     "para": "8/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000255574,
+     "case": "Naeem v. State of Uttar Pradesh",
+     "date": "2024-03-05",
+     "court": "Supreme Court of India",
+     "para": "7",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 43717,
+     "case": "Raju Devade v. State of Maharashtra",
+     "date": "1989-03-04",
+     "court": "Supreme Court of India",
+     "para": "28",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000255746,
+     "case": "Rajendra S/O Ramdas Kolhe v. State of Maharashtra",
+     "date": "2024-05-15",
+     "court": "Supreme Court of India",
+     "para": "25",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000755954,
+     "case": "Prabin Phukan @ Bira v. The State of Assam",
+     "date": "2025-10-29",
+     "court": "Gauhati High Court",
+     "para": "40",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 41743,
+     "case": "Umakant & Anr v. State of Chhatisgarh",
+     "date": "2010-09-24",
+     "court": "Supreme Court of India",
+     "para": "1-2",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000755012,
+     "case": "Sri Shabilal Chetry v. The State of Assam",
+     "date": "2025-01-07",
+     "court": "Gauhati High Court",
+     "para": "49",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 30402,
+     "case": "Shaik Nagoor v. State of A.P. rep. by its Public Prosecutor, High Court of A.P., Hyderabad",
+     "date": "2008-02-20",
+     "court": "Supreme Court of India",
+     "para": "10",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000754011,
+     "case": "Shyamoli Biswas v. The State of Assam",
+     "date": "2023-12-15",
+     "court": "Gauhati High Court",
+     "para": "45",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 3
+  },
+  {
+   "q": "possession of a firearm without licence under the Arms Act, conviction and sentence",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 2000755305,
+     "case": "Bhakta Chakma v. The State of AP and Anr",
+     "date": "2025-04-08",
+     "court": "Gauhati High Court",
+     "para": "33-34",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 12312,
+     "case": "Paras Ram v. State of Haryana",
+     "date": "1992-10-20",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 2000000424,
+     "case": "Sultan Uddin v. The State of Assam & Anr",
+     "date": "2015-07-24",
+     "court": "Gauhati High Court",
+     "para": "148",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 1000253472,
+     "case": "Surinder Singh v. State (Union Territory of Chandigarh)",
+     "date": "2021-11-26",
+     "court": "Supreme Court of India",
+     "para": "28",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 6535,
+     "case": "Mahendra Singh v. State of West Bengal",
+     "date": "1973-04-24",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000752069,
+     "case": "Biman Borah v. The State of Assam",
+     "date": "2021-02-17",
+     "court": "Gauhati High Court",
+     "para": "16",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000755305,
+     "case": "Bhakta Chakma v. The State of AP and Anr",
+     "date": "2025-04-08",
+     "court": "Gauhati High Court",
+     "para": "17",
+     "type": "argument"
+    },
+    {
+     "rank": 8,
+     "doc": 42738,
+     "case": "The State rep. by the Inspector of Police, \u2018Q\u2019 Branch C.I.D.,Tirunelveli Range, Tamil Nadu v. Mariya Anton Vijay",
+     "date": "2015-07-01",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 10465,
+     "case": "Baldev Singh & Anr v. State of Punjab",
+     "date": "1995-10-13",
+     "court": "Supreme Court of India",
+     "para": "2-3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 30987,
+     "case": "Pravin v. State of Madhya Pradesh",
+     "date": "2008-03-25",
+     "court": "Supreme Court of India",
+     "para": "28",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 4
+  },
+  {
+   "q": "default bail when the chargesheet is not filed within 60 or 90 days",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 1003962695,
+     "case": "Shaurya Sunil Kumar Singh v. Central Bureau of Investigation",
+     "date": "2026-07-01",
+     "court": "Supreme Court of India",
+     "para": "23",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 1000250154,
+     "case": "Rakesh Kumar Paul v. State of Assam",
+     "date": "2017-08-16",
+     "court": "Supreme Court of India",
+     "para": "17",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000254853,
+     "case": "Enforcement Directorate, Government of India v. Kapil Wadhawan & Anr. etc",
+     "date": "2023-03-27",
+     "court": "Supreme Court of India",
+     "para": "34/3",
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 2000253166,
+     "case": "Md. Ariz Hasnain @ Ariz Hasnain v. State of Jharkhand",
+     "date": "2026-04-30",
+     "court": "Supreme Court of India",
+     "para": "28",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 1000252775,
+     "case": "Saravanan v. State Rep. by the Inspector of Police",
+     "date": "2020-10-15",
+     "court": "Supreme Court of India",
+     "para": "9/1",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 1000252775,
+     "case": "Saravanan v. State Rep. by the Inspector of Police",
+     "date": "2020-10-15",
+     "court": "Supreme Court of India",
+     "para": "9/2",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 1000254853,
+     "case": "Enforcement Directorate, Government of India v. Kapil Wadhawan & Anr. etc",
+     "date": "2023-03-27",
+     "court": "Supreme Court of India",
+     "para": "38",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 1003962695,
+     "case": "Shaurya Sunil Kumar Singh v. Central Bureau of Investigation",
+     "date": "2026-07-01",
+     "court": "Supreme Court of India",
+     "para": "20",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 1000254853,
+     "case": "Enforcement Directorate, Government of India v. Kapil Wadhawan & Anr. etc",
+     "date": "2023-03-27",
+     "court": "Supreme Court of India",
+     "para": "50",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000253642,
+     "case": "Jaskaran Jeet Singh Deol v. State of Punjab",
+     "date": "2026-09-21",
+     "court": "Supreme Court of India",
+     "para": "34",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 0
+  },
+  {
+   "q": "criminal trespass and cheating over a land dispute in Assam",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 2000000171,
+     "case": "Biren Chautal v. The State of Assam",
+     "date": "2012-07-17",
+     "court": "Gauhati High Court",
+     "para": "18",
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 2000756497,
+     "case": "Renubala Ghosh and Anr v. The State of Assam and Anr",
+     "date": "2026-04-22",
+     "court": "Gauhati High Court",
+     "para": "22",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 1000255028,
+     "case": "Sri Gulam Mustafa v. The State of Karnataka & Anr",
+     "date": "2023-05-10",
+     "court": "Supreme Court of India",
+     "para": "20",
+     "type": "argument"
+    },
+    {
+     "rank": 4,
+     "doc": 2000750198,
+     "case": "Tohar Ali and 3 Ors v. The State of Assam and Anr",
+     "date": "2018-03-07",
+     "court": "Gauhati High Court",
+     "para": "9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000000037,
+     "case": "Smti Heera Barua v. Piush Agarwal D Agarwal",
+     "date": "2011-05-31",
+     "court": "Gauhati High Court",
+     "para": "18",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 2000756961,
+     "case": "Moimun Nessa and 6 Ors v. State of Assam and Anr",
+     "date": "2026-09-09",
+     "court": "Gauhati High Court",
+     "para": "15",
+     "type": "argument"
+    },
+    {
+     "rank": 7,
+     "doc": 2000750648,
+     "case": "Abdul Jalil and 2 Ors v. The State of Assam and Anr",
+     "date": "2018-09-27",
+     "court": "Gauhati High Court",
+     "para": "preamble/11",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 2000751260,
+     "case": "Biswajit Paul v. State of Assam and 6 Ors",
+     "date": "2019-07-25",
+     "court": "Gauhati High Court",
+     "para": "8-9",
+     "type": "reasoning"
+    },
+    {
+     "rank": 9,
+     "doc": 13086,
+     "case": "State of Rajasthan etc., Gokula and Another v. Ram Bharosi & Ors., State of Rajasthan",
+     "date": "1998-08-12",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000750030,
+     "case": "Kailash Ch. Sarma v. Manoj Kalita",
+     "date": "2018-01-12",
+     "court": "Gauhati High Court",
+     "para": "5",
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 8
+  },
+  {
+   "q": "Armed Forces Special Powers Act and the arrest of a civilian",
+   "results": [
+    {
+     "rank": 1,
+     "doc": 4489,
+     "case": "Balkishan A. Devidayal etc v. State of Maharashtra etc",
+     "date": "1980-07-31",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 2,
+     "doc": 38684,
+     "case": "Sadhwi Pragyna Singh Thakur v. State of Maharashtra",
+     "date": "2011-09-23",
+     "court": "Supreme Court of India",
+     "para": "8",
+     "type": "reasoning"
+    },
+    {
+     "rank": 3,
+     "doc": 4489,
+     "case": "Balkishan A. Devidayal etc v. State of Maharashtra etc",
+     "date": "1980-07-31",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 4,
+     "doc": 1000252784,
+     "case": "Tofan Singh v. State of Tamil Nadu",
+     "date": "2020-10-29",
+     "court": "Supreme Court of India",
+     "para": null,
+     "type": "reasoning"
+    },
+    {
+     "rank": 5,
+     "doc": 2000754669,
+     "case": "Inspector General of Assam Rifles v. The State of Nagaland",
+     "date": "2024-09-11",
+     "court": "Gauhati High Court",
+     "para": "6",
+     "type": "reasoning"
+    },
+    {
+     "rank": 6,
+     "doc": 43775,
+     "case": "Extra Judicial Execution Victim Families Association (EEVFAM) & Anr v. Union of India & Anr",
+     "date": "2016-07-08",
+     "court": "Supreme Court of India",
+     "para": "95",
+     "type": "reasoning"
+    },
+    {
+     "rank": 7,
+     "doc": 2000754551,
+     "case": "ARMY NO. 15715017K NAGIREDLA SRINU AN ANR. Vs THE STATE OF ASSAM AND 2 ORS. (2024-08-06)",
+     "date": "2024-08-06",
+     "court": "Gauhati High Court",
+     "para": "14",
+     "type": "reasoning"
+    },
+    {
+     "rank": 8,
+     "doc": 39284,
+     "case": "General Officer Commanding v. CBI & Anr",
+     "date": "2012-05-01",
+     "court": "Supreme Court of India",
+     "para": "8-9",
+     "type": "argument"
+    },
+    {
+     "rank": 9,
+     "doc": 43775,
+     "case": "Extra Judicial Execution Victim Families Association (EEVFAM) & Anr v. Union of India & Anr",
+     "date": "2016-07-08",
+     "court": "Supreme Court of India",
+     "para": "94",
+     "type": "reasoning"
+    },
+    {
+     "rank": 10,
+     "doc": 2000000151,
+     "case": "I C 62912 F, Major Sowmithri S v. The State of Assam and Ors",
+     "date": "2012-06-05",
+     "court": "Gauhati High Court",
+     "para": null,
+     "type": "reasoning"
+    }
+   ],
+   "n_other_court": 3
+  }
+ ],
+ "usage_today": {
+  "date": "2026-10-26",
+  "searches": 21,
+  "rerank_tokens": 324442,
+  "daily_cap": 5000000,
+  "dollars_estimate": 0.0163
+ }
+}

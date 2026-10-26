@@ -1,0 +1,56 @@
+{
+ "index": {
+  "index_commit": "d8811a910c73b0159bea7bcf3183ea258120db5b",
+  "passages": 420893,
+  "passages_main": 418286,
+  "documents": 19255,
+  "side_indexes": [
+   {
+    "dir": "2026-10-09_correcting_judgments",
+    "manifest_sha256": "460830eb812ae0ba2849e463dfdf02ac375839795df54d7fc78810c3534cab83",
+    "documents": 17,
+    "passages": 2572
+   },
+   {
+    "dir": "2026-10-09_fetched_documents",
+    "manifest_sha256": "936889d09f6c05f3fd13ce517b4a58340db3a9b7ba19880aada47b0e4c8d796f",
+    "documents": 1,
+    "passages": 12
+   },
+   {
+    "dir": "2026-10-09_fetched_shivangi_bansal",
+    "manifest_sha256": "be0fec4b276821b1ed794dc30d013d40c9da5a5bbf26f7bb79aaf1d284af1199",
+    "documents": 1,
+    "passages": 23
+   }
+  ],
+  "as_of": "2026-10-16",
+  "embed_model": "voyage-law-2",
+  "documents_without_title": 326,
+  "vector_dtype": "float16",
+  "vector_dim": 1024,
+  "load_seconds": 130.5,
+  "names_table": {
+   "rows": 19255,
+   "named": 19147,
+   "built": "2026-10-26T04:15:09Z",
+   "index_commit": "d8811a910c73b0159bea7bcf3183ea258120db5b"
+  },
+  "courts": {
+   "Supreme Court of India": 11702,
+   "Gauhati High Court": 7553
+  },
+  "as_of_by_court": {
+   "Supreme Court of India": "2026-10-16",
+   "Gauhati High Court": "2026-10-14"
+  },
+  "documents_named_from_opening_lines": 5687
+ },
+ "disk_mb_index_files": 994.1,
+ "vectors_mb_in_memory": 862.0,
+ "passage_text_mb_chars": 410.2,
+ "rss_mb_before_load": 38.0,
+ "rss_mb_after_load": 2543.0,
+ "rss_mb_peak": 2989.0,
+ "load_seconds_total": 131.0
+}

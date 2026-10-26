@@ -40,13 +40,31 @@ gz(os.path.join(crawl, "shards", "000250.jsonl.gz"), [
     {"id": "251", "status": "ok", "bytes": "100", "text": "garbled text with no caption at all"}])
 work = {"1952_1_172_178": {"path": "1952_1_172_178", "key": "data/pdf/year=1952/english/1952_1_172_178_EN.pdf", "title": "ADAMJI UMAR DALAL versus THE STATE OF BOMBAY", "petitioner": "ADAMJI UMAR DALAL", "respondent": "THE STATE OF BOMBAY",
         "decision_date": "26-11-1951", "citation": "[1952] 1 S.C.R. 172", "case_id": "1951 INSC 54", "cnr": "C1", "size": "1000"}}
+gz(os.path.join(idx, "index", "b.meta.jsonl.gz"), [{"doc": d, "i": 0, "text": "x"} for d in (2000000001, 2000000002, 2000000003, 2000000004)])
+gz(os.path.join(idx, "index", "b.docs.jsonl.gz"), [
+    {"doc": 2000000001, "passages": 1, "src": {"source": "ghc_post2017", "title": "Dinathso Chaitom Vs THE STATE OF AP", "date": "2020-12-17", "citation": "Crl.Petn./52/2020", "case_id": "Crl.Petn./52/2020", "court": "Gauhati High Court",
+                                                "neutral_citation": "None", "url": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2020/court=18_6/x.pdf"}},
+    {"doc": 2000000002, "passages": 1, "src": {"source": "sci_newer", "title": "BALJINDER SINGH @ LADOO AND OTHERS versus STATE OF PUNJAB", "date": "2024-09-25", "citation": "2024 INSC 738", "case_id": "38050/2011",
+                                                "court": "Supreme Court of India", "url": "https://api.sci.gov.in/supremecourt/2011/38050/x.pdf"}},
+    {"doc": 2000000003, "passages": 1, "src": {"source": "ghc_court", "title": "SHRI UMA SHANKAR MISHRA Vs M/S FAMILY CREDIT LIMITED & 5 ORS.", "date": "2017-10-31", "citation": "Crl.Pet. 925/2016", "case_id": "Crl.Pet. 925/2016",
+                                                "court": "Gauhati High Court", "url": "https://ghconline.gov.in/Judgment/CrlPet9252016.pdf"}},
+    {"doc": 2000000004, "passages": 1, "src": {"source": "ghc_post2017", "title": "No Court Given Vs Someone", "date": "2021-01-01", "citation": "WP/1/2021", "url": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/y.pdf"}}])
 rows, stats, n_side = B.build(idx, crawl, work, [])
 by = {r["doc"]: r for r in rows}
 check("a crawl judgment is read from its own header, dated and linked to the court's archive", by[250]["name"] == "Kangsari Haldar & Another v. The State of West Bengal" and by[250]["date"] == "1959-12-18" and by[250]["link"].endswith("/judis/250.pdf") and by[250]["link_kind"] == "court_archive_pdf" and by[250]["citations"].get("air"), by[250])
 check("an unreadable header falls back to the index's case record", by[251]["name"] == "The State v. Beema" and by[251]["name_source"] == "index_case_record" and by[251]["date"] == "1990-02-01", by[251])
 check("a bucket judgment takes its name, date, citation and PDF link from the bucket's metadata", by[1000000020]["name"] == "Adamji Umar Dalal v. The State of Bombay" and by[1000000020]["date"] == "1951-11-26" and by[1000000020]["citations"]["insc"] == "1951 INSC 54" and by[1000000020]["link"].endswith("1952_1_172_178_EN.pdf") and by[1000000020]["link_kind"] == "open_bucket_pdf", by[1000000020])
 check("a bucket judgment the list does not know is named from the index but flagged: no link, to review", by[1000000021]["link"] is None and by[1000000021]["name"] == "A v. B", by[1000000021])
-check("a row with no name is flagged for a person and keeps its link", by[250]["review"] is False and all(r["review"] == (r["name"] is None) for r in rows if r["link"]))
+check("a row with no name is flagged for a person and keeps its link", by[250]["review"] is False and all(r["review"] == (r["name"] is None) for r in rows if r["link"] and r["doc"] != 2000000004))
+check("a High Court judgment of the High Court bucket: name from 'X Vs Y', date, case number, the bucket link, and its court", by[2000000001]["name"] == "Dinathso Chaitom v. The State of AP" and by[2000000001]["court"] == "Gauhati High Court"
+      and by[2000000001]["date"] == "2020-12-17" and by[2000000001]["citations"] == {"case_no": "Crl.Petn./52/2020"} and by[2000000001]["link_kind"] == "high_court_bucket_pdf" and by[2000000001]["link"].startswith("https://indian-high-court-judgments"), by[2000000001])
+check("a newer Supreme Court judgment: neutral citation, the court's own link, labelled Supreme Court", by[2000000002]["court"] == "Supreme Court of India" and by[2000000002]["citations"]["insc"] == "2024 INSC 738" and by[2000000002]["link_kind"] == "court_site_pdf"
+      and by[2000000002]["name"].startswith("Baljinder Singh") and by[2000000002]["review"] is False, by[2000000002])
+check("a High Court judgment from the court's own site gets its own link kind", by[2000000003]["link_kind"] == "high_court_site_pdf" and by[2000000003]["court"] == "Gauhati High Court" and by[2000000003]["name"].startswith("Shri Uma Shankar Mishra"), by[2000000003])
+check("the bench glued to a party name by the court site's title is cut off", B.split_parties("TAFAR TAPPO & ORS Vs THE STATE OF ASSAM. MR MADAN B. LOKUR GOSWAMI") == ("TAFAR TAPPO & ORS", "THE STATE OF ASSAM")
+      and B.split_parties("A Vs B") == ("A", "B") and B.split_parties("A versus B. Ors") == ("A", "B. Ors") and B.split_parties("no party word here") == (None, None))
+check("a document whose court is not recorded is flagged for a person and is NOT labelled the Supreme Court", by[2000000004]["court"] == "Court not recorded" and by[2000000004]["review"] is True, by[2000000004])
+check("every older document is labelled the Supreme Court", all(by[d]["court"] == "Supreme Court of India" for d in (250, 251, 1000000020, 1000000021)))
 doc = B.write(rows, os.path.join(tmp, "t.json.gz"), {"documents": len(rows)})
 d2, byd = B.load(os.path.join(tmp, "t.json.gz"))
 check("the table round-trips", byd[250]["name"] == by[250]["name"] and d2["schema"] == B.SCHEMA)

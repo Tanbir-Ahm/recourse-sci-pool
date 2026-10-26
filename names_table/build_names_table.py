@@ -35,6 +35,10 @@ SCHEMA = "names-table-1"
 JUDIS_URL = "https://api.sci.gov.in/jonew/judis/{id}.pdf"
 BUCKET_HOST = "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/"
 BUCKET_BASE = 1_000_000_000
+NEWER_BASE = 2_000_000_000                  # documents added after the first index (2026-10): the index's own `src` record carries their title, date, citation, link and court
+NO_COURT = "Court not recorded"
+SC_COURT = "Supreme Court of India"         # every document below NEWER_BASE, and every side-index document unless its manifest says otherwise
+NEWER_LINK_KIND = {"sci_newer": "court_site_pdf", "ghc_post2017": "high_court_bucket_pdf", "ghc_bucket": "high_court_bucket_pdf", "ghc_court": "high_court_site_pdf"}
 SMALL = {"of", "and", "the", "for", "in", "on", "by", "to", "at", "a", "an", "vs", "v", "or", "etc"}
 ACRONYMS = {"UOI", "CBI", "NCT", "NIA", "NDPS", "UP", "MP", "HP", "AP", "TN", "J&K", "BSNL", "LIC", "SEBI", "RBI", "ONGC", "CRPF", "BSF", "CISF", "DDA", "MCD", "NHAI", "AIIMS", "IAS", "IPS", "IFS", "SBI", "PNB", "HDFC", "ICICI",
             "II", "III", "IV", "VI", "VII", "VIII", "IX", "XI", "XII", "LTD", "PVT", "NCERT", "UGC", "AICTE", "CPI", "CPM", "BJP", "INC", "DMK", "AIADMK"}
@@ -64,6 +68,15 @@ def display_name(pet, resp):
         return s
     p, r = one(pet), one(resp)
     return f"{p} v. {r}" if p and r else None
+
+
+def split_parties(title):
+    """('Petitioner', 'Respondent') from a title written 'X versus Y' or 'X Vs Y' (the High Court bucket's form); (None, None) when it has no such word."""
+    parts = re.split(r"\s+(?:versus|vs\.?|v/s)\s+", re.sub(r"\s+", " ", title or "").strip(), maxsplit=1, flags=re.I)
+    if len(parts) != 2:
+        return None, None
+    resp = re.split(r"\.\s*(?:MR|MRS|MS|HON'?BLE|JUSTICE)\b", parts[1], maxsplit=1, flags=re.I)[0]           # the court site's titles sometimes end with the bench: 'THE STATE OF ASSAM. MR MADAN B. LOKUR GOSWAMI'
+    return H.clean_name(parts[0]), H.clean_name(resp)
 
 
 def judis_url(doc):
@@ -184,8 +197,29 @@ def build(index_dir, crawl_dir, work, side_dirs=(), root=ROOT):
     rows, stats = [], collections.Counter()
     for d in sorted(docs):
         rec, src = docs[d]["case"], docs[d]["src"]
-        row = {"doc": d, "name": None, "petitioner": None, "respondent": None, "date": None, "year": None, "citations": {}, "name_source": None, "link": None, "link_kind": None, "review": False}
-        if d < BUCKET_BASE:
+        row = {"doc": d, "name": None, "petitioner": None, "respondent": None, "date": None, "year": None, "citations": {}, "name_source": None, "link": None, "link_kind": None, "review": False, "court": SC_COURT}
+        if d >= NEWER_BASE and src and src.get("source") in NEWER_LINK_KIND:
+            pet, resp = split_parties(src.get("title"))
+            row["petitioner"], row["respondent"], row["name_source"] = pet, resp, "index_src_title"
+            row["name"] = display_name(pet, resp) if pet and resp and not suspicious(pet, resp) else None
+            row["date"] = _iso(src.get("date"))
+            cite, neutral = str(src.get("citation") or "").strip(), str(src.get("neutral_citation") or "").strip()
+            cits = {}
+            if re.search(r"\bINSC\b", cite):
+                cits["insc"] = cite
+            elif cite:
+                cits["case_no"] = cite
+            if neutral and neutral != "None":
+                cits["neutral"] = neutral
+            if src.get("case_id") and str(src["case_id"]) != cite:
+                cits["case_id"] = str(src["case_id"])
+            row["citations"] = cits
+            url = str(src.get("url") or src.get("bucket_url") or "")
+            row["link"] = url if url.startswith(("http://", "https://")) else None
+            row["link_kind"] = NEWER_LINK_KIND[src["source"]] if row["link"] else None
+            row["court"] = str(src.get("court") or "").strip() or NO_COURT
+            row["review"] = row["court"] == NO_COURT                   # a document whose court is not recorded is flagged for a person and never labelled as the Supreme Court
+        elif d < BUCKET_BASE:
             p = crawl.get(d)
             pet = resp = None
             if p and not suspicious(p["pet"], p["resp"]):
@@ -234,7 +268,7 @@ def build(index_dir, crawl_dir, work, side_dirs=(), root=ROOT):
                 row["date"] = _iso(src.get("date"))
                 row["citations"] = {k: v for k, v in (("scr", src.get("citation")), ("insc", src.get("case_id"))) if v}
         row["year"] = int(row["date"][:4]) if row["date"] else None
-        row["review"] = row["name"] is None
+        row["review"] = row["review"] or row["name"] is None
         stats[(row["name_source"] or "none", row["name"] is not None)] += 1
         rows.append(row)
     sides = []
@@ -260,7 +294,8 @@ def build(index_dir, crawl_dir, work, side_dirs=(), root=ROOT):
             else:
                 link, kind = None, None
             rows.append({"doc": d, "name": display_name(pet, resp) if pet and resp else title, "petitioner": pet, "respondent": resp, "date": l.get("date"), "year": l.get("year"),
-                         "citations": {"insc": l["insc"]} if l.get("insc") else {}, "name_source": "side_index_manifest", "link": link, "link_kind": kind, "review": link is None})
+                         "citations": {"insc": l["insc"]} if l.get("insc") else {}, "name_source": "side_index_manifest", "link": link, "link_kind": kind, "review": link is None,
+                         "court": l.get("court") or e.get("court") or SC_COURT})
             sides.append(d)
     return rows, stats, len(sides)
 
@@ -329,19 +364,23 @@ def main(argv=None):
     ap.add_argument("--bucket", default=os.path.normpath(os.path.join(ROOT, "..", "recourse-sci-bucket-data")))
     ap.add_argument("--worklist", default=os.path.join(ROOT, "coverage", "bucket_match", "worklist.csv.gz"))
     ap.add_argument("--out", default=os.path.join(HERE, "names_table.json.gz"))
+    ap.add_argument("--sides", default=os.path.join(ROOT, "review_data", "side_index", "*"), help="glob of the side-index folders (default: the three made for index 3c80a26)")
+    ap.add_argument("--index-commit", default=None, help="the index's commit when the index folder is not a git checkout (a downloaded archive)")
     ap.add_argument("--review-sample", type=int, default=0, help="write names_table/review_sample.csv with this many random named rows plus every unnamed one")
     ap.add_argument("--verify-links", type=int, default=0, help="HEAD-check this many random links of each kind (about one second apiece)")
     a = ap.parse_args(argv)
-    sides = sorted(glob.glob(os.path.join(ROOT, "review_data", "side_index", "*")))
+    sides = sorted(glob.glob(a.sides))
     work = read_worklist(a.worklist)
     work.update(read_bucket_shards(a.bucket))
     rows, stats, n_side = build(a.index, a.crawl, work, sides)
-    head = subprocess_head(a.index)
+    head = a.index_commit or subprocess_head(a.index)
     named = sum(1 for r in rows if r["name"])
     meta = {"index_commit": head, "documents": len(rows), "named": named, "to_review": len(rows) - named, "side_index_documents": n_side,
             "by_source": {f"{k[0]}:{'named' if k[1] else 'unnamed'}": v for k, v in sorted(stats.items(), key=str)},
             "link_kinds": dict(collections.Counter(r["link_kind"] for r in rows)),
-            "bucket_credit": "Bucket judgments: open Supreme Court judgments bucket, CC-BY-4.0, Dattam Labs (s3://indian-supreme-court-judgments)."}
+            "courts": dict(collections.Counter(r.get("court") for r in rows)),
+            "bucket_credit": "Bucket judgments: open Supreme Court judgments bucket, CC-BY-4.0, Dattam Labs (s3://indian-supreme-court-judgments).",
+            "high_court_bucket_credit": "High Court bucket judgments: open Indian High Court Judgments bucket (AWS Open Data, Dattam Labs; s3://indian-high-court-judgments). Licence terms to be confirmed before public use."}
     doc = write(rows, a.out, meta)
     print(json.dumps({k: v for k, v in doc.items() if k != "rows"}, indent=1))
     if a.review_sample:

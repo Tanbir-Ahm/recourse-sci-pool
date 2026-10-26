@@ -47,6 +47,8 @@ RERANK_MODEL = "rerank-3-lite"
 PRICE_RERANK, PRICE_EMBED = 0.05, 0.12          # dollars per million tokens, as in review_tools/pool_runner.py (estimates; the service's own counts are what is billed)
 DEFAULT_SIDE_INDEXES = ("review_data/side_index/2026-10-09_correcting_judgments", "review_data/side_index/2026-10-09_fetched_documents", "review_data/side_index/2026-10-09_fetched_shivangi_bansal")
 TIER = "wider_pool_not_independently_verified"
+COURT_DEFAULT = "Supreme Court of India"       # every document of the first index, and any result row of a names table made before the table had a court column
+COURT_UNKNOWN = "Court not recorded"           # a document the names table does not know: never labelled as the Supreme Court
 DISCLAIMER = ("These passages come from a search of a much wider judgment database. Nobody at Recourse has read and confirmed them. Read the real judgment yourself, or with a lawyer, before relying on it. "
               "This search does not say whether a decision is still good law.")
 MAX_QUESTION = 2000
@@ -105,6 +107,21 @@ def _title_table(index_dirs):
     return case_meta, src_title
 
 
+def _src_courts(index_dirs):
+    """doc -> the court its own source record names (only the newer documents carry one), so that a High Court document is never taken for a Supreme Court one even when no names table is loaded."""
+    out = {}
+    for d in index_dirs:
+        for f in glob.glob(os.path.join(d, "index", "*.docs.jsonl.gz")):
+            with gzip.open(f, "rt", encoding="utf-8") as fh:
+                for line in fh:
+                    if line.strip():
+                        r = json.loads(line)
+                        src = r.get("src")
+                        if isinstance(src, dict) and src.get("court"):
+                            out[r["doc"]] = str(src["court"]).strip()
+    return out
+
+
 def _make_title(case_meta, src_title, extra=None, header=None):
     def title(doc):
         c = case_meta.get(doc)
@@ -132,6 +149,30 @@ def _latest_date(title_strings):
     return best.isoformat() if best else None
 
 
+def court_of(doc, names, src_courts):
+    """The court of one document: the names table's court column, else the court the document's own source record names, else (a names table that has no court column, or none at all) the Supreme Court,
+    which is what every document of the first index was. A document that a loaded table does not know has an unknown court."""
+    nm = names.get(doc) if names else None
+    if nm and nm.get("court"):
+        return nm["court"]
+    if doc in src_courts:
+        return src_courts[doc]
+    return COURT_UNKNOWN if (names and nm is None) else COURT_DEFAULT
+
+
+def court_summary(docs, names, src_courts, today=None):
+    """({court: judgments}, {court: latest decision date}, latest date overall). The dates come from the names table (ISO dates; a date after today is a typing error in the source and is ignored)."""
+    today = (today or datetime.date.today()).isoformat()
+    count, latest = collections.Counter(), {}
+    for d in docs:
+        court = court_of(d, names, src_courts)
+        count[court] += 1
+        dt = ((names or {}).get(d) or {}).get("date")
+        if dt and dt <= today and dt > latest.get(court, ""):
+            latest[court] = dt
+    return dict(count), latest, (max(latest.values()) if latest else None)
+
+
 def git_head(path):
     f = os.path.join(path, "INDEX_COMMIT")
     if os.path.exists(f):
@@ -149,6 +190,7 @@ class SearchService:
         self.info = info or {}
         self.rerank_model, self.daily_cap, self.max_text, self.clock, self.sleep, self.enabled = rerank_model, daily_rerank_tokens, max_text, clock, sleep, enabled
         self.header_docs = set()
+        self.src_courts = {}
         self.names = {}
         self.lock = threading.Lock()
         self.day, self.rerank_today, self.embed_today, self.searches_today = None, 0, 0, 0
@@ -171,6 +213,7 @@ class SearchService:
             extra.update(ex)
             sides.append(info)
         case_meta, src_title = _title_table([index_dir])
+        src_courts = _src_courts([index_dir] + [d for d in side_dirs])
         header = {}
         for m in metas:
             if m["doc"] not in header and (m["section"] == "header" or str(m["pn"]).startswith("preamble")):
@@ -190,6 +233,11 @@ class SearchService:
             info["names_table"] = {"rows": len(svc.names), "named": nd.get("named"), "built": nd.get("built"), "index_commit": nd.get("index_commit")}
             if nd.get("index_commit") and head and nd["index_commit"] != head:
                 raise ValueError(f"the names table was built for index {nd['index_commit'][:7]}, not {head[:7]}; rebuild it (names_table/build_names_table.py)")
+        svc.src_courts = src_courts
+        courts, as_of_by_court, newest = court_summary(docs, svc.names, src_courts)
+        info["courts"], info["as_of_by_court"] = courts, as_of_by_court
+        if newest:
+            info["as_of"] = newest                     # the latest decision date among all the judgments (the title-based date above only reads dd-mm-yyyy titles, which the newer documents do not have)
         svc.header_docs = {d for d in docs if not ((case_meta.get(d) or {}).get("pet") or (case_meta.get(d) or {}).get("resp")) and d not in src_title and d not in extra}
         info["documents_named_from_opening_lines"] = len(svc.header_docs) - info["documents_without_title"]
         return svc
@@ -267,10 +315,10 @@ class SearchService:
                 m = self.metas[rid]
                 text = re.sub(r"[ \t]+", " ", m["text"]).strip()
                 nm = self.names.get(m["doc"])
-                results.append({"rank": rank, "doc": m["doc"], "case_name": (nm or {}).get("name") or self.title(m["doc"]), "date": (nm or {}).get("date"), "citations": (nm or {}).get("citations") or {},
+                results.append({"rank": rank, "doc": m["doc"], "court": court_of(m["doc"], self.names, self.src_courts), "case_name": (nm or {}).get("name") or self.title(m["doc"]), "date": (nm or {}).get("date"), "citations": (nm or {}).get("citations") or {},
                                 "link": (nm or {}).get("link"), "link_kind": (nm or {}).get("link_kind"), "name_to_review": bool(nm["review"]) if nm else None, "paragraph": m["pn"], "page": m.get("page"), "name_is_opening_lines": (m["doc"] in self.header_docs) if not nm else (nm["name"] is None), "passage_type": m["section"], "score": round(float(score), 4),
                                 "text": text[: self.max_text] + ("..." if len(text) > self.max_text else ""), "passage_id": m["h"]})
-            return {"ok": True, "tier": TIER, "recipe": "B", "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "disclaimer": DISCLAIMER,
+            return {"ok": True, "tier": TIER, "recipe": "B", "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "as_of_by_court": self.info.get("as_of_by_court") or {}, "disclaimer": DISCLAIMER,
                     "seconds": round(time.time() - t0, 2), "usage": usage, "results": results}
 
     def health(self):
@@ -495,7 +543,8 @@ def make_server(service, host, port, token):
 
 def serve(service, host, port, token):
     srv = make_server(service, host, port, token)
-    print(f"sci-search listening on {host}:{port}; index {service.info.get('index_commit', '?')[:10] if service.info.get('index_commit') else '?'}, {service.info.get('passages'):,} passages", flush=True)
+    print(f"sci-search listening on {host}:{port}; index {service.info.get('index_commit', '?')[:10] if service.info.get('index_commit') else '?'}, {service.info.get('passages'):,} passages; "
+          f"{service.info.get('documents'):,} judgments ({', '.join(f'{k} {v:,}' for k, v in (service.info.get('courts') or {}).items())}); ends {service.info.get('as_of')}", flush=True)
     srv.serve_forever()
 
 

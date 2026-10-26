@@ -166,6 +166,26 @@ ms.server_close()
 
 # ---- the command line refuses to start open ----
 env = dict(os.environ); env.pop("SCI_SEARCH_TOKEN", None)
+# ---- the court of each result (the newer index holds Gauhati High Court judgments beside the Supreme Court's) ----
+import datetime
+check("without a names table every result is labelled the Supreme Court, as before the table had a court column", all(r["court"] == S.COURT_DEFAULT for r in res["results"]) and res["as_of_by_court"] == {})
+names_old = {100: {"name": "A v. B", "date": "2020-02-01", "review": False}}                                                   # a row of the old table: no court column
+names_new = {100: {"name": "A v. B", "date": "2020-02-01", "review": False, "court": "Gauhati High Court"}, 101: {"name": "C v. D", "date": "2026-10-16", "review": False, "court": "Supreme Court of India"},
+             102: {"name": "E v. F", "date": "2999-01-01", "review": False, "court": "Gauhati High Court"}}
+check("court_of: the names table's column wins; a row without the column is the Supreme Court; a document a loaded table does not know is NOT labelled the Supreme Court",
+      S.court_of(100, names_new, {}) == "Gauhati High Court" and S.court_of(100, names_old, {}) == S.COURT_DEFAULT and S.court_of(555, names_new, {}) == S.COURT_UNKNOWN and S.court_of(555, {}, {}) == S.COURT_DEFAULT)
+check("court_of: with no table row, the court the document's own source record names is used", S.court_of(555, {}, {555: "Gauhati High Court"}) == "Gauhati High Court" and S.court_of(555, names_new, {555: "Gauhati High Court"}) == "Gauhati High Court")
+cnt, latest, newest = S.court_summary([100, 101, 102, 555], names_new, {}, today=datetime.date(2026, 10, 26))
+check("court_summary: judgments and latest decision date per court; a date in the future is ignored; an unknown document is counted under 'not recorded'",
+      cnt == {"Gauhati High Court": 2, "Supreme Court of India": 1, S.COURT_UNKNOWN: 1} and latest == {"Gauhati High Court": "2020-02-01", "Supreme Court of India": "2026-10-16"} and newest == "2026-10-16", (cnt, latest, newest))
+s3 = svc(); s3.names = names_new; s3.src_courts = {}
+r3 = s3.search(Q)
+by_doc = {r["doc"]: r["court"] for r in r3["results"]}
+check("a result carries the court of its judgment (names table), and an unlisted one is labelled 'not recorded'", by_doc.get(100) in (None, "Gauhati High Court") and set(by_doc.values()) <= {"Gauhati High Court", "Supreme Court of India", S.COURT_UNKNOWN}
+      and S.COURT_DEFAULT not in [c for d, c in by_doc.items() if d not in names_new], by_doc)
+s3.info = {**s3.info, "as_of_by_court": {"Gauhati High Court": "2026-10-14", "Supreme Court of India": "2026-10-16"}}
+check("the reply names the latest decision date of each court", s3.search(Q)["as_of_by_court"] == {"Gauhati High Court": "2026-10-14", "Supreme Court of India": "2026-10-16"})
+
 import subprocess
 p = subprocess.run([sys.executable, os.path.join(HERE, "sci_search_service.py"), "serve", "--host", "0.0.0.0"], capture_output=True, text=True, env={**env, "SCI_INDEX_DIR": "/nonexistent"}, timeout=60)
 check("serve without SCI_SEARCH_TOKEN does not start", p.returncode != 0)
