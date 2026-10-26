@@ -125,3 +125,31 @@ Page summary (one row per page and tool): gist correct (yes / no); number of Cri
 3. **Design rule confirmed:** the tool must show the page image beside the text, strip invented captions, and flag lines where two readers disagree or where numbers repeat inconsistently. Sideways pages need rotating first. Each page should be read both with and without the language setting, and the two readings compared.
 
 **Still to run:** Gemini and Google Cloud Vision at full resolution (no key available yet), the line-by-line strip method with two readers, Jurisphere and Niyam (upload the same pages), and a person marking the Assamese pages against a reference translation.
+
+### 10b. First real reference and the line-strip method (recorded 2026-10-26; counts only, no case text)
+
+**What was tested.** One handwritten Assamese complaint page (a 1,217 x 892 px image). The lawyer's side supplied the meaning in English as a gist (not word for word), so the page was scored on 15 facts it states: the district, "Sir", the incident date, about 7 pm, the husband and his name, age, "not at home", "came drunk", "dragged out", "various body parts", "near-dying", the date found, the word for FIR, and the request for action. Matching is strict: a fact counts only if the expected word or number appears. A near miss such as a drink word spelled slightly differently is counted as a miss.
+
+| Reading of the same image | Facts found (of 15) |
+|---|---|
+| Gemini 3.5 Flash, whole page, run 1 | 9 |
+| Gemini 3.5 Flash, whole page, run 2 | 12 |
+| Gemini 3.5 Flash-Lite, whole page | 10 |
+| Sarvam Vision, full-resolution page | 8 |
+| Gemini 3.5 Flash, line strips | 8 |
+| Gemini 3.5 Flash-Lite, line strips | 6 |
+| Sarvam Vision, line strips | 6 |
+
+**Findings**
+1. **Cutting the page into enlarged line strips did not help.** Each model scored the same or lower on strips than on the whole page. The two whole-page runs of the same Gemini model differed by 3 facts, so the strip effect is inside the model's own run-to-run noise. This is one image, so it is a first signal, not a verdict.
+2. **No reading got the incident date right except one run.** Whole-page and strip readings gave 26, 27 or an unresolved digit for a date that the reference gives as 29. Only one whole-page Gemini run read 29.
+3. **All three strip readers agreed on the husband's age and all were wrong** (they read 50; the reference says about 40). **Agreement between readers is not correctness.** Two readers agreeing on a wrong digit would not be flagged. Reader disagreement caught the date-found error (Sarvam read it right, both Gemini models wrong), but not the age.
+4. **Wrong place names, silently.** On the district line, Sarvam's strip reading produced a place that is not the district (one reading named another state's name). Both Gemini models read the district correctly on every strip.
+5. **Nobody read "I was not at home" or "drunk" correctly as written** (Sarvam's strip reading of "drunk" was a near miss).
+6. **My earlier English-page scores overstated usability for critical digits.** The reference now gives the incident date as 29, and Sarvam read the same date on the English FIR form differently (as 22). That date was not among the reference terms used for the 79 to 83% figure in section 10, so a high term score can hide a wrong critical number.
+
+**What this changes in the plan**
+- **Every date, age, amount and section number goes to a person for checking, whatever the readers say.** Reader agreement is not a safeguard for digits.
+- **Do not build the strip method as an accuracy fix.** Keep it only if a later, larger test shows a gain.
+- **The free-tier Gemini models and Sarvam are about equally unreliable on this handwriting.** A stronger model (paid tier) is still untested.
+- **Scoring is now possible** with the lawyer's gists. More reference gists, ideally the translator's full versions, are the most valuable next input.
