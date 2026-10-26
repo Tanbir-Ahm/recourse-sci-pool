@@ -77,6 +77,33 @@ check({x["bench"] for x in rows} == {"Guwahati", "Kohima", "Shillong", "Imphal",
 real_k = hl.clean_label(KOJANI)
 check(real_k["title"] == table["crlrevnsh332009.pdf"]["title"] and real_k["bench"] == "Shillong", "clean_label reads the repository's table when no table is passed")
 
+# ---------------------------------------------------------------- card: what a page prints for one result
+import tier_select as ts
+PASSAGE = ("We have considered the submissions. We hold that a revision petition against an order framing charge does not lie where the order is interlocutory in nature, "
+           "and the petitioner must raise the objection at the trial.")
+res = ts.pick([{"doc": 7, "cos": 0.7, "text": PASSAGE, "src": KOJANI}])
+check(len(res) == 1, "the sample passage survives the filter, so the card has a result to wrap")
+c = hl.card(KOJANI, res[0])
+check(c["heading"] == " · ".join((c["title"], "CRL.REVN 33(SH)/2009", "2011-04-27")) and c["bench_label"] == "Shillong bench (Meghalaya), until March 2013"
+      and c["voice_line"] == res[0]["voice_line"] and c["quote"] == res[0]["authority"]["quote"] and c["url"] == KOJANI["url"] and c["also_decided_in"] == [],
+      "card carries the heading, the bench, the link, the voice line and the quote of the result")
+check(set(c) == {"heading", "court", "title", "case_no", "date", "bench_label", "url", "voice_line", "quote", "also_decided_in"}, "card has exactly the fields the patch notes list")
+c2 = hl.card(SARADA, {"voice_line": "x", "authority": {"quote": "q"}, "also_in": [3, 4]})
+check(c2["also_decided_in"] == [3, 4] and c2["bench_label"].startswith("principal seat"), "twins folded under a result are listed on its card")
+
+# ---------------------------------------------------------------- the exported bundle works on its own, from an empty directory
+import subprocess, sys, tempfile
+import export_voice_bundle as ev
+with tempfile.TemporaryDirectory() as out, tempfile.TemporaryDirectory() as work:
+    files = ev.main(os.path.join(out, "passage_authority"))
+    check(files == ["__init__.py", "authority.py", "court_file_labels.csv", "hc_labels.py", "textutil.py"], "the bundle holds five files")
+    code = ("from passage_authority import hc_labels\n"
+            "k = hc_labels.clean_label({'scope':'ghc_court','court':'Gauhati High Court','date':'2011-04-27','url':'https://ghconline.gov.in/Judgment/CRLREVNSH332009.pdf',"
+            "'path':'https://ghconline.gov.in/Judgment/CRLREVNSH332009.pdf','title':'M/S KOJANI’S DHANKHETI THE HON’BLE MR JUSTICE T VAIPHEI Vs ','citation':'x'})\n"
+            "print(k['bench'], '|', k['title'])")
+    run = subprocess.run([sys.executable, "-I", "-c", "import sys; sys.path.insert(0, %r)\n" % out + code], cwd=work, capture_output=True, text=True)
+    check(run.returncode == 0 and run.stdout.startswith("Shillong | SHRI JOSE PULLAN") and "HON" not in run.stdout, "the bundle, imported from an empty directory, gives the Shillong bench and the clean title: " + (run.stderr[-200:] or run.stdout[:80]))
+
 print()
 if FAILURES:
     print(f"{len(FAILURES)} FAILED:")

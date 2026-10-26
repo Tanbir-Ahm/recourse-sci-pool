@@ -14,7 +14,7 @@ This is a filter in code, not a line in a prompt. `authority.py` reads the passa
 python3 -I export_voice_bundle.py <recourse checkout>/passage_authority
 ```
 
-writes three files (`authority.py`, `textutil.py`, `__init__.py`), about 30 KB, pure Python with no dependency, no data file, no network and nothing to spend. It was imported and used from an otherwise empty directory as a check. Re-export it after any change here, and run `python test_authority.py` in this repository first (see the test files).
+writes five files (`authority.py`, `textutil.py`, `hc_labels.py`, `court_file_labels.csv`, `__init__.py`), about 140 KB, pure Python with no dependency, no network and nothing to spend. The one data file is the slim label table of section 2(d): 758 rows, no judges' names. It was imported and used from an otherwise empty directory as a check. Re-export it after any change here, and run `python test_authority.py` in this repository first (see the test files).
 
 ## 2. Where it goes
 
@@ -48,6 +48,29 @@ The lines it produces: "*{court}'s own words*"; "*the Supreme Court, as quoted b
 
 * `v["tier"]` is 1, 2 or 3, or `None`; `None` sorts last and is never promoted.
 * **Order, owner's decisions of 2026-10-25:** the strict order (Supreme Court, High Court, trial court, then states-law, then score), and a passage never ranks above the court that wrote its judgment: a High Court judgment quoting the Supreme Court stays at High Court rank, and in a Supreme Court judgment the Court's own words come before its recital of the High Court's view. The verdict carries `own_tier`, so `sort_key` applies this without the caller passing anything.
+
+**(d) The label and the bench: `hc_labels`.** Owner's request, 2026-10-26. Every Gauhati High Court result needs a clean title, a case number, a date, the bench it was decided at, and a link; the stored fields do not give them cleanly (a judge's name trails a party, the case number swallows party names, double spaces). The Supreme Court results need none of this and are left as they are.
+
+```python
+from passage_authority import hc_labels
+
+card = hc_labels.card(src, result)       # src: the stored fields of the judgment; result: one row from tier_select.pick
+show(card["heading"])                     # "SHRI JOSE PULLAN @ JOSEPH P Vs SMTI UMA JASRASARIA ... · CRL.REVN 33(SH)/2009 · 2011-04-27"
+show(card["bench_label"])                 # "Shillong bench (Meghalaya), until March 2013"
+show(card["voice_line"]); show(card["quote"])
+link(card["url"])
+```
+
+`card` returns exactly: `heading`, `court`, `title`, `case_no`, `date`, `bench_label`, `url`, `voice_line`, `quote`, `also_decided_in` (the judgments whose twin passage was folded under this one, as document numbers; the page can say "also decided in ..."). `hc_labels.clean_label(src)` and `hc_labels.bench_of(src)` are there if the page wants the pieces.
+
+What each field is, and where it comes from:
+
+* **Title and case number, 758 court files of 2010-2017:** from the slim table `court_file_labels.csv` (found next to `hc_labels.py`), built from the court's monthly lists re-read by position. The old wording is not in the bundle. A row says what was done to it in this repository's full table; the bundle drops that column.
+* **Every other judgment** (2018 on, and the Supreme Court): the title stored in the index with double spaces mended, nothing else changed. A typo in the source stays a typo.
+* **Bench:** from the path code of a 2018-on file (`as` Guwahati, `ar` Itanagar, `nl` Kohima, `az` Aizawl) or from the bracketed code in the case number of an older one (`K` Kohima, `AP` Itanagar, `AZ` Aizawl, `SH` Shillong, `AT` Agartala, `IM` Imphal). No code means the principal seat at Guwahati, unless the case names another state. The Shillong, Agartala and Imphal benches ended on 23 March 2013, and the label says "until March 2013".
+* **Url:** the stored one. A record with no address gives `None`; do not print an empty link.
+
+**The shape caveat.** `card` and `clean_label` read the index's `src` fields (`scope`, `url`, `title`, `citation`, `path`, `court`, `date`). The site's own pilot chunks (`pilot_tier_search.py`) have other names (`case_name`, `citation`, `chunk_method`, ...). Either `sci_search_service.py` returns the card itself (preferred, nothing to map), or the site builds a dict with those seven keys from its chunk before calling. If `path` and `url` are both missing, `bench_label` and `url` come back empty (`None`) rather than guessed: the bench is read from the file's path or address, so a chunk without either gets no bench line. The page should print nothing for an empty field, not a default. Do not fill in "Guwahati" for it.
 
 ## 3. Fail closed, not open
 

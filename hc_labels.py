@@ -13,7 +13,8 @@ Three faults of the stored fields are mended here, not in the index (nothing in 
 import csv, os, re, urllib.parse
 
 COURT = "Gauhati High Court"
-TABLE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ghc", "court_lists", "court_file_labels.csv")
+_HERE = os.path.dirname(os.path.abspath(__file__))
+TABLE = os.path.join(_HERE, "court_file_labels.csv") if os.path.exists(os.path.join(_HERE, "court_file_labels.csv")) else os.path.join(_HERE, "ghc", "court_lists", "court_file_labels.csv")   # beside the module in the site bundle
 BENCH_PATH = {"asghccis": ("Guwahati", "Assam"), "arghccis": ("Itanagar", "Arunachal Pradesh"), "nlghccis": ("Kohima", "Nagaland"), "azghccis": ("Aizawl", "Mizoram")}   # the bucket's file path; each checked against the state named in the titles
 BENCH_SUFFIX = {"K": ("Kohima", "Nagaland"), "AP": ("Itanagar", "Arunachal Pradesh"), "AZ": ("Aizawl", "Mizoram"), "SH": ("Shillong", "Meghalaya"), "AT": ("Agartala", "Tripura"), "IM": ("Imphal", "Manipur")}   # the code in a case number of the court's lists
 FORMER = {"Shillong", "Agartala", "Imphal"}     # benches that ended on 23 March 2013, when Meghalaya, Tripura and Manipur got High Courts of their own
@@ -77,3 +78,14 @@ def clean_label(src, table=None):
         title = squash(src.get("title")); case_no = case_numbers(src.get("citation")) if src.get("scope") == "ghc_court" else squash(src.get("citation")); b = bench_of(src, title)
     return {"court": src.get("court") or COURT, "title": title, "case_no": case_no, "date": src.get("date"), "url": src.get("url"), "bench": b[0] if b else None, "state": b[1] if b else None,
             "bench_label": bench_label(*b) if b else None, "fixed": squash(src.get("title")) != title or squash(src.get("citation")) != case_no}
+
+
+def card(src, result):
+    """Everything a page needs to print one Guwahati result, from the docs row's `src` and a result of `tier_select.pick`:
+    {"heading", "court", "title", "case_no", "date", "bench_label", "url", "voice_line", "quote", "also_decided_in"}. `heading` is the single line to print first
+    (title, case number, date); `voice_line` goes directly above `quote`. `also_decided_in` lists the case numbers of the twin petitions folded under this result
+    (pass `twins`, a {doc: src} map, to name them; otherwise it holds the document numbers)."""
+    lab = clean_label(src)
+    heading = " · ".join(x for x in (lab["title"], lab["case_no"], lab["date"]) if x)
+    return {"heading": heading, "court": lab["court"], "title": lab["title"], "case_no": lab["case_no"], "date": lab["date"], "bench_label": lab["bench_label"], "url": lab["url"],
+            "voice_line": result["voice_line"], "quote": result["authority"]["quote"], "also_decided_in": list(result.get("also_in") or [])}
