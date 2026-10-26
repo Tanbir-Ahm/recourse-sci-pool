@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Section 10 records the first results (one real document, scores only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10c record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -153,3 +153,34 @@ Page summary (one row per page and tool): gist correct (yes / no); number of Cri
 - **Do not build the strip method as an accuracy fix.** Keep it only if a later, larger test shows a gain.
 - **The free-tier Gemini models and Sarvam are about equally unreliable on this handwriting.** A stronger model (paid tier) is still untested.
 - **Scoring is now possible** with the lawyer's gists. More reference gists, ideally the translator's full versions, are the most valuable next input.
+
+### 10c. Paid-tier Gemini run on the same page (recorded 2026-10-26; counts only, no case text)
+
+**What was tested.** The same handwritten Assamese complaint page as 10b (1,217 x 892 px), whole page, one prompt asking for a line-by-line transcription with `[unclear]` and `(?)` for doubtful words, temperature 0, 3 runs per model, with `ocr_tests/gemini_read_check.py`. The billing-enabled key could call `gemini-3.1-pro-preview` and `gemini-4-argon`, which the free key could not (quota error). `gemini-3.5-flash` was rerun on the same key for comparison. `gemini-3.8-flash` returned HTTP 503 (overloaded) and then timed out, so it is **not tested**. Total use was about 44,000 tokens; the fee was not checked.
+
+**How it was scored, and why it is not comparable with 10b.** The private 15-fact file of 10b was not available in this session. I wrote a **9-fact** file myself before the run (district, "Sir", incident date, about 7 pm, "husband", the husband's name, his age, the date found, the word for FIR). Three are critical numbers: incident date 29 and age about 40 (both from the 10b reference) and the date found, read as 30 **from the page image by me, not from a reference**. That reading is not independent of the models. The other 6 facts of 10b (not at home, drunk, dragged out, body parts, near-dying, request for action) could not be pattern-scored; the "not at home" and closing-request rows below were compared by hand against the saved readings, with no reference. All counts are therefore "of 9", not "of 15".
+
+| Reader (3 runs each) | Facts found, per run (of 9) | Critical numbers, per run (of 3) | Incident date 29 | Age 40 | Closing request kept | "Not at home" present | `[unclear]` / `(?)` marks per run |
+|---|---|---|---|---|---|---|---|
+| **gemini-4-argon** | 9, 9, 9 | 3, 3, 3 | 3 of 3 | 3 of 3 | 3 of 3 | 3 of 3 | 0, 0, 0 |
+| gemini-3.1-pro-preview | 8, 8, 8 | 2, 2, 2 | 3 of 3 | **0 of 3** (read 50) | **1 of 3** | 1 of 3 | 0, 0, 0 |
+| gemini-3.5-flash (rerun) | 6, 7, 5 | 1, 2, 1 | 1 of 3 (read 21 and 25 in the others) | 0 of 3 (read 50) | 3 of 3 | 0 of 3 | 6, 2, 3 |
+
+**Findings**
+1. **`gemini-4-argon` is the first reader in this project to read all three critical numbers correctly, in every run.** It is also the first to read the age as 40; the three strip readers in 10b all read 50, as did the other two models here. This is one image and three temperature-0 runs, which are not independent samples. It is a lead worth testing on more pages, not an accuracy figure.
+2. **A bigger model was not a better reader.** `gemini-3.1-pro-preview` read the age as 50 in all three runs, with no warning mark. Run-to-run agreement is not correctness (the same lesson as 10b, finding 3).
+3. **Silent truncation.** `gemini-3.1-pro-preview` stopped early in 2 of 3 runs (one after the FIR sentence, one in the middle of a word), dropping the closing request, with no error and no mark. The script did not record why. The likely cause is the 8,192-token output limit being shared with the model's own thinking; this is not confirmed.
+4. **The "not at home" phrase** was read by `gemini-4-argon` in 3 of 3 runs, by `gemini-3.1-pro-preview` in 1 of 3 (the other two replaced it with an intoxication phrase) and by `gemini-3.5-flash` in 0 of 3. By hand, no reference.
+5. **Names and the manner of the beating differ between runs** in every model. For the beating, `gemini-4-argon` gave the same reading in 3 of 3 runs and `gemini-3.1-pro-preview` gave three different ones. These are the lines most likely to change what the evidence says and need a person who reads Assamese.
+6. **Warning marks do not track errors.** `gemini-4-argon` and `gemini-3.1-pro-preview` produced no marks at all, including on lines where the names differed between runs. `gemini-3.5-flash` marked 11 spots over 3 runs, but its two wrong incident dates (21, 25) carried no mark on the wrong digit.
+
+**Translation step (not scored).** To let the lawyer check the readings, each of the 9 readings was translated into English by `gemini-4-argon`, told to translate literally and not to correct the reading. The drafts sit beside the page image on a private page outside this repository. Two choices of the translator need a human: a name-like word in the position of the accused is rendered "the accused", and the deceased-marker symbol before the husband's name is rendered "Late". These are translator interpretations, not words on the page. No person who reads Assamese has checked the English.
+
+**A scoring bug, now fixed.** The first-pass scores were wrong because the script did not unify Bengali y-with-dot stored composed or decomposed, so correct readings of two words were marked as missed (first pass: 9, 7, 7 / 7, 7, 7 / 6, 6, 5). `ocr_tests/gemini_read_check.py` now normalises text and patterns to NFD and reports any reading whose finish reason is not `STOP`. The fix was checked on the saved readings with the unchanged facts file (now 9, 9, 9 / 8, 8, 8 / 6, 7, 5) and by a selftest case that fails on the old code. **Earlier scores in 10 and 10b may be understated for any fact containing y-with-dot, r-with-dot or rh-with-dot.** They were not recomputed, because those readings and the 15-fact file are not in this repository.
+
+**What this changes in the plan**
+- **`gemini-4-argon` becomes the lead candidate for handwritten Assamese reading, to be tested on at least 3 or 4 more handwritten pages** before any recommendation. One page cannot support one.
+- **Every date, age, amount and section number still goes to a person**, whatever the reader. A reader that gives no warning marks (here, two of the three) cannot flag its own errors.
+- **Reading and translating stay separate steps.** The English drafts above inherit every reading error and add the translator's own choices.
+- **Set the output limit higher or lower the thinking effort for the larger models**, and treat any run whose finish reason is not `STOP` as failed.
+- **Still to run:** Google Cloud Vision at full resolution, `gemini-3.8-flash` when it is not overloaded, Jurisphere and Niyam, the two-reader check, and a person who reads Assamese marking the English against a reference translation (the translator's full version is still the most valuable input).

@@ -24,10 +24,12 @@ The default output is HTML and the API refuses `md` for such a job, so the scrip
 10 documents, so the all-pages pass is sent in chunks of 10. `--reuse` re-reads saved job results instead of paying again.
 Summary of the first results is in section 10 of `OCR_TRANSLATION_TEST_PLAN.md`.
 
-## Paid-tier Gemini test (prepared 2026-10-26; not yet run)
+## Paid-tier Gemini test (prepared and run 2026-10-26; results in section 10c of the test plan)
 The free tier cannot call the largest Gemini models (`gemini-3.1-pro-preview` and `gemini-4-argon` returned a quota error on the
 free key; `gemini-3.8-flash` was overloaded). `gemini_read_check.py` first checks which models answer, then reads one handwritten page
 several times per model and scores each reading against a private facts file (label -> regex; labels starting `[digit] ` are critical
 numbers such as dates, ages and amounts). Run it from a session whose environment has `GEMINI_API_KEY` for a billing-enabled project,
 with the approved image and facts file supplied outside the repo. `python gemini_read_check.py --selftest` checks the wiring only.
 The first real reference (15 facts for one handwritten complaint page) and the free-tier results are in section 10b of the test plan.
+
+After the first run the script was changed: matching now normalises text and patterns to NFD (Bengali y-with-dot stored composed or decomposed no longer causes false misses), and a reading whose Gemini finish reason is not `STOP` is reported as cut off. Keep the facts file, the image and the readings outside the repository.

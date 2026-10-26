@@ -8,9 +8,10 @@ Nothing about a real case belongs in this file or in the repo. The image and the
   python gemini_read_check.py --selftest
 
 facts.json: {"label": "regex", ...}. A label starting with "[digit] " marks a critical number (date, age, amount, section).
-Matching is strict and done on normalised text: Assamese ra/wa mapped to the Bengali forms, digits to ASCII, spaces and punctuation collapsed.
+Matching is strict and done on normalised text: NFD (so a letter stored composed or decomposed, such as Bengali y-with-dot, matches either way), Assamese ra/wa mapped to the Bengali forms, digits to ASCII, spaces and punctuation collapsed.
+The patterns are NFD-normalised too. A reading that stops early is reported with its finishReason (anything but STOP).
 """
-import argparse, base64, json, os, re, sys, time, urllib.error, urllib.request
+import argparse, base64, json, os, re, sys, time, unicodedata, urllib.error, urllib.request
 
 SYSTEM = ("You transcribe handwritten {lang} court and police documents. Transcribe exactly what is written, line by line, in the original script. "
           "NEVER guess: if a word or digit is not clearly legible write [unclear] in its place, and put (?) after a reading you are not sure of. "
@@ -18,14 +19,14 @@ SYSTEM = ("You transcribe handwritten {lang} court and police documents. Transcr
 
 
 def norm(s):
-    s = s.replace("ৰ", "র").replace("ৱ", "ব").replace("‍", "").replace("‌", "")
+    s = unicodedata.normalize("NFD", s).replace("ৰ", "র").replace("ৱ", "ব").replace("‍", "").replace("‌", "")
     s = s.translate(str.maketrans("০১২৩৪৫৬৭৮৯", "0123456789"))
     return re.sub(r"[\s\-\.\|।,;:()\[\]\"'`*]+", " ", s)
 
 
 def score(text, facts):
     t = norm(text)
-    return [label for label, pat in facts.items() if re.search(pat, t)]
+    return [label for label, pat in facts.items() if re.search(unicodedata.normalize("NFD", pat), t)]
 
 
 def call(model, parts, system, key, max_tokens=8192, tries=4):
@@ -38,7 +39,7 @@ def call(model, parts, system, key, max_tokens=8192, tries=4):
             d = json.load(urllib.request.urlopen(req, timeout=180))
             c = (d.get("candidates") or [{}])[0]
             return {"ok": True, "text": "".join(p.get("text", "") for p in c.get("content", {}).get("parts", [])),
-                    "tokens": d.get("usageMetadata", {}).get("totalTokenCount", 0)}
+                    "tokens": d.get("usageMetadata", {}).get("totalTokenCount", 0), "finish": c.get("finishReason")}
         except urllib.error.HTTPError as e:
             msg = e.read().decode("utf8", "replace")
             if e.code in (429, 503) and "quota" not in msg.lower() and attempt < tries - 1:
@@ -69,6 +70,8 @@ def run(args, caller=call):
                          SYSTEM.format(lang=args.lang), key)
             if not res["ok"]:
                 print(f"[{model}] run {r}: failed HTTP {res['code']} {res['error'][:90]}"); continue
+            if res.get("finish") not in (None, "STOP"):
+                print(f"[{model}] run {r}: CUT OFF, finishReason={res['finish']} (the reading is incomplete; raise the output limit or lower thinking)")
             found = score(res["text"], facts); scores.append((len(found), len([d for d in digit if d in found]), res["tokens"]))
             open(os.path.join(args.out, f"{model}_run{r}.txt"), "w").write(res["text"])
             print(f"[{model}] run {r}: {len(found)}/{len(facts)} facts, {len([d for d in digit if d in found])}/{len(digit)} critical numbers; missed: "
@@ -83,13 +86,13 @@ def run(args, caller=call):
 def selftest():
     import tempfile
     d = tempfile.mkdtemp(); img = os.path.join(d, "x.png"); open(img, "wb").write(b"\x89PNG fake")
-    json.dump({"[digit] age 40": r"বয়স ?40", "district": r"ওদালগুর"}, open(os.path.join(d, "f.json"), "w"), ensure_ascii=False)
+    json.dump({"[digit] age 40": r"বয়স ?40", "district": r"ওদালগুর", "composed y-dot vs decomposed text": "ব\u09df"}, open(os.path.join(d, "f.json"), "w"), ensure_ascii=False)
     def fake(model, parts, system, key, max_tokens=0, tries=0):
         if "pro" in model: return {"ok": False, "code": 429, "error": "You exceeded your current quota"}
-        return {"ok": True, "text": "1. থানা/জিলা - ওদালগুৰি\n2. (বয়স ৪০ বছৰ)", "tokens": 10}
+        return {"ok": True, "text": "1. থানা/জিলা - ওদালগুৰি\n2. (ব\u09af\u09bcস ৪০ বছৰ)", "tokens": 10, "finish": "MAX_TOKENS"}
     ns = argparse.Namespace(image=img, facts=os.path.join(d, "f.json"), models="m-flash,m-pro", runs=2, out=os.path.join(d, "o"), lang="Assamese", selftest=True)
     s = run(ns, fake)
-    assert s["m-pro"] is None and [x[0] for x in s["m-flash"]] == [2, 2] and [x[1] for x in s["m-flash"]] == [1, 1], s
+    assert s["m-pro"] is None and [x[0] for x in s["m-flash"]] == [3, 3] and [x[1] for x in s["m-flash"]] == [1, 1], s
     print("selftest OK (fake caller; no Gemini call was made)")
 
 
