@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10e record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10f record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -287,3 +287,38 @@ Medians of 3 runs unless stated. `gemini-3.1-pro-preview` and `gemini-pro-latest
 - **The cheapest models are not for reading.** At Rs 0.1 per page and 2.5 s they are fast, but they failed the messy page. They may suit first-pass triage.
 - **Reading and translating stay separate steps.** A fixed translator applied to every reading would separate reading errors from translation errors; this has not been run.
 - **Still to run:** an independent human English version of the notes page; a human-marked reference for more messy handwritten pages; Google Cloud Vision, IndicTrans2 and Google Translate; Jurisphere and Niyam; and the same cost and speed test on a bigger batch of pages, when the overloaded models are available.
+
+### 10f. Cost against efficiency, ranked (recorded 2026-10-26; counts only, no case text)
+
+**The question.** Which model gives the most reliable reading of handwritten Assamese for the least money, using only the results in 10c to 10e.
+
+**How efficiency is defined.** *Accuracy* on a page is the share of its critical values a model read right across its runs. The messy handwritten complaint of 10 to 10c has 3 critical values per run (incident date, husband's age, date found; the third is my own reading of the image, the other two come from the lawyer's reference). The clean letter of 10d has 5 per run (letter date, incident date, amount, and the two meaning words "borrowed" and "could not repay me"; from the lawyer's English reference), with the two keys pooled. *Quality Q* is the average of the two page accuracies, or the clean-letter accuracy alone where the messy page was not tested. *Efficiency* is Q divided by the cost per page in rupees (about Rs 96 per US dollar; third-party and unverified prices, see 10e). **The ranking puts models that passed a gate on the messy page first**, each group ordered by efficiency. The gate is: all three critical numbers read right in at least one run. Plain accuracy per rupee ranks the two cheapest models first, because they cost almost nothing, even though neither read the messy page; a reader that fails the hard page still needs a person to check every page, so its low price saves little. The plain rank is in the last column so the effect of the gate is visible.
+
+| Rank | Model | Messy page | Clean letter | Quality Q | Cost per page | Response time | Efficiency (Q per Rs) | Plain rank |
+|---|---|---|---|---|---|---|---|---|
+| 1 (passed the gate) | `gemini-4-argon` | 100% | 83% | 0.92 | Rs 0.62 (then Rs 1.24) | 7.3 s | 1.48 (then 0.74) | 4 |
+| 2 (failed the gate) | `gemini-3.1-flash-lite` | 33% | 100% | 0.67 | Rs 0.08 | 2.5 s | 7.99 | 1 |
+| 3 (failed the gate) | `gemini-3.5-flash-lite` | 11% | 87% | 0.49 | Rs 0.12 | 2.6 s | 3.91 | 2 |
+| 4 (failed the gate) | `gemini-3-flash-preview` | 67% | 60% | 0.63 | Rs 0.79 | 10.0 s | 0.80 | 5 |
+| 5 (failed the gate) | `gemini-3.6-flash` | 33% | 100% | 0.67 | Rs 0.85 (then Rs 1.70) | 14.1 s | 0.79 (then 0.39) | 6 |
+| 6 (failed the gate) | `gemini-3.5-flash` | 44% | 100% | 0.72 | Rs 2.23 | 12.1 s | 0.32 | 8 |
+| 7 (failed the gate) | `gemini-3.1-pro-preview` | 67% | 83% | 0.75 | Rs 3.82 | not measured | 0.20 | 9 |
+| 8 (not rated on the messy page) | `gemini-3.7-flash` | not tested | 100% | 1.00 (clean letter only) | Rs 0.46 (then Rs 0.92) | 178 s | 2.18 (then 1.09) | 3 |
+| 9 (not rated on the messy page) | `sarvam-vision` | not tested | 60% | 0.60 (clean letter only) | Rs 1.44 | 15.0 s | 0.42 | 7 |
+| 10 (not rated on the messy page) | `gemini-3.8-flash` | not tested | not tested | no data | Rs 0.45 (then Rs 0.90) | 94.6 s | n/a | n/a |
+| 11 (not rated on the messy page) | `gemini-pro-latest` | not tested | 93% | 0.93 (clean letter only) | unknown | not measured | n/a | n/a |
+| 12 (not rated on the messy page) | `gemini-flash-lite-latest` | not tested | 73% | 0.73 (clean letter only) | unknown | 2.1 s | n/a | n/a |
+| 13 (not rated on the messy page) | `gemma-4-26b-a4b-it` | not tested | 40% | 0.40 (clean letter only) | unknown | 20.3 s | n/a | n/a |
+
+Messy-page accuracy is out of 9 critical values (3 runs of 3) for the seven models tested on it; the clean letter is out of 5 per run, with up to 6 runs per model. Rows with an unknown price have no efficiency. `gemini-3.8-flash` has no accuracy data. The notes page of 10d and 10e is not in these figures because its reference was a model output.
+
+**What the ranking says**
+1. **`gemini-4-argon` is the most efficient reader that can read the messy page at all**, at about Rs 0.62 and 7 s a page. If its promotional price ends, efficiency halves (1.48 to 0.74) and it stays first, because no other model passed the gate.
+2. **The cheapest models are the least useful for this job.** The two lite models cost Rs 0.08 to 0.13 a page and answer in under 3 s, so they top the plain ranking, but they read 1 to 3 of 9 critical numbers on the messy page. They may suit a first triage, not reading.
+3. **The pro-tier model is the least efficient**: about Rs 3.8 a page for no better messy-page result than models costing a fifth as much, and it was overloaded when timed.
+4. **The two flash models that were perfect on the clean letter fail the messy page.** A second reader earns its cost: `gemini-4-argon` plus `gemini-3.6-flash` is about Rs 1.5 a page, and on the two digit-heavy pages every critical digit `gemini-4-argon` got wrong, `gemini-3.6-flash` disagreed with.
+5. **Speed is a separate axis**: about 2.5 s for the lite models, 7 s for `gemini-4-argon`, 10 to 14 s for the flash models, and 95 to 178 s for the 3.7 and 3.8 flash models while overloaded.
+
+**Limits.** The messy-page accuracy rests on **one page** and 3 temperature-0 runs per model, which are not independent samples; one page is the reason only one model passes the gate, and a second messy page could change the order. Other weights for the two pages would move the lower rows but not the top row. The cost of a person checking a page is not in these figures and is probably far larger than any model cost, which is why accuracy comes before price. Models on the second key may cost nothing if that key is on a free tier, which could not be confirmed.
+
+**What this changes in the plan.** Run a second and third messy handwritten page before relying on the lead of `gemini-4-argon`, ideally with a human-marked reference for each; re-price once Google's own pricing page can be read; and keep a person checking every date, age and amount whatever the model.
