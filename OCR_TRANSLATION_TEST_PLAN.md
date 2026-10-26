@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10c record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10d record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -184,3 +184,51 @@ Page summary (one row per page and tool): gist correct (yes / no); number of Cri
 - **Reading and translating stay separate steps.** The English drafts above inherit every reading error and add the translator's own choices.
 - **Set the output limit higher or lower the thinking effort for the larger models**, and treat any run whose finish reason is not `STOP` as failed.
 - **Still to run:** Google Cloud Vision at full resolution, `gemini-3.8-flash` when it is not overloaded, Jurisphere and Niyam, the two-reader check, and a person who reads Assamese marking the English against a reference translation (the translator's full version is still the most valuable input).
+
+### 10d. A clean handwritten Assamese letter, 13 readers, a real English reference (recorded 2026-10-26; counts only)
+
+**What was tested.** A clean, well-formed handwritten Assamese complaint letter (618 x 1,032 px), a fill-in **template with no real case data** (the police station name, address, and the writer's name and address are left as blanks). The lawyer supplied the English translation of the page, so for the first time the readings are scored against **a reference from a person**, not against my own reading. The reference fixes the letter date (03/09/2025), the incident date (20/08/2025, written "Monday"), the name of the person who borrowed, the amount (20,000), "borrowed", "could not repay me", and "out of reach for 3 days". 50 readings in all: whole page, the same prompt as 10c (line-by-line, `[unclear]` and `(?)` for doubtful words), temperature 0, output limit 32,768 so nothing was cut off. Three runs per reader where it answered.
+
+- **Key A**: the billing-enabled key of 10c (19 readings, six Gemini models and Sarvam Vision).
+- **Key B** (`GEMINI_FREE_OCR_KEY`, added 2026-10-26): 31 readings, ten Gemini models and one Gemma. It answered `gemini-3.1-pro-preview` and `gemini-4-argon`, which the first free key could not in 10c. I cannot tell from the API which tier this key is on, so "free" is the owner's label.
+
+**How it was scored.** 20 facts, written as patterns on the Assamese text: 3 critical numbers (letter date, incident date, amount), 2 critical meanings (the money was **borrowed**; he **failed to repay me**), plus the name, the weekday, the agreement, the phone, "3 days", "helpless", "investigation", "justice", the three blanks and the closing. Two of my patterns were wrong on the first try (they missed correct readings) and were fixed before any score was used; the final patterns are in the private facts file, not in this repository. A person who reads Assamese has not yet checked the readings line by line, so a reading can still hide an error my 20 facts do not test.
+
+| Reader (readings) | Facts per run (of 20) | Critical per run (of 5) | Wrong dates | Lost a meaning | Notes |
+|---|---|---|---|---|---|
+| **Key A** `gemini-3.5-flash` (3) | 20, 20, 20 | 5, 5, 5 | 0 | 0 | |
+| **Key A** `gemini-3.6-flash` (3) | 20, 20, 20 | 5, 5, 5 | 0 | 0 | 1 reading starts with an English intro line |
+| **Key A** `gemini-3.7-flash` (1 of 3 runs) | 20 | 5 | 0 | 0 | 2 runs failed (overloaded, timeout) |
+| **Key A** `gemini-3.5-flash-lite` (3) | 18, 20, 20 | 3, 5, 5 | 1 reading (both dates) | 0 | |
+| **Key A** `gemini-4-argon` (3) | 19, 19, 20 | 4, 4, 5 | 2 (incident month 06) | 0 | |
+| **Key A** `gemini-3.1-pro-preview` (3) | 20, 19, 19 | 5, 4, 4 | 2 (letter month 07) | 0 | |
+| **Key A** `sarvam-vision` (3: language set twice, unset once) | 18, 18, 18 | 3, 3, 3 | 0 | **3 of 3** | all dates right; two meanings changed |
+| Key B `gemini-3.5-flash` (3) | 20, 20, 20 | 5, 5, 5 | 0 | 0 | 1 mark, on a non-critical word |
+| Key B `gemini-3.6-flash` (3) | 20, 20, 20 | 5, 5, 5 | 0 | 0 | |
+| Key B `gemini-3.1-flash-lite` (3) | 20, 20, 20 | 5, 5, 5 | 0 | 0 | |
+| Key B `gemini-3.7-flash` (1 of 3 runs) | 20 | 5 | 0 | 0 | 2 runs failed (overloaded) |
+| Key B `gemini-3.5-flash-lite` (3) | 20, 18, 20 | 5, 3, 5 | 1 reading (both dates) | 0 | |
+| Key B `gemini-pro-latest` (3) | 19, 20, 20 | 4, 5, 5 | 1 (letter month 07) | 0 | alias; the model behind it can change |
+| Key B `gemini-flash-lite-latest` (3) | 20, 18, 18 | 5, 3, 3 | 2 readings (both dates) | 0 | alias; 1 reading begins with a stray Latin word |
+| Key B `gemini-4-argon` (3) | 19, 19, 19 | 4, 4, 4 | 3 (incident month 06) | 0 | |
+| Key B `gemini-3.1-pro-preview` (3) | 19, 19, 19 | 4, 4, 4 | 3 (letter month 07) | 0 | |
+| Key B `gemini-3-flash-preview` (3) | 18, 18, 18 | 3, 3, 3 | 3 (year 2023 in both dates) | 0 | marked `(?)` on the letter date in 3 of 3 runs and on the incident date in 1 |
+| Key B `gemma-4-26b-a4b-it` (3) | 10, 10, 10 | 2, 2, 2 | 3 (incident month 06) | **3 of 3** | wrong name; meaning lost or invented; see below |
+
+Not completed on key B: `gemini-3.8-flash` and `gemini-flash-latest` (overloaded, then timed out), `gemma-4-31b-it` (HTTP 500 and 503).
+
+**Findings**
+1. **The errors that mattered were digits, not meaning, for every Gemini model.** Across the 44 Gemini readings, none lost "borrowed" or "could not repay me" and none got the name wrong. **18 of the 44 (41%) had at least one wrong date**, and 21 of all 50 readings did. The wrong values were the incident month (06 instead of 08), the letter month (07 instead of 09) and, for one model, the year (2023).
+2. **Silent errors.** Of the 21 readings with a wrong date, only 3 carried any warning mark, and all 3 were `gemini-3-flash-preview` on its wrong year. The other 18 were silent. Across all 50 readings only 9 had any mark at all, and the only marks on a date line were on `gemini-3-flash-preview`'s dates. This repeats the 10b and 10c finding that a missing warning means nothing.
+3. **Sarvam Vision has the opposite weakness.** It got every date, the name and the amount right in all 3 jobs (language set or unset), but in all 3 it changed two words: "borrowed" came out as a word meaning "to hold", and "could not repay me" came out as "could not see me". The reference confirms both are wrong, and neither carried a warning. A comparison of Sarvam against Gemini would have flagged every one of the 18 wrong Gemini dates, and a comparison of Gemini against Sarvam would have flagged both changed words. That is a reason to keep the two-reader check on the plan, not proof it works: here the two readers happen to fail in different places, while in 10b the three strip readers agreed on a wrong age.
+4. **Rankings are not stable.** The same model with the same prompt gave different answers on the two keys (`gemini-4-argon`: incident month right in 1 of 3 runs on key A and 0 of 3 on key B; `gemini-3.1-pro-preview`: letter month right in 1 of 3 on key A and 0 of 3 on key B). Between-model differences on one page are no larger than that run-to-run noise, with two exceptions: `gemini-3.5-flash` and `gemini-3.6-flash` were fully right in all 6 of their readings each (both keys), and `gemini-3-flash-preview` was wrong in all 3 of its readings. **The "lead candidate" status given to `gemini-4-argon` in 10c did not hold on a second page**: it wrote the incident month wrong in 5 of 6 runs here.
+5. **`gemma-4-26b-a4b-it` is not usable for this.** It read 10 of 20 facts, wrote the person's name as a different name, and in place of "could not repay me" wrote words that read as "could not give my phone". It produced no warning marks.
+6. **Smaller output problems.** One `gemini-flash-lite-latest` reading began with a stray Latin word, and one `gemini-3.6-flash` reading began with an English intro line, against the "add nothing" instruction. No reading was cut off.
+7. **The page contradicts itself.** The written weekday (Monday) does not fit 20/08/2025, which was a Wednesday, and it does not fit 20/06/2025 either (a Friday). The reference keeps "Monday". A calendar check can flag such a page for a person; it cannot say which part is wrong.
+
+**What this changes in the plan**
+- **Dates are the weak spot on a clean page, and models produce them confidently.** Every date goes to a person, as in 10b, whatever the reader says.
+- **Do not pick one model on one page.** No model is recommended. The two readers that were right on every run here (`gemini-3.5-flash` and `gemini-3.6-flash`, on both keys) are the ones to include in the next, larger test, together with Sarvam Vision as the second reader.
+- **Reading and translating stay separate.** A reader that changes one word (Sarvam) changes what the English will say, with nothing to warn the translator.
+- **The English reference now exists, so a translation test is possible** (reading, then English, scored against the reference). That has not been run.
+- **Still to run:** Google Cloud Vision, Jurisphere and Niyam, the translation step against this reference, more handwritten pages (including messy ones), and a person who reads Assamese marking the readings line by line.
