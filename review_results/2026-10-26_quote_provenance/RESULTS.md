@@ -1,5 +1,7 @@
 # Quote provenance at index time (prototype, 2026-10-26)
 
+**Update 2026-10-27 (FOLLOW_UPS 2cn):** section 2's wording for the answer page (head "inside paragraph 25", a Note by code, `paragraph` 25 in the sources box) was REPLACED. The notes made the model write sentences about where a passage sits and what it may quote, in the middle of the legal argument. Now a flagged passage is not given to the model at all, the prompt says never to mention quotations, and code removes such sentences from a finished answer. What stays as written below: the detector, its measurements, the service switch, and the search page's "inside paragraph 25" with its note.
+
 Owner's go, 2026-10-26: "Yes, build a and b and prototype of quote provenance at index time that would also fix the 'paragraph 8' display, which a prompt can't." This file is about the third part. (a) and (b) are in `../2026-10-26_followup_merge_dedupe/RESULTS.md`.
 
 Nothing here was tried with the answer model (the sandbox has no Anthropic key). Every figure below is a count of words and numbers in the index, or a reading by Claude, who is not a lawyer.
