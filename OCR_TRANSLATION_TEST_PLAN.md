@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10n record the results so far (real pages, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10n record the results so far (real pages, scores and counts only); section 11 is the proposed design that follows from them; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -586,3 +586,36 @@ Cloud Vision mean word confidence 95.5% (clean half), 82.0% (scanned half), 87.2
 **Findings.** (1) **All four readers handle the clean copy; the scan separates them.** On the blurred half Cloud Vision dropped or garbled whole phrases of two dictionary entries and Tesseract lost nearly a third of the text, while `gemini-4-argon` kept every entry in order. (2) **Argon still made small silent word errors in the blurred spots** (for example a different plausible word where the scan shows another), with no `[unclear]` marks; its two runs on the same half were 98% alike, so run-to-run agreement does not reveal these. (3) **Reading order on four columns worked for argon and `gemini-3.7-flash`**, with `[COLUMN n]` markers in the right order. (4) **The "translation" step has little meaning on a bilingual dictionary page**: much of the text is already English glosses; the two Gemini readers treated the Assamese glosses differently (one reported the English gloss, the other translated the Assamese words), so the English needs a person who reads Assamese. (5) **Total logged spend across 10l to 10n is about Rs 76 (lower bound, 10k).**
 
 **What this changes in the plan.** Nothing in the ranking: argon is the lead reader, with Cloud Vision as a cheap check on clean typed pages only. Group C needs the triage step before any reader is run, so that files with a good text layer are not sent through OCR at all.
+
+## 11. Proposed checked-reading pipeline (design recorded 2026-10-27; not yet run end to end)
+
+This follows from sections 10l to 10n. It changes no pass rule in section 5. It is a proposal for the 30-page test and has not been run as a whole; each part was tested on its own, on a handful of pages.
+
+**Why this shape.** No second Gemini reader was safe on dense or handwritten Assamese (10l, 10m), so the "second reader" is three different checks, each aimed at a different kind of mistake, with a person as the last one. Agreement between machine readings is never treated as correctness.
+
+**Steps for one page.**
+1. **Receive and gate** (person). Record the language and the page type (typed, handwritten, PDF). Do not send anything that identifies a minor or the victim of a sexual offence.
+2. **Triage every PDF** (two minutes). Extract the text layer with `pdftotext` and compare it with what the page shows. A clean match: use the text layer, no OCR. No text or junk text: treat as a picture. Photos skip this step. (Two PDFs tested, with opposite answers: 10m, 10n.)
+3. **Page image.** One page per image, the whole page, not cut up (a four-column page read correctly whole, 10n).
+4. **Argon reads twice.** `gemini-4-argon`, the same prompt (`ocr_tests/prompts/read_translate.txt`), original-script transcription then English draft. A run that ends with no finish reason is cut off: the page is red and the run is repeated once.
+5. **Cloud Vision reads typed and printed pages only.** It copies letters without "fixing" words and returns a confidence per word. On handwriting and blurred scans it is used as a warning only, never as agreement (mean word confidence 58 to 82% there).
+6. **Checker** (`ocr_tests/checker.py`). Compares the original-script text of the readings letter by letter, lists every difference, extracts the must-check list (dates, amounts, ages, numbers, section numbers, names, land units), flags any English sentence that changed between the two argon runs, and compares the amount of text each reading produced so dropped text shows.
+7. **Traffic light.** The cut-offs below are a first guess taken from three comparisons (argon against Vision on the clean half, the scanned half and the whole page of 10n, 97.9%, 87.7%, 91.0%) and are to be tuned on the 30 pages.
+   - **Green**: a typed page; argon's two runs and Vision agree to about 97% of letters or better; no cut-off, no `[unclear]` marks, no difference in any must-check item. A person still ticks the must-check list.
+   - **Amber**: any difference in a must-check item; agreement of about 90 to 97%; or **any handwritten page**, because handwriting has no independent machine check. A person reads the flagged lines against the page.
+   - **Red**: a failed or cut-off reading; one reading with clearly less text than the other; agreement under about 90%; a scan with low Vision confidence. The translator reads the whole page; the machine English is only a help.
+8. **A person checks** on the marking sheet (`ocr_tests/marksheet.py`, section 8): every must-check item against the page image, every flagged line, correct the English, log every error.
+9. **Output.** One PDF per page: the page image, the corrected English, what was checked, a sign-off line, and the stamp "Machine draft. Not a certified translation."
+
+**What each check can and cannot catch.**
+
+| Check | Catches | Misses |
+|---|---|---|
+| Argon run 1 against run 2 | random slips; a run that stops early | a mistake made both times (98% alike on the 10n page, with the same blurred-word errors in both) |
+| Cloud Vision against argon, typed pages | dropped or changed words and "tidied" printed names | translation mistakes; handwriting and blurred scans |
+| English draft, run 1 against run 2 | a sentence whose meaning wobbles | a wrong meaning given both times |
+| A person with the page image | everything on the must-check list and the flagged lines | whatever nobody looks at |
+
+**Cost and time (estimates, never measured as a whole).** Machine time about 1 to 3 minutes a page. Argon twice plus Vision about Rs 3 to 6 a page by the logged figures, so Rs 90 to 180 for 30 pages; budget Rs 250 to 300 because the real bill has run 1.5 to 2 times the logged estimate (10k). Person time is unmeasured; the translator timing test (section 2, 5 pages) measures it.
+
+**Known weak points.** (a) Handwritten pages can never be green, and most of the court material is handwritten. (b) The traffic-light cut-offs are guesses. (c) Argon fills in meaning where there is none (10m), so the English draft needs a person on any passage that reads too smoothly. (d) Kannada pages and most of the PDF group are untested. (e) No page has a person's marks yet, so every accuracy statement so far compares readers with each other.
