@@ -132,7 +132,7 @@ def run(args, caller=call_gemini):
                        "thinking_tokens": res.get("thinking_tokens", 0), "error": res.get("error"), "time_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
                 usd = cost_usd(models[model], rec["prompt_tokens"], rec["output_tokens"], rec["thinking_tokens"])
                 rec["cost_usd"] = round(usd, 6); rec["cost_inr"] = round(usd * fx, 4)
-                if res.get("ok") and res.get("finish") not in (None, "STOP"):
+                if res.get("ok") and res.get("finish") != "STOP":       # a stream that ends with no finish reason was cut off
                     rec["status"] = f"INCOMPLETE ({res.get('finish')}): do not trust this reading"
                 elif res.get("ok") and not res.get("text", "").strip():
                     rec["status"] = "EMPTY"
