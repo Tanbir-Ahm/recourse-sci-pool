@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10n record the results so far (real pages, scores and counts only); section 11 is the proposed design that follows from them; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10o record the results so far (real pages, scores and counts only); section 11 is the proposed design that follows from them; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -619,3 +619,21 @@ This follows from sections 10l to 10n. It changes no pass rule in section 5. It 
 **Cost and time (estimates, never measured as a whole).** Machine time about 1 to 3 minutes a page. Argon twice plus Vision about Rs 3 to 6 a page by the logged figures, so Rs 90 to 180 for 30 pages; budget Rs 250 to 300 because the real bill has run 1.5 to 2 times the logged estimate (10k). Person time is unmeasured; the translator timing test (section 2, 5 pages) measures it.
 
 **Known weak points.** (a) Handwritten pages can never be green, and most of the court material is handwritten. (b) The traffic-light cut-offs are guesses. (c) Argon fills in meaning where there is none (10m), so the English draft needs a person on any passage that reads too smoothly. (d) Kannada pages and most of the PDF group are untested. (e) No page has a person's marks yet, so every accuracy statement so far compares readers with each other.
+
+### 10o. First run of the section 11 pipeline: three typed Assamese pages (recorded 2026-10-27; counts only, no names, places, case numbers or text)
+
+**What was tested.** Three typed Assamese government sheets with handwritten margin notes (one of them a faded copy), supplied by the owner, run as designed in section 11: `gemini-4-argon` twice, Cloud Vision once, then `checker.py --page typed`. The checker's own selftest (invented text) passed first; this was the first run of the new page check on real readings. No other model was used. No page identified a minor or the victim of a sexual offence. No reference text and no human marks exist for these pages.
+
+| Page | Argon run 1 against run 2 | Argon against Cloud Vision | Cloud Vision mean confidence | Light | Differing lines between runs |
+|---|---|---|---|---|---|
+| 8 | 97.9% | 89.5% | 85.4% | red | 7 |
+| 9 | 86.0% | 66.6% | 69.8% | red | 39 |
+| 10 (faded) | 96.4% | 50.9%, and 75% as many letters | 59.5% | red | 8 |
+
+All three pages came out **red**. Cost was about Rs 7 for the six argon readings (Rs 1.11 to 1.28 each, 12 to 52 s; one run failed on a network error and was repeated), logged; Cloud Vision about Rs 0. The checker ran without errors.
+
+**Findings.** (1) **Page 9's red is earned by argon itself**: its two runs agree on only 86% of letters, differ on 39 lines, one run carries a date the other lacks, and four English sentences changed. (2) **Pages 8 and 10 are red mostly because Cloud Vision read them badly, not argon**: on the faded page Cloud Vision garbled digits and dropped lines while argon's reading was coherent. The rule "red if Vision is unsure" therefore sends a page for full human reading without saying which reader is wrong. (3) **The English-sentence comparison caught a real meaning flip that the letter check did not**: on page 10 the two argon runs agree on 96.4% of letters yet one run names one place for a ceremony and the other names a different place. (4) **Handwritten margin notes make pages look different**: argon marked doubtful words on pages 9 and 10 (9 in all) and gave `[unclear]` for the signatures, as intended. (5) **All three typed pages were red, so on this evidence green is rare on faded or low-resolution typed pages**; whether that is the right call needs the owner's marks.
+
+**Proposed tuning, not yet made.** Treat a page whose Cloud Vision confidence is under 80% as having no independent machine check (amber, like handwriting) unless argon's own two runs also disagree, so that Vision's weakness does not decide the colour. This rests on three pages and should be tested on the owner's marks before it is adopted.
+
+**Limits.** Three pages from the same kind of document, not independent of earlier pages 1 and 2; no reference; thresholds are a first guess.
