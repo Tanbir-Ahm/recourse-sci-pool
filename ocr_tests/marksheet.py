@@ -65,6 +65,8 @@ function addRow(){const tr=document.createElement('tr');
 $('#add').onclick=addRow;
 function csv(){const q=v=>'"'+String(v).replace(/"/g,'""')+'"'; const rows=[['Page','Tool','Group','Line','Tool said','Should say','Type','Severity','Warned']];
  document.querySelectorAll('#errs tbody tr').forEach(tr=>{rows.push([...tr.children].slice(0,9).map(td=>{const f=td.querySelector('input,select,textarea');return f?f.value:td.textContent;}));});
+ rows.push([]); rows.push(['Check list','Status','Type','Reader A','Reader B','Line A/B','Value on the page','Result']);
+ document.querySelectorAll('#items tr.dis, #items tr.conf').forEach(tr=>{const c=[...tr.children]; rows.push(['',c[0].textContent,c[1].textContent,c[2].textContent,c[3].textContent,c[4].textContent,c[5].querySelector('input').value,c[6].querySelector('select').value]);});
  rows.push([]); rows.push(['Page summary','gist correct',$('#gist').value,'critical errors',$('#ncrit').value,'silent critical',$('#nsil').value,'minutes',$('#mins').value]);
  return rows.map(r=>r.map(q).join(',')).join('\\n');}
 $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(csv());$('#copy').textContent='Copied';}catch(e){window.prompt('Copy this:',csv());}};
