@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10l record the results so far (real pages, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10m record the results so far (real pages, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -523,3 +523,36 @@ The 24 and 25 scores are artifacts of my pattern: in four readings the phrase "1
 **What this changes in the plan.** `gemini-4-argon` stays the lead reader. `gemini-3.7-flash` is not usable as the second reader for handwritten or dense pages on this evidence, and is demoted to "unproven"; the second-reader slot is open (`gemini-3.5-flash` is the next candidate; the owner deferred testing it). Group B needs a human-marked reference before any pass rule is applied. The three-page dry run for budgeting is effectively done: five pages cost about Rs 23 logged, about Rs 5 a page at argon plus the overloaded second reader's retries, which the 30-page budget should multiply and then double for the billing gap in 10k.
 
 **Limits.** Five pages, no reference, two runs each at temperature 0 (not independent). The cost figures are the harness's estimates. Nothing in this section identifies a person, place, case or document.
+
+### 10m. The "gibberish" PDF (Step 0) and `gemini-3.5-flash` as the second reader (recorded 2026-10-27; counts only, no case text)
+
+**What was tested.** (a) One owner-supplied PDF from group C, a one-page digital Assamese file whose sentences are deliberately meaningless (the file says so). (b) `gemini-3.5-flash`, the deferred second-reader candidate, on the five pages of 10l and on that PDF.
+
+**Step 0 diagnosis of the PDF.** It is **not** a broken-text-layer PDF. It has no scanned image, one embedded Unicode TrueType Bengali-script font with a proper Unicode map, and `pdftotext` returns clean, correctly ordered Assamese. What is broken is the **visible rendering**: the file was drawn without proper complex-script shaping, so vowel signs sit in the wrong places on screen (for example, signs that belong before a consonant are drawn after it), and a person looking at the page sees garbled words that the text layer does not contain. This gives the first **exact reference text** in the project, and a rule for this type of file: **extract the text layer first (free, exact), and use OCR only when the layer is missing or does not match the page.** It says nothing about the other four group C files, which may be the opposite case (a good picture over a junk text layer, as with old non-Unicode fonts); each needs the same two-minute check: compare the text layer with what the page shows.
+
+**Scores against the exact text (page rendered to an image at 150 dpi):**
+
+| Reader | Word-for-word right (exact) | Base-letter error rate (vowel-sign positions ignored) | Logged cost per reading |
+|---|---|---|---|
+| `gemini-4-argon` (2 runs) | 65.7%, 70.4% | 1.8%, 3.1% | Rs 0.97 to 0.99 |
+| `gemini-3.5-flash` (2 runs) | 50.9%, 42.6% | 2.9%, 3.1% | Rs 6.36 and 11.15 |
+| Cloud Vision | 30.6% | 1.6% | about Rs 0 |
+| Tesseract | 26.9% | 14.2% | Rs 0 |
+
+`gemini-3.7-flash` failed (overload) and was not retried. The exact word score is low for every reader because the readers copied the garbled marks as drawn; the base-letter column shows that the letters themselves were read well by all but Tesseract. **Both Gemini models wrote the final sentence of the page correctly and none marked any word `[unclear]`.** On the meaningless lines, `gemini-4-argon` produced fluent, poetic English for words that have no sentence meaning (it made sense where there is none), while `gemini-3.5-flash` mostly transliterated them. For a real page the first behaviour is a risk: a reader that fills in meaning cannot be trusted to say when there is none.
+
+**`gemini-3.5-flash` on the five pages of 10l (one run each):**
+
+| Page | Result |
+|---|---|
+| 1 typed | Rewrote the subject of one numbered item, invented a date range and a body name, and changed the names in the list. Worse than `gemini-3.7-flash`. |
+| 2 typed | Cut off (stream ended with no finish reason, 6,901 thinking tokens, Rs 6.42 spent); unusable. |
+| 3 handwritten English | Same reading of the seized article as `gemini-3.7-flash` (bamboo), different from argon (wood); dates differ between the three readers. |
+| 4 handwritten Assamese | Close to argon on the main facts (the object, the arrest, the court stage); added a "/34" to the section, changed a column number and the year in a date. |
+| 5 handwritten mixed | One clause changed meaning ("beat me" where the others have "remained like that"); "4-5 days" where the others have 15. |
+
+Cost and speed: Rs 2.77 to 4.16 per page on these pages (about 3 to 4 times argon) and Rs 6.36 to 11.15 on the PDF page; 16 to 77 s; 2,300 to 11,900 thinking tokens a page.
+
+**Findings.** (1) **Neither flash model works as the second reader on dense or handwritten Assamese**: both changed the meaning on a typed page where argon did not. The "two readers agree" alarm cannot be built from either of them. (2) **The disagreement between argon and the flash models is still useful as a warning, but not as a second opinion**: where they differ, a person must look; where they agree, the earlier lesson (agreement is not correctness) still applies. (3) **Cloud Vision is the most faithful transcriber on the digital page** and gives a confidence for each word; it was weak on handwriting (58 to 87% mean confidence on pages 3 to 5). It does not translate. (4) Total logged spend across 10l and 10m is about Rs 62 (lower bound, 10k); this round about Rs 39, of which `gemini-3.5-flash` accounted for about Rs 37 including two readings that were unusable.
+
+**What this changes in the plan.** Step 0 is done for one file and gives a triage rule (text layer first). The second-reader slot has no Gemini candidate left on this evidence; the next options are argon run twice (self-consistency), Cloud Vision as an independent transcriber on typed pages, and the human reviewer. The owner's marks on the 10l pages are still the way to turn any of this into scored numbers.
