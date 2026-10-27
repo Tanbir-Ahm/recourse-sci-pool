@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10h record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10j record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -409,3 +409,56 @@ Costs at about Rs 96 per US dollar with the unverified third-party prices of 10e
 - **Use two readers and compare, plus a re-run.** Differences between `gemini-4-argon` and a second reader, and between two runs of the same reader, flag the name and many of the number cells.
 - **Do not use Sarvam Translate for the remarks of a record** without a person checking the English; it may still be useful as a second reader of dates and digits.
 - **Still to run:** a human translator's version and line-by-line marking for this record and the notes pages; a decision on which tier of Gemini key may be used for client documents (the data-use terms of the key's tier were not checked); the rest of the plan's 30-page set.
+
+### 10i. A full Assamese newspaper page: dropped text, changed names and digits (recorded 2026-10-27; counts only, no article text)
+
+**What was tested.** One photographed Assamese newspaper page (1,127 x 826 px): masthead, a large headline, a photograph, a byline and six columns of small print, ending with a phone number. It is a published article, so nothing in it is confidential. Every model transcribed it in column order (a `[COLUMN n]` marker for each column, digits exactly as printed, `[unclear]` for doubtful words, stop where the text stops) and translated it in the same call. Sarvam read with Vision and translated with Sarvam Translate in chunks (two of its three reading jobs were translated, to limit cost). Timed streaming calls; temperature 0; output limit 32,768 tokens.
+
+**How it was scored.** There is no reference translation. 37 items: 13 on the transcription (masthead; the headline words; the headline surname spelled as printed; the byline; the six years and ages or durations), 12 passages spread over the six columns, which detect dropped text, and 12 facts in the English. The reference is my own reading of the print, which I could read plainly but may have wrong; `gemini-4-argon` and Sarvam agree with it on every item, which is agreement, not proof. **The owner's verdicts, recorded as the owner's judgments:** `gemini-4-argon` was best on both meaning and details; `gemini-3.7-flash` got everything right (one reading); `gemini-3.5-flash` was second best on meaning and details; the other models changed the meaning or the names.
+
+| Reader | Readings | Items right (of 37) | Response time (median) | Cost per page | Main differences from the print |
+|---|---|---|---|---|---|
+| **`gemini-4-argon`** | 2 of 3 | **37, 37** | 144 s (128 to 195) | Rs 3.62 | none found |
+| `gemini-3.7-flash` | 1 of 3 | 36 | 259 s | Rs 1.68 | headline surname spelling changed |
+| `gemini-3-flash-preview` | 3 | 36, 36, 34 | 28 s | Rs 2.04 | phone number wrong in all 3 |
+| `sarvam-vision` + Translate | 2 | 36, 36 | about 25 s | about Rs 9.6 | byline surname spelling; an invented arrest in the English |
+| `gemini-pro-latest` | 1 of 3 | 35 | 105 s | price unknown | one surname wrong |
+| `gemini-3.6-flash` | 3 | 34, 35, 35 | 65 s | Rs 4.51 | phone number wrong in all 3; last line dropped in 2 |
+| `gemini-3.5-flash` | 3 | 33, 35, 35 | 74 s | Rs 10.76 | last line dropped in 2; one phone digit pair swapped; imprisonment attributed to one event |
+| `gemini-3.5-flash-lite` | 3 | 34, 31, 27 | 23 s | Rs 0.86 | last line dropped in 3; names and phone wrong |
+| `gemini-flash-lite-latest` | 3 | 33, 29, 31 | 28 s | price unknown | last line dropped in 3; names wrong; an invented year |
+| `gemini-3.1-flash-lite` | 3 | 32, 32, 32 | 16 s | Rs 0.51 | the byline and a second person's surname wrong in every reading |
+| `gemini-3.1-pro-preview` | 1 of 3 | 18 | 182 s | about Rs 38 | cut off at about half the page |
+| `gemini-3.8-flash` | 0 | none | | | overloaded |
+
+**Findings**
+1. **Argon read all 37 items in both completed runs**, and the owner found it best on meaning and details. It took 128 to 195 s, against 7 to 17 s on short pages; the page is long and argon was also slow for its output length, which may be load.
+2. **A printed name was quietly changed.** 16 of 25 readings wrote the headline surname in the more usual spelling instead of the printed one. Only `gemini-4-argon` (2 of 2) and Sarvam (2 of 2) kept it as printed, apart from a few lite readings.
+3. **Names were corrupted by the lite models**: the byline surname and a second person's surname were wrong in every lite reading in some form, and one reading wrote the ashram's name as a different place.
+4. **The phone number split.** The right number appeared in 15 of 25 readings; 9 had a digit wrong and 1 had none. **Years**: all five right in 23 of 25 (one reading missed one year, one invented a year).
+5. **Text was dropped.** 11 of 25 readings omitted the article's closing sentence; `gemini-3.5-flash-lite` and `gemini-flash-lite-latest` did it every time, `gemini-3.5-flash` and `gemini-3.6-flash` in 2 of 3.
+6. **Meaning.** Sarvam's English says she was "arrested for allegedly being an infiltrator" on a march that the article says was to stop infiltration (an invented fact). In one sentence listing two events with imprisonment after them, `gemini-4-argon` (2 of 2) and `gemini-3.7-flash` (1 of 1) attribute the imprisonment to both events, while `gemini-3.5-flash` (3 of 3), `gemini-3.6-flash`, the lite models and Sarvam attribute it to the later event only. **The source sentence is ambiguous in print, and the owner has not ruled on which is right; this is unresolved.**
+7. **Thinking models cost far more on a long page**: `gemini-3.1-pro-preview` spent 31,458 of its 32,768 tokens thinking on its one finished run and was cut off (about Rs 38 for half a page), `gemini-3.5-flash` cost Rs 10.8.
+
+**Limits.** Argon completed 2 of 3 runs, `gemini-3.7-flash` 1 of 3 and `gemini-3.1-pro-preview` 1 of 3, because of overload; `gemini-3.8-flash` none. The reference is my reading, and the prices are unverified.
+
+**What this changes in the plan.** `gemini-4-argon` stays the lead reader. `gemini-3.7-flash` becomes a serious candidate for the second reader, on one clean reading plus clean readings on three earlier pages, but it has not been tested on handwriting and was overloaded on most pages. `gemini-3.5-flash` is a close second on meaning. On the pages where both argon and `gemini-3.7-flash` completed (the clean letter, the second notes page, the land record and this page), every critical error argon made was met by a disagreement with `gemini-3.7-flash`; this is a small sample.
+
+### 10j. A small Hindi newspaper clipping (recorded 2026-10-27; counts only, no article text)
+
+**What was tested.** A small photographed Hindi (Devanagari) newspaper paragraph about a teacher (422 x 350 px), with stray letters from the neighbouring column at the left edge. Same method as 10i, with a prompt adapted for Hindi. Published text; no confidentiality issue. 26 items scored (14 on the Hindi reading: heading, the professor's name, five digits, four organisation names, two subject names and the final words; 12 facts in the English), against my own reading of the print.
+
+**Two readers could not be run**: `gemini-3.7-flash` (the Google key returned a billing error) and Sarvam (payment required; its free credit is used up). Neither was retried.
+
+| Reader | Readings | Items right (of 26) | Response time (median) | Cost per page |
+|---|---|---|---|---|
+| `gemini-4-argon`, `gemini-3.1-flash-lite`, `gemini-3.5-flash-lite`, `gemini-flash-lite-latest`, `gemini-3-flash-preview` | 3 each | 26, 26, 26 | 12.5 s, 3.4 s, 2.8 s, 2.1 s, 11.7 s | Rs 0.91, 0.12, 0.18, unknown, 0.95 |
+| `gemini-3.5-flash` | 3 | 26, 25, 26 | 17.7 s | Rs 2.12 |
+| `gemini-3.6-flash` | 3 | 24, 25, 26 | 12.6 s | Rs 0.93 |
+| `gemini-3.8-flash`, `gemini-3.1-pro-preview`, `gemini-pro-latest` | 2 of 3 each | 26, 26 / 26, 25 / 26, 26 | 93 s, 57 s, 102 s | Rs 1.04, 4.21, unknown |
+
+The 24 and 25 scores are artifacts of my pattern: in four readings the phrase "10 o'clock" is split across a line break with a stray edge letter between, and the 10 is present in all of them. All readings are effectively right on these items.
+
+**Findings.** (1) **The page does not separate the models**: all gave the right name, digits, plant, company and the car claim. The cheapest models, at Rs 0.1 to 0.2 and 2 to 3 s, were perfect. (2) **One printed name was quietly changed**: the page prints a polytechnic's name in a variant spelling; `gemini-4-argon` kept it as printed in 3 of 3 readings, while three models wrote the real city's name instead in 10 readings (all readings of `gemini-3.5-flash-lite`, `gemini-3.6-flash` and `gemini-flash-lite-latest`, plus one of `gemini-3.5-flash`). (3) **Stray-letter noise**: `gemini-3.6-flash` put "[Text fragment]" markers inside its English in one reading; two readings flagged 11 `[unclear]` spots on the edge fragments, which is the right behaviour. (4) **Hindi is an easier script than Assamese**, so this says little about the Assamese and Kannada pages the plan is about.
+
+**What this changes in the plan.** Nothing in the ranking. Easy printed pages do not discriminate; the earlier failures came from dense Assamese text and handwriting. The next tests should use the plan's page groups, not more one-off pages.
