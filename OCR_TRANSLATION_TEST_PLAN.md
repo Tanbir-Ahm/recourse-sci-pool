@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10m record the results so far (real pages, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10n record the results so far (real pages, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -556,3 +556,33 @@ Cost and speed: Rs 2.77 to 4.16 per page on these pages (about 3 to 4 times argo
 **Findings.** (1) **Neither flash model works as the second reader on dense or handwritten Assamese**: both changed the meaning on a typed page where argon did not. The "two readers agree" alarm cannot be built from either of them. (2) **The disagreement between argon and the flash models is still useful as a warning, but not as a second opinion**: where they differ, a person must look; where they agree, the earlier lesson (agreement is not correctness) still applies. (3) **Cloud Vision is the most faithful transcriber on the digital page** and gives a confidence for each word; it was weak on handwriting (58 to 87% mean confidence on pages 3 to 5). It does not translate. (4) Total logged spend across 10l and 10m is about Rs 62 (lower bound, 10k); this round about Rs 39, of which `gemini-3.5-flash` accounted for about Rs 37 including two readings that were unusable.
 
 **What this changes in the plan.** Step 0 is done for one file and gives a triage rule (text layer first). The second-reader slot has no Gemini candidate left on this evidence; the next options are argon run twice (self-consistency), Cloud Vision as an independent transcriber on typed pages, and the human reviewer. The owner's marks on the 10l pages are still the way to turn any of this into scored numbers.
+
+### 10n. A second group C PDF: image only, no text layer (recorded 2026-10-27; counts only)
+
+**What was tested.** A one-page PDF made by a PDF merge tool, containing a single 1240 x 582 JPEG and no fonts and no text layer (`pdftotext` returns nothing, so copying gives nothing). The picture is a page of a published Assamese–English dictionary shown twice side by side: a clean re-typed copy on the left and a low-quality scan of the original on the right, four text columns in all. Published material; no confidentiality issue. I read the whole page and each half cropped and enlarged to twice its size (the halves do not cover exactly the same entries, so the two halves are not compared with each other). No reference text exists: the re-typed half contains errors of its own.
+
+**Step 0 triage, now with two PDFs.** File 1 (10m): good text layer, garbled picture, so extract the text. File 2: no text layer, so render and OCR. A two-minute check separates them: run `pdftotext`, then compare what comes out with what the page shows. Three more files are still needed to know how common each type is.
+
+| Reader (whole page) | Completed | Time | Logged cost |
+|---|---|---|---|
+| `gemini-4-argon` | 1 of 2 (the other failed on a network error) | 64 s | Rs 2.93 |
+| `gemini-3.7-flash` | 1 of 1 | 216 s | Rs 3.23 |
+| Cloud Vision, Tesseract | 1 each | about 1 s, 6 s | about Rs 0, Rs 0 |
+
+On the halves: `gemini-4-argon` completed 2 of 2 on each (15 to 71 s, Rs 1.38 to 1.77); `gemini-3.7-flash` completed on the clean half only (299 s) and failed on the scanned half.
+
+**Agreement between readers (character level, punctuation and spaces ignored; this is agreement, not accuracy).**
+
+| Pair | Clean half | Scanned half | Whole page |
+|---|---|---|---|
+| argon run 1 against run 2 | 98.2% | 98.4% | not repeated |
+| argon against Cloud Vision | 97.9% | 87.7% | 91.0% |
+| argon against Tesseract | 93.5% | 69.4% | not computed |
+| argon against `gemini-3.7-flash` | 91.5% | not available | 88.4% |
+| `gemini-3.7-flash` against Cloud Vision | 89.8% | not available | 82.9% |
+
+Cloud Vision mean word confidence 95.5% (clean half), 82.0% (scanned half), 87.2% (whole page); Tesseract 88.6%, 70.4%, 75.1%.
+
+**Findings.** (1) **All four readers handle the clean copy; the scan separates them.** On the blurred half Cloud Vision dropped or garbled whole phrases of two dictionary entries and Tesseract lost nearly a third of the text, while `gemini-4-argon` kept every entry in order. (2) **Argon still made small silent word errors in the blurred spots** (for example a different plausible word where the scan shows another), with no `[unclear]` marks, and it did not repeat them identically across the two runs on the same half only in part. (3) **Reading order on four columns worked for argon and `gemini-3.7-flash`**, with `[COLUMN n]` markers in the right order. (4) **The "translation" step has little meaning on a bilingual dictionary page**: much of the text is already English glosses; the two Gemini readers treated the Assamese glosses differently (one reported the English gloss, the other translated the Assamese words), so the English needs a person who reads Assamese. (5) **Total logged spend across 10l to 10n is about Rs 76 (lower bound, 10k).**
+
+**What this changes in the plan.** Nothing in the ranking: argon is the lead reader, with Cloud Vision as a cheap check on clean typed pages only. Group C needs the triage step before any reader is run, so that files with a good text layer are not sent through OCR at all.
