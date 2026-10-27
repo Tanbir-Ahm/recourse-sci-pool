@@ -1,0 +1,11 @@
+{
+  "_note": "Prices are US dollars per 1 million tokens, from third-party price trackers read on 2026-10-26; NOT verified against Google's own pricing page. Several are promotional rates that rise later. The harness uses them to ESTIMATE cost; the billing account is the truth, and it has run higher than these estimates (see section 10k of OCR_TRANSLATION_TEST_PLAN.md).",
+  "usd_to_inr": 96,
+  "models": {
+    "gemini-4-argon":         {"key_env": "GEMINI_API_KEY", "price_in": 2.00, "price_out": 10.00, "note": "promo rate; $4 / $20 after the promotion"},
+    "gemini-3.7-flash":       {"key_env": "GEMINI_API_KEY", "price_in": 0.75, "price_out": 3.75,  "note": "introductory rate to 2026-12-31 (Vertex); then 1.50 / 7.50"},
+    "gemini-3.5-flash":       {"key_env": "GEMINI_API_KEY", "price_in": 1.50, "price_out": 9.00,  "note": ""},
+    "gemini-3.6-flash":       {"key_env": "GEMINI_API_KEY", "price_in": 0.75, "price_out": 3.75,  "note": "introductory rate"},
+    "gemini-3.1-pro-preview": {"key_env": "GEMINI_API_KEY", "price_in": 2.00, "price_out": 12.00, "note": "thinks a lot; one page used 31,000 thinking tokens"}
+  }
+}

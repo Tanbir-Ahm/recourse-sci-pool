@@ -1,0 +1,18 @@
+# Case data must never be committed (public repository). Page images, run outputs, ledgers, marking sheets and
+# reviewer marks stay on the working machine, outside version control.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.tif
+*.tiff
+run_out/
+out/
+out*/
+pages/
+ledger.jsonl
+*_marksheet.html
+*_marks.csv
+facts*.json
+refs*.json

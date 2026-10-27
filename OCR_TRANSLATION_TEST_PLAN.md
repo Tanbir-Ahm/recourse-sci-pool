@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10j record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10k record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -235,6 +235,8 @@ Not completed on key B: `gemini-3.8-flash` and `gemini-flash-latest` (overloaded
 
 ### 10e. Cost and speed per model, the messy page again with cheaper models, and a correction (recorded 2026-10-26; counts only, no case text)
 
+*Cost note (added 2026-10-27): the per-page costs in this section are lower bounds; see 10k.*
+
 **Correction first.** The English text supplied as "the closest translation" of a handwritten notes page (a page of Assamese-language notes, no case data) is **word-for-word identical to the `gemini-4-argon` run 1 output**, down to a bracketed "[through]" and the British spelling "favourable". It is a model output, not an independent translation, so scoring against it would give `gemini-4-argon` 100% by construction. **No reader was scored against it, and no ranking on the notes page is valid.** An independent human English version of that page is still needed.
 
 **Notes page: what can be counted without a reference.** 12 readers, 34 readings (each model transcribed and translated in one call, 3 runs; Sarvam read with Vision and translated with Sarvam Translate). The prompt told every model to ignore writing showing through from the back and to stop where the text stops. The page breaks off mid-sentence.
@@ -290,6 +292,8 @@ Medians of 3 runs unless stated. `gemini-3.1-pro-preview` and `gemini-pro-latest
 
 ### 10f. Cost against efficiency, ranked (recorded 2026-10-26; counts only, no case text)
 
+*Cost note (added 2026-10-27): the per-page costs in this section are lower bounds; see 10k.*
+
 **The question.** Which model gives the most reliable reading of handwritten Assamese for the least money, using only the results in 10c to 10e.
 
 **How efficiency is defined.** *Accuracy* on a page is the share of its critical values a model read right across its runs. The messy handwritten complaint of 10 to 10c has 3 critical values per run (incident date, husband's age, date found; the third is my own reading of the image, the other two come from the lawyer's reference). The clean letter of 10d has 5 per run (letter date, incident date, amount, and the two meaning words "borrowed" and "could not repay me"; from the lawyer's English reference), with the two keys pooled. *Quality Q* is the average of the two page accuracies, or the clean-letter accuracy alone where the messy page was not tested. *Efficiency* is Q divided by the cost per page in rupees (about Rs 96 per US dollar; third-party and unverified prices, see 10e). **The ranking puts models that passed a gate on the messy page first**, each group ordered by efficiency. The gate is: all three critical numbers read right in at least one run. Plain accuracy per rupee ranks the two cheapest models first, because they cost almost nothing, even though neither read the messy page; a reader that fails the hard page still needs a person to check every page, so its low price saves little. The plain rank is in the last column so the effect of the gate is visible.
@@ -324,6 +328,8 @@ Messy-page accuracy is out of 9 critical values (3 runs of 3) for the seven mode
 **What this changes in the plan.** Run a second and third messy handwritten page before relying on the lead of `gemini-4-argon`, ideally with a human-marked reference for each; re-price once Google's own pricing page can be read; and keep a person checking every date, age and amount whatever the model.
 
 ### 10g. A second notes page, 14 readers; the owner found the `gemini-4-argon` reading closest (recorded 2026-10-26; counts only, no case text)
+
+*Cost note (added 2026-10-27): the per-page costs in this section are lower bounds; see 10k.*
 
 **What was tested.** A photographed page of handwritten Assamese notes (718 x 682 px, no case data) on how Old Indo-Aryan changed into Prakrit and then Assamese, with red underlining and writing showing through from the back of the paper. The page is cut off at the bottom in the middle of a point on the dual number. Every model transcribed and translated in one call (the same prompt as the first notes page of 10d and 10e: ignore writing from the back, stop where the text stops, mark doubtful words); Sarvam read with Vision and translated with Sarvam Translate. Three runs per reader where they answered, timed with one streaming call each; temperature 0; output limit 32,768 tokens.
 
@@ -365,6 +371,8 @@ Costs are at about Rs 96 per US dollar with the unverified third-party prices of
 - **Still to run:** an independent human translation or line-by-line marking by a person who reads Assamese for this page and the first notes page; more messy handwritten pages with such a reference; Google Cloud Vision, IndicTrans2 and Google Translate; Jurisphere and Niyam.
 
 ### 10h. A printed land-revenue record: numbers, a land unit and one name (recorded 2026-10-26; counts only, no names, no record numbers)
+
+*Cost note (added 2026-10-27): the per-page costs in this section are lower bounds; see 10k.*
 
 **What was tested.** One photographed page of a printed Assam land-revenue record (a jamabandi): a table in Assamese and English with five holders, two plot numbers, areas in two units, revenue and local-tax columns, and a remarks cell carrying two circle-officer orders (with dates, order numbers and land quantities) and two officers' names in Latin script (1,455 x 875 px). It is a real record about real people. Nothing that identifies it (names, plot, order or patta numbers, the village) is written in this repository. Every model transcribed and translated in one call with a prompt adapted for a printed table (digits copied exactly as printed, no tidying, `[unclear]` for doubtful characters); Sarvam read with Vision (which returns an HTML table, flattened to text) and translated with Sarvam Translate in chunks under its 2,000-character limit. Three runs per reader where they answered; timed streaming calls; temperature 0; output limit 32,768 tokens.
 
@@ -412,6 +420,8 @@ Costs at about Rs 96 per US dollar with the unverified third-party prices of 10e
 
 ### 10i. A full Assamese newspaper page: dropped text, changed names and digits (recorded 2026-10-27; counts only, no article text)
 
+*Cost note (added 2026-10-27): the per-page costs in this section are lower bounds; see 10k.*
+
 **What was tested.** One photographed Assamese newspaper page (1,127 x 826 px): masthead, a large headline, a photograph, a byline and six columns of small print, ending with a phone number. It is a published article, so nothing in it is confidential. Every model transcribed it in column order (a `[COLUMN n]` marker for each column, digits exactly as printed, `[unclear]` for doubtful words, stop where the text stops) and translated it in the same call. Sarvam read with Vision and translated with Sarvam Translate in chunks (two of its three reading jobs were translated, to limit cost). Timed streaming calls; temperature 0; output limit 32,768 tokens.
 
 **How it was scored.** There is no reference translation. 37 items: 13 on the transcription (masthead; the headline words; the headline surname spelled as printed; the byline; the six years and ages or durations), 12 passages spread over the six columns, which detect dropped text, and 12 facts in the English. The reference is my own reading of the print, which I could read plainly but may have wrong; `gemini-4-argon` and Sarvam agree with it on every item, which is agreement, not proof. **The owner's verdicts, recorded as the owner's judgments:** `gemini-4-argon` was best on both meaning and details; `gemini-3.7-flash` got everything right (one reading); `gemini-3.5-flash` was second best on meaning and details; the other models changed the meaning or the names.
@@ -446,6 +456,8 @@ Costs at about Rs 96 per US dollar with the unverified third-party prices of 10e
 
 ### 10j. A small Hindi newspaper clipping (recorded 2026-10-27; counts only, no article text)
 
+*Cost note (added 2026-10-27): the per-page costs in this section are lower bounds; see 10k.*
+
 **What was tested.** A small photographed Hindi (Devanagari) newspaper paragraph about a teacher (422 x 350 px), with stray letters from the neighbouring column at the left edge. Same method as 10i, with a prompt adapted for Hindi. Published text; no confidentiality issue. 26 items scored (14 on the Hindi reading: heading, the professor's name, five digits, four organisation names, two subject names and the final words; 12 facts in the English), against my own reading of the print.
 
 **Two readers could not be run**: `gemini-3.7-flash` (the Google key returned a billing error) and Sarvam (payment required; its free credit is used up). Neither was retried.
@@ -462,3 +474,16 @@ The 24 and 25 scores are artifacts of my pattern: in four readings the phrase "1
 **Findings.** (1) **The page does not separate the models**: all gave the right name, digits, plant, company and the car claim. The cheapest models, at Rs 0.1 to 0.2 and 2 to 3 s, were perfect. (2) **One printed name was quietly changed**: the page prints a polytechnic's name in a variant spelling; `gemini-4-argon` kept it as printed in 3 of 3 readings, while three models wrote the real city's name instead in 10 readings (all readings of `gemini-3.5-flash-lite`, `gemini-3.6-flash` and `gemini-flash-lite-latest`, plus one of `gemini-3.5-flash`). (3) **Stray-letter noise**: `gemini-3.6-flash` put "[Text fragment]" markers inside its English in one reading; two readings flagged 11 `[unclear]` spots on the edge fragments, which is the right behaviour. (4) **Hindi is an easier script than Assamese**, so this says little about the Assamese and Kannada pages the plan is about.
 
 **What this changes in the plan.** Nothing in the ranking. Easy printed pages do not discriminate; the earlier failures came from dense Assamese text and handwriting. The next tests should use the plan's page groups, not more one-off pages.
+
+### 10k. Correction to the cost figures (recorded 2026-10-27; counts only)
+
+**What the billing page shows.** The prepaid credit for the Gemini API was topped up with Rs 500 on 25 October 2026, and on 27 October the balance was Rs 2.85, so about **Rs 497** was used. When the credit ran out, the paid key began returning a billing error.
+
+**What I had estimated.** The timed runs I logged on the paid key for pages 3 to 7 (about 85 completed calls) come to about **Rs 268** at the third-party prices in 10e. The rest, roughly Rs 230, is not itemised: the earlier runs on the first pages and the translation steps were not logged with token counts, and calls that failed or timed out may also be billed. The prices themselves are unverified, so the real cost per token may be higher than assumed.
+
+**What this changes.**
+- **The per-page costs in 10e to 10j, and the cost column of the ranking in 10f, are lower bounds for the paid-key models.** The true cost per page is probably higher, perhaps by up to about 1.5 to 2 times, but this was not measured. Their order is unlikely to change, because the cheap and expensive models differ by much more than that.
+- **The models run on the second key were not on this account**; their cost is unknown and may be zero.
+- **Budgeting.** The 30-page test (the plan's section 2) must be budgeted from the new ledger, not from the figures above. Run a three-page dry run first, multiply by ten, and add a margin.
+
+**What was done about it (Step 3).** The harness (`ocr_tests/harness.py`) now records the tokens, estimated cost and outcome of every call, including failed ones, and stops at a budget set in rupees. It still estimates, so the ledger should be reconciled against the billing page after each batch.

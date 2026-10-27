@@ -33,3 +33,25 @@ with the approved image and facts file supplied outside the repo. `python gemini
 The first real reference (15 facts for one handwritten complaint page) and the free-tier results are in section 10b of the test plan.
 
 After the first run the script was changed: matching now normalises text and patterns to NFD (Bengali y-with-dot stored composed or decomposed no longer causes false misses), and a reading whose Gemini finish reason is not `STOP` is reported as cut off. Keep the facts file, the image and the readings outside the repository.
+
+## Step 3 harness (2026-10-27): run pages through the readers, compare, and mark
+
+Three small scripts replace the ad hoc ones used for sections 10c to 10j. All three have a `--selftest` that uses **invented text only**.
+
+| Script | What it does |
+|---|---|
+| `harness.py` | Sends each page image to each reader model, runs times, saves every output as `RUN/<page>/<model>/run<N>.txt`, and appends **every call, including failed ones**, to `RUN/ledger.jsonl` with time to first token, total time, input, output and thinking tokens, why it ended (`ok`, `INCOMPLETE (MAX_TOKENS)`, `EMPTY`, `failed`), and an **estimated** cost in rupees. `--budget-inr` stops it before a call that would pass the budget. Calls already paid for are skipped on a rerun; only failed calls are retried. Incomplete readings are saved as `run<N>.INCOMPLETE.txt` so they cannot be mistaken for good ones. `--report RUN/ledger.jsonl` prints a per-model summary. |
+| `checker.py` | Compares two readings of one page. Every disagreement (a number, date, amount, name, land unit, or a whole line) comes first. Every date, amount, number, unit, section number and name the readers **agree** on is listed too, marked "still confirm", because agreement is not correctness. It never marks anything correct. |
+| `marksheet.py` | Prints one self-contained HTML marking sheet per page: the page image beside the check list, the differing lines, both English drafts, and the plan's section 8 error table (type, severity, warned?) with Copy-as-CSV. Nothing is loaded from the internet, and reader text is escaped. |
+
+`models.json` holds the model list, the key each one uses (read from an environment variable; keys are never printed or pasted into chat), and the prices. **The prices are third-party and unverified, and the estimates have run below the real bill (see 10k in the plan).** Reconcile the ledger against the billing page.
+
+Quick start, from a session whose environment has the key set:
+```
+python harness.py --pages PAGES --out RUN --models gemini-4-argon,gemini-3.7-flash --runs 2 --language Assamese --budget-inr 150
+python marksheet.py --page-id A01 --group A --image PAGES/A01.png --a RUN/A01/gemini-4-argon/run1.txt --a-name argon \
+                    --b RUN/A01/gemini-3.7-flash/run1.txt --b-name flash37 --out A01_marksheet.html
+```
+Pages are named by ID only (`A01.png` = group A, page 1). `.gitignore` in this folder blocks images, PDFs, run folders, ledgers, marking sheets and marks files, but **check `git status` before every commit**: a marking sheet contains the page and its text.
+
+Smoke test on 2026-10-27, on a public Hindi clipping with the free key: one real call (time, tokens and cost recorded), a second invocation skipped it, the checker and marking sheet ran on the result, and the sheet loaded in a real browser with no script errors.
