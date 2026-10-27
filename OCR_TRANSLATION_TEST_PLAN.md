@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10k record the results so far (one real document, scores and counts only); the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10l record the results so far (real pages, scores and counts only); the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -487,3 +487,39 @@ The 24 and 25 scores are artifacts of my pattern: in four readings the phrase "1
 - **Budgeting.** The 30-page test (the plan's section 2) must be budgeted from the new ledger, not from the figures above. Run a three-page dry run first, multiply by ten, and add a margin.
 
 **What was done about it (Step 3).** The harness (`ocr_tests/harness.py`) now records the tokens, estimated cost and outcome of every call, including failed ones, and stops at a budget set in rupees. It still estimates, so the ledger should be reconciled against the billing page after each batch.
+
+### 10l. Five real pages from the plan's groups, run through the Step 3 harness (recorded 2026-10-27; counts only, no names, places, case numbers or text)
+
+**What was tested.** Five photographed pages supplied by the owner, the first real use of the harness: two typed Assamese government sheets with handwritten marginal notes (group B style), one handwritten English police form with court stamps and one line in Assamese script, one handwritten Assamese police court record, and one handwritten Assamese statement with English words mixed in (group A style). None was a PDF, so **Step 0 (the gibberish PDF diagnosis) is still open**. Language was identified by me, not given. All pages went to Google's paid Gemini key and to Google Cloud Vision; the owner confirmed cloud processing was acceptable, and nothing identifying a minor or the victim of a sexual offence was seen on them. Same prompt as 10d to 10j, temperature 0, two runs for `gemini-4-argon` and `gemini-3.7-flash`, one for `gemini-3.8-flash`. Tesseract (Assamese + English) and Cloud Vision (with Google Translate on its reading) were added as free or near-free baselines.
+
+**Nothing here is scored against a reference yet.** The pages have no human reference translation. Marking sheets (plan section 8) were printed for the owner to fill in; until they are, every comparison below is between readers, and my reading of the images is not a reference. The owner's first impression after reading the outputs was that `gemini-4-argon` was the best reader overall; this is recorded as an impression, not a score.
+
+| Reader | Readings completed | Attempts | Time per reading | Logged cost per page (lower bound, see 10k) |
+|---|---|---|---|---|
+| `gemini-4-argon` | 10 of 10 | 10 | 8 to 36 s | Rs 0.65 to 1.20 |
+| `gemini-3.7-flash` | 7 | 12 (1 empty, 4 failed on overload, timeout or connection reset) | 81 to 258 s | Rs 0.55 to 3.41 |
+| `gemini-3.8-flash` | 1 | 8 (2 empty, 4 failed, 1 cut off) | 131 to 261 s | Rs 0.17 to 1.89 |
+
+`gemini-3.7-flash` produced at least one reading for each of the 5 pages only after a second pass. `gemini-3.8-flash` completed on one page. Total logged spend for the five pages was about Rs 23 (lower bound).
+
+**What the two-reader checker found** (`gemini-4-argon` run 1 against `gemini-3.7-flash` run 1; the name items include false hits such as place words):
+
+| Page | Item disagreements | Items to confirm | Differing lines | Argon run 1 against run 2: differing lines / item disagreements |
+|---|---|---|---|---|
+| 1 typed | 8 | 9 | 32 | 12 / 2 |
+| 2 typed | 1 | 8 | 29 | 14 / 0 |
+| 3 handwritten English | 11 | 20 | 50 | 24 / 3 |
+| 4 handwritten Assamese | 9 | 2 | 32 | 15 / 6 |
+| 5 handwritten mixed | 1 | 4 | 13 | 8 / 2 |
+
+**Findings (my reading of the outputs, not yet confirmed by the owner).**
+1. **`gemini-3.7-flash` changed the subject, not only a name or digit, on 3 of 5 pages** (1, 2 and 4): a numbered item about one matter came out as a different matter, an official's title came out differently, and the object seized in a police record came out as a different object. The earlier finding that it was clean (10i and the pages before it) came from pages without this kind of dense or handwritten text. Each of these readings was fluent, so nothing in the output warned of it.
+2. **The item list alone would have under-reported this**: page 1 had 8 item disagreements but 32 differing lines, and the sentence changes are visible only in the line differences. The marking sheet and the PDF show both, but the plan's "must-check" list is not enough by itself.
+3. **`gemini-4-argon` was consistent with the printed text on pages 1 and 2 and with the seizure form on page 4**, but differed from its own second run on 8 to 24 lines per page and on dates and names, so run-to-run agreement is not proof either. Dates differed between the two readers on 3 pages.
+4. **Overload is now the main practical problem for the second reader**: five of the twelve `gemini-3.7-flash` attempts and seven of the eight `gemini-3.8-flash` attempts gave no usable reading, and good readings took 80 to 260 s.
+5. **Cloud Vision** read the typed pages with mean word confidence 83% and 85% and the handwritten pages with 58%, 70% and 87% (pages 3, 4, 5). **Tesseract** gave 60% and 61% on the typed pages and 31% to 39% on handwriting. **Google Translate on Vision's reading was garbled** on the two pages I read (1 and 4) and is not usable as a translator. Whether Vision's low-confidence words point at the places where Gemini is silently wrong has not been tested; it needs the owner's marks.
+6. **A harness fault was found and fixed** (commit e2b9909): a `gemini-3.8-flash` stream that stopped after about 200 tokens with no finish reason was logged as ok. It is now logged as incomplete; one row was relabelled.
+
+**What this changes in the plan.** `gemini-4-argon` stays the lead reader. `gemini-3.7-flash` is not usable as the second reader for handwritten or dense pages on this evidence, and is demoted to "unproven"; the second-reader slot is open (`gemini-3.5-flash` is the next candidate; the owner deferred testing it). Group B needs a human-marked reference before any pass rule is applied. The three-page dry run for budgeting is effectively done: five pages cost about Rs 23 logged, about Rs 5 a page at argon plus the overloaded second reader's retries, which the 30-page budget should multiply and then double for the billing gap in 10k.
+
+**Limits.** Five pages, no reference, two runs each at temperature 0 (not independent). The cost figures are the harness's estimates. Nothing in this section identifies a person, place, case or document.
