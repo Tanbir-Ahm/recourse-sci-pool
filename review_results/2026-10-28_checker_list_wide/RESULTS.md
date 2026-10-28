@@ -32,7 +32,7 @@ Two names read as the same parties when: honorifics ("Shri", "M/s"), "& Ors", "(
 | parties the other way round | 2,000 | 102 | 1,969 | 1,998 |
 | one letter lost (a scanner slip) | 1,207 | 2 | 581 | 582 |
 
-(The shipped function is "old match OR new match", so it never finds less than the old one; the "wide" column is the new matcher alone and in the first row finds 2 names fewer than the old one: "Ms. P"-type names it cannot read.) A slip is forgiven only in long names (46 to 48% of the one-letter-lost names are found); in a short name it is not, on purpose.
+(The shipped function is "old match OR new match", so it never finds less than the old one; the "wide" column is the new matcher alone and in the first row finds 2 names fewer than the old one: "Ms. P"-type names it cannot read.) A slip is forgiven only in long names (47 to 48% of the one-letter-lost names are found); in a short name it is not, on purpose.
 
 **3. Names that are NOT real (3,000 each, made by code from the index; this is the risk side):**
 
