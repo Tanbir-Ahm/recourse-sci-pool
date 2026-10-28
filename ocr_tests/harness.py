@@ -46,15 +46,19 @@ def split_output(text):
 MEDIA_RESOLUTION = None               # set by --media-resolution: low, medium, high or ultra_high (a per-image setting, sent on the v1alpha API)
 
 
-def call_gemini(model, key, system, image_bytes, mime, max_tokens=32768, tries=3, timeout=300):
+def call_gemini(model, key, system, image_bytes, mime, max_tokens=32768, tries=3, timeout=300, text=None):
     """One streaming call. Returns a dict; never raises. Time to first token and total time are measured."""
-    image_part = {"inline_data": {"mime_type": mime, "data": base64.b64encode(image_bytes).decode()}}
-    if MEDIA_RESOLUTION:
-        image_part["media_resolution"] = {"level": "media_resolution_" + MEDIA_RESOLUTION}
-    body = {"contents": [{"role": "user", "parts": [{"text": "Transcribe and translate this page."}, image_part]}],
+    if text is not None:                                     # a text-only call (translating a PDF's own text layer): no image
+        parts = [{"text": text}]
+    else:
+        image_part = {"inline_data": {"mime_type": mime, "data": base64.b64encode(image_bytes).decode()}}
+        if MEDIA_RESOLUTION:
+            image_part["media_resolution"] = {"level": "media_resolution_" + MEDIA_RESOLUTION}
+        parts = [{"text": "Transcribe and translate this page."}, image_part]
+    body = {"contents": [{"role": "user", "parts": parts}],
             "systemInstruction": {"parts": [{"text": system}]},
             "generationConfig": {"temperature": 0, "maxOutputTokens": max_tokens}}
-    api = "v1alpha" if MEDIA_RESOLUTION else "v1beta"
+    api = "v1alpha" if (MEDIA_RESOLUTION and text is None) else "v1beta"
     url = f"https://generativelanguage.googleapis.com/{api}/models/{model}:streamGenerateContent?alt=sse"
     rec = {"attempts": 0}
     for attempt in range(tries):
@@ -102,6 +106,33 @@ def read_ledger(path):
 
 def spent_inr(ledger):
     return sum(r.get("cost_inr", 0) for r in ledger)
+
+
+def log_call(out, ledger, page, model, run_no, res, models, fx):
+    """Record one finished call: its status, tokens and estimated cost go to RUN/ledger.jsonl and its text to RUN/<page>/<model>/run<N>.txt.
+    An incomplete reading is saved under a different name so it is never mistaken for a good one. Returns the ledger record."""
+    rec = {"page": page, "model": model, "run": run_no, "ok": bool(res.get("ok")), "attempts": res.get("attempts", 1),
+           "ttft": res.get("ttft"), "total": res.get("total"), "finish": res.get("finish"),
+           "prompt_tokens": res.get("prompt_tokens", 0), "output_tokens": res.get("output_tokens", 0),
+           "thinking_tokens": res.get("thinking_tokens", 0), "error": res.get("error"), "time_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
+    usd = cost_usd(models[model], rec["prompt_tokens"], rec["output_tokens"], rec["thinking_tokens"])
+    rec["cost_usd"] = round(usd, 6); rec["cost_inr"] = round(usd * fx, 4)
+    if res.get("ok") and res.get("finish") != "STOP":       # a stream that ends with no finish reason was cut off
+        rec["status"] = f"INCOMPLETE ({res.get('finish')}): do not trust this reading"
+    elif res.get("ok") and not res.get("text", "").strip():
+        rec["status"] = "EMPTY"
+    else:
+        rec["status"] = "ok" if res.get("ok") else "failed"
+    if res.get("ok") and res.get("text", "").strip():
+        outfile = os.path.join(out, page, model, f"run{run_no}.txt")
+        if rec["status"] != "ok":
+            outfile = outfile.replace(".txt", ".INCOMPLETE.txt")
+        os.makedirs(os.path.dirname(outfile), exist_ok=True)
+        open(outfile, "w", encoding="utf8").write(res["text"]); rec["outfile"] = os.path.relpath(outfile, out)
+    with open(os.path.join(out, "ledger.jsonl"), "a", encoding="utf8") as f:
+        f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    ledger.append(rec)
+    return rec
 
 
 def collect_pages(args):
@@ -181,26 +212,7 @@ def run(args, caller=call_gemini):
                     print(f"STOP: reached --max-calls {args.max_calls}."); return ledger
                 res = caller(model, key, prompt, img, mime)
                 calls += 1
-                rec = {"page": page, "model": model, "run": run_no, "ok": bool(res.get("ok")), "attempts": res.get("attempts", 1),
-                       "ttft": res.get("ttft"), "total": res.get("total"), "finish": res.get("finish"),
-                       "prompt_tokens": res.get("prompt_tokens", 0), "output_tokens": res.get("output_tokens", 0),
-                       "thinking_tokens": res.get("thinking_tokens", 0), "error": res.get("error"), "time_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())}
-                usd = cost_usd(models[model], rec["prompt_tokens"], rec["output_tokens"], rec["thinking_tokens"])
-                rec["cost_usd"] = round(usd, 6); rec["cost_inr"] = round(usd * fx, 4)
-                if res.get("ok") and res.get("finish") != "STOP":       # a stream that ends with no finish reason was cut off
-                    rec["status"] = f"INCOMPLETE ({res.get('finish')}): do not trust this reading"
-                elif res.get("ok") and not res.get("text", "").strip():
-                    rec["status"] = "EMPTY"
-                else:
-                    rec["status"] = "ok" if res.get("ok") else "failed"
-                if res.get("ok") and res.get("text", "").strip():
-                    if rec["status"] != "ok":
-                        outfile = outfile.replace(".txt", ".INCOMPLETE.txt")      # never mistaken for a good reading
-                    os.makedirs(os.path.dirname(outfile), exist_ok=True)
-                    open(outfile, "w").write(res["text"]); rec["outfile"] = os.path.relpath(outfile, args.out)
-                with open(ledger_path, "a") as f:
-                    f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-                ledger.append(rec)
+                rec = log_call(args.out, ledger, page, model, run_no, res, models, fx)
                 print(f"{page} {model} run {run_no}: {rec['status']}, {rec['total'] and round(rec['total'],1)} s, Rs {rec['cost_inr']:.2f} (running total Rs {spent_inr(ledger):.2f})", flush=True)
     return ledger
 

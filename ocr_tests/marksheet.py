@@ -45,7 +45,7 @@ input,select,button,textarea{font:inherit;font-size:.86rem;padding:3px 5px;max-w
 <div class="muted">Critical = changes what the evidence says. Moderate = awkward but the meaning survives. Minor = the rest. &ldquo;Warned?&rdquo; = did the tool flag that spot (<code>[unclear]</code> or a disagreement).</div>
 <div class="scroll"><table id="errs"><thead><tr><th>Page</th><th>Tool</th><th>Group</th><th>Line</th><th>What the tool said</th><th>What it should say</th><th>Type</th><th>Severity</th><th>Warned?</th><th></th></tr></thead><tbody></tbody></table></div>
 <p><button id="add">Add row</button> <button id="copy">Copy as CSV</button> <button id="dl">Download CSV</button></p>
-<h3>Page summary</h3><p>Gist correct: <select id="gist"><option></option><option>yes</option><option>no</option></select> &nbsp; Critical errors: <input id="ncrit" size="3"> &nbsp; Silent critical errors: <input id="nsil" size="3"> &nbsp; Reviewer minutes: <input id="mins" size="4"></p></div>
+<h3>Page summary</h3><p>Gist correct: <select id="gist"><option></option><option>yes</option><option>no</option></select> &nbsp; Critical errors: <input id="ncrit" size="3"> &nbsp; Silent critical errors: <input id="nsil" size="3"> &nbsp; Reviewer minutes: <input id="mins" size="4"> &nbsp; Summary is about: <select id="who"><option>both readings (the pipeline)</option><option>__ANAME__</option><option>__BNAME__</option></select></p></div>
 </div></div>
 <script>
 const D=__DATA__;
@@ -54,6 +54,12 @@ $('#sum').textContent=D.summary.disagreements+' disagreements to resolve, '+D.su
 let h='<tr><th>Status</th><th>Type</th><th>Reader A</th><th>Reader B</th><th>Line (A/B)</th><th>Value on the page</th><th>Result</th></tr>';
 D.items.forEach(i=>{h+='<tr class="'+(i.status==='DISAGREE'?'dis':'conf')+'"><td>'+i.status+'</td><td>'+esc(i.type)+'</td><td>'+esc(i.A)+'</td><td>'+esc(i.B)+'</td><td>'+esc(i.line_A)+' / '+esc(i.line_B)+'</td><td><input size="14"></td><td><select><option></option><option>right in both</option><option>A wrong</option><option>B wrong</option><option>both wrong</option><option>not on the page</option></select></td></tr>';});
 $('#items').innerHTML=h;
+const fl=s=>{s=String(s==null?'':s);let o='';for(const c of s){const k=c.codePointAt(0);let d=-1;for(const b of [0x9E6,0x966,0xA66,0xAE6,0xB66,0xBE6,0xC66,0xCE6,0xD66]){if(k>=b&&k<b+10){d=k-b;break;}}
+ if(d>=0)o+=d;else if(c==='ৰ')o+='র';else if(c==='ৱ')o+='ব';else if(c==='।'||c==='৷')o+='/';else if(c.trim()===''||k===0x200c||k===0x200d)continue;else o+=c.toLowerCase();}return o;};
+document.querySelectorAll('#items tr.dis, #items tr.conf').forEach((tr,idx)=>{const it=D.items[idx],inp=tr.querySelector('input');
+ inp.addEventListener('input',()=>{const v=fl(inp.value),a=it.A==null?null:fl(it.A),b=it.B==null?null:fl(it.B),bad=v!==''&&v!==a&&v!==b;
+  let sp=inp.nextElementSibling;if(!sp||!sp.classList.contains('mm')){sp=document.createElement('div');sp.className='mm';sp.style.cssText='color:#a3271f;font-size:.8rem';inp.after(sp);}
+  sp.textContent=bad?'differs from both readings: look at the page again':'';});});
 h='<tr><th>Line A</th><th>Reader A</th><th>Line B</th><th>Reader B</th><th>Similarity</th></tr>';
 D.line_diffs.forEach(d=>{h+='<tr><td>'+esc(d.line_A)+'</td><td>'+esc(d.A)+'</td><td>'+esc(d.line_B)+'</td><td>'+esc(d.B)+'</td><td>'+d.similarity+'</td></tr>';});
 $('#diffs').innerHTML=h;
@@ -67,7 +73,7 @@ function csv(){const q=v=>'"'+String(v).replace(/"/g,'""')+'"'; const rows=[['Pa
  document.querySelectorAll('#errs tbody tr').forEach(tr=>{rows.push([...tr.children].slice(0,9).map(td=>{const f=td.querySelector('input,select,textarea');return f?f.value:td.textContent;}));});
  rows.push([]); rows.push(['Check list','Status','Type','Reader A','Reader B','Line A/B','Value on the page','Result']);
  document.querySelectorAll('#items tr.dis, #items tr.conf').forEach(tr=>{const c=[...tr.children]; rows.push(['',c[0].textContent,c[1].textContent,c[2].textContent,c[3].textContent,c[4].textContent,c[5].querySelector('input').value,c[6].querySelector('select').value]);});
- rows.push([]); rows.push(['Page summary','gist correct',$('#gist').value,'critical errors',$('#ncrit').value,'silent critical',$('#nsil').value,'minutes',$('#mins').value]);
+ rows.push([]); rows.push(['Page summary','gist correct',$('#gist').value,'critical errors',$('#ncrit').value,'silent critical',$('#nsil').value,'minutes',$('#mins').value,'about',$('#who').value]);
  return rows.map(r=>r.map(q).join(',')).join('\\n');}
 $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(csv());$('#copy').textContent='Copied';}catch(e){window.prompt('Copy this:',csv());}};
 $('#dl').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv()],{type:'text/csv'}));a.download=D.pid+'_marks.csv';a.click();};
@@ -96,6 +102,7 @@ def selftest():
     b = "TRANSCRIPTION\n1. Order dated 15-02-2020; phone 98659-79979.\nTRANSLATION\nOrder of 15 February 2020."
     d = tempfile.mkdtemp(); img = os.path.join(d, "x.png"); open(img, "wb").write(b"\x89PNG fake")
     out = build("T01", "A", a, b, "reader-a", "reader-b", img)
+    assert "differs from both readings" in out and "Summary is about" in out
     assert "Marking sheet: page T01" in out and "98659-79979" in out and "data:image/png;base64" in out
     assert "<script>alert(1)</script>" not in out, "text from the readers must never be able to run as script"
     assert 'src="http' not in out and 'href="http' not in out and "https://" not in out, "nothing may be loaded from the internet"

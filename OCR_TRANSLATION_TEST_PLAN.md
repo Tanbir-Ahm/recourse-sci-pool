@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10p record the results so far (real pages, scores and counts only); section 11 is the proposed design that follows from them; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10p record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -587,39 +587,6 @@ Cloud Vision mean word confidence 95.5% (clean half), 82.0% (scanned half), 87.2
 
 **What this changes in the plan.** Nothing in the ranking: argon is the lead reader, with Cloud Vision as a cheap check on clean typed pages only. Group C needs the triage step before any reader is run, so that files with a good text layer are not sent through OCR at all.
 
-## 11. Proposed checked-reading pipeline (design recorded 2026-10-27; not yet run end to end)
-
-This follows from sections 10l to 10n. It changes no pass rule in section 5. It is a proposal for the 30-page test and has not been run as a whole; each part was tested on its own, on a handful of pages.
-
-**Why this shape.** No second Gemini reader was safe on dense or handwritten Assamese (10l, 10m), so the "second reader" is three different checks, each aimed at a different kind of mistake, with a person as the last one. Agreement between machine readings is never treated as correctness.
-
-**Steps for one page.**
-1. **Receive and gate** (person). Record the language and the page type (typed, handwritten, PDF). Do not send anything that identifies a minor or the victim of a sexual offence.
-2. **Triage every PDF** (two minutes). Extract the text layer with `pdftotext` and compare it with what the page shows. A clean match: use the text layer, no OCR. No text or junk text: treat as a picture. Photos skip this step. (Two PDFs tested, with opposite answers: 10m, 10n.)
-3. **Page image.** One page per image, the whole page, not cut up (a four-column page read correctly whole, 10n).
-4. **Argon reads twice.** `gemini-4-argon`, the same prompt (`ocr_tests/prompts/read_translate.txt`), original-script transcription then English draft. A run that ends with no finish reason is cut off: the page is red and the run is repeated once.
-5. **Cloud Vision reads typed and printed pages only.** It copies letters without "fixing" words and returns a confidence per word. On handwriting and blurred scans it is used as a warning only, never as agreement (mean word confidence 58 to 82% there).
-6. **Checker** (`ocr_tests/checker.py`). Compares the original-script text of the readings letter by letter, lists every difference, extracts the must-check list (dates, amounts, ages, numbers, section numbers, names, land units), flags any English sentence that changed between the two argon runs, and compares the amount of text each reading produced so dropped text shows.
-7. **Traffic light.** The cut-offs below are a first guess taken from three comparisons (argon against Vision on the clean half, the scanned half and the whole page of 10n, 97.9%, 87.7%, 91.0%) and are to be tuned on the 30 pages.
-   - **Green**: a typed page; argon's two runs and Vision agree to about 97% of letters or better; no cut-off, no `[unclear]` marks, no difference in any must-check item. A person still ticks the must-check list.
-   - **Amber**: any difference in a must-check item; agreement of about 90 to 97%; or **any handwritten page**, because handwriting has no independent machine check. A person reads the flagged lines against the page.
-   - **Red**: a failed or cut-off reading; one reading with clearly less text than the other; agreement under about 90%; a scan with low Vision confidence. The translator reads the whole page; the machine English is only a help.
-8. **A person checks** on the marking sheet (`ocr_tests/marksheet.py`, section 8): every must-check item against the page image, every flagged line, correct the English, log every error.
-9. **Output.** One PDF per page: the page image, the corrected English, what was checked, a sign-off line, and the stamp "Machine draft. Not a certified translation."
-
-**What each check can and cannot catch.**
-
-| Check | Catches | Misses |
-|---|---|---|
-| Argon run 1 against run 2 | random slips; a run that stops early | a mistake made both times (98% alike on the 10n page, with the same blurred-word errors in both) |
-| Cloud Vision against argon, typed pages | dropped or changed words and "tidied" printed names | translation mistakes; handwriting and blurred scans |
-| English draft, run 1 against run 2 | a sentence whose meaning wobbles | a wrong meaning given both times |
-| A person with the page image | everything on the must-check list and the flagged lines | whatever nobody looks at |
-
-**Cost and time (estimates, never measured as a whole).** Machine time about 1 to 3 minutes a page. Argon twice plus Vision about Rs 3 to 6 a page by the logged figures, so Rs 90 to 180 for 30 pages; budget Rs 250 to 300 because the real bill has run 1.5 to 2 times the logged estimate (10k). Person time is unmeasured; the translator timing test (section 2, 5 pages) measures it.
-
-**Known weak points.** (a) Handwritten pages can never be green, and most of the court material is handwritten. (b) The traffic-light cut-offs are guesses. (c) Argon fills in meaning where there is none (10m), so the English draft needs a person on any passage that reads too smoothly. (d) Kannada pages and most of the PDF group are untested. (e) No page has a person's marks yet, so every accuracy statement so far compares readers with each other.
-
 ### 10o. First run of the section 11 pipeline: three typed Assamese pages (recorded 2026-10-27; counts only, no names, places, case numbers or text)
 
 **What was tested.** Three typed Assamese government sheets with handwritten margin notes (one of them a faded copy), supplied by the owner, run as designed in section 11: `gemini-4-argon` twice, Cloud Vision once, then `checker.py --page typed`. The checker's own selftest (invented text) passed first; this was the first run of the new page check on real readings. No other model was used. No page identified a minor or the victim of a sexual offence. No reference text and no human marks exist for these pages.
@@ -656,3 +623,40 @@ All three pages came out **red**. Cost was about Rs 7 for the six argon readings
 **Findings.** (1) **The values are at the ceiling**: argon already finds almost every confirmed number, date and name in every variant, so this test cannot rank the variants on those; it can show regressions and stability. (2) **No variant fixed the one known wrong printed name**: every variant, 7 of 7 readings, still reads it the same wrong way. Image preparation does not cure a name error. (3) **A shared error was exposed by changing the view**: both baseline runs read a handwritten date with the same day number, which the owner's marks say is wrong; padded and contrast variants read a different day consistently, and ultra-high gave a third. Identical runs hid it; different views disagree and would flag it. (4) **A place word on page 10 split the baseline runs, and the other views mostly agree on one reading**: of the 10 variant readings, 9 give one place (one of them garbled) and 1 gives the other; the two baseline runs split one each. The owner has not yet said which is right. (5) **Padding and ultra-high detail made the readings steadier** (page 9 from 86% to 98% and 96%; page 10 from 96% to 97% and 99%); **contrast with sharpening and straightening made them less steady** (page 10 down to 90%, and 86% to 89% against the baseline), so neither is recommended. Enlarging was neutral. (6) **Caveats**: 4 pages, 1 to 2 runs each; the page 9 baseline was one run that added lines the other did not, so some of the gain may be a good draw. Steadier is not more accurate.
 
 **What this changes in the plan.** Step 3 becomes small: **no contrast boost and no straightening by default**; the second argon run reads a **padded** copy of the page (no API risk), with **ultra-high detail** as an optional third view when the first two disagree (it uses the alpha API). The disagreement between differently prepared views is the signal, because identical runs agree with each other even when wrong. The owner's confirmation of the page 9 date and the page 10 place word would turn findings 3 and 4 into measured results.
+
+## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
+
+This replaces the first version of this section, which used Cloud Vision as a second reader. It changes no pass rule in section 5.
+
+**Why this shape.** No second model was safe as an independent reader of dense or handwritten Assamese (10l, 10m): the other Gemini models changed meanings, and Cloud Vision garbled the faded pages (10o; it found 17 of 20 values the owner confirmed, but its sentences were nonsense). Two identical argon runs agree with each other even when both are wrong (10p: both read a handwritten date with the same wrong day), so the second read is made of a **different view of the same page**, and the disagreement between views is the signal. Agreement is never treated as correctness.
+
+**Steps for one page.**
+1. **Receive and gate** (person). Language and page type (typed or handwritten). Nothing that identifies a minor or the victim of a sexual offence is sent. Original scans at 300 dpi or better are worth more than any processing.
+2. **PDFs: triage** (`pdf_triage.py`). The text layer is compared with the rendered page on base letters only (a PDF drawn without proper Assamese shaping shows vowel signs in the wrong places while its text is fine). Good text layer: use it, no reading model. No text, junk text, or a mismatch: read the page as an image. A person decides when the evidence is mixed (read as an image by default). Reader for the comparison: Tesseract (local; 83.3% on the one good file) or Cloud Vision (97.7%; sends each PDF page to Google).
+3. **Views** (`pipeline.py`). View 1 is the image as given. View 2 is the same image with a white border (6% a side). **No contrast boost and no straightening**: both made the readings less steady (10p).
+4. **Two blind reads** by `gemini-4-argon`, same instructions (`prompts/read_translate.txt`), neither sees the other: original-script text, then an English draft. A run that ends without a finish signal is cut off and the page is red.
+5. **Third view only if flagged**: the original image at ultra-high detail (a per-image setting on the alpha API, about Rs 0.2 more a call). It is used only to show which side of a disagreement it sides with, as a hint.
+6. **Checker** (`checker.py --page`, `redundancy.py`). Letter agreement between the views; the must-check list (dates, amounts, ages, numbers, sections, names, land units); English sentences that changed between the views; `[unclear]` and `(?)` marks; dropped or cut-off text; and the checks that need no model: impossible dates, numbered lists that skip, English amounts whose digits and words disagree, the same name spelled two ways across pages, names close to a confirmed name (flagged, never corrected).
+7. **PDF pages with a good text layer** skip steps 3 to 5: the exact text is translated twice with a text-only call (`prompts/translate_text.txt`, which tells argon to transliterate and mark (?) where a passage has no clear meaning), and the two English drafts are compared (`checker.check_text_page`).
+8. **Traffic light, as a reading order only.** Red pages are read first, then amber, then green; **a person reads every page in full for now.** Red: a cut-off or missing reading, much less text in one view, or the views agree on under about 90% of letters. Amber: any must-check item differs, an English sentence changed, doubtful words marked, a page check fired, agreement under about 97%, or the page is handwritten. Green: a typed page with agreement of about 97% or more and nothing flagged. A handwritten page is never green.
+9. **A person checks** on the marking sheet (`marksheet.py`): type what the page really says for each value (the sheet flags at once a value that differs from both readings), log every error, download the CSV. A second person re-checks about 1 page in 10 to measure the reviewer's own error rate.
+10. **Output**: a report per page (`report.py`, printed to PDF with `print_pdf.js`) with the stamp "Machine draft. Not a certified translation.", a marking sheet, and a summary with red pages first.
+
+**What each check can and cannot catch.**
+
+| Check | Catches | Misses |
+|---|---|---|
+| View 1 against view 2 (different views of one page) | slips that depend on how the page looks; a run that stops early; a date read differently when the view changes | an error made in every view: the one wrong printed name (10p) was read the same wrong way in all 7 readings |
+| English sentences, view 1 against view 2 | a sentence whose meaning wobbles | a wrong meaning given both times |
+| Redundancy checks | impossible dates, skipped numbering, an English amount whose digits and words disagree | everything that is internally consistent but wrong |
+| A person with the page image | everything on the must-check list and the flagged lines | whatever nobody looks at |
+
+**Dropped, and why.** Cloud Vision as a reader or a light (10o); Google Translate (nonsense on the faded pages); Tesseract as a reader; `gemini-3.5-flash`, `gemini-3.6-flash`, `gemini-3.7-flash`, `gemini-3.8-flash` (10l, 10m); Sarvam (10b to 10j; no confidence output, silent meaning changes); token log-probabilities (argon returns them, but the one known wrong name was read at 98% confidence).
+
+**Cost and time (estimates).** A rehearsal on one image page (3 reads) and one text-layer PDF page (2 translations) cost about Rs 4.4 logged; about 12 seconds a read. A typed image page costs about Rs 2.2 logged for two views, about Rs 3.5 with the third. The real bill has run 1.5 to 2 times the logged figure (10k): budget about Rs 4 to 7 a page for a 30-page set, so Rs 150 to 250, and set `--budget-inr`. Person time is unmeasured; the owner's checking of a typed page took 10 to 15 minutes (10o). The translator timing test (section 2, 5 pages) still decides the 30% rule.
+
+**Status of the parts (2026-10-28).** Built and selftested on invented text: `checker.py`, `redundancy.py`, `report.py`, `pdf_triage.py`, `harness.py`, `marksheet.py`, `pipeline.py`. Run for real: the readers and views on four typed pages (10l, 10o, 10p); PDF triage on two files; the whole pipeline once on one image page and one text-layer PDF. **Not built:** amounts in words against digits in the original script (needs a checked Assamese number-word parser), weekday against date; page preparation beyond padding (deliberately); a Kannada or Hindi check (nothing here has been run on those). **Not yet tested:** the traffic-light cut-offs on a full set; handwritten pages through the final pipeline; mixed PDFs (some pages with a text layer, some without).
+
+**Known weak points.** (a) Handwritten pages can never be green, and most of the court material is handwritten. (b) An error made in every view is invisible to the machine checks: only a person or an outside check catches it. (c) Argon fills in meaning where there is none (10m), only partly curbed by the text prompt. (d) The cut-offs are guesses from four typed pages. (e) The ultra-high detail setting uses the alpha API and may change. (f) No page has been marked by more than one person, so the reviewer's own error rate is unknown.
+
+**How the next real test will be read.** For each page: the light the pipeline gave, the errors the reviewer logs, and the silent critical errors (an error on a page the pipeline did not send for full reading, or an error the checker did not point at). The pipeline counts as worth carrying forward only if the red and amber pages catch the pages with critical errors; the section 5 pass rules are applied to what is left.

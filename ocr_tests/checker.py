@@ -1,18 +1,20 @@
 """Compare readings of the same page and build the list a person must confirm.
 
   python checker.py A_reading.txt B_reading.txt > checks.json              (two readings: items and line differences)
-  python checker.py --page typed --a run1.txt --b run2.txt \\
-         [--vision vision.txt --vision-stats vision_stats.json] [--finish-a STOP --finish-b STOP] > page_check.json
-                                                                           (the whole page check: traffic light, section 11 of the plan)
+  python checker.py --page typed|handwritten --a view1.txt --b view2.txt [--c view3.txt] [--finish-a STOP --finish-b STOP --finish-c STOP] \
+                    [--known known_names.json] > page_check.json            (the whole page check: traffic light, plan section 11)
   python checker.py --selftest
 
-Each reading is a harness output (TRANSCRIPTION then TRANSLATION). The transcription is compared letter by letter;
-the English is compared only between the two argon runs, sentence by sentence.
+Each reading is a harness output (TRANSCRIPTION then TRANSLATION). The transcription is compared letter by letter; the English is compared
+only between the two readings, sentence by sentence. The two readings are two blind reads of the SAME page: view 1 the image as given,
+view 2 a padded copy (plan section 11 and 10p). An optional third view (ultra-high detail) is used only to show which side of a disagreement
+it sides with: a hint for a person, never an answer.
 Two kinds of item are produced:
   DISAGREE      the two readers differ (a number, a date, a name, a unit, or a whole line): look at the page.
   CONFIRM       the readers agree, but it is a date, amount, number, unit, section number or name: still confirm it.
-                Agreement is not correctness; three readers once agreed on a wrong age.
+                Agreement is not correctness; three readers once agreed on a wrong age, and two runs once agreed on a wrong date.
 The tool never marks anything as correct. A person closes every item. Green means "spot-check", never "right".
+redundancy.py adds checks that need no model (impossible dates, numbering gaps, English amounts in digits and words that disagree, near-miss names).
 
 Languages: the structure does not depend on the language, but the thresholds were taken from Assamese pages only, and the
 patterns for units, honorifics and names were written for Assamese/Bengali script, Devanagari (Hindi, Marathi) and Kannada.
@@ -20,7 +22,8 @@ Digits are folded for nine Indian scripts. Units and honorifics for Telugu, Tami
 additions (not checked by a reader of those languages). Kannada and Hindi pages have not been run through this file.
 No case data belongs in this folder; the selftest uses invented text.
 """
-import argparse, difflib, json, re, sys, unicodedata
+import argparse, difflib, json, os, re, sys, unicodedata
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 _DIGITS = {}
 # Bengali/Assamese, Devanagari, Gurmukhi, Gujarati, Odia, Tamil, Telugu, Kannada, Malayalam digits
@@ -56,7 +59,7 @@ def extract_items(lines):
         def add(kind, m, value=None):
             items.append({"type": kind, "value": (value or m.group(0)).strip(" ,;:.|"), "norm": norm(value or m.group(0)).strip(" ,;:.|").lower(), "line": ln})
             used.append(m.span())
-        for m in re.finditer(r"\b\d{1,2}\s*[/\-.]\s*\d{1,2}\s*[/\-.]\s*\d{2,4}\b", s): add("date", m)
+        for m in re.finditer(r"\b\d{1,2}\s*[/\-.।৷]\s*\d{1,2}\s*[/\-.।৷]\s*\d{2,4}\b", s): add("date", m)
         for m in re.finditer(r"(?:₹|Rs\.?|रु(?:पये|\.)?|টকা|ರೂ)\s*[0-9][0-9,.]*|[0-9][0-9,.]*\s*(?:/-|টকা|रुपये|ರೂಪಾಯಿ|rupees)", s, re.I): add("amount", m)
         for m in re.finditer(r"(?:section|sec\.?|धारा|ধাৰা|ধারা|ಕಲಂ)\s*\d+[A-Za-z]?", s, re.I): add("section", m)
         for u in UNITS:
@@ -106,14 +109,13 @@ def compare(text_a, text_b):
 
 
 # ---- the whole page check (plan section 11) ------------------------------------------------------------------------
-# These numbers are a FIRST GUESS taken from three Assamese comparisons (argon against Cloud Vision on the clean half, the
-# scanned half and the whole page of one dictionary page: 97.9, 87.7 and 91.0 percent). Tune them on the 30-page test.
+# These numbers are a FIRST GUESS taken from a handful of Assamese comparisons (run-to-run agreement of argon on four typed pages was 86 to 98
+# percent). Tune them on the 30-page test.
 GREEN_AGREE = 97.0       # letter agreement needed for green
 RED_AGREE = 90.0         # below this the page is red
-VISION_MIN_CONF = 80.0   # Cloud Vision mean word confidence (percent) under which the page is red
 DROP_RATIO = 0.85        # a reading with less than this share of the other's letters has probably dropped text
 ENGLISH_WOBBLE = 0.85    # an English sentence more different than this between the two runs is flagged
-PAGE_TYPES = ("typed", "scan", "handwritten")
+PAGE_TYPES = ("typed", "handwritten")
 
 
 def letters(text):
@@ -196,83 +198,86 @@ def doubtful_marks(text):
     return head.count("[unclear]") + head.count("(?)")
 
 
-def check_page(page_type, run1, run2, vision=None, vision_stats=None, finish1=None, finish2=None):
-    """The traffic light for one page. page_type: typed, scan (a typed or printed page that is a poor scan) or handwritten.
-    run1, run2: two argon readings (harness output). vision: Cloud Vision's text, vision_stats: its stats dict with mean_conf.
-    Returns a dict; 'light' is green, amber or red. It never says a page is correct."""
+def _flat(s):
+    s = norm(s).replace("'", ".")
+    s = re.sub(r"[।৷]", "/", s)
+    return re.sub(r"[\s\u200c\u200d]+", "", re.sub(r"\s*/\s*", "/", s)).lower()
+
+
+def tiebreak(items, run3):
+    """For items the first two views disagree on, which side a third view reads. A hint for a person, never an answer."""
+    head = _flat("\n".join(transcription_lines(run3)))
+    out = []
+    for i in items:
+        if i["status"] != "DISAGREE" or not (i["A"] and i["B"]):
+            continue
+        a, b = _flat(i["A"]) in head, _flat(i["B"]) in head
+        out.append({"type": i["type"], "view1": i["A"], "view2": i["B"], "third_view": "view 1" if a and not b else "view 2" if b and not a else "both" if a and b else "neither"})
+    return out
+
+
+def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, finish3=None, known=None):
+    """The traffic light for one page read as an image. page_type: typed or handwritten. run1, run2: two blind readings of the same page
+    (the image as given, and a padded copy); run3: the optional ultra-high-detail reading. Returns a dict; 'light' is green, amber or red.
+    It never says a page is correct."""
+    import redundancy
     if page_type not in PAGE_TYPES:
         raise ValueError("page_type must be one of %s" % (PAGE_TYPES,))
     red, amber, notes = [], [], []
-    out = {"page_type": page_type, "thresholds": {"green_agree": GREEN_AGREE, "red_agree": RED_AGREE, "vision_min_conf": VISION_MIN_CONF,
-                                                  "drop_ratio": DROP_RATIO, "english_wobble": ENGLISH_WOBBLE,
-                                                  "status": "first guess, tune on the 30-page test"}}
-
-    for name, text, fin in (("argon run 1", run1, finish1), ("argon run 2", run2, finish2)):
+    out = {"page_type": page_type, "thresholds": {"green_agree": GREEN_AGREE, "red_agree": RED_AGREE, "drop_ratio": DROP_RATIO,
+                                                  "english_wobble": ENGLISH_WOBBLE, "status": "first guess, tune on the 30-page test"}}
+    for name, text, fin in (("view 1 (image as given)", run1, finish1), ("view 2 (padded copy)", run2, finish2)):
         p = reading_problem(text, fin)
         if p:
             red.append("%s: %s" % (name, p))
-    have_both = bool(run1 and run1.strip() and run2 and run2.strip())
-
+    if run3 is not None:
+        p = reading_problem(run3, finish3)
+        if p:
+            notes.append("view 3 (ultra-high detail) cannot be used: %s" % p); run3 = None
     items = []
-    if have_both:
+    if run1 and run1.strip() and run2 and run2.strip():
         agr = agreement(run1, run2)
-        out["agreement_run1_vs_run2"] = agr
+        out["agreement_view1_vs_view2"] = agr
         if agr["percent"] < RED_AGREE:
-            red.append("the two argon runs agree on only %.1f%% of letters (red below %.0f%%)" % (agr["percent"], RED_AGREE))
+            red.append("the two views agree on only %.1f%% of letters (red below %.0f%%)" % (agr["percent"], RED_AGREE))
         elif agr["percent"] < GREEN_AGREE:
-            amber.append("the two argon runs agree on %.1f%% of letters (green needs %.0f%% or more)" % (agr["percent"], GREEN_AGREE))
+            amber.append("the two views agree on %.1f%% of letters (green needs %.0f%% or more)" % (agr["percent"], GREEN_AGREE))
         if agr.get("share", 1) < DROP_RATIO:
-            red.append("one argon run has much less text than the other (%.0f%% of the letters): possible dropped text" % (100 * agr["share"]))
+            red.append("one view has much less text than the other (%.0f%% of the letters): possible dropped text" % (100 * agr["share"]))
         c12 = compare(run1, run2)
-        out["line_differences_run1_vs_run2"] = c12["line_diffs"]
-        d = c12["summary"]["disagreements"]
-        if d:
-            amber.append("%d must-check item(s) differ between the two argon runs" % d)
-        items += [dict(i, source="argon run 1 vs run 2") for i in c12["items"]]
+        out["line_differences"] = c12["line_diffs"]
+        if c12["summary"]["disagreements"]:
+            amber.append("%d must-check item(s) differ between the two views" % c12["summary"]["disagreements"])
+        items = list(c12["items"])
         wob = english_wobble(run1, run2)
         out["english_wobble"] = wob
         if wob:
-            amber.append("%d English sentence(s) changed between the two runs" % len(wob))
+            amber.append("%d English sentence(s) changed between the two views" % len(wob))
         marks = doubtful_marks(run1) + doubtful_marks(run2)
         if marks:
             amber.append("the reader marked %d doubtful word(s) as [unclear] or (?)" % marks)
+        seen = []
+        for r in (run1, run2):
+            eng = r.split("TRANSLATION")[-1] if "TRANSLATION" in r else None
+            for f in redundancy.page_flags(r, eng, known):
+                if f not in seen:
+                    seen.append(f)
+        out["redundancy_flags"] = seen
+        amber += ["page check: " + f for f in seen]
+        if run3 is not None:
+            out["agreement_view3_vs_view1"] = agreement(run3, run1); out["agreement_view3_vs_view2"] = agreement(run3, run2)
+            out["third_view_on_disagreements"] = tiebreak(items, run3)
     else:
-        out["agreement_run1_vs_run2"] = None
+        out["agreement_view1_vs_view2"] = None
         if not red:
-            red.append("fewer than two readings: run the second argon reading")
-
-    vis_ok = bool(vision and vision.strip())
-    conf = (vision_stats or {}).get("mean_conf")
+            red.append("fewer than two readings: run the second view")
     if page_type == "handwritten":
         amber.append("handwriting has no independent machine check: a person must look at every date, number and name")
-        if vis_ok:
-            out["cloud_vision"] = {"use": "warning only", "mean_conf": conf}
-            if conf is not None and conf < VISION_MIN_CONF:
-                notes.append("Cloud Vision is unsure of this handwriting (mean confidence %.1f%%); this does not change the colour" % conf)
-    elif vis_ok and run1 and run1.strip():
-        av = agreement(run1, vision)
-        out["agreement_argon_vs_vision"] = av
-        out["cloud_vision"] = {"use": "second reader", "mean_conf": conf}
-        if av["percent"] < RED_AGREE:
-            red.append("argon and Cloud Vision agree on only %.1f%% of letters (red below %.0f%%)" % (av["percent"], RED_AGREE))
-        elif av["percent"] < GREEN_AGREE:
-            amber.append("argon and Cloud Vision agree on %.1f%% of letters (green needs %.0f%% or more)" % (av["percent"], GREEN_AGREE))
-        if av.get("share", 1) < DROP_RATIO:
-            red.append("argon and Cloud Vision differ a lot in how much text they found (%.0f%% of the letters): possible dropped text" % (100 * av["share"]))
-        if conf is not None and conf < VISION_MIN_CONF:
-            red.append("Cloud Vision is unsure of this page (mean confidence %.1f%%, red below %.0f%%): likely a poor scan" % (conf, VISION_MIN_CONF))
-        cv = compare(run1, vision)
-        dv = cv["summary"]["disagreements"]
-        if dv:
-            amber.append("%d must-check item(s) differ between argon and Cloud Vision" % dv)
-        items += [dict(i, source="argon run 1 vs Cloud Vision") for i in cv["items"] if i["status"] == "DISAGREE"]
-    else:
-        amber.append("no independent second reader was available for this page")
-
     light = "red" if red else "amber" if amber else "green"
     out["light"] = light
     out["reasons_red"], out["reasons_amber"], out["notes"] = red, amber, notes
-    n_check = sum(1 for i in items if i["status"] == "CONFIRM") + sum(1 for i in items if i["status"] == "DISAGREE")
+    out["needs_third_view"] = light != "green" or any(i["status"] == "DISAGREE" for i in items)
+    n_check = sum(1 for i in items if i["status"] in ("CONFIRM", "DISAGREE"))
     out["person_task"] = {
         "green": "Tick the must-check list (%d item(s)) against the page image. Nothing was flagged. Green means spot-check, not correct." % n_check,
         "amber": "Look at every flagged item and line against the page image, then tick the must-check list (%d item(s))." % n_check,
@@ -283,19 +288,46 @@ def check_page(page_type, run1, run2, vision=None, vision_stats=None, finish1=No
     return out
 
 
+def check_text_page(text, english1, english2, known=None):
+    """The check for a PDF page whose own text layer is used (step 2): the source is exact, so only the two English drafts and the
+    redundancy checks are in question. text: the text layer; english1, english2: two blind translations (each with a TRANSLATION heading)."""
+    import redundancy
+    amber, red = [], []
+    for n, e in (("English draft 1", english1), ("English draft 2", english2)):
+        if not e or "TRANSLATION" not in e or not english_sentences(e):
+            red.append("%s: no translation" % n)
+    items = [dict(i, status="CONFIRM", source="text layer") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + text))]
+    wob = english_wobble(english1, english2) if not red else []
+    if wob:
+        amber.append("%d English sentence(s) changed between the two drafts" % len(wob))
+    flags = redundancy.page_flags("TRANSCRIPTION\n" + text, None, known)
+    for e in (english1, english2):
+        for w, dg, wd in redundancy.english_amount_check(e.split("TRANSLATION")[-1] if e else ""):
+            f = "English amount '%s': digits say %s, words say %s" % (w, dg, wd)
+            if f not in flags:
+                flags.append(f)
+    amber += ["page check: " + f for f in flags]
+    light = "red" if red else "amber" if amber else "green"
+    return {"page_type": "text_layer", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "redundancy_flags": flags,
+            "must_check": items,
+            "person_task": {"green": "The source text is the PDF's own text. Check the English draft against it and tick the must-check list (%d item(s))." % len(items),
+                            "amber": "Check the flagged English sentences and items against the source text, then tick the must-check list (%d item(s))." % len(items),
+                            "red": "The translation failed: translate this page by hand."}[light],
+            "stamp": "Machine draft. Not a certified translation."}
+
+
 def _cli_page(argv):
     ap = argparse.ArgumentParser(prog="checker.py --page")
     ap.add_argument("--page", choices=PAGE_TYPES, required=True)
-    ap.add_argument("--a", required=True, help="argon run 1 (harness output file)")
-    ap.add_argument("--b", required=True, help="argon run 2 (harness output file)")
-    ap.add_argument("--vision", help="Cloud Vision text file (typed and scan pages)")
-    ap.add_argument("--vision-stats", dest="vision_stats", help="JSON with mean_conf for the Cloud Vision reading")
-    ap.add_argument("--finish-a", dest="finish_a")
-    ap.add_argument("--finish-b", dest="finish_b")
+    ap.add_argument("--a", required=True, help="view 1: the image as given (harness output file)")
+    ap.add_argument("--b", required=True, help="view 2: the padded copy (harness output file)")
+    ap.add_argument("--c", help="view 3: ultra-high detail (optional)")
+    ap.add_argument("--finish-a", dest="finish_a"); ap.add_argument("--finish-b", dest="finish_b"); ap.add_argument("--finish-c", dest="finish_c")
+    ap.add_argument("--known", help="JSON list of names a reviewer has confirmed (case data: keep outside the repository)")
     ns = ap.parse_args(argv)
     rd = lambda p: open(p, encoding="utf8").read() if p else None
-    stats = json.loads(rd(ns.vision_stats)) if ns.vision_stats else None
-    print(json.dumps(check_page(ns.page, rd(ns.a), rd(ns.b), rd(ns.vision), stats, ns.finish_a, ns.finish_b), ensure_ascii=False, indent=1))
+    known = json.loads(rd(ns.known)) if ns.known else None
+    print(json.dumps(check_page(ns.page, rd(ns.a), rd(ns.b), rd(ns.c), ns.finish_a, ns.finish_b, ns.finish_c, known), ensure_ascii=False, indent=1))
 
 
 def selftest():
@@ -310,17 +342,30 @@ def selftest():
     assert any(t == "name" and a == "Ramesh Kumar" for t, a in conf), conf              # agreement still goes on the list to confirm
     assert r["summary"]["lines_A"] == 4 and r["summary"]["lines_B"] == 3 and any(d["B"] is None for d in r["line_diffs"])   # the dropped last line
     assert norm("২০২৫ ৰ") == norm("2025 র"), "Assamese digits and ra must match their ASCII and Bengali forms"
-    # page check, invented text: identical runs and a matching Vision text on a typed page are green; a handwritten page never is
+    # page check, invented text: two identical views of a typed page are green; a handwritten page never is
     R = "TRANSCRIPTION\n1. aaaa bbbb cccc dddd eeee ffff gggg hhhh\nTRANSLATION\nThe first line is here. The second line follows."
-    V = "aaaa bbbb cccc dddd eeee ffff gggg hhhh"
     assert agreement(R, R)["percent"] == 100.0
-    assert check_page("typed", R, R, V, {"mean_conf": 95.0}, "STOP", "STOP")["light"] == "green"
-    assert check_page("handwritten", R, R, None, None, "STOP", "STOP")["light"] == "amber"
-    assert check_page("typed", R, R, V, {"mean_conf": 95.0}, "MAX_TOKENS", "STOP")["light"] == "red"               # a cut-off run
-    assert check_page("typed", R, R, V, {"mean_conf": 60.0}, "STOP", "STOP")["light"] == "red"                    # Vision unsure of the scan
-    assert check_page("typed", R, R.replace("cccc", "zzzz"), V, {"mean_conf": 95.0}, "STOP", "STOP")["light"] == "red"   # 87.5% agreement
+    assert check_page("typed", R, R, None, "STOP", "STOP")["light"] == "green"
+    assert check_page("handwritten", R, R, None, "STOP", "STOP")["light"] == "amber"
+    assert check_page("typed", R, R, None, "MAX_TOKENS", "STOP")["light"] == "red"                                  # a cut-off view
+    assert check_page("typed", R, None, None, "STOP", None)["light"] == "red"                                       # no second view
+    assert check_page("typed", R, R.replace("cccc", "zzzz"), None, "STOP", "STOP")["light"] == "red"                # 87.5% agreement
     assert len(english_wobble(R, R.replace("The second line follows.", "A different sentence entirely."))) == 1
-    assert check_page("typed", R, R, None, None, "STOP", "STOP")["light"] == "amber"                              # no second reader
+    assert check_page("typed", R, R.replace("The second line follows.", "A different sentence entirely."), None, "STOP", "STOP")["light"] == "amber"
+    bad = R.replace("aaaa", "45/1/90")                                                                              # the same impossible date in both views
+    r = check_page("typed", bad, bad, None, "STOP", "STOP")
+    assert r["light"] == "amber" and any("impossible date" in x for x in r["reasons_amber"]), r
+    assert extract_items(["a note dated ১১।৮।৯৩ here"])[0]["type"] == "date"                                         # Assamese dates with the danda
+    # a third view sides with one of two disagreeing readings
+    V1 = "TRANSCRIPTION\n1. dated 15/8/92 end\nTRANSLATION\nx."; V2 = V1.replace("15/8/92", "16/8/92"); V3 = V1.replace("15/8/92", "16/8/92")
+    r = check_page("typed", V1, V2, V3, "STOP", "STOP", "STOP")
+    assert r["needs_third_view"] and r["third_view_on_disagreements"] == [{"type": "date", "view1": "15/8/92", "view2": "16/8/92", "third_view": "view 2"}], r
+    # a PDF page whose own text is used
+    E1 = "TRANSLATION\nThe first line is here. The second line follows."
+    t = check_text_page("order dated 15-02-2020 here", E1, E1)
+    assert t["light"] == "green" and any(i["type"] == "date" for i in t["must_check"]), t
+    assert check_text_page("order here", E1, E1.replace("second line follows.", "other thing entirely."))["light"] == "amber"
+    assert check_text_page("order here", E1, "")["light"] == "red"
     print("selftest OK (invented text only)")
 
 
