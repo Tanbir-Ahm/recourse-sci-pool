@@ -188,11 +188,24 @@ def english_wobble(text_a, text_b):
 _TERM = re.compile(r"\b[A-Z][A-Za-z.'\-]*(?:\s+(?:(?i:of|and|the|for|in)\s+)?[A-Z][A-Za-z.'\-]*)+")
 
 
+_MONTHS = "january february march april may june july august september october november december".split()
+_TERM_EDGE = set(_MONTHS) | set("on in the this that these those it its he she they we our however thereafter meanwhile under even but and also held where when while although "
+                                 "since because therefore hence thus then now further learned".split())
+
+
 def english_terms(text):
     """Named things in an English draft: runs of capitalised words (court, party and statute names, titles) and numbers of two or more digits, lower-cased."""
     i = text.rfind("TRANSLATION")
     t = re.sub(r"\s+", " ", text[i + len("TRANSLATION"):] if i >= 0 else text)
-    names = {re.sub(r"[.\s]+", " ", m.group(0)).strip().lower() for m in _TERM.finditer(t)}
+    names = set()
+    for m in _TERM.finditer(t):
+        words = re.sub(r"[.\s]+", " ", re.sub(r"\.\s*-+\s*", ". ", m.group(0))).strip().lower().split()
+        while words and words[0] in _TERM_EDGE:                  # a sentence-opening word that is not part of the name ("On April", "However")
+            words.pop(0)
+        while words and words[-1] in _TERM_EDGE:
+            words.pop()
+        if words and not (len(words) == 1 and words[0] in _TERM_EDGE) and not all(w in _TERM_EDGE for w in words):
+            names.add(" ".join(words))
     nums = {re.sub(r"[,.]$", "", n).lower() for n in re.findall(r"\d[\d,./]*(?:[A-Z](?![A-Za-z]))?", t) if len(re.sub(r"\D", "", n)) >= 2}
     return names, nums
 
@@ -331,7 +344,7 @@ def check_text_page(text, english1, english2, known=None):
     for n, e in (("English draft 1", english1), ("English draft 2", english2)):
         if not e or "TRANSLATION" not in e or not english_sentences(e):
             red.append("%s: no translation" % n)
-    items = [dict(i, status="CONFIRM", source="text layer") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + text))]
+    items = [dict(i, status="CONFIRM", A=i["value"], B=i["value"], source="text layer") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + text))]
     wob = english_wobble(english1, english2) if not red else []
     if wob:
         amber.append("%d English sentence(s) changed between the two drafts" % len(wob))
@@ -348,6 +361,66 @@ def check_text_page(text, english1, english2, known=None):
             "person_task": {"green": "The source text is the PDF's own text. Check the English draft against it and tick the must-check list (%d item(s))." % len(items),
                             "amber": "Check the flagged English sentences and items against the source text, then tick the must-check list (%d item(s))." % len(items),
                             "red": "The translation failed: translate this page by hand."}[light],
+            "stamp": "Machine draft. Not a certified translation."}
+
+
+def check_document(source, english1, english2, known=None, finish1="STOP", finish2="STOP", joins=None):
+    """The check for a WHOLE document translated twice from its joined text (stitch.py). source: the joined original text; english1, english2: the two
+    translations (with or without a TRANSLATION heading). Flags only; nothing is marked correct and nothing is corrected.
+    Amber for: sentences that changed between the two translations, a name or number that only one translation has, a clause / rule / article /
+    section number that the two translations count differently, a printed reference that disagrees with itself (redundancy.reference_flags),
+    [sic], (?), (spelling unsure) and [unclear] marks the model put in, and the redundancy checks. Red: a translation that is missing, cut off, or much shorter."""
+    import redundancy
+    body = lambda e: e.split("TRANSLATION", 1)[1].lstrip("*:# \n-") if e and "TRANSLATION" in e else (e or "")
+    e1, e2 = body(english1), body(english2)
+    red, amber = [], []
+    for n, e, f in (("Translation 1", e1, finish1), ("Translation 2", e2, finish2)):
+        if not e.strip():
+            red.append("%s: no translation" % n)
+        elif f not in (None, "STOP"):
+            red.append("%s: cut off (%s)" % (n, f))
+    if e1.strip() and e2.strip() and min(len(e1), len(e2)) < DROP_RATIO * max(len(e1), len(e2)):
+        red.append("one translation is much shorter than the other (%d against %d characters)" % (len(e1), len(e2)))
+    a1, a2 = "TRANSLATION\n" + e1, "TRANSLATION\n" + e2
+    wob = english_wobble(a1, a2) if not red else []
+    if wob:
+        amber.append("%d sentence(s) changed between the two translations" % len(wob))
+    diffs = english_term_differences(a1, a2) if not red else []
+    names = next((d for d in diffs if d["kind"] == "name"), None)
+    nums = next((d for d in diffs if d["kind"] == "number"), None)
+    if names:
+        amber.append("%d name(s) or title(s) that only one translation has" % (len(names["only_in_view_1"]) + len(names["only_in_view_2"])))
+    if nums:
+        amber.append("number(s) that only one translation has: %s" % ", ".join(nums["only_in_view_1"] + nums["only_in_view_2"]))
+    r1, r2 = redundancy.legal_references(e1), redundancy.legal_references(e2)
+    ref_diff = sorted("%s %s: %d against %d" % (k[0], k[1], r1[k], r2[k]) for k in set(r1) | set(r2) if r1[k] != r2[k])
+    if ref_diff:
+        amber.append("clause, rule, article or section reference(s) counted differently by the two translations: " + "; ".join(ref_diff))
+    rflags = []
+    for e in (e1, e2):
+        for f in redundancy.reference_flags(e):
+            if f not in rflags:
+                rflags.append(f)
+    amber += ["reference check: " + f for f in rflags]
+    marks = {m: sum(e.count(m) for e in (e1, e2)) for m in ("[sic]", "(?)", "(spelling unsure)", "[unclear]")}
+    for m, n in marks.items():
+        if n:
+            amber.append("%d '%s' mark(s) put in by the model: look at each" % (n, m))
+    flags = redundancy.page_flags("TRANSCRIPTION\n" + source, None, known)
+    for e in (e1, e2):
+        for w, dg, wd in redundancy.english_amount_check(e):
+            f = "English amount '%s': digits say %s, words say %s" % (w, dg, wd)
+            if f not in flags:
+                flags.append(f)
+    amber += ["document check: " + f for f in flags]
+    items = [dict(i, status="CONFIRM", A=i["value"], B=i["value"], source="joined text") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + source))]
+    light = "red" if red else "amber" if amber else "green"
+    return {"page_type": "document", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "name_differences": names,
+            "number_differences": nums, "reference_counts_differ": ref_diff, "reference_flags": rflags, "references": {"%s %s" % k: r1[k] for k in sorted(r1)},
+            "model_marks": marks, "redundancy_flags": flags, "must_check": items, "page_joins": joins or [],
+            "person_task": {"green": "Read the whole translation against the original, then tick the must-check list (%d item(s))." % len(items),
+                            "amber": "Read the whole translation against the original. Look first at the flags above: every name, every clause / rule / section number, every changed sentence. %d must-check item(s)." % len(items),
+                            "red": "The translation failed or is incomplete: do not use it."}[light],
             "stamp": "Machine draft. Not a certified translation."}
 
 
@@ -413,6 +486,18 @@ def selftest():
     assert t["light"] == "green" and any(i["type"] == "date" for i in t["must_check"]), t
     assert check_text_page("order here", E1, E1.replace("second line follows.", "other thing entirely."))["light"] == "amber"
     assert check_text_page("order here", E1, "")["light"] == "red"
+    # a whole document translated twice from its joined text
+    D1 = "TRANSLATION\nShri Ramesh Kumar [original] came on 15-02-2020. The Order IX, rule 9 application failed. The words \"where there has been an appeal\" in clause 3 are read with the column. It falls under clause 2 because the words \"where there has been an appeal\" are wide."
+    D2 = D1.replace("Ramesh Kumar", "Ramesh Kumer")
+    d = check_document("order dated 15-02-2020 here", D1, D1)
+    assert d["light"] == "amber" and any("tied to clause 3" in f for f in d["reference_flags"]) and d["references"]["clause 2"] == 1, d
+    d = check_document("order here", D1, D2)
+    assert any("name(s) or title(s) that only one translation has" in r for r in d["reasons_amber"]) and d["name_differences"]["only_in_view_1"] == ["shri ramesh kumar"], d
+    clean = "TRANSLATION\nThe appeal is dismissed. The costs follow the event."
+    assert check_document("order here", clean, clean)["light"] == "green"
+    assert check_document("order here", clean, clean + " (?)")["light"] == "amber"
+    assert check_document("order here", clean, "")["light"] == "red" and check_document("order here", clean, clean, finish2="MAX_TOKENS")["light"] == "red"
+    assert check_document("order here", clean * 3, clean)["light"] == "red"                       # one translation much shorter
     print("selftest OK (invented text only)")
 
 

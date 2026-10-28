@@ -11,6 +11,10 @@ For each page image:
   view 1   the image as given             \\ two blind reads by gemini-4-argon, same instructions, neither sees the other
   view 2   a padded copy (white border)   /
   view 3   the image again at ultra-high detail, ONLY if the checker flags the page (--third-view auto); it is used as a tiebreak hint
+Then, for a PDF of two or more pages (--stitch auto, the default), the readings (or the PDF's own text) of all its pages are JOINED into one text
+(stitch.py: a sentence that runs over a page break is joined) and translated twice, blind, with prompts/translate_stitched.txt (names by sound with the
+original-script word in square brackets, printed numbers and references kept as printed, [sic] on a suspected misprint). checker.check_document compares the two
+translations; document/<name>_*.html is the whole-document report. Translation 1 is the one to read: fixed in advance, never chosen by the tool.
 Then checker.py sets a traffic light, redundancy.py adds the checks that need no model, and report.py / marksheet.py write one report
 and one marking sheet per page. The light is a reading order, never permission to skip reading a page: a person reads every page in full for now.
 Page type is typed or handwritten (--page-type for all pages, --types FILE.json for {"page id": "handwritten"}). A handwritten page is never green.
@@ -20,11 +24,11 @@ Cost: about Rs 1 to 1.5 per read logged (the real bill has run 1.5 to 2 times hi
 a stopped run is resumed by running the same command again (finished calls are skipped). Cloud Vision for the PDF match (--pdf-reader vision) is
 outside the budget and sends each PDF page to Google.
 """
-import argparse, json, os, shutil, subprocess, sys, tempfile, time
+import argparse, json, os, re, shutil, subprocess, sys, tempfile, time
 from types import SimpleNamespace
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import checker, harness, marksheet, report
+import checker, harness, marksheet, report, stitch
 
 MODEL = "gemini-4-argon"
 PAD = 0.06           # white border on each side of view 2, as a share of the width and height
@@ -84,6 +88,78 @@ def translate_pages(args, out, text_pages, ledger, models, fx, text_caller):
             print("%s %s: %s, Rs %.2f" % (page, MODEL, rec["status"], rec["cost_inr"]), flush=True)
 
 
+_DOC = re.compile(r"^(.*)_p(\d+)$")
+
+
+def group_documents(pids):
+    """PDF pages are named <file>_p<N>; a file with two or more pages is a document. Returns {file: {page number: page id}}."""
+    docs = {}
+    for pid in pids:
+        m = _DOC.match(pid)
+        if m:
+            docs.setdefault(m.group(1), {})[int(m.group(2))] = pid
+    return {d: p for d, p in docs.items() if len(p) >= 2}
+
+
+def page_source(rd):
+    """The original-script text of one page for joining: the PDF's own text, else the view-1 reading (view 2 if view 1 did not finish). Returns (text, note)."""
+    if "text" in rd:
+        return rd["text"], None
+    if rd.get("view1") and rd.get("f1") == "STOP":
+        return rd["view1"], None
+    if rd.get("view2") and rd.get("f2") == "STOP":
+        return rd["view2"], "view 1 did not finish: view 2 used"
+    return None, "no complete reading"
+
+
+def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known):
+    """Join each document's pages and translate the joined text twice. Returns a list of summary rows; writes RUN/document/<name>_*."""
+    docs = group_documents(readings)
+    rows = []
+    if args.stitch == "off" or not docs:
+        return rows
+    prompt = open(os.path.join(HERE, "prompts", "translate_stitched.txt"), encoding="utf8").read().format(language=args.language)
+    key = os.environ.get(models[MODEL]["key_env"], "")
+    os.makedirs(os.path.join(out, "document"), exist_ok=True)
+    for name, pages in sorted(docs.items()):
+        src, notes, missing = {}, [], []
+        for n in sorted(pages):
+            text, note = page_source(readings[pages[n]])
+            if text is None:
+                missing.append(n)
+            else:
+                src[n] = text
+                if note:
+                    notes.append({"page": n, "action": note})
+        if missing:
+            print("DOCUMENT %s not joined: no complete reading for page(s) %s" % (name, ", ".join(map(str, missing))), flush=True)
+            rows.append({"document": name, "status": "not joined: no complete reading for page(s) %s" % ", ".join(map(str, missing))})
+            continue
+        text, joins = stitch.stitch_pages(src)
+        joins = notes + joins
+        ledger = harness.read_ledger(ledger_path)
+        for n in (1, 2):
+            page = "%s_full__t%d" % (name, n)
+            if any(r["page"] == page and r["model"] == MODEL and r["status"] == "ok" for r in ledger):
+                continue
+            if args.budget_inr is not None and harness.spent_inr(ledger) >= args.budget_inr:
+                print("STOP: the budget of Rs %s is reached; run the same command again with a higher --budget-inr to continue." % args.budget_inr); break
+            res = text_caller(MODEL, key, prompt, text)
+            rec = harness.log_call(out, ledger, page, MODEL, 1, res, models, fx)
+            print("%s %s: %s, Rs %.2f" % (page, MODEL, rec["status"], rec["cost_inr"]), flush=True)
+        ledger = harness.read_ledger(ledger_path)
+        (e1, f1), (e2, f2) = reading(ledger, out, name + "_full__t1"), reading(ledger, out, name + "_full__t2")
+        chk = checker.check_document(text, e1 or "", e2 or "", known, f1, f2, joins)
+        d = os.path.join(out, "document")
+        for suffix, body in (("_source.txt", text), ("_translation_1.txt", report.english(e1 or "") or (e1 or "")), ("_translation_2.txt", report.english(e2 or "") or (e2 or ""))):
+            open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
+        json.dump(chk, open(os.path.join(d, name + "_check.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
+        open(os.path.join(d, name + "_document.html"), "w", encoding="utf8").write(report.build_document(name, chk, text, e1 or "", e2 or "", args.language))
+        rows.append({"document": name, "pages": len(pages), "light": chk["light"], "reasons": chk["reasons_red"] + chk["reasons_amber"],
+                     "page_joins": sum(j["action"].startswith("joined") for j in joins)})
+    return rows
+
+
 def run_pipeline(args, caller=None, text_caller=None):
     real = caller is None
     caller = caller or harness.call_gemini
@@ -133,6 +209,8 @@ def run_pipeline(args, caller=None, text_caller=None):
             readings[pid] = {"text": text, "english1": e1 or "", "english2": e2 or ""}
             results[pid] = checker.check_text_page(text, e1 or "", e2 or "", known)
 
+    doc_rows = stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known)
+    ledger = harness.read_ledger(ledger_path)
     cost = harness.spent_inr(ledger)
     for sub in ("checks", "report", "marksheets"):
         os.makedirs(os.path.join(out, sub), exist_ok=True)
@@ -152,7 +230,7 @@ def run_pipeline(args, caller=None, text_caller=None):
             marksheet.build(pid, chk.get("page_type", "?"), a, b, names[0], names[1], img))
         summary.append({"page": pid, "light": chk["light"], "page_type": chk.get("page_type"), "must_check_items": len(chk.get("must_check", [])),
                         "reasons": chk["reasons_red"] + chk["reasons_amber"], "third_view": bool(rd.get("view3"))})
-    json.dump({"pages": summary, "estimated_cost_inr": round(cost, 2), "note": "cost is an estimate from models.json; the billing account is the truth"},
+    json.dump({"pages": summary, "documents": doc_rows, "estimated_cost_inr": round(cost, 2), "note": "cost is an estimate from models.json; the billing account is the truth"},
               open(os.path.join(out, "summary.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
     if args.pdf:
         node = shutil.which("node")
@@ -160,12 +238,14 @@ def run_pipeline(args, caller=None, text_caller=None):
             print("PDF output skipped: Node is not installed (the HTML reports are in %s/report)" % out)
         else:
             npm = subprocess.run(["npm", "root", "-g"], capture_output=True, text=True).stdout.strip()
-            htmls = [os.path.join(out, "report", p["page"] + ".html") for p in summary]
+            htmls = [os.path.join(out, "report", p["page"] + ".html") for p in summary] + [os.path.join(out, "document", d["document"] + "_document.html") for d in doc_rows if "light" in d]
             r = subprocess.run([node, os.path.join(HERE, "print_pdf.js")] + htmls, capture_output=True, text=True, env={**os.environ, "NODE_PATH": npm})
             print(r.stdout.strip() or ("PDF output failed: " + r.stderr.strip()[:200]))
     print("\n%-28s %-6s %s" % ("page", "light", "to do"))
     for s in summary:
         print("%-28s %-6s %s" % (s["page"], s["light"].upper(), "read the whole page" if s["light"] == "red" else "check the flagged items, then the must-check list" if s["light"] == "amber" else "tick the must-check list"))
+    for d in doc_rows:
+        print("\nWhole document %-20s %s" % (d["document"], ("%s: read it in full against the original; names, section numbers and changed sentences first" % d["light"].upper()) if "light" in d else d["status"]))
     print("\nEstimated model cost for this run: Rs %.2f (a lower bound; the billing account is the truth). Outputs: %s" % (cost, out))
     return summary
 
@@ -181,6 +261,7 @@ def selftest():
              "Closing line of this invented test page only.", "Another plain sentence to give the page enough letters."]
     pdf_triage._mini_pdf(os.path.join(inp, "doc.pdf"), lines)
     Image.new("RGB", (600, 200), "white").save(os.path.join(inp, "scan.pdf"))
+    Image.new("RGB", (600, 200), "white").save(os.path.join(inp, "scan2.pdf"), save_all=True, append_images=[Image.new("RGB", (600, 200), "white")])      # a two-page document
     state = {"n": 0}
     def fake(model, key, system, image, mime):
         state["n"] += 1
@@ -194,7 +275,7 @@ def selftest():
     pdf_triage.tesseract_read = lambda png, lang: ("\n".join(lines), None)
     out = os.path.join(td, "run")
     args = argparse.Namespace(input=inp, out=out, language="English", page_type="typed", types=None, known=None, budget_inr=None, third_view="auto", pdf=False,
-                              pdf_reader="tesseract", pdf_lang="eng", pdf_dpi=100, pdf_undecided="image", pdf_no_match=False)
+                              pdf_reader="tesseract", pdf_lang="eng", pdf_dpi=100, pdf_undecided="image", pdf_no_match=False, stitch="auto")
     try:
         s = {x["page"]: x for x in run_pipeline(args, fake, fake_text)}
         led = harness.read_ledger(os.path.join(out, "ledger.jsonl"))
@@ -203,6 +284,12 @@ def selftest():
         assert "doc_p1__view1" not in pages, "a page with a good text layer must not be read as an image"
         assert "scan_p1__view3" not in pages, "view 3 only for pages that are flagged"
         assert s["pg1"]["light"] == "amber" and s["pg1"]["third_view"] and s["scan_p1"]["light"] == "green" and s["doc_p1"]["light"] == "green", s
+        assert {"scan2_full__t1", "scan2_full__t2"} <= pages and not any(p.startswith(("scan_full", "doc_full", "pg1_full")) for p in pages), "only a file of 2 or more pages is joined"
+        for f in ("_source.txt", "_translation_1.txt", "_translation_2.txt", "_check.json", "_document.html"):
+            assert os.path.exists(os.path.join(out, "document", "scan2" + f)), f
+        assert open(os.path.join(out, "document", "scan2_source.txt")).read().count("dated") == 2, "the two pages are joined into one text"
+        dj = json.load(open(os.path.join(out, "summary.json")))["documents"]
+        assert len(dj) == 1 and dj[0]["document"] == "scan2" and dj[0]["pages"] == 2 and dj[0]["page_joins"] == 1, dj
         chk = json.load(open(os.path.join(out, "checks", "pg1.json")))
         assert chk["third_view_on_disagreements"][0]["third_view"] == "view 2", chk["third_view_on_disagreements"]
         for sub, ext in (("checks", ".json"), ("report", ".html"), ("marksheets", "_marksheet.html")):
@@ -215,6 +302,9 @@ def selftest():
         args2 = argparse.Namespace(**{**vars(args), "out": os.path.join(td, "run2"), "page_type": "handwritten", "third_view": "off", "budget_inr": 0.9})
         state["n"] = 0
         s2 = {x["page"]: x for x in run_pipeline(args2, fake, fake_text)}
+        args3 = argparse.Namespace(**{**vars(args), "out": os.path.join(td, "run3"), "stitch": "off", "third_view": "off"})
+        run_pipeline(args3, fake, fake_text)
+        assert not os.path.exists(os.path.join(td, "run3", "document")), "--stitch off writes no document"
         assert all(x["light"] != "green" for x in s2.values() if x["page"] != "doc_p1"), s2         # handwriting is never green; the budget stops the run early
     finally:
         pdf_triage.tesseract_read = real
@@ -227,6 +317,7 @@ if __name__ == "__main__":
     ap.add_argument("--page-type", dest="page_type", choices=checker.PAGE_TYPES, help="typed or handwritten (required unless --types covers every page)")
     ap.add_argument("--types", help="JSON file {page id: typed|handwritten}"); ap.add_argument("--known", help="JSON list of confirmed names (case data: keep outside the repository)")
     ap.add_argument("--budget-inr", dest="budget_inr", type=float); ap.add_argument("--third-view", dest="third_view", choices=("auto", "off", "always"), default="auto")
+    ap.add_argument("--stitch", choices=("auto", "off"), default="auto", help="auto: join the pages of each PDF of 2 or more pages and translate the joined text twice")
     ap.add_argument("--pdf", action="store_true", help="also print the reports to PDF (needs Node and Playwright)")
     ap.add_argument("--pdf-reader", dest="pdf_reader", choices=("tesseract", "vision"), default="tesseract", help="vision sends each PDF page to Google")
     ap.add_argument("--pdf-lang", dest="pdf_lang", default="asm+eng"); ap.add_argument("--pdf-dpi", dest="pdf_dpi", type=int, default=200)

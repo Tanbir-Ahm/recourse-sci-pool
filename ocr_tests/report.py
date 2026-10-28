@@ -89,6 +89,42 @@ def build(pid, check, readings, image_path=None, language="", cost_inr=None):
     return "<!doctype html><html><head><meta charset=utf-8><title>Page %s</title><style>%s</style></head><body>%s</body></html>" % (esc(pid), CSS, "".join(h))
 
 
+def build_document(name, check, source, english1, english2, language="", cost_inr=None):
+    """The report for a whole document translated twice from its joined text (checker.check_document). Translation 1 is the one to read (fixed in advance,
+    never chosen by the tool); translation 2 is there to show where the two differ. The names table comes first: a name is a guess until a person has
+    checked the original-script word in the brackets."""
+    col = COLOURS[check["light"]]
+    h = ["<h1>Document %s</h1><p class=meta>%s%s. Prepared %s.</p>" % (esc(name), esc(language), (" &middot; model cost about Rs %.2f (estimate, a lower bound)" % cost_inr) if cost_inr is not None else "", datetime.date.today().isoformat()),
+         "<div class=warn><b>Machine draft. Not a certified translation.</b> The pages were read by a model, joined into one text and translated twice. A person who reads the language must read all of it against the original and check every name, date, number, amount and section reference. Two translations that agree can both be wrong; names are written by sound and the original-script word is in square brackets for you to check.</div>"]
+    why = "".join("<li><b>Red:</b> %s</li>" % esc(r) for r in check["reasons_red"]) + "".join("<li>Amber: %s</li>" % esc(r) for r in check["reasons_amber"])
+    h.append("<div style='border:2px solid %s;padding:8px 10px;margin:8px 0'><b style='color:%s;font-size:14pt'>%s</b> &nbsp; %s<ul style='margin:6px 0 0 18px'>%s</ul></div>" % (col, col, check["light"].upper(), esc(check["person_task"]), why))
+    nd = check.get("name_differences")
+    if nd:
+        h.append("<h2>Names and titles that only one translation has (check each against the original-script word)</h2><table><tr><th>Translation 1 only</th><th>Translation 2 only</th></tr><tr><td>%s</td><td>%s</td></tr></table>" % (
+            esc("; ".join(nd["only_in_view_1"])), esc("; ".join(nd["only_in_view_2"]))))
+    if check.get("reference_flags") or check.get("references"):
+        h.append("<h2>Clause, rule, article, section and order numbers (look at each in the original)</h2>%s<p>%s</p>" % (
+            ("<ul>%s</ul>" % "".join("<li>%s</li>" % esc(f) for f in check.get("reference_flags", []))) if check.get("reference_flags") else "",
+            esc("; ".join("%s x%d" % (k, v) for k, v in check.get("references", {}).items()))))
+    if check.get("model_marks") and any(check["model_marks"].values()):
+        h.append("<p class=small>Marks the model put in, both translations together: %s</p>" % esc(", ".join("%s x%d" % (k, v) for k, v in check["model_marks"].items() if v)))
+    if check.get("page_joins"):
+        h.append("<h3>How the pages were joined (check that nothing was joined by mistake)</h3><table><tr><th>Page</th><th>What was done</th><th>Previous page ended</th><th>This page starts</th></tr>%s</table>" % "".join(
+            "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (j["page"], esc(j["action"]), esc(j.get("previous_page_ends", "")), esc(j.get("this_page_starts", j.get("line", "")))) for j in check["page_joins"]))
+    if check.get("english_wobble"):
+        h.append("<h3>Sentences that changed between the two translations</h3><table><tr><th>Translation 1</th><th>Translation 2</th></tr>%s</table>" % "".join(
+            "<tr><td>%s</td><td>%s</td></tr>" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")) for w in check["english_wobble"]))
+    if check.get("redundancy_flags"):
+        h.append("<h3>Checks that need no model</h3><ul>%s</ul>" % "".join("<li>%s</li>" % esc(f) for f in check["redundancy_flags"]))
+    con = check.get("must_check", [])
+    if con:
+        h.append("<h2>Must-check list (a person confirms each against the original)</h2><table><tr><th>Kind</th><th>Value</th></tr>%s</table>" % "".join(
+            "<tr><td>%s</td><td>%s</td></tr>" % (esc(i["type"]), esc(str(i["A"]))) for i in con))
+    h.append("<h1 class=pb>Translation 1 (the one to read)</h1>%s<h1 class=pb>Translation 2 (for comparison)</h1>%s<h1 class=pb>Appendix: the joined original text</h1>%s" % (
+        pre(english(english1) or english1), pre(english(english2) or english2), pre(source)))
+    return "<!doctype html><html><head><meta charset=utf-8><title>Document %s</title><style>%s</style></head><body>%s</body></html>" % (esc(name), CSS, "".join(h))
+
+
 def selftest():
     R = "TRANSCRIPTION\n1. dated 15/8/92 here\nTRANSLATION\nThe first line is here. The second line follows."
     R2 = R.replace("15/8/92", "16/8/92").replace("The second line follows.", "A different sentence entirely <script>alert(1)</script>.")
@@ -100,6 +136,12 @@ def selftest():
     E = "TRANSLATION\nOne line here. Another line there."
     t = build("T02", checker.check_text_page("order here", E, E), {"text": "order here", "english1": E, "english2": E})
     assert "GREEN" in t and "Text layer of the PDF" in t
+    E2 = "TRANSLATION\nDated 15-02-2020 the order was made."
+    tp = build("T03", checker.check_text_page("order dated 15-02-2020 here", E2, E2), {"text": "order dated 15-02-2020 here", "english1": E2, "english2": E2})
+    assert "15-02-2020" in tp, "a text-layer page with a date in its must-check list must build (it raised KeyError 'A' before 2026-10-28)"
+    D = "TRANSLATION\nRamesh [rama] came. <b>x</b> Clause 2 applies."
+    d = build_document("doc1", checker.check_document("source <i> dated 15-02-2020", D, D.replace("came", "went")), "source <i>", D, D, "Kannada", 3.0)
+    assert "Machine draft. Not a certified translation." in d and "Translation 1 (the one to read)" in d and "<b>x</b>" not in d and "<i>" not in d.replace("<i>not", "") and "https://" not in d
     print("selftest OK (invented text only)")
 
 

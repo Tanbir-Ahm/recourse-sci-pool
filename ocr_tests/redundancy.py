@@ -140,6 +140,59 @@ def known_names_from_csv(paths):
     return sorted(names)
 
 
+_REFKIND = {"cl": "clause", "cls": "clause", "clauses": "clause", "r": "rule", "rules": "rule", "art": "article", "articles": "article",
+            "s": "section", "sections": "section", "o": "order", "ss": "section"}
+_REF = re.compile(r"\b(?:(clauses?|cls?|rules?|r|articles?|art|sections?|ss?)(?:\.\s*|\s+)(\d+)|(order|o)(?:\.\s*|\s+)((?-i:[IVXL]+|\d+)))\b", re.I)   # roman numerals only after "order"
+
+
+def legal_references(text):
+    """Counts of 'clause 2', 'rule 9', 'article 182', 'section 36', 'order IX' in an English text, including ONE-digit ones, which the plain number checks ignore."""
+    from collections import Counter
+    c = Counter()
+    for m in _REF.finditer(text):
+        k, n = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
+        c[(_REFKIND.get(k.lower(), k.lower()), n.upper())] += 1
+    return c
+
+
+_ORDER_RULE = re.compile(r"\b(?:order|o\.)\s*((?-i:[IVXL]+|\d+))\s*,?\s*(?:rules?|r\.)\s*(\d+)|\brules?\s+(\d+)\s*,?\s*(?:of\s+)?(?:order|o\.)\s*((?-i:[IVXL]+|\d+))", re.I)
+_CLAUSES = re.compile(r"\b(?:clauses?|cls?)\.?\s*\d+(?:\s*(?:,|and|or|&)\s*\d+)*", re.I)
+_QUOTE = re.compile(r"[\"\u201c]([^\"\u201c\u201d]{12,}?)[\"\u201d]")
+
+
+def reference_flags(english):
+    """Printed references that disagree with themselves inside one translation. Two checks, both from the text alone:
+    (1) the same rule number under different order numbers (Order IX rule 9 in eight places, Order II rule 9 in one);
+    (2) the same quoted words tied to different clause numbers in different sentences.
+    Each flag says to look at the original; nothing is corrected. A source's own misprint is copied faithfully by every reader (plan section 10t),
+    so only a check like this can raise it."""
+    flags = []
+    t = re.sub(r"\s+", " ", english)
+    pairs = {}
+    for m in _ORDER_RULE.finditer(t):
+        order, rule = (m.group(1), m.group(2)) if m.group(1) else (m.group(4), m.group(3))
+        pairs.setdefault(rule, {}).setdefault(order.upper(), 0)
+        pairs[rule][order.upper()] += 1
+    for rule, orders in sorted(pairs.items()):
+        if len(orders) > 1:
+            flags.append("rule %s appears under different orders (%s): look at the original" % (rule, ", ".join("Order %s x%d" % (o, n) for o, n in sorted(orders.items(), key=lambda x: -x[1]))))
+    seen = {}
+    for s in re.split(r"(?<=[.?!])\s+(?=[A-Z\"\u201c(])", t):
+        cls = [(m.start(), m.end(), set(re.findall(r"\d+", m.group(0)))) for m in _CLAUSES.finditer(s)]
+        for q in _QUOTE.finditer(s):
+            key = re.sub(r"[^a-z ]", "", q.group(1).lower()).strip()
+            near = sorted(((max(c[0] - q.end(), q.start() - c[1], 0), c[2]) for c in cls), key=lambda x: x[0])
+            if len(key.split()) >= 3 and near and near[0][0] <= 160:          # the clause named closest to the quoted words, if it is close
+                seen.setdefault(key, []).append((q.group(1).strip(), near[0][1]))
+    for key, ties in seen.items():
+        for i, (q, a) in enumerate(ties):
+            other = next((b for _, b in ties[i + 1:] if not (a & b)), None)
+            if other is not None:
+                flags.append("the words \"%s\" are tied to clause %s in one place and clause %s in another: look at the original" % (q, "/".join(sorted(a)), "/".join(sorted(other))))
+                break
+    return flags
+
+
 def page_flags(reading, english=None, known=None):
     """All the checks for one reading, as a list of plain-words flags."""
     flags = []
@@ -180,6 +233,15 @@ def selftest():
         f = os.path.join(td, "m.csv")
         open(f, "w", encoding="utf8").write('"Page","Tool"\n\n"Check list","Status","Type","Reader A","Reader B","Line A/B","Value on the page","Result"\n"","DISAGREE","name","X","Y","1 / 1","Ramesh Kumar","A wrong"\n"","CONFIRM","number","15","15","1 / 1","15","right in both"\n')
         assert known_names_from_csv([f]) == ["Ramesh Kumar"]
+    lr = legal_references("It falls under clause 2 of Article 182 and Order IX, rule 9; six items; S. I. Das and Section 36, Section 36.")
+    assert dict(lr) == {("clause", "2"): 1, ("article", "182"): 1, ("order", "IX"): 1, ("rule", "9"): 1, ("section", "36"): 2}, lr
+    e = ("Order IX, rule 9, applies. The application under Order IX, Rule 9 failed. Proceedings under Order II, rule 9, are not material. "
+         "The words \"where there has been an appeal\" in clause 3 of Article 182 must be read with the column. "
+         "It falls within clause 2 of Article 182 because the words \"where there has been an appeal\" are wide.")
+    rf = reference_flags(e)
+    assert len(rf) == 2 and "rule 9 appears under different orders" in rf[0] and "Order IX x2" in rf[0] and "Order II x1" in rf[0] and "clause 3" in rf[1] and "clause 2" in rf[1], rf
+    assert reference_flags("Art. 182, cls. 2 and 3: the words \"where there has been a review\" in clause 3 are quoted. Again \"where there has been a review\" in clause 3.") == []
+    assert reference_flags("Order IX, rule 9 and rule 9 of Order IX, clause 2 and clause 2. The words \"where there has been a review\" in clause 3. Again \"where there has been a review\" in clause 3.") == []
     fl = page_flags("TRANSCRIPTION\n(1) a 45/1/90\n(3) b", "Rs. 750.00 (Seven hundred)")
     assert len(fl) == 3, fl
     print("selftest OK (invented text only)")

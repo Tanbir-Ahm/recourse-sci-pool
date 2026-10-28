@@ -16,27 +16,13 @@ Inputs are case data: keep them and the output outside the repository. The selft
 """
 import argparse, difflib, json, os, re, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import checker
+import checker, redundancy
 
 _WORDS = lambda s: re.sub(r"[^a-z0-9 ]", " ", s.lower()).split()
 
 
 def numbers(text):
     return sorted({re.sub(r"[.,]$", "", n) for n in re.findall(r"\b\d[\d,./]*(?:[A-Z](?![A-Za-z]))?", text) if len(re.sub(r"\D", "", n)) >= 2})
-
-
-_REFKIND = {"cl": "clause", "cls": "clause", "clauses": "clause", "r": "rule", "rules": "rule", "art": "article", "articles": "article",
-            "s": "section", "sections": "section", "o": "order", "ss": "section"}
-
-
-def legal_references(text):
-    """Counts of 'clause 2', 'rule 9', 'article 182', 'section 36', 'order IX' ... including ONE-digit ones, which `numbers` ignores."""
-    from collections import Counter
-    c = Counter()
-    for m in re.finditer(r"\b(clauses?|cls?|rules?|r|articles?|art|sections?|ss?|order|o)\.?\s*(IX|II|[0-9]+)\b", text, re.I):
-        k = m.group(1).lower()
-        c[(_REFKIND.get(k, k), m.group(2).upper())] += 1
-    return c
 
 
 def closeness(ref_sentences, draft_sentences):
@@ -59,7 +45,7 @@ def score(reference, drafts, start=None):
         d = cut(text); ds = checker.english_sentences("TRANSLATION\n" + d)
         c = closeness(rs, ds)
         nr, nd = set(numbers(ref)), set(numbers(d))
-        rr, rd = legal_references(ref), legal_references(d)
+        rr, rd = redundancy.legal_references(ref), redundancy.legal_references(d)
         names = [t for t in checker.english_term_differences("TRANSLATION\n" + ref, "TRANSLATION\n" + d) if t["kind"] == "name"]
         out["drafts"][name] = {"mean_closeness": round(sum(c) / len(c), 3) if c else 0.0, "sentences_under_0.6": sum(x < 0.6 for x in c),
                                "closeness_per_sentence": [round(x, 2) for x in c],
