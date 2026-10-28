@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10o record the results so far (real pages, scores and counts only); section 11 is the proposed design that follows from them; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10p record the results so far (real pages, scores and counts only); section 11 is the proposed design that follows from them; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -637,3 +637,22 @@ All three pages came out **red**. Cost was about Rs 7 for the six argon readings
 **Proposed tuning, not yet made.** Treat a page whose Cloud Vision confidence is under 80% as having no independent machine check (amber, like handwriting) unless argon's own two runs also disagree, so that Vision's weakness does not decide the colour. This rests on three pages and should be tested on the owner's marks before it is adopted.
 
 **Limits.** Three pages from the same kind of document, not independent of earlier pages 1 and 2; no reference; thresholds are a first guess.
+
+### 10p. Step 3 test package: which image changes help `gemini-4-argon` (recorded 2026-10-28; counts only, no names, places, case numbers or text)
+
+**What was tested.** Four typed Assamese government pages the owner had marked (the marks on three of them give 26 confirmed values), each read by `gemini-4-argon` in five image variants and compared with the baseline readings already made (the original image, two runs): **v1** enlarged 2x; **v2** enlarged 2x with automatic contrast and sharpening; **v3** padded with a white border (6% a side); **v4** the original image with the model's per-image detail setting raised to ultra high; **v5** the one skewed page (measured -1.75 degrees; the other three measured 0) straightened. 26 new calls, about Rs 32 logged (a lower bound, 10k), plus about Rs 5 of probing. Pages 1, 8: one run per variant; pages 9, 10: two runs.
+
+**The detail setting.** Argon already uses high detail by default (1,357 input tokens for the page); asking for high on the standard API changed nothing, and ultra high works only as a per-image setting on the alpha API (2,477 input tokens, about Rs 0.2 more a call). The alpha API may change.
+
+| Variant | Confirmed values found | Invented names | Two runs agree with each other, p9 / p10 | Agree with baseline run 1, p9 / p10 | Avg time | Logged cost (6 calls) |
+|---|---|---|---|---|---|---|
+| baseline (existing) | 33 of 34 | 0 | 86.0% / 96.4% | n/a | 12 s | n/a |
+| v1 enlarged | 22 of 22 | 0 | 89.3% / 96.2% | 90.7% / 94.9% | 13.7 s | Rs 6.78 |
+| v2 enlarged + contrast | 22 of 22 | 0 | 87.8% / 89.9% | 85.3% / 86.4% | 12.8 s | Rs 7.54 |
+| v3 padded | 21 of 22 | 0 | 98.3% / 97.3% | 98.0% / 94.3% | 13.3 s | Rs 6.92 |
+| v4 ultra-high detail | 22 of 22 | 0 | 95.9% / 98.9% | 98.6% / 96.3% | 17.5 s | Rs 8.15 |
+| v5 straightened (p10 only, 2 calls) | 10 of 10 | 0 | n/a / 90.2% | n/a / 88.6% | 12.4 s | Rs 2.33 |
+
+**Findings.** (1) **The values are at the ceiling**: argon already finds almost every confirmed number, date and name in every variant, so this test cannot rank the variants on those; it can show regressions and stability. (2) **No variant fixed the one known wrong printed name**: every variant, 7 of 7 readings, still reads it the same wrong way. Image preparation does not cure a name error. (3) **A shared error was exposed by changing the view**: both baseline runs read a handwritten date with the same day number, which the owner's marks say is wrong; padded and contrast variants read a different day consistently, and ultra-high gave a third. Identical runs hid it; different views disagree and would flag it. (4) **A place word on page 10 split the baseline runs and most views agree on one reading**: 9 of the 11 variant readings, and in the baseline one of two, give the same place; two readings give the other. The owner has not yet said which is right. (5) **Padding and ultra-high detail made the readings steadier** (page 9 from 86% to 98% and 96%; page 10 from 96% to 97% and 99%); **contrast with sharpening and straightening made them less steady** (page 10 down to 90%, and 86% to 89% against the baseline), so neither is recommended. Enlarging was neutral. (6) **Caveats**: 4 pages, 1 to 2 runs each; the page 9 baseline was one run that added lines the other did not, so some of the gain may be a good draw. Steadier is not more accurate.
+
+**What this changes in the plan.** Step 3 becomes small: **no contrast boost and no straightening by default**; the second argon run reads a **padded** copy of the page (no API risk), with **ultra-high detail** as an optional third view when the first two disagree (it uses the alpha API). The disagreement between differently prepared views is the signal, because identical runs agree with each other even when wrong. The owner's confirmation of the page 9 date and the page 10 place word would turn findings 3 and 4 into measured results.

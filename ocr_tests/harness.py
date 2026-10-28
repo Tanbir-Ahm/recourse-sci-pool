@@ -43,13 +43,19 @@ def split_output(text):
     return text[:h.start()], text[h.end():].lstrip("*:# \n-")
 
 
+MEDIA_RESOLUTION = None               # set by --media-resolution: low, medium, high or ultra_high (a per-image setting, sent on the v1alpha API)
+
+
 def call_gemini(model, key, system, image_bytes, mime, max_tokens=32768, tries=3, timeout=300):
     """One streaming call. Returns a dict; never raises. Time to first token and total time are measured."""
-    body = {"contents": [{"role": "user", "parts": [{"text": "Transcribe and translate this page."},
-                                                      {"inline_data": {"mime_type": mime, "data": base64.b64encode(image_bytes).decode()}}]}],
+    image_part = {"inline_data": {"mime_type": mime, "data": base64.b64encode(image_bytes).decode()}}
+    if MEDIA_RESOLUTION:
+        image_part["media_resolution"] = {"level": "media_resolution_" + MEDIA_RESOLUTION}
+    body = {"contents": [{"role": "user", "parts": [{"text": "Transcribe and translate this page."}, image_part]}],
             "systemInstruction": {"parts": [{"text": system}]},
             "generationConfig": {"temperature": 0, "maxOutputTokens": max_tokens}}
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:streamGenerateContent?alt=sse"
+    api = "v1alpha" if MEDIA_RESOLUTION else "v1beta"
+    url = f"https://generativelanguage.googleapis.com/{api}/models/{model}:streamGenerateContent?alt=sse"
     rec = {"attempts": 0}
     for attempt in range(tries):
         rec["attempts"] += 1
@@ -291,11 +297,14 @@ if __name__ == "__main__":
     ap.add_argument("--runs", type=int, default=2); ap.add_argument("--language", default="Assamese"); ap.add_argument("--prompt")
     ap.add_argument("--models-file", dest="models_file"); ap.add_argument("--budget-inr", type=float, dest="budget_inr"); ap.add_argument("--max-calls", type=int, dest="max_calls")
     ap.add_argument("--force", action="store_true"); ap.add_argument("--report"); ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--media-resolution", dest="media_resolution", choices=("low", "medium", "high", "ultra_high"), help="the model's image-detail setting (argon already uses high by default; ultra_high costs about 1,100 more input tokens)")
     ap.add_argument("--pdf-reader", dest="pdf_reader", choices=("tesseract", "vision"), default="tesseract", help="reader for the PDF match check; vision sends each PDF page to Google")
     ap.add_argument("--pdf-lang", dest="pdf_lang", default="asm+eng"); ap.add_argument("--pdf-dpi", dest="pdf_dpi", type=int, default=200)
     ap.add_argument("--pdf-undecided", dest="pdf_undecided", choices=("image", "skip"), default="image", help="what to do with a PDF page where a person must decide")
     ap.add_argument("--pdf-no-match", dest="pdf_no_match", action="store_true", help="skip the comparison of the text layer with the picture")
     a = ap.parse_args()
+    if a.media_resolution:
+        MEDIA_RESOLUTION = a.media_resolution
     if a.selftest: selftest()
     elif a.report: report(a.report)
     elif a.pages:
