@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10q record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10r record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -643,6 +643,33 @@ All three pages came out **red**. Cost was about Rs 7 for the six argon readings
 **Findings.** (1) **On clean typed pages the two views agree almost perfectly on the original script** (99.6 to 100%), so the machine sees nothing to settle; this says nothing about whether the shared reading is right. (2) **The instability is in the English, not the transcription.** Each amber page was amber only because of English: one sentence worded differently, or a name or citation translated two ways. (3) **The new names-and-numbers comparison between the two English drafts caught two legal naming differences that a sentence-by-sentence comparison missed because the rest of the sentence was identical**: a party designation (one draft "Government of ...", the other "State of ...") and a case citation ("Union Government of India" in one draft against "Union of India" in the other). A literal translation of an Assamese phrase gives a different name from the one the official English judgment uses; a person who knows the established name must settle these. (4) **Three tool problems found by real data and fixed:** the English sentence splitter broke sentences after "vs." and "S.C.C." and so created false differences while hiding real ones (it now skips abbreviations and initials); the names-and-numbers comparison was added; the third view was triggered by English wording differences, which an image view cannot settle (it now runs only when a must-check item differs or letter agreement is under 97%; on this file that would have saved the Rs 5.17). (5) **Few must-check items on legal prose** (22 in all, mostly section numbers): the extractor finds numbers and sections but few names, so the list covers little of the text.
 
 **What this changes in the plan.** Nothing in the design except the third-view trigger. For translated judgments the English names and citations are the main risk, which suggests a glossary of established legal designations (party names, "Union of India", "State of ...") that flags, and never corrects, a literal rendering; this is not built. The owner's marks are still needed to say whether the shared reading is right.
+
+### 10r. The first true reference: the official English text of the same judgment (recorded 2026-10-28; counts only, no names, places, case numbers or text)
+
+**What was tested.** The official English text of the judgment whose Assamese translation was run in 10q (two pages, a text layer, from the court's own website; the Assamese document is a translation of it). Both English drafts of the pipeline (view 1, image as given; view 2, padded copy) were scored against it, sentence by sentence (32 official sentences) plus 6 header fields, with `ocr_tests/score_reference.py` (closeness, numbers, names) and my own reading of every pair. The judgments of severity are mine and a reviewer may disagree. The Assamese document is itself a translation, so the drafts are back-translations and will not match word for word.
+
+| Measure | View 1 | View 2 |
+|---|---|---|
+| Mean closeness to the official sentences (0 to 1) | 0.702 | 0.706 |
+| Official sentences with no close match (under 0.6) | 8 of 32 | 9 of 32 |
+| Sentences where this draft is closer by more than 0.05 | 5 | 4 |
+| Sentences within 0.05 of each other | 23 | 23 |
+| Header fields correct | 5 of 6 | 6 of 6 |
+| Sentences with no critical or moderate problem | 26 of 32 | 26 of 32 |
+| Critical differences from the official text (names, numbers, legal references) | 5 | 3 |
+| of which faithful to a misprint in the Assamese source | 2 | 2 |
+| Moderate | 3 | 3 |
+| Gist correct, pages of judgment text | 4 of 4 | 4 of 4 |
+
+Taking the closer draft for each sentence would give a mean closeness of 0.722.
+
+**The critical differences.** (a) **Two section references**: both drafts, all three reads, say Section 422 and Section 133 where the official text says 433 both times. At 400 dpi the Assamese page itself prints those two numbers: **the source has two misprints and the readers copied them faithfully.** Every other number and section reference in both drafts (about 25) matches the official text. (b) **A printed case name was silently replaced**: the Assamese page and the official English both print one spelling; both drafts wrote the spelling of the real case name instead, with no warning (the pattern of 10i). (c) **View 1 only**: the respondent's designation and a case citation were rendered literally ("Government of ...", "Union Government of India") where the official text uses the established forms; view 2 has the established forms. Both were flagged by the names-and-numbers comparison of 10q (the only critical differences the pipeline flagged); (a) and (b) were not flagged as problems (the section numbers were on the must-check list as items to confirm).
+
+**The moderate ones, the same in both drafts.** Two sentences are garbled where a page break fell in the middle of a sentence (the pipeline reads and translates each page separately and does not notice); one sentence shifts what stays unaffected (the court's power to pronounce on validity, against the validity itself).
+
+**Findings.** (1) **The choice between the two drafts rarely matters**: 23 of 32 sentences are equally close; it matters at the few places where names or legal designations differ, which supports choosing sentence by sentence only where the drafts differ and checking names against a glossary or the official text. (2) **Agreement of the readers was faithfulness, not correctness**: three reads agreed on two numbers that were wrong in the source. A reader cannot know; only the official text, the law or a person who knows it can. (3) **Silent errors by the plan's measure**: counting the two source-faithful numbers and the silent name replacement, this one document already has 3 silent critical differences in 4 pages of text (2 of them misprints in the source), against the plan's allowance of 1 per group; whether a faithful copy of a printed misprint is an "error" is a decision for the owner. (4) **A page break in mid-sentence is an undetected failure** of the page-by-page design. (5) **The official text, when it exists, is the best checker**: it found the three things above in minutes; most real records will not have one.
+
+**What this changes in the plan.** Nothing is built from it yet. Candidates, in order: a check that flags a page that ends or begins in the middle of a sentence (or reads pages together); an instruction to keep a printed name exactly as printed and mark it, with a test on this document; a glossary of established legal designations; the sentence-by-sentence choice process with its log (on hold at the owner's request); and keeping the official English text as the reference whenever one exists.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
