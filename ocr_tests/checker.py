@@ -48,18 +48,55 @@ def transcription_lines(text):
         l = l.strip()
         if not l or re.match(r"^\W*TRANSCRIPTION\W*$", l) or re.match(r"^\[COLUMN \d+\]$", l):
             continue
-        out.append(re.sub(r"^\d+\.\s+", "", l))
+        out.append(re.sub(r"^\d{1,3}\.\s+", "", l))              # an item number, not a year at the start of a line ("1950. March 14")
+    return out
+
+
+# Month names for dates written in words ("1940ರ ಆಗಸ್ಟ್ 21ರಂದು", "21 August 1940"). BEST EFFORT, NOT CHECKED BY A READER OF THE LANGUAGES: a month name that is missing
+# here only means that date is not recognised as a date (it still shows as numbers); a wrong one could make a non-date look like one, and a person checks every item.
+_MONTH_NAMES = {
+    1: "january জানুৱাৰী জানুৱাৰি জানুয়ারি জানুয়ারী जनवरी ಜನವರಿ", 2: "february ফেব্ৰুৱাৰী ফেব্ৰুৱাৰি ফেব্রুয়ারি फरवरी फ़रवरी ಫೆಬ್ರವರಿ ಫೆಬ್ರುವರಿ",
+    3: "march মাৰ্চ মার্চ मार्च ಮಾರ್ಚ್ ಮಾರ್ಚ", 4: "april এপ্ৰিল এপ্রিল अप्रैल ಏಪ್ರಿಲ್ ಏಪ್ರಿಲ", 5: "may মে मई ಮೇ", 6: "june জুন जून ಜೂನ್ ಜೂನ",
+    7: "july জুলাই जुलाई ಜುಲೈ", 8: "august আগষ্ট আগস্ট अगस्त ಆಗಸ್ಟ್ ಆಗಸ್ಟ", 9: "september ছেপ্তেম্বৰ ছেপ্টেম্বৰ সেপ্টেম্বর सितंबर सितम्बर ಸೆಪ್ಟೆಂಬರ್ ಸೆಪ್ಟೆಂಬರ",
+    10: "october অক্টোবৰ অক্টোবর अक्टूबर अक्तूबर ಅಕ್ಟೋಬರ್ ಅಕ್ಟೋಬರ", 11: "november নৱেম্বৰ নবেম্বৰ নভেম্বর नवंबर नवम्बर ಜ್ನವೆಂಬರ್ ನವೆಂಬರ್ ನವೆಂಬರ",
+    12: "december ডিচেম্বৰ ডিসেম্বর दिसंबर दिसम्बर ಡಿಸೆಂಬರ್ ಡಿಸೆಂಬರ"}
+_MONTH_TOKENS = sorted(((norm(w).lower(), m) for m, ws in _MONTH_NAMES.items() for w in ws.split()), key=lambda x: -len(x[0]))
+_MONTH_RE = re.compile("|".join(re.escape(w) for w, _ in _MONTH_TOKENS))
+_MONTH_OF = dict(_MONTH_TOKENS)
+
+
+def _letter_edge(s, i):
+    """True if position i in s is not inside a word (a letter or a combining mark on that side)."""
+    return not (0 <= i < len(s) and unicodedata.category(s[i])[0] in "LM")
+
+
+def month_dates(s):
+    """Dates written with a month name in one line of a reading: a month name with a day (1 or 2 digits) and a year (4 digits) within 16 characters.
+    Returns [(start, end, canonical 'YYYY-MM-DD')]. The canonical form lets '1940ರ ಆಗಸ್ಟ್ 21ರಂದು' in two readings match even if the endings differ."""
+    out = []
+    for m in _MONTH_RE.finditer(s.lower()):
+        if not (_letter_edge(s, m.start() - 1) and _letter_edge(s, m.end())):
+            continue
+        lo, hi = max(0, m.start() - 16), min(len(s), m.end() + 16)
+        years = [(abs(y.start() - m.start()), y) for y in re.finditer(r"(?<!\d)(?:1[89]\d\d|20\d\d)(?!\d)", s[lo:hi])]
+        days = [(abs(d.start() - m.start()), d) for d in re.finditer(r"(?<!\d)\d{1,2}(?!\d)", s[lo:hi])]
+        if years and days:
+            y = min(years, key=lambda x: x[0])[1]; d = min(days, key=lambda x: x[0])[1]
+            a, b = min(y.start(), d.start(), m.start() - lo) + lo, max(y.end(), d.end(), m.end() - lo) + lo
+            out.append((a, b, "%s-%02d-%02d" % (y.group(0), _MONTH_OF[m.group(0)], int(d.group(0)))))
     return out
 
 
 def extract_items(lines):
     items = []
     for ln, raw in enumerate(lines, 1):
-        s = norm(raw); used = []
+        s = re.sub("[\u200c\u200d]", "", norm(raw)); used = []
         def add(kind, m, value=None):
             items.append({"type": kind, "value": (value or m.group(0)).strip(" ,;:.|"), "norm": norm(value or m.group(0)).strip(" ,;:.|").lower(), "line": ln})
             used.append(m.span())
         for m in re.finditer(r"\b\d{1,2}\s*[/\-.।৷]\s*\d{1,2}\s*[/\-.।৷]\s*\d{2,4}\b", s): add("date", m)
+        for a, b, canon in month_dates(s):                                                          # a date written with a month name
+            items.append({"type": "date", "value": s[a:b].strip(" ,;:.|"), "norm": canon, "line": ln}); used.append((a, b))
         for m in re.finditer(r"(?:₹|Rs\.?|रु(?:पये|\.)?|টকা|ರೂ)\s*[0-9][0-9,.]*|[0-9][0-9,.]*\s*(?:/-|টকা|रुपये|ರೂಪಾಯಿ|rupees)", s, re.I): add("amount", m)
         for m in re.finditer(r"(?:section|sec\.?|धारा|ধাৰা|ধারা|ಕಲಂ)\s*\d+[A-Za-z]?", s, re.I): add("section", m)
         for u in UNITS:
@@ -257,6 +294,42 @@ def tiebreak(items, run3):
     return out
 
 
+DIGIT_TYPES = ("date", "amount")        # values whose digits matter most: every page that has one gets a third look (plan section 10w)
+
+
+def third_view_contradictions(items, run3):
+    """Items the first two views AGREE on (so the check list shows them as 'still confirm') that the ultra-high-detail view does not read the same way.
+    Found on the first fresh document (10w): both views read a year as 2023, the page says 2026, and only the third view read it right. Returns
+    [{'type', 'views_1_and_2', 'third_view'}]; third_view is the nearest value of that type the third view read, or None. A hint, never an answer."""
+    third = extract_items(transcription_lines(run3))
+    have = {(i["type"], i["norm"]) for i in third}
+    seen = {}
+    for i in third:
+        seen.setdefault(i["type"], []).append(i["value"])
+    out = []
+    for i in items:
+        if i["status"] != "CONFIRM" or i["type"] not in DIGIT_TYPES or not i["A"]:
+            continue
+        mine = extract_items([i["A"]])                      # the same canonical form the first two views were compared in
+        if mine and all((m["type"], m["norm"]) in have for m in mine):
+            continue
+        near = difflib.get_close_matches(i["A"], seen.get(i["type"], []), n=1, cutoff=0.0)
+        out.append({"type": i["type"], "views_1_and_2": i["A"], "third_view": near[0] if near else None})
+    return out
+
+
+def third_view_reason(items, agr_pct):
+    """Why a page gets a third look, or None: the first two views disagree on an item, agree on fewer letters than GREEN_AGREE, or the page holds a date or
+    an amount (agreement between two views of the same image is not proof of a digit)."""
+    if any(i["status"] == "DISAGREE" for i in items):
+        return "the first two views disagree on an item"
+    if agr_pct is not None and agr_pct < GREEN_AGREE:
+        return "the first two views agree on fewer letters than %.0f%%" % GREEN_AGREE
+    if any(i["type"] in DIGIT_TYPES for i in items):
+        return "the page holds a date or an amount: a second look at ultra-high detail"
+    return None
+
+
 def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, finish3=None, known=None):
     """The traffic light for one page read as an image. page_type: typed or handwritten. run1, run2: two blind readings of the same page
     (the image as given, and a padded copy); run3: the optional ultra-high-detail reading. Returns a dict; 'light' is green, amber or red.
@@ -313,6 +386,11 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
         if run3 is not None:
             out["agreement_view3_vs_view1"] = agreement(run3, run1); out["agreement_view3_vs_view2"] = agreement(run3, run2)
             out["third_view_on_disagreements"] = tiebreak(items, run3)
+            contra = third_view_contradictions(items, run3)
+            out["third_view_contradicts"] = contra
+            if contra:
+                amber.append("the third view (ultra-high detail) reads %d agreed value(s) differently from both views: %s: look at these first" % (
+                    len(contra), "; ".join("%s %s against %s" % (c["type"], c["views_1_and_2"], c["third_view"] or "nothing") for c in contra[:4])))
     else:
         out["agreement_view1_vs_view2"] = None
         if not red:
@@ -324,7 +402,8 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
     out["reasons_red"], out["reasons_amber"], out["notes"] = red, amber, notes
     # a third image view can only settle a difference in what the page says; it cannot settle a difference in English wording
     agr_pct = (out.get("agreement_view1_vs_view2") or {}).get("percent")
-    out["needs_third_view"] = bool(run1 and run2) and (any(i["status"] == "DISAGREE" for i in items) or (agr_pct is not None and agr_pct < GREEN_AGREE))
+    out["third_view_reason"] = third_view_reason(items, agr_pct) if (run1 and run2) else None
+    out["needs_third_view"] = out["third_view_reason"] is not None
     n_check = sum(1 for i in items if i["status"] in ("CONFIRM", "DISAGREE"))
     out["person_task"] = {
         "green": "Tick the must-check list (%d item(s)) against the page image. Nothing was flagged. Green means spot-check, not correct." % n_check,
@@ -354,6 +433,9 @@ def check_text_page(text, english1, english2, known=None):
             f = "English amount '%s': digits say %s, words say %s" % (w, dg, wd)
             if f not in flags:
                 flags.append(f)
+        for f in redundancy.designation_flags(e.split("TRANSLATION")[-1] if e else ""):
+            if "designation: " + f not in flags:
+                flags.append("designation: " + f)
     amber += ["page check: " + f for f in flags]
     light = "red" if red else "amber" if amber else "green"
     return {"page_type": "text_layer", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "redundancy_flags": flags,
@@ -402,6 +484,12 @@ def check_document(source, english1, english2, known=None, finish1="STOP", finis
             if f not in rflags:
                 rflags.append(f)
     amber += ["reference check: " + f for f in rflags]
+    dflags = []
+    for e in (e1, e2):
+        for f in redundancy.designation_flags(e):
+            if f not in dflags:
+                dflags.append(f)
+    amber += ["designation check: " + f for f in dflags]
     marks = {m: sum(e.count(m) for e in (e1, e2)) for m in ("[sic]", "(?)", "(spelling unsure)", "[unclear]")}
     for m, n in marks.items():
         if n:
@@ -416,7 +504,7 @@ def check_document(source, english1, english2, known=None, finish1="STOP", finis
     items = [dict(i, status="CONFIRM", A=i["value"], B=i["value"], source="joined text") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + source))]
     light = "red" if red else "amber" if amber else "green"
     return {"page_type": "document", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "name_differences": names,
-            "number_differences": nums, "reference_counts_differ": ref_diff, "reference_flags": rflags, "references": {"%s %s" % k: r1[k] for k in sorted(r1)},
+            "number_differences": nums, "reference_counts_differ": ref_diff, "reference_flags": rflags, "designation_flags": dflags, "references": {"%s %s" % k: r1[k] for k in sorted(r1)},
             "model_marks": marks, "redundancy_flags": flags, "must_check": items, "page_joins": joins or [],
             "person_task": {"green": "Read the whole translation against the original, then tick the must-check list (%d item(s))." % len(items),
                             "amber": "Read the whole translation against the original. Look first at the flags above: every name, every clause / rule / section number, every changed sentence. %d must-check item(s)." % len(items),
@@ -480,6 +568,21 @@ def selftest():
     V1 = "TRANSCRIPTION\n1. dated 15/8/92 end\nTRANSLATION\nx."; V2 = V1.replace("15/8/92", "16/8/92"); V3 = V1.replace("15/8/92", "16/8/92")
     r = check_page("typed", V1, V2, V3, "STOP", "STOP", "STOP")
     assert r["needs_third_view"] and r["third_view_on_disagreements"] == [{"type": "date", "view1": "15/8/92", "view2": "16/8/92", "third_view": "view 2"}], r
+    assert [i["norm"] for i in extract_items(transcription_lines("TRANSCRIPTION\n1950. March 14. The judgment was delivered")) if i["type"] == "date"] == ["1950-03-14"]
+    ks = extract_items(["1940ರ ಆಗಸ್ಟ್ 21ರಂದು ಅಂತಿಮ ಐತೀರ್ಪನ್ನು, 1941ರ ಡಿಸೆಂಬರ್\u200c 22ರಂದು"])             # dates written with a month name are dates
+    assert [(i["type"], i["norm"]) for i in ks] == [("date", "1940-08-21"), ("date", "1941-12-22")], ks
+    assert not any(i["type"] == "date" for i in extract_items(["ಮೇಲ್ಮನವಿ 1940 ಮೇ"])) and extract_items(["On the 21st August, 1940, a decree"])[0]["norm"] == "1940-08-21"
+    K1 = "TRANSCRIPTION\n1940ರ ಆಗಸ್ಟ್ 21ರಂದು ಐತೀರ್ಪು\nTRANSLATION\nx."; K2 = K1.replace("21ರಂದು", "27ರಂದು")
+    assert [(i["status"], i["type"]) for i in compare(K1, K2)["items"]] == [("DISAGREE", "date")]
+    assert check_page("typed", K1, K1, K2, "STOP", "STOP", "STOP")["third_view_contradicts"][0]["third_view"].endswith("27")
+    # the first fresh document (10w): both views read a year wrongly, only the third view read it right
+    Y1 = "TRANSCRIPTION\n1. meeting held on 18-08-2023 and order no. 154549/239\nTRANSLATION\nThe meeting was held on 18-08-2023."; Y3 = Y1.replace("2023", "2026")
+    r = check_page("typed", Y1, Y1, None, "STOP", "STOP")
+    assert r["needs_third_view"] and "date or an amount" in r["third_view_reason"], r                      # a page with a date always gets a third look
+    r = check_page("typed", Y1, Y1, Y3, "STOP", "STOP", "STOP")
+    assert r["third_view_contradicts"] == [{"type": "date", "views_1_and_2": "18-08-2023", "third_view": "18-08-2026"}] and any("third view" in x and "18-08-2026" in x for x in r["reasons_amber"]), r
+    assert check_page("typed", Y1, Y1, Y1, "STOP", "STOP", "STOP")["third_view_contradicts"] == []
+    assert not check_page("typed", R, R, None, "STOP", "STOP")["needs_third_view"]                           # no date or amount, views agree: no third look
     # a PDF page whose own text is used
     E1 = "TRANSLATION\nThe first line is here. The second line follows."
     t = check_text_page("order dated 15-02-2020 here", E1, E1)
@@ -497,6 +600,11 @@ def selftest():
     assert any("name(s) or title(s) that only one translation has" in r for r in d["reasons_amber"]) and d["name_differences"]["only_in_view_1"] == ["shri ramesh kumar"], d
     clean = "TRANSLATION\nThe appeal is dismissed. The costs follow the event."
     assert check_document("order here", clean, clean)["light"] == "green"
+    dd = check_document("order here", "TRANSLATION\nAll Co-District Commissioners, Assam are asked to attend now.", "TRANSLATION\nAll Sub-District Commissioners, Assam are asked to attend now.")
+    assert any(r.startswith("designation check:") and "co-district commissioner" in r for r in dd["reasons_amber"]), dd
+    assert any("designation:" in f for f in check_text_page("order here", "TRANSLATION\nThe Sub-District Commissioner came.", "TRANSLATION\nThe Sub-District Commissioner came.")["redundancy_flags"])
+    pg = check_page("typed", "TRANSCRIPTION\n1. x\nTRANSLATION\nThe Sub-District Commissioner came.", "TRANSCRIPTION\n1. x\nTRANSLATION\nThe Sub-District Commissioner came.", None, "STOP", "STOP")
+    assert any("designation:" in f for f in pg["redundancy_flags"]) and pg["light"] == "amber", pg
     assert check_document("order here", clean, clean + " (?)")["light"] == "amber"
     assert check_document("order here", clean, "")["light"] == "red" and check_document("order here", clean, clean, finish2="MAX_TOKENS")["light"] == "red"
     assert check_document("order here", clean * 3, clean)["light"] == "red"                       # one translation much shorter

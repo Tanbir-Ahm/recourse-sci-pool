@@ -68,6 +68,9 @@ def build(pid, check, readings, image_path=None, language="", cost_inr=None):
     items = check.get("must_check", [])
     dis = [i for i in items if i["status"] == "DISAGREE"]; con = [i for i in items if i["status"] == "CONFIRM"]
     tb = {(t["type"], t["view1"], t["view2"]): t["third_view"] for t in check.get("third_view_on_disagreements", [])}
+    if check.get("third_view_contradicts"):
+        h.append("<h2>Look at these first: the third view (ultra-high detail) reads a value differently from both views</h2><table><tr><th>Kind</th><th>Views 1 and 2 (agree)</th><th>View 3 reads</th></tr>%s</table><p class=small>The two first views agreeing is not proof: they are two looks at the same picture. Compare each digit with the page itself.</p>" % "".join(
+            "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" % (esc(c["type"]), esc(str(c["views_1_and_2"])), esc(str(c["third_view"]))) for c in check["third_view_contradicts"]))
     if dis:
         h.append("<h2>Where the two views disagree (check these first)</h2><table><tr><th>Kind</th><th>View 1</th><th>View 2</th><th>View 3 sides with</th></tr>%s</table>" % "".join(
             "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (esc(i["type"]), esc(str(i["A"])) if i["A"] else "<i>not found</i>", esc(str(i["B"])) if i["B"] else "<i>not found</i>",
@@ -133,6 +136,9 @@ def selftest():
     assert "Machine draft. Not a certified translation." in out and "AMBER" in out and "View 3 sides with" in out
     assert "<script>alert(1)</script>" not in out, "reading text must be escaped"
     assert "http://" not in out and "https://" not in out, "nothing may be loaded from the internet"
+    Y = "TRANSCRIPTION\n1. held on 18-08-2023 end\nTRANSLATION\nHeld on 18-08-2023."
+    cy = checker.check_page("typed", Y, Y, Y.replace("2023", "2026"), "STOP", "STOP", "STOP")
+    assert "reads a value differently from both views" in build("T04", cy, {"view1": Y, "view2": Y, "view3": Y.replace("2023", "2026")}, None, "Assamese") and "18-08-2026" in build("T04", cy, {"view1": Y, "view2": Y, "view3": Y}, None, "Assamese")
     E = "TRANSLATION\nOne line here. Another line there."
     t = build("T02", checker.check_text_page("order here", E, E), {"text": "order here", "english1": E, "english2": E})
     assert "GREEN" in t and "Text layer of the PDF" in t

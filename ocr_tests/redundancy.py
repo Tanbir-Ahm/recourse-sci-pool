@@ -193,7 +193,62 @@ def reference_flags(english):
     return flags
 
 
-def page_flags(reading, english=None, known=None):
+_TITLE_MODS = {"sub", "co", "deputy", "assistant", "additional", "joint", "senior", "junior", "chief", "principal", "vice", "under", "special", "acting", "associate",
+               "district", "divisional", "regional", "zonal", "circle", "block"}        # a first word that can change a title: never skipped as a mere leading word
+_TITLE_STOP = {"the", "all", "to", "of", "and", "a", "an", "hon'ble", "honble", "shri", "smt", "sri", "dr", "mr", "ms", "learned", "for", "by", "from", "in", "on", "with", "copy", "forwarded"}
+
+
+DESIGNATIONS_PATH = None      # set by pipeline.py --designations FILE
+
+
+def load_designations(path=None):
+    """Official titles for designation_flags: designations.txt next to this file, or another file (one title per line, # for comments)."""
+    p = path or DESIGNATIONS_PATH or os.path.join(os.path.dirname(os.path.abspath(__file__)), "designations.txt")
+    return [l.strip().lower() for l in open(p, encoding="utf8") if l.strip() and not l.lstrip().startswith("#")]
+
+
+def _title_tokens(text):
+    toks = re.findall(r"[A-Za-z][A-Za-z'\-&.]*", text)
+    toks = [re.sub(r"['\u2019]s?$", "", x.strip(".").lower()) for x in toks if x.strip(".")]                  # "Minister's" is "minister"
+    return [x[:-3] + "y" if x.endswith("ies") and len(x) > 4 else x[:-1] if len(x) > 4 and x.endswith("s") and not x.endswith("ss") else x for x in toks]
+
+
+def designation_flags(english, titles=None, close=0.85):
+    """A title in a translation that is close to a known official title but not the same ('Sub-District Commissioners' against 'Co-District Commissioner').
+    Compared word window by word window; the last word must be (nearly) the same (plural s ignored), so 'Additional District Commissioner' is not matched to
+    'Additional District Magistrate'. Found on the second fresh document (10w): a prefix meaning 'co' was translated 'sub'. Flags only; nothing is corrected.
+    A title that is not in the list is not checked, and the list itself has not been checked by a reader: see designations.txt."""
+    titles = titles if titles is not None else load_designations()
+    toks = _title_tokens(english)
+    known = {" ".join(_title_tokens(x)) for x in titles}
+    by_len = {}
+    for k in known:
+        by_len.setdefault(len(k.split()), []).append(k)
+    seen, flags = set(), []
+    for n in range(1, 6):
+        for i in range(len(toks) - n + 1):
+            w = toks[i:i + n]
+            phrase = " ".join(w)
+            if w[0] in _TITLE_STOP or phrase in known or phrase in seen:
+                continue
+            if n > 2 and " ".join(w[1:]) in known and w[0] not in _TITLE_MODS:               # "etc additional secretary": a leading word, not a different title
+                continue
+            near = []
+            for ln in (n - 1, n, n + 1):
+                for k in by_len.get(ln, []):
+                    if len(k.split()) < 2 or difflib.SequenceMatcher(None, k.split()[-1], w[-1]).ratio() < 0.8:
+                        continue
+                    r = difflib.SequenceMatcher(None, phrase, k).ratio()
+                    if r >= close:
+                        near.append((r, k))
+            if near:
+                seen.add(phrase)
+                near = [k for _, k in sorted(near, reverse=True)[:2]]
+                flags.append((phrase, "'%s' is close to the known title%s %s but not the same: look at the original" % (phrase, "s" * (len(near) > 1), " and ".join("'%s'" % k for k in near))))
+    return [m for p, m in flags if not any(p != q and p in q for q, _ in flags)]            # a shorter window inside a longer flagged one says nothing more
+
+
+def page_flags(reading, english=None, known=None, titles=None):
     """All the checks for one reading, as a list of plain-words flags."""
     flags = []
     for d, why in impossible_dates(reading):
@@ -203,6 +258,8 @@ def page_flags(reading, english=None, known=None):
     if english:
         for w, dg, wd in english_amount_check(english):
             flags.append("English amount '%s': digits say %s, words say %s" % (w, dg, wd))
+        for f in designation_flags(english, titles):
+            flags.append("designation: " + f)
     if known:
         for a, b in known_name_flags(reading, known):
             flags.append("name '%s' is close to the confirmed name '%s'" % (a, b))
@@ -242,6 +299,11 @@ def selftest():
     assert len(rf) == 2 and "rule 9 appears under different orders" in rf[0] and "Order IX x2" in rf[0] and "Order II x1" in rf[0] and "clause 3" in rf[1] and "clause 2" in rf[1], rf
     assert reference_flags("Art. 182, cls. 2 and 3: the words \"where there has been a review\" in clause 3 are quoted. Again \"where there has been a review\" in clause 3.") == []
     assert reference_flags("Order IX, rule 9 and rule 9 of Order IX, clause 2 and clause 2. The words \"where there has been a review\" in clause 3. Again \"where there has been a review\" in clause 3.") == []
+    df = designation_flags("All Co-District Commissioners, Assam. All Sub-District Commissioners, Assam. By Orders etc., Additional Secretary. The Deputy Superintendent of Police. The Deputy Superintendent of Policy.")
+    assert len(df) == 2 and "sub-district commissioner" in df[0] and "'co-district commissioner'" in df[0] and "deputy superintendent of polic" in df[1], df
+    assert designation_flags("The Chief Minister's Secretariat and the Hon'ble Chief Minister's office, the Governor's staff.") == []
+    assert designation_flags("The Additional District Commissioner, the Chief Secretary, the Principal Secretaries and the Registrar.") == []
+    assert designation_flags("The Sub District Commissioner.") != [] and designation_flags("A Director of Zoology and a Commissioner") == []
     fl = page_flags("TRANSCRIPTION\n(1) a 45/1/90\n(3) b", "Rs. 750.00 (Seven hundred)")
     assert len(fl) == 3, fl
     print("selftest OK (invented text only)")

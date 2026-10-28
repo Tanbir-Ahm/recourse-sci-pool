@@ -10,7 +10,9 @@ For each PDF page, step 2 (pdf_triage.py) decides whether the PDF's own text can
 For each page image:
   view 1   the image as given             \\ two blind reads by gemini-4-argon, same instructions, neither sees the other
   view 2   a padded copy (white border)   /
-  view 3   the image again at ultra-high detail, ONLY if the checker flags the page (--third-view auto); it is used as a tiebreak hint
+  view 3   the image again at ultra-high detail, ONLY if the checker flags the page (--third-view auto): the first two views disagree on an item, agree on
+           fewer letters than 97%, or the page holds a date or an amount (agreement between two views of one image is not proof of a digit: 10w). It is a hint
+           for a person, never an answer: the checker lists every agreed date or amount that view 3 reads differently, and puts it first
 Then, for a PDF of two or more pages (--stitch auto, the default), the readings (or the PDF's own text) of all its pages are JOINED into one text
 (stitch.py: a sentence that runs over a page break is joined) and translated twice, blind, with prompts/translate_stitched.txt (names by sound with the
 original-script word in square brackets, printed numbers and references kept as printed, [sic] on a suspected misprint). checker.check_document compares the two
@@ -165,6 +167,9 @@ def run_pipeline(args, caller=None, text_caller=None):
     caller = caller or harness.call_gemini
     text_caller = text_caller or (lambda model, key, system, text: harness.call_gemini(model, key, system, None, None, text=text))
     out = os.path.abspath(args.out); os.makedirs(out, exist_ok=True)
+    if getattr(args, "designations", None):
+        import redundancy
+        redundancy.DESIGNATIONS_PATH = os.path.abspath(args.designations)
     models, fx = harness.load_models(None)
     if real and not os.environ.get(models[MODEL]["key_env"]):
         sys.exit("%s is not set in this environment." % models[MODEL]["key_env"])
@@ -189,7 +194,7 @@ def run_pipeline(args, caller=None, text_caller=None):
             readings[pid] = {"view1": t1, "view2": t2, "f1": f1, "f2": f2}
             image_of[pid] = files[pid]["original"]
             results[pid] = checker.check_page(types.get(pid, args.page_type), t1, t2, None, f1, f2, None, known)
-        flagged = [p for p in files if results[p]["needs_third_view"] and results[p].get("agreement_view1_vs_view2") and args.third_view == "auto" or args.third_view == "always"]
+        flagged = [p for p in files if args.third_view == "always" or (args.third_view == "auto" and results[p]["needs_third_view"])]
         if flagged and args.third_view != "off":               # view 3 only where the first two views leave something to settle
             v3 = os.path.join(out, "_views3"); os.makedirs(v3, exist_ok=True)
             for pid in flagged:
@@ -227,9 +232,9 @@ def run_pipeline(args, caller=None, text_caller=None):
             a, b = rd.get("view1") or "", rd.get("view2") or ""
             names = ("view 1 (image as given)", "view 2 (padded copy)")
         open(os.path.join(out, "marksheets", pid + "_marksheet.html"), "w", encoding="utf8").write(
-            marksheet.build(pid, chk.get("page_type", "?"), a, b, names[0], names[1], img))
+            marksheet.build(pid, chk.get("page_type", "?"), a, b, names[0], names[1], img, rd.get("view3")))
         summary.append({"page": pid, "light": chk["light"], "page_type": chk.get("page_type"), "must_check_items": len(chk.get("must_check", [])),
-                        "reasons": chk["reasons_red"] + chk["reasons_amber"], "third_view": bool(rd.get("view3"))})
+                        "reasons": chk["reasons_red"] + chk["reasons_amber"], "third_view": bool(rd.get("view3")), "third_view_reason": chk.get("third_view_reason")})
     json.dump({"pages": summary, "documents": doc_rows, "estimated_cost_inr": round(cost, 2), "note": "cost is an estimate from models.json; the billing account is the truth"},
               open(os.path.join(out, "summary.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
     if args.pdf:
@@ -257,6 +262,7 @@ def selftest():
         print("  (poppler tools missing: pipeline wiring test skipped)"); return
     td = tempfile.mkdtemp(); inp = os.path.join(td, "in"); os.makedirs(inp)
     Image.new("RGB", (300, 200), "white").save(os.path.join(inp, "pg1.png"))
+    Image.new("RGB", (123, 100), "white").save(os.path.join(inp, "zz_nodate.png"))          # a page with no date or amount: no third view
     lines = ["The quick brown fox jumps over the lazy dog.", "Order dated fifteen February under the heading of this code.",
              "Closing line of this invented test page only.", "Another plain sentence to give the page enough letters."]
     pdf_triage._mini_pdf(os.path.join(inp, "doc.pdf"), lines)
@@ -265,6 +271,9 @@ def selftest():
     state = {"n": 0}
     def fake(model, key, system, image, mime):
         state["n"] += 1
+        if Image.open(__import__("io").BytesIO(image)).size[0] < 200:                          # the small page: no date, no amount
+            return {"ok": True, "attempts": 1, "text": "TRANSCRIPTION\n1. plain line end\nTRANSLATION\nThe first line is here. The second line follows.",
+                    "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 1000, "output_tokens": 500, "thinking_tokens": 0}
         date = "16/8/92" if (state["n"] == 2 or harness.MEDIA_RESOLUTION == "ultra_high") else "15/8/92"     # only pg1's second view (and any ultra-high view) differs
         return {"ok": True, "attempts": 1, "text": "TRANSCRIPTION\n1. dated %s end\nTRANSLATION\nThe first line is here. The second line follows." % date,
                 "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 1000, "output_tokens": 500, "thinking_tokens": 0}
@@ -282,8 +291,10 @@ def selftest():
         pages = {r["page"] for r in led}
         assert {"pg1__view1", "pg1__view2", "pg1__view3", "scan_p1__view1", "scan_p1__view2", "doc_p1__en1", "doc_p1__en2"} <= pages, pages
         assert "doc_p1__view1" not in pages, "a page with a good text layer must not be read as an image"
-        assert "scan_p1__view3" not in pages, "view 3 only for pages that are flagged"
-        assert s["pg1"]["light"] == "amber" and s["pg1"]["third_view"] and s["scan_p1"]["light"] == "green" and s["doc_p1"]["light"] == "green", s
+        assert "zz_nodate__view3" not in pages, "no third view for a page with no date or amount whose views agree"
+        assert "scan_p1__view3" in pages, "a page that holds a date gets a third view even when the two views agree"
+        assert s["pg1"]["light"] == "amber" and s["pg1"]["third_view"] and s["scan_p1"]["light"] == "amber" and s["zz_nodate"]["light"] == "green" and s["doc_p1"]["light"] == "green", s
+        assert json.load(open(os.path.join(out, "checks", "scan_p1.json")))["third_view_contradicts"][0]["views_1_and_2"] == "15/8/92"
         assert {"scan2_full__t1", "scan2_full__t2"} <= pages and not any(p.startswith(("scan_full", "doc_full", "pg1_full")) for p in pages), "only a file of 2 or more pages is joined"
         for f in ("_source.txt", "_translation_1.txt", "_translation_2.txt", "_check.json", "_document.html"):
             assert os.path.exists(os.path.join(out, "document", "scan2" + f)), f
@@ -293,7 +304,7 @@ def selftest():
         chk = json.load(open(os.path.join(out, "checks", "pg1.json")))
         assert chk["third_view_on_disagreements"][0]["third_view"] == "view 2", chk["third_view_on_disagreements"]
         for sub, ext in (("checks", ".json"), ("report", ".html"), ("marksheets", "_marksheet.html")):
-            for pid in ("pg1", "scan_p1", "doc_p1"):
+            for pid in ("pg1", "scan_p1", "doc_p1", "zz_nodate"):
                 assert os.path.exists(os.path.join(out, sub, pid + ext)), (sub, pid)
         assert json.load(open(os.path.join(out, "summary.json")))["pages"][0]["light"] == "amber"          # red and amber pages are listed first
         n = len(led); state["n"] = 0
@@ -317,6 +328,7 @@ if __name__ == "__main__":
     ap.add_argument("--page-type", dest="page_type", choices=checker.PAGE_TYPES, help="typed or handwritten (required unless --types covers every page)")
     ap.add_argument("--types", help="JSON file {page id: typed|handwritten}"); ap.add_argument("--known", help="JSON list of confirmed names (case data: keep outside the repository)")
     ap.add_argument("--budget-inr", dest="budget_inr", type=float); ap.add_argument("--third-view", dest="third_view", choices=("auto", "off", "always"), default="auto")
+    ap.add_argument("--designations", help="a file of official titles (one per line) that replaces ocr_tests/designations.txt; used only to flag a title close to a known one")
     ap.add_argument("--stitch", choices=("auto", "off"), default="auto", help="auto: join the pages of each PDF of 2 or more pages and translate the joined text twice")
     ap.add_argument("--pdf", action="store_true", help="also print the reports to PDF (needs Node and Playwright)")
     ap.add_argument("--pdf-reader", dest="pdf_reader", choices=("tesseract", "vision"), default="tesseract", help="vision sends each PDF page to Google")
