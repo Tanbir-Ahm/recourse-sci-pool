@@ -1,6 +1,6 @@
-"""Measure the wider checker list (FOLLOW_UPS 2cp). Written and committed BEFORE it was run; seeds fixed (28). Reads only; spends nothing.
+"""Measure the wider checker list (FOLLOW_UPS 2cp). Written and committed BEFORE it was run; the seed is an argument (28 by default). Reads only; spends nothing.
 
-    python3 measure_checker_list.py RECOURSE_DIR NAMES_TABLE.json.gz OUT.json
+    python3 measure_checker_list.py RECOURSE_DIR NAMES_TABLE.json.gz OUT.json [SEED]
 
 Four sets, each run through three configurations:
   OLD   grounding_checks._sc_title_list_has  (the Supreme Court title list, word for word: what production does)
@@ -17,6 +17,7 @@ Four sets, each run through three configurations:
 import collections, gzip, json, os, random, re, statistics, sys, time
 
 rec, names_path, out = sys.argv[1:4]
+SEED = int(sys.argv[4]) if len(sys.argv) > 4 else 28            # run 1 used 28 (before the matcher was reworked); run 2 repeats 28 and run 3 uses 29, which nothing was tuned on
 os.chdir(rec)
 sys.path.insert(0, rec)
 os.environ["CASE_LOOKUP_INDEX_PATH"] = os.path.join(rec, "case_lookup_index.db")
@@ -25,7 +26,7 @@ import grounding_checks as G
 import checker_list as C
 import name_match as NM
 
-rng = random.Random(28)
+rng = random.Random(SEED)
 nd = json.load(gzip.open(names_path, "rt", encoding="utf-8"))
 SC = "Supreme Court of India"
 sc_rows = [r for r in nd["rows"] if r.get("name") and r.get("court") == SC]
