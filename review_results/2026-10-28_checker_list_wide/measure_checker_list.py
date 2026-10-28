@@ -153,7 +153,7 @@ def normkey(name):
     a, b = split(name)
     if a is None:
         return None
-    pa, pb = NM.parse_name(name)
+    pa, pb, _bag = NM.parse_name(name)
     return (tuple(sorted({s[2] for s in pa if not s[3]})), tuple(sorted({s[2] for s in pb if not s[3]})))
 
 
