@@ -68,10 +68,57 @@ def numbering_gaps(text):
         if b == a:
             continue
         if b < a:
+            if b == 1:
+                continue                                  # a new list starting again at 1 (a page with several numbered sections)
             out.append("goes back from %d to %d" % (a, b))
         elif b > a + 1:
             out.append("skips from %d to %d" % (a, b))
     return out
+
+
+_TOTAL_WORDS = ("মুঠ", "সৰ্বমুঠ", "সর্বমোট", "total", "grand total", "कुल", "जोड़", "योग", "ಒಟ್ಟು", "ಮೊತ್ತ")
+
+
+def _amount(cell):
+    """A table cell that is just an amount ('56,000', '1,25,000/-', '0.5') as a number, else None."""
+    s = checker.norm(cell).replace(" ", "")
+    m = re.fullmatch(r"(?:rs\.?|₹)?(\d[\d,]*(?:\.\d+)?)(?:/-)?", s, re.I)
+    return float(m.group(1).replace(",", "")) if m else None
+
+
+def table_sum_flags(text):
+    """A table whose amounts do not add up to its printed total ('rows | amount' lines, a total row inside the table, or a total line right under it).
+    Found on the second handwritten page (10y): one reading gave an expense column that added to 25,000 under a printed total of 29,000, and another reading
+    of one cell made it add to 29,000. Arithmetic only: the writer's own sum may be wrong; it says which readings are consistent with the page's own total."""
+    flags, block = [], []
+    def close(after=None):
+        if len(block) < 3:
+            return
+        rows = [[c.strip() for c in r.split("|")] for r in block]
+        total_row = next((r for r in reversed(rows) if any(w in checker.norm(r[0]).lower() for w in _TOTAL_WORDS)), None)
+        data = [r for r in rows if r is not total_row]
+        ncol = max(len(r) for r in rows)
+        for c in range(1, ncol):
+            vals = [_amount(r[c]) for r in data if len(r) > c]
+            vals = [v for v in vals if v is not None]
+            if len(vals) < 2:
+                continue
+            tot = _amount(total_row[c]) if total_row and len(total_row) > c else None
+            if tot is None and after is not None and c == max(k for k in range(1, ncol) if sum(1 for r in data if len(r) > k and _amount(r[k]) is not None) >= 2):
+                tot = after                                              # the total line under the table belongs to its rightmost amount column
+            if tot is not None and abs(sum(vals) - tot) > 0.5:
+                flags.append("table: the amounts in a column add up to %s but the total shown is %s: look at the page" % (format(sum(vals), ",.0f"), format(tot, ",.0f")))
+    for l in _raw_lines(text):
+        if l.count("|") >= 1 and len([c for c in l.split("|") if c.strip()]) >= 2:
+            block.append(l); continue
+        after = None
+        n = checker.norm(l).lower()
+        if block and any(w in n for w in _TOTAL_WORDS):
+            m = re.findall(r"\d[\d,]*(?:\.\d+)?", n)
+            after = float(m[-1].replace(",", "")) if m else None
+        close(after); block = []
+    close()
+    return flags
 
 
 _UNITS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split())}
@@ -265,6 +312,8 @@ def designation_flags(english, titles=None, close=0.85):
 def page_flags(reading, english=None, known=None, titles=None):
     """All the checks for one reading, as a list of plain-words flags."""
     flags = []
+    for f in table_sum_flags(reading):
+        flags.append(f)
     for d, why in impossible_dates(reading):
         flags.append("impossible date '%s' (%s)" % (d, why))
     for g in numbering_gaps(reading):
@@ -291,6 +340,7 @@ def selftest():
     assert numbering_gaps("TRANSCRIPTION\n(1) a\n(2) b\n(4) c") == ["skips from 2 to 4"]
     assert numbering_gaps("TRANSCRIPTION\n(5) a\n(5) sub\n(6) c\n(3) d") == ["goes back from 6 to 3"]
     assert numbering_gaps("TRANSCRIPTION\n[COLUMN 1]\n১. a\n২. b\n3 | x | y\n4 | x | y\n[COLUMN 2]\n5. c") == [] and numbering_gaps("TRANSCRIPTION\n১. a\n২. b\n৮৮. c\n৪. d") == ["skips from 2 to 88", "goes back from 88 to 4"]
+    assert numbering_gaps("TRANSCRIPTION\n১. a\n২. b\n৩. c\nSecond section\n১. x\n২. y") == [] and numbering_gaps("TRANSCRIPTION\n১. a\n২. b\n৩. c\n২. x") == ["goes back from 3 to 2"]        # a restart at 1 is a new list
     assert numbering_gaps("TRANSCRIPTION\n1950. March 14 was the day\n56/2024 | 379/34") == []
     assert [words_to_int(x) for x in ("seven hundred fifty", "five hundred", "one hundred", "thirty thousand", "twenty-five thousand six hundred", "one lakh", "twelve")] == [750, 500, 100, 30000, 25600, 100000, 12]
     assert words_to_int("seven hundred banana") is None and words_to_int("") is None
@@ -322,6 +372,10 @@ def selftest():
     assert designation_flags("The Chief Minister's Secretariat and the Hon'ble Chief Minister's office, the Governor's staff.") == []
     assert designation_flags("The Additional District Commissioner, the Chief Secretary, the Principal Secretaries and the Registrar.") == []
     assert designation_flags("The Sub District Commissioner.") != [] and designation_flags("A Director of Zoology and a Commissioner") == []
+    T = "TRANSCRIPTION\nবিৱৰণ | আয় | ব্যয়\nবেতন | ৫৬,০০০ | -\nভাড়া | - | ৪,০০০\nখাদ্য | - | ১২,০০০\nযাতায়াত | - | ৫,০০০\nঅন্যান্য | - | %s\nমুঠ | ৫৬,০০০ | ২৯,০০০\n"
+    assert table_sum_flags(T % "৮,০০০") == [] and table_sum_flags(T % "৪,০০০") == ["table: the amounts in a column add up to 25,000 but the total shown is 29,000: look at the page"], table_sum_flags(T % "৪,০০০")
+    U = "TRANSCRIPTION\nক্ৰমিক | তাৰিখ | টকা\n১১ | ০৫-০৩-২০২৪ | ৫০,০০০/-\n১২ | ১৮-০৭-২০২৪ | ১,২৫,০০০/-\n১৩ | ২৮-১১-২০২৪ | ৭৫,০০০/-\nমুঠ টকা : ২,৫০,০০০/-\n"
+    assert table_sum_flags(U) == [] and len(table_sum_flags(U.replace("২,৫০,০০০", "২,৬০,০০০"))) == 1
     fl = page_flags("TRANSCRIPTION\n(1) a 45/1/90\n(3) b", "Rs. 750.00 (Seven hundred)")
     assert len(fl) == 3, fl
     print("selftest OK (invented text only)")
