@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10x record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10y record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -798,6 +798,19 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 | Cost of the new third-look rule | about Rs 1.1 to 1.4 for each page that holds a date or an amount; on the 9-page Kannada file about Rs 5 to 6 more (4 pages), on the 3-page notice Rs 1.1 more (1 page) |
 
 **What this does not show.** One document with a misread digit; the third look read the year right in 2 runs, which is not a rate. A digit the third view also misreads would still be missed. Only dates and amounts get the third look (not other numbers: reference numbers, serial numbers, postal codes). The designation list catches a near-miss of a title it knows; a wrong title that is not close to any listed title is not caught. The Kannada and Hindi month names are best-effort. The marking-sheet changes are tested on two pages in a browser, not by a reviewer.
+
+### 10y. The 50-number handwritten page (recorded 2026-10-28; counts only, no names, places, case numbers or text)
+
+**What was tested.** One handwritten page supplied by the owner (who wrote it): 50 numbered lines in Assamese with dates, amounts, a phone-style number, a bank-account-style number, a land-record number, case and section numbers, and two small tables. The owner did not give the true values in advance; the tool read the page blind (two views plus a third at ultra-high detail, because the first two disagreed), the readings were sent to the owner, and the owner reviewed them and returned the list with corrections. Unchanged lines are taken as correct. Cost **Rs 6.75 logged**; the first two views agreed on 99.4% of letters.
+
+| Measure | First look | Second look | Third look |
+|---|---|---|---|
+| Number values right (of 42 that could be graded) | 41 (97.6%) | 42 | 42 |
+| Item numbers 1 to 50 right, as written on the page | 49 | 49 | 50 |
+
+**Findings.** (1) **One value was read wrongly, by one look only** (a land-record number: a 4 for a printed 8); the other two looks were right, the checker listed it as a disagreement and the third look sided with the right reading. No value was wrong in all three looks. (2) **One value could not be graded**: the owner says its last digits are not clear from the image itself; the three looks gave three different readings of it (11 or 12 digits). The checker flagged it as a disagreement, which was the right outcome, but **no look used the [unclear] mark** the instruction asks for (0 marks in 3 reads); each guessed. (3) **One silent correction**: the writer numbered one line 88 where the sequence needed 48 (a slip on the page). The first two looks wrote 48, silently changing what the page says; the third look wrote 88 as written. The instruction is to keep every digit as printed and never correct; two of three looks broke it, and nothing surfaced the difference. (4) **Tool gaps found, all fixed**: the numbering check had never seen lists numbered "1. 2. 3." (it read lines after the item number was already stripped), so it could not have caught a numbering slip on any page since it was built; it now reads the lines as printed and also table rows that start with their number (71 earlier readings scanned: 2 flags, one of them this page's real slip); the no-model checks (numbering, impossible dates) now also run on the third view, so the page's slip is shown as "page check, third view only: numbered list skips from 47 to 88"; the third-view comparison now covers numbers and section numbers, not only dates and amounts (0 false alarms on the 12 earlier pages that have a third view); the date check no longer reads a table cell border as a date separator (it had raised 3 false "impossible date" flags on this page).
+
+**What this does and does not show.** On this page, in 42 gradable values, no value was wrong in every look and none was wrong without a flag. Zero silent wrong values in 42 means the true rate could still be about 7% (rule of three); one page, one writer and one pen is a small sample. The page is easier than a real record (numbers on lines of their own, clean paper, good light). The one silent change was in the item numbering, not a value, and it was a slip by the writer: the machine "fixed" the page. In a legal record that kind of normalisation matters. The test did not cover names or meaning.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 

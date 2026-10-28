@@ -43,11 +43,24 @@ def impossible_dates(text):
     return out
 
 
+def _raw_lines(text):
+    """The reading's lines as printed (before the TRANSLATION heading): no header, no [COLUMN n] marker, and the leading item number kept."""
+    head = text.split("TRANSLATION")[0] if "TRANSLATION" in text else text
+    out = []
+    for l in head.splitlines():
+        l = l.strip()
+        if l and not re.match(r"^\W*TRANSCRIPTION\W*$", l) and not re.match(r"^\[COLUMN \d+\]$", l):
+            out.append(l)
+    return out
+
+
 def numbering_gaps(text):
-    """A numbered list that skips or goes backwards. Several lines with the same number in a row (sub-items) are fine."""
+    """A numbered list that skips or goes backwards: (1) (2) (4), or 1. 2. 4., or table rows that start with their number (11 | ...). Several lines with the
+    same number in a row (sub-items) are fine. Until 2026-10-28 this looked only at lines whose item number had already been stripped, so '1. 2. 4.' lists were
+    never checked (found on the 50-number test: a page whose writer numbered one line 88 instead of 48)."""
     nums = []
-    for l in checker.transcription_lines(text):
-        m = re.match(r"^\(?\s*(\d{1,2})\s*[)।৷.]", checker.norm(l))
+    for l in _raw_lines(text):
+        m = re.match(r"^\(?\s*(\d{1,2})\s*(?:[)।৷.]|\|)", checker.norm(l))
         if m:
             nums.append(int(m.group(1)))
     out = []
@@ -277,6 +290,8 @@ def selftest():
     assert numbering_gaps("TRANSCRIPTION\n(১) a\n(২) b\n(৩) c") == []
     assert numbering_gaps("TRANSCRIPTION\n(1) a\n(2) b\n(4) c") == ["skips from 2 to 4"]
     assert numbering_gaps("TRANSCRIPTION\n(5) a\n(5) sub\n(6) c\n(3) d") == ["goes back from 6 to 3"]
+    assert numbering_gaps("TRANSCRIPTION\n[COLUMN 1]\n১. a\n২. b\n3 | x | y\n4 | x | y\n[COLUMN 2]\n5. c") == [] and numbering_gaps("TRANSCRIPTION\n১. a\n২. b\n৮৮. c\n৪. d") == ["skips from 2 to 88", "goes back from 88 to 4"]
+    assert numbering_gaps("TRANSCRIPTION\n1950. March 14 was the day\n56/2024 | 379/34") == []
     assert [words_to_int(x) for x in ("seven hundred fifty", "five hundred", "one hundred", "thirty thousand", "twenty-five thousand six hundred", "one lakh", "twelve")] == [750, 500, 100, 30000, 25600, 100000, 12]
     assert words_to_int("seven hundred banana") is None and words_to_int("") is None
     assert english_amount_check("pension from Rs. 500.00 (Five hundred) to Rs. 750.00 (Seven hundred fifty).") == []

@@ -295,6 +295,7 @@ def tiebreak(items, run3):
 
 
 DIGIT_TYPES = ("date", "amount")        # values whose digits matter most: every page that has one gets a third look (plan section 10w)
+CONTRA_TYPES = ("date", "amount", "number", "section")   # what the third view is compared on once it exists (no false alarm on 12 pages that have a third view: 10y)
 
 
 def third_view_contradictions(items, run3):
@@ -308,7 +309,7 @@ def third_view_contradictions(items, run3):
         seen.setdefault(i["type"], []).append(i["value"])
     out = []
     for i in items:
-        if i["status"] != "CONFIRM" or i["type"] not in DIGIT_TYPES or not i["A"]:
+        if i["status"] != "CONFIRM" or i["type"] not in CONTRA_TYPES or not i["A"]:
             continue
         mine = extract_items([i["A"]])                      # the same canonical form the first two views were compared in
         if mine and all((m["type"], m["norm"]) in have for m in mine):
@@ -388,6 +389,10 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
             out["third_view_on_disagreements"] = tiebreak(items, run3)
             contra = third_view_contradictions(items, run3)
             out["third_view_contradicts"] = contra
+            eng3 = run3.split("TRANSLATION")[-1] if "TRANSLATION" in run3 else None
+            for f in redundancy.page_flags(run3, eng3, known):                   # the same no-model checks on view 3: a numbering that skips, an impossible date
+                if f not in seen:
+                    out["redundancy_flags"].append("view 3 reads: " + f); amber.append("page check, third view only: " + f)
             if contra:
                 amber.append("the third view (ultra-high detail) reads %d agreed value(s) differently from both views: %s: look at these first" % (
                     len(contra), "; ".join("%s %s against %s" % (c["type"], c["views_1_and_2"], c["third_view"] or "nothing") for c in contra[:4])))
@@ -575,6 +580,13 @@ def selftest():
     K1 = "TRANSCRIPTION\n1940ರ ಆಗಸ್ಟ್ 21ರಂದು ಐತೀರ್ಪು\nTRANSLATION\nx."; K2 = K1.replace("21ರಂದು", "27ರಂದು")
     assert [(i["status"], i["type"]) for i in compare(K1, K2)["items"]] == [("DISAGREE", "date")]
     assert check_page("typed", K1, K1, K2, "STOP", "STOP", "STOP")["third_view_contradicts"][0]["third_view"].endswith("27")
+    # the 50-number page (10y): the writer numbered one line 88 instead of 48; views 1 and 2 silently wrote 48, view 3 wrote 88 as printed
+    L = "TRANSCRIPTION\n১. a\n২. b\n৩. c\n৪. d\nTRANSLATION\nx."
+    r = check_page("typed", L, L, L.replace("৪.", "৮৮."), "STOP", "STOP", "STOP")
+    assert any("third view only" in x and "skips from 3 to 88" in x for x in r["reasons_amber"]) and r["light"] == "amber", r
+    assert check_page("typed", L, L, L, "STOP", "STOP", "STOP")["light"] == "green"
+    N1 = "TRANSCRIPTION\n১. khatian no 123/47 end\nTRANSLATION\nx."
+    assert check_page("typed", N1, N1, N1.replace("123/47", "123/87"), "STOP", "STOP", "STOP")["third_view_contradicts"][0]["type"] == "number"       # not only dates and amounts
     # the first fresh document (10w): both views read a year wrongly, only the third view read it right
     Y1 = "TRANSCRIPTION\n1. meeting held on 18-08-2023 and order no. 154549/239\nTRANSLATION\nThe meeting was held on 18-08-2023."; Y3 = Y1.replace("2023", "2026")
     r = check_page("typed", Y1, Y1, None, "STOP", "STOP")
