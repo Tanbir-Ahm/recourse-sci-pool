@@ -154,7 +154,7 @@ def agreement(text_a, text_b):
             "share": round(min(len(a), len(b)) / max(len(a), len(b)), 2)}
 
 
-_ABBREV = re.compile(r"\b(?:vs|v|no|nos|sec|secs|art|arts|dr|mr|mrs|ms|smt|shri|sri|crl|cri|i\.e|e\.g|etc|viz|cf|ors|anr|pp|para|paras|ltd|st|rs)\.|\b(?:[A-Za-z]\.){2,}|\b[A-Z]\.(?=\s*[A-Z\[(])", re.I)
+_ABBREV = re.compile(r"\b(?:vs|v|no|nos|sec|secs|art|arts|dr|mr|mrs|ms|smt|shri|sri|crl|cri|i\.e|e\.g|etc|viz|cf|ors|anr|pp|para|paras|ltd|st|rs|govt|addl|hon|secy|dept|asst|p\.s)\.|\b(?:[A-Za-z]\.){2,}|\b[A-Z]\.(?=\s*[A-Z\[(])", re.I)
 
 
 def english_sentences(text):
@@ -486,6 +486,8 @@ def selftest():
     assert t["light"] == "green" and any(i["type"] == "date" for i in t["must_check"]), t
     assert check_text_page("order here", E1, E1.replace("second line follows.", "other thing entirely."))["light"] == "amber"
     assert check_text_page("order here", E1, "")["light"] == "red"
+    assert english_sentences("TRANSLATION\nAll Addl. Chief Secretaries to the Govt. of Assam, Dispur. The Hon'ble Dept. of Health. P.S. to All Ministers.") == [
+        "All Addl. Chief Secretaries to the Govt. of Assam, Dispur.", "The Hon'ble Dept. of Health.", "P.S. to All Ministers."]          # Indian-English abbreviations do not end a sentence
     # a whole document translated twice from its joined text
     D1 = "TRANSLATION\nShri Ramesh Kumar [original] came on 15-02-2020. The Order IX, rule 9 application failed. The words \"where there has been an appeal\" in clause 3 are read with the column. It falls under clause 2 because the words \"where there has been an appeal\" are wide."
     D2 = D1.replace("Ramesh Kumar", "Ramesh Kumer")
