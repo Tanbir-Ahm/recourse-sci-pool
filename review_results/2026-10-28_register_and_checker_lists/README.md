@@ -1,0 +1,8 @@
+# Register and invented-case checker lists, 2026-10-28
+
+Asked by the owner on 2026-10-28: (1) the detailed Overruled Register as of today in Excel; (2) the list the invented-case check looks up, whether every judgment the corpus holds is in it, in Excel.
+
+- `Overruled_Register_Full_2026-10-28.xlsx`: built with `python sci_goodlaw.py register-export-xlsx --out FILE` from `goodlaw/data/register/register.json` (built 2026-10-07; nothing recorded by a reviewer since; the weekly sheets of 10-08, 10-15 and 10-22 each hold the same 58 candidates and 2 flags). 1,765 rows: 1,688 list-1 (verified on the owner's statement, not read by Mr. Advocate), 58 list-2 candidates, 18 siblings, 1 unchecked. 11 list-1 rows are held from wording (`year_order_check`). The copy the site uses (`overruled_register/register_slim.json` in Recourse) has the same 1,765 rows with the same trust and treatment (checked).
+- `Checker_List_and_Coverage_2026-10-28.xlsx`: the checker's list (`case_lookup_index.db`, 38,026 Supreme Court titles to 2025-12-12), every judgment of the wide index d8811a9 with its status, and the library's 68. Built by `coverage_check.py` then `build_checker_workbook.py`.
+- Findings: of 11,619 named Supreme Court judgments in the wide index, 7,982 (69%) are found by the checker, 1,037 are in the list under a spelling the name match misses, 371 are newer than the list, 2,229 are not in it; the 7,553 Gauhati High Court judgments cannot be (list is Supreme Court only). Library: 50 of 68 found; 10 are High Court judgments, 3 Supreme Court ones are in the list but missed by the name match, 5 Supreme Court ones are not in the list.
+- No lawyer has read any of this; no hallucination rate has been measured.
