@@ -1,0 +1,1359 @@
+{
+ "sizes": {
+  "title_list_only_entries": 38026,
+  "wide_entries": 57166
+ },
+ "S0": {
+  "sc_names": 11619,
+  "found_by_old": 7982,
+  "missed_by_old": 3637,
+  "tolerance_outcome": {
+   "same date": 485,
+   "not found by tolerance": 2811,
+   "different year": 267,
+   "same year": 26,
+   "a date is missing": 48
+  },
+  "seconds": 154
+ },
+ "S0_samples": {
+  "same date": [
+   {
+    "index_name": "The State of Bombay v. Parshottam Kanaiyalal",
+    "index_date": "1960-08-31",
+    "list_title": "THE STATE OF BOMBAY versus PAHSHOTTAM KANALYALAL",
+    "list_date": "1960-08-31",
+    "kind": "same date"
+   },
+   {
+    "index_name": "State of U. P v. Deoman Upadhyaya",
+    "index_date": "1960-05-06",
+    "list_title": "STATE OF U.P. versus DEOMAN UPADHYAYA",
+    "list_date": "1960-05-06",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Jaikrishnadas Manohardasdesai and Another v. The State of Bombay",
+    "index_date": "1960-03-16",
+    "list_title": "JAIKRISHNADAS MANOHARDAS  DESAI AND ANOTHER versus THE STATE OF BOMBAY",
+    "list_date": "1960-03-16",
+    "kind": "same date"
+   },
+   {
+    "index_name": "The State v. Hiralal G. Kothari and Others",
+    "index_date": "1959-11-30",
+    "list_title": "THE STATE versus HIRALAL G. KOTHARI AND OTHERS",
+    "list_date": "1959-11-30",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Vadivelu Thevar v. THE STATE OF MADRAS(with connected appeal)",
+    "index_date": "1957-04-12",
+    "list_title": "VADIVELU THEVAR versus THE STATE OF MADRAS",
+    "list_date": "1957-04-12",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Ram Krishan and Another v. THE STATE OF DELHI(With connected appeal)",
+    "index_date": "1956-03-09",
+    "list_title": "RAM KRISHAN AND ANOTHER versus THE STATE OF DELHI",
+    "list_date": "1956-03-09",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Pandurang, Tukia and Bhillia v. The State of Hyderabad",
+    "index_date": "1954-12-03",
+    "list_title": "PANDURANG, TUKIA AND BHILLIA versus THE ST ATE OF HYDERABAD",
+    "list_date": "1954-12-03",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Bhataraju Nageshw Ara Rao v. The Hon’Ble Judges of the Madrashigh Court and Others",
+    "index_date": "1954-12-03",
+    "list_title": "BHATARAJU NAGESHWARA RAO versus THE HONBLE JUDGES OF THE MADRAS  HIGH COURT AND OTHERS.",
+    "list_date": "1954-12-03",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Budhan Choudhry and Other v. The State of Bihar",
+    "index_date": "1954-12-02",
+    "list_title": "BUDHAN CHOUDHRY AND OTHERS  versus THE STATE OF BIHAR",
+    "list_date": "1954-12-02",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Ramkishan Mithanlal Sharma v. THE STATE OF BOMBAY.[And Two Connected Appeals]",
+    "index_date": "1954-10-22",
+    "list_title": "RAMKISHAN MITHANLAL SHARMA versus THE STATE OF BOMBAY",
+    "list_date": "1954-10-22",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Dhirendra Kumar Mandal v. The Superintendent Andremembrancer of Legal Affairs to the",
+    "index_date": "1954-04-20",
+    "list_title": "DHIRENDRA KUMAR MANDAL  versus THE SUPERINTENDENT AND REMEMBRANCER OF LEGAL AFFAIRS TO THE GOVERNMENT OF WEST BENGAL AND ANOTHER.",
+    "list_date": "1954-04-20",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Kedar Nath Bajoria v. The State of West Bengal.Hari Ram Vaidv.The State of West Be",
+    "index_date": "1953-05-22",
+    "list_title": "KEDAR NATH BAJORIA  versus THE STATE OF WEST BENGAL.",
+    "list_date": "1953-05-22",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Maqbool Hussain v. The State of Bombay.Jagjit Singhv.The State of Punjab.Vidya",
+    "index_date": "1953-04-17",
+    "list_title": "MAQBOOL HUSSAIN versus THE STATE OF BOMBAY",
+    "list_date": "1953-04-17",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Basir-Ul-Huq and Others v. The State of West Bengal.Nur-Ul-Hudav.The State of West Beng",
+    "index_date": "1953-04-10",
+    "list_title": "BASIR-UL-HUQ AND OTHERS versus THE STATE OF WEST BENGAL",
+    "list_date": "1953-04-10",
+    "kind": "same date"
+   },
+   {
+    "index_name": "Palvinder Kaur v. The State of Punjab(Rup Singh-Caveator)",
+    "index_date": "1952-10-22",
+    "list_title": "PALVINDER KAUR  versus IHE STATE OF PUNJAB",
+    "list_date": "1952-10-22",
+    "kind": "same date"
+   }
+  ],
+  "same year": [
+   {
+    "index_name": "Shreekantiah Ramayya Munipalli v. THE STATE OF BOMBAY(With Connected Appeal)",
+    "index_date": "1954-12-22",
+    "list_title": "SHREEKANTIAH RAMA YYA MUNIPALLI versus THE STATE OF BOMBAY",
+    "list_date": "1954-12-12",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Behram Khurshed Pesikaka v. The State of Bombay.Reference Under Article 145(3) of the Co",
+    "index_date": "1954-02-19",
+    "list_title": "BEHRAM KHURSHED PESIKAKA versus THE STATE OF BOMBAY.",
+    "list_date": "1954-09-24",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Hanumant v. The State of Madhya Pradesh.Raojibhaithe State of Madhya Pra",
+    "index_date": "1952-01-23",
+    "list_title": "HANUMANT versus THE STATE OF MADHYA PRADESH",
+    "list_date": "1952-09-23",
+    "kind": "same year"
+   },
+   {
+    "index_name": "The State of Mysore v. Padmanabhacharya ETC.[P. B. Gajendragadkar, C.J., K",
+    "index_date": "1965-10-05",
+    "list_title": "THE STATE OF MYSORE versus PADMANABHACHARYA ETC.",
+    "list_date": "1965-09-24",
+    "kind": "same year"
+   },
+   {
+    "index_name": "State of U.P v. Mahendra Singh & Ors",
+    "index_date": "1974-10-15",
+    "list_title": "STATE OF U.P. versus MAHENDRA SINGH & ORS.",
+    "list_date": "1974-10-16",
+    "kind": "same year"
+   },
+   {
+    "index_name": "State (Delhi Admn.) v. Jagjit Singh",
+    "index_date": "1988-12-15",
+    "list_title": "STATE (DELHI ADMN.) versus JAGJIT SINGH",
+    "list_date": "1988-12-16",
+    "kind": "same year"
+   },
+   {
+    "index_name": "State of Assam and Anr v. R.K. Krishna Kumar and Ors., Saeed Kidwai and Ors",
+    "index_date": "1997-10-24",
+    "list_title": "R.K. KRISHNA KUMAR versus STATE OF ASSAM AND ORS.",
+    "list_date": "1997-12-03",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Gursharan Singh v. State of Punjab",
+    "index_date": "1996-09-10",
+    "list_title": "STATE OF PUNJAB AND ORS. versus GURSHARAN SINGH AND ORS.",
+    "list_date": "1996-12-06",
+    "kind": "same year"
+   },
+   {
+    "index_name": "T. SUTHENTHIRARAJA,P. Ravichandran,Robert Payas & Others v. State by D.S.P., CBI, Sit, Chennai",
+    "index_date": "1999-05-11",
+    "list_title": "SUTHENTHIRARAJA@ SANTHAN AND ORS. ETC. ETC. versus STATE THROUGH DSP/CBI, SIT, CHENNAI ETC. ETC.",
+    "list_date": "1999-10-08",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Malempati Pattabi Narendra v. Ghattamaneni Maruthi Prasad and Ors",
+    "index_date": "2000-03-27",
+    "list_title": "MALEMPATI PATIABI NARENDRA ETC versus GHATIAMANENI MARUTHI PRASAD AND ORS. ETC.",
+    "list_date": "2000-04-27",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Devender Pal Singh, Dharmendra Singh @ Dharu Singh, Krishna Mochi and others v. State, N.C.T. of Delhi & another, State of Bihar",
+    "index_date": "2002-12-17",
+    "list_title": "KRISHNA MOCHI AND ORS. versus STATE OF BIHAR ETC.",
+    "list_date": "2002-04-15",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Sunderbha1 Ambalal Desai v. State of Gujarat",
+    "index_date": "2002-10-01",
+    "list_title": "SUNDERBHAI AMBALAL DESAI versus STATE OF GUJARAT",
+    "list_date": "2002-11-18",
+    "kind": "same year"
+   },
+   {
+    "index_name": "State of U.P v. Shiv Kumar & Ors",
+    "index_date": "2005-04-20",
+    "list_title": "STA TE OF UTTAR PRADESH AND ANR. versus SHIV NARAIN UPADHYAYA",
+    "list_date": "2005-07-28",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Jasbir Singh v. State of Punjab",
+    "index_date": "2006-10-11",
+    "list_title": "STATE OF PUNJAB AND ORS. versus JASBIR SINGH AND ORS.",
+    "list_date": "2006-07-17",
+    "kind": "same year"
+   },
+   {
+    "index_name": "Satish Jaggi v. State of Chhattisgarh & Ors",
+    "index_date": "2007-02-22",
+    "list_title": "SATISH JAGGI  versus STATE OF CHATTISGARH & ORS.",
+    "list_date": "2007-04-30",
+    "kind": "same year"
+   }
+  ],
+  "different year": [
+   {
+    "index_name": "Sarwan Singh v. THE STATE OF PUNJAB(with connected appeal)",
+    "index_date": "1957-04-10",
+    "list_title": "SARWAN SINGH ETC. ETC. versus THE STATE OF PUNJAB & ORS. ETC.",
+    "list_date": "1974-12-12",
+    "kind": "different year"
+   },
+   {
+    "index_name": "The State of Uttar Pradesh v. Shankar and Another",
+    "index_date": "1962-02-15",
+    "list_title": "STATE OF U.P.  versus GIRIJA SHANKAR SONAKIYA",
+    "list_date": "1998-08-19",
+    "kind": "different year"
+   },
+   {
+    "index_name": "State of U.P v. Hari Ram and Others",
+    "index_date": "1983-09-07",
+    "list_title": "STATE OF U.P. versus HARI RAM",
+    "list_date": "2013-03-11",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Gurnam Singh & Anr v. State of Punjab",
+    "index_date": "1995-10-19",
+    "list_title": "KALA SINGH @ GURNAM SINGH versus STATE OF PUNJAB",
+    "list_date": "2021-09-21",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Gurmit Singh & Ors v. State of Punjab",
+    "index_date": "1995-09-29",
+    "list_title": "STATE OF PUNJAB versus GURMIT SINGH",
+    "list_date": "2014-07-02",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Labhu Ram and Ors v. The State of Punjab",
+    "index_date": "1995-09-26",
+    "list_title": "STATE OF PUNJAB & ORS. versus LABHU RAM & ORS.",
+    "list_date": "1976-10-15",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Hussainara Khatoon & Others v. Home Secretary, Bihar & Othersw I T Hwrit Petition (Criminal",
+    "index_date": "1995-08-04",
+    "list_title": "HUSSAINARA KHATOON & ORS. versus HOME SECRETARY, STATE OF BIHAR, PATNA",
+    "list_date": "1979-02-26",
+    "kind": "different year"
+   },
+   {
+    "index_name": "State of Rajasthan v. Prithvi Raj",
+    "index_date": "1995-07-12",
+    "list_title": "STATE OF RAJASTHAN versus JAG RAJ SINGH @ HANSA",
+    "list_date": "2016-06-29",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Rajaram v. State of M.P",
+    "index_date": "1993-04-08",
+    "list_title": "RAJARAM versus STATE OF MADHYA PRADESH & ORS",
+    "list_date": "2022-12-16",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Pritam Singh and Others v. State of Punjab",
+    "index_date": "1993-01-06",
+    "list_title": "STATE OF PUNJAB versus PRITAM SINGH ETC. ETC.",
+    "list_date": "1995-08-30",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Om Prakash etc. etc v. State of Punjab",
+    "index_date": "1992-08-19",
+    "list_title": "OM PRAKASH versus THE STATE OF PUNJAB",
+    "list_date": "1961-04-24",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Bharat Singh v. State of Uttar Pradesh",
+    "index_date": "1998-12-17",
+    "list_title": "STATE OF U.P. AND ORS. versus BHARAT SINGH AND ORS.",
+    "list_date": "2011-03-08",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Prem Singh, Smt. Shanti v. State of Haryana",
+    "index_date": "1998-08-06",
+    "list_title": "SMT. SHANTI AND ANR. versus STATE OF HARYANA",
+    "list_date": "1990-11-13",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Venugopal v. State Karnataka",
+    "index_date": "1998-07-29",
+    "list_title": "VENU @ VENUGOPAL AND ORS versus STATE OF KARNATAKA",
+    "list_date": "2008-01-30",
+    "kind": "different year"
+   },
+   {
+    "index_name": "Gurnam Singh v. State of Punjab",
+    "index_date": "1998-07-28",
+    "list_title": "KALA SINGH @ GURNAM SINGH versus STATE OF PUNJAB",
+    "list_date": "2021-09-21",
+    "kind": "different year"
+   }
+  ],
+  "a date is missing": [
+   {
+    "index_name": "Sidharth Vashisht @ Manu Sharma v. The State (N.C.T. of Delhi)",
+    "index_date": null,
+    "list_title": "SIDHARTHA VASHISHT @ MANU SHARMA versus STATE (NCT OF DELHI)",
+    "list_date": "2010-04-19",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "Pramod Kumar Saxena v. Union of India & Ors",
+    "index_date": null,
+    "list_title": "PRAMOD KUMAR SAXENA versus UNION OF !NOIA & ORS.",
+    "list_date": "2008-09-19",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of Goa .......Appellant/(S) v. Subhash Ghogle",
+    "index_date": null,
+    "list_title": "STATE OF GOA versus SUBHASH GHOGLE",
+    "list_date": "2008-10-21",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of Rajasthan v. Vijay Saxena",
+    "index_date": null,
+    "list_title": "STATE OF RAJASTHAN versus M.C. SAXENA",
+    "list_date": "1998-02-24",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of U.P v. Raja @ Jalil",
+    "index_date": null,
+    "list_title": "STATE OF U.P. versus RAJA @ JALIL",
+    "list_date": "2008-08-28",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of Punjab v. Rajwinder Singh @ Raja & Ors",
+    "index_date": null,
+    "list_title": "STATE OF PUNJAB versus RAJINDER SINGH & ORS. ETC.",
+    "list_date": "2008-11-05",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "Rajbir Singh and Anr v. State of Haryana and Anr",
+    "index_date": null,
+    "list_title": "RAJBIR SINGH, HFS-II versus THE STATE OF HARYANA AND ANR.",
+    "list_date": "1996-01-04",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of Haryana v. Balkar Singh & Ors",
+    "index_date": null,
+    "list_title": "BALKAR SINGH versus STATE OF HARYANA",
+    "list_date": "2014-11-17",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of U.P v. Paras Nath Singh",
+    "index_date": null,
+    "list_title": "STATE OF U.P. versus PARAS NATH SINGH & ORS.",
+    "list_date": "1973-01-15",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of Punjab v. Nirmal Singh",
+    "index_date": null,
+    "list_title": "NIRMAL SINGH versus STATE OF PUNJAB AND ORS.",
+    "list_date": "1984-08-09",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "Ms. Nisha Priya Bhatia v. Union of India and Ors",
+    "index_date": null,
+    "list_title": "NISHA PRIYA BHATIA versus UNION OF INDIA & ANR.",
+    "list_date": "2020-04-24",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of A.P v. Gourishetty Mahesh & Ors",
+    "index_date": null,
+    "list_title": "STATE OF A.P. versus GOURISHETIY MAHESH & ORS.",
+    "list_date": "2010-07-15",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of U.P v. Ram Prasad and Ors",
+    "index_date": null,
+    "list_title": "RAM PRASAD AND OTHERS versus THE STATE OF U.P.",
+    "list_date": "1973-09-17",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "State of Maharashtra v. Abu Salem Abdul Kayyum Ansari & Ors",
+    "index_date": null,
+    "list_title": "ABU SALEM ABDUL KAYYUM ANSARI versus THE STATE OF MAHARASHTRA",
+    "list_date": "2022-07-11",
+    "kind": "a date is missing"
+   },
+   {
+    "index_name": "Corp. Mithilesh Kumar @Mithilesh Singh v. Union of India & Ors",
+    "index_date": null,
+    "list_title": "MITHILESH SINGH versus UNION OF INDIA AND ORS.",
+    "list_date": "2003-02-27",
+    "kind": "a date is missing"
+   }
+  ]
+ },
+ "S1": {
+  "drop & Ors": {
+   "n": 1018,
+   "old_found": 1018,
+   "tol_found": 1011,
+   "wide_found": 1015,
+   "tol_misses_examples": [
+    {
+     "real": "L. V. Jadhav v. Shankarrao Abasaheb Pawar & Others",
+     "variant": "L. v. Jadhav v. Shankarrao Abasaheb Pawar"
+    },
+    {
+     "real": "Union of India & Ors v. Santosh Kumar Singh",
+     "variant": "Union of India v. Santosh Kumar Singh"
+    },
+    {
+     "real": "Ms. P v. The State of Madhya Pradesh and Another",
+     "variant": "Ms. P v. The State of Madhya Pradesh"
+    },
+    {
+     "real": "Rohtas & Anr v. State of U.P",
+     "variant": "Rohtas v. State of U.P"
+    },
+    {
+     "real": "State of Karnataka v. A.B.Nagaraj & Anr",
+     "variant": "State of Karnataka v. A.B.Nagaraj"
+    },
+    {
+     "real": "Bishan Singh & Anr v. The State",
+     "variant": "Bishan Singh v. The State"
+    }
+   ]
+  },
+  "abbreviate/expand": {
+   "n": 300,
+   "old_found": 136,
+   "tol_found": 298,
+   "wide_found": 298,
+   "tol_misses_examples": [
+    {
+     "real": "Ms. P v. The State of Madhya Pradesh and Another",
+     "variant": "Ms. P v. The State of M.P. and Another"
+    },
+    {
+     "real": "Dr. V. K. Saxena v. State of Uttar Pradesh and Vice Versa",
+     "variant": "Dr. v. K. Saxena v. State of U.P. and Vice Versa"
+    }
+   ]
+  },
+  "honorific added": {
+   "n": 1720,
+   "old_found": 1,
+   "tol_found": 1711,
+   "wide_found": 1715,
+   "tol_misses_examples": [
+    {
+     "real": "Hari Ram v. State of Uttarakhand",
+     "variant": "Shri Hari Ram v. State of Uttarakhand"
+    },
+    {
+     "real": "L. V. Jadhav v. Shankarrao Abasaheb Pawar & Others",
+     "variant": "Shri L. v. Jadhav v. Shankarrao Abasaheb Pawar & Others"
+    },
+    {
+     "real": "Manoj Kumar V. State of Himachal Pradesh v. State of Himachal Pradesh",
+     "variant": "Shri Manoj Kumar v. State of Himachal Pradesh v. State of Himachal Pradesh"
+    },
+    {
+     "real": "Ms. P v. The State of Madhya Pradesh and Another",
+     "variant": "Shri Ms. P v. The State of Madhya Pradesh and Another"
+    },
+    {
+     "real": "Dr. V. K. Saxena v. State of Uttar Pradesh and Vice Versa",
+     "variant": "Shri Dr. v. K. Saxena v. State of Uttar Pradesh and Vice Versa"
+    },
+    {
+     "real": "Subhash Chand v. State of Punjab",
+     "variant": "Shri Subhash Chand v. State of Punjab"
+    }
+   ]
+  },
+  "parties reversed": {
+   "n": 2000,
+   "old_found": 93,
+   "tol_found": 1972,
+   "wide_found": 1996,
+   "tol_misses_examples": [
+    {
+     "real": "State of Orissa v. Vs. Babaji Charan Mohanty & Anr",
+     "variant": "Vs. Babaji Charan Mohanty & Anr v. State of Orissa"
+    },
+    {
+     "real": "State of Madhya Pradesh v. Awadh Kishore Gupta and Ors",
+     "variant": "Awadh Kishore Gupta and Ors v. State of Madhya Pradesh"
+    },
+    {
+     "real": "Hari Ram v. State of Uttarakhand",
+     "variant": "State of Uttarakhand v. Hari Ram"
+    },
+    {
+     "real": "L. V. Jadhav v. Shankarrao Abasaheb Pawar & Others",
+     "variant": "Jadhav v. Shankarrao Abasaheb Pawar & Others v. L."
+    },
+    {
+     "real": "Union of India & Ors v. Santosh Kumar Singh",
+     "variant": "Santosh Kumar Singh v. Union of India & Ors"
+    },
+    {
+     "real": "Bhaskar @ Prabaskar and Ors v. Inspector of Police,Vellore Taluk Police Station, Vellore",
+     "variant": "Inspector of Police,Vellore Taluk Police Station, Vellore v. Bhaskar @ Prabaskar and Ors"
+    }
+   ]
+  },
+  "one letter lost (scanner slip)": {
+   "n": 1198,
+   "old_found": 1,
+   "tol_found": 567,
+   "wide_found": 567,
+   "tol_misses_examples": [
+    {
+     "real": "A.K. Subbaiah & Ors v. State of Karnataka & Ors",
+     "variant": "A.K. Subbaah & Ors v. State of Karnataka & Ors"
+    },
+    {
+     "real": "Bhushan Kumar & Anr v. State (NCT of Delhi) & Anr",
+     "variant": "Bhusan Kumar & Anr v. State (NCT of Delhi) & Anr"
+    },
+    {
+     "real": "State of Himachal Pradesh v. Raghubir Singh",
+     "variant": "State of Himchal Pradesh v. Raghubir Singh"
+    },
+    {
+     "real": "Jothi @ Nagajothi v. The State, Rep. by the Inspector of Police",
+     "variant": "Jothi @ Nagajoti v. The State, Rep. by the Inspector of Police"
+    },
+    {
+     "real": "Jayaseelan v. State of Tamil Nadu",
+     "variant": "Jayaseeln v. State of Tamil Nadu"
+    },
+    {
+     "real": "Smt. Parminder Kaur v. State of U.P. & Anr",
+     "variant": "Smt. Parmider Kaur v. State of U.P. & Anr"
+    }
+   ]
+  }
+ },
+ "S2": {
+  "swapped parties": {
+   "n": 3000,
+   "old_accepts": 135,
+   "tol_accepts": 148,
+   "wide_accepts": 164,
+   "accepted_by_wide_but_not_old": 135,
+   "wide_accepts_same_order": 130,
+   "wide_accepts_reversed_order": 34,
+   "examples_wide_new": [
+    {
+     "invented": "Anil Khadkiwala v. State of Delhi",
+     "accepted_as": "Anil Khadkiwala v. State (Government of NCT of Delhi) and Another",
+     "list": "wide index",
+     "date": "2019-07-30"
+    },
+    {
+     "invented": "State of Gujarat & Anr v. Narayan K.PATODIA",
+     "accepted_as": "STATE OF GUJARAT & ANR. versus NARAYAN @ NARAYAN SAI @ MOTA BHAGWAN ASARAM @ ASUMAL HARPALANI",
+     "list": "title list",
+     "date": "2021-10-20"
+    },
+    {
+     "invented": "The State of Uttar Pradesh v. State of Madhya Pradesh",
+     "accepted_as": "THE STATE OF UTTAR PRADESH versus M. P. SINGH AND OTHERS",
+     "list": "title list",
+     "date": "1959-12-15"
+    },
+    {
+     "invented": "Sidharth Vashisht @ Manu Sharma v. State (Delhi Administration)",
+     "accepted_as": "SIDHARTHA VASHISHT @ MANU SHARMA versus STATE (NCT OF DELHI)",
+     "list": "title list",
+     "date": "2010-04-19"
+    },
+    {
+     "invented": "Anuran Rastogi & Ors v. State through C.B.I",
+     "accepted_as": "ANURAN RASTOGI AND ORS. versus STATE OF U.P. AND ANR.",
+     "list": "title list",
+     "date": "2007-02-07"
+    },
+    {
+     "invented": "T.V. Saravanan @ S.A.R.Prasana Venkatachaariar Chaturvedi v. State of Tamil Nadu & Ors",
+     "accepted_as": "T.V. Saravanan @ S.A.R.Prasana Venkatachaariar Chaturvedi v. State through Secretary and another",
+     "list": "wide index",
+     "date": "2006-02-16"
+    },
+    {
+     "invented": "N.H. Muhammed Afras v. The State Rep. by the Inspector of Police",
+     "accepted_as": "N.H. MUHAMMED AFRAS versus STATE OF KERALA",
+     "list": "title list",
+     "date": "2008-11-25"
+    },
+    {
+     "invented": "Basavaraj v. State Karnataka",
+     "accepted_as": "Basappa @ Basavaraj v. State of Karnataka",
+     "list": "wide index",
+     "date": null
+    },
+    {
+     "invented": "Subramani @ Jeeva @ Kullajeeva v. State of Punjab",
+     "accepted_as": "Subramani & Anr v. State Rep. by Inspector of Police",
+     "list": "wide index",
+     "date": null
+    },
+    {
+     "invented": "V. Ravi Chandran v. State of Bihar",
+     "accepted_as": "RAVI@ RAVICHANDRAN versus STATE REP. BY INSPECTOR OF POLICE",
+     "list": "title list",
+     "date": "2007-04-27"
+    },
+    {
+     "invented": "State of U.P v. State of UP & Anr",
+     "accepted_as": "STATE OF U P THROUGH PRINCIPAL SECRETARY & ORS. versus ALL U. P. CONSUMER PROTECTION BAR ASSOCIATION",
+     "list": "title list",
+     "date": "2017-12-15"
+    },
+    {
+     "invented": "Teesta Atul Setalvad v. State Rep. by S.D.M",
+     "accepted_as": "TEESTA ATUL SETALVAD versus THE STATE OF GUJARAT",
+     "list": "title list",
+     "date": "2017-12-15"
+    },
+    {
+     "invented": "State of Kerala v. State of Andhra Pradesh",
+     "accepted_as": "STATE OF KERALA & ORS. versus A. P. MAMMIKUTIY",
+     "list": "title list",
+     "date": "2015-07-01"
+    },
+    {
+     "invented": "State of U.P v. The State Represented by Deputy Director and Ors",
+     "accepted_as": "STATE OF U.P. versus DY. DIRECTOR OF CONSOLIDATION AND ORS.",
+     "list": "title list",
+     "date": "1996-07-08"
+    },
+    {
+     "invented": "Union of India & Ors v. The State of Gujarat",
+     "accepted_as": "UNION OF INDIA AND ORS. versus GUJARAT WOOLLEN FELT MILLS",
+     "list": "title list",
+     "date": "1977-04-07"
+    },
+    {
+     "invented": "S. Krishnamoorthy v. State of Bihar",
+     "accepted_as": "Krishnamoorthy & Anr v. State by Inspector of Police & Ors",
+     "list": "wide index",
+     "date": "2007-03-01"
+    },
+    {
+     "invented": "State of Madhya Pradesh v. State of U.P",
+     "accepted_as": "THE STATE OF MADHYA PRADESH & ANR. versus U.P. STATE BRIDGE CORPORATION LTD.& ANR.",
+     "list": "title list",
+     "date": "2020-12-08"
+    },
+    {
+     "invented": "State of Haryana v. Santosh Kumar",
+     "accepted_as": "SMT. SANTOSH KUMAR! ETC. versus STATE OF HARYANA",
+     "list": "title list",
+     "date": "1996-08-28"
+    },
+    {
+     "invented": "State of U.P v. State of U.P. & Anr",
+     "accepted_as": "STATE OF U P THROUGH PRINCIPAL SECRETARY & ORS. versus ALL U. P. CONSUMER PROTECTION BAR ASSOCIATION",
+     "list": "title list",
+     "date": "2017-12-15"
+    },
+    {
+     "invented": "State of Punjab v. State of Punjab and Another",
+     "accepted_as": "STATE OF PUNJAB versus PRINCIPAL SECRETARY TO THE GOVERNOR OF PUNJAB AND ANOTHER",
+     "list": "title list",
+     "date": "2023-11-10"
+    },
+    {
+     "invented": "Dr. Prakash v. Shobha S. Aradhya",
+     "accepted_as": "PRAKASH (DEAD) BY LR. versus G. ARADHYA AND ORS.",
+     "list": "title list",
+     "date": "2023-08-18"
+    },
+    {
+     "invented": "State of U.P. and Anr v. Union of India & Ors",
+     "accepted_as": "STATE OF UTTAR PRADESH AND ANR. ETC. ETC. versus UNION OF INDIA AND ANR. ETC. ETC.",
+     "list": "title list",
+     "date": "2003-02-04"
+    },
+    {
+     "invented": "Union of India & Ors v. State of Bihar",
+     "accepted_as": "STATE OF BIHAR versus UNION OF INDIA & ANR.",
+     "list": "title list",
+     "date": "1969-09-19"
+    },
+    {
+     "invented": "Union of India v. The State of Bombay",
+     "accepted_as": "UNION OF INDIA versus MIS. MILLENIUM MUMBAI BROADCAST PVT. LTD.",
+     "list": "title list",
+     "date": "2006-04-28"
+    },
+    {
+     "invented": "Union of India v. Prasanna Kumar Mohanty",
+     "accepted_as": "UNION OF INDIA AND ORS. versus TUSHAR RANJAN MOHANTY",
+     "list": "title list",
+     "date": "1994-07-14"
+    },
+    {
+     "invented": "Nelabothu Sundararamaiah & Ors v. State Rep. by Inspector of Police",
+     "accepted_as": "Nelabothu Sundararamaiah & Ors v. The State of Andhra Pradesh",
+     "list": "wide index",
+     "date": "2000-12-04"
+    },
+    {
+     "invented": "Divisional Manager, United India Insurance Co. Ltd. and Anr v. M/s. P.E.C. LTD. & Anr",
+     "accepted_as": "UNITED INDIA INSURANCE CO. LTD. versus J.A. INFRASTRUCTURE PVT. LTD.",
+     "list": "title list",
+     "date": "2006-08-30"
+    },
+    {
+     "invented": "Dilbagh Singh v. State Rep. by the Inspector of Police",
+     "accepted_as": "DILBAGH SINGH versus STATE OF PUNJAB",
+     "list": "title list",
+     "date": "2016-11-28"
+    },
+    {
+     "invented": "The Union of India Through the Assistant Director v. M/s. Shree Nath Spinners P.Ltd. & Ors. etc",
+     "accepted_as": "UNION OF INDIA AND ORS. versus JAIN SPINNERS LTD. AND ANR.",
+     "list": "title list",
+     "date": "1992-09-10"
+    },
+    {
+     "invented": "Rakesh Kumar v. State of National Capital Territory of Delhi & Anr",
+     "accepted_as": "Rakesh Kumar @ Sachdeva @ Deva v. State (Delhi Admn.)",
+     "list": "wide index",
+     "date": "1994-11-23"
+    },
+    {
+     "invented": "Union of India and others v. The State of Punjab & Anr",
+     "accepted_as": "UNION OF INDIA versus WEST PUNJAB FACTORIES LTD.",
+     "list": "title list",
+     "date": "1965-08-24"
+    },
+    {
+     "invented": "State of Kerala & Anr v. The State of Maharashtra",
+     "accepted_as": "STATE OF KERALA AND ORS. versus MAHARASHTRA DISTILLERIES LTD. AND ORS",
+     "list": "title list",
+     "date": "2005-05-06"
+    },
+    {
+     "invented": "Ravinder Singh @ Bittu v. State of Madhya Pradesh",
+     "accepted_as": "RA VINDER SINGH versus STATE OF M.P. AND ORS.",
+     "list": "title list",
+     "date": "1995-03-06"
+    },
+    {
+     "invented": "Shyam Lal Sharma, etc v. State of Uttar Pradesh",
+     "accepted_as": "STATE OF U.P. versus SHYAM LAL SHARMA",
+     "list": "title list",
+     "date": "1971-08-12"
+    },
+    {
+     "invented": "State of U.P v. Shri Kalyan Singh (former CM of UP) & Ors",
+     "accepted_as": "KALYAN SINGH versus STATE OF U. P.",
+     "list": "title list",
+     "date": "1961-12-11"
+    },
+    {
+     "invented": "State of Haryana v. Smt. Daya Sapra",
+     "accepted_as": "State of Haryana v. Daya Nand",
+     "list": "wide index",
+     "date": "2004-08-25"
+    },
+    {
+     "invented": "State of Andhra Pradesh v. The State of Orissa",
+     "accepted_as": "STATE OF ORISSA versus STATE OF ANDHRA PRADESH",
+     "list": "title list",
+     "date": "2010-05-05"
+    },
+    {
+     "invented": "State of M.P v. Union of India and Another",
+     "accepted_as": "STATE OF MADHYA PRADESH versus UNION OF INDIA & ANR.",
+     "list": "title list",
+     "date": "2011-08-17"
+    },
+    {
+     "invented": "State of U.P. & Anr v. State of Madhya Pradesh",
+     "accepted_as": "THE STATE OF UTTAR PRADESH versus M. P. SINGH AND OTHERS",
+     "list": "title list",
+     "date": "1959-12-15"
+    },
+    {
+     "invented": "Dashrath @ Champa and Ors v. State of Maharashtra",
+     "accepted_as": "DASHRATH versus THE STATE OF MAHARASHTRA",
+     "list": "title list",
+     "date": "2025-04-24"
+    }
+   ]
+  },
+  "plausible invented names": {
+   "n": 3000,
+   "old_accepts": 38,
+   "tol_accepts": 44,
+   "wide_accepts": 57,
+   "accepted_by_wide_but_not_old": 37,
+   "wide_accepts_same_order": 41,
+   "wide_accepts_reversed_order": 16,
+   "examples_wide_new": [
+    {
+     "invented": "Punjab Ors v. State of Punjab",
+     "accepted_as": "PUNJAB AND HARYANA HIGH COURT BAR ASSOCIATION versus THE STATE OF PUNJAB AND ORS.",
+     "list": "title list",
+     "date": "1996-05-10"
+    },
+    {
+     "invented": "Suresh Anr v. State of Tamil Nadu",
+     "accepted_as": "STATE OF TAMIL NADU ETC. versus SURESH (A-2) AND ANR.",
+     "list": "title list",
+     "date": "1997-12-05"
+    },
+    {
+     "invented": "Rakesh Kumar v. Union of India",
+     "accepted_as": "UNION OF INDIA & ORS. versus RAKESH KUMAR & ORS.",
+     "list": "title list",
+     "date": "2017-03-24"
+    },
+    {
+     "invented": "Bharatbhai Another v. State of Gujarat",
+     "accepted_as": "BHARATBHAI @ JIMI PREMCHANDBHAI versus STATE OF GUJARAT",
+     "list": "title list",
+     "date": "2002-10-03"
+    },
+    {
+     "invented": "Sanjay Ors v. State of Assam",
+     "accepted_as": "Raju Bag @ Sanjay v. The State of Assam and Anr",
+     "list": "wide index",
+     "date": "2025-12-08"
+    },
+    {
+     "invented": "Sanjay Ors v. State of Delhi",
+     "accepted_as": "SANJAY @ KAKA versus THE STATE (NCT OF DELHI)",
+     "list": "title list",
+     "date": "2001-02-07"
+    },
+    {
+     "invented": "Vijay Singh v. State of Bihar",
+     "accepted_as": "VIJAY SINGH @ VIJAY KR. SHARMA versus THE STATE OF BIHAR",
+     "list": "title list",
+     "date": "2024-09-25"
+    },
+    {
+     "invented": "Sanjay Anr v. State of Delhi",
+     "accepted_as": "SANJAY @ KAKA versus THE STATE (NCT OF DELHI)",
+     "list": "title list",
+     "date": "2001-02-07"
+    },
+    {
+     "invented": "Jagdish Ors v. Union of India",
+     "accepted_as": "UNION OF INDIA  versus JAGDISH AND ORS.",
+     "list": "title list",
+     "date": "1995-03-21"
+    },
+    {
+     "invented": "Krishnamurthy Anr v. State of Uttar Pradesh",
+     "accepted_as": "Krishnamurthy v. State Rep. by the Inspector of Police",
+     "list": "wide index",
+     "date": "2022-09-01"
+    },
+    {
+     "invented": "Ashok Anr v. Union of India",
+     "accepted_as": "DR.ASHOK versus UNION OF INDIA AND ORS.",
+     "list": "title list",
+     "date": "1997-05-02"
+    },
+    {
+     "invented": "Munna Anr v. Union of India",
+     "accepted_as": "Union of India v. Munna and Anr",
+     "list": "wide index",
+     "date": "2004-08-27"
+    },
+    {
+     "invented": "Sanatan Ors v. State of West Bengal",
+     "accepted_as": "Dilip Shaw @ Sanatan & Anr v. The State of West Bengal and Ors",
+     "list": "wide index",
+     "date": "2020-03-02"
+    },
+    {
+     "invented": "Krishan Anr v. Union of India",
+     "accepted_as": "SHRI KRISHAN AND ORS. versus UNION OF INDIA AND ORS.",
+     "list": "title list",
+     "date": "2014-09-16"
+    },
+    {
+     "invented": "Rajesh Another v. State of Maharashtra",
+     "accepted_as": "Rajesh & Ors., Taufiq Ahmed Aminuddin, Santosh Shashikantamb v. State of Maharashtra",
+     "list": "wide index",
+     "date": "1998-08-13"
+    },
+    {
+     "invented": "Santosh Anr v. State of Delhi",
+     "accepted_as": "SANTOSH @ BHURE versus STATE (G.N.C.T.) OF DELHI",
+     "list": "title list",
+     "date": "2023-04-28"
+    },
+    {
+     "invented": "Abdul Anr v. State of Uttar Pradesh",
+     "accepted_as": "STATE OF U.P.  versus ABDUL AND ORS.",
+     "list": "title list",
+     "date": "1997-05-05"
+    },
+    {
+     "invented": "Munna Anr v. Union of India",
+     "accepted_as": "Union of India v. Munna and Anr",
+     "list": "wide index",
+     "date": "2004-08-27"
+    },
+    {
+     "invented": "Subramanian Anr v. Union of India",
+     "accepted_as": "UNION OF INDIA & ANR. versus K. S. SUBRAMANIAN",
+     "list": "title list",
+     "date": "1976-07-30"
+    },
+    {
+     "invented": "Deepak Ors v. State of Assam",
+     "accepted_as": "Raju Patowary @ Deepak and Anr v. The State of Assam",
+     "list": "wide index",
+     "date": "2017-08-31"
+    },
+    {
+     "invented": "Rajesh Ors v. State of Delhi",
+     "accepted_as": "Rajender @ Rajesh @ Raju v. State (NCT of Delhi)",
+     "list": "wide index",
+     "date": "2019-10-24"
+    },
+    {
+     "invented": "Devendra Anr v. State of Madhya Pradesh",
+     "accepted_as": "STATE OF M.P. versus DEVENDRA",
+     "list": "title list",
+     "date": "2009-05-05"
+    },
+    {
+     "invented": "Krishan Another v. State of Uttar Pradesh",
+     "accepted_as": "State of U.P v. Shri Krishan",
+     "list": "wide index",
+     "date": "2004-12-16"
+    },
+    {
+     "invented": "Sanjay Etc v. State of Assam",
+     "accepted_as": "Raju Bag @ Sanjay v. The State of Assam and Anr",
+     "list": "wide index",
+     "date": "2025-12-08"
+    },
+    {
+     "invented": "Rajendra Singh v. Union of India",
+     "accepted_as": "UNION OF INDIA AND OTHERS versus RAJENDRA SINGH ETC",
+     "list": "title list",
+     "date": "1992-10-12"
+    },
+    {
+     "invented": "Sunil Anr v. State of Madhya Pradesh",
+     "accepted_as": "State of M.P v. Sunil",
+     "list": "wide index",
+     "date": "2005-10-24"
+    },
+    {
+     "invented": "Manjeet Singh v. Union of India",
+     "accepted_as": "UNION OF INDIA & ORS. versus MANJEET SINGH",
+     "list": "title list",
+     "date": "2015-05-12"
+    },
+    {
+     "invented": "Ashok Ors v. Union of India",
+     "accepted_as": "DR.ASHOK versus UNION OF INDIA AND ORS.",
+     "list": "title list",
+     "date": "1997-05-02"
+    },
+    {
+     "invented": "Prem Singh v. State of Madhya Pradesh",
+     "accepted_as": "Raja Ram and Ors.Prem Singh & Anr v. State of Madhya Pradesh",
+     "list": "wide index",
+     "date": "1997-01-16"
+    },
+    {
+     "invented": "Subhash Another v. State of Karnataka",
+     "accepted_as": "SUBHASH @ SUBANNA & ORS. versus STATE OF KARNATAKA MINISTRY OF HOME AFFAIRS",
+     "list": "title list",
+     "date": "2024-04-10"
+    },
+    {
+     "invented": "Punjab Singh v. Union of India",
+     "accepted_as": "UNION OF INDIA AND ANR. versus PUNJAB SINGH AND ANR.",
+     "list": "title list",
+     "date": "2003-09-15"
+    },
+    {
+     "invented": "Chandra Etc v. State of Karnataka",
+     "accepted_as": "VENKATESH @ CHANDRA & ANR. ETC versus STATE OF KARNATAKA",
+     "list": "title list",
+     "date": "2022-04-19"
+    },
+    {
+     "invented": "Secretary Another v. State of West Bengal",
+     "accepted_as": "SECRETARY, FINANCE DEPARTMENT AND ORS. versus WEST BENGAL REGISTRATION SERVICE ASSOCIATION AND  ORS.",
+     "list": "title list",
+     "date": "1992-02-20"
+    },
+    {
+     "invented": "Rajendra Singh v. Union of India",
+     "accepted_as": "UNION OF INDIA AND OTHERS versus RAJENDRA SINGH ETC",
+     "list": "title list",
+     "date": "1992-10-12"
+    },
+    {
+     "invented": "Jagdish Anr v. Union of India",
+     "accepted_as": "UNION OF INDIA  versus JAGDISH AND ORS.",
+     "list": "title list",
+     "date": "1995-03-21"
+    },
+    {
+     "invented": "Prakash Gupta v. Union of India",
+     "accepted_as": "PRAKASH GUPTA versus SECURITIES AND EXCHANGE BOARD OF INDIA",
+     "list": "title list",
+     "date": "2021-07-23"
+    },
+    {
+     "invented": "Ravindra Ors v. Union of India",
+     "accepted_as": "RAVINDRA & ASSOCIATES versus UNION OF INDIA",
+     "list": "title list",
+     "date": "2009-10-21"
+    }
+   ]
+  },
+  "one unrelated letter changed": {
+   "n": 3000,
+   "old_accepts": 4,
+   "tol_accepts": 324,
+   "wide_accepts": 438,
+   "accepted_by_wide_but_not_old": 434,
+   "wide_accepts_same_order": 432,
+   "wide_accepts_reversed_order": 6,
+   "examples_wide_new": [
+    {
+     "invented": "G H P. Gcpalkrishnan @ Dileep v. State of Kerala and Anr",
+     "accepted_as": "G H P. GOPALKRISHNAN @ DILEEP versus STATE OF KERALA AND ANR.",
+     "list": "title list",
+     "date": "2019-11-29"
+    },
+    {
+     "invented": "Surenqra Singh Rautela @ Surendra Singh Bengali v. State of Bihar (Now State of Jharkhand)",
+     "accepted_as": "SURENDRA SINGH RAUTELA @ SURENDRA SINGH BENGALI versus STATE OF BIHAR (NOW STATE OF JHARKAHAND)",
+     "list": "title list",
+     "date": "2001-11-27"
+    },
+    {
+     "invented": "Ranjitsing Brahmadeetsing Sharma v. State of Maharashtra & Anr",
+     "accepted_as": "RANJITSING BRAHMAJEETSING SHARMA versus STATE OF MAHARASHTRA AND ANR.",
+     "list": "title list",
+     "date": "2005-04-07"
+    },
+    {
+     "invented": "Jayendra Sarnswathi Swamigal v. State of Tamil Nadu",
+     "accepted_as": "JAYENDRA SARASWATHI SWAMIGAL versus STATE OF TAMIL NADU",
+     "list": "title list",
+     "date": "2005-01-10"
+    },
+    {
+     "invented": "Moijuvlah @ Puttan v. State of Rajasthan",
+     "accepted_as": "Moijullah @ Puttan v. State of Rajasthan",
+     "list": "wide index",
+     "date": "2003-12-19"
+    },
+    {
+     "invented": "State of Karnatakaby H.A.L. Airportpoyice, Bangalore v. Thangaraj",
+     "accepted_as": "State of Karnatakaby H.A.L. Airportpolice, Bangalore v. Thangaraj",
+     "list": "wide index",
+     "date": "1995-07-12"
+    },
+    {
+     "invented": "Himachal Road Transpkrt Corpn. & Anr v. Hukam Chand",
+     "accepted_as": "Himachal Road Transport Corpn. & Anr v. Hukam Chand",
+     "list": "wide index",
+     "date": "2009-02-03"
+    },
+    {
+     "invented": "Neeharika Infrastrmcture PVT. LTD v. State of Maharashtra and Others",
+     "accepted_as": "NEEHARIKA INFRASTRUCTURE PVT. LTD. versus STATE OF MAHARASHTRA AND OTHERS",
+     "list": "title list",
+     "date": "2021-04-13"
+    },
+    {
+     "invented": "Prakash Dhawal Khairfar (Patil) v. State of Maharastra",
+     "accepted_as": "Prakash Dhawal Khairnar (Patil) v. State of Maharastra",
+     "list": "wide index",
+     "date": "2001-12-12"
+    },
+    {
+     "invented": "M/s. Sarav Investment & Financial Censultants Pvt. Ltd. & Anr v. Llyods Register of Shipping Indian Office Staff Provident Fund & Anr",
+     "accepted_as": "M/s. Sarav Investment & Financial Consultants Pvt. Ltd. & Anr v. Llyods Register of Shipping Indian Office Staff Provident Fund & Anr",
+     "list": "wide index",
+     "date": "2007-10-11"
+    },
+    {
+     "invented": "Chandfan @ Manichan @ Maniyan v. State of Kerala",
+     "accepted_as": "CHANDRAN @ MANICHAN @ MANIYAN versus STATE OF KERALA",
+     "list": "title list",
+     "date": "2011-04-04"
+    },
+    {
+     "invented": "Pyla Muhyalamma @ Satyavathi v. Pyla Suri Demudu & Anr",
+     "accepted_as": "PYLA MUTYALAMMA @ SATYAVATHI versus PYLA SURI DEMUDU & ANR.",
+     "list": "title list",
+     "date": "2011-08-09"
+    },
+    {
+     "invented": "Perueal Raja @ Perumal v. State, Rep. by Inspector of Police",
+     "accepted_as": "PERUMAL RAJA @ PERUMAL versus STATE, REP. BY INSPECTOR OF POLICE",
+     "list": "title list",
+     "date": "2024-01-03"
+    },
+    {
+     "invented": "Devennra Bhai Shankar Mehta v. Rameshchandra Vithaldas Sheth and Anr",
+     "accepted_as": "DEVENDRA BHAI SHANKAR MEHTA versus RAMESHCHANDRA VITHALDAS SHETH AND ANR.",
+     "list": "title list",
+     "date": "1992-04-22"
+    },
+    {
+     "invented": "Sanghi Brothems (Indore) Pvt. Ltd v. Sanjay Choudhary and Ors",
+     "accepted_as": "SANGHI BROTHERS (INDORE) PVT. LTD. versus SANJAY CHOUDHARY AND ORS.",
+     "list": "title list",
+     "date": "2008-10-03"
+    },
+    {
+     "invented": "Ram Deo Chaohan @ Raj Nath Chauhan v. State of Assam .Respondent",
+     "accepted_as": "RAM DEO CHAUHAN ALIAS RAJ NATH CHAUHAN versus STATE OF ASSAM",
+     "list": "title list",
+     "date": "2000-07-31"
+    },
+    {
+     "invented": "Hyeoksoo Son Authorized Repreientative for Daechang Seat Automotive PVT. LTD v. Moon June Seok & Anr",
+     "accepted_as": "Hyeoksoo Son Authorized Representative for Daechang Seat Automotive PVT. LTD v. Moon June Seok & Anr",
+     "list": "wide index",
+     "date": "2025-04-08"
+    },
+    {
+     "invented": "Nos. 9544-9545/2011) State of Hvryana v. Janak Singh & etc",
+     "accepted_as": "Nos. 9544-9545/2011) State of Haryana v. Janak Singh & etc",
+     "list": "wide index",
+     "date": "2013-05-10"
+    },
+    {
+     "invented": "Rajendra Pralhadyao Wasnik v. The State of Maharashtra",
+     "accepted_as": "RAJENDRA PRALHADRAO WASNIK versus STATE OF MAHARASHTRA",
+     "list": "title list",
+     "date": "2018-12-12"
+    },
+    {
+     "invented": "Donthula Rawindranath @ Ravinder Rao v. State of Andhra Pradesh",
+     "accepted_as": "Donthula Ravindranath @ Ravinder Rao v. State of Andhra Pradesh",
+     "list": "wide index",
+     "date": "2014-01-06"
+    },
+    {
+     "invented": "Shiva Karam Payaswagi Tewari v. State of Maharashtra",
+     "accepted_as": "SHIVA KARAM PAYASWAMI TEWARI versus STATE OF MAHARASHTRA",
+     "list": "title list",
+     "date": "2009-01-21"
+    },
+    {
+     "invented": "Arilkumar S/O Manohar Devadhar v. Praveen S/O Adivayya Hiremath",
+     "accepted_as": "Anilkumar S/O Manohar Devadhar v. Praveen S/O Adivayya Hiremath",
+     "list": "wide index",
+     "date": "2026-04-13"
+    },
+    {
+     "invented": "M/s Green Earth Asphalt & ...Appbllant Power P. Ltd v. State of Maharashtra Tr",
+     "accepted_as": "M/S GREEN EARTH ASPHALT & POWER P. LTD. versus STATE OF MAHARASHTRA TR. P.S.O. & ORS.",
+     "list": "title list",
+     "date": "2008-08-13"
+    },
+    {
+     "invented": "National Legal Services Axthority v. Union of India & Ors",
+     "accepted_as": "NATIONAL LEGAL SERVICES AUTHORITY versus UNION OF INDIA AND OTHERS",
+     "list": "title list",
+     "date": "2014-04-15"
+    },
+    {
+     "invented": "Commissiooer of Customs, Calcutta etc. etc v. M/s Indian Oil Corporation Ltd. & Anr",
+     "accepted_as": "COMMISSIONER OF CUSTOMS, CALCUTTA ETC. ETC. versus M/S. INDIAN OIL CORPORATION LTD. AND ANR.",
+     "list": "title list",
+     "date": "2004-02-17"
+    },
+    {
+     "invented": "Sangram Sadashiv Suryaaanshi v. The State of Maharashtra",
+     "accepted_as": "SANGRAM SADASHIV SURYAVANSHI versus THE STATE OF MAHARASHTRA",
+     "list": "title list",
+     "date": "2024-11-25"
+    },
+    {
+     "invented": "Chandru @ Chaadrasekaran v. State Rep. by Deputy Superintendent of Police Cb Cid and Anr",
+     "accepted_as": "CHANDRU @ CHANDRASEKARAN versus STATE REP. BY DEPUTY SUPERINTENDENT OF POLICE CB CID AND ANR.",
+     "list": "title list",
+     "date": "2019-02-12"
+    },
+    {
+     "invented": "T.V. Saravanan @ S.A.R.Prasana Vevkatachaariar Chaturvedi v. State through Secretary and another",
+     "accepted_as": "T.V. Saravanan @ S.A.R.Prasana Venkatachaariar Chaturvedi v. State through Secretary and another",
+     "list": "wide index",
+     "date": "2006-02-16"
+    },
+    {
+     "invented": "Automubile Products India Ltd v. Das John Peter & Ors",
+     "accepted_as": "AUTOMOBILE PRODUCTS INDIA LTD. versus DAS JOHN PETER & ORS.",
+     "list": "title list",
+     "date": "2010-07-20"
+    },
+    {
+     "invented": "Mohan @Srinrvas @Seena @Tailor Seena v. The State of Karnataka",
+     "accepted_as": "MOHAN @SRINIVAS @SEENA @TAILOR SEENA versus THE STATE OF KARNATAKA",
+     "list": "title list",
+     "date": "2021-12-13"
+    },
+    {
+     "invented": "Abdul Rashid Ikrahim Mansurl v. State of Gujarat",
+     "accepted_as": "Abdul Rashid Ibrahim Mansurl v. State of Gujarat",
+     "list": "wide index",
+     "date": "2000-02-01"
+    },
+    {
+     "invented": "Basavaraj Alias Basavbnnappa Parmeshwar Bangargir v. The State of Maharashtra",
+     "accepted_as": "Basavaraj Alias Basavannappa Parmeshwar Bangargir v. The State of Maharashtra",
+     "list": "wide index",
+     "date": "2018-10-01"
+    },
+    {
+     "invented": "State of Bihar and otaers etc v. Anil Kumar and others etc",
+     "accepted_as": "STATE OF BIHAR AND OTHERS ETC. versus ANIL KUMAR AND OTHERS ETC.",
+     "list": "title list",
+     "date": "2017-03-23"
+    },
+    {
+     "invented": "Gabbar Singh alias Devenwra Pratap Singh Alias Rajesh Singh v. State of U.P. and Ors",
+     "accepted_as": "Gabbar Singh alias Devendra Pratap Singh Alias Rajesh Singh v. State of U.P. and Ors",
+     "list": "wide index",
+     "date": "2026-03-20"
+    },
+    {
+     "invented": "Bijendgr @ Mandar v. State of Haryana",
+     "accepted_as": "BIJENDER @ MANDAR versus STATE OF HARYANA",
+     "list": "title list",
+     "date": "2021-11-08"
+    },
+    {
+     "invented": "Kukar @ Shiva Kumar v. State of Karnataka",
+     "accepted_as": "SHIVA KUMAR @ SHIVA @ SHIVAMURTHY versus STATE OF KARNATAKA",
+     "list": "title list",
+     "date": "2023-03-28"
+    },
+    {
+     "invented": "Samuhaji Hindurao Deshmukh & Ors v. State of Maharashtra",
+     "accepted_as": "Sambhaji Hindurao Deshmukh & Ors v. State of Maharashtra",
+     "list": "wide index",
+     "date": "2008-01-17"
+    },
+    {
+     "invented": "Abdul Rashid Ibrahxm Mansurl v. State of Gujarat",
+     "accepted_as": "Abdul Rashid Ibrahim Mansurl v. State of Gujarat",
+     "list": "wide index",
+     "date": "2000-02-01"
+    },
+    {
+     "invented": "Mohmdd Rafiq Abdul Rahim Shaikh v. The State of Gujarat",
+     "accepted_as": "MOHMED RAFIQ ABDUL RAHIM SHAIKH versus THE STATE OF GUJARAT",
+     "list": "title list",
+     "date": "2018-09-13"
+    },
+    {
+     "invented": "Madhav Hayqwadanrao Hoskot v. State of Maharashtra",
+     "accepted_as": "Madhav Hayawadanrao Hoskot v. State of Maharashtra",
+     "list": "wide index",
+     "date": "1978-08-17"
+    }
+   ]
+  }
+ },
+ "S3": {
+  "library_cases": 68,
+  "old_found": 50,
+  "tol_found_title_list_only": 54,
+  "tol_still_missing": [
+   "Deepa v S. Vijayalakshmi",
+   "Jatin Narendrabhai Sanghvi & Ors v State of Gujarat & Anr",
+   "Johnson V.U. v State of Kerala",
+   "Lokesh B.H v State of Karnataka",
+   "Malabar Gold and Diamond Limited v Union of India",
+   "Neelkanth Pharma Logistics Pvt. Ltd. v Union of India",
+   "Prakash Chimanlal Sheth v Jagruti Keyur Rajpopat",
+   "Prakash Ranjan v State of Bihar",
+   "Rakhi Mitra and Anr v State of West Bengal",
+   "Sri Manjunath M P v State of Karnataka",
+   "T. Manikadan v State (NCT of Delhi) & Anr",
+   "Usha Chakraborty v State of West Bengal",
+   "Viraj Chetan Shah v Union of India & Anr (& Connected Matters)",
+   "Youth Bar Association v Union of India"
+  ]
+ },
+ "speed_ms": {
+  "n": 2000,
+  "mean": 6.31,
+  "p95": 25.35,
+  "max": 247.2
+ }
+}

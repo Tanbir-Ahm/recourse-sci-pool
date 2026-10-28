@@ -1,0 +1,129 @@
+{
+ "named_rows": 19147,
+ "result": {
+  "found": 19124,
+  "cannot read the name": 20,
+  "not found": 3
+ },
+ "by_court": {
+  "Supreme Court of India": 21,
+  "Gauhati High Court": 2
+ },
+ "misses": [
+  [
+   "Mr. C v. The Advocate-General of Madras",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "By L.RS v. State of Rajasthan & Ors",
+   "Supreme Court of India",
+   "not found"
+  ],
+  [
+   "K.V.S.RAO v. C.B.I. & Ors",
+   "Supreme Court of India",
+   "not found"
+  ],
+  [
+   "Ms. S v. Sunil Kumar & Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Ms. X v. The State of Telangana and Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Ms. X v. The State of Jharkhand & Ors",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Ms.Y v. State of Rajasthan and Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Ms. P v. The State of Madhya Pradesh and Another",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X v. The Principal Secretary, Health and Family Welfare Department, Govt. of NCT of Delhi & Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Ms. X v. The State of Maharashtra and Another",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Ms. X v. Mr. A and Others",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X v. State of Rajasthan & Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X etc v. Rajesh Kumar & Ors",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X v. The State of Uttar Pradesh & Another",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Sri v. State Rep. by the Inspector of Police, Q Branch, Ramanathapuram, Tamil Nadu",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X v. State of Kerala & Another",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Connected Matters As Per the Record of Proceeding Dated 26.02.2026 Satinder Singh Bhasin v. Government of NCT of Delhi & Ors",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "[ v. The State of Bihar",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X v. State of Bihar & Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "Another v. State of Odisha",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "‘R’ v. ‘E’ & Anr",
+   "Supreme Court of India",
+   "cannot read"
+  ],
+  [
+   "X X X X v. In Re - the State of Assam and 2 Ors",
+   "Gauhati High Court",
+   "not found"
+  ],
+  [
+   "X v. In Re- State of Arunachal Pradesh and 2 Ors",
+   "Gauhati High Court",
+   "cannot read"
+  ]
+ ]
+}
