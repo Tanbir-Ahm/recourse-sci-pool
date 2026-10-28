@@ -183,6 +183,10 @@ def s2_run(names):
         cnt["old"] += bool(o)
         cnt["tol"] += bool(t)
         cnt["wide"] += bool(w)
+        if w:
+            qn, cn = NM.parse_name(nm), NM.parse_name(wi["title"])
+            direct = NM.party_match(qn[0], cn[0])
+            cnt["wide_accepts_same_order" if direct else "wide_accepts_reversed_order"] += 1
         if w and not o:
             cnt["wide_new_hits"] += 1
             if len(ex) < 40:
@@ -220,7 +224,7 @@ while len(twins) < 3000 and guard < 200000:
         twins.append(nm)
 for label, names in (("swapped parties", swapped), ("plausible invented names", plausible), ("one unrelated letter changed", twins)):
     cnt, ex = s2_run(names)
-    res.setdefault("S2", {})[label] = {"n": cnt["n"], "old_accepts": cnt["old"], "tol_accepts": cnt["tol"], "wide_accepts": cnt["wide"], "accepted_by_wide_but_not_old": cnt["wide_new_hits"], "examples_wide_new": ex}
+    res.setdefault("S2", {})[label] = {"n": cnt["n"], "old_accepts": cnt["old"], "tol_accepts": cnt["tol"], "wide_accepts": cnt["wide"], "accepted_by_wide_but_not_old": cnt["wide_new_hits"], "wide_accepts_same_order": cnt["wide_accepts_same_order"], "wide_accepts_reversed_order": cnt["wide_accepts_reversed_order"], "examples_wide_new": ex}
 
 # ---------------- S3 library
 import glob
