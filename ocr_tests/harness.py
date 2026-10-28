@@ -6,6 +6,10 @@ referred to by an ID only (for example A01 = group A page 1; the file is A01.png
   export GEMINI_API_KEY=...      # set in the environment's secrets; never pasted in chat, never printed
   python harness.py --pages PAGES_DIR --out RUN_DIR --models gemini-4-argon,gemini-3.7-flash --runs 2 \
                     --language Assamese --budget-inr 150
+  python harness.py --pages PAGES_DIR ...   PAGES_DIR may also hold PDFs: each PDF page goes through step 2 (pdf_triage.py) first. A page with a clean
+                    text layer is NOT sent to a model: its exact text is saved to RUN_DIR/_text and logged as model "text-layer", cost 0.
+                    Any other page is rendered to RUN_DIR/_pages and read like an image. Options: --pdf-reader tesseract|vision (vision sends
+                    each PDF page to Google), --pdf-lang asm+eng, --pdf-dpi 200, --pdf-undecided image|skip, --pdf-no-match.
   python harness.py --report RUN_DIR/ledger.jsonl
   python harness.py --selftest          # wiring test with a fake caller; no network, no cost
 
@@ -14,7 +18,7 @@ ended. The run stops before a call that would take the estimated spend past --bu
 RUN_DIR/<page>/<model>/run<N>.txt; combinations already done are skipped, so a stopped run can be continued.
 Cost is an ESTIMATE from models.json; the billing account is the truth.
 """
-import argparse, base64, json, os, re, statistics, sys, tempfile, time, unicodedata, urllib.error, urllib.request
+import argparse, base64, json, os, re, shutil, statistics, sys, tempfile, time, unicodedata, urllib.error, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IMG_TYPES = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}
@@ -94,18 +98,63 @@ def spent_inr(ledger):
     return sum(r.get("cost_inr", 0) for r in ledger)
 
 
+def collect_pages(args):
+    """The pages to work on: (page id, image path, mime) to read with a model, and (page id, triage record) for PDF pages whose own text
+    layer is good (step 2, pdf_triage.py). PDF pages are named <file>_p<N>. The triage result is saved in RUN_DIR/triage so a resumed run does not repeat it."""
+    work, text_pages, seen = [], [], {}
+    for fname in sorted(os.listdir(args.pages)):
+        ext = os.path.splitext(fname)[1].lower(); stem = os.path.splitext(fname)[0]
+        path = os.path.join(args.pages, fname)
+        if ext in IMG_TYPES:
+            work.append((stem, path, IMG_TYPES[ext]))
+        elif ext == ".pdf":
+            sys.path.insert(0, HERE)
+            import pdf_triage
+            seen[stem] = seen.get(stem, 0) + 1
+            name = stem if seen[stem] == 1 else "%s_%d" % (stem, seen[stem])
+            tri_path = os.path.join(args.out, "triage", name + ".json")
+            if os.path.exists(tri_path):
+                res = json.load(open(tri_path))
+            else:
+                try:
+                    res = pdf_triage.triage(path, getattr(args, "pdf_lang", "asm+eng"), getattr(args, "pdf_dpi", 200), os.path.join(args.out, "_text"),
+                                            os.path.join(args.out, "_pages"), not getattr(args, "pdf_no_match", False), name, getattr(args, "pdf_reader", "tesseract"))
+                except RuntimeError as e:
+                    sys.exit("PDF %s: %s" % (fname, e))
+                os.makedirs(os.path.dirname(tri_path), exist_ok=True)
+                json.dump(res, open(tri_path, "w"), indent=1)
+            for p in res["per_page"]:
+                pid = "%s_p%d" % (name, p["page"])
+                print("PDF %s page %d: %s (%s)" % (fname, p["page"], p["verdict"], p["reasons"][0]), flush=True)
+                if p["verdict"] == "use_text_layer":
+                    text_pages.append((pid, p))
+                elif p["verdict"] == "person_decides" and getattr(args, "pdf_undecided", "image") == "skip":
+                    print("  skipped: a person decides (--pdf-undecided skip)")
+                elif p.get("saved_image"):
+                    work.append((pid, p["saved_image"], "image/png"))
+                else:
+                    sys.exit("PDF %s page %d could not be rendered to an image; see %s" % (fname, p["page"], tri_path))
+    return work, text_pages
+
+
 def run(args, caller=call_gemini):
     models, fx = load_models(args.models_file)
     prompt = open(args.prompt or os.path.join(HERE, "prompts", "read_translate.txt")).read().format(language=args.language)
-    pages = sorted(f for f in os.listdir(args.pages) if os.path.splitext(f)[1].lower() in IMG_TYPES)
     os.makedirs(args.out, exist_ok=True)
     ledger_path = os.path.join(args.out, "ledger.jsonl")
     ledger = read_ledger(ledger_path)
+    work, text_pages = collect_pages(args)
+    for pid, p in text_pages:              # a good text layer is the reading: no model call, no cost
+        if not any(r["page"] == pid and r["model"] == "text-layer" for r in ledger):
+            rec = {"page": pid, "model": "text-layer", "run": 1, "ok": True, "attempts": 1, "ttft": None, "total": 0.0, "finish": "n/a",
+                   "prompt_tokens": 0, "output_tokens": 0, "thinking_tokens": 0, "error": None, "time_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                   "cost_usd": 0.0, "cost_inr": 0.0, "status": "text layer", "outfile": os.path.relpath(p["saved_text"], args.out), "note": p["reasons"][0]}
+            with open(ledger_path, "a") as f:
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+            ledger.append(rec)
     calls = 0
-    for fname in pages:
-        page = os.path.splitext(fname)[0]
-        img = open(os.path.join(args.pages, fname), "rb").read()
-        mime = IMG_TYPES[os.path.splitext(fname)[1].lower()]
+    for page, img_path, mime in work:
+        img = open(img_path, "rb").read()
         for model in args.model_list:
             if model not in models:
                 sys.exit(f"{model} is not in models.json")
@@ -157,7 +206,7 @@ def report(path):
         by.setdefault(r["model"], []).append(r)
     print(f"{'model':26} calls  ok  incomplete/failed   median time   median cost (Rs)   total (Rs)")
     for m, rs in by.items():
-        good = [r for r in rs if r["status"] == "ok"]
+        good = [r for r in rs if r["status"] in ("ok", "text layer")]
         bad = len(rs) - len(good)
         t = statistics.median(r["total"] for r in good) if good else float("nan")
         c = statistics.median(r["cost_inr"] for r in good) if good else float("nan")
@@ -199,6 +248,40 @@ def selftest():
     assert len(led3) == 1 and spent_inr(led3) < 0.9, led3          # the second call would pass the budget, so it is not made
     assert os.path.exists(os.path.join(d, "out", "T01", "gemini-3.1-pro-preview", "run1.INCOMPLETE.txt"))
     assert split_output("TRANSCRIPTION\nx\nTRANSLATION\ny") == ("TRANSCRIPTION\nx\n", "y")
+    # PDFs through step 2 (invented files built here; the picture reader is replaced so the result does not depend on Tesseract)
+    sys.path.insert(0, HERE)
+    import pdf_triage
+    if all(shutil.which(t) for t in pdf_triage.TOOLS):
+        d2 = tempfile.mkdtemp(); pg = os.path.join(d2, "pages"); os.makedirs(pg)
+        lines = ["The quick brown fox jumps over the lazy dog.", "Order dated fifteen February under the heading of this code.",
+                 "Closing line of this invented test page only.", "Another plain sentence to give the page enough letters."]
+        pdf_triage._mini_pdf(os.path.join(pg, "doc.pdf"), lines)
+        have_pil = True
+        try:
+            from PIL import Image, ImageDraw
+            im = Image.new("RGB", (600, 200), "white"); ImageDraw.Draw(im).text((20, 80), "picture only", fill="black"); im.save(os.path.join(pg, "scan.pdf"))
+        except ImportError:
+            have_pil = False
+        real = pdf_triage.tesseract_read
+        pdf_triage.tesseract_read = lambda png, lang: ("\n".join(lines), None)
+        try:
+            ns3 = argparse.Namespace(pages=pg, out=os.path.join(d2, "out"), models_file=None, prompt=None, language="English", runs=1, model_list=["gemini-4-argon"],
+                                     budget_inr=None, max_calls=None, force=False, pdf_reader="tesseract", pdf_lang="eng", pdf_dpi=100, pdf_undecided="image", pdf_no_match=False)
+            led4 = run(ns3, fake)
+            rows = {(r["page"], r["model"]): r for r in led4}
+            assert rows[("doc_p1", "text-layer")]["status"] == "text layer" and rows[("doc_p1", "text-layer")]["cost_inr"] == 0, rows
+            assert ("doc_p1", "gemini-4-argon") not in rows, "a page with a good text layer must not be sent to a model"
+            assert os.path.exists(os.path.join(d2, "out", "_text", "doc_p1.txt")) and os.path.exists(os.path.join(d2, "out", "triage", "doc.json"))
+            if have_pil:
+                assert rows[("scan_p1", "gemini-4-argon")]["status"] == "ok", "a picture-only page is read by the model"
+            n = len(led4); assert len(run(ns3, fake)) == n, "a resumed run must not repeat anything"
+            ns4 = argparse.Namespace(**{**vars(ns3), "out": os.path.join(d2, "out_skip"), "pdf_no_match": True, "pdf_undecided": "skip"})
+            led6 = run(ns4, fake)
+            assert not any(r["page"] == "doc_p1" for r in led6), "with --pdf-undecided skip an undecided page is left out"
+        finally:
+            pdf_triage.tesseract_read = real
+    else:
+        print("  (poppler tools missing: PDF wiring test skipped)")
     print("selftest OK (fake caller; no network, no cost)")
 
 
@@ -208,6 +291,10 @@ if __name__ == "__main__":
     ap.add_argument("--runs", type=int, default=2); ap.add_argument("--language", default="Assamese"); ap.add_argument("--prompt")
     ap.add_argument("--models-file", dest="models_file"); ap.add_argument("--budget-inr", type=float, dest="budget_inr"); ap.add_argument("--max-calls", type=int, dest="max_calls")
     ap.add_argument("--force", action="store_true"); ap.add_argument("--report"); ap.add_argument("--selftest", action="store_true")
+    ap.add_argument("--pdf-reader", dest="pdf_reader", choices=("tesseract", "vision"), default="tesseract", help="reader for the PDF match check; vision sends each PDF page to Google")
+    ap.add_argument("--pdf-lang", dest="pdf_lang", default="asm+eng"); ap.add_argument("--pdf-dpi", dest="pdf_dpi", type=int, default=200)
+    ap.add_argument("--pdf-undecided", dest="pdf_undecided", choices=("image", "skip"), default="image", help="what to do with a PDF page where a person must decide")
+    ap.add_argument("--pdf-no-match", dest="pdf_no_match", action="store_true", help="skip the comparison of the text layer with the picture")
     a = ap.parse_args()
     if a.selftest: selftest()
     elif a.report: report(a.report)
