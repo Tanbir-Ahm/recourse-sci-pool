@@ -16,7 +16,8 @@ import csv, difflib, json, os, re, sys, unicodedata
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import checker
 
-_DATE = re.compile(r"(?<!\d)(\d{1,2})\s*[/\-.।৷|]\s*(\d{1,2})\s*[/\-.।৷|]\s*(\d{2,4})(?!\d)")
+_SEP = r"(?:\s*[/\-.।৷]\s*|\|)"        # a danda misread as a bar counts as a separator only when it touches the digits: a table cell border " | " is not one
+_DATE = re.compile(r"(?<!\d)(\d{1,2})" + _SEP + r"(\d{1,2})" + _SEP + r"(\d{2,4})(?!\d)")
 
 
 def impossible_dates(text):
@@ -269,7 +270,9 @@ def page_flags(reading, english=None, known=None, titles=None):
 def selftest():
     assert impossible_dates("TRANSCRIPTION\n1. dated 15-02-2020 and 31/4/93 and 1/8/92 and 45/1/90 and 3/13/91 and 30/2/90") == [
         ("31/4/93", "31 in a 30-day month"), ("45/1/90", "day 45"), ("3/13/91", "month 13"), ("30/2/90", "30 February")], impossible_dates("31/4/93 45/1/90 3/13/91 30/2/90")
-    assert impossible_dates("১১।৮।৯৩ and ৯৷৮৷৯৩") == []                                  # Assamese dates with the danda are read
+    assert impossible_dates("১১।৮।৯৩ and ৯৷৮৷৯৩") == []
+    assert impossible_dates("১১ | ১৮-০৭-২০২৪ | ৫০,০০০/-") == [] and impossible_dates("12 | 18-07-2024 | 50,000") == []          # a table row is not a date (the 50-number test, 10y)
+    assert impossible_dates("45|1|90") == [("45|1|90", "day 45")]                                  # Assamese dates with the danda are read
     assert impossible_dates("১১।১৫।৯৩") == [("11।15।93", "month 15")]
     assert numbering_gaps("TRANSCRIPTION\n(১) a\n(২) b\n(৩) c") == []
     assert numbering_gaps("TRANSCRIPTION\n(1) a\n(2) b\n(4) c") == ["skips from 2 to 4"]
