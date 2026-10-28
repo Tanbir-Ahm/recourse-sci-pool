@@ -1,6 +1,6 @@
 """Step 2 of the pipeline (plan section 11): decide, page by page, whether a PDF's own text can be used or the page must be read as a picture.
 
-  python pdf_triage.py FILE.pdf [FILE2.pdf ...] [--lang asm+eng] [--dpi 200] [--text-out DIR] [--render-out DIR] [--no-match] > triage.json
+  python pdf_triage.py FILE.pdf [FILE2.pdf ...] [--lang asm+eng] [--dpi 200] [--reader tesseract|vision] [--text-out DIR] [--render-out DIR] [--no-match] > triage.json
   python pdf_triage.py --selftest
 
 Per page the verdict is one of:
@@ -9,13 +9,16 @@ Per page the verdict is one of:
   person_decides   the evidence is mixed or could not be gathered: a person looks.
 The match with the picture is made on BASE LETTERS ONLY (vowel signs ignored), because a PDF drawn without proper Assamese shaping
 shows vowel signs in the wrong places while its text is fine (the first group C file: 98% of base letters agree, 66% of words do).
-The picture is read with Tesseract, a weak reader, so the match is a rough test on typed text, not on handwriting. Cut-offs are a first guess
-from two files; tune them on the other group C files.
-Needs the poppler tools (pdfinfo, pdftotext, pdffonts, pdfimages, pdftoppm). Tesseract is optional (without it the verdict falls back to person_decides).
+The picture is read with one of two readers (--reader):
+  tesseract (default)  free and local: nothing leaves this machine. Weak: 83.3% on the one good file, only 3 points above the 80% cut-off.
+  vision               Google Cloud Vision: much better on clean typed pages (about 98% on the same file) but EACH PAGE IS SENT TO GOOGLE.
+                       Needs GOOGLE_CLOUD_API_KEY in the environment (never printed). Use it only where the owner has allowed cloud processing.
+Either way the match is a rough test on typed text, not on handwriting. Cut-offs are a first guess from two files; tune them on more files.
+Needs the poppler tools (pdfinfo, pdftotext, pdffonts, pdfimages, pdftoppm). The reader is optional (without it the verdict falls back to person_decides).
 The JSON holds counts and verdicts only, never page text. --text-out and --render-out write page text and page images: those are CASE DATA, keep them outside the repository.
 The selftest uses invented text and files it builds itself.
 """
-import argparse, difflib, json, os, re, shutil, subprocess, sys, tempfile, unicodedata
+import argparse, base64, difflib, json, os, re, shutil, subprocess, sys, tempfile, time, unicodedata, urllib.error, urllib.request
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import checker
 
@@ -23,6 +26,7 @@ MIN_LETTERS = 20      # fewer letters than this on a page: no usable text layer
 MATCH_OK = 80.0       # base-letter agreement (percent) with the picture at or above which the text layer is trusted
 MATCH_BAD = 60.0      # below this the text layer is taken not to be what the page shows
 TOOLS = ("pdfinfo", "pdftotext", "pdffonts", "pdfimages", "pdftoppm")
+VISION_LANG = {"asm": "as", "eng": "en", "hin": "hi", "kan": "kn", "ben": "bn", "mar": "mr", "tam": "ta", "tel": "te", "mal": "ml", "guj": "gu", "pan": "pa", "ori": "or"}
 
 
 def run(cmd, timeout=180):
@@ -119,6 +123,34 @@ def tesseract_read(png, lang):
     return (out, None) if rc == 0 else (None, "Tesseract failed: %s" % err.strip()[:120])
 
 
+def vision_read(png, lang):
+    """Read a page image with Google Cloud Vision. The key comes from the environment and is never printed or put in the URL."""
+    key = os.environ.get("GOOGLE_CLOUD_API_KEY")
+    if not key:
+        return None, "GOOGLE_CLOUD_API_KEY is not set"
+    hints = [VISION_LANG[l] for l in lang.split("+") if l in VISION_LANG]
+    body = {"requests": [{"image": {"content": base64.b64encode(open(png, "rb").read()).decode()},
+                          "features": [{"type": "DOCUMENT_TEXT_DETECTION"}], "imageContext": {"languageHints": hints}}]}
+    req = urllib.request.Request("https://vision.googleapis.com/v1/images:annotate", json.dumps(body).encode(),
+                                 {"Content-Type": "application/json", "X-Goog-Api-Key": key})
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                resp = json.load(r)["responses"][0]
+            if "error" in resp:
+                return None, "Cloud Vision error: %s" % str(resp["error"].get("message", ""))[:100]
+            return resp.get("fullTextAnnotation", {}).get("text", ""), None
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 500, 503) and attempt < 2:
+                time.sleep(3 * (attempt + 1)); continue
+            return None, "Cloud Vision failed: HTTP %d" % e.code
+        except Exception as e:
+            if attempt < 2:
+                time.sleep(3); continue
+            return None, "Cloud Vision failed: %s" % type(e).__name__
+    return None, "Cloud Vision failed"
+
+
 def decide(n_letters, n_images, signs, match):
     """The verdict for one page and the reasons, in plain words."""
     if n_letters < MIN_LETTERS:
@@ -137,7 +169,7 @@ def decide(n_letters, n_images, signs, match):
     return "person_decides", ["the text layer agrees with the picture on %.1f%% of base letters: between %.0f%% and %.0f%%" % (match, MATCH_BAD, MATCH_OK)]
 
 
-def triage(pdf, lang="asm+eng", dpi=200, text_out=None, render_out=None, match=True, stem=None):
+def triage(pdf, lang="asm+eng", dpi=200, text_out=None, render_out=None, match=True, stem=None, reader="tesseract"):
     missing = [t for t in TOOLS if not shutil.which(t)]
     if missing:
         raise RuntimeError("missing tools: %s (install poppler-utils)" % ", ".join(missing))
@@ -156,11 +188,11 @@ def triage(pdf, lang="asm+eng", dpi=200, text_out=None, render_out=None, match=T
                 if not png:
                     notes.append("page %d: could not render (%s)" % (n, err.strip()[:80]))
             if match and png and n_letters >= MIN_LETTERS:
-                reading, why = tesseract_read(png, lang)
+                reading, why = (vision_read if reader == "vision" else tesseract_read)(png, lang)
                 if reading is None:
                     how = why
                 else:
-                    m = similarity(skeleton(text), skeleton(reading)); how = "Tesseract (%s)" % lang
+                    m = similarity(skeleton(text), skeleton(reading)); how = ("Cloud Vision (%s)" if reader == "vision" else "Tesseract (%s)") % lang
             elif match and n_letters >= MIN_LETTERS:
                 how = "no rendered page to read"
             verdict, reasons = decide(n_letters, len(imgs), signs, m)
@@ -220,6 +252,14 @@ def selftest():
     assert decide(100, 0, {"a": 1}, 85.0)[0] == "use_text_layer"
     assert decide(100, 0, {}, 70.0)[0] == "person_decides"
     assert decide(100, 0, {}, 40.0)[0] == "treat_as_image"
+    # the Vision reader: no key means a clear message and no network call
+    saved = os.environ.pop("GOOGLE_CLOUD_API_KEY", None)
+    try:
+        assert vision_read("/nonexistent.png", "asm+eng") == (None, "GOOGLE_CLOUD_API_KEY is not set")
+    finally:
+        if saved is not None:
+            os.environ["GOOGLE_CLOUD_API_KEY"] = saved
+    assert VISION_LANG["asm"] == "as" and VISION_LANG["eng"] == "en"
     # real files, built here
     with tempfile.TemporaryDirectory() as td:
         if all(shutil.which(t) for t in TOOLS):
@@ -254,6 +294,7 @@ def main(argv):
     ap = argparse.ArgumentParser(description="Decide per page whether a PDF's text layer can be used.")
     ap.add_argument("pdfs", nargs="*"); ap.add_argument("--lang", default="asm+eng", help="Tesseract languages for the match check")
     ap.add_argument("--dpi", type=int, default=200); ap.add_argument("--text-out"); ap.add_argument("--render-out")
+    ap.add_argument("--reader", choices=("tesseract", "vision"), default="tesseract", help="vision sends every page to Google")
     ap.add_argument("--no-match", action="store_true", help="skip the comparison with the picture"); ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args(argv)
     if a.selftest:
@@ -264,7 +305,7 @@ def main(argv):
     for p in a.pdfs:                                   # two files with the same name must not overwrite each other's saved pages
         st = os.path.splitext(os.path.basename(p))[0]; seen[st] = seen.get(st, 0) + 1
         stems.append(st if seen[st] == 1 else "%s_%d" % (st, seen[st]))
-    res = [triage(p, a.lang, a.dpi, a.text_out, a.render_out, not a.no_match, st) for p, st in zip(a.pdfs, stems)]
+    res = [triage(p, a.lang, a.dpi, a.text_out, a.render_out, not a.no_match, st, a.reader) for p, st in zip(a.pdfs, stems)]
     print(json.dumps(res if len(res) > 1 else res[0], ensure_ascii=False, indent=1))
 
 
