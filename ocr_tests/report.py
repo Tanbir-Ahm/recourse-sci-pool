@@ -60,6 +60,9 @@ def build(pid, check, readings, image_path=None, language="", cost_inr=None):
     if check.get("english_wobble"):
         h.append("<h3>English sentences that changed between the readings</h3><table><tr><th>First</th><th>Second</th></tr>%s</table>" % "".join(
             "<tr><td>%s</td><td>%s</td></tr>" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")) for w in check["english_wobble"]))
+    if check.get("english_term_differences"):
+        h.append("<h3>Names and numbers that one English draft has and the other lacks</h3><table><tr><th>Kind</th><th>View 1 only</th><th>View 2 only</th></tr>%s</table>" % "".join(
+            "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" % (esc(t["kind"]), esc(", ".join(t["only_in_view_1"])), esc(", ".join(t["only_in_view_2"]))) for t in check["english_term_differences"]))
     if check.get("redundancy_flags"):
         h.append("<h2>Page checks that need no model</h2><ul>%s</ul>" % "".join("<li>%s</li>" % esc(f) for f in check["redundancy_flags"]))
     items = check.get("must_check", [])

@@ -153,13 +153,18 @@ def agreement(text_a, text_b):
             "share": round(min(len(a), len(b)) / max(len(a), len(b)), 2)}
 
 
+_ABBREV = re.compile(r"\b(?:vs|v|no|nos|sec|secs|art|arts|dr|mr|mrs|ms|smt|shri|sri|crl|cri|i\.e|e\.g|etc|viz|cf|ors|anr|pp|para|paras|ltd|st|rs)\.|\b(?:[A-Za-z]\.){2,}|\b[A-Z]\.(?=\s*[A-Z\[(])", re.I)
+
+
 def english_sentences(text):
-    """The English part of a harness output as sentences (the harness uses the LAST TRANSLATION heading)."""
+    """The English part of a harness output as sentences (the harness uses the LAST TRANSLATION heading). A full stop after an abbreviation
+    (vs., No., S.C.C., an initial like S. N.) does not end a sentence, so two drafts that differ only in how they break such a line still match."""
     i = text.rfind("TRANSLATION")
     if i < 0:
         return []
     tail = re.sub(r"\s+", " ", text[i + len("TRANSLATION"):].lstrip("*:# \n-")).strip()
-    return [s for s in re.split(r"(?<=[.?!])\s+", tail) if s]
+    tail = _ABBREV.sub(lambda m: m.group(0).replace(".", "\u2024"), tail)
+    return [x.replace("\u2024", ".") for x in re.split(r"(?<=[.?!])\s+", tail) if x]
 
 
 def english_wobble(text_a, text_b):
@@ -176,6 +181,28 @@ def english_wobble(text_a, text_b):
             r = difflib.SequenceMatcher(None, (a or "").lower(), (b or "").lower()).ratio() if a and b else 0.0
             if r < ENGLISH_WOBBLE:
                 out.append({"run1": a, "run2": b, "similarity": round(r, 2)})
+    return out
+
+
+_TERM = re.compile(r"\b[A-Z][A-Za-z.'\-]*(?:\s+(?:(?i:of|and|the|for|in)\s+)?[A-Z][A-Za-z.'\-]*)+")
+
+
+def english_terms(text):
+    """Named things in an English draft: runs of capitalised words (court, party and statute names, titles) and numbers of two or more digits, lower-cased."""
+    i = text.rfind("TRANSLATION")
+    t = re.sub(r"\s+", " ", text[i + len("TRANSLATION"):] if i >= 0 else text)
+    names = {re.sub(r"[.\s]+", " ", m.group(0)).strip().lower() for m in _TERM.finditer(t)}
+    nums = {re.sub(r"[,.]$", "", n).lower() for n in re.findall(r"\d[\d,./]*[A-Za-z]?", t) if len(re.sub(r"\D", "", n)) >= 2}
+    return names, nums
+
+
+def english_term_differences(text_a, text_b):
+    """Names and numbers that one English draft has and the other lacks. Catches 'Union of India' against 'Union Government of India', which a
+    sentence-by-sentence comparison can miss because the rest of the sentence is the same. Noisy by nature: a list to look at."""
+    na, da = english_terms(text_a); nb, db = english_terms(text_b)
+    out = [{"kind": "name", "only_in_view_1": sorted(na - nb), "only_in_view_2": sorted(nb - na)}] if (na - nb or nb - na) else []
+    if da - db or db - da:
+        out.append({"kind": "number", "only_in_view_1": sorted(da - db), "only_in_view_2": sorted(db - da)})
     return out
 
 
@@ -253,6 +280,11 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
         out["english_wobble"] = wob
         if wob:
             amber.append("%d English sentence(s) changed between the two views" % len(wob))
+        terms = english_term_differences(run1, run2)
+        out["english_term_differences"] = terms
+        for t in terms:
+            amber.append("English %ss that differ between the views: %s" % (t["kind"], "; ".join(
+                ["view 1 only: " + ", ".join(t["only_in_view_1"][:6])] * bool(t["only_in_view_1"]) + ["view 2 only: " + ", ".join(t["only_in_view_2"][:6])] * bool(t["only_in_view_2"]))))
         marks = doubtful_marks(run1) + doubtful_marks(run2)
         if marks:
             amber.append("the reader marked %d doubtful word(s) as [unclear] or (?)" % marks)
@@ -276,7 +308,9 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
     light = "red" if red else "amber" if amber else "green"
     out["light"] = light
     out["reasons_red"], out["reasons_amber"], out["notes"] = red, amber, notes
-    out["needs_third_view"] = light != "green" or any(i["status"] == "DISAGREE" for i in items)
+    # a third image view can only settle a difference in what the page says; it cannot settle a difference in English wording
+    agr_pct = (out.get("agreement_view1_vs_view2") or {}).get("percent")
+    out["needs_third_view"] = bool(run1 and run2) and (any(i["status"] == "DISAGREE" for i in items) or (agr_pct is not None and agr_pct < GREEN_AGREE))
     n_check = sum(1 for i in items if i["status"] in ("CONFIRM", "DISAGREE"))
     out["person_task"] = {
         "green": "Tick the must-check list (%d item(s)) against the page image. Nothing was flagged. Green means spot-check, not correct." % n_check,
@@ -342,6 +376,16 @@ def selftest():
     assert any(t == "name" and a == "Ramesh Kumar" for t, a in conf), conf              # agreement still goes on the list to confirm
     assert r["summary"]["lines_A"] == 4 and r["summary"]["lines_B"] == 3 and any(d["B"] is None for d in r["line_diffs"])   # the dropped last line
     assert norm("২০২৫ ৰ") == norm("2025 র"), "Assamese digits and ra must match their ASCII and Bengali forms"
+    # a full stop after an abbreviation or an initial does not end a sentence
+    assert english_sentences("TRANSLATION\nIn Maru Ram vs. Union of India [1981 (1) S.C.C. 106], it was held. Bench: S. N. Phukan. Next one.") == [
+        "In Maru Ram vs. Union of India [1981 (1) S.C.C. 106], it was held.", "Bench: S. N. Phukan.", "Next one."], english_sentences("TRANSLATION\nIn Maru Ram vs. Union of India [1981 (1) S.C.C. 106], it was held. Bench: S. N. Phukan. Next one.")
+    assert english_wobble("TRANSLATION\nSee Maru Ram vs. Union of India. Next one.", "TRANSLATION\nSee Maru Ram vs.\nUnion of India. Next one.") == []
+    # names the two English drafts spell differently, although the sentence is nearly the same
+    ta = "TRANSLATION\nIn Maru Ram vs Union Government of India [1981 (1) SCC 106] it was held."; tb = "TRANSLATION\nIn Maru Ram vs. Union of India [1981 (1) S.C.C. 106] it was held."
+    d = english_term_differences(ta, tb)
+    assert d and "union government of india" in d[0]["only_in_view_1"] and "union of india" in d[0]["only_in_view_2"], d
+    assert english_term_differences(ta, ta) == [] and english_term_differences("TRANSLATION\nThe first line is here.", "TRANSLATION\nThe first line is here.") == []
+    assert english_term_differences("TRANSLATION\nSection 433A applies.", "TRANSLATION\nSection 433B applies.")[0]["kind"] == "number"
     # page check, invented text: two identical views of a typed page are green; a handwritten page never is
     R = "TRANSCRIPTION\n1. aaaa bbbb cccc dddd eeee ffff gggg hhhh\nTRANSLATION\nThe first line is here. The second line follows."
     assert agreement(R, R)["percent"] == 100.0
