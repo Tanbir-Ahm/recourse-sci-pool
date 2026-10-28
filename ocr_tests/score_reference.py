@@ -21,7 +21,7 @@ _WORDS = lambda s: re.sub(r"[^a-z0-9 ]", " ", s.lower()).split()
 
 
 def numbers(text):
-    return sorted({re.sub(r"[.,]$", "", n) for n in re.findall(r"\b\d[\d,./]*[A-Za-z]?\b", text) if len(re.sub(r"\D", "", n)) >= 2})
+    return sorted({re.sub(r"[.,]$", "", n) for n in re.findall(r"\b\d[\d,./]*(?:[A-Z](?![A-Za-z]))?", text) if len(re.sub(r"\D", "", n)) >= 2})
 
 
 def closeness(ref_sentences, draft_sentences):

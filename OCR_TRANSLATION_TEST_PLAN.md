@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10r record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10s record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -670,6 +670,25 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 **Findings.** (1) **The choice between the two drafts rarely matters**: 23 of 32 sentences are equally close; it matters at the few places where names or legal designations differ, which supports choosing sentence by sentence only where the drafts differ and checking names against a glossary or the official text. (2) **Agreement of the readers was faithfulness, not correctness**: three reads agreed on two numbers that were wrong in the source. A reader cannot know; only the official text, the law or a person who knows it can. (3) **Silent errors by the plan's measure**: counting the two source-faithful numbers and the silent name replacement, this one document already has 3 silent critical differences in 4 pages of text (2 of them misprints in the source), against the plan's allowance of 1 per group; whether a faithful copy of a printed misprint is an "error" is a decision for the owner. (4) **A page break in mid-sentence is an undetected failure** of the page-by-page design. (5) **The official text, when it exists, is the best checker**: it found the three things above in minutes; most real records will not have one.
 
 **What this changes in the plan.** Nothing is built from it yet. Candidates, in order: a check that flags a page that ends or begins in the middle of a sentence (or reads pages together); an instruction to keep a printed name exactly as printed and mark it, with a test on this document; a glossary of established legal designations; the sentence-by-sentence choice process with its log (on hold at the owner's request); and keeping the official English text as the reference whenever one exists.
+
+### 10s. The first Kannada file: a nine-page PDF (recorded 2026-10-28; counts only, no names, places, case numbers or text)
+
+**What was tested.** A nine-page PDF supplied by the owner: a Kannada translation of an old published civil judgment (a limitation-law case), printed to PDF from a browser, typed, Kannada script, no pictures. It reached the tool under a `.php` name (a download link serving a PDF). Public record; no minor and no victim of a sexual offence, so it passed the gate. Run with `pipeline.py --language Kannada --page-type typed --pdf-lang kan+eng`, Rs 40 cap. No reference text yet; the owner will supply the official English text.
+
+**Problems found before reading anything.** (1) The tool recognised files by name, so the `.php` file was silently ignored (0 pages found); it now recognises PDFs and images by their first bytes and says when it skips a file (commit 1f03562). (2) The PDF's own text layer is junk on pages 1 to 8 (scattered Kannada fragments; the font has no Unicode map): triage fired its signs of a broken encoding (two signs on seven pages, one on page 3) and the comparison with the rendered page agreed on only 26.1% to 32.0% of base letters, so all eight pages were read as images; page 9 (a signature line, one letter extracted, no picture) was "a person decides" and read as an image by default.
+
+**Reads.** 18 reads (2 views x 9 pages) and 1 third view (page 8), **Rs 18.29 logged**; time per read 9 to 22 s (one 107 s). Two whole-document translations (below) cost Rs 5.73 more.
+
+| Measure | Result |
+|---|---|
+| Views agree on letters | 99.6% to 100% on all 9 pages |
+| Lights | 8 amber, 1 green (page 4); every amber page was amber only because of English differences |
+| Must-check items (numbers, sections, dates) | 37 across the 9 pages, none differing between the views once a separator ("-000-") stopped being counted as a number |
+| Pages that end in the middle of a sentence | 6 of 8 page breaks (pages 1 to 2, 2 to 3, 3 to 4, 4 to 5, 6 to 7, 7 to 8) |
+
+**Findings.** (1) **Argon reads typed Kannada as steadily as typed Assamese**: both views agree to 99.6% or better on every page. This does not show the reading is right; no Kannada reader has marked it. (2) **Page-by-page translation is the wrong unit for this document**: six page breaks cut a sentence, so every English page draft has a broken sentence at each end. The nine Kannada readings were therefore stitched into one text and translated twice, blind, in one piece each (A and B). (3) **Kannada writes English names and titles in Kannada letters, so their English spelling is a guess**: A follows the Kannada letters (a literal back-transliteration of the parties' and judges' names); B gives what look like the established English spellings, probably from the model's memory of the case. 20 of about 50 sentences differ between A and B, nearly all names, date styles and wording. The official English text will show which spellings are right; whichever is closer, names need a glossary or the official text. (4) **Two checker fixes from this file**: a separator such as "-000-" is no longer a value to confirm, and an ordinal ("20th") is no longer a different number from "20".
+
+**Not yet done.** Scoring A, B and the per-page drafts against the official English text, when the owner supplies it.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 

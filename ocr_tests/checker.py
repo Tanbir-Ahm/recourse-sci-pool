@@ -69,7 +69,8 @@ def extract_items(lines):
             if not re.match(HONOR + r"\b", m.group(0)):        # "Shri Ramesh Kumar" is already caught after its honorific
                 add("name", m)
         for m in re.finditer(r"\d+(?:[.,]\d+)*(?:-\d+(?:[.,]\d+)*)*", s):
-            if len(re.sub(r"\D", "", m.group(0))) >= 2 and not any(a <= m.start() < b for a, b in used):
+            digits = re.sub(r"\D", "", m.group(0))
+            if len(digits) >= 2 and set(digits) != {"0"} and not any(a <= m.start() < b for a, b in used):          # "-000-" is a separator, not a value
                 add("number", m)
     return items
 
@@ -192,7 +193,7 @@ def english_terms(text):
     i = text.rfind("TRANSLATION")
     t = re.sub(r"\s+", " ", text[i + len("TRANSLATION"):] if i >= 0 else text)
     names = {re.sub(r"[.\s]+", " ", m.group(0)).strip().lower() for m in _TERM.finditer(t)}
-    nums = {re.sub(r"[,.]$", "", n).lower() for n in re.findall(r"\d[\d,./]*[A-Za-z]?", t) if len(re.sub(r"\D", "", n)) >= 2}
+    nums = {re.sub(r"[,.]$", "", n).lower() for n in re.findall(r"\d[\d,./]*(?:[A-Z](?![A-Za-z]))?", t) if len(re.sub(r"\D", "", n)) >= 2}
     return names, nums
 
 
@@ -384,6 +385,8 @@ def selftest():
     ta = "TRANSLATION\nIn Maru Ram vs Union Government of India [1981 (1) SCC 106] it was held."; tb = "TRANSLATION\nIn Maru Ram vs. Union of India [1981 (1) S.C.C. 106] it was held."
     d = english_term_differences(ta, tb)
     assert d and "union government of india" in d[0]["only_in_view_1"] and "union of india" in d[0]["only_in_view_2"], d
+    assert english_term_differences("TRANSLATION\nOn the 20th and 21st of May.", "TRANSLATION\nOn 20 and 21 May.") == [], "ordinals are not different numbers"
+    assert extract_items(["a line -000- and 00 and 150"])[0]["value"] == "150", "zero-only numbers are separators"
     assert english_term_differences(ta, ta) == [] and english_term_differences("TRANSLATION\nThe first line is here.", "TRANSLATION\nThe first line is here.") == []
     assert english_term_differences("TRANSLATION\nSection 433A applies.", "TRANSLATION\nSection 433B applies.")[0]["kind"] == "number"
     # page check, invented text: two identical views of a typed page are green; a handwritten page never is
