@@ -70,6 +70,7 @@ export GEMINI_API_KEY=...             # already in the environment's secrets; ne
 python ocr_tests/pipeline.py --input /path/to/pages --out /path/to/run --language Assamese --page-type typed --budget-inr 40 --pdf
 ```
 
+- Files are recognised by their **content**, not their name: a PDF saved as `.php` (a download link that serves a PDF) is read as a PDF; anything that is not a PDF or a PNG, JPEG or WebP image is skipped with a message (before 2026-10-28 such a file was silently ignored).
 - `--page-type typed` or `handwritten` is required (a handwritten page is never green). For a mix, give `--types types.json` with `{"page id": "handwritten"}`; PDF pages are named `<file>_p<N>`.
 - Before spending anything: `python ocr_tests/pipeline.py --selftest` (fake callers, no cost), and `python ocr_tests/checker.py --selftest`, `redundancy.py --selftest`, `report.py --selftest`, `pdf_triage.py --selftest`, `harness.py --selftest`.
 - Cost: about Rs 1 to 1.5 per read logged (2 reads per page, 3 where flagged; a text-layer PDF page costs two small text calls, under Rs 1). The real bill has run 1.5 to 2 times the logged figure; keep `--budget-inr` and check the AI Studio balance first. A stopped run is resumed by repeating the command.

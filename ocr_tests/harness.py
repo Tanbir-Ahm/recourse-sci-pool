@@ -135,16 +135,40 @@ def log_call(out, ledger, page, model, run_no, res, models, fx):
     return rec
 
 
+def sniff(path):
+    """What a file really is, from its first bytes, whatever its name says: 'pdf', an image MIME type, or None. A PDF saved with a .php, .aspx or no extension
+    (a download link that serves a PDF) is still a PDF."""
+    try:
+        with open(path, "rb") as f:
+            head = f.read(16)
+    except OSError:
+        return None
+    if head.startswith(b"%PDF"):
+        return "pdf"
+    if head.startswith(b"\x89PNG"):
+        return "image/png"
+    if head.startswith(b"\xff\xd8\xff"):
+        return "image/jpeg"
+    if head[:4] == b"RIFF" and head[8:12] == b"WEBP":
+        return "image/webp"
+    return None
+
+
 def collect_pages(args):
     """The pages to work on: (page id, image path, mime) to read with a model, and (page id, triage record) for PDF pages whose own text
     layer is good (step 2, pdf_triage.py). PDF pages are named <file>_p<N>. The triage result is saved in RUN_DIR/triage so a resumed run does not repeat it."""
     work, text_pages, seen = [], [], {}
     for fname in sorted(os.listdir(args.pages)):
-        ext = os.path.splitext(fname)[1].lower(); stem = os.path.splitext(fname)[0]
+        stem = os.path.splitext(fname)[0]
         path = os.path.join(args.pages, fname)
-        if ext in IMG_TYPES:
-            work.append((stem, path, IMG_TYPES[ext]))
-        elif ext == ".pdf":
+        kind = sniff(path) if os.path.isfile(path) else None
+        if kind is None:
+            if os.path.isfile(path):
+                print("SKIPPED %s: not a PDF or a PNG, JPEG or WebP image (checked by content, not by name)" % fname, flush=True)
+            continue
+        if kind != "pdf":
+            work.append((stem, path, kind))
+        else:
             sys.path.insert(0, HERE)
             import pdf_triage
             seen[stem] = seen.get(stem, 0) + 1
@@ -280,6 +304,8 @@ def selftest():
             im = Image.new("RGB", (600, 200), "white"); ImageDraw.Draw(im).text((20, 80), "picture only", fill="black"); im.save(os.path.join(pg, "scan.pdf"))
         except ImportError:
             have_pil = False
+        shutil.copyfile(os.path.join(pg, "doc.pdf"), os.path.join(pg, "disguised.php"))          # a PDF served under another name
+        open(os.path.join(pg, "notes.txt"), "w").write("not a page")
         real = pdf_triage.tesseract_read
         pdf_triage.tesseract_read = lambda png, lang: ("\n".join(lines), None)
         try:
@@ -289,6 +315,8 @@ def selftest():
             rows = {(r["page"], r["model"]): r for r in led4}
             assert rows[("doc_p1", "text-layer")]["status"] == "text layer" and rows[("doc_p1", "text-layer")]["cost_inr"] == 0, rows
             assert ("doc_p1", "gemini-4-argon") not in rows, "a page with a good text layer must not be sent to a model"
+            assert rows[("disguised_p1", "text-layer")]["status"] == "text layer", "a PDF is recognised by its content, not its file name"
+            assert not any(r["page"].startswith("notes") for r in led4), "a file that is neither a PDF nor an image is skipped"
             assert os.path.exists(os.path.join(d2, "out", "_text", "doc_p1.txt")) and os.path.exists(os.path.join(d2, "out", "triage", "doc.json"))
             if have_pil:
                 assert rows[("scan_p1", "gemini-4-argon")]["status"] == "ok", "a picture-only page is read by the model"

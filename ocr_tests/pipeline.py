@@ -37,7 +37,7 @@ def make_views(work, out):
     vd = os.path.join(out, "_views"); os.makedirs(vd, exist_ok=True)
     files = {}
     for pid, path, mime in work:
-        ext = os.path.splitext(path)[1].lower() or ".png"
+        ext = {"image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp"}.get(mime, ".png")          # from the content, not the file name
         v1 = os.path.join(vd, pid + "__view1" + ext); shutil.copyfile(path, v1)
         im = Image.open(path).convert("RGB")
         px, py = int(im.width * PAD), int(im.height * PAD)
@@ -117,7 +117,7 @@ def run_pipeline(args, caller=None, text_caller=None):
         if flagged and args.third_view != "off":               # view 3 only where the first two views leave something to settle
             v3 = os.path.join(out, "_views3"); os.makedirs(v3, exist_ok=True)
             for pid in flagged:
-                src = files[pid]["original"]; shutil.copyfile(src, os.path.join(v3, pid + "__view3" + (os.path.splitext(src)[1].lower() or ".png")))
+                src = files[pid]["original"]; shutil.copyfile(src, os.path.join(v3, pid + "__view3" + os.path.splitext(files[pid]["view1"])[1]))
             read_pages(out, v3, args, caller, media="ultra_high")
             ledger = harness.read_ledger(ledger_path)
             for pid in flagged:
