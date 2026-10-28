@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10s record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10t record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -688,7 +688,38 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 
 **Findings.** (1) **Argon reads typed Kannada as steadily as typed Assamese**: both views agree to 99.6% or better on every page. This does not show the reading is right; no Kannada reader has marked it. (2) **Page-by-page translation is the wrong unit for this document**: six page breaks cut a sentence, so every English page draft has a broken sentence at each end. The nine Kannada readings were therefore stitched into one text and translated twice, blind, in one piece each (A and B). (3) **Kannada writes English names and titles in Kannada letters, so their English spelling is a guess**: A follows the Kannada letters (a literal back-transliteration of the parties' and judges' names); B gives what look like the established English spellings, probably from the model's memory of the case. 20 of about 50 sentences differ between A and B, nearly all names, date styles and wording. The official English text will show which spellings are right; whichever is closer, names need a glossary or the official text. (4) **Two checker fixes from this file**: a separator such as "-000-" is no longer a value to confirm, and an ordinal ("20th") is no longer a different number from "20".
 
-**Not yet done.** Scoring A, B and the per-page drafts against the official English text, when the owner supplies it.
+**Not yet done.** (Done in 10t.) Scoring A, B and the per-page drafts against the official English text, when the owner supplies it.
+
+### 10t. The Kannada file scored against the official English (recorded 2026-10-28; counts only, no names, places, case numbers or text)
+
+**What was tested.** The four English versions of 10s (per-page drafts from view 1, per-page drafts from view 2, stitched translation A, stitched translation B) against the official English text of the same judgment, supplied by the owner as a five-page scan of the law report (a PDF under a `.php` name; its own text layer is OCR with many faults, so it was cleaned by hand against the page images; the cleaned text and all outputs stay outside the repository). The judgment is a published apex-court report from 1950, so it is probably in the models' training data (see the confound below).
+
+**Scores** (`score_reference.py`; closeness is word-by-word likeness, so it measures phrasing, not meaning):
+
+| Version | Mean closeness, whole text (54 sentences) | Mean closeness, judgment body only (29 sentences) | Body sentences with no close match |
+|---|---|---|---|
+| Per-page, view 1 | 0.683 | 0.771 | 5 |
+| Per-page, view 2 | 0.689 | 0.774 | 6 |
+| Stitched A (first translation) | 0.703 | 0.821 | 1 |
+| Stitched B (second translation) | 0.760 | 0.892 | 1 |
+
+**Counts of real differences, found by reading.**
+
+| Check | Per-page v1 / v2 | Stitched A | Stitched B |
+|---|---|---|---|
+| Garbled sentence at a page break (of 8 breaks, 6 mid-sentence) | 2 / 2 (word order scrambled, one with a stray "[against]"); 1 more awkward join each | 0 | 0 |
+| "appellant" turned into "appellants" (official: singular, 7 times) | 6 / 6 | 0 | 0 |
+| Numbers of two digits or more that differ from the official | 0 / 0 | 0 | 0 |
+| Dates (16 in the official) | 15 of 16 / 15 of 16 | 15 of 16 | 15 of 16 |
+| Clause, rule, article, section references that differ | 1 / 1 | 1 | 1 (shown as "[2]") |
+| Names (8 that carry a spelling choice: 2 party names, 5 bench names, 1 agent) written differently from the official | 1 / 1 (the agent's name; the other 7 match) | 8 of 8 | 1 (the same agent's name; the other 7 match) |
+| Nonsense word inserted by the translator | 0 / 0 | 0 | 1 ("but" became a stray noun) |
+
+**Findings.** (1) **Stitching beats page-by-page**: no garbled seam and no singular/plural drift in either stitched version, against two garbled seams and six wrong plurals in each per-page version. The likely cause (not tested) is that a page that starts mid-sentence gives the model no context to choose singular or plural; a stitched text does. (2) **Every number of two digits or more, and 15 of 16 dates, matched the official in all four versions.** The one missing date (a dismissal date) is missing in the Kannada text itself, so no reader could have produced it: a translation of a translation can lose a fact before our tool sees the page. (3) **One legal reference is wrong in all four versions** (a clause number in the headnote: the printed Kannada says 3, the official says 2). It is a printed error in the source, copied faithfully by every reading; only B marked it, with a bracket the model added by itself ("3 [2]"; likewise "Order II [IX]" for a reference the official itself prints as "II"). The model's bracket was right both times, but it is not a rule we set, so it cannot be relied on. The first score tool ignored one-digit numbers and would have missed this; `score_reference.py` now also counts clause, rule, article, section and order references. (4) **Names: three of the four versions matched the official on 7 of 8 name spellings; stitched A matched on none.** The Kannada text writes English names in Kannada letters, so the English spelling is a guess; A guessed sound by sound, the other three used the established spellings. The same instruction, run twice on the same text, gave both behaviours, so no single run can be trusted on names. **Confound:** this is a famous reported judgment, so the established spellings (and some of B's legal wording; its closeness of 0.892 is high) may come from the model's memory; on a trial-court or police document the model has never seen, there is nothing to remember, and a name it "knows" may be a different person's. Run-to-run variation, not a property of B, probably explains the gap between A and B. (5) **B has the nonsense word, A does not**: stitched translations are not clean either; a person must read the whole thing. (6) **Three wording shifts are in all four versions** ("judgment" where the official says "decree", twice; "order" where it says "decision"): they come from the Kannada text, not from the readers or the translator.
+
+**What this changes.** Stitching readings into one text before translating is adopted as the unit of translation for typed, multi-page documents (not yet inside `pipeline.py`: it is done by a scratch script). Names and legal references must be checked against the source by a person, never by agreement between two translations. Two translations still catch what one misses (B caught two source misprints, A caught none), and the capitalised-name difference check between two translations would have flagged all 8 names where A and B disagree: a spelling difference between two translations of one text is a usable alarm, agreement is not proof.
+
+**Limits.** One document, one language, a 1950 published judgment; the reference was an OCR'd scan cleaned by one person (the headnote partly reconstructed from the page image); the owner has not marked the Kannada pages; the closeness score is a rough guide only.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
