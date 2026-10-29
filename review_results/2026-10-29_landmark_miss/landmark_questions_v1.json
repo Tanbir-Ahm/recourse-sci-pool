@@ -1,0 +1,1641 @@
+{
+ "schema": "landmark-questions-1",
+ "written": "2026-10-29",
+ "written_by": "Claude, from his own knowledge of Indian criminal law, BEFORE any search was run on these questions. Not a lawyer's list.",
+ "rule": "A question is a hit when at least one of its expected judgments (a document id of the newer index d8811a9, found by NAME in the names table) is among the judgments the search returns for it. Judgments that are not in the index were not used.",
+ "questions": [
+  {
+   "id": "L001",
+   "group": "anticipatory_bail",
+   "topic": "anticipatory bail (Section 438 CrPC)",
+   "style": "lay",
+   "text": "I am afraid the police will arrest me in a false case. Can I get bail before I am arrested, and does it end after a fixed time?",
+   "expected": [
+    4562,
+    1000252377,
+    37199
+   ],
+   "expected_names": [
+    "Gurbaksh Singh Sibbia etc v. State of Punjab",
+    "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+    "Siddharam Satlingappa Mhetre v. State of Maharashtra and Others"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L002",
+   "group": "anticipatory_bail",
+   "topic": "anticipatory bail (Section 438 CrPC)",
+   "style": "lawyer",
+   "text": "What principles govern the grant of anticipatory bail under Section 438 CrPC, and can the court limit it to a fixed period?",
+   "expected": [
+    4562,
+    1000252377,
+    37199
+   ],
+   "expected_names": [
+    "Gurbaksh Singh Sibbia etc v. State of Punjab",
+    "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+    "Siddharam Satlingappa Mhetre v. State of Maharashtra and Others"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L003",
+   "group": "bail_guidelines",
+   "topic": "bail guidelines, offences not needing arrest",
+   "style": "lay",
+   "text": "I have been in jail for two years waiting for trial for a minor offence. Can the court give me bail?",
+   "expected": [
+    1000254065,
+    1000255527
+   ],
+   "expected_names": [
+    "Satender Kumar Antil v. Central Bureau of Investigation & Anr",
+    "Satender Kumar Antil v. Central Bureau of Investigation and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L004",
+   "group": "bail_guidelines",
+   "topic": "bail guidelines, offences not needing arrest",
+   "style": "lawyer",
+   "text": "What guidelines has the Supreme Court laid down on grant of bail and on arrests that are not required in offences punishable up to seven years?",
+   "expected": [
+    1000254065,
+    1000255527
+   ],
+   "expected_names": [
+    "Satender Kumar Antil v. Central Bureau of Investigation & Anr",
+    "Satender Kumar Antil v. Central Bureau of Investigation and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L005",
+   "group": "arrest_safeguards",
+   "topic": "arrest and custody safeguards",
+   "style": "lay",
+   "text": "What are my rights when the police arrest me? Do they have to tell my family and can they hold me without a medical check?",
+   "expected": [
+    13877,
+    14580
+   ],
+   "expected_names": [
+    "Shri Dilip K. Basu Etc.Ashok K. Johari v. State of West Bengal & Ors",
+    "Shri D.K. Basu,Ashok K. Johri v. State of West Bengal,State of U.P"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L006",
+   "group": "arrest_safeguards",
+   "topic": "arrest and custody safeguards",
+   "style": "lawyer",
+   "text": "What procedural safeguards must the police follow on arrest and detention to prevent custodial torture?",
+   "expected": [
+    13877,
+    14580
+   ],
+   "expected_names": [
+    "Shri Dilip K. Basu Etc.Ashok K. Johari v. State of West Bengal & Ors",
+    "Shri D.K. Basu,Ashok K. Johri v. State of West Bengal,State of U.P"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L007",
+   "group": "arrest_498a",
+   "topic": "arrest in a dowry harassment case",
+   "style": "lay",
+   "text": "My husband's family has been named in a dowry harassment case. Can the police arrest them straight away?",
+   "expected": [
+    41736,
+    1000250996
+   ],
+   "expected_names": [
+    "Arnesh Kumar v. State of Bihar & Anr",
+    "Social Action Forum for Manav Adhikar and Another v. Union of India Ministry of Law and Justice and Others"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L008",
+   "group": "arrest_498a",
+   "topic": "arrest in a dowry harassment case",
+   "style": "lawyer",
+   "text": "Must a police officer be satisfied under Section 41 CrPC before arresting in a Section 498A case, and what should the magistrate check at remand?",
+   "expected": [
+    41736,
+    1000250996
+   ],
+   "expected_names": [
+    "Arnesh Kumar v. State of Bihar & Anr",
+    "Social Action Forum for Manav Adhikar and Another v. Union of India Ministry of Law and Justice and Others"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L009",
+   "group": "498a_general_allegations",
+   "topic": "498A, relatives named with vague allegations",
+   "style": "lay",
+   "text": "My in-laws are named in my wife's complaint but there is nothing specific against them. Can the court throw out the case against them?",
+   "expected": [
+    1000253702,
+    36664
+   ],
+   "expected_names": [
+    "Kahkashan Kausar @ Sonam & Ors v. State of Bihar & Ors",
+    "Preeti Gupta & Another v. State of Jharkhand & Another"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L010",
+   "group": "498a_general_allegations",
+   "topic": "498A, relatives named with vague allegations",
+   "style": "lawyer",
+   "text": "When can proceedings under Section 498A IPC against the husband's relatives be quashed for want of specific allegations?",
+   "expected": [
+    1000253702,
+    36664
+   ],
+   "expected_names": [
+    "Kahkashan Kausar @ Sonam & Ors v. State of Bihar & Ors",
+    "Preeti Gupta & Another v. State of Jharkhand & Another"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L011",
+   "group": "default_bail",
+   "topic": "default bail",
+   "style": "lay",
+   "text": "The police did not file the chargesheet within 90 days of my arrest. Can I be released as of right?",
+   "expected": [
+    17702,
+    1000250154,
+    1000252765
+   ],
+   "expected_names": [
+    "Uday Mohanlal Acharya v. State of Maharashtra",
+    "Rakesh Kumar Paul v. State of Assam",
+    "Bikramjit Singh v. The State of Punjab"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L012",
+   "group": "default_bail",
+   "topic": "default bail",
+   "style": "lawyer",
+   "text": "Is the right to default bail under Section 167(2) CrPC indefeasible, and till when can it be claimed?",
+   "expected": [
+    17702,
+    1000250154,
+    1000252765
+   ],
+   "expected_names": [
+    "Uday Mohanlal Acharya v. State of Maharashtra",
+    "Rakesh Kumar Paul v. State of Assam",
+    "Bikramjit Singh v. The State of Punjab"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L013",
+   "group": "uapa_bail",
+   "topic": "UAPA bail",
+   "style": "lay",
+   "text": "I have been held under the anti-terror law for years and my trial has not begun. Can the court grant me bail because of the delay?",
+   "expected": [
+    1000252904,
+    1000251566
+   ],
+   "expected_names": [
+    "Union of India v. K. A. Najeeb",
+    "National Investigation Agency v. Zahoor Ahmad Shah Watali"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L014",
+   "group": "uapa_bail",
+   "topic": "UAPA bail",
+   "style": "lawyer",
+   "text": "What is the standard for bail under Section 43D(5) UAPA, and does long incarceration justify bail despite the statutory bar?",
+   "expected": [
+    1000252904,
+    1000251566
+   ],
+   "expected_names": [
+    "Union of India v. K. A. Najeeb",
+    "National Investigation Agency v. Zahoor Ahmad Shah Watali"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L015",
+   "group": "pmla_arrest_bail",
+   "topic": "PMLA grounds of arrest and bail",
+   "style": "lay",
+   "text": "The Enforcement Directorate arrested me in a money laundering case. Do they have to tell me the reasons in writing?",
+   "expected": [
+    1000255278,
+    1000255745,
+    1000250373,
+    1000254150
+   ],
+   "expected_names": [
+    "Pankaj Bansal v. Union of India & Ors",
+    "Prabir Purkayastha v. State (NCT of Delhi)",
+    "Nikesh Tarachand Shah v. Union of India & Anr",
+    "Vijay Madanlal Choudhary & Ors v. Union of India & Ors"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L016",
+   "group": "pmla_arrest_bail",
+   "topic": "PMLA grounds of arrest and bail",
+   "style": "lawyer",
+   "text": "Are the twin conditions for bail under Section 45 PMLA valid, and what must an arrest under the Act communicate to the accused?",
+   "expected": [
+    1000255278,
+    1000255745,
+    1000250373,
+    1000254150
+   ],
+   "expected_names": [
+    "Pankaj Bansal v. Union of India & Ors",
+    "Prabir Purkayastha v. State (NCT of Delhi)",
+    "Nikesh Tarachand Shah v. Union of India & Anr",
+    "Vijay Madanlal Choudhary & Ors v. Union of India & Ors"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L017",
+   "group": "undertrials",
+   "topic": "undertrial prisoners, speedy trial",
+   "style": "lay",
+   "text": "Many poor people stay in jail for years because they cannot pay bail or their trial never starts. Is there a right to a speedy trial?",
+   "expected": [
+    4792,
+    4819,
+    4841,
+    18409
+   ],
+   "expected_names": [
+    "Hussainara Khatoon & Ors v. Home Secretary, State of Bihar, Govt. of Bihar, Patna",
+    "Hussainara Khantoon & Ors v. Home Secretary, State of Bihar, Patna",
+    "Hussainara Khatoon & Ors v. Home Secretary, State of Bihar, Patna",
+    "P. Ramachandra Rao v. State of Karnataka"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L018",
+   "group": "undertrials",
+   "topic": "undertrial prisoners, speedy trial",
+   "style": "lawyer",
+   "text": "Is the right to a speedy trial part of Article 21, and can a long delay end a criminal case?",
+   "expected": [
+    4792,
+    4819,
+    4841,
+    18409
+   ],
+   "expected_names": [
+    "Hussainara Khatoon & Ors v. Home Secretary, State of Bihar, Govt. of Bihar, Patna",
+    "Hussainara Khantoon & Ors v. Home Secretary, State of Bihar, Patna",
+    "Hussainara Khatoon & Ors v. Home Secretary, State of Bihar, Patna",
+    "P. Ramachandra Rao v. State of Karnataka"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L019",
+   "group": "bail_after_conviction",
+   "topic": "bail pending appeal; bail is the rule",
+   "style": "lay",
+   "text": "I was convicted and have filed an appeal. Can I get bail while the appeal is pending?",
+   "expected": [
+    5242,
+    5183
+   ],
+   "expected_names": [
+    "Kashmira Singh v. The State of Punjab",
+    "Gudikanti Narasimhulu and Ors v. Public Prosecutor, High Court of Andhra Pradesh"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L020",
+   "group": "bail_after_conviction",
+   "topic": "bail pending appeal; bail is the rule",
+   "style": "lawyer",
+   "text": "What is the approach to bail pending appeal against conviction, and is bail the rule and jail the exception?",
+   "expected": [
+    5242,
+    5183
+   ],
+   "expected_names": [
+    "Kashmira Singh v. The State of Punjab",
+    "Gudikanti Narasimhulu and Ors v. Public Prosecutor, High Court of Andhra Pradesh"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L021",
+   "group": "bail_factors",
+   "topic": "bail factors in serious offences",
+   "style": "lawyer",
+   "text": "Which factors must the court weigh in deciding bail in a serious non-bailable offence, and must it give reasons?",
+   "expected": [
+    17683
+   ],
+   "expected_names": [
+    "Prahlad Singh Bhati v. N.C.T., Delhi & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L022",
+   "group": "quash_fir",
+   "topic": "quashing a police case",
+   "style": "lay",
+   "text": "The police case against me is false and politically motivated. Can the High Court cancel it?",
+   "expected": [
+    7332,
+    1000250282
+   ],
+   "expected_names": [
+    "State of Haryana and Ors v. Ch. Bhajan Lal and Ors",
+    "Parbatbhai Aahir @ Parbatbhai Bhimsinhbhai Karmur and Ors v. State of Gujarat and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L023",
+   "group": "quash_fir",
+   "topic": "quashing a police case",
+   "style": "lawyer",
+   "text": "In what categories of cases can an FIR or criminal proceeding be quashed under Section 482 CrPC or Article 226?",
+   "expected": [
+    7332,
+    1000250282
+   ],
+   "expected_names": [
+    "State of Haryana and Ors v. Ch. Bhajan Lal and Ors",
+    "Parbatbhai Aahir @ Parbatbhai Bhimsinhbhai Karmur and Ors v. State of Gujarat and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L024",
+   "group": "compounding_quash",
+   "topic": "settlement of non-compoundable offences",
+   "style": "lay",
+   "text": "We have settled our dispute out of court but the offence is serious. Can the court still close the case?",
+   "expected": [
+    37152,
+    39579,
+    41348,
+    1000250282
+   ],
+   "expected_names": [
+    "Gian Singh v. State of Punjab & Anr",
+    "Gian Singh v. State of Punjab & Another",
+    "Narinder Singh & Ors v. State of Punjab & Anr",
+    "Parbatbhai Aahir @ Parbatbhai Bhimsinhbhai Karmur and Ors v. State of Gujarat and Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L025",
+   "group": "compounding_quash",
+   "topic": "settlement of non-compoundable offences",
+   "style": "lawyer",
+   "text": "Can the High Court quash proceedings for a non-compoundable offence on the basis of a compromise, and what guides it?",
+   "expected": [
+    37152,
+    39579,
+    41348,
+    1000250282
+   ],
+   "expected_names": [
+    "Gian Singh v. State of Punjab & Anr",
+    "Gian Singh v. State of Punjab & Another",
+    "Narinder Singh & Ors v. State of Punjab & Anr",
+    "Parbatbhai Aahir @ Parbatbhai Bhimsinhbhai Karmur and Ors v. State of Gujarat and Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L026",
+   "group": "civil_dispute_criminal",
+   "topic": "civil dispute given a criminal colour",
+   "style": "lay",
+   "text": "A business partner has filed a cheating case against me over money we owe each other. Is it right to use a criminal case for a civil dispute?",
+   "expected": [
+    35436,
+    1000251250,
+    1000253806
+   ],
+   "expected_names": [
+    "Md. Ibrahim & Ors v. State of Bihar & Anr",
+    "Satishchandra Ratanlal Shah v. State of Gujarat and Another",
+    "Vijay Kumar Ghai & Ors v. The State of West Bengal & Ors"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L027",
+   "group": "civil_dispute_criminal",
+   "topic": "civil dispute given a criminal colour",
+   "style": "lawyer",
+   "text": "When does a purely civil or commercial dispute amount to cheating or criminal breach of trust, and when should such proceedings be quashed?",
+   "expected": [
+    35436,
+    1000251250,
+    1000253806
+   ],
+   "expected_names": [
+    "Md. Ibrahim & Ors v. State of Bihar & Anr",
+    "Satishchandra Ratanlal Shah v. State of Gujarat and Another",
+    "Vijay Kumar Ghai & Ors v. The State of West Bengal & Ors"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L028",
+   "group": "section_319",
+   "topic": "summoning additional accused",
+   "style": "lay",
+   "text": "The trial is half over and a new person's name has come up in the evidence. Can the court add him as an accused?",
+   "expected": [
+    41145
+   ],
+   "expected_names": [
+    "Hardeep Singh v. State of Punjab & Ors"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L029",
+   "group": "section_319",
+   "topic": "summoning additional accused",
+   "style": "lawyer",
+   "text": "What is the test for summoning an additional accused under Section 319 CrPC, and at what stage can it be done?",
+   "expected": [
+    41145
+   ],
+   "expected_names": [
+    "Hardeep Singh v. State of Punjab & Ors"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L030",
+   "group": "double_jeopardy",
+   "topic": "same facts tried twice",
+   "style": "lawyer",
+   "text": "Can a person be prosecuted both under Section 138 of the NI Act and for cheating on the same transaction, or does the bar on double jeopardy apply?",
+   "expected": [
+    39250
+   ],
+   "expected_names": [
+    "Sangeetaben Mahendrabhai Patel v. State of Gujarat & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L031",
+   "group": "hostile_witness",
+   "topic": "fair trial, hostile witnesses",
+   "style": "lay",
+   "text": "The main witness turned hostile after being threatened. What can the court do to protect a fair trial?",
+   "expected": [
+    26084,
+    27561
+   ],
+   "expected_names": [
+    "Zahira Habibulla H Sheikh and Anr v. State of Gujarat and Ors",
+    "Zahira Habibullah Sheikh & Anr v. State of Gujarat & Ors"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L032",
+   "group": "hostile_witness",
+   "topic": "fair trial, hostile witnesses",
+   "style": "lawyer",
+   "text": "What is the duty of the trial court when witnesses turn hostile, and how is a fair trial protected?",
+   "expected": [
+    26084,
+    27561
+   ],
+   "expected_names": [
+    "Zahira Habibulla H Sheikh and Anr v. State of Gujarat and Ors",
+    "Zahira Habibullah Sheikh & Anr v. State of Gujarat & Ors"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L033",
+   "group": "dying_declaration",
+   "topic": "dying declaration",
+   "style": "lay",
+   "text": "Can a person be convicted only on the basis of what the victim said just before dying?",
+   "expected": [
+    12461
+   ],
+   "expected_names": [
+    "Smt. Paniben v. State of Gujarat"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L034",
+   "group": "dying_declaration",
+   "topic": "dying declaration",
+   "style": "lawyer",
+   "text": "What principles govern the reliability of a dying declaration as the sole basis of conviction?",
+   "expected": [
+    12461
+   ],
+   "expected_names": [
+    "Smt. Paniben v. State of Gujarat"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L035",
+   "group": "burden_home_crime",
+   "topic": "burden of proof, crime inside a home",
+   "style": "lay",
+   "text": "A wife was found dead in the house where only she and her husband lived. Who has to explain what happened?",
+   "expected": [
+    28109
+   ],
+   "expected_names": [
+    "Trimukh Maroti Kirkan v. State of Maharashtra"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L036",
+   "group": "burden_home_crime",
+   "topic": "burden of proof, crime inside a home",
+   "style": "lawyer",
+   "text": "How does Section 106 of the Evidence Act operate where an offence takes place inside the privacy of a home?",
+   "expected": [
+    28109
+   ],
+   "expected_names": [
+    "Trimukh Maroti Kirkan v. State of Maharashtra"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L037",
+   "group": "last_seen",
+   "topic": "last seen together",
+   "style": "lay",
+   "text": "The accused was last seen with the deceased and the body was found the next day. Is that enough to convict him?",
+   "expected": [
+    41316,
+    28685
+   ],
+   "expected_names": [
+    "Kanhaiya Lal v. State of Rajasthan",
+    "State of Goa v. Sanjay Thakran and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L038",
+   "group": "last_seen",
+   "topic": "last seen together",
+   "style": "lawyer",
+   "text": "What is the evidentiary value of the last-seen-together circumstance?",
+   "expected": [
+    41316,
+    28685
+   ],
+   "expected_names": [
+    "Kanhaiya Lal v. State of Rajasthan",
+    "State of Goa v. Sanjay Thakran and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L039",
+   "group": "section_27_recovery",
+   "topic": "recovery on disclosure",
+   "style": "lay",
+   "text": "The police say they recovered the weapon because I told them where it was. How much of my statement can be used against me?",
+   "expected": [
+    5883,
+    164
+   ],
+   "expected_names": [
+    "Mohmed Inayatullah v. The State of Maharashtra",
+    "State of U. P v. Deoman Upadhyaya"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L040",
+   "group": "section_27_recovery",
+   "topic": "recovery on disclosure",
+   "style": "lawyer",
+   "text": "How much of an accused's statement to the police leading to a recovery is admissible under Section 27 of the Evidence Act?",
+   "expected": [
+    5883,
+    164
+   ],
+   "expected_names": [
+    "Mohmed Inayatullah v. The State of Maharashtra",
+    "State of U. P v. Deoman Upadhyaya"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L041",
+   "group": "electronic_evidence",
+   "topic": "electronic evidence certificate",
+   "style": "lay",
+   "text": "The prosecution wants to use a phone video as evidence. What must they produce to make it valid in court?",
+   "expected": [
+    1000252655
+   ],
+   "expected_names": [
+    "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal and Ors"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L042",
+   "group": "electronic_evidence",
+   "topic": "electronic evidence certificate",
+   "style": "lawyer",
+   "text": "Is a certificate under Section 65B(4) of the Evidence Act mandatory for admitting electronic records such as CCTV footage?",
+   "expected": [
+    1000252655
+   ],
+   "expected_names": [
+    "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal and Ors"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L043",
+   "group": "police_statement_contradiction",
+   "topic": "statements to police, contradiction",
+   "style": "lawyer",
+   "text": "How can a witness's earlier statement to the police be used to contradict him at trial under Section 162 CrPC?",
+   "expected": [
+    374
+   ],
+   "expected_names": [
+    "Tahsildar Singh and Another v. The State of Uttar Pradesh"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L044",
+   "group": "related_witness",
+   "topic": "relatives as witnesses",
+   "style": "lay",
+   "text": "The only witnesses are the victim's relatives. Can the court still rely on them?",
+   "expected": [
+    1026
+   ],
+   "expected_names": [
+    "Dalip Singh and Others v. State of Punjab"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L045",
+   "group": "related_witness",
+   "topic": "relatives as witnesses",
+   "style": "lawyer",
+   "text": "Is the testimony of related or interested witnesses to be discarded, or only scrutinised with care?",
+   "expected": [
+    1026
+   ],
+   "expected_names": [
+    "Dalip Singh and Others v. State of Punjab"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L046",
+   "group": "self_incrimination",
+   "topic": "self-incrimination, forced tests",
+   "style": "lay",
+   "text": "Can the police force me to take a lie detector or narco test?",
+   "expected": [
+    36303,
+    4157,
+    5091
+   ],
+   "expected_names": [
+    "Smt. Selvi & Ors v. State of Karnataka",
+    "The State of Bombay v. Kathi Kalu Oghad and Others",
+    "Nandini Satpathy v. Dani (P.L.) and Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L047",
+   "group": "self_incrimination",
+   "topic": "self-incrimination, forced tests",
+   "style": "lawyer",
+   "text": "What is the scope of Article 20(3), and are compelled narco-analysis or brain mapping tests permissible?",
+   "expected": [
+    36303,
+    4157,
+    5091
+   ],
+   "expected_names": [
+    "Smt. Selvi & Ors v. State of Karnataka",
+    "The State of Bombay v. Kathi Kalu Oghad and Others",
+    "Nandini Satpathy v. Dani (P.L.) and Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L048",
+   "group": "sanction_public_servant",
+   "topic": "sanction to prosecute a public servant",
+   "style": "lay",
+   "text": "Can a policeman be taken to court for something he did while on duty, without the government's permission?",
+   "expected": [
+    793
+   ],
+   "expected_names": [
+    "Matajog Dobey v. H. C. Bhari(With Connected Appeal)"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L049",
+   "group": "sanction_public_servant",
+   "topic": "sanction to prosecute a public servant",
+   "style": "lawyer",
+   "text": "When is sanction required under Section 197 CrPC to prosecute a public servant for acts done in the discharge of official duty?",
+   "expected": [
+    793
+   ],
+   "expected_names": [
+    "Matajog Dobey v. H. C. Bhari(With Connected Appeal)"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L050",
+   "group": "death_penalty_rarest",
+   "topic": "death penalty, rarest of rare",
+   "style": "lay",
+   "text": "When can a court give the death penalty?",
+   "expected": [
+    4726,
+    4795,
+    9766,
+    34632
+   ],
+   "expected_names": [
+    "Bachan Singh etc v. State of Punjab",
+    "Bachan Singh S/O Saudagar Singh v. State of Punjab",
+    "Machhi Singh and Others v. State of Punjab",
+    "Santosh Kumar Satishbhushan Bariyar v. State of Maharashtra"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L051",
+   "group": "death_penalty_rarest",
+   "topic": "death penalty, rarest of rare",
+   "style": "lawyer",
+   "text": "What is the rarest of rare doctrine, and how must aggravating and mitigating circumstances be balanced before a death sentence?",
+   "expected": [
+    4726,
+    4795,
+    9766,
+    34632
+   ],
+   "expected_names": [
+    "Bachan Singh etc v. State of Punjab",
+    "Bachan Singh S/O Saudagar Singh v. State of Punjab",
+    "Machhi Singh and Others v. State of Punjab",
+    "Santosh Kumar Satishbhushan Bariyar v. State of Maharashtra"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L052",
+   "group": "death_penalty_validity",
+   "topic": "constitutionality of the death penalty, mandatory death",
+   "style": "lay",
+   "text": "Is the death penalty legal in India, and can a judge be forced to give it?",
+   "expected": [
+    6696,
+    9810,
+    4726
+   ],
+   "expected_names": [
+    "Jagmohan Singh v. The State of U. P",
+    "Mithu, etc., etc v. State of Punjab etc. etc",
+    "Bachan Singh etc v. State of Punjab"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L053",
+   "group": "death_penalty_validity",
+   "topic": "constitutionality of the death penalty, mandatory death",
+   "style": "lawyer",
+   "text": "Is a mandatory death sentence valid, and is the death penalty itself constitutional?",
+   "expected": [
+    6696,
+    9810,
+    4726
+   ],
+   "expected_names": [
+    "Jagmohan Singh v. The State of U. P",
+    "Mithu, etc., etc v. State of Punjab etc. etc",
+    "Bachan Singh etc v. State of Punjab"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L054",
+   "group": "sentencing_principles",
+   "topic": "principles of sentencing",
+   "style": "lawyer",
+   "text": "What principles should a court follow in deciding the quantum of punishment, and should it consider the circumstances of the offender?",
+   "expected": [
+    39837
+   ],
+   "expected_names": [
+    "Soman v. State of Kerala"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L055",
+   "group": "murder_vs_culpable_homicide",
+   "topic": "culpable homicide vs murder",
+   "style": "lay",
+   "text": "What is the difference between murder and culpable homicide?",
+   "expected": [
+    5531
+   ],
+   "expected_names": [
+    "State of Andhra Pradesh v. Rayavarapu Punnayya & Another"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L056",
+   "group": "murder_vs_culpable_homicide",
+   "topic": "culpable homicide vs murder",
+   "style": "lawyer",
+   "text": "When does causing an injury that is sufficient in the ordinary course of nature to cause death amount to murder under Section 300 IPC?",
+   "expected": [
+    5531
+   ],
+   "expected_names": [
+    "State of Andhra Pradesh v. Rayavarapu Punnayya & Another"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L057",
+   "group": "unlawful_assembly",
+   "topic": "unlawful assembly, common object",
+   "style": "lay",
+   "text": "I was in a crowd where someone was killed but I did not do anything. Can I be convicted for murder too?",
+   "expected": [
+    3223
+   ],
+   "expected_names": [
+    "Masalti v. State of U. P"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L058",
+   "group": "unlawful_assembly",
+   "topic": "unlawful assembly, common object",
+   "style": "lawyer",
+   "text": "What is required to convict a person with the aid of Section 149 IPC for the act of another member of an unlawful assembly?",
+   "expected": [
+    3223
+   ],
+   "expected_names": [
+    "Masalti v. State of U. P"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L059",
+   "group": "sudden_fight",
+   "topic": "sudden fight, exception to murder",
+   "style": "lay",
+   "text": "I killed a man in a sudden quarrel without planning it. Is that murder?",
+   "expected": [
+    8015
+   ],
+   "expected_names": [
+    "Surinder Kumar v. Union Territory, Chandigarh"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L060",
+   "group": "sudden_fight",
+   "topic": "sudden fight, exception to murder",
+   "style": "lawyer",
+   "text": "What are the requirements of the exception for a sudden fight in the heat of passion under Section 300 IPC?",
+   "expected": [
+    8015
+   ],
+   "expected_names": [
+    "Surinder Kumar v. Union Territory, Chandigarh"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L061",
+   "group": "common_intention",
+   "topic": "common intention, section 34",
+   "style": "lawyer",
+   "text": "What must the prosecution prove to apply Section 34 IPC, and must there be a prior meeting of minds?",
+   "expected": [
+    860
+   ],
+   "expected_names": [
+    "Pandurang, Tukia and Bhillia v. The State of Hyderabad"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L062",
+   "group": "rape_consent",
+   "topic": "rape, consent and submission",
+   "style": "lay",
+   "text": "Does it count as consent if the woman does not resist or shout?",
+   "expected": [
+    4992,
+    40276
+   ],
+   "expected_names": [
+    "Tuka Ram and Anr v. State of Maharashtra",
+    "Lillu @ Rajesh & Anr v. State of Haryana"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L063",
+   "group": "rape_consent",
+   "topic": "rape, consent and submission",
+   "style": "lawyer",
+   "text": "What is the difference between consent and submission in a rape case, and what weight does the victim's testimony carry?",
+   "expected": [
+    4992,
+    40276
+   ],
+   "expected_names": [
+    "Tuka Ram and Anr v. State of Maharashtra",
+    "Lillu @ Rajesh & Anr v. State of Haryana"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L064",
+   "group": "modesty",
+   "topic": "outraging modesty",
+   "style": "lay",
+   "text": "What counts as outraging the modesty of a woman?",
+   "expected": [
+    10468
+   ],
+   "expected_names": [
+    "Mrs. Rupan Deol Bajaj & Anr v. Kanwar Pal Singh Gill & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L065",
+   "group": "modesty",
+   "topic": "outraging modesty",
+   "style": "lawyer",
+   "text": "How is the offence of outraging the modesty of a woman under Section 354 IPC made out?",
+   "expected": [
+    10468
+   ],
+   "expected_names": [
+    "Mrs. Rupan Deol Bajaj & Anr v. Kanwar Pal Singh Gill & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L066",
+   "group": "pocso_contact",
+   "topic": "POCSO skin-to-skin",
+   "style": "lawyer",
+   "text": "Does sexual assault under the POCSO Act require skin-to-skin physical contact?",
+   "expected": [
+    1000253440
+   ],
+   "expected_names": [
+    "Attorney General for India v. Satish and Another"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L067",
+   "group": "medical_negligence",
+   "topic": "criminal liability for medical negligence",
+   "style": "lay",
+   "text": "A patient died after an operation. Can the doctor be arrested for negligence?",
+   "expected": [
+    27088
+   ],
+   "expected_names": [
+    "Jacob Mathew v. State of Punjab & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L068",
+   "group": "medical_negligence",
+   "topic": "criminal liability for medical negligence",
+   "style": "lawyer",
+   "text": "What is the standard of gross negligence for prosecuting a medical professional under Section 304A IPC?",
+   "expected": [
+    27088
+   ],
+   "expected_names": [
+    "Jacob Mathew v. State of Punjab & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L069",
+   "group": "abetment_suicide",
+   "topic": "abetment of suicide",
+   "style": "lay",
+   "text": "My daughter killed herself after her husband's family harassed her. Can they be charged with abetting her suicide?",
+   "expected": [
+    1000252755,
+    35671
+   ],
+   "expected_names": [
+    "Gurcharan Singh v. The State of Punjab",
+    "Amalendu Pal @ Jhantu v. State of West Bengal"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L070",
+   "group": "abetment_suicide",
+   "topic": "abetment of suicide",
+   "style": "lawyer",
+   "text": "What must be shown to constitute abetment of suicide under Section 306 IPC, and when is mere harassment not enough?",
+   "expected": [
+    1000252755,
+    35671
+   ],
+   "expected_names": [
+    "Gurcharan Singh v. The State of Punjab",
+    "Amalendu Pal @ Jhantu v. State of West Bengal"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L071",
+   "group": "cheating_breach_of_contract",
+   "topic": "cheating vs breach of contract",
+   "style": "lay",
+   "text": "A builder took my money and did not deliver the flat. Is this cheating or only a breach of contract?",
+   "expected": [
+    20323,
+    20022,
+    35436
+   ],
+   "expected_names": [
+    "Hridaya Rangan Pd. Verma and Ors v. State of Bihar and Anr",
+    "S.W. Palanitkar and Ors v. State of Bihar and Anr",
+    "Md. Ibrahim & Ors v. State of Bihar & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L072",
+   "group": "cheating_breach_of_contract",
+   "topic": "cheating vs breach of contract",
+   "style": "lawyer",
+   "text": "What distinguishes criminal cheating under Section 420 IPC from a mere breach of contract, and when must dishonest intention exist?",
+   "expected": [
+    20323,
+    20022,
+    35436
+   ],
+   "expected_names": [
+    "Hridaya Rangan Pd. Verma and Ors v. State of Bihar and Anr",
+    "S.W. Palanitkar and Ors v. State of Bihar and Anr",
+    "Md. Ibrahim & Ors v. State of Bihar & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L073",
+   "group": "dowry_death",
+   "topic": "dowry death presumption",
+   "style": "lay",
+   "text": "My sister died within three years of her marriage and her in-laws say it was suicide. Will the law presume they are responsible?",
+   "expected": [
+    17435,
+    19141
+   ],
+   "expected_names": [
+    "Kans Raj v. State of Punjab & Ors",
+    "Hira Lal and Ors v. Vs. State (Govt. of NCT) Delhi"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L074",
+   "group": "dowry_death",
+   "topic": "dowry death presumption",
+   "style": "lawyer",
+   "text": "What must be proved to attract the presumption under Section 113B of the Evidence Act in a Section 304B IPC dowry death case?",
+   "expected": [
+    17435,
+    19141
+   ],
+   "expected_names": [
+    "Kans Raj v. State of Punjab & Ors",
+    "Hira Lal and Ors v. Vs. State (Govt. of NCT) Delhi"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L075",
+   "group": "juvenile_age",
+   "topic": "juvenile age determination",
+   "style": "lay",
+   "text": "I was 17 when the offence was alleged but I am 21 now. Will I be treated as a child?",
+   "expected": [
+    26757,
+    26764,
+    30900
+   ],
+   "expected_names": [
+    "Pratap Singh v. State of Jharkhand & Anr",
+    "Pratap Singh v. State of Jharkhand & Anr",
+    "Pratap Singh v. State of Jharkhand & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L076",
+   "group": "juvenile_age",
+   "topic": "juvenile age determination",
+   "style": "lawyer",
+   "text": "Which date is relevant for determining whether an accused is a juvenile, and how is the age to be established?",
+   "expected": [
+    26757,
+    26764,
+    30900
+   ],
+   "expected_names": [
+    "Pratap Singh v. State of Jharkhand & Anr",
+    "Pratap Singh v. State of Jharkhand & Anr",
+    "Pratap Singh v. State of Jharkhand & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L077",
+   "group": "maintenance_guidelines",
+   "topic": "maintenance, disclosures",
+   "style": "lay",
+   "text": "How does the court decide how much maintenance a wife and children should get while the case is pending?",
+   "expected": [
+    1000252794
+   ],
+   "expected_names": [
+    "Rajnesh v. Neha & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L078",
+   "group": "maintenance_guidelines",
+   "topic": "maintenance, disclosures",
+   "style": "lawyer",
+   "text": "What directions on affidavit of disclosure and the criteria for interim maintenance has the Supreme Court issued?",
+   "expected": [
+    1000252794
+   ],
+   "expected_names": [
+    "Rajnesh v. Neha & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L079",
+   "group": "dv_shared_household",
+   "topic": "domestic violence, right of residence",
+   "style": "lay",
+   "text": "I left my husband's house because of violence. Can I still claim a right to live there under the domestic violence law?",
+   "expected": [
+    1000253984
+   ],
+   "expected_names": [
+    "Prabha Tyagi v. Kamlesh Devi"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L080",
+   "group": "dv_shared_household",
+   "topic": "domestic violence, right of residence",
+   "style": "lawyer",
+   "text": "Can a woman who has left the shared household still seek relief under the Protection of Women from Domestic Violence Act?",
+   "expected": [
+    1000253984
+   ],
+   "expected_names": [
+    "Prabha Tyagi v. Kamlesh Devi"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L081",
+   "group": "sc_st_bail",
+   "topic": "SC/ST Act arrest and bail",
+   "style": "lay",
+   "text": "A man is accused under the SC/ST atrocities law. Can the police arrest him immediately and can he get anticipatory bail?",
+   "expected": [
+    1000250634
+   ],
+   "expected_names": [
+    "Dr. Subhash Kashinath Mahajan v. The State of Maharashtra and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L082",
+   "group": "sc_st_bail",
+   "topic": "SC/ST Act arrest and bail",
+   "style": "lawyer",
+   "text": "What safeguards apply to arrest and anticipatory bail under the SC/ST (Prevention of Atrocities) Act?",
+   "expected": [
+    1000250634
+   ],
+   "expected_names": [
+    "Dr. Subhash Kashinath Mahajan v. The State of Maharashtra and Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L083",
+   "group": "sc_st_public_view",
+   "topic": "SC/ST Act, insult within public view",
+   "style": "lay",
+   "text": "A man was abused by a landlord inside the landlord's house with no one else around. Does the atrocities law apply?",
+   "expected": [
+    1000252799
+   ],
+   "expected_names": [
+    "Hitesh Verma v. The State of Uttarakhand & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L084",
+   "group": "sc_st_public_view",
+   "topic": "SC/ST Act, insult within public view",
+   "style": "lawyer",
+   "text": "Does an insult or intimidation inside a building amount to an offence 'in any place within public view' under the SC/ST Act?",
+   "expected": [
+    1000252799
+   ],
+   "expected_names": [
+    "Hitesh Verma v. The State of Uttarakhand & Anr"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L085",
+   "group": "adultery",
+   "topic": "adultery",
+   "style": "lay",
+   "text": "Is adultery still a crime in India?",
+   "expected": [
+    1000251042
+   ],
+   "expected_names": [
+    "Joseph Shine v. Union of India"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L086",
+   "group": "adultery",
+   "topic": "adultery",
+   "style": "lawyer",
+   "text": "Is Section 497 IPC on adultery constitutionally valid?",
+   "expected": [
+    1000251042
+   ],
+   "expected_names": [
+    "Joseph Shine v. Union of India"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L087",
+   "group": "criminal_defamation",
+   "topic": "criminal defamation",
+   "style": "lay",
+   "text": "Can a person be jailed for defaming someone?",
+   "expected": [
+    44579
+   ],
+   "expected_names": [
+    "Subramanian Swamy v. Union of India, Ministry of Law & Ors"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L088",
+   "group": "criminal_defamation",
+   "topic": "criminal defamation",
+   "style": "lawyer",
+   "text": "Is criminal defamation under Sections 499 and 500 IPC constitutionally valid?",
+   "expected": [
+    44579
+   ],
+   "expected_names": [
+    "Subramanian Swamy v. Union of India, Ministry of Law & Ors"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L089",
+   "group": "pc_act_demand",
+   "topic": "corruption, proof of demand",
+   "style": "lay",
+   "text": "A clerk is accused of taking a bribe but the complainant turned hostile. Can the clerk still be convicted?",
+   "expected": [
+    1000254584
+   ],
+   "expected_names": [
+    "Neeraj Dutta v. State (Govt. of N.C.T. of Delhi)"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L090",
+   "group": "pc_act_demand",
+   "topic": "corruption, proof of demand",
+   "style": "lawyer",
+   "text": "Can a public servant be convicted under the Prevention of Corruption Act in the absence of direct evidence of demand?",
+   "expected": [
+    1000254584
+   ],
+   "expected_names": [
+    "Neeraj Dutta v. State (Govt. of N.C.T. of Delhi)"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L091",
+   "group": "cheque_presumption",
+   "topic": "cheque presumption, blank cheque",
+   "style": "lay",
+   "text": "I gave someone a signed blank cheque as security and they filled in an amount. Can I be punished if it bounces?",
+   "expected": [
+    1000251356,
+    36322
+   ],
+   "expected_names": [
+    "Bir Singh v. Mukesh Kumar",
+    "Rangappa v. Sri Mohan"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L092",
+   "group": "cheque_presumption",
+   "topic": "cheque presumption, blank cheque",
+   "style": "lawyer",
+   "text": "Does the presumption under Section 139 of the NI Act apply to a signed blank cheque given as security?",
+   "expected": [
+    1000251356,
+    36322
+   ],
+   "expected_names": [
+    "Bir Singh v. Mukesh Kumar",
+    "Rangappa v. Sri Mohan"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L093",
+   "group": "cheque_jurisdiction",
+   "topic": "cheque bounce, where to file",
+   "style": "lay",
+   "text": "Where can a cheque bounce case be filed: where I bank or where the other person banks?",
+   "expected": [
+    41801
+   ],
+   "expected_names": [
+    "Dashrath Rupsingh Rathod v. State of Maharashtra & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L094",
+   "group": "cheque_jurisdiction",
+   "topic": "cheque bounce, where to file",
+   "style": "lawyer",
+   "text": "Which court has territorial jurisdiction to try a complaint under Section 138 of the NI Act?",
+   "expected": [
+    41801
+   ],
+   "expected_names": [
+    "Dashrath Rupsingh Rathod v. State of Maharashtra & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L095",
+   "group": "cheque_compounding",
+   "topic": "cheque bounce, settlement",
+   "style": "lay",
+   "text": "We have settled the cheque bounce case. Can it be closed, and what happens if the other side delays?",
+   "expected": [
+    1000250291,
+    41436
+   ],
+   "expected_names": [
+    "M/s. Meters and Instruments Private Limited & Anr v. Kanchan Mehta",
+    "Indian Bank Association and others v. Union of India and others"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L096",
+   "group": "cheque_compounding",
+   "topic": "cheque bounce, settlement",
+   "style": "lawyer",
+   "text": "Can an offence under Section 138 NI Act be compounded, and what directions govern the pace of such cases?",
+   "expected": [
+    1000250291,
+    41436
+   ],
+   "expected_names": [
+    "M/s. Meters and Instruments Private Limited & Anr v. Kanchan Mehta",
+    "Indian Bank Association and others v. Union of India and others"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L097",
+   "group": "ndps_search",
+   "topic": "NDPS, personal search",
+   "style": "lay",
+   "text": "Police found drugs in my bag after searching me. Did they have to tell me I could be searched before a magistrate?",
+   "expected": [
+    30317,
+    37060
+   ],
+   "expected_names": [
+    "State of Punjab v. Baldev Singh",
+    "Vijaysinh Chandubha Jadeja — v. State of Gujarat —"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L098",
+   "group": "ndps_search",
+   "topic": "NDPS, personal search",
+   "style": "lawyer",
+   "text": "What is the requirement of informing the accused of the right to be searched before a gazetted officer under Section 50 NDPS?",
+   "expected": [
+    30317,
+    37060
+   ],
+   "expected_names": [
+    "State of Punjab v. Baldev Singh",
+    "Vijaysinh Chandubha Jadeja — v. State of Gujarat —"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L099",
+   "group": "ndps_statement",
+   "topic": "NDPS, statements to officers",
+   "style": "lay",
+   "text": "The narcotics officers made me sign a statement. Can it be used against me in court?",
+   "expected": [
+    1000252784
+   ],
+   "expected_names": [
+    "Tofan Singh v. State of Tamil Nadu"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L100",
+   "group": "ndps_statement",
+   "topic": "NDPS, statements to officers",
+   "style": "lawyer",
+   "text": "Is a statement recorded under Section 67 NDPS Act admissible as a confession?",
+   "expected": [
+    1000252784
+   ],
+   "expected_names": [
+    "Tofan Singh v. State of Tamil Nadu"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L101",
+   "group": "ndps_bail_burden",
+   "topic": "NDPS bail conditions, reverse burden",
+   "style": "lay",
+   "text": "Why is it so hard to get bail in a drugs case?",
+   "expected": [
+    1000253281,
+    31821
+   ],
+   "expected_names": [
+    "Union of India Through Narcotics Control Bureau, Lucknow v. Md. Nawaz Khan",
+    "Noor Aga v. State of Punjab & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L102",
+   "group": "ndps_bail_burden",
+   "topic": "NDPS bail conditions, reverse burden",
+   "style": "lawyer",
+   "text": "How do the twin conditions under Section 37 NDPS operate, and does the reverse burden of proof violate Article 21?",
+   "expected": [
+    1000253281,
+    31821
+   ],
+   "expected_names": [
+    "Union of India Through Narcotics Control Bureau, Lucknow v. Md. Nawaz Khan",
+    "Noor Aga v. State of Punjab & Anr"
+   ],
+   "half": "frozen"
+  },
+  {
+   "id": "L103",
+   "group": "circumstantial",
+   "topic": "circumstantial evidence",
+   "style": "lay",
+   "text": "The police have no eyewitness against my brother, only a chain of circumstances. Can the court still convict him?",
+   "expected": [
+    9517,
+    1154
+   ],
+   "expected_names": [
+    "Sharad Birdhi Chand Sarda v. State of Maharashtra",
+    "Hanumant v. The State of Madhya Pradesh.Raojibhaithe State of Madhya Pra"
+   ],
+   "half": "dev"
+  },
+  {
+   "id": "L104",
+   "group": "circumstantial",
+   "topic": "circumstantial evidence",
+   "style": "lawyer",
+   "text": "What are the conditions for a conviction resting wholly on circumstantial evidence?",
+   "expected": [
+    9517,
+    1154
+   ],
+   "expected_names": [
+    "Sharad Birdhi Chand Sarda v. State of Maharashtra",
+    "Hanumant v. The State of Madhya Pradesh.Raojibhaithe State of Madhya Pra"
+   ],
+   "half": "dev"
+  }
+ ],
+ "sha256_of_questions_and_expected": "67e6f4742274e556023c4826421a17154b5fc080e62333af73df435198a06464"
+}
