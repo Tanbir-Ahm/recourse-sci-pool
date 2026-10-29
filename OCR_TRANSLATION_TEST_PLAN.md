@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10aa record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ab record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -861,6 +861,23 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 - Image 2: the second look listed the small mark above the date as a separate line, which lowered the letter agreement to 80% and turned the page red; the date itself was right in four looks.
 
 **Totals so far over four handwritten pages (72 values)**: first look 69, second look 69, third look 69, digit-by-digit run 1 70, run 2 68 right. **One value (the mobile-style number on page 2) was wrong in every normal look with no flag**; no other value was wrong in all methods. Every method makes a few look-alike slips (about 3 to 6% of values); they differ from one another, which is why disagreement flags work, and why a value on which every look agrees can still be wrong.
+
+### 10ab. Does enlarging a small crop help the reading? (run 2026-10-29; counts only, no names, places, case numbers or text)
+
+**What was tested.** Nine small crops with known values: two small images from the owner (a row of 9 dates, a single date) and seven single lines cut from the two earlier handwritten pages (three phone-style numbers, a land-record number, a date, a transaction number, an instalment, a table cell). Each crop was read blind with one short instruction (transcribe exactly, keep digits as written, [?] if unclear), in four variants, two runs each: as given, enlarged 2 times, enlarged 4 times (plain Lanczos resizing, no sharpening or contrast change), and as given with the ultra-high-detail setting. 72 reads, **Rs 21.86 logged** (Rs 4.5 for each of the three plain variants, Rs 8.3 for the ultra-high one).
+
+**Two crops are left out of the scoring because the owner's key and the crop reads disagree** (the owner is asked to look again): a transaction number (every one of the 8 crop reads says ...109; the key, and all five full-page reads, say ...107) and an instalment (all 8 crop reads say 17,000; the key says 12,000; the full-page reads said 12,000 twice and 17,000 or 19,000 three times). Both turn on a look-alike digit pair, which is also where a person checking the key can slip. Seven crops remain: 15 values per run, 30 per variant.
+
+| Variant | Values right (of 30) |
+|---|---|
+| As given | 27 |
+| Enlarged 2 times | 24 |
+| Enlarged 4 times | 25 |
+| As given, ultra-high detail | 25 |
+
+**Findings.** (1) **Enlarging did not help; as given was best** (27 against 24 to 25). A difference of 2 to 3 values in 30 is within the run-to-run variation seen elsewhere (10aa), so the safe reading is "no gain from enlargement or the higher-detail setting on small crops", not "enlargement hurts". (2) **The errors do not move with the picture size**: a 9 read as a 1 (first look at the date row), the 10 read as 13, a year read 96 for 93, and the last two digits of the phone-style number page 2 (read ...212 or ...211 in 7 of 8 reads, never ...201, never the familiar ...210 either). Those are look-alike digits, not lack of pixels. (3) No variant fixed the phone-style number that every normal look had read as ...210. (4) The answer key itself is a source of doubt: where a person's key and the machine's reads disagree on a look-alike digit pair, the page itself must settle it, and the sheet's magnifier and enlarged digits are built for that.
+
+**Decision.** No change to the pipeline: no automatic enlargement, no separate crop re-read. **Not tried:** sharpening and contrast (10p found them unhelpful on whole pages), other resizing methods, crops of different sizes, printed rather than handwritten digits.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
