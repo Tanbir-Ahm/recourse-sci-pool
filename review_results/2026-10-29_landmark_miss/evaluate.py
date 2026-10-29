@@ -13,6 +13,7 @@ import argparse
 import json
 import os
 import sys
+import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
@@ -30,6 +31,18 @@ def docs_of(svc, top, same=lambda d: d):
     return out
 
 
+def ranked(svc, text, tries=6):
+    """svc.ranked_ex(text, 10), tried again after a failure of the model provider (a transient server error stopped the first frozen run before it produced any result, 2026-10-29)."""
+    for i in range(tries):
+        try:
+            return svc.ranked_ex(text, 10)
+        except Exception as exc:  # noqa: BLE001
+            if i == tries - 1:
+                raise
+            print(f"retry {i + 1} after {type(exc).__name__}", flush=True)
+            time.sleep(5 * (i + 1))
+
+
 def run(svc, questions, authority=None, params=None, same_case=None):
     """[{'id', 'half', 'style', 'hit8', 'hit10', 'docs': first 10 distinct judgments, 'best_position', 'added'}] for the questions, with the service's authority step on (a loaded AuthorityTable) or off (None).
     `same_case`: document number -> number shared by the records of one case (AuthorityTable.cluster_of); without it every document number is a case of its own."""
@@ -39,7 +52,7 @@ def run(svc, questions, authority=None, params=None, same_case=None):
     same = same_case or (lambda d: d)
     out = []
     for q in questions:
-        top, ann = svc.ranked_ex(q["text"], 10)
+        top, ann = ranked(svc, q["text"])
         docs = docs_of(svc, top, same)
         exp = {same(d) for d in q["expected"]}
         listed = [same(d) for d in docs]

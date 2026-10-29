@@ -1,0 +1,533 @@
+{
+ "off": {
+  "ok": true,
+  "tier": "wider_pool_not_independently_verified",
+  "recipe": "B",
+  "index_commit": null,
+  "as_of": "2026-10-16",
+  "as_of_by_court": {
+   "Supreme Court of India": "2026-10-16",
+   "Gauhati High Court": "2026-10-14"
+  },
+  "disclaimer": "These passages come from a search of a much wider judgment database. Nobody at Recourse has read and confirmed them. Read the real judgment yourself, or with a lawyer, before relying on it. This search does not say whether a decision is still good law.",
+  "seconds": 9.75,
+  "usage": {
+   "embed_model": "voyage-law-2",
+   "embed_tokens": 0,
+   "rerank_model": "rerank-3-lite",
+   "rerank_tokens": 0
+  },
+  "results": [
+   {
+    "rank": 1,
+    "doc": 2000253232,
+    "court": "Supreme Court of India",
+    "case_name": "Pawan Kumar Sharma v. Manoj Kumar & Ors",
+    "date": "2026-05-25",
+    "citations": {
+     "insc": "2026 INSC 539",
+     "case_id": "14203/2015"
+    },
+    "link": "https://api.sci.gov.in/supremecourt/2015/14203/14203_2015_15_1504_71505_Judgement_25-May-2026.pdf",
+    "link_kind": "court_site_pdf",
+    "name_to_review": false,
+    "paragraph": "42",
+    "page": 22,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9219,
+    "text": "42. Thus, it is a settled position of law that to convict the accused on the basis of circumstantial evidence, the prosecution must prove beyond reasonable doubt each of the incriminating circumstances on which it proposes to rely; the circumstance(s) relied upon must be of a definite tendency unerringly pointing towards the accused\u2019s guilt and must form a chain so far complete that there is no escape from the conclusion that within all human probability it is the accused and no one else who had committed the crime and they (it) must exclude all other hypothesis inconsistent with his guilt and consistent with his innocence.",
+    "passage_id": "4f023afe32a95007"
+   },
+   {
+    "rank": 2,
+    "doc": 2000253264,
+    "court": "Supreme Court of India",
+    "case_name": "Mehtab v. State of Uttarakhand",
+    "date": "2026-05-27",
+    "citations": {
+     "insc": "2026 INSC 578",
+     "case_id": "22194/2018"
+    },
+    "link": "https://api.sci.gov.in/supremecourt/2018/22194/22194_2018_2_1503_71618_Judgement_27-May-2026.pdf",
+    "link_kind": "court_site_pdf",
+    "name_to_review": false,
+    "paragraph": "40",
+    "page": 32,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9062,
+    "text": "40. It is a settled proposition of criminal jurisprudence that in a case resting solely on circumstantial evidence, the prosecution carries the onerous burden of establishing each incriminating circumstance beyond reasonable doubt. Unlike a case founded on direct ocular testimony, where the commission of the offence is spoken to by eyewitnesses, a case based on circumstantial evidence requires the Court to carefully evaluate whether the circumstances relied upon by the prosecution have been firmly and cogently proved and that the circumstances so proved form a complete chain pointing unerringly towards the guilt of the accused person. Each circumstance forming part of the chain must stand independently established and the cumulative effect thereof must be such as to lead only to the irresistible conclusion that the accused alone is the perpetrator of the crime. Mere suspicion, however grave, cannot take the place of legal proof, and the circumstances proved must be incompatible with the innocence of the accused.",
+    "passage_id": "559f79545294e5ea"
+   },
+   {
+    "rank": 3,
+    "doc": 2000753679,
+    "court": "Gauhati High Court",
+    "case_name": "Suresh Majhi v. The State of AP",
+    "date": "2023-08-07",
+    "citations": {
+     "case_no": "CRL.A(J)/11/2022"
+    },
+    "link": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2023/court=18_6/bench=arghccis/GAHC040005652022_1_2023-08-07.pdf",
+    "link_kind": "high_court_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "21",
+    "page": 14,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9062,
+    "text": "21. To convict an accused under the circumstantial evidence, the prosecution has to prove that the chain is complete and has to establish the following:- \u201c(1) the circumstances from which the conclusion of guilt is to be drawn should be fully established. The 8 circumstances concerned \u2018must\u2019 or \u2018should\u2019 and not \u2018may be\u2019 established; (2) the facts so established should be consistent only with the hypothesis of the guilt of the accused, that is to say, they should not be explainable on any other hypothesis except that the accused is guilty; (3) the circumstances should be of a conclusive nature and tendency; (4) they should exclude every possible hypothesis except the one to be proved; and (5) there must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused.",
+    "passage_id": "bee41e9af086ff2d"
+   },
+   {
+    "rank": 4,
+    "doc": 2000000265,
+    "court": "Gauhati High Court",
+    "case_name": "Herman Tirky @ Herman Orang v. The State of Assam",
+    "date": "2013-04-25",
+    "citations": {
+     "case_no": "CRL.A(J) 46/2008"
+    },
+    "link": "https://ghconline.gov.in/Judgment/CrlA46J2008.pdf",
+    "link_kind": "high_court_site_pdf",
+    "name_to_review": false,
+    "paragraph": "8",
+    "page": 3,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8906,
+    "text": "8. When a case rests on circumstantial evidence, prosecution must prove every piece of incriminating circumstances, which the prosecution relies upon. The circumstances, so proved, shall form a complete chain, which shall unerringly point to the accused as the guilty one. The evidence, adduced by the prosecution, shall not only be consistent with the guilt of the accused, but shall also be inconsistent with every hypothesis of innocence of the accused, meaning thereby that every possible hypothesis of the innocence of the accused has to be ruled out before the circumstantial evidence is relied upon to base conviction of the accused.",
+    "passage_id": "8c631d8a278d6a32"
+   },
+   {
+    "rank": 5,
+    "doc": 2000754253,
+    "court": "Gauhati High Court",
+    "case_name": "Hongro Ngotan v. The State of AP",
+    "date": "2024-04-08",
+    "citations": {
+     "case_no": "CRL.A(J)/13/2023"
+    },
+    "link": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2024/court=18_6/bench=arghccis/GAHC040007992023_1_2024-04-09.pdf",
+    "link_kind": "high_court_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "24",
+    "page": 12,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8906,
+    "text": "24. In deciding the sufficiency of the circumstantial evidence for the purpose of conviction, the court has to consider the total cumulative effect of all the proved facts, each one of which reinforces the conclusion of guilt and if the combined effect of all these facts taken together is conclusive in establishing the guilt of the accused, the conviction would be justified even though it may be that one or more of these facts by itself or themselves is/are not decisive. The facts established should be consistent only with the hypothesis of the guilt of the accused and should exclude every hypothesis except the one sought to be proved. But this does not mean that before the prosecution can succeed in a case resting upon circumstantial evidence alone, it must exclude each and every hypothesis suggested by the accused, howsoever, extravagant and fanciful it might be. There must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused, where various links in chain are in themselves complete, then the false plea or false defence may be called into aid only to lend assurance to the court.\u201d 24. In the case of Rajendra Pralhadrao Wasnik vs. State of Maharashtra, (2012) 4 SCC 37, while dealing with the case based on circumstantial evidence, this Court observed as under: (SCC pp. 41-42, paras 12-13) \u201c12. There is no doub...",
+    "passage_id": "8444fcfd2698ecdd"
+   },
+   {
+    "rank": 6,
+    "doc": 1000252508,
+    "court": "Supreme Court of India",
+    "case_name": "Manoj Suryavanshi v. State of Chhattisgarh",
+    "date": "2020-03-05",
+    "citations": {
+     "scr": "[2020] 4 S.C.R. 1",
+     "insc": "2020 INSC 275",
+     "cnr": "ESCR010002752020"
+    },
+    "link": "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2020/english/2020_4_1_43_EN.pdf",
+    "link_kind": "open_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "14",
+    "page": 25,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8789,
+    "text": "14. We are conscious of the fact that it is a case of circumstantial evidence and therefore before convicting the accused on the basis of circumstantial evidence, the prosecution has to prove beyond doubt and complete the chain of events which lead to the conclusion that it is the accused alone who has committed the offence. Therefore, in the facts and circumstances of the case, it is required to be considered whether the prosecution has been successful in establishing the complete chain of events which lead to the conclusion that it is the appellant-accused alone who has committed the offence?",
+    "passage_id": "c3f47ce14a961af2"
+   },
+   {
+    "rank": 7,
+    "doc": 40463,
+    "court": "Supreme Court of India",
+    "case_name": "Majendran Langeswaran v. State (NCT of Delhi) & Anr",
+    "date": "2013-07-01",
+    "citations": {},
+    "link": "https://api.sci.gov.in/jonew/judis/40463.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": "24",
+    "page": 27,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8789,
+    "text": "24. In deciding the sufficiency of the circumstantial evidence for the purpose of conviction, the court has to consider the total cumulative effect of all the proved facts, each one of which reinforces the conclusion of guilt and if the combined effect of all these facts taken together is conclusive in establishing the guilt of the accused, the conviction would be justified even though it may be that one or more of these facts by itself or themselves is/are not decisive. The facts established should be consistent only with the hypothesis of the guilt of the accused and should exclude every hypothesis except the one sought to be proved. But this does not mean that before the prosecution can succeed in a case resting upon circumstantial evidence alone, it must exclude each and every hypothesis suggested by the accused, howsoever, extravagant and fanciful it might be. There must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused, where various links in chain are in themselves complete, then the false plea or false defence may be called into aid only to lend assurance to the court.\u201d",
+    "passage_id": "dd313ae4cb03e053"
+   },
+   {
+    "rank": 8,
+    "doc": 1000256761,
+    "court": "Supreme Court of India",
+    "case_name": "Padman Bibhar v. State of Odisha",
+    "date": "2025-05-21",
+    "citations": {
+     "scr": "[2025] 5 S.C.R. 1116",
+     "insc": "2025 INSC 751",
+     "cnr": "ESCR010005822025"
+    },
+    "link": "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2025/english/2025_5_1116_1127_EN.pdf",
+    "link_kind": "open_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "10",
+    "page": 5,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.875,
+    "text": "10. It is settled law that in a case based on circumstantial evidence, the prosecution is obliged to prove each circumstance, taken cumulatively to form a chain so complete that there is no escape from the conclusion that within all human probabilities, crime was committed by the accused and none else. Further, the facts so proved should unerringly point towards the guilt of the accused.",
+    "passage_id": "5972dcbef69eb436"
+   },
+   {
+    "rank": 9,
+    "doc": 35914,
+    "court": "Supreme Court of India",
+    "case_name": "Vijay Kumar Arora v. State Govt. of NCT of Delhi",
+    "date": "2010-01-13",
+    "citations": {},
+    "link": "https://api.sci.gov.in/jonew/judis/35914.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": "9/3",
+    "page": 9,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8711,
+    "text": "The Court thereafter has to consider the effect of proved facts. In deciding the sufficiency of the circumstantial evidence for the purpose of conviction, Court has to consider the total cumulative effect of all the proved facts, each one of which reinforces the conclusion of guilt and if the combined effect of all these facts taken together is conclusive in establishing the guilt of the accused, the conviction would be justified even though it may be that one or more of these facts by itself or themselves is, or are not decisive. The facts established should be consistent only with the hypothesis of the guilt of the accused and should exclude every hypothesis, except the one sought to be proved. But this does not mean that before the prosecution can succeed in a case resting upon circumstantial evidence alone, it must exclude each and every hypothesis suggested by the accused, howsoever, extravagant and fanciful it might be. There must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused; and where the various links in a chain are in themselves complete, then a false plea or a false defence may be called into aid only to lend assurance to the Court.",
+    "passage_id": "4d08cfa47da65642"
+   },
+   {
+    "rank": 10,
+    "doc": 2000000045,
+    "court": "Gauhati High Court",
+    "case_name": "Babul Boro @ Babulal Boro v. The State of Assam Ansari Sarma",
+    "date": "2011-07-28",
+    "citations": {
+     "case_no": "CRL.A(J) 94/2005"
+    },
+    "link": "https://ghconline.gov.in/Judgment/CRLA94J2005.pdf",
+    "link_kind": "high_court_site_pdf",
+    "name_to_review": false,
+    "paragraph": "26",
+    "page": 16,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8711,
+    "text": "26. To base conviction on the basis of circumstantial evidence, the events of circumstances, revealed by the prosecution witnesses, must be cogent, reliable and conclusive in nature, forming a complete chain, pointing the guilt of the accused and inconsistent with his innocence.",
+    "passage_id": "b0825b3cce46e528"
+   }
+  ]
+ },
+ "on": {
+  "ok": true,
+  "tier": "wider_pool_not_independently_verified",
+  "recipe": "B+authority",
+  "index_commit": null,
+  "as_of": "2026-10-16",
+  "as_of_by_court": {
+   "Supreme Court of India": "2026-10-16",
+   "Gauhati High Court": "2026-10-14"
+  },
+  "disclaimer": "These passages come from a search of a much wider judgment database. Nobody at Recourse has read and confirmed them. Read the real judgment yourself, or with a lawyer, before relying on it. This search does not say whether a decision is still good law.",
+  "seconds": 3.47,
+  "usage": {
+   "embed_model": "voyage-law-2",
+   "embed_tokens": 0,
+   "rerank_model": "rerank-3-lite",
+   "rerank_tokens": 0
+  },
+  "results": [
+   {
+    "rank": 1,
+    "doc": 9517,
+    "court": "Supreme Court of India",
+    "case_name": "Sharad Birdhi Chand Sarda v. State of Maharashtra",
+    "date": "1984-07-17",
+    "citations": {
+     "air": [
+      "1984 AIR 1622"
+     ],
+     "scr": [
+      "1985 SCR (1) 88"
+     ],
+     "scc": [
+      "1984 SCC (4) 116"
+     ]
+    },
+    "link": "https://api.sci.gov.in/jonew/judis/9517.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": null,
+    "page": 53,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 1.239,
+    "text": "It may be interesting to note that as regards the mode of proof in a criminal case depending on circumstantial evidence, in the absence of a corpus deliciti, the statement of law as to proof of the same was laid down by Gresson, J. (and concurred by 3 more Judges) in The King v. Horry,(l) thus: \"Before he can be convicted, the fact of death should be proved by such circumstances as render the commission of the crime morally certain and leave no ground for reasonable doubt: the circumstantial evidence should be so cogent and compelling as to convince a jury that up on no rational hypothesis other than murder can the facts be accounted for.\" Lord Goddard slightly modified the expression, morally certain by \u2019such circumstances as render the commission of the crime certain\u2019. This indicates the cardinal principle\u2019 of criminal jurisprudence that a case can be said to be proved only when there is certain and explicit evidence and no person can be convicted on pure moral conviction. Horry\u2019s case (supra) was approved by this Court in Anant Chintaman Lagu v. The State of Bombay(2) Lagu\u2019s case as also the principles enunciated by this Court in Hanumant\u2019s case (supra) have been uniformly and consistently followed in all later decisions of this Court without any single exception. To quote a few cases Tufail\u2019s case (supra), Ramgopals case (supra), Chandrakant Nyalchand Seth v.",
+    "passage_id": "1a7596b7c84d36b8",
+    "authority": {
+     "named_by_collection": 446,
+     "named_by_retrieved": 22,
+     "retrieved": 59,
+     "pointer": true,
+     "raw_score": 0.8007
+    }
+   },
+   {
+    "rank": 2,
+    "doc": 1154,
+    "court": "Supreme Court of India",
+    "case_name": "Hanumant v. The State of Madhya Pradesh.Raojibhaithe State of Madhya Pra",
+    "date": "1952-01-23",
+    "citations": {
+     "air": [
+      "1975 AIR 1083"
+     ]
+    },
+    "link": "https://api.sci.gov.in/jonew/judis/1154.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": "preamble/11",
+    "page": 1,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9691,
+    "text": "He is a person who felt no hesitation in deposing on oath that he willingly became a party to the forgery of Exhibit 13-27. Assuming that the accused Nargundkar had taken the tenders to his house, the prosecution, in order to bring the guilt home to the accused, has yet to prove the other facts referred to above. No direct\u2019 evidence was adduced in proof of those facts. Reliance was placed by the prosecution and by the courts below on certain circumstances, and intrinsic evidence contained in the impugned document, Exhibit P-3A. In dealing with circumstantial evidence the rules specially applicable to such evidence must be borne in mind. In such cases there is always the danger that conjecture or suspicion may take the place of legal proof and therefore it is right to recall the warning addressed by Baron Alderson to the jury in Reg v. Hodge (1) where he said :-- \"The mind was apt to take a pleasure in adapting circumstances to one another, and even in straining them a little, if need be, to force them to form parts of one connected whole; and the more ingenious the mind of the individual, the more likely was it, considering such matters, to overreach and mislead itself, to supply some little link that \u2019is wanting, to take for granted some fact consistent with its previous theories and necessary to render them complete.\" It is well to remember that in cases where the evidence is of a circumstantial nature,the circumstances from which the conclusion of guilt is to be drawn shou...",
+    "passage_id": "cd819ebd1883a9bf",
+    "authority": {
+     "named_by_collection": 82,
+     "named_by_retrieved": 7,
+     "retrieved": 59,
+     "pointer": true,
+     "raw_score": 0.7827
+    }
+   },
+   {
+    "rank": 3,
+    "doc": 2000253232,
+    "court": "Supreme Court of India",
+    "case_name": "Pawan Kumar Sharma v. Manoj Kumar & Ors",
+    "date": "2026-05-25",
+    "citations": {
+     "insc": "2026 INSC 539",
+     "case_id": "14203/2015"
+    },
+    "link": "https://api.sci.gov.in/supremecourt/2015/14203/14203_2015_15_1504_71505_Judgement_25-May-2026.pdf",
+    "link_kind": "court_site_pdf",
+    "name_to_review": false,
+    "paragraph": "42",
+    "page": 22,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9357,
+    "text": "42. Thus, it is a settled position of law that to convict the accused on the basis of circumstantial evidence, the prosecution must prove beyond reasonable doubt each of the incriminating circumstances on which it proposes to rely; the circumstance(s) relied upon must be of a definite tendency unerringly pointing towards the accused\u2019s guilt and must form a chain so far complete that there is no escape from the conclusion that within all human probability it is the accused and no one else who had committed the crime and they (it) must exclude all other hypothesis inconsistent with his guilt and consistent with his innocence.",
+    "passage_id": "4f023afe32a95007",
+    "authority": {
+     "named_by_collection": 1,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.9219
+    }
+   },
+   {
+    "rank": 4,
+    "doc": 3860,
+    "court": "Supreme Court of India",
+    "case_name": "M. G. Agarwal v. State of Maharashtra",
+    "date": "1962-04-24",
+    "citations": {
+     "air": [
+      "1963 AIR 200"
+     ],
+     "scr": [
+      "1963 SCR (2) 405"
+     ]
+    },
+    "link": "https://api.sci.gov.in/jonew/judis/3860.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": "423/5",
+    "page": 7,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9145,
+    "text": "The prosecution case against accused No. 1 rests on circumstantial evidence. The main charge of conspiracy under section 120 B is sought to be established by the alleged conduct of the conspirators and so far as accused No. 1 is concerned, that rests on circumstantial evidence alone. It is a well established rule in criminal jurisprudence that circumstantial evidence can be reasonably made the basis of an accused person\u2019s conviction if it is of such a character that it is wholly inconsistent with the innocence of the accused and is consistent only with his guilt. If the circumstances proved in the case are consistent either with the innocence of the accused or with his guilt, then the accused is entitled to the benefit of doubt. There is no doubt or dispute about this position. But in applying this principle, it is necessary to distinguish between facts which may be called primary or basic on the one hand and inference of facts to be drawn from them on the other. In regard to the proof of basic or primary facts the Court has to judge the evidence in the ordinary way, and in the appreciation of evidence in respect of the proof of these basic or primary facts there is no scope for the application of the doctrine of benefit of doubt. The Court considers the evidence and decides whether that evidences proves a particular fact or not.",
+    "passage_id": "0faa2b11047c69f7",
+    "authority": {
+     "named_by_collection": 47,
+     "named_by_retrieved": 1,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.8438
+    }
+   },
+   {
+    "rank": 5,
+    "doc": 2000253264,
+    "court": "Supreme Court of India",
+    "case_name": "Mehtab v. State of Uttarakhand",
+    "date": "2026-05-27",
+    "citations": {
+     "insc": "2026 INSC 578",
+     "case_id": "22194/2018"
+    },
+    "link": "https://api.sci.gov.in/supremecourt/2018/22194/22194_2018_2_1503_71618_Judgement_27-May-2026.pdf",
+    "link_kind": "court_site_pdf",
+    "name_to_review": false,
+    "paragraph": "40",
+    "page": 32,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9062,
+    "text": "40. It is a settled proposition of criminal jurisprudence that in a case resting solely on circumstantial evidence, the prosecution carries the onerous burden of establishing each incriminating circumstance beyond reasonable doubt. Unlike a case founded on direct ocular testimony, where the commission of the offence is spoken to by eyewitnesses, a case based on circumstantial evidence requires the Court to carefully evaluate whether the circumstances relied upon by the prosecution have been firmly and cogently proved and that the circumstances so proved form a complete chain pointing unerringly towards the guilt of the accused person. Each circumstance forming part of the chain must stand independently established and the cumulative effect thereof must be such as to lead only to the irresistible conclusion that the accused alone is the perpetrator of the crime. Mere suspicion, however grave, cannot take the place of legal proof, and the circumstances proved must be incompatible with the innocence of the accused.",
+    "passage_id": "559f79545294e5ea",
+    "authority": {
+     "named_by_collection": 0,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.9062
+    }
+   },
+   {
+    "rank": 6,
+    "doc": 2000753679,
+    "court": "Gauhati High Court",
+    "case_name": "Suresh Majhi v. The State of AP",
+    "date": "2023-08-07",
+    "citations": {
+     "case_no": "CRL.A(J)/11/2022"
+    },
+    "link": "https://indian-high-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2023/court=18_6/bench=arghccis/GAHC040005652022_1_2023-08-07.pdf",
+    "link_kind": "high_court_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "21",
+    "page": 14,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9062,
+    "text": "21. To convict an accused under the circumstantial evidence, the prosecution has to prove that the chain is complete and has to establish the following:- \u201c(1) the circumstances from which the conclusion of guilt is to be drawn should be fully established. The 8 circumstances concerned \u2018must\u2019 or \u2018should\u2019 and not \u2018may be\u2019 established; (2) the facts so established should be consistent only with the hypothesis of the guilt of the accused, that is to say, they should not be explainable on any other hypothesis except that the accused is guilty; (3) the circumstances should be of a conclusive nature and tendency; (4) they should exclude every possible hypothesis except the one to be proved; and (5) there must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused.",
+    "passage_id": "bee41e9af086ff2d",
+    "authority": {
+     "named_by_collection": 0,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.9062
+    }
+   },
+   {
+    "rank": 7,
+    "doc": 1000256761,
+    "court": "Supreme Court of India",
+    "case_name": "Padman Bibhar v. State of Odisha",
+    "date": "2025-05-21",
+    "citations": {
+     "scr": "[2025] 5 S.C.R. 1116",
+     "insc": "2025 INSC 751",
+     "cnr": "ESCR010005822025"
+    },
+    "link": "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2025/english/2025_5_1116_1127_EN.pdf",
+    "link_kind": "open_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "10",
+    "page": 5,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9055,
+    "text": "10. It is settled law that in a case based on circumstantial evidence, the prosecution is obliged to prove each circumstance, taken cumulatively to form a chain so complete that there is no escape from the conclusion that within all human probabilities, crime was committed by the accused and none else. Further, the facts so proved should unerringly point towards the guilt of the accused.",
+    "passage_id": "5972dcbef69eb436",
+    "authority": {
+     "named_by_collection": 4,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.875
+    }
+   },
+   {
+    "rank": 8,
+    "doc": 1000252508,
+    "court": "Supreme Court of India",
+    "case_name": "Manoj Suryavanshi v. State of Chhattisgarh",
+    "date": "2020-03-05",
+    "citations": {
+     "scr": "[2020] 4 S.C.R. 1",
+     "insc": "2020 INSC 275",
+     "cnr": "ESCR010002752020"
+    },
+    "link": "https://indian-supreme-court-judgments.s3.ap-south-1.amazonaws.com/data/pdf/year=2020/english/2020_4_1_43_EN.pdf",
+    "link_kind": "open_bucket_pdf",
+    "name_to_review": false,
+    "paragraph": "14",
+    "page": 25,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9053,
+    "text": "14. We are conscious of the fact that it is a case of circumstantial evidence and therefore before convicting the accused on the basis of circumstantial evidence, the prosecution has to prove beyond doubt and complete the chain of events which lead to the conclusion that it is the accused alone who has committed the offence. Therefore, in the facts and circumstances of the case, it is required to be considered whether the prosecution has been successful in establishing the complete chain of events which lead to the conclusion that it is the appellant-accused alone who has committed the offence?",
+    "passage_id": "c3f47ce14a961af2",
+    "authority": {
+     "named_by_collection": 3,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.8789
+    }
+   },
+   {
+    "rank": 9,
+    "doc": 35914,
+    "court": "Supreme Court of India",
+    "case_name": "Vijay Kumar Arora v. State Govt. of NCT of Delhi",
+    "date": "2010-01-13",
+    "citations": {},
+    "link": "https://api.sci.gov.in/jonew/judis/35914.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": "9/3",
+    "page": 9,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.9049,
+    "text": "The Court thereafter has to consider the effect of proved facts. In deciding the sufficiency of the circumstantial evidence for the purpose of conviction, Court has to consider the total cumulative effect of all the proved facts, each one of which reinforces the conclusion of guilt and if the combined effect of all these facts taken together is conclusive in establishing the guilt of the accused, the conviction would be justified even though it may be that one or more of these facts by itself or themselves is, or are not decisive. The facts established should be consistent only with the hypothesis of the guilt of the accused and should exclude every hypothesis, except the one sought to be proved. But this does not mean that before the prosecution can succeed in a case resting upon circumstantial evidence alone, it must exclude each and every hypothesis suggested by the accused, howsoever, extravagant and fanciful it might be. There must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused; and where the various links in a chain are in themselves complete, then a false plea or a false defence may be called into aid only to lend assurance to the Court.",
+    "passage_id": "4d08cfa47da65642",
+    "authority": {
+     "named_by_collection": 5,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.8711
+    }
+   },
+   {
+    "rank": 10,
+    "doc": 40463,
+    "court": "Supreme Court of India",
+    "case_name": "Majendran Langeswaran v. State (NCT of Delhi) & Anr",
+    "date": "2013-07-01",
+    "citations": {},
+    "link": "https://api.sci.gov.in/jonew/judis/40463.pdf",
+    "link_kind": "court_archive_pdf",
+    "name_to_review": false,
+    "paragraph": "24",
+    "page": 27,
+    "name_is_opening_lines": false,
+    "passage_type": "reasoning",
+    "score": 0.8921,
+    "text": "24. In deciding the sufficiency of the circumstantial evidence for the purpose of conviction, the court has to consider the total cumulative effect of all the proved facts, each one of which reinforces the conclusion of guilt and if the combined effect of all these facts taken together is conclusive in establishing the guilt of the accused, the conviction would be justified even though it may be that one or more of these facts by itself or themselves is/are not decisive. The facts established should be consistent only with the hypothesis of the guilt of the accused and should exclude every hypothesis except the one sought to be proved. But this does not mean that before the prosecution can succeed in a case resting upon circumstantial evidence alone, it must exclude each and every hypothesis suggested by the accused, howsoever, extravagant and fanciful it might be. There must be a chain of evidence so complete as not to leave any reasonable ground for the conclusion consistent with the innocence of the accused and must show that in all human probability the act must have been done by the accused, where various links in chain are in themselves complete, then the false plea or false defence may be called into aid only to lend assurance to the court.\u201d",
+    "passage_id": "dd313ae4cb03e053",
+    "authority": {
+     "named_by_collection": 1,
+     "named_by_retrieved": 0,
+     "retrieved": 59,
+     "pointer": false,
+     "raw_score": 0.8789
+    }
+   }
+  ]
+ }
+}

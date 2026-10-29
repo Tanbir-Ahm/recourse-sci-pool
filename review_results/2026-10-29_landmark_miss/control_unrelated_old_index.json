@@ -1,0 +1,2562 @@
+{
+ "summary": {
+  "questions": 70,
+  "mean_score_off": 0.686,
+  "mean_score_on": 0.657,
+  "mean_score_off_same_number_of_judgments": 0.686,
+  "mean_score_on_same_number_of_judgments": 0.677,
+  "judgments_brought_in": 178,
+  "mean_score_of_judgments_brought_in": 0.592,
+  "judgments_pushed_out": 89,
+  "mean_score_of_judgments_pushed_out": 0.627,
+  "mean_shared_of_8": 5.46,
+  "same_eight": 2,
+  "mean_passages_added": 13.4,
+  "questions_score_fell_by_0.05_or_more_same_number": 3,
+  "questions_score_rose_by_0.05_or_more_same_number": 0
+ },
+ "settings": {
+  "prior": 0.1,
+  "consensus": 0.6,
+  "min_frac": 0.08,
+  "max_clusters": 10,
+  "passages": 3,
+  "min_count": 3,
+  "per_doc": 1,
+  "prior_cap": 100,
+  "consensus_cap": 0.5,
+  "pool": 60
+ },
+ "index_commit": "3c80a26e42bea75e5858be6ed44a2649ec701355",
+ "rows": [
+  {
+   "q": "My client's opponent relies on Union of India (UOI) and Another v. K.R. Tahiliani (AIR 1980 SC 953). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    37199,
+    39511,
+    1000255155,
+    1000250181,
+    34290,
+    1000252162,
+    38157,
+    1000250645
+   ],
+   "on": [
+    37199,
+    39511,
+    1000250181,
+    1000255155,
+    36861,
+    1000252162,
+    34290,
+    38157
+   ],
+   "score_off": 0.5224609375,
+   "score_on": 0.5224609375,
+   "score_off_common": 0.5224609375,
+   "score_on_common": 0.5224609375,
+   "common_n": 8,
+   "new_scores": [
+    0.490234375
+   ],
+   "gone_scores": [
+    0.490234375
+   ],
+   "shared": 7,
+   "added": 3
+  },
+  {
+   "q": "Can the court take away my passport if I am charge-sheeted under the anti-terror law?",
+   "off": [
+    30866,
+    32524,
+    1000251566,
+    33003,
+    1000001892
+   ],
+   "on": [
+    30866,
+    1000001711,
+    1000001771,
+    32524,
+    1000251566,
+    33003,
+    16829,
+    35616
+   ],
+   "score_off": 0.539453125,
+   "score_on": 0.52783203125,
+   "score_off_common": 0.539453125,
+   "score_on_common": 0.5359375,
+   "common_n": 5,
+   "new_scores": [
+    0.5078125,
+    0.439453125,
+    0.462890625,
+    0.5859375
+   ],
+   "gone_scores": [
+    0.470703125
+   ],
+   "shared": 4,
+   "added": 18
+  },
+  {
+   "q": "Is previous sanction required for the court to take cognizance of an offence under Chapters IV and VI of the UAPA?",
+   "off": [
+    1000254991,
+    1000253395,
+    30256,
+    29173,
+    1000255984,
+    30316,
+    13283,
+    17267
+   ],
+   "on": [
+    12691,
+    576,
+    35414,
+    1000253395,
+    1000254991,
+    9608,
+    13869,
+    30256
+   ],
+   "score_off": 0.8286158069968224,
+   "score_on": 0.8202627524733543,
+   "score_off_common": 0.8286158069968224,
+   "score_on_common": 0.8202627524733543,
+   "common_n": 8,
+   "new_scores": [
+    0.8134201765060425,
+    0.7893194556236267,
+    0.8242931365966797,
+    0.7291620373725891,
+    0.7424030900001526
+   ],
+   "gone_scores": [
+    0.8145118355751038,
+    0.8104497790336609,
+    0.7844948172569275,
+    0.7844948172569275,
+    0.7714710831642151
+   ],
+   "shared": 3,
+   "added": 28
+  },
+  {
+   "q": "Is Shafhi Mohammad v. State of Himachal Pradesh (2018) still good law? What did it hold?",
+   "off": [
+    1000256308,
+    1000254830,
+    1000253947,
+    1000254463,
+    1000252655
+   ],
+   "on": [
+    1000252655,
+    1000250501,
+    1000256308,
+    1000254830,
+    1000254463,
+    1000253947,
+    1003962585,
+    1000256820
+   ],
+   "score_off": 0.74921875,
+   "score_on": 0.73486328125,
+   "score_off_common": 0.74921875,
+   "score_on_common": 0.75078125,
+   "common_n": 5,
+   "new_scores": [
+    0.74609375,
+    0.6953125,
+    0.69140625
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 11
+  },
+  {
+   "q": "Under which section is an association declared unlawful and what is the role of the Tribunal?",
+   "off": [
+    1000254850
+   ],
+   "on": [
+    1000254850,
+    37441,
+    1000255984,
+    43775,
+    13609,
+    42701,
+    25734,
+    40372
+   ],
+   "score_off": 0.881745457649231,
+   "score_on": 0.5679723583161831,
+   "score_off_common": 0.881745457649231,
+   "score_on_common": 0.881745457649231,
+   "common_n": 1,
+   "new_scores": [
+    0.43623149394989014,
+    0.7605884671211243,
+    0.5350343585014343,
+    0.5249648690223694,
+    0.5142402648925781,
+    0.3867224156856537,
+    0.5042515397071838
+   ],
+   "gone_scores": [],
+   "shared": 1,
+   "added": 9
+  },
+  {
+   "q": "Is an offence under the Muslim Women (Protection of Rights on Marriage) Act cognizable, and who may give the information to the police?",
+   "off": [
+    1000257016,
+    1897,
+    1000252854,
+    1000256514,
+    40960,
+    14958,
+    1000251042,
+    12770
+   ],
+   "on": [
+    1000257016,
+    1897,
+    1000252854,
+    12770,
+    1000256514,
+    1000251042,
+    40960,
+    14958
+   ],
+   "score_off": 0.6504655182361603,
+   "score_on": 0.6504655182361603,
+   "score_off_common": 0.6504655182361603,
+   "score_on_common": 0.6504655182361603,
+   "common_n": 8,
+   "new_scores": [],
+   "gone_scores": [],
+   "shared": 8,
+   "added": 6
+  },
+  {
+   "q": "My client's opponent relies on Ram Saroop Dasji v. S.P. Sahi, Special Officer-in-charge of The Hindu Religious Trusts and Others (AIR 1959 SC 951). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    6479,
+    39917,
+    1000250181,
+    37199,
+    33021,
+    28996,
+    39131,
+    29676
+   ],
+   "on": [
+    4795,
+    6479,
+    39917,
+    1000250181,
+    37199,
+    33021,
+    27305,
+    29676
+   ],
+   "score_off": 0.5033512152731419,
+   "score_on": 0.5181883908808231,
+   "score_off_common": 0.5033512152731419,
+   "score_on_common": 0.5181883908808231,
+   "common_n": 8,
+   "new_scores": [
+    0.589751124382019,
+    0.4662514626979828
+   ],
+   "gone_scores": [
+    0.46847137808799744,
+    0.4688338041305542
+   ],
+   "shared": 6,
+   "added": 3
+  },
+  {
+   "q": "A child has no parents and needs care. Who decides what happens to the child?",
+   "off": [
+    1000255899,
+    1003962533,
+    1000256441,
+    13925,
+    37709,
+    33104,
+    1000251694
+   ],
+   "on": [
+    1000255899,
+    13925,
+    1003962533,
+    1000256441,
+    30900,
+    33104,
+    1000250047,
+    1000251694
+   ],
+   "score_off": 0.6668526785714286,
+   "score_on": 0.630615234375,
+   "score_off_common": 0.6668526785714286,
+   "score_on_common": 0.6325334821428571,
+   "common_n": 7,
+   "new_scores": [
+    0.515625,
+    0.486328125
+   ],
+   "gone_scores": [
+    0.625
+   ],
+   "shared": 6,
+   "added": 6
+  },
+  {
+   "q": "The police recorded a video of the recovery on a phone but gave no Section 65B certificate. Is the video still admissible in court?",
+   "off": [
+    1000250085,
+    1000253947,
+    1000252655,
+    1000250501,
+    1000251679,
+    1000255052,
+    1003962585
+   ],
+   "on": [
+    1000252655,
+    1000250501,
+    42313,
+    1000250085,
+    1000253947,
+    1000251679,
+    1000255052,
+    1003962585
+   ],
+   "score_off": 0.7287856425557818,
+   "score_on": 0.713829755783081,
+   "score_off_common": 0.7287856425557818,
+   "score_on_common": 0.7087554335594177,
+   "common_n": 7,
+   "new_scores": [
+    0.609138548374176
+   ],
+   "gone_scores": [],
+   "shared": 7,
+   "added": 23
+  },
+  {
+   "q": "What are the functions and responsibilities of the Child Welfare Committee?",
+   "off": [
+    1000255899,
+    40330,
+    13925,
+    1000256572,
+    44871
+   ],
+   "on": [
+    1000255899,
+    40330,
+    13925,
+    1000256572,
+    34524,
+    1000251221,
+    1000253442,
+    1000255983
+   ],
+   "score_off": 0.6860023140907288,
+   "score_on": 0.6436653211712837,
+   "score_off_common": 0.6860023140907288,
+   "score_on_common": 0.6820174813270569,
+   "common_n": 5,
+   "new_scores": [
+    0.5693380832672119,
+    0.5821983218193054,
+    0.5701479911804199,
+    0.58688884973526
+   ],
+   "gone_scores": [
+    0.5892622470855713
+   ],
+   "shared": 4,
+   "added": 15
+  },
+  {
+   "q": "My relative was arrested under the anti-terror law. For how long can the police go on investigating before they file the chargesheet?",
+   "off": [
+    1000001711,
+    1000251383,
+    39693,
+    1000254853,
+    12382,
+    27135,
+    4854,
+    41765
+   ],
+   "on": [
+    1000001711,
+    1000250154,
+    1000001771,
+    1000251383,
+    39693,
+    29542,
+    1000254853,
+    12382
+   ],
+   "score_off": 0.7116071134805679,
+   "score_on": 0.6924781426787376,
+   "score_off_common": 0.7116071134805679,
+   "score_on_common": 0.6924781426787376,
+   "common_n": 8,
+   "new_scores": [
+    0.6600743532180786,
+    0.5929058194160461,
+    0.6209766864776611
+   ],
+   "gone_scores": [
+    0.6799020171165466,
+    0.6767178773880005,
+    0.6703687310218811
+   ],
+   "shared": 5,
+   "added": 17
+  },
+  {
+   "q": "Is there a presumption against the accused in a prosecution under the Atrocities Act?",
+   "off": [
+    1000250634,
+    1000253378,
+    27807,
+    1000253109,
+    1000256984,
+    35657,
+    1000252136,
+    36050
+   ],
+   "on": [
+    32155,
+    30317,
+    17831,
+    1000250634,
+    28595,
+    27807,
+    1000253378,
+    1000253109
+   ],
+   "score_off": 0.6408293172717094,
+   "score_on": 0.6225190386176109,
+   "score_off_common": 0.6408293172717094,
+   "score_on_common": 0.6225190386176109,
+   "common_n": 8,
+   "new_scores": [
+    0.5576687455177307,
+    0.6226617693901062,
+    0.5889826416969299,
+    0.5000436305999756
+   ],
+   "gone_scores": [
+    0.6087825298309326,
+    0.6080664992332458,
+    0.599494993686676,
+    0.599494993686676
+   ],
+   "shared": 4,
+   "added": 27
+  },
+  {
+   "q": "Is Mahendra Kumar Shastri v. Union of India (UOI) and Another (1983) still good law? What did it hold?",
+   "off": [
+    40836,
+    1000254905,
+    39250,
+    1000251444,
+    1000255445,
+    1000001562,
+    751,
+    1000255268
+   ],
+   "on": [
+    40836,
+    4795,
+    39250,
+    1000254905,
+    1000255445,
+    1000251444,
+    7547,
+    1000001562
+   ],
+   "score_off": 0.4451317712664604,
+   "score_on": 0.4366714246571064,
+   "score_off_common": 0.4451317712664604,
+   "score_on_common": 0.4366714246571064,
+   "common_n": 8,
+   "new_scores": [
+    0.3787792921066284,
+    0.4065425992012024
+   ],
+   "gone_scores": [
+    0.4266927242279053,
+    0.4263119399547577
+   ],
+   "shared": 6,
+   "added": 6
+  },
+  {
+   "q": "How are a company and its directors held liable for money laundering?",
+   "off": [
+    40911,
+    42666,
+    1000255607,
+    40882,
+    1000256817,
+    1000253405,
+    1000256237,
+    1000256859
+   ],
+   "on": [
+    28486,
+    34971,
+    42199,
+    40911,
+    42666,
+    1000255607,
+    40882,
+    39265
+   ],
+   "score_off": 0.7008492797613144,
+   "score_on": 0.681720070540905,
+   "score_off_common": 0.7008492797613144,
+   "score_on_common": 0.681720070540905,
+   "common_n": 8,
+   "new_scores": [
+    0.6785063147544861,
+    0.6528241038322449,
+    0.6438316106796265,
+    0.5642329454421997
+   ],
+   "gone_scores": [
+    0.6882724165916443,
+    0.6739533543586731,
+    0.6661059260368347,
+    0.6640969514846802
+   ],
+   "shared": 4,
+   "added": 29
+  },
+  {
+   "q": "What is the punishment for being a member of a terrorist organisation under the UAPA?",
+   "off": [
+    1000255893,
+    1000255141,
+    1000253395,
+    1000254850
+   ],
+   "on": [
+    1000255893,
+    1000255141,
+    1000253395,
+    1000254850,
+    1000251873,
+    1000255641,
+    1000001711,
+    17514
+   ],
+   "score_off": 0.8309665024280548,
+   "score_on": 0.7570342607796192,
+   "score_off_common": 0.8309665024280548,
+   "score_on_common": 0.8293865472078323,
+   "common_n": 4,
+   "new_scores": [
+    0.6606564521789551,
+    0.8561745285987854,
+    0.4566274583339691,
+    0.7652694582939148
+   ],
+   "gone_scores": [],
+   "shared": 4,
+   "added": 28
+  },
+  {
+   "q": "What are the general principles to be followed in the administration of this Act?",
+   "off": [
+    43837,
+    1000255626,
+    1000254113,
+    1000254437,
+    34410,
+    1000252702
+   ],
+   "on": [
+    43837,
+    1000255626,
+    1000254113,
+    34410,
+    1000254437,
+    1000252702,
+    29015,
+    8264
+   ],
+   "score_off": 0.7513020833333334,
+   "score_on": 0.6962890625,
+   "score_off_common": 0.7513020833333334,
+   "score_on_common": 0.7473958333333334,
+   "common_n": 6,
+   "new_scores": [
+    0.5546875,
+    0.53125
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 8
+  },
+  {
+   "q": "The High Court gave my husband anticipatory bail only until the next hearing and then told him to apply for regular bail. His lawyer cites Salauddin Abdulsamad Shaikh v. State of Maharashtra (1996) to say anticipatory bail should end after a short fixed time. Is that correct?",
+   "off": [
+    29706,
+    33297,
+    30671,
+    32873,
+    1000252377,
+    37199,
+    26392,
+    28630
+   ],
+   "on": [
+    10195,
+    26392,
+    26810,
+    37199,
+    4562,
+    33297,
+    1000252377,
+    29706
+   ],
+   "score_off": 0.9084207862615585,
+   "score_on": 0.8735204190015793,
+   "score_off_common": 0.9084207862615585,
+   "score_on_common": 0.8735204190015793,
+   "common_n": 8,
+   "new_scores": [
+    0.8654263615608215,
+    0.8545029759407043,
+    0.7291150093078613
+   ],
+   "gone_scores": [
+    0.9236935377120972,
+    0.9236881732940674,
+    0.8808655738830566
+   ],
+   "shared": 5,
+   "added": 18
+  },
+  {
+   "q": "I know a neighbour is abusing a child but I do not want to get involved. Am I legally required to tell the police?",
+   "off": [
+    1000255983,
+    1000254366,
+    1000254459,
+    1000250900,
+    40330
+   ],
+   "on": [
+    1000255983,
+    1000254366,
+    40330,
+    1000254459,
+    1000250900,
+    1000253701,
+    1000256976,
+    40392
+   ],
+   "score_off": 0.7102489233016968,
+   "score_on": 0.6585631296038628,
+   "score_off_common": 0.7102489233016968,
+   "score_on_common": 0.7102489233016968,
+   "common_n": 5,
+   "new_scores": [
+    0.603974461555481,
+    0.5838852524757385,
+    0.5294007062911987
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 6
+  },
+  {
+   "q": "After my in-laws forced me out, I filed a domestic violence case, but the court says it will take at least a year to decide. I have no money for rent or food right now. Can the court give me maintenance before the case is fully decided?",
+   "off": [
+    32128,
+    1000252794,
+    1000256344
+   ],
+   "on": [
+    32128,
+    1000252794,
+    1000256344,
+    42130,
+    41767,
+    44723,
+    39071,
+    1000253984
+   ],
+   "score_off": 0.741904596487681,
+   "score_on": 0.6255223676562309,
+   "score_off_common": 0.741904596487681,
+   "score_on_common": 0.741904596487681,
+   "common_n": 3,
+   "new_scores": [
+    0.6362471580505371,
+    0.5187980532646179,
+    0.6002453565597534,
+    0.49127495288848877,
+    0.531899631023407
+   ],
+   "gone_scores": [],
+   "shared": 3,
+   "added": 6
+  },
+  {
+   "q": "Summarise the holding in Sabhajit Tewary v. Union of India (UOI) and Others (1975) and tell me whether I can cite it.",
+   "off": [
+    27249,
+    33478,
+    1000251956,
+    35220,
+    1000250181,
+    9242,
+    12660,
+    1000253281
+   ],
+   "on": [
+    27249,
+    25734,
+    16242,
+    35220,
+    33478,
+    1000251956,
+    1000250181,
+    9517
+   ],
+   "score_off": 0.4610082507133484,
+   "score_on": 0.451224435120821,
+   "score_off_common": 0.4610082507133484,
+   "score_on_common": 0.451224435120821,
+   "common_n": 8,
+   "new_scores": [
+    0.4097062349319458,
+    0.4005969762802124,
+    0.38319283723831177
+   ],
+   "gone_scores": [
+    0.43309107422828674,
+    0.42481303215026855,
+    0.4138624668121338
+   ],
+   "shared": 5,
+   "added": 15
+  },
+  {
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant asks the magistrate for a fresh investigation by the police. Is that allowed?",
+   "off": [
+    1000252085,
+    29542,
+    1000255489,
+    39845,
+    39847,
+    44522,
+    4903,
+    1000254984
+   ],
+   "on": [
+    4903,
+    29542,
+    39831,
+    14565,
+    26042,
+    32912,
+    1000252085,
+    39845
+   ],
+   "score_off": 0.8620887920260429,
+   "score_on": 0.8298807740211487,
+   "score_off_common": 0.8620887920260429,
+   "score_on_common": 0.8298807740211487,
+   "common_n": 8,
+   "new_scores": [
+    0.8475164771080017,
+    0.836966335773468,
+    0.7674447894096375,
+    0.7328797578811646
+   ],
+   "gone_scores": [
+    0.8649818897247314,
+    0.8643317818641663,
+    0.8623262643814087,
+    0.8508315682411194
+   ],
+   "shared": 4,
+   "added": 24
+  },
+  {
+   "q": "Is Isha Valimohamed and Another v. Haji Gulam Mohamad and Haji Dada Trust (1974) still good law? What did it hold?",
+   "off": [
+    7547,
+    27880,
+    1000251584,
+    38157,
+    1000257073,
+    15467,
+    33688,
+    1000003661
+   ],
+   "on": [
+    4795,
+    27092,
+    7547,
+    27880,
+    16242,
+    15467,
+    1000003661,
+    38157
+   ],
+   "score_off": 0.378173828125,
+   "score_on": 0.37255859375,
+   "score_off_common": 0.378173828125,
+   "score_on_common": 0.37255859375,
+   "common_n": 8,
+   "new_scores": [
+    0.376953125,
+    0.3515625,
+    0.341796875
+   ],
+   "gone_scores": [
+    0.37890625,
+    0.369140625,
+    0.3671875
+   ],
+   "shared": 5,
+   "added": 9
+  },
+  {
+   "q": "Summarise the holding in M.P. Sharma v. Satish Chandra (1954) and tell me whether I can cite it.",
+   "off": [
+    39339,
+    1000255196,
+    1000250181,
+    1000001552,
+    1000252784,
+    4157
+   ],
+   "on": [
+    4157,
+    39339,
+    1000255196,
+    1000250181,
+    1000001552,
+    1000252784,
+    27092,
+    1000255659
+   ],
+   "score_off": 0.7490950624148051,
+   "score_on": 0.7166791334748268,
+   "score_off_common": 0.7490950624148051,
+   "score_on_common": 0.7322801848252615,
+   "common_n": 6,
+   "new_scores": [
+    0.6585448384284973,
+    0.6812071204185486
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 3
+  },
+  {
+   "q": "Under the Act, must the prosecution be heard before an accused or convicted person in custody is released on bail?",
+   "off": [
+    8394,
+    1000255641,
+    1000255675,
+    1000254991,
+    1000255141,
+    5469,
+    1000001711,
+    39701
+   ],
+   "on": [
+    1000251566,
+    5469,
+    1000254991,
+    1000255641,
+    8394,
+    1000255141,
+    1000001711,
+    1000255675
+   ],
+   "score_off": 0.8251856118440628,
+   "score_on": 0.8295024782419205,
+   "score_off_common": 0.8251856118440628,
+   "score_on_common": 0.8295024782419205,
+   "common_n": 8,
+   "new_scores": [
+    0.8040515780448914
+   ],
+   "gone_scores": [
+    0.76951664686203
+   ],
+   "shared": 7,
+   "added": 20
+  },
+  {
+   "q": "What is the punishment for cruelty to a child under the Juvenile Justice Act?",
+   "off": [
+    40191,
+    1000256612,
+    40541,
+    41356,
+    1000252313,
+    9671,
+    30900
+   ],
+   "on": [
+    40541,
+    40191,
+    1000256612,
+    30900,
+    9671,
+    16335,
+    41356,
+    34524
+   ],
+   "score_off": 0.6005647097315107,
+   "score_on": 0.571149580180645,
+   "score_off_common": 0.6005647097315107,
+   "score_on_common": 0.5915159753390721,
+   "common_n": 7,
+   "new_scores": [
+    0.44312584400177,
+    0.4285848140716553
+   ],
+   "gone_scores": [
+    0.5064669847488403
+   ],
+   "shared": 6,
+   "added": 20
+  },
+  {
+   "q": "Whether a complaint of cruelty under Section 85 BNS by a wife who was forced out of her in-laws' house can be investigated and tried at the town where she now lives with her parents, though no act of cruelty took place there.",
+   "off": [
+    28175,
+    1000004453,
+    1000255395,
+    1000251591,
+    37871
+   ],
+   "on": [
+    28175,
+    1000004453,
+    1000255395,
+    1000251591,
+    37871,
+    1000255992,
+    31074,
+    1000255715
+   ],
+   "score_off": 0.72890625,
+   "score_on": 0.66259765625,
+   "score_off_common": 0.72890625,
+   "score_on_common": 0.70859375,
+   "common_n": 5,
+   "new_scores": [
+    0.6328125,
+    0.6484375,
+    0.4765625
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 8
+  },
+  {
+   "q": "Does the Code of Criminal Procedure apply to proceedings before the Special Court under the money-laundering law, including bail provisions?",
+   "off": [
+    1003962665,
+    1000250348,
+    1000002073,
+    1000250373,
+    43201,
+    1000255951,
+    1000254150
+   ],
+   "on": [
+    1003962665,
+    1000250348,
+    1000002073,
+    1000250373,
+    43201,
+    1000255951,
+    1000254150,
+    1000254065
+   ],
+   "score_off": 0.8304734740938459,
+   "score_on": 0.7870137691497803,
+   "score_off_common": 0.8304734740938459,
+   "score_on_common": 0.8160000017711094,
+   "common_n": 7,
+   "new_scores": [
+    0.5841101408004761
+   ],
+   "gone_scores": [],
+   "shared": 7,
+   "added": 18
+  },
+  {
+   "q": "Summarise the holding in Lalji Haridas v. State of Maharashtra and Another (1964) and tell me whether I can cite it.",
+   "off": [
+    43915,
+    1000253011,
+    8193,
+    1000250200
+   ],
+   "on": [
+    43915,
+    1000253011,
+    8193,
+    1000250200,
+    27092,
+    1866,
+    4795,
+    5992
+   ],
+   "score_off": 0.6802038997411728,
+   "score_on": 0.604973629117012,
+   "score_off_common": 0.6802038997411728,
+   "score_on_common": 0.6656182706356049,
+   "common_n": 4,
+   "new_scores": [
+    0.5066344141960144,
+    0.6930983066558838,
+    0.4387943148612976,
+    0.538788914680481
+   ],
+   "gone_scores": [],
+   "shared": 4,
+   "added": 11
+  },
+  {
+   "q": "Is there a presumption of guilt against the accused in a prosecution under the POCSO Act?",
+   "off": [
+    1000253440,
+    1000253705,
+    1000255983,
+    1000256911,
+    1000256183
+   ],
+   "on": [
+    1000253440,
+    1000253705,
+    1000255983,
+    1000256183,
+    1000256911,
+    30317,
+    1000254447,
+    31821
+   ],
+   "score_off": 0.8421663880348206,
+   "score_on": 0.7704944312572479,
+   "score_off_common": 0.8421663880348206,
+   "score_on_common": 0.8421663880348206,
+   "common_n": 5,
+   "new_scores": [
+    0.6626289486885071,
+    0.7284109592437744,
+    0.5620836019515991
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 30
+  },
+  {
+   "q": "Summarise the holding in Naresh Kumar Yadav v. Ravindra Kumar (2008) and tell me whether I can cite it.",
+   "off": [
+    37199,
+    1000251983,
+    1000252377,
+    37865,
+    42770,
+    36151,
+    41893
+   ],
+   "on": [
+    37199,
+    1000251983,
+    1000252377,
+    28595,
+    37865,
+    42770,
+    1000253881,
+    36151
+   ],
+   "score_off": 0.5809151785714286,
+   "score_on": 0.557373046875,
+   "score_off_common": 0.5809151785714286,
+   "score_on_common": 0.572265625,
+   "common_n": 7,
+   "new_scores": [
+    0.47265625,
+    0.439453125
+   ],
+   "gone_scores": [
+    0.51953125
+   ],
+   "shared": 6,
+   "added": 3
+  },
+  {
+   "q": "Is anticipatory bail available to an accused under the SC/ST Atrocities Act?",
+   "off": [
+    1000250634,
+    40321,
+    1000004818,
+    1000256991,
+    1000255914,
+    1000252047,
+    10902
+   ],
+   "on": [
+    39539,
+    1000250634,
+    1000252416,
+    40321,
+    1000004818,
+    1000252047,
+    1000256991,
+    1000255914
+   ],
+   "score_off": 0.8582589285714286,
+   "score_on": 0.8466796875,
+   "score_off_common": 0.8582589285714286,
+   "score_on_common": 0.8465401785714286,
+   "common_n": 7,
+   "new_scores": [
+    0.7890625,
+    0.80859375
+   ],
+   "gone_scores": [
+    0.83203125
+   ],
+   "shared": 6,
+   "added": 12
+  },
+  {
+   "q": "I gave dowry because my in-laws pressured me. Can I be punished for giving it, not just them?",
+   "off": [
+    42009,
+    35438,
+    25759,
+    33460,
+    1000257081,
+    7800,
+    9348,
+    1000256356
+   ],
+   "on": [
+    42009,
+    35438,
+    7800,
+    25759,
+    9348,
+    17435,
+    33460,
+    1000257081
+   ],
+   "score_off": 0.631827175617218,
+   "score_on": 0.6246839612722397,
+   "score_off_common": 0.631827175617218,
+   "score_on_common": 0.6246839612722397,
+   "common_n": 8,
+   "new_scores": [
+    0.5425623059272766
+   ],
+   "gone_scores": [
+    0.5997080206871033
+   ],
+   "shared": 7,
+   "added": 10
+  },
+  {
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant now asks the magistrate to order further investigation, and our lawyer cites Bikash Ranjan Rout v. State (NCT of Delhi) (2019) to say the magistrate cannot. Is that right?",
+   "off": [
+    44522,
+    35704,
+    1000252085,
+    1000253732
+   ],
+   "on": [
+    39831,
+    14565,
+    35704,
+    4903,
+    2383,
+    29542,
+    44522,
+    1000252085
+   ],
+   "score_off": 0.8623046875,
+   "score_on": 0.8095703125,
+   "score_off_common": 0.8623046875,
+   "score_on_common": 0.8046875,
+   "common_n": 4,
+   "new_scores": [
+    0.80859375,
+    0.765625,
+    0.78515625,
+    0.71875,
+    0.8046875
+   ],
+   "gone_scores": [
+    0.85546875
+   ],
+   "shared": 3,
+   "added": 22
+  },
+  {
+   "q": "My client's opponent relies on Bhikaji Narain Dhakras and Others v. The State of Madhya Pradesh and Another (AIR 1955 SC 781). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    1000254850,
+    39917,
+    40895,
+    32869,
+    1000256295,
+    34998,
+    39908,
+    38425
+   ],
+   "on": [
+    4795,
+    1000254850,
+    39917,
+    40895,
+    34998,
+    22,
+    32869,
+    1000256295
+   ],
+   "score_off": 0.535544253885746,
+   "score_on": 0.5450476706027985,
+   "score_off_common": 0.535544253885746,
+   "score_on_common": 0.5450476706027985,
+   "common_n": 8,
+   "new_scores": [
+    0.5781939625740051,
+    0.484427273273468
+   ],
+   "gone_scores": [
+    0.4972617030143738,
+    0.4893321990966797
+   ],
+   "shared": 6,
+   "added": 3
+  },
+  {
+   "q": "Is Jagdish Chander Chatterjee and Others v. Shri Kishan and Another (1972) still good law? What did it hold?",
+   "off": [
+    6005,
+    3104,
+    39917,
+    12437,
+    9776,
+    9859,
+    7547,
+    34690
+   ],
+   "on": [
+    6005,
+    9776,
+    3104,
+    39917,
+    12437,
+    7547,
+    9859,
+    9936
+   ],
+   "score_off": 0.48994987457990646,
+   "score_on": 0.48902304470539093,
+   "score_off_common": 0.48994987457990646,
+   "score_on_common": 0.48902304470539093,
+   "common_n": 8,
+   "new_scores": [
+    0.44349178671836853
+   ],
+   "gone_scores": [
+    0.4509064257144928
+   ],
+   "shared": 7,
+   "added": 0
+  },
+  {
+   "q": "A doctor examined my son's private parts for a medical condition with our consent. Can that be treated as sexual assault?",
+   "off": [
+    1000253440,
+    1000001761,
+    28098,
+    1000256668,
+    15373,
+    37709,
+    1000254452
+   ],
+   "on": [
+    1000253440,
+    16186,
+    12399,
+    1000001761,
+    28098,
+    15373,
+    1000256668,
+    1000254452
+   ],
+   "score_off": 0.5665036014148167,
+   "score_on": 0.553194560110569,
+   "score_off_common": 0.5665036014148167,
+   "score_on_common": 0.558387781892504,
+   "common_n": 7,
+   "new_scores": [
+    0.4948519766330719,
+    0.49456873536109924
+   ],
+   "gone_scores": [
+    0.5293894410133362
+   ],
+   "shared": 6,
+   "added": 9
+  },
+  {
+   "q": "Is chain snatching now a separate crime under the new criminal law, and what is the maximum punishment?",
+   "off": [
+    1000255620,
+    40372,
+    1000004581,
+    8852,
+    1000253085,
+    16830,
+    16831
+   ],
+   "on": [
+    16242,
+    4216,
+    1000001711,
+    1000255620,
+    4795,
+    8264,
+    40372,
+    1000004581
+   ],
+   "score_off": 0.4048549107142857,
+   "score_on": 0.3935546875,
+   "score_off_common": 0.4048549107142857,
+   "score_on_common": 0.392578125,
+   "common_n": 7,
+   "new_scores": [
+    0.400390625,
+    0.400390625,
+    0.388671875,
+    0.341796875,
+    0.359375
+   ],
+   "gone_scores": [
+    0.390625,
+    0.38671875,
+    0.380859375,
+    0.380859375
+   ],
+   "shared": 3,
+   "added": 21
+  },
+  {
+   "q": "Which provisions of the Indian Penal Code apply for the purposes of the SC/ST Act?",
+   "off": [
+    1000004818,
+    1003962567,
+    44794,
+    1000252416,
+    1000250409,
+    1000251978,
+    43153,
+    1000255571
+   ],
+   "on": [
+    1000004818,
+    1003962567,
+    44794,
+    39539,
+    43153,
+    1000252416,
+    1000250409,
+    1000251978
+   ],
+   "score_off": 0.6957375630736351,
+   "score_on": 0.6949212551116943,
+   "score_off_common": 0.6957375630736351,
+   "score_on_common": 0.6949212551116943,
+   "common_n": 8,
+   "new_scores": [
+    0.6365424990653992
+   ],
+   "gone_scores": [
+    0.6430729627609253
+   ],
+   "shared": 7,
+   "added": 6
+  },
+  {
+   "q": "How many years in jail can a Muslim husband get for pronouncing instant talaq?",
+   "off": [
+    1000252854,
+    18797,
+    1000255716,
+    1000255810,
+    1000255410
+   ],
+   "on": [
+    1000252854,
+    18797,
+    1000255716,
+    1000255810,
+    1000255410,
+    29143,
+    1003962611,
+    1000004478
+   ],
+   "score_off": 0.5714306235313416,
+   "score_on": 0.5270828679203987,
+   "score_off_common": 0.5714306235313416,
+   "score_on_common": 0.5714306235313416,
+   "common_n": 5,
+   "new_scores": [
+    0.46011677384376526,
+    0.45533689856529236,
+    0.4440561532974243
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 0
+  },
+  {
+   "q": "Anticipatory bail was granted to the accused in my family's case and the order gives no real reasons. Can it be cancelled?",
+   "off": [
+    1000252856,
+    33368,
+    44327,
+    1000256431,
+    1000255853,
+    42996,
+    39761,
+    1000253955
+   ],
+   "on": [
+    37199,
+    38026,
+    1000252223,
+    1000252856,
+    25970,
+    37063,
+    33368,
+    11149
+   ],
+   "score_off": 0.7662585899233818,
+   "score_on": 0.7130521386861801,
+   "score_off_common": 0.7662585899233818,
+   "score_on_common": 0.7130521386861801,
+   "common_n": 8,
+   "new_scores": [
+    0.7385204434394836,
+    0.728461503982544,
+    0.6925138235092163,
+    0.6239403486251831,
+    0.659446120262146,
+    0.6578744053840637
+   ],
+   "gone_scores": [
+    0.7669394016265869,
+    0.7623427510261536,
+    0.7623427510261536,
+    0.7492466568946838,
+    0.7441853880882263,
+    0.741351306438446
+   ],
+   "shared": 2,
+   "added": 22
+  },
+  {
+   "q": "In 2023, a drunk driver drove his SUV onto the footpath at night and killed my brother, who was waiting for a bus. The police test showed he was far over the alcohol limit. The FIR is only under 304A IPC, which our lawyer says carries at most two years. The driver's family is already offering money for a compromise. I keep reading that drunk-driving deaths are sometimes treated more seriously. When can such a death be prosecuted under Section 304 Part II IPC instead of only 304A?",
+   "off": [
+    39459,
+    41301,
+    32691,
+    1000004443,
+    25699,
+    29759,
+    1000254859
+   ],
+   "on": [
+    38962,
+    41301,
+    39459,
+    29759,
+    32691,
+    20325,
+    25699,
+    1000004443
+   ],
+   "score_off": 0.724761426448822,
+   "score_on": 0.7136425450444221,
+   "score_off_common": 0.724761426448822,
+   "score_on_common": 0.7168867758342198,
+   "common_n": 7,
+   "new_scores": [
+    0.7015975713729858,
+    0.6051106452941895
+   ],
+   "gone_scores": [
+    0.6708978414535522
+   ],
+   "shared": 6,
+   "added": 15
+  },
+  {
+   "q": "My cousin was caught by the police with some pills in his bag near a bus stand, and they say they are still investigating what the pills are. It has been two full days and they have not taken him to any court. Can they keep him at the station this long without a court order?",
+   "off": [
+    1000250154,
+    28905,
+    1000001711,
+    1000255155,
+    12382,
+    35001,
+    1000253103,
+    1000251013
+   ],
+   "on": [
+    1000001711,
+    1000250154,
+    1000001771,
+    1000255155,
+    28905,
+    12382,
+    35001,
+    1000253103
+   ],
+   "score_off": 0.7274514213204384,
+   "score_on": 0.7175987437367439,
+   "score_off_common": 0.7274514213204384,
+   "score_on_common": 0.7175987437367439,
+   "common_n": 8,
+   "new_scores": [
+    0.6102166771888733
+   ],
+   "gone_scores": [
+    0.689038097858429
+   ],
+   "shared": 7,
+   "added": 14
+  },
+  {
+   "q": "Which court may take cognizance of an offence under the Dowry Prohibition Act, and is there a time limit?",
+   "off": [
+    1000253879,
+    1000255144,
+    40153,
+    29259,
+    12640,
+    30017,
+    1000255155,
+    19141
+   ],
+   "on": [
+    29259,
+    1000253879,
+    1000255144,
+    40153,
+    12640,
+    1000255155,
+    30017,
+    19386
+   ],
+   "score_off": 0.67822265625,
+   "score_on": 0.6787109375,
+   "score_off_common": 0.67822265625,
+   "score_on_common": 0.6787109375,
+   "common_n": 8,
+   "new_scores": [
+    0.59765625
+   ],
+   "gone_scores": [
+    0.59375
+   ],
+   "shared": 7,
+   "added": 6
+  },
+  {
+   "q": "Summarise the holding in Oriental Insurance Co. Ltd. v. Angad Kol (2009) and tell me whether I can cite it.",
+   "off": [
+    1000256077,
+    1000250051,
+    34334,
+    26623,
+    1000253397,
+    1000253713
+   ],
+   "on": [
+    1000250051,
+    1000256077,
+    34334,
+    26623,
+    1000253397,
+    1000253713,
+    29947,
+    34848
+   ],
+   "score_off": 0.6138966282208761,
+   "score_on": 0.5822495520114899,
+   "score_off_common": 0.6138966282208761,
+   "score_on_common": 0.6138966282208761,
+   "common_n": 6,
+   "new_scores": [
+    0.4995119571685791,
+    0.4751046895980835
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 2
+  },
+  {
+   "q": "How is proceeds of crime defined under the money-laundering law?",
+   "off": [
+    1000255996,
+    1000255607,
+    1000255407,
+    1000254150,
+    1003962559,
+    1000254453,
+    1000254684
+   ],
+   "on": [
+    1000250373,
+    1000251983,
+    1000255996,
+    1000254150,
+    1000255407,
+    1000255607,
+    1003962559,
+    1000254453
+   ],
+   "score_off": 0.8745589511735099,
+   "score_on": 0.8629156202077866,
+   "score_off_common": 0.8745589511735099,
+   "score_on_common": 0.8628057071140834,
+   "common_n": 7,
+   "new_scores": [
+    0.837500810623169,
+    0.7831955552101135
+   ],
+   "gone_scores": [
+    0.8392840623855591
+   ],
+   "shared": 6,
+   "added": 17
+  },
+  {
+   "q": "What is the punishment for a person who fails to report an offence against a child to the police?",
+   "off": [
+    40330,
+    1000255983,
+    1000254366,
+    1000254459,
+    1000251221
+   ],
+   "on": [
+    40330,
+    1000255983,
+    1000254366,
+    1000254459,
+    1000251221,
+    1000256899,
+    8969,
+    1000253440
+   ],
+   "score_off": 0.7672033071517944,
+   "score_on": 0.6752187870442867,
+   "score_off_common": 0.7672033071517944,
+   "score_on_common": 0.7672033071517944,
+   "common_n": 5,
+   "new_scores": [
+    0.5596001148223877,
+    0.4976731836795807,
+    0.5084604620933533
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 6
+  },
+  {
+   "q": "My client's opponent relies on Adri Dharan Das v. State of West Bengal ((2005) 4 SCC 303). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    39290,
+    32620,
+    1000256420,
+    39599,
+    41343,
+    32873,
+    28630,
+    30918
+   ],
+   "on": [
+    32620,
+    39290,
+    41343,
+    1000256420,
+    39599,
+    28630,
+    32873,
+    30918
+   ],
+   "score_off": 0.7430757135152817,
+   "score_on": 0.7430757135152817,
+   "score_off_common": 0.7430757135152817,
+   "score_on_common": 0.7430757135152817,
+   "common_n": 8,
+   "new_scores": [],
+   "gone_scores": [],
+   "shared": 8,
+   "added": 18
+  },
+  {
+   "q": "What matters must the court consider when fixing the fine on a person convicted of an offence of acquiring property by corrupt means?",
+   "off": [
+    16666,
+    32720,
+    1000252028,
+    3879,
+    1000250292,
+    44563,
+    42192,
+    6511
+   ],
+   "on": [
+    16666,
+    32720,
+    1000252028,
+    3879,
+    3456,
+    1000250292,
+    44563,
+    5337
+   ],
+   "score_off": 0.6327950023114681,
+   "score_on": 0.6461825110018253,
+   "score_off_common": 0.6327950023114681,
+   "score_on_common": 0.6461825110018253,
+   "common_n": 8,
+   "new_scores": [
+    0.4813368618488312,
+    0.6123632788658142
+   ],
+   "gone_scores": [
+    0.49612367153167725,
+    0.4904763996601105
+   ],
+   "shared": 6,
+   "added": 6
+  },
+  {
+   "q": "Can a Special Judge try an offence under the Prevention of Corruption Act summarily?",
+   "off": [
+    655,
+    668,
+    3311,
+    4309,
+    8917,
+    672,
+    495,
+    4807
+   ],
+   "on": [
+    655,
+    668,
+    3311,
+    8917,
+    4309,
+    495,
+    672,
+    4216
+   ],
+   "score_off": 0.79638671875,
+   "score_on": 0.7734375,
+   "score_off_common": 0.79638671875,
+   "score_on_common": 0.7734375,
+   "common_n": 8,
+   "new_scores": [
+    0.70703125
+   ],
+   "gone_scores": [
+    0.890625
+   ],
+   "shared": 7,
+   "added": 6
+  },
+  {
+   "q": "What are the twin conditions for bail in a money-laundering case?",
+   "off": [
+    1000254150,
+    1000255607,
+    1000256374,
+    1000250373,
+    1000255394,
+    1000255928
+   ],
+   "on": [
+    1000254150,
+    1000250373,
+    1000255607,
+    1000256374,
+    1000255394,
+    1000255928,
+    1000255435,
+    1000255278
+   ],
+   "score_off": 0.8697129388650259,
+   "score_on": 0.8460461422801018,
+   "score_off_common": 0.8697129388650259,
+   "score_on_common": 0.8697129388650259,
+   "common_n": 6,
+   "new_scores": [
+    0.7928808927536011,
+    0.7572106122970581
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 28
+  },
+  {
+   "q": "Our company gave gifts and money to officials to win a government tender. Is the company itself liable and who in the company can be punished?",
+   "off": [
+    1000252192,
+    43797,
+    42666,
+    28486,
+    27525,
+    37447,
+    1000253295,
+    42239
+   ],
+   "on": [
+    28486,
+    39265,
+    28874,
+    27525,
+    1000252192,
+    34971,
+    43797,
+    42666
+   ],
+   "score_off": 0.5824758857488632,
+   "score_on": 0.5830056145787239,
+   "score_off_common": 0.5824758857488632,
+   "score_on_common": 0.5830056145787239,
+   "common_n": 8,
+   "new_scores": [
+    0.5598207116127014,
+    0.5677947402000427,
+    0.5165529847145081
+   ],
+   "gone_scores": [
+    0.5559360980987549,
+    0.5475672483444214,
+    0.5447238683700562
+   ],
+   "shared": 5,
+   "added": 17
+  },
+  {
+   "q": "Who is eligible to be a prospective adoptive parent under the Act?",
+   "off": [
+    1000256572,
+    9190,
+    1000254366,
+    1000255983
+   ],
+   "on": [
+    1000256572,
+    9190,
+    1000254366,
+    1000255983,
+    1000256307,
+    1000254297,
+    39823,
+    30909
+   ],
+   "score_off": 0.56494140625,
+   "score_on": 0.4677734375,
+   "score_off_common": 0.56494140625,
+   "score_on_common": 0.56494140625,
+   "common_n": 4,
+   "new_scores": [
+    0.376953125,
+    0.3671875,
+    0.375,
+    0.36328125
+   ],
+   "gone_scores": [],
+   "shared": 4,
+   "added": 0
+  },
+  {
+   "q": "Is it an offence to make a false complaint of child sexual abuse against someone just to harass him?",
+   "off": [
+    1000254116,
+    40330,
+    1000254586,
+    41160,
+    39911,
+    10142,
+    1000253702,
+    1000256899
+   ],
+   "on": [
+    40330,
+    32865,
+    1000254116,
+    26865,
+    1000254586,
+    41160,
+    10142,
+    39911
+   ],
+   "score_off": 0.6064453125,
+   "score_on": 0.60595703125,
+   "score_off_common": 0.6064453125,
+   "score_on_common": 0.60595703125,
+   "common_n": 8,
+   "new_scores": [
+    0.59375,
+    0.5234375
+   ],
+   "gone_scores": [
+    0.5625,
+    0.55859375
+   ],
+   "shared": 6,
+   "added": 14
+  },
+  {
+   "q": "I am accused of cheating and forgery in a complaint filed in court, and the High Court refused to extend my anticipatory bail protection. When is anticipatory bail given?",
+   "off": [
+    35815,
+    1000253368,
+    1003962566,
+    1000256743,
+    1000254909,
+    32620,
+    10195,
+    38869
+   ],
+   "on": [
+    37199,
+    35815,
+    26810,
+    4562,
+    10195,
+    1000253368,
+    1000252215,
+    1003962566
+   ],
+   "score_off": 0.6529382392764091,
+   "score_on": 0.6311147511005402,
+   "score_off_common": 0.6529382392764091,
+   "score_on_common": 0.6311147511005402,
+   "common_n": 8,
+   "new_scores": [
+    0.5733473300933838,
+    0.6194947361946106,
+    0.5295806527137756,
+    0.5670053958892822
+   ],
+   "gone_scores": [
+    0.6343565583229065,
+    0.6257830262184143,
+    0.6058955192565918,
+    0.5979809165000916
+   ],
+   "shared": 4,
+   "added": 25
+  },
+  {
+   "q": "Police ne hamari car roki aur back seat ke neeche ek bag mila jisme kuch tablets aur powder tha. Car mere dost ki thi, main bas peeche baitha tha, mujhe bag ka kuch pata nahi tha. Kya law mein car mein baithe sab log us bag ke liye zimmedar maane jaate hain?",
+   "off": [
+    1000256251,
+    36871,
+    40195,
+    1000255290,
+    1000256277,
+    1000256919,
+    1000254078,
+    37745
+   ],
+   "on": [
+    1000256251,
+    36871,
+    40195,
+    30317,
+    1000256919,
+    1000256277,
+    1000255290,
+    40880
+   ],
+   "score_off": 0.6069964915513992,
+   "score_on": 0.6016124337911606,
+   "score_off_common": 0.6069964915513992,
+   "score_on_common": 0.6016124337911606,
+   "common_n": 8,
+   "new_scores": [
+    0.4916380047798157,
+    0.685608983039856
+   ],
+   "gone_scores": [
+    0.5610906481742859,
+    0.6592288017272949
+   ],
+   "shared": 6,
+   "added": 9
+  },
+  {
+   "q": "To which court does an appeal lie against an order of forfeiture of proceeds of terrorism?",
+   "off": [
+    25734,
+    39172,
+    1003962559,
+    17805,
+    1000254150,
+    44563
+   ],
+   "on": [
+    25734,
+    39172,
+    1003962559,
+    19113,
+    17805,
+    1000254150,
+    44563,
+    1000251924
+   ],
+   "score_off": 0.6477864583333334,
+   "score_on": 0.6025390625,
+   "score_off_common": 0.6477864583333334,
+   "score_on_common": 0.6315104166666666,
+   "common_n": 6,
+   "new_scores": [
+    0.51953125,
+    0.5
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 15
+  },
+  {
+   "q": "My client's opponent relies on Common Cause, A Registered Society v. Union of India (UOI) and Others (AIR 1996 SC 3538). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    1000251042,
+    30832,
+    18409,
+    39529,
+    40160,
+    33587,
+    32007,
+    39479
+   ],
+   "on": [
+    18409,
+    33587,
+    30832,
+    1000251042,
+    16648,
+    40160,
+    39529,
+    16776
+   ],
+   "score_off": 0.637638658285141,
+   "score_on": 0.6294362097978592,
+   "score_off_common": 0.637638658285141,
+   "score_on_common": 0.6294362097978592,
+   "common_n": 8,
+   "new_scores": [
+    0.4982752799987793,
+    0.6207194924354553
+   ],
+   "gone_scores": [
+    0.5994274020195007,
+    0.5851869583129883
+   ],
+   "shared": 6,
+   "added": 9
+  },
+  {
+   "q": "My brother is named in a 2025 cheating FIR over money from a travel business that failed. He was never arrested and went to the police station every time they called, giving all his papers. Now the IO says the chargesheet is ready and that under section 190 BNSS he has to be produced in custody with it, so the magistrate will send him to jail. Our neighbour says this is how it always happens. He is the only earning member at home and we are very scared. Does he have to be arrested just because the chargesheet is being filed?",
+   "off": [
+    1000254065,
+    1003962566,
+    1000255710,
+    1000253478,
+    1000251346
+   ],
+   "on": [
+    1000254065,
+    1003962566,
+    30187,
+    1000255710,
+    1000253478,
+    1000251346,
+    41940,
+    34629
+   ],
+   "score_off": 0.6808833003044128,
+   "score_on": 0.6367894560098648,
+   "score_off_common": 0.6808833003044128,
+   "score_on_common": 0.6814703464508056,
+   "common_n": 5,
+   "new_scores": [
+    0.5802403092384338,
+    0.5740993618965149,
+    0.5355594754219055
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 12
+  },
+  {
+   "q": "Is Mohan Lal v. State of Punjab (2018) still good law? What did it hold?",
+   "off": [
+    1000252711,
+    1000256883,
+    1000255167,
+    1000252228,
+    1000251368,
+    1000251916
+   ],
+   "on": [
+    1000252711,
+    1000256883,
+    1000251368,
+    1000255167,
+    1000252228,
+    1000251916,
+    1000250931,
+    1000252295
+   ],
+   "score_off": 0.7314664324124655,
+   "score_on": 0.6849655658006668,
+   "score_off_common": 0.7314664324124655,
+   "score_on_common": 0.7216950356960297,
+   "common_n": 6,
+   "new_scores": [
+    0.5759668946266174,
+    0.5735874176025391
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 5
+  },
+  {
+   "q": "The police officer who seized drugs from my brother also investigated the case and was the complainant. Can the trial be challenged on that ground?",
+   "off": [
+    1000251916,
+    1000252711,
+    32277,
+    26011,
+    1000250931,
+    1000255167,
+    1000003645,
+    42316
+   ],
+   "on": [
+    1000250931,
+    1000252711,
+    1000251916,
+    32277,
+    42316,
+    34824,
+    12770,
+    26011
+   ],
+   "score_off": 0.765679232776165,
+   "score_on": 0.768372006714344,
+   "score_off_common": 0.765679232776165,
+   "score_on_common": 0.768372006714344,
+   "common_n": 8,
+   "new_scores": [
+    0.7783908843994141,
+    0.7039567828178406
+   ],
+   "gone_scores": [
+    0.7362642288208008,
+    0.730994462966919
+   ],
+   "shared": 6,
+   "added": 16
+  },
+  {
+   "q": "My client's opponent relies on Nirmal Jeet Kaur v. State of M.P. ((2004) 7 SCC 558). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    1000004818,
+    41343,
+    30671,
+    33297,
+    32873,
+    29706,
+    39290
+   ],
+   "on": [
+    1000004818,
+    26810,
+    41343,
+    33297,
+    39290,
+    32873,
+    30671,
+    29706
+   ],
+   "score_off": 0.7469903230667114,
+   "score_on": 0.736845925450325,
+   "score_off_common": 0.7469903230667114,
+   "score_on_common": 0.737487963267735,
+   "common_n": 7,
+   "new_scores": [
+    0.6658351421356201
+   ],
+   "gone_scores": [],
+   "shared": 7,
+   "added": 22
+  },
+  {
+   "q": "My client's opponent relies on Shafhi Mohammad v. State of Himachal Pradesh ((2018) 5 SCC 311). Can I rely on it too, and what rule does it lay down?",
+   "off": [
+    1000252655,
+    1000250716,
+    1000254830,
+    1000254463,
+    1000256308,
+    1000253947
+   ],
+   "on": [
+    1000252655,
+    1000250501,
+    1000250716,
+    1000254463,
+    1000254830,
+    1000256308,
+    1000253947,
+    1000256804
+   ],
+   "score_off": 0.7426955898602804,
+   "score_on": 0.7331057116389275,
+   "score_off_common": 0.7426955898602804,
+   "score_on_common": 0.7489753365516663,
+   "common_n": 6,
+   "new_scores": [
+    0.7289369702339172,
+    0.6797351837158203
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 14
+  },
+  {
+   "q": "On whom does the burden of proof lie in a money-laundering prosecution?",
+   "off": [
+    1000254150,
+    1000255928,
+    1000255394,
+    27378,
+    1000255822
+   ],
+   "on": [
+    1000255928,
+    1000254150,
+    27378,
+    1000255394,
+    1000255822,
+    1000001879,
+    1000250373,
+    38725
+   ],
+   "score_off": 0.80234375,
+   "score_on": 0.794921875,
+   "score_off_common": 0.80234375,
+   "score_on_common": 0.80234375,
+   "common_n": 5,
+   "new_scores": [
+    0.7265625,
+    0.84765625,
+    0.7734375
+   ],
+   "gone_scores": [],
+   "shared": 5,
+   "added": 29
+  },
+  {
+   "q": "My father was booked last year for cheating and breach of trust after his partnership business broke down, and the other partner says he owes 8 lakhs. He was arrested and has been in jail for three weeks. The Sessions Court has said it will give bail under section 483 BNSS only if he first deposits 4 lakhs for the complainant. We cannot arrange this money and my mother is trying to sell her jewellery. Can bail be made conditional on paying the disputed money?",
+   "off": [
+    1000256876,
+    1000255096,
+    1000252775,
+    1000254628,
+    1000253130,
+    40770,
+    1000252761
+   ],
+   "on": [
+    1000256876,
+    1000255096,
+    1000253130,
+    1000254628,
+    1000252775,
+    40770,
+    1000252761,
+    26476
+   ],
+   "score_off": 0.707599801676614,
+   "score_on": 0.6984442844986916,
+   "score_off_common": 0.707599801676614,
+   "score_on_common": 0.707599801676614,
+   "common_n": 7,
+   "new_scores": [
+    0.6343556642532349
+   ],
+   "gone_scores": [],
+   "shared": 7,
+   "added": 9
+  },
+  {
+   "q": "The police filed a charge sheet and the magistrate took cognizance. The complainant now asks the magistrate to order further investigation, and the other side cites Randhir Singh Rana v. State (Delhi Administration) (1997) to say the magistrate cannot. Is that right?",
+   "off": [
+    44522,
+    35704,
+    39357,
+    39831,
+    1000252085
+   ],
+   "on": [
+    39831,
+    35704,
+    14565,
+    2383,
+    4903,
+    44522,
+    29542,
+    39357
+   ],
+   "score_off": 0.9017713308334351,
+   "score_on": 0.8482139408588409,
+   "score_off_common": 0.9017713308334351,
+   "score_on_common": 0.8283261179924011,
+   "common_n": 5,
+   "new_scores": [
+    0.8032363057136536,
+    0.7339258790016174,
+    0.7863665223121643,
+    0.8214706778526306
+   ],
+   "gone_scores": [
+    0.8681445121765137
+   ],
+   "shared": 4,
+   "added": 21
+  },
+  {
+   "q": "Someone kidnapped a child. What does the Juvenile Justice Act say about it?",
+   "off": [
+    25600,
+    6677,
+    1003962704,
+    1000251221,
+    9671,
+    40541,
+    40191,
+    1003962533
+   ],
+   "on": [
+    9671,
+    30900,
+    40541,
+    25600,
+    6677,
+    34524,
+    16335,
+    1000251221
+   ],
+   "score_off": 0.6543543562293053,
+   "score_on": 0.6281100586056709,
+   "score_off_common": 0.6543543562293053,
+   "score_on_common": 0.6281100586056709,
+   "common_n": 8,
+   "new_scores": [
+    0.5423674583435059,
+    0.5494248270988464,
+    0.5436670184135437
+   ],
+   "gone_scores": [
+    0.6497064232826233,
+    0.6010808348655701,
+    0.5946264266967773
+   ],
+   "shared": 5,
+   "added": 21
+  },
+  {
+   "q": "Whether, in a prosecution for rape under Section 64 BNS, an adult woman's earlier romantic relationship with the accused, or her not physically resisting, amounts to consent under Section 63 BNS.",
+   "off": [
+    1000251143,
+    19076,
+    1000256438,
+    40308,
+    16447,
+    1000254213,
+    1000255792,
+    1000255358
+   ],
+   "on": [
+    1000251143,
+    40427,
+    19076,
+    1000251932,
+    26590,
+    1000256438,
+    16447,
+    1000254213
+   ],
+   "score_off": 0.631557323038578,
+   "score_on": 0.6281586214900017,
+   "score_off_common": 0.631557323038578,
+   "score_on_common": 0.6281586214900017,
+   "common_n": 8,
+   "new_scores": [
+    0.6396393179893494,
+    0.5677462816238403,
+    0.5520561933517456
+   ],
+   "gone_scores": [
+    0.6145322322845459,
+    0.5954965949058533,
+    0.576602578163147
+   ],
+   "shared": 5,
+   "added": 13
+  },
+  {
+   "q": "At whose instance can an offence under the Act be compounded, and with whose permission?",
+   "off": [
+    8860,
+    40398,
+    39579,
+    34419,
+    39038,
+    1000003006,
+    1000253154,
+    1000256353
+   ],
+   "on": [
+    8860,
+    39579,
+    40398,
+    39038,
+    34419,
+    32676,
+    1000003006,
+    1000253154
+   ],
+   "score_off": 0.8168716579675674,
+   "score_on": 0.8145573884248734,
+   "score_off_common": 0.8168716579675674,
+   "score_on_common": 0.8145573884248734,
+   "common_n": 8,
+   "new_scores": [
+    0.7578902840614319
+   ],
+   "gone_scores": [
+    0.7764044404029846
+   ],
+   "shared": 7,
+   "added": 6
+  },
+  {
+   "q": "What is the punishment for giving a child intoxicating liquor or a narcotic drug?",
+   "off": [
+    695,
+    1000256899,
+    1000250046,
+    1000001879,
+    37819,
+    2359
+   ],
+   "on": [
+    695,
+    1000256899,
+    1000250046,
+    1000001879,
+    37819,
+    29106,
+    4795,
+    2359
+   ],
+   "score_off": 0.5257742603619894,
+   "score_on": 0.49316882342100143,
+   "score_off_common": 0.5257742603619894,
+   "score_on_common": 0.5139249016841253,
+   "common_n": 6,
+   "new_scores": [
+    0.4118659794330597,
+    0.37883904576301575
+   ],
+   "gone_scores": [],
+   "shared": 6,
+   "added": 24
+  },
+  {
+   "q": "My father died without a will, leaving a house in his name. Do my mother, my sister and I each get an equal share?",
+   "off": [
+    10052,
+    34584,
+    1000252101,
+    29682,
+    1000252019,
+    36676,
+    12120,
+    34610
+   ],
+   "on": [
+    10052,
+    34584,
+    1000252101,
+    12120,
+    29682,
+    1000252019,
+    34610,
+    9517
+   ],
+   "score_off": 0.46329833939671516,
+   "score_on": 0.4555078148841858,
+   "score_off_common": 0.46329833939671516,
+   "score_on_common": 0.4555078148841858,
+   "common_n": 8,
+   "new_scores": [
+    0.3459758162498474
+   ],
+   "gone_scores": [
+    0.4083000123500824
+   ],
+   "shared": 7,
+   "added": 9
+  }
+ ]
+}
