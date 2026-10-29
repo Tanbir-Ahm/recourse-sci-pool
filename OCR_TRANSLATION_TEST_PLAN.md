@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10z record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10aa record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -833,6 +833,24 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 - **Totals across the two handwritten pages (10y and this one)**: 76 gradable values, 1 wrong in every look with no flag (1.3%; the true rate could be anywhere from a fraction of a percent to about 7%), 2 values wrong in one look only and flagged, 1 silent change to a numbering digit. Two pages, one writer.
 
 **Not done.** A re-read of number lines digit by digit with an instruction not to complete patterns (a candidate fix for the pattern pull, not tried); a person's time on these pages.
+
+### 10aa. The digit-by-digit read as a check on number lines (run 2026-10-29; counts only, no names, places, case numbers or text)
+
+**What was tested.** The fix proposed after 10z: read every number on the page one digit at a time, with an instruction not to complete, repair or regularise patterns and to write [?] for a digit it is not sure of (`prompts/read_digits.txt`; the instruction names no particular number). Two runs on each of the two earlier handwritten pages (true values known from the owner, 10y and 10z) and two runs on each of two fresh images supplied by the owner (a line of dates in one row, and a short date with a mark above it; true values not yet received). The model was overloaded (HTTP 503) for about two hours, so the calls were retried until all finished; failed calls cost nothing.
+
+**Scoring (values of three digits or more, or with a separator, counted with repeats):**
+
+| | First look | Second look | Third look | Digit-by-digit, run 1 | Digit-by-digit, run 2 |
+|---|---|---|---|---|---|
+| Page of 50 lines (34 values) | 33 | 34 | 34 | 34 | 34 |
+| Page 2 (28 values) | 27 | 25 | 27 | 26 | 26 |
+| Both pages (62 values) | 60 | 59 | 61 | 60 | 60 |
+
+**Findings.** (1) **It did not fix the pattern pull, but it broke the agreement**: the mobile-style number that all three normal looks read as the familiar ...210 (the page says ...201) was read ...211 in both digit-by-digit runs: still wrong, but no longer the same as the normal looks, so a method disagreement now flags it. Before, it was a silent error in every look. (2) **It was wrong where normal looks were right**: the monthly instalment (page says 12,000) was read 17,000 and 19,000; two of three normal looks had it right. As a second opinion it adds noise as well as signal. (3) **It read the writer's out-of-sequence line number (88 where 48 was expected) as written in both runs** (one run added an unrequested note naming the oddity); normal looks 1 and 2 had written 48. (4) It read the land-record number right in both runs (one normal look had it wrong). (5) **As a fourth look it left no wrong value agreed by every method on these two pages** (every wrong value in any method differed from another method), where the three normal looks alone left one. That is one value on two pages; it is a hint that a different way of reading has a different failure, not a measured benefit. (6) Cost: Rs 1.2 to 3.7 a call on a full page (about the cost of a normal read), Rs 0.3 to 0.4 on the small images.
+
+**Fresh images (blind; truth not received).** Image 1 (a row of 9 dates): all looks agree on 7 of the 9 dates; the other two differ between looks (a first date read 9 or 1 of March; a second read 13, 10 or 15), each of the five looks making a different mix. The checker flagged both (a disagreement between views 1 and 2; the third view reading an agreed date differently). Image 2 (a short date with a mark above it): the year read 93 by four looks and 96 by the third look; one look listed a separate "2" for the mark above the date; the checker went red because the two views agreed on only 80% of letters, and flagged the third look's different year. 
+
+**Not done.** The owner's true values for the two fresh images; whether to build a digit-by-digit read into the pipeline as an option for number-heavy pages (the evidence is two pages).
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
