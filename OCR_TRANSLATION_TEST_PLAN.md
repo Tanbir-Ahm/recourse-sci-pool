@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ac record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ad record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -886,6 +886,25 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 **Results.** (1) **Page: all four lines and the heading were read and translated correctly, in both views** (the owner's verdict; one phrase differed between the two English drafts and the owner accepted both wordings); letter agreement between the views 100%. **One gap, not scored by the owner:** the heading says there are five tips, the page shows four, and the bottom edge of the crop cuts off part of a fifth line, which the tool did not transcribe or mark; this is the third time a number in words or digits (here, the number of list items) disagreed with what the page holds and the tool said nothing (10w: 32 departments against 24 rows). (2) **The six sentences: all six were translated correctly in both drafts** (the owner's reference); mean closeness to the reference 0.80 and 0.83, one sentence in each under 0.6 (word order and word choice differ: one sentence says "through education" where the reference says "to study"; the meaning is the same).
 
 **What this does not show.** Clean handwriting, short sentences, one page, no names and no numbers beyond a count; the names test is still to do.
+
+### 10ad. A handwritten notebook page with names (run and scored 2026-10-29; counts only, no names, places, case numbers or text)
+
+**What was tested.** A phone photo (3072 x 4080) of one handwritten notebook page: a few personal names, a place, a village number and a few short sentences, messy writing at an angle. Read blind: two views, a third because letter agreement was 96.5% (under 97%), and the names-as-printed translation of the first view run twice. The owner supplied the correct readings and English. Cost about Rs 2.0 logged. The owner's key leaves out one line that all three looks read (a name-like line), so that line is not scored.
+
+| Item | First look | Second look | Third look |
+|---|---|---|---|
+| The writer's own name (3 words) | right | right | right |
+| A short given name (English) | right | right | right |
+| A first name in a pair (the pair's second name right in all) | wrong | wrong | right |
+| The place | right | right | right |
+| A village number | wrong (same digit slip in all three) | | |
+| "Accused" (a legal term) | right | wrong ("criminal") | right |
+
+**Findings.** (1) **No silent wrong name**: the one name that was read wrongly by two looks (three different readings across the three looks) was flagged as a disagreement; the third look had it right. The names-as-printed translation of the first view carried that wrong name through (it is built from one view's reading, so it inherits the view's errors). (2) **The village number was misread by every look and nothing flagged it**: the key says 124, all three looks read 424; the same look-alike digit pair as in 10z. (3) **A word that means both yesterday and tomorrow was silently resolved as "yesterday"** by the first two looks and both names-as-printed translations; the third look hedged ("tomorrow/yesterday"), which is the faithful rendering; the key says "tomorrow". The same word in the next sentence was right in looks 1 and 2 and "yesterday" in both name translations, so the translations were inconsistent with each other. (4) **An insult was translated with a specific English word in every look** where the key keeps the Assamese word untranslated: a choice the reader made for the translator. (5) A common word meaning "go on" or "come on" was rendered "come" (looks 1, 2) and "crazy" (look 3). (6) In the names rule's first run, an unreadable word was marked "(?)" and spelled by sound, where the third look had written a famous name that may have come from the model's memory; the key does not cover that line, so this cannot be scored.
+
+**Candidate fixes (not built).** For words that the text cannot settle (yesterday or tomorrow, an insult or slang word), write the word as spoken with its possible meanings in brackets instead of choosing; run the names-as-printed translation from the checked reading of all looks, not from view 1 alone. Because these were suggested by this page, a fair test needs a fresh page.
+
+**Limits.** One page, a handful of names, one writer.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
