@@ -1,0 +1,233 @@
+{
+ "ambiguous": [],
+ "neg": [
+  {
+   "note": "",
+   "q": "How can I get my security deposit back from my landlord?"
+  },
+  {
+   "note": "",
+   "q": "What is the procedure to obtain a succession certificate?"
+  },
+  {
+   "note": "",
+   "q": "Can my employer terminate me without notice during probation?"
+  },
+  {
+   "note": "",
+   "q": "What documents are needed to register a sale deed?"
+  },
+  {
+   "note": "",
+   "q": "My neighbour is playing loud music at night. Which law applies?"
+  },
+  {
+   "note": "",
+   "q": "Can the police refuse to register my FIR?"
+  },
+  {
+   "note": "",
+   "q": "What is the punishment for criminal breach of trust?"
+  },
+  {
+   "note": "",
+   "q": "Is it compulsory to give a statement to the police during investigation?"
+  },
+  {
+   "note": "",
+   "q": "How do I get anticipatory bail in a cheating case?"
+  },
+  {
+   "note": "",
+   "q": "What are the rights of an arrested woman at night?"
+  },
+  {
+   "note": "",
+   "q": "Can the court transfer my case to another city?"
+  },
+  {
+   "note": "",
+   "q": "Is a sting operation recording admissible as evidence?"
+  },
+  {
+   "note": "",
+   "q": "What is the difference between bailable and non-bailable offences?"
+  },
+  {
+   "note": "",
+   "q": "How long can police detain me before charge sheet is filed?"
+  },
+  {
+   "note": "",
+   "q": "A witness has turned hostile. What can the prosecution do?"
+  },
+  {
+   "note": "",
+   "q": "Can an accused be convicted on the basis of a retracted confession?"
+  },
+  {
+   "note": "",
+   "q": "Is it necessary for the prosecution to examine all the witnesses it has cited?"
+  },
+  {
+   "note": "",
+   "q": "Is the evidence of a police informer admissible?"
+  },
+  {
+   "note": "",
+   "q": "How is a conviction under the NDPS Act appealed?"
+  },
+  {
+   "note": "",
+   "q": "Can I withdraw my complaint after the chargesheet is filed?"
+  },
+  {
+   "note": "",
+   "q": "What happens if the investigating officer is transferred in the middle of the trial?"
+  },
+  {
+   "note": "",
+   "q": "Are the circumstances of the offender relevant at the sentencing stage?"
+  },
+  {
+   "note": "",
+   "q": "The court has fixed the case for final arguments. What does that mean?"
+  },
+  {
+   "note": "",
+   "q": "What is the evidentiary value of a medical report in a rape case?"
+  },
+  {
+   "note": "",
+   "q": "In what circumstances can a will be challenged?"
+  },
+  {
+   "note": "",
+   "q": "Can an insurance claim be rejected because there was no witness to the fire?"
+  },
+  {
+   "note": "",
+   "q": "My landlord says there is no direct evidence that I paid the rent. Can he evict me?"
+  },
+  {
+   "note": "",
+   "q": "Is a chain of title important when buying a flat?"
+  },
+  {
+   "note": "",
+   "q": "My husband says we should divorce because of my circumstances. What are my rights?"
+  },
+  {
+   "note": "",
+   "q": "I was arrested on suspicion of theft and released the next day. Can I sue the police?"
+  }
+ ],
+ "pos": [
+  {
+   "note": "",
+   "q": "Can the court convict my brother of murder when there is nothing but circumstantial evidence against him?"
+  },
+  {
+   "note": "",
+   "q": "What does the prosecution have to prove if it has no direct evidence and is relying on circumstances?"
+  },
+  {
+   "note": "",
+   "q": "A man was found dead and the police arrested the neighbour because they had quarrelled. There is no eyewitness. Can he be convicted?"
+  },
+  {
+   "note": "",
+   "q": "Is it enough for conviction that all the circumstances point towards the accused?"
+  },
+  {
+   "note": "",
+   "q": "Which Supreme Court judgment lays down the principles for convicting on circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "What are the golden rules a court must follow in a circumstantial evidence case?"
+  },
+  {
+   "note": "",
+   "q": "The High Court confirmed the death sentence in a case based only on circumstantial evidence. Is that permissible?"
+  },
+  {
+   "note": "",
+   "q": "If the circumstances proved are consistent with both guilt and innocence, what must the court do?"
+  },
+  {
+   "note": "",
+   "q": "Can false statements by the accused complete the chain of circumstances against him?"
+  },
+  {
+   "note": "",
+   "q": "What does 'proved beyond reasonable doubt' mean when the case depends on circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "My cousin is in jail for rape and murder although no one saw anything. How can the conviction be challenged?"
+  },
+  {
+   "note": "",
+   "q": "Do all the circumstances relied on by the prosecution have to be proved independently?"
+  },
+  {
+   "note": "",
+   "q": "Can an accused be convicted on suspicion if the motive is strong?"
+  },
+  {
+   "note": "",
+   "q": "How does a court decide guilt where there is only circumstantial proof and no confession?"
+  },
+  {
+   "note": "",
+   "q": "Explain the five conditions for a conviction on circumstantial evidence."
+  },
+  {
+   "note": "",
+   "q": "Can a person be hanged on the basis of circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "In a dowry death case there is no direct evidence of cruelty. Can circumstantial evidence convict the husband?"
+  },
+  {
+   "note": "",
+   "q": "Is the chain of circumstances test applicable to cases under the POCSO Act as well?"
+  },
+  {
+   "note": "",
+   "q": "What was decided in Sharad Birdhichand Sarda about the standard of proof?"
+  },
+  {
+   "note": "",
+   "q": "If one link in the chain of circumstances is missing, can the accused still be convicted?"
+  },
+  {
+   "note": "",
+   "q": "Can the benefit of doubt be given where the case rests on circumstances alone?"
+  },
+  {
+   "note": "",
+   "q": "Without any eyewitness, how can the prosecution prove who killed the victim?"
+  },
+  {
+   "note": "",
+   "q": "Can we appeal a life sentence given only on circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "Is there a rule that circumstantial evidence must exclude every other reasonable explanation?"
+  },
+  {
+   "note": "",
+   "q": "What did the Supreme Court say about convicting an accused on the basis of circumstances in a murder where nobody saw the accused with the victim?"
+  }
+ ],
+ "schema": "frozen-questions-1",
+ "set": 3,
+ "sha256_of_the_questions_only": "397d0011c9c32bb0112b10d62a98cfe032d5b542b22ac8b7224960df4d5bc4cc",
+ "topic": "circumstantial_evidence",
+ "written": "2026-10-29",
+ "written_by": "Claude, after the patterns were tuned on set 2; natural phrasings, not written to break or to hit the patterns; run ONCE, no pattern changed afterwards"
+}

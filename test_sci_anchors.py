@@ -102,5 +102,75 @@ outs = tempfile.mkdtemp()
 check(SA.main(["sheet", "--out", outs]) == 0 and os.path.exists(os.path.join(outs, "ANCHOR_SHEET_trial_delay.md")), "the sheet command writes the Markdown file")
 SA.DATA = os.path.join(HERE, "anchors", "anchors.json")
 
+# ---- old printed reports (the landmark topic, 2026-10-29): what a check may look past, and what it may not
+OLD_RAW = """The circumstances should be fully estab-
+lished and the facts so established should be consistent only with the hypothesis of the guilt of the accused.(1) Again,
+1043
+the circumstances should be of a conclusive nature and tendency."""
+OLD_SEG = "The circumstances should be fully established and the facts so established should be consistent only with the hypothesis of the guilt of the accused. Again, the circumstances should be of a conclusive nature and tendency."
+OLD = {"id": "old1", "link": "https://example.invalid/old.pdf", "excerpts": [{"label": "P", "segments": [OLD_SEG]}]}
+
+
+def _verify(anchor, raw=OLD_RAW):
+    return SA.verify_anchor(anchor, tmp, None, fetch=lambda url, d: pdf, text_of=lambda p: raw)
+
+
+check(not _verify(OLD)["ok"], "old report, no options: a split word, a footnote mark and a page number inside the sentence fail the check (the default is strict)")
+check(not _verify(dict(OLD, verify_options={"join_hyphens": True}))["ok"], "join_hyphens alone does not excuse the footnote mark and the page number")
+full = {"ignore_page_numbers": True, "ignore_footnote_marks": True, "join_hyphens": True}
+ro = _verify(dict(OLD, verify_options=full))
+check(ro["ok"] and ro["check"]["options"] == full and "page number" in ro["check"]["method"] and "footnote marks" in ro["check"]["method"] and "hyphens" in ro["check"]["method"] and "No word was ignored" in ro["check"]["method"], "with the three options the same words pass, and the record says what was looked past")
+check("options" not in r["check"] and "looked past" not in r["check"]["method"], "an anchor with no options keeps its old record (no 'options', no allowance sentence)")
+changed = copy.deepcopy(OLD)
+changed["excerpts"][0]["segments"] = [OLD_SEG.replace("guilt of the accused", "innocence of the accused")]
+check(not _verify(dict(changed, verify_options=full))["ok"], "negative control: with every option on, a changed word still fails")
+dropped_word = copy.deepcopy(OLD)
+dropped_word["excerpts"][0]["segments"] = [OLD_SEG.replace("fully ", "")]
+check(not _verify(dict(dropped_word, verify_options=full))["ok"], "negative control: with every option on, a dropped word still fails")
+
+# page numbers: only a line that holds nothing but one to four digits
+check("1043" not in SA.source_variants("a\n1043\nb", {"ignore_page_numbers": True})[0] and "1043 persons" in SA.source_variants("a\n1043 persons\nb", {"ignore_page_numbers": True})[0] and "1043" in SA.source_variants("a\n1043\nb")[0], "page numbers: a line of digits alone is dropped; digits within a line of words are not; without the option nothing is dropped")
+# footnote marks: stuck to a word, one or two digits (or the OCR's (l)); a list number after a space is kept
+fm = SA.source_variants("Pradesh.(1) It held that (1) the accused, and Pradesh.(l) Next", {"ignore_footnote_marks": True})
+check(SA.norm(fm[0]) == "pradesh it held that 1 the accused and pradesh next", "footnote marks: '(1)' and '(l)' stuck to a word are dropped in the first reading; a list number after a space is kept")
+check(len(fm) == 2 and SA.norm(fm[1]) == "pradesh 1 it held that 1 the accused and pradesh l next", "footnote marks: the text is also read with the marks kept")
+# the loophole closed: a bracketed number that is part of the segment's own words must match exactly
+BR = {"id": "br", "link": "https://example.invalid/b.pdf", "verify_options": {"ignore_footnote_marks": True}, "excerpts": [{"label": "S", "segments": ["The accused shall be examined under section 313(2) of the Code."]}]}
+BR_RAW = "The accused shall be examined under section 313(2) of the Code."
+check(_verify(BR, BR_RAW)["ok"], "a segment that holds its own bracketed number ('313(2)') passes when the archive has it")
+BR_BAD = copy.deepcopy(BR)
+BR_BAD["excerpts"][0]["segments"] = ["The accused shall be examined under section 313(3) of the Code."]
+check(not _verify(BR_BAD, BR_RAW)["ok"], "negative control: a WRONG bracketed number ('313(3)' for '313(2)') fails (it was once looked past on both sides)")
+BR_PLAIN = copy.deepcopy(BR)
+BR_PLAIN["excerpts"][0]["segments"] = ["The accused shall be examined under section 313 of the Code."]
+check(_verify(BR_PLAIN, BR_RAW)["ok"], "a segment written without the bracket still matches the reading with the mark dropped")
+# footnote lines inside a sentence: exact lines only
+FN_RAW = "It is well to remember that the rule is\n(1) (1838) 2 Lew. 227.\nthat the circumstances must be fully proved."
+FN = {"id": "fn", "link": "https://example.invalid/f.pdf", "excerpts": [{"label": "F", "segments": ["It is well to remember that the rule is that the circumstances must be fully proved."]}]}
+check(not _verify(FN, FN_RAW)["ok"] and _verify(dict(FN, verify_options={"ignore_lines": ["(1) (1838) 2 Lew. 227."]}), FN_RAW)["ok"], "ignore_lines: the named footnote line is looked past, and only then")
+check(not _verify(dict(FN, verify_options={"ignore_lines": ["(1) (1838) 2 Lew. 228."]}), FN_RAW)["ok"], "negative control: a line that is not exactly the footnote line is not dropped")
+check("(1) (1838) 2 Lew. 227." in SA.describe_options({"ignore_lines": ["(1) (1838) 2 Lew. 227."]}) and SA.describe_options({}) == "" and SA.describe_options(None) == "", "the allowance sentence names the footnote line; no options, no sentence")
+
+# ---- the real landmark anchors: what was looked past, and that it is on record
+by_id = {a["id"]: a for a in real["anchors"]}
+sarda, han = by_id["circumstantial_evidence_sharad_sarda"], by_id["circumstantial_evidence_hanumant"]
+check(sarda["topic"] == han["topic"] == "circumstantial_evidence" and sarda["status"] == han["status"] == "machine_checked" and not sarda.get("confirmed_by") and not han.get("confirmed_by"), "the two landmark anchors are machine_checked and confirmed by nobody")
+check(sarda["check"]["options"] == sarda["verify_options"] and han["check"]["options"] == han["verify_options"] and "looked past" in sarda["check"]["method"], "what each check looked past is written into its record")
+check(all(r_["found"] is True for a in (sarda, han) for r_ in a["check"]["also_in"]) and len(sarda["check"]["also_in"]) == 8 and len(han["check"]["also_in"]) == 2, "the paragraph numbers and the AIR citation are each backed by later judgments that quote them (8 and 2), all found")
+check(sarda["aliases"] == ["Sharad Sarda"] and "aliases" not in han, "the short name the labeller may look for is data on the Sarda anchor only")
+check(SA.TOPIC_INFO.keys() >= {a.get("topic") for a in real["anchors"]}, "every topic in the data has sheet wording")
+
+# ---- the sheet, per topic
+outc = tempfile.mkdtemp()
+check(SA.main(["sheet", "--out", outc, "--topic", "circumstantial_evidence"]) == 0 and sorted(os.listdir(outc)) == sorted(["ANCHOR_SHEET_circumstantial_evidence.md"] + (["ANCHOR_SHEET_circumstantial_evidence.docx"] if any(f.endswith(".docx") for f in os.listdir(outc)) else [])), "sheet --topic writes that topic's sheet only")
+mdc = open(os.path.join(outc, "ANCHOR_SHEET_circumstantial_evidence.md"), encoding="utf-8").read()
+check("Sharad Birdhichand Sarda" in mdc and "Hanumant" in mdc and "Antulay" not in mdc and "Ramachandra" not in mdc, "the circumstantial sheet is about the two landmark cases and not the trial-delay ones")
+check(all(SA.excerpt_text(e).replace("\n", " ") in mdc.replace("\n", " ") for a in (sarda, han) for e in a["excerpts"]) and sarda["link"] in mdc and han["link"] in mdc, "the sheet carries every excerpt word for word, with the court's links")
+check("paragraphs 152 to 154 of the SCC report" in mdc and "paragraph 10 of the AIR report" in mdc and "How the words were checked" in mdc and "No word was ignored" in mdc, "the sheet shows each paragraph with its report and says what the check looked past")
+check("is good law" not in mdc.lower() and "Until you confirm" in mdc and "panchsheel" in mdc, "the sheet never says a case is good law; it asks the reviewer to confirm the description")
+outa = tempfile.mkdtemp()
+check(SA.main(["sheet", "--out", outa]) == 0 and {"ANCHOR_SHEET_trial_delay.md", "ANCHOR_SHEET_circumstantial_evidence.md"} <= set(os.listdir(outa)), "sheet with no topic writes one sheet for each topic in the data")
+check(SA.main(["sheet", "--out", tempfile.mkdtemp(), "--topic", "no_such_topic"]) == 1, "an unknown topic is refused")
+
 print("\nALL PASSED" if not FAILURES else f"\n{len(FAILURES)} FAILED: {FAILURES}")
 sys.exit(1 if FAILURES else 0)

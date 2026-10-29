@@ -1,0 +1,333 @@
+{
+ "pos": [
+  {
+   "q": "Is a conviction possible when the prosecution relies on a series of circumstances rather than any one direct proof?",
+   "note": "no 'circumstantial' word; 'series of circumstances'",
+   "fires": false
+  },
+  {
+   "q": "Our lawyer says the case against my brother is all inference and no witness. Can the court send him to prison?",
+   "note": "no witness; prison",
+   "fires": false
+  },
+  {
+   "q": "How many links in the chain must be proved before the court can say the accused is guilty?",
+   "note": "links in the chain",
+   "fires": false
+  },
+  {
+   "q": "In Sharad Sarda the Supreme Court talked about 'must be' and not 'may be'. What does it mean for my case?",
+   "note": "short name of the case",
+   "fires": true
+  },
+  {
+   "q": "What are the Sarda principles on proof?",
+   "note": "'Sarda principles'",
+   "fires": false
+  },
+  {
+   "q": "The prosecution has only shown a series of facts that together point to the accused. Is that enough for a conviction?",
+   "note": "series of facts",
+   "fires": false
+  },
+  {
+   "q": "My son was convicted on last seen together and a recovery. Can we get that set aside on the ground that the chain is incomplete?",
+   "note": "chain is incomplete",
+   "fires": false
+  },
+  {
+   "q": "Can the accused be convicted if every fact proved is also consistent with someone else having done it?",
+   "note": "consistent with someone else",
+   "fires": false
+  },
+  {
+   "q": "What did the Supreme Court say in the Sharad Birdhichand Sarda case about a false defence?",
+   "note": "named",
+   "fires": true
+  },
+  {
+   "q": "Is the five-point test for circumstantial cases still followed by the courts?",
+   "note": "circumstantial cases",
+   "fires": true
+  },
+  {
+   "q": "my father is accused in a murder, there is no eye witness only some circumstances, can court convict",
+   "note": "eye witness as two words, no punctuation",
+   "fires": true
+  },
+  {
+   "q": "No CCTV, no witness - only the circumstances. Can the court still convict him?",
+   "note": "no witness, dash",
+   "fires": false
+  },
+  {
+   "q": "Is it true that courts cannot convict on mere suspicion even in heinous crimes?",
+   "note": "suspicion",
+   "fires": true
+  },
+  {
+   "q": "Can a person be convicted of murder if the weapon was never found and nobody saw it?",
+   "note": "nobody saw",
+   "fires": true
+  },
+  {
+   "q": "What is the legal test for conviction when the police have only inferences and no direct proof?",
+   "note": "no direct proof",
+   "fires": true
+  },
+  {
+   "q": "Kya circumstantial evidence se saza ho sakti hai?",
+   "note": "hinglish",
+   "fires": true
+  },
+  {
+   "q": "Ground of appeal: the trial court convicted on an incomplete chain of circumstances.",
+   "note": "chain of circumstances, no question",
+   "fires": true
+  },
+  {
+   "q": "Circumstantial evidence of cruelty in a section 498A case - can it support a conviction?",
+   "note": "criminal, circumstantial",
+   "fires": true
+  },
+  {
+   "q": "Does the prosecution have to prove every circumstance beyond reasonable doubt when there is no direct evidence?",
+   "note": "no direct evidence",
+   "fires": true
+  },
+  {
+   "q": "Can a murder accused be acquitted because the evidence against him is circumstantial?",
+   "note": "",
+   "fires": true
+  },
+  {
+   "q": "What did the Supreme Court say about hypotheses consistent with innocence?",
+   "note": "hypothesis",
+   "fires": false
+  },
+  {
+   "q": "Is it legal for a court to hang someone on circumstantial evidence?",
+   "note": "'hang'; circumstantial",
+   "fires": true
+  },
+  {
+   "q": "The judge convicted my husband based on motive, last seen and recovery together. Are these circumstances enough?",
+   "note": "circumstances enough; convicted",
+   "fires": false
+  },
+  {
+   "q": "Can a woman be held guilty of killing her husband when nobody saw it and only the circumstances point to her?",
+   "note": "nobody saw; guilty",
+   "fires": true
+  },
+  {
+   "q": "Explain the principle that the accused must be and not merely may be guilty before a court can convict.",
+   "note": "must be / may be",
+   "fires": false
+  },
+  {
+   "q": "Can I be sentenced if all the police have is that I was seen near the place earlier that day?",
+   "note": "no keyword at all; sentence",
+   "fires": false
+  }
+ ],
+ "neg": [
+  {
+   "q": "Circumstances in which the accused may be released on bail in a murder case",
+   "note": "circumstances, murder",
+   "fires": false
+  },
+  {
+   "q": "Is there a chain of command in the police that decides an arrest?",
+   "note": "chain of command",
+   "fires": false
+  },
+  {
+   "q": "What is the chain of custody of seized drugs under the NDPS Act?",
+   "note": "chain of custody",
+   "fires": false
+  },
+  {
+   "q": "Can a person be convicted for murder if a witness turned hostile?",
+   "note": "hostile witness",
+   "fires": false
+  },
+  {
+   "q": "There's no direct evidence of the loan, only WhatsApp messages. Can I get my money back?",
+   "note": "no direct evidence; civil loan",
+   "fires": false
+  },
+  {
+   "q": "Without any direct evidence of cruelty, can my wife get a divorce?",
+   "note": "no direct evidence; divorce",
+   "fires": false
+  },
+  {
+   "q": "The accused says the circumstances forced him to steal out of hunger. Is hunger a defence?",
+   "note": "circumstances forced",
+   "fires": false
+  },
+  {
+   "q": "My lawyer says the evidence is circumstantial in my husband's insurance claim after his death.",
+   "note": "insurance",
+   "fires": false
+  },
+  {
+   "q": "What are the stages of a murder trial in a sessions court?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Explain the Panchsheel agreement between India and China.",
+   "note": "panchsheel, foreign policy",
+   "fires": false
+  },
+  {
+   "q": "What are the five principles of Panchsheel in foreign policy?",
+   "note": "panchsheel",
+   "fires": false
+  },
+  {
+   "q": "What is the golden rule of interpretation of statutes?",
+   "note": "golden rule",
+   "fires": false
+  },
+  {
+   "q": "Is the testimony of the investigating officer alone enough for conviction?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Is a confession alone enough to convict an accused?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Can I be convicted for something I did under duress?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Suspicion of theft: can the shopkeeper detain me?",
+   "note": "suspicion, no conviction",
+   "fires": false
+  },
+  {
+   "q": "Can the police arrest me merely on suspicion?",
+   "note": "arrest on suspicion",
+   "fires": false
+  },
+  {
+   "q": "Is a conviction for cheque bounce possible without a legal notice?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Can the court rely on the circumstances of the case to reduce my sentence?",
+   "note": "circumstances of the case",
+   "fires": false
+  },
+  {
+   "q": "There was no witness when I signed the agreement. Is it valid?",
+   "note": "no witness; contract",
+   "fires": false
+  },
+  {
+   "q": "No eyewitness saw the accident but there is CCTV. Can I claim from the insurance company?",
+   "note": "insurance",
+   "fires": false
+  },
+  {
+   "q": "Chain of events leading to the accident: who is liable under motor vehicle law?",
+   "note": "chain of events; civil",
+   "fires": false
+  },
+  {
+   "q": "Which evidence is better, direct or circumstantial, for proving a breach of contract?",
+   "note": "contract",
+   "fires": true
+  },
+  {
+   "q": "Can an employer dismiss an employee on circumstantial evidence of theft in a domestic inquiry?",
+   "note": "service law",
+   "fires": true
+  },
+  {
+   "q": "Can the Income Tax department assess me on circumstantial evidence?",
+   "note": "tax",
+   "fires": false
+  },
+  {
+   "q": "What are the grounds for anticipatory bail in a murder case?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Is the FIR itself enough evidence to convict?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Can a juvenile be tried as an adult for murder?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "What happens to a case when the main witness dies before the trial ends?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "How long does a sessions trial for murder usually take?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Can I get compensation if the accused is acquitted?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "What is the difference between culpable homicide and murder?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "Is the post-mortem report binding on the court?",
+   "note": "",
+   "fires": false
+  },
+  {
+   "q": "When is a death sentence confirmed by the High Court?",
+   "note": "",
+   "fires": false
+  }
+ ],
+ "ambiguous": [
+  {
+   "q": "Is it possible to prove murder without finding the body?",
+   "note": "no body / corpus delicti",
+   "fires": false
+  },
+  {
+   "q": "Does the benefit of the doubt apply when two explanations are possible on the evidence?",
+   "note": "two views; general",
+   "fires": false
+  },
+  {
+   "q": "Does the Customs department need direct evidence for a seizure or is circumstantial evidence enough?",
+   "note": "customs; circumstantial",
+   "fires": true
+  },
+  {
+   "q": "Is a person guilty of contempt if nobody saw him break the court's order?",
+   "note": "nobody saw + guilty, contempt",
+   "fires": true
+  },
+  {
+   "q": "What is the evidentiary value of an extra-judicial confession?",
+   "note": "",
+   "fires": false
+  }
+ ]
+}

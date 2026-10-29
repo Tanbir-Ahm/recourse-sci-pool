@@ -1,0 +1,226 @@
+{
+ "pos": [
+  {
+   "q": "Can the court convict my brother of murder when there is nothing but circumstantial evidence against him?",
+   "fires": true
+  },
+  {
+   "q": "What does the prosecution have to prove if it has no direct evidence and is relying on circumstances?",
+   "fires": true
+  },
+  {
+   "q": "A man was found dead and the police arrested the neighbour because they had quarrelled. There is no eyewitness. Can he be convicted?",
+   "fires": true
+  },
+  {
+   "q": "Is it enough for conviction that all the circumstances point towards the accused?",
+   "fires": true
+  },
+  {
+   "q": "Which Supreme Court judgment lays down the principles for convicting on circumstantial evidence?",
+   "fires": true
+  },
+  {
+   "q": "What are the golden rules a court must follow in a circumstantial evidence case?",
+   "fires": true
+  },
+  {
+   "q": "The High Court confirmed the death sentence in a case based only on circumstantial evidence. Is that permissible?",
+   "fires": true
+  },
+  {
+   "q": "If the circumstances proved are consistent with both guilt and innocence, what must the court do?",
+   "fires": false
+  },
+  {
+   "q": "Can false statements by the accused complete the chain of circumstances against him?",
+   "fires": true
+  },
+  {
+   "q": "What does 'proved beyond reasonable doubt' mean when the case depends on circumstantial evidence?",
+   "fires": true
+  },
+  {
+   "q": "My cousin is in jail for rape and murder although no one saw anything. How can the conviction be challenged?",
+   "fires": true
+  },
+  {
+   "q": "Do all the circumstances relied on by the prosecution have to be proved independently?",
+   "fires": false
+  },
+  {
+   "q": "Can an accused be convicted on suspicion if the motive is strong?",
+   "fires": true
+  },
+  {
+   "q": "How does a court decide guilt where there is only circumstantial proof and no confession?",
+   "fires": true
+  },
+  {
+   "q": "Explain the five conditions for a conviction on circumstantial evidence.",
+   "fires": true
+  },
+  {
+   "q": "Can a person be hanged on the basis of circumstantial evidence?",
+   "fires": true
+  },
+  {
+   "q": "In a dowry death case there is no direct evidence of cruelty. Can circumstantial evidence convict the husband?",
+   "fires": true
+  },
+  {
+   "q": "Is the chain of circumstances test applicable to cases under the POCSO Act as well?",
+   "fires": true
+  },
+  {
+   "q": "What was decided in Sharad Birdhichand Sarda about the standard of proof?",
+   "fires": true
+  },
+  {
+   "q": "If one link in the chain of circumstances is missing, can the accused still be convicted?",
+   "fires": true
+  },
+  {
+   "q": "Can the benefit of doubt be given where the case rests on circumstances alone?",
+   "fires": false
+  },
+  {
+   "q": "Without any eyewitness, how can the prosecution prove who killed the victim?",
+   "fires": true
+  },
+  {
+   "q": "Can we appeal a life sentence given only on circumstantial evidence?",
+   "fires": true
+  },
+  {
+   "q": "Is there a rule that circumstantial evidence must exclude every other reasonable explanation?",
+   "fires": true
+  },
+  {
+   "q": "What did the Supreme Court say about convicting an accused on the basis of circumstances in a murder where nobody saw the accused with the victim?",
+   "fires": true
+  }
+ ],
+ "neg": [
+  {
+   "q": "How can I get my security deposit back from my landlord?",
+   "fires": false
+  },
+  {
+   "q": "What is the procedure to obtain a succession certificate?",
+   "fires": false
+  },
+  {
+   "q": "Can my employer terminate me without notice during probation?",
+   "fires": false
+  },
+  {
+   "q": "What documents are needed to register a sale deed?",
+   "fires": false
+  },
+  {
+   "q": "My neighbour is playing loud music at night. Which law applies?",
+   "fires": false
+  },
+  {
+   "q": "Can the police refuse to register my FIR?",
+   "fires": false
+  },
+  {
+   "q": "What is the punishment for criminal breach of trust?",
+   "fires": false
+  },
+  {
+   "q": "Is it compulsory to give a statement to the police during investigation?",
+   "fires": false
+  },
+  {
+   "q": "How do I get anticipatory bail in a cheating case?",
+   "fires": false
+  },
+  {
+   "q": "What are the rights of an arrested woman at night?",
+   "fires": false
+  },
+  {
+   "q": "Can the court transfer my case to another city?",
+   "fires": false
+  },
+  {
+   "q": "Is a sting operation recording admissible as evidence?",
+   "fires": false
+  },
+  {
+   "q": "What is the difference between bailable and non-bailable offences?",
+   "fires": false
+  },
+  {
+   "q": "How long can police detain me before charge sheet is filed?",
+   "fires": false
+  },
+  {
+   "q": "A witness has turned hostile. What can the prosecution do?",
+   "fires": false
+  },
+  {
+   "q": "Can an accused be convicted on the basis of a retracted confession?",
+   "fires": false
+  },
+  {
+   "q": "Is it necessary for the prosecution to examine all the witnesses it has cited?",
+   "fires": false
+  },
+  {
+   "q": "Is the evidence of a police informer admissible?",
+   "fires": false
+  },
+  {
+   "q": "How is a conviction under the NDPS Act appealed?",
+   "fires": false
+  },
+  {
+   "q": "Can I withdraw my complaint after the chargesheet is filed?",
+   "fires": false
+  },
+  {
+   "q": "What happens if the investigating officer is transferred in the middle of the trial?",
+   "fires": false
+  },
+  {
+   "q": "Are the circumstances of the offender relevant at the sentencing stage?",
+   "fires": false
+  },
+  {
+   "q": "The court has fixed the case for final arguments. What does that mean?",
+   "fires": false
+  },
+  {
+   "q": "What is the evidentiary value of a medical report in a rape case?",
+   "fires": false
+  },
+  {
+   "q": "In what circumstances can a will be challenged?",
+   "fires": false
+  },
+  {
+   "q": "Can an insurance claim be rejected because there was no witness to the fire?",
+   "fires": false
+  },
+  {
+   "q": "My landlord says there is no direct evidence that I paid the rent. Can he evict me?",
+   "fires": false
+  },
+  {
+   "q": "Is a chain of title important when buying a flat?",
+   "fires": false
+  },
+  {
+   "q": "My husband says we should divorce because of my circumstances. What are my rights?",
+   "fires": false
+  },
+  {
+   "q": "I was arrested on suspicion of theft and released the next day. Can I sue the police?",
+   "fires": false
+  }
+ ]
+}

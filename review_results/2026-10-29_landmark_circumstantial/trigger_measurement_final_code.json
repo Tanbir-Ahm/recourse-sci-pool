@@ -1,0 +1,105 @@
+{
+ "sets": {
+  "set1_frozen": {
+   "pos": 42,
+   "pos_hit": 42,
+   "neg": 48,
+   "neg_fired": 0,
+   "ambiguous": 8,
+   "ambiguous_fired": 1,
+   "misses": [],
+   "false_fires": [],
+   "ambiguous_that_fired": [
+    "What is the difference between direct and circumstantial evidence?"
+   ]
+  },
+  "set2_tuning": {
+   "pos": 26,
+   "pos_hit": 24,
+   "neg": 34,
+   "neg_fired": 0,
+   "ambiguous": 5,
+   "ambiguous_fired": 2,
+   "misses": [
+    "Can the accused be convicted if every fact proved is also consistent with someone else having done it?",
+    "Can I be sentenced if all the police have is that I was seen near the place earlier that day?"
+   ],
+   "false_fires": [],
+   "ambiguous_that_fired": [
+    "Does the Customs department need direct evidence for a seizure or is circumstantial evidence enough?",
+    "Is a person guilty of contempt if nobody saw him break the court's order?"
+   ]
+  },
+  "set3_final_check": {
+   "pos": 25,
+   "pos_hit": 22,
+   "neg": 30,
+   "neg_fired": 0,
+   "ambiguous": 0,
+   "ambiguous_fired": 0,
+   "misses": [
+    "If the circumstances proved are consistent with both guilt and innocence, what must the court do?",
+    "Do all the circumstances relied on by the prosecution have to be proved independently?",
+    "Can the benefit of doubt be given where the case rests on circumstances alone?"
+   ],
+   "false_fires": [],
+   "ambiguous_that_fired": []
+  }
+ },
+ "pool": {
+  "questions": 284,
+  "fired": 0,
+  "by_file": {
+   "register_exam/questions.jsonl": {
+    "questions": 50,
+    "fired": 0,
+    "which": []
+   },
+   "register_exam/criminal/questions.jsonl": {
+    "questions": 28,
+    "fired": 0,
+    "which": []
+   },
+   "register_exam/situation/questions.jsonl": {
+    "questions": 24,
+    "fired": 0,
+    "which": []
+   },
+   "review_data/ruler/fix_test_f_v1.json": {
+    "questions": 29,
+    "fired": 0,
+    "which": []
+   },
+   "eval_questions_pair.json": {
+    "questions": 24,
+    "fired": 0,
+    "which": []
+   },
+   "eval_offtopic_questions_pair.json": {
+    "questions": 6,
+    "fired": 0,
+    "which": []
+   },
+   "eval_questions.json": {
+    "questions": 75,
+    "fired": 0,
+    "which": []
+   },
+   "eval_offtopic_questions.json": {
+    "questions": 10,
+    "fired": 0,
+    "which": []
+   },
+   "eval_offtopic_questions_jjdowry.json": {
+    "questions": 6,
+    "fired": 0,
+    "which": []
+   },
+   "eval_questions_jjdowry.json": {
+    "questions": 32,
+    "fired": 0,
+    "which": []
+   }
+  }
+ }
+}
