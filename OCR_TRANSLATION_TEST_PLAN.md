@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ab record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ac record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -878,6 +878,14 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 **Findings.** (1) **Enlarging did not help; as given was best** (27 against 24 to 25). A difference of 2 to 3 values in 30 is within the run-to-run variation seen elsewhere (10aa), so the safe reading is "no gain from enlargement or the higher-detail setting on small crops", not "enlargement hurts". (2) **The errors do not move with the picture size**: a 9 read as a 1 (first look at the date row), the 10 read as 13, a year read 96 for 93, and the last two digits of the phone-style number page 2 (read ...212 or ...211 in 7 of 8 reads, never ...201, never the familiar ...210 either). Those are look-alike digits, not lack of pixels. (3) No variant fixed the phone-style number that every normal look had read as ...210. (4) The answer key itself is a source of doubt: where a person's key and the machine's reads disagree on a look-alike digit pair, the page itself must settle it, and the sheet's magnifier and enlarged digits are built for that.
 
 **Decision.** No change to the pipeline: no automatic enlargement, no separate crop re-read. **Not tried:** sharpening and contrast (10p found them unhelpful on whole pages), other resizing methods, crops of different sizes, printed rather than handwritten digits.
+
+### 10ac. A handwritten text page and a short text translation (run and scored 2026-10-29; counts only, no names, places, case numbers or text)
+
+**What was tested.** (1) A handwritten Assamese page from the owner (a cropped video frame on ruled paper: a heading and four numbered lines, clear writing, no names), read blind with the normal pipeline (two views; no third view needed). (2) Six short Assamese sentences supplied by the owner as typed text (they did not belong to the image), translated twice with the text-only call. The owner supplied the correct English. Cost Rs 0.74 for the page and Rs 0.30 for the six sentences.
+
+**Results.** (1) **Page: all four lines and the heading were read and translated correctly, in both views** (the owner's verdict; one phrase differed between the two English drafts and the owner accepted both wordings); letter agreement between the views 100%. **One gap, not scored by the owner:** the heading says there are five tips, the page shows four, and the bottom edge of the crop cuts off part of a fifth line, which the tool did not transcribe or mark; this is the third time a number in words or digits (here, the number of list items) disagreed with what the page holds and the tool said nothing (10w: 32 departments against 24 rows). (2) **The six sentences: all six were translated correctly in both drafts** (the owner's reference); mean closeness to the reference 0.80 and 0.83, one sentence in each under 0.6 (word order and word choice differ: one sentence says "through education" where the reference says "to study"; the meaning is the same).
+
+**What this does not show.** Clean handwriting, short sentences, one page, no names and no numbers beyond a count; the names test is still to do.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
