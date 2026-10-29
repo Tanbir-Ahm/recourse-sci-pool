@@ -1,0 +1,406 @@
+{
+ "ambiguous": [
+  {
+   "note": "last seen together (a circumstantial-evidence doctrine; not claimed by the topic)",
+   "q": "Is last seen together enough to convict a person of murder?"
+  },
+  {
+   "note": "definition only",
+   "q": "What is the difference between direct and circumstantial evidence?"
+  },
+  {
+   "note": "s.27 recovery",
+   "q": "Is recovery of the weapon at the accused's instance enough for conviction?"
+  },
+  {
+   "note": "scientific evidence",
+   "q": "Can DNA evidence alone convict a person?"
+  },
+  {
+   "note": "conduct as a circumstance",
+   "q": "What is the relevance of the accused's conduct after the crime?"
+  },
+  {
+   "note": "dying declaration alone",
+   "q": "Can a person be convicted on the basis of a dying declaration alone?"
+  },
+  {
+   "note": "motive",
+   "q": "What happens if the prosecution fails to prove motive?"
+  },
+  {
+   "note": "ambiguous 'link'",
+   "q": "Is it necessary for the prosecution to prove every link in its case?"
+  }
+ ],
+ "neg": [
+  {
+   "note": "",
+   "q": "How do I get bail in a murder case?"
+  },
+  {
+   "note": "",
+   "q": "What is the punishment for murder under the Bharatiya Nyaya Sanhita?"
+  },
+  {
+   "note": "",
+   "q": "Can the police arrest me without a warrant for cheating?"
+  },
+  {
+   "note": "",
+   "q": "My cheque bounced, what should I do?"
+  },
+  {
+   "note": "",
+   "q": "What are the stages of a sessions trial?"
+  },
+  {
+   "note": "appeal against conviction, no circumstantial issue",
+   "q": "What is the limitation for filing a criminal appeal against conviction?"
+  },
+  {
+   "note": "",
+   "q": "How long can the police keep me in custody before producing me before a magistrate?"
+  },
+  {
+   "note": "",
+   "q": "Can the police search my house without a warrant?"
+  },
+  {
+   "note": "direct evidence, the opposite",
+   "q": "Is the testimony of a single eyewitness enough to convict an accused?"
+  },
+  {
+   "note": "",
+   "q": "Can a conviction be based on the testimony of a child witness?"
+  },
+  {
+   "note": "",
+   "q": "Is electronic evidence admissible without a certificate?"
+  },
+  {
+   "note": "",
+   "q": "What is the evidentiary value of a first information report?"
+  },
+  {
+   "note": "",
+   "q": "Can the court draw an adverse inference from the accused's silence?"
+  },
+  {
+   "note": "",
+   "q": "Can a confession made to a police officer be used against the accused?"
+  },
+  {
+   "note": "",
+   "q": "What are the grounds for quashing an FIR?"
+  },
+  {
+   "note": "",
+   "q": "How can I challenge a sentence that I think is too harsh?"
+  },
+  {
+   "note": "",
+   "q": "What is default bail and when does it arise?"
+  },
+  {
+   "note": "the other anchor topic (trial delay)",
+   "q": "My trial has been going on for 9 years and the prosecution keeps asking for time. Can the case be closed because of the delay?"
+  },
+  {
+   "note": "",
+   "q": "The accused was not produced before the magistrate within 24 hours. What follows?"
+  },
+  {
+   "note": "",
+   "q": "Can an FIR be registered against a public servant without sanction?"
+  },
+  {
+   "note": "",
+   "q": "In what circumstances can the police arrest without a warrant?"
+  },
+  {
+   "note": "",
+   "q": "Under what circumstances can a court grant anticipatory bail?"
+  },
+  {
+   "note": "sentencing",
+   "q": "What mitigating circumstances can reduce a death sentence to life imprisonment?"
+  },
+  {
+   "note": "",
+   "q": "The circumstances of my arrest were illegal. Can I claim compensation?"
+  },
+  {
+   "note": "",
+   "q": "Because of my financial circumstances I cannot pay the fine. What can I do?"
+  },
+  {
+   "note": "",
+   "q": "What special circumstances allow parole to a convict?"
+  },
+  {
+   "note": "",
+   "q": "In what circumstances is a confession treated as voluntary?"
+  },
+  {
+   "note": "",
+   "q": "Does the family's circumstances matter to the Juvenile Justice Board?"
+  },
+  {
+   "note": "civil / matrimonial",
+   "q": "Can adultery be proved by circumstantial evidence in a divorce case?"
+  },
+  {
+   "note": "civil",
+   "q": "Can a will be proved by circumstantial evidence in a civil suit about property?"
+  },
+  {
+   "note": "civil",
+   "q": "Can an insurance company reject my claim on the basis of circumstantial evidence?"
+  },
+  {
+   "note": "civil / matrimonial",
+   "q": "Is circumstantial evidence enough to prove cruelty in a divorce petition?"
+  },
+  {
+   "note": "civil",
+   "q": "Can negligence be proved by circumstantial evidence in a motor accident claim?"
+  },
+  {
+   "note": "civil, no eyewitness",
+   "q": "There was no eyewitness to the accident. Can my family still claim compensation from the insurer?"
+  },
+  {
+   "note": "civil, no witness",
+   "q": "There is no witness to the loan I gave my friend. Can I file a recovery suit?"
+  },
+  {
+   "note": "civil",
+   "q": "Can a tenant be evicted on the basis of circumstantial evidence of subletting?"
+  },
+  {
+   "note": "",
+   "q": "What is the difference between a primary and a secondary document under the evidence law?"
+  },
+  {
+   "note": "dying declaration",
+   "q": "Is a dying declaration enough to convict?"
+  },
+  {
+   "note": "s.106",
+   "q": "What is the burden of proof on the accused under section 106 of the Evidence Act?"
+  },
+  {
+   "note": "general standard",
+   "q": "What does 'beyond reasonable doubt' mean?"
+  },
+  {
+   "note": "",
+   "q": "Can a hostile witness's evidence be relied upon?"
+  },
+  {
+   "note": "",
+   "q": "Can the court rely on the evidence of an accomplice?"
+  },
+  {
+   "note": "",
+   "q": "How do I register a trademark?"
+  },
+  {
+   "note": "",
+   "q": "What are the notice period rules for terminating an employee?"
+  },
+  {
+   "note": "",
+   "q": "How can a landlord evict a tenant?"
+  },
+  {
+   "note": "",
+   "q": "What is the procedure to file for divorce by mutual consent?"
+  },
+  {
+   "note": "",
+   "q": "How is income tax calculated on rental income?"
+  },
+  {
+   "note": "empty",
+   "q": ""
+  }
+ ],
+ "pos": [
+  {
+   "note": "the owner's staging question",
+   "q": "Can a person be convicted on circumstantial evidence alone? What must the prosecution prove?"
+  },
+  {
+   "note": "",
+   "q": "What are the conditions for a conviction based solely on circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "Explain the five golden principles for circumstantial evidence in a murder trial."
+  },
+  {
+   "note": "",
+   "q": "What is the panchsheel of proof in circumstantial evidence cases?"
+  },
+  {
+   "note": "case named",
+   "q": "Sharad Birdhichand Sarda v. State of Maharashtra - what did the Supreme Court hold?"
+  },
+  {
+   "note": "",
+   "q": "When can a court convict where the case rests entirely on circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "In a case based on circumstantial evidence, must the chain of circumstances be complete?"
+  },
+  {
+   "note": "fragment, no question mark",
+   "q": "Grounds of appeal against a murder conviction resting only on circumstantial evidence"
+  },
+  {
+   "note": "",
+   "q": "Does the prosecution have to exclude every hypothesis of innocence when the evidence is circumstantial?"
+  },
+  {
+   "note": "",
+   "q": "The High Court upheld a conviction founded on circumstantial evidence. What should the special leave petition argue?"
+  },
+  {
+   "note": "",
+   "q": "What is the standard of proof for circumstantial evidence in a criminal case?"
+  },
+  {
+   "note": "a point Sharad Sarda decides",
+   "q": "Is a false defence an additional link in the chain of circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "What does 'may be' as against 'must be' mean in the law on circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "How does a criminal court assess circumstantial evidence?"
+  },
+  {
+   "note": "case named",
+   "q": "What is the test laid down in Hanumant v. State of Madhya Pradesh for circumstantial evidence?"
+  },
+  {
+   "note": "",
+   "q": "Can a conviction rest on circumstantial evidence when no motive is proved?"
+  },
+  {
+   "note": "",
+   "q": "Is a conviction safe if the prosecution case is based only on circumstantial evidence and one link in the chain is missing?"
+  },
+  {
+   "note": "",
+   "q": "What must the prosecution establish before a court can convict on the basis of circumstantial evidence in a dowry death case?"
+  },
+  {
+   "note": "no eyewitness",
+   "q": "There is no eyewitness in my brother's murder case. Can he still be convicted?"
+  },
+  {
+   "note": "no direct evidence",
+   "q": "The police have no direct evidence against me, only circumstances. Can I be convicted?"
+  },
+  {
+   "note": "",
+   "q": "Can someone go to jail only on the basis of circumstantial evidence?"
+  },
+  {
+   "note": "nobody saw",
+   "q": "Can the court punish a person if nobody saw the crime happen?"
+  },
+  {
+   "note": "no one saw",
+   "q": "My husband was convicted of murder though no one saw him do it. Is that legal?"
+  },
+  {
+   "note": "chain of circumstances",
+   "q": "The police say a chain of circumstances proves my son killed his wife. Is that enough to convict him?"
+  },
+  {
+   "note": "",
+   "q": "Is circumstantial evidence enough to prove murder?"
+  },
+  {
+   "note": "",
+   "q": "Can a person be sentenced without any direct evidence?"
+  },
+  {
+   "note": "suspicion",
+   "q": "Can I be found guilty on suspicion and circumstances alone?"
+  },
+  {
+   "note": "",
+   "q": "No one saw who committed the crime. What does the prosecution need to prove to convict someone?"
+  },
+  {
+   "note": "",
+   "q": "Is it legal to convict a person when there is only circumstantial evidence and no witnesses?"
+  },
+  {
+   "note": "",
+   "q": "The case against my father is based only on circumstantial evidence. How strong is it?"
+  },
+  {
+   "note": "",
+   "q": "Can circumstantial evidence be used to convict someone of rape?"
+  },
+  {
+   "note": "",
+   "q": "If the prosecution has only circumstantial evidence, who gets the benefit of the doubt?"
+  },
+  {
+   "note": "no eyewitness",
+   "q": "My uncle was arrested for murder but the police have no eyewitness and no confession. Can the court still convict him?"
+  },
+  {
+   "note": "",
+   "q": "Can the court convict an accused when the entire case is circumstantial?"
+  },
+  {
+   "note": "hinglish",
+   "q": "circumstantial evidence pe conviction ho sakta hai kya?"
+  },
+  {
+   "note": "misspelt, no punctuation",
+   "q": "can court convict on circumstancial evidence"
+  },
+  {
+   "note": "misspelt",
+   "q": "conviction on circumstantial evidance - what are the rules"
+  },
+  {
+   "note": "lower case, run-on",
+   "q": "convicted without any direct evidence, only a circumstantial case. what are my options"
+  },
+  {
+   "note": "",
+   "q": "what is chain of evidence in a circumstantial case and why must it be complete for conviction"
+  },
+  {
+   "note": "suspicion, accused",
+   "q": "Is suspicion, however strong, enough to convict an accused?"
+  },
+  {
+   "note": "nobody saw",
+   "q": "In a murder trial where nobody saw the killing, how does the court decide guilt?"
+  },
+  {
+   "note": "hypothesis, in other words",
+   "q": "Can the accused be acquitted if the circumstances are consistent with innocence as well as guilt?"
+  }
+ ],
+ "rule": "pos = a question the circumstantial-evidence landmark excerpts should be handed over for; neg = they should not; ambiguous = not scored, reported only",
+ "schema": "frozen-questions-1",
+ "sha256_of_the_questions_only": "283f2143507aac761010654ef9b8c358f73852b4a35d84ae19bbe1123ee55eef",
+ "topic": "circumstantial_evidence",
+ "written": "2026-10-29",
+ "written_by": "Claude, before any trigger pattern for this topic existed; not a lawyer's list"
+}
