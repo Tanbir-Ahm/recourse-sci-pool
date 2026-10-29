@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ad record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ae record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -905,6 +905,23 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 **Candidate fixes (not built).** For words that the text cannot settle (yesterday or tomorrow, an insult or slang word), write the word as spoken with its possible meanings in brackets instead of choosing; run the names-as-printed translation from the checked reading of all looks, not from view 1 alone. Because these were suggested by this page, a fair test needs a fresh page.
 
 **Limits.** One page, a handful of names, one writer.
+
+### 10ae. A handwritten page of single words and names, sideways and upright (run and scored 2026-10-29; counts only, no names, places, case numbers or text)
+
+**What was tested.** One phone photo (dark, tilted, and physically rotated a quarter turn) of nine lines of comma-separated single words: mostly personal names and surnames, a few place names, a few common nouns, in handwriting. 38 words in the owner's key (the key is in Latin letters; a flat list, aligned to the nine lines by word counts, with one extra word read at the start of line 1 by every look). Read blind twice: as given, and after turning the page upright (a plain 90-degree rotation; no other change). Each time two views plus a third look. Cost Rs 2.21 for the sideways page and Rs 1.79 for the upright page, logged.
+
+| Measure | Sideways | Upright |
+|---|---|---|
+| Letters the first two views agree on | 34.8% | 82.4% |
+| Word positions (of 39) the same in all three looks | 6 | 19 |
+| Word positions different in every look | 23 | 7 |
+| Light | red | red |
+
+**Scoring the upright page against the key (38 words; judged word by word):** first look 23 right (61%), second look 23 right (61%), third look 25 right (66%); 28 of 38 words right in at least one look; 20 right in all three; **10 wrong in every look**. Of those 10, six were written as the same wrong word by at least two looks (agreed and wrong): a surname read as a common first name, a name read as a word for God, a name read as an unrelated word, a word read as a different place-like word, and two common-noun/short-word slips. Every look also invented one extra word at the start of line 1 (a repeated name). The sideways page was not scored word by word (the three looks share almost no words).
+
+**Findings.** (1) **A page of bare names is the tool's weakest case so far**: about one word in four is wrong in every look and a further one in ten in some of the looks; nothing inside a line of single words (no sentence, no grammar) lets the readers correct themselves, and an unusual name tends to come out as a more familiar one (the same pull seen on digits). (2) **The tool was right to mark the page red; it cannot say which words are wrong**, so a person has to read the whole page against the picture. (3) **Orientation matters a great deal**: turning the page upright raised letter agreement from 34.8% to 82.4% and the number of words common to all three looks from 6 to 19. The pipeline has no upright check (10p found contrast and straightening unhelpful, but a quarter-turn is a different thing and was not tested). (4) Not one of the readings turns the page's names into a list that could be trusted: this page is a reading aid at best.
+
+**Not built.** An orientation check (ask the model which way up the text is, or compare the four rotations on a small crop); a pick list of the looks' alternatives for each word for a person to choose from (the owner put the idea on hold). Both would need a fresh page to be tested fairly.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
