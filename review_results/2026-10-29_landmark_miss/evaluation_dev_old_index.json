@@ -1,0 +1,2008 @@
+{
+ "half": "dev",
+ "settings": {
+  "prior": 0.1,
+  "consensus": 0.6,
+  "min_frac": 0.08,
+  "max_clusters": 10,
+  "passages": 3,
+  "min_count": 3,
+  "prior_cap": 100,
+  "consensus_cap": 0.5,
+  "pool": 60
+ },
+ "baseline": {
+  "questions": 52,
+  "hit8": 33,
+  "hit10": 35,
+  "hit8_pct": 63.5,
+  "hit10_pct": 67.3,
+  "lay_hit8": 16,
+  "lay_n": 24,
+  "lawyer_hit8": 17,
+  "lawyer_n": 28
+ },
+ "authority": {
+  "questions": 52,
+  "hit8": 45,
+  "hit10": 45,
+  "hit8_pct": 86.5,
+  "hit10_pct": 86.5,
+  "lay_hit8": 21,
+  "lay_n": 24,
+  "lawyer_hit8": 24,
+  "lawyer_n": 28
+ },
+ "rows_baseline": [
+  {
+   "id": "L001",
+   "group": "anticipatory_bail",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000257030,
+    1000255914,
+    1000255956,
+    32620,
+    32873,
+    1000252377,
+    1000253107,
+    30671,
+    28630
+   ],
+   "best_position": 6,
+   "added": 0
+  },
+  {
+   "id": "L002",
+   "group": "anticipatory_bail",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253107,
+    1000252377,
+    1003962566,
+    1000254814,
+    1000255395,
+    1000255956,
+    1000255144
+   ],
+   "best_position": 2,
+   "added": 0
+  },
+  {
+   "id": "L005",
+   "group": "arrest_safeguards",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    43679,
+    1000252702,
+    14580,
+    1000250634,
+    1000250996,
+    13877,
+    40541,
+    29412
+   ],
+   "best_position": 3,
+   "added": 0
+  },
+  {
+   "id": "L006",
+   "group": "arrest_safeguards",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000256853,
+    1000252702,
+    14580,
+    1000250634,
+    43679,
+    33665,
+    27465,
+    1000256770,
+    19383
+   ],
+   "best_position": 3,
+   "added": 0
+  },
+  {
+   "id": "L009",
+   "group": "498a_general_allegations",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253702,
+    1000256578,
+    1000255992,
+    1000256212,
+    1003962640,
+    1000256161,
+    1000256356,
+    1000256584
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L010",
+   "group": "498a_general_allegations",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000255205,
+    41017,
+    1000256714,
+    1000253702,
+    1000255992,
+    34582,
+    19002,
+    30186,
+    1000255715,
+    1000256578
+   ],
+   "best_position": 4,
+   "added": 0
+  },
+  {
+   "id": "L013",
+   "group": "uapa_bail",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000255518,
+    1000255641,
+    1000252904,
+    1003962505,
+    1000255886,
+    1000254065,
+    1000255835,
+    37314,
+    1000255793,
+    44643
+   ],
+   "best_position": 3,
+   "added": 0
+  },
+  {
+   "id": "L014",
+   "group": "uapa_bail",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000255835,
+    1003962505,
+    1000255775,
+    1000252904,
+    1000253484,
+    1000255996
+   ],
+   "best_position": 4,
+   "added": 0
+  },
+  {
+   "id": "L017",
+   "group": "undertrials",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000254065,
+    4873,
+    4841,
+    1003962508,
+    1000255775
+   ],
+   "best_position": 3,
+   "added": 0
+  },
+  {
+   "id": "L018",
+   "group": "undertrials",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    39518,
+    1000004489,
+    1000255775,
+    28096,
+    39479,
+    42385,
+    1000254065,
+    4873,
+    10020
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L021",
+   "group": "bail_factors",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000253989,
+    1000252106,
+    39074,
+    41351,
+    1000254581,
+    1000250172,
+    28390,
+    31356,
+    31355,
+    28840
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L024",
+   "group": "compounding_quash",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000251468,
+    1000251427,
+    1000256082,
+    1000253305,
+    1000254292,
+    1000254159,
+    1000256014,
+    41348
+   ],
+   "best_position": 8,
+   "added": 0
+  },
+  {
+   "id": "L025",
+   "group": "compounding_quash",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000251427,
+    1000251468,
+    41903,
+    32676,
+    1000254292,
+    1000255935,
+    41348,
+    1000256082,
+    41778,
+    1000252418
+   ],
+   "best_position": 7,
+   "added": 0
+  },
+  {
+   "id": "L028",
+   "group": "section_319",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    32355,
+    32923,
+    35677,
+    4942,
+    28976,
+    29596,
+    1000255143,
+    1000254548,
+    9860
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L029",
+   "group": "section_319",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000254548,
+    1000256504,
+    1000254727,
+    1000255123,
+    1000256522,
+    1000256461
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L031",
+   "group": "hostile_witness",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    30822,
+    40965,
+    44323,
+    1000250329,
+    1000256996,
+    1000255345,
+    1000255180,
+    26084,
+    1000253471
+   ],
+   "best_position": 8,
+   "added": 0
+  },
+  {
+   "id": "L032",
+   "group": "hostile_witness",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000250329,
+    40277,
+    1000255345,
+    1000256996,
+    40965,
+    1000252809,
+    44323,
+    26084
+   ],
+   "best_position": 8,
+   "added": 0
+  },
+  {
+   "id": "L035",
+   "group": "burden_home_crime",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": true,
+   "docs": [
+    29106,
+    44749,
+    34626,
+    31203,
+    1000251839,
+    41708,
+    1000256409,
+    1000256224,
+    28109
+   ],
+   "best_position": 9,
+   "added": 0
+  },
+  {
+   "id": "L036",
+   "group": "burden_home_crime",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000254591,
+    28109,
+    42010,
+    1003962671,
+    1000254404,
+    1000256260,
+    1000255460,
+    1000255716,
+    1000256409,
+    1000256048
+   ],
+   "best_position": 2,
+   "added": 0
+  },
+  {
+   "id": "L039",
+   "group": "section_27_recovery",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000257057,
+    1000256118,
+    14525,
+    44755,
+    1000253916,
+    20842,
+    1000250002,
+    17591,
+    31197
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L040",
+   "group": "section_27_recovery",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000256118,
+    1000253916,
+    31197,
+    17591,
+    1000256833,
+    1000255975,
+    41403,
+    1003962578,
+    1633,
+    1000004790
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L043",
+   "group": "police_statement_contradiction",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000255716,
+    1000256310,
+    42802,
+    1000255210,
+    1000256644,
+    16854,
+    43223
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L046",
+   "group": "self_incrimination",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    36303,
+    1000256803,
+    1000252784,
+    1000252331
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L047",
+   "group": "self_incrimination",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252784,
+    36303,
+    44862,
+    1000256803
+   ],
+   "best_position": 2,
+   "added": 0
+  },
+  {
+   "id": "L050",
+   "group": "death_penalty_rarest",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    19219,
+    39219,
+    1000004486,
+    39220,
+    39121,
+    40794,
+    1000251394,
+    36747,
+    32092,
+    32389
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L051",
+   "group": "death_penalty_rarest",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    38220,
+    13209,
+    1000252060,
+    1000251158,
+    1000250002,
+    34632,
+    29511
+   ],
+   "best_position": 6,
+   "added": 0
+  },
+  {
+   "id": "L054",
+   "group": "sentencing_principles",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    39502,
+    39341,
+    40190,
+    41156,
+    40067,
+    1000251528,
+    44762,
+    42539,
+    44244,
+    1000251609
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L057",
+   "group": "unlawful_assembly",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000256490,
+    1000257064,
+    1000251526,
+    40818,
+    40230,
+    1000251974,
+    34507,
+    1000253483,
+    1000256363
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L058",
+   "group": "unlawful_assembly",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    36335,
+    42232,
+    39883,
+    36483,
+    43269,
+    42581,
+    26737,
+    34390,
+    18813,
+    34507
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L061",
+   "group": "common_intention",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000256306,
+    32278,
+    39577,
+    44473,
+    1000253723,
+    36960,
+    1000252058,
+    1000255255,
+    1000253517,
+    43228
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L064",
+   "group": "modesty",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    28098,
+    2651,
+    25850,
+    1000256298,
+    10468,
+    1000003589,
+    28786,
+    33844,
+    32547
+   ],
+   "best_position": 5,
+   "added": 0
+  },
+  {
+   "id": "L065",
+   "group": "modesty",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    33844,
+    32547,
+    1000003589,
+    25631,
+    43968,
+    28098,
+    10468,
+    2651
+   ],
+   "best_position": 7,
+   "added": 0
+  },
+  {
+   "id": "L067",
+   "group": "medical_negligence",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    26300,
+    41301,
+    32691,
+    33375,
+    35229,
+    27088
+   ],
+   "best_position": 6,
+   "added": 0
+  },
+  {
+   "id": "L068",
+   "group": "medical_negligence",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27088,
+    41301,
+    39976,
+    1000253111,
+    44746,
+    40762,
+    32691
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L071",
+   "group": "cheating_breach_of_contract",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27880,
+    42962,
+    1000250185,
+    1000254228,
+    34610,
+    1003962606,
+    20323,
+    42499,
+    20022,
+    1000255917
+   ],
+   "best_position": 7,
+   "added": 0
+  },
+  {
+   "id": "L072",
+   "group": "cheating_breach_of_contract",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253534,
+    1003962606,
+    20323,
+    29267,
+    18869,
+    42499,
+    1000251250,
+    1000252386,
+    1000255485,
+    38705
+   ],
+   "best_position": 3,
+   "added": 0
+  },
+  {
+   "id": "L075",
+   "group": "juvenile_age",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    37156,
+    42478,
+    40340,
+    1000256254,
+    40541,
+    34524,
+    1000254113,
+    37340,
+    39520
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L076",
+   "group": "juvenile_age",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": true,
+   "docs": [
+    37156,
+    36257,
+    39559,
+    16335,
+    18208,
+    33583,
+    1000255398,
+    39844,
+    27675,
+    30900
+   ],
+   "best_position": 10,
+   "added": 0
+  },
+  {
+   "id": "L079",
+   "group": "dv_shared_household",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253984,
+    30909,
+    43646,
+    1000004478
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L080",
+   "group": "dv_shared_household",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253984,
+    1000004478,
+    39071,
+    43128,
+    1000252794
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L083",
+   "group": "sc_st_public_view",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1003962671,
+    1000256639,
+    1000251256,
+    1000250634,
+    4396,
+    1000252047,
+    27548,
+    38719,
+    1000251418,
+    1003962655
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L084",
+   "group": "sc_st_public_view",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252799,
+    1000256330,
+    1003962655,
+    1000255914,
+    1000255070
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L087",
+   "group": "criminal_defamation",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000256394,
+    44579,
+    1000250393,
+    1000252246,
+    7172
+   ],
+   "best_position": 2,
+   "added": 0
+  },
+  {
+   "id": "L088",
+   "group": "criminal_defamation",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    44579,
+    1000250696
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L091",
+   "group": "cheque_presumption",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000251356,
+    1000254219,
+    1000252087,
+    1000253492,
+    18555,
+    1000253391
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L092",
+   "group": "cheque_presumption",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252920,
+    1000253511,
+    1000255876,
+    1000254219,
+    1000252087,
+    1000251356,
+    1000257049,
+    1000252438
+   ],
+   "best_position": 6,
+   "added": 0
+  },
+  {
+   "id": "L095",
+   "group": "cheque_compounding",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253352,
+    1000252963,
+    1000250291,
+    36294,
+    41902,
+    41067
+   ],
+   "best_position": 3,
+   "added": 0
+  },
+  {
+   "id": "L096",
+   "group": "cheque_compounding",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    39038,
+    1000257049,
+    1000255847,
+    29985,
+    1000253154,
+    1000253352,
+    39399,
+    1000254801
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L099",
+   "group": "ndps_statement",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252784,
+    1000255359,
+    29625,
+    41558,
+    374,
+    40141,
+    32020
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L100",
+   "group": "ndps_statement",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000250894,
+    1000255268,
+    38022,
+    1000255659,
+    30081,
+    1000251980,
+    1000252784
+   ],
+   "best_position": 7,
+   "added": 0
+  },
+  {
+   "id": "L103",
+   "group": "circumstantial",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    44862,
+    41403,
+    1000256409,
+    1000254405,
+    36521,
+    1000250260,
+    39326,
+    1000254986,
+    35139,
+    7436
+   ],
+   "best_position": null,
+   "added": 0
+  },
+  {
+   "id": "L104",
+   "group": "circumstantial",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    12755,
+    35952,
+    1000254368,
+    1000253895,
+    38227,
+    35139,
+    12698,
+    3860,
+    1000257053,
+    34410
+   ],
+   "best_position": null,
+   "added": 0
+  }
+ ],
+ "rows_authority": [
+  {
+   "id": "L001",
+   "group": "anticipatory_bail",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    4562,
+    5469,
+    37199,
+    26810,
+    10195,
+    26392
+   ],
+   "best_position": 1,
+   "added": 20
+  },
+  {
+   "id": "L002",
+   "group": "anticipatory_bail",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    37199,
+    4562,
+    1000252377,
+    1000255395,
+    1003962566
+   ],
+   "best_position": 1,
+   "added": 27
+  },
+  {
+   "id": "L005",
+   "group": "arrest_safeguards",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    14580,
+    40541,
+    1000250634,
+    1000252702,
+    1000250996,
+    43679,
+    29412,
+    13877
+   ],
+   "best_position": 1,
+   "added": 17
+  },
+  {
+   "id": "L006",
+   "group": "arrest_safeguards",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    14580,
+    1000256853
+   ],
+   "best_position": 1,
+   "added": 21
+  },
+  {
+   "id": "L009",
+   "group": "498a_general_allegations",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253702,
+    1000256578,
+    1000255992,
+    1000256212,
+    1003962640,
+    1000256161,
+    1000256356,
+    39724
+   ],
+   "best_position": 1,
+   "added": 8
+  },
+  {
+   "id": "L010",
+   "group": "498a_general_allegations",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000255205,
+    41017,
+    1000256714,
+    36664,
+    1000253702,
+    1000255992,
+    19002,
+    34582,
+    30186,
+    1000255715
+   ],
+   "best_position": 4,
+   "added": 9
+  },
+  {
+   "id": "L013",
+   "group": "uapa_bail",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252904,
+    1000255518,
+    38869,
+    1000255641,
+    1000255886,
+    1000254065,
+    15927
+   ],
+   "best_position": 1,
+   "added": 24
+  },
+  {
+   "id": "L014",
+   "group": "uapa_bail",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252904,
+    1000255775,
+    1000255835,
+    1003962505,
+    1000251566,
+    1000255518,
+    1000255893
+   ],
+   "best_position": 1,
+   "added": 12
+  },
+  {
+   "id": "L017",
+   "group": "undertrials",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000254065,
+    1000252904,
+    4873,
+    15927
+   ],
+   "best_position": null,
+   "added": 13
+  },
+  {
+   "id": "L018",
+   "group": "undertrials",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    18409,
+    12969,
+    1000254065,
+    8946,
+    1000255775
+   ],
+   "best_position": 1,
+   "added": 22
+  },
+  {
+   "id": "L021",
+   "group": "bail_factors",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    25970,
+    5184,
+    26725,
+    1000252223,
+    26701,
+    26315,
+    1000253989
+   ],
+   "best_position": null,
+   "added": 23
+  },
+  {
+   "id": "L024",
+   "group": "compounding_quash",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    39579,
+    41348,
+    1000250282,
+    41939,
+    1000251427
+   ],
+   "best_position": 1,
+   "added": 22
+  },
+  {
+   "id": "L025",
+   "group": "compounding_quash",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    39579,
+    32676,
+    41348,
+    1000250282
+   ],
+   "best_position": 1,
+   "added": 20
+  },
+  {
+   "id": "L028",
+   "group": "section_319",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    32923,
+    9860,
+    18422,
+    41145,
+    17208
+   ],
+   "best_position": 4,
+   "added": 22
+  },
+  {
+   "id": "L029",
+   "group": "section_319",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    41145,
+    32923,
+    44832,
+    1000250284,
+    1000254548
+   ],
+   "best_position": 1,
+   "added": 25
+  },
+  {
+   "id": "L031",
+   "group": "hostile_witness",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    26084,
+    27561,
+    44323,
+    30822,
+    40965,
+    1000250329,
+    1000256996
+   ],
+   "best_position": 1,
+   "added": 26
+  },
+  {
+   "id": "L032",
+   "group": "hostile_witness",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    26084,
+    27561,
+    44323,
+    1000250329,
+    1000255345,
+    40277,
+    1000256996,
+    40965,
+    1000252809
+   ],
+   "best_position": 1,
+   "added": 19
+  },
+  {
+   "id": "L035",
+   "group": "burden_home_crime",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    28109,
+    29106,
+    9517,
+    34626,
+    31203,
+    44749,
+    1000256409,
+    41708,
+    12407
+   ],
+   "best_position": 1,
+   "added": 16
+  },
+  {
+   "id": "L036",
+   "group": "burden_home_crime",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    28109,
+    1000254591,
+    1000255460,
+    1000256409,
+    42010,
+    1003962671,
+    1000254404,
+    1000256260,
+    1000255716
+   ],
+   "best_position": 1,
+   "added": 29
+  },
+  {
+   "id": "L039",
+   "group": "section_27_recovery",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    3808,
+    17389,
+    27092,
+    1000257057,
+    1000256118,
+    14525,
+    1000253916,
+    5883
+   ],
+   "best_position": 8,
+   "added": 27
+  },
+  {
+   "id": "L040",
+   "group": "section_27_recovery",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    3808,
+    27092,
+    31197,
+    1000253916,
+    17591,
+    9821,
+    1000256118
+   ],
+   "best_position": null,
+   "added": 30
+  },
+  {
+   "id": "L043",
+   "group": "police_statement_contradiction",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    42802,
+    374,
+    27092,
+    17419,
+    1000255210,
+    1000256310
+   ],
+   "best_position": 2,
+   "added": 15
+  },
+  {
+   "id": "L046",
+   "group": "self_incrimination",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    36303
+   ],
+   "best_position": 1,
+   "added": 3
+  },
+  {
+   "id": "L047",
+   "group": "self_incrimination",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    36303,
+    1000252784
+   ],
+   "best_position": 1,
+   "added": 2
+  },
+  {
+   "id": "L050",
+   "group": "death_penalty_rarest",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    9766,
+    4795,
+    34632,
+    7966,
+    28409
+   ],
+   "best_position": 1,
+   "added": 27
+  },
+  {
+   "id": "L051",
+   "group": "death_penalty_rarest",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    9766,
+    34632,
+    10229,
+    40330,
+    38220,
+    32067
+   ],
+   "best_position": 1,
+   "added": 28
+  },
+  {
+   "id": "L054",
+   "group": "sentencing_principles",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    9766,
+    10229,
+    39502,
+    40190,
+    27432,
+    39341,
+    38962,
+    12722,
+    6696
+   ],
+   "best_position": null,
+   "added": 28
+  },
+  {
+   "id": "L057",
+   "group": "unlawful_assembly",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000256490,
+    1000257064,
+    40230,
+    40818,
+    1000251526,
+    1000256363,
+    1000251974,
+    34507
+   ],
+   "best_position": null,
+   "added": 5
+  },
+  {
+   "id": "L058",
+   "group": "unlawful_assembly",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    3223,
+    14439,
+    36335,
+    8083,
+    18813,
+    36483,
+    42232,
+    34390,
+    39883
+   ],
+   "best_position": 1,
+   "added": 7
+  },
+  {
+   "id": "L061",
+   "group": "common_intention",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    17655,
+    1000256306,
+    39577,
+    32278,
+    16467,
+    860,
+    1000253517,
+    44473,
+    1000253723
+   ],
+   "best_position": 6,
+   "added": 17
+  },
+  {
+   "id": "L064",
+   "group": "modesty",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    2651,
+    10468
+   ],
+   "best_position": 2,
+   "added": 0
+  },
+  {
+   "id": "L065",
+   "group": "modesty",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    2651,
+    10468
+   ],
+   "best_position": 2,
+   "added": 7
+  },
+  {
+   "id": "L067",
+   "group": "medical_negligence",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27088
+   ],
+   "best_position": 1,
+   "added": 6
+  },
+  {
+   "id": "L068",
+   "group": "medical_negligence",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27088,
+    41301,
+    39976
+   ],
+   "best_position": 1,
+   "added": 0
+  },
+  {
+   "id": "L071",
+   "group": "cheating_breach_of_contract",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27880,
+    20022,
+    32865,
+    34610,
+    18869,
+    42962,
+    1000250185,
+    1000254228
+   ],
+   "best_position": 2,
+   "added": 26
+  },
+  {
+   "id": "L072",
+   "group": "cheating_breach_of_contract",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27880,
+    1000253534,
+    18869,
+    20022,
+    29267,
+    1003962606,
+    20323,
+    1000252386,
+    34610
+   ],
+   "best_position": 4,
+   "added": 26
+  },
+  {
+   "id": "L075",
+   "group": "juvenile_age",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    30900,
+    16335,
+    34524,
+    1000004745,
+    40541,
+    39656,
+    9671,
+    39559
+   ],
+   "best_position": 1,
+   "added": 24
+  },
+  {
+   "id": "L076",
+   "group": "juvenile_age",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    16335,
+    26757,
+    30900,
+    26764,
+    39559
+   ],
+   "best_position": 2,
+   "added": 20
+  },
+  {
+   "id": "L079",
+   "group": "dv_shared_household",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000253984,
+    39071,
+    30909,
+    1000004478,
+    43646
+   ],
+   "best_position": 1,
+   "added": 2
+  },
+  {
+   "id": "L080",
+   "group": "dv_shared_household",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    39071,
+    1000253984,
+    1000004478,
+    43128,
+    1000252794
+   ],
+   "best_position": 2,
+   "added": 1
+  },
+  {
+   "id": "L083",
+   "group": "sc_st_public_view",
+   "half": "dev",
+   "style": "lay",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    1000250634,
+    1003962671,
+    1000256639,
+    9766,
+    4396,
+    1000251256,
+    1000252047,
+    27548,
+    38719,
+    1000251418
+   ],
+   "best_position": null,
+   "added": 6
+  },
+  {
+   "id": "L084",
+   "group": "sc_st_public_view",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000252799,
+    1000256330,
+    1003962655,
+    1000255914,
+    1000255070
+   ],
+   "best_position": 1,
+   "added": 12
+  },
+  {
+   "id": "L087",
+   "group": "criminal_defamation",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    44579,
+    1000256394
+   ],
+   "best_position": 1,
+   "added": 9
+  },
+  {
+   "id": "L088",
+   "group": "criminal_defamation",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    44579
+   ],
+   "best_position": 1,
+   "added": 18
+  },
+  {
+   "id": "L091",
+   "group": "cheque_presumption",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000251356,
+    1000254219,
+    1000252920,
+    1000252087,
+    30108,
+    1000253492
+   ],
+   "best_position": 1,
+   "added": 23
+  },
+  {
+   "id": "L092",
+   "group": "cheque_presumption",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    1000251356,
+    33341,
+    36322,
+    30108,
+    1000252920,
+    1000251590,
+    1000252087
+   ],
+   "best_position": 1,
+   "added": 23
+  },
+  {
+   "id": "L095",
+   "group": "cheque_compounding",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    36294,
+    1000253352,
+    1000252963,
+    1000250291,
+    41902
+   ],
+   "best_position": 4,
+   "added": 11
+  },
+  {
+   "id": "L096",
+   "group": "cheque_compounding",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": false,
+   "hit10": false,
+   "docs": [
+    36294,
+    29985,
+    39038,
+    1000252963,
+    1000257049,
+    1000253352,
+    1000255847
+   ],
+   "best_position": null,
+   "added": 13
+  },
+  {
+   "id": "L099",
+   "group": "ndps_statement",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    27092,
+    1000252784,
+    30081,
+    374,
+    29625,
+    1000255359,
+    31821
+   ],
+   "best_position": 2,
+   "added": 18
+  },
+  {
+   "id": "L100",
+   "group": "ndps_statement",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    30081,
+    1000252784,
+    40880,
+    1000250894,
+    38022
+   ],
+   "best_position": 2,
+   "added": 19
+  },
+  {
+   "id": "L103",
+   "group": "circumstantial",
+   "half": "dev",
+   "style": "lay",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    28109,
+    9517,
+    1000256409,
+    44862,
+    41403,
+    1000254405,
+    7436
+   ],
+   "best_position": 2,
+   "added": 12
+  },
+  {
+   "id": "L104",
+   "group": "circumstantial",
+   "half": "dev",
+   "style": "lawyer",
+   "hit8": true,
+   "hit10": true,
+   "docs": [
+    9517,
+    9821,
+    29417,
+    12535,
+    1000002377,
+    27596
+   ],
+   "best_position": 1,
+   "added": 30
+  }
+ ]
+}

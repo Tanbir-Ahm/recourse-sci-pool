@@ -15,6 +15,9 @@ at a time (a lock); questions over 2,000 characters are refused; the caller is e
 Names and links: names_table/names_table.json.gz (built by names_table/build_names_table.py for the same index commit; the service refuses to start on a table built for another commit) gives each result a readable case_name, date, citations and a link to the judgment's PDF.
 Environment: SCI_NAMES_TABLE (default names_table/names_table.json.gz), SCI_INDEX_DIR (default ../recourse-sci-index), SCI_SIDE_INDEXES (comma-separated folders; default the three in review_data/side_index), SCI_INDEX_COMMIT (when the index folder is not a git checkout),
 SCI_QUOTES (on|off, default off: passages numbered outside their judgment's own paragraph sequence get a "quote" field; sci_quotes.py), SCI_RERANK_MODEL (default rerank-3-lite), SCI_MAX_TEXT (characters of passage text returned, default 1500), VOYAGE_API_KEY, SCI_SEARCH_TOKEN, PORT.
+SCI_AUTHORITY (on|off, default off): authority-aware ranking (authority_search.py, 2026-10-29): the judgments that the retrieved judgments themselves name are fetched and favoured, so that a landmark is not outranked by the
+restatements of it. Needs the table authority_graph.py builds for the same index (SCI_AUTHORITY_TABLE, default authority_table/authority_<index commit>.json.gz; the service refuses to start on a missing table or one made for
+another commit). Tuning: SCI_AUTH_PRIOR, SCI_AUTH_CONSENSUS, SCI_AUTH_MIN_FRAC, SCI_AUTH_MAX, SCI_AUTH_PASSAGES, SCI_AUTH_MIN_COUNT. Off, the service ranks exactly as before and the results carry no extra field.
 """
 import collections
 import datetime
@@ -198,6 +201,9 @@ class SearchService:
         self.src_courts = {}
         self.names = {}
         self.quotes = {}                                 # "<doc>:<i>" -> sci_quotes record, when SCI_QUOTES=on
+        self.authority = None                            # authority_search.AuthorityTable when SCI_AUTHORITY=on
+        self.auth_params = None
+        self._rows_by_doc = None
         self.lock = threading.Lock()
         self.day, self.rerank_today, self.embed_today, self.searches_today = None, 0, 0, 0
         self.started = clock()
@@ -250,6 +256,14 @@ class SearchService:
             import sci_quotes
             svc.quotes, qstats = sci_quotes.build(metas)
             info["quotes"] = qstats
+        import authority_search as AS
+        if AS.enabled():                               # SCI_AUTHORITY=on (default off): the judgments the retrieved judgments name are fetched and favoured (authority_search.py)
+            apath = os.environ.get("SCI_AUTHORITY_TABLE") or os.path.join(HERE, "authority_table", f"authority_{(head or 'unknown')[:7]}.json.gz")
+            if not os.path.exists(apath):
+                raise ValueError(f"SCI_AUTHORITY is on but the authority table {apath} is missing (python authority_graph.py build ...; SCI_AUTHORITY_TABLE names another file)")
+            svc.authority = AS.AuthorityTable.load(apath, head)
+            svc.auth_params = AS.params_from_env()
+            info["authority"] = {"table": os.path.basename(apath), "judgments_named": len(svc.authority.cited_by), "judgments_that_name_others": len(svc.authority.cites), "params": svc.auth_params}
         return svc
 
     # ------------------------------------------------------------ the recipe
@@ -274,7 +288,7 @@ class SearchService:
             for rank, rid in enumerate(lst):
                 rr[rid] = rr.get(rid, 0.0) + 1.0 / (60 + rank)
         ranked = [r for r, _ in sorted(rr.items(), key=lambda x: -x[1])]
-        return {"cand": ranked[:pool], "nums": nums}
+        return {"cand": ranked[:pool], "nums": nums, "sims": sims}
 
     def _rerank(self, q, cand):
         texts = [self.metas[r]["text"][:3500] for r in cand]
@@ -286,11 +300,45 @@ class SearchService:
         return si.W.get(self.metas[rid]["section"], 1.0) * (1.10 if nums and si.has_section(self.metas[rid]["text"], nums) else 1.0)
 
     def ranked(self, q, k=10):
-        """[(index row id, score)] best first: recipe B."""
+        """[(index row id, score)] best first: recipe B (with the authority step when SCI_AUTHORITY is on)."""
+        return self.ranked_ex(q, k)[0]
+
+    def rows_by_doc(self):
+        if self._rows_by_doc is None:
+            d = collections.defaultdict(list)
+            for i, m in enumerate(self.metas):
+                d[m["doc"]].append(i)
+            self._rows_by_doc = dict(d)
+        return self._rows_by_doc
+
+    def ranked_ex(self, q, k=10):
+        """([(row id, score)], annotation or None). Without the authority table: recipe B exactly. With it: the court's own pointers (authority_search.py)."""
         a = self.retrieve(q)
-        rs = self._rerank(q, a["cand"])
-        final = {r: s * self._weight(r, a["nums"]) for r, s in rs.items()}
-        return sorted(final.items(), key=lambda x: -x[1])[:k]
+        if self.authority is None:
+            rs = self._rerank(q, a["cand"])
+            final = {r: s * self._weight(r, a["nums"]) for r, s in rs.items()}
+            return sorted(final.items(), key=lambda x: -x[1])[:k], None
+        import authority_search as AS
+        prm, tab = self.auth_params, self.authority
+        pl = AS.plan(tab, [self.metas[r]["doc"] for r in a["cand"][:prm["pool"]]], prm)
+        named = {}                                                    # judgment -> how many retrieved judgments name it (only for the judgments the retrieved ones rely on)
+        for c, n in pl["chosen"]:
+            for d in tab.docs_of(c):
+                named[d] = max(named.get(d, 0), n)
+        extra = AS.extra_rows(tab, pl["chosen"], self.rows_by_doc(), a["sims"], a["cand"], prm)
+        rs = self._rerank(q, list(a["cand"]) + extra)
+        final = {r: s * self._weight(r, a["nums"]) * AS.boost(tab, self.metas[r]["doc"], named.get(self.metas[r]["doc"], 0), pl["pool_size"], prm) for r, s in rs.items()}
+        top = sorted(final.items(), key=lambda x: -x[1])
+        if prm.get("per_doc"):                                        # a judgment may take at most this many places in the list (the website keeps one passage of each judgment, so more only crowd the others out)
+            kept, per = [], collections.Counter()
+            for r, s_ in top:
+                c = tab.cluster_of(self.metas[r]["doc"])
+                if per[c] < prm["per_doc"]:
+                    per[c] += 1
+                    kept.append((r, s_))
+            top = kept
+        top = top[:k]
+        return top, {"pool_size": pl["pool_size"], "counts": pl["counts"], "named": named, "raw": {r: rs[r] for r, _s in top}, "added": len(extra), "chosen": len(pl["chosen"]), "chosen_set": {c for c, _n in pl["chosen"]}}
 
     # ------------------------------------------------------------ the request
     def _new_day(self):
@@ -317,7 +365,7 @@ class SearchService:
                 raise Refused(429, "the daily re-rank allowance is spent; try again tomorrow")
             t0 = time.time()
             e0, r0 = self.embed_today, self.rerank_today
-            top = self.ranked(q, k)
+            top, auth = self.ranked_ex(q, k)
             usage = {"embed_model": EMBED_MODEL, "embed_tokens": self.embed_today - e0, "rerank_model": self.rerank_model, "rerank_tokens": self.rerank_today - r0}      # what this one search used (one search runs at a time, so the difference is exact)
             self.searches_today += 1
             results = []
@@ -331,7 +379,11 @@ class SearchService:
                 q = self.quotes.get(f"{m['doc']}:{m['i']}") if self.quotes else None
                 if q:
                     results[-1]["quote"] = dict(q)       # the number in "paragraph" is NOT the judgment's own: the passage sits inside paragraph q["within"]
-            return {"ok": True, "tier": TIER, "recipe": "B", "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "as_of_by_court": self.info.get("as_of_by_court") or {}, "disclaimer": DISCLAIMER,
+                if auth is not None:                     # SCI_AUTHORITY=on: why this judgment is here, as facts (counts of text matches; not a statement that it is good law)
+                    import authority_search as AS
+                    cl = self.authority.cluster_of(m["doc"])
+                    results[-1]["authority"] = dict(AS.annotate(self.authority, m["doc"], auth["counts"].get(cl, 0), auth["pool_size"], cl in auth["chosen_set"]), raw_score=round(float(auth["raw"][rid]), 4))
+            return {"ok": True, "tier": TIER, "recipe": "B" + ("+authority" if auth is not None else ""), "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "as_of_by_court": self.info.get("as_of_by_court") or {}, "disclaimer": DISCLAIMER,
                     "seconds": round(time.time() - t0, 2), "usage": usage, "results": results}
 
     def health(self):
@@ -559,7 +611,8 @@ def startup_line(service, host, port):
     q = info.get("quotes")
     return (f"sci-search listening on {host}:{port}; index {info.get('index_commit', '?')[:10] if info.get('index_commit') else '?'}, {info.get('passages'):,} passages; "
             f"{info.get('documents'):,} judgments ({', '.join(f'{k} {v:,}' for k, v in (info.get('courts') or {}).items())}); ends {info.get('as_of')}"
-            + (f"; SCI_QUOTES on: {q['flagged']:,} passages marked in {q['documents_with_flagged']:,} judgments (numbered outside their judgment's own sequence)" if q else ""))
+            + (f"; SCI_QUOTES on: {q['flagged']:,} passages marked in {q['documents_with_flagged']:,} judgments (numbered outside their judgment's own sequence)" if q else "")
+            + (f"; SCI_AUTHORITY on: {info['authority']['judgments_named']:,} judgments named by others, {info['authority']['judgments_that_name_others']:,} that name others" if info.get("authority") else ""))
 
 
 def serve(service, host, port, token):

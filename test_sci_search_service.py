@@ -186,8 +186,50 @@ check("a result carries the court of its judgment (names table), and an unlisted
 s3.info = {**s3.info, "as_of_by_court": {"Gauhati High Court": "2026-10-14", "Supreme Court of India": "2026-10-16"}}
 check("the reply names the latest decision date of each court", s3.search(Q)["as_of_by_court"] == {"Gauhati High Court": "2026-10-14", "Supreme Court of India": "2026-10-16"})
 
+# ---- authority-aware ranking (SCI_AUTHORITY=on): the judgments that the retrieved judgments name are fetched and favoured; off, nothing changes ----
+import authority_search as AS
+ametas = []
+for d in range(300, 310):                                          # nine judgments that fit the question word for word, and one landmark (309) that fits it less
+    for i in range(6):
+        text = (f"{i + 1}. In case {d} the court considered anticipatory bail and arrest under section 400 on the record number {i}." if d < 309
+                else f"{i + 1}. The landmark case {d} settles anticipatory bail and arrest under section law in detail, number {i}.")      # 6 of the question's 7 words: fits the question less than the others (7 of 7)
+        ametas.append({"doc": d, "i": i, "pn": str(i + 1), "page": 1, "section": "reasoning", "h": f"a{d}-{i}", "text": text})
+AM = np.stack([vec(m["text"]) for m in ametas]).astype(np.float16)
+AQ = "anticipatory bail and arrest under section 400"
+atable = {"schema": AS.SCHEMA, "index_commit": "abc123", "cited_by": {"309": 400}, "cluster": {}, "cites": {str(d): [309] for d in range(300, 309)}}
+def asvc(authority=True, client=None, **kw):
+    sv = S.SearchService([S._slim(m) for m in ametas], AM, client or FakeClient(), lambda doc: f"Case {doc} v. State", info={"index_commit": "abc123", "as_of": "2026-07-13"}, sleep=lambda s_: None, **kw)
+    if authority:
+        sv.authority, sv.auth_params = AS.AuthorityTable(atable), dict(AS.DEFAULTS)
+    return sv
+off_docs = [r["doc"] for r in asvc(False).search(AQ)["results"]]
+on = asvc(True)
+res_on = on.search(AQ)
+on_docs = [r["doc"] for r in res_on["results"]]
+check("authority off: the landmark that fits the question less is outranked by the nine that fit it word for word", 309 not in off_docs and len(off_docs) == 10, off_docs)
+check("authority on: the judgment all nine retrieved judgments name ranks first", on_docs[0] == 309 and res_on["recipe"] == "B+authority", on_docs)
+r309 = res_on["results"][0]
+check("the result says why: how many judgments of the collection and how many of the retrieved ones name it, and the re-ranker's own score",
+      r309["authority"]["named_by_collection"] == 400 and r309["authority"]["named_by_retrieved"] == 9 and r309["authority"]["retrieved"] >= 9 and 0 < r309["authority"]["raw_score"] < 1 and r309["score"] > r309["authority"]["raw_score"], r309.get("authority"))
+check("the other results carry the facts too (named by nobody there)", all("authority" in r for r in res_on["results"]) and all(r["authority"]["named_by_retrieved"] == 0 for r in res_on["results"] if r["doc"] != 309))
+check("only the judgment the retrieved judgments point to is marked a pointer (the website treats only those as the court's own pointers)", r309["authority"]["pointer"] is True and all(r["authority"]["pointer"] is False for r in res_on["results"] if r["doc"] != 309))
+check("still one embedding and one re-rank call per question, with the added passages in the same call", on.client.embed_calls == 1 and on.client.rerank_calls == 1)
+def n309(per_doc):
+    sv = asvc(True)
+    sv.auth_params = dict(sv.auth_params, per_doc=per_doc)
+    docs = [r["doc"] for r in sv.search(AQ)["results"]]
+    return docs.count(309), len(docs), len(set(docs))
+check("a judgment takes one place in the list by default (so a landmark's passages do not push the other judgments out); the list is still full; the limit can be raised or lifted", asvc(True).search(AQ)["results"].count(None) == 0 and [r["doc"] for r in asvc(True).search(AQ)["results"]].count(309) == 1
+      and n309(1) == (1, 10, 10) and n309(2)[0] == 2 and n309(2)[1] == 10 and n309(0)[0] > 2, (n309(2), n309(1), n309(0)))
+check("authority off: no 'authority' field and the recipe is plain B", all("authority" not in r for r in asvc(False).search(AQ)["results"]) and asvc(False).search(AQ)["recipe"] == "B")
+a_off = asvc(False)
+check("ranked() and ranked_ex() agree, and without the table the annotation is None", [r for r, _ in a_off.ranked(AQ, 10)] == [r for r, _ in a_off.ranked_ex(AQ, 10)[0]] and a_off.ranked_ex(AQ, 10)[1] is None)
+bt = AS.AuthorityTable(atable)
+bmax = AS.boost(bt, 309, 9, 10, dict(AS.DEFAULTS))
+check("the boost is a multiplier of at most 1.7, so a passage the re-ranker finds only half relevant (0.5) stays below one it finds a good fit (0.9)", 1.0 < bmax <= 1.7 + 1e-9 and 0.5 * bmax < 0.9 and AS.boost(bt, 301, 0, 10, dict(AS.DEFAULTS)) == 1.0, bmax)
+
 import subprocess
-p = subprocess.run([sys.executable, os.path.join(HERE, "sci_search_service.py"), "serve", "--host", "0.0.0.0"], capture_output=True, text=True, env={**env, "SCI_INDEX_DIR": "/nonexistent"}, timeout=60)
+p = subprocess.run([sys.executable, os.path.join(HERE, "sci_search_service.py"), "serve", "--host", "0.0.0.0"], capture_output=True, text=True, env={**env, "SCI_INDEX_DIR": "/nonexistent", "SCI_GITHUB_CODELOAD": "http://127.0.0.1:9", "SCI_GITHUB_API": "http://127.0.0.1:9"}, timeout=60)      # no download from GitHub in a test (a networked machine would start fetching the 540 MB index)
 check("serve without SCI_SEARCH_TOKEN does not start", p.returncode != 0)
 print("\nALL PASSED" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)
