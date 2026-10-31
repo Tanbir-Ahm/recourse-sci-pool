@@ -514,3 +514,12 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 **Way back (seconds):** delete `SCI_AUTHORITY` on the staging `sci-search` service and redeploy; nothing else was changed on any service.
 **Production.** Not touched. A table for production's pinned index already exists (`authority_table/authority_3c80a26.json.gz`, 79 percent on the held-out questions there), so the same one variable would switch it on later. **Do not set it on production before a lawyer has read staging answers**, and after the register-exposure point above has been looked at.
 **When the index changes** the table must be rebuilt for the new index (`python authority_graph.py build --index-dir ... --names ... --out authority_table/authority_<index commit>.json.gz`); the service refuses to start with `SCI_AUTHORITY` on and a table for another index.
+
+## Part 4af: stop irrelevant sections being handed to the answer, `RELEVANCE_GATE` (added 2026-10-31; owner's critique "Point 4 is filler ... Section 249 BNSS"; Recourse branch `register-hooks-and-overlay` (newest commit); FOLLOW_UPS 2cs; `review_results/2026-10-31_relevance_gate/RESULTS.md`)
+**What changed.** The library search keeps a section when its cosine score clears 0.34, but irrelevant sections often score 0.42 to 0.44, so up to five unrelated sections reach the answer model. With `RELEVANCE_GATE` the kept passages are also scored by the re-ranker and those under a floor (statutes 0.45, judgments 0.40) are dropped; a section the person named by number is never dropped. Two sentences in the prompt say: cite a section only if it answers the question.
+**Not tried with the answer model.** The floors were chosen on 47 questions written by me (no held-out half).
+1. **YOU. On `staging-api` and the staging Streamlit site add `RELEVANCE_GATE` = `log`, redeploy, ask the circumstantial-evidence question and two or three others.** Look in the deploy log for `RELEVANCE_GATE` lines: they list what would be removed and its scores. Nothing changes in the answer yet.
+2. **YOU. If the removed ones are the unrelated sections (for example BNSS 249), set `RELEVANCE_GATE` = `on`, redeploy and repeat.** Send me the answers. Check that no section you wanted is gone.
+3. **If the library ends up empty** the question goes to the wider search alone (log line `RELEVANCE_GATE_WIDER_ONLY`) when the search service is connected; otherwise "Not enough to go on yet".
+**Way back:** delete `RELEVANCE_GATE` (or set `off`). Do not set it on production before you have seen staging answers.
+

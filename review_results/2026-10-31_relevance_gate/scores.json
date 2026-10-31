@@ -1,0 +1,1912 @@
+[
+ {
+  "q": "What is the punishment for theft?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "303",
+    "case": null,
+    "cos": 0.577,
+    "rr": 0.484,
+    "text": "303. (1) Whoever, intending to take dishonestly any movable property out of the "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "306",
+    "case": null,
+    "cos": 0.562,
+    "rr": 0.771,
+    "text": "306. Whoever, being a clerk or servant, or being employed in the capacity of a c"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "305",
+    "case": null,
+    "cos": 0.558,
+    "rr": 0.791,
+    "text": "305. Whoever commits theft\u2014 (a) in any building, tent or vessel used as a human "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "134",
+    "case": null,
+    "cos": 0.556,
+    "rr": 0.678,
+    "text": "134. Whoever assaults or uses criminal force to any person, in attempting to com"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "307",
+    "case": null,
+    "cos": 0.525,
+    "rr": 0.749,
+    "text": "307. Whoever commits theft, having made preparation for causing death, or hurt, "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "K.N. Mehra v State of Rajasthan",
+    "cos": 0.407,
+    "rr": 0.432,
+    "text": "Commission  of\ttheft, therefore, consists in (1)  moving  a movable\t property of"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "303"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Someone cheated me of money by a false promise. Which section applies?",
+  "state": "conflicting_matches",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "318",
+    "case": null,
+    "cos": 0.563,
+    "rr": 0.512,
+    "text": "318. (1) Whoever, by deceiving any person, fraudulently or dishonestly induces t"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+    "cos": 0.46,
+    "rr": 0.403,
+    "text": "14.   Now coming to the charge under Section 415 punishable under        Section"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "318"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for murder?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "103",
+    "case": null,
+    "cos": 0.679,
+    "rr": 0.83,
+    "text": "103. (1) Whoever commits murder shall be punished with death or imprisonment for"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "104",
+    "case": null,
+    "cos": 0.615,
+    "rr": 0.781,
+    "text": "104. Whoever, being under sentence of imprisonment for life, commits murder, sha"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "103"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "My neighbour hit me and I have a bruise. What offence is this?",
+  "state": "conflicting_matches",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "122",
+    "case": null,
+    "cos": 0.486,
+    "rr": 0.535,
+    "text": "122. (1) Whoever voluntarily causes hurt on grave and sudden provocation, if he "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "33",
+    "case": null,
+    "cos": 0.481,
+    "rr": 0.566,
+    "text": "33. Nothing is an offence by reason that it causes, or that it is intended to ca"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "131",
+    "case": null,
+    "cos": 0.453,
+    "rr": 0.562,
+    "text": "131. Whoever assaults or uses criminal force to any person otherwise than on gra"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "114",
+    "case": null,
+    "cos": 0.45,
+    "rr": 0.586,
+    "text": "114. Whoever causes bodily pain, disease or infirmity to any person is said to c"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "133",
+    "case": null,
+    "cos": 0.446,
+    "rr": 0.578,
+    "text": "133. Whoever assaults or uses criminal force to any person, intending thereby to"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "115"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Can the police arrest without a warrant?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "45",
+    "case": null,
+    "cos": 0.588,
+    "rr": 0.711,
+    "text": "45. A police officer may, for the purpose of arresting without warrant any perso"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "55",
+    "case": null,
+    "cos": 0.579,
+    "rr": 0.668,
+    "text": "55. (1) When any officer in charge of a police station or any police officer mak"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "57",
+    "case": null,
+    "cos": 0.573,
+    "rr": 0.715,
+    "text": "57. A police officer making an arrest without warrant shall, without unnecessary"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "47",
+    "case": null,
+    "cos": 0.547,
+    "rr": 0.648,
+    "text": "47. (1) Every police officer or other person arresting any person without warran"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "35",
+    "case": null,
+    "cos": 0.541,
+    "rr": 0.715,
+    "text": "35. (1) Any police officer may without an order from a Magistrate and without a "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.586,
+    "rr": 0.793,
+    "text": "\u201c41. When police may arrest without warrant.-(1) Any police officer may without "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Vihaan Kumar v State of Haryana",
+    "cos": 0.564,
+    "rr": 0.789,
+    "text": "7. Sub-Section (1) of Section 41 of CrPC lists cases where police may arrest a p"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.539,
+    "rr": 0.633,
+    "text": "achieve? It is only after these questions are addressed and one or the other con"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "cos": 0.513,
+    "rr": 0.766,
+    "text": "17. An arrest, being an act done by a police officer in furtherance of an invest"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "35"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "How do I apply for anticipatory bail?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "489",
+    "case": null,
+    "cos": 0.347,
+    "rr": 0.38,
+    "text": "489. (1) All or any sureties for the attendance and appearance of a person relea"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "482"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "The police did not file a chargesheet within 60 days. Can I get default bail?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "60",
+    "case": null,
+    "cos": 0.477,
+    "rr": 0.324,
+    "text": "60. No person who has been arrested by a police officer shall be discharged exce"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "478",
+    "case": null,
+    "cos": 0.414,
+    "rr": 0.321,
+    "text": "478. (1) When any person other than a person accused of a non-bailable offence i"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Bikramjit Singh v State of Punjab",
+    "cos": 0.567,
+    "rr": 0.754,
+    "text": "A conspectus of the aforesaid decisions would show that so long as  an applicati"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.563,
+    "rr": 0.618,
+    "text": "18.2            The right to be released on default bail         continues to re"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakesh Kumar Paul v State of Assam",
+    "cos": 0.549,
+    "rr": 0.672,
+    "text": "In our opinion, in matters of personal liberty, we cannot and should not  be too"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.491,
+    "rr": 0.633,
+    "text": "In common legal parlance, the right to bail under the  Proviso to Section 167(2)"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "187"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "The police refuse to register my FIR. What can I do?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "173",
+    "case": null,
+    "cos": 0.44,
+    "rr": 0.466,
+    "text": "173. (1) Every information relating to the commission of a cognizable offence, i"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "172",
+    "case": null,
+    "cos": 0.419,
+    "rr": 0.36,
+    "text": "172. (1) All persons shall be bound to conform to the lawful directions of a pol"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "177",
+    "case": null,
+    "cos": 0.413,
+    "rr": 0.481,
+    "text": "177. (1) Every report sent to a Magistrate under section 176 shall, if the State"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "174",
+    "case": null,
+    "cos": 0.372,
+    "rr": 0.493,
+    "text": "174. (1) When information is given to an officer in charge of a police station o"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "382",
+    "case": null,
+    "cos": 0.367,
+    "rr": 0.434,
+    "text": "382. (1) A Magistrate to whom a complaint is made under section 379 or section 3"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lalita Kumari v Government of Uttar Pradesh",
+    "cos": 0.478,
+    "rr": 0.629,
+    "text": "1)    The important issue which arises for  consideration  in  the  referred mat"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lalita Kumari v Government of Uttar Pradesh",
+    "cos": 0.463,
+    "rr": 0.686,
+    "text": "iv) The police officer cannot avoid his duty of registering offence  if         "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Prabir Purkayastha v State (NCT of Delhi)",
+    "cos": 0.426,
+    "rr": 0.508,
+    "text": "32. Now, coming to the facts of the case at hand. Indisputably, FIR No. 224 of 2"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lalita Kumari v Government of Uttar Pradesh",
+    "cos": 0.423,
+    "rr": 0.579,
+    "text": "i) Registration of FIR is mandatory under Section 154 of the Code,  if         t"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "173",
+    "175"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Can I get bail in a non-bailable offence?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "480",
+    "case": null,
+    "cos": 0.545,
+    "rr": 0.784,
+    "text": "480. (1) When any person accused of, or suspected of, the commission of any non-"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "482",
+    "case": null,
+    "cos": 0.54,
+    "rr": 0.747,
+    "text": "482. (1) When any person has reason to believe that he may be arrested on an acc"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "478",
+    "case": null,
+    "cos": 0.483,
+    "rr": 0.71,
+    "text": "478. (1) When any person other than a person accused of a non-bailable offence i"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "139",
+    "case": null,
+    "cos": 0.468,
+    "rr": 0.361,
+    "text": "139. The bond or bail bond to be executed by any such person shall bind him to k"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "269",
+    "case": null,
+    "cos": 0.466,
+    "rr": 0.279,
+    "text": "269. Whoever, having been charged with an offence and released on bail bond or o"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.435,
+    "rr": 0.469,
+    "text": "believe that no arrest should be made only because the offence is non-bailable a"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakesh Kumar Paul v State of Assam",
+    "cos": 0.416,
+    "rr": 0.442,
+    "text": "In our opinion, in matters of personal liberty, we cannot and should not  be too"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.416,
+    "rr": 0.41,
+    "text": "In common legal parlance, the right to bail under the  Proviso to Section 167(2)"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "480"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "How can a High Court quash an FIR?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "439",
+    "case": null,
+    "cos": 0.412,
+    "rr": 0.423,
+    "text": "439. On examining any record under section 438 or otherwise, the High Court or t"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "442",
+    "case": null,
+    "cos": 0.364,
+    "rr": 0.416,
+    "text": "442. (1) In the case of any proceeding the record of which has been called for b"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "281",
+    "case": null,
+    "cos": 0.355,
+    "rr": 0.319,
+    "text": "281. In any summons-case instituted otherwise than upon complaint, a Magistrate "
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "268",
+    "case": null,
+    "cos": 0.344,
+    "rr": 0.343,
+    "text": "268. (1) If, upon taking all the evidence referred to in section 267, the Magist"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "135",
+    "case": null,
+    "cos": 0.342,
+    "rr": 0.267,
+    "text": "135. (1) When an order under section 130 has been read or explained under sectio"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.522,
+    "rr": 0.649,
+    "text": "i) Police has the statutory right and duty under the relevant       provisions o"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.447,
+    "rr": 0.51,
+    "text": "(1) Where the allegations made in the first information       report or the comp"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "528"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for criminal breach of trust?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "316",
+    "case": null,
+    "cos": 0.602,
+    "rr": 0.755,
+    "text": "316. (1) Whoever, being in any manner entrusted with property, or with any domin"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.543,
+    "rr": 0.869,
+    "text": "Offence of criminal breach of trust punishable  under Section 406, IPC.  (i) Ent"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+    "cos": 0.399,
+    "rr": 0.63,
+    "text": "12.   Having observed the background principles applicable herein,        we nee"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "316"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What does the law say about dowry death?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "80",
+    "case": null,
+    "cos": 0.727,
+    "rr": 0.877,
+    "text": "80. (1) Where the death of a woman is caused by any burns or bodily injury or oc"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Kahkashan Kausar @ Sonam v State of Bihar",
+    "cos": 0.588,
+    "rr": 0.62,
+    "text": "8.    (2018) 14 SCC 452                                             11 \f      \u201c6"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "cos": 0.571,
+    "rr": 0.332,
+    "text": "21. Now the statistics disclose that there is unreasonable rise in filing of the"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "cos": 0.567,
+    "rr": 0.359,
+    "text": "19. In Smt. Neera Singh Vs. The State (NCT of Delhi), the Court has made the fol"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "cos": 0.541,
+    "rr": 0.351,
+    "text": "4. Now-a-days, exorbitant claims are made about the amount spent on marriage and"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "80"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for rape?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "65",
+    "case": null,
+    "cos": 0.64,
+    "rr": 0.79,
+    "text": "65. (1) Whoever, commits rape on a woman  under sixteen years of age shall be pu"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "70",
+    "case": null,
+    "cos": 0.631,
+    "rr": 0.764,
+    "text": "70. (1) Where a woman is raped by one or more persons constituting a group or ac"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "cos": 0.63,
+    "rr": 0.835,
+    "text": "64. (1) Whoever, except in the cases provided for in sub-section (2), commits ra"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "cos": 0.437,
+    "rr": 0.478,
+    "text": "12. We hasten to add that the directions aforesaid shall not only apply to the c"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "64"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for kidnapping?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "140",
+    "case": null,
+    "cos": 0.631,
+    "rr": 0.824,
+    "text": "140. (1) Whoever kidnaps or abducts any person in order that such person may be "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "137",
+    "case": null,
+    "cos": 0.603,
+    "rr": 0.808,
+    "text": "137. (1) Kidnapping is of two kinds: kidnapping from India, and kidnapping from "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "97",
+    "case": null,
+    "cos": 0.586,
+    "rr": 0.82,
+    "text": "97. Whoever kidnaps or abducts any child under the age of ten years with the int"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "142",
+    "case": null,
+    "cos": 0.582,
+    "rr": 0.754,
+    "text": "142. Whoever, knowing that any person has been kidnapped or has been abducted, w"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "137"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is defamation under the new criminal code?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "356",
+    "case": null,
+    "cos": 0.546,
+    "rr": 0.657,
+    "text": "356. (1) Whoever, by words either spoken or intended to be read, or by signs or "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Johnson V.U. v State of Kerala",
+    "cos": 0.413,
+    "rr": 0.393,
+    "text": "6.        This Court in Sanjeev S v. State of Kerala  [2023(3) KHC 324] consider"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "356"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for criminal intimidation?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "351",
+    "case": null,
+    "cos": 0.632,
+    "rr": 0.879,
+    "text": "351. (1) Whoever threatens another by any means, with any injury to his person, "
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "351"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for house trespass?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "333",
+    "case": null,
+    "cos": 0.686,
+    "rr": 0.895,
+    "text": "333. Whoever commits house-trespass, having made preparation for causing hurt to"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "329",
+    "case": null,
+    "cos": 0.667,
+    "rr": 0.832,
+    "text": "329. (1) Whoever enters into or upon property in the possession of another with "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "332",
+    "case": null,
+    "cos": 0.664,
+    "rr": 0.875,
+    "text": "332. Whoever commits house-trespass in order to the committing of any offence\u2013\u2013 "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "331",
+    "case": null,
+    "cos": 0.632,
+    "rr": 0.84,
+    "text": "331. (1) Whoever commits lurking house-trespass or house-breaking, shall be puni"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "329"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Can a magistrate order maintenance for a wife?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "144",
+    "case": null,
+    "cos": 0.573,
+    "rr": 0.82,
+    "text": "144. (1) If any person having sufficient means neglects or refuses to maintain\u2014 "
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "144"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Which offences can be compounded?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "NIACT",
+    "sec": "147",
+    "case": null,
+    "cos": 0.641,
+    "rr": 0.84,
+    "text": "147. Offences to be compoundable. Notwithstanding anything contained in the Code"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "359"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is sexual harassment punishable under?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "75",
+    "case": null,
+    "cos": 0.49,
+    "rr": 0.737,
+    "text": "75. (1) A man committing any of the following acts:\u2014 (i) physical contact and ad"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "75"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for cruelty by a husband?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "85",
+    "case": null,
+    "cos": 0.685,
+    "rr": 0.918,
+    "text": "85. Whoever, being the husband or the relative of the husband of a woman, subjec"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "85"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Must the police tell an arrested person the grounds of arrest?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "47",
+    "case": null,
+    "cos": 0.581,
+    "rr": 0.774,
+    "text": "47. (1) Every police officer or other person arresting any person without warran"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "77",
+    "case": null,
+    "cos": 0.579,
+    "rr": 0.621,
+    "text": "77. The police officer or other person executing a warrant of arrest shall notif"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "55",
+    "case": null,
+    "cos": 0.532,
+    "rr": 0.578,
+    "text": "55. (1) When any officer in charge of a police station or any police officer mak"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Vihaan Kumar v State of Haryana",
+    "cos": 0.599,
+    "rr": 0.827,
+    "text": "14. Thus, the requirement of informing the person arrested of the grounds of arr"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Prabir Purkayastha v State (NCT of Delhi)",
+    "cos": 0.572,
+    "rr": 0.716,
+    "text": "49. It may be reiterated at the cost of repetition that there is a significant d"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Vihaan Kumar v State of Haryana",
+    "cos": 0.563,
+    "rr": 0.715,
+    "text": "26. The stand taken before the High Court was that the appellant\u2019s wife was info"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Prabir Purkayastha v State (NCT of Delhi)",
+    "cos": 0.561,
+    "rr": 0.732,
+    "text": "38. The interpretation given by the learned Single Judge that the grounds of arr"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "47"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Within how many hours must an arrested person be produced before a magistrate?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "78",
+    "case": null,
+    "cos": 0.652,
+    "rr": 0.855,
+    "text": "78. The police officer or other person executing a warrant of arrest shall (subj"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "57",
+    "case": null,
+    "cos": 0.584,
+    "rr": 0.736,
+    "text": "57. A police officer making an arrest without warrant shall, without unnecessary"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "58",
+    "case": null,
+    "cos": 0.581,
+    "rr": 0.721,
+    "text": "58. No police officer shall detain in custody a person arrested without warrant "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "cos": 0.543,
+    "rr": 0.792,
+    "text": "8. An accused arrested without warrant by the police has the constitutional righ"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.514,
+    "rr": 0.741,
+    "text": "achieve? It is only after these questions are addressed and one or the other con"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Vihaan Kumar v State of Haryana",
+    "cos": 0.51,
+    "rr": 0.716,
+    "text": "20. When an arrested person is produced before a Judicial Magistrate for remand,"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.478,
+    "rr": 0.531,
+    "text": "167, Cr.PC, he has to be first satisfied that the arrest made is legal and in ac"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Prabir Purkayastha v State (NCT of Delhi)",
+    "cos": 0.392,
+    "rr": 0.771,
+    "text": "34. The accused was arrested on 3rd October, 2023 at 5:45 p.m. as per the arrest"
+   }
+  ],
+  "exp": {
+   "BNSS": [
+    "58"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for causing death by negligence?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "106",
+    "case": null,
+    "cos": 0.613,
+    "rr": 0.862,
+    "text": "106. (1) Whoever causes death of any person by doing any rash or negligent act n"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "105",
+    "case": null,
+    "cos": 0.603,
+    "rr": 0.662,
+    "text": "105. Whoever commits culpable homicide not amounting to murder, shall be punishe"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "106"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for forgery?",
+  "state": "conflicting_matches",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "336",
+    "case": null,
+    "cos": 0.661,
+    "rr": 0.879,
+    "text": "336. (1) Whoever makes any false document or false electronic record or part of "
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "340",
+    "case": null,
+    "cos": 0.593,
+    "rr": 0.746,
+    "text": "340. (1) A false document or electronic record made wholly or in part by forgery"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.471,
+    "rr": 0.699,
+    "text": "Offence punishable under Section 467, IPC.                                      "
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "336"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is dishonestly receiving stolen property?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "317",
+    "case": null,
+    "cos": 0.608,
+    "rr": 0.886,
+    "text": "317. (1) Property, the possession whereof has been transferred by theft or extor"
+   },
+   {
+    "type": "statute",
+    "act": "ITACT",
+    "sec": "66B",
+    "case": null,
+    "cos": 0.541,
+    "rr": 0.829,
+    "text": "66B. Punishment for dishonestly receiving stolen computer resource or communicat"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "323",
+    "case": null,
+    "cos": 0.529,
+    "rr": 0.619,
+    "text": "323. Whoever dishonestly or fraudulently conceals or removes any property of him"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "K.N. Mehra v State of Rajasthan",
+    "cos": 0.414,
+    "rr": 0.453,
+    "text": "Commission  of\ttheft, therefore, consists in (1)  moving  a movable\t property of"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Pyare Lal Bhargava v State of Rajasthan",
+    "cos": 0.413,
+    "rr": 0.471,
+    "text": "Wrongful loss is loss by unlawful means of property to which the  person  losing"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "317"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the offence of rioting?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "192",
+    "case": null,
+    "cos": 0.677,
+    "rr": 0.838,
+    "text": "192.Whoever malignantly, or wantonly by doing anything which is illegal, gives p"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "191",
+    "case": null,
+    "cos": 0.669,
+    "rr": 0.9,
+    "text": "191. (1) Whenever force or violence is used by an unlawful assembly, or by any m"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Johnson V.U. v State of Kerala",
+    "cos": 0.486,
+    "rr": 0.678,
+    "text": "6.        This Court in Sanjeev S v. State of Kerala  [2023(3) KHC 324] consider"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "191"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is unlawful assembly?",
+  "state": "conflicting_matches",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "189",
+    "case": null,
+    "cos": 0.656,
+    "rr": 0.887,
+    "text": "189. (1) An assembly of five or more persons is designated an \u201cunlawful assembly"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "190",
+    "case": null,
+    "cos": 0.611,
+    "rr": 0.684,
+    "text": "190. If an offence is committed by any member of an unlawful assembly in prosecu"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "189"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "What is the punishment for extortion?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "308",
+    "case": null,
+    "cos": 0.662,
+    "rr": 0.819,
+    "text": "308. (1) Whoever intentionally puts any person in fear of any injury to that per"
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.507,
+    "rr": 0.772,
+    "text": "Offence of extortion punishable under Section 384,  IPC.  (i) intentionally putt"
+   }
+  ],
+  "exp": {
+   "BNS": [
+    "308"
+   ]
+  },
+  "kind": "pos"
+ },
+ {
+  "q": "Can a person be convicted on circumstantial evidence alone? What must the prosecution prove?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "230",
+    "case": null,
+    "cos": 0.435,
+    "rr": 0.289,
+    "text": "230. (1) Whoever gives or fabricates false evidence, intending thereby to cause,"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "249",
+    "case": null,
+    "cos": 0.429,
+    "rr": 0.407,
+    "text": "249. When the accused appears or is brought before the Court, in pursuance of a "
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "259",
+    "case": null,
+    "cos": 0.428,
+    "rr": 0.288,
+    "text": "259. In a case where a previous conviction is charged under the provisions of su"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "244",
+    "case": null,
+    "cos": 0.419,
+    "rr": 0.386,
+    "text": "244. (1) If a single act or series of acts is of such a nature that it is doubtf"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "334",
+    "case": null,
+    "cos": 0.419,
+    "rr": 0.278,
+    "text": "334. In any inquiry, trial or other proceeding under this Sanhita, a previous co"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the burden of proof when a fact is especially within the knowledge of the accused?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "354",
+    "case": null,
+    "cos": 0.379,
+    "rr": 0.445,
+    "text": "354. Except as provided in sections 343 and 344, no influence, by means of any p"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "cos": 0.36,
+    "rr": 0.209,
+    "text": "353. (1) Any person accused of an offence before a Criminal Court shall be a com"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "270",
+    "case": null,
+    "cos": 0.344,
+    "rr": 0.305,
+    "text": "270. The accused shall then be called upon to enter upon his defence and produce"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "Is a statement leading to the recovery of an object admissible against the accused?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "498",
+    "case": null,
+    "cos": 0.397,
+    "rr": 0.29,
+    "text": "498. (1) When an investigation, inquiry or trial in any criminal case is conclud"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "503",
+    "case": null,
+    "cos": 0.368,
+    "rr": 0.254,
+    "text": "503. (1) Whenever the seizure of property by any police officer is reported to a"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "354",
+    "case": null,
+    "cos": 0.365,
+    "rr": 0.388,
+    "text": "354. Except as provided in sections 343 and 344, no influence, by means of any p"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "cos": 0.365,
+    "rr": 0.38,
+    "text": "181. (1) No statement made by any person to a police officer in the course of an"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "106",
+    "case": null,
+    "cos": 0.355,
+    "rr": 0.229,
+    "text": "106. (1) Any police officer may seize any property which may be alleged or suspe"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "Can a conviction rest on the last seen together theory?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "244",
+    "case": null,
+    "cos": 0.351,
+    "rr": 0.247,
+    "text": "244. (1) If a single act or series of acts is of such a nature that it is doubtf"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "358",
+    "case": null,
+    "cos": 0.342,
+    "rr": 0.346,
+    "text": "358. (1) Where, in the course of any inquiry into, or trial of, an offence, it a"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "How is a dying declaration treated as evidence?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "237",
+    "case": null,
+    "cos": 0.438,
+    "rr": 0.45,
+    "text": "237. Whoever corruptly uses or attempts to use as true any such declaration, kno"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "236",
+    "case": null,
+    "cos": 0.399,
+    "rr": 0.479,
+    "text": "236. Whoever, in any declaration made or subscribed by him, which declaration an"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "227",
+    "case": null,
+    "cos": 0.368,
+    "rr": 0.283,
+    "text": "227. Whoever, being legally bound by an oath or by an express provision of law t"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the standard of proof in a criminal trial?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "cos": 0.398,
+    "rr": 0.297,
+    "text": "353. (1) Any person accused of an offence before a Criminal Court shall be a com"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "270",
+    "case": null,
+    "cos": 0.392,
+    "rr": 0.348,
+    "text": "270. The accused shall then be called upon to enter upon his defence and produce"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "255",
+    "case": null,
+    "cos": 0.374,
+    "rr": 0.455,
+    "text": "255. If, after taking the evidence for the prosecution, examining the accused an"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "249",
+    "case": null,
+    "cos": 0.364,
+    "rr": 0.342,
+    "text": "249. When the accused appears or is brought before the Court, in pursuance of a "
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "520",
+    "case": null,
+    "cos": 0.361,
+    "rr": 0.328,
+    "text": "520. When an offence is tried by the High Court otherwise than under section 447"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "Is a confession made to a police officer admissible?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "cos": 0.409,
+    "rr": 0.584,
+    "text": "181. (1) No statement made by any person to a police officer in the course of an"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "509",
+    "case": null,
+    "cos": 0.378,
+    "rr": 0.496,
+    "text": "509. (1) If any Court before which a confession or other statement of an accused"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "183",
+    "case": null,
+    "cos": 0.371,
+    "rr": 0.61,
+    "text": "183. (1) Any Magistrate of the District in which the information about commissio"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "182",
+    "case": null,
+    "cos": 0.345,
+    "rr": 0.516,
+    "text": "182. (1) No police officer or other person in authority shall offer or make, or "
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Pyare Lal Bhargava v State of Rajasthan",
+    "cos": 0.41,
+    "rr": 0.526,
+    "text": "The  first  question turns upon the  interpretation  of\t the provisions' of s. 2"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "How is electronic evidence proved in court?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "94",
+    "case": null,
+    "cos": 0.439,
+    "rr": 0.479,
+    "text": "94. (1) Whenever any Court or any officer in charge of a police station consider"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "530",
+    "case": null,
+    "cos": 0.405,
+    "rr": 0.312,
+    "text": "530. All trials, inquires and proceedings under this Sanhita, including\u2014 (i) iss"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "254",
+    "case": null,
+    "cos": 0.399,
+    "rr": 0.504,
+    "text": "254. (1) On the date so fixed, the Judge shall proceed to take all such evidence"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "241",
+    "case": null,
+    "cos": 0.393,
+    "rr": 0.432,
+    "text": "241. Whoever secretes or destroys any document or electronic record which he may"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "330",
+    "case": null,
+    "cos": 0.364,
+    "rr": 0.41,
+    "text": "330. (1) Where any document is filed before any Court by the prosecution or the "
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the effect of a witness being declared hostile?",
+  "state": "no_match",
+  "rows": [],
+  "kind": "neg"
+ },
+ {
+  "q": "How should a court appreciate the testimony of a related witness?",
+  "state": "no_match",
+  "rows": [],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the doctrine of res gestae?",
+  "state": "no_match",
+  "rows": [],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the difference between direct and circumstantial evidence?",
+  "state": "no_match",
+  "rows": [],
+  "kind": "neg"
+ },
+ {
+  "q": "On what grounds can a will be challenged?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "343",
+    "case": null,
+    "cos": 0.364,
+    "rr": 0.442,
+    "text": "343. Whoever fraudulently or dishonestly, or with intent to cause damage or inju"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "How do I recover a loan given without any written agreement?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+    "cos": 0.316,
+    "rr": 0.345,
+    "text": "12.   Having observed the background principles applicable herein,        we nee"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the limitation period for filing a civil suit?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "513",
+    "case": null,
+    "cos": 0.394,
+    "rr": 0.475,
+    "text": "513. For the purposes of this Chapter, unless the context otherwise requires, \"p"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "514",
+    "case": null,
+    "cos": 0.385,
+    "rr": 0.53,
+    "text": "514. (1) Except as otherwise provided in this Sanhita, no Court shall take cogni"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "515",
+    "case": null,
+    "cos": 0.361,
+    "rr": 0.475,
+    "text": "515. (1) The period of limitation, in relation to an offender, shall commence,\u2014 "
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "518",
+    "case": null,
+    "cos": 0.357,
+    "rr": 0.409,
+    "text": "518. In the case of a continuing offence, a fresh period of limitation shall beg"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "517",
+    "case": null,
+    "cos": 0.342,
+    "rr": 0.371,
+    "text": "517. Where the period of limitation expires on a day when the Court is closed, t"
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "How is specific performance of a contract enforced?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "160",
+    "case": null,
+    "cos": 0.349,
+    "rr": 0.605,
+    "text": "160. (1) When an order has been made absolute under section 155 or section 157, "
+   }
+  ],
+  "kind": "neg"
+ },
+ {
+  "q": "What is the rule against hearsay?",
+  "state": "no_match",
+  "rows": [],
+  "kind": "neg"
+ },
+ {
+  "q": "Can an accused be convicted on the sole testimony of a child witness?",
+  "state": "single_match",
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "cos": 0.415,
+    "rr": 0.315,
+    "text": "353. (1) Any person accused of an offence before a Criminal Court shall be a com"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "264",
+    "case": null,
+    "cos": 0.402,
+    "rr": 0.295,
+    "text": "264. If the accused pleads guilty, the Magistrate shall record the plea and may,"
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "244",
+    "case": null,
+    "cos": 0.399,
+    "rr": 0.293,
+    "text": "244. (1) If a single act or series of acts is of such a nature that it is doubtf"
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "20",
+    "case": null,
+    "cos": 0.399,
+    "rr": 0.368,
+    "text": "20. Nothing is an offence which is done by a child under seven years of age."
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "252",
+    "case": null,
+    "cos": 0.393,
+    "rr": 0.3,
+    "text": "252. If the accused pleads guilty, the Judge shall record the plea and may, in h"
+   }
+  ],
+  "kind": "neg"
+ }
+]
