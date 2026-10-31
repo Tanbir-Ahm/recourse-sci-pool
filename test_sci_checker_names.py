@@ -58,6 +58,17 @@ with gzip.open(out, "wt", encoding="utf-8") as fh:
 check(any("index commit" in p for p in SC.verify(out, tp, rec)), "verify notices a file built for another index commit")
 check(SC.main(["export", tp, rec, "--out", os.path.join(tmp, "o2.json.gz")]) == 0 and SC.main(["verify", os.path.join(tmp, "o2.json.gz"), tp, rec]) == 0, "the command line exports and verifies")
 
+# a Gauhati record with a display name: the file carries both spellings
+t2 = {"schema": "names-table-1", "index_commit": "abc1234", "documents": 2, "named": 2, "rows": [
+    {"doc": 1, "name": "Raj v. The State of AP", "display_name": "Raj v. The State of Arunachal Pradesh", "date": "2020-01-01", "court": "Gauhati High Court"},
+    {"doc": 2, "name": "Rao v. State of A.P.", "date": "2019-01-01", "court": "Supreme Court of India"}]}
+tp2 = os.path.join(tmp, "t2.json.gz")
+with gzip.open(tp2, "wt", encoding="utf-8") as fh:
+    json.dump(t2, fh)
+d2 = SC.build(tp2, rec)
+n2 = [r[0] for r in d2["rows"]]
+check("Raj v. The State of AP" in n2 and "Raj v. The State of Arunachal Pradesh" in n2 and "Rao v. State of A.P." in n2 and "Rao v. State of Andhra Pradesh" not in n2, f"the invented-case list knows both spellings of a Gauhati 'State of AP' title and leaves the Supreme Court one alone ({n2})")
+
 # the real names table, when it is in this checkout
 here = os.path.dirname(os.path.abspath(__file__))
 real = os.path.join(here, "names_table", "names_table_d8811a9.json.gz")

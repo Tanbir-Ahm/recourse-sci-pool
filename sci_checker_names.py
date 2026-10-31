@@ -53,6 +53,10 @@ def build(names_table_path, recourse_dir):
             continue
         seen.add(key)
         rows.append([name, cidx(r.get("court")) if r.get("court") else None, r.get("date"), 0])
+        shown = (r.get("display_name") or "").strip()                # the name a person is shown (State of AP -> State of Arunachal Pradesh): an answer may carry either spelling
+        if shown and shown.lower() != name.lower() and (shown.lower(), r.get("date"), r.get("court")) not in seen:
+            seen.add((shown.lower(), r.get("date"), r.get("court")))
+            rows.append([shown, cidx(r.get("court")) if r.get("court") else None, r.get("date"), 0])
     n_wide = len(rows)
     have = {x[0].lower() for x in rows}
     for nm in _library_names(recourse_dir):

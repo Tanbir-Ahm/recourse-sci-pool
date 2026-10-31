@@ -70,6 +70,33 @@ def display_name(pet, resp):
     return f"{p} v. {r}" if p and r else None
 
 
+_ARUNACHAL = re.compile(r"\bState\s+of\s+A\.?\s?P\.?(?![A-Za-z])", re.I)
+
+
+def shown_name(row):
+    """The name to SHOW for a row, or None when it is the row's own `name`. In a Gauhati High Court title "State of AP" is the State of ARUNACHAL PRADESH (the court has a bench at Itanagar; the judgments' own text says
+    "Additional Public Prosecutor, Arunachal Pradesh"); read on its own it looks like Andhra Pradesh. Only the Gauhati High Court's records are changed: in a Supreme Court title "State of A.P." is Andhra Pradesh.
+    `name`, `petitioner` and `respondent` stay as the court wrote them (the citation table of authority_graph.py matches on them); `display_name` is what a person is shown."""
+    nm = row.get("name")
+    if not nm or "gauhati" not in str(row.get("court") or "").lower():
+        return None
+    new = _ARUNACHAL.sub("State of Arunachal Pradesh", nm)
+    return new if new != nm else None
+
+
+def add_display_names(rows):
+    """Sets `display_name` on the rows that need one (and removes a stale one). Returns how many rows have it."""
+    n = 0
+    for r in rows:
+        d = shown_name(r)
+        if d:
+            r["display_name"] = d
+            n += 1
+        else:
+            r.pop("display_name", None)
+    return n
+
+
 def split_parties(title):
     """('Petitioner', 'Respondent') from a title written 'X versus Y' or 'X Vs Y' (the High Court bucket's form); (None, None) when it has no such word."""
     parts = re.split(r"\s+(?:versus|vs\.?|v/s)\s+", re.sub(r"\s+", " ", title or "").strip(), maxsplit=1, flags=re.I)
@@ -297,6 +324,7 @@ def build(index_dir, crawl_dir, work, side_dirs=(), root=ROOT):
                          "citations": {"insc": l["insc"]} if l.get("insc") else {}, "name_source": "side_index_manifest", "link": link, "link_kind": kind, "review": link is None,
                          "court": l.get("court") or e.get("court") or SC_COURT})
             sides.append(d)
+    add_display_names(rows)
     return rows, stats, len(sides)
 
 
@@ -368,7 +396,16 @@ def main(argv=None):
     ap.add_argument("--index-commit", default=None, help="the index's commit when the index folder is not a git checkout (a downloaded archive)")
     ap.add_argument("--review-sample", type=int, default=0, help="write names_table/review_sample.csv with this many random named rows plus every unnamed one")
     ap.add_argument("--verify-links", type=int, default=0, help="HEAD-check this many random links of each kind (about one second apiece)")
+    ap.add_argument("--add-display-names", metavar="FILE", default=None, help="only add/refresh `display_name` (State of AP -> Arunachal Pradesh for the Gauhati High Court) in an existing names table file, in place; needs no index")
     a = ap.parse_args(argv)
+    if a.add_display_names:
+        doc = json.load(gzip.open(a.add_display_names, "rt", encoding="utf-8"))
+        n = add_display_names(doc["rows"])
+        doc["display_names"] = n
+        with gzip.open(a.add_display_names, "wt", encoding="utf-8") as fh:
+            json.dump(doc, fh, ensure_ascii=False, separators=(",", ":"))
+        print(f"{a.add_display_names}: display_name on {n} rows")
+        return 0
     sides = sorted(glob.glob(a.sides))
     work = read_worklist(a.worklist)
     work.update(read_bucket_shards(a.bucket))

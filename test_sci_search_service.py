@@ -185,6 +185,10 @@ check("a result carries the court of its judgment (names table), and an unlisted
       and S.COURT_DEFAULT not in [c for d, c in by_doc.items() if d not in names_new], by_doc)
 s3.info = {**s3.info, "as_of_by_court": {"Gauhati High Court": "2026-10-14", "Supreme Court of India": "2026-10-16"}}
 check("the reply names the latest decision date of each court", s3.search(Q)["as_of_by_court"] == {"Gauhati High Court": "2026-10-14", "Supreme Court of India": "2026-10-16"})
+names_ap = {100: dict(names_new[100], name="Raj v. The State of AP", display_name="Raj v. The State of Arunachal Pradesh")}
+s5 = svc(); s5.names = names_ap; s5.src_courts = {}
+r5 = {r["doc"]: r["case_name"] for r in s5.search(Q)["results"]}
+check("a result shows the display name when the names table has one (State of AP -> State of Arunachal Pradesh) and the plain name otherwise", r5.get(100) in (None, "Raj v. The State of Arunachal Pradesh"), r5)
 
 # ---- authority-aware ranking (SCI_AUTHORITY=on): the judgments that the retrieved judgments name are fetched and favoured; off, nothing changes ----
 import authority_search as AS
