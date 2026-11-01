@@ -541,3 +541,11 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 2. **Expected cost:** a few hundred more prompt characters; a note may now be a little shorter where a ground has no basis.
 **Way back:** the rule is in `chat_assistant.py` (`_V3_SHAPE`, `_V3_LAWYER_INCLUDE`, `_V3_LAWYER_SHAPE`); reverting that commit removes it. Setting `RESPONSE_STYLE=v1` on a service puts that service on the old prompt.
 
+## Part 4ai: the whole NI Act and IT Act on the Act shelf (added 2026-10-31; owner's "Load the full NI Act and IT Act too"; Recourse branch `register-hooks-and-overlay` (`266aace` and later); FOLLOW_UPS 2cv; `review_results/2026-10-31_ni_it_full/RESULTS.md`)
+**What changed.** The shelf holds 13 Acts now. The whole Negotiable Instruments Act (155 sections) and Information Technology Act (125) are on it, machine-checked against India Code's PDF and embedded. Questions are NOT affected (the Directory entries have `detect: false`, so a question naming either Act is answered by the library's own flows as before). The lawyers' search page IS affected: a section the library lacks comes from the shelf.
+1. **YOU. Deploy the branch to staging (`ACT_SHELF=on` is already set there). On the For lawyers search page search `section 68 information technology act`.** Expect the sub-section (2) with "liable to penalty which may extend to twenty-five lakh rupees". Then `section 66A information technology act`: expect the omission line and the Shreya Singhal footnote, no offensive-messages text. Then `section 9 negotiable instruments act`: expect the section, no "not one of the 19 sections" note. Then `section 138 negotiable instruments act`: expect ONE card (the library's), not two.
+2. **YOU. Send me what you see**, and send `acts/NI_IT_SHEET.docx` to Mr. Advocate (two substantive repairs, a finding about the library's IT ss.72 and 72A, five uncertain readings, sections to read).
+3. **Decision for you:** the library's IT Act sections 72 and 72A are the old (pre 30-11-2023) wording. Say "fix them" and I will replace those two chunks from the checked text, re-embed them, and look at the IT Act tables for the same punishments.
+**Way back:** delete `ACT_SHELF`, or revert the commit. Nothing else was touched.
+**Production.** Untouched until you merge. After a merge, only the search page changes; answers do not.
+

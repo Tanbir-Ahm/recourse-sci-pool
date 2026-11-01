@@ -29,3 +29,6 @@ The Act Directory (Recourse `act_directory.py` and `acts_directory.json`, a copy
 ## The Evidence Act and the Bharatiya Sakshya Adhiniyam (2026-10-31, FOLLOW_UPS 2ct)
 - `EVIDENCE_BSA_SHEET.docx` is for Mr. Advocate (sections in full, the section-map pairs the program is unsure of, two suspected misprints, four questions); rebuild with `python acts/build_evidence_sheet.py --recourse <checkout>`. Nothing on it is confirmed until he answers.
 - The BSA is loaded like the other Acts (database + PDF, `machine_checked`). The Evidence Act is repealed and India Code holds only its PDF, so it is loaded by `build_act_from_pdf.py` from that one source (`machine_extracted`: the cutting is complete and in order and a second PDF reader agrees; the PDF's own text is not proved free of misprints). Evidence and the map: `../review_results/2026-10-31_evidence_bsa/`.
+
+## The whole Negotiable Instruments Act and Information Technology Act (2026-10-31, FOLLOW_UPS 2cv)
+- `NI_IT_SHEET.docx` is for Mr. Advocate (two substantive repairs, the library's out-of-date IT ss.72 and 72A, five uncertain readings, sections to read); rebuild with `python acts/build_ni_it_sheet.py --recourse <checkout>`. Evidence: `../review_results/2026-10-31_ni_it_full/`.
