@@ -588,3 +588,12 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 6. **YOU. Send me the Word file and those log lines.**
 **Way back:** no switch for the carry; `CHAT_MODE=off` removes the whole follow-up path. Tell me if you want a separate switch.
 
+## Part 4ao: possible register match in the case's row, the passage of a named pool case, and 'rests on' in the lawyers' note (added 2026-11-02; owner's "Build 1, 2 and 3"; Recourse branch `register-hooks-and-overlay` `3d0e113`, `recourse-web` `main` `fa1e2fb`; FOLLOW_UPS 2dc)
+**What changed.** (1) A case with no register hit of its own but whose two full party names match a register row of another year says so in its row ('Possible match: ...') and in the prompt line beside its passage; the download no longer prints that note a second time under Currency notes. (2) A case of 'Other real court cases' that the answer names now shows its passage (the first 1,200 characters the answer model was given). (3) The lawyers' note lists under 'The sections and judgments this answer rests on' only the judgments the answer names. Not tried with the answer model.
+1. **YOU. Redeploy `staging-api`, `staging-site` and `staging-web` on the newest commits. Nothing to set.** Keep `RELEVANCE_GATE=log` for this run (set it `on` afterwards and repeat).
+2. **YOU. Repeat the two anticipatory-bail questions in one new chat (For lawyers)** and download the Word file.
+3. **Check:** wherever the answer relies on Bhadresh (or any case that has a 'Possible match' in its row) it says in that sentence that our register holds a decision of that name treated that way and that we cannot tell whether it is the same case; the row of the table says the same; the Currency notes do not repeat it. Under 'Other real court cases' each case the answer names (Sibbia, Sushila para 102 ...) shows its passage: look for the words the answer quotes. 'Rests on' no longer lists Arnesh Kumar (or any case the answer does not name).
+4. **Also look at (not changed):** whether Q1 still names BNSS 483(1)(a) for anticipatory-bail conditions (a likely mistake; for Mr. Advocate).
+5. **YOU. Send me the Word file, and the `RELEVANCE_GATE` and `GROUNDING_CHECK` log lines if you can find them.**
+**Way back:** no switch; tell me which part to undo. `REGISTER_HOOKS=off` removes the register lines altogether.
+
