@@ -12,7 +12,7 @@ Nothing is loaded from the internet. The sheet never marks anything as correct; 
 """
 import argparse, base64, difflib, html, json, os, sys, tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import checker
+import checker, picklist
 
 PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Marking sheet __PID__</title>
@@ -29,6 +29,10 @@ th{background:#eef0f2;font-weight:600;white-space:nowrap} .scroll{overflow-x:aut
 tr.sub td{background:#fbfbf4;border-top:none}tr.dis td:first-child{background:var(--redbg);color:var(--red);font-weight:600} tr.conf td:first-child{background:var(--amberbg);color:var(--amber)}
 input,select,button,textarea{font:inherit;font-size:.86rem;padding:3px 5px;max-width:100%} textarea{width:100%;min-height:3.2rem}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px} .txt{white-space:pre-wrap;line-height:1.55}
+.pk{border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:8px 0;background:#fff}.pk.done{background:#eef7ee}
+.pk .ctx{font-size:1.02rem;line-height:1.9}.pk .gap{display:inline-block;min-width:2.2rem;border-bottom:3px solid var(--amber);margin:0 4px;text-align:center;color:var(--amber);font-weight:700}
+.pk label.o{display:flex;gap:8px;align-items:center;padding:3px 4px;font-size:1.15rem;cursor:pointer}.pk label.o small{color:var(--muted);font-size:.78rem}
+.pk .typed{font-size:1rem;width:14rem}.fin{font-size:1.05rem;line-height:1.8;min-height:7rem}
 .zoomwrap{position:relative;line-height:0}.lens{display:none;position:absolute;width:230px;height:230px;border:3px solid #17212b;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,.35);background-repeat:no-repeat;background-color:#fff;pointer-events:none;z-index:5}
 .dg{font-size:1.55em;font-weight:700;letter-spacing:.05em;background:#fff3b8;padding:0 2px;border-radius:3px}.ln{margin-top:4px;line-height:1.9;font-size:.9rem}.v3{color:var(--red);font-weight:600}
 @media (max-width:860px){.wrap,.two{grid-template-columns:minmax(0,1fr)}.sticky{position:static}}
@@ -41,9 +45,16 @@ input,select,button,textarea{font:inherit;font-size:.86rem;padding:3px 5px;max-w
 <div>
 <div class="card"><h2 style="margin-top:0">1. Check list</h2><div class="muted" id="sum"></div>
 <div class="scroll"><table id="items"></table></div></div>
-<div class="card"><h2 style="margin-top:0">2. Lines where the two readings differ</h2><div class="scroll"><table id="diffs"></table></div></div>
-<div class="card"><h2 style="margin-top:0">3. The two English drafts</h2><div class="two"><div><b>__ANAME__</b><div class="txt" id="enA"></div></div><div><b>__BNAME__</b><div class="txt" id="enB"></div></div></div></div>
-<div class="card"><h2 style="margin-top:0">4. Errors found (one row per error)</h2>
+<div class="card" id="pickcard"><h2 style="margin-top:0">2. Pick the right word</h2>
+<div class="muted">Every word the readings agree on is already filled in (check them against the page too: agreement is not proof). Where the readings differ, find that word on the page (use the magnifier), then click the one that matches, or type what the page says, or mark it as unreadable. The options are in a mixed order. Nothing is chosen for you.</div>
+<p><label><input type="checkbox" id="showsrc"> Show which reading said what</label> &nbsp; <b id="pickprog"></b></p>
+<div id="picks"></div>
+<h3>Final text so far</h3><div class="muted">Unpicked words show as [?]. This is the original-script text only, not a translation.</div>
+<textarea id="final" class="fin" readonly aria-label="Final text so far"></textarea>
+<p><button id="copyfinal">Copy final text</button> <span class="muted" id="copymsg"></span></p></div>
+<div class="card"><h2 style="margin-top:0">3. Lines where the two readings differ</h2><div class="scroll"><table id="diffs"></table></div></div>
+<div class="card"><h2 style="margin-top:0">4. The two English drafts</h2><div class="two"><div><b>__ANAME__</b><div class="txt" id="enA"></div></div><div><b>__BNAME__</b><div class="txt" id="enB"></div></div></div></div>
+<div class="card"><h2 style="margin-top:0">5. Errors found (one row per error)</h2>
 <div class="muted">Critical = changes what the evidence says. Moderate = awkward but the meaning survives. Minor = the rest. &ldquo;Warned?&rdquo; = did the tool flag that spot (<code>[unclear]</code> or a disagreement).</div>
 <div class="scroll"><table id="errs"><thead><tr><th>Page</th><th>Tool</th><th>Group</th><th>Line</th><th>What the tool said</th><th>What it should say</th><th>Type</th><th>Severity</th><th>Warned?</th><th></th></tr></thead><tbody></tbody></table></div>
 <p><button id="add">Add row</button> <button id="copy">Copy as CSV</button> <button id="dl">Download CSV</button></p>
@@ -76,10 +87,41 @@ function addRow(){const tr=document.createElement('tr');
  tr.innerHTML='<td>'+esc(D.pid)+'</td><td><select>'+[D.aname,D.bname].map(x=>'<option>'+esc(x)+'</option>').join('')+'</select></td><td>'+esc(D.group)+'</td><td><input size="5"></td><td><textarea></textarea></td><td><textarea></textarea></td><td><select>'+TYPES.map(x=>'<option>'+x+'</option>').join('')+'</select></td><td><select><option>Critical</option><option>Moderate</option><option>Minor</option></select></td><td><select><option>no</option><option>yes</option></select></td><td><button>remove</button></td>';
  tr.querySelector('button').onclick=()=>tr.remove(); $('#errs tbody').appendChild(tr);}
 $('#add').onclick=addRow;
+
+/* pick list */
+const PL=D.pick||{lines:[],slots:[],stats:{agreed_words:0,choices:0,looks:0}};let PK={};const PKEY='marksheet-picks-'+D.pid;
+try{const r=localStorage.getItem(PKEY);if(r)PK=JSON.parse(r)||{};}catch(e){}
+function seeded(n){let s=0;for(const c of D.pid+'|'+n)s=(s*31+c.charCodeAt(0))>>>0;return()=>{s=(s*1664525+1013904223)>>>0;return s/4294967296;};}
+function shuffled(arr,n){const a=arr.map((x,i)=>i),r=seeded(n);for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function finalText(){return PL.lines.map(l=>l.segments.map(s=>{if(s.fixed!==undefined)return s.fixed;const p=PK[s.slot]||{},sl=PL.slots[s.slot];if(p.cand!==undefined)return sl.cands[p.cand].text;if(p.typed!==undefined&&p.typed!=='')return p.typed;return '[?]';}).filter(x=>x!=='').join(' ')).join('\\n');}
+function pickProgress(){const done=PL.slots.filter(s=>{const p=PK[s.id]||{};return p.cand!==undefined||(p.typed||'')!==''||p.unreadable;}).length;
+ $('#pickprog').textContent=PL.slots.length?(done+' of '+PL.slots.length+' choices made; '+PL.stats.agreed_words+' words filled in by agreement'):('All '+PL.stats.looks+' readings agree on every word ('+PL.stats.agreed_words+'). Nothing to pick; still check the page.');
+ $('#final').value=finalText();document.querySelectorAll('.pk').forEach(d=>{const p=PK[d.dataset.slot]||{};d.classList.toggle('done',p.cand!==undefined||(p.typed||'')!==''||!!p.unreadable);});}
+function savePK(){try{localStorage.setItem(PKEY,JSON.stringify(PK));}catch(e){}pickProgress();}
+function renderPicks(){const box=$('#picks');box.innerHTML='';const show=$('#showsrc').checked;
+ PL.slots.forEach(sl=>{const d=document.createElement('div');d.className='pk';d.dataset.slot=sl.id;
+  const ctx=document.createElement('div');ctx.className='ctx';
+  ctx.innerHTML='<small class="muted">Line '+sl.line+' of '+PL.lines.filter(l=>!l.extra_line).length+(sl.extra?' (a line only one reading has)':'')+'</small><br>'+esc(sl.before.join(' '))+' <span class="gap">?</span> '+esc(sl.after.join(' '));d.append(ctx);
+  shuffled(sl.cands,sl.id).forEach(ci=>{const c=sl.cands[ci],lb=document.createElement('label');lb.className='o';
+   const r=document.createElement('input');r.type='radio';r.name='pk-'+sl.id;r.checked=(PK[sl.id]||{}).cand===ci;
+   r.onchange=()=>{PK[sl.id]={cand:ci};savePK();};
+   const sp=document.createElement('span');sp.textContent=c.text===''?'(nothing here)':c.text;lb.append(r,sp);
+   if(show){const sm=document.createElement('small');sm.textContent=' reading '+c.looks.join(', ');lb.append(sm);}d.append(lb);});
+  const lb2=document.createElement('label');lb2.className='o';const r2=document.createElement('input');r2.type='radio';r2.name='pk-'+sl.id;r2.checked=(PK[sl.id]||{}).typed!==undefined;
+  const ti=document.createElement('input');ti.type='text';ti.className='typed';ti.placeholder='none of these: type it';ti.value=(PK[sl.id]||{}).typed||'';ti.setAttribute('aria-label','Type the word');
+  ti.oninput=()=>{PK[sl.id]={typed:ti.value};r2.checked=true;savePK();};r2.onchange=()=>{PK[sl.id]={typed:ti.value};savePK();};lb2.append(r2,ti);d.append(lb2);
+  const lb3=document.createElement('label');lb3.className='o';const r3=document.createElement('input');r3.type='radio';r3.name='pk-'+sl.id;r3.checked=!!(PK[sl.id]||{}).unreadable;
+  r3.onchange=()=>{PK[sl.id]={unreadable:true};savePK();};const s3=document.createElement('span');s3.textContent='I cannot tell from the page';lb3.append(r3,s3);d.append(lb3);
+  box.append(d);});pickProgress();}
+$('#showsrc').onchange=renderPicks;renderPicks();
+$('#copyfinal').onclick=async()=>{const m=$('#copymsg');try{await navigator.clipboard.writeText(finalText());m.textContent='Copied.';}catch(e){const t=$('#final');t.removeAttribute('readonly');t.focus();t.select();m.textContent='Select the text and copy it by hand.';}};
 function csv(){const q=v=>'"'+String(v).replace(/"/g,'""')+'"'; const rows=[['Page','Tool','Group','Line','Tool said','Should say','Type','Severity','Warned']];
  document.querySelectorAll('#errs tbody tr').forEach(tr=>{rows.push([...tr.children].slice(0,9).map(td=>{const f=td.querySelector('input,select,textarea');return f?f.value:td.textContent;}));});
  rows.push([]); rows.push(['Check list','Status','Type','Reader A','Reader B','Line A/B','Value on the page','Result','View 3']);
  document.querySelectorAll('#items tr.dis, #items tr.conf').forEach(tr=>{const c=[...tr.children]; rows.push(['',c[0].textContent,c[1].textContent,c[2].textContent,c[3].textContent,c[4].textContent,c[5].querySelector('input').value,c[6].querySelector('select').value,tr.dataset.c||'']);});
+ rows.push([]); rows.push(['Pick list','Line','Words before','Candidates (reading numbers)','Chosen','Typed by the reviewer']);
+ PL.slots.forEach(sl=>{const p=PK[sl.id]||{};rows.push(['',sl.line,sl.before.join(' '),sl.cands.map(c=>(c.text===''?'(nothing)':c.text)+' ['+c.looks.join(',')+']').join(' / '),p.cand!==undefined?(sl.cands[p.cand].text===''?'(nothing)':sl.cands[p.cand].text):(p.unreadable?'cannot tell':''),p.typed||'']);});
+ rows.push([]); rows.push(['Final text (original script; [?] = not picked)']); finalText().split('\\n').forEach(l=>rows.push([l]));
  rows.push([]); rows.push(['Page summary','gist correct',$('#gist').value,'critical errors',$('#ncrit').value,'silent critical',$('#nsil').value,'minutes',$('#mins').value,'about',$('#who').value]);
  return rows.map(r=>r.map(q).join(',')).join('\\n');}
 $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText(csv());$('#copy').textContent='Copied';}catch(e){window.prompt('Copy this:',csv());}};
@@ -104,7 +146,8 @@ def build(page_id, group, a_text, b_text, a_name, b_name, image_path=None, c_tex
     else:
         img = '<div class="muted">No page image was given. Open the original beside this sheet.</div>'
     data = dict(cmp_, pid=page_id, group=group, aname=a_name, bname=b_name, enA=english(a_text), enB=english(b_text),
-                linesA=checker.transcription_lines(a_text), linesB=checker.transcription_lines(b_text), hasC=bool(c_text))
+                linesA=checker.transcription_lines(a_text), linesB=checker.transcription_lines(b_text), hasC=bool(c_text),
+                pick=picklist.build([a_text, b_text] + ([c_text] if c_text else [])))
     if c_text:                                   # the third (ultra-high detail) reading: what it reads for each date and amount
         third = checker.extract_items(checker.transcription_lines(c_text))
         have = {(i["type"], i["norm"]) for i in third}

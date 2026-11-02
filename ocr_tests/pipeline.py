@@ -13,6 +13,8 @@ For each page image:
   view 3   the image again at ultra-high detail, ONLY if the checker flags the page (--third-view auto): the first two views disagree on an item, agree on
            fewer letters than 97%, or the page holds a date or an amount (agreement between two views of one image is not proof of a digit: 10w). It is a hint
            for a person, never an answer: the checker lists every agreed date or amount that view 3 reads differently, and puts it first
+Before reading, each page image is checked for being photographed turned (--orient auto, the default; orient.py): Tesseract first, the reading model only when Tesseract is not sure; a
+turned page is turned upright (the original is kept in RUN and the report says so); a page that cannot be settled is left alone and marked.
 Then, for a PDF of two or more pages (--stitch auto, the default), the readings (or the PDF's own text) of all its pages are JOINED into one text
 (stitch.py: a sentence that runs over a page break is joined) and translated twice, blind, with prompts/translate_stitched.txt (names by sound with the
 original-script word in square brackets, printed numbers and references kept as printed, [sic] on a suspected misprint). checker.check_document compares the two
@@ -30,7 +32,7 @@ import argparse, json, os, re, shutil, subprocess, sys, tempfile, time
 from types import SimpleNamespace
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import checker, harness, marksheet, report, stitch
+import checker, harness, marksheet, orient, report, stitch
 
 MODEL = "gemini-4-argon"
 PAD = 0.06           # white border on each side of view 2, as a share of the width and height
@@ -162,6 +164,43 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
     return rows
 
 
+def orient_pages(args, out, work, ledger_path, models, fx, caller, osd_fn=None):
+    """Step 2b: turn a page that was photographed sideways or upside down (orient.py). Returns (the work list with turned copies in place of the originals, {page id: decision}).
+    The decision is saved in RUN/orientation.json so a resumed run asks nothing twice; a turned copy is written to RUN/_oriented/ and the original is kept."""
+    from PIL import Image
+    if getattr(args, "orient", "auto") == "off" or not work:
+        return work, {}
+    pf = os.path.join(out, "orientation.json")
+    saved = json.load(open(pf)) if os.path.exists(pf) else {}
+    od = os.path.join(out, "_oriented"); new, info = [], {}
+    models_, key = models, os.environ.get(models[MODEL]["key_env"], "") if models else ""
+    for pid, path, mime in work:
+        d = saved.get(pid)
+        if d is None:
+            im = Image.open(path)
+            ledger = harness.read_ledger(ledger_path)
+            d = orient.check(im, caller, MODEL, key, osd_fn=osd_fn)
+            mr = d.pop("model_result", None)
+            if mr is not None:
+                harness.log_call(out, ledger, pid + "__orient", MODEL, 1, mr, models, fx)
+            d.pop("need_model", None)
+            saved[pid] = d; json.dump(saved, open(pf, "w", encoding="utf8"), indent=1)
+        info[pid] = d
+        if d.get("rotate"):
+            os.makedirs(od, exist_ok=True)
+            ext = {"image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".png"}.get(mime, ".png")
+            q = os.path.join(od, pid + ext)
+            if not os.path.exists(q):
+                orient.turn(Image.open(path).convert("RGB"), d["rotate"]).save(q, **({"quality": 95} if ext == ".jpg" else {}))
+            new.append((pid, q, "image/jpeg" if ext == ".jpg" else "image/png"))
+            print("%s: turned %d degrees clockwise before reading (%s)" % (pid, d["rotate"], d.get("why")), flush=True)
+        else:
+            new.append((pid, path, mime))
+            if d.get("status") in ("doubtful", "unchecked"):
+                print("%s: orientation %s (%s)" % (pid, d["status"], d.get("why")), flush=True)
+    return new, info
+
+
 def run_pipeline(args, caller=None, text_caller=None):
     real = caller is None
     caller = caller or harness.call_gemini
@@ -185,6 +224,7 @@ def run_pipeline(args, caller=None, text_caller=None):
     ledger_path = os.path.join(out, "ledger.jsonl")
 
     results, readings, image_of = {}, {}, {}
+    work, orientation = orient_pages(args, out, work, ledger_path, models, fx, caller, getattr(args, "osd_fn", None))
     if work:                                                   # views 1 and 2 of every page image
         vd, files = make_views(work, out)
         read_pages(out, vd, args, caller)
@@ -214,6 +254,13 @@ def run_pipeline(args, caller=None, text_caller=None):
             readings[pid] = {"text": text, "english1": e1 or "", "english2": e2 or ""}
             results[pid] = checker.check_text_page(text, e1 or "", e2 or "", known)
 
+    for pid, d in orientation.items():
+        if pid in results:
+            results[pid]["orientation"] = {k: d.get(k) for k in ("status", "rotate", "why")}
+            if d.get("status") == "turned":
+                results[pid].setdefault("notes", []).append("The page was photographed turned: it was turned %d degrees clockwise before reading (%s)." % (d["rotate"], d.get("why")))
+            elif d.get("status") == "doubtful":
+                results[pid]["reasons_amber"].append("the page may be photographed turned (%s): check which way up it is" % d.get("why"))
     doc_rows = stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known)
     ledger = harness.read_ledger(ledger_path)
     cost = harness.spent_inr(ledger)
@@ -234,7 +281,7 @@ def run_pipeline(args, caller=None, text_caller=None):
         open(os.path.join(out, "marksheets", pid + "_marksheet.html"), "w", encoding="utf8").write(
             marksheet.build(pid, chk.get("page_type", "?"), a, b, names[0], names[1], img, rd.get("view3")))
         summary.append({"page": pid, "light": chk["light"], "page_type": chk.get("page_type"), "must_check_items": len(chk.get("must_check", [])),
-                        "reasons": chk["reasons_red"] + chk["reasons_amber"], "third_view": bool(rd.get("view3")), "third_view_reason": chk.get("third_view_reason")})
+                        "reasons": chk["reasons_red"] + chk["reasons_amber"], "third_view": bool(rd.get("view3")), "third_view_reason": chk.get("third_view_reason"), "orientation": (chk.get("orientation") or {}).get("status")})
     json.dump({"pages": summary, "documents": doc_rows, "estimated_cost_inr": round(cost, 2), "note": "cost is an estimate from models.json; the billing account is the truth"},
               open(os.path.join(out, "summary.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
     if args.pdf:
@@ -263,6 +310,8 @@ def selftest():
     td = tempfile.mkdtemp(); inp = os.path.join(td, "in"); os.makedirs(inp)
     Image.new("RGB", (300, 200), "white").save(os.path.join(inp, "pg1.png"))
     Image.new("RGB", (123, 100), "white").save(os.path.join(inp, "zz_nodate.png"))          # a page with no date or amount: no third view
+    Image.new("RGB", (311, 211), "white").save(os.path.join(inp, "zz_sideways.png"))        # Tesseract (stubbed below) says: turn 90 degrees clockwise, confidently
+    Image.new("RGB", (257, 111), "white").save(os.path.join(inp, "zz_unsure.png"))          # Tesseract gives no answer: the model is asked
     lines = ["The quick brown fox jumps over the lazy dog.", "Order dated fifteen February under the heading of this code.",
              "Closing line of this invented test page only.", "Another plain sentence to give the page enough letters."]
     pdf_triage._mini_pdf(os.path.join(inp, "doc.pdf"), lines)
@@ -270,6 +319,9 @@ def selftest():
     Image.new("RGB", (600, 200), "white").save(os.path.join(inp, "scan2.pdf"), save_all=True, append_images=[Image.new("RGB", (600, 200), "white")])      # a two-page document
     state = {"n": 0}
     def fake(model, key, system, image, mime):
+        if system == orient.PROMPT:                                                             # the orientation question: not counted with the page reads
+            state["orient_asked"] = state.get("orient_asked", 0) + 1
+            return {"ok": True, "attempts": 1, "text": "UPRIGHT", "ttft": 0.5, "total": 0.6, "finish": "STOP", "prompt_tokens": 300, "output_tokens": 3, "thinking_tokens": 0}
         state["n"] += 1
         if Image.open(__import__("io").BytesIO(image)).size[0] < 200:                          # the small page: no date, no amount
             return {"ok": True, "attempts": 1, "text": "TRANSCRIPTION\n1. plain line end\nTRANSLATION\nThe first line is here. The second line follows.",
@@ -280,11 +332,17 @@ def selftest():
     def fake_text(model, key, system, text):
         return {"ok": True, "attempts": 1, "text": "TRANSLATION\nThe first line is here. The second line follows.", "ttft": 1.0, "total": 2.0, "finish": "STOP",
                 "prompt_tokens": 500, "output_tokens": 300, "thinking_tokens": 0}
+    def fake_osd(im):
+        if im.size == (311, 211):
+            return {"rotate": 90, "confidence": 12.0}
+        if im.size == (257, 111):
+            return {"rotate": None, "confidence": None}
+        return {"rotate": 0, "confidence": 30.0}
     real = pdf_triage.tesseract_read
     pdf_triage.tesseract_read = lambda png, lang: ("\n".join(lines), None)
     out = os.path.join(td, "run")
     args = argparse.Namespace(input=inp, out=out, language="English", page_type="typed", types=None, known=None, budget_inr=None, third_view="auto", pdf=False,
-                              pdf_reader="tesseract", pdf_lang="eng", pdf_dpi=100, pdf_undecided="image", pdf_no_match=False, stitch="auto")
+                              pdf_reader="tesseract", pdf_lang="eng", pdf_dpi=100, pdf_undecided="image", pdf_no_match=False, stitch="auto", orient="auto", osd_fn=fake_osd)
     try:
         s = {x["page"]: x for x in run_pipeline(args, fake, fake_text)}
         led = harness.read_ledger(os.path.join(out, "ledger.jsonl"))
@@ -301,6 +359,14 @@ def selftest():
         assert open(os.path.join(out, "document", "scan2_source.txt")).read().count("dated") == 2, "the two pages are joined into one text"
         dj = json.load(open(os.path.join(out, "summary.json")))["documents"]
         assert len(dj) == 1 and dj[0]["document"] == "scan2" and dj[0]["pages"] == 2 and dj[0]["page_joins"] == 1, dj
+        assert state.get("orient_asked") == 1, "the model is asked about orientation only for the page Tesseract could not settle"
+        assert "zz_unsure__orient" in pages and "zz_sideways__orient" not in pages and "pg1__orient" not in pages, pages
+        o = json.load(open(os.path.join(out, "orientation.json")))
+        assert o["zz_sideways"]["status"] == "turned" and o["zz_sideways"]["rotate"] == 90 and o["pg1"]["status"] == "upright" and o["zz_unsure"]["status"] == "upright", o
+        assert Image.open(os.path.join(out, "_oriented", "zz_sideways.png")).size == (211, 311) and Image.open(os.path.join(out, "_views", "zz_sideways__view1.png")).size == (211, 311), "read after turning"
+        assert not os.path.exists(os.path.join(out, "_oriented", "pg1.png")), "an upright page is not copied"
+        assert "turned 90 degrees" in " ".join(json.load(open(os.path.join(out, "checks", "zz_sideways.json")))["notes"])
+        assert [x for x in json.load(open(os.path.join(out, "summary.json")))["pages"] if x["page"] == "zz_sideways"][0]["orientation"] == "turned"
         chk = json.load(open(os.path.join(out, "checks", "pg1.json")))
         assert chk["third_view_on_disagreements"][0]["third_view"] == "view 2", chk["third_view_on_disagreements"]
         for sub, ext in (("checks", ".json"), ("report", ".html"), ("marksheets", "_marksheet.html")):
@@ -328,6 +394,7 @@ if __name__ == "__main__":
     ap.add_argument("--page-type", dest="page_type", choices=checker.PAGE_TYPES, help="typed or handwritten (required unless --types covers every page)")
     ap.add_argument("--types", help="JSON file {page id: typed|handwritten}"); ap.add_argument("--known", help="JSON list of confirmed names (case data: keep outside the repository)")
     ap.add_argument("--budget-inr", dest="budget_inr", type=float); ap.add_argument("--third-view", dest="third_view", choices=("auto", "off", "always"), default="auto")
+    ap.add_argument("--orient", choices=("auto", "off"), default="auto", help="auto: turn a page that was photographed sideways or upside down before reading it")
     ap.add_argument("--designations", help="a file of official titles (one per line) that replaces ocr_tests/designations.txt; used only to flag a title close to a known one")
     ap.add_argument("--stitch", choices=("auto", "off"), default="auto", help="auto: join the pages of each PDF of 2 or more pages and translate the joined text twice")
     ap.add_argument("--pdf", action="store_true", help="also print the reports to PDF (needs Node and Playwright)")
