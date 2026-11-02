@@ -39,12 +39,19 @@ def load(path=None, language=None):
     out = []
     with open(p, encoding="utf-8-sig", newline="") as f:
         for r in csv.DictReader(f):
-            forms = [r["word"]] + [v for v in (r.get("variants") or "").split("|") if v.strip()]
+            allv = [r["word"]] + [v for v in (r.get("variants") or "").split("|") if v.strip()]
+            forms = [v for v in allv if not v.startswith("=")]
+            exact = [v[1:] for v in allv if v.startswith("=")]          # a variant written "=word" is matched as that word alone (or with র/ক): it is the start of longer, different words
             e = dict(r)
-            e["forms"] = sorted({norm(x) for x in forms if x.strip()}, key=len, reverse=True)
+            e["forms"] = sorted({norm(x) for x in forms + exact if x.strip()}, key=len, reverse=True)
+            ex = sorted({norm(x) for x in exact if x.strip()}, key=len, reverse=True)
             e["ok"] = [x.strip().lower() for x in (r.get("english_ok") or "").split("|") if x.strip()]
             e["avoid"] = [x.strip().lower() for x in (r.get("not_as") or "").split("|") if x.strip()]
-            e["_re"] = re.compile("(?<!" + _LETTER + ")(" + "|".join(re.escape(x) for x in e["forms"]) + ")" + _SUFFIX + "(?!" + _LETTER + ")")
+            norm_forms = sorted({norm(x) for x in forms if x.strip()}, key=len, reverse=True)
+            alt = ["(?:" + "|".join(re.escape(x) for x in norm_forms) + ")" + _SUFFIX] if norm_forms else []
+            if ex:
+                alt.append("(?:" + "|".join(re.escape(x) for x in ex) + ")(?:র|ক)?")
+            e["_re"] = re.compile("(?<!" + _LETTER + ")(" + "|".join(alt) + ")(?!" + _LETTER + ")")
             out.append(e)
     return out
 
@@ -214,8 +221,10 @@ def selftest():
     # the shipped glossary loads and every entry has what it needs
     g = load(os.path.join(DEFAULT_DIR, "assamese_legal.csv"))
     if g:
-        assert len(g) == 77 and len({e["id"] for e in g}) == 77 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
+        assert len(g) == 82 and len({e["id"] for e in g}) == 82 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
         assert all(e["status"] == "unverified" for e in g), "nothing in the draft may claim to be approved"
+    G = [e for e in load(os.path.join(DEFAULT_DIR, "assamese_legal.csv")) if e["word"] == "সংগঠন"]
+    assert G and find("সংঘটিত হয়", G) == [] and len(find("সংঘ আৰু সমিতি", G)) == 2 and len(find("সংগঠনৰ নাম", G)) == 1, "the =word variant matches the whole word only"
     print("selftest OK (invented text; the shipped draft glossary loads)")
 
 
