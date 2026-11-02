@@ -63,6 +63,9 @@ def build(pid, check, readings, image_path=None, language="", cost_inr=None):
     if check.get("english_term_differences"):
         h.append("<h3>Names and numbers that one English draft has and the other lacks</h3><table><tr><th>Kind</th><th>View 1 only</th><th>View 2 only</th></tr>%s</table>" % "".join(
             "<tr><td>%s</td><td>%s</td><td>%s</td></tr>" % (esc(t["kind"]), esc(", ".join(t["only_in_view_1"])), esc(", ".join(t["only_in_view_2"]))) for t in check["english_term_differences"]))
+    if check.get("glossary_notes"):
+        h.append("<h2>Glossary notes: words with a settled legal meaning</h2><p class=small>A prompt to look, not a rule: entries that a lawyer has not approved yet are drafts.</p><table><tr><th>Word as read</th><th>Normally means</th><th>Note</th><th>Applies to</th></tr>%s</table>" % "".join(
+            "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (esc(n["word"]), esc(n["english"]), esc(n["text"]), esc(", ".join(n.get("applies_to", [])))) for n in check["glossary_notes"]))
     if check.get("redundancy_flags"):
         h.append("<h2>Page checks that need no model</h2><ul>%s</ul>" % "".join("<li>%s</li>" % esc(f) for f in check["redundancy_flags"]))
     items = check.get("must_check", [])
@@ -117,6 +120,9 @@ def build_document(name, check, source, english1, english2, language="", cost_in
     if check.get("english_wobble"):
         h.append("<h3>Sentences that changed between the two translations</h3><table><tr><th>Translation 1</th><th>Translation 2</th></tr>%s</table>" % "".join(
             "<tr><td>%s</td><td>%s</td></tr>" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")) for w in check["english_wobble"]))
+    if check.get("glossary_notes"):
+        h.append("<h3>Glossary notes: words with a settled legal meaning</h3><p class=small>A prompt to look, not a rule: entries that a lawyer has not approved yet are drafts.</p><table><tr><th>Word as read</th><th>Normally means</th><th>Note</th><th>Applies to</th></tr>%s</table>" % "".join(
+            "<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>" % (esc(n["word"]), esc(n["english"]), esc(n["text"]), esc(", ".join(n.get("applies_to", [])))) for n in check["glossary_notes"]))
     if check.get("redundancy_flags"):
         h.append("<h3>Checks that need no model</h3><ul>%s</ul>" % "".join("<li>%s</li>" % esc(f) for f in check["redundancy_flags"]))
     con = check.get("must_check", [])
@@ -145,6 +151,16 @@ def selftest():
     E2 = "TRANSLATION\nDated 15-02-2020 the order was made."
     tp = build("T03", checker.check_text_page("order dated 15-02-2020 here", E2, E2), {"text": "order dated 15-02-2020 here", "english1": E2, "english2": E2})
     assert "15-02-2020" in tp, "a text-layer page with a date in its must-check list must build (it raised KeyError 'A' before 2026-10-28)"
+    import glossary, tempfile as _tf
+    gp = os.path.join(_tf.mkdtemp(), "g.csv")
+    open(gp, "w", encoding="utf-8-sig").write("id,word,variants,latin,english,english_ok,not_as,kind,domain,appears_in,note,confidence,source,status,approved_by,approved_on\nT-1,আসামী,,asami,accused,accused,criminal,term,role,FIR,Not a criminal.,high,none,unverified,,\n")
+    glossary.ACTIVE_PATH = gp
+    try:
+        cg = checker.check_page("typed", "TRANSCRIPTION\n1. আসামীক ধৰা হ'ল\nTRANSLATION\nThe criminal was arrested.", "TRANSCRIPTION\n1. আসামীক ধৰা হ'ল\nTRANSLATION\nThe accused was arrested.", None, "STOP", "STOP")
+        assert cg["glossary_notes"] and cg["glossary_notes"][0]["applies_to"] == ["view 1"] and any(x.startswith("glossary:") for x in cg["reasons_amber"]), cg
+        assert "Glossary notes" in build("T05", cg, {"view1": "x", "view2": "x"}, None, "Assamese") and "Not a criminal" in build("T05", cg, {"view1": "x", "view2": "x"}, None, "Assamese")
+    finally:
+        glossary.ACTIVE_PATH = None
     D = "TRANSLATION\nRamesh [rama] came. <b>x</b> Clause 2 applies."
     d = build_document("doc1", checker.check_document("source <i> dated 15-02-2020", D, D.replace("came", "went")), "source <i>", D, D, "Kannada", 3.0)
     assert "Machine draft. Not a certified translation." in d and "Translation 1 (the one to read)" in d and "<b>x</b>" not in d and "<i>" not in d.replace("<i>not", "") and "https://" not in d

@@ -12,7 +12,7 @@ Nothing is loaded from the internet. The sheet never marks anything as correct; 
 """
 import argparse, base64, difflib, html, json, os, sys, tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import checker, picklist
+import checker, glossary, picklist
 
 PAGE = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Marking sheet __PID__</title>
@@ -52,6 +52,7 @@ input,select,button,textarea{font:inherit;font-size:.86rem;padding:3px 5px;max-w
 <h3>Final text so far</h3><div class="muted">Unpicked words show as [?]. This is the original-script text only, not a translation.</div>
 <textarea id="final" class="fin" readonly aria-label="Final text so far"></textarea>
 <p><button id="copyfinal">Copy final text</button> <span class="muted" id="copymsg"></span></p></div>
+<div class="card" id="glcard" hidden><h2 style="margin-top:0">Glossary notes</h2><div class="muted">Words with a settled legal meaning, and what the English does with them. A prompt to look, not a rule: entries a lawyer has not approved yet are drafts.</div><div class="scroll"><table id="gl"></table></div></div>
 <div class="card"><h2 style="margin-top:0">3. Lines where the two readings differ</h2><div class="scroll"><table id="diffs"></table></div></div>
 <div class="card"><h2 style="margin-top:0">4. The two English drafts</h2><div class="two"><div><b>__ANAME__</b><div class="txt" id="enA"></div></div><div><b>__BNAME__</b><div class="txt" id="enB"></div></div></div></div>
 <div class="card"><h2 style="margin-top:0">5. Errors found (one row per error)</h2>
@@ -88,6 +89,10 @@ function addRow(){const tr=document.createElement('tr');
  tr.querySelector('button').onclick=()=>tr.remove(); $('#errs tbody').appendChild(tr);}
 $('#add').onclick=addRow;
 
+
+/* glossary notes */
+(function(){const G=D.glossary||[];if(!G.length)return;$('#glcard').hidden=false;let h='<tr><th>Word as read</th><th>Normally means</th><th>Note</th><th>Applies to</th></tr>';
+ G.forEach(n=>{h+='<tr><td>'+esc(n.word)+'</td><td>'+esc(n.english)+'</td><td>'+esc(n.text)+'</td><td>'+esc((n.applies_to||[]).join(', '))+'</td></tr>';});$('#gl').innerHTML=h;})();
 /* pick list */
 const PL=D.pick||{lines:[],slots:[],stats:{agreed_words:0,choices:0,looks:0}};let PK={};const PKEY='marksheet-picks-'+D.pid;
 try{const r=localStorage.getItem(PKEY);if(r)PK=JSON.parse(r)||{};}catch(e){}
@@ -147,7 +152,8 @@ def build(page_id, group, a_text, b_text, a_name, b_name, image_path=None, c_tex
         img = '<div class="muted">No page image was given. Open the original beside this sheet.</div>'
     data = dict(cmp_, pid=page_id, group=group, aname=a_name, bname=b_name, enA=english(a_text), enB=english(b_text),
                 linesA=checker.transcription_lines(a_text), linesB=checker.transcription_lines(b_text), hasC=bool(c_text),
-                pick=picklist.build([a_text, b_text] + ([c_text] if c_text else [])))
+                pick=picklist.build([a_text, b_text] + ([c_text] if c_text else [])),
+                glossary=glossary.notes_for_readings([("reading A", a_text.split("TRANSLATION")[0], english(a_text)), ("reading B", b_text.split("TRANSLATION")[0], english(b_text))]))
     if c_text:                                   # the third (ultra-high detail) reading: what it reads for each date and amount
         third = checker.extract_items(checker.transcription_lines(c_text))
         have = {(i["type"], i["norm"]) for i in third}
@@ -173,6 +179,15 @@ def selftest():
     assert "<script>alert(1)</script>" not in out, "text from the readers must never be able to run as script"
     assert 'src="http' not in out and 'href="http' not in out and "https://" not in out, "nothing may be loaded from the internet"
     assert out.count("<script>") == 1, "only the sheet's own script"
+    import glossary as _g, tempfile as _tf
+    gp = os.path.join(_tf.mkdtemp(), "g.csv")
+    open(gp, "w", encoding="utf-8-sig").write("id,word,variants,latin,english,english_ok,not_as,kind,domain,appears_in,note,confidence,source,status,approved_by,approved_on\nT-1,আসামী,,asami,accused,accused,criminal,term,role,FIR,Not a criminal.,high,none,unverified,,\n")
+    _g.ACTIVE_PATH = gp
+    try:
+        g_out = build("T02", "A", "TRANSCRIPTION\n1. আসামীক ধৰা হ'ল\nTRANSLATION\nThe criminal was arrested.", "TRANSCRIPTION\n1. আসামীক ধৰা হ'ল\nTRANSLATION\nThe accused was arrested.", "a", "b")
+        assert '"glossary": [{' in g_out and "Not a criminal" in g_out and 'id="glcard"' in g_out
+    finally:
+        _g.ACTIVE_PATH = None
     assert "Pick the right word" in out and '"pick": {"looks": 2' in out and '"cands"' in out, "the pick list is part of the sheet"
     assert "\n" not in out.split("function finalText")[1].split("}")[0].replace("\\n", ""), "no raw line break inside a JavaScript string"
     print("selftest OK (invented text only)")

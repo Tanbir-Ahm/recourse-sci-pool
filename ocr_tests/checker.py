@@ -331,6 +331,17 @@ def third_view_reason(items, agr_pct):
     return None
 
 
+def _glossary_note(out, amber, readings):
+    """Glossary notes (glossary.py) for one or more readings: [(label, original-script text, English text)]. Adds them to out and one line to the amber reasons."""
+    import glossary
+    notes = glossary.notes_for_readings(readings)
+    out["glossary_notes"] = notes
+    if notes:
+        strong = [n for n in notes if n["level"] == "strong"]
+        amber.append("glossary: %d note(s) on words with a settled legal meaning%s: look at them (entries not yet approved by a lawyer are a prompt to look, not a rule)" % (
+            len(notes), (" (%d where the English uses a rendering to avoid)" % len(strong)) if strong else ""))
+
+
 def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, finish3=None, known=None):
     """The traffic light for one page read as an image. page_type: typed or handwritten. run1, run2: two blind readings of the same page
     (the image as given, and a padded copy); run3: the optional ultra-high-detail reading. Returns a dict; 'light' is green, amber or red.
@@ -384,6 +395,8 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
                     seen.append(f)
         out["redundancy_flags"] = seen
         amber += ["page check: " + f for f in seen]
+        _glossary_note(out, amber, [("view 1", run1.split("TRANSLATION")[0], run1.split("TRANSLATION")[-1] if "TRANSLATION" in run1 else ""),
+                                    ("view 2", run2.split("TRANSLATION")[0], run2.split("TRANSLATION")[-1] if "TRANSLATION" in run2 else "")])
         if run3 is not None:
             out["agreement_view3_vs_view1"] = agreement(run3, run1); out["agreement_view3_vs_view2"] = agreement(run3, run2)
             out["third_view_on_disagreements"] = tiebreak(items, run3)
@@ -442,8 +455,10 @@ def check_text_page(text, english1, english2, known=None):
             if "designation: " + f not in flags:
                 flags.append("designation: " + f)
     amber += ["page check: " + f for f in flags]
+    gl = {}
+    _glossary_note(gl, amber, [("draft 1", text, english1.split("TRANSLATION")[-1] if english1 else ""), ("draft 2", text, english2.split("TRANSLATION")[-1] if english2 else "")])
     light = "red" if red else "amber" if amber else "green"
-    return {"page_type": "text_layer", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "redundancy_flags": flags,
+    return {"glossary_notes": gl.get("glossary_notes", []), "page_type": "text_layer", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "redundancy_flags": flags,
             "must_check": items,
             "person_task": {"green": "The source text is the PDF's own text. Check the English draft against it and tick the must-check list (%d item(s))." % len(items),
                             "amber": "Check the flagged English sentences and items against the source text, then tick the must-check list (%d item(s))." % len(items),
@@ -495,6 +510,8 @@ def check_document(source, english1, english2, known=None, finish1="STOP", finis
             if f not in dflags:
                 dflags.append(f)
     amber += ["designation check: " + f for f in dflags]
+    gl = {}
+    _glossary_note(gl, amber, [("translation 1", source, e1), ("translation 2", source, e2)])
     marks = {m: sum(e.count(m) for e in (e1, e2)) for m in ("[sic]", "(?)", "(spelling unsure)", "[unclear]")}
     for m, n in marks.items():
         if n:
@@ -509,7 +526,7 @@ def check_document(source, english1, english2, known=None, finish1="STOP", finis
     items = [dict(i, status="CONFIRM", A=i["value"], B=i["value"], source="joined text") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + source))]
     light = "red" if red else "amber" if amber else "green"
     return {"page_type": "document", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "name_differences": names,
-            "number_differences": nums, "reference_counts_differ": ref_diff, "reference_flags": rflags, "designation_flags": dflags, "references": {"%s %s" % k: r1[k] for k in sorted(r1)},
+            "number_differences": nums, "reference_counts_differ": ref_diff, "reference_flags": rflags, "designation_flags": dflags, "glossary_notes": gl.get("glossary_notes", []), "references": {"%s %s" % k: r1[k] for k in sorted(r1)},
             "model_marks": marks, "redundancy_flags": flags, "must_check": items, "page_joins": joins or [],
             "person_task": {"green": "Read the whole translation against the original, then tick the must-check list (%d item(s))." % len(items),
                             "amber": "Read the whole translation against the original. Look first at the flags above: every name, every clause / rule / section number, every changed sentence. %d must-check item(s)." % len(items),

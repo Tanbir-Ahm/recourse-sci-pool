@@ -209,6 +209,10 @@ def run_pipeline(args, caller=None, text_caller=None):
     if getattr(args, "designations", None):
         import redundancy
         redundancy.DESIGNATIONS_PATH = os.path.abspath(args.designations)
+    import glossary
+    glossary.LANGUAGE = args.language                          # glossary/<language>_legal.csv is used when it exists
+    if getattr(args, "glossary", None):
+        glossary.ACTIVE_PATH = os.path.abspath(args.glossary)
     models, fx = harness.load_models(None)
     if real and not os.environ.get(models[MODEL]["key_env"]):
         sys.exit("%s is not set in this environment." % models[MODEL]["key_env"])
@@ -395,6 +399,7 @@ if __name__ == "__main__":
     ap.add_argument("--types", help="JSON file {page id: typed|handwritten}"); ap.add_argument("--known", help="JSON list of confirmed names (case data: keep outside the repository)")
     ap.add_argument("--budget-inr", dest="budget_inr", type=float); ap.add_argument("--third-view", dest="third_view", choices=("auto", "off", "always"), default="auto")
     ap.add_argument("--orient", choices=("auto", "off"), default="auto", help="auto: turn a page that was photographed sideways or upside down before reading it")
+    ap.add_argument("--glossary", help="a glossary CSV (see glossary/assamese_legal.csv) that replaces the one for --language; words with a settled legal meaning, notes only")
     ap.add_argument("--designations", help="a file of official titles (one per line) that replaces ocr_tests/designations.txt; used only to flag a title close to a known one")
     ap.add_argument("--stitch", choices=("auto", "off"), default="auto", help="auto: join the pages of each PDF of 2 or more pages and translate the joined text twice")
     ap.add_argument("--pdf", action="store_true", help="also print the reports to PDF (needs Node and Playwright)")
