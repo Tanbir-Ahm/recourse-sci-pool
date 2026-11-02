@@ -214,7 +214,7 @@ def selftest():
     # the shipped glossary loads and every entry has what it needs
     g = load(os.path.join(DEFAULT_DIR, "assamese_legal.csv"))
     if g:
-        assert len(g) == 60 and len({e["id"] for e in g}) == 60 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
+        assert len(g) == 77 and len({e["id"] for e in g}) == 77 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
         assert all(e["status"] == "unverified" for e in g), "nothing in the draft may claim to be approved"
     print("selftest OK (invented text; the shipped draft glossary loads)")
 
