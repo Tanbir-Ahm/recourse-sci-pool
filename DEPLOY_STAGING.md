@@ -549,3 +549,9 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 **Way back:** delete `ACT_SHELF`, or revert the commit. Nothing else was touched.
 **Production.** Untouched until you merge. After a merge, only the search page changes; answers do not.
 
+## Part 4aj: the library's IT Act s.72 and s.72A corrected (added 2026-11-02; owner's "Fix the IT s.72 and s.72A library sections"; Recourse branch `register-hooks-and-overlay` (`c58bc4d`); FOLLOW_UPS 2cw)
+**What changed (library data, no switch):** the two library chunks, their two embeddings and the structured table now say what India Code's PDF of 27 June 2025 says: "liable to penalty which may extend to five lakh rupees" (s.72) and "twenty-five lakh rupees" (s.72A), replacing the old imprisonment wording. The answer no longer states cognizable/bailable for them.
+1. **YOU. On staging ask:** `What is the punishment for a company that discloses my personal data in breach of a contract? Under the IT Act, section 72A.` and `Is breach of confidentiality under section 72 of the IT Act punishable with imprisonment?` Check the answer says penalty (not jail), gives the amount only as the section text shows it, and does not say cognizable or bailable.
+2. **YOU, for Mr. Advocate:** confirm on `acts/NI_IT_SHEET.docx` that this is the law today.
+**Production.** Library files are production data: they change only when you merge (your own pull request). Way back: revert the commit.
+
