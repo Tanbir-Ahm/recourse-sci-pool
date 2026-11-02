@@ -225,7 +225,7 @@ def selftest():
     # the shipped glossary loads and every entry has what it needs
     g = load(os.path.join(DEFAULT_DIR, "assamese_legal.csv"))
     if g:
-        assert len(g) == 226 and len({e["id"] for e in g}) == 226 and sum(e["kind"] == "reference" for e in g) == 0 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
+        assert len(g) == 227 and len({e["id"] for e in g}) == 227 and sum(e["kind"] == "reference" for e in g) == 0 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
         assert all(e["status"].startswith("approved by a lawyer (the owner's statement") and e["approved_by"] for e in g), "every row carries the owner's statement of the lawyer's approval, worded as a statement"
         assert not any(e["status"] == "approved" for e in g), "never a bare 'approved'"
     G = [e for e in load(os.path.join(DEFAULT_DIR, "assamese_legal.csv")) if e["word"] == "সংগঠন"]
