@@ -555,3 +555,9 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 2. **YOU, for Mr. Advocate:** confirm on `acts/NI_IT_SHEET.docx` that this is the law today.
 **Production.** Library files are production data: they change only when you merge (your own pull request). Way back: revert the commit.
 
+## Part 4ak: NI and IT detection on; no inline disclaimer or source tags in the answer (added 2026-11-02; owner's instruction; Recourse branch `register-hooks-and-overlay` (newest commit); FOLLOW_UPS 2cx)
+**What changed.** (1) A question that names the Negotiable Instruments Act or the Information Technology Act (full names; "NI Act") is now tied to the shelf copy; sections the library already supplies are not repeated. (2) The answer text no longer carries "(from a wider search, not independently verified)" after a wider-search case, and no "(open bucket, CC-BY-4.0, Dattam Labs)" or "(Dattam Labs; licence terms to be confirmed)" after a link; the data credit is in the page footer once. Not tried with the answer model.
+1. **YOU. Deploy the branch to staging. Ask** `My cheque bounced. Can I file a case under section 138 of the Negotiable Instruments Act?` and `Is section 66C of the Information Technology Act bailable?` Check: the answer is the same quality as before (the cheque-bounce flow must not get worse), no section appears twice, and nothing about 69/69A/69B padding creeps in beside 66C.
+2. **YOU. Ask the circumstantial-evidence question with `SCI_SEARCH_MODE=feed`.** Check: no "(from a wider search...)" in the text, the table of authorities still says "Wider search (not independently verified)", no Dattam tag, one credit line at the foot of the page.
+**Way back:** `WIDER_LABEL=on` and `SOURCE_TAGS=on` restore the label and the tags; set `detect` back to false for the two Directory entries (or `ACT_DIRECTORY=off` for all).
+
