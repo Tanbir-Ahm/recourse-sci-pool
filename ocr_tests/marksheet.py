@@ -173,6 +173,8 @@ def selftest():
     assert "<script>alert(1)</script>" not in out, "text from the readers must never be able to run as script"
     assert 'src="http' not in out and 'href="http' not in out and "https://" not in out, "nothing may be loaded from the internet"
     assert out.count("<script>") == 1, "only the sheet's own script"
+    assert "Pick the right word" in out and '"pick": {"looks": 2' in out and '"cands"' in out, "the pick list is part of the sheet"
+    assert "\n" not in out.split("function finalText")[1].split("}")[0].replace("\\n", ""), "no raw line break inside a JavaScript string"
     print("selftest OK (invented text only)")
 
 
