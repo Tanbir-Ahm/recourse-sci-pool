@@ -222,7 +222,8 @@ def selftest():
     g = load(os.path.join(DEFAULT_DIR, "assamese_legal.csv"))
     if g:
         assert len(g) == 82 and len({e["id"] for e in g}) == 82 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
-        assert all(e["status"] == "unverified" for e in g), "nothing in the draft may claim to be approved"
+        assert {e["id"] for e in g if e["status"] != "unverified"} == {"AS-005"} | {"AS-%03d" % i for i in range(61, 83)}, "only the owner's words (confirmed by a lawyer on the owner's say-so) may be marked as confirmed"
+        assert all(e["status"] == "unverified" or e["status"].startswith("confirmed by a lawyer") for e in g) and not any(e["status"] == "approved" for e in g)
     G = [e for e in load(os.path.join(DEFAULT_DIR, "assamese_legal.csv")) if e["word"] == "সংগঠন"]
     assert G and find("সংঘটিত হয়", G) == [] and len(find("সংঘ আৰু সমিতি", G)) == 2 and len(find("সংগঠনৰ নাম", G)) == 1, "the =word variant matches the whole word only"
     print("selftest OK (invented text; the shipped draft glossary loads)")
