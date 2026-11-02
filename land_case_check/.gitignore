@@ -1,0 +1,5 @@
+# Never commit tokens, raw API replies, reports or real parcel/holder data.
+eci_raw/
+parcel_case_report.json
+parcels*.json
+*.log
