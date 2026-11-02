@@ -1,6 +1,6 @@
 # Test plan: reading and translating local-language court and police records
 
-Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ag record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
+Written 2026-10-25 for the lawyer who asked for a tool that reads and translates trial-court and police records written in Assamese, Kannada and other local languages. The plan was fixed before any result existed. Sections 10 to 10ah record the results so far (real pages, scores and counts only); section 11 (the last section of this file) is the design that follows from them, and it is built; the rest of the plan is still to be run.
 
 ## 1. The question
 
@@ -954,6 +954,18 @@ Taking the closer draft for each sentence would give a mean closeness of 0.722.
 **What it does not do.** It cannot catch a number, a name read as a more familiar name, or a wrong reading of the original word; an entry that is not in the glossary is not checked; nothing in it is approved.
 
 **Not done.** Lawyer approval of any entry; a fresh-document test; sentence-level matching; a glossary for another language.
+
+### 10ah. A fresh typed Assamese page, run through the whole pipeline with the glossary on (2026-11-02; counts only; a public 1967 government foreword, no case data)
+
+**What was run.** One cropped page (10 lines of typed Assamese and a signature block) from the Assamese foreword of the 1967 Government of Assam glossary, sent by the owner as the "fresh document" the glossary needed. `pipeline.py --page-type typed`, glossary on (226 rows), the third look on (it holds a date). Cost Rs 2.46 by estimate. Before the run Claude wrote its own reading of the image; the model's readings were compared with it afterwards.
+
+**Results.** The two readings agreed on 99.8% of letters; the third (ultra-high detail) agreed with view 1 on 100% and with view 2 on 99.8%; no third-look contradiction. The light was **amber** for two reasons: one English sentence changed between the views (the clauses came in a different order), and one English name differed ("Glossary of Technical Terms" in two readings, "Glossary of Terms" in the other). The 10 lines of Assamese differed between the two first readings on 7 lines, all of them cosmetic (view 2 wrote the Bengali ra in conjuncts, a danda or an apostrophe differently) except one year-word (চন or ছন, "year", on the second date line; the third look and view 1 agree on the second). The must-check list held 4 items (two years, a day number, one full date), all agreed.
+
+**The glossary on a fresh page:** 2 of the 226 entries matched (the committee word 3 times, the State's name once); **0 notes**, correctly: the English says "Committee" (accepted) and "Assam". **It added nothing here and could not have: the page has some 60 different words and the list found 2.** The words this page uses that a government glossary would hold (state language, official language, terminology) are on later pages of the book, which are not loaded; that is the evidence for reading the rest of the book.
+
+**Findings, honest.** (1) **A silent completion:** the left edge of the image cuts off the first digit of the date line under the signature; all three readings supplied the missing digit and the checker, seeing three readings agree, called the date confirmed. It happens to be right (the English foreword in the same book gives 12 April 1967), but nothing in the tool noticed that part of the character was missing. An edge check (ink touching the image border) is not built. (2) **Claude's own pre-reading made 3 spelling slips** that the model did not (it modernised the 1967 spellings of three words: the type has the older forms); one more difference in the signature block was not settled. The machine reading was better than the reader checking it, on spelling. (3) **The official English in the same book is not a translation of this text:** it is a different paragraph set (it mentions the Anchalik Panchayat level and the typewriter, which this Assamese does not, and this Assamese gives 15 April 1966 and the Brahmaputra Valley, which the English does not). It confirms only the signature block (Chairman, Official Language Implementation Committee, Shillong, 12 April 1967), "December 1967", "heads of departments" and "third volume": a partial fact check, not a scored translation. (4) **The one word the tool did flag, "technical", was an addition:** the Assamese is the word for a glossary of terminology, and "Technical" is not in it.
+
+**Still open:** sight of the lawyer's approval; an answer key for a document with a true English version; the edge check; whether to read the remaining 247 pages of the book.
 
 ## 11. The checked-reading pipeline (design recorded 2026-10-27, rewritten 2026-10-28 after sections 10l to 10p; built, rehearsed once, not yet run on a real test set)
 
