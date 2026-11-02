@@ -578,3 +578,13 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 4. **YOU. Open the answer on `staging-web`:** the paragraph labels in the boxes and in the table read 'not numbered' where they used to show a passage id.
 **Way back:** no switch; tell me which part to undo.
 
+## Part 4an: the follow-up carries the earlier answer's sections; Gaps stops restating the wider-search tier (added 2026-11-02; owner's "build" for both; Recourse branch `register-hooks-and-overlay` `ae098e9`; FOLLOW_UPS 2da)
+**What changed.** A follow-up in the same chat now gets, besides what its own search finds, the statute sections that the earlier answer NAMED in its text (at most three; BNSS 482 and 483 for the anticipatory-bail chat), with a prompt line that says they were relied on earlier and are to be used only if they bear on the new question. The Research Note's Gaps part no longer says that a case comes from the wider search or is unverified (the page says it once). Not tried with the answer model.
+1. **YOU. Redeploy `staging-api` (and `staging-site` if you use it) on the newest commit. `CHAT_MODE` must be `on` (the rewrite) or `fold` on the service that answers.** Nothing else to set. (`CHAT_TURN` and `CHAT_MERGE` are log lines, not variables.)
+2. **YOU. Repeat the last test in one new chat on `staging-web` (For lawyers):** `Does an anticipatory bail order expire after a fixed period, or can it continue until the end of the trial?` then `Can the court cancel it later, and on what grounds?`
+3. **Look in the `staging-api` deploy log for the second question:** `CHAT_TURN {... "turn": 2, "rewrite": "used" ..., "carry": ["BNSS 482", "BNSS 483", ...]}` and `CARRY_FORWARD {"offered": [...], "added": [...]}`. If there is no `CHAT_TURN` line with `"turn": 2`, the follow-up did not go through the follow-up path: tell me, with the first lines of the log around that time.
+4. **Check the second answer:** it should now rest on BNSS 483(3) (cancellation) and 482, not say the material holds no BNSS provision; BNSS 142 should not be called relevant; its Gaps should not say that the cases come from a wider search; every case still has its register status where it is mentioned.
+5. **Also look at (not changed by this step):** whether 'The sections and judgments this answer rests on' still lists material the answer never used (that is `RELEVANCE_GATE=log`: set it to `on` to see the effect); whether Sibbia's two quoted phrases are in the `GROUNDING_CHECK` log lines.
+6. **YOU. Send me the Word file and those log lines.**
+**Way back:** no switch for the carry; `CHAT_MODE=off` removes the whole follow-up path. Tell me if you want a separate switch.
+
