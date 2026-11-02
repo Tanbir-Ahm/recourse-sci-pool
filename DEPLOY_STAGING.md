@@ -569,3 +569,12 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 4. **YOU. Download the Word file** and check the last paragraph before 'Notes' (layman) or the end (lawyer) holds one data-credit sentence naming the bucket(s) the passages came from; open `staging-web` and check the one-line credit at the foot of every page and no 'Dattam' tag after any link.
 5. **YOU. Send me the answers and the log.**
 **Way back:** the code changes have no switch; tell me which to take out. `REGISTER_HOOKS=off` removes the register lines altogether.
+
+## Part 4am: the new layout of the PDF / Word download (added 2026-11-02; owner's "Build the layout change"; Recourse branch `register-hooks-and-overlay` `64e5d48`, `recourse-web` `main` `2bf4dd1`; FOLLOW_UPS 2cz)
+**What changed.** The answer comes first; everything that lets you check it sits under one heading, **Sources and checks**, with the caveat said once; the tables of authorities are one table; the Word file has no printed web addresses (links still click); the index's passage ids ('preamble/128') read 'not numbered'; '1 question'. The text of the answer is not changed. Not seen on a real answer.
+1. **YOU. Redeploy `staging-api`, `staging-site` and `staging-web` on the newest commits. Nothing to set.**
+2. **YOU. Ask the circumstantial-evidence question (For lawyers) and download the Word file and the PDF.** Check: the answer and its Facts/Issues/Grounds/Gaps come first; then a line, the heading 'Sources and checks' and one paragraph of caveat; then ONE table 'Authorities and where each stands on our lists' with a Source column (Hanumant's register status still there, in its row); the box of wider-search passages follows without a second 'Named by other judgments' note; no 'preamble/128'; in the Word file no long web addresses (click a case name: it opens the judgment); in the PDF the addresses are printed.
+3. **YOU. Compare with the last file** (the one with 'Further reading from a wider search' and the separate tables) and tell me what is still too long or what you miss. If a caveat you want to see in one place has gone, say where.
+4. **YOU. Open the answer on `staging-web`:** the paragraph labels in the boxes and in the table read 'not numbered' where they used to show a passage id.
+**Way back:** no switch; tell me which part to undo.
+
