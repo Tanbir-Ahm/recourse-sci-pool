@@ -4,7 +4,7 @@
   python glossary.py --file glossary/assamese_legal.csv --source reading.txt --english translation.txt     (prints the notes)
 
 A glossary is a CSV (see glossary/assamese_legal.csv): the word in script, its spelling variants, the standard English, the English words that count as a fair rendering,
-the renderings to avoid, and a kind. notes(source, english) looks for the glossary's words in the ORIGINAL-SCRIPT text and compares what the English says. It only ever
+the renderings to avoid, and a kind (term, ambiguous, insult, unit, form, or reference: a word listed for lookup that never raises a note). notes(source, english) looks for the glossary's words in the ORIGINAL-SCRIPT text and compares what the English says. It only ever
 produces notes for a person; it never changes a word. Every entry carries a status: until a lawyer has approved it, a note is a prompt to look, not a rule.
 Kinds: term (a standard English rendering exists), ambiguous (the word can mean more than one thing: the translation must not choose silently), insult (keep the word,
 do not pick one English insult), unit (keep the word as written: land measures and records), form (alias, honorific).
@@ -86,6 +86,8 @@ def find(source, entries):
     """[(entry, word as read)] for every glossary word in the original-script text, longest hits first; a hit inside a longer hit of another entry is dropped."""
     text = norm(source); hits = []
     for e in entries:
+        if e["kind"] == "reference":                          # lookup-only rows take no part in the matching, so they cannot hide a real entry inside a longer phrase
+            continue
         for m in e["_re"].finditer(text):
             hits.append((m.start(), m.end(), e, m.group(0)))
     hits.sort(key=lambda h: -(h[1] - h[0]))
@@ -129,8 +131,10 @@ def notes(source, english, entries=None, language=None):
     for e, w in found:
         if e["id"] in seen:
             continue
-        found_ok, found_bad = _has(english, e["ok"]), _has(english, e["avoid"])
         kind, std = e["kind"], e["english"]
+        if kind == "reference":                                 # listed for lookup only: never raises a note (see section 10ag, the 1967 government glossary rows)
+            continue
+        found_ok, found_bad = _has(english, e["ok"]), _has(english, e["avoid"])
         text, level = None, "check"
         strong = e.get("confidence") == "high"                  # a medium-confidence entry only ever gives a plain 'check'
         if kind in ("term", "unit", "form"):
@@ -221,11 +225,13 @@ def selftest():
     # the shipped glossary loads and every entry has what it needs
     g = load(os.path.join(DEFAULT_DIR, "assamese_legal.csv"))
     if g:
-        assert len(g) == 82 and len({e["id"] for e in g}) == 82 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
+        assert len(g) == 226 and len({e["id"] for e in g}) == 226 and all(e["forms"] and e["ok"] and e["domain"] and e["status"] for e in g)
         assert {e["id"] for e in g if e["status"] != "unverified"} == {"AS-005"} | {"AS-%03d" % i for i in range(61, 83)}, "only the owner's words (confirmed by a lawyer on the owner's say-so) may be marked as confirmed"
         assert all(e["status"] == "unverified" or e["status"].startswith("confirmed by a lawyer") for e in g) and not any(e["status"] == "approved" for e in g)
     G = [e for e in load(os.path.join(DEFAULT_DIR, "assamese_legal.csv")) if e["word"] == "সংগঠন"]
     assert G and find("সংঘটিত হয়", G) == [] and len(find("সংঘ আৰু সমিতি", G)) == 2 and len(find("সংগঠনৰ নাম", G)) == 1, "the =word variant matches the whole word only"
+    R = [dict(e, kind="reference") for e in E if e["id"] == E[0]["id"]] if E else []
+    assert R and notes("আসামীক ধৰা হ'ল", "The criminal was arrested.", R) == [], "a reference entry never raises a note"
     print("selftest OK (invented text; the shipped draft glossary loads)")
 
 
