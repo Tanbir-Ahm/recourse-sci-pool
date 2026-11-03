@@ -1,0 +1,3249 @@
+[
+ {
+  "q": "A man on a motorcycle snatched my gold chain from my neck and drove away. What offence is that?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "304"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "134",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5386724791053507
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "304",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.47267425663710266
+   }
+  ]
+ },
+ {
+  "q": "Three men stopped me on the road, showed a knife and took my phone and wallet. What is this offence and its punishment?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "309"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "134",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.539717961839199
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "309",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.49894667683256255
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "304",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4830838928452852
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "retrieval": null,
+    "source": null,
+    "score": 0.41901229157371456
+   }
+  ]
+ },
+ {
+  "q": "Seven men broke into a jeweller's shop at night, tied up the owner and took the gold. What offence did they commit?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "310"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "313",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.47924258243292667
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "134",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.467193904867324
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "307",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4664238084211867
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "97",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4599450895899222
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "311",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4359952035116834
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "310",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4309881838897717
+   }
+  ]
+ },
+ {
+  "q": "A shopkeeper mixed a harmful substance in the milk he sells and many people fell ill. Is there a criminal offence?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "274",
+    "275"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "274",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5151800529564756
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "275",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4981647559260566
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "277",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4387361604482322
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "286",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.41617855450558777
+   }
+  ]
+ },
+ {
+  "q": "A truck driver was driving very fast on a public road and hit a scooter; the rider died. Which section applies to the driver?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "281"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "281",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48918813235415554
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "106",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.41528235357649024
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "State of Gujarat v Haidarali Kalubhai",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "State of Gujarat v Haidarali Kalubhai",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   }
+  ]
+ },
+ {
+  "q": "A man secretly filmed a woman changing clothes in a trial room and showed the video to friends.",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "77"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "77",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4826671287702423
+   }
+  ]
+ },
+ {
+  "q": "A man touched a woman inappropriately in a crowded bus. What is the offence?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "74"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "79",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4993021685515047
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "74",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.480496530100309
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "75",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.47183172809474555
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "76",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43914649310475556
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "129",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43060858126340174
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "T. Manikadan v State (NCT of Delhi) & Anr",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4686856655064938
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "T. Manikadan v State (NCT of Delhi) & Anr",
+    "retrieval": null,
+    "source": null,
+    "score": 0.40539678786466316
+   }
+  ]
+ },
+ {
+  "q": "A woman killed herself after her employer harassed her and told her to go and die. Can the employer be held responsible?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "108"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "108",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.34257736141741246
+   }
+  ]
+ },
+ {
+  "q": "He fired a pistol at me from close range but missed. What is he charged with?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "109"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "110",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.46387603296277424
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "130",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.41476392307623167
+   }
+  ]
+ },
+ {
+  "q": "In a fight, one man hit another on the head with an iron rod and broke his skull. What offence is that?",
+  "kind": "offence",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "118"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "9",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48617159714973884
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "117",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48073444227075696
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "122",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.46866599640118906
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "194",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.45672334498570377
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "118",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4500613802289785
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Mathai v State of Kerala",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4593203842635044
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Mathai v State of Kerala",
+    "retrieval": null,
+    "source": null,
+    "score": 0.40665881336925963
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "117(2)",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "116",
+    "case": null,
+    "retrieval": null,
+    "source": "definitional_companion",
+    "score": null
+   }
+  ]
+ },
+ {
+  "q": "My landlord locked me inside the flat for a whole day and would not let me leave. Is that a crime?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "127"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "127",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4933213719900934
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "135",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4394757176394346
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "100",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.3527869515490365
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "138",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.3465862902058599
+   }
+  ]
+ },
+ {
+  "q": "My domestic servant stole cash from the cupboard in my house. What is the punishment?",
+  "kind": "offence",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "305",
+    "306"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "306",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5501664355462917
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "315",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5445546773098636
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "316",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4840573453292964
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "303",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   }
+  ]
+ },
+ {
+  "q": "Someone called me pretending to be from my bank and took my money; he used a false name and a false employee id.",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "319"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "319",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4632512150510761
+   },
+   {
+    "type": "statute",
+    "act": "ITACT",
+    "sec": "66D",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4297061204328876
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "242",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4031682692586749
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "182",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.39173825089261005
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "204",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3890806551649282
+   }
+  ]
+ },
+ {
+  "q": "A witness lied on oath in the trial court. What can happen to him?",
+  "kind": "offence",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "227",
+    "229"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "216",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5167048836935814
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "233",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48771200693300554
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "236",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4825744830031612
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "383",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48222381074656906
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "227",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4561268114016197
+   }
+  ]
+ },
+ {
+  "q": "An agent promised a village girl a job in the city and sold her to a brothel. Which section covers this?",
+  "kind": "offence",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "143"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "98",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5397932431206278
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "99",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5043125600253774
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "87",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4852498178777322
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "144",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4730178297042648
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "141",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.46978365625396357
+   }
+  ]
+ },
+ {
+  "q": "A person posted a drawing meant to insult the religion of a community and hurt their feelings. Is that punishable?",
+  "kind": "offence",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "299"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "299",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.562558082524336
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "302",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5602337702706335
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "301",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.49796875231100324
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "197",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.46904664547296454
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "298",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.45289725070465603
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Johnson V.U. v State of Kerala",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4879215691790652
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Johnson V.U. v State of Kerala",
+    "retrieval": null,
+    "source": null,
+    "score": 0.41354824091475917
+   }
+  ]
+ },
+ {
+  "q": "Can the police search my house without a search warrant?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "185"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "185",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.460403218703603
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "44",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43430647285615825
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "49",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4081111858918466
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "186",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.40768787170341514
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "45",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4062863807453797
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4232152569774248
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Vihaan Kumar v State of Haryana",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4057571012224976
+   }
+  ]
+ },
+ {
+  "q": "The police took my phone and laptop during their investigation without giving me any paper. Is that allowed?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "106",
+    "94"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "105",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.38546411306028566
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "185",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3713358883571466
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "49",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.35437739836219895
+   }
+  ]
+ },
+ {
+  "q": "In a rape case, how fast must the police finish the investigation?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "193"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "193",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5844700915520198
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "176",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5373004860717505
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "184",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5049415136807498
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "retrieval": null,
+    "source": null,
+    "score": 0.42486524552743454
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4176594962353736
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4130713307680045
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   }
+  ]
+ },
+ {
+  "q": "Can a rape complainant be medically examined, and who can order it?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "184"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "184",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.6076479941322268
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "52",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.588558758312962
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "51",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.5025343648157113
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   }
+  ]
+ },
+ {
+  "q": "I want to file a private complaint before a magistrate. How does the magistrate take cognizance and what does he examine first?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "210",
+    "223"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "223",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.6097888779852432
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "210",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.567084921121086
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "225",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.551357381954073
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "224",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4892602933781033
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "retrieval": "lexical",
+    "source": null,
+    "score": 0.38919608901069375
+   }
+  ]
+ },
+ {
+  "q": "The accused has absconded. Can the court try him in his absence?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "356"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "356",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5665125225446868
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "335",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5641208541264844
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "355",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.48603329518054644
+   }
+  ]
+ },
+ {
+  "q": "Can an accused plead guilty and ask for a reduced sentence? Within what time must the application be filed?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "289",
+    "290"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "252",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5595660305120284
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "264",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5346990909880078
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "275",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5046066194362935
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "290",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.45325697761282546
+   }
+  ]
+ },
+ {
+  "q": "I was convicted by the Sessions Court. Can I appeal and where?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "413",
+    "415"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "422",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5624356403141915
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "415",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5221920705689834
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "390",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5157608126672426
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "416",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5026323797821166
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "495",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5002545979550045
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "417",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.45707828394499717
+   }
+  ]
+ },
+ {
+  "q": "Can the High Court call for the record of a trial court and examine it if the order seems wrong?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "438"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "438",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5370210836998118
+   }
+  ]
+ },
+ {
+  "q": "The magistrate fears that a man will disturb the peace in the village. Can he be asked to give security?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "126"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "126",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5810131568385225
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "136",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5694515031996722
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "134",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5355710999355213
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "137",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.532083724571373
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "132",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5299042162291447
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "135",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4647737676462745
+   }
+  ]
+ },
+ {
+  "q": "Can a witness give evidence by video conference and can the trial be held online?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "530"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "530",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5116958696948927
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "254",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.470611351236731
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "265",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4521089740760181
+   }
+  ]
+ },
+ {
+  "q": "Is there a witness protection scheme for people who fear the accused?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "398"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "398",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.543420309907581
+   }
+  ]
+ },
+ {
+  "q": "Within how many days must a trial court pronounce its judgment after the arguments end?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "392"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "258",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5476097778022253
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "392",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4777324922659134
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "294",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4774226939756338
+   }
+  ]
+ },
+ {
+  "q": "A 19-year-old first-time offender was convicted of a minor offence. Can he be released on probation?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "401"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "401",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5916128816829022
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "293",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4503991201675687
+   }
+  ]
+ },
+ {
+  "q": "The accused fears he cannot get a fair trial in this district. Can the case be moved to another court?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "446",
+    "447"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "361",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5345574655995422
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "447",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5122125199578573
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "448",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4780143917462029
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "211",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.47446606237369693
+   }
+  ]
+ },
+ {
+  "q": "Can a magistrate record a confession from the accused during the investigation, and how?",
+  "kind": "procedure",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "183"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "183",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5313872693462622
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "316",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5128750369813871
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "274",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4848189660609154
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "264",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48474776711962236
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "310",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.46999343712990954
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "275",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4610548909186784
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "retrieval": null,
+    "source": null,
+    "score": 0.43168328024413305
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "retrieval": "lexical",
+    "source": null,
+    "score": 0.38291476569786526
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "23",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4584
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "79",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3954
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "127",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3857
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "22",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3804
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "131",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3347
+   }
+  ]
+ },
+ {
+  "q": "Is a confession made to a police officer admissible against the accused in court?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "23"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4765523980635281
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "509",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.42761955435091276
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "183",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4242741110477362
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Pyare Lal Bhargava v State of Rajasthan",
+    "retrieval": null,
+    "source": null,
+    "score": 0.46533162907820125
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "23",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6787
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "22",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.508
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "79",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4651
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "24",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4438
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "19",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4384
+   }
+  ]
+ },
+ {
+  "q": "The victim of a stabbing told the doctor who attended him that his neighbour attacked him and died the next day. Can that statement be used in court?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "26"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "31",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.38826045098963263
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "326",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3829349017182958
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3428061141326265
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "26",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.43
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "6",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4249
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "147",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4238
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "158",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4231
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "159",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4078
+   }
+  ]
+ },
+ {
+  "q": "Can WhatsApp chats and CCTV footage be used as evidence in court, and what must go with them?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "61",
+    "63"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "94",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3871871679647981
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "530",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3660630227833398
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "497",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.35556420200820127
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "310",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3491168105720741
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "311",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3486244124934013
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "33",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4612
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "62",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4349
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "57",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4262
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "2",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4033
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "90",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3712
+   }
+  ]
+ },
+ {
+  "q": "In a criminal trial who has to prove guilt? Does the accused have to prove that he is innocent?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "104",
+    "105"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "270",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5234165018755238
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.49167155267950285
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "249",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.49095159437961056
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "252",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.46224154531944056
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "255",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.45166226596900294
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "106",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5629
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "104",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.531
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "108",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4872
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "109",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4323
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "105",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4319
+   }
+  ]
+ },
+ {
+  "q": "A married woman died within five years of marriage and her family says she was harassed for dowry. Does the court presume anything?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "118"
+   ],
+   "BNS": [
+    "80"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "80",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5796822064659395
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Kahkashan Kausar @ Sonam v State of Bihar",
+    "retrieval": null,
+    "source": null,
+    "score": 0.5092980959595426
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "retrieval": null,
+    "source": null,
+    "score": 0.5089849320261002
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "retrieval": null,
+    "source": null,
+    "score": 0.5022797447965077
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "retrieval": null,
+    "source": null,
+    "score": 0.5020023552793603
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "National Legal Services Authority v Union of India",
+    "retrieval": "lexical",
+    "source": null,
+    "score": 0.2966676571386012
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "retrieval": "lexical",
+    "source": null,
+    "score": 0.399
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "80",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "118",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6608
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "117",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.468
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "111",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3596
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "110",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3553
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "119",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.352
+   }
+  ]
+ },
+ {
+  "q": "Can the prosecution tell the court that the accused has a bad character and earlier cases against him?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "49"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "249",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.49805315001278333
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "259",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48848392586815415
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "47",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6112
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "49",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.599
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "12",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4635
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "46",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4506
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "156",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.429
+   }
+  ]
+ },
+ {
+  "q": "Can a court convict a person on the evidence of an accomplice alone?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "138"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "358",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4385422140856641
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "344",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.42821528710105017
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "49",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.42646100376039675
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "231",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.40697191127817733
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "244",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.40451803784175877
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "138",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6945
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "24",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4375
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "159",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4279
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "119",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4135
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "106",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3706
+   }
+  ]
+ },
+ {
+  "q": "Is a photocopy of a document accepted in court or must the original be produced?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "58",
+    "60"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "330",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.39169005611404295
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "210",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3905131039005616
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "94",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3896678081116636
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "241",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.38794870031280715
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "405",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.36373697365314533
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "76",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5592
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "57",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5349
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "58",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5228
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "60",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5126
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "162",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4903
+   }
+  ]
+ },
+ {
+  "q": "Is a handwriting expert's opinion binding on the court?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "39",
+    "41"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "41",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5728
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "39",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4733
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "65",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.451
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "72",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4416
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "68",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.356
+   }
+  ]
+ },
+ {
+  "q": "After his arrest the accused told the police where he had hidden the stolen goods and they were recovered there. Can that part of his statement be used against him?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "23"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.42406328225889234
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "354",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3926475598772146
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "106",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3478765388205335
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "351",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.34408005714707607
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "303",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "23",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4854
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "19",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4222
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "159",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3935
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "33",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3854
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "6",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3768
+   }
+  ]
+ },
+ {
+  "q": "A prosecution witness turned hostile and now denies what he told the police. What can the prosecutor do?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "148",
+    "157"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4031473844164793
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "254",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.39458082315689347
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "388",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3895725747639217
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "339",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.38744925967052946
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "233",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.38305462178491956
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "70",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4379
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "158",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4243
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "160",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4103
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "156",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3984
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "161",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3916
+   }
+  ]
+ },
+ {
+  "q": "Can the defence cross-examine a rape complainant about her past sexual experience?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "48"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "184",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.40410949531090035
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "52",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3894306455879045
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "63",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3684143417313124
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.35685075281125256
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "149",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5325
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "48",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4058
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "120",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4027
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "148",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3436
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "156",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3403
+   }
+  ]
+ },
+ {
+  "q": "Under the Bharatiya Sakshya Adhiniyam, can a husband be forced to disclose in court what his wife told him during the marriage?",
+  "kind": "evidence-named",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "128"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "221",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.47825094624729564
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "182",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.46198132186026464
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "180",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4245205436140587
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "220",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.41919368613761504
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "219",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.41884317175017655
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "128",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4825
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "1",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4778
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "165",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.458
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "168",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4178
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "149",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4161
+   }
+  ]
+ },
+ {
+  "q": "What does the Bharatiya Sakshya Adhiniyam say about a confession made by one accused that also implicates his co-accused?",
+  "kind": "evidence-named",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "24"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "509",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.48843867038435435
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "182",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4842164904296381
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "181",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4793029210634181
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "183",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4372951591004225
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "3",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4209897012041135
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Pyare Lal Bhargava v State of Rajasthan",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4411348607296622
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "24",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5978
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "22",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4445
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "23",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4313
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "1",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4267
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "19",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4235
+   }
+  ]
+ },
+ {
+  "q": "Under the Bharatiya Sakshya Adhiniyam, how many witnesses are needed to prove a fact?",
+  "kind": "evidence-named",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "139"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "327",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43181451836690926
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "216",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43148060591884474
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "323",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.42629182574819213
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "182",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.41832686122722573
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "332",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.41212673803827976
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "1",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5577
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "139",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5522
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "2",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4706
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "67",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4149
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "54",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4109
+   }
+  ]
+ },
+ {
+  "q": "Does the Bharatiya Sakshya Adhiniyam allow the judge himself to put questions to a witness?",
+  "kind": "evidence-named",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "168"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "322",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5066220145429966
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "327",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4914442439517954
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "254",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4781815480894356
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "323",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4781361303192915
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "328",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.47675109963526036
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "168",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6394
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "157",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.55
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "1",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5237
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "149",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5071
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "146",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4851
+   }
+  ]
+ }
+]

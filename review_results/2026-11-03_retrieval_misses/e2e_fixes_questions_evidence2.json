@@ -1,0 +1,1043 @@
+[
+ {
+  "q": "Is an admission made by one party to a case binding on him later?",
+  "kind": "evidence",
+  "state": "no_match",
+  "exp": {
+   "BSA": [
+    "16",
+    "25"
+   ]
+  },
+  "got": []
+ },
+ {
+  "q": "Can the court take notice of a fact such as a public holiday without anybody proving it?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "51",
+    "52"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "517",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3402504869770805
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "331",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3401414711348283
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Prabir Purkayastha v State (NCT of Delhi)",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Prabir Purkayastha v State (NCT of Delhi)",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "retrieval": null,
+    "source": "curated_judgment_override",
+    "score": null
+   }
+  ]
+ },
+ {
+  "q": "Is a certified copy of a public document, like a land record, accepted as proof without calling the officer who made it?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "75",
+    "76"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "201",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.37964692145438284
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "334",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3618720584368152
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "256",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.35985606916199686
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "235",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.34690230372840924
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "234",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3420945957361346
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "76",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6257
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "78",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5135
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "77",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4785
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "75",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4757
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "59",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4603
+   }
+  ]
+ },
+ {
+  "q": "What is primary evidence of a document?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "57"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "59",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.59
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "57",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5851
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "56",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5408
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "147",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4364
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "94",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4363
+   }
+  ]
+ },
+ {
+  "q": "Can a blind or deaf person be a witness in a criminal trial?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "124",
+    "125"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.5023212061329869
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "366",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43832807456987455
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "335",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43658475385098516
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "227",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4264401210857294
+   },
+   {
+    "type": "judgment",
+    "act": "",
+    "sec": "",
+    "case": "L. Muruganantham v State of Tamil Nadu",
+    "retrieval": null,
+    "source": null,
+    "score": 0.4686386413413168
+   }
+  ]
+ },
+ {
+  "q": "If a husband and wife are both accused in a case, can one give evidence against the other?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "126"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.43978380054922017
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "354",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.39301994181900346
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "358",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3816242698340857
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "270",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.36982904117020066
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "233",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.36216330822366816
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "126",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5455
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "138",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4403
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "128",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4335
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "137",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.394
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "24",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3899
+   }
+  ]
+ },
+ {
+  "q": "Does the law presume that a document which is thirty years old is genuine?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "92"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "330",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3835691791468383
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "343",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3581949607771705
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "338",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.34056017097450086
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "92",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6257
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "93",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4896
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "80",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4659
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "83",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4574
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "79",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4505
+   }
+  ]
+ },
+ {
+  "q": "Can emails that are five years old be presumed to be genuine electronic records?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "93"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "93",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.567
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "90",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4862
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "85",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4657
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "81",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4347
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "86",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4324
+   }
+  ]
+ },
+ {
+  "q": "Can an accused be convicted on the testimony of just one witness?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "139"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "252",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.481601561450114
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "244",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4709169211442146
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "264",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4682778427779012
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "275",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.45537772041994473
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4484518068613099
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "138",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5037
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "139",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4787
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "158",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4141
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "156",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3937
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "106",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3912
+   }
+  ]
+ },
+ {
+  "q": "What does the law say about leading questions put to a witness in examination-in-chief?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "146"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "311",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.35782782673384933
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "322",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.35032267002166473
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "146",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.6543
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "142",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5079
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "143",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5002
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "157",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.446
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "148",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4164
+   }
+  ]
+ },
+ {
+  "q": "Can a lawyer be asked to disclose in court what his client told him?",
+  "kind": "evidence",
+  "state": "no_match",
+  "exp": {
+   "BSA": [
+    "132",
+    "134"
+   ]
+  },
+  "got": []
+ },
+ {
+  "q": "How is the signature on a will proved in court?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "65",
+    "67"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "330",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4132805391978337
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "227",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3635665341363681
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "334",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3433252733279304
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "65",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5812
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "68",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5809
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "72",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5753
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "66",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5144
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "67",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4958
+   }
+  ]
+ },
+ {
+  "q": "Is an entry in a shopkeeper's account book relevant evidence in a dispute about money?",
+  "kind": "evidence",
+  "state": "no_match",
+  "exp": {
+   "BSA": [
+    "28"
+   ]
+  },
+  "got": []
+ },
+ {
+  "q": "The weapon was recovered after the accused pointed out where it was hidden. Is that recovery enough to prove guilt?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "23"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "252",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3429422285519118
+   }
+  ]
+ },
+ {
+  "q": "A woman says she was raped and the accused says she consented. Does the court presume anything about her consent?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "120"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "63",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4625791690369355
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "184",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.40276600655177686
+   },
+   {
+    "type": null,
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "retrieval": null,
+    "source": "explicit_section_ref",
+    "score": null
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "120",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.5897
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "119",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4047
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "48",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3905
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "106",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3755
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "79",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3743
+   }
+  ]
+ },
+ {
+  "q": "Is a girl of nine allowed to give evidence in a trial, or is she too young?",
+  "kind": "evidence",
+  "state": "single_match",
+  "exp": {
+   "BSA": [
+    "124"
+   ]
+  },
+  "got": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "21",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4417784293732129
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "20",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.4370123254877366
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "308",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.40755898268257185
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "353",
+    "case": null,
+    "retrieval": null,
+    "source": null,
+    "score": 0.3752131318003777
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "124",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.4505
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "160",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3884
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "137",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3634
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "159",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3612
+   },
+   {
+    "type": "statute",
+    "act": "BSA",
+    "sec": "33",
+    "case": null,
+    "retrieval": "meaning",
+    "source": "act_shelf",
+    "score": 0.3545
+   }
+  ]
+ }
+]
