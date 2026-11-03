@@ -21,7 +21,7 @@ CONFIGS = {
     "shelf": {"ACT_SHELF": "on", "ACT_DETECT": "wide"},
     "shelfc": {"ACT_SHELF": "on", "ACT_DETECT": "wide", "EVIDENCE_COMPANIONS": "on"},
     "shelfw": {"ACT_SHELF": "on", "ACT_DETECT": "wide", "STATUTE_WIDEN": "on"},
-    "fixes": {"ACT_SHELF": "on", "ACT_DETECT": "wide", "STATUTE_WIDEN": "on", "STATUTE_ALIASES": "on"},
+    "fixes": {"ACT_SHELF": "on", "ACT_DETECT": "wide", "STATUTE_WIDEN": "on", "STATUTE_ALIASES": "on", "EVIDENCE_DETECT": "on"},
 }
 
 
