@@ -180,6 +180,15 @@
     "score": 0.40252677246258645
    },
    {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "490",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.3886322005650158
+   },
+   {
     "type": "judgment",
     "act": "",
     "sec": "",
@@ -400,6 +409,24 @@
     "retrieval": null,
     "source": null,
     "score": 0.5093473827325712
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "468",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.37267661993433415
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "60",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.35189765577851306
    }
   ]
  },
@@ -573,6 +600,15 @@
     "score": 0.508181928202023
    },
    {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "170",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.5017516894818781
+   },
+   {
     "type": "judgment",
     "act": "",
     "sec": "",
@@ -741,6 +777,15 @@
     "retrieval": null,
     "source": null,
     "score": 0.4606293247066122
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "168",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4400676374180622
    },
    {
     "type": "judgment",
@@ -1095,6 +1140,15 @@
     "retrieval": null,
     "source": null,
     "score": 0.40219968699056685
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "182",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.3988634844759379
    }
   ]
  },
@@ -1255,6 +1309,15 @@
     "retrieval": "widened",
     "source": null,
     "score": 0.45862162489009717
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "262",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.43689544126247293
    }
   ]
  },
@@ -1446,6 +1509,15 @@
     "score": 0.5600072036837824
    },
    {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "321",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.49990906531141927
+   },
+   {
     "type": "judgment",
     "act": "",
     "sec": "",
@@ -1496,11 +1568,20 @@
    {
     "type": "statute",
     "act": "BNS",
-    "sec": "109",
+    "sec": "105",
     "case": null,
     "retrieval": "widened",
     "source": null,
-    "score": 0.5071917450717885
+    "score": 0.5467566821628095
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "55",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.5126770757774806
    },
    {
     "type": null,
@@ -1597,6 +1678,15 @@
     "retrieval": null,
     "source": null,
     "score": 0.5760710239555435
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "75",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.4401400671207387
    },
    {
     "type": "statute",
@@ -1985,6 +2075,15 @@
     "score": 0.4664312877198209
    },
    {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "353",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.44790156514923335
+   },
+   {
     "type": "judgment",
     "act": "",
     "sec": "",
@@ -2049,6 +2148,24 @@
     "retrieval": null,
     "source": null,
     "score": 0.4727805316996435
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "314",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.41232545774756857
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "235",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.3807961026326599
    },
    {
     "type": "judgment",
@@ -2145,6 +2262,15 @@
     "retrieval": null,
     "source": null,
     "score": 0.6298250757865411
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "74",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.5408465832788112
    },
    {
     "type": "statute",
@@ -2460,6 +2586,24 @@
     "retrieval": null,
     "source": null,
     "score": 0.6669615469310498
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "197",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.5337483588898078
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "353",
+    "case": null,
+    "retrieval": "widened",
+    "source": null,
+    "score": 0.5269881997058543
    }
   ]
  }

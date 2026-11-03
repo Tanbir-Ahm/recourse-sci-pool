@@ -1,0 +1,18 @@
+Expected sections that reach the answer model (stubbed model, real search, shelf and overrides). 'today' = ACT_SHELF=on ACT_DETECT=wide; 'fixes' = + STATUTE_WIDEN=on STATUTE_ALIASES=on EVIDENCE_DETECT=on
+set                           today          fixes
+dev 1 (29 q)            28/30   93%      30/30  100%
+dev 2 (36 q)            36/43   84%      42/43   98%
+frozen (48 q)           34/62   55%      51/62   82%
+evidence 2 (16 q)        0/22    0%      12/22   55%
+set 3 (35 q)            34/39   87%      35/39   90%
+
+evidence word pass on non-evidence questions, dev 1                     : 0 of 29 name the Bharatiya Sakshya Adhiniyam
+evidence word pass on non-evidence questions, dev 2                     : 0 of 36 name the Bharatiya Sakshya Adhiniyam
+evidence word pass on non-evidence questions, frozen offence+procedure  : 1 of 32 name the Bharatiya Sakshya Adhiniyam  <- Can a magistrate record a confession from the accused during the inves
+evidence word pass on non-evidence questions, set 3                     : 0 of 35 name the Bharatiya Sakshya Adhiniyam
+evidence word pass on non-evidence questions, NEG                       : 0 of 14 name the Bharatiya Sakshya Adhiniyam
+evidence word pass on non-evidence questions, NEG2                      : 0 of 8 name the Bharatiya Sakshya Adhiniyam
+total: 1 of 154
+word pass alone, frozen evidence (12): names the Act for 12 of 12
+word pass alone, frozen evidence-named (4): names the Act for 3 of 4
+word pass alone, evidence 2 (16): names the Act for 10 of 16

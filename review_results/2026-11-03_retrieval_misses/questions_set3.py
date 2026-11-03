@@ -1,5 +1,5 @@
 """
-36 SET-3 questions (18 BNS, 18 BNSS), written 2026-11-03 AFTER the widening floor was moved from 0.60 to 0.55 using the development sets and the frozen set (which therefore is a development set for that one number now),
+35 SET-3 questions (17 BNS, 18 BNSS; the first draft of this line said 36, a miscount), written 2026-11-03 AFTER the widening floor was moved from 0.60 to 0.55 using the development sets and the frozen set (which therefore is a development set for that one number now),
 and BEFORE any of these was run. Written by Claude (not a lawyer). Expected sections were chosen from the question alone and checked against the first line of the library's chunk for that number (title only).
 Sections already used in the earlier sets (see questions_frozen.py) were avoided. Narrative and short forms are mixed on purpose: the frozen set showed that the cross-encoder scores narratives lower than the short
 'What is the punishment for X' form.

@@ -1,0 +1,58 @@
+== e2e_fixes_questions.json: 29 questions, 0 errors
+   expected sections reaching the model: 30 of 30 (100%)   questions with at least one: 29   with all: 29
+   by Act:  BNS 19/19   BNSS 11/11
+   by kind: - 30/30
+== e2e_fixes_questions_fresh.json: 36 questions, 0 errors
+   expected sections reaching the model: 42 of 43 (98%)   questions with at least one: 35   with all: 35
+   by Act:  BNS 20/20   BNSS 22/23
+   by kind: - 42/43
+   MISS [('BNSS', '63')] | How must a court summons be served on me?
+        got: ['BNSS 64', 'BNSS 66', 'BNSS 67', 'BNSS 69', 'BNSS 70']
+== e2e_fixes_questions_frozen.json: 48 questions, 0 errors
+   expected sections reaching the model: 51 of 62 (82%)   questions with at least one: 44   with all: 40
+   by Act:  BNS 18/20   BNSS 16/21   BSA 17/21
+   by kind: evidence 14/18   evidence-named 4/4   offence 17/19   procedure 16/21
+   MISS [('BNS', '109')] | He fired a pistol at me from close range but missed. What is he charged with?
+        got: ['BNS 110', 'BNS 130']
+   MISS [('BNS', '229')] | A witness lied on oath in the trial court. What can happen to him?
+        got: ['BNS 216', 'BNS 227', 'BNS 233', 'BNS 236', 'BNSS 383']
+   MISS [('BNSS', '106'), ('BNSS', '94')] | The police took my phone and laptop during their investigation without giving me any paper. Is that 
+        got: ['BNSS 105', 'BNSS 185', 'BNSS 49']
+   MISS [('BNSS', '289')] | Can an accused plead guilty and ask for a reduced sentence? Within what time must the application be
+        got: ['BNSS 252', 'BNSS 264', 'BNSS 275', 'BNSS 290']
+   MISS [('BNSS', '413')] | I was convicted by the Sessions Court. Can I appeal and where?
+        got: ['BNSS 390', 'BNSS 415', 'BNSS 416', 'BNSS 417', 'BNSS 422', 'BNSS 428', 'BNSS 495']
+   MISS [('BNSS', '446')] | The accused fears he cannot get a fair trial in this district. Can the case be moved to another cour
+        got: ['BNSS 211', 'BNSS 251', 'BNSS 361', 'BNSS 447', 'BNSS 448']
+   MISS [('BSA', '61'), ('BSA', '63')] | Can WhatsApp chats and CCTV footage be used as evidence in court, and what must go with them?
+        got: ['BNSS 310', 'BNSS 311', 'BNSS 497', 'BNSS 530', 'BNSS 94', 'BSA 2', 'BSA 33', 'BSA 57', 'BSA 62', 'BSA 90']
+   MISS [('BSA', '148'), ('BSA', '157')] | A prosecution witness turned hostile and now denies what he told the police. What can the prosecutor
+        got: ['BNS 233', 'BNSS 181', 'BNSS 254', 'BNSS 339', 'BNSS 388', 'BSA 156', 'BSA 158', 'BSA 160', 'BSA 161', 'BSA 70']
+== e2e_fixes_questions_evidence2.json: 16 questions, 0 errors
+   expected sections reaching the model: 12 of 22 (55%)   questions with at least one: 10   with all: 10
+   by Act:  BSA 12/22
+   by kind: evidence 12/22
+   MISS [('BSA', '16'), ('BSA', '25')] | Is an admission made by one party to a case binding on him later?
+        got: []
+   MISS [('BSA', '51'), ('BSA', '52')] | Can the court take notice of a fact such as a public holiday without anybody proving it?
+        got: ['BNSS 331', 'BNSS 517']
+   MISS [('BSA', '124'), ('BSA', '125')] | Can a blind or deaf person be a witness in a criminal trial?
+        got: ['BNS 227', 'BNSS 335', 'BNSS 353', 'BNSS 366']
+   MISS [('BSA', '132'), ('BSA', '134')] | Can a lawyer be asked to disclose in court what his client told him?
+        got: []
+   MISS [('BSA', '28')] | Is an entry in a shopkeeper's account book relevant evidence in a dispute about money?
+        got: []
+   MISS [('BSA', '23')] | The weapon was recovered after the accused pointed out where it was hidden. Is that recovery enough 
+        got: ['BNSS 252']
+== e2e_fixes_questions_set3.json: 35 questions, 0 errors
+   expected sections reaching the model: 35 of 39 (90%)   questions with at least one: 32   with all: 31
+   by Act:  BNS 16/20   BNSS 19/19
+   by kind: offence 16/20   procedure 19/19
+   MISS [('BNS', '61')] | Two friends planned together to rob a jeweller and were arrested before they did anything. Are they 
+        got: ['BNS 18', 'BNS 307', 'BNS 50', 'BNS 58', 'BNS 60']
+   MISS [('BNS', '105')] | In a sudden quarrel he hit his neighbour with a stick and the neighbour died; he says he never meant
+        got: ['BNS 100', 'BNS 101', 'BNS 102', 'BNS 103', 'BNS 110', 'BNS 122', 'BNS 18']
+   MISS [('BNS', '270')] | A factory releases poisonous fumes and the whole colony falls ill. Is there a criminal case against 
+        got: ['BNS 280', 'BNS 286']
+   MISS [('BNS', '45')] | Someone promised him money to kill his business rival and he did it. What is the liability of the on
+        got: ['BNS 308', 'BNS 32', 'BNS 51', 'BNS 53', 'BNS 55']
