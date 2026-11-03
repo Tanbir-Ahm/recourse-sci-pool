@@ -1,0 +1,14 @@
+fresh set: 43 expected sections in all; the search returned 36 of them
+floor | FRESH: expected dropped / returned | not-expected statutes kept / handed over | OLD (pos only): expected dropped / returned | not-expected kept / handed over
+ 0.45 |   3 / 36  |  55 / 73  |   0 / 24  |  37 / 49
+ 0.42 |   1 / 36  |  62 / 73  |   0 / 24  |  39 / 49
+ 0.40 |   1 / 36  |  64 / 73  |   0 / 24  |  40 / 49
+ 0.38 |   1 / 36  |  66 / 73  |   0 / 24  |  41 / 49
+ 0.36 |   0 / 36  |  67 / 73  |   0 / 24  |  43 / 49
+ 0.34 |   0 / 36  |  67 / 73  |   0 / 24  |  44 / 49
+ 0.30 |   0 / 36  |  72 / 73  |   0 / 24  |  47 / 49
+ 0.00 |   0 / 36  |  73 / 73  |   0 / 24  |  49 / 49
+the fresh expected sections the 0.45 floor drops:
+   BNSS 483 0.375 | The prosecution says I broke my bail conditions. Can the court send me back to c
+   BNSS 175 0.424 | The police will not register my complaint of a cognizable offence. What can I do
+   BNSS 251 0.431 | How can an accused ask the Sessions Court to discharge him before charges are fr

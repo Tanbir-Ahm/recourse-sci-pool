@@ -1,0 +1,1637 @@
+[
+ {
+  "q": "Can the police keep me at the police station for more than 24 hours without taking me before a magistrate?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "187",
+    "58"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "58",
+    "case": null,
+    "cos": 0.594,
+    "rr": 0.765
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "cos": 0.48,
+    "rr": 0.775
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.477,
+    "rr": 0.689
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.413,
+    "rr": 0.488
+   }
+  ]
+ },
+ {
+  "q": "My brother is accused of a non-bailable offence and the magistrate refused bail. Can the Sessions Court or the High Court grant it?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "480",
+    "483"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "482",
+    "case": null,
+    "cos": 0.536,
+    "rr": 0.752
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "480",
+    "case": null,
+    "cos": 0.493,
+    "rr": 0.693
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "484",
+    "case": null,
+    "cos": 0.46,
+    "rr": 0.574
+   }
+  ]
+ },
+ {
+  "q": "I think the police will arrest me in a false complaint. Can I get bail in advance?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "482"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "60",
+    "case": null,
+    "cos": 0.464,
+    "rr": 0.428
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "482",
+    "case": null,
+    "cos": 0.452,
+    "rr": 0.532
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "478",
+    "case": null,
+    "cos": 0.411,
+    "rr": 0.392
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "39",
+    "case": null,
+    "cos": 0.411,
+    "rr": 0.401
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "484",
+    "case": null,
+    "cos": 0.403,
+    "rr": 0.463
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "cos": 0.425,
+    "rr": 0.482
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "cos": 0.422,
+    "rr": 0.468
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "cos": 0.404,
+    "rr": 0.488
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.403,
+    "rr": 0.468
+   }
+  ]
+ },
+ {
+  "q": "Is bail automatic when the offence is bailable and I am arrested?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "478"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "47",
+    "case": null,
+    "cos": 0.51,
+    "rr": 0.519
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "480",
+    "case": null,
+    "cos": 0.494,
+    "rr": 0.582
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "482",
+    "case": null,
+    "cos": 0.492,
+    "rr": 0.564
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "478",
+    "case": null,
+    "cos": 0.491,
+    "rr": 0.652
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "60",
+    "case": null,
+    "cos": 0.466,
+    "rr": 0.492
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakesh Kumar Paul v State of Assam",
+    "cos": 0.456,
+    "rr": 0.394
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakesh Kumar Paul v State of Assam",
+    "cos": 0.449,
+    "rr": 0.418
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.443,
+    "rr": 0.383
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.433,
+    "rr": 0.395
+   }
+  ]
+ },
+ {
+  "q": "I have been in jail as an undertrial for more than half of the longest sentence for my offence. Can I be released?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "479"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "479",
+    "case": null,
+    "cos": 0.509,
+    "rr": 0.748
+   }
+  ]
+ },
+ {
+  "q": "The prosecution says I broke my bail conditions. Can the court send me back to custody?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "483"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "139",
+    "case": null,
+    "cos": 0.409,
+    "rr": 0.486
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "483",
+    "case": null,
+    "cos": 0.406,
+    "rr": 0.375
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "266",
+    "case": null,
+    "cos": 0.405,
+    "rr": 0.573
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "478",
+    "case": null,
+    "cos": 0.37,
+    "rr": 0.439
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "141",
+    "case": null,
+    "cos": 0.369,
+    "rr": 0.555
+   }
+  ]
+ },
+ {
+  "q": "The person who stood surety for my relative wants to withdraw. How does that work?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "489"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "489",
+    "case": null,
+    "cos": 0.453,
+    "rr": 0.474
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "140",
+    "case": null,
+    "cos": 0.406,
+    "rr": 0.325
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "486",
+    "case": null,
+    "cos": 0.405,
+    "rr": 0.477
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "494",
+    "case": null,
+    "cos": 0.397,
+    "rr": 0.291
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "280",
+    "case": null,
+    "cos": 0.375,
+    "rr": 0.454
+   }
+  ]
+ },
+ {
+  "q": "Can a policeman arrest me without a warrant for an offence that carries up to seven years?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "35"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "35",
+    "case": null,
+    "cos": 0.535,
+    "rr": 0.81
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "47",
+    "case": null,
+    "cos": 0.527,
+    "rr": 0.523
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "55",
+    "case": null,
+    "cos": 0.521,
+    "rr": 0.506
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "57",
+    "case": null,
+    "cos": 0.513,
+    "rr": 0.499
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "45",
+    "case": null,
+    "cos": 0.508,
+    "rr": 0.47
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.585,
+    "rr": 0.831
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.571,
+    "rr": 0.781
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Vihaan Kumar v State of Haryana",
+    "cos": 0.551,
+    "rr": 0.889
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.516,
+    "rr": 0.7
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satender Kumar Antil v Central Bureau of Investigation (2026)",
+    "cos": 0.399,
+    "rr": 0.794
+   }
+  ]
+ },
+ {
+  "q": "What must a police officer tell me when arresting me, and whom must they inform?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "47",
+    "48"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "77",
+    "case": null,
+    "cos": 0.612,
+    "rr": 0.565
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "47",
+    "case": null,
+    "cos": 0.591,
+    "rr": 0.655
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "36",
+    "case": null,
+    "cos": 0.584,
+    "rr": 0.703
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "48",
+    "case": null,
+    "cos": 0.538,
+    "rr": 0.718
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "55",
+    "case": null,
+    "cos": 0.533,
+    "rr": 0.468
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "D.K. Basu v State of West Bengal",
+    "cos": 0.631,
+    "rr": 0.576
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "D.K. Basu v State of West Bengal",
+    "cos": 0.581,
+    "rr": 0.547
+   }
+  ]
+ },
+ {
+  "q": "The police will not register my complaint of a cognizable offence. What can I do?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "173",
+    "175"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "174",
+    "case": null,
+    "cos": 0.54,
+    "rr": 0.53
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "173",
+    "case": null,
+    "cos": 0.501,
+    "rr": 0.552
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "224",
+    "case": null,
+    "cos": 0.479,
+    "rr": 0.535
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "175",
+    "case": null,
+    "cos": 0.461,
+    "rr": 0.424
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lalita Kumari v Government of Uttar Pradesh",
+    "cos": 0.533,
+    "rr": 0.776
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lalita Kumari v Government of Uttar Pradesh",
+    "cos": 0.466,
+    "rr": 0.607
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lalita Kumari v Government of Uttar Pradesh",
+    "cos": 0.457,
+    "rr": 0.659
+   }
+  ]
+ },
+ {
+  "q": "How long can the police investigation go on before the accused becomes entitled to default bail?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "187"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "187",
+    "case": null,
+    "cos": 0.488,
+    "rr": 0.496
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "189",
+    "case": null,
+    "cos": 0.427,
+    "rr": 0.44
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "479",
+    "case": null,
+    "cos": 0.425,
+    "rr": 0.552
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "193",
+    "case": null,
+    "cos": 0.423,
+    "rr": 0.461
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.545,
+    "rr": 0.74
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.544,
+    "rr": 0.619
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "M. Ravindran v Intelligence Officer, Directorate of Revenue Intelligence",
+    "cos": 0.53,
+    "rr": 0.634
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Bikramjit Singh v State of Punjab",
+    "cos": 0.497,
+    "rr": 0.771
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakesh Kumar Paul v State of Assam",
+    "cos": 0.399,
+    "rr": 0.711
+   }
+  ]
+ },
+ {
+  "q": "Can the High Court cancel an FIR that is false and malicious?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "528"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "273",
+    "case": null,
+    "cos": 0.414,
+    "rr": 0.303
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "248",
+    "case": null,
+    "cos": 0.408,
+    "rr": 0.422
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "439",
+    "case": null,
+    "cos": 0.405,
+    "rr": 0.331
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "268",
+    "case": null,
+    "cos": 0.397,
+    "rr": 0.315
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "260",
+    "case": null,
+    "cos": 0.386,
+    "rr": 0.309
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.587,
+    "rr": 0.447
+   }
+  ]
+ },
+ {
+  "q": "Can the parties settle a case and have it ended?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "359"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "292",
+    "case": null,
+    "cos": 0.346,
+    "rr": 0.541
+   }
+  ]
+ },
+ {
+  "q": "Can the police force me to answer all their questions in an investigation?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "180"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "195",
+    "case": null,
+    "cos": 0.458,
+    "rr": 0.594
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "172",
+    "case": null,
+    "cos": 0.431,
+    "rr": 0.464
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "214",
+    "case": null,
+    "cos": 0.423,
+    "rr": 0.534
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "180",
+    "case": null,
+    "cos": 0.417,
+    "rr": 0.635
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "351",
+    "case": null,
+    "cos": 0.402,
+    "rr": 0.427
+   }
+  ]
+ },
+ {
+  "q": "How must a court summons be served on me?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "63"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "64",
+    "case": null,
+    "cos": 0.573,
+    "rr": 0.757
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "70",
+    "case": null,
+    "cos": 0.524,
+    "rr": 0.549
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "67",
+    "case": null,
+    "cos": 0.494,
+    "rr": 0.695
+   }
+  ]
+ },
+ {
+  "q": "How can an accused ask the Sessions Court to discharge him before charges are framed?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "250",
+    "251"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "251",
+    "case": null,
+    "cos": 0.493,
+    "rr": 0.431
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "274",
+    "case": null,
+    "cos": 0.474,
+    "rr": 0.57
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "247",
+    "case": null,
+    "cos": 0.472,
+    "rr": 0.402
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "268",
+    "case": null,
+    "cos": 0.467,
+    "rr": 0.478
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "272",
+    "case": null,
+    "cos": 0.464,
+    "rr": 0.723
+   }
+  ]
+ },
+ {
+  "q": "Is a victim of crime entitled to compensation?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "396"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "396",
+    "case": null,
+    "cos": 0.554,
+    "rr": 0.658
+   },
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "395",
+    "case": null,
+    "cos": 0.484,
+    "rr": 0.459
+   }
+  ]
+ },
+ {
+  "q": "Must a person who is arrested be examined by a doctor?",
+  "state": "single_match",
+  "exp": {
+   "BNSS": [
+    "53"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNSS",
+    "sec": "53",
+    "case": null,
+    "cos": 0.666,
+    "rr": 0.88
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "D.K. Basu v State of West Bengal",
+    "cos": 0.594,
+    "rr": 0.75
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "D.K. Basu v State of West Bengal",
+    "cos": 0.578,
+    "rr": 0.842
+   }
+  ]
+ },
+ {
+  "q": "What is the punishment for cheating someone out of money?",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "318"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "318",
+    "case": null,
+    "cos": 0.656,
+    "rr": 0.492
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+    "cos": 0.536,
+    "rr": 0.473
+   }
+  ]
+ },
+ {
+  "q": "What is the punishment for murder?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "103"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "103",
+    "case": null,
+    "cos": 0.679,
+    "rr": 0.83
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "104",
+    "case": null,
+    "cos": 0.615,
+    "rr": 0.781
+   }
+  ]
+ },
+ {
+  "q": "My neighbour sent me a message threatening to kill me. What offence is that?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "351"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "351",
+    "case": null,
+    "cos": 0.484,
+    "rr": 0.64
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "33",
+    "case": null,
+    "cos": 0.459,
+    "rr": 0.523
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "302",
+    "case": null,
+    "cos": 0.452,
+    "rr": 0.37
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "352",
+    "case": null,
+    "cos": 0.428,
+    "rr": 0.474
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "130",
+    "case": null,
+    "cos": 0.409,
+    "rr": 0.468
+   }
+  ]
+ },
+ {
+  "q": "A man keeps following a woman and messaging her after she refused. Is that an offence?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "78"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "78",
+    "case": null,
+    "cos": 0.576,
+    "rr": 0.871
+   }
+  ]
+ },
+ {
+  "q": "A bride died within seven years of marriage after dowry demands. What offence is that?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "80"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "80",
+    "case": null,
+    "cos": 0.714,
+    "rr": 0.902
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "cos": 0.565,
+    "rr": 0.612
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Kahkashan Kausar @ Sonam v State of Bihar",
+    "cos": 0.545,
+    "rr": 0.499
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "cos": 0.542,
+    "rr": 0.514
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "cos": 0.539,
+    "rr": 0.498
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Arnesh Kumar v State of Bihar",
+    "cos": 0.399,
+    "rr": 0.472
+   }
+  ]
+ },
+ {
+  "q": "What is cruelty by a husband or his relatives against a wife under the law?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "85",
+    "86"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "85",
+    "case": null,
+    "cos": 0.659,
+    "rr": 0.92
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "86",
+    "case": null,
+    "cos": 0.592,
+    "rr": 0.682
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Lokesh B.H v State of Karnataka",
+    "cos": 0.427,
+    "rr": 0.729
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Sri Manjunath M P v State of Karnataka",
+    "cos": 0.408,
+    "rr": 0.585
+   }
+  ]
+ },
+ {
+  "q": "What is the offence of rioting and what is an unlawful assembly?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "189",
+    "191"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "191",
+    "case": null,
+    "cos": 0.742,
+    "rr": 0.924
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Johnson V.U. v State of Kerala",
+    "cos": 0.49,
+    "rr": 0.456
+   }
+  ]
+ },
+ {
+  "q": "What is the punishment for voluntarily causing grievous hurt?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "117"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "117",
+    "case": null,
+    "cos": 0.708,
+    "rr": 0.952
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "119",
+    "case": null,
+    "cos": 0.665,
+    "rr": 0.938
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "122",
+    "case": null,
+    "cos": 0.643,
+    "rr": 0.931
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "115",
+    "case": null,
+    "cos": 0.635,
+    "rr": 0.841
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Mathai v State of Kerala",
+    "cos": 0.556,
+    "rr": 0.684
+   }
+  ]
+ },
+ {
+  "q": "What is the offence of defamation?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "356"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "356",
+    "case": null,
+    "cos": 0.592,
+    "rr": 0.746
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Johnson V.U. v State of Kerala",
+    "cos": 0.472,
+    "rr": 0.429
+   }
+  ]
+ },
+ {
+  "q": "An employee kept money that his employer had entrusted to him. What offence is that?",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "316"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "316",
+    "case": null,
+    "cos": 0.543,
+    "rr": 0.68
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "315",
+    "case": null,
+    "cos": 0.517,
+    "rr": 0.574
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "344",
+    "case": null,
+    "cos": 0.506,
+    "rr": 0.543
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "306",
+    "case": null,
+    "cos": 0.473,
+    "rr": 0.652
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Satishchandra Ratanlal Shah v State of Gujarat",
+    "cos": 0.412,
+    "rr": 0.677
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.404,
+    "rr": 0.792
+   }
+  ]
+ },
+ {
+  "q": "What is kidnapping from lawful guardianship?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "137"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "137",
+    "case": null,
+    "cos": 0.672,
+    "rr": 0.912
+   }
+  ]
+ },
+ {
+  "q": "What is the punishment for rape?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "64"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "65",
+    "case": null,
+    "cos": 0.64,
+    "rr": 0.79
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "70",
+    "case": null,
+    "cos": 0.631,
+    "rr": 0.764
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "64",
+    "case": null,
+    "cos": 0.63,
+    "rr": 0.835
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Rakhi Mitra and Anr v State of West Bengal",
+    "cos": 0.437,
+    "rr": 0.478
+   }
+  ]
+ },
+ {
+  "q": "What is the punishment for voluntarily hurting someone?",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "115"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "115",
+    "case": null,
+    "cos": 0.68,
+    "rr": 0.893
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "119",
+    "case": null,
+    "cos": 0.676,
+    "rr": 0.844
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "117",
+    "case": null,
+    "cos": 0.666,
+    "rr": 0.864
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "122",
+    "case": null,
+    "cos": 0.662,
+    "rr": 0.845
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "118",
+    "case": null,
+    "cos": 0.624,
+    "rr": 0.842
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Mathai v State of Kerala",
+    "cos": 0.51,
+    "rr": 0.466
+   },
+   {
+    "type": "judgment",
+    "act": null,
+    "sec": "",
+    "case": "Usha Chakraborty v State of West Bengal",
+    "cos": 0.495,
+    "rr": 0.705
+   }
+  ]
+ },
+ {
+  "q": "Someone deliberately damaged my shop's shutter. What offence is that?",
+  "state": "conflicting_matches",
+  "exp": {
+   "BNS": [
+    "324"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "324",
+    "case": null,
+    "cos": 0.487,
+    "rr": 0.54
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "302",
+    "case": null,
+    "cos": 0.481,
+    "rr": 0.396
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "326",
+    "case": null,
+    "cos": 0.476,
+    "rr": 0.438
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "346",
+    "case": null,
+    "cos": 0.45,
+    "rr": 0.428
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "33",
+    "case": null,
+    "cos": 0.432,
+    "rr": 0.461
+   }
+  ]
+ },
+ {
+  "q": "What is criminal trespass?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "329"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "329",
+    "case": null,
+    "cos": 0.633,
+    "rr": 0.816
+   }
+  ]
+ },
+ {
+  "q": "Someone broke into my house at night to steal. What offence is that?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "331"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "331",
+    "case": null,
+    "cos": 0.548,
+    "rr": 0.712
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "330",
+    "case": null,
+    "cos": 0.524,
+    "rr": 0.537
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "332",
+    "case": null,
+    "cos": 0.524,
+    "rr": 0.631
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "41",
+    "case": null,
+    "cos": 0.511,
+    "rr": 0.508
+   },
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "329",
+    "case": null,
+    "cos": 0.496,
+    "rr": 0.495
+   }
+  ]
+ },
+ {
+  "q": "What counts as organised crime under the new law?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "111"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "111",
+    "case": null,
+    "cos": 0.538,
+    "rr": 0.774
+   }
+  ]
+ },
+ {
+  "q": "Is speaking or writing to excite secession or armed rebellion an offence?",
+  "state": "single_match",
+  "exp": {
+   "BNS": [
+    "152"
+   ]
+  },
+  "rows": [
+   {
+    "type": "statute",
+    "act": "BNS",
+    "sec": "152",
+    "case": null,
+    "cos": 0.667,
+    "rr": 0.934
+   }
+  ]
+ }
+]

@@ -1,0 +1,72 @@
+== FRESH (36 questions, not used to choose anything)
+  questions: 36
+  returned_expected: 36
+  gate_drops_expected: 3
+  emptied: 0
+  statutes_total: 109
+  statutes_gate_keeps: 88
+  unexpected_statutes: 73
+  unexpected_gate_drops: 18
+  K1_rescues_expected: 1
+  K1_rescues_unexpected: 0
+  K1_keeps_total: 89
+  K2_rescues_expected: 1
+  K2_rescues_unexpected: 2
+  K2_keeps_total: 91
+  rescues (K, section, rerank, status):
+    ('The police will not register my complaint of a cognizable offence. Wha', 1, 'BNSS 175', 0.424, 'EXPECTED')
+    ('The police will not register my complaint of a cognizable offence. Wha', 2, 'BNSS 175', 0.424, 'EXPECTED')
+    ('How long can the police investigation go on before the accused becomes', 2, 'BNSS 189', 0.44, 'not expected')
+    ("Someone deliberately damaged my shop's shutter. What offence is that?", 2, 'BNS 326', 0.438, 'not expected')
+== OLD (47 questions that chose the floors; cost side only)
+  questions: 29
+  returned_expected: 24
+  gate_drops_expected: 0
+  emptied: 1
+  statutes_total: 73
+  statutes_gate_keeps: 61
+  unexpected_statutes: 49
+  unexpected_gate_drops: 12
+  K1_rescues_expected: 0
+  K1_rescues_unexpected: 1
+  K1_keeps_total: 62
+  K2_rescues_expected: 0
+  K2_rescues_unexpected: 1
+  K2_keeps_total: 62
+== FRESH: every expected section: retrieved? rerank?
+   Can the police keep me at the police station for more than 24 hours  | {'BNSS 187': 'not retrieved', 'BNSS 58': 0.765}
+   My brother is accused of a non-bailable offence and the magistrate r | {'BNSS 480': 0.693, 'BNSS 483': 'not retrieved'}
+   I think the police will arrest me in a false complaint. Can I get ba | {'BNSS 482': 0.532}
+   Is bail automatic when the offence is bailable and I am arrested? | {'BNSS 478': 0.652}
+   I have been in jail as an undertrial for more than half of the longe | {'BNSS 479': 0.748}
+   The prosecution says I broke my bail conditions. Can the court send  | {'BNSS 483': 0.375}
+   The person who stood surety for my relative wants to withdraw. How d | {'BNSS 489': 0.474}
+   Can a policeman arrest me without a warrant for an offence that carr | {'BNSS 35': 0.81}
+   What must a police officer tell me when arresting me, and whom must  | {'BNSS 47': 0.655, 'BNSS 48': 0.718}
+   The police will not register my complaint of a cognizable offence. W | {'BNSS 173': 0.552, 'BNSS 175': 0.424}
+   How long can the police investigation go on before the accused becom | {'BNSS 187': 0.496}
+  MISS  Can the High Court cancel an FIR that is false and malicious? | {'BNSS 528': 'not retrieved'}
+  MISS  Can the parties settle a case and have it ended? | {'BNSS 359': 'not retrieved'}
+   Can the police force me to answer all their questions in an investig | {'BNSS 180': 0.635}
+  MISS  How must a court summons be served on me? | {'BNSS 63': 'not retrieved'}
+   How can an accused ask the Sessions Court to discharge him before ch | {'BNSS 250': 'not retrieved', 'BNSS 251': 0.431}
+   Is a victim of crime entitled to compensation? | {'BNSS 396': 0.658}
+   Must a person who is arrested be examined by a doctor? | {'BNSS 53': 0.88}
+   What is the punishment for cheating someone out of money? | {'BNS 318': 0.492}
+   What is the punishment for murder? | {'BNS 103': 0.83}
+   My neighbour sent me a message threatening to kill me. What offence  | {'BNS 351': 0.64}
+   A man keeps following a woman and messaging her after she refused. I | {'BNS 78': 0.871}
+   A bride died within seven years of marriage after dowry demands. Wha | {'BNS 80': 0.902}
+   What is cruelty by a husband or his relatives against a wife under t | {'BNS 85': 0.92, 'BNS 86': 0.682}
+   What is the offence of rioting and what is an unlawful assembly? | {'BNS 189': 'not retrieved', 'BNS 191': 0.924}
+   What is the punishment for voluntarily causing grievous hurt? | {'BNS 117': 0.952}
+   What is the offence of defamation? | {'BNS 356': 0.746}
+   An employee kept money that his employer had entrusted to him. What  | {'BNS 316': 0.68}
+   What is kidnapping from lawful guardianship? | {'BNS 137': 0.912}
+   What is the punishment for rape? | {'BNS 64': 0.835}
+   What is the punishment for voluntarily hurting someone? | {'BNS 115': 0.893}
+   Someone deliberately damaged my shop's shutter. What offence is that | {'BNS 324': 0.54}
+   What is criminal trespass? | {'BNS 329': 0.816}
+   Someone broke into my house at night to steal. What offence is that? | {'BNS 331': 0.712}
+   What counts as organised crime under the new law? | {'BNS 111': 0.774}
+   Is speaking or writing to excite secession or armed rebellion an off | {'BNS 152': 0.934}
