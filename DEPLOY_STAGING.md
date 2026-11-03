@@ -597,3 +597,11 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 5. **YOU. Send me the Word file, and the `RELEVANCE_GATE` and `GROUNDING_CHECK` log lines if you can find them.**
 **Way back:** no switch; tell me which part to undo. `REGISTER_HOOKS=off` removes the register lines altogether.
 
+## Part 4ap: the cited sub-section in the sections box, the headnote note, one Source label, one second search (added 2026-11-03; owner's "Build A, B, C and E; run D first"; Recourse branch `register-hooks-and-overlay` `2429f6a`, `recourse-web` `main` `eb39690`; FOLLOW_UPS 2dd)
+**What changed.** (A) Under 'The sections and judgments this answer rests on', a section that the answer cites by sub-section (BNSS 483(3)) shows that sub-section even when the 900-character cut would have stopped before it. (B) A passage that is a law reporter's headnote (page markers such as [419 E-F]) is marked as one for the model and on the page and in the download. (C) The download's table of authorities has no Source column when every row has the same source. (E) The wider search runs one second search per corrector name per question instead of one per flagged case. **D (the 'neighbours' gate rule) was only measured and NOT built: `RELEVANCE_GATE` stays `log`.** Not tried with the answer model.
+1. **YOU. Redeploy `staging-api`, `staging-site` and `staging-web` on the newest commits. Nothing to set; keep `RELEVANCE_GATE=log`.**
+2. **YOU. Repeat the two anticipatory-bail questions in one new chat (For lawyers) and download the Word file.**
+3. **Check:** the box under each answer shows 'BNSS Section 483' with the first line, `[...]` and sub-section (3); the Sibbia passage (if the answer names it) has the line 'This passage is the law reporter's headnote ...' under it, and the answer does not put its words in quotation marks as what the Court held; the table of authorities has no 'Source' column and its heading says 'wider search (not independently verified)'; in the `staging-api` log the follow-up shows ONE `sci_search_second` cost line per corrector name (before: four).
+4. **YOU. Send me the Word file, and the `CHAT_TURN`, `CARRY_FORWARD`, `RELEVANCE_GATE` and `GROUNDING_CHECK` lines.**
+**Way back:** `HEADNOTE_NOTE=off` removes the headnote note; the other changes have no switch.
+
