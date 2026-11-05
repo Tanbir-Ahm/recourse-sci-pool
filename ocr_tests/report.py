@@ -34,6 +34,57 @@ def original(t):
     return (t.split("TRANSLATION", 1)[0] if t and "TRANSLATION" in t else t or "").replace("TRANSCRIPTION:", "").strip()
 
 
+def _box(items):
+    """The 'Read these first' box: the places where the tool found something a reader must look at on the page, one line each. Nothing here says what is right."""
+    if not items:
+        return ""
+    return ("<div style='border:2px solid #b45309;background:#fff7ed;padding:8px 12px;margin:8px 0'><h2 style='border:none;margin:0 0 4px'>Read these first</h2>"
+            "<p class=small>Each line is a place where the readings disagree, a correction or a stamp is on the page, or the reader said a passage did not make sense as written. "
+            "Look at each on the page image. This list is a reading order, not a verdict.</p><ol style='margin:4px 0 0 18px'>%s</ol></div>" % "".join("<li>%s</li>" % i for i in items))
+
+
+def _marked_sentences(english, marks=("<doubtful:", "[sic]", "(?)", "[unclear]", "~~", "[stamp over text]", "[struck: ?]")):
+    return [x for x in checker.english_sentences("TRANSLATION\n" + (english or "")) if any(m in x for m in marks)]
+
+
+def read_first_page(check):
+    items = []
+    for c in check.get("corrections", []):
+        if c["kind"] in checker.CORRECTION_KINDS and c["where"] == "original":
+            items.append("<b>%s</b>%s &mdash; line: <i>%s</i>%s" % (esc(c["kind"]), (" '%s'" % esc(c["text"])) if c["text"] else "", esc(c["line"]),
+                                                                    "" if c.get("in_all", True) else " &mdash; <b>marked in only some of the readings (%s)</b>" % esc(", ".join(c["views"]))))
+    for c in check.get("corrections", []):
+        if c["kind"] == "doubtful reading, explained" and c["where"] == "English" and c.get("in_all", True) is not None:
+            items.append("<b>doubtful reading explained by the reader</b>: %s &mdash; <i>%s</i>" % (esc(c["text"]), esc(c["line"])))
+            break
+    tb = {(t["type"], t["view1"], t["view2"]): t["third_view"] for t in check.get("third_view_on_disagreements", [])}
+    for i in check.get("must_check", []):
+        if i["status"] == "DISAGREE":
+            items.append("<b>%s</b> read differently: %s against %s (third view: %s)" % (esc(i["type"]), esc(str(i["A"])) if i["A"] else "<i>not found</i>", esc(str(i["B"])) if i["B"] else "<i>not found</i>", esc(tb.get((i["type"], i["A"], i["B"]), "not run"))))
+    for c in check.get("third_view_contradicts", []):
+        items.append("<b>%s</b>: views 1 and 2 agree on %s but the ultra-high view reads %s" % (esc(c["type"]), esc(str(c["views_1_and_2"])), esc(str(c["third_view"]))))
+    for w in (check.get("english_wobble") or [])[:4]:
+        items.append("<b>sentence changed between the readings</b>: &ldquo;%s&rdquo; against &ldquo;%s&rdquo;" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")))
+    return _box(items)
+
+
+def read_first_document(check, english1=""):
+    items = []
+    for d in check.get("page_disagreements", []):
+        items.append("<b>%s</b> on page %s: the readings give %s and %s (third view: %s). Not confirmed, although the translations agree." % (esc(d["type"]), esc(str(d["page"])), esc(str(d["A"])), esc(str(d["B"])), esc(d.get("third_view") or "not run")))
+    seen = set()
+    for c in check.get("corrections", []):
+        if c["kind"] in checker.CORRECTION_KINDS and c["where"] == "original":
+            k = (c["kind"], c["text"], c.get("page"))
+            if k not in seen:
+                seen.add(k); items.append("<b>%s</b>%s on page %s &mdash; <i>%s</i>" % (esc(c["kind"]), (" '%s'" % esc(c["text"])) if c["text"] else "", esc(str(c.get("page", "?"))), esc(c["line"])))
+    for x in _marked_sentences(english(english1) or english1)[:6]:
+        items.append("<b>marked passage</b>: &ldquo;%s&rdquo;" % esc(x))
+    for w in (check.get("english_wobble") or [])[:4]:
+        items.append("<b>sentence changed between the two translations</b>: &ldquo;%s&rdquo; against &ldquo;%s&rdquo;" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")))
+    return _box(items)
+
+
 def build(pid, check, readings, image_path=None, language="", cost_inr=None):
     """check: a result of checker.check_page or checker.check_text_page. readings: {'view1','view2','view3'} for an image page, or
     {'text','english1','english2'} for a PDF page whose own text was used."""
@@ -45,6 +96,7 @@ def build(pid, check, readings, image_path=None, language="", cost_inr=None):
     h.append("<div style='border:2px solid %s;padding:8px 10px;margin:8px 0'><b style='color:%s;font-size:14pt'>%s</b> &nbsp; %s<ul style='margin:6px 0 0 18px'>%s</ul>%s</div>" % (
         col, col, check["light"].upper(), esc(check["person_task"]), why,
         ("<p class=small>The two views agree on %s%% of letters. Cut-offs are a first guess.</p>" % agr["percent"]) if agr else ""))
+    h.append(read_first_page(check))
     if image_path and os.path.exists(image_path):
         ext = os.path.splitext(image_path)[1].lower().lstrip(".")
         h.append("<div class=pageimg><img src='data:image/%s;base64,%s'></div>" % ({"jpg": "jpeg"}.get(ext, ext), base64.b64encode(open(image_path, "rb").read()).decode()))
@@ -104,6 +156,7 @@ def build_document(name, check, source, english1, english2, language="", cost_in
          "<div class=warn><b>Machine draft. Not a certified translation.</b> The pages were read by a model, joined into one text and translated twice. A person who reads the language must read all of it against the original and check every name, date, number, amount and section reference. Two translations that agree can both be wrong; names are written by sound and the original-script word is in square brackets for you to check.</div>"]
     why = "".join("<li><b>Red:</b> %s</li>" % esc(r) for r in check["reasons_red"]) + "".join("<li>Amber: %s</li>" % esc(r) for r in check["reasons_amber"])
     h.append("<div style='border:2px solid %s;padding:8px 10px;margin:8px 0'><b style='color:%s;font-size:14pt'>%s</b> &nbsp; %s<ul style='margin:6px 0 0 18px'>%s</ul></div>" % (col, col, check["light"].upper(), esc(check["person_task"]), why))
+    h.append(read_first_document(check, english1))
     nd = check.get("name_differences")
     if nd:
         h.append("<h2>Names and titles that only one translation has (check each against the original-script word)</h2><table><tr><th>Translation 1 only</th><th>Translation 2 only</th></tr><tr><td>%s</td><td>%s</td></tr></table>" % (
@@ -164,6 +217,17 @@ def selftest():
     D = "TRANSLATION\nRamesh [rama] came. <b>x</b> Clause 2 applies."
     d = build_document("doc1", checker.check_document("source <i> dated 15-02-2020", D, D.replace("came", "went")), "source <i>", D, D, "Kannada", 3.0)
     assert "Machine draft. Not a certified translation." in d and "Translation 1 (the one to read)" in d and "<b>x</b>" not in d and "<i>" not in d.replace("<i>not", "") and "https://" not in d
+    # 10ak: the "Read these first" box
+    P1 = "TRANSCRIPTION\n1. x\nThe ~~victim~~ ^witness^ is escorted\nTRANSLATION\nThe ~~victim~~ ^witness^ is escorted."
+    P2 = "TRANSCRIPTION\n1. x\nThe witness is escorted\nTRANSLATION\nThe witness is escorted."
+    hp = build("hw", checker.check_page("handwritten", P1, P2), {"view1": P1, "view2": P2})
+    assert "Read these first" in hp and "struck out" in hp and "victim" in hp and "only some of the readings" in hp, "a correction and a one-view mark are listed first"
+    assert "Read these first" not in build("ty", checker.check_page("typed", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b."), {"view1": "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "view2": "TRANSCRIPTION\n1. x\nTRANSLATION\nA b."}), "no box on a clean page"
+    en = "TRANSLATION\nDated 02/4/25. Sometimes <doubtful: written 'when', likely meant 'sometimes'> he came. Total paid."
+    cd = checker.check_document("1. dated ০২/৪/২৫ end", en, en, page_items=[{"page": 2, "status": "DISAGREE", "type": "date", "A": "02/4/25", "B": "9/4/25", "third_view": "view 2"}],
+                                page_corrections=[{"kind": "struck out", "text": "victim", "where": "original", "line": "The ~~victim~~ is", "page": 2}])
+    hd = build_document("hw", cd, "1. dated ০২/৪/২৫ end", en, en)
+    assert "Read these first" in hd and "page 2" in hd and "9/4/25" in hd and "marked passage" in hd and "victim" in hd, hd[:300]
     print("selftest OK (invented text only)")
 
 

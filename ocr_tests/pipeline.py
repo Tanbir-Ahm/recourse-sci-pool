@@ -64,10 +64,24 @@ def reading(ledger, out, page):
     return open(os.path.join(out, r["outfile"]), encoding="utf8").read(), (r.get("finish") if r["status"] == "ok" else "INCOMPLETE")
 
 
-def read_pages(out, folder, runs_args, caller, media=None):
+def prompt_chooser(args, types):
+    """A function page id -> reading prompt. A handwritten page gets prompts/read_translate_marked.txt (marks for crossed-out words, insertions and stamps over text, and the
+    rule never to write a garbled sentence; plan 10ak) when --marks is auto or on; a typed page gets the plain prompt unless --marks on."""
+    plain = open(os.path.join(HERE, "prompts", "read_translate.txt"), encoding="utf8").read().format(language=args.language)
+    marked = open(os.path.join(HERE, "prompts", "read_translate_marked.txt"), encoding="utf8").read().format(language=args.language)
+    mode = getattr(args, "marks", "auto")
+
+    def choose(page):
+        pid = page.split("__view")[0]
+        t = types.get(pid, args.page_type)
+        return marked if (mode == "on" or (mode == "auto" and t == "handwritten")) else plain
+    return choose
+
+
+def read_pages(out, folder, runs_args, caller, media=None, prompt_for=None):
     """Run the harness over a folder of views (a view file is <page>__view<N>.<ext>); media sets the image-detail setting for this run only."""
     ns = SimpleNamespace(pages=folder, out=out, models_file=None, prompt=None, language=runs_args.language, runs=1, model_list=[MODEL],
-                         budget_inr=runs_args.budget_inr, max_calls=None, force=False)
+                         budget_inr=runs_args.budget_inr, max_calls=None, force=False, prompt_for=prompt_for)
     harness.MEDIA_RESOLUTION = media
     try:
         harness.run(ns, caller)
@@ -116,12 +130,49 @@ def page_source(rd):
     return None, "no complete reading"
 
 
-def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known):
+def document_mode(args, pages, types):
+    """'text' (the joined original-script text translated twice, text only) or 'english' (the per-page English joined). --stitch auto: a document with a handwritten page
+    uses 'english', because a text-only translation cannot see the image and made one sentence nonsense on a real affidavit (10ak); a typed document uses 'text'."""
+    if args.stitch in ("text", "english"):
+        return args.stitch
+    return "english" if any(types.get(pid, args.page_type) == "handwritten" for pid in pages.values()) else "text"
+
+
+def join_english(pages, readings, view, fin):
+    """The English of each page's reading (view 1 or view 2) joined into one text, with the seams repaired by stitch.py (a sentence that ran over a page break is joined)."""
+    eng = {}
+    for n in sorted(pages):
+        rd = readings[pages[n]]
+        t = rd.get(view) if rd.get(fin) == "STOP" else None
+        if t is None:
+            t = rd.get("view2" if view == "view1" else "view1")          # the other view when this one did not finish
+        e = report.english(t or "")
+        if e:
+            eng[n] = e
+    text, _ = stitch.stitch_pages(eng) if eng else ("", [])
+    return text, eng
+
+
+def page_evidence(pages, results):
+    """What the readings of each page showed: the must-check values the views disagree on (with the third view's side) and the corrections marked on the page."""
+    items, corr = [], []
+    for n in sorted(pages):
+        r = (results or {}).get(pages[n]) or {}
+        tb = {(t["type"], t["view1"]): t["third_view"] for t in (r.get("third_view_on_disagreements") or [])}
+        for i in r.get("must_check") or []:
+            if i.get("status") == "DISAGREE":
+                items.append({"page": n, "status": "DISAGREE", "type": i["type"], "A": i.get("A"), "B": i.get("B"), "third_view": tb.get((i["type"], i.get("A")))})
+        corr += [dict(c, page=n) for c in (r.get("corrections") or [])]
+    return items, corr
+
+
+def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known, results=None, types=None):
     """Join each document's pages and translate the joined text twice. Returns a list of summary rows; writes RUN/document/<name>_*."""
     docs = group_documents(readings)
     rows = []
     if args.stitch == "off" or not docs:
         return rows
+    results, types = results or {}, types or {}
     prompt = open(os.path.join(HERE, "prompts", "translate_stitched.txt"), encoding="utf8").read().format(language=args.language)
     key = os.environ.get(models[MODEL]["key_env"], "")
     os.makedirs(os.path.join(out, "document"), exist_ok=True)
@@ -141,6 +192,21 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
             continue
         text, joins = stitch.stitch_pages(src)
         joins = notes + joins
+        mode = document_mode(args, pages, types)
+        page_items, page_corr = page_evidence(pages, results)
+        if mode == "english":                                  # handwritten: the English of the pages (made WITH the image) joined, not a text-only translation of the joined text (10ak)
+            e1t, j1 = join_english(pages, readings, "view1", "f1"); e2t, j2 = join_english(pages, readings, "view2", "f2")
+            e1, e2, f1, f2 = "TRANSLATION\n" + e1t, "TRANSLATION\n" + e2t, "STOP" if e1t else None, "STOP" if e2t else None
+            chk = checker.check_document(text, e1, e2, known, f1, f2, joins, page_items, page_corr)
+            chk["translation_mode"] = "english of the pages, joined (made with the page images)"
+            d = os.path.join(out, "document")
+            for suffix, body in (("_source.txt", text), ("_translation_1.txt", e1t), ("_translation_2.txt", e2t)):
+                open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
+            json.dump(chk, open(os.path.join(d, name + "_check.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
+            open(os.path.join(d, name + "_document.html"), "w", encoding="utf8").write(report.build_document(name, chk, text, e1, e2, args.language))
+            rows.append({"document": name, "pages": len(pages), "light": chk["light"], "reasons": chk["reasons_red"] + chk["reasons_amber"],
+                         "page_joins": sum(j["action"].startswith("joined") for j in joins), "translation_mode": "english"})
+            continue
         ledger = harness.read_ledger(ledger_path)
         for n in (1, 2):
             page = "%s_full__t%d" % (name, n)
@@ -153,7 +219,8 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
             print("%s %s: %s, Rs %.2f" % (page, MODEL, rec["status"], rec["cost_inr"]), flush=True)
         ledger = harness.read_ledger(ledger_path)
         (e1, f1), (e2, f2) = reading(ledger, out, name + "_full__t1"), reading(ledger, out, name + "_full__t2")
-        chk = checker.check_document(text, e1 or "", e2 or "", known, f1, f2, joins)
+        chk = checker.check_document(text, e1 or "", e2 or "", known, f1, f2, joins, page_items, page_corr)
+        chk["translation_mode"] = "text of the pages, joined and translated twice"
         d = os.path.join(out, "document")
         for suffix, body in (("_source.txt", text), ("_translation_1.txt", report.english(e1 or "") or (e1 or "")), ("_translation_2.txt", report.english(e2 or "") or (e2 or ""))):
             open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
@@ -231,7 +298,8 @@ def run_pipeline(args, caller=None, text_caller=None):
     work, orientation = orient_pages(args, out, work, ledger_path, models, fx, caller, getattr(args, "osd_fn", None))
     if work:                                                   # views 1 and 2 of every page image
         vd, files = make_views(work, out)
-        read_pages(out, vd, args, caller)
+        chooser = prompt_chooser(args, types)
+        read_pages(out, vd, args, caller, prompt_for=chooser)
         ledger = harness.read_ledger(ledger_path)
         for pid in files:
             t1, f1 = reading(ledger, out, pid + "__view1"); t2, f2 = reading(ledger, out, pid + "__view2")
@@ -243,7 +311,7 @@ def run_pipeline(args, caller=None, text_caller=None):
             v3 = os.path.join(out, "_views3"); os.makedirs(v3, exist_ok=True)
             for pid in flagged:
                 src = files[pid]["original"]; shutil.copyfile(src, os.path.join(v3, pid + "__view3" + os.path.splitext(files[pid]["view1"])[1]))
-            read_pages(out, v3, args, caller, media="ultra_high")
+            read_pages(out, v3, args, caller, media="ultra_high", prompt_for=chooser)
             ledger = harness.read_ledger(ledger_path)
             for pid in flagged:
                 t3, f3 = reading(ledger, out, pid + "__view3"); readings[pid]["view3"] = t3
@@ -265,7 +333,7 @@ def run_pipeline(args, caller=None, text_caller=None):
                 results[pid].setdefault("notes", []).append("The page was photographed turned: it was turned %d degrees clockwise before reading (%s)." % (d["rotate"], d.get("why")))
             elif d.get("status") == "doubtful":
                 results[pid]["reasons_amber"].append("the page may be photographed turned (%s): check which way up it is" % d.get("why"))
-    doc_rows = stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known)
+    doc_rows = stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known, results, types)
     ledger = harness.read_ledger(ledger_path)
     cost = harness.spent_inr(ledger)
     for sub in ("checks", "report", "marksheets"):
@@ -387,6 +455,39 @@ def selftest():
         run_pipeline(args3, fake, fake_text)
         assert not os.path.exists(os.path.join(td, "run3", "document")), "--stitch off writes no document"
         assert all(x["light"] != "green" for x in s2.values() if x["page"] != "doc_p1"), s2         # handwriting is never green; the budget stops the run early
+        # 10ak: a handwritten two-page document: the marked prompt, the pages' own English joined (no text-only translation call), page disagreements carried to the document view
+        ihw = os.path.join(td, "in_hw"); os.makedirs(ihw)
+        Image.new("RGB", (300, 200), "white").save(os.path.join(ihw, "hw_p1.png")); Image.new("RGB", (301, 200), "white").save(os.path.join(ihw, "hw_p2.png"))
+        hw = {"prompts": [], "text_calls": 0}
+        def fake_hw(model, key, system, image, mime):
+            if system == orient.PROMPT:
+                return {"ok": True, "attempts": 1, "text": "UPRIGHT", "ttft": 0.5, "total": 0.6, "finish": "STOP", "prompt_tokens": 300, "output_tokens": 3, "thinking_tokens": 0}
+            hw["prompts"].append(system)
+            w = Image.open(__import__("io").BytesIO(image)).size[0]
+            page2, view1 = w in (301, 337), w in (300, 301) and harness.MEDIA_RESOLUTION != "ultra_high"      # the ultra-high view reads like view 2 here
+            if not page2:
+                body = ("TRANSCRIPTION\nThe ~~victim~~ ^witness^ is escorted\nTRANSLATION\nThe ~~victim~~ ^witness^ is escorted. It ends here." if view1
+                        else "TRANSCRIPTION\nThe witness is escorted\nTRANSLATION\nThe witness is escorted. It ends here.")
+            else:
+                d = "02/4/25" if view1 else "9/4/25"
+                body = "TRANSCRIPTION\n1. dated %s end\nTRANSLATION\nDated %s here. Sometimes <doubtful: written 'when', likely meant 'sometimes'> he came." % (d, d)
+            return {"ok": True, "attempts": 1, "text": body, "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 1000, "output_tokens": 500, "thinking_tokens": 0}
+        def fake_hw_text(model, key, system, text):
+            hw["text_calls"] += 1
+            return {"ok": True, "attempts": 1, "text": "TRANSLATION\nx.", "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 500, "output_tokens": 300, "thinking_tokens": 0}
+        ah = argparse.Namespace(**{**vars(args), "input": ihw, "out": os.path.join(td, "run_hw"), "page_type": "handwritten", "third_view": "auto", "language": "Assamese"})
+        run_pipeline(ah, fake_hw, fake_hw_text)
+        assert hw["prompts"] and all("~~word~~" in x for x in hw["prompts"]), "every handwritten page is read with the marked prompt"
+        assert hw["text_calls"] == 0, "a handwritten document is not translated from its joined text"
+        dj = json.load(open(os.path.join(td, "run_hw", "document", "hw_check.json")))
+        assert dj["translation_mode"].startswith("english") and dj["light"] == "amber", dj["translation_mode"]
+        assert dj["page_disagreements"] and dj["page_disagreements"][0]["A"] == "02/4/25" and dj["page_disagreements"][0]["third_view"] == "view 2", dj["page_disagreements"]
+        assert any(i["status"] == "DISAGREE" and i["type"] == "date" for i in dj["must_check"]) and dj["corrections"], dj["must_check"]
+        assert any("stay unconfirmed" in r for r in dj["reasons_amber"]) and "~~victim~~" in open(os.path.join(td, "run_hw", "document", "hw_translation_1.txt")).read()
+        ah2 = argparse.Namespace(**{**vars(ah), "out": os.path.join(td, "run_hw2"), "stitch": "text", "marks": "off"}); hw["prompts"].clear()
+        run_pipeline(ah2, fake_hw, fake_hw_text)
+        assert hw["text_calls"] == 2 and not any("~~word~~" in x for x in hw["prompts"]), "--stitch text and --marks off restore the old way"
+        assert json.load(open(os.path.join(td, "run_hw2", "document", "hw_check.json")))["page_disagreements"], "page disagreements are carried in this mode too"
     finally:
         pdf_triage.tesseract_read = real
     print("selftest OK (fake callers; no network, no cost)")
@@ -401,7 +502,8 @@ if __name__ == "__main__":
     ap.add_argument("--orient", choices=("auto", "off"), default="auto", help="auto: turn a page that was photographed sideways or upside down before reading it")
     ap.add_argument("--glossary", help="a glossary CSV (see glossary/assamese_legal.csv) that replaces the one for --language; words with a settled legal meaning, notes only")
     ap.add_argument("--designations", help="a file of official titles (one per line) that replaces ocr_tests/designations.txt; used only to flag a title close to a known one")
-    ap.add_argument("--stitch", choices=("auto", "off"), default="auto", help="auto: join the pages of each PDF of 2 or more pages and translate the joined text twice")
+    ap.add_argument("--stitch", choices=("auto", "off", "text", "english"), default="auto", help="auto: join the pages of each document of 2 or more pages; a typed document is translated as joined text (twice), a document with a handwritten page is the pages' own English joined (they were made with the images); text or english forces one way")
+    ap.add_argument("--marks", choices=("auto", "on", "off"), default="auto", help="auto: handwritten pages are read with the marked prompt (crossed-out words, insertions, stamps over text, doubtful readings explained); on: every page; off: never")
     ap.add_argument("--pdf", action="store_true", help="also print the reports to PDF (needs Node and Playwright)")
     ap.add_argument("--pdf-reader", dest="pdf_reader", choices=("tesseract", "vision"), default="tesseract", help="vision sends each PDF page to Google")
     ap.add_argument("--pdf-lang", dest="pdf_lang", default="asm+eng"); ap.add_argument("--pdf-dpi", dest="pdf_dpi", type=int, default=200)

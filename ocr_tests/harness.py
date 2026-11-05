@@ -201,6 +201,7 @@ def collect_pages(args):
 def run(args, caller=call_gemini):
     models, fx = load_models(args.models_file)
     prompt = open(args.prompt or os.path.join(HERE, "prompts", "read_translate.txt")).read().format(language=args.language)
+    prompt_for = getattr(args, "prompt_for", None)          # optional: a function page id -> prompt text (pipeline.py uses it to give handwritten pages the marked prompt)
     os.makedirs(args.out, exist_ok=True)
     ledger_path = os.path.join(args.out, "ledger.jsonl")
     ledger = read_ledger(ledger_path)
@@ -234,7 +235,7 @@ def run(args, caller=call_gemini):
                     return ledger
                 if args.max_calls is not None and calls >= args.max_calls:
                     print(f"STOP: reached --max-calls {args.max_calls}."); return ledger
-                res = caller(model, key, prompt, img, mime)
+                res = caller(model, key, (prompt_for(page) if prompt_for else prompt), img, mime)
                 calls += 1
                 rec = log_call(args.out, ledger, page, model, run_no, res, models, fx)
                 print(f"{page} {model} run {run_no}: {rec['status']}, {rec['total'] and round(rec['total'],1)} s, Rs {rec['cost_inr']:.2f} (running total Rs {spent_inr(ledger):.2f})", flush=True)

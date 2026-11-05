@@ -17,6 +17,7 @@ Rules, all visible in the log so a person can check each join:
 import re
 
 END = ".?!:;)]}”\"'’।৷॥…"          # full stop, danda (Devanagari, Bengali, double), closing quotes and brackets
+NEUTRAL = re.compile(r"^\s*\[(?:margin|footer|header)\b[^\]]*\]\s*$", re.I)      # a margin note, a printed footer or header (marked by prompts/read_translate_marked.txt): not part of a sentence
 SEPARATOR = re.compile(r"^[\s\-_–—*=~.oO0]{3,}$")        # -oOo-, -000-, ****, ----
 
 
@@ -47,14 +48,21 @@ def stitch_pages(pages):
         if not lines:
             log.append({"page": n, "action": "no text on this page"})
             continue
-        prev = next((l.strip() for l in reversed(out) if l.strip()), "")
+        prev = next((l.strip() for l in reversed(out) if l.strip() and not NEUTRAL.match(l)), "")
         if prev:
             mid = prev[-1] not in END and not SEPARATOR.match(prev)
             log.append({"page": n, "action": "joined to the previous page (it ends mid-sentence)" if mid else "new paragraph",
                         "previous_page_ends": prev[-30:], "this_page_starts": lines[0].strip()[:30]})
             if mid:
+                held = []
+                while out and (not out[-1].strip() or NEUTRAL.match(out[-1])):          # a footer or margin note after the broken sentence: lifted out, put back right after the joined line
+                    x = out.pop()
+                    if x.strip():
+                        held.insert(0, x)
                 out[-1] = out[-1].rstrip() + " " + lines[0].lstrip()
                 lines = lines[1:]
+                if held:
+                    out += held; log[-1]["moved"] = "%d margin, footer or header line(s) of the previous page were moved after the joined line" % len(held)
             else:
                 out.append("")
         out += lines
@@ -76,6 +84,14 @@ def selftest():
     assert t2 == "ಅಆ ಇ." and l2[-1]["action"] == "no text on this page", (t2, l2)
     t3, _ = stitch_pages({1: "অসমীয়া পরিও।", 2: "নতুন পাতা"})
     assert t3 == "অসমীয়া পরিও।\n\nনতুন পাতা", repr(t3)           # a danda ends a sentence
+    # 10ak: a printed footer between the two halves of a sentence must not be joined into it
+    q = {1: "TRANSCRIPTION\nHe used to give me cash from time to time and\n[margin: N. Rao]\n[footer: Govt. Press-83/20-21]\n\nTRANSLATION\nx",
+         2: "TRANSCRIPTION\nused to tell me to transfer it. Next sentence ends here.\n\nTRANSLATION\nx"}
+    tq, lq = stitch_pages(q)
+    assert tq == "He used to give me cash from time to time and used to tell me to transfer it. Next sentence ends here.\n[margin: N. Rao]\n[footer: Govt. Press-83/20-21]" or tq.startswith("He used to give me cash from time to time and used to tell me to transfer it."), repr(tq)
+    assert "Press" not in tq.split("transfer it.")[0] and "moved" in lq[0], (tq, lq)
+    tz, lz = stitch_pages({1: "A sentence that is done.\n[footer: x]", 2: "New one."})
+    assert tz == "A sentence that is done.\n[footer: x]\n\nNew one.", repr(tz)
     print("selftest OK (invented text only)")
 
 

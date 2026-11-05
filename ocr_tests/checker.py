@@ -94,7 +94,9 @@ def extract_items(lines):
         def add(kind, m, value=None):
             items.append({"type": kind, "value": (value or m.group(0)).strip(" ,;:.|"), "norm": norm(value or m.group(0)).strip(" ,;:.|").lower(), "line": ln})
             used.append(m.span())
-        for m in re.finditer(r"\b\d{1,2}\s*[/\-.।৷]\s*\d{1,2}\s*[/\-.।৷]\s*\d{2,4}\b", s): add("date", m)
+        for m in re.finditer(r"\b\d{1,2}\s*[/\-.।৷]\s*\d{1,2}\s*[/\-.।৷]\s*\d{2,4}\b", s):
+            canon = "/".join((q.lstrip("0") or "0") for q in re.split(r"\s*[/\-.।৷]\s*", m.group(0)))          # 09/4/25 and 9/4/25 are the same date
+            items.append({"type": "date", "value": m.group(0).strip(" ,;:.|"), "norm": canon, "line": ln}); used.append(m.span())
         for a, b, canon in month_dates(s):                                                          # a date written with a month name
             items.append({"type": "date", "value": s[a:b].strip(" ,;:.|"), "norm": canon, "line": ln}); used.append((a, b))
         for m in re.finditer(r"(?:₹|Rs\.?|रु(?:पये|\.)?|টকা|ರೂ)\s*[0-9][0-9,.]*|[0-9][0-9,.]*\s*(?:/-|টকা|रुपये|ರೂಪಾಯಿ|rupees)", s, re.I): add("amount", m)
@@ -191,6 +193,15 @@ def agreement(text_a, text_b):
             "share": round(min(len(a), len(b)) / max(len(a), len(b)), 2)}
 
 
+ORDER_OK_AGREE = 95.0       # below the red line in order but at least this with the lines in any order: a block was read in a different place, not different text
+
+
+def agreement_unordered(text_a, text_b):
+    """Agreement with the LINES of each reading sorted first, so a stamp block or a note that one reading put in a different place does not count as different text."""
+    srt = lambda t: "TRANSCRIPTION\n" + "\n".join(sorted(transcription_lines(t)))
+    return agreement(srt(text_a), srt(text_b))
+
+
 _ABBREV = re.compile(r"\b(?:vs|v|no|nos|sec|secs|art|arts|dr|mr|mrs|ms|smt|shri|sri|crl|cri|i\.e|e\.g|etc|viz|cf|ors|anr|pp|para|paras|ltd|st|rs|govt|addl|hon|secy|dept|asst|p\.s)\.|\b(?:[A-Za-z]\.){2,}|\b[A-Z]\.(?=\s*[A-Z\[(])", re.I)
 
 
@@ -243,7 +254,10 @@ def english_terms(text):
             words.pop()
         if words and not (len(words) == 1 and words[0] in _TERM_EDGE) and not all(w in _TERM_EDGE for w in words):
             names.add(" ".join(words))
-    nums = {re.sub(r"[,.]$", "", n).lower() for n in re.findall(r"\d[\d,./]*(?:[A-Z](?![A-Za-z]))?", t) if len(re.sub(r"\D", "", n)) >= 2}
+    def _num(n):
+        n = re.sub(r"[,.]$", "", n).lower()
+        return "/".join((q.lstrip("0") or "0") for q in n.split("/")) if re.fullmatch(r"\d+/\d+/\d+", n) else n          # 09/4/25 and 9/4/25 are one number
+    nums = {_num(n) for n in re.findall(r"\d[\d,./]*(?:[A-Z](?![A-Za-z]))?", t) if len(re.sub(r"\D", "", n)) >= 2}
     return names, nums
 
 
@@ -273,7 +287,47 @@ def reading_problem(text, finish=None):
 def doubtful_marks(text):
     """How many words the reader itself marked as doubtful in the transcription."""
     head = text.split("TRANSLATION")[0] if "TRANSLATION" in text else text
-    return head.count("[unclear]") + head.count("(?)")
+    return head.count("[unclear]") + head.count("(?)") + head.count("[struck: ?]")
+
+
+_MARKS = (("struck out", re.compile(r"~~(.+?)~~", re.S)),
+          ("inserted above the line", re.compile(r"\^([^\^\n]+?)\^")),
+          ("stamp or seal over text", re.compile(r"\[(?:stamp|seal) over text\]", re.I)),
+          ("struck out, unreadable", re.compile(r"\[struck: ?\?\]", re.I)),
+          ("doubtful reading, explained", re.compile(r"<doubtful:\s*([^>]*)>", re.S)))
+CORRECTION_KINDS = ("struck out", "inserted above the line", "stamp or seal over text", "struck out, unreadable")      # what a person must look at on the page; 'doubtful' is a note about meaning
+
+
+def correction_marks(text):
+    """The marks the reader put in (prompts/read_translate_marked.txt) for crossed-out words, words inserted above the line, stamps over writing and doubtful readings it
+    explained, found in the TRANSCRIPTION and in the TRANSLATION part of one reading. [{'kind', 'text', 'where' ('original' or 'English'), 'line'}]. Nothing is judged here."""
+    if not text:
+        return []
+    i = text.rfind("TRANSLATION")
+    parts = (("original", text[:i] if i >= 0 else text), ("English", text[i + len("TRANSLATION"):] if i >= 0 else ""))
+    out = []
+    for where, part in parts:
+        for kind, rx in _MARKS:
+            for m in rx.finditer(part):
+                ls = part.rfind("\n", 0, m.start()) + 1; le = part.find("\n", m.end()); le = len(part) if le < 0 else le
+                out.append({"kind": kind, "text": (m.group(1).strip() if m.groups() else ""), "where": where, "line": re.sub(r"\s+", " ", part[ls:le]).strip()[:140]})
+    return out
+
+
+def merge_marks(reads):
+    """reads: [(view name, reading text)]. The marks of all the readings as one list; each says which views have it (a mark found in only some of the readings is how a
+    crossed-out word that one reading dropped shows up). Marks are matched by kind, part and the flat text; the same stamp twice is matched in order."""
+    merged, count = {}, {}
+    for name, text in reads:
+        seen = {}
+        for m in correction_marks(text):
+            key = (m["kind"], m["where"], _flat(m["text"]))
+            n = seen[key] = seen.get(key, 0) + 1
+            k = key + (n,)
+            if k not in merged:
+                merged[k] = dict(m, views=[])
+            merged[k]["views"].append(name)
+    return [dict(v, in_all=len(v["views"]) == len(reads)) for v in merged.values()]
 
 
 def _flat(s):
@@ -365,7 +419,12 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
         agr = agreement(run1, run2)
         out["agreement_view1_vs_view2"] = agr
         if agr["percent"] < RED_AGREE:
-            red.append("the two views agree on only %.1f%% of letters (red below %.0f%%)" % (agr["percent"], RED_AGREE))
+            un = agreement_unordered(run1, run2)
+            if un["percent"] >= ORDER_OK_AGREE:               # same text, different order of blocks (10ak): amber, not red
+                out["agreement_unordered"] = un
+                amber.append("the two views agree on only %.1f%% of letters in order, but on %.1f%% when the order of the lines is ignored: a block (a stamp, a note) was read in a different place" % (agr["percent"], un["percent"]))
+            else:
+                red.append("the two views agree on only %.1f%% of letters (red below %.0f%%)" % (agr["percent"], RED_AGREE))
         elif agr["percent"] < GREEN_AGREE:
             amber.append("the two views agree on %.1f%% of letters (green needs %.0f%% or more)" % (agr["percent"], GREEN_AGREE))
         if agr.get("share", 1) < DROP_RATIO:
@@ -413,6 +472,19 @@ def check_page(page_type, run1, run2, run3=None, finish1=None, finish2=None, fin
         out["agreement_view1_vs_view2"] = None
         if not red:
             red.append("fewer than two readings: run the second view")
+    reads = [("view 1", run1), ("view 2", run2)] + ([("view 3", run3)] if run3 is not None else [])
+    cm = [m for m in merge_marks([(n, t) for n, t in reads if t and t.strip()])]
+    out["corrections"] = cm
+    seen_c = {(m["kind"], _flat(m["text"])) for m in cm if m["kind"] in CORRECTION_KINDS}
+    if seen_c:
+        amber.append("the reader marked %d correction(s) on the page (crossed-out or inserted words, or a stamp over writing): look at each on the image" % len(seen_c))
+        some = [m for m in cm if m["kind"] in CORRECTION_KINDS and m["where"] == "original" and not m["in_all"]]
+        if some:
+            amber.append("%d correction mark(s) are in only some of the readings (a crossed-out word that one reading kept or dropped without a mark): %s" % (
+                len(some), "; ".join("%s '%s'" % (m["kind"], m["text"]) if m["text"] else m["kind"] for m in some[:4])))
+    dbt = {_flat(m["text"]) for m in cm if m["kind"] == "doubtful reading, explained"}
+    if dbt:
+        amber.append("the reader explained %d doubtful reading(s) (a word that did not make sense as written): look at each on the image" % len(dbt))
     if page_type == "handwritten":
         amber.append("handwriting has no independent machine check: a person must look at every date, number and name")
     light = "red" if red else "amber" if amber else "green"
@@ -466,7 +538,7 @@ def check_text_page(text, english1, english2, known=None):
             "stamp": "Machine draft. Not a certified translation."}
 
 
-def check_document(source, english1, english2, known=None, finish1="STOP", finish2="STOP", joins=None):
+def check_document(source, english1, english2, known=None, finish1="STOP", finish2="STOP", joins=None, page_items=None, page_corrections=None):
     """The check for a WHOLE document translated twice from its joined text (stitch.py). source: the joined original text; english1, english2: the two
     translations (with or without a TRANSLATION heading). Flags only; nothing is marked correct and nothing is corrected.
     Amber for: sentences that changed between the two translations, a name or number that only one translation has, a clause / rule / article /
@@ -512,7 +584,7 @@ def check_document(source, english1, english2, known=None, finish1="STOP", finis
     amber += ["designation check: " + f for f in dflags]
     gl = {}
     _glossary_note(gl, amber, [("translation 1", source, e1), ("translation 2", source, e2)])
-    marks = {m: sum(e.count(m) for e in (e1, e2)) for m in ("[sic]", "(?)", "(spelling unsure)", "[unclear]")}
+    marks = {m: sum(e.count(m) for e in (e1, e2)) for m in ("[sic]", "(?)", "(spelling unsure)", "[unclear]", "<doubtful:", "~~")}
     for m, n in marks.items():
         if n:
             amber.append("%d '%s' mark(s) put in by the model: look at each" % (n, m))
@@ -524,10 +596,30 @@ def check_document(source, english1, english2, known=None, finish1="STOP", finis
                 flags.append(f)
     amber += ["document check: " + f for f in flags]
     items = [dict(i, status="CONFIRM", A=i["value"], B=i["value"], source="joined text") for i in extract_items(transcription_lines("TRANSCRIPTION\n" + source))]
+    # A value that the readings of a PAGE disagree on is not confirmed because the two translations of the joined text agree: the translations are made from one
+    # reading, so their agreement says nothing about the page (10ak: a date under a stamp showed as confirmed in the document list while the page list had a disagreement).
+    page_dis = []
+    for it in (page_items or []):
+        if it.get("status") != "DISAGREE" or not (it.get("A") and it.get("B")):
+            continue
+        fa, fb = _flat(it["A"]), _flat(it["B"])
+        hit = [i for i in items if i["type"] == it["type"] and _flat(i["value"]) in (fa, fb)]
+        for i in hit:
+            i.update(status="DISAGREE", A=it["A"], B=it["B"], source="page %s readings" % it.get("page", "?"), page=it.get("page"), third_view=it.get("third_view"))
+        if not hit:
+            items.append({"status": "DISAGREE", "type": it["type"], "value": it["A"], "A": it["A"], "B": it["B"], "line": None, "source": "page %s readings" % it.get("page", "?"), "page": it.get("page"), "third_view": it.get("third_view")})
+        page_dis.append({"page": it.get("page"), "type": it["type"], "A": it["A"], "B": it["B"], "third_view": it.get("third_view")})
+    if page_dis:
+        amber.append("%d value(s) that the readings of a page disagree on stay unconfirmed here, even where the two translations agree: %s" % (
+            len(page_dis), "; ".join("%s %s against %s (page %s%s)" % (d["type"], d["A"], d["B"], d["page"], ", third view: " + d["third_view"] if d.get("third_view") else "") for d in page_dis[:4])))
+    if page_corrections:
+        kinds = {(c["kind"], _flat(c["text"])) for c in page_corrections if c["kind"] in CORRECTION_KINDS}
+        if kinds:
+            amber.append("%d correction(s) marked on the pages (crossed-out or inserted words, stamps over writing): check that the translation shows each one" % len(kinds))
     light = "red" if red else "amber" if amber else "green"
     return {"page_type": "document", "light": light, "reasons_red": red, "reasons_amber": amber, "english_wobble": wob, "name_differences": names,
             "number_differences": nums, "reference_counts_differ": ref_diff, "reference_flags": rflags, "designation_flags": dflags, "glossary_notes": gl.get("glossary_notes", []), "references": {"%s %s" % k: r1[k] for k in sorted(r1)},
-            "model_marks": marks, "redundancy_flags": flags, "must_check": items, "page_joins": joins or [],
+            "model_marks": marks, "redundancy_flags": flags, "must_check": items, "page_joins": joins or [], "page_disagreements": page_dis, "corrections": page_corrections or [],
             "person_task": {"green": "Read the whole translation against the original, then tick the must-check list (%d item(s))." % len(items),
                             "amber": "Read the whole translation against the original. Look first at the flags above: every name, every clause / rule / section number, every changed sentence. %d must-check item(s)." % len(items),
                             "red": "The translation failed or is incomplete: do not use it."}[light],
@@ -637,6 +729,35 @@ def selftest():
     assert check_document("order here", clean, clean + " (?)")["light"] == "amber"
     assert check_document("order here", clean, "")["light"] == "red" and check_document("order here", clean, clean, finish2="MAX_TOKENS")["light"] == "red"
     assert check_document("order here", clean * 3, clean)["light"] == "red"                       # one translation much shorter
+    # 10ak: corrections marked by the reader, and page disagreements carried into the document view
+    M1 = "TRANSCRIPTION\nwitness\nThe ~~victim~~ ^witness^ is escorted\n[stamp over text] 4/25\nTRANSLATION\nThe ~~victim~~ ^witness^ is escorted. Sometimes <doubtful: written 'when', likely meant 'sometimes'> he came."
+    cmk = correction_marks(M1)
+    assert [(m["kind"], m["text"], m["where"]) for m in cmk if m["where"] == "original"] == [("struck out", "victim", "original"), ("inserted above the line", "witness", "original"), ("stamp or seal over text", "", "original")], cmk
+    assert any(m["kind"] == "doubtful reading, explained" and m["where"] == "English" and "sometimes" in m["text"] for m in cmk) and correction_marks("") == [] and correction_marks("plain text") == []
+    M2 = M1.replace("~~victim~~ ", "")                                                          # one reading drops the crossed-out word with no mark
+    mm = merge_marks([("view 1", M1), ("view 2", M2)])
+    assert [m["in_all"] for m in mm if m["kind"] == "struck out"] == [False, False] and all(m["in_all"] for m in mm if m["kind"] == "stamp or seal over text"), mm
+    P1 = "TRANSCRIPTION\n1. x\nThe ~~victim~~ ^witness^ is escorted\nTRANSLATION\nThe ~~victim~~ ^witness^ is escorted."
+    P2 = "TRANSCRIPTION\n1. x\nThe witness is escorted\nTRANSLATION\nThe witness is escorted."
+    pgc = check_page("handwritten", P1, P2)
+    assert any("correction(s) on the page" in r for r in pgc["reasons_amber"]) and any("only some of the readings" in r for r in pgc["reasons_amber"]) and pgc["corrections"], pgc["reasons_amber"]
+    assert not any("correction" in r for r in check_page("typed", "TRANSCRIPTION\n1. x\nTRANSLATION\nA.", "TRANSCRIPTION\n1. x\nTRANSLATION\nA.")["reasons_amber"]), "a page with no marks raises no correction note"
+    src = "1. dated ০২/৪/২৫ end\n2. total ২,০০,০০০/- paid"
+    en = "TRANSLATION\nDated 02/4/25. Total 2,00,000/- paid."
+    dd = check_document(src, en, en, page_items=[{"page": 2, "status": "DISAGREE", "type": "date", "A": "02/4/25", "B": "9/4/25", "third_view": "view 2"}], page_corrections=[{"kind": "struck out", "text": "victim", "where": "original"}])
+    assert dd["light"] == "amber" and dd["page_disagreements"] and any(i["status"] == "DISAGREE" and i["type"] == "date" for i in dd["must_check"]), dd["must_check"]
+    assert any("stay unconfirmed" in r for r in dd["reasons_amber"]) and any("correction(s) marked on the pages" in r for r in dd["reasons_amber"])
+    assert check_document(src, en, en)["page_disagreements"] == [], "nothing carried over when the pages had no disagreement"
+    assert doubtful_marks("TRANSCRIPTION\na [struck: ?] b [unclear] c\nTRANSLATION\nx") == 2
+    # 10ak: the same text with a block read in a different place is amber, different text is still red
+    B1 = "TRANSCRIPTION\n1. aaaa bbbb cccc dddd eeee\n2. ffff gggg hhhh iiii jjjj\n3. kkkk llll mmmm nnnn oooo\n4. pppp qqqq rrrr ssss tttt\n5. uuuu vvvv wwww xxxx yyyy\n6. zzzz aaab bbbc cccd ddde\nTRANSLATION\nx."
+    B2 = "TRANSCRIPTION\n1. aaaa bbbb cccc dddd eeee\n5. uuuu vvvv wwww xxxx yyyy\n6. zzzz aaab bbbc cccd ddde\n2. ffff gggg hhhh iiii jjjj\n3. kkkk llll mmmm nnnn oooo\n4. pppp qqqq rrrr ssss tttt\nTRANSLATION\nx."
+    assert agreement(B1, B2)["percent"] < RED_AGREE <= agreement_unordered(B1, B2)["percent"] and check_page("handwritten", B1, B2)["light"] == "amber", check_page("handwritten", B1, B2)["reasons_red"]
+    B3 = B1.replace("ffff gggg hhhh iiii jjjj", "qqqq rrrr ssss tttt uuuu").replace("kkkk llll mmmm nnnn oooo", "wwww xxxx yyyy zzzz aaaa").replace("pppp qqqq rrrr ssss tttt", "bbbb cccc dddd eeee ffff")
+    assert check_page("handwritten", B1, B3)["light"] == "red", "really different text is still red"
+    assert [i["status"] for i in compare("TRANSCRIPTION\n1. dated 09/4/25 end", "TRANSCRIPTION\n1. dated 9/4/25 end")["items"]] == ["CONFIRM"], "a leading zero is not a different date"
+    assert [i["status"] for i in compare("TRANSCRIPTION\n1. dated 02/4/25 end", "TRANSCRIPTION\n1. dated 9/4/25 end")["items"]] == ["DISAGREE"]
+    assert english_term_differences("TRANSLATION\nDated 09/4/25 here.", "TRANSLATION\nDated 9/4/25 here.") == [] and english_term_differences("TRANSLATION\nDated 02/4/25 here.", "TRANSLATION\nDated 9/4/25 here.")[0]["kind"] == "number"
     print("selftest OK (invented text only)")
 
 

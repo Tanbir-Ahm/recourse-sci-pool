@@ -26,6 +26,8 @@ def impossible_dates(text):
     for m in _DATE.finditer(checker.norm(text)):
         d, mo, y = int(m.group(1)), int(m.group(2)), m.group(3)
         why = None
+        if (not 1 <= mo <= 12 or not 1 <= d <= 31) and len(y) == 2 and int(y) == (mo + 1) % 100:
+            continue                       # a printer's or financial-year code such as "83/20-21" (order 83 of 2020-21), not a date; a real date such as 5/11/12 is not skipped
         if not 1 <= mo <= 12:
             why = "month %d" % mo
         elif not 1 <= d <= 31:
@@ -268,7 +270,12 @@ def load_designations(path=None):
     return [l.strip().lower() for l in open(p, encoding="utf8") if l.strip() and not l.lstrip().startswith("#")]
 
 
+_ORD = {"1": "first", "2": "second", "3": "third", "4": "fourth", "5": "fifth", "6": "sixth", "7": "seventh", "8": "eighth", "9": "ninth", "10": "tenth"}
+
+
 def _title_tokens(text):
+    text = re.sub(r"(?<![\w/])(\d{1,2})\s*(?:st|nd|rd|th)\b", lambda m: _ORD.get(m.group(1), ""), text, flags=re.I)        # "1st Class" is "first class": the digit must not be dropped
+    text = re.sub(r"\bO\s*/\s*o\b\.?", "office of", text, flags=re.I)                                                    # "O/o Circle Office" is "office of Circle Office"
     toks = re.findall(r"[A-Za-z][A-Za-z'\-&.]*", text)
     toks = [re.sub(r"['\u2019]s?$", "", x.strip(".").lower()) for x in toks if x.strip(".")]                  # "Minister's" is "minister"
     return [x[:-3] + "y" if x.endswith("ies") and len(x) > 4 else x[:-1] if len(x) > 4 and x.endswith("s") and not x.endswith("ss") else x for x in toks]
@@ -299,6 +306,8 @@ def designation_flags(english, titles=None, close=0.85):
                 for k in by_len.get(ln, []):
                     if len(k.split()) < 2 or difflib.SequenceMatcher(None, k.split()[-1], w[-1]).ratio() < 0.8:
                         continue
+                    if w[-1] in ("office", "offices") and k.split()[-1].startswith("officer"):
+                        continue                  # "Circle Office" is a place, not a mis-spelt "Circle Officer": too many false alarms (10ak)
                     r = difflib.SequenceMatcher(None, phrase, k).ratio()
                     if r >= close:
                         near.append((r, k))
@@ -378,6 +387,13 @@ def selftest():
     assert table_sum_flags(U) == [] and len(table_sum_flags(U.replace("২,৫০,০০০", "২,৬০,০০০"))) == 1
     fl = page_flags("TRANSCRIPTION\n(1) a 45/1/90\n(3) b", "Rs. 750.00 (Seven hundred)")
     assert len(fl) == 3, fl
+    # 10ak: three false alarms found on a real affidavit
+    assert impossible_dates("Assam Govt. Press-83/20-21") == [] and impossible_dates("order 7/19-20") == [], "a printer's code is not a date"
+    assert impossible_dates("dated 5/11/12 and 31/04/2020") == [("31/04/2020", "31 in a 30-day month")], "a real date, and a real error, are still judged"
+    assert impossible_dates("45/1/90") != [] and impossible_dates("83/20/2021") != [], "only the year-pair code N/YY-YY is skipped"
+    assert designation_flags("Judicial Magistrate 1st Class, Kamrup (Metro)") == [] and designation_flags("the Judicial Magistrate 2nd Class and a Judicial Magistrate 3rd Class") == []
+    assert designation_flags("I am working at O/o Circle Office, Dalgaon and at Dalgaon Circle Office.") == [], "a Circle Office is a place, not a mis-spelt Circle Officer"
+    assert designation_flags("The Sub District Commissioner.") != [], "the real near-miss is still found"
     print("selftest OK (invented text only)")
 
 
