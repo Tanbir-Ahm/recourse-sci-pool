@@ -615,3 +615,12 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 6. **Check:** nothing else on the page changed; no answer cites a section that is not in the sections box.
 7. **YOU. Send me the Word file(s) and the `STATUTE_WIDEN`, `STATUTE_ALIAS`, `ACT_DETECT`, `ACT_SHELF` and `COST_QUESTION` lines** (the cost line will show what the extra re-rank call costs).
 **Way back:** unset (or set to `off`) the variable you changed. Production is untouched until your own pull request is merged AND you set the variable there; do not set any of the three on production before a lawyer has read staging answers. Not tried with the answer model; the Act texts are `machine_checked`, nobody has read them; no hallucination rate has been measured.
+
+## Part 4ar: the same paragraph in two judgments is handed over once (added 2026-11-05; owner's "build the duplicate passage issue fix"; FOLLOW_UPS 2dg)
+**What changed.** When the wider search finds the same paragraph, word for word, in two different judgments (for example Jayanta Kumar Ghosh and Debashish Bhattacharjee, Gauhati High Court, paragraph 45), only the better-ranked one is handed to the model and shown; it carries a line "The same paragraph also appears word for word in X (date). It is one passage, not two decisions." On by default; `FEED_DEDUP=off` switches it off. A judgment that is on the Overruled Register or has a warning card is never merged away.
+1. **YOU. Redeploy `staging-api` on the newest Recourse commit** (the engine runs there; `staging-site` and `staging-web` need only the same commit for their own code). Nothing to set.
+2. **YOU. Ask the reworded bail question again, in a NEW conversation, Layman:** "Can the Sessions Court or the High Court grant bail to my brother after the magistrate refused it in a non-bailable case?"
+3. **Check:** only one of Jayanta Kumar Ghosh / Debashish Bhattacharjee is in the box, with the "same paragraph also appears ..." sentence; the answer does not present them as two decisions or say "again"; the `staging-api` log has `SCI_FEED_SAME {...}`.
+4. **YOU. Send me the answer and the `SCI_FEED_SAME` line.**
+**Way back:** `FEED_DEDUP=off`.
+
