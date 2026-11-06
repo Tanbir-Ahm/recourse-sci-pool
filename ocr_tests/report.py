@@ -39,7 +39,7 @@ def _box(items):
     if not items:
         return ""
     return ("<div style='border:2px solid #b45309;background:#fff7ed;padding:8px 12px;margin:8px 0'><h2 style='border:none;margin:0 0 4px'>Read these first</h2>"
-            "<p class=small>Each line is a place where the readings disagree, a correction or a stamp is on the page, or the reader said a passage did not make sense as written. "
+            "<p class=small>Each line is a place where the readings disagree, a correction or a stamp is on the page, the reader said a passage did not make sense as written, or the sense check found a sentence that may not make sense in English. "
             "Look at each on the page image. This list is a reading order, not a verdict.</p><ol style='margin:4px 0 0 18px'>%s</ol></div>" % "".join("<li>%s</li>" % i for i in items))
 
 
@@ -63,6 +63,8 @@ def read_first_page(check):
             items.append("<b>%s</b> read differently: %s against %s (third view: %s)" % (esc(i["type"]), esc(str(i["A"])) if i["A"] else "<i>not found</i>", esc(str(i["B"])) if i["B"] else "<i>not found</i>", esc(tb.get((i["type"], i["A"], i["B"]), "not run"))))
     for c in check.get("third_view_contradicts", []):
         items.append("<b>%s</b>: views 1 and 2 agree on %s but the ultra-high view reads %s" % (esc(c["type"]), esc(str(c["views_1_and_2"])), esc(str(c["third_view"]))))
+    for k in check.get("sense_flags", []):
+        items.append("<b>may not make sense (%s)</b>: &ldquo;%s&rdquo; &mdash; %s" % (esc(k["severity"]), esc(k["quote"]), esc(k["problem"])))
     for w in (check.get("english_wobble") or [])[:4]:
         items.append("<b>sentence changed between the readings</b>: &ldquo;%s&rdquo; against &ldquo;%s&rdquo;" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")))
     return _box(items)
@@ -80,6 +82,8 @@ def read_first_document(check, english1=""):
                 seen.add(k); items.append("<b>%s</b>%s on page %s &mdash; <i>%s</i>" % (esc(c["kind"]), (" '%s'" % esc(c["text"])) if c["text"] else "", esc(str(c.get("page", "?"))), esc(c["line"])))
     for x in _marked_sentences(english(english1) or english1)[:6]:
         items.append("<b>marked passage</b>: &ldquo;%s&rdquo;" % esc(x))
+    for k in check.get("sense_flags", []):
+        items.append("<b>may not make sense (%s)</b>: &ldquo;%s&rdquo; &mdash; %s" % (esc(k["severity"]), esc(k["quote"]), esc(k["problem"])))
     for w in (check.get("english_wobble") or [])[:4]:
         items.append("<b>sentence changed between the two translations</b>: &ldquo;%s&rdquo; against &ldquo;%s&rdquo;" % (esc(w.get("run1") or ""), esc(w.get("run2") or "")))
     return _box(items)
@@ -228,6 +232,11 @@ def selftest():
                                 page_corrections=[{"kind": "struck out", "text": "victim", "where": "original", "line": "The ~~victim~~ is", "page": 2}])
     hd = build_document("hw", cd, "1. dated ০২/৪/২৫ end", en, en)
     assert "Read these first" in hd and "page 2" in hd and "9/4/25" in hd and "marked passage" in hd and "victim" in hd, hd[:300]
+    sc = checker.apply_sense(checker.check_page("typed", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b."), [{"quote": "the urgent necessity for has been realized", "problem": "missing object", "severity": "high"}], 0)
+    hs = build("sn", sc, {"view1": "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "view2": "TRANSCRIPTION\n1. x\nTRANSLATION\nA b."})
+    assert "Read these first" in hs and "may not make sense (high)" in hs and "urgent necessity for has been realized" in hs and "missing object" in hs
+    cs = checker.apply_sense(checker.check_document("1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f."), [{"quote": "A b c d", "problem": "dangling", "severity": "low"}], 0)
+    assert "may not make sense (low)" in build_document("d", cs, "1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f.") and "may not make sense" not in build_document("d", checker.check_document("1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f."), "1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f.")
     print("selftest OK (invented text only)")
 
 

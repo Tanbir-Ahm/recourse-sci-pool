@@ -130,6 +130,33 @@ def page_source(rd):
     return None, "no complete reading"
 
 
+def sense_check(args, out, ledger_path, models, fx, text_caller, page, english):
+    """One text-only call (prompts/sense_check.txt) that lists sentences of the English that may not make sense; no image, no original, never a rewrite (plan 10al). Returns
+    (kept findings, number dropped because the quote was not in the text) or None when the check is off, there is no English, or its answer could not be read."""
+    if getattr(args, "sense", "auto") == "off" or not english or not english.strip():
+        return None
+    ledger = harness.read_ledger(ledger_path)
+    if not any(r["page"] == page and r["model"] == MODEL and r["status"] == "ok" for r in ledger):
+        if args.budget_inr is not None and harness.spent_inr(ledger) >= args.budget_inr:
+            print("STOP: the budget of Rs %s is reached; the sense check of %s was not run." % (args.budget_inr, page)); return None
+        prompt = open(os.path.join(HERE, "prompts", "sense_check.txt"), encoding="utf8").read().strip()
+        res = text_caller(MODEL, os.environ.get(models[MODEL]["key_env"], ""), prompt, english)
+        rec = harness.log_call(out, ledger, page, MODEL, 1, res, models, fx)
+        print("%s %s: %s, Rs %.2f" % (page, MODEL, rec["status"], rec["cost_inr"]), flush=True)
+        ledger = harness.read_ledger(ledger_path)
+    t, _ = reading(ledger, out, page)
+    items = checker.parse_sense(t or "")
+    return checker.match_sense(items, english) if items is not None else None
+
+
+def page_english(rd):
+    """The English of a page to be sense-checked: the PDF text page's draft 1, else the view 1 English (view 2 if view 1 did not finish)."""
+    if "text" in rd:
+        return report.english(rd.get("english1") or "")
+    t = rd.get("view1") if rd.get("f1") == "STOP" else rd.get("view2")
+    return report.english(t or "")
+
+
 def document_mode(args, pages, types):
     """'text' (the joined original-script text translated twice, text only) or 'english' (the per-page English joined). --stitch auto: a document with a handwritten page
     uses 'english', because a text-only translation cannot see the image and made one sentence nonsense on a real affidavit (10ak); a typed document uses 'text'."""
@@ -199,6 +226,9 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
             e1, e2, f1, f2 = "TRANSLATION\n" + e1t, "TRANSLATION\n" + e2t, "STOP" if e1t else None, "STOP" if e2t else None
             chk = checker.check_document(text, e1, e2, known, f1, f2, joins, page_items, page_corr)
             chk["translation_mode"] = "english of the pages, joined (made with the page images)"
+            sn = sense_check(args, out, ledger_path, models, fx, text_caller, name + "_full__sense", e1t)
+            if sn is not None:
+                checker.apply_sense(chk, *sn)
             d = os.path.join(out, "document")
             for suffix, body in (("_source.txt", text), ("_translation_1.txt", e1t), ("_translation_2.txt", e2t)):
                 open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
@@ -221,6 +251,9 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
         (e1, f1), (e2, f2) = reading(ledger, out, name + "_full__t1"), reading(ledger, out, name + "_full__t2")
         chk = checker.check_document(text, e1 or "", e2 or "", known, f1, f2, joins, page_items, page_corr)
         chk["translation_mode"] = "text of the pages, joined and translated twice"
+        sn = sense_check(args, out, ledger_path, models, fx, text_caller, name + "_full__sense", report.english(e1 or ""))
+        if sn is not None:
+            checker.apply_sense(chk, *sn)
         d = os.path.join(out, "document")
         for suffix, body in (("_source.txt", text), ("_translation_1.txt", report.english(e1 or "") or (e1 or "")), ("_translation_2.txt", report.english(e2 or "") or (e2 or ""))):
             open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
@@ -333,6 +366,12 @@ def run_pipeline(args, caller=None, text_caller=None):
                 results[pid].setdefault("notes", []).append("The page was photographed turned: it was turned %d degrees clockwise before reading (%s)." % (d["rotate"], d.get("why")))
             elif d.get("status") == "doubtful":
                 results[pid]["reasons_amber"].append("the page may be photographed turned (%s): check which way up it is" % d.get("why"))
+    in_doc = {pid for pages in group_documents(readings).values() for pid in pages.values()} if args.stitch != "off" else set()
+    for pid in sorted(results):                                # a page of a joined document is sense-checked as part of the document (below)
+        if pid not in in_doc:
+            sn = sense_check(args, out, ledger_path, models, fx, text_caller, pid + "__sense", page_english(readings[pid]))
+            if sn is not None:
+                checker.apply_sense(results[pid], *sn)
     doc_rows = stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known, results, types)
     ledger = harness.read_ledger(ledger_path)
     cost = harness.spent_inr(ledger)
@@ -402,6 +441,8 @@ def selftest():
         return {"ok": True, "attempts": 1, "text": "TRANSCRIPTION\n1. dated %s end\nTRANSLATION\nThe first line is here. The second line follows." % date,
                 "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 1000, "output_tokens": 500, "thinking_tokens": 0}
     def fake_text(model, key, system, text):
+        if system.startswith("You check an English text"):                                     # the sense check (10al): nothing to report on these invented pages
+            return {"ok": True, "attempts": 1, "text": "[]", "ttft": 0.5, "total": 1.0, "finish": "STOP", "prompt_tokens": 200, "output_tokens": 3, "thinking_tokens": 0}
         return {"ok": True, "attempts": 1, "text": "TRANSLATION\nThe first line is here. The second line follows.", "ttft": 1.0, "total": 2.0, "finish": "STOP",
                 "prompt_tokens": 500, "output_tokens": 300, "thinking_tokens": 0}
     def fake_osd(im):
@@ -472,21 +513,35 @@ def selftest():
                 d = "02/4/25" if view1 else "9/4/25"
                 body = "TRANSCRIPTION\n1. dated %s end\nTRANSLATION\nDated %s here. Sometimes <doubtful: written 'when', likely meant 'sometimes'> he came." % (d, d)
             return {"ok": True, "attempts": 1, "text": body, "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 1000, "output_tokens": 500, "thinking_tokens": 0}
+        hw["sense_calls"] = 0
         def fake_hw_text(model, key, system, text):
+            if system.startswith("You check an English text"):
+                hw["sense_calls"] += 1
+                body = json.dumps([{"quote": "Sometimes <doubtful: written 'when', likely meant 'sometimes'> he came", "problem": "doubtful", "severity": "low"},
+                                   {"quote": "a sentence the text does not contain", "problem": "invented", "severity": "high"}])
+                return {"ok": True, "attempts": 1, "text": "```json\n" + body + "\n```", "ttft": 0.5, "total": 1.0, "finish": "STOP", "prompt_tokens": 200, "output_tokens": 30, "thinking_tokens": 0}
             hw["text_calls"] += 1
             return {"ok": True, "attempts": 1, "text": "TRANSLATION\nx.", "ttft": 1.0, "total": 2.0, "finish": "STOP", "prompt_tokens": 500, "output_tokens": 300, "thinking_tokens": 0}
         ah = argparse.Namespace(**{**vars(args), "input": ihw, "out": os.path.join(td, "run_hw"), "page_type": "handwritten", "third_view": "auto", "language": "Assamese"})
         run_pipeline(ah, fake_hw, fake_hw_text)
         assert hw["prompts"] and all("~~word~~" in x for x in hw["prompts"]), "every handwritten page is read with the marked prompt"
         assert hw["text_calls"] == 0, "a handwritten document is not translated from its joined text"
+        assert hw["sense_calls"] == 1, "one sense check of the joined English, no more"
         dj = json.load(open(os.path.join(td, "run_hw", "document", "hw_check.json")))
         assert dj["translation_mode"].startswith("english") and dj["light"] == "amber", dj["translation_mode"]
         assert dj["page_disagreements"] and dj["page_disagreements"][0]["A"] == "02/4/25" and dj["page_disagreements"][0]["third_view"] == "view 2", dj["page_disagreements"]
         assert any(i["status"] == "DISAGREE" and i["type"] == "date" for i in dj["must_check"]) and dj["corrections"], dj["must_check"]
         assert any("stay unconfirmed" in r for r in dj["reasons_amber"]) and "~~victim~~" in open(os.path.join(td, "run_hw", "document", "hw_translation_1.txt")).read()
+        assert [k["problem"] for k in dj["sense_flags"]] == ["doubtful"] and dj["sense_unmatched"] == 1, "a finding whose quote is not in the text is dropped and counted"
+        assert any("sense check found 1" in r for r in dj["reasons_amber"]) and "may not make sense" in open(os.path.join(td, "run_hw", "document", "hw_document.html")).read()
+        assert any(r["page"] == "hw_full__sense" and r["status"] == "ok" for r in harness.read_ledger(os.path.join(td, "run_hw", "ledger.jsonl")))
         ah2 = argparse.Namespace(**{**vars(ah), "out": os.path.join(td, "run_hw2"), "stitch": "text", "marks": "off"}); hw["prompts"].clear()
         run_pipeline(ah2, fake_hw, fake_hw_text)
         assert hw["text_calls"] == 2 and not any("~~word~~" in x for x in hw["prompts"]), "--stitch text and --marks off restore the old way"
+        ah3 = argparse.Namespace(**{**vars(ah), "out": os.path.join(td, "run_hw3"), "sense": "off"}); hw["sense_calls"] = 0
+        run_pipeline(ah3, fake_hw, fake_hw_text)
+        assert hw["sense_calls"] == 0 and "sense_flags" not in json.load(open(os.path.join(td, "run_hw3", "document", "hw_check.json"))), "--sense off makes no call and adds no finding"
+        assert any(r["page"] == "pg1__sense" for r in harness.read_ledger(os.path.join(out, "ledger.jsonl"))) and "sense_flags" in json.load(open(os.path.join(out, "checks", "pg1.json"))), "a single page is sense-checked on its own"
         assert json.load(open(os.path.join(td, "run_hw2", "document", "hw_check.json")))["page_disagreements"], "page disagreements are carried in this mode too"
     finally:
         pdf_triage.tesseract_read = real
@@ -503,6 +558,7 @@ if __name__ == "__main__":
     ap.add_argument("--glossary", help="a glossary CSV (see glossary/assamese_legal.csv) that replaces the one for --language; words with a settled legal meaning, notes only")
     ap.add_argument("--designations", help="a file of official titles (one per line) that replaces ocr_tests/designations.txt; used only to flag a title close to a known one")
     ap.add_argument("--stitch", choices=("auto", "off", "text", "english"), default="auto", help="auto: join the pages of each document of 2 or more pages; a typed document is translated as joined text (twice), a document with a handwritten page is the pages' own English joined (they were made with the images); text or english forces one way")
+    ap.add_argument("--sense", choices=("auto", "off"), default="auto", help="auto: one text-only sense check of the English of each page or joined document (flags sentences that may not make sense; about Rs 0.1 to 0.5 each); off: none")
     ap.add_argument("--marks", choices=("auto", "on", "off"), default="auto", help="auto: handwritten pages are read with the marked prompt (crossed-out words, insertions, stamps over text, doubtful readings explained); on: every page; off: never")
     ap.add_argument("--pdf", action="store_true", help="also print the reports to PDF (needs Node and Playwright)")
     ap.add_argument("--pdf-reader", dest="pdf_reader", choices=("tesseract", "vision"), default="tesseract", help="vision sends each PDF page to Google")

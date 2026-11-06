@@ -330,6 +330,42 @@ def merge_marks(reads):
     return [dict(v, in_all=len(v["views"]) == len(reads)) for v in merged.values()]
 
 
+def parse_sense(text):
+    """The list a sense-check call returns (prompts/sense_check.txt), or None when it cannot be read. Each item: {'quote', 'problem', 'severity'}."""
+    m = re.search(r"\[.*\]", text or "", re.S)
+    if not m:
+        return None
+    try:
+        data = json.loads(m.group(0))
+    except ValueError:
+        return None
+    if not isinstance(data, list):
+        return None
+    return [{"quote": str(d["quote"]).strip(), "problem": str(d.get("problem", "")).strip(), "severity": "high" if str(d.get("severity", "")).lower() == "high" else "low"}
+            for d in data if isinstance(d, dict) and str(d.get("quote", "")).strip()]
+
+
+def match_sense(items, english):
+    """Keep only the sense-check findings whose quote really is in the English (a checker can invent a quote); returns (kept, number dropped). Whitespace and case are ignored."""
+    flat = lambda t: re.sub(r"\s+", " ", t or "").strip().lower()
+    e = flat(english)
+    kept = [i for i in items if len(flat(i["quote"])) >= 6 and flat(i["quote"]) in e]
+    return kept, len(items) - len(kept)
+
+
+def apply_sense(out, kept, dropped=0):
+    """Put the sense-check findings into a page or document check: amber at most, never red, never a verdict. A green page with a finding becomes amber."""
+    out["sense_flags"] = kept; out["sense_unmatched"] = dropped
+    if not kept:
+        return out
+    hi = sum(1 for k in kept if k["severity"] == "high")
+    out["reasons_amber"].append("the sense check found %d sentence(s) or phrase(s) that may not make sense%s: look at each against the page (see 'Read these first')" % (len(kept), " (%d high)" % hi if hi else ""))
+    if out.get("light") == "green":
+        out["light"] = "amber"
+        out["person_task"] = "Look at every flagged item and line against the page image, then tick the must-check list (%d item(s))." % len(out.get("must_check", []))
+    return out
+
+
 def _flat(s):
     s = norm(s).replace("'", ".")
     s = re.sub(r"[।৷]", "/", s)
@@ -758,6 +794,16 @@ def selftest():
     assert [i["status"] for i in compare("TRANSCRIPTION\n1. dated 09/4/25 end", "TRANSCRIPTION\n1. dated 9/4/25 end")["items"]] == ["CONFIRM"], "a leading zero is not a different date"
     assert [i["status"] for i in compare("TRANSCRIPTION\n1. dated 02/4/25 end", "TRANSCRIPTION\n1. dated 9/4/25 end")["items"]] == ["DISAGREE"]
     assert english_term_differences("TRANSLATION\nDated 09/4/25 here.", "TRANSLATION\nDated 9/4/25 here.") == [] and english_term_differences("TRANSLATION\nDated 02/4/25 here.", "TRANSLATION\nDated 9/4/25 here.")[0]["kind"] == "number"
+    # 10al: the sense check: findings are kept only when the quote is in the text; amber, never red
+    sn = parse_sense('```json\n[{"quote": "the urgent necessity for has been realized", "problem": "missing object", "severity": "high"}, {"quote": "never said this", "problem": "invented", "severity": "low"}, {"quote": "x", "problem": "short", "severity": "low"}]\n```')
+    assert len(sn) == 3 and parse_sense("[]") == [] and parse_sense("no list here") is None and parse_sense("[{bad json") is None
+    kept, dropped = match_sense(sn, "In such   circumstances, the urgent necessity for has been realized. Next.")
+    assert [k["quote"] for k in kept] == ["the urgent necessity for has been realized"] and dropped == 2, (kept, dropped)
+    G = check_page("typed", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.")
+    assert G["light"] == "green" and apply_sense(dict(G), [], 0)["light"] == "green"
+    G2 = apply_sense(dict(G, reasons_amber=list(G["reasons_amber"])), kept, dropped)
+    assert G2["light"] == "amber" and G2["sense_flags"] and any("sense check found 1" in r for r in G2["reasons_amber"]) and "Look at every flagged item" in G2["person_task"]
+    assert apply_sense({"light": "red", "reasons_amber": [], "must_check": []}, kept)["light"] == "red", "a sense finding never turns red into anything else, and never makes red"
     print("selftest OK (invented text only)")
 
 
