@@ -1,6 +1,6 @@
 # Keeping the lawyer: matters, clocks, hearing briefs, pricing (stored 2026-11-06; owner: "Save this for later")
 
-NOT a plan approved for building and NOT started. Revive only when the owner raises lawyer retention, personalised workflows, matters, clocks, drafting, pricing or payments, or asks what is open. Drafting stays unapproved: ask before starting it. Everything here is Claude's reasoning; demand is unverified. No hallucination rate has been measured.
+**Status 2026-11-06: ONE part is built on the owner's go ("Build ... 'Matter' ..."): matters (case file + conversations filed under it + notes read with each question), FOLLOW_UPS 2dl. Everything else below (clocks, hearing brief, pinned authorities, drafting, private library, client status page, reminders, pricing) is still NOT approved and NOT started.** Original status line: NOT a plan approved for building and NOT started. Revive only when the owner raises lawyer retention, personalised workflows, matters, clocks, drafting, pricing or payments, or asks what is open. Drafting stays unapproved: ask before starting it. Everything here is Claude's reasoning; demand is unverified. No hallucination rate has been measured.
 
 **Core point.** A lawyer comes, asks a question and leaves because a question box is a utility. Lawyers return for their MATTERS: open cases, dates, drafts, reminders. Retention = the tool holds something painful to leave.
 
