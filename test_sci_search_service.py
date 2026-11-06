@@ -92,13 +92,37 @@ r101 = [rr for rr in s_n.search(Q, 20)["results"] if rr["doc"] == 101]
 check("a row with no name still has its link and is marked for review, falling back to the old title", not r101 or (r101[0]["link"] and r101[0]["name_to_review"] is True and r101[0]["case_name"]), r101)
 check("without a table the results carry no link rather than a made-up one", all(rr["link"] is None for rr in svc().search(Q)["results"]))
 
-# ---- refusals ----
+
 def refused(fn):
     try:
         fn()
     except S.Refused as r:
         return r.status
     return None
+
+# ---- the court filter (optional `court`: "sc" | "hc"; none = today's behaviour) ----
+SC_DOCS, HC_DOCS, UNK_DOCS = set(range(100, 106)), set(range(106, 110)), {110, 111}
+def court_svc():
+    sv = svc()
+    sv.names = {d: {"doc": d, "name": f"Case {d} v. State", "court": "Supreme Court of India", "date": "2020-01-02", "citations": {}, "review": False} for d in SC_DOCS}
+    sv.names.update({d: {"doc": d, "name": f"Case {d} v. State", "court": "Gauhati High Court", "date": "2021-01-02", "citations": {}, "review": False} for d in HC_DOCS})
+    return sv                                                   # docs 110 and 111 are in no names row: their court is not known
+cs = court_svc()
+no_f = [r["doc"] for r in cs.search(Q, 20)["results"]]
+check("no court given: the same list as before and the field says no filter", no_f == [r["doc"] for r in svc().search(Q, 20)["results"]] and cs.search(Q)["court_filter"] is None)
+hc = court_svc().search(Q, 20, court="hc")
+check("court=hc: only High Court passages, however many Supreme Court ones fit better; the field says so", hc["results"] and all(r["doc"] in HC_DOCS and r["court"] == "Gauhati High Court" for r in hc["results"]) and hc["court_filter"] == "hc", [r["doc"] for r in hc["results"]])
+sc2 = court_svc().search(Q, 20, court="sc")
+check("court=sc: only Supreme Court passages", sc2["results"] and all(r["doc"] in SC_DOCS for r in sc2["results"]) and sc2["court_filter"] == "sc")
+check("a judgment of unknown court is in neither filter", not any(r["doc"] in UNK_DOCS for r in hc["results"] + sc2["results"]))
+check("the High Court list is full length although the best passages for this question are mostly the other court's (the filter cuts before ranking, not after)", len(court_svc().search(Q, 10, court="hc")["results"]) == 10 and sum(1 for d in no_f[:10] if d in HC_DOCS) < 10)
+eh = svc()                                                       # no names table: every document is taken to be the Supreme Court's
+check("an index with no High Court judgment gives an empty list for court=hc, with no Voyage call", eh.search(Q, 10, court="hc")["results"] == [] and eh.client.embed_calls == 0 and eh.search(Q, 5, court="sc")["results"] != [])
+check("an unknown court value is refused (400)", refused(lambda: svc().search(Q, 10, court="xx")) == 400 and refused(lambda: svc().search(Q, 10, court="High Court")) == 400)
+check("the court filter costs no extra call: one embedding and one re-rank", (lambda sv: (sv.search(Q, 10, court="hc"), sv.client.embed_calls, sv.client.rerank_calls)[1:])(court_svc()) == (1, 1))
+check("masks are built once per court", (lambda sv: (sv.search(Q, 5, court="hc"), sv.search(Q, 5, court="hc"), len(sv._court_masks))[2])(court_svc()) == 1)
+
+# ---- refusals ----
 check("an empty question is refused (400)", refused(lambda: svc().search("   ")) == 400 and refused(lambda: svc().search(None)) == 400)
 check("a very long question is refused (400)", refused(lambda: svc().search("x" * 2001)) == 400)
 check("a bad k is refused (400)", refused(lambda: svc().search(Q, "ten")) == 400)
@@ -134,6 +158,9 @@ st, r = req(base + "/search", {"question": Q, "k": 5}, token="sekrit")
 check("/search with the token returns the results", st == 200 and len(r["results"]) == 5 and r["tier"] == S.TIER)
 check("bad JSON is 400, an empty question is 400, an unknown path is 404", req(base + "/search", raw=b"{nope", token="sekrit")[0] == 400 and req(base + "/search", {"question": ""}, token="sekrit")[0] == 400 and req(base + "/other", {"q": 1}, token="sekrit")[0] == 404)
 check("the health numbers moved: one search counted", req(base + "/health")[1]["today"]["searches"] == 1)
+st, r = req(base + "/search", {"question": Q, "k": 5, "court": "hc"}, token="sekrit")
+check("/search passes the court through (a service with no names table has no High Court passage: an empty list, not an error)", st == 200 and r["results"] == [] and r["court_filter"] == "hc")
+check("/search with an unknown court is 400", req(base + "/search", {"question": Q, "court": "xx"}, token="sekrit")[0] == 400)
 srv.shutdown()
 bad = svc(FakeClient(fail="embed"))
 srv, base = start(bad, None)

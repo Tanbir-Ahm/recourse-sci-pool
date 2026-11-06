@@ -157,6 +157,14 @@ def quotes_on():
     return (os.environ.get("SCI_QUOTES") or "off").strip().strip("\"'").strip().lower() in ("on", "1", "true", "yes")
 
 
+COURT_FILTERS = ("sc", "hc")                 # the optional `court` of a request: "sc" = the Supreme Court only, "hc" = every other court (today the Gauhati High Court). Nothing else is accepted.
+
+
+def is_supreme(court):
+    """True for the Supreme Court (or a result with no court named: the first index was the Supreme Court's alone)."""
+    return (not court) or court == COURT_DEFAULT or "supreme court" in str(court).lower()
+
+
 def court_of(doc, names, src_courts):
     """The court of one document: the names table's court column, else the court the document's own source record names, else (a names table that has no court column, or none at all) the Supreme Court,
     which is what every document of the first index was. A document that a loaded table does not know has an unknown court."""
@@ -273,16 +281,39 @@ class SearchService:
         qv = np.asarray(resp.embeddings[0], dtype=np.float32)
         return qv / (np.linalg.norm(qv) or 1.0)
 
-    def retrieve(self, q, pool=60):
+    def court_mask(self, court):
+        """None for no filter; else a boolean array over the passages: True where the passage's judgment is of the court asked for ("sc" or "hc"). Built once per court."""
+        if court is None:
+            return None
+        cache = self.__dict__.setdefault("_court_masks", {})
+        if court not in cache:
+            by_doc, flags = {}, np.zeros(len(self.metas), dtype=bool)
+            for i, m in enumerate(self.metas):
+                d = m["doc"]
+                if d not in by_doc:
+                    c = court_of(d, self.names, self.src_courts)
+                    by_doc[d] = "sc" if is_supreme(c) else (None if c == COURT_UNKNOWN else "hc")      # a judgment whose court is not known belongs to neither filter
+                flags[i] = by_doc[d] == court
+            cache[court] = flags
+        return cache[court]
+
+    def retrieve(self, q, pool=60, mask=None):
+        """Candidates for q. With `mask` (court_mask) every list (meaning, words, section numbers) is cut to the passages the mask allows BEFORE the lists are joined, so a court's judgments are not crowded out by the other court's."""
         qv = self._embed(q)
         sims = np.concatenate([self.M[i:i + 50000].astype(np.float32) @ qv for i in range(0, len(self.M), 50000)])
-        sem = [int(i) for i in np.argsort(-sims)[:100]]
+        if mask is None:
+            sem = [int(i) for i in np.argsort(-sims)[:100]]
+        else:
+            ms = np.where(mask, sims, -np.inf)
+            sem = [int(i) for i in np.argsort(-ms)[:100] if np.isfinite(ms[i])]
+        wide = 1 if mask is None else 12                       # a court filter asks the word index for more rows, then keeps those the mask allows
+        keep = (lambda rows: rows) if mask is None else (lambda rows: [r for r in rows if mask[r]])
         toks = list(dict.fromkeys(t for t in re.findall(r"[A-Za-z0-9]{4,}", q.lower()) if t not in si.STOP))[:12]
-        kw = [r[0] for r in self.fts.execute("select rowid from f where f match ? order by bm25(f) limit 50", (" OR ".join(f'"{t}"' for t in toks),))] if toks else []
+        kw = keep([r[0] for r in self.fts.execute("select rowid from f where f match ? order by bm25(f) limit ?", (" OR ".join(f'"{t}"' for t in toks), 50 * wide))])[:50] if toks else []
         nums = si.section_numbers(q)
         sc = []
         for n in nums:
-            sc += [r[0] for r in self.fts.execute("select rowid from f where f match ? order by bm25(f) limit 30", (f'"section {n}"',))]
+            sc += keep([r[0] for r in self.fts.execute("select rowid from f where f match ? order by bm25(f) limit ?", (f'"section {n}"', 30 * wide))])[:30]
         rr = {}
         for lst in (sem, kw, sc):
             for rank, rid in enumerate(lst):
@@ -311,9 +342,12 @@ class SearchService:
             self._rows_by_doc = dict(d)
         return self._rows_by_doc
 
-    def ranked_ex(self, q, k=10):
-        """([(row id, score)], annotation or None). Without the authority table: recipe B exactly. With it: the court's own pointers (authority_search.py)."""
-        a = self.retrieve(q)
+    def ranked_ex(self, q, k=10, court=None):
+        """([(row id, score)], annotation or None). Without the authority table: recipe B exactly. With it: the court's own pointers (authority_search.py). `court` ("sc" or "hc") keeps only that court's passages; None changes nothing."""
+        mask = self.court_mask(court)
+        if mask is not None and not mask.any():
+            return [], None
+        a = self.retrieve(q, mask=mask)
         if self.authority is None:
             rs = self._rerank(q, a["cand"])
             final = {r: s * self._weight(r, a["nums"]) for r, s in rs.items()}
@@ -326,6 +360,8 @@ class SearchService:
             for d in tab.docs_of(c):
                 named[d] = max(named.get(d, 0), n)
         extra = AS.extra_rows(tab, pl["chosen"], self.rows_by_doc(), a["sims"], a["cand"], prm)
+        if mask is not None:
+            extra = [r for r in extra if mask[r]]                    # the judgments a judgment names are often the other court's: not under a court filter
         rs = self._rerank(q, list(a["cand"]) + extra)
         final = {r: s * self._weight(r, a["nums"]) * AS.boost(tab, self.metas[r]["doc"], named.get(self.metas[r]["doc"], 0), pl["pool_size"], prm) for r, s in rs.items()}
         top = sorted(final.items(), key=lambda x: -x[1])
@@ -346,8 +382,8 @@ class SearchService:
         if today != self.day:
             self.day, self.rerank_today, self.embed_today, self.searches_today = today, 0, 0, 0
 
-    def search(self, question, k=10):
-        """The /search answer for one question. Raises Refused for anything the service will not run."""
+    def search(self, question, k=10, court=None):
+        """The /search answer for one question. Raises Refused for anything the service will not run. `court`: None (every court, today's behaviour), "sc" or "hc"."""
         if not self.enabled:
             raise Refused(503, "the search tier is switched off (SCI_SEARCH_ENABLED=0)")
         q = re.sub(r"\s+", " ", question or "").strip() if isinstance(question, str) else ""
@@ -359,13 +395,17 @@ class SearchService:
             k = max(1, min(int(k), 20))
         except (TypeError, ValueError):
             raise Refused(400, "k must be a number from 1 to 20")
+        if court in ("", False):
+            court = None
+        if court is not None and court not in COURT_FILTERS:
+            raise Refused(400, "court must be \"sc\" or \"hc\"")
         with self.lock:
             self._new_day()
             if self.rerank_today >= self.daily_cap:
                 raise Refused(429, "the daily re-rank allowance is spent; try again tomorrow")
             t0 = time.time()
             e0, r0 = self.embed_today, self.rerank_today
-            top, auth = self.ranked_ex(q, k)
+            top, auth = self.ranked_ex(q, k, court)
             usage = {"embed_model": EMBED_MODEL, "embed_tokens": self.embed_today - e0, "rerank_model": self.rerank_model, "rerank_tokens": self.rerank_today - r0}      # what this one search used (one search runs at a time, so the difference is exact)
             self.searches_today += 1
             results = []
@@ -383,7 +423,7 @@ class SearchService:
                     import authority_search as AS
                     cl = self.authority.cluster_of(m["doc"])
                     results[-1]["authority"] = dict(AS.annotate(self.authority, m["doc"], auth["counts"].get(cl, 0), auth["pool_size"], cl in auth["chosen_set"]), raw_score=round(float(auth["raw"][rid]), 4))
-            return {"ok": True, "tier": TIER, "recipe": "B" + ("+authority" if auth is not None else ""), "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "as_of_by_court": self.info.get("as_of_by_court") or {}, "disclaimer": DISCLAIMER,
+            return {"ok": True, "tier": TIER, "recipe": "B" + ("+authority" if auth is not None else ""), "index_commit": self.info.get("index_commit"), "as_of": self.info.get("as_of"), "as_of_by_court": self.info.get("as_of_by_court") or {}, "disclaimer": DISCLAIMER, "court_filter": court,
                     "seconds": round(time.time() - t0, 2), "usage": usage, "results": results}
 
     def health(self):
@@ -572,7 +612,7 @@ def make_handler(service, token):
                 body = json.loads(self.rfile.read(n) or b"{}")
                 if not isinstance(body, dict):
                     raise Refused(400, "body must be a JSON object")
-                self._send(200, service.search(body.get("question"), body.get("k", 10)))
+                self._send(200, service.search(body.get("question"), body.get("k", 10), body.get("court")))
             except Refused as r:
                 self._send(r.status, {"ok": False, "reason": r.reason})
             except (ValueError, UnicodeDecodeError):
