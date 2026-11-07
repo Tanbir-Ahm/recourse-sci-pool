@@ -644,3 +644,11 @@ The answer PDF does not carry the currency notes. WhatsApp shows the notes but n
 5. **YOU. On a phone:** the header's two links and Sign in fit; the headline and box come first; nothing scrolls sideways. If your phone is set to reduce motion, nothing should move.
 6. **YOU. Send me a screenshot of the landing page on your phone and anything that looks wrong.**
 **Way back:** redeploy the previous `recourse-web` commit (`16fe770`). **Not changed:** the Streamlit production site has no "Get help" wording (its audience switch reads "Layman / Lawyer" and only exists while `RESPONSE_STYLE=v3`); say if you want that renamed too.
+
+## Part 4au: proviso note for every section the answer relies on, and the s.17 / s.17A companion (added 2026-11-07; owner: "Yes, build it along with 17A"; Recourse branch `fe23a51`; FOLLOW_UPS 2dn)
+Needs `ACT_SHELF=on` (already on in production); `SECTION_RULE` and `SHELF_COMPANIONS` default on, so nothing to set.
+1. **YOU. Redeploy `staging-api`** from the branch (the engine runs there when `USE_API` is on, so the log lines are in the `staging-api` log).
+2. **YOU. Ask exactly:** "Can an arrest in a disproportionate assets case be made without an enquiry?" (no section named). Expect: under the answer, a grey box for section 17 of the Prevention of Corruption Act with its whole official text, a note that the answer left a proviso out if it did; a companion note for section 17A if the answer does not mention it; the `SHELF_COMPANIONS {...}` line in the `staging-api` log.
+3. **YOU. Read the answer against the box:** it should say the main rule, the first proviso (Inspector authorised by the State) and the second proviso (s.13(1)(b) offences need an SP or above), and never "Deputy Superintendent" for the second proviso. Send me the answer text and the log line.
+4. Ask one question about a different shelf Act (for example POCSO section 19) to confirm the new "sections you rely on" notes do not clutter an answer; tell me if a note looks wrong.
+**Way back:** `SHELF_COMPANIONS=off` (drops the pair rule), `SECTION_RULE=off` (drops all notes and the prompt block), or redeploy the previous commit `a93bad4`. **Not changed:** the Hard rules block; WhatsApp. Say "no hallucination rate has been measured".
