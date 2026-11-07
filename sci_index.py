@@ -870,18 +870,55 @@ def has_section(text, nums):
     return False
 
 
-def _load_index(index_dir):
+def vector_info(index_dir):
+    """(rows, dtype, width) of the vectors of an index, read from the .npy headers only (no vector data is read): what a caller needs to allocate one array for several indexes.
+    dtype is what np.vstack would give for the shards (None when there are no vectors); width is None when there are none, or -1 when the shards disagree."""
+    led = ledger(index_dir)
+    d = _idx_dir(index_dir)
+    rows, dtypes, widths = 0, [], set()
+    for start in sorted(led):
+        v = led[start]
+        if not v["passages"]:
+            continue
+        a = np.load(os.path.join(d, v["base"] + ".vec.npy"), mmap_mode="r")
+        rows += a.shape[0]
+        dtypes.append(a.dtype)
+        widths.add(a.shape[1:])
+    if not dtypes:
+        return 0, None, None
+    width = widths.pop()[0] if len(widths) == 1 and len(next(iter(widths))) == 1 else -1
+    return rows, np.result_type(*dtypes), width
+
+
+def _load_index(index_dir, out=None, keep=None):
+    """(rows of metadata, matrix of vectors, set of documents). Two optional arguments for a low-memory load (added 2026-11-07, FOLLOW_UPS 2dq); without them the behaviour is the one it always had.
+    out: an array of exactly the right shape (see vector_info) that the vectors are written into shard by shard and which is returned as the matrix, instead of collecting every shard and copying them all again with np.vstack (that copy is the whole matrix a second time, 857 MB on the newer index).
+    keep: a function applied to each metadata row as it is read (the search service passes the one that drops the fields it never uses), so that the full rows are never all held at once."""
     metas, vecs, docs_with = [], [], set()
-    for start in sorted(ledger(index_dir)):
-        v = ledger(index_dir)[start]
-        d = _idx_dir(index_dir)
+    led = ledger(index_dir)                       # once; it used to be recomputed for every shard (each time opening every vector file's header)
+    d = _idx_dir(index_dir)
+    filled = 0
+    for start in sorted(led):
+        v = led[start]
         if not v["passages"]:
             continue
         with gzip.open(os.path.join(d, v["base"] + ".meta.jsonl.gz"), "rt", encoding="utf-8") as fh:
             rows = [json.loads(line) for line in fh]
-        metas.extend(rows)
-        vecs.append(np.load(os.path.join(d, v["base"] + ".vec.npy")))
         docs_with.update(r["doc"] for r in rows)
+        metas.extend(keep(r) for r in rows) if keep else metas.extend(rows)
+        a = np.load(os.path.join(d, v["base"] + ".vec.npy"), mmap_mode="r" if out is not None else None)
+        if out is not None:
+            if filled + a.shape[0] > out.shape[0] or a.shape[1:] != out.shape[1:]:
+                raise ValueError(f"the vector files of {index_dir} do not fit the array they are to be loaded into")
+            out[filled:filled + a.shape[0]] = a
+            filled += a.shape[0]
+            del a
+        else:
+            vecs.append(a)
+    if out is not None:
+        if filled != out.shape[0]:
+            raise ValueError(f"the vector files of {index_dir} hold {filled} rows, not the {out.shape[0]} expected")
+        return metas, out, docs_with
     M = np.vstack(vecs) if vecs else np.zeros((0, 0), dtype=np.float16)
     return metas, M, docs_with
 

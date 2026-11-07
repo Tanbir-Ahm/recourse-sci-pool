@@ -152,6 +152,16 @@ def _latest_date(title_strings):
     return best.isoformat() if best else None
 
 
+def sim_block():
+    """SCI_SIM_BLOCK: how many passage vectors are turned into float32 at a time when a question is compared with all of them (default 5000, allowed 5000 to 100000). Each row's score is the same however the rows are grouped (to within about 2e-7);
+    what changes is the temporary memory (and, for blocks of 1000, two near-tied passages swapped places in 2 of 350 test searches: blocks of 5000 and 50000 gave identical candidate lists in 350 of 350, hence the floor of 5000): 50000 rows (the value before 2026-11-07) is a 200 MB array for every search, 5000 rows is 20 MB. SCI_SIM_BLOCK=50000 is the way back."""
+    try:
+        v = int((os.environ.get("SCI_SIM_BLOCK") or "").strip().strip("\"'") or 5000)
+    except ValueError:
+        v = 5000
+    return max(5000, min(100000, v))
+
+
 def quotes_on():
     """SCI_QUOTES=on|off, default off: whether passages numbered outside their judgment's own paragraph sequence are marked (sci_quotes.py)."""
     return (os.environ.get("SCI_QUOTES") or "off").strip().strip("\"'").strip().lower() in ("on", "1", "true", "yes")
@@ -224,12 +234,26 @@ class SearchService:
         if wrong:
             raise ValueError(wrong)
         head = os.environ.get("SCI_INDEX_COMMIT") or git_head(index_dir)
-        metas, M, _ = si._load_index(index_dir)
-        metas = [_slim(m) for m in metas]
-        n_main = len(metas)
+        big = _preallocate(index_dir, side_dirs)                    # None = the classic path (SCI_LOAD_COPY=on, or sizes that do not agree: the old checks then raise their old errors)
+        if big is not None:
+            offset = si.vector_info(index_dir)[0]                    # rows of vectors of the main index: where the side indexes' vectors start in the big array
+            metas, M, _ = si._load_index(index_dir, out=big[:offset], keep=_slim)
+            n_main = len(metas)
+            M = big
+        else:
+            metas, M, _ = si._load_index(index_dir)
+            metas = [_slim(m) for m in metas]
+            n_main = len(metas)
         extra, sides = {}, []
+        if big is None:
+            offset = 0
         for d in side_dirs:
-            metas, M, info, ex = _add_side_index(d, metas, M, head)
+            if big is not None:
+                n_side = si.vector_info(d)[0]
+                metas, M, info, ex = _add_side_index(d, metas, M, head, out=big[offset:offset + n_side])
+                offset += n_side
+            else:
+                metas, M, info, ex = _add_side_index(d, metas, M, head)
             extra.update(ex)
             sides.append(info)
         case_meta, src_title = _title_table([index_dir])
@@ -300,7 +324,8 @@ class SearchService:
     def retrieve(self, q, pool=60, mask=None):
         """Candidates for q. With `mask` (court_mask) every list (meaning, words, section numbers) is cut to the passages the mask allows BEFORE the lists are joined, so a court's judgments are not crowded out by the other court's."""
         qv = self._embed(q)
-        sims = np.concatenate([self.M[i:i + 50000].astype(np.float32) @ qv for i in range(0, len(self.M), 50000)])
+        blk = sim_block()
+        sims = np.concatenate([self.M[i:i + blk].astype(np.float32) @ qv for i in range(0, len(self.M), blk)])
         if mask is None:
             sem = [int(i) for i in np.argsort(-sims)[:100]]
         else:
@@ -434,8 +459,28 @@ class SearchService:
                 "memory_mb": rss_mb()}
 
 
-def _add_side_index(supp_dir, metas, M, head):
-    """Main index + one side index, with the checks of review_tools/pool_runner.load_supplement (same model, made for this main index, same width, no document twice)."""
+def _preallocate(index_dir, side_dirs):
+    """One empty array big enough for the main index and every side index together, so that the vectors are read straight into it (see si._load_index, `out`). Before 2026-11-07 each part was read into its own array and the parts were copied into a new one
+    with np.vstack: the whole matrix a second time for the main index and again for each side index (+857 MB at the peak on the newer index). None means: use the old path. That is so when SCI_LOAD_COPY=on (the way back), when there are no vectors,
+    or when the parts do not agree on width (the old path then raises its own error, unchanged)."""
+    if (os.environ.get("SCI_LOAD_COPY") or "").strip().strip("\"'").lower() in ("1", "on", "true", "yes"):
+        return None
+    rows, dtypes, widths = 0, [], set()
+    for d in [index_dir] + list(side_dirs):
+        r, dt, w = si.vector_info(d)
+        if r == 0 or dt is None or w in (None, -1):
+            return None
+        rows += r
+        dtypes.append(dt)
+        widths.add(w)
+    if len(widths) != 1:
+        return None
+    return np.empty((rows, widths.pop()), dtype=np.result_type(*dtypes))
+
+
+def _add_side_index(supp_dir, metas, M, head, out=None):
+    """Main index + one side index, with the checks of review_tools/pool_runner.load_supplement (same model, made for this main index, same width, no document twice).
+    out (added 2026-11-07): the part of the one big array (see _preallocate) that this side index's vectors are written into; M is then that whole array already and is returned as it is (no copy)."""
     mp = os.path.join(supp_dir, "SUPPLEMENT.json")
     if not os.path.exists(mp):
         raise ValueError(f"{supp_dir} has no SUPPLEMENT.json")
@@ -446,8 +491,11 @@ def _add_side_index(supp_dir, metas, M, head):
         raise ValueError(wrong)
     if head and man.get("main_index_commit") != head:
         raise ValueError(f"the side index was made for main index {str(man.get('main_index_commit'))[:7]}, not {head[:7]}")
-    smetas, SM, _ = si._load_index(supp_dir)
-    smetas = [_slim(m) for m in smetas]
+    if out is not None:
+        smetas, SM, _ = si._load_index(supp_dir, out=out, keep=_slim)
+    else:
+        smetas, SM, _ = si._load_index(supp_dir)
+        smetas = [_slim(m) for m in smetas]
     if len(smetas) != len(SM) or not len(SM):
         raise ValueError(f"the side index in {supp_dir} is empty or inconsistent")
     if SM.shape[1] != M.shape[1]:
@@ -461,7 +509,7 @@ def _add_side_index(supp_dir, metas, M, head):
         for e in json.load(open(lp, encoding="utf-8"))["docs"]:
             extra[int(e["index_doc"])] = re.sub(r"\s+", " ", e["title"]) + (f" ({e['date']})" if e.get("date") else "")
     info = {"dir": os.path.basename(supp_dir.rstrip("/")), "manifest_sha256": hashlib.sha256(raw).hexdigest(), "documents": man.get("documents"), "passages": man.get("passages")}
-    return metas + smetas, np.vstack([M, SM]), info, extra
+    return metas + smetas, (M if out is not None else np.vstack([M, SM])), info, extra
 
 
 # ================================================================ getting the index onto the volume
