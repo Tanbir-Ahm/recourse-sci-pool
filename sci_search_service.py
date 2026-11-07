@@ -43,7 +43,8 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import sci_index as si  # noqa: E402
+import sci_index as si
+import sci_store as store  # noqa: E402
 
 EMBED_MODEL = si.MODEL
 RERANK_MODEL = "rerank-3-lite"
@@ -234,40 +235,32 @@ class SearchService:
         if wrong:
             raise ValueError(wrong)
         head = os.environ.get("SCI_INDEX_COMMIT") or git_head(index_dir)
-        big = _preallocate(index_dir, side_dirs)                    # None = the classic path (SCI_LOAD_COPY=on, or sizes that do not agree: the old checks then raise their old errors)
-        if big is not None:
-            offset = si.vector_info(index_dir)[0]                    # rows of vectors of the main index: where the side indexes' vectors start in the big array
-            metas, M, _ = si._load_index(index_dir, out=big[:offset], keep=_slim)
-            n_main = len(metas)
-            M = big
+        lean = None
+        if store.enabled():                                             # SCI_STORE=on (default off): the passage text and the keyword index live in a file, not in memory (sci_store.py)
+            try:
+                lean = _load_lean(index_dir, side_dirs, head)
+            except store.StoreError as e:
+                print(f"SCI_STORE is on but the store cannot be used ({e}); the text and the keyword index stay in memory", flush=True)
+        if lean is not None:
+            metas, M, n_main, extra, sides, header, store_info = lean
         else:
-            metas, M, _ = si._load_index(index_dir)
-            metas = [_slim(m) for m in metas]
-            n_main = len(metas)
-        extra, sides = {}, []
-        if big is None:
-            offset = 0
-        for d in side_dirs:
-            if big is not None:
-                n_side = si.vector_info(d)[0]
-                metas, M, info, ex = _add_side_index(d, metas, M, head, out=big[offset:offset + n_side])
-                offset += n_side
-            else:
-                metas, M, info, ex = _add_side_index(d, metas, M, head)
-            extra.update(ex)
-            sides.append(info)
+            metas, M, n_main, extra, sides = _read_index(index_dir, side_dirs, head)
+            header, store_info = None, None
         case_meta, src_title = _title_table([index_dir])
         src_courts = _src_courts([index_dir] + [d for d in side_dirs])
-        header = {}
-        for m in metas:
-            if m["doc"] not in header and (m["section"] == "header" or str(m["pn"]).startswith("preamble")):
-                header[m["doc"]] = re.sub(r"\s+", " ", m["text"])[:260]            # a document with no case record: its opening lines, as in the experiments
+        if header is None:
+            header = {}
+            for m in metas:
+                if m["doc"] not in header and (m["section"] == "header" or str(m["pn"]).startswith("preamble")):
+                    header[m["doc"]] = re.sub(r"\s+", " ", m["text"])[:260]            # a document with no case record: its opening lines, as in the experiments
         title = _make_title(case_meta, src_title, extra, header)
         docs = sorted({m["doc"] for m in metas})
         as_of = _latest_date(title(d) for d in docs)
-        fts = build_fts(metas)
+        fts = build_fts(metas) if store_info is None else store.open_ro(store_info["path"])
         info = {"index_commit": head, "passages": len(metas), "passages_main": n_main, "documents": len(docs), "side_indexes": sides, "as_of": as_of, "embed_model": EMBED_MODEL,
                 "documents_without_title": sum(1 for d in docs if not title(d)), "vector_dtype": str(M.dtype), "vector_dim": int(M.shape[1]), "load_seconds": round(time.time() - t0, 1)}
+        if store_info is not None:
+            info["store"] = {k: v for k, v in store_info.items() if k != "path"}
         svc = cls(metas, M, client or si.make_client(), title, fts, info, **kw)
         names_path = os.environ.get("SCI_NAMES_TABLE") or os.path.join(HERE, "names_table", "names_table.json.gz")
         if os.path.exists(names_path):
@@ -286,7 +279,7 @@ class SearchService:
         info["documents_named_from_opening_lines"] = len(svc.header_docs) - info["documents_without_title"]
         if quotes_on():                                # SCI_QUOTES=on (default off): passages numbered outside their judgment's own sequence get a "quote" field (sci_quotes.py)
             import sci_quotes
-            svc.quotes, qstats = sci_quotes.build(metas)
+            svc.quotes, qstats = sci_quotes.build(metas.rows_with_text() if hasattr(metas, "rows_with_text") else metas)
             info["quotes"] = qstats
         import authority_search as AS
         if AS.enabled():                               # SCI_AUTHORITY=on (default off): the judgments the retrieved judgments name are fetched and favoured (authority_search.py)
@@ -347,13 +340,18 @@ class SearchService:
         return {"cand": ranked[:pool], "nums": nums, "sims": sims}
 
     def _rerank(self, q, cand):
-        texts = [self.metas[r]["text"][:3500] for r in cand]
+        texts = [self._text(r)[:3500] for r in cand]
         resp = _call(self.client.rerank, q, texts, model=self.rerank_model, top_k=len(texts), sleep=self.sleep)
         self.rerank_today += getattr(resp, "total_tokens", 0) or 0
         return {cand[x.index]: x.relevance_score for x in resp.results}
 
+    def _text(self, rid):
+        """The text of passage `rid`: from memory, or, with SCI_STORE=on, from the store file (byte for byte the same)."""
+        t = getattr(self.metas, "text", None)
+        return t(rid) if t is not None else self.metas[rid]["text"]
+
     def _weight(self, rid, nums):
-        return si.W.get(self.metas[rid]["section"], 1.0) * (1.10 if nums and si.has_section(self.metas[rid]["text"], nums) else 1.0)
+        return si.W.get(self.metas[rid]["section"], 1.0) * (1.10 if nums and si.has_section(self._text(rid), nums) else 1.0)
 
     def ranked(self, q, k=10):
         """[(index row id, score)] best first: recipe B (with the authority step when SCI_AUTHORITY is on)."""
@@ -436,7 +434,7 @@ class SearchService:
             results = []
             for rank, (rid, score) in enumerate(top, 1):
                 m = self.metas[rid]
-                text = re.sub(r"[ \t]+", " ", m["text"]).strip()
+                text = re.sub(r"[ \t]+", " ", self._text(rid)).strip()
                 nm = self.names.get(m["doc"])
                 results.append({"rank": rank, "doc": m["doc"], "court": court_of(m["doc"], self.names, self.src_courts), "case_name": (nm or {}).get("display_name") or (nm or {}).get("name") or self.title(m["doc"]), "date": (nm or {}).get("date"), "citations": (nm or {}).get("citations") or {},
                                 "link": (nm or {}).get("link"), "link_kind": (nm or {}).get("link_kind"), "name_to_review": bool(nm["review"]) if nm else None, "paragraph": m["pn"], "page": m.get("page"), "name_is_opening_lines": (m["doc"] in self.header_docs) if not nm else (nm["name"] is None), "passage_type": m["section"], "score": round(float(score), 4),
@@ -459,6 +457,61 @@ class SearchService:
                 "memory_mb": rss_mb()}
 
 
+def _read_index(index_dir, side_dirs, head, keep=None):
+    """The main index and the side indexes read into one list of passage rows and one matrix: (metas, M, rows of the main index, extra titles, side-index infos). `keep` is applied to each row as it is read
+    (default: drop the fields the service never uses; sci_store.Collector.keep also takes the text out)."""
+    keep = keep or _slim
+    big = _preallocate(index_dir, side_dirs)                    # None = the classic path (SCI_LOAD_COPY=on, or sizes that do not agree: the old checks then raise their old errors)
+    if big is not None:
+        offset = si.vector_info(index_dir)[0]                    # rows of vectors of the main index: where the side indexes' vectors start in the big array
+        metas, M, _ = si._load_index(index_dir, out=big[:offset], keep=keep)
+        M = big
+    else:
+        metas, M, _ = si._load_index(index_dir, keep=keep)
+        offset = 0
+    n_main = len(metas)
+    extra, sides = {}, []
+    for d in side_dirs:
+        if big is not None:
+            n_side = si.vector_info(d)[0]
+            metas, M, info, ex = _add_side_index(d, metas, M, head, out=big[offset:offset + n_side], keep=keep)
+            offset += n_side
+        else:
+            metas, M, info, ex = _add_side_index(d, metas, M, head, keep=keep)
+        extra.update(ex)
+        sides.append(info)
+    return metas, M, n_main, extra, sides
+
+
+def _load_lean(index_dir, side_dirs, head):
+    """SCI_STORE=on: the same reading, but the text of every passage goes to (or is checked against) the store file and the service keeps only the small fields (sci_store.py).
+    Returns (LeanMetas, M, rows of the main index, extra titles, side-index infos, opening-lines table, store info) or raises store.StoreError (the caller then keeps everything in memory)."""
+    path = store.store_path(index_dir)
+    existing = store.read_info(path)
+    t0 = time.time()
+    for build in ([False, True] if existing else [True]):
+        coll = store.Collector(path if build else None)
+        try:
+            metas, M, n_main, extra, sides = _read_index(index_dir, side_dirs, head, keep=coll.keep)
+        except BaseException:
+            coll.abort()
+            raise
+        if coll.incomplete:
+            coll.abort()
+            raise store.StoreError(coll.incomplete)
+        if build:
+            size = coll.finish()
+            how = "built" if not existing else "rebuilt (the index changed)"
+            break
+        if existing["digest"] == coll.digest() and existing["passages"] == coll.count:
+            size, how = os.path.getsize(path), "reused"
+            break
+        del metas, M                                            # the file belongs to another index: read again and write a new one
+    lm = store.LeanMetas(metas, path, coll.total_chars)
+    del metas
+    return lm, M, n_main, extra, sides, coll.header, {"path": path, "state": how, "file_mb": round(size / 1e6, 1), "passages": coll.count, "seconds": round(time.time() - t0, 1)}
+
+
 def _preallocate(index_dir, side_dirs):
     """One empty array big enough for the main index and every side index together, so that the vectors are read straight into it (see si._load_index, `out`). Before 2026-11-07 each part was read into its own array and the parts were copied into a new one
     with np.vstack: the whole matrix a second time for the main index and again for each side index (+857 MB at the peak on the newer index). None means: use the old path. That is so when SCI_LOAD_COPY=on (the way back), when there are no vectors,
@@ -478,7 +531,7 @@ def _preallocate(index_dir, side_dirs):
     return np.empty((rows, widths.pop()), dtype=np.result_type(*dtypes))
 
 
-def _add_side_index(supp_dir, metas, M, head, out=None):
+def _add_side_index(supp_dir, metas, M, head, out=None, keep=None):
     """Main index + one side index, with the checks of review_tools/pool_runner.load_supplement (same model, made for this main index, same width, no document twice).
     out (added 2026-11-07): the part of the one big array (see _preallocate) that this side index's vectors are written into; M is then that whole array already and is returned as it is (no copy)."""
     mp = os.path.join(supp_dir, "SUPPLEMENT.json")
@@ -491,11 +544,7 @@ def _add_side_index(supp_dir, metas, M, head, out=None):
         raise ValueError(wrong)
     if head and man.get("main_index_commit") != head:
         raise ValueError(f"the side index was made for main index {str(man.get('main_index_commit'))[:7]}, not {head[:7]}")
-    if out is not None:
-        smetas, SM, _ = si._load_index(supp_dir, out=out, keep=_slim)
-    else:
-        smetas, SM, _ = si._load_index(supp_dir)
-        smetas = [_slim(m) for m in smetas]
+    smetas, SM, _ = si._load_index(supp_dir, out=out, keep=keep or _slim)      # rows are trimmed as they are read; with out=, the vectors are written straight into the big array
     if len(smetas) != len(SM) or not len(SM):
         raise ValueError(f"the side index in {supp_dir} is empty or inconsistent")
     if SM.shape[1] != M.shape[1]:
@@ -699,6 +748,7 @@ def startup_line(service, host, port):
     q = info.get("quotes")
     return (f"sci-search listening on {host}:{port}; index {info.get('index_commit', '?')[:10] if info.get('index_commit') else '?'}, {info.get('passages'):,} passages; "
             f"{info.get('documents'):,} judgments ({', '.join(f'{k} {v:,}' for k, v in (info.get('courts') or {}).items())}); ends {info.get('as_of')}"
+            + (f"; SCI_STORE on ({info['store']['state']}): passage text and keyword index in a {info['store']['file_mb']:,} MB file on disk, not in memory" if info.get("store") else "")
             + (f"; SCI_QUOTES on: {q['flagged']:,} passages marked in {q['documents_with_flagged']:,} judgments (numbered outside their judgment's own sequence)" if q else "")
             + (f"; SCI_AUTHORITY on: {info['authority']['judgments_named']:,} judgments named by others, {info['authority']['judgments_that_name_others']:,} that name others" if info.get("authority") else ""))
 
@@ -724,7 +774,7 @@ def report(index_dir, sides):
     before = current_rss_mb()
     svc = SearchService.load(index_dir, sides, client=object())
     after = current_rss_mb()
-    text_mb = sum(len(m["text"]) for m in svc.metas) / 1e6
+    text_mb = (svc.metas.total_chars if hasattr(svc.metas, "total_chars") else sum(len(m["text"]) for m in svc.metas)) / 1e6
     out = {"index": svc.info, "disk_mb_index_files": round(disk / 1e6, 1), "vectors_mb_in_memory": round(svc.M.nbytes / 1e6, 1), "passage_text_mb_chars": round(text_mb, 1),
            "rss_mb_before_load": before, "rss_mb_after_load": after, "rss_mb_peak": rss_mb(), "load_seconds_total": round(time.time() - t0, 1)}
     return out
@@ -741,11 +791,12 @@ def main(argv=None):
     r = sub.add_parser("report")
     r.add_argument("--json")
     sub.add_parser("fetch-index")
+    sub.add_parser("build-store", help="read the index and write (or check) the SCI_STORE file, then stop: run it once before switching SCI_STORE on")
     k = sub.add_parser("ask")
     k.add_argument("question")
     a = ap.parse_args(argv)
     index_dir, sides = _paths()
-    if a.cmd in ("fetch-index", "serve", "ask"):
+    if a.cmd in ("fetch-index", "serve", "ask", "build-store"):
         try:
             sha = ensure_index(index_dir)
         except FetchError as e:
@@ -754,6 +805,11 @@ def main(argv=None):
         if a.cmd == "fetch-index":
             print("index already present" if sha is None else f"index fetched ({sha[:10]})")
             return 0
+    if a.cmd == "build-store":
+        os.environ["SCI_STORE"] = "on"
+        svc = SearchService.load(index_dir, sides, client=object())
+        print(json.dumps(svc.info.get("store") or {"error": "the store could not be used; see the line above"}, indent=1))
+        return 0 if svc.info.get("store") else 1
     if a.cmd == "report":
         out = report(index_dir, sides)
         print(json.dumps(out, indent=1))

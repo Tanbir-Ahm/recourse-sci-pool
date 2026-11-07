@@ -1,0 +1,14 @@
+classic loaded 17s
+lean loaded 28s  store={'state': 'built', 'file_mb': 256.2, 'passages': 238762, 'seconds': 27.3}
+OK  same passage count: True
+OK  vectors identical: True
+OK  rows with different fields (of 238762): 0
+OK  rows with different text (of 238762): 0
+OK  info identical: True
+OK  header_docs identical: True
+OK  titles identical for all 10522 docs: True
+OK  court masks identical: True
+OK  rows_by_doc identical: True
+OK  keyword queries with a different rowid list (of 300): 0
+OK  retrieve() candidate lists different (of 450, incl. court filters): 0
+OK  search() full replies different (of 180: rank, score, text, names, links): 0

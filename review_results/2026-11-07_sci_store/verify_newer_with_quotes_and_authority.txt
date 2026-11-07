@@ -1,0 +1,16 @@
+classic loaded 28s
+lean loaded 18s  store={'state': 'reused', 'file_mb': 407.9, 'passages': 420893, 'seconds': 8.8}
+OK  same passage count: True
+OK  vectors identical: True
+OK  rows with different fields (of 420893): 0
+OK  rows with different text (of 420893): 0
+OK  info identical: True
+OK  header_docs identical: True
+OK  titles identical for all 19255 docs: True
+OK  court masks identical: True
+OK  rows_by_doc identical: True
+OK  SCI_QUOTES marks identical (21524 flagged): True
+OK  SCI_AUTHORITY table loaded in both: True
+OK  keyword queries with a different rowid list (of 300): 0
+OK  retrieve() candidate lists different (of 450, incl. court filters): 0
+OK  search() full replies different (of 180: rank, score, text, names, links): 0
