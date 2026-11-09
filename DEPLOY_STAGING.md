@@ -712,3 +712,12 @@ Needs `ACT_SHELF=on` (already on in production); `SECTION_RULE` and `SHELF_COMPA
 2. **YOU. Do the same on your phone** (and in Safari if you can). Tell me if the answer's first line is ever scrolled out of sight, or if the top bar lights the wrong side.
 3. **YOU. Open an old conversation from the side list:** it should open at its first line, not at the end. Reloading the page keeps the browser's own scroll position (that is the browser's habit, not ours).
 **Way back:** redeploy the previous `recourse-web` commit (`bf41d75`). No variable. Say "no hallucination rate has been measured".
+
+
+## Part 4bc: the slow follow-up, whole statute sections, unnamed wider-search cases, follow-ups keep their sections (added 2026-11-09; Recourse `31ddab1`, `recourse-web` `4cf3c8c`; FOLLOW_UPS 2ed)
+1. **YOU. Set `API_ASK_TIMEOUT_SECONDS=300` on `staging-api`** (it stops waiting at 120 s by default; allowed 10 to 600) and redeploy `staging-api` and `staging-web`. The log should then show no `ask timed out` line for a long lawyer's note.
+2. **YOU. Test the recovery:** ask a lawyer's question and then a follow-up that asks for "detailed explanations". If the page gives up before the answer is finished, it should say "Still being written" and draw the answer by itself within about four minutes; it must never say "Out of scope" for a technical problem. Send me the `staging-api` log lines `ask timed out`, `CHAT_TURN`, `COST_QUESTION`.
+3. **YOU. Look at the boxes under an answer that rests on BNS 77, BNSS 35, 187 or 480:** each section should be there whole (BNSS 35 with sub-section (1)(b)). Tell me if a box is too long to read comfortably.
+4. **YOU. Look at the wider-search box:** the cases the answer names stay in the list; the others sit in a closed "Also read, but not named in the answer (N)". Download the answer as Word: the unnamed cases are names only.
+5. **YOU. Ask a follow-up that does not repeat the first question's words** ("what other sections can he be charged with?"). The `CHAT_TURN` line may say `dropped_guard:...`; its `carry` list should now name the sections of the first answer. Say whether the second answer is better.
+**Way back:** redeploy the previous Recourse commit (`00c5456`) and `recourse-web` commit (`ab5914f`). No new variable is needed except the timeout in step 1. Say "no hallucination rate has been measured".
