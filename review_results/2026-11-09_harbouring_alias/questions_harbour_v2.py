@@ -50,3 +50,6 @@ NEG = [(q, {}, "neg") for q in [
     "The police arrested the owner of the vehicle that was used to drive the accused away from the scene. Can he be arrested?",
     "I was told to take the absconding accused's belongings to his family. Is it safe?",
 ]]
+
+POS_ONLY = POS
+POS = POS + NEG          # the harness reads POS: negatives were left out of the first run by mistake (positives unchanged)
