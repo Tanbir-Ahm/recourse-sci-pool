@@ -1,0 +1,260 @@
+[
+ {
+  "name": "molestation",
+  "expected": [
+   "BNS 77",
+   "ITACT 66E"
+  ],
+  "NO": {
+   "got": [
+    "BNSS 234",
+    "BNSS 236",
+    "BNSS 237",
+    "BNSS 244",
+    "BNSS 353"
+   ],
+   "hits": []
+  },
+  "WITH": {
+   "got": [
+    "BNS 77",
+    "BNSS 234",
+    "BNSS 236",
+    "BNSS 244",
+    "BNSS 308",
+    "BNSS 353",
+    "BNSS 358"
+   ],
+   "hits": [
+    "BNS 77"
+   ]
+  }
+ },
+ {
+  "name": "job cheating",
+  "expected": [
+   "BNS 318",
+   "BNS 336",
+   "BNS 340"
+  ],
+  "NO": {
+   "got": [
+    "BNSS 233",
+    "BNSS 244",
+    "BNSS 271",
+    "BNSS 278",
+    "BNSS 358"
+   ],
+   "hits": []
+  },
+  "WITH": {
+   "got": [
+    "BNS 204",
+    "BNS 318",
+    "BNS 319",
+    "BNS 335",
+    "BNS 336"
+   ],
+   "hits": [
+    "BNS 318",
+    "BNS 336"
+   ]
+  }
+ },
+ {
+  "name": "hurt with rod",
+  "expected": [
+   "BNS 115",
+   "BNS 117",
+   "BNS 118"
+  ],
+  "NO": {
+   "got": [
+    "BNS 114",
+    "BNS 115",
+    "BNS 117",
+    "BNS 122",
+    "BNS 44"
+   ],
+   "hits": [
+    "BNS 115",
+    "BNS 117"
+   ]
+  },
+  "WITH": {
+   "got": [
+    "BNS 114",
+    "BNS 115",
+    "BNS 116",
+    "BNS 117",
+    "BNS 122",
+    "BNS 131",
+    "BNS 136"
+   ],
+   "hits": [
+    "BNS 115",
+    "BNS 117"
+   ]
+  }
+ },
+ {
+  "name": "visa fraud",
+  "expected": [
+   "BNS 318"
+  ],
+  "NO": {
+   "got": [
+    "BNS 10",
+    "BNS 20",
+    "BNS 33",
+    "BNS 9",
+    "BNSS 244"
+   ],
+   "hits": []
+  },
+  "WITH": {
+   "got": [
+    "BNS 2",
+    "BNS 252",
+    "BNS 308",
+    "BNS 318",
+    "BNS 69"
+   ],
+   "hits": [
+    "BNS 318"
+   ]
+  }
+ },
+ {
+  "name": "dowry cruelty",
+  "expected": [
+   "BNS 85"
+  ],
+  "NO": {
+   "got": [
+    "BNSS 216",
+    "BNSS 219",
+    "BNSS 222",
+    "BNSS 380",
+    "BNSS 381",
+    "DOWRY 7"
+   ],
+   "hits": []
+  },
+  "WITH": {
+   "got": [
+    "BNS 80",
+    "BNS 85",
+    "BNS 86",
+    "BNSS 216",
+    "BNSS 222",
+    "BNSS 380",
+    "BNSS 381",
+    "DOWRY 3",
+    "DOWRY 4",
+    "DOWRY 5",
+    "DOWRY 6",
+    "DOWRY 8A"
+   ],
+   "hits": [
+    "BNS 85"
+   ]
+  }
+ },
+ {
+  "name": "stalking",
+  "expected": [
+   "BNS 78"
+  ],
+  "NO": {
+   "got": [
+    "BNS 20",
+    "BNS 33",
+    "BNS 34",
+    "BNS 9",
+    "BNSS 200"
+   ],
+   "hits": []
+  },
+  "WITH": {
+   "got": [
+    "BNS 20",
+    "BNS 33",
+    "BNS 34",
+    "BNS 75",
+    "BNS 78",
+    "BNS 79",
+    "BNSS 200"
+   ],
+   "hits": [
+    "BNS 78"
+   ]
+  }
+ },
+ {
+  "name": "bail (regression)",
+  "expected": [
+   "BNSS 478",
+   "BNSS 480"
+  ],
+  "NO": {
+   "got": [
+    "BNSS 139",
+    "BNSS 478",
+    "BNSS 479",
+    "BNSS 480",
+    "BNSS 482",
+    "BNSS 60"
+   ],
+   "hits": [
+    "BNSS 478",
+    "BNSS 480"
+   ]
+  },
+  "WITH": {
+   "got": [
+    "BNSS 139",
+    "BNSS 39",
+    "BNSS 47",
+    "BNSS 478",
+    "BNSS 479",
+    "BNSS 480",
+    "BNSS 60"
+   ],
+   "hits": [
+    "BNSS 478",
+    "BNSS 480"
+   ]
+  }
+ },
+ {
+  "name": "arrest (regression)",
+  "expected": [
+   "BNSS 35"
+  ],
+  "NO": {
+   "got": [
+    "BNS 14",
+    "BNS 17",
+    "BNSS 43",
+    "BNSS 55",
+    "BNSS 62"
+   ],
+   "hits": []
+  },
+  "WITH": {
+   "got": [
+    "BNS 14",
+    "BNS 17",
+    "BNSS 35",
+    "BNSS 47",
+    "BNSS 55",
+    "BNSS 57",
+    "BNSS 62"
+   ],
+   "hits": [
+    "BNSS 35"
+   ]
+  }
+ }
+]
