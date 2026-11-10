@@ -9,9 +9,13 @@ sys.path.insert(0, rec)
 os.environ["ACT_SHELF"] = "on"
 import act_shelf as S
 d = json.load(open(sys.argv[1]))
+import shelf_companions as SC
 def handed(q):
     r = S.search(q, [{"id": "mv_act_1988"}], current_message=q)
-    return [str(m.get("section_number")) for m in r["matches"]]
+    ms = list(r["matches"])
+    if "--companions" in sys.argv:                                    # the companion rule of shelf_companions.py on top of what the shelf handed over
+        ms += SC.add(q, [dict(m, source="act_shelf") for m in ms])
+    return [str(m.get("section_number")) for m in ms]
 ok = 0
 for q in d["fled"]:
     h = handed(q); got = [s for s in d["want"] if s in h]

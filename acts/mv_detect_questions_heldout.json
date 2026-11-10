@@ -1,0 +1,42 @@
+{
+ "about": "Frozen 2026-11-10, written AFTER the Motor Vehicles Act word-pass patterns were frozen (mv_detect_questions.json was the development set). Run ONCE, no tuning afterwards. Written by Claude (not a lawyer).",
+ "frozen_on": "2026-11-10",
+ "want": "mv_act_1988",
+ "positives": [
+  "My client is a 41-year-old truck driver. Around 11 pm on a highway his truck hit a man who was crossing the road, and the man died. My client did not stop and drove on.",
+  "Our school van met with an accident and three children were hurt; the driver says the brakes failed. What are the owner's responsibilities?",
+  "A drunk man was driving the tractor when it overturned and killed a labourer.",
+  "The police stopped my bike and asked for papers; I had only a photocopy of my licence.",
+  "Is there a cashless treatment scheme for the first hour after a road crash?",
+  "I run a goods carrier business. Do I need a fitness certificate and a permit for every truck?",
+  "The traffic police are checking people for using mobile phones while riding. What is the fine?",
+  "A cyclist died when the tipper reversed over him; the tipper owner has no insurance.",
+  "The insurer says my policy lapsed a week before the crash and rejects the claim of the injured pedestrian.",
+  "What happens if a minor is found driving a scooter and causes an injury?",
+  "A speeding car crashed into the divider; the driver was intoxicated and two passengers died.",
+  "Our bus was overcrowded and the driver was fined for carrying passengers beyond capacity.",
+  "The family of the deceased in a road accident wants to know how much time they have to apply to the Motor Accidents Claims Tribunal.",
+  "Can the RTO cancel my driving licence for repeated traffic violations?",
+  "A speeding tempo hit a boy near the school gate; the driver stopped for a moment and then left. The boy died.",
+  "My vehicle was impounded for plying without a permit; how do I get it released?"
+ ],
+ "negatives": [
+  "The accused attacked the shopkeeper with a rod and fled with the cash.",
+  "My husband beats me and his family demands dowry.",
+  "The truck was stolen from the depot and the watchman is suspected.",
+  "A person posted an obscene video of his ex-girlfriend on social media.",
+  "The company owner cheated investors of Rs 5 crore through a fake scheme.",
+  "My client is accused of bribing a clerk at the sub-registrar's office.",
+  "A man set fire to his neighbour's house during a dispute.",
+  "The police registered an FIR against my client under the NDPS Act for a small quantity of ganja found in his car.",
+  "The bus conductor and the passenger quarrelled over change and the conductor slapped him.",
+  "A woman was thrown out of her matrimonial home and is seeking maintenance.",
+  "The accused took a taxi and robbed the driver at knife point.",
+  "The tenant has damaged the house and the landlord wants him evicted.",
+  "My client has been summoned for a cheque bounce case of Rs 3 lakh.",
+  "A doctor operated without consent and the patient died; the family wants to file a case.",
+  "The accused is alleged to have hacked the company's server and stolen data.",
+  "He drove his friend to the police station to file a complaint against the landlord."
+ ],
+ "traps": []
+}

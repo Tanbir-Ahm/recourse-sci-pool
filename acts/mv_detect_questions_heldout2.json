@@ -1,0 +1,42 @@
+{
+ "about": "Frozen 2026-11-10, written AFTER the Motor Vehicles Act patterns were widened using the two earlier sets (both are development sets now). Run ONCE, no tuning afterwards. Written by Claude (not a lawyer).",
+ "frozen_on": "2026-11-10",
+ "want": "mv_act_1988",
+ "positives": [
+  "A lorry loaded with sand rolled back on a slope and hit a parked car; the cleaner was seriously injured.",
+  "My nephew was riding a motorcycle without a helmet when a van hit him and he is in coma. Can the family get anything from the van owner's insurer?",
+  "The bus driver did not give way to the ambulance and the patient died on the way.",
+  "A tanker driver, drunk at the time, was arrested after the tanker mowed down three pedestrians.",
+  "Our auto was stopped by the traffic police who demanded the permit and the fitness papers.",
+  "An unregistered Bullet was seized by the police during a vehicle check.",
+  "The driver left the injured motorcyclist on the road and drove off after the dumper hit him.",
+  "Is the owner of a truck responsible if the driver had no valid licence at the time of the accident?",
+  "A car going at high speed lost control and killed a street dog and injured a boy who tried to save it.",
+  "Can I get compensation if I was hit by a vehicle which was never traced?",
+  "The state transport bus overturned on the ghat road and seventeen passengers were injured.",
+  "My son, 17, took my Activa and knocked down an old man; the man has a fractured hip.",
+  "The cab driver was challaned for not carrying the vehicle's registration papers.",
+  "After the pickup truck hit the roadside shop, the driver slipped away in the dark.",
+  "What is the fine for talking on a mobile phone while driving a car?",
+  "The company vehicle had no pollution certificate when the transport officer checked it."
+ ],
+ "negatives": [
+  "The accused stabbed his neighbour during a quarrel about parking.",
+  "A man is accused of raping a woman after offering her a lift in his car.",
+  "My client is accused of forging a sale deed for agricultural land.",
+  "The shopkeeper sold me a defective helmet and refuses to return the money.",
+  "The cab company has terminated the contract of the driver without notice.",
+  "A gang looted the bank and escaped in a stolen van.",
+  "The mob burnt a truck during the agitation.",
+  "The patient died during surgery and the hospital refuses to give the records.",
+  "My bike was stolen and the police have not registered an FIR.",
+  "The employer has not paid the driver's provident fund contribution.",
+  "The accused strangled the victim and dumped the body in a car boot.",
+  "I want to challenge the order of eviction passed against me.",
+  "A man died after eating poisoned food at a wedding.",
+  "The accused threatened the bus owner to hand over money every month.",
+  "Can I withdraw my complaint after the settlement in a cheque case?",
+  "The accused allegedly sexually assaulted a girl in a moving car."
+ ],
+ "traps": []
+}
