@@ -23,7 +23,11 @@ _DATE = re.compile(r"(?<!\d)(\d{1,2})" + _SEP + r"(\d{1,2})" + _SEP + r"(\d{2,4}
 def impossible_dates(text):
     """Dates in a reading that cannot exist. Returns a list of (date as written, why)."""
     out = []
-    for m in _DATE.finditer(checker.norm(text)):
+    t = checker.norm(text)
+    for m in _DATE.finditer(t):
+        before = t[max(0, m.start() - 2):m.start()]
+        if re.search(r"\d[\-./]$", before) or (m.end() < len(t) and t[m.end()] in ".,/" and m.end() + 1 < len(t) and t[m.end() + 1].isdigit()) or re.search(r"[\-/]\d+\.\d{2,}$", m.group(0)):
+            continue                       # part of a longer figure: an area such as 0-2-5.445 (bigha-katha-lessa), not a date (10am: land record)
         d, mo, y = int(m.group(1)), int(m.group(2)), m.group(3)
         why = None
         if (not 1 <= mo <= 12 or not 1 <= d <= 31) and len(y) == 2 and int(y) == (mo + 1) % 100:
@@ -62,8 +66,9 @@ def numbering_gaps(text):
     never checked (found on the 50-number test: a page whose writer numbered one line 88 instead of 48)."""
     nums = []
     for l in _raw_lines(text):
-        m = re.match(r"^\(?\s*(\d{1,2})\s*(?:[)।৷.]|\|)", checker.norm(l))
-        if m:
+        nl = checker.norm(l)
+        m = re.match(r"^\(?\s*(\d{1,2})\s*(?:[)।৷.]|\|)", nl)
+        if m and not re.match(r"^\(?\s*\d+\.\d", nl):                     # "56.81" is an amount, not item 56 (10am)
             nums.append(int(m.group(1)))
     out = []
     for a, b in zip(nums, nums[1:]):
@@ -394,6 +399,9 @@ def selftest():
     assert designation_flags("Judicial Magistrate 1st Class, Kamrup (Metro)") == [] and designation_flags("the Judicial Magistrate 2nd Class and a Judicial Magistrate 3rd Class") == []
     assert designation_flags("I am working at O/o Circle Office, Dalgaon and at Dalgaon Circle Office.") == [], "a Circle Office is a place, not a mis-spelt Circle Officer"
     assert designation_flags("The Sub District Commissioner.") != [], "the real near-miss is still found"
+    # 10am: a land record: areas and amounts are not dates or item numbers
+    assert impossible_dates("area 0-2-5.445 and 0-6-8.3668 and revenue 227.23") == [] and impossible_dates("area 0-2-5.445 dated 45/1/90") != [], "an area is not a date; a real bad date beside it still is"
+    assert numbering_gaps("TRANSCRIPTION\n6 | x\n56.81 | y\n227.23 | z") == [] and numbering_gaps("TRANSCRIPTION\n(1) a\n(2) b\n(4) c") == ["skips from 2 to 4"]
     print("selftest OK (invented text only)")
 
 
