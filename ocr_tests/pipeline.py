@@ -193,6 +193,19 @@ def page_evidence(pages, results):
     return items, corr
 
 
+def page_disagreement_items(res):
+    """A page's must-check values that the readings disagree on, as items for checker.mark_disagreements (A is view 1's value, B view 2's, third_view the side the third look takes)."""
+    tb = {(t["type"], t["view1"]): t["third_view"] for t in (res.get("third_view_on_disagreements") or [])}
+    return [{"type": i["type"], "A": i.get("A"), "B": i.get("B"), "third_view": tb.get((i["type"], i.get("A")))} for i in (res.get("must_check") or []) if i.get("status") == "DISAGREE"]
+
+
+def mark_document(chk, english_body, page_items):
+    """Print every value that the readings of a page disagree on as both values in the English to read; the checks keep the unmarked English. Returns the marked body."""
+    marked, n, unplaced = checker.mark_disagreements(english_body, page_items)
+    chk["disagreements_marked"] = n; chk["disagreements_unplaced"] = unplaced
+    return marked
+
+
 def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known, results=None, types=None):
     """Join each document's pages and translate the joined text twice. Returns a list of summary rows; writes RUN/document/<name>_*."""
     docs = group_documents(readings)
@@ -230,10 +243,11 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
             if sn is not None:
                 checker.apply_sense(chk, *sn)
             d = os.path.join(out, "document")
-            for suffix, body in (("_source.txt", text), ("_translation_1.txt", e1t), ("_translation_2.txt", e2t)):
+            shown = mark_document(chk, e1t, page_items)
+            for suffix, body in (("_source.txt", text), ("_translation_1.txt", shown), ("_translation_1_raw.txt", e1t), ("_translation_2.txt", e2t)):
                 open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
             json.dump(chk, open(os.path.join(d, name + "_check.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
-            open(os.path.join(d, name + "_document.html"), "w", encoding="utf8").write(report.build_document(name, chk, text, e1, e2, args.language))
+            open(os.path.join(d, name + "_document.html"), "w", encoding="utf8").write(report.build_document(name, chk, text, "TRANSLATION\n" + shown, e2, args.language))
             rows.append({"document": name, "pages": len(pages), "light": chk["light"], "reasons": chk["reasons_red"] + chk["reasons_amber"],
                          "page_joins": sum(j["action"].startswith("joined") for j in joins), "translation_mode": "english"})
             continue
@@ -255,10 +269,12 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
         if sn is not None:
             checker.apply_sense(chk, *sn)
         d = os.path.join(out, "document")
-        for suffix, body in (("_source.txt", text), ("_translation_1.txt", report.english(e1 or "") or (e1 or "")), ("_translation_2.txt", report.english(e2 or "") or (e2 or ""))):
+        raw1 = report.english(e1 or "") or (e1 or "")
+        shown = mark_document(chk, raw1, page_items)
+        for suffix, body in (("_source.txt", text), ("_translation_1.txt", shown), ("_translation_1_raw.txt", raw1), ("_translation_2.txt", report.english(e2 or "") or (e2 or ""))):
             open(os.path.join(d, name + suffix), "w", encoding="utf8").write(body)
         json.dump(chk, open(os.path.join(d, name + "_check.json"), "w", encoding="utf8"), ensure_ascii=False, indent=1)
-        open(os.path.join(d, name + "_document.html"), "w", encoding="utf8").write(report.build_document(name, chk, text, e1 or "", e2 or "", args.language))
+        open(os.path.join(d, name + "_document.html"), "w", encoding="utf8").write(report.build_document(name, chk, text, "TRANSLATION\n" + shown, e2 or "", args.language))
         rows.append({"document": name, "pages": len(pages), "light": chk["light"], "reasons": chk["reasons_red"] + chk["reasons_amber"],
                      "page_joins": sum(j["action"].startswith("joined") for j in joins)})
     return rows
@@ -372,6 +388,15 @@ def run_pipeline(args, caller=None, text_caller=None):
             sn = sense_check(args, out, ledger_path, models, fx, text_caller, pid + "__sense", page_english(readings[pid]))
             if sn is not None:
                 checker.apply_sense(results[pid], *sn)
+    for pid in sorted(results):                                # the English to read shows both values wherever the readings of the page disagree (a page of a joined document: below)
+        if pid in in_doc or "text" in readings[pid]:
+            continue
+        its = page_disagreement_items(results[pid])
+        if its:
+            mk, n, un = checker.mark_disagreements(page_english(readings[pid]), its)
+            results[pid]["disagreements_marked"] = n; results[pid]["disagreements_unplaced"] = un
+            if n:
+                results[pid]["english_marked"] = mk
     doc_rows = stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, known, results, types)
     ledger = harness.read_ledger(ledger_path)
     cost = harness.spent_inr(ledger)
@@ -535,9 +560,20 @@ def selftest():
         assert [k["problem"] for k in dj["sense_flags"]] == ["doubtful"] and dj["sense_unmatched"] == 1, "a finding whose quote is not in the text is dropped and counted"
         assert any("sense check found 1" in r for r in dj["reasons_amber"]) and "may not make sense" in open(os.path.join(td, "run_hw", "document", "hw_document.html")).read()
         assert any(r["page"] == "hw_full__sense" and r["status"] == "ok" for r in harness.read_ledger(os.path.join(td, "run_hw", "ledger.jsonl")))
+        t1 = open(os.path.join(td, "run_hw", "document", "hw_translation_1.txt")).read()
+        assert "[02/4/25 or 9/4/25 (third look: 9/4/25): check]" in t1 and "Dated 02/4/25 here" in open(os.path.join(td, "run_hw", "document", "hw_translation_1_raw.txt")).read(), t1
+        assert dj["disagreements_marked"] == 1 and "[02/4/25 or 9/4/25" in open(os.path.join(td, "run_hw", "document", "hw_document.html")).read(), "the document report shows both values"
         ah2 = argparse.Namespace(**{**vars(ah), "out": os.path.join(td, "run_hw2"), "stitch": "text", "marks": "off"}); hw["prompts"].clear()
         run_pipeline(ah2, fake_hw, fake_hw_text)
         assert hw["text_calls"] == 2 and not any("~~word~~" in x for x in hw["prompts"]), "--stitch text and --marks off restore the old way"
+        isolo = os.path.join(td, "in_solo"); os.makedirs(isolo)
+        Image.new("RGB", (301, 200), "white").save(os.path.join(isolo, "solo.png"))
+        asolo = argparse.Namespace(**{**vars(ah), "input": isolo, "out": os.path.join(td, "run_solo")})
+        run_pipeline(asolo, fake_hw, fake_hw_text)
+        cs = json.load(open(os.path.join(td, "run_solo", "checks", "solo.json")))
+        assert cs["disagreements_marked"] == 1 and "[02/4/25 or 9/4/25 (third look: 9/4/25): check]" in cs["english_marked"], cs.get("english_marked")
+        assert "English to read" in open(os.path.join(td, "run_solo", "report", "solo.html")).read(), "a single page shows the marked English first"
+        assert json.load(open(os.path.join(out, "checks", "pg1.json")))["disagreements_unplaced"], "a value that is not in the English as written is listed, not lost"
         ah3 = argparse.Namespace(**{**vars(ah), "out": os.path.join(td, "run_hw3"), "sense": "off"}); hw["sense_calls"] = 0
         run_pipeline(ah3, fake_hw, fake_hw_text)
         assert hw["sense_calls"] == 0 and "sense_flags" not in json.load(open(os.path.join(td, "run_hw3", "document", "hw_check.json"))), "--sense off makes no call and adds no finding"

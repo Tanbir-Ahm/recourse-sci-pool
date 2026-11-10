@@ -110,6 +110,8 @@ def build(pid, check, readings, image_path=None, language="", cost_inr=None):
         cols = [("English draft 1", english(readings["english1"])), ("English draft 2", english(readings["english2"]))]
     else:
         cols = [("View 1: image as given", english(readings.get("view1"))), ("View 2: padded copy", english(readings.get("view2")))]
+        if check.get("english_marked"):                       # where the readings disagree on a value the English to read shows both (10an)
+            cols.insert(0, ("English to read: view 1, with every value the readings disagree on shown as both", check["english_marked"]))
         if readings.get("view3"):
             cols.append(("View 3: ultra-high detail", english(readings["view3"])))
     h.append("<h2>English draft, reading by reading</h2><div class=cols>%s</div>" % "".join("<div class=col><h3>%s</h3>%s</div>" % (esc(n), pre(t)) for n, t in cols))
@@ -161,6 +163,10 @@ def build_document(name, check, source, english1, english2, language="", cost_in
     why = "".join("<li><b>Red:</b> %s</li>" % esc(r) for r in check["reasons_red"]) + "".join("<li>Amber: %s</li>" % esc(r) for r in check["reasons_amber"])
     h.append("<div style='border:2px solid %s;padding:8px 10px;margin:8px 0'><b style='color:%s;font-size:14pt'>%s</b> &nbsp; %s<ul style='margin:6px 0 0 18px'>%s</ul></div>" % (col, col, check["light"].upper(), esc(check["person_task"]), why))
     h.append(read_first_document(check, english1))
+    if check.get("disagreements_marked") or check.get("disagreements_unplaced"):
+        h.append("<p class=small>In translation 1 below, a value that the readings of a page disagree on is printed as <b>[value 1 or value 2: check]</b>%s%s</p>" % (
+            " (%d marked)" % check["disagreements_marked"] if check.get("disagreements_marked") else "",
+            ("; %d could not be placed in the text (they are in the list above)" % len(check["disagreements_unplaced"])) if check.get("disagreements_unplaced") else ""))
     nd = check.get("name_differences")
     if nd:
         h.append("<h2>Names and titles that only one translation has (check each against the original-script word)</h2><table><tr><th>Translation 1 only</th><th>Translation 2 only</th></tr><tr><td>%s</td><td>%s</td></tr></table>" % (
@@ -237,6 +243,14 @@ def selftest():
     assert "Read these first" in hs and "may not make sense (high)" in hs and "urgent necessity for has been realized" in hs and "missing object" in hs
     cs = checker.apply_sense(checker.check_document("1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f."), [{"quote": "A b c d", "problem": "dangling", "severity": "low"}], 0)
     assert "may not make sense (low)" in build_document("d", cs, "1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f.") and "may not make sense" not in build_document("d", checker.check_document("1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f."), "1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f.")
+    # 10an: both values in the English to read
+    cm = checker.check_page("typed", "TRANSCRIPTION\n1. dated 15/8/92 end\nTRANSLATION\nDated 15/8/92.", "TRANSCRIPTION\n1. dated 16/8/92 end\nTRANSLATION\nDated 16/8/92.")
+    cm["english_marked"] = "Dated [15/8/92 or 16/8/92: check]."
+    hm = build("mk", cm, {"view1": "TRANSCRIPTION\n1. x\nTRANSLATION\nDated 15/8/92.", "view2": "TRANSCRIPTION\n1. x\nTRANSLATION\nDated 16/8/92."})
+    assert "English to read" in hm and "[15/8/92 or 16/8/92: check]" in hm
+    assert "English to read" not in build("nm", checker.check_page("typed", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "TRANSCRIPTION\n1. x\nTRANSLATION\nA b."), {"view1": "TRANSCRIPTION\n1. x\nTRANSLATION\nA b.", "view2": "TRANSCRIPTION\n1. x\nTRANSLATION\nA b."})
+    cdm = dict(checker.check_document("1. x", "TRANSLATION\nA b c d e f.", "TRANSLATION\nA b c d e f."), disagreements_marked=2, disagreements_unplaced=[{"A": "x"}])
+    assert "[value 1 or value 2: check]" in build_document("d", cdm, "1. x", "TRANSLATION\nA b.", "TRANSLATION\nA b.") and "2 marked" in build_document("d", cdm, "1. x", "TRANSLATION\nA b.", "TRANSLATION\nA b.")
     print("selftest OK (invented text only)")
 
 

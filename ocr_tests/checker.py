@@ -366,6 +366,35 @@ def apply_sense(out, kept, dropped=0):
     return out
 
 
+def _val_re(v):
+    return r"(?<![\d/.,\-])" + re.escape(v) + r"(?![\d/])"
+
+
+def mark_disagreements(english, items):
+    """The English that is shown to be read, with every value that the readings of the page disagree on printed as BOTH values, so a wrong guess never reads as fact:
+    '[02/4/25 or 9/4/25 (third look: 9/4/25): check]'. items: [{'A', 'B', 'third_view', ...}] (view 1's value, view 2's value, the side the third look takes). A value found in
+    one reading only is shown as '[02/4/25: found in one reading only: check]'. Only a value that appears in the English as written can be marked; the others are returned as
+    unplaced. Returns (marked text, number marked, unplaced items). The checks themselves run on the unmarked English."""
+    text, placed, unplaced = english or "", 0, []
+    for it in items or []:
+        a, b = it.get("A"), it.get("B")
+        if not (a or b):
+            continue
+        target = next((v for v in (a, b) if v and re.search(_val_re(v), text)), None)
+        core = "%s or %s" % (a, b) if (a and b) else "%s: found in one reading only" % (a or b)
+        if target is None:
+            if not any("[" + core in text for _ in (0,)):
+                unplaced.append(it)
+            continue
+        if "[" + core in text:
+            continue
+        side = {"view 1": a, "view 2": b}.get(it.get("third_view"))
+        note = " (third look: %s)" % side if side else ""
+        text = re.sub(_val_re(target), lambda m: "[%s%s: check]" % (core, note), text)
+        placed += 1
+    return text, placed, unplaced
+
+
 def _flat(s):
     s = norm(s).replace("'", ".")
     s = re.sub(r"[।৷]", "/", s)
@@ -804,6 +833,18 @@ def selftest():
     G2 = apply_sense(dict(G, reasons_amber=list(G["reasons_amber"])), kept, dropped)
     assert G2["light"] == "amber" and G2["sense_flags"] and any("sense check found 1" in r for r in G2["reasons_amber"]) and "Look at every flagged item" in G2["person_task"]
     assert apply_sense({"light": "red", "reasons_amber": [], "must_check": []}, kept)["light"] == "red", "a sense finding never turns red into anything else, and never makes red"
+    # 10an: where the readings disagree the English shows both values
+    I1 = [{"A": "02/4/25", "B": "9/4/25", "third_view": "view 2"}]
+    mk, n, un = mark_disagreements("Dated 02/4/25 and again 02/4/25. Next 102/4/25 is another number.", I1)
+    assert n == 1 and un == [] and mk.count("[02/4/25 or 9/4/25 (third look: 9/4/25): check]") == 2 and "Next 102/4/25" in mk, mk
+    mk2, n2, un2 = mark_disagreements("Paid on 9/4/25 only.", I1)
+    assert n2 == 1 and "[02/4/25 or 9/4/25 (third look: 9/4/25): check]" in mk2, mk2
+    mk3, n3, un3 = mark_disagreements("No date here.", I1)
+    assert n3 == 0 and un3 == I1 and mk3 == "No date here."
+    mk4, n4, _ = mark_disagreements("Amount 2,00,000/- paid.", [{"A": "2,00,000/-", "B": None, "third_view": None}])
+    assert "[2,00,000/-: found in one reading only: check]" in mk4 and n4 == 1
+    assert mark_disagreements(mk, I1)[1] == 0, "a value already marked is not marked again"
+    assert mark_disagreements("x 1/1/90", [{"A": "1/1/90", "B": "1/1/91", "third_view": "neither"}])[0] == "x [1/1/90 or 1/1/91: check]"
     print("selftest OK (invented text only)")
 
 
