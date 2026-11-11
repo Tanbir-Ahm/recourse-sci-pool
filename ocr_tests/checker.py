@@ -162,6 +162,8 @@ def letters(text):
     """A reading reduced to its letters for comparison: transcription lines only, line-end hyphens joined, then only
     letters, vowel signs and digits kept, in the comparison form of norm()."""
     t = "\n".join(transcription_lines(text))
+    t = re.sub(r"\[(?:struck: ?\?|stamp over text|seal over text|signature)\]", " ", t, flags=re.I)         # the words of a mark are not writing on the page (10ao): the marks are compared on their own
+    t = re.sub(r"\[(?:margin|footer|header):\s*", " ", t, flags=re.I)
     t = re.sub(r"-\s*\n\s*", "", t)
     t = norm(t)
     return "".join(c for c in t if unicodedata.category(c)[0] in "LMN").lower()
@@ -193,7 +195,7 @@ def agreement(text_a, text_b):
             "share": round(min(len(a), len(b)) / max(len(a), len(b)), 2)}
 
 
-ORDER_OK_AGREE = 95.0       # below the red line in order but at least this with the lines in any order: a block was read in a different place, not different text
+ORDER_OK_AGREE = RED_AGREE  # below the red line in order but not below it with the lines in any order: a block was read in a different place, not different text (the same red line, applied with the order ignored)
 
 
 def agreement_unordered(text_a, text_b):
@@ -845,6 +847,9 @@ def selftest():
     assert "[2,00,000/-: found in one reading only: check]" in mk4 and n4 == 1
     assert mark_disagreements(mk, I1)[1] == 0, "a value already marked is not marked again"
     assert mark_disagreements("x 1/1/90", [{"A": "1/1/90", "B": "1/1/91", "third_view": "neither"}])[0] == "x [1/1/90 or 1/1/91: check]"
+    # 10ao: the words of a mark ("struck", "stamp over text", "signature") do not count as letters of the page
+    assert agreement("TRANSCRIPTION\nabcd efgh [struck: ?] ijkl\n[stamp over text] mnop\nTRANSLATION\nx", "TRANSCRIPTION\nabcd efgh ijkl\n[signature] mnop\nTRANSLATION\nx")["percent"] == 100.0
+    assert agreement("TRANSCRIPTION\n[margin: abcd]\nTRANSLATION\nx", "TRANSCRIPTION\nabcd\nTRANSLATION\nx")["percent"] == 100.0
     print("selftest OK (invented text only)")
 
 
