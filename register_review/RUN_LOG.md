@@ -7,3 +7,4 @@ One line per run of `register-weekly`; a week without a line means the routine d
 - 2026-10-15 04:06 UTC: sheet 2026-10-15: 60 items (candidate 58, flag 2); backlog 504; open flags 2; open proposals 232
 - 2026-10-22 04:07 UTC: sheet 2026-10-22: 60 items (candidate 58, flag 2); backlog 501; open flags 2; open proposals 232
 - 2026-11-05 04:06 UTC: sheet 2026-11-05: 60 items (candidate 58, flag 2); backlog 501; open flags 2; open proposals 232
+- 2026-11-12 04:06 UTC: sheet 2026-11-12: 60 items (candidate 58, flag 2); backlog 501; open flags 2; open proposals 232
