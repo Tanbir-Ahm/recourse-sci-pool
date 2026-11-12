@@ -1,0 +1,41 @@
+{
+ "written": "2026-11-12, by Claude, BEFORE the age exclusion was written and before any run; not a lawyer's set. 'neg' = a question that mentions a person's AGE next to the word case / proceedings / trial and is NOT about delay in a criminal trial (the trial-delay excerpts must not be handed over). 'pos' = a question that is about delay and also mentions an age (they must still be handed over).",
+ "neg": [
+  "Can the case against the 31-year-old shopkeeper be compounded under Section 7(b) now that the wife wants to settle, and does that change bail?",
+  "My client is a 62-year-old man facing proceedings under the Dowry Prohibition Act. Is the offence bailable?",
+  "The accused, aged 45 years, was tried in a case of theft. What is the punishment under the BNS?",
+  "A 17-year-old boy is accused in a case of rash driving. Which court will hear the proceedings?",
+  "My client, a 28-year-old engineer, is named in a cheating case. Can he get anticipatory bail?",
+  "The complainant is a 70 years old widow and the case is about a forged will. Which sections apply?",
+  "In a case where the accused is aged 55, does the police need permission from a DSP before arrest?",
+  "The 40-year-old driver in the case says he was not at the spot. How should I cross-examine the witness?",
+  "My client is 19 years of age and the proceedings were started on a neighbour's complaint. Can the FIR be quashed?",
+  "A 35-year-old woman filed the case under section 498A. What does the husband do to get bail?",
+  "The prosecution says the 22-year-old accused absconded. How is a proclaimed offender dealt with in the case?",
+  "Is a 16-year-old tried as an adult in a murder case? Please explain the proceedings.",
+  "My 50-year-old client was arrested in a PMLA case. What are the conditions for bail?",
+  "The case concerns a 12-year-old victim; what changes in the proceedings under POCSO?",
+  "Our client, aged 33, faces proceedings for a bounced cheque. Can the case be compounded?",
+  "In a case against a 65-year-old doctor for negligence, what must the prosecution prove?",
+  "The accused, who is 29 years old, was seen near the shop. Is the case one of theft or house trespass?",
+  "A 45-year-old government clerk is in a bribery case. Is sanction needed for the proceedings?",
+  "The 26-year-old accused confessed to the police. Can the case rest on that confession?",
+  "Can a 58-year-old man get default bail if the charge-sheet in his case was not filed in 90 days?",
+  "My client is a 41-year-old trader. The case is under the GST Act. Which court conducts the proceedings?",
+  "A 30-year-old teacher is in a case under the IT Act for a post. What is the punishment?",
+  "The 60-year-old accused has a heart condition; the court is hearing the case on bail. What can be argued?",
+  "In the case of a 24-year-old man accused of voyeurism, which sections apply and what is the punishment?"
+ ],
+ "pos": [
+  "My 45-year-old client's trial has been going on for 9 years and the prosecution keeps asking for time. Can the case be closed because of the delay?",
+  "The accused, aged 60, has been in custody for 5 years and the trial has not started. What can I do?",
+  "My son is 32 years old and his case has been pending for ten years with date after date. Does Article 21 help?",
+  "Can the High Court quash the proceedings against a 55-year-old accused because the trial took 12 years?",
+  "A 38-year-old undertrial has spent four years in jail and the case is still at the evidence stage. Is there a right to speedy trial?",
+  "My client, aged 50, is facing a trial that is dragging on; the prosecution seeks adjournments at every hearing. What are the remedies?",
+  "The 29-year-old accused was arrested at 24 and the case is still going on after 5 years. Can bail be granted on the ground of delay?",
+  "Is there a time limit for a criminal trial? My 47-year-old client has been facing one for eight years.",
+  "He is now 66 years old and the trial that began 15 years ago is still not over. Can the court discharge him?",
+  "A 34-year-old man's case has been delayed for six years because the witnesses do not turn up. What does the Supreme Court say about speedy trial?"
+ ]
+}
