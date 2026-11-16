@@ -1,0 +1,54 @@
+# Drafting plan for the lawyers' module (written 2026-11-16)
+
+**Status: a PLAN. Nothing is approved to build and nothing is built.** Drafting stays "ask before starting" (`LAWYER_RETENTION_PLAN.md`, CLAUDE.md). The owner asked on 2026-11-16 ("i have these templates now, be innovative and plan it now"); this is that plan. Everything here is Claude's reasoning; demand is unverified; no lawyer has read it. Say "no hallucination rate has been measured".
+
+## 0. Why this exists
+A lawyer asked the tool to "draft a document for a defamation case"; it showed Supreme Court and Gauhati High Court judgments and no draft. Cause: the engine has no draft intent (every message is a research question), the only drafting code (`draft_layer.py`, `petition_draft.py`, `scenario_draft.py`) is deterministic templates for arrest, freeze and bail situations, and there is no defamation template.
+
+## 1. What the 21 templates are (read in full on 2026-11-16; the zip is the owner's, not stored here: provenance and licence unknown)
+- 20 distinct Word files (`loan-agreement (1)` is byte-identical text to `loan-agreement`). Each is 2,000 to 5,000 characters, one placeholder style `[PLEASE PROVIDE: Label]` (212 distinct labels; 35 recur: Day, Month, Year, City, State, Full Address, Amount in Rupees, Advocate Name / Enrollment / Address / Phone, Witness 1 and 2, PAN, Aadhaar), plus about 92 free-text instructions in square brackets ("[describe the events ...]", "[bailable / triable by Magistrate ...]") that are the real drafting content. A page-number footer only.
+- Relevant to Recourse (criminal and litigation): bail application, legal notice, affidavit, writ petition. Civil litigation: consumer complaint, divorce petition. **Fourteen are transactional** (rent, lease, sale, gift, will, POA, NDA, MoU, employment, partnership, franchise, consultancy, loan, service agreement): they need the Transfer of Property, Registration, Contract, Partnership and Succession Acts and state stamp duty, none of which is on the Act shelf, and they have nothing to do with the research moat.
+- **Not in the set: defamation (notice, private complaint under BNSS 223, quashing petition under BNSS 528), and anything else criminal beyond bail.**
+- **Defects seen in the templates (the lawyer should confirm):** the affidavit cites the Indian Evidence Act, 1872 s.3 (the Bharatiya Sakshya Adhiniyam replaced it); the legal notice is headed "Section 80 CPC / General" (s.80 is the notice to the Government), is built on the Contract Act s.73, and carries a stamp-duty line, an exclusive-jurisdiction clause and witness lines that a notice does not normally need; the bail application hard-codes three authorities (Sanjay Chandra, Arnesh Kumar, Satender Kumar Antil) with no paragraph and no register check (Arnesh Kumar is about arrest, not bail), says "court fees ... paid", and opens its grounds with a stock "innocent and falsely implicated"; the bail template does not say which of BNSS 480, 483 or 484 applies; the writ template is Article 226 only.
+- Whether a lawyer wrote or reviewed any of them is unknown. **Never mark a template `reviewed` on anyone's behalf.**
+
+## 2. The idea in one line
+**The model never writes the law and never invents a fact. Code fills the lawyer's own Word template; the law comes word for word from the Act shelf; facts come only from the Matter's case file; the model, if used at all, only joins the lawyer's own facts into paragraphs, and every sentence it adds is traced or highlighted.** The product's edge over ChatGPT and CaseMine's drafting is the checking, not the writing.
+
+## 3. Pieces that already exist
+Matter and case file (the person's own typed sentences, word for word); the Act shelf (BNS, BNSS, 13 Acts, verbatim sections, official-text boxes); the invented-case check and tolerant name match; the quote check; the register and checker for authorities; PDF / Word export; the interview pattern (`interview_flow.py`); the cost log; the statute map EA to BSA. **New pieces:** the template specs, the fill engine, the draft linter, law-block insertion, a CrPC/IPC to BNSS/BNS reference map (not built; the library has only the EA to BSA map), the intent detector, the draft cover sheet.
+
+## 4. The design (innovations)
+1. **Templates become data.** A script reads each docx and writes a spec: sections in order, fields (type: name, date, amount, choice, address, free text from facts, LAW block, AUTHORITY slot), required or not, which statute each section rests on. The 212 labels fold into one registry, so "Client Full Name" is one field across every document.
+2. **Type once, used everywhere.** An Advocate profile (name, enrolment, address, phone) saved once fills five templates' signature blocks; the Matter holds court, FIR, police station, parties and dates once. This is the stickiness the retention plan wanted, at zero model cost.
+3. **Fill the lawyer's own Word file in place** (python-docx on the original, formatting and footer kept), not a re-typed copy.
+4. **A highlight code the lawyer reads at a glance:** no mark = from the lawyer's own facts or verbatim law; yellow = a blank or a choice for the lawyer; red = a check failed. The checks live on a separate cover sheet that is NOT part of the filing.
+5. **Law blocks.** `{{LAW:BNS:356}}` is replaced by the shelf's text word for word with its source and the shelf's `machine_checked` status; the template's hand-typed legal references are replaced by checked blocks.
+6. **Elements first, for defamation.** The draft's paragraphs follow the elements of BNS 356 (an imputation, made or published, intending or knowing or having reason to believe it will harm reputation) and the exceptions are shown word for word so that the lawyer sees at once which exception the other side will run. The same case file also produces the defence side (a quashing petition, grounds to resist the complaint). BNSS 223 changes the complaint's path: the Magistrate examines the complainant on oath and must give the accused a hearing before cognizance (shelf text read 2026-11-16), so the complaint must be drafted for that.
+7. **Draft check as a free product of its own (no model, no cost).** Upload any Word draft (ours, the lawyer's, the other side's): the linter flags stale law (IPC, CrPC, Evidence Act), a section number with no text, a citation that is not on the verified list or is on the register, blanks left, party names or dates that differ between paragraphs, a missing verification or annexure line. This reuses the same checks, helps the lawyer on day one, and shows whether the checks catch real faults before any generation is shipped.
+8. **Filing-readiness list** per document type (annexures, affidavit, vakalatnama, court fee, limitation question): lawyer-written rule table, shown as questions, never as legal conclusions.
+9. **Style library later:** the lawyer's own past drafts (anonymised, with permission) set the house format.
+
+## 5. Order (each step needs the owner's go; each ends in his staging test; nothing is set on production without his say-so)
+- **D0, small, no drafting:** when someone asks to draft something and no template exists, say so plainly and offer what exists (the section's elements, the statute text, the cases). Detect "draft / prepare / write a ..." asks.
+- **D1, deterministic core, no model:** spec converter, field registry, Advocate profile, fill engine for the four criminal-litigation templates (bail, notice, affidavit, writ), highlight code, cover sheet, the linter. Measured on 20 fact sets written before the build.
+- **D2, law blocks and authorities:** shelf-verbatim sections replace hand-typed references; authority slots accept only judgments the checker and register know; the CrPC/IPC to BNSS/BNS map (built from the shelf and checked by program, then a lawyer reads it).
+- **D3, the defamation set:** notice, private complaint (BNSS 223), quashing petition (BNSS 528), the elements table. The lawyer supplies or corrects the skeletons; Claude may write a first skeleton from the statute text, marked `unreviewed`.
+- **D4, model-written fact paragraphs**, switch `DRAFT_MODEL`, default off, staging: the model joins case-file facts into the template's free-text slots; every sentence is traced to a case-file line or highlighted; invented names, dates, amounts and sections are caught (measured by seeding invented facts into drafts and counting what the check finds). Cost per draft to be measured, not assumed.
+- **D5, draft check for uploads, D6, style library.**
+- Transactional templates (14): not in v1, not before D4 measures; they are a different market (property and corporate lawyers, clerks, the public), crowded (ChatGPT, document sites), state-specific (stamp duty, registration), and they do not use the research moat.
+
+## 6. How it will be judged
+Pre-registered, all committed before running: (a) the linter finds 100% of seeded stale-law and blank faults on 20 templates-times-fact-sets, with false alarms counted; (b) every statute passage in a draft is a character-for-character copy of the shelf (a diff check, not a sample); (c) the trace check finds seeded invented facts (report the rate, do not assume it); (d) a lawyer scores 10 drafts blind against a ChatGPT draft from the same facts: wrong law, wrong or invented authority, minutes to filing-ready. Claude's own scoring is not accepted as the result. No claim that drafts are accurate or safe until (d) exists.
+
+## 7. Risks, said plainly
+A draft is a court filing: a wrong section or an invented case harms the lawyer, not just the user. Hence: lawyers only at first; "draft for lawyer review", never "ready to file"; no limitation or jurisdiction conclusion (a question to the lawyer); a draft stored in a Matter holds client names (privacy policy and DPDP consent are still placeholders, gate G1). ChatGPT and CaseMine already draft: the edge is only the checks, unproven until D6's blind test. Licence of the templates: if bought or copied from a site, they may not be shipped.
+
+## 8. Decisions needed from the owner
+1. Go for D0 and D1 (or D0 only).
+2. Where the templates came from, who reviewed them, whether Recourse may ship them.
+3. Which lawyer reads and corrects the skeletons and marks a template `reviewed` (Mr. Advocate or the lawyer who asked for the defamation draft); whether he will supply the defamation, complaint and quashing skeletons.
+4. Defamation first from the complainant's side, the accused's side, or both.
+5. v1 scope: the four criminal templates plus the defamation set (advised), not the fourteen transactional ones.
+6. Drafting for laypeople: never, or later (advised: lawyers first).
+7. Price or monthly allowance for drafting (after D4 gives a measured cost).
