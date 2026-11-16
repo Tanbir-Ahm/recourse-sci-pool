@@ -1,0 +1,262 @@
+[
+ {
+  "aud": "layman",
+  "name": "tada sedition",
+  "state": "single_match",
+  "answer_call_chars": 16410,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 16410,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "job cheating",
+  "state": "conflicting_matches",
+  "answer_call_chars": 72115,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 72115,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "hurt with rod",
+  "state": "single_match",
+  "answer_call_chars": 20315,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 20315,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "dowry cruelty",
+  "state": "single_match",
+  "answer_call_chars": 29048,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 29048,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "stalking",
+  "state": "single_match",
+  "answer_call_chars": 13932,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 13932,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "bail theft",
+  "state": "single_match",
+  "answer_call_chars": 57979,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 57979,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "arrest legal",
+  "state": "single_match",
+  "answer_call_chars": 71409,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 71409,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "pc act s17",
+  "state": "single_match",
+  "answer_call_chars": 35181,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 35181,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "drink drive",
+  "state": "single_match",
+  "answer_call_chars": 13736,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 13736,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "layman",
+  "name": "cheque bounce",
+  "state": "single_match",
+  "answer_call_chars": 16819,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 16819,
+    "max_tokens": 8000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "tada sedition",
+  "state": "single_match",
+  "answer_call_chars": 15696,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 15696,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "job cheating",
+  "state": "conflicting_matches",
+  "answer_call_chars": 71401,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 71401,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "hurt with rod",
+  "state": "single_match",
+  "answer_call_chars": 19601,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 19601,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "dowry cruelty",
+  "state": "single_match",
+  "answer_call_chars": 28334,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 28334,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "stalking",
+  "state": "single_match",
+  "answer_call_chars": 13218,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 13218,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "bail theft",
+  "state": "single_match",
+  "answer_call_chars": 57265,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 57265,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "arrest legal",
+  "state": "single_match",
+  "answer_call_chars": 70695,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 70695,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "pc act s17",
+  "state": "single_match",
+  "answer_call_chars": 34467,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 34467,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "drink drive",
+  "state": "single_match",
+  "answer_call_chars": 13022,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 13022,
+    "max_tokens": 12000
+   }
+  ]
+ },
+ {
+  "aud": "lawyer",
+  "name": "cheque bounce",
+  "state": "single_match",
+  "answer_call_chars": 16105,
+  "calls": [
+   {
+    "model": "claude-sonnet-5",
+    "chars": 16105,
+    "max_tokens": 12000
+   }
+  ]
+ }
+]
