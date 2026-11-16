@@ -1,0 +1,42 @@
+{
+ "Gunmala Sales": {
+  "judgments_whose_text_has_the_name": 15,
+  "authority_table_cited_by": null,
+  "cluster_records": 1
+ },
+ "S.M.S. Pharmaceuticals 2005": {
+  "judgments_whose_text_has_the_name": 69,
+  "authority_table_cited_by": 2,
+  "cluster_records": 1
+ },
+ "S.M.S. Pharmaceuticals 2007": {
+  "judgments_whose_text_has_the_name": 70,
+  "authority_table_cited_by": 1,
+  "cluster_records": 1
+ },
+ "Aneeta Hada 2008": {
+  "judgments_whose_text_has_the_name": 40,
+  "authority_table_cited_by": null,
+  "cluster_records": 1
+ },
+ "Aneeta Hada 2012": {
+  "judgments_whose_text_has_the_name": 40,
+  "authority_table_cited_by": 37,
+  "cluster_records": 1
+ },
+ "K.K. Ahuja": {
+  "judgments_whose_text_has_the_name": 27,
+  "authority_table_cited_by": 23,
+  "cluster_records": 1
+ },
+ "Sunita Palita": {
+  "judgments_whose_text_has_the_name": 5,
+  "authority_table_cited_by": 4,
+  "cluster_records": 1
+ },
+ "Dashrath Rupsingh Rathod": {
+  "judgments_whose_text_has_the_name": 22,
+  "authority_table_cited_by": 21,
+  "cluster_records": 1
+ }
+}

@@ -1,0 +1,684 @@
+{
+ "index_commit": "d8811a910c73b0159bea7bcf3183ea258120db5b",
+ "judgments": 19255,
+ "authority_params": {
+  "prior": 0.1,
+  "consensus": 0.6,
+  "min_frac": 0.08,
+  "max_clusters": 10,
+  "passages": 3,
+  "min_count": 3,
+  "per_doc": 1,
+  "prior_cap": 100,
+  "consensus_cap": 0.5,
+  "pool": 60
+ },
+ "rows": [
+  {
+   "id": "D1",
+   "set": "D",
+   "q": "I am a non-executive director of a company. A complaint under section 138 of the Negotiable Instruments Act has been filed against the company and me. The complaint only says that I was 'in charge of and responsible for the conduct of the business of the company'. Can the complaint against me be quashed?",
+   "top5_without": [
+    "Securities and Exchange Board of India v. Gaurav Varshney & Anr",
+    "S.M.S. Pharmaceuticals Ltd v. Neeta Bhalla and anr",
+    "K. Srikanth Singh v. North East Securities Ltd. and Anr",
+    "Mannalal Chamaria & Anr v. State of West Bengal and Anr",
+    "Harshendra Kumar D v. Rebatilata Koley Etc"
+   ],
+   "top5_with": [
+    "K.K. Ahuja v. V.K. Vora & Anr",
+    "Harshendra Kumar D v. Rebatilata Koley Etc",
+    "Securities and Exchange Board of India v. Gaurav Varshney & Anr",
+    "Sabitha Ramamurthy & Anr v. R.B.S. Channabasavaradhya",
+    "K. Srikanth Singh v. North East Securities Ltd. and Anr"
+   ],
+   "leads": {
+    "27193": {
+     "name": "S.M.S. Pharmaceuticals (2005)",
+     "in_index": true,
+     "passages": 25,
+     "best_dense_rank": 27,
+     "best_sim": 0.615,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 2,
+     "judgment_position_with": 8,
+     "named_by_collection": 2
+    },
+    "28670": {
+     "name": "S.M.S. Pharmaceuticals (2007)",
+     "in_index": true,
+     "passages": 19,
+     "best_dense_rank": 72,
+     "best_sim": 0.593,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 28,
+     "judgment_position_with": 35,
+     "named_by_collection": 1
+    },
+    "42037": {
+     "name": "Gunmala Sales (2014)",
+     "in_index": true,
+     "passages": 44,
+     "best_dense_rank": 1,
+     "best_sim": 0.664,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 6,
+     "judgment_position_with": 12,
+     "named_by_collection": null
+    },
+    "43149": {
+     "name": "Bridgestone India (2015)",
+     "in_index": true,
+     "passages": 13,
+     "best_dense_rank": 7178,
+     "best_sim": 0.31,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    },
+    "1000256766": {
+     "name": "HDFC Bank v State of Maharashtra (2025)",
+     "in_index": true,
+     "passages": 45,
+     "best_dense_rank": 17,
+     "best_sim": 0.624,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 20,
+     "judgment_position_with": 24,
+     "named_by_collection": 4
+    },
+    "2000252250": {
+     "name": "Kamalkishor Taparia (2025)",
+     "in_index": true,
+     "passages": 22,
+     "best_dense_rank": 41,
+     "best_sim": 0.606,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": 1
+    },
+    "31456": {
+     "name": "Aneeta Hada (2008)",
+     "in_index": true,
+     "passages": 68,
+     "best_dense_rank": 29,
+     "best_sim": 0.615,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 24,
+     "judgment_position_with": 32,
+     "named_by_collection": null
+    },
+    "39265": {
+     "name": "Aneeta Hada (2012)",
+     "in_index": true,
+     "passages": 56,
+     "best_dense_rank": 255,
+     "best_sim": 0.547,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": 10,
+     "named_by_collection": 37
+    },
+    "1000254163": {
+     "name": "Sunita Palita (2022)",
+     "in_index": true,
+     "passages": 54,
+     "best_dense_rank": 31,
+     "best_sim": 0.615,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 16,
+     "judgment_position_with": 23,
+     "named_by_collection": 4
+    },
+    "2000251720": {
+     "name": "Ashok Shewakramani (2023)",
+     "in_index": true,
+     "passages": 18,
+     "best_dense_rank": 15,
+     "best_sim": 0.628,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 8,
+     "judgment_position_with": 16,
+     "named_by_collection": null
+    },
+    "34971": {
+     "name": "K.K. Ahuja (2009)",
+     "in_index": true,
+     "passages": 27,
+     "best_dense_rank": 16,
+     "best_sim": 0.625,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 14,
+     "judgment_position_with": 1,
+     "named_by_collection": 23
+    }
+   }
+  },
+  {
+   "id": "D2",
+   "set": "D",
+   "q": "Section 141 NI Act: is a bare averment that a director was in charge of the company enough to proceed against a non-executive director for a dishonoured cheque, or must the complaint say what his role was?",
+   "top5_without": [
+    "K.K. Ahuja v. V.K. Vora & Anr",
+    "Sankar Padam Thapa v. Vijaykumar Dineshchandra Agarwal",
+    "State of NCT of Delhi Through Prosecuting Officer, Insecticides, Government of NCT, Delhi v. Rajiv Khurana",
+    "M/s Mansi Finance (Chennai) LTD v. M. Lalitha and Others",
+    "Gunmala Sales Private Ltd v. Anu Mehta & Ors"
+   ],
+   "top5_with": [
+    "K.K. Ahuja v. V.K. Vora & Anr",
+    "Pooja Ravinder Devidasani v. State of Maharashtra & Anr",
+    "N. Rangachari v. Bharat Sanchar Nigam LTD",
+    "Sabitha Ramamurthy & Anr v. R.B.S. Channabasavaradhya",
+    "Saroj Kumar Poddar v. State (NCT of Delhi) & Anr"
+   ],
+   "leads": {
+    "27193": {
+     "name": "S.M.S. Pharmaceuticals (2005)",
+     "in_index": true,
+     "passages": 25,
+     "best_dense_rank": 34,
+     "best_sim": 0.673,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 19,
+     "judgment_position_with": 24,
+     "named_by_collection": 2
+    },
+    "28670": {
+     "name": "S.M.S. Pharmaceuticals (2007)",
+     "in_index": true,
+     "passages": 19,
+     "best_dense_rank": 46,
+     "best_sim": 0.666,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 22,
+     "judgment_position_with": 27,
+     "named_by_collection": 1
+    },
+    "42037": {
+     "name": "Gunmala Sales (2014)",
+     "in_index": true,
+     "passages": 44,
+     "best_dense_rank": 1,
+     "best_sim": 0.741,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 5,
+     "judgment_position_with": 20,
+     "named_by_collection": null
+    },
+    "43149": {
+     "name": "Bridgestone India (2015)",
+     "in_index": true,
+     "passages": 13,
+     "best_dense_rank": 5781,
+     "best_sim": 0.319,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    },
+    "1000256766": {
+     "name": "HDFC Bank v State of Maharashtra (2025)",
+     "in_index": true,
+     "passages": 45,
+     "best_dense_rank": 5,
+     "best_sim": 0.717,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 15,
+     "judgment_position_with": 14,
+     "named_by_collection": 4
+    },
+    "2000252250": {
+     "name": "Kamalkishor Taparia (2025)",
+     "in_index": true,
+     "passages": 22,
+     "best_dense_rank": 39,
+     "best_sim": 0.67,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 31,
+     "judgment_position_with": 39,
+     "named_by_collection": 1
+    },
+    "31456": {
+     "name": "Aneeta Hada (2008)",
+     "in_index": true,
+     "passages": 68,
+     "best_dense_rank": 79,
+     "best_sim": 0.645,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    },
+    "39265": {
+     "name": "Aneeta Hada (2012)",
+     "in_index": true,
+     "passages": 56,
+     "best_dense_rank": 352,
+     "best_sim": 0.56,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": 7,
+     "named_by_collection": 37
+    },
+    "1000254163": {
+     "name": "Sunita Palita (2022)",
+     "in_index": true,
+     "passages": 54,
+     "best_dense_rank": 2,
+     "best_sim": 0.731,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 7,
+     "judgment_position_with": 12,
+     "named_by_collection": 4
+    },
+    "2000251720": {
+     "name": "Ashok Shewakramani (2023)",
+     "in_index": true,
+     "passages": 18,
+     "best_dense_rank": 8,
+     "best_sim": 0.715,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 28,
+     "judgment_position_with": 34,
+     "named_by_collection": null
+    },
+    "34971": {
+     "name": "K.K. Ahuja (2009)",
+     "in_index": true,
+     "passages": 27,
+     "best_dense_rank": 9,
+     "best_sim": 0.714,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 1,
+     "judgment_position_with": 1,
+     "named_by_collection": 23
+    }
+   }
+  },
+  {
+   "id": "D3",
+   "set": "D",
+   "q": "My company's cheque bounced. I am a director but I do not look after the daily running of the company, and I have got a court notice in the cheque bounce case. Can I be made to face the case?",
+   "top5_without": [
+    "S. P. Mani and Mohan Dairy v. Dr.Snehalatha Elangovan",
+    "Ashok Singh v. State of Uttar Pradesh & Anr",
+    "Rajpal Walia v. Rajeev Mehrotra",
+    "Sunita Palita & Others v. M/s Panchami Stone Quarry",
+    "Gunmala Sales Private Ltd v. Anu Mehta & Ors"
+   ],
+   "top5_with": [
+    "K.K. Ahuja v. V.K. Vora & Anr",
+    "Sabitha Ramamurthy & Anr v. R.B.S. Channabasavaradhya",
+    "N. Rangachari v. Bharat Sanchar Nigam LTD",
+    "Saroj Kumar Poddar v. State (NCT of Delhi) & Anr",
+    "S. P. Mani and Mohan Dairy v. Dr.Snehalatha Elangovan"
+   ],
+   "leads": {
+    "27193": {
+     "name": "S.M.S. Pharmaceuticals (2005)",
+     "in_index": true,
+     "passages": 25,
+     "best_dense_rank": 40,
+     "best_sim": 0.528,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": 2
+    },
+    "28670": {
+     "name": "S.M.S. Pharmaceuticals (2007)",
+     "in_index": true,
+     "passages": 19,
+     "best_dense_rank": 5,
+     "best_sim": 0.567,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 6,
+     "judgment_position_with": 12,
+     "named_by_collection": 1
+    },
+    "42037": {
+     "name": "Gunmala Sales (2014)",
+     "in_index": true,
+     "passages": 44,
+     "best_dense_rank": 21,
+     "best_sim": 0.539,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 5,
+     "judgment_position_with": 13,
+     "named_by_collection": null
+    },
+    "43149": {
+     "name": "Bridgestone India (2015)",
+     "in_index": true,
+     "passages": 13,
+     "best_dense_rank": 5276,
+     "best_sim": 0.295,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    },
+    "1000256766": {
+     "name": "HDFC Bank v State of Maharashtra (2025)",
+     "in_index": true,
+     "passages": 45,
+     "best_dense_rank": 18,
+     "best_sim": 0.542,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 7,
+     "judgment_position_with": 10,
+     "named_by_collection": 4
+    },
+    "2000252250": {
+     "name": "Kamalkishor Taparia (2025)",
+     "in_index": true,
+     "passages": 22,
+     "best_dense_rank": 107,
+     "best_sim": 0.508,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": 1
+    },
+    "31456": {
+     "name": "Aneeta Hada (2008)",
+     "in_index": true,
+     "passages": 68,
+     "best_dense_rank": 122,
+     "best_sim": 0.505,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 15,
+     "judgment_position_with": 20,
+     "named_by_collection": null
+    },
+    "39265": {
+     "name": "Aneeta Hada (2012)",
+     "in_index": true,
+     "passages": 56,
+     "best_dense_rank": 216,
+     "best_sim": 0.486,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": 7,
+     "named_by_collection": 37
+    },
+    "1000254163": {
+     "name": "Sunita Palita (2022)",
+     "in_index": true,
+     "passages": 54,
+     "best_dense_rank": 7,
+     "best_sim": 0.559,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 4,
+     "judgment_position_with": 8,
+     "named_by_collection": 4
+    },
+    "2000251720": {
+     "name": "Ashok Shewakramani (2023)",
+     "in_index": true,
+     "passages": 18,
+     "best_dense_rank": 160,
+     "best_sim": 0.497,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    },
+    "34971": {
+     "name": "K.K. Ahuja (2009)",
+     "in_index": true,
+     "passages": 27,
+     "best_dense_rank": 37,
+     "best_sim": 0.529,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": 1,
+     "named_by_collection": 23
+    }
+   }
+  },
+  {
+   "id": "E1",
+   "set": "E",
+   "q": "A cheque was given as security for a loan and it bounced when the lender presented it. Can the lender file a case under section 138 of the Negotiable Instruments Act?",
+   "top5_without": [
+    "B. Chandramathi v. N. Prakash",
+    "Bhabesh Sarma v. The State of Assam and Anr",
+    "Dilip Kr. Das v. State of Assam and Anr",
+    "Sankar Biswas v. The State of Assam and Anr",
+    "Sripati Singh (Since Deceased) Through His Son Gaurav Singh v. The State of Jharkhand & Anr"
+   ],
+   "top5_with": [
+    "Sampelly Satyanarayana Rao v. Indian Renewable Energy Development Agency Limited",
+    "Sripati Singh (Since Deceased) Through His Son Gaurav Singh v. The State of Jharkhand & Anr",
+    "Dashrathbhai Trikambhai Patel v. Hitesh Mahendrabhai Patel & Anr",
+    "B. Chandramathi v. N. Prakash",
+    "Sunil Todi & Ors v. State of Gujarat & Anr"
+   ],
+   "leads": {
+    "1000253391": {
+     "name": "Sripati Singh (2021)",
+     "in_index": true,
+     "passages": 28,
+     "best_dense_rank": 3,
+     "best_sim": 0.636,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 5,
+     "judgment_position_with": 2,
+     "named_by_collection": 7
+    },
+    "36322": {
+     "name": "Rangappa v Sri Mohan (2010)",
+     "in_index": true,
+     "passages": 28,
+     "best_dense_rank": 151,
+     "best_sim": 0.514,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": 17,
+     "named_by_collection": 27
+    },
+    "36294": {
+     "name": "Damodar S. Prabhu (2010)",
+     "in_index": true,
+     "passages": 19,
+     "best_dense_rank": 551,
+     "best_sim": 0.475,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": 29
+    },
+    "2000252798": {
+     "name": "Jai Balaji Industries (2025)",
+     "in_index": true,
+     "passages": 98,
+     "best_dense_rank": 401,
+     "best_sim": 0.486,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    }
+   }
+  },
+  {
+   "id": "E2",
+   "set": "E",
+   "q": "Does a security cheque attract section 138 of the NI Act if the debt was not yet due when the cheque was presented?",
+   "top5_without": [
+    "Man Mohan Gupta v. Super Sales Corporation",
+    "Dashrathbhai Trikambhai Patel v. Hitesh Mahendrabhai Patel & Anr",
+    "M/s. Indus Airways Pvt. Ltd. & Ors v. M/s. Magnum Aviation Pvt. Ltd. & Anr",
+    "Sripati Singh (Since Deceased) Through His Son Gaurav Singh v. The State of Jharkhand & Anr",
+    "Sunil Todi & Ors v. State of Gujarat & Anr"
+   ],
+   "top5_with": [
+    "Sripati Singh (Since Deceased) Through His Son Gaurav Singh v. The State of Jharkhand & Anr",
+    "Sampelly Satyanarayana Rao v. Indian Renewable Energy Development Agency Limited",
+    "Dashrathbhai Trikambhai Patel v. Hitesh Mahendrabhai Patel & Anr",
+    "Man Mohan Gupta v. Super Sales Corporation",
+    "Sunil Todi & Ors v. State of Gujarat & Anr"
+   ],
+   "leads": {
+    "1000253391": {
+     "name": "Sripati Singh (2021)",
+     "in_index": true,
+     "passages": 28,
+     "best_dense_rank": 3,
+     "best_sim": 0.663,
+     "any_in_keyword_top50": true,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 4,
+     "judgment_position_with": 1,
+     "named_by_collection": 7
+    },
+    "36322": {
+     "name": "Rangappa v Sri Mohan (2010)",
+     "in_index": true,
+     "passages": 28,
+     "best_dense_rank": 551,
+     "best_sim": 0.491,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": 20,
+     "named_by_collection": 27
+    },
+    "36294": {
+     "name": "Damodar S. Prabhu (2010)",
+     "in_index": true,
+     "passages": 19,
+     "best_dense_rank": 1187,
+     "best_sim": 0.442,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": 29
+    },
+    "2000252798": {
+     "name": "Jai Balaji Industries (2025)",
+     "in_index": true,
+     "passages": 98,
+     "best_dense_rank": 349,
+     "best_sim": 0.516,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    }
+   }
+  },
+  {
+   "id": "E3",
+   "set": "E",
+   "q": "I gave a blank cheque to someone as security for a loan. They presented it and it bounced and now they have sent me a legal notice. Is a cheque bounce case valid against me?",
+   "top5_without": [
+    "Md. Matibur Rahman v. Pintu Ghosh",
+    "Sankar Biswas v. The State of Assam and Anr",
+    "B. Chandramathi v. N. Prakash",
+    "Sunil Todi & Ors v. State of Gujarat & Anr",
+    "Sanjabij Tari v. Kishore S. Borcar & Anr"
+   ],
+   "top5_with": [
+    "Md. Matibur Rahman v. Pintu Ghosh",
+    "Sankar Biswas v. The State of Assam and Anr",
+    "Sunil Todi & Ors v. State of Gujarat & Anr",
+    "Sanjabij Tari v. Kishore S. Borcar & Anr",
+    "B. Chandramathi v. N. Prakash"
+   ],
+   "leads": {
+    "1000253391": {
+     "name": "Sripati Singh (2021)",
+     "in_index": true,
+     "passages": 28,
+     "best_dense_rank": 14,
+     "best_sim": 0.503,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 9,
+     "judgment_position_with": 9,
+     "named_by_collection": 7
+    },
+    "36322": {
+     "name": "Rangappa v Sri Mohan (2010)",
+     "in_index": true,
+     "passages": 28,
+     "best_dense_rank": 7,
+     "best_sim": 0.514,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": true,
+     "judgment_position_without": 37,
+     "judgment_position_with": 36,
+     "named_by_collection": 27
+    },
+    "36294": {
+     "name": "Damodar S. Prabhu (2010)",
+     "in_index": true,
+     "passages": 19,
+     "best_dense_rank": 1969,
+     "best_sim": 0.371,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": 29
+    },
+    "2000252798": {
+     "name": "Jai Balaji Industries (2025)",
+     "in_index": true,
+     "passages": 98,
+     "best_dense_rank": 552,
+     "best_sim": 0.426,
+     "any_in_keyword_top50": false,
+     "any_in_60_candidates": false,
+     "judgment_position_without": null,
+     "judgment_position_with": null,
+     "named_by_collection": null
+    }
+   }
+  }
+ ]
+}
