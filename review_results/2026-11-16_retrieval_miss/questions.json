@@ -1,0 +1,15 @@
+{
+ "written": "2026-11-16, by Claude, BEFORE any run. The article's prompts D and E are not reproduced word for word in the document (only their gist), so these are faithful paraphrases: three phrasings of each, one in plain words. The 'leads' are the cases the article named as missed (Gunmala, S.M.S. Pharmaceuticals, Bridgestone, HDFC Bank 2025, Kamalkishor) plus other well-known section 141 authorities I add (Aneeta Hada, Sunita Palita, Ashok Shewakramani, K.K. Ahuja); doc ids from names_table_d8811a9. Not a lawyer's list.",
+ "leads": {
+   "D": {"27193":"S.M.S. Pharmaceuticals (2005)","28670":"S.M.S. Pharmaceuticals (2007)","42037":"Gunmala Sales (2014)","43149":"Bridgestone India (2015)","1000256766":"HDFC Bank v State of Maharashtra (2025)","2000252250":"Kamalkishor Taparia (2025)","31456":"Aneeta Hada (2008)","39265":"Aneeta Hada (2012)","1000254163":"Sunita Palita (2022)","2000251720":"Ashok Shewakramani (2023)","34971":"K.K. Ahuja (2009)"},
+   "E": {"1000253391":"Sripati Singh (2021)","36322":"Rangappa v Sri Mohan (2010)","36294":"Damodar S. Prabhu (2010)","2000252798":"Jai Balaji Industries (2025)"}
+ },
+ "questions": [
+  {"id":"D1","set":"D","q":"I am a non-executive director of a company. A complaint under section 138 of the Negotiable Instruments Act has been filed against the company and me. The complaint only says that I was 'in charge of and responsible for the conduct of the business of the company'. Can the complaint against me be quashed?"},
+  {"id":"D2","set":"D","q":"Section 141 NI Act: is a bare averment that a director was in charge of the company enough to proceed against a non-executive director for a dishonoured cheque, or must the complaint say what his role was?"},
+  {"id":"D3","set":"D","q":"My company's cheque bounced. I am a director but I do not look after the daily running of the company, and I have got a court notice in the cheque bounce case. Can I be made to face the case?"},
+  {"id":"E1","set":"E","q":"A cheque was given as security for a loan and it bounced when the lender presented it. Can the lender file a case under section 138 of the Negotiable Instruments Act?"},
+  {"id":"E2","set":"E","q":"Does a security cheque attract section 138 of the NI Act if the debt was not yet due when the cheque was presented?"},
+  {"id":"E3","set":"E","q":"I gave a blank cheque to someone as security for a loan. They presented it and it bounced and now they have sent me a legal notice. Is a cheque bounce case valid against me?"}
+ ]
+}
