@@ -76,10 +76,15 @@ def party_tokens(s):
     return toks
 
 
+_ALIAS_TOK = re.compile(r"^(?:s/o|d/o|w/o|c/o|alias|@)$", re.I)
+
+
 def _is_name_tok(t):
     core = t.strip(",;:()[]\"'‘’“”")
     if not core or core.isdigit() or re.match(r"^[\(\[]\s*\d", t):                       # "(1984)" and "[2010]" after a name are a year, not part of the name
         return False
+    if _ALIAS_TOK.match(core):                                                         # "Mahesh s/o Ram Narain and Others vs. State": keep the whole party so that party_tokens() cuts it at "s/o" and the first party is "Mahesh" (it used to stop at "s/o" and read "Ram Narain")
+        return True
     return bool(re.match(r"^" + _CONNECT + r"$", core, re.I) or re.match(r"^[A-Z@(\[]", t) or re.match(r"^[A-Z]", core))
 
 
@@ -199,6 +204,7 @@ class Resolver:
 
 
 _GENERIC_WORDS = frozenset("""state union central govt government commissioner collector director directorate superintendent inspector bureau enforcement national registrar station public police cbi home ministry secretary
+research centre center college hospital school medical dental engineering technology foundation association education educational institutions
 chief district sessions magistrate bank municipal corporation board authority committee commission tribunal university institute company assistant deputy additional joint senior principal high supreme emperor crown king
 queen india amicus curiae food income customs excise narcotics delhi punjab bihar uttar madhya andhra tamil west kerala gujarat maharashtra karnataka rajasthan haryana assam orissa odisha bengal himachal jharkhand
 chhattisgarh uttarakhand telangana goa manipur tripura meghalaya mizoram nagaland sikkim jammu kashmir bombay madras calcutta mumbai chennai kolkata officer official administration railway railways insurance

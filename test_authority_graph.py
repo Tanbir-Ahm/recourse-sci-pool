@@ -164,5 +164,10 @@ check("a real sentence end before a name still ends the name (no word of the pre
 check("the old behaviour for plain names is unchanged (a State, a year, a citation)",
       AG.mentions("In Sharad Birdhichand Sarda v. State of Maharashtra (1984) 4 SCC 116 the Court held")[0][1:] == ("stateofmaharashtra", 1984))
 
+check("'Mahesh s/o Ram Narain and Others vs. State' is read as Mahesh, not as Ram Narain (the party is cut at 's/o'; it used to stop at 's/o' and read 'Ram Narain', which linked to a case named Narain)",
+      AG.mentions("in Mahesh s/o Ram Narain and Others vs. State of Madhya Pradesh6. To quote")[0][0][-1] == "mahesh" and "narain" not in AG.mentions("in Mahesh s/o Ram Narain and Others vs. State of Madhya Pradesh6. To quote")[0][0])
+R2_ = AG.Resolver({7: {"name": "Dr. Dhani Ram Baruah Heart Institute and Research Centre and Anr v. Gupta Hardware Private Limited", "year": 2020}})
+check("a descriptive word such as 'Research Centre' is not a name of its own: 'Modern Dental College and Research Centre v. ...' is not linked to a case whose petitioner is 'Heart Institute and Research Centre'",
+      R2_.resolve(*AG.mentions("placed on Modern Dental College and Research Centre & Ors. vs. State of Madhya Pradesh & Ors. to urge")[0]) == set())
 print("\nALL PASSED" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)
