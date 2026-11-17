@@ -1,0 +1,35 @@
+"""SECOND HELD-OUT TARGET LIST (written 2026-11-17 BEFORE any count was run on it and before the reader was changed; judged ONCE at the end, after every reader change of this session).
+Same format and rules as targets_v1.py. targets_v1.py is used to judge the first round of the fix (the four faults seen in the diagnosis); whatever that run shows may lead to further reader changes: those are judged on THIS list, which nobody has looked at.
+Claude's picks from memory of Indian criminal and quasi-criminal law; not a lawyer's; a target the names table does not hold is dropped and reported."""
+TARGETS = [
+ # company-named (a corporate-form word in either party)
+ ("Bilcare Ltd v. Amartara Pvt Ltd", r"bilcare", r"amartara", 2021, ['"Bilcare" AND "Amartara"']),
+ ("Hindustan Petroleum Corporation Ltd v. Dilbahar Singh", r"hindustan petroleum", r"dilbahar", 2014, ['"Dilbahar Singh"']),
+ ("Prestige Lights Ltd v. State Bank of India", r"prestige lights", r"state bank of india", 2007, ['"Prestige Lights"']),
+ ("Gian Singh v. State of Punjab", r"gian singh", r"state of punjab", 2012, ['"Gian Singh" AND "State of Punjab"']),
+ ("Ravi Kapur v. State of Rajasthan", r"ravi kapur", r"state of rajasthan", 2012, ['"Ravi Kapur"']),
+ ("Madhavrao Jiwajirao Scindia v. Sambhajirao Chandrojirao Angre", r"madhavrao jiwajirao", r"sambhajirao", 1988, ['"Madhavrao Jiwajirao"']),
+ ("Inder Mohan Goswami v. State of Uttaranchal", r"inder mohan goswami", r"state of uttaranchal", 2007, ['"Inder Mohan Goswami"']),
+ ("Medchl Chemicals and Pharma Pvt Ltd v. Biological E Ltd", r"medchl chemicals", r"biological e", 2000, ['"Medchl Chemicals"']),
+ ("Anil Kumar Jain v. Maya Jain", r"anil kumar jain", r"maya jain", 2009, ['"Maya Jain"']),
+ ("Gulam Mustafa v. State of Karnataka", r"gulam mustafa", r"karnataka", 1976, ['"Gulam Mustafa"']),
+ ("Lee Kun Hee v. State of Uttar Pradesh", r"lee kun hee", r"state of u", 2012, ['"Lee Kun Hee"']),
+ ("Sunil Bharti Mittal v. Central Bureau of Investigation", r"sunil bharti mittal", r"central bureau", 2015, ['"Sunil Bharti Mittal"']),
+ ("Anita Malhotra v. Apparel Export Promotion Council", r"anita malhotra", r"apparel export", 2012, ['"Apparel Export Promotion"']),
+ ("Rajiv Thapar v. Madan Lal Kapoor", r"rajiv thapar", r"madan lal kapoor", 2013, ['"Madan Lal Kapoor"']),
+ ("Nahar Singh Yadav v. Union of India", r"nahar singh yadav", r"union of india", 2011, ['"Nahar Singh Yadav"']),
+ ("Sushil Suri v. Central Bureau of Investigation", r"sushil suri", r"central bureau", 2011, ['"Sushil Suri"']),
+ ("Paramjeet Batra v. State of Uttarakhand", r"paramjeet batra", r"state of uttarakhand", 2012, ['"Paramjeet Batra"']),
+ ("Uma Shankar Gopalika v. State of Bihar", r"uma shankar gopalika", r"state of bihar", 2005, ['"Gopalika"']),
+ ("Hamida v. Rashid", r"hamida", r"rashid", 2007, ['"Hamida" AND "Rashid" AND "quash"']),
+ ("Dhariwal Tobacco Products Ltd v. State of Maharashtra", r"dhariwal tobacco", r"state of maharashtra", 2009, ['"Dhariwal Tobacco"']),
+ ("Associated Cement Companies Ltd v. P.N. Sharma", r"associated cement", r"sharma", 1965, ['"Associated Cement Companies"']),
+ ("Ashoka Smokeless Coal India Pvt Ltd v. Union of India", r"ashoka smokeless", r"union of india", 2007, ['"Ashoka Smokeless"']),
+ ("Aroon Purie v. State of NCT of Delhi", r"aroon purie", r"state", 2012, ['"Aroon Purie"']),
+ ("Shiv Kumar Jatia v. State of NCT of Delhi", r"shiv kumar jatia", r"state", 2019, ['"Shiv Kumar Jatia"']),
+ ("Ram Jethmalani v. Union of India", r"ram jethmalani", r"union of india", 2011, ['"Ram Jethmalani"']),
+ ("Bharat Petroleum Corporation Ltd v. Maddula Ratnavalli", r"bharat petroleum", r"maddula", 2007, ['"Maddula Ratnavalli"']),
+ ("Sanjay Dutt v. State through CBI", r"sanjay dutt", r"state", 1994, ['"Sanjay Dutt"']),
+ ("Mohd. Hussain @ Julfikar Ali v. State (Govt. of NCT of Delhi)", r"hussain", r"state", 2012, ['"Julfikar Ali"']),
+ ("Ramnarayan Mor v. State of Maharashtra", r"ramnarayan mor", r"state of maharashtra", 1964, ['"Ramnarayan Mor"']),
+]
