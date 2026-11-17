@@ -1,0 +1,344 @@
+[
+ {
+  "id": "E01L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "A magistrate issued summons against me in a cheating complaint filed by a company without really looking at the facts. Can the High Court cancel the summons?",
+  "expected": [
+   13701
+  ]
+ },
+ {
+  "id": "E01W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Scope of the High Court's power to quash a summoning order passed mechanically by a Magistrate, and what the Magistrate must show before issuing process.",
+  "expected": [
+   13701
+  ]
+ },
+ {
+  "id": "E02L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "Can a company be prosecuted for an offence when the law says the punishment is jail and fine, but a company cannot be put in jail?",
+  "expected": [
+   27525
+  ]
+ },
+ {
+  "id": "E02W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Whether a corporate entity can be prosecuted for an offence where imprisonment and fine are both mandatory, and what sentence can be imposed on it.",
+  "expected": [
+   27525
+  ]
+ },
+ {
+  "id": "E03L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "A company was accused of cheating through its directors. Can the company itself be treated as a criminal accused, or only the people?",
+  "expected": [
+   37034
+  ]
+ },
+ {
+  "id": "E03W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Attribution of the mens rea of directors to the company for offences requiring intent such as cheating, and the company's amenability to prosecution.",
+  "expected": [
+   37034
+  ]
+ },
+ {
+  "id": "E04L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "The police want to prosecute the directors of a company for what the company did. When is a director personally criminally responsible?",
+  "expected": [
+   42239
+  ]
+ },
+ {
+  "id": "E04W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Vicarious criminal liability of directors for company offences and the 'alter ego' doctrine; conditions for summoning directors as accused.",
+  "expected": [
+   42239
+  ]
+ },
+ {
+  "id": "E05L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "I am only a director of a company and was named in a cheating case. Can I be dragged into the case just because I am a director?",
+  "expected": [
+   1000251945
+  ]
+ },
+ {
+  "id": "E05W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Quashing of proceedings against a director where the complaint does not attribute any specific role to him in the company's offence.",
+  "expected": [
+   1000251945
+  ]
+ },
+ {
+  "id": "E06L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "In a cheque bounce case against a company, the complaint names me as a director but does not say what my role was. Can I be held liable?",
+  "expected": [
+   42493
+  ]
+ },
+ {
+  "id": "E06W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Section 141 Negotiable Instruments Act: sufficiency of averments in the complaint that a director was in charge of and responsible for the company's business.",
+  "expected": [
+   42493
+  ]
+ },
+ {
+  "id": "E07L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "My cheque bounce case is pending for years. Can the case be settled with the person who gave me the cheque even now, and does it get closed?",
+  "expected": [
+   1000250291
+  ]
+ },
+ {
+  "id": "E07W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Compounding of the offence under Section 138 at any stage, guidelines for summary trial and the court's power to impose costs on a non-consenting complainant.",
+  "expected": [
+   1000250291
+  ]
+ },
+ {
+  "id": "E08L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "A business deal went wrong and the other side filed a cheating case instead of a civil suit for money. Can I ask the court to throw out the criminal case?",
+  "expected": [
+   27880
+  ]
+ },
+ {
+  "id": "E08W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Quashing of criminal proceedings that give a criminal colour to what is essentially a civil or commercial dispute; the principles for exercising inherent power.",
+  "expected": [
+   27880
+  ]
+ },
+ {
+  "id": "E09L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "Our contract has an arbitration clause. The other party still filed a criminal complaint for cheating. Does the arbitration clause stop the criminal case?",
+  "expected": [
+   16662
+  ]
+ },
+ {
+  "id": "E09W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Whether the existence of an arbitration clause bars criminal proceedings for cheating and criminal breach of trust arising out of the same transaction.",
+  "expected": [
+   16662
+  ]
+ },
+ {
+  "id": "E10L",
+  "group": "company",
+  "half": "heldout",
+  "style": "lay",
+  "text": "A property dealing dispute between two companies became a criminal case. Can the High Court close it when the matter is basically civil?",
+  "expected": [
+   39838
+  ]
+ },
+ {
+  "id": "E10W",
+  "group": "company",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Quashing under the High Court's inherent power where the dispute is predominantly civil, and the relevance of settlement between the parties.",
+  "expected": [
+   39838
+  ]
+ },
+ {
+  "id": "E11L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "My FIR is clearly false and was filed to harass me. In what situations can the High Court cancel an FIR before the police finish investigation?",
+  "expected": [
+   7332
+  ]
+ },
+ {
+  "id": "E11W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "The categories of cases in which the High Court may quash an FIR or complaint in exercise of its inherent powers to prevent abuse of process.",
+  "expected": [
+   7332
+  ]
+ },
+ {
+  "id": "E12L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "I want the High Court to quash a case against me. Can I give my own documents showing I am innocent, or does the court only look at the police papers?",
+  "expected": [
+   39965
+  ]
+ },
+ {
+  "id": "E12W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "The approach of the High Court in a quashing petition: whether the accused's defence material can be considered and the steps of the test.",
+  "expected": [
+   39965
+  ]
+ },
+ {
+  "id": "E13L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "In a cheque bounce case, do I have to prove that I did not owe the money, or does the other person have to prove that the cheque was for a real debt?",
+  "expected": [
+   17831
+  ]
+ },
+ {
+  "id": "E13W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Presumption under Sections 118 and 139 of the Negotiable Instruments Act in favour of the holder and the burden on the drawer to rebut.",
+  "expected": [
+   17831
+  ]
+ },
+ {
+  "id": "E14L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "How much must a person prove to show that a cheque was not given for a debt? Is it as strict as proving a crime?",
+  "expected": [
+   27807
+  ]
+ },
+ {
+  "id": "E14W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "The standard of proof for rebutting the presumption under Section 139: preponderance of probabilities and not proof beyond reasonable doubt.",
+  "expected": [
+   27807
+  ]
+ },
+ {
+  "id": "E15L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "My neighbour filed a criminal case over a money dispute to put pressure on me. Can a court stop criminal proceedings that are really about a civil debt?",
+  "expected": [
+   20281
+  ]
+ },
+ {
+  "id": "E15W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Criminal proceedings initiated to settle civil scores: the duty of the court to examine whether the complaint discloses an offence before taking cognizance.",
+  "expected": [
+   20281
+  ]
+ },
+ {
+  "id": "E16L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "We have settled our dispute. Can a criminal case that is not normally compoundable be closed because both sides agreed?",
+  "expected": [
+   37152,
+   39579
+  ]
+ },
+ {
+  "id": "E16W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Power of the High Court under Section 482 to quash non-compoundable offences on settlement and its distinction from compounding under Section 320.",
+  "expected": [
+   37152,
+   39579
+  ]
+ },
+ {
+  "id": "E17L",
+  "group": "control",
+  "half": "heldout",
+  "style": "lay",
+  "text": "Does a magistrate have to give a detailed reason when he decides to take a case forward and issue summons to me?",
+  "expected": [
+   1000004580
+  ]
+ },
+ {
+  "id": "E17W",
+  "group": "control",
+  "half": "heldout",
+  "style": "lawyer",
+  "text": "Whether a summoning order must record detailed reasons and what application of mind the Magistrate must show at the stage of taking cognizance.",
+  "expected": [
+   1000004580
+  ]
+ }
+]

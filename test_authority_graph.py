@@ -143,5 +143,26 @@ os.environ["SCI_AUTH_PER_DOC"] = "0"
 check("a limit of 0 is kept (no limit), and the default is 1", AS.params_from_env()["per_doc"] == 0 and AS.DEFAULTS["per_doc"] == 1)
 os.environ.pop("SCI_AUTH_PER_DOC")
 
+# ---- the name reader fix of 2026-11-17 (FOLLOW_UPS 2ep): company names, dotted abbreviations, "and Others", a leading "in"
+SMS = "in S.M.S. Pharmaceuticals Ltd. v. Neeta Bhalla and Another [(2005) 8 SCC 89]"
+check("a dotted abbreviation before 'v.' (Ltd.) is read, not taken for the end of a sentence",
+      len(AG.mentions(SMS)) == 1 and AG.mentions(SMS)[0][1] == "neetabhalla" and AG.mentions(SMS)[0][2] == 2005 and AG.mentions(SMS) == AG.mentions(SMS.replace("Ltd.", "Ltd")))
+MI = "M/s. Meters and Instruments Pvt. Ltd. vs. Kanchan Mehta, (2018) 1 SCC 560"
+check("a dotted abbreviation INSIDE the first party (Pvt. Ltd.) does not cut the name either", len(AG.mentions(MI)) == 1 and AG.mentions(MI)[0][1] == "kanchanmehta")
+check("a corporate-form word at the end of a party is not part of the name (Limited = Ltd = Pvt. Ltd. = nothing); 'and Others' leaves no 'and' behind",
+      AG.party_tokens("Gunmala Sales Private Limited") == AG.party_tokens("Gunmala Sales Pvt. Ltd.") == AG.party_tokens("Gunmala Sales Ltd") == AG.party_tokens("Gunmala Sales") == ["gunmala", "sales"]
+      and AG.party_tokens("Anu Mehta and Others") == ["anu", "mehta"] and AG.party_tokens("Anu Mehta & Ors.") == ["anu", "mehta"])
+check("a party that is only such words keeps them, and a corporate word in the MIDDLE stays (Life Insurance Corporation of India)",
+      AG.party_tokens("Company Limited") == ["company"] and AG.party_tokens("Life Insurance Corporation of India") == ["life", "insurance", "corporation", "of", "india"])
+R_ = AG.Resolver({1: {"name": "Gunmala Sales Private Limited v. Anu Mehta", "year": 2014}, 2: {"name": "S.M.S. Pharmaceuticals Ltd. v. Neeta Bhalla", "year": 2005}, 3: {"name": "Pepsi Foods Ltd v. Special Judicial Magistrate", "year": 1998}})
+check("the diagnosed cases are now found from their citations in other judgments (leading 'in', Limited against Ltd, 'and Others')",
+      R_.resolve(*AG.mentions("in Gunmala Sales Private Limited v. Anu Mehta and Others (2014) 3 SCC 1")[0]) == {1}
+      and R_.resolve(*AG.mentions("held in S.M.S. Pharmaceuticals Ltd. v. Neeta Bhalla and Another (2005) 8 SCC 89")[0]) == {2}
+      and R_.resolve(*AG.mentions("Pepsi Foods Ltd. and Another v. Special Judicial Magistrate and Others (1998) 5 SCC 749")[0]) == {3})
+SE = AG.mentions("Reliance was placed on the earlier order. Sharma v. State of Punjab was cited")
+check("a real sentence end before a name still ends the name (no word of the previous sentence joins it)", len(SE) == 1 and SE[0][0] == ["sharma"])
+check("the old behaviour for plain names is unchanged (a State, a year, a citation)",
+      AG.mentions("In Sharad Birdhichand Sarda v. State of Maharashtra (1984) 4 SCC 116 the Court held")[0][1:] == ("stateofmaharashtra", 1984))
+
 print("\nALL PASSED" if not FAILS else f"\n{len(FAILS)} FAILED: {FAILS}")
 sys.exit(1 if FAILS else 0)

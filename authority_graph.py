@@ -46,9 +46,23 @@ _DROPW = frozenset("ors anr anrs etc others another dead lrs lr thr through by a
 _CONNECT = r"(?:of|and|the|for|&|ors\.?|anr\.?|etc\.?|others|another|in|re|m/s|dead|lrs?)"
 _ABBR = re.compile(r"^(?:Dr|Mr|Mrs|Ms|Smt|Shri|Sri|Sh|Col|Lt|Capt|Prof|Hon|St|Vs|M/s|Mt|Md|Mohd|[A-Z])\.?$")
 _INITIALS = re.compile(r"^(?:[A-Z]\.){1,5}[A-Z]?\.?$")
+# Words a court abbreviates with a dot INSIDE a party's name ("Ltd.", "Pvt.", "Co.", "Corp."): a dot after them does not end a sentence. Before 2026-11-17 any dotted word of four characters or more ended the sentence, so
+# "S.M.S. Pharmaceuticals Ltd. v. Neeta Bhalla" was read as no mention at all.
+_DOT_ABBR = frozenset("ltd pvt co corp corpn inc bros mfg assn assoc govt dept engg estt regn indus inds ind admn addl dy jt commr comm secy supdt enterp ents trad exp imp dist sons mills".split())
+
+
+def _ends_sentence(t, core):
+    """True when the dot at the end of the token `t` ends a sentence (so the name stops before it)."""
+    return t.endswith(".") and len(core) > 3 and not _INITIALS.match(core) and not _ABBR.match(core) and core.lower().rstrip(".") not in _DOT_ABBR
 _VS = re.compile(r"(?<=[\s,(])(?:v|vs|versus)\.?(?=\s)", re.I)
 _YEAR_AFTER = re.compile(r"^[^A-Za-z0-9]{0,6}(?:\(\s*((?:19|20)\d\d)\s*\)|(?:AIR|SCC|SCR|INSC)?\s*((?:19|20)\d\d)\b|\[\s*((?:19|20)\d\d)\s*\])")
 _LEAD_STOP = frozenset("in see also vide and compare cf following per thus hence held case cases of the like court judgment decision observed said view relied reference reported".split())
+
+
+# Corporate-form words at the END of a party's name are not part of the name: a court writes "Gunmala Sales Private Limited", "Gunmala Sales Pvt. Ltd.", "Gunmala Sales Ltd" or just "Gunmala Sales" for one party, and a trailing "and" is left over when
+# "and Others" is cut off ("Anu Mehta and Others"). Dropped from BOTH sides of every comparison (the names of the index and the mentions in the text), so a pair of names that differs only there is the same pair (2026-11-17, FOLLOW_UPS 2ep;
+# the diagnosis of 2026-11-16: S.M.S. Pharmaceuticals and Gunmala Sales were named in 69 and 15 judgments and counted in 2 and 0). Never the whole name: a party that is only such words is kept as it is.
+_CORP_TAIL = frozenset("ltd limited pvt private co company corp corporation corpn inc llp and".split())
 
 
 def party_tokens(s):
@@ -56,7 +70,10 @@ def party_tokens(s):
     s = re.split(r"@|\balias\b|\bthrough\b|\bthr\.?\b|\brepresented\b|\bs/o\b|\bd/o\b|\bw/o\b|\bson of\b", s, flags=re.I)[0]
     s = s.lower().replace("’", "'")
     s = re.sub(r"\b" + _HON + r"\b\.?", " ", s)
-    return [t for t in re.findall(r"[a-z]+", s) if t not in _DROPW]
+    toks = [t for t in re.findall(r"[a-z]+", s) if t not in _DROPW]
+    while len(toks) > 1 and toks[-1] in _CORP_TAIL:
+        toks.pop()
+    return toks
 
 
 def _is_name_tok(t):
@@ -73,8 +90,9 @@ def _left(text, pos):
         if not _is_name_tok(t):
             break
         core = t.strip(",;:()[]\"'‘’“”")
+        first = not out                                   # the word right before "v.": a dot after it is an abbreviation ("Ltd."), never the end of a sentence ("... held. v. State" does not occur)
         out.append(t)
-        if re.search(r"[;:]$", t) or (t.endswith(".") and len(core) > 3 and not _INITIALS.match(core) and not _ABBR.match(core)):
+        if re.search(r"[;:]$", t) or (not first and _ends_sentence(t, core)):
             out.pop()
             break
         if len(out) >= 9:
@@ -90,7 +108,7 @@ def _right(text, pos):
             break
         core = t.strip(",;:()[]\"'‘’“”")
         out.append(t)
-        if re.search(r"[,;:)]$", t) or (t.endswith(".") and len(core) > 3 and not _INITIALS.match(core) and not _ABBR.match(core)):
+        if re.search(r"[,;:)]$", t) or _ends_sentence(t, core):
             break
         if len(out) >= 8:
             break
