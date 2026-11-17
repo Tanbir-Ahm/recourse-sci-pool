@@ -1,0 +1,883 @@
+{
+ "company": [
+  {
+   "doc": 29675,
+   "name": "All Cargo Movers (I) Pvt. Ltd. & Ors v. Dhanesh Badarmal Jain & Anr",
+   "query": "\"All Cargo Movers\" AND \"Dhanesh Badarmal\"",
+   "text_mentions": 10,
+   "table_cited_by": 10
+  },
+  {
+   "doc": 1000250291,
+   "name": "M/s. Meters and Instruments Private Limited & Anr v. Kanchan Mehta",
+   "query": "\"Meters and Instruments\" AND \"Kanchan Mehta\"",
+   "text_mentions": 18,
+   "table_cited_by": 16
+  },
+  {
+   "doc": 37034,
+   "name": "Iridium India Telecom LTD v. Motorola Incorporated & Ors",
+   "query": "\"Iridium India Telecom\" AND \"Motorola Incorporated\"",
+   "text_mentions": 5,
+   "table_cited_by": 12
+  },
+  {
+   "doc": 1000256049,
+   "name": "HDFC Bank LTD v. The State of Bihar & Ors",
+   "query": "\"HDFC Bank\"",
+   "text_mentions": 56,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 27193,
+   "name": "S.M.S. Pharmaceuticals Ltd v. Neeta Bhalla and anr",
+   "query": "\"Pharmaceuticals\" AND \"Neeta Bhalla\"",
+   "text_mentions": 69,
+   "table_cited_by": 74
+  },
+  {
+   "doc": 2000755531,
+   "name": "Mahindra and Mahindra Financial Services LTD v. The State of Mizoram",
+   "query": "\"Mahindra and Mahindra\"",
+   "text_mentions": 10,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 42480,
+   "name": "Ramdev Food Products Private Limited v. State of Gujarat",
+   "query": "\"Ramdev Food Products\"",
+   "text_mentions": 11,
+   "table_cited_by": 11
+  },
+  {
+   "doc": 43354,
+   "name": "M/s V.L.S. Finance LTD v. S.P. Gupta and Anr",
+   "query": "\"Finance\" AND \"Gupta\"",
+   "text_mentions": 16,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 40469,
+   "name": "Essar Teleholdings LTD v. Registrar General, Delhi High Court & Ors",
+   "query": "\"Essar Teleholdings\"",
+   "text_mentions": 5,
+   "table_cited_by": 3
+  },
+  {
+   "doc": 2000754347,
+   "name": "Tata Motors Finance LTD. and Anr v. The State of Assam and Anr",
+   "query": "\"Tata Motors Finance\"",
+   "text_mentions": 5,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000754548,
+   "name": "Mahindra and Mahindra Financial Services Ltd v. State of Mizoram and Anr",
+   "query": "\"Mahindra and Mahindra\"",
+   "text_mentions": 10,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 32157,
+   "name": "Godrej Pacific Tech. Ltd v. Computer Joint India Ltd",
+   "query": "\"Godrej Pacific Tech\" AND \"Computer\"",
+   "text_mentions": 5,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 1000004731,
+   "name": "Hindustan Unilever LTD v. State of Rajasthan & Anr",
+   "query": "\"Hindustan Unilever\"",
+   "text_mentions": 9,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000250757,
+   "name": "Asian Resurfacing of Road Agency P. LTD. and Anr v. Central Bureau of Investigation",
+   "query": "\"Asian Resurfacing of\" AND \"Investigation\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 43149,
+   "name": "M/s Bridgestone India PVT. LTD v. Inderpal Singh",
+   "query": "\"Bridgestone India\" AND \"Inderpal Singh\"",
+   "text_mentions": 9,
+   "table_cited_by": 12
+  },
+  {
+   "doc": 2000751654,
+   "name": "Housing and Urban Development Corporation LTD v. State of Assam and 2 Ors",
+   "query": "\"Housing and Urban\"",
+   "text_mentions": 9,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 28670,
+   "name": "S.M.S. Pharmaceuticals Ltd v. Neeta Bhalla & Anr",
+   "query": "\"Pharmaceuticals\" AND \"Neeta Bhalla\"",
+   "text_mentions": 69,
+   "table_cited_by": 74
+  },
+  {
+   "doc": 17594,
+   "name": "Alpic Finance LTD v. P. Sadasivan and Anr",
+   "query": "\"Alpic Finance\" AND \"Sadasivan\"",
+   "text_mentions": 6,
+   "table_cited_by": 8
+  },
+  {
+   "doc": 30066,
+   "name": "Suryalakshmi Cotton Mills Ltd v. Rajvir Industries Ltd. & Ors",
+   "query": "\"Suryalakshmi Cotton Mills\" AND \"Rajvir Industries\"",
+   "text_mentions": 11,
+   "table_cited_by": 11
+  },
+  {
+   "doc": 2000753835,
+   "name": "M/s Gupta Hardware PVT. LTD v. M/s R.B. Engineering and Co. and Anr",
+   "query": "\"Gupta Hardware\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 42493,
+   "name": "HMT Watches Ltd v. M.A. Abida & Anr",
+   "query": "\"HMT Watches\" AND \"Abida\"",
+   "text_mentions": 8,
+   "table_cited_by": 9
+  },
+  {
+   "doc": 40398,
+   "name": "V.L.S. Finance LTD v. Union of India & Ors",
+   "query": "\"Finance\"",
+   "text_mentions": 615,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 28831,
+   "name": "Everest Advertising Pvt. Ltd v. State, Govt. of NCT of Delhi & Ors",
+   "query": "\"Everest Advertising\" AND \"NCT\"",
+   "text_mentions": 17,
+   "table_cited_by": 16
+  },
+  {
+   "doc": 17625,
+   "name": "Shri Ishar Alloy Steels LTD v. Jayaswals Neco Limited",
+   "query": "\"Ishar Alloy Steels\" AND \"Jayaswals Neco\"",
+   "text_mentions": 6,
+   "table_cited_by": 5
+  },
+  {
+   "doc": 1000250656,
+   "name": "Asian Resurfacing of Road Agency PVT. LTD. & ANR.V. Central Bureau of Investigation v. Central Bureau of Investigation",
+   "query": "\"Asian Resurfacing of\" AND \"Investigation\"",
+   "text_mentions": 6,
+   "table_cited_by": 8
+  },
+  {
+   "doc": 29871,
+   "name": "Ranjit Singh AND Co v. State of Punjab",
+   "query": "\"Ranjit Singh AND\"",
+   "text_mentions": 21,
+   "table_cited_by": 4
+  },
+  {
+   "doc": 27154,
+   "name": "Cref Finance LTD v. Shree Shanthi Homes PVT. Ltd.&Anr",
+   "query": "\"Cref Finance\" AND \"Shree Shanthi\"",
+   "text_mentions": 6,
+   "table_cited_by": 6
+  },
+  {
+   "doc": 2000750427,
+   "name": "M/s. R.K. Trading Company v. The State of Assam and Anr",
+   "query": "\"Trading\"",
+   "text_mentions": 641,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 42037,
+   "name": "Gunmala Sales Private Ltd v. Anu Mehta & Ors",
+   "query": "\"Gunmala Sales\" AND \"Anu Mehta\"",
+   "text_mentions": 9,
+   "table_cited_by": 15
+  },
+  {
+   "doc": 1000252816,
+   "name": "Skoda Auto Volkswagen India Private Limited v. The State of Uttar Pradesh and Ors",
+   "query": "\"Skoda Auto Volkswagen\" AND \"Pradesh\"",
+   "text_mentions": 7,
+   "table_cited_by": 7
+  },
+  {
+   "doc": 27880,
+   "name": "M/s Indian Oil Corporation v. M/s NEPC India Ltd., & Ors",
+   "query": "\"Indian Oil\" AND \"NEPC\"",
+   "text_mentions": 113,
+   "table_cited_by": 126
+  },
+  {
+   "doc": 37883,
+   "name": "Rallis India Ltd v. Poduru Vidya Bhusan & Ors",
+   "query": "\"Rallis India\" AND \"Poduru Vidya\"",
+   "text_mentions": 6,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 18957,
+   "name": "Goaplast Pvt. Ltd v. Shri Chico Ursula D\u2019Souza & Anr",
+   "query": "\"Goaplast\" AND \"Chico Ursula\"",
+   "text_mentions": 7,
+   "table_cited_by": 13
+  },
+  {
+   "doc": 31658,
+   "name": "DCM Financial Services Ltd v. J.N. Sareen and another",
+   "query": "\"DCM Financial Services\" AND \"Sareen\"",
+   "text_mentions": 7,
+   "table_cited_by": 7
+  },
+  {
+   "doc": 41891,
+   "name": "Gold Quest International Private Limited v. The State of Tamil Nadu & Ors. \u2026",
+   "query": "\"Gold Quest International\" AND \"Nadu\"",
+   "text_mentions": 5,
+   "table_cited_by": 5
+  },
+  {
+   "doc": 1000253067,
+   "name": "Neeharika Infrastructure PVT. LTD v. State of Maharashtra and Others",
+   "query": "\"Neeharika Infrastructure\"",
+   "text_mentions": 123,
+   "table_cited_by": 116
+  },
+  {
+   "doc": 1000256766,
+   "name": "HDFC Bank Limited v. State of Maharashtra and Anr",
+   "query": "\"HDFC Bank\"",
+   "text_mentions": 56,
+   "table_cited_by": 1
+  }
+ ],
+ "plain": [
+  {
+   "doc": 2000253736,
+   "name": "In the Matter of: Just Rights for Children Alliance & Anr v. S. Harish & Ors",
+   "query": "\"In the Matter\" AND \"Harish\"",
+   "text_mentions": 8,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000752429,
+   "name": "Indrajit Das v. State of Assam",
+   "query": "\"Indrajit Das\"",
+   "text_mentions": 10,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000250810,
+   "name": "Khurshid Ahmed v. State of Jammu and Kashmir",
+   "query": "\"Khurshid Ahmed\"",
+   "text_mentions": 8,
+   "table_cited_by": 6
+  },
+  {
+   "doc": 41241,
+   "name": "Anil @ Anthony Arikswamy Joseph v. State of Maharashtra",
+   "query": "\"Anil Anthony Arikswamy\"",
+   "text_mentions": 5,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 33808,
+   "name": "Ram Pal Singh & Ors v. State of U.P. & Anr",
+   "query": "\"Ram Pal Singh\"",
+   "text_mentions": 18,
+   "table_cited_by": 14
+  },
+  {
+   "doc": 3126,
+   "name": "Karan Singh v. State of Madhya Pradesh",
+   "query": "\"Karan Singh\" AND \"Pradesh\"",
+   "text_mentions": 22,
+   "table_cited_by": 25
+  },
+  {
+   "doc": 5895,
+   "name": "Dharam Pal & Ors v. The State of U.P",
+   "query": "\"Dharam Pal Ors\"",
+   "text_mentions": 9,
+   "table_cited_by": 4
+  },
+  {
+   "doc": 27349,
+   "name": "Baldev Singh v. Union of India and Ors",
+   "query": "\"Baldev Singh\"",
+   "text_mentions": 214,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 2000504821,
+   "name": "Md. Ramjan Ali v. The State of Assam",
+   "query": "\"Md Ramjan Ali\"",
+   "text_mentions": 15,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000250631,
+   "name": "P. Sreekumar v. State of Kerala & Ors",
+   "query": "\"Sreekumar\"",
+   "text_mentions": 16,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 2000755936,
+   "name": "Md. Anowar Hussain and 2 Ors v. The State of Assam",
+   "query": "\"Md Anowar Hussain\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 17847,
+   "name": "P K Pradhan v. The State of Sikkim Represented by the",
+   "query": "\"Pradhan\" AND \"Represented by\"",
+   "text_mentions": 8,
+   "table_cited_by": 20
+  },
+  {
+   "doc": 34080,
+   "name": "Ajoy Kumar Ghose v. State of Jharkhand & Anr",
+   "query": "\"Ajoy Kumar Ghose\"",
+   "text_mentions": 9,
+   "table_cited_by": 9
+  },
+  {
+   "doc": 1000252106,
+   "name": "Shri P. Chidambaram v. Central Bureau of Investigation",
+   "query": "\"Chidambaram\" AND \"Investigation\"",
+   "text_mentions": 29,
+   "table_cited_by": 7
+  },
+  {
+   "doc": 1000253157,
+   "name": "Indra Devi v. State of Rajasthan & Anr",
+   "query": "\"Indra Devi\"",
+   "text_mentions": 6,
+   "table_cited_by": 4
+  },
+  {
+   "doc": 29736,
+   "name": "Lal & Anr v. State of M.P",
+   "query": "\"Lal Anr\"",
+   "text_mentions": 23,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000750737,
+   "name": "Nur Hussain v. The State of Assam and Anr",
+   "query": "\"Nur Hussain\"",
+   "text_mentions": 17,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000250780,
+   "name": "Murugan v. State of Tamil Nadu",
+   "query": "\"Murugan\" AND \"Nadu\"",
+   "text_mentions": 13,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 1000250047,
+   "name": "Nithya Anand Raghavan v. State of NCT of Delhi & Anr",
+   "query": "\"Nithya Anand Raghavan\" AND \"NCT\"",
+   "text_mentions": 7,
+   "table_cited_by": 7
+  },
+  {
+   "doc": 40626,
+   "name": "Bakhshish Singh v. State of Punjab & Anr",
+   "query": "\"Bakhshish Singh\"",
+   "text_mentions": 31,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 2000750363,
+   "name": "Sri Rabindra Biswas v. State of Assam",
+   "query": "\"Rabindra Biswas\"",
+   "text_mentions": 5,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 29291,
+   "name": "Kulwinder Singh v. State of Punjab",
+   "query": "\"Kulwinder Singh\"",
+   "text_mentions": 26,
+   "table_cited_by": 16
+  },
+  {
+   "doc": 1000256403,
+   "name": "The State of Himachal Pradesh v. Rajesh Kumar @ Munnu",
+   "query": "\"The State of\" AND \"Rajesh Kumar\"",
+   "text_mentions": 7,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000253163,
+   "name": "Narendra Singh v. The State of Madhya Pradesh",
+   "query": "\"Narendra Singh\" AND \"Pradesh\"",
+   "text_mentions": 11,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000252746,
+   "name": "Anwar Ali and Another v. The State of Himachal Pradesh",
+   "query": "\"Anwar Ali and\" AND \"Pradesh\"",
+   "text_mentions": 12,
+   "table_cited_by": 19
+  },
+  {
+   "doc": 6836,
+   "name": "Ratilal Bhanji Mithani v. The State of Maharashtra and Others",
+   "query": "\"Ratilal Bhanji Mithani\"",
+   "text_mentions": 11,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 2000503746,
+   "name": "Rubul Ali v. The State of Assam",
+   "query": "\"Rubul Ali\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000000101,
+   "name": "Md. Hasmat Ali and Ors v. The State of Assam",
+   "query": "\"Md Hasmat Ali\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 42452,
+   "name": "Vijay Pal v. State (GNCT) of Delhi",
+   "query": "\"Vijay Pal\"",
+   "text_mentions": 32,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 4845,
+   "name": "Arunachalam v. P. S. R. Sadhanantham",
+   "query": "\"Arunachalam\" AND \"Sadhanantham\"",
+   "text_mentions": 39,
+   "table_cited_by": 38
+  },
+  {
+   "doc": 42521,
+   "name": "Panna Lal and Others v. State of M.P",
+   "query": "\"Panna Lal and\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 4935,
+   "name": "K. Gopal Reddy v. State of Andhra Pradesh",
+   "query": "\"Gopal Reddy\" AND \"Pradesh\"",
+   "text_mentions": 18,
+   "table_cited_by": 38
+  },
+  {
+   "doc": 27589,
+   "name": "Sankaran Moitra v. Sadhna Das & Anr",
+   "query": "\"Sankaran Moitra\" AND \"Sadhna Das\"",
+   "text_mentions": 27,
+   "table_cited_by": 32
+  },
+  {
+   "doc": 2000000371,
+   "name": "Election Commission of India v. The State of Nagaland and Anr",
+   "query": "\"Election Commission of\"",
+   "text_mentions": 31,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 20479,
+   "name": "Mahendra Lal Das v. State of Bihar and Ors",
+   "query": "\"Mahendra Lal Das\"",
+   "text_mentions": 6,
+   "table_cited_by": 6
+  },
+  {
+   "doc": 3492,
+   "name": "The State of Andhra Pradesh v. N. Venugopal and Others",
+   "query": "\"The State of\" AND \"Venugopal\"",
+   "text_mentions": 15,
+   "table_cited_by": 7
+  },
+  {
+   "doc": 37060,
+   "name": "Vijaysinh Chandubha Jadeja \u2014 v. State of Gujarat \u2014",
+   "query": "\"Vijaysinh Chandubha Jadeja\"",
+   "text_mentions": 16,
+   "table_cited_by": 16
+  },
+  {
+   "doc": 2000751411,
+   "name": "Ruhul Amin v. The State of Assam and Anr",
+   "query": "\"Ruhul Amin\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000503782,
+   "name": "Md.Amir Ali and 2 Ors v. The State of Assam",
+   "query": "\"Md Amir Ali\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000502952,
+   "name": "Saiful Islam and Anr v. The State of Assam",
+   "query": "\"Saiful Islam and\"",
+   "text_mentions": 11,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 31821,
+   "name": "Noor Aga v. State of Punjab & Anr",
+   "query": "\"Noor Aga\"",
+   "text_mentions": 100,
+   "table_cited_by": 85
+  },
+  {
+   "doc": 18016,
+   "name": "Satya Narayan Sharma v. State of Rajasthan",
+   "query": "\"Satya Narayan Sharma\"",
+   "text_mentions": 7,
+   "table_cited_by": 6
+  },
+  {
+   "doc": 32641,
+   "name": "Ram Singh v. State of Madhya Pradesh",
+   "query": "\"Ram Singh\" AND \"Pradesh\"",
+   "text_mentions": 35,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 17288,
+   "name": "N. Narsinga Rao v. State of Andhra Pradesh",
+   "query": "\"Narsinga Rao\" AND \"Pradesh\"",
+   "text_mentions": 6,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 2000750236,
+   "name": "Jashim Uddin v. The State of Assam and Anr",
+   "query": "\"Jashim Uddin\"",
+   "text_mentions": 5,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000255192,
+   "name": "Irfan @ Naka v. The State of Uttar Pradesh",
+   "query": "\"Irfan Naka\" AND \"Pradesh\"",
+   "text_mentions": 5,
+   "table_cited_by": 7
+  },
+  {
+   "doc": 1000250348,
+   "name": "Rohit Tandon v. The Enforcement Directorate",
+   "query": "\"Rohit Tandon\"",
+   "text_mentions": 6,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 35919,
+   "name": "Darshan Singh v. State of Punjab & Another",
+   "query": "\"Darshan Singh\"",
+   "text_mentions": 171,
+   "table_cited_by": 8
+  },
+  {
+   "doc": 19027,
+   "name": "Karamjit Singh v. State (Delhi Administration)",
+   "query": "\"Karamjit Singh\"",
+   "text_mentions": 13,
+   "table_cited_by": 4
+  },
+  {
+   "doc": 2000751320,
+   "name": "Habibur Rahman v. The State of Assam and Anr",
+   "query": "\"Habibur Rahman\"",
+   "text_mentions": 46,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 948,
+   "name": "M. S. Sheriff v. The State of Madras and Others",
+   "query": "\"Sheriff\"",
+   "text_mentions": 40,
+   "table_cited_by": 20
+  },
+  {
+   "doc": 25742,
+   "name": "Mangilal v. State of Madhya Pradesh",
+   "query": "\"Mangilal\" AND \"Pradesh\"",
+   "text_mentions": 24,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 2000755768,
+   "name": "Sri Ramen Das v. The State of Assam and Anr",
+   "query": "\"Ramen Das\"",
+   "text_mentions": 5,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000756498,
+   "name": "Jehirul Islam v. The State of Assam and Anr",
+   "query": "\"Jehirul Islam\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 39905,
+   "name": "Subhash Chand v. State (Delhi Administration)",
+   "query": "\"Subhash Chand\"",
+   "text_mentions": 30,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 1000255793,
+   "name": "Frank Vitus v. Narcotics Control Bureau & Ors",
+   "query": "\"Frank Vitus\" AND \"Control\"",
+   "text_mentions": 5,
+   "table_cited_by": 5
+  },
+  {
+   "doc": 1000002084,
+   "name": "Shamshul Kanwar v. State of U.P",
+   "query": "\"Shamshul Kanwar\"",
+   "text_mentions": 15,
+   "table_cited_by": 15
+  },
+  {
+   "doc": 18781,
+   "name": "Shrikant Anandrao Bhosale v. State of Maharashtra",
+   "query": "\"Shrikant Anandrao Bhosale\"",
+   "text_mentions": 7,
+   "table_cited_by": 6
+  },
+  {
+   "doc": 9400,
+   "name": "Mohinder Singh and Ors. etc v. State of Punjab and Anr",
+   "query": "\"Mohinder Singh and\"",
+   "text_mentions": 50,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 2000252138,
+   "name": "Bishwajit Dey v. The State of Assam",
+   "query": "\"Bishwajit Dey\"",
+   "text_mentions": 16,
+   "table_cited_by": 14
+  },
+  {
+   "doc": 39429,
+   "name": "Manjit Singh v. State of Rajasthan",
+   "query": "\"Manjit Singh\"",
+   "text_mentions": 82,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 29106,
+   "name": "Swamy Shraddananda @ Murali Manohar Mishra v. State of Karnataka",
+   "query": "\"Swamy Shraddananda Murali\"",
+   "text_mentions": 11,
+   "table_cited_by": 90
+  },
+  {
+   "doc": 31536,
+   "name": "B. Nagabhushanam v. State of Karnataka",
+   "query": "\"Nagabhushanam\"",
+   "text_mentions": 10,
+   "table_cited_by": 5
+  },
+  {
+   "doc": 27315,
+   "name": "Romesh Lal Jain v. Naginder Singh Rana & Ors",
+   "query": "\"Romesh Lal Jain\" AND \"Naginder Singh\"",
+   "text_mentions": 8,
+   "table_cited_by": 9
+  },
+  {
+   "doc": 2000756415,
+   "name": "Uttam Das v. The State of Assam and Anr",
+   "query": "\"Uttam Das\"",
+   "text_mentions": 14,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 39883,
+   "name": "Gurmail Singh v. State of Punjab & Anr",
+   "query": "\"Gurmail Singh\"",
+   "text_mentions": 64,
+   "table_cited_by": 2
+  },
+  {
+   "doc": 33549,
+   "name": "Khilari v. State of U.P. & Ors",
+   "query": "\"Khilari\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000755624,
+   "name": "Sh. Jakir Hussain v. The State of Mizoram and Anr",
+   "query": "\"Jakir Hussain\"",
+   "text_mentions": 47,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000756355,
+   "name": "Sh. P. Lalhmachhuana v. The State of Mizoram and Anr",
+   "query": "\"Lalhmachhuana\"",
+   "text_mentions": 14,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 4570,
+   "name": "Som Nath v. State of Haryana",
+   "query": "\"Som Nath\"",
+   "text_mentions": 59,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 29580,
+   "name": "Nallapati Sivaiah v. Sub-Divisional Officer, Guntur, A.P",
+   "query": "\"Nallapati Sivaiah\" AND \"Sub Divisional\"",
+   "text_mentions": 9,
+   "table_cited_by": 10
+  },
+  {
+   "doc": 1000251036,
+   "name": "Jagjit Singh v. State of Punjab",
+   "query": "\"Jagjit Singh\"",
+   "text_mentions": 92,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 27967,
+   "name": "Rajiv Ranjan Singh \u2019Lalan\u2019 & Anr v. Union of India & Ors",
+   "query": "\"Rajiv Ranjan Singh\"",
+   "text_mentions": 16,
+   "table_cited_by": 12
+  },
+  {
+   "doc": 2000251343,
+   "name": "Jarnail Singh v. State of Punjab & Anr",
+   "query": "\"Jarnail Singh\"",
+   "text_mentions": 140,
+   "table_cited_by": 9
+  },
+  {
+   "doc": 38677,
+   "name": "Gajraj v. State (NCT) of Delhi",
+   "query": "\"Gajraj\"",
+   "text_mentions": 25,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 34433,
+   "name": "Raman Kumar v. State of Punjab",
+   "query": "\"Raman Kumar\"",
+   "text_mentions": 5,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 2000250637,
+   "name": "Sau. Kamal Shivaji Pokarnekar v. The State of Maharashtra & Ors",
+   "query": "\"Sau Kamal Shivaji\"",
+   "text_mentions": 6,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 2000504489,
+   "name": "Jamal Uddin v. The State of Assam",
+   "query": "\"Jamal Uddin\"",
+   "text_mentions": 23,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 16397,
+   "name": "Raghbir Singh v. State of Haryana",
+   "query": "\"Raghbir Singh\"",
+   "text_mentions": 58,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 2000756864,
+   "name": "Sh. Lalnuntluanga v. The State of Mizoram",
+   "query": "\"Lalnuntluanga\"",
+   "text_mentions": 5,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 29149,
+   "name": "Niranjan Singh v. State of Madhya Pradesh",
+   "query": "\"Niranjan Singh\" AND \"Pradesh\"",
+   "text_mentions": 6,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 2000501560,
+   "name": "Abdul Khalek v. State of Assam",
+   "query": "\"Abdul Khalek\"",
+   "text_mentions": 9,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 36044,
+   "name": "Satyavir Singh v. State of U.P",
+   "query": "\"Satyavir Singh\"",
+   "text_mentions": 13,
+   "table_cited_by": 0
+  },
+  {
+   "doc": 323,
+   "name": "Vishwanath v. The State of Uttar Pradesh",
+   "query": "\"Vishwanath\" AND \"Pradesh\"",
+   "text_mentions": 9,
+   "table_cited_by": 1
+  },
+  {
+   "doc": 25603,
+   "name": "Kuldip Singh v. State of Delhi",
+   "query": "\"Kuldip Singh\"",
+   "text_mentions": 135,
+   "table_cited_by": 12
+  },
+  {
+   "doc": 2000755784,
+   "name": "Azizul Hoque v. The State of Assam",
+   "query": "\"Azizul Hoque\"",
+   "text_mentions": 12,
+   "table_cited_by": 1
+  }
+ ],
+ "summary": {
+  "company": {
+   "cases": 37,
+   "recall_capped": 0.262,
+   "table_ge_half": 22,
+   "table_zero": 9,
+   "table_over_text": 10
+  },
+  "plain": {
+   "cases": 86,
+   "recall_capped": 0.214,
+   "table_ge_half": 27,
+   "table_zero": 35,
+   "table_over_text": 9
+  }
+ }
+}

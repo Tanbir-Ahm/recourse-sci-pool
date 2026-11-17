@@ -27,7 +27,9 @@ HOW MATCHING WORKS, and why it is strict. A wrong link would make an ordinary ca
 - A case held twice in the index (the same distinctive name, the same second party, decided within two years of each other) is one cluster.
 - The bare name ("in Tofan Singh the Court held") is used only for a case already named in full by at least three judgments, only if it is distinctive (nine letters and two words, or ten letters), only in the way a case
   is cited ("in X", "the decision in X", "X (supra)", "X's case", "X (2021)"), never when "J." follows (a judge of that name), and never by an earlier judgment than the one named.
-Measured on 2026-10-29 on the index of 19,236 judgments: 94,143 "X v. Y" mentions, 38,264 matched, plus 31,033 bare mentions; the most named judgments are the classics of Indian criminal law. The table is NOT
+Measured on 2026-10-29 on the index of 19,236 judgments: 94,143 "X v. Y" mentions, 38,264 matched, plus 31,033 bare mentions; the most named judgments are the classics of Indian criminal law. After the reader fix of 2026-11-17 (FOLLOW_UPS 2ep:
+a dotted abbreviation such as "Ltd." or "Corpn." is not a sentence end; "Limited", "Ltd", "Pvt. Ltd." and no suffix at all are one name; "and Others" leaves no "and"; "s/o", "alias" and "@" cut a party where they stand) the same index gives 104,909 mentions,
+46,524 matched, 33,003 bare, and 45,144 links against 39,704 (6,081 new, 641 old ones no longer found; the new ones were read in samples, see review_results/2026-11-17_name_reader_fix/RESULTS.md; nothing here is a statement that a case is good law). The table is NOT
 checked by a lawyer; it counts text matches. Known gaps: names that a judgment abbreviates or misspells, and cases the index does not hold (a mention of "Virsa Singh v. State of Punjab" with no year is credited to the only
 Virsa Singh v. State of Punjab the index holds, which is a different case of 2008).
 """
