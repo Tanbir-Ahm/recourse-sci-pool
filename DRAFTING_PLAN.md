@@ -55,3 +55,63 @@ A draft is a court filing: a wrong section or an invented case harms the lawyer,
 
 ## 9. Relationship to matters (recorded 2026-11-19, owner: "Record this in both plan files"; see `MATTER_FILES_PLAN.md`)
 Drafts live INSIDE a matter: the matter is the container (instructions, facts, files, conversations, clocks) and a draft is a work product made from it, a different kind of object from a Q&A answer (a document to file, filled by code from the lawyer's template, facts only from the matter, law word for word from the shelf, versioned, with a cover sheet of checks that is not part of the filing). The matter is what makes drafting worth building: without it a bail application is a form with blanks; with it the court, FIR, police station, parties and dates are filled once (design point 2 above). Order of dependency: matter facts, then uploads (which propose facts so the lawyer does not retype them; staging only until the legal text exists), then drafting. **Exception: the draft check (design point 7, step D5) works on any uploaded Word file with no matter attached; a matter is not a precondition for it.** The rule of section 2 holds even with a matter full of uploaded documents: the model never writes the law and never invents a fact. Building the matter-files steps P0 and P1 does not start drafting; drafting still needs the owner's go on D0 onwards.
+
+
+## 10. Drafting from the matter's documents: "go through the material I uploaded and draft a bail petition" (recorded 2026-11-19, owner's requirement: draft any petition faithfully, grounded in the resources, without mistakes)
+**Status: still a PLAN. Drafting is NOT approved and nothing is built.** Written after `MATTER_ROUTING_PLAN.md` (which sorts a question into a file lookup, a legal question or a draft request) and `MATTER_FILES_PLAN.md` (the documents feature). Everything here is Claude's reasoning; no lawyer has read it; nothing has been run with the answer model.
+
+### 10.1 What "without mistakes" can and cannot mean
+No tool can promise that a court filing has no mistake, and Recourse must not say it does. What can be promised, and tested, is **faithfulness by construction**: every fact in the draft traces to a page of the lawyer's own documents and to a line the lawyer confirmed; every statute passage is a character-for-character copy of Recourse's checked text; every authority is on a verified list and nothing else; and **everything the tool does not know is a visible blank, never a guess**. What code cannot check, and the lawyer must: the choice of remedy and forum, whether a ground fits these facts, whether an authority supports the point it is used for, limitation, court fee, the court's own format, and whether a fact in the file is itself right. The draft says so on a cover sheet that is not part of the filing. "Draft for lawyer review", never "ready to file".
+
+### 10.2 What happens today (so that the gap is clear)
+The engine has no draft intent: every message is a research question (that is why the lawyer's "draft a document for a defamation case" got judgments and no draft). The only drafting code (`draft_layer.py`, `petition_draft.py`, `scenario_draft.py`) is deterministic assembly for arrest, freeze and bail situations from a finished assessment, with no model: the same principle as here. An improvised draft from the research prompt would be exactly the unfaithful kind, so detecting the request (D0, below) matters before any drafting is built.
+
+### 10.3 The flow for one sentence from the lawyer
+1. **Recognise the request** (the Draft route of the routing plan: a drafting verb with a petition, application, notice, complaint, affidavit or writ). Until drafting exists the answer says plainly that it is not available yet and offers what exists (a fact sheet from the documents, the law on bail, the grounds the file supports): D0.
+2. **Find out which petition, without guessing.** "A bail petition" can be regular bail after a refusal or after the chargesheet, anticipatory bail, or default bail: a legal choice that depends on stage, custody, earlier orders and forum. The tool shows what the file shows ("in custody since 18-03-2026; bail refused by the Sessions Judge on 05-05-2026, Doc 3; chargesheet filed 10-06-2026, Doc 1 p. 6") and asks the lawyer to choose from a short list. It does not choose.
+3. **Read the documents into a fact sheet.** The model reads (whole-document mode, a cost) and PROPOSES fields: court, case numbers, parties, FIR, police station, sections charged, arrest, remand and custody dates, chargesheet status, co-accused status, earlier bail applications and orders, and so on. Each proposal carries the page and the exact words. **Code rejects any proposal whose value is not on the cited page** (the same check as the quotation check), and shows conflicts between documents side by side. A title line ("report under section 193") is not a charge: a named test case.
+4. **The lawyer confirms the fact sheet** in an editable panel (the case-file panel of 2026-11-09 is the model: every line theirs to edit, add or remove). Only confirmed lines flow into the draft; an unconfirmed line shows yellow.
+5. **Ask only what is missing and material** (the interview pattern): antecedents, residence and surety, age, health, family, status of the co-accused, any other pending application. Unanswered stays a yellow blank.
+6. **Assemble** a Word file in the lawyer's own template (design points 3 and 4 above: highlight code, cover sheet, linter).
+7. **Review checklist** for the lawyer: every yellow item, every authority still unconfirmed, every fact the documents contradict.
+
+### 10.4 Where each part of a bail petition comes from
+| Part | Source | Checked by |
+|---|---|---|
+| Court, cause title, parties, FIR, police station, sections | the confirmed fact sheet (matter fields and the file's proposals) | trace to a confirmed line; blank when absent |
+| Facts of the case and custody history | confirmed fact lines in order; sentences by fixed wording, or (optional, off by default) a model that only joins confirmed lines | every date, name, number and amount in a sentence must stand in a traced line; any other is red |
+| Day counts (for example days from arrest to chargesheet) | computed by code from two confirmed dates | recomputed by the check |
+| Statutory provisions (BNSS 480, 483, 482, 187 as chosen) | word for word from Recourse's checked text, with its source | diff against the source; **see the prerequisite on the BNSS text below** |
+| Grounds | a **ground bank**: paragraph skeletons read by a lawyer, each with a trigger (the facts it needs). A ground is offered only when the file supports its trigger; the lawyer ticks it; the model writes no ground | trigger facts present and confirmed |
+| Authorities | only a **verified list**: each entry is a verbatim excerpt that passed `verify` (the anchors machinery), tied to the one proposition it was verified for, with its register status. Unconfirmed entries show yellow. The model adds no case | on the list; not on the register; excerpt is a copy |
+| Disclosure paragraphs (earlier applications, pending proceedings) | a lawyer-written rule table: if the file shows an earlier refusal, the draft must state it | the rule fires or the cover sheet says it is missing |
+| Prayer and interim prayer | the template | none beyond the template |
+| Annexure list | built by code from the uploaded documents (Annexure A is the chargesheet; its pages) | matches the files |
+| Verification, affidavit, advocate's details | template and the saved advocate profile | blanks highlighted |
+The only uses of the model: reading documents into proposed facts (checked as above) and, if the lawyer turns it on, joining confirmed lines into sentences (traced). **Never** the law, the grounds, the authorities or the prayer. The default draft is therefore reproducible: the same confirmed facts give the same draft.
+
+### 10.5 "Any petition"
+A free generator for any petition would be unfaithful. What scales is a **library of reviewed petition types**, each a lawyer-read skeleton, ground bank, authority list and disclosure-rule table: regular bail first, then anticipatory bail, default bail, quashing (BNSS 528), notices and complaints (the defamation set of section 4). For a type that has no reviewed skeleton the tool says so, and offers the fact sheet and the research instead. Adding a type is a lawyer's reading, not a code change.
+
+### 10.6 What must exist first (none of it does yet)
+- **The fact sheet extraction and its confirm panel** (P2 of `MATTER_FILES_PLAN.md`, not approved).
+- **A lawyer's reading of the bail skeleton, the ground bank, the authority list and the disclosure rules.** The owner's supplied bail template has unknown provenance and licence and stale-law defects (section 1); Claude may write first skeletons from the statute text marked `unreviewed`, never `reviewed`.
+- **Verified bail authorities** in the anchors machinery (verbatim, `verify` passed; Mr. Advocate's confirmation before a petition relies on one without a yellow mark).
+- **Correct BNSS text.** Recourse's own BNSS copy has known losses (checked 2026-10-17): s.480 has a one-letter loss ("o" for "on"), and s.183 and s.401 have lines missing. **A petition quoting section 480 from that copy would carry the defect.** The deferred BNS/BNSS repair (CLAUDE.md, FOLLOW_UPS 2ah item 5) becomes a prerequisite of quoting those sections in a draft. It needs the owner's word and his own pull request (production data).
+- The privacy policy and consent text (gate G1): a draft held in a matter holds client facts.
+- The routing plan's Draft route and the matter-documents plan's sections-charged fetch.
+
+### 10.7 How it will be judged (declared before any code)
+(a) Extraction: on the synthetic and public documents with hand-marked fields, the share of proposed values that stand on the cited page (must be 100% by the code check) and the share of marked fields found; including the title-line trap. (b) Seeded faults: invented facts, wrong dates, altered statute text, a made-up case planted in drafts; report how many the checks catch (report the rate, do not assume it). (c) Every statute passage in a draft is a copy of the source (a diff, not a sample). (d) A deterministic draft for the test matter has the expected fields, blanks and annexures. (e) **A lawyer scores 10 drafts blind against a generic chatbot's draft from the same facts** (wrong law, wrong or invented authority, minutes to filing-ready): the only measure that is not Claude's own, and until it exists no claim that drafts are accurate or safe.
+
+### 10.8 Order
+D0 (detect a draft request and say plainly what exists; no drafting) with the routing plan's R0/R1; the fact sheet (P2) after the routing plan's R3; D1 (deterministic regular-bail petition from the confirmed fact sheet, a reviewed skeleton and ground bank); D2 (law blocks after the BNSS repair, and the verified authority list); D4 (optional traced model joining); further petition types one at a time. Each step needs the owner's go and ends in his staging test.
+
+### 10.9 Decisions needed from the owner
+1. Go for D0 alone (detect and say what exists) as the first, safe step.
+2. Faithfulness by construction (deterministic assembly, the model only reads; advised) rather than freer model-written drafts.
+3. Which bail petition first: regular bail after a refusal or after the chargesheet (the test matter's situation), anticipatory, or default bail.
+4. Which lawyer reads the skeleton, the ground bank, the authorities and the disclosure rules, and the court format to follow (Gauhati High Court, Sessions, Magistrate).
+5. Where the supplied templates came from and whether they may ship (section 8, decision 2).
+6. The BNS/BNSS repair: go, as a prerequisite of quoting BNSS text in a draft (his own pull request).
+7. Whether a draft counts as its own priced unit (section 8, decision 7).

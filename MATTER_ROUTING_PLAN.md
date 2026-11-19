@@ -23,7 +23,8 @@ So two separate faults: (a) no cheap path for a question whose answer is in the 
 | **Law only** | "what is the punishment under BNS 309(4)?"; "is robbery bailable?" | Recourse's law material | the existing legal path, **with no documents handed over** |
 | **Law on the facts** | "is he entitled to default bail on these dates?"; "can we get bail when the co-accused is absconding?"; "was the arrest valid if the grounds were not given in writing?" | both: the facts in the file, the law in the library | the existing legal path, with the file's facts fetched on purpose (see 6) |
 | **Chained** | "what sections are charged and are they bailable?" | the file first, then the law for what the file names | the legal path, with the sections the file names fetched as law (see 6.3) |
-| **Other** | "hi"; "thanks"; "draft a bail application" | nothing / not approved | existing handling (small talk, the drafting notice) |
+| **Draft** | "go through the material I uploaded and draft a bail petition" | the documents (facts), checked law and verified authorities, a reviewed skeleton | **not built, not approved.** Detect the request and say plainly what exists (D0); the design is `DRAFTING_PLAN.md` section 10 (faithful by construction: facts traced to pages and confirmed by the lawyer, statute text copied, authorities from a verified list, blanks where unknown) |
+| **Other** | "hi"; "thanks" | nothing | existing handling (small talk) |
 
 ## 4. How the system decides (in this order, first match wins)
 1. **No documents in the matter** → legal path, exactly as today.
@@ -68,7 +69,8 @@ Two measured helpers, to be tried on the frozen set before they are used: (a) a 
 - **R1, the file path:** `MATTER_ROUTING=on`; quick answer, coverage line, checks, NEEDS_LAW escape, the mode switch and the route label with its one-tap other way. The quota unit for a file question is his decision (decision 3).
 - **R3, sections the file charges (6.3 version 1)**, then **R2, the rest of section 6 (6.1, 6.2, 6.5, the small-matter handover)**. R3 before R2: it closes the gap that made the first test's answer unreliable.
 - **R4, computed intervals; R5, whole-document mode:** later, each with its own go and its own measured set.
-- Not in this plan: OCR, drafting, clocks, WhatsApp.
+- **The Draft route (added 2026-11-19, owner: "respond correctly when a user says 'go through the material I uploaded and draft a bail petition' ... faithfully ... without making any mistakes"):** detection comes with R0/R1 (D0: say plainly that drafting is not available yet and what exists); the drafting itself is `DRAFTING_PLAN.md` section 10 and needs its own go.
+- Not in this plan: OCR, clocks, WhatsApp, the drafting itself.
 
 ## 9. Decisions needed from the owner
 1. Auto routing with a visible switch (recommended), auto only, or two separate boxes.
