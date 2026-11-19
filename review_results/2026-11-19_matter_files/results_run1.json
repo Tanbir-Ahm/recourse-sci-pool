@@ -1,0 +1,2478 @@
+{
+ "M1": {
+  "CS": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 6,
+   "unread": [],
+   "passages": 6,
+   "chars": 5082
+  },
+  "RM": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 2,
+   "unread": [],
+   "passages": 2,
+   "chars": 1655
+  },
+  "BO": {
+   "kind": "docx",
+   "unit": "para",
+   "count": 12,
+   "unread": [],
+   "passages": 2,
+   "chars": 1640
+  },
+  "INJ": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 3,
+   "unread": [
+    3
+   ],
+   "passages": 2,
+   "chars": 1334
+  },
+  "AK": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 7,
+   "unread": [],
+   "passages": 24,
+   "chars": 20227
+  },
+  "PB": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 17,
+   "unread": [],
+   "passages": 64,
+   "chars": 55459
+  },
+  "PP": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 18,
+   "unread": [],
+   "passages": 65,
+   "chars": 56066
+  },
+  "SKA": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 13,
+   "unread": [],
+   "passages": 44,
+   "chars": 38187
+  },
+  "AM": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 1,
+   "unread": [],
+   "passages": 2,
+   "chars": 1783
+  },
+  "LN": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 2,
+   "unread": [],
+   "passages": 6,
+   "chars": 4588
+  },
+  "JOR": {
+   "kind": "pdf",
+   "unit": "page",
+   "count": 1,
+   "unread": [],
+   "passages": 1,
+   "chars": 589
+  },
+  "TXT": {
+   "kind": "txt",
+   "unit": "para",
+   "count": 1,
+   "unread": [],
+   "passages": 1,
+   "chars": 481
+  },
+  "SCAN": {
+   "refused": "no_text"
+  }
+ },
+ "M3": {
+  "passed": 24,
+  "total": 25,
+  "cases": [
+   {
+    "id": 1,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 2,
+    "expect": [
+     [
+      "other_page",
+      3
+     ]
+    ],
+    "got": [
+     [
+      "other_page",
+      3
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 3,
+    "expect": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "got": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 4,
+    "expect": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "got": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 5,
+    "expect": [
+     [
+      "unknown_doc"
+     ]
+    ],
+    "got": [
+     [
+      "unknown_doc"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 6,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 7,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 8,
+    "expect": [
+     [
+      "other_page",
+      10
+     ]
+    ],
+    "got": [
+     [
+      "other_page",
+      10
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 9,
+    "expect": [
+     [
+      "skipped_short"
+     ]
+    ],
+    "got": [
+     [
+      "skipped_short"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 10,
+    "expect": [],
+    "got": [],
+    "pass": true
+   },
+   {
+    "id": 11,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 12,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 13,
+    "expect": [
+     [
+      "ok"
+     ],
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ],
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 14,
+    "expect": [
+     [
+      "other_page",
+      6
+     ]
+    ],
+    "got": [
+     [
+      "skipped_short"
+     ]
+    ],
+    "pass": false
+   },
+   {
+    "id": 15,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 16,
+    "expect": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "got": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 17,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 18,
+    "expect": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "got": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 19,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 20,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 21,
+    "expect": [],
+    "got": [],
+    "pass": true
+   },
+   {
+    "id": 22,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 23,
+    "expect": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "got": [
+     [
+      "not_in_file"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 24,
+    "expect": [
+     [
+      "ok"
+     ]
+    ],
+    "got": [
+     [
+      "ok"
+     ]
+    ],
+    "pass": true
+   },
+   {
+    "id": 25,
+    "expect": [
+     [
+      "other_doc",
+      "2",
+      1
+     ]
+    ],
+    "got": [
+     [
+      "other_doc",
+      "2",
+      1
+     ]
+    ],
+    "pass": true
+   }
+  ]
+ },
+ "M2": {
+  "words": {
+   "hits": 33,
+   "of": 39,
+   "misses": [
+    1,
+    8,
+    13,
+    17,
+    27,
+    32
+   ],
+   "absent_top_scores": {
+    "40": 7.7056,
+    "41": 13.138,
+    "42": 4.593
+   },
+   "answerable_top_score_min": 5.1181,
+   "per": [
+    {
+     "id": 1,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "LN:2",
+      "LN:1",
+      "LN:2",
+      "LN:1",
+      "LN:2",
+      "PB:14"
+     ],
+     "top_score": 6.5568,
+     "chars": 5312
+    },
+    {
+     "id": 2,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:2",
+      "INJ:1",
+      "PP:13",
+      "CS:6",
+      "CS:5",
+      "INJ:2"
+     ],
+     "top_score": 9.9231,
+     "chars": 4685
+    },
+    {
+     "id": 3,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "BO:1-7",
+      "SKA:8",
+      "CS:3"
+     ],
+     "top_score": 7.8832,
+     "chars": 3081
+    },
+    {
+     "id": 4,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "CS:6",
+      "BO:1-7",
+      "CS:3",
+      "PP:9",
+      "PB:15",
+      "SKA:13"
+     ],
+     "top_score": 12.3943,
+     "chars": 5949
+    },
+    {
+     "id": 5,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "BO:8-12",
+      "PB:2",
+      "LN:2",
+      "CS:6",
+      "RM:2"
+     ],
+     "top_score": 24.6443,
+     "chars": 3795
+    },
+    {
+     "id": 6,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "LN:1",
+      "SKA:8",
+      "PB:6",
+      "PP:10",
+      "AK:3"
+     ],
+     "top_score": 15.0075,
+     "chars": 5866
+    },
+    {
+     "id": 7,
+     "hit": true,
+     "rank": 6,
+     "handed": [
+      "INJ:1",
+      "RM:2",
+      "CS:2",
+      "PB:10",
+      "CS:6",
+      "CS:5"
+     ],
+     "top_score": 6.775,
+     "chars": 3878
+    },
+    {
+     "id": 8,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "SKA:7",
+      "SKA:5",
+      "PP:3",
+      "PB:9",
+      "PB:3",
+      "SKA:6"
+     ],
+     "top_score": 7.8791,
+     "chars": 5995
+    },
+    {
+     "id": 9,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:6",
+      "CS:1",
+      "RM:2",
+      "PP:1",
+      "PB:17",
+      "SKA:6"
+     ],
+     "top_score": 11.2167,
+     "chars": 4776
+    },
+    {
+     "id": 10,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:3",
+      "AK:4",
+      "PB:6",
+      "INJ:2",
+      "AK:4"
+     ],
+     "top_score": 8.3378,
+     "chars": 5468
+    },
+    {
+     "id": 11,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:2",
+      "PB:8",
+      "PP:16",
+      "AK:6",
+      "PP:15"
+     ],
+     "top_score": 30.7687,
+     "chars": 5423
+    },
+    {
+     "id": 12,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "RM:2",
+      "RM:1",
+      "PB:3",
+      "PP:3",
+      "AK:5",
+      "PB:8"
+     ],
+     "top_score": 12.2952,
+     "chars": 5545
+    },
+    {
+     "id": 13,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:6",
+      "RM:2",
+      "PP:15",
+      "PP:17",
+      "PP:17",
+      "PP:4"
+     ],
+     "top_score": 7.369,
+     "chars": 5377
+    },
+    {
+     "id": 14,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PB:3",
+      "RM:2",
+      "PP:7",
+      "PB:1",
+      "PP:3",
+      "RM:1"
+     ],
+     "top_score": 9.7044,
+     "chars": 5394
+    },
+    {
+     "id": 15,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "RM:2",
+      "CS:5",
+      "AK:6",
+      "SKA:5",
+      "AK:2",
+      "INJ:1"
+     ],
+     "top_score": 14.3084,
+     "chars": 4911
+    },
+    {
+     "id": 16,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "BO:8-12",
+      "AK:2",
+      "BO:1-7",
+      "PB:3",
+      "PB:6",
+      "PB:9"
+     ],
+     "top_score": 7.6941,
+     "chars": 4930
+    },
+    {
+     "id": 17,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "RM:2",
+      "INJ:2",
+      "PB:7",
+      "PP:5",
+      "AK:6",
+      "CS:5"
+     ],
+     "top_score": 6.4149,
+     "chars": 4507
+    },
+    {
+     "id": 18,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "BO:8-12",
+      "PP:17",
+      "PP:18",
+      "PP:11",
+      "PP:8",
+      "PB:11"
+     ],
+     "top_score": 5.1181,
+     "chars": 5389
+    },
+    {
+     "id": 19,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "INJ:1",
+      "CS:2",
+      "AK:2",
+      "CS:6",
+      "CS:5",
+      "INJ:2"
+     ],
+     "top_score": 11.1093,
+     "chars": 4686
+    },
+    {
+     "id": 20,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "INJ:2",
+      "CS:4",
+      "PP:4",
+      "INJ:1",
+      "CS:2",
+      "AK:2"
+     ],
+     "top_score": 11.3803,
+     "chars": 4619
+    },
+    {
+     "id": 21,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:7",
+      "AK:1",
+      "AK:2",
+      "PP:5",
+      "SKA:5",
+      "PP:1"
+     ],
+     "top_score": 12.6265,
+     "chars": 5341
+    },
+    {
+     "id": 22,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:7",
+      "PP:18",
+      "AK:1",
+      "AK:4",
+      "PP:11",
+      "SKA:2"
+     ],
+     "top_score": 11.184,
+     "chars": 5560
+    },
+    {
+     "id": 23,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:2",
+      "AK:1",
+      "LN:2",
+      "AK:7",
+      "LN:1",
+      "PB:6"
+     ],
+     "top_score": 17.518,
+     "chars": 5558
+    },
+    {
+     "id": 24,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:6",
+      "AK:5",
+      "SKA:5",
+      "SKA:11",
+      "LN:2",
+      "SKA:9"
+     ],
+     "top_score": 16.2115,
+     "chars": 5225
+    },
+    {
+     "id": 25,
+     "hit": true,
+     "rank": 4,
+     "handed": [
+      "PP:8",
+      "PP:9",
+      "PP:8",
+      "PB:14",
+      "PP:11",
+      "PB:12"
+     ],
+     "top_score": 14.4049,
+     "chars": 5869
+    },
+    {
+     "id": 26,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PB:15",
+      "PP:9",
+      "PP:8",
+      "PB:14",
+      "PB:13",
+      "AK:2"
+     ],
+     "top_score": 13.8104,
+     "chars": 5241
+    },
+    {
+     "id": 27,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:7",
+      "PP:14",
+      "PP:3",
+      "PP:3",
+      "PP:5",
+      "PB:5"
+     ],
+     "top_score": 10.5736,
+     "chars": 4636
+    },
+    {
+     "id": 28,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PB:3",
+      "PB:1",
+      "PB:2",
+      "PB:4",
+      "PB:5",
+      "PP:2"
+     ],
+     "top_score": 16.4892,
+     "chars": 4684
+    },
+    {
+     "id": 29,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PP:18",
+      "PP:15",
+      "PP:7",
+      "PP:2",
+      "PP:3",
+      "PP:1"
+     ],
+     "top_score": 7.3312,
+     "chars": 1446
+    },
+    {
+     "id": 30,
+     "hit": true,
+     "rank": 5,
+     "handed": [
+      "PP:17",
+      "PB:5",
+      "PB:6",
+      "PB:5",
+      "PP:6",
+      "PB:3"
+     ],
+     "top_score": 12.265,
+     "chars": 5606
+    },
+    {
+     "id": 31,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PP:4",
+      "PP:6",
+      "PP:5",
+      "PP:14",
+      "PP:5",
+      "PP:2"
+     ],
+     "top_score": 15.1554,
+     "chars": 5617
+    },
+    {
+     "id": 32,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "SKA:12",
+      "SKA:11",
+      "SKA:11",
+      "SKA:12",
+      "SKA:13",
+      "SKA:3"
+     ],
+     "top_score": 15.0716,
+     "chars": 6185
+    },
+    {
+     "id": 33,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "AK:3",
+      "SKA:10",
+      "PB:11",
+      "SKA:8",
+      "SKA:5",
+      "SKA:8"
+     ],
+     "top_score": 11.9375,
+     "chars": 5605
+    },
+    {
+     "id": 34,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AM:1",
+      "PP:15",
+      "AK:2",
+      "INJ:1",
+      "CS:1",
+      "BO:1-7"
+     ],
+     "top_score": 15.6411,
+     "chars": 5524
+    },
+    {
+     "id": 35,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AM:1",
+      "BO:1-7",
+      "RM:1",
+      "PP:15",
+      "PP:17",
+      "CS:1"
+     ],
+     "top_score": 14.0247,
+     "chars": 6049
+    },
+    {
+     "id": 36,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "LN:2",
+      "LN:2",
+      "LN:1",
+      "LN:1",
+      "LN:2",
+      "PP:14"
+     ],
+     "top_score": 13.2895,
+     "chars": 4681
+    },
+    {
+     "id": 37,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "SKA:11",
+      "PB:5",
+      "LN:2",
+      "LN:2",
+      "PB:11",
+      "PB:3"
+     ],
+     "top_score": 6.0512,
+     "chars": 5753
+    },
+    {
+     "id": 38,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:2",
+      "AK:2",
+      "AK:2",
+      "SKA:10",
+      "AK:3",
+      "AK:5"
+     ],
+     "top_score": 12.4868,
+     "chars": 5723
+    },
+    {
+     "id": 39,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:1",
+      "LN:2",
+      "LN:2",
+      "LN:1"
+     ],
+     "top_score": 21.558,
+     "chars": 3329
+    },
+    {
+     "id": 40,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "PP:4",
+      "LN:2",
+      "INJ:2",
+      "PP:3",
+      "SKA:8",
+      "CS:6"
+     ],
+     "top_score": 7.7056,
+     "chars": 4784
+    },
+    {
+     "id": 41,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "PB:11",
+      "AK:2",
+      "SKA:5",
+      "AK:6",
+      "PP:3",
+      "PB:3"
+     ],
+     "top_score": 13.138,
+     "chars": 5661
+    },
+    {
+     "id": 42,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "INJ:1",
+      "PB:2",
+      "SKA:5",
+      "AK:3",
+      "AK:6",
+      "CS:2"
+     ],
+     "top_score": 4.593,
+     "chars": 5054
+    },
+    {
+     "id": 43,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "INJ:2",
+      "PB:6",
+      "CS:4",
+      "CS:6",
+      "PB:6",
+      "PB:14"
+     ],
+     "top_score": 5.1714,
+     "chars": 5167
+    }
+   ]
+  },
+  "meaning": {
+   "hits": 35,
+   "of": 39,
+   "misses": [
+    1,
+    13,
+    17,
+    32
+   ],
+   "absent_top_scores": {
+    "40": 0.2012,
+    "41": 0.4333,
+    "42": 0.2087
+   },
+   "answerable_top_score_min": 0.2713,
+   "per": [
+    {
+     "id": 1,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:15",
+      "PP:5",
+      "PB:13",
+      "PP:2",
+      "AM:1",
+      "PP:8"
+     ],
+     "top_score": 0.4127,
+     "chars": 4662
+    },
+    {
+     "id": 2,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:2",
+      "CS:3",
+      "CS:6",
+      "CS:5",
+      "CS:4",
+      "INJ:2"
+     ],
+     "top_score": 0.4261,
+     "chars": 4944
+    },
+    {
+     "id": 3,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:3",
+      "CS:2",
+      "CS:6",
+      "BO:1-7",
+      "RM:1",
+      "CS:4"
+     ],
+     "top_score": 0.4572,
+     "chars": 5621
+    },
+    {
+     "id": 4,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:3",
+      "BO:1-7",
+      "SKA:9",
+      "AM:1",
+      "PP:18",
+      "PP:1"
+     ],
+     "top_score": 0.2926,
+     "chars": 4161
+    },
+    {
+     "id": 5,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "PP:5",
+      "INJ:2",
+      "SKA:12",
+      "SKA:2",
+      "CS:6"
+     ],
+     "top_score": 0.3906,
+     "chars": 3833
+    },
+    {
+     "id": 6,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "PB:11",
+      "PB:6",
+      "PB:9",
+      "PB:11",
+      "CS:3"
+     ],
+     "top_score": 0.3336,
+     "chars": 5386
+    },
+    {
+     "id": 7,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:5",
+      "AM:1",
+      "CS:2",
+      "INJ:2",
+      "CS:6",
+      "RM:2"
+     ],
+     "top_score": 0.3752,
+     "chars": 4421
+    },
+    {
+     "id": 8,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:5",
+      "CS:3",
+      "PP:15",
+      "SKA:5",
+      "CS:4",
+      "CS:1"
+     ],
+     "top_score": 0.5289,
+     "chars": 4621
+    },
+    {
+     "id": 9,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:6",
+      "CS:1",
+      "PB:17",
+      "SKA:1",
+      "SKA:12",
+      "PP:18"
+     ],
+     "top_score": 0.3332,
+     "chars": 2487
+    },
+    {
+     "id": 10,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:3",
+      "BO:1-7",
+      "CS:6",
+      "RM:1",
+      "BO:8-12"
+     ],
+     "top_score": 0.3386,
+     "chars": 5390
+    },
+    {
+     "id": 11,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:2",
+      "CS:3",
+      "AK:1",
+      "PP:9",
+      "PB:9"
+     ],
+     "top_score": 0.3693,
+     "chars": 5764
+    },
+    {
+     "id": 12,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "RM:1",
+      "AK:5",
+      "AK:4",
+      "AK:5",
+      "AK:4",
+      "SKA:5"
+     ],
+     "top_score": 0.4392,
+     "chars": 5785
+    },
+    {
+     "id": 13,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:6",
+      "PP:17",
+      "PP:15",
+      "PP:15",
+      "PP:15",
+      "PB:14"
+     ],
+     "top_score": 0.5828,
+     "chars": 5886
+    },
+    {
+     "id": 14,
+     "hit": true,
+     "rank": 5,
+     "handed": [
+      "PB:8",
+      "RM:1",
+      "PP:6",
+      "PP:4",
+      "RM:2",
+      "PP:7"
+     ],
+     "top_score": 0.3455,
+     "chars": 5219
+    },
+    {
+     "id": 15,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "RM:2",
+      "CS:5",
+      "AM:1",
+      "SKA:2",
+      "RM:1",
+      "SKA:10"
+     ],
+     "top_score": 0.3266,
+     "chars": 4820
+    },
+    {
+     "id": 16,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "BO:8-12",
+      "PP:8",
+      "PB:13",
+      "BO:1-7",
+      "PB:14",
+      "PP:14"
+     ],
+     "top_score": 0.3451,
+     "chars": 5506
+    },
+    {
+     "id": 17,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:2",
+      "INJ:2",
+      "PP:6",
+      "PB:6",
+      "PP:2",
+      "AK:1"
+     ],
+     "top_score": 0.2713,
+     "chars": 4699
+    },
+    {
+     "id": 18,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "PP:8",
+      "PP:7",
+      "BO:8-12",
+      "PB:12",
+      "AK:7",
+      "PP:17"
+     ],
+     "top_score": 0.3611,
+     "chars": 3960
+    },
+    {
+     "id": 19,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "INJ:1",
+      "INJ:2",
+      "CS:2",
+      "CS:5",
+      "CS:6",
+      "SKA:10"
+     ],
+     "top_score": 0.4862,
+     "chars": 4581
+    },
+    {
+     "id": 20,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "INJ:2",
+      "INJ:1",
+      "PP:7",
+      "PP:4",
+      "PP:15",
+      "CS:2"
+     ],
+     "top_score": 0.4793,
+     "chars": 4498
+    },
+    {
+     "id": 21,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:7",
+      "AK:1",
+      "AK:6",
+      "SKA:5",
+      "SKA:6",
+      "SKA:5"
+     ],
+     "top_score": 0.5749,
+     "chars": 5507
+    },
+    {
+     "id": 22,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:7",
+      "AK:1",
+      "SKA:2",
+      "AK:6",
+      "SKA:5",
+      "SKA:5"
+     ],
+     "top_score": 0.5797,
+     "chars": 5547
+    },
+    {
+     "id": 23,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:2",
+      "AK:1",
+      "AK:7",
+      "AK:2",
+      "CS:2",
+      "INJ:1"
+     ],
+     "top_score": 0.4803,
+     "chars": 5348
+    },
+    {
+     "id": 24,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:6",
+      "AK:5",
+      "SKA:4",
+      "SKA:9",
+      "AK:5",
+      "SKA:5"
+     ],
+     "top_score": 0.4776,
+     "chars": 5206
+    },
+    {
+     "id": 25,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PP:8",
+      "PB:14",
+      "PP:17",
+      "PP:9",
+      "PB:14",
+      "PP:15"
+     ],
+     "top_score": 0.6286,
+     "chars": 6122
+    },
+    {
+     "id": 26,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PB:15",
+      "PP:9",
+      "PB:14",
+      "PP:17",
+      "PP:15",
+      "SKA:10"
+     ],
+     "top_score": 0.565,
+     "chars": 5969
+    },
+    {
+     "id": 27,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PB:16",
+      "PB:1",
+      "PB:16",
+      "PB:3",
+      "PB:2",
+      "PP:3"
+     ],
+     "top_score": 0.5742,
+     "chars": 3488
+    },
+    {
+     "id": 28,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "PB:3",
+      "PB:2",
+      "PB:1",
+      "PB:4",
+      "PB:16",
+      "PB:5"
+     ],
+     "top_score": 0.582,
+     "chars": 3868
+    },
+    {
+     "id": 29,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PP:18",
+      "PP:2",
+      "PP:5",
+      "PP:3",
+      "PP:1",
+      "PP:1"
+     ],
+     "top_score": 0.5599,
+     "chars": 2539
+    },
+    {
+     "id": 30,
+     "hit": true,
+     "rank": 5,
+     "handed": [
+      "PP:17",
+      "PB:16",
+      "PB:1",
+      "PB:6",
+      "PP:6",
+      "PB:2"
+     ],
+     "top_score": 0.5673,
+     "chars": 3864
+    },
+    {
+     "id": 31,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PP:6",
+      "PP:4",
+      "PP:5",
+      "PP:15",
+      "PP:14",
+      "PP:15"
+     ],
+     "top_score": 0.5481,
+     "chars": 5589
+    },
+    {
+     "id": 32,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "SKA:3",
+      "SKA:11",
+      "SKA:11",
+      "SKA:11",
+      "SKA:10",
+      "SKA:13"
+     ],
+     "top_score": 0.5599,
+     "chars": 5438
+    },
+    {
+     "id": 33,
+     "hit": true,
+     "rank": 4,
+     "handed": [
+      "AK:3",
+      "SKA:5",
+      "AK:4",
+      "SKA:10",
+      "SKA:8",
+      "SKA:4"
+     ],
+     "top_score": 0.5033,
+     "chars": 5600
+    },
+    {
+     "id": 34,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AM:1",
+      "RM:1",
+      "BO:1-7",
+      "PP:15",
+      "CS:1",
+      "PP:15"
+     ],
+     "top_score": 0.5906,
+     "chars": 5815
+    },
+    {
+     "id": 35,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AM:1",
+      "RM:1",
+      "BO:1-7",
+      "PP:17",
+      "CS:1",
+      "PP:15"
+     ],
+     "top_score": 0.6564,
+     "chars": 6104
+    },
+    {
+     "id": 36,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "LN:2",
+      "LN:2",
+      "LN:1",
+      "LN:1",
+      "LN:1",
+      "LN:2"
+     ],
+     "top_score": 0.4797,
+     "chars": 4584
+    },
+    {
+     "id": 37,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:2",
+      "LN:2",
+      "LN:1",
+      "LN:2",
+      "AK:6",
+      "SKA:9"
+     ],
+     "top_score": 0.3213,
+     "chars": 4866
+    },
+    {
+     "id": 38,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:2",
+      "LN:1",
+      "LN:2",
+      "LN:2",
+      "SKA:3",
+      "INJ:1"
+     ],
+     "top_score": 0.3687,
+     "chars": 4861
+    },
+    {
+     "id": 39,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:1",
+      "LN:2",
+      "LN:1",
+      "LN:2",
+      "LN:1",
+      "AM:1"
+     ],
+     "top_score": 0.4909,
+     "chars": 5024
+    },
+    {
+     "id": 40,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "AK:1",
+      "CS:4",
+      "CS:1",
+      "CS:5",
+      "AM:1",
+      "PP:15"
+     ],
+     "top_score": 0.2012,
+     "chars": 5208
+    },
+    {
+     "id": 41,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "AK:6",
+      "SKA:5",
+      "PB:3",
+      "PP:15",
+      "BO:8-12",
+      "PP:18"
+     ],
+     "top_score": 0.4333,
+     "chars": 5288
+    },
+    {
+     "id": 42,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "CS:2",
+      "CS:3",
+      "INJ:1",
+      "LN:2",
+      "AM:1",
+      "CS:4"
+     ],
+     "top_score": 0.2087,
+     "chars": 4345
+    },
+    {
+     "id": 43,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "CS:4",
+      "CS:6",
+      "CS:1",
+      "PP:4",
+      "BO:1-7",
+      "SKA:1"
+     ],
+     "top_score": 0.3583,
+     "chars": 4920
+    }
+   ]
+  },
+  "hybrid": {
+   "hits": 33,
+   "of": 39,
+   "misses": [
+    1,
+    8,
+    13,
+    17,
+    27,
+    32
+   ],
+   "absent_top_scores": {
+    "40": 0.1929,
+    "41": 0.4333,
+    "42": 0.2087
+   },
+   "answerable_top_score_min": 0.2578,
+   "per": [
+    {
+     "id": 1,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PB:13",
+      "PB:14",
+      "PB:12",
+      "PB:14",
+      "PP:8",
+      "PP:17"
+     ],
+     "top_score": 0.3988,
+     "chars": 5823
+    },
+    {
+     "id": 2,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:2",
+      "CS:6",
+      "CS:3",
+      "INJ:1",
+      "CS:5",
+      "INJ:2"
+     ],
+     "top_score": 0.4261,
+     "chars": 4576
+    },
+    {
+     "id": 3,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:3",
+      "BO:1-7",
+      "SKA:8",
+      "CS:2",
+      "CS:6",
+      "RM:1"
+     ],
+     "top_score": 0.4572,
+     "chars": 5746
+    },
+    {
+     "id": 4,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:3",
+      "BO:1-7",
+      "CS:6",
+      "AM:1",
+      "PP:1",
+      "PP:9"
+     ],
+     "top_score": 0.2926,
+     "chars": 4823
+    },
+    {
+     "id": 5,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:6",
+      "INJ:2",
+      "SKA:2",
+      "RM:2",
+      "PB:17"
+     ],
+     "top_score": 0.3906,
+     "chars": 4165
+    },
+    {
+     "id": 6,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "PB:6",
+      "PB:6",
+      "LN:1",
+      "PP:15",
+      "SKA:4"
+     ],
+     "top_score": 0.3336,
+     "chars": 6075
+    },
+    {
+     "id": 7,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "CS:2",
+      "CS:5",
+      "RM:2",
+      "INJ:1",
+      "AM:1",
+      "CS:6"
+     ],
+     "top_score": 0.3752,
+     "chars": 4287
+    },
+    {
+     "id": 8,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "CS:3",
+      "SKA:7",
+      "PB:3",
+      "PB:9",
+      "RM:1",
+      "CS:6"
+     ],
+     "top_score": 0.375,
+     "chars": 5886
+    },
+    {
+     "id": 9,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:6",
+      "CS:1",
+      "PB:17",
+      "RM:1",
+      "RM:2",
+      "PP:3"
+     ],
+     "top_score": 0.3332,
+     "chars": 4646
+    },
+    {
+     "id": 10,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:3",
+      "CS:6",
+      "INJ:2",
+      "AK:4",
+      "BO:1-7"
+     ],
+     "top_score": 0.3386,
+     "chars": 5605
+    },
+    {
+     "id": 11,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "CS:4",
+      "CS:2",
+      "CS:3",
+      "PP:16",
+      "PP:5",
+      "CS:6"
+     ],
+     "top_score": 0.3693,
+     "chars": 5522
+    },
+    {
+     "id": 12,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "RM:1",
+      "AK:5",
+      "RM:2",
+      "PB:8",
+      "AK:5",
+      "PP:14"
+     ],
+     "top_score": 0.4392,
+     "chars": 5529
+    },
+    {
+     "id": 13,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:6",
+      "PP:15",
+      "PP:17",
+      "PP:15",
+      "PP:17",
+      "PP:15"
+     ],
+     "top_score": 0.5828,
+     "chars": 5540
+    },
+    {
+     "id": 14,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "RM:2",
+      "RM:1",
+      "PP:7",
+      "PB:3",
+      "PB:8",
+      "PB:1"
+     ],
+     "top_score": 0.3455,
+     "chars": 5412
+    },
+    {
+     "id": 15,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "RM:2",
+      "CS:5",
+      "SKA:5",
+      "AM:1",
+      "INJ:2",
+      "RM:1"
+     ],
+     "top_score": 0.3266,
+     "chars": 4669
+    },
+    {
+     "id": 16,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "BO:8-12",
+      "BO:1-7",
+      "PP:8",
+      "PP:14",
+      "PB:13",
+      "AK:2"
+     ],
+     "top_score": 0.3451,
+     "chars": 5609
+    },
+    {
+     "id": 17,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "INJ:2",
+      "CS:5",
+      "RM:2",
+      "CS:4",
+      "PP:5",
+      "PP:15"
+     ],
+     "top_score": 0.2578,
+     "chars": 4917
+    },
+    {
+     "id": 18,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "BO:8-12",
+      "PP:8",
+      "PP:18",
+      "PB:12",
+      "PP:7",
+      "PP:17"
+     ],
+     "top_score": 0.3611,
+     "chars": 4502
+    },
+    {
+     "id": 19,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "INJ:1",
+      "CS:2",
+      "INJ:2",
+      "CS:5",
+      "CS:6",
+      "CS:4"
+     ],
+     "top_score": 0.4862,
+     "chars": 4609
+    },
+    {
+     "id": 20,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "INJ:2",
+      "INJ:1",
+      "PP:4",
+      "CS:2",
+      "CS:4",
+      "PP:15"
+     ],
+     "top_score": 0.4793,
+     "chars": 4500
+    },
+    {
+     "id": 21,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:7",
+      "AK:1",
+      "AK:6",
+      "SKA:5",
+      "SKA:2",
+      "SKA:2"
+     ],
+     "top_score": 0.5749,
+     "chars": 5362
+    },
+    {
+     "id": 22,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:7",
+      "AK:1",
+      "SKA:2",
+      "SKA:5",
+      "AK:6",
+      "AK:2"
+     ],
+     "top_score": 0.5797,
+     "chars": 5683
+    },
+    {
+     "id": 23,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:2",
+      "AK:1",
+      "AK:7",
+      "LN:2",
+      "PB:1",
+      "PB:6"
+     ],
+     "top_score": 0.4803,
+     "chars": 5014
+    },
+    {
+     "id": 24,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AK:6",
+      "AK:5",
+      "AK:5",
+      "SKA:5",
+      "SKA:9",
+      "SKA:4"
+     ],
+     "top_score": 0.4776,
+     "chars": 5206
+    },
+    {
+     "id": 25,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "PP:8",
+      "PP:9",
+      "PB:14",
+      "PB:14",
+      "PB:12",
+      "PP:11"
+     ],
+     "top_score": 0.6286,
+     "chars": 6102
+    },
+    {
+     "id": 26,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PB:15",
+      "PP:9",
+      "PB:14",
+      "PB:13",
+      "PP:8",
+      "PP:16"
+     ],
+     "top_score": 0.565,
+     "chars": 5662
+    },
+    {
+     "id": 27,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "PP:3",
+      "PP:7",
+      "PB:1",
+      "PP:17",
+      "PP:5",
+      "PP:4"
+     ],
+     "top_score": 0.5635,
+     "chars": 4761
+    },
+    {
+     "id": 28,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PB:3",
+      "PB:1",
+      "PB:2",
+      "PB:4",
+      "PB:5",
+      "PP:18"
+     ],
+     "top_score": 0.582,
+     "chars": 4856
+    },
+    {
+     "id": 29,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "PP:18",
+      "PP:2",
+      "PP:3",
+      "PP:15",
+      "PP:7",
+      "PP:1"
+     ],
+     "top_score": 0.5599,
+     "chars": 1446
+    },
+    {
+     "id": 30,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PP:17",
+      "PP:6",
+      "PB:6",
+      "PB:1",
+      "PB:5",
+      "PP:5"
+     ],
+     "top_score": 0.5673,
+     "chars": 4597
+    },
+    {
+     "id": 31,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "PP:4",
+      "PP:6",
+      "PP:5",
+      "PP:14",
+      "PP:15",
+      "PP:2"
+     ],
+     "top_score": 0.5481,
+     "chars": 5507
+    },
+    {
+     "id": 32,
+     "hit": false,
+     "rank": null,
+     "handed": [
+      "SKA:11",
+      "SKA:3",
+      "SKA:11",
+      "SKA:12",
+      "SKA:11",
+      "SKA:10"
+     ],
+     "top_score": 0.5599,
+     "chars": 5882
+    },
+    {
+     "id": 33,
+     "hit": true,
+     "rank": 2,
+     "handed": [
+      "AK:3",
+      "SKA:10",
+      "SKA:5",
+      "SKA:8",
+      "SKA:10",
+      "SKA:8"
+     ],
+     "top_score": 0.5033,
+     "chars": 5565
+    },
+    {
+     "id": 34,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AM:1",
+      "PP:15",
+      "RM:1",
+      "BO:1-7",
+      "CS:1",
+      "PP:15"
+     ],
+     "top_score": 0.5906,
+     "chars": 5815
+    },
+    {
+     "id": 35,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "AM:1",
+      "RM:1",
+      "BO:1-7",
+      "PP:15",
+      "CS:1",
+      "PP:17"
+     ],
+     "top_score": 0.6564,
+     "chars": 6104
+    },
+    {
+     "id": 36,
+     "hit": true,
+     "rank": 3,
+     "handed": [
+      "LN:2",
+      "LN:2",
+      "LN:1",
+      "LN:1",
+      "LN:2",
+      "LN:1"
+     ],
+     "top_score": 0.4797,
+     "chars": 4584
+    },
+    {
+     "id": 37,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:2",
+      "LN:2",
+      "SKA:11",
+      "SKA:9",
+      "AK:5",
+      "SKA:4"
+     ],
+     "top_score": 0.3213,
+     "chars": 5763
+    },
+    {
+     "id": 38,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:2",
+      "SKA:9",
+      "SKA:4",
+      "SKA:5",
+      "AK:5",
+      "SKA:3"
+     ],
+     "top_score": 0.3687,
+     "chars": 6044
+    },
+    {
+     "id": 39,
+     "hit": true,
+     "rank": 1,
+     "handed": [
+      "LN:1",
+      "LN:2",
+      "LN:2",
+      "LN:1",
+      "LN:1",
+      "AM:1"
+     ],
+     "top_score": 0.4909,
+     "chars": 5024
+    },
+    {
+     "id": 40,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "LN:2",
+      "RM:2",
+      "CS:6",
+      "INJ:2",
+      "SKA:2",
+      "CS:4"
+     ],
+     "top_score": 0.1929,
+     "chars": 4108
+    },
+    {
+     "id": 41,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "AK:6",
+      "SKA:5",
+      "AK:2",
+      "PB:3",
+      "PB:11",
+      "PP:15"
+     ],
+     "top_score": 0.4333,
+     "chars": 5628
+    },
+    {
+     "id": 42,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "INJ:1",
+      "CS:2",
+      "CS:3",
+      "AK:2",
+      "AK:3",
+      "AK:3"
+     ],
+     "top_score": 0.2087,
+     "chars": 5241
+    },
+    {
+     "id": 43,
+     "hit": null,
+     "rank": null,
+     "handed": [
+      "CS:4",
+      "CS:6",
+      "BO:1-7",
+      "PB:6",
+      "PB:6",
+      "INJ:1"
+     ],
+     "top_score": 0.3583,
+     "chars": 5338
+    }
+   ]
+  }
+ },
+ "M2_handover": {
+  "k": 6,
+  "max_chars": 7000,
+  "passage_chars": 1100,
+  "voyage": true,
+  "rows_in_matter_A": 217
+ },
+ "M5": {
+  "q43_handed": [
+   "CS:4",
+   "CS:6",
+   "BO:1",
+   "PB:6",
+   "PB:6",
+   "INJ:1"
+  ],
+  "matter_B_in_result": false,
+  "matter_B_would_rank_first_if_mixed": true
+ },
+ "M4": {
+  "planted_text_only_on_fenced_lines": true,
+  "planted_text_present_fenced": true,
+  "fake_citation_neutralised": true,
+  "block_ends_once": true,
+  "end_marker_inside_documents_neutralised": true,
+  "unread_page_listed": true,
+  "model_behaviour": "NOT TESTED (no Anthropic key in the sandbox)"
+ }
+}
