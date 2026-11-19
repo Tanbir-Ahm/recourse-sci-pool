@@ -15,6 +15,8 @@
   RD_TRUST_PROXY      1 when a reverse proxy in front of the server sets X-Forwarded-Host and X-Forwarded-Proto
   RD_ALLOWED_ORIGINS  extra "host:port" values accepted in the Origin header of a write request (comma separated); "*" skips that comparison (every write still needs the site's own header)
   RD_ALLOW_FRAMING    1 lets another site show this one in a frame (off by default)
+  RD_SITE_NAME        the name shown on the site (default Reading Desk)    RD_CONTACT  who a person writes to about their papers (shown on the "How your papers are handled" page)
+  PORT                the port to listen on when --port is not given (the name hosting services use)
 """
 import os, re, sys
 
@@ -93,3 +95,5 @@ class Config:
         self.allowed_origins = {x.strip().lower() for x in os.environ.get("RD_ALLOWED_ORIGINS", "").split(",") if x.strip()}
         self.allow_framing = os.environ.get("RD_ALLOW_FRAMING") == "1"
         self.session_ttl = 12 * 3600
+        self.site_name = (os.environ.get("RD_SITE_NAME") or "Reading Desk").strip()[:40] or "Reading Desk"
+        self.contact = (os.environ.get("RD_CONTACT") or "").strip()[:200]

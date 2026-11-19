@@ -1,0 +1,8 @@
+# HTTPS for the domain in RD_DOMAIN. Caddy sends plain-HTTP visitors to HTTPS, limits an upload to 30 MB (the site's own limit is 25 MB a file) and passes the visitor's address on.
+{$RD_DOMAIN} {
+	encode zstd gzip
+	request_body {
+		max_size 30MB
+	}
+	reverse_proxy app:8080
+}

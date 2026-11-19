@@ -1,0 +1,4 @@
+# Docker builds of the Reading Desk (ocr_tests/web/deploy) need only ocr_tests/. Everything else in this repository stays out of the image.
+*
+!ocr_tests
+**/__pycache__

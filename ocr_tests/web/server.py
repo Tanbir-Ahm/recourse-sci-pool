@@ -54,7 +54,8 @@ class App:
         self.store = storemod.Store(cfg.data_dir)
         self.secret = auth.load_secret(cfg.data_dir)
         self.runner = Runner(cfg, self.store, start_workers)
-        self.limiter = auth.LoginLimiter()
+        self.limiter = auth.LoginLimiter()                               # per address: 8 wrong codes in 10 minutes
+        self.name_limiter = auth.LoginLimiter(limit=30)                  # per name: looser, so a stranger cannot lock a real user out by guessing at the name
         self.revoked = {}                                                # signed-out cookies that would otherwise stay valid until they expire: token -> time to forget it
         self.pdf_tools = all(shutil.which(t) for t in ("pdfinfo", "pdftotext", "pdffonts", "pdfimages", "pdftoppm"))
         self.glossary = None
@@ -272,6 +273,9 @@ class Handler(BaseHTTPRequestHandler):
                "doc": "sandbox; default-src 'none'; img-src data:; style-src 'unsafe-inline'",
                "sheet": "sandbox allow-scripts allow-downloads; default-src 'none'; img-src data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'"}
         h.append(("Content-Security-Policy", csp["app" if kind == "static" else kind]))
+        h.append(("X-Robots-Tag", "noindex, nofollow"))
+        if c.cookie_secure:                                              # served over HTTPS: the browser must not go back to plain HTTP
+            h.append(("Strict-Transport-Security", "max-age=31536000"))
         if not c.allow_framing:
             h.append(("X-Frame-Options", "DENY"))
         return h
@@ -330,15 +334,25 @@ def api_login(h, user, m, q):
     app, cfg = h.app, h.app.cfg
     d = h.read_json()
     name, code = str(d.get("name", "")).strip().lower(), str(d.get("code", ""))
-    keys = ("ip:" + h.client_ip(), "name:" + name)
-    if not app.limiter.allowed(*keys):
+    ip = h.client_ip()
+    if not app.limiter.allowed("ip:" + ip) or not app.name_limiter.allowed("name:" + name):
+        sys.stderr.write("login refused (too many wrong codes) from %s\n" % ip)
         raise ApiError(429, "Too many wrong tries. Wait ten minutes.")
     if not auth.check_code(cfg.users, name, code):
-        app.limiter.fail(*keys)
+        app.limiter.fail("ip:" + ip); app.name_limiter.fail("name:" + name)
+        sys.stderr.write("login failed from %s\n" % ip)
         time.sleep(0.4)
         raise ApiError(401, "The name or the access code is not right.")
-    app.limiter.ok(*keys)
+    app.limiter.ok("ip:" + ip); app.name_limiter.ok("name:" + name)
     h.send_json({"user": name}, headers=h.set_cookie(auth.make_session(app.secret, name, cfg.session_ttl), cfg.session_ttl))
+
+
+@route("GET", r"/api/public", auth_required=False)
+def api_public(h, user, m, q):
+    """What anyone may know before signing in: the site's name and how long papers are kept (for the 'How your papers are handled' page)."""
+    c = h.app.cfg
+    h.send_json({"site_name": c.site_name, "retention_hours": c.retention_hours, "contact": c.contact, "gate_text": GATE_TEXT,
+                 "reading": "the model service named on the upload screen" if c.pipeline == "real" else "invented text (test mode)"})
 
 
 @route("POST", r"/api/logout", auth_required=False)
@@ -356,7 +370,7 @@ def api_me(h, user, m, q):
     if not user:
         raise ApiError(401, "Sign in first.")
     room = app.room(user)
-    h.send_json({"user": user, "dev": cfg.dev,
+    h.send_json({"user": user, "dev": cfg.dev, "site_name": cfg.site_name,
                  "caps": {"pdf": app.pdf_tools, "word": docx_out.available(), "pdf_reports": bool(app.runner.pdf_reports), "real": app.key_ready(), "stub": cfg.pipeline == "stub", "languages": list(config.LANGUAGES)},
                  "limits": {"max_pages": cfg.max_pages, "max_file_mb": cfg.max_file // (1024 * 1024), "retention_hours": cfg.retention_hours, "job_budget_inr": cfg.job_budget, "per_page_low_inr": PER_PAGE_LOW_INR, "per_page_high_inr": PER_PAGE_HIGH_INR},
                  "room": room, "gate_text": GATE_TEXT, "cost_note": COST_NOTE})
@@ -678,10 +692,14 @@ def make_server(cfg, start_workers=True):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="The Reading Desk site (see the top of this file).")
-    ap.add_argument("--host", default="127.0.0.1"); ap.add_argument("--port", type=int, default=8080)
+    ap.add_argument("--host", default="127.0.0.1"); ap.add_argument("--port", type=int, default=int(os.environ.get("PORT") or 8080))
+    ap.add_argument("--new-code", action="store_true", help="print a random access code and exit (put it in RD_USERS as name:code)")
     ap.add_argument("--data", help="where jobs are kept (default ~/.reading_desk)")
     ap.add_argument("--dev", action="store_true", help="this computer only: no sign-in")
     a = ap.parse_args(argv)
+    if a.new_code:
+        print(secrets.token_urlsafe(15))
+        return
     cfg = config.Config(dev=a.dev, data_dir=a.data, host=a.host, port=a.port)
     srv, app = make_server(cfg)
     app.runner.recover()

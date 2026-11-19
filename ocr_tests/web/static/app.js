@@ -4,7 +4,7 @@
   'use strict';
   var app = document.getElementById('app');
   var STAMP = 'Machine draft. Not a certified translation.';
-  var S = { me: null, timer: null, glossary: null, files: [], form: { label: '', language: 'Assamese', page_type: 'handwritten', grouped: true, known: '', gate: false } };
+  var S = { pub: { site_name: 'Reading Desk', retention_hours: 72, contact: '' }, me: null, timer: null, glossary: null, files: [], form: { label: '', language: 'Assamese', page_type: 'handwritten', grouped: true, known: '', gate: false } };
 
   /* ---------- helpers ---------- */
   function h(tag, attrs) {
@@ -120,13 +120,15 @@
   function route() { var p = (location.hash || '#/new').replace(/^#\/?/, '').split('/'); return { name: p[0] || 'new', id: p[1], target: p[2] }; }
   function render() {
     stopTimer();
+    if (route().name === 'handling') { document.title = 'How your papers are handled'; return put(app, h('div', { class: 'login wide' }, handlingView())); }
+    document.title = S.pub.site_name;
     if (!S.me) return put(app, loginView());
     var r = route(), view = h('div', { class: 'wrap', id: 'view' });
     function nav(name, label) { return h('a', { href: '#/' + name, 'aria-current': (r.name === name || (name === 'history' && r.name === 'job')) ? 'page' : null }, label); }
     put(app, h('div', { class: 'shell' },
-      h('aside', { class: 'rail' }, h('div', { class: 'brand' }, 'Reading Desk', h('small', null, 'a reading aid for court papers')),
+      h('aside', { class: 'rail' }, h('div', { class: 'brand' }, S.pub.site_name, h('small', null, 'a reading aid for court papers')),
         h('nav', { class: 'nav', 'aria-label': 'Main' }, h('h4', null, 'Read'), nav('new', 'New document'), h('h4', null, 'Reference'), nav('glossary', 'Term glossary'), h('h4', null, 'Manage'), nav('history', 'History'), nav('usage', 'Usage')),
-        h('div', { class: 'foot' }, h('span', null, STAMP, ' A person reads every page.'), h('span', null, S.me.user, ' · ', h('a', { href: '#/new', onclick: signOut }, 'Sign out')))),
+        h('div', { class: 'foot' }, h('span', null, STAMP, ' A person reads every page.'), h('a', { href: '#/handling' }, 'How your papers are handled'), h('span', null, S.me.user, ' · ', h('a', { href: '#/new', onclick: signOut }, 'Sign out')))),
       h('main', null, view)));
     var v = { new: newView, history: historyView, glossary: glossaryView, usage: usageView, job: function () { return jobView(r.id, r.target); } }[r.name] || newView;
     put(view, v());
@@ -135,6 +137,7 @@
   window.addEventListener('hashchange', function () { if (S.me) render(); });
 
   function boot() {
+    api('GET', '/public').then(function (d) { S.pub = d; }).catch(function () {});
     return api('GET', '/me').then(function (d) { S.me = d; render(); }).catch(function () { S.me = null; render(); });
   }
 
@@ -143,13 +146,26 @@
     var name = h('input', { type: 'text', id: 'ln', autocomplete: 'username', autocapitalize: 'none', spellcheck: 'false' });
     var code = h('input', { type: 'password', id: 'lc', autocomplete: 'current-password' });
     var err = h('p', { class: 'small', role: 'alert' });
-    return h('div', { class: 'login' }, h('div', { class: 'card' }, h('h1', null, 'Reading Desk'),
+    return h('div', { class: 'login' }, h('div', { class: 'card' }, h('h1', null, S.pub.site_name),
       h('p', { class: 'sub' }, 'Sign in with the name and access code you were given.'),
       h('form', { onsubmit: function (e) {
         e.preventDefault(); err.textContent = '';
         api('POST', '/login', { name: name.value, code: code.value }).then(boot).catch(function (x) { err.textContent = x.message; });
       } }, field('Name', 'ln', name), field('Access code', 'lc', code), h('button', { class: 'btn primary', type: 'submit' }, 'Sign in'), err),
-      h('p', { class: 'small' }, STAMP)));
+      h('p', { class: 'small' }, STAMP), h('p', { class: 'small' }, h('a', { href: '#/handling' }, 'How your papers are handled'))));
+  }
+  function handlingView() {
+    var p = S.pub, li = function (t) { return h('li', null, t); };
+    return h('div', { class: 'card' }, h('h1', null, 'How your papers are handled'), h('p', { class: 'sub' }, 'A plain statement of what this site does with what you upload. It is not a legal agreement.'),
+      h('ul', { class: 'reasons' },
+        li('You upload page photos or a PDF. They are kept on this site\'s server under a random job number, and only the person who uploaded them can open them through the site.'),
+        li('To read them, each page picture, and later the text read from it, is sent to Google\'s Gemini service (' + p.reading + '). Google handles it under the terms of the account this site uses.'),
+        li('Before you upload you confirm that nothing in the pages identifies a minor or the victim of a sexual offence. Do not upload such pages.'),
+        li('A job and all its files are deleted automatically ' + Math.round(p.retention_hours) + ' hours after the reading ends, or at once when you delete the job. An upload you never start is deleted after 6 hours.'),
+        li('There is no backup of your papers. A small usage record (who, when, how many pages, an estimated cost) is kept; it holds no text and no file names.'),
+        li('The person who runs this server can read files on it while they exist.'),
+        li('What comes back is a machine draft. It is not a certified translation, and a person who reads the language must check every page against the original.')),
+      p.contact ? h('p', null, 'Questions about your papers: ', p.contact) : null, h('p', null, h('a', { href: '#/new' }, 'Back')));
   }
 
   /* ---------- new document ---------- */

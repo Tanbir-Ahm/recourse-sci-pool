@@ -68,7 +68,7 @@ A first version of this page said "about Rs 3 a page" with a ceiling of Rs 8 a p
 
 ## What protects the papers, and what does not
 
-Done and tested (`tests/test_web.py`, 35 tests):
+Done and tested (`tests/test_web.py`, 37 tests):
 
 - nothing but the page itself is served without signing in; a wrong code is limited to 8 tries in 10 minutes per address and per name; the code is compared in constant time;
 - the cookie is signed, expires, is `HttpOnly` and `SameSite=Strict` (and `Secure` with `RD_COOKIE_SECURE=1`); signing out ends that cookie on the server too;
@@ -88,6 +88,10 @@ Done and tested (`tests/test_web.py`, 35 tests):
 - Flags are not placed on the page picture: the pipeline works on text, not on coordinates, so there are no pins on the image (the prototype's pins were a drawing).
 - Most testing so far was on Assamese. Kannada and Hindi are offered, but little has been run on them, and the glossary is Assamese only.
 - No text-paste translation, no batch screen, no per-user spend history beyond the Usage page.
+
+## On your own domain
+
+`deploy/` holds a container image, a Compose file with HTTPS through Caddy, a settings template and the steps (`deploy/README.md`). The image was built and tested here (37 tests inside it); the HTTPS and DNS part needs a real domain and a server and was not tried. `python ocr_tests/web/tests/smoke_remote.py https://your.domain NAME CODE` checks a live site.
 
 ## Tests
 

@@ -457,6 +457,32 @@ class Limits(unittest.TestCase):
         finally:
             site.stop()
 
+    def test_the_public_page_the_site_name_and_the_https_header(self):
+        site = Site(RD_COOKIE_SECURE="1", RD_SITE_NAME="Desk X", RD_CONTACT="write to the chambers", RD_RETENTION_HOURS="48")
+        try:
+            c = Client(site.port)
+            s, h, d = c.req("GET", "/api/public")
+            self.assertEqual((s, d["site_name"], d["retention_hours"], d["contact"]), (200, "Desk X", 48.0, "write to the chambers"))
+            self.assertIn("max-age", h["Strict-Transport-Security"]); self.assertIn("noindex", h["X-Robots-Tag"])
+            self.assertIn("Secure", c.login("alpha", CODE_A)[1]["Set-Cookie"])
+        finally:
+            site.stop()
+
+    def test_the_smoke_check_passes_against_a_running_site(self):
+        import subprocess
+        out = subprocess.run([sys.executable, os.path.join(HERE, "smoke_remote.py"), "http://127.0.0.1:%d" % self.site_port(), "alpha", CODE_A, "--local"], capture_output=True, text=True, timeout=240)
+        self.assertEqual(out.returncode, 0, out.stdout + out.stderr); self.assertIn("all checks passed", out.stdout)
+
+    def site_port(self):
+        if not hasattr(Limits, "_smoke"):
+            Limits._smoke = Site()
+            return Limits._smoke.port
+
+    @classmethod
+    def tearDownClass(cls):
+        if hasattr(cls, "_smoke"):
+            cls._smoke.stop()
+
     def test_the_server_refuses_to_start_without_a_user_unless_dev(self):
         with mock.patch.dict(os.environ, {"RD_USERS": ""}):
             with self.assertRaises(SystemExit):

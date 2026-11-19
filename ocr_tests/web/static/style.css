@@ -139,3 +139,5 @@ details>summary{cursor:pointer;font-weight:600;list-style-position:inside}
 }
 .stat{font:600 24px var(--f-head);margin:2px 0}
 .flash{outline:3px solid var(--ink);outline-offset:2px;border-radius:6px}
+.login.wide{max-width:640px}
+.foot a{color:var(--muted)}
