@@ -1,6 +1,6 @@
 # The Reading Desk: a website around the checked-reading pipeline
 
-A small web app (Python standard library only on the server, plain JavaScript in the browser) around `ocr_tests/pipeline.py`. A person signs in, uploads page photos or a PDF,
+A small web app (a Python server that uses only the standard library and Pillow, plain JavaScript in the browser) around `ocr_tests/pipeline.py`. A person signs in, uploads page photos or a PDF,
 says the language and whether the pages are typed or handwritten, confirms that nothing in them identifies a minor or the victim of a sexual offence, sees an estimate, and starts
 the reading. The result screen shows, for each page and for the joined document:
 
@@ -18,13 +18,15 @@ The design (left rail, the amber "Read these first" box, the two-pane page) foll
 ## Run it on your own computer
 
 ```
-pip install pillow python-docx            # python-docx only for the Word file
+pip install -r ocr_tests/web/requirements.txt    # Pillow, and python-docx (only for the Word file); checked in a clean virtual environment
 export GEMINI_API_KEY=...                  # the model key: only in the environment, never in a file, never printed
 export RD_USERS="alice:a-long-access-code" # a code is at least 10 characters; several users: "a:code1,b:code2"
 python ocr_tests/web/server.py --port 8080 # then open http://127.0.0.1:8080
 ```
 
 Windows PowerShell: `$env:GEMINI_API_KEY="..."; $env:RD_USERS="alice:a-long-access-code"; python ocr_tests\web\server.py`.
+
+To show the site inside another page (a preview pane), and only then, add `RD_ALLOW_FRAMING=1 RD_COOKIE_SECURE=1 RD_COOKIE_SAMESITE=None` (the browser must be using HTTPS or localhost) and, behind a proxy that rewrites the host name, `RD_TRUST_PROXY=1 RD_ALLOWED_ORIGINS=*`. These weaken the protection against another site framing it or starting a job from it, so do not use them for real papers on an open address.
 
 `python ocr_tests/web/server.py --dev` signs nobody in and only answers to `127.0.0.1` (use it on your own computer only). `RD_PIPELINE=stub` makes every reading invented text with no model and no cost
 (the **Try the demo** button does this for its three invented pages whatever the setting is).
@@ -55,12 +57,14 @@ browser ──► server.py ──► one child process per job: pipeline.py ─
 
 ## Money
 
-Reading costs money on your Google account. The pipeline's own estimate is about Rs 2 to 4 a page; **the real bill has run 1.5 to 2 times the estimate** (plan section 10k). The site therefore:
+Reading costs money on your Google account, and **a page costs more the more is written on it**. By the pipeline's own estimate a short handwritten page is about Rs 2 (Rs 0.7 a reading; plan 10ao) and a full printed page of small type is about Rs 11 to 12 (Rs 3.75 a reading, three readings and a check; plan 10i and the first run through this site). **The real bill has run 1.5 to 2 times the estimate** (plan section 10k). The site therefore:
 
-- shows an estimate before anything is read (a job stays a draft until someone presses **Start reading**);
-- gives the pipeline a budget ceiling per job (`--budget-inr`, about 2.5 times the typical figure, never above `RD_JOB_BUDGET_INR`), and refuses a job that would pass `RD_JOB_BUDGET_INR`, the user's `RD_DAILY_BUDGET_INR` or the site's `RD_MONTHLY_BUDGET_INR` (defaults Rs 40, 150 and 600);
+- shows a range, "Rs 2 to 12 a page", before anything is read, and keeps a job a draft until someone presses **Start reading**;
+- gives the pipeline a budget ceiling per job (`--budget-inr`: Rs 14 a page plus 4, so that a dense page can finish, and never above what `RD_JOB_BUDGET_INR`, the user's `RD_DAILY_BUDGET_INR` and the site's `RD_MONTHLY_BUDGET_INR` still allow; defaults Rs 40, 150 and 600). It refuses a job whose lowest estimate would pass a limit;
 - counts what running jobs hold back, so two jobs started together cannot pass a cap;
 - stops a job that reads past its budget and says so; **Continue** resumes it, and readings that finished are not paid for twice.
+
+A first version of this page said "about Rs 3 a page" with a ceiling of Rs 8 a page. The first real reading through the site (a dense printed page) showed both were wrong; they were replaced before anything was committed.
 
 ## What protects the papers, and what does not
 

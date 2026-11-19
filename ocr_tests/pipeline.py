@@ -340,7 +340,9 @@ def orient_pages(args, out, work, ledger_path, models, fx, caller, osd_fn=None):
 def run_pipeline(args, caller=None, text_caller=None):
     real = caller is None
     caller = caller or harness.call_gemini
-    text_caller = text_caller or (lambda model, key, system, text: harness.call_gemini(model, key, system, None, None, text=text, tries=2 if system.startswith("You check an English text") else 3))
+    # the optional sense check answers in seconds when it answers (7 s on a full page) and when it does not, the connection hangs for minutes and is then closed (4 attempts of 5 on one full
+    # page, 2026-11-19): give each attempt 75 s instead of 300, so a hung attempt is retried at once
+    text_caller = text_caller or (lambda model, key, system, text: harness.call_gemini(model, key, system, None, None, text=text, **({"timeout": 75} if system.startswith("You check an English text") else {})))
     out = os.path.abspath(args.out); os.makedirs(out, exist_ok=True)
     if getattr(args, "designations", None):
         import redundancy
