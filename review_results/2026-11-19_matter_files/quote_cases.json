@@ -1,0 +1,31 @@
+{
+  "_note": "FROZEN 2026-11-19, written BEFORE the quote-on-page check existed. Each case is a piece of an answer and the verdicts the check must give, one per quotation it checks, in order. A quotation is checked only when the same sentence carries a document citation of the form [Doc N, p. M] / [Doc N, pp. M-K] / [Doc N, page M] / [Doc N, para M]. Verdicts: ok (on the cited page or paragraph), other_page (in the same document, elsewhere: found_on given), other_doc (only in another document), not_in_file (nowhere in the documents given), unknown_doc (the answer cites a document number that was not given), skipped_short (under five words). The check proves WHERE words are, never that the answer's use of them is right (case 17). Written by Claude.",
+  "docs": {"1": "CS", "2": "RM", "3": "BO", "4": "INJ", "5": "LN"},
+  "cases": [
+    {"id": 1, "text": "The chargesheet records that \"The complainant correctly identified Accused No. 1 as the pillion rider who snatched the chain\" [Doc 1, p. 3].", "expect": [["ok"]]},
+    {"id": 2, "text": "The chargesheet records that \"The complainant correctly identified Accused No. 1 as the pillion rider who snatched the chain\" [Doc 1, p. 2].", "expect": [["other_page", 3]]},
+    {"id": 3, "text": "The magistrate wrote that \"police custody is granted for 3 days only\" [Doc 2, p. 1].", "expect": [["not_in_file"]]},
+    {"id": 4, "text": "The chargesheet says \"The FSL report has been received and is filed\" [Doc 1, p. 4].", "expect": [["not_in_file"]]},
+    {"id": 5, "text": "He was sent to jail: \"The accused is remanded to judicial custody for 14 days\" [Doc 9, p. 2].", "expect": [["unknown_doc"]]},
+    {"id": 6, "text": "The arrest is recorded: \"Arrested on 15-03-2026 at 06:45 hours from his residence\" [Doc 1, p. 1].", "expect": [["ok"]]},
+    {"id": 7, "text": "The judge held: \"I do not find it a fit case for bail at this stage\" [Doc 3, para 10].", "expect": [["ok"]]},
+    {"id": 8, "text": "The judge held: \"I do not find it a fit case for bail at this stage\" [Doc 3, para 9].", "expect": [["other_page", 10]]},
+    {"id": 9, "text": "The petition was \"rejected\" [Doc 3, para 10].", "expect": [["skipped_short"]]},
+    {"id": 10, "text": "The Supreme Court said officers \"shall be liable for departmental action\" for non-compliance.", "expect": []},
+    {"id": 11, "text": "The police state: “The red motorcycle bearing registration number AS-01-BX-4421 was seized on 17-03-2026” [Doc 1, p. 3].", "expect": [["ok"]]},
+    {"id": 12, "text": "As the second order shows [Doc 2, p. 2], \"The accused is remanded to judicial custody for 14 days, till 01-04-2026.\"", "expect": [["ok"]]},
+    {"id": 13, "text": "The shopkeeper saw \"two young men speed away\" but says \"He could not see their faces\" [Doc 1, p. 4].", "expect": [["ok"], ["ok"]]},
+    {"id": 14, "text": "The report \"is submitted on 10-06-2026\" says the officer [Doc 1, p. 9].", "expect": [["other_page", 6]]},
+    {"id": 15, "text": "Payment is demanded \"within 15 (fifteen) days from the date of receipt of this notice\" [Doc 5, p. 2].", "expect": [["ok"]]},
+    {"id": 16, "text": "The cheque was \"for an amount of Rs. 4,57,000/-\" [Doc 5, p. 1].", "expect": [["not_in_file"]]},
+    {"id": 17, "text": "The letter says \"the accused is guilty and must be convicted\" [Doc 4, p. 2].", "expect": [["ok"]]},
+    {"id": 18, "text": "The slip shows \"diary entry number GD 88 of 2026\" [Doc 4, p. 3].", "expect": [["not_in_file"]]},
+    {"id": 19, "text": "The garage owner said the accused \"left the motorcycle with him on the night of 14-03-2026\" [Doc 1, pp. 3-4].", "expect": [["ok"]]},
+    {"id": 20, "text": "The injuries were \"on the right elbow, both simple in nature\" [Doc 1, page 5].", "expect": [["ok"]]},
+    {"id": 21, "text": "The bail court thought the co-accused might be helped to evade arrest [Doc 3, para 8].", "expect": []},
+    {"id": 22, "text": "The court noted that \"The co-accused Bikash Saikia ... is yet to be arrested\" [Doc 3, para 8].", "expect": [["ok"]]},
+    {"id": 23, "text": "The court noted that \"The co-accused Bikash Saikia ... has been arrested\" [Doc 3, para 8].", "expect": [["not_in_file"]]},
+    {"id": 24, "text": "The police say \"the gold chain was recovered from a steel trunk kept under the bed\" [Doc 1, p. 3].", "expect": [["ok"]]},
+    {"id": 25, "text": "The chargesheet says \"police custody is granted for 2 days only\" [Doc 1, p. 1].", "expect": [["other_doc", "2", 1]]}
+  ]
+}
