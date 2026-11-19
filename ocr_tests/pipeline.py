@@ -157,6 +157,22 @@ def page_english(rd):
     return report.english(t or "")
 
 
+SENSE_UNRUN = ("the sense check did not run or gave no usable answer (the model service did not answer, or the budget was reached): nothing has looked for sentences that do not "
+               "make sense, so read the English with extra care")
+
+
+def note_sense_unrun(args, chk, english):
+    """A sense check that was asked for and gave nothing back must not look like a check that found nothing (it failed once on a full newspaper page: the connection was closed after
+    about two minutes, three times). The page or document goes amber with the reason; a green page cannot stay green, because it was not checked the way a green page is."""
+    if getattr(args, "sense", "auto") == "off" or not english or not english.strip():
+        return chk
+    chk["reasons_amber"].append(SENSE_UNRUN)
+    if chk.get("light") == "green":
+        chk["light"] = "amber"
+        chk["person_task"] = "Look at every flagged item and line against the page image, then tick the must-check list (%d item(s))." % len(chk.get("must_check", []))
+    return chk
+
+
 def document_mode(args, pages, types):
     """'text' (the joined original-script text translated twice, text only) or 'english' (the per-page English joined). --stitch auto: a document with a handwritten page
     uses 'english', because a text-only translation cannot see the image and made one sentence nonsense on a real affidavit (10ak); a typed document uses 'text'."""
@@ -242,6 +258,8 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
             sn = sense_check(args, out, ledger_path, models, fx, text_caller, name + "_full__sense", e1t)
             if sn is not None:
                 checker.apply_sense(chk, *sn)
+            else:
+                note_sense_unrun(args, chk, e1t)
             d = os.path.join(out, "document")
             shown = mark_document(chk, e1t, page_items)
             for suffix, body in (("_source.txt", text), ("_translation_1.txt", shown), ("_translation_1_raw.txt", e1t), ("_translation_2.txt", e2t)):
@@ -268,6 +286,8 @@ def stitch_documents(args, out, readings, ledger_path, models, fx, text_caller, 
         sn = sense_check(args, out, ledger_path, models, fx, text_caller, name + "_full__sense", report.english(e1 or ""))
         if sn is not None:
             checker.apply_sense(chk, *sn)
+        else:
+            note_sense_unrun(args, chk, report.english(e1 or ""))
         d = os.path.join(out, "document")
         raw1 = report.english(e1 or "") or (e1 or "")
         shown = mark_document(chk, raw1, page_items)
@@ -320,7 +340,7 @@ def orient_pages(args, out, work, ledger_path, models, fx, caller, osd_fn=None):
 def run_pipeline(args, caller=None, text_caller=None):
     real = caller is None
     caller = caller or harness.call_gemini
-    text_caller = text_caller or (lambda model, key, system, text: harness.call_gemini(model, key, system, None, None, text=text))
+    text_caller = text_caller or (lambda model, key, system, text: harness.call_gemini(model, key, system, None, None, text=text, tries=2 if system.startswith("You check an English text") else 3))
     out = os.path.abspath(args.out); os.makedirs(out, exist_ok=True)
     if getattr(args, "designations", None):
         import redundancy
@@ -388,6 +408,8 @@ def run_pipeline(args, caller=None, text_caller=None):
             sn = sense_check(args, out, ledger_path, models, fx, text_caller, pid + "__sense", page_english(readings[pid]))
             if sn is not None:
                 checker.apply_sense(results[pid], *sn)
+            else:
+                note_sense_unrun(args, results[pid], page_english(readings[pid]))
     for pid in sorted(results):                                # the English to read shows both values wherever the readings of the page disagree (a page of a joined document: below)
         if pid in in_doc or "text" in readings[pid]:
             continue
@@ -579,6 +601,22 @@ def selftest():
         assert hw["sense_calls"] == 0 and "sense_flags" not in json.load(open(os.path.join(td, "run_hw3", "document", "hw_check.json"))), "--sense off makes no call and adds no finding"
         assert any(r["page"] == "pg1__sense" for r in harness.read_ledger(os.path.join(out, "ledger.jsonl"))) and "sense_flags" in json.load(open(os.path.join(out, "checks", "pg1.json"))), "a single page is sense-checked on its own"
         assert json.load(open(os.path.join(td, "run_hw2", "document", "hw_check.json")))["page_disagreements"], "page disagreements are carried in this mode too"
+        # a sense check that was asked for and failed is reported, never mistaken for a check that found nothing
+        def down(text_fn):
+            def f(model, key, system, text):
+                if system.startswith("You check an English text"):
+                    return {"ok": False, "attempts": 2, "error": "RemoteDisconnected: Remote end closed connection without response"}
+                return text_fn(model, key, system, text)
+            return f
+        run_pipeline(argparse.Namespace(**{**vars(ah), "out": os.path.join(td, "run_hw4")}), fake_hw, down(fake_hw_text))
+        d4 = json.load(open(os.path.join(td, "run_hw4", "document", "hw_check.json")))
+        assert any(r.startswith("the sense check did not run") for r in d4["reasons_amber"]) and "sense_flags" not in d4, d4["reasons_amber"]
+        assert "the sense check did not run" in open(os.path.join(td, "run_hw4", "document", "hw_document.html")).read()
+        run_pipeline(argparse.Namespace(**{**vars(args), "out": os.path.join(td, "run5"), "stitch": "off", "third_view": "off"}), fake, down(fake_text))
+        c5 = json.load(open(os.path.join(td, "run5", "checks", "zz_nodate.json")))
+        assert c5["light"] == "amber" and any(r.startswith("the sense check did not run") for r in c5["reasons_amber"]), "a page that was green cannot stay green when its sense check failed"
+        run_pipeline(argparse.Namespace(**{**vars(args), "out": os.path.join(td, "run6"), "stitch": "off", "third_view": "off", "sense": "off"}), fake, down(fake_text))
+        assert json.load(open(os.path.join(td, "run6", "checks", "zz_nodate.json")))["light"] == "green", "--sense off is a choice, not a failure: nothing is added"
     finally:
         pdf_triage.tesseract_read = real
     print("selftest OK (fake callers; no network, no cost)")

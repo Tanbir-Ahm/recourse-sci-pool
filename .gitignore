@@ -6,3 +6,9 @@ corpus.sqlite*
 .env
 IK_STOP
 goodlaw/data/*.lock
+
+# Reading Desk site: its data folder is outside the repository on purpose; these only guard against one made inside it
+ocr_tests/web/data/
+ocr_tests/web/.reading_desk/
+ocr_tests/web/secret.key
+ocr_tests/web/demo_assets/
