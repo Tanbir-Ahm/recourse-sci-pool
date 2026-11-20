@@ -12,7 +12,7 @@ It folds in R2 to R5 of `MATTER_ROUTING_PLAN.md` and P2 to P4 of `MATTER_FILES_P
 5. **What it would have cost.** The explain turn becomes about Rs 0.5 to 1.1 [Likely: arithmetic from a measured Rs 0.88 file answer, not a measurement of this design], about twenty times less, with the sections shown word for word.
 6. **The strategic piece.** "Section cards": the common sections compiled once, shared by every user, checked by code and read by a lawyer once. After that, explaining a section is a lookup. This is the one thing a general assistant cannot match.
 7. **The uncomfortable parts** (section 9): "legal path when unsure" was my build of your instruction and it is the wrong default once a cheaper safe path exists; the library has **no IPC or CrPC text**, so any matter under the old codes has no law on hand; and the section cards would quote BNS/BNSS text whose known losses are not yet repaired.
-8. **Order.** W1 (law on hand and the explain turn) fixes your turn; W2 (sizes) fixes the cost; W3 to W6 are the Projects feel; W7 (IPC/CrPC) and W8 (a lawyer reads 20 answers) decide whether it is ready to charge for. Each step needs your go and ends in your staging test.
+8. **Order.** W1 (law on hand and the explain turn) fixes your turn: the right sections, a short answer, about Rs 1; W2 (sizes) gives every other question the right size, because "can he get bail now?" still runs the full note until then; W3 to W6 are the Projects feel; W7 (IPC/CrPC) and W8 (a lawyer reads 20 answers) decide whether it is ready to charge for. Each step needs your go and ends in your staging test.
 
 ---
 
@@ -197,7 +197,7 @@ About 190 words, against 5,348.
 | **W7** IPC and CrPC on the shelf | load both from India Code (the certificate expired on 2026-11-02: check first; never disable TLS verification), machine-check as the others | matters under the old codes | medium; needs its own go |
 | **W8** The lawyer test | 20 answers read by a lawyer; then the quota units and the price per size | whether it can be charged for | the owner's |
 
-W1 alone fixes the complaint's first half (the right sections) and the Explain button's cost; W1 + W2 fix the second half (cost and detail).
+W1 fixes this turn and the Explain button: the right sections, a short answer, about Rs 1. It does nothing for a question like "can he get bail now?", which keeps running the full research note until W2 gives it a size.
 
 ## 8. Decisions for the owner (with my recommendation)
 - **D1.** Replace "legal path when unsure" (your instruction of 2026-11-20, built as asked) with **"unsure means Standard, with a visible Go deeper"**. *Recommend yes:* the old rule protected against an answer with no law; Law on hand removes that danger, and the old rule now costs Rs 8 to 22 for every unclear turn.
