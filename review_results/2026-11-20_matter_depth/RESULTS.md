@@ -44,3 +44,6 @@ The real explain prompt for the real synthetic chargesheet is 12,604 characters,
 - The law on hand is **our copy** of BNS and BNSS (checked against India Code on 2026-10-17: 99% identical, with known losses in other sections); the Schedule rows are `machine_extracted` from one source and no person has read them. Matters under the IPC and CrPC have no law on hand (the library has neither): the answer says the text is not on hand.
 - The code checks count words and numbers: they cannot tell that a quotation is used fairly or that an explanation is right. Pins come only from the last answer's list, labelled lines of the documents, or the person's own words.
 - Staging only, like the documents themselves, until the privacy and consent text (gate G1) exists.
+
+## Test totals (2026-11-20, after the last commit)
+Recourse `run_tests.py`: **163 of 163 pass** (the three new files `test_law_on_hand.py`, `test_matter_depth.py`, `test_api_matter_depth.py` included; the routing, documents and answer-view tests that touch the changed code pass unchanged except the Explain button's words, updated on purpose). `recourse-web`: `tsc` clean, **148 unit tests pass**, **83 browser tests pass, 4 skipped** (the whole suite, desktop and phone, axe included). The browser tests run the real law on hand (the library's own text) with a stub for the model's words.
