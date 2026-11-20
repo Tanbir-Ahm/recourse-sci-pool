@@ -1,0 +1,847 @@
+{
+ "_note": "FROZEN 2026-11-20 before any router code (owner's go: 'go ahead with auto routing, legal path when unsure'). Written by Claude, not a lawyer. Context: a lawyer's matter holding the synthetic chargesheet, remand orders, bail order and complainant's letter of review_results/2026-11-19_matter_files/docs. Expected route: file (answer lives in the documents), law (the legal path; includes law-only, law-on-facts, chained, draft look-alikes, small talk and anything unsure), draft (a request to draft a document). Half A is for writing the rules; half B is held out and run ONCE after the rules are fixed. Declared metrics: law or draft expected but routed file (must be 0: the dangerous error); file expected but routed law (reported: the money cost); draft expected but not draft, and anything routed draft that was not (a legal question answered with a 'drafting is not available' notice is an error). Do not edit after the first run of half B.",
+ "A": [
+  {
+   "id": "A01",
+   "kind": "lookup",
+   "q": "what are the sections charged here?",
+   "expect": "file"
+  },
+  {
+   "id": "A02",
+   "kind": "lookup",
+   "q": "When was the accused arrested?",
+   "expect": "file"
+  },
+  {
+   "id": "A03",
+   "kind": "lookup",
+   "q": "where was the chain recovered from",
+   "expect": "file"
+  },
+  {
+   "id": "A04",
+   "kind": "lookup",
+   "q": "who conducted the TIP?",
+   "expect": "file"
+  },
+  {
+   "id": "A05",
+   "kind": "lookup",
+   "q": "How many days of police custody were granted?",
+   "expect": "file"
+  },
+  {
+   "id": "A06",
+   "kind": "lookup",
+   "q": "What does the remand order say about the medical examination?",
+   "expect": "file"
+  },
+  {
+   "id": "A07",
+   "kind": "lookup",
+   "q": "list all the witnesses in the chargesheet",
+   "expect": "file"
+  },
+  {
+   "id": "A08",
+   "kind": "lookup",
+   "q": "What is the FIR number and police station?",
+   "expect": "file"
+  },
+  {
+   "id": "A09",
+   "kind": "lookup",
+   "q": "When was the chargesheet filed?",
+   "expect": "file"
+  },
+  {
+   "id": "A10",
+   "kind": "lookup",
+   "q": "Who is the investigating officer?",
+   "expect": "file"
+  },
+  {
+   "id": "A11",
+   "kind": "lookup",
+   "q": "what did the bail order say about the co-accused",
+   "expect": "file"
+  },
+  {
+   "id": "A12",
+   "kind": "lookup",
+   "q": "According to Doc 3, why was bail rejected?",
+   "expect": "file"
+  },
+  {
+   "id": "A13",
+   "kind": "lookup",
+   "q": "what's on page 4 of the chargesheet?",
+   "expect": "file"
+  },
+  {
+   "id": "A14",
+   "kind": "lookup",
+   "q": "Has the FSL report come yet?",
+   "expect": "file"
+  },
+  {
+   "id": "A15",
+   "kind": "lookup",
+   "q": "Did the complainant identify the accused?",
+   "expect": "file"
+  },
+  {
+   "id": "A16",
+   "kind": "lookup",
+   "q": "what injuries are recorded in the medical report",
+   "expect": "file"
+  },
+  {
+   "id": "A17",
+   "kind": "lookup_hinglish",
+   "q": "chargesheet mein kaun se sections lage hain?",
+   "expect": "file"
+  },
+  {
+   "id": "A18",
+   "kind": "lookup_hinglish",
+   "q": "FIR kab register hui thi?",
+   "expect": "file"
+  },
+  {
+   "id": "A19",
+   "kind": "summary",
+   "q": "Summarise the remand order.",
+   "expect": "file"
+  },
+  {
+   "id": "A20",
+   "kind": "lookup",
+   "q": "Which documents are relied upon in the chargesheet?",
+   "expect": "file"
+  },
+  {
+   "id": "A21",
+   "kind": "lookup",
+   "q": "What date is the next production fixed for in the remand order?",
+   "expect": "file"
+  },
+  {
+   "id": "A22",
+   "kind": "lookup",
+   "q": "Is there any mention of a CCTV camera in the file?",
+   "expect": "file"
+  },
+  {
+   "id": "A23",
+   "kind": "lookup",
+   "q": "who is accused no. 2 and where does he live",
+   "expect": "file"
+  },
+  {
+   "id": "A24",
+   "kind": "lookup",
+   "q": "what did the complainant say in her letter about threats",
+   "expect": "file"
+  },
+  {
+   "id": "A25",
+   "kind": "law_only",
+   "q": "What is the punishment for robbery under BNS 309(4)?",
+   "expect": "law"
+  },
+  {
+   "id": "A26",
+   "kind": "law_only",
+   "q": "Is robbery a bailable offence?",
+   "expect": "law"
+  },
+  {
+   "id": "A27",
+   "kind": "law_only",
+   "q": "What does section 480 of the BNSS say?",
+   "expect": "law"
+  },
+  {
+   "id": "A28",
+   "kind": "law_only_lookalike",
+   "q": "what are the sections for snatching under the BNS?",
+   "expect": "law"
+  },
+  {
+   "id": "A29",
+   "kind": "law_only",
+   "q": "Explain default bail under the BNSS.",
+   "expect": "law"
+  },
+  {
+   "id": "A30",
+   "kind": "law_only",
+   "q": "When can the police arrest without a warrant?",
+   "expect": "law"
+  },
+  {
+   "id": "A31",
+   "kind": "law_only_hinglish",
+   "q": "kya robbery bailable hai?",
+   "expect": "law"
+  },
+  {
+   "id": "A32",
+   "kind": "law_only",
+   "q": "What is the maximum period of police custody under the BNSS?",
+   "expect": "law"
+  },
+  {
+   "id": "A33",
+   "kind": "law_only",
+   "q": "What is a test identification parade and what is its evidentiary value?",
+   "expect": "law"
+  },
+  {
+   "id": "A34",
+   "kind": "law_only",
+   "q": "Is a section 63 BSA certificate mandatory for CCTV footage?",
+   "expect": "law"
+  },
+  {
+   "id": "A35",
+   "kind": "law_on_facts",
+   "q": "Is he entitled to default bail on these dates?",
+   "expect": "law"
+  },
+  {
+   "id": "A36",
+   "kind": "law_on_facts",
+   "q": "Can we get bail now that the chargesheet has been filed?",
+   "expect": "law"
+  },
+  {
+   "id": "A37",
+   "kind": "law_on_facts",
+   "q": "Was the arrest legal if the grounds were not given in writing?",
+   "expect": "law"
+  },
+  {
+   "id": "A38",
+   "kind": "law_on_facts",
+   "q": "What are the chances of bail given the recovery from his room?",
+   "expect": "law"
+  },
+  {
+   "id": "A39",
+   "kind": "law_on_facts",
+   "q": "Should we challenge the TIP since his photograph was published before it?",
+   "expect": "law"
+  },
+  {
+   "id": "A40",
+   "kind": "law_on_facts",
+   "q": "Is the remand order valid?",
+   "expect": "law"
+  },
+  {
+   "id": "A41",
+   "kind": "law_on_facts",
+   "q": "On these facts, which sections actually apply?",
+   "expect": "law"
+  },
+  {
+   "id": "A42",
+   "kind": "law_on_facts",
+   "q": "Does the delay in the FSL report help the defence?",
+   "expect": "law"
+  },
+  {
+   "id": "A43",
+   "kind": "law_on_facts",
+   "q": "what grounds can we take for bail here?",
+   "expect": "law"
+  },
+  {
+   "id": "A44",
+   "kind": "law_on_facts",
+   "q": "Can the accused be released since the co-accused is absconding?",
+   "expect": "law"
+  },
+  {
+   "id": "A45",
+   "kind": "law_on_facts",
+   "q": "is the chargesheet defective without the 63 certificate?",
+   "expect": "law"
+  },
+  {
+   "id": "A46",
+   "kind": "law_on_facts",
+   "q": "is the police custody beyond 2 days possible in this case?",
+   "expect": "law"
+  },
+  {
+   "id": "A47",
+   "kind": "chained",
+   "q": "What sections are charged and are they bailable?",
+   "expect": "law"
+  },
+  {
+   "id": "A48",
+   "kind": "chained",
+   "q": "What are the sections charged here and what punishment do they carry?",
+   "expect": "law"
+  },
+  {
+   "id": "A49",
+   "kind": "chained",
+   "q": "List the sections in the chargesheet and tell me which court tries them.",
+   "expect": "law"
+  },
+  {
+   "id": "A50",
+   "kind": "chained",
+   "q": "which sections is he charged under and can he get anticipatory bail?",
+   "expect": "law"
+  },
+  {
+   "id": "A51",
+   "kind": "draft",
+   "q": "Draft a bail petition.",
+   "expect": "draft"
+  },
+  {
+   "id": "A52",
+   "kind": "draft",
+   "q": "go through the material I uploaded and draft a bail petition for me",
+   "expect": "draft"
+  },
+  {
+   "id": "A53",
+   "kind": "draft",
+   "q": "Prepare a bail application for accused no. 1.",
+   "expect": "draft"
+  },
+  {
+   "id": "A54",
+   "kind": "draft",
+   "q": "Can you draft a reply to the complainant's letter?",
+   "expect": "draft"
+  },
+  {
+   "id": "A55",
+   "kind": "draft",
+   "q": "Write an application for medical examination of the accused.",
+   "expect": "draft"
+  },
+  {
+   "id": "A56",
+   "kind": "draft_hinglish",
+   "q": "bail application draft kar do",
+   "expect": "draft"
+  },
+  {
+   "id": "A57",
+   "kind": "draft_lookalike",
+   "q": "What should a bail petition contain?",
+   "expect": "law"
+  },
+  {
+   "id": "A58",
+   "kind": "draft_lookalike",
+   "q": "What grounds go into a bail application?",
+   "expect": "law"
+  },
+  {
+   "id": "A59",
+   "kind": "draft_lookalike",
+   "q": "How is a quashing petition drafted?",
+   "expect": "law"
+  },
+  {
+   "id": "A60",
+   "kind": "other",
+   "q": "thanks",
+   "expect": "law"
+  },
+  {
+   "id": "A61",
+   "kind": "other",
+   "q": "hello",
+   "expect": "law"
+  },
+  {
+   "id": "A62",
+   "kind": "trap",
+   "q": "What is the law here?",
+   "expect": "law"
+  },
+  {
+   "id": "A63",
+   "kind": "trap",
+   "q": "Is bail possible here?",
+   "expect": "law"
+  },
+  {
+   "id": "A64",
+   "kind": "trap",
+   "q": "what does section 193 of the BNSS say?",
+   "expect": "law"
+  },
+  {
+   "id": "A65",
+   "kind": "trap",
+   "q": "What section is the chargesheet filed under?",
+   "expect": "file"
+  },
+  {
+   "id": "A66",
+   "kind": "trap",
+   "q": "What did the magistrate decide about police custody, and was that correct?",
+   "expect": "law"
+  },
+  {
+   "id": "A67",
+   "kind": "trap",
+   "q": "what is the date of arrest and is it more than 60 days ago?",
+   "expect": "law"
+  },
+  {
+   "id": "A68",
+   "kind": "trap",
+   "q": "does the chargesheet mention any previous convictions?",
+   "expect": "file"
+  },
+  {
+   "id": "A69",
+   "kind": "trap",
+   "q": "Please read the documents and tell me the arrest time.",
+   "expect": "file"
+  },
+  {
+   "id": "A70",
+   "kind": "trap",
+   "q": "What's the complainant's name?",
+   "expect": "file"
+  }
+ ],
+ "B": [
+  {
+   "id": "B01",
+   "kind": "lookup",
+   "q": "Which sections has the police charged him with?",
+   "expect": "file"
+  },
+  {
+   "id": "B02",
+   "kind": "lookup",
+   "q": "What time was my client arrested?",
+   "expect": "file"
+  },
+  {
+   "id": "B03",
+   "kind": "lookup",
+   "q": "What was seized from his house?",
+   "expect": "file"
+  },
+  {
+   "id": "B04",
+   "kind": "lookup",
+   "q": "who identified the accused at the parade?",
+   "expect": "file"
+  },
+  {
+   "id": "B05",
+   "kind": "lookup",
+   "q": "For how many days was he sent to judicial custody?",
+   "expect": "file"
+  },
+  {
+   "id": "B06",
+   "kind": "lookup",
+   "q": "what does the bail order record about his family?",
+   "expect": "file"
+  },
+  {
+   "id": "B07",
+   "kind": "lookup",
+   "q": "Give me the names of all prosecution witnesses.",
+   "expect": "file"
+  },
+  {
+   "id": "B08",
+   "kind": "lookup",
+   "q": "Which court is the chargesheet filed in?",
+   "expect": "file"
+  },
+  {
+   "id": "B09",
+   "kind": "lookup",
+   "q": "On what date was the bail order passed?",
+   "expect": "file"
+  },
+  {
+   "id": "B10",
+   "kind": "lookup",
+   "q": "Who examined the complainant medically?",
+   "expect": "file"
+  },
+  {
+   "id": "B11",
+   "kind": "lookup",
+   "q": "What does Doc 2 say on page 2?",
+   "expect": "file"
+  },
+  {
+   "id": "B12",
+   "kind": "lookup",
+   "q": "Did the police seize the motorcycle, and where from?",
+   "expect": "file"
+  },
+  {
+   "id": "B13",
+   "kind": "lookup",
+   "q": "What is the registration number of the motorcycle?",
+   "expect": "file"
+  },
+  {
+   "id": "B14",
+   "kind": "lookup_hinglish",
+   "q": "dhara kaun si lagi hai chargesheet mein?",
+   "expect": "file"
+  },
+  {
+   "id": "B15",
+   "kind": "lookup",
+   "q": "When did the threatening call come?",
+   "expect": "file"
+  },
+  {
+   "id": "B16",
+   "kind": "lookup",
+   "q": "Has a proclamation been sought against the co-accused?",
+   "expect": "file"
+  },
+  {
+   "id": "B17",
+   "kind": "lookup",
+   "q": "What is written about the jeweller in the chargesheet?",
+   "expect": "file"
+  },
+  {
+   "id": "B18",
+   "kind": "summary",
+   "q": "Give me a timeline of the events from the documents.",
+   "expect": "file"
+  },
+  {
+   "id": "B19",
+   "kind": "lookup",
+   "q": "What reasons did the Sessions Judge give for rejecting bail?",
+   "expect": "file"
+  },
+  {
+   "id": "B20",
+   "kind": "lookup",
+   "q": "is the accused's age mentioned anywhere?",
+   "expect": "file"
+  },
+  {
+   "id": "B21",
+   "kind": "lookup",
+   "q": "Show me what the documents say about the CCTV footage.",
+   "expect": "file"
+  },
+  {
+   "id": "B22",
+   "kind": "lookup",
+   "q": "What did counsel argue at the remand hearing?",
+   "expect": "file"
+  },
+  {
+   "id": "B23",
+   "kind": "lookup",
+   "q": "Is a seizure list mentioned in the chargesheet?",
+   "expect": "file"
+  },
+  {
+   "id": "B24",
+   "kind": "lookup",
+   "q": "what are the charges",
+   "expect": "file"
+  },
+  {
+   "id": "B25",
+   "kind": "law_only",
+   "q": "What is the punishment for voluntarily causing hurt under BNS 115(2)?",
+   "expect": "law"
+  },
+  {
+   "id": "B26",
+   "kind": "law_only",
+   "q": "Is section 309(4) BNS cognizable?",
+   "expect": "law"
+  },
+  {
+   "id": "B27",
+   "kind": "law_only",
+   "q": "Explain section 3(5) of the BNS.",
+   "expect": "law"
+  },
+  {
+   "id": "B28",
+   "kind": "law_only_lookalike",
+   "q": "What are the sections for chain snatching?",
+   "expect": "law"
+  },
+  {
+   "id": "B29",
+   "kind": "law_only",
+   "q": "How long can police custody last under the BNSS?",
+   "expect": "law"
+  },
+  {
+   "id": "B30",
+   "kind": "law_only",
+   "q": "What is the limitation period for filing a chargesheet for default bail?",
+   "expect": "law"
+  },
+  {
+   "id": "B31",
+   "kind": "law_only",
+   "q": "Can a magistrate grant bail in a robbery case?",
+   "expect": "law"
+  },
+  {
+   "id": "B32",
+   "kind": "law_only",
+   "q": "What is the difference between section 480 and 483 BNSS?",
+   "expect": "law"
+  },
+  {
+   "id": "B33",
+   "kind": "law_only_hinglish",
+   "q": "robbery mein kitni saza hai?",
+   "expect": "law"
+  },
+  {
+   "id": "B34",
+   "kind": "law_only",
+   "q": "What does section 187 BNSS provide?",
+   "expect": "law"
+  },
+  {
+   "id": "B35",
+   "kind": "law_on_facts",
+   "q": "Given the arrest date and the chargesheet date, has the default bail right accrued?",
+   "expect": "law"
+  },
+  {
+   "id": "B36",
+   "kind": "law_on_facts",
+   "q": "Can we argue parity with the co-accused?",
+   "expect": "law"
+  },
+  {
+   "id": "B37",
+   "kind": "law_on_facts",
+   "q": "Is the identification evidence weak because the photograph was published?",
+   "expect": "law"
+  },
+  {
+   "id": "B38",
+   "kind": "law_on_facts",
+   "q": "Will the absence of the FSL report affect the trial?",
+   "expect": "law"
+  },
+  {
+   "id": "B39",
+   "kind": "law_on_facts",
+   "q": "How strong is the prosecution case on these documents?",
+   "expect": "law"
+  },
+  {
+   "id": "B40",
+   "kind": "law_on_facts",
+   "q": "Can we seek bail on medical grounds here?",
+   "expect": "law"
+  },
+  {
+   "id": "B41",
+   "kind": "law_on_facts",
+   "q": "Was the police custody remand properly granted?",
+   "expect": "law"
+  },
+  {
+   "id": "B42",
+   "kind": "law_on_facts",
+   "q": "should we file for bail in the High Court or the Sessions Court now?",
+   "expect": "law"
+  },
+  {
+   "id": "B43",
+   "kind": "law_on_facts",
+   "q": "Is the recovery admissible since it was on his disclosure statement?",
+   "expect": "law"
+  },
+  {
+   "id": "B44",
+   "kind": "law_on_facts",
+   "q": "What are our best arguments for bail?",
+   "expect": "law"
+  },
+  {
+   "id": "B45",
+   "kind": "law_on_facts",
+   "q": "Is the absconding co-accused a valid reason to deny bail?",
+   "expect": "law"
+  },
+  {
+   "id": "B46",
+   "kind": "law_on_facts",
+   "q": "Are the threats to the complainant relevant for bail?",
+   "expect": "law"
+  },
+  {
+   "id": "B47",
+   "kind": "chained",
+   "q": "Tell me the sections charged and whether they are compoundable.",
+   "expect": "law"
+  },
+  {
+   "id": "B48",
+   "kind": "chained",
+   "q": "what are the offences in the chargesheet and their maximum sentence?",
+   "expect": "law"
+  },
+  {
+   "id": "B49",
+   "kind": "chained",
+   "q": "Which sections is he facing, and which of them are non-bailable?",
+   "expect": "law"
+  },
+  {
+   "id": "B50",
+   "kind": "chained",
+   "q": "Identify the charged sections and explain each.",
+   "expect": "law"
+  },
+  {
+   "id": "B51",
+   "kind": "draft",
+   "q": "Draft an anticipatory bail application.",
+   "expect": "draft"
+  },
+  {
+   "id": "B52",
+   "kind": "draft",
+   "q": "Please prepare a regular bail petition based on these documents.",
+   "expect": "draft"
+  },
+  {
+   "id": "B53",
+   "kind": "draft",
+   "q": "Write a quashing petition for this case.",
+   "expect": "draft"
+  },
+  {
+   "id": "B54",
+   "kind": "draft",
+   "q": "make me a bail application using the chargesheet",
+   "expect": "draft"
+  },
+  {
+   "id": "B55",
+   "kind": "draft",
+   "q": "Draft a legal notice in reply.",
+   "expect": "draft"
+  },
+  {
+   "id": "B56",
+   "kind": "draft",
+   "q": "Prepare written submissions for the bail hearing.",
+   "expect": "draft"
+  },
+  {
+   "id": "B57",
+   "kind": "draft_lookalike",
+   "q": "What must a regular bail application include under the BNSS?",
+   "expect": "law"
+  },
+  {
+   "id": "B58",
+   "kind": "draft_lookalike",
+   "q": "Explain how to draft a good bail petition.",
+   "expect": "law"
+  },
+  {
+   "id": "B59",
+   "kind": "draft_lookalike",
+   "q": "Is a fresh bail petition allowed after the first was rejected?",
+   "expect": "law"
+  },
+  {
+   "id": "B60",
+   "kind": "other",
+   "q": "ok thank you",
+   "expect": "law"
+  },
+  {
+   "id": "B61",
+   "kind": "other",
+   "q": "Hi there",
+   "expect": "law"
+  },
+  {
+   "id": "B62",
+   "kind": "trap",
+   "q": "What's the position here?",
+   "expect": "law"
+  },
+  {
+   "id": "B63",
+   "kind": "trap",
+   "q": "can he come out on bail here?",
+   "expect": "law"
+  },
+  {
+   "id": "B64",
+   "kind": "trap",
+   "q": "What is section 115 of the BNS?",
+   "expect": "law"
+  },
+  {
+   "id": "B65",
+   "kind": "trap",
+   "q": "under which section has the final report been filed?",
+   "expect": "file"
+  },
+  {
+   "id": "B66",
+   "kind": "trap",
+   "q": "What did the Sessions Judge decide and was it right?",
+   "expect": "law"
+  },
+  {
+   "id": "B67",
+   "kind": "trap",
+   "q": "Is accused no. 2 still absconding?",
+   "expect": "file"
+  },
+  {
+   "id": "B68",
+   "kind": "trap",
+   "q": "What does the letter ask the police to do?",
+   "expect": "file"
+  },
+  {
+   "id": "B69",
+   "kind": "trap",
+   "q": "Read the chargesheet and tell me the date of the TIP.",
+   "expect": "file"
+  },
+  {
+   "id": "B70",
+   "kind": "trap",
+   "q": "Was the chargesheet filed within 90 days?",
+   "expect": "law"
+  }
+ ]
+}
