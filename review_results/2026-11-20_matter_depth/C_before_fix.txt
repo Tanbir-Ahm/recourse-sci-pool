@@ -1,0 +1,6 @@
+half C: 35 of 40 as frozen; dangerous (law or draft sent to a no-law size): 1; money (small sent up): 1; thin (research sent to standard): 0
+   ('C02', 'file', 'standard', 'In which court was the bail application filed?')
+   ('C04', 'file', 'explain', 'What court is the chargesheet addressed to?')
+   ('C11', 'research', 'draft', 'Prepare a detailed research memo on the law of parity in bail')
+   ('C14', 'research', 'draft', 'write me a legal research memorandum on identification parades')
+   ('C34', 'standard', 'file', 'Is anything missing from the chargesheet?')
