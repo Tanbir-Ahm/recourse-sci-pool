@@ -1,0 +1,7 @@
+half B: 86 of 92 as frozen; dangerous (law or draft sent to a no-law size): 0; money (small sent up): 4; thin (research sent to standard): 0
+   ('B05', 'file', 'standard', 'For how many days was he sent to judicial custody?')
+   ('B08', 'file', 'explain', 'Which court is the chargesheet filed in?')
+   ('B12', 'file', 'standard', 'Did the police seize the motorcycle, and where from?')
+   ('B13', 'file', 'standard', 'What is the registration number of the motorcycle?')
+   ('B24', 'file', 'standard', 'what are the charges')
+   ('BN16', 'research', 'draft', 'Write a detailed legal research memo on default bail')

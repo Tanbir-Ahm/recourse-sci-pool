@@ -1,0 +1,325 @@
+{
+ "_note": "planner_set_C.json: a FRESH set written 2026-11-20 AFTER the held-out run of half B (heldout_run1.txt: 86 of 92; two real misses besides the four known file lookups the router sends up: B08 'Which court is the chargesheet\nfiled in?' went to explain, and BN16 'Write a detailed legal research memo on default bail' was read as a request to draft) and BEFORE the two rule changes. Half B is no longer held out once its misses are fixed; C is the\ncheck of the changes. Written by Claude, not a lawyer. Same labels as planner_set.json; pins as there (True = the last answer listed the sections).",
+ "C": [
+  {
+   "id": "C01",
+   "q": "Which court is the accused being produced before?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C02",
+   "q": "In which court was the bail application filed?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C03",
+   "q": "Which court issued the remand order?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C04",
+   "q": "What court is the chargesheet addressed to?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C05",
+   "q": "Which police station registered the FIR?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C06",
+   "q": "Which sections does the remand order mention?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C07",
+   "q": "which court tries these offences?",
+   "expect": "explain",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C08",
+   "q": "Which court can try the offences charged?",
+   "expect": "explain",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C09",
+   "q": "which court is competent to try section 309(4) BNS?",
+   "expect": "explain",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C10",
+   "q": "are the offences triable by a Magistrate?",
+   "expect": "explain",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C11",
+   "q": "Prepare a detailed research memo on the law of parity in bail",
+   "expect": "research",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C12",
+   "q": "Write a research note on default bail under section 187 BNSS",
+   "expect": "research",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C13",
+   "q": "Draft a legal research note on whether a TIP is valid after photographs are published",
+   "expect": "research",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C14",
+   "q": "write me a legal research memorandum on identification parades",
+   "expect": "research",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C15",
+   "q": "Write a bail application for the accused",
+   "expect": "draft",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C16",
+   "q": "Prepare a bail petition from the documents",
+   "expect": "draft",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C17",
+   "q": "Draft a reply to the complainant's letter",
+   "expect": "draft",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C18",
+   "q": "write a petition under section 483 BNSS for bail",
+   "expect": "draft",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C19",
+   "q": "Is the bail application maintainable before the Sessions Court?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C20",
+   "q": "What happens if the co-accused is not arrested for a long time?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C21",
+   "q": "Can the police seize a motorcycle without a seizure memo?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C22",
+   "q": "explain the sections and tell me whether he can be released on bail",
+   "expect": "standard",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C23",
+   "q": "What is the effect of the FSL report being delayed?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C24",
+   "q": "what does section 63 of the BSA provide?",
+   "expect": "explain",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C25",
+   "q": "Explain 483 BNSS in simple language",
+   "expect": "explain",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C26",
+   "q": "what are the ingredients of the offences charged?",
+   "expect": "explain",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C27",
+   "q": "tell me the punishment for each charged section",
+   "expect": "explain",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C28",
+   "q": "What did the complainant say about the helmet?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C29",
+   "q": "When was the FIR registered?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C30",
+   "q": "Who is the Investigating Officer?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C31",
+   "q": "Are there Supreme Court judgments on bail for snatching?",
+   "expect": "research",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C32",
+   "q": "case law on delay in the TIP",
+   "expect": "research",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C33",
+   "q": "thank you",
+   "expect": "smalltalk",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C34",
+   "q": "Is anything missing from the chargesheet?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C35",
+   "q": "what is the maximum punishment he can get and how likely is bail",
+   "expect": "standard",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C36",
+   "q": "are these sections cognizable and bailable?",
+   "expect": "explain",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C37",
+   "q": "What should I argue on the delay in the remand?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C38",
+   "q": "give me citations for this",
+   "expect": "research",
+   "also": [],
+   "pins": true,
+   "kind": "c"
+  },
+  {
+   "id": "C39",
+   "q": "How long can police custody be sought?",
+   "expect": "standard",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  },
+  {
+   "id": "C40",
+   "q": "How many witnesses does the chargesheet list?",
+   "expect": "file",
+   "also": [],
+   "pins": false,
+   "kind": "c"
+  }
+ ]
+}
